@@ -10,14 +10,6 @@ keywords: video resume job description matching, tailor video pitch job applicat
 image: public/blog-images/matching-video-resume-to-job-description.webp
 ---
 
-More applications, especially for retail, hospitality, customer-facing, and some tech and creative roles, now include an optional or required 30-to-60 second video pitch. And most candidates treat it the same generic way they treat an untailored resume: one script, recorded once, sent to every application.
-
-That is a mistake. The same [matching principles](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) that apply to your written resume apply to your video pitch, and a script tailored to the specific role will consistently outperform a generic one.
-
-Use [TailorCV's resume optimizer](/solutions) to identify the job description's core priorities first, then use that same analysis to write your video pitch script.
-
----
-
 ## Key Takeaways
 
 - Tailor your 30-second video pitch to match the specific job description, just like you would with your resume, to enhance your chances of success.
@@ -25,6 +17,15 @@ Use [TailorCV's resume optimizer](/solutions) to identify the job description's 
 - Structure your pitch with a clear opening, a core match of experiences or skills, and a closing that expresses genuine interest in the role and company.
 - Match your delivery style to the tone of the job description to demonstrate cultural fit and engagement.
 - Avoid common mistakes such as reusing the same script for all applications, neglecting to address fit, over-preparing, and overlooking video/audio quality.
+
+
+More applications, especially for retail, hospitality, customer-facing, and some tech and creative roles, now include an optional or required 30-to-60 second video pitch. And most candidates treat it the same generic way they treat an untailored resume: one script, recorded once, sent to every application.
+
+That is a mistake. The same [matching principles](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) that apply to your written resume apply to your video pitch, and a script tailored to the specific role will consistently outperform a generic one.
+
+Use [TailorCV's resume optimizer](/solutions) to identify the job description's core priorities first, then use that same analysis to write your video pitch script.
+
+---
 
 ## Why Video Pitches Need the Same Matching Treatment as Resumes
 
@@ -98,11 +99,20 @@ A well-matched script delivered with poor lighting or unclear audio still underc
 
 Use [TailorCV's resume optimizer](/solutions) to quickly identify a job description's top priorities and keywords, the same insights you need to write a matched video pitch script. Then practice your delivery and refine your framing with an [AI mock interview](/mock-interview), which builds practice questions directly from your resume and target role.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ---
 
 ## Step-by-Step Guide to Crafting Your Video Pitch
 
 Creating a compelling 30-second video pitch involves more than just reciting your qualifications. Here’s a step-by-step approach to ensure your pitch aligns perfectly with the job description:
+
+
 
 1. **Analyze the Job Description Thoroughly**: Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to identify key responsibilities and requirements. Highlight any specific skills or experiences that are mentioned.
 
@@ -124,11 +134,13 @@ Creating a compelling 30-second video pitch involves more than just reciting you
 
 While crafting your video pitch, be aware of these common pitfalls that can undermine your message:
 
-- **Reading from a Script**: This can make your delivery sound robotic. Instead, practice enough to speak naturally and confidently.
-- **Ignoring Non-Verbal Cues**: Body language is crucial. Avoid folding your arms or looking away; instead, use open gestures and maintain eye contact.
-- **Overloading with Information**: Stick to the essentials. A concise pitch is more impactful than one that tries to cover every aspect of your experience.
-- **Neglecting Technical Quality**: Poor audio or video quality can distract from your message. Use a good camera and microphone, and ensure proper lighting.
-- **Failing to Tailor Your Pitch**: Generic pitches fail to resonate. Always customize your content to reflect the specific job description.
+| Mistake | Why it costs you |
+|---|---|
+| **Reading from a Script** | This can make your delivery sound robotic. Instead, practice enough to speak naturally and confidently |
+| **Ignoring Non-Verbal Cues** | Body language is crucial. Avoid folding your arms or looking away; instead, use open gestures and maintain eye contact |
+| **Overloading with Information** | Stick to the essentials. A concise pitch is more impactful than one that tries to cover every aspect of your experience |
+| **Neglecting Technical Quality** | Poor audio or video quality can distract from your message. Use a good camera and microphone, and ensure proper lighting |
+| **Failing to Tailor Your Pitch** | Generic pitches fail to resonate. Always customize your content to reflect the specific job description |
 
 ## Do's and Don'ts for Your Video Pitch
 

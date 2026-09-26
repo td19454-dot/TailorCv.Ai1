@@ -388,19 +388,6 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             return;
           }
 
-          // A backend without the JSON version of this endpoint (added in
-          // b86b08e5 on main) still returns the bare PDF, with the score in a
-          // header. Download that as-is rather than failing on res.json():
-          // there is just no diff or skills list to show.
-          const contentType = res.headers.get('content-type') || '';
-          if (contentType.includes('application/pdf')) {
-            const header = res.headers.get('X-Skill-Match-After');
-            const afterScore = header && !isNaN(Number(header)) ? Number(header) : null;
-            await downloadPdfBase64(arrayBufferToBase64(await res.arrayBuffer()), 'tailored_resume.pdf');
-            sendResponse({ data: { success: true, afterScore, skillsAdded: [], skillGaps: [], changes: {} } });
-            return;
-          }
-
           // The endpoint returns JSON now (not a raw PDF) so the "See what
           // changed" diff and the skill lists can travel alongside the PDF —
           // a response header cannot carry bullet-level before/after text.
@@ -540,7 +527,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         sendResponse({ data: await res.json() });
 
       } else if (msg.type === 'AF_SAVE_ANSWERS') {
-        const res = await fetch(`${BASE_URL}/api/extension/apply-answers`, {
+        const res = await fetch(`${BASE_URL}/api/extension/autofill/answers`, {
           method: 'POST',
           credentials: 'include',
           headers: { 'Content-Type': 'application/json' },

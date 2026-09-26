@@ -10,14 +10,6 @@ slug: how-to-list-education-on-resume
 keywords: how to list education on resume, education on resume 2026, resume education section, where to put education resume, GPA on resume, resume education format
 ---
 
-The education section seems simple, but candidates make surprisingly common mistakes - including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)) than others (experienced professionals), but everyone should get it right.
-
-This guide covers exactly how to list [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) on your resume for every situation.
-
-Before finalizing, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and use an [ATS-friendly template](https://www.thetailorcv.com/templates).
-
----
-
 ## Key Takeaways
 
 - Include core elements in the education section: degree type, institution name, location, graduation year, GPA, relevant coursework, and honors if applicable.
@@ -26,16 +18,33 @@ Before finalizing, run your resume through the [ATS score checker](https://www.t
 - List relevant coursework only if you are a student or recent graduate and it directly relates to the job; remove it once you have relevant work experience.
 - Use a clear format for the education section, emphasizing degree, institution, and graduation year for clarity and professionalism.
 
+
+The education section seems simple, but candidates make surprisingly common mistakes - including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers)) than others (experienced professionals), but everyone should get it right.
+
+This guide covers exactly how to list [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) on your resume for every situation.
+
+Before finalizing, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and use an [ATS-friendly template](https://www.thetailorcv.com/templates).
+
+---
+
 ## What to Include in the Education Section
 
 Core elements:
+
 - Degree type and major (e.g., Bachelor of Technology in Computer Science)
 - Institution name
 - Location (city, or city and country)
 - Graduation year (or expected graduation)
 - GPA / CGPA (if strong - see below)
-- Relevant coursework (for students and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes))
+- Relevant coursework (for students and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers))
 - Honors, awards, or distinctions (if applicable)
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 ---
 
@@ -89,6 +98,7 @@ If your overall GPA is mediocre but your major GPA is strong, you can list the m
 ## Relevant Coursework - When to Include
 
 Include [relevant coursework](https://thetailorcv.com/blog/volunteer-work-on-resume) if:
+
 - You are a student or recent graduate
 - The coursework is directly relevant to the target role
 - You need to demonstrate knowledge in areas where you lack work experience
@@ -141,6 +151,8 @@ List in reverse chronological order (most recent first). Include both, but keep 
 
 ## Special Situations
 
+
+
 ### Incomplete Degree
 
 If you started but did not finish a degree, you can list it honestly:
@@ -159,6 +171,7 @@ List legitimate online degrees and bootcamps like any other [education](https://
 ### High School
 
 Only include high school if:
+
 - You are currently in high school or a recent high school graduate with no college
 - The high school is exceptionally prestigious and relevant
 
@@ -217,7 +230,7 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-List your education clearly: degree, institution, year, and GPA only if strong. Students and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) should place education near the top with [relevant coursework](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description); experienced professionals should keep it concise at the bottom. Remove high school once you have a degree, and omit a weak GPA.
+List your education clearly: degree, institution, year, and GPA only if strong. Students and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) should place education near the top with [relevant coursework](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description); experienced professionals should keep it concise at the bottom. Remove high school once you have a degree, and omit a weak GPA.
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read [how to list certifications on resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete guidance.
 

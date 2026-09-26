@@ -14,10 +14,15 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --bg:#070f24; --panel:#0c1733; --panel-2:#0a1430; --border:rgba(99,130,200,.18); --muted:#9fb0cc; --accent:#3392ff; --ink:#e2ecff; }
+        html, body { overflow-x: hidden; }
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; padding-top: 76px; }
         a { text-decoration: none !important; }
 
-        .app { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 76px); }
+        /* minmax(0, 1fr), not 1fr: a bare 1fr track cannot shrink below its
+           widest child, so one wide row (the sample-JD picker) widened the whole
+           column past a phone screen and html/body overflow-x clipped the
+           right-hand side off every card. */
+        .app { display: grid; grid-template-columns: 240px minmax(0, 1fr); min-height: calc(100vh - 76px); }
 
         /* Sidebar — single icon color (currentColor), tight */
         .side { background: #081024; border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 16px 14px; position: sticky; top: 76px; height: calc(100vh - 76px); overflow-y: auto; }
@@ -30,170 +35,19 @@
         .side-foot { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
         /* Burger toggles the sidebar. Desktop: collapse it to reclaim space. */
         @media (min-width: 861px) {
-            body.dash-nav-open .app { grid-template-columns: 1fr; }
+            /* Pinned with position: fixed, not sticky: html/body carry
+               overflow-x: hidden, which silently breaks sticky and let the
+               sidebar scroll away with the page. The .app padding reserves
+               the 240px the fixed sidebar no longer takes up in the grid. */
+            .app { grid-template-columns: minmax(0, 1fr); padding-left: 240px; }
+            .side { position: fixed; top: 76px; left: 0; width: 240px; z-index: 50; }
+            body.dash-nav-open .app { padding-left: 0; }
             body.dash-nav-open .side { display: none; }
         }
 
-        .main { padding: 30px 34px 60px; max-width: 1180px; }
+        .main { padding: 30px 34px 60px; max-width: 1180px; min-width: 0; }
         .greet { font-size: 2rem; font-weight: 800; margin-bottom: 22px; }
 
-        /* Promo banner */
-        .promo { display: flex; align-items: center; gap: 18px; background: linear-gradient(110deg, rgba(51,146,255,.14), rgba(124,58,237,.12)); border: 1px solid var(--border); border-radius: 16px; padding: 18px 22px; margin-bottom: 22px; position: relative; }
-        .promo .tag { background: #f59e0b; color: #1a1206; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 6px; letter-spacing: .04em; }
-        .promo h3 { font-size: 1.05rem; margin-bottom: 3px; display: flex; align-items: center; gap: 10px; }
-        .promo p { color: var(--muted); font-size: .9rem; }
-        .promo .go { margin-left: auto; background: linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.85rem; padding:10px 18px; border-radius:10px; white-space:nowrap; }
-
-        /* "Optimize a resume" promo link — shiny 3D-tilt bevel (Uiverse.io by
-           AqFox), recolored to this button's existing blue/violet gradient.
-           Scoped via .dash-optimize-btn so the shared .go class (also used by
-           .scan-actions .go elsewhere on this page) is untouched. */
-        .promo .go.dash-optimize-btn {
-            all: unset;
-            box-sizing: border-box;
-            cursor: pointer;
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            font-family: inherit;
-            font-weight: 700;
-            font-size: .9rem;
-            padding: 12px 22px;
-            border-radius: 10px;
-            border: none;
-            color: #fff;
-            background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat, linear-gradient(135deg,#3392ff,#6d28d9);
-            text-shadow: 0 2px 0 rgba(0,0,0,.35);
-            transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
-            outline-offset: .1em;
-            transition: .3s, box-shadow .3s ease;
-            text-decoration: none;
-            white-space: nowrap;
-            box-shadow: 0 0 14px 2px rgba(99,140,255,.55), 0 0 28px 4px rgba(124,58,237,.35);
-            animation: dashOptimizeGlow 2.4s ease-in-out infinite;
-        }
-        .dash-optimize-btn:hover,
-        .dash-optimize-btn:focus-visible {
-            --_p: 0%;
-            --_i: 1;
-            box-shadow: 0 0 20px 4px rgba(99,140,255,.75), 0 0 40px 8px rgba(124,58,237,.5);
-        }
-        .dash-optimize-btn:active {
-            box-shadow: inset 0 0 9e9q #0005;
-            transition: 0s;
-            animation: none;
-        }
-        @keyframes dashOptimizeGlow {
-            0%, 100% { box-shadow: 0 0 14px 2px rgba(99,140,255,.55), 0 0 28px 4px rgba(124,58,237,.35); }
-            50%      { box-shadow: 0 0 20px 5px rgba(99,140,255,.8), 0 0 38px 9px rgba(124,58,237,.55); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .dash-optimize-btn { transition: none; animation: none; }
-        }
-
-        /* "NEW feature" announcement banner (dismissible) */
-        .feat-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(110deg, #e8f1ff, #e7f7ef); border: 1px solid rgba(99,130,200,.25); border-radius: 16px; padding: 18px 48px 18px 22px; margin-bottom: 22px; position: relative; }
-        .feat-banner.hide { display: none; }
-        .feat-banner .fb-badge { background: #f59e0b; color: #1a1206; font-size: 11px; font-weight: 800; padding: 4px 9px; border-radius: 6px; letter-spacing: .04em; flex-shrink: 0; }
-        .feat-banner .fb-body { min-width: 0; }
-        .feat-banner h3 { font-size: 1.15rem; font-weight: 800; color: #0d1b3d; margin-bottom: 3px; }
-        .feat-banner p { color: #3a4a66; font-size: .92rem; }
-        .feat-banner .fb-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; color: #2563eb; font-weight: 700; font-size: .92rem; }
-        .feat-banner .fb-cta svg { width: 16px; height: 16px; }
-        .feat-banner .fb-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: #2563eb; line-height: 1; cursor: pointer; padding: 4px; border-radius: 8px; display: inline-flex; }
-        .feat-banner .fb-close svg { width: 18px; height: 18px; display: block; }
-        .feat-banner .fb-close:hover { background: rgba(37,99,235,.1); color: #1d4ed8; }
-        @media (max-width: 560px) { .feat-banner { flex-direction: column; align-items: flex-start; } }
-
-        .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 22px; }
-        .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
-        .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-        .card-head h3 { font-size: .95rem; font-weight: 700; display: flex; align-items: center; gap: 9px; }
-        .card-head svg { width: 18px; height: 18px; color: #8aa0c8; }
-        .card-head a { color: #4a9bff; display: inline-flex; align-items: center; }
-        .card-head a svg { width: 17px; height: 17px; }
-        .stat { display: flex; align-items: baseline; gap: 10px; }
-        .stat .num { font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1; }
-        .stat .lbl { color: var(--muted); font-size: .9rem; }
-        .pill { display:inline-block; margin-top:12px; font-size:.8rem; font-weight:600; padding:4px 11px; border-radius:999px; background:rgba(16,185,129,.16); color:#6ee7b7; border:1px solid rgba(16,185,129,.3); }
-        .mini-list { list-style:none; display:flex; flex-direction:column; gap:9px; margin-top:14px; }
-        .mini-list li { display:flex; justify-content:space-between; gap:10px; font-size:.86rem; color:#c4d4ef; border-bottom:1px solid rgba(255,255,255,.06); padding-bottom:8px; }
-        .mini-list li span.co { color: var(--muted); }
-
-        /* Task 4 — clickable, truncating "My Resumes" rows with a chevron */
-        .resume-rows { display: flex; flex-direction: column; gap: 4px; margin-top: 14px; }
-        .resume-rows .mini-row {
-            display: flex; align-items: center; gap: 10px;
-            padding: 10px 6px; border-radius: 9px; color: #c4d4ef;
-            cursor: pointer; transition: background .15s;
-            border-bottom: 1px solid rgba(255,255,255,.06);
-        }
-        .resume-rows .mini-row:active,
-        .resume-rows .mini-row:hover { background: rgba(99,132,255,.14); }
-        .resume-rows .mr-title { flex: 1 1 auto; max-width: calc(100% - 56px); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .88rem; }
-        .resume-rows .mr-date { flex: 0 0 auto; width: 48px; text-align: right; white-space: nowrap; color: var(--muted); font-size: .8rem; }
-        .resume-rows .mr-chev { flex: 0 0 auto; color: #8aa0c8; font-size: 1.1rem; line-height: 1; }
-
-        /* Task 5 — full-width "New scan" button in the empty ATS card */
-        .card .cta.cta-block { display: block; width: 100%; text-align: center; padding: 12px; }
-        /* Task 7 — capitalise the user's display name */
-        .greet { text-transform: capitalize; }
-        .empty { color: var(--muted); font-size: .9rem; margin-top: 10px; }
-        .card .cta { display:inline-block; margin-top:16px; background:linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.84rem; padding:9px 16px; border-radius:9px; }
-
-        /* "Build My Portfolio" / "Start Mock Interview" — skewed arrow cta
-           (Uiverse.io by mobinkakei), recolored to these cards' existing
-           blue/violet gradient. Scoped via .dash-cta-arrow so the shared
-           .cta/.cta-block classes elsewhere are untouched. */
-        .card .cta.cta-block.dash-cta-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 11px 18px;
-            text-decoration: none;
-            font-size: .9rem;
-            font-weight: 700;
-            color: #fff;
-            background: linear-gradient(135deg,#3392ff,#6d28d9);
-            transition: box-shadow .5s, background .3s;
-            box-shadow: 5px 5px 0 #000;
-            transform: skewX(-15deg);
-            border: none;
-            border-radius: 0;
-            cursor: pointer;
-        }
-        .dash-cta-arrow:focus { outline: none; }
-        .dash-cta-arrow .dash-cta-text { display: inline-block; transform: skewX(15deg); }
-        .dash-cta-arrow .dash-cta-ico {
-            transition: .5s;
-            margin-right: 0;
-            width: 20px;
-            margin-left: 20px;
-            position: relative;
-            top: 12%;
-            transform: skewX(15deg);
-        }
-        .dash-cta-arrow:hover {
-            transition: .5s;
-            box-shadow: 9px 9px 0 #fbc638;
-        }
-        .dash-cta-arrow:hover .dash-cta-ico { margin-right: 30px; }
-        .dash-cta-one { transition: .4s; transform: translateX(-60%); }
-        .dash-cta-two { transition: .5s; transform: translateX(-30%); }
-        .dash-cta-arrow:hover .dash-cta-three { animation: dashCtaColorAnim 1s infinite .2s; }
-        .dash-cta-arrow:hover .dash-cta-one { transform: translateX(0%); animation: dashCtaColorAnim 1s infinite .6s; }
-        .dash-cta-arrow:hover .dash-cta-two { transform: translateX(0%); animation: dashCtaColorAnim 1s infinite .4s; }
-        @keyframes dashCtaColorAnim {
-            0% { fill: #fff; }
-            50% { fill: #fbc638; }
-            100% { fill: #fff; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .dash-cta-arrow, .dash-cta-arrow * { animation: none !important; transition: none !important; }
-        }
 
         /* "Get ATS score" — plane-style launch button (Uiverse.io by
            marcelodolza), recolored to the dashboard's blue/violet accent.
@@ -404,10 +258,10 @@
         .ns-progress-fill { height: 100%; width: 4%; border-radius: 999px; background: linear-gradient(90deg,#3392ff,#6d28d9); transition: width .4s ease; }
         .ns-progress-label { margin-top: 8px; font-size: .82rem; color: #9fb6d6; }
 
-        @media (max-width: 980px) { .cards { grid-template-columns: 1fr; } .scan-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 980px) { .cards { grid-template-columns: minmax(0, 1fr); } .scan-grid { grid-template-columns: minmax(0, 1fr); } }
         @media (max-width: 860px) {
             body { padding-top: 52px; }   /* match the 52px mobile top bar */
-            .app { grid-template-columns: 1fr; }
+            .app { grid-template-columns: minmax(0, 1fr); }
             /* Sidebar becomes a slide-in drawer toggled by the burger. */
             .side {
                 position: fixed; top: 52px; left: 0; z-index: 4000;
@@ -461,6 +315,254 @@
         .jt-list li:last-child { border-bottom:none; }
         .jt-list li span { color:#c4d4ef; }
         .jt-list li b { color:#ffffff; font-weight:700 !important; font-size:1.05rem; }
+        /* ── Action-plan dashboard (hero → stage stepper → progress + spotlight) ── */
+        .main { max-width: 1240px; margin: 0 auto; width: 100%; }
+        .dh-hero { text-align: center; margin: 6px 0 26px; }
+        .dh-hero h1 { font-size: 2.35rem; color: #fff; letter-spacing: -.02em; text-transform: capitalize; }
+        .dh-hero p { color: var(--muted); font-size: 1.05rem; margin-top: 8px; }
+
+        .dh-stepper { display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; max-width: 100%; overflow-x: auto; padding: 6px 4px; scrollbar-width: none; }
+        .dh-stepper::-webkit-scrollbar { display: none; }
+        .dh-stage {
+            flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px;
+            padding: 11px 22px; border-radius: 999px; cursor: pointer;
+            background: rgba(12,23,51,.78); border: 1px solid var(--border);
+            color: #c4d4ef; font: inherit; font-size: .95rem;
+            transition: background .2s, border-color .2s, color .2s, box-shadow .2s;
+        }
+        .dh-stage:hover { border-color: rgba(96,165,250,.5); color: #fff; }
+        .dh-stage.active {
+            color: #fff; background: rgba(51,146,255,.16); border-color: #3392ff;
+            box-shadow: 0 0 0 4px rgba(51,146,255,.16), 0 8px 24px rgba(51,146,255,.22);
+        }
+        .dh-stage .dh-tick { width: 16px; height: 16px; color: #34d399; display: none; }
+        .dh-stage.done .dh-tick { display: block; }
+        .dh-conn { flex: 0 0 auto; width: 56px; height: 2px; background: var(--border); transition: background .3s; }
+        .dh-conn.lit { background: linear-gradient(90deg, #3392ff, #60a5fa); }
+
+        .dh-plan { display: grid; grid-template-columns: 350px minmax(0, 1fr); gap: 24px; margin-bottom: 34px; align-items: stretch; }
+        .dh-card { background: rgba(12,23,51,.86); border: 1px solid var(--border); border-radius: 18px; backdrop-filter: blur(6px); }
+
+        .dh-progress { overflow: hidden; }
+        .dh-prog-head { display: flex; align-items: center; gap: 14px; padding: 20px 22px; border-bottom: 1px solid var(--border); }
+        .dh-prog-head strong { color: #fff; font-size: 1.02rem; white-space: nowrap; }
+        .dh-bar { flex: 1; height: 7px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+        .dh-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #3392ff, #60a5fa); transition: width .6s cubic-bezier(.22,.61,.36,1); }
+        .dh-count { color: #c4d4ef; font-size: .95rem; font-variant-numeric: tabular-nums; }
+        .dh-steps { display: none; padding: 6px 0 10px; }
+        .dh-steps.active { display: block; }
+        .dh-step {
+            display: flex; align-items: center; gap: 14px; width: 100%;
+            padding: 13px 22px; border: none; border-right: 3px solid transparent;
+            background: transparent; color: #d6e2fa; font: inherit; font-size: 1rem; text-align: left; cursor: pointer;
+            transition: background .15s, border-color .15s;
+        }
+        .dh-step:hover { background: rgba(99,132,255,.08); }
+        .dh-step.active { background: rgba(51,146,255,.12); border-right-color: #3392ff; color: #fff; }
+        .dh-step-ico {
+            flex: 0 0 auto; width: 44px; height: 44px; border-radius: 11px;
+            display: inline-flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,.05); color: #9fc2ff;
+        }
+        .dh-step.active .dh-step-ico { background: rgba(51,146,255,.2); color: #fff; }
+        .dh-step-ico svg { width: 21px; height: 21px; }
+        .dh-step.done .dh-step-ico { background: rgba(52,211,153,.14); color: #34d399; }
+        .dh-step.done .dh-step-label { color: #9fb0cc; }
+
+        .dh-spot { position: relative; padding: 30px 32px; min-height: 100%; }
+        .dh-spot::before {
+            content: ""; position: absolute; left: -9px; top: var(--notch-y, 50%);
+            width: 16px; height: 16px; transform: translateY(-50%) rotate(45deg);
+            background: rgba(12,23,51,.98); border-left: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            transition: top .25s ease;
+        }
+        .dh-panel { display: none; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: center; height: 100%; }
+        .dh-panel.active { display: grid; animation: dhFade .35s ease; }
+        @keyframes dhFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+        .dh-panel-body { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+        .dh-chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 9px; background: rgba(51,146,255,.14); color: #7cc0ff; font-size: .88rem; }
+        .dh-done-badge { display: inline-flex; align-items: center; gap: 5px; margin-left: 8px; padding: 7px 12px; border-radius: 9px; background: rgba(52,211,153,.12); color: #6ee7b7; font-size: .82rem; }
+        .dh-done-badge svg { width: 14px; height: 14px; }
+        .dh-panel h2 { color: #fff; font-size: 1.6rem; line-height: 1.25; margin: 20px 0 10px; letter-spacing: -.01em; }
+        .dh-panel p { color: #b7c6e6; font-size: .98rem; line-height: 1.65; max-width: 460px; }
+        /* Site-wide skewed cta with the triple-chevron arrow (same recipe as
+           .iq-btn in interview_prep.html): brand blue, black hard shadow that
+           flips to gold on hover while the chevrons slide in and flash. */
+        .dh-cta {
+            margin-top: 24px; margin-left: 6px; display: inline-flex; align-items: center; justify-content: center;
+            padding: 14px 26px; border-radius: 0; color: #fff; font-size: 1rem; letter-spacing: .02em;
+            background: #1a6aff;
+            box-shadow: 6px 6px 0 #000;
+            transform: skewX(-15deg);
+            transition: box-shadow .5s, background .3s;
+        }
+        .dh-cta:focus { outline: none; }
+        .dh-cta:focus-visible { outline: 2px solid #fbc638; outline-offset: 4px; }
+        .dh-cta:hover { box-shadow: 10px 10px 0 #fbc638; }
+        .dh-cta-text { display: inline-block; transform: skewX(15deg); }
+        .dh-cta-arrow { display: inline-flex; width: 20px; margin-left: 16px; position: relative; top: 1px; transform: skewX(15deg); transition: margin-right .5s; }
+        .dh-cta-arrow svg { width: 40px; height: 18px; flex: 0 0 auto; }
+        .dh-cta:hover .dh-cta-arrow { margin-right: 26px; }
+        .dh-cta .dh-arr-one { transition: .4s; transform: translateX(-60%); }
+        .dh-cta .dh-arr-two { transition: .5s; transform: translateX(-30%); }
+        .dh-cta:hover .dh-arr-one { transform: translateX(0%); animation: dhArrColor 1s infinite .6s; }
+        .dh-cta:hover .dh-arr-two { transform: translateX(0%); animation: dhArrColor 1s infinite .4s; }
+        .dh-cta:hover .dh-arr-three { animation: dhArrColor 1s infinite .2s; }
+        @keyframes dhArrColor { 0% { fill: #fff; } 50% { fill: #fbc638; } 100% { fill: #fff; } }
+        @media (prefers-reduced-motion: reduce) {
+            .dh-cta, .dh-cta * { transition: none !important; animation: none !important; }
+        }
+        .dh-art { display: flex; align-items: center; justify-content: center; }
+        .dh-art svg { width: 100%; max-width: 380px; height: auto; filter: drop-shadow(0 18px 30px rgba(2,8,30,.45)); }
+
+        /* Section headings + quick stats */
+        .dh-h2 { color: #fff; font-size: 1.45rem; margin: 0 0 16px; }
+        .dh-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-bottom: 34px; }
+        .dh-stat { padding: 22px 24px; }
+        .dh-stat-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+        .dh-stat-head h3 { color: #fff; font-size: 1.08rem; }
+        .dh-stat-head a { color: #4a9bff; display: inline-flex; }
+        .dh-stat-head a svg { width: 18px; height: 18px; }
+        .dh-rlist { list-style: none; margin-top: 8px; }
+        .dh-rlist li a { display: flex; align-items: center; gap: 10px; padding: 12px 2px; border-bottom: 1px solid rgba(255,255,255,.06); color: #c4d4ef; font-size: .93rem; }
+        .dh-rlist li:last-child a { border-bottom: none; }
+        .dh-rlist li a:hover { color: #fff; }
+        .dh-rlist .t { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+        .dh-rlist .s { flex: 0 0 auto; font-size: .8rem; padding: 3px 9px; border-radius: 999px; background: rgba(51,146,255,.14); color: #7cc0ff; }
+        .dh-empty { color: var(--muted); font-size: .92rem; line-height: 1.6; margin-top: 16px; }
+        .dh-link-btn { display: inline-flex; margin-top: 16px; padding: 10px 18px; border-radius: 10px; border: 1px solid rgba(96,165,250,.4); color: #cfe0ff; font-size: .9rem; transition: background .15s; }
+        .dh-link-btn:hover { background: rgba(51,146,255,.12); }
+        .dh-score { display: flex; align-items: center; gap: 20px; margin-top: 20px; }
+        .dh-ring { --p: 0; width: 104px; height: 104px; border-radius: 50%; flex: 0 0 auto; display: grid; place-items: center;
+            background: radial-gradient(closest-side, #0c1733 78%, transparent 79% 100%), conic-gradient(#3392ff calc(var(--p) * 1%), rgba(255,255,255,.08) 0); }
+        .dh-ring b { color: #fff; font-size: 1.8rem; }
+        .dh-score-txt { color: #b7c6e6; font-size: .92rem; line-height: 1.55; }
+
+        /* Quick Stats: both cards share one height; tracker rows spread to fill it */
+        .dh-stats { align-items: stretch; }
+        .dh-stat { display: flex; flex-direction: column; }
+        .dh-stat-head { width: 100%; gap: 12px; }
+        .dh-stat .jt-list { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .dh-improve { background: radial-gradient(90% 70% at 100% 100%, rgba(51,146,255,.18), transparent 60%), rgba(12,23,51,.86); }
+        .dh-improve-body { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: center; padding-top: 22px; }
+        .dh-improve-copy { display: flex; flex-direction: column; align-items: flex-start; }
+        .dh-improve-copy h4 { color: #fff; font-size: 1.45rem; line-height: 1.3; margin: 0 0 8px; }
+        .dh-improve-copy p { color: #b7c6e6; font-size: .95rem; line-height: 1.6; }
+        .dh-improve-copy .dh-launch { margin-top: 26px; }
+        .dh-improve-art svg { display: block; width: 100%; height: auto; filter: drop-shadow(0 14px 26px rgba(2,8,30,.45)); }
+        @media (max-width: 1180px) and (min-width: 861px) {
+            .dh-improve-body { grid-template-columns: minmax(0, 1fr); }
+            .dh-improve-art { max-width: 300px; }
+        }
+        @media (max-width: 560px) {
+            .dh-improve-body { grid-template-columns: minmax(0, 1fr); }
+        }
+        /* Plane-style launch button (Uiverse.io by marcelodolza — same recipe as
+           "Upload Existing CV" in modify_cv.html), recolored brand blue.
+           Deliberately without the recipe's :focus "sent" state: on a link it
+           hid the label, and Back (bfcache) left an empty focused button. */
+        .dh-launch {
+            --primary: #bfdbfe; --neutral-1: #3b8bff; --neutral-2: #1d4ed8; --radius: 12px;
+            box-sizing: border-box; position: relative; display: inline-flex; align-items: center; justify-content: center;
+            padding: 14px 26px; min-height: 52px; border-radius: var(--radius); cursor: pointer;
+            color: #fff; font-size: 15px; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.3);
+            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 8px 22px rgba(37,99,235,.4);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .dh-launch:hover { transform: translateY(-1px) scale(1.02); box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 12px 28px rgba(37,99,235,.55); }
+        .dh-launch:active { transform: scale(1); }
+        .dh-launch:focus-visible { outline: 2px solid #bfdbfe; outline-offset: 4px; }
+        .dh-launch::after {
+            content: ""; position: absolute; inset: 0; z-index: 0; border-radius: var(--radius); border: 2px solid transparent;
+            background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box, linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+            transition: box-shadow .4s ease;
+        }
+        .dh-launch:hover::after { box-shadow: inset 0 -1px 3px 0 #fff; }
+        .dh-launch::before {
+            content: ""; position: absolute; inset: 4px; z-index: 2; border-radius: 18px; filter: blur(.5px);
+            background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+        }
+        .dh-launch-outline { position: absolute; inset: -2px -3px; z-index: 1; border-radius: inherit; overflow: hidden; opacity: 0; transition: opacity .4s ease; }
+        .dh-launch-outline::before {
+            content: ""; position: absolute; inset: -100%;
+            background: conic-gradient(from 180deg, transparent 60%, #fff 80%, transparent 100%);
+            animation: dhLaunchSpin 2s linear infinite; animation-play-state: paused;
+        }
+        .dh-launch:hover .dh-launch-outline { opacity: 1; }
+        .dh-launch:hover .dh-launch-outline::before { animation-play-state: running; }
+        .dh-launch-state { position: relative; z-index: 3; display: flex; align-items: center; padding-left: 28px; }
+        .dh-launch-icon { position: absolute; left: 0; top: 0; bottom: 0; margin: auto; display: flex; align-items: center; transition: transform .3s ease; }
+        .dh-launch-icon svg { width: 19px; height: 19px; overflow: visible; }
+        .dh-launch:hover .dh-launch-icon { transform: rotate(45deg); }
+        .dh-launch-txt { display: flex; }
+        .dh-launch-txt span { display: block; }
+        .dh-launch:hover .dh-launch-txt span { animation: dhLaunchWave .5s ease both calc(var(--i) * .015s); }
+        @keyframes dhLaunchSpin { to { transform: rotate(360deg); } }
+        @keyframes dhLaunchWave {
+            30% { transform: translateY(3px); }
+            50% { transform: translateY(-2px); color: var(--primary); }
+            100% { transform: translateY(0); color: #fff; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .dh-launch, .dh-launch *, .dh-launch-outline::before { animation: none !important; transition: none !important; }
+        }
+        /* Bottom row: pricing card (left) + two stacked feature cards (right) */
+        .dh-offers { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-top: 34px; align-items: stretch; }
+        .dh-offer-col { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; }
+        .dh-price-card {
+            padding: 30px 32px; border: 1.5px solid rgba(96,165,250,.6);
+            background: radial-gradient(120% 55% at 0% 100%, rgba(51,146,255,.24), transparent 62%), rgba(12,23,51,.9);
+            box-shadow: 0 0 0 4px rgba(51,146,255,.07);
+        }
+        .dh-from { color: #b7c6e6; font-size: 1rem; }
+        .dh-price { display: flex; align-items: baseline; gap: 10px; margin: 10px 0 12px; }
+        .dh-price b { color: #fff; font-size: 2.9rem; line-height: 1; letter-spacing: -.02em; }
+        .dh-price em { font-style: normal; color: #cfe0ff; font-size: 1.35rem; }
+        .dh-price em.dh-pro-ok { display: inline-flex; align-items: center; gap: 6px; font-size: .95rem; color: #6ee7b7; padding: 5px 12px; border-radius: 999px; background: rgba(52,211,153,.12); }
+        .dh-price em.dh-pro-ok svg { width: 15px; height: 15px; }
+        .dh-lead { color: #b7c6e6; font-size: 1rem; line-height: 1.6; }
+        .dh-cta.dh-cta-block { display: flex; width: calc(100% - 14px); margin: 24px 0 0 7px; padding: 16px 24px; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .06em; }
+        .dh-divider { border-top: 1px solid var(--border); margin: 28px 0 22px; }
+        .dh-feat h4 { color: #fff; font-size: 1.02rem; margin-bottom: 16px; }
+        .dh-feat ul { list-style: none; display: grid; gap: 14px; }
+        .dh-feat li { display: flex; align-items: center; gap: 12px; color: #d6e2fa; font-size: .98rem; }
+        .dh-feat li i { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: rgba(51,146,255,.2); color: #7cc0ff; }
+        .dh-feat li i svg { width: 14px; height: 14px; }
+
+        .dh-side-card { position: relative; overflow: hidden; padding: 28px 30px; min-height: 250px; display: flex; flex-direction: column; align-items: flex-start; }
+        .dh-side-card h3 { position: relative; z-index: 1; color: #fff; font-size: 1.5rem; line-height: 1.3; max-width: 58%; }
+        .dh-side-card p { position: relative; z-index: 1; color: #b7c6e6; font-size: .95rem; line-height: 1.6; max-width: 56%; margin: 8px 0 20px; }
+        .dh-side-card .dh-link-btn { position: relative; z-index: 1; margin-top: auto; }
+        .dh-side-art { position: absolute; right: 0; bottom: 0; width: 44%; height: 100%; pointer-events: none; }
+        .dh-side-art--wheel { width: 250px; height: 250px; right: -70px; bottom: auto; top: 50%; transform: translateY(-50%); }
+
+        @media (max-width: 860px) {
+            .dh-offers { grid-template-columns: minmax(0, 1fr); }
+            .dh-offer-col { grid-template-rows: none; }
+            .dh-side-card { min-height: 0; }
+            .dh-side-card h3, .dh-side-card p { max-width: 100%; }
+            .dh-side-card .dh-link-btn { margin-top: 20px; }
+            .dh-side-art { display: none; }
+            .dh-price-card { padding: 24px 20px; }
+        }
+
+
+        @media (max-width: 1100px) {
+            .dh-plan { grid-template-columns: 300px minmax(0, 1fr); }
+            .dh-panel { grid-template-columns: minmax(0, 1fr); }
+            .dh-art { display: none; }
+        }
+        @media (max-width: 860px) {
+            .dh-plan, .dh-stats { grid-template-columns: minmax(0, 1fr); }
+            .dh-spot::before { display: none; }
+            .dh-stepper { justify-content: flex-start; }
+            .dh-hero h1 { font-size: 1.8rem; }
+            .dh-conn { width: 24px; }
+            .dh-stage { padding: 10px 16px; font-size: .9rem; }
+            .dh-spot { padding: 24px 20px; }
+            .dh-panel-body { min-height: 0; }
+            .dh-cta { margin-top: 22px; }
+        }
     </style>
 </head>
 <body>
@@ -507,7 +609,6 @@
                 <a class="side-link" href="/cover-letter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> Cover Letter</a>
                 <a class="side-link" href="/my-resumes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> My Resumes</a>
                 <a class="side-link" href="/profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg> My Profile</a>
-                <a class="side-link" href="/dashboard/jobs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg> Job Dashboard</a>
                 <a class="side-link" href="/portfolio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="19" height="18" rx="3"/><circle cx="12" cy="9" r="2.6"/><path d="M7 18a5 5 0 0 1 10 0"/></svg> Portfolio Website</a>
                 <a class="side-link" href="/templates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Templates</a>
                 <a class="side-link" href="/interview-prep"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 4.7 1.4c0 1.7-2.2 2.1-2.2 3.4"/><path d="M12 17h.01"/></svg> Interview Prep</a>
@@ -521,72 +622,367 @@
 
         <!-- Main -->
         <main class="main">
-            <div class="greet">Welcome, {{ user_name }}!</div>
+            {% macro icon(name) -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            {%- if name == 'doc' -%}<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h5"/>
+            {%- elif name == 'chart' -%}<path d="M3 20h18"/><path d="M6 20V11"/><path d="M12 20V5"/><path d="M18 20v-6"/>
+            {%- elif name == 'spark' -%}<path d="M12 3l1.8 4.9L18.7 9l-4.9 1.8L12 16l-1.8-5.2L5.3 9l4.9-1.1z"/><path d="M19 14l.7 1.9L21.5 17l-1.8.6L19 19l-.7-1.4L16.5 17l1.8-.6z"/>
+            {%- elif name == 'mail' -%}<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
+            {%- elif name == 'board' -%}<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/>
+            {%- elif name == 'help' -%}<circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 4.7 1.4c0 1.7-2.2 2.1-2.2 3.4"/><path d="M12 17h.01"/>
+            {%- elif name == 'mic' -%}<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>
+            {%- elif name == 'calendar' -%}<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>
+            {%- elif name == 'trophy' -%}<path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>
+            {%- elif name == 'globe' -%}<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/>
+            {%- elif name == 'grid' -%}<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+            {%- elif name == 'arrow' -%}<path d="M5 12h14M13 6l6 6-6 6"/>
+            {%- elif name == 'check' -%}<path d="M20 6 9 17l-5-5"/>
+            {%- elif name == 'ext' -%}<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            {%- endif -%}
+            </svg>
+            {%- endmacro %}
 
-            <!-- NEW feature announcement (dismissible) -->
-            <div class="feat-banner" id="featExtension">
-                <span class="fb-badge">NEW</span>
-                <div class="fb-body">
-                    <h3>Chrome Extension</h3>
-                    <p>Tailor your resume, check your ATS score, and apply — right on any job posting, without ever leaving the tab.</p>
-                    <a class="fb-cta" href="/extension">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4a2 2 0 0 0-2 2v3.8h1.5a2.2 2.2 0 1 1 0 4.4H2V19a2 2 0 0 0 2 2h3.8v-1.5a2.2 2.2 0 1 1 4.4 0V21H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/></svg>
-                        Add to Chrome — Free
-                    </a>
-                </div>
-                <a class="fb-close" href="/extension" aria-label="Open the extension"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
-            </div>
-
-            <!-- Promo -->
-            <div class="promo">
-                <div>
-                    <h3><span class="tag">TIP</span> Tailor every application</h3>
-                    <p>Optimize your resume for each job description to boost your ATS score and get more callbacks.</p>
-                </div>
-                <a class="go dash-optimize-btn" href="/optimize">Optimize a resume</a>
-            </div>
-
-            <!-- Cards -->
-            <div class="cards">
-                <div class="card">
-                    <div class="card-head">
-                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg> Portfolio Website</h3>
-                        <a href="/portfolio" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
-                    </div>
-                    <p class="empty">Turn your resume into a live, shareable portfolio website — no coding, publish in minutes.</p>
-                    <a class="cta cta-block dash-cta-arrow" href="/portfolio">
-                        <span class="dash-cta-text">Build My Portfolio</span>
-                        <span class="dash-cta-ico" aria-hidden="true">
-                            <svg width="50px" height="20px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                <g id="dash-cta-arrow-portfolio" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <path class="dash-cta-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
-                                    <path class="dash-cta-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
-                                    <path class="dash-cta-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
-                                </g>
-                            </svg>
-                        </span>
-                    </a>
-                    <svg class="empty-art" viewBox="0 0 220 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <defs><linearGradient id="eaRing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3392ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
-                        <rect x="24" y="14" width="172" height="104" rx="12" fill="#0e1c40" stroke="#31427a" stroke-width="2"/>
-                        <circle cx="38" cy="27" r="3" fill="#3c4f80"/>
-                        <circle cx="49" cy="27" r="3" fill="#3c4f80"/>
-                        <circle cx="60" cy="27" r="3" fill="#3c4f80"/>
-                        <rect x="78" y="23" width="104" height="8" rx="4" fill="#1a2b52"/>
-                        <line x1="24" y1="40" x2="196" y2="40" stroke="#26365f" stroke-width="1.5"/>
-                        <circle cx="52" cy="63" r="13" fill="url(#eaRing)"/>
-                        <rect x="74" y="55" width="64" height="6" rx="3" fill="#3c4f80"/>
-                        <rect x="74" y="66" width="44" height="5" rx="2.5" fill="#26355c"/>
-                        <rect x="40" y="88" width="44" height="24" rx="5" fill="#16264c" stroke="#2c3d6a" stroke-width="1.5"/>
-                        <rect x="90" y="88" width="44" height="24" rx="5" fill="#16264c" stroke="#2c3d6a" stroke-width="1.5"/>
-                        <rect x="140" y="88" width="44" height="24" rx="5" fill="#16264c" stroke="#2c3d6a" stroke-width="1.5"/>
+            {% macro cta(label, href, extra='') -%}
+            <a class="dh-cta{% if extra %} {{ extra }}{% endif %}" href="{{ href }}">
+                <span class="dh-cta-text">{{ label }}</span>
+                <span class="dh-cta-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" fill-rule="evenodd">
+                            <path class="dh-arr-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"/>
+                            <path class="dh-arr-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"/>
+                            <path class="dh-arr-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"/>
+                        </g>
                     </svg>
+                </span>
+            </a>
+            {%- endmacro %}
+
+            {% macro launch(label, href) -%}
+            <a class="dh-launch" href="{{ href }}" aria-label="{{ label }}">
+                <span class="dh-launch-outline"></span>
+                <span class="dh-launch-state" aria-hidden="true">
+                    <span class="dh-launch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span>
+                    <span class="dh-launch-txt">{% for ch in label %}<span style="--i:{{ loop.index0 }}">{{ ' ' if ch == ' ' else ch }}</span>{% endfor %}</span>
+                </span>
+            </a>
+            {%- endmacro %}
+
+            {% macro art(kind, uid='') -%}
+            <svg viewBox="0 0 360 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" font-family="Inter, sans-serif">
+                <defs>
+                    <linearGradient id="dhg-{{ kind }}{{ uid }}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3392ff"/><stop offset="1" stop-color="#60a5fa"/></linearGradient>
+                    <linearGradient id="dhbg-{{ kind }}{{ uid }}" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#15295a"/><stop offset="1" stop-color="#0b1633"/></linearGradient>
+                </defs>
+                <rect x="8" y="8" width="344" height="224" rx="22" fill="url(#dhbg-{{ kind }}{{ uid }})" stroke="#243a70"/>
+                {% if kind == 'resume' %}
+                <rect x="96" y="30" width="168" height="186" rx="12" fill="#0e1c40" stroke="#34508f"/>
+                <circle cx="126" cy="62" r="16" fill="url(#dhg-{{ kind }}{{ uid }})"/>
+                <rect x="150" y="52" width="86" height="8" rx="4" fill="#cfe0ff"/>
+                <rect x="150" y="66" width="58" height="6" rx="3" fill="#3c5590"/>
+                <rect x="112" y="94" width="50" height="6" rx="3" fill="#60a5fa"/>
+                <rect x="112" y="108" width="136" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="112" y="119" width="120" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="112" y="130" width="128" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="112" y="152" width="50" height="6" rx="3" fill="#60a5fa"/>
+                <rect x="112" y="166" width="132" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="112" y="177" width="104" height="5" rx="2.5" fill="#2c4278"/>
+                <circle cx="262" cy="190" r="24" fill="url(#dhg-{{ kind }}{{ uid }})"/>
+                <path d="M262 201v-20M254 188l8-8 8 8" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                {% elif kind == 'ats' %}
+                <defs>
+                    <filter id="dhsh-ats{{ uid }}" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#020818" flood-opacity=".6"/></filter>
+                    <linearGradient id="dhgauge-ats{{ uid }}" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#3392ff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+                    <linearGradient id="dhscan-ats{{ uid }}" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#60a5fa" stop-opacity="0"/><stop offset=".5" stop-color="#7cc0ff"/><stop offset="1" stop-color="#60a5fa" stop-opacity="0"/></linearGradient>
+                    <radialGradient id="dhglow-ats{{ uid }}" cx=".7" cy=".35" r=".6"><stop stop-color="#3392ff" stop-opacity=".35"/><stop offset="1" stop-color="#3392ff" stop-opacity="0"/></radialGradient>
+                </defs>
+                <rect x="8" y="8" width="344" height="224" rx="22" fill="url(#dhglow-ats{{ uid }})"/>
+                <!-- resume being scanned -->
+                <rect x="34" y="30" width="148" height="184" rx="12" fill="#0f1f47" stroke="#2c4278"/>
+                <circle cx="58" cy="54" r="11" fill="url(#dhg-ats{{ uid }})"/>
+                <rect x="76" y="47" width="70" height="6" rx="3" fill="#cfe0ff"/>
+                <rect x="76" y="58" width="46" height="4" rx="2" fill="#3c5590"/>
+                <rect x="48" y="80" width="36" height="5" rx="2.5" fill="#60a5fa"/>
+                <rect x="48" y="92" width="120" height="4" rx="2" fill="#2c4278"/>
+                <rect x="48" y="101" width="34" height="6" rx="3" fill="rgba(52,211,153,.55)"/><rect x="86" y="102" width="74" height="4" rx="2" fill="#2c4278"/>
+                <rect x="48" y="113" width="108" height="4" rx="2" fill="#2c4278"/>
+                <rect x="48" y="134" width="36" height="5" rx="2.5" fill="#60a5fa"/>
+                <rect x="48" y="146" width="62" height="4" rx="2" fill="#2c4278"/><rect x="114" y="145" width="26" height="6" rx="3" fill="rgba(52,211,153,.55)"/>
+                <rect x="48" y="155" width="116" height="4" rx="2" fill="#2c4278"/>
+                <rect x="48" y="164" width="96" height="4" rx="2" fill="#2c4278"/>
+                <rect x="48" y="184" width="84" height="4" rx="2" fill="#2c4278"/>
+                <rect x="48" y="193" width="104" height="4" rx="2" fill="#2c4278"/>
+                <!-- scan line -->
+                <rect x="26" y="124" width="164" height="2" rx="1" fill="url(#dhscan-ats{{ uid }})"/>
+                <rect x="34" y="112" width="148" height="12" fill="#60a5fa" opacity=".07"/>
+                <!-- score card -->
+                <g filter="url(#dhsh-ats{{ uid }})">
+                    <rect x="164" y="34" width="168" height="94" rx="16" fill="#13285c" stroke="#3a5fa8"/>
+                </g>
+                <path d="M186 110a32 32 0 0 1 64 0" stroke="#223a70" stroke-width="9" stroke-linecap="round"/>
+                <path d="M186 110a32 32 0 0 1 64 0" stroke="url(#dhgauge-ats{{ uid }})" stroke-width="9" stroke-linecap="round" stroke-dasharray="82 101"/>
+                <text x="218" y="106" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">82</text>
+                <text x="264" y="66" fill="#9fb0cc" font-size="10">ATS match</text>
+                <text x="264" y="84" fill="#fff" font-size="13" font-weight="600">Strong</text>
+                <rect x="264" y="94" width="50" height="16" rx="8" fill="rgba(52,211,153,.16)"/>
+                <text x="289" y="105.5" text-anchor="middle" fill="#6ee7b7" font-size="9">+14 pts</text>
+                <!-- keyword checklist -->
+                <g filter="url(#dhsh-ats{{ uid }})">
+                    <rect x="200" y="140" width="132" height="80" rx="14" fill="#13285c" stroke="#3a5fa8"/>
+                </g>
+                <circle cx="218" cy="160" r="7" fill="rgba(52,211,153,.2)"/><path d="M214.5 160l2.5 2.5 4.5-5" stroke="#6ee7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="232" y="163.5" fill="#dbe7ff" font-size="10.5">Python</text>
+                <circle cx="218" cy="180" r="7" fill="rgba(52,211,153,.2)"/><path d="M214.5 180l2.5 2.5 4.5-5" stroke="#6ee7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="232" y="183.5" fill="#dbe7ff" font-size="10.5">SQL</text>
+                <circle cx="218" cy="200" r="7" fill="rgba(248,113,113,.18)"/><path d="M215.5 197.5l5 5M220.5 197.5l-5 5" stroke="#fca5a5" stroke-width="1.8" stroke-linecap="round"/>
+                <text x="232" y="203.5" fill="#dbe7ff" font-size="10.5">Airflow</text>
+                <text x="318" y="203.5" text-anchor="end" fill="#fca5a5" font-size="9">missing</text>
+                {% elif kind == 'tailor' %}
+                <rect x="26" y="40" width="124" height="160" rx="12" fill="#0e1c40" stroke="#34508f"/>
+                <text x="40" y="62" fill="#9fb0cc" font-size="11">Job description</text>
+                <rect x="40" y="74" width="96" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="40" y="86" width="44" height="12" rx="6" fill="rgba(51,146,255,.3)"/>
+                <rect x="88" y="88" width="48" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="40" y="106" width="84" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="40" y="118" width="58" height="12" rx="6" fill="rgba(51,146,255,.3)"/>
+                <rect x="40" y="138" width="92" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="40" y="150" width="70" height="5" rx="2.5" fill="#2c4278"/>
+                <circle cx="180" cy="120" r="20" fill="url(#dhg-{{ kind }}{{ uid }})"/>
+                <path d="M172 120h16M183 114l6 6-6 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="210" y="32" width="124" height="176" rx="12" fill="#0e1c40" stroke="#3392ff"/>
+                <text x="224" y="54" fill="#cfe0ff" font-size="11">Tailored resume</text>
+                <rect x="224" y="68" width="96" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="224" y="80" width="44" height="12" rx="6" fill="rgba(52,211,153,.3)"/>
+                <rect x="272" y="82" width="46" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="224" y="100" width="88" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="224" y="112" width="58" height="12" rx="6" fill="rgba(52,211,153,.3)"/>
+                <rect x="224" y="132" width="92" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="224" y="144" width="80" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="224" y="176" width="96" height="18" rx="9" fill="rgba(52,211,153,.14)"/><text x="272" y="189" text-anchor="middle" fill="#6ee7b7" font-size="10">Match 91%</text>
+                {% elif kind == 'letter' %}
+                <rect x="78" y="26" width="204" height="190" rx="12" fill="#0e1c40" stroke="#34508f"/>
+                <text x="98" y="54" fill="#cfe0ff" font-size="12">Dear Hiring Manager,</text>
+                <rect x="98" y="68" width="164" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="98" y="80" width="150" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="98" y="94" width="104" height="14" rx="7" fill="rgba(52,211,153,.22)"/><text x="150" y="104" text-anchor="middle" fill="#6ee7b7" font-size="9">Data pipelines</text>
+                <rect x="98" y="118" width="160" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="98" y="130" width="140" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="98" y="144" width="124" height="14" rx="7" fill="rgba(251,191,36,.2)"/><text x="160" y="154" text-anchor="middle" fill="#fcd34d" font-size="9">Cut costs by 20%</text>
+                <rect x="98" y="168" width="154" height="5" rx="2.5" fill="#2c4278"/>
+                <rect x="98" y="190" width="60" height="6" rx="3" fill="#60a5fa"/>
+                <circle cx="282" cy="40" r="20" fill="url(#dhg-{{ kind }}{{ uid }})"/>
+                <path d="M282 30l2.4 6.4 6.6 1.6-6.6 1.8L282 46l-2.4-6.2-6.6-1.8 6.6-1.6z" fill="#fff"/>
+                {% elif kind == 'tracker' %}
+                {% for col in [('Saved', 30), ('Applied', 136), ('Interview', 242)] %}
+                <rect x="{{ col[1] }}" y="30" width="96" height="180" rx="12" fill="#0e1c40" stroke="#34508f"/>
+                <text x="{{ col[1] + 12 }}" y="52" fill="#9fb0cc" font-size="11">{{ col[0] }}</text>
+                <rect x="{{ col[1] + 10 }}" y="64" width="76" height="40" rx="8" fill="#16264c" stroke="#2c3d6a"/>
+                <rect x="{{ col[1] + 18 }}" y="74" width="44" height="5" rx="2.5" fill="#cfe0ff"/>
+                <rect x="{{ col[1] + 18 }}" y="86" width="56" height="4" rx="2" fill="#3c5590"/>
+                {% endfor %}
+                <rect x="40" y="112" width="76" height="40" rx="8" fill="#16264c" stroke="#2c3d6a"/>
+                <rect x="48" y="122" width="38" height="5" rx="2.5" fill="#cfe0ff"/>
+                <rect x="48" y="134" width="52" height="4" rx="2" fill="#3c5590"/>
+                <rect x="252" y="112" width="76" height="40" rx="8" fill="#16264c" stroke="#3392ff" transform="rotate(-4 290 132)"/>
+                <rect x="260" y="122" width="40" height="5" rx="2.5" fill="#cfe0ff" transform="rotate(-4 290 132)"/>
+                <rect x="260" y="134" width="30" height="4" rx="2" fill="#34d399" transform="rotate(-4 290 132)"/>
+                {% elif kind == 'questions' %}
+                <rect x="30" y="34" width="210" height="46" rx="14" fill="#0e1c40" stroke="#34508f"/>
+                <text x="46" y="54" fill="#7cc0ff" font-size="10">Q1 · Behavioral</text>
+                <text x="46" y="70" fill="#cfe0ff" font-size="11">Tell me about a project you led…</text>
+                <rect x="60" y="96" width="210" height="46" rx="14" fill="#0e1c40" stroke="#34508f"/>
+                <text x="76" y="116" fill="#7cc0ff" font-size="10">Q2 · Technical</text>
+                <text x="76" y="132" fill="#cfe0ff" font-size="11">How would you design this API?</text>
+                <rect x="90" y="158" width="240" height="52" rx="14" fill="rgba(51,146,255,.14)" stroke="#3392ff"/>
+                <text x="106" y="178" fill="#6ee7b7" font-size="10">Suggested answer · STAR</text>
+                <rect x="106" y="188" width="196" height="5" rx="2.5" fill="#3c5590"/>
+                <rect x="106" y="198" width="150" height="5" rx="2.5" fill="#3c5590"/>
+                {% elif kind == 'mock' %}
+                <circle cx="120" cy="112" r="54" fill="rgba(51,146,255,.12)"/>
+                <circle cx="120" cy="112" r="36" fill="url(#dhg-{{ kind }}{{ uid }})"/>
+                <rect x="112" y="92" width="16" height="26" rx="8" fill="#fff"/>
+                <path d="M104 112a16 16 0 0 0 32 0M120 128v7" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+                {% for h in [18, 34, 52, 26, 44, 60, 30, 48, 22, 38] %}
+                <rect x="{{ 196 + loop.index0 * 13 }}" y="{{ 112 - h / 2 }}" width="7" height="{{ h }}" rx="3.5" fill="{{ '#60a5fa' if loop.index0 % 2 else '#3392ff' }}"/>
+                {% endfor %}
+                <rect x="60" y="186" width="240" height="28" rx="10" fill="#0e1c40" stroke="#34508f"/>
+                <text x="74" y="204" fill="#9fb0cc" font-size="11">Clarity</text>
+                <rect x="124" y="197" width="160" height="6" rx="3" fill="#1f3366"/>
+                <rect x="124" y="197" width="126" height="6" rx="3" fill="#34d399"/>
+                {% elif kind == 'calendar' %}
+                <rect x="86" y="34" width="188" height="172" rx="14" fill="#0e1c40" stroke="#34508f"/>
+                <rect x="86" y="34" width="188" height="36" rx="14" fill="url(#dhg-{{ kind }}{{ uid }})"/>
+                <text x="180" y="58" text-anchor="middle" fill="#fff" font-size="13">Interview · Thu</text>
+                {% for r in range(3) %}{% for c in range(5) %}
+                <rect x="{{ 104 + c * 32 }}" y="{{ 86 + r * 36 }}" width="24" height="24" rx="6" fill="{{ 'url(#dhg-calendar)' if (r == 1 and c == 3) else '#16264c' }}"/>
+                {% endfor %}{% endfor %}
+                <path d="M205 134l5 5 9-10" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                {% elif kind == 'offer' %}
+                <circle cx="180" cy="116" r="70" fill="rgba(51,146,255,.1)"/>
+                <circle cx="180" cy="116" r="48" fill="url(#dhg-{{ kind }}{{ uid }})"/>
+                <path d="M160 96h40v14a20 20 0 0 1-40 0zM180 130v12M168 146h24" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="92" cy="60" r="5" fill="#fbbf24"/><circle cx="272" cy="70" r="6" fill="#34d399"/>
+                <circle cx="80" cy="170" r="4" fill="#f472b6"/><circle cx="284" cy="176" r="5" fill="#60a5fa"/>
+                <rect x="250" y="36" width="10" height="4" rx="2" fill="#fbbf24" transform="rotate(30 255 38)"/>
+                <rect x="104" y="196" width="10" height="4" rx="2" fill="#34d399" transform="rotate(-30 109 198)"/>
+                {% elif kind == 'portfolio' %}
+                <rect x="34" y="30" width="292" height="182" rx="14" fill="#0e1c40" stroke="#34508f"/>
+                <circle cx="52" cy="48" r="4" fill="#f87171"/><circle cx="66" cy="48" r="4" fill="#fbbf24"/><circle cx="80" cy="48" r="4" fill="#34d399"/>
+                <rect x="100" y="42" width="190" height="12" rx="6" fill="#16264c"/>
+                <text x="110" y="51" fill="#7cc0ff" font-size="8">yourname.thetailorcv.com</text>
+                <circle cx="80" cy="100" r="22" fill="url(#dhg-{{ kind }}{{ uid }})"/>
+                <rect x="114" y="88" width="110" height="9" rx="4.5" fill="#cfe0ff"/>
+                <rect x="114" y="104" width="80" height="6" rx="3" fill="#3c5590"/>
+                <rect x="240" y="88" width="66" height="22" rx="11" fill="#3392ff"/><text x="273" y="103" text-anchor="middle" fill="#fff" font-size="9">Hire me</text>
+                <rect x="54" y="138" width="80" height="56" rx="8" fill="#16264c" stroke="#2c3d6a"/>
+                <rect x="140" y="138" width="80" height="56" rx="8" fill="#16264c" stroke="#2c3d6a"/>
+                <rect x="226" y="138" width="80" height="56" rx="8" fill="#16264c" stroke="#2c3d6a"/>
+                <rect x="62" y="178" width="44" height="5" rx="2.5" fill="#3c5590"/><rect x="148" y="178" width="44" height="5" rx="2.5" fill="#3c5590"/><rect x="234" y="178" width="44" height="5" rx="2.5" fill="#3c5590"/>
+                {% elif kind == 'templates' %}
+                {% for t in range(4) %}
+                {% set tx = 34 + t * 76 %}
+                <rect x="{{ tx }}" y="{{ 40 if t != 1 else 30 }}" width="64" height="{{ 150 if t != 1 else 170 }}" rx="8" fill="#0e1c40" stroke="{{ '#3392ff' if t == 1 else '#34508f' }}" stroke-width="{{ 2 if t == 1 else 1 }}"/>
+                <rect x="{{ tx + 8 }}" y="{{ 52 if t != 1 else 44 }}" width="{{ 30 + t * 4 }}" height="6" rx="3" fill="{{ '#60a5fa' if t == 1 else '#cfe0ff' }}"/>
+                {% for l in range(6) %}<rect x="{{ tx + 8 }}" y="{{ (68 if t != 1 else 62) + l * 12 }}" width="{{ 48 - (l % 3) * 8 }}" height="4" rx="2" fill="#2c4278"/>{% endfor %}
+                {% endfor %}
+                <circle cx="142" cy="208" r="13" fill="#34d399"/>
+                <path d="M136 208l4 4 8-8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                {% endif %}
+            </svg>
+            {%- endmacro %}
+
+            {% set P = plan_done or {} %}
+            {% set stages = [
+                {"key": "resume", "label": "Resume", "chip": "Resume Building", "steps": [
+                    {"id": "resume_base", "label": "Create a base resume", "icon": "doc", "art": "resume",
+                     "title": "Build your base resume",
+                     "desc": "Every tailored version starts from this one file.",
+                     "cta": "Open Resume Builder", "href": "/modify-cv"},
+                    {"id": "resume_ats", "label": "Check your ATS score", "icon": "chart", "art": "ats",
+                     "title": "Check your ATS score",
+                     "desc": "See your match score and the keywords you're missing.",
+                     "cta": "Scan my resume", "href": "/solutions"},
+                    {"id": "resume_tailor", "label": "Tailor it to a job", "icon": "spark", "art": "tailor",
+                     "title": "Tailor it to the job",
+                     "desc": "AI rewrites your bullets for the role — nothing invented.",
+                     "cta": "Tailor to a job", "href": "/optimize"},
+                ]},
+                {"key": "apply", "label": "Apply", "chip": "Job Search", "steps": [
+                    {"id": "apply_letter", "label": "Write a cover letter", "icon": "mail", "art": "letter",
+                     "title": "Write your cover letter",
+                     "desc": "Generated from your resume and the job, in minutes.",
+                     "cta": "Create cover letter", "href": "/cover-letter"},
+                    {"id": "apply_track", "label": "Track your applications", "icon": "board", "art": "tracker",
+                     "title": "Track every application",
+                     "desc": "Know what's pending and who to follow up with.",
+                     "cta": "Open job tracker", "href": "/my-resumes"},
+                ]},
+                {"key": "interview", "label": "Interview", "chip": "Interview Prep", "steps": [
+                    {"id": "iv_questions", "label": "Prep likely questions", "icon": "help", "art": "questions",
+                     "title": "Prep likely questions",
+                     "desc": "The questions this role will ask, with answer outlines.",
+                     "cta": "Prep questions", "href": "/interview-prep"},
+                    {"id": "iv_mock", "label": "Practice a mock interview", "icon": "mic", "art": "mock",
+                     "title": "Practice out loud",
+                     "desc": "Mock interview with instant feedback on your answers.",
+                     "cta": "Start mock interview", "href": "/mock-interview"},
+                    {"id": "iv_round", "label": "Land an interview", "icon": "calendar", "art": "calendar",
+                     "title": "Got a call back?",
+                     "desc": "Move that resume to Interview in your tracker.",
+                     "cta": "Update job tracker", "href": "/my-resumes"},
+                    {"id": "iv_offer", "label": "Get a job offer", "icon": "trophy", "art": "offer",
+                     "title": "Land the offer",
+                     "desc": "Mark it Selected when it arrives. Keep tailoring till then.",
+                     "cta": "Open job tracker", "href": "/my-resumes"},
+                ]},
+                {"key": "standout", "label": "Stand Out", "chip": "Personal Brand", "steps": [
+                    {"id": "out_portfolio", "label": "Publish a portfolio site", "icon": "globe", "art": "portfolio",
+                     "title": "Launch your portfolio",
+                     "desc": "A live website from your resume. No coding.",
+                     "cta": "Build my portfolio", "href": "/portfolio"},
+                    {"id": "out_template", "label": "Try a new template", "icon": "grid", "art": "templates",
+                     "title": "Try a new template",
+                     "desc": "Switch layouts without retyping anything.",
+                     "cta": "Browse templates", "href": "/templates"},
+                ]},
+            ] %}
+            {% set nsA = namespace(idx=none) %}
+            {% for s in stages %}
+                {% set sdone = namespace(all=true) %}
+                {% for st in s.steps %}{% if not P.get(st.id) %}{% set sdone.all = false %}{% endif %}{% endfor %}
+                {% if not sdone.all and nsA.idx is none %}{% set nsA.idx = loop.index0 %}{% endif %}
+            {% endfor %}
+            {% set active_idx = nsA.idx if nsA.idx is not none else 0 %}
+
+            <section class="dh-hero">
+                <h1>Hi, {{ first_name or user_name or 'there' }}</h1>
+                <p>Here's your action plan for landing the next interview</p>
+            </section>
+
+            <div class="dh-stepper" role="tablist" aria-label="Job search stages">
+                {% for s in stages %}
+                {% set sdone = namespace(all=true) %}
+                {% for st in s.steps %}{% if not P.get(st.id) %}{% set sdone.all = false %}{% endif %}{% endfor %}
+                {% if not loop.first %}<span class="dh-conn{% if loop.index0 <= active_idx %} lit{% endif %}" data-conn="{{ loop.index0 }}"></span>{% endif %}
+                <button class="dh-stage{% if loop.index0 == active_idx %} active{% endif %}{% if sdone.all %} done{% endif %}" type="button" role="tab" data-stage="{{ loop.index0 }}" aria-selected="{{ 'true' if loop.index0 == active_idx else 'false' }}">
+                    <span class="dh-tick">{{ icon('check') }}</span>{{ s.label }}
+                </button>
+                {% endfor %}
+            </div>
+
+            <div class="dh-plan">
+                <div class="dh-card dh-progress">
+                    {% for s in stages %}
+                    {% set cnt = namespace(done=0, first=none) %}
+                    {% for st in s.steps %}
+                        {% if P.get(st.id) %}{% set cnt.done = cnt.done + 1 %}{% elif cnt.first is none %}{% set cnt.first = loop.index0 %}{% endif %}
+                    {% endfor %}
+                    {% set first_open = cnt.first if cnt.first is not none else 0 %}
+                    <div class="dh-steps{% if loop.index0 == active_idx %} active{% endif %}" data-stage-steps="{{ loop.index0 }}">
+                        <div class="dh-prog-head">
+                            <strong>Your Progress</strong>
+                            <span class="dh-bar"><i style="width: {{ (cnt.done * 100 / s.steps|length)|round|int }}%"></i></span>
+                            <span class="dh-count">{{ cnt.done }}/{{ s.steps|length }}</span>
+                        </div>
+                        {% set si = loop.index0 %}
+                        {% for st in s.steps %}
+                        <button class="dh-step{% if P.get(st.id) %} done{% endif %}{% if loop.index0 == first_open %} active{% endif %}" type="button" data-panel="p-{{ si }}-{{ loop.index0 }}">
+                            <span class="dh-step-ico">{{ icon('check') if P.get(st.id) else icon(st.icon) }}</span>
+                            <span class="dh-step-label">{{ st.label }}</span>
+                        </button>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
                 </div>
 
-                <div class="card">
-                    <div class="card-head">
-                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 4v5"/></svg> Job Tracker</h3>
-                        <a href="/my-resumes" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+                <div class="dh-card dh-spot">
+                    {% for s in stages %}
+                    {% set si = loop.index0 %}
+                    {% set cnt = namespace(first=none) %}
+                    {% for st in s.steps %}{% if not P.get(st.id) and cnt.first is none %}{% set cnt.first = loop.index0 %}{% endif %}{% endfor %}
+                    {% set first_open = cnt.first if cnt.first is not none else 0 %}
+                    {% for st in s.steps %}
+                    <div class="dh-panel{% if si == active_idx and loop.index0 == first_open %} active{% endif %}" id="p-{{ si }}-{{ loop.index0 }}">
+                        <div class="dh-panel-body">
+                            <div>
+                                <span class="dh-chip">{{ s.chip }}</span>
+                                {% if P.get(st.id) %}<span class="dh-done-badge">{{ icon('check') }} Done</span>{% endif %}
+                            </div>
+                            <h2>{{ st.title }}</h2>
+                            <p>{{ st.desc }}</p>
+                            {{ cta(st.cta, st.href) }}
+                        </div>
+                        <div class="dh-art">{{ art(st.art) }}</div>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <h2 class="dh-h2">Quick Stats</h2>
+            <div class="dh-stats">
+                <div class="dh-card dh-stat">
+                    <div class="dh-stat-head">
+                        <h3>Job Tracker</h3>
+                        <a href="/my-resumes" aria-label="Open job tracker">{{ icon('ext') }}</a>
                     </div>
                     <ul class="jt-list">
                         <li><span>Saved</span><b>{{ pipeline.saved if pipeline else 0 }}</b></li>
@@ -597,102 +993,97 @@
                     </ul>
                 </div>
 
-                <div class="card">
-                    <div class="card-head">
-                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg> Mock Interview</h3>
-                        <a href="/mock-interview" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+                <div class="dh-card dh-stat dh-improve">
+                    <div class="dh-stat-head">
+                        <h3>Improve Your Resume Right Now</h3>
+                        <a href="/optimize" aria-label="Open AI Optimize">{{ icon('ext') }}</a>
                     </div>
-                    <p class="empty">Practice real interview questions and get instant AI feedback to build your confidence.</p>
-                    <a class="cta cta-block dash-cta-arrow" href="/mock-interview">
-                        <span class="dash-cta-text">Start Mock Interview</span>
-                        <span class="dash-cta-ico" aria-hidden="true">
-                            <svg width="50px" height="20px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                <g id="dash-cta-arrow-mock" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <path class="dash-cta-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
-                                    <path class="dash-cta-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
-                                    <path class="dash-cta-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
-                                </g>
-                            </svg>
-                        </span>
-                    </a>
-                    <svg class="empty-art" viewBox="0 0 220 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <defs><linearGradient id="miGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3392ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
-                        <rect x="24" y="14" width="172" height="104" rx="12" fill="#0e1c40" stroke="#31427a" stroke-width="2"/>
-                        <circle cx="47" cy="42" r="11" fill="url(#miGrad)"/>
-                        <rect x="66" y="31" width="108" height="26" rx="8" fill="#16264c" stroke="#2c3d6a" stroke-width="1.5"/>
-                        <rect x="74" y="39" width="82" height="4" rx="2" fill="#3c4f80"/>
-                        <rect x="74" y="47" width="58" height="4" rx="2" fill="#26355c"/>
-                        <rect x="86" y="65" width="88" height="20" rx="8" fill="#1a2b52" stroke="#2c3d6a" stroke-width="1.5"/>
-                        <rect x="94" y="73" width="64" height="4" rx="2" fill="#26355c"/>
-                        <circle cx="110" cy="101" r="13" fill="url(#miGrad)"/>
-                        <rect x="106.5" y="93" width="7" height="10" rx="3.5" fill="#ffffff"/>
-                        <path d="M103 100a7 7 0 0 0 14 0" stroke="#ffffff" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-                        <line x1="110" y1="107" x2="110" y2="110" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-                    </svg>
+                    <div class="dh-improve-body">
+                        <div class="dh-improve-copy">
+                            <h4>Tailor your resume to any job</h4>
+                            <p>Paste a job description. AI does the rest.</p>
+                            {{ launch('Optimize my resume', '/optimize') }}
+                        </div>
+                        <div class="dh-improve-art">{{ art('tailor', '-card') }}</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- New scan -->
-            <div class="newscan">
-                <h2>New scan</h2>
-                <p class="cap">Paste your resume and a job description — we'll score it and optimize it.</p>
-                <div class="scan-grid">
-                    <div class="scan-box">
-                        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:0.5rem;">
-                            <div class="step">Step 1 · Job description</div>
-                            <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
-                                <span style="color:#7b48f0;font-size:13px;font-weight:700;white-space:nowrap;letter-spacing:0.01em;">Use sample JD:</span>
-                                <div id="jd-picker-wrapper" style="position:relative;min-width:210px;"></div>
-                            </div>
-                        </div>
-                        <textarea id="ns-jd" placeholder="Paste the job description here…"></textarea>
-                    </div>
-                    <div class="scan-box">
-                        <div class="step">Step 2 · Your resume (PDF)</div>
-                        <label class="ns-upload" for="ns-file" id="ns-dropzone">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M5 20h14"/></svg>
-                            <span class="ns-up-label">Tap to upload your resume PDF</span>
-                            <span class="ns-up-file" id="ns-file-name"></span>
-                        </label>
-                        <input type="file" id="ns-file" accept=".pdf" hidden>
+            <div class="dh-offers">
+                {% set pro_features = ['Unlimited resume optimizations', 'Unlimited cover letters', 'Unlimited mock interviews', 'Unlimited LinkedIn import', 'All templates &amp; downloads', 'Live site on yourname.netlify.app'] %}
+                {% if not is_pro_user %}
+                <div class="dh-card dh-price-card">
+                    <span class="dh-from">Plans starting from</span>
+                    <div class="dh-price"><b><span id="dh-price-sym">₹</span><span id="dh-price-amt">149</span></b><em>/ week</em></div>
+                    <p class="dh-lead">Unlock every TailorCV tool for your job hunt. Weekly pass, no subscription.</p>
+                    {{ cta('Upgrade now', '/pricing', 'dh-cta-block') }}
+                    <div class="dh-divider"></div>
+                    <div class="dh-feat">
+                        <h4>Everything in Free, plus:</h4>
+                        <ul>
+                            {% for f in pro_features %}<li><i>{{ icon('check') }}</i>{{ f|safe }}</li>{% endfor %}
+                        </ul>
                     </div>
                 </div>
-                <div class="scan-actions">
-                    <button class="go dash-ats-launch" id="ns-go" type="button">
-                        <div class="dash-ats-outline"></div>
-                        <div class="dash-ats-state dash-ats-state--default">
-                            <div class="dash-ats-icon">
-                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 20h18"></path><path d="M6 20V11"></path><path d="M12 20V5"></path><path d="M18 20v-6"></path>
-                                </svg>
-                            </div>
-                            <p>
-                                <span style="--i:0">G</span><span style="--i:1">e</span><span style="--i:2">t</span><span style="--i:3">&nbsp;</span><span style="--i:4">A</span><span style="--i:5">T</span><span style="--i:6">S</span><span style="--i:7">&nbsp;</span><span style="--i:8">s</span><span style="--i:9">c</span><span style="--i:10">o</span><span style="--i:11">r</span><span style="--i:12">e</span>
-                            </p>
-                        </div>
-                        <div class="dash-ats-state dash-ats-state--sent">
-                            <div class="dash-ats-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
-                                    <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
-                                    <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
-                                </svg>
-                            </div>
-                            <p>
-                                <span style="--i:8">S</span><span style="--i:9">c</span><span style="--i:10">o</span><span style="--i:11">r</span><span style="--i:12">i</span><span style="--i:13">n</span><span style="--i:14">g</span>
-                            </p>
-                        </div>
-                    </button>
-                    <span class="scan-msg" id="ns-msg"></span>
+                {% else %}
+                <div class="dh-card dh-price-card">
+                    <span class="dh-from">Your plan</span>
+                    <div class="dh-price"><b>Pro</b><em class="dh-pro-ok">{{ icon('check') }} Active</em></div>
+                    <p class="dh-lead">Everything is unlocked. Tailor as many applications as you like.</p>
+                    {{ cta('Manage subscription', '/manage-subscription', 'dh-cta-block') }}
+                    <div class="dh-divider"></div>
+                    <div class="dh-feat">
+                        <h4>Included in your plan:</h4>
+                        <ul>
+                            {% for f in pro_features %}<li><i>{{ icon('check') }}</i>{{ f|safe }}</li>{% endfor %}
+                        </ul>
+                    </div>
                 </div>
-                <div class="ns-progress" id="ns-progress">
-                    <div class="ns-progress-track"><div class="ns-progress-fill" id="ns-progress-fill"></div></div>
-                    <div class="ns-progress-label" id="ns-progress-label">Preparing ATS score...</div>
+                {% endif %}
+
+                <div class="dh-offer-col">
+                    <div class="dh-card dh-side-card">
+                        <h3>Your resume, as a live website</h3>
+                        <p>Publish a portfolio site recruiters can click through. Ready in minutes, no coding.</p>
+                        <a class="dh-link-btn" href="/portfolio">Build my portfolio</a>
+                        <svg class="dh-side-art" viewBox="0 0 260 250" preserveAspectRatio="xMaxYMax meet" fill="none" aria-hidden="true" font-family="Inter, sans-serif">
+                            <defs><linearGradient id="dhSideG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3392ff"/><stop offset="1" stop-color="#1a6aff"/></linearGradient></defs>
+                            <circle cx="215" cy="170" r="118" fill="url(#dhSideG)" opacity=".9"/>
+                            <circle cx="215" cy="170" r="118" stroke="#7cc0ff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="4 8"/>
+                            <g transform="rotate(-6 150 150)">
+                                <rect x="52" y="78" width="176" height="128" rx="12" fill="#0c1733" stroke="#3c5590"/>
+                                <circle cx="66" cy="91" r="3" fill="#f87171"/><circle cx="76" cy="91" r="3" fill="#fbbf24"/><circle cx="86" cy="91" r="3" fill="#34d399"/>
+                                <rect x="98" y="86" width="116" height="10" rx="5" fill="#16264c"/>
+                                <circle cx="84" cy="128" r="16" fill="url(#dhSideG)"/>
+                                <circle cx="84" cy="123" r="6" fill="#cfe0ff"/><path d="M73 138a11 11 0 0 1 22 0" fill="#cfe0ff"/>
+                                <rect x="108" y="118" width="78" height="7" rx="3.5" fill="#cfe0ff"/>
+                                <rect x="108" y="131" width="54" height="5" rx="2.5" fill="#3c5590"/>
+                                <rect x="66" y="156" width="46" height="36" rx="6" fill="#16264c" stroke="#2c3d6a"/>
+                                <rect x="118" y="156" width="46" height="36" rx="6" fill="#16264c" stroke="#2c3d6a"/>
+                                <rect x="170" y="156" width="46" height="36" rx="6" fill="#16264c" stroke="#2c3d6a"/>
+                            </g>
+                            <rect x="150" y="46" width="84" height="26" rx="13" fill="#fff"/>
+                            <text x="192" y="63" text-anchor="middle" fill="#1a6aff" font-size="11" font-weight="700">Hire me</text>
+                        </svg>
+                    </div>
+                    <div class="dh-card dh-side-card">
+                        <h3>Tailor right on the job posting</h3>
+                        <p>Check your ATS score and tailor your resume on LinkedIn and other job boards, without leaving the tab.</p>
+                        <a class="dh-link-btn" href="https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb" target="_blank" rel="noopener">Install now — free</a>
+                        <svg class="dh-side-art dh-side-art--wheel" viewBox="0 0 240 240" aria-hidden="true">
+                            <circle cx="120" cy="120" r="116" fill="#1a6aff"/>
+                            <path d="M120 4a116 116 0 0 1 100.5 58H120a58 58 0 0 0-50.2 29L19.5 62A116 116 0 0 1 120 4z" fill="#60a5fa"/>
+                            <path d="M220.5 62A116 116 0 0 1 120 236l50.2-87A58 58 0 0 0 170.2 91z" fill="#2563eb"/>
+                            <circle cx="120" cy="120" r="50" fill="#0c1733"/>
+                            <circle cx="120" cy="120" r="38" fill="#7cc0ff"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <script src="/static/auth_nav.js?v=17"></script>
+    <script src="/static/auth_nav.js?v=20"></script>
     <script>
     (function () {
         function doLogout(e) {
@@ -2128,15 +2519,15 @@ Nice to have:
                 background: "rgba(3,17,41,0.95)", border: "1.5px solid rgba(74,222,128,0.45)",
                 borderRadius: "10px", color: "#4ade80", fontSize: "13px", fontWeight: "600",
                 padding: "8px 13px", cursor: "pointer", transition: "border-color .2s,box-shadow .2s",
-                whiteSpace: "nowrap", minWidth: "210px",
+                whiteSpace: "nowrap", minWidth: "min(210px, 100%)",
             });
 
             // Build dropdown panel
             const panel = document.createElement("div");
             panel.id = "jd-picker-panel";
             Object.assign(panel.style, {
-                display: "none", position: "absolute", right: "0", top: "calc(100% + 6px)",
-                minWidth: "240px", maxHeight: "380px", overflowY: "auto",
+                display: "none", position: "absolute", right: "0", left: "auto", top: "calc(100% + 6px)",
+                width: "min(240px, calc(100vw - 40px))", maxHeight: "380px", overflowY: "auto",
                 background: "rgba(4,16,44,0.98)", border: "1px solid rgba(74,222,128,0.28)",
                 borderRadius: "14px", boxShadow: "0 24px 56px rgba(0,0,0,0.6)",
                 backdropFilter: "blur(24px)", zIndex: "300", padding: "6px 0",
@@ -2318,7 +2709,7 @@ Nice to have:
             fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
                 .then(function (r) {
                     if (r.status === 401 || r.status === 403) { window.location.href = '/login?next=/dashboard'; throw new Error('login'); }
-                    if (!r.ok) { return r.json().then(function (p) { throw new Error((p && (p.detail || p.error)) || 'Could not score the resume.'); }); }
+                    if (!r.ok) { return r.json().then(function (p) { throw new Error(tcvErrorMessage(p, 'Could not score the resume.')); }); }
                     return r.json();
                 })
                 .then(function (data) {
@@ -2333,6 +2724,72 @@ Nice to have:
         });
     })();
     </script>
+    <script>
+    // Action plan: stage pills switch the step list; steps switch the spotlight.
+    (function () {
+        var stages = document.querySelectorAll('.dh-stage');
+        var spot = document.querySelector('.dh-spot');
+        if (!stages.length || !spot) return;
+
+        function placeNotch() {
+            var step = document.querySelector('.dh-steps.active .dh-step.active');
+            if (!step) return;
+            var s = step.getBoundingClientRect(), p = spot.getBoundingClientRect();
+            var y = Math.max(28, Math.min(p.height - 28, s.top + s.height / 2 - p.top));
+            spot.style.setProperty('--notch-y', y + 'px');
+        }
+        function showPanel(id) {
+            spot.querySelectorAll('.dh-panel').forEach(function (el) {
+                el.classList.toggle('active', el.id === id);
+            });
+            placeNotch();
+        }
+        function selectStage(idx) {
+            stages.forEach(function (b) {
+                var on = +b.dataset.stage === idx;
+                b.classList.toggle('active', on);
+                b.setAttribute('aria-selected', on ? 'true' : 'false');
+            });
+            document.querySelectorAll('.dh-conn').forEach(function (c) {
+                c.classList.toggle('lit', +c.dataset.conn <= idx);
+            });
+            var group = null;
+            document.querySelectorAll('.dh-steps').forEach(function (g) {
+                var on = +g.dataset.stageSteps === idx;
+                g.classList.toggle('active', on);
+                if (on) group = g;
+            });
+            var step = group && (group.querySelector('.dh-step.active') || group.querySelector('.dh-step'));
+            if (step) showPanel(step.dataset.panel);
+        }
+        stages.forEach(function (b) {
+            b.addEventListener('click', function () { selectStage(+b.dataset.stage); });
+        });
+        document.querySelectorAll('.dh-steps').forEach(function (g) {
+            g.addEventListener('click', function (e) {
+                var step = e.target.closest('.dh-step');
+                if (!step) return;
+                g.querySelectorAll('.dh-step').forEach(function (s) { s.classList.toggle('active', s === step); });
+                showPanel(step.dataset.panel);
+            });
+        });
+        window.addEventListener('resize', placeNotch);
+        placeNotch();
+
+        // Pricing card: weekly pass price for the visitor's region. Same
+        // endpoint and figures as /pricing (routers/billing.py WEEKLY_INR /
+        // USD_WEEKLY); the markup ships the India price as the default.
+        var amt = document.getElementById('dh-price-amt');
+        if (amt) fetch('/api/billing/region').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+            var weekly = { india: ['₹', '149'], lic: ['$', '1.99'], global: ['$', '4.99'] }[d && d.region];
+            if (!weekly) return;
+            document.getElementById('dh-price-sym').textContent = weekly[0];
+            amt.textContent = weekly[1];
+        }).catch(function () {});
+
+        setTimeout(placeNotch, 600);   // after the reveal transition settles
+    })();
+    </script>
     <script src="/static/resume_store.js?v=1"></script>
 
 <!-- Dashboard motion (scoped to /dashboard): welcome + banner + cards stagger
@@ -2345,8 +2802,8 @@ Nice to have:
     will-change: opacity, transform;
   }
   body.tcx-dash .tc-reveal.tc-in { opacity: 1; transform: none; will-change: auto; }
-  body.tcx-dash .card { transition: transform .2s ease, box-shadow .2s ease; }
-  body.tcx-dash .card:hover {
+  body.tcx-dash .dh-stat, body.tcx-dash .dh-side-card { transition: transform .2s ease, box-shadow .2s ease; }
+  body.tcx-dash .dh-stat:hover, body.tcx-dash .dh-side-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 16px 36px rgba(2,8,30,.4), 0 0 0 1px rgba(96,165,250,.28);
   }
@@ -2388,10 +2845,10 @@ Nice to have:
 
   // Reveal welcome header, banner, cards (staggered), new-scan panel.
   var els = [];
-  document.querySelectorAll('.greet, .feat-banner, .cards .card, .newscan').forEach(function (el) {
+  document.querySelectorAll('.dh-hero, .dh-stepper, .dh-plan, .dh-stats .dh-card, .dh-offers .dh-card').forEach(function (el) {
     el.classList.add('tc-reveal'); els.push(el);
   });
-  document.querySelectorAll('.cards .card.tc-reveal').forEach(function (el, i) {
+  document.querySelectorAll('.dh-stats .dh-card.tc-reveal, .dh-offers .dh-card.tc-reveal').forEach(function (el, i) {
     el.style.transitionDelay = (i * 70) + 'ms';
   });
   var io = new IntersectionObserver(function (entries) {

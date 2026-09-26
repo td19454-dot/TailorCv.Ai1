@@ -10,12 +10,6 @@ slug: why-your-resume-gets-no-responses
 keywords: why resume gets no responses, no response after applying jobs, qualified but no interviews, resume not getting callbacks, resume ignored job applications
 ---
 
-You are applying. You are qualified. You are hearing nothing. It is one of the most demoralizing experiences in a [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) - and almost always, the problem is fixable. Here are the most common reasons qualified candidates get no responses, and the exact fix for each.
-
-Test your resume right now with the [free ATS checker](/solutions) to see what is costing you responses.
-
----
-
 ## Key Takeaways
 
 - Over 90% of large companies use Applicant Tracking Systems (ATS) that filter resumes before they reach human recruiters.
@@ -23,6 +17,13 @@ Test your resume right now with the [free ATS checker](/solutions) to see what i
 - Ensure your ATS score meets the threshold required for competitive roles by checking it against the job description before submission.
 - Use a clean, single-column resume layout to avoid parsing issues that can cause ATS to misread your information.
 - Your resume's summary and headline should align closely with the specific role to enhance your chances of getting noticed.
+
+
+You are applying. You are qualified. You are hearing nothing. It is one of the most demoralizing experiences in a [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) - and almost always, the problem is fixable. Here are the most common reasons qualified candidates get no responses, and the exact fix for each.
+
+Test your resume right now with the [free ATS checker](/solutions) to see what is costing you responses.
+
+---
 
 ## The Hard Truth: Most Resumes Don't Reach a Human
 
@@ -73,6 +74,13 @@ If your resume uses a creative or visually complex template - multiple columns, 
 
 The top section of your resume is processed first and weighted most heavily. If your headline says "Marketing Professional" and you're applying for "Performance Marketing Manager," you've already lost the job title alignment signal.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 A generic summary - "Experienced professional seeking a challenging role" - contributes almost nothing to your [ATS score](https://thetailorcv.com/blog/ats-score-guide) and tells a recruiter nothing in the 6-second first pass.
 
 **The fix:** Write your headline as the exact job title you're applying to. Write your summary as a 3-sentence targeted pitch for *this* role. See [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) and [how to write a resume headline](https://thetailorcv.com/blog/how-to-write-resume-headline).
@@ -96,6 +104,8 @@ Recruiters read "responsible for" and immediately know the resume is generic. Ev
 ## Reason 6 - You're Applying to the Wrong Roles
 
 Sometimes the silence is signal - you may be applying for roles where there is a genuine gap in your qualifications or experience level. If you're consistently scoring below 60% on [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) for a particular role type, that is a data point worth examining.
+
+
 
 **The fix:** Use the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) checker on 3-5 similar postings and see if a consistent keyword gap emerges. If you keep missing the same skills, that's your development roadmap.
 

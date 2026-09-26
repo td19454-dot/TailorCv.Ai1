@@ -10,8 +10,8 @@
 <section class="blog-ats" id="blog-ats-scanner" aria-labelledby="blog-ats-heading">
   <div class="blog-ats-head">
     <span class="blog-ats-chip">Free &middot; No account needed</span>
-    <h2 id="blog-ats-heading">Is your resume good enough?</h2>
-    <p>Scan your resume against a job description and get your ATS match score in about a minute.</p>
+    <h2 id="blog-ats-heading">{{ ats_widget_copy.title }}</h2>
+    <p>{{ ats_widget_copy.text }}</p>
   </div>
 
   <div class="blog-ats-grid">
@@ -42,8 +42,16 @@
 
     <div>
       <label class="blog-ats-label" for="blog-ats-jd">Job description</label>
+      {# Same sample-JD picker the landing scanner uses (_landing_ats.html).
+         jd_picker.js auto-attaches to every [data-jd-picker] and fills the
+         textarea named by data-target, so a blog reader who has no posting to
+         hand can still score against a realistic JD instead of bouncing. #}
+      <div class="blog-ats-jdrow">
+        <span class="blog-ats-jdlabel">Use sample JD:</span>
+        <div data-jd-picker data-target="blog-ats-jd"></div>
+      </div>
       <textarea id="blog-ats-jd" class="blog-ats-jd" rows="8"
-                placeholder="Paste the full job description you are applying to…"></textarea>
+                placeholder="Paste the job description here, or pick a sample role above."></textarea>
     </div>
   </div>
 
@@ -52,4 +60,11 @@
   </button>
 
   <div class="blog-ats-out" id="blog-ats-out" role="status" aria-live="polite"></div>
+
+  <figure class="blog-ats-preview">
+    <img src="/public/blog-images/what-is-a-good-ats-score-dashboard.webp"
+         alt="TailorCV ATS scorecard showing an overall score with per-section checks passed and failed"
+         loading="lazy" decoding="async">
+    <figcaption>What you get back: an overall score plus every check that passed or failed, section by section.</figcaption>
+  </figure>
 </section>

@@ -10,6 +10,15 @@ slug: hidden-keywords-in-job-description
 keywords: hidden keywords job description, job description analysis resume, how to read job description for resume, decode job description 2026, resume tailoring job description clues
 ---
 
+## Key Takeaways
+
+- Job descriptions contain three layers: explicit requirements, priority signals, and subtext, which provide deeper insights into the role.
+- Priority signals, such as the position of requirements and repetition of key terms, indicate what the employer values most.
+- The "Required vs. Preferred" sections reveal essential qualifications and differentiators that can set candidates apart.
+- Understanding the subtext, including the problems the company is facing, helps tailor applications more effectively.
+- Candidates who analyze all three layers of a job description are more likely to stand out in the hiring process.
+
+
 You read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 You see: "Python, SQL, [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026), cross-functional collaboration, communication skills."
@@ -35,14 +44,6 @@ All of that is encoded in the language - if you know how to read it.
 This guide teaches you how. It goes deeper than the standard [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) - that covers finding the obvious terms. This guide covers finding the ones that are not obvious.
 
 ---
-
-## Key Takeaways
-
-- Job descriptions contain three layers: explicit requirements, priority signals, and subtext, which provide deeper insights into the role.
-- Priority signals, such as the position of requirements and repetition of key terms, indicate what the employer values most.
-- The "Required vs. Preferred" sections reveal essential qualifications and differentiators that can set candidates apart.
-- Understanding the subtext, including the problems the company is facing, helps tailor applications more effectively.
-- Candidates who analyze all three layers of a job description are more likely to stand out in the hiring process.
 
 ## The Three Layers of a Job Description
 
@@ -116,12 +117,14 @@ This is where the real tailoring advantage lives.
 Job descriptions often reveal the team's current pain points - sometimes explicitly, sometimes through implication.
 
 "We are looking for someone to help us scale our data infrastructure as we prepare for Series B" tells you:
+
 - The team is currently under-scaled
 - There is a fundraising event on the horizon
 - Speed and growth-readiness are the real criteria
 - Keywords to add: scale, infrastructure, growth-stage, high-availability, distributed systems
 
 "We need someone who can bring structure to our analytics function" tells you:
+
 - There is currently no structure
 - Your ability to build processes from scratch is what they actually need
 - Keywords: process-building, analytics frameworks, documentation, stakeholder alignment, governance
@@ -178,6 +181,7 @@ What kind of person succeeds in this environment?
 What language signals what values the team holds?
 
 After all three passes, write down:
+
 1. The top 5 explicit required keywords
 2. The top 3 priority signals (what is repeated and emphasized)
 3. The one-sentence problem statement ("they need someone to...")
@@ -196,6 +200,7 @@ Now tailor your [resume](https://thetailorcv.com/blog/resume-tailoring-startup-v
 Data engineering, pipelines, scalable architecture.
 
 **What the subtext tells you:**
+
 - The current state is broken ("fragile")
 - They want reliability, not just functionality
 - "Trust" in data is the emotional priority
@@ -212,6 +217,13 @@ You addressed the real problem. Not just the listed requirement.
 
 [TailorCV's keyword analyzer](https://www.thetailorcv.com/solutions) handles the Layer 1 and Layer 2 work efficiently.
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+The score matters less than the breakdown beside it - each check names what passed, what failed and why, which is the list you actually work through.
+
+
 Paste the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 Upload your resume.
 Get an instant gap analysis: which required and preferred keywords are missing from your resume, and where to add them.
@@ -226,9 +238,9 @@ The combination of AI-powered keyword matching and human-level subtext reading i
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### Do ATS systems pick up subtext and context?

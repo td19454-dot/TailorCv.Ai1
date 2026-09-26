@@ -10,10 +10,6 @@ keywords: cv vs resume malaysia, difference between cv and resume malaysia, resu
 image: public/blog-images/cv-vs-resume-malaysia.png
 ---
 
-"Please submit your CV." "Attach your resume." In Malaysia, you'll see both requests — often for the same kind of job — and it's easy to wonder whether you're supposed to send two different documents. The short answer: for most Malaysian jobs, "CV" and "resume" mean the same thing, but there are important exceptions where the difference genuinely matters.
-
-This guide clears up the confusion for good: what a CV and a resume actually are, how the terms are used in Malaysia, which document specific employers expect, and how to make sure whatever you send gets you shortlisted.
-
 ## Key Takeaways
 
 - In Malaysia, **"CV" and "resume" are usually used interchangeably** for a concise 1–2 page application document.
@@ -21,6 +17,11 @@ This guide clears up the confusion for good: what a CV and a resume actually are
 - Whatever you call it, most Malaysian private-sector roles want a **tailored, ATS-ready 1–2 page document**.
 - The exception: academia and research expect a **full, multi-page CV** listing publications, grants, and teaching.
 - When unsure, follow the language and expectations of the specific job posting.
+
+
+"Please submit your CV." "Attach your resume." In Malaysia, you'll see both requests — often for the same kind of job — and it's easy to wonder whether you're supposed to send two different documents. The short answer: for most Malaysian jobs, "CV" and "resume" mean the same thing, but there are important exceptions where the difference genuinely matters.
+
+This guide clears up the confusion for good: what a CV and a resume actually are, how the terms are used in Malaysia, which document specific employers expect, and how to make sure whatever you send gets you shortlisted.
 
 ## What Is a Resume?
 
@@ -71,6 +72,13 @@ So the same word can mean two different things depending on the sector. The safe
 - **Resume (most jobs):** [one page](https://thetailorcv.com/blog/anatomy-of-a-resume) for fresh graduates and early-career candidates; up to two pages for experienced professionals.
 - **Academic CV:** as long as needed to fully document your record — often three or more pages.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 Never pad a resume to look more impressive, and never trim an academic CV so much that it omits required detail. Match the format to the purpose.
 
 ## Whatever You Send, Make It ATS-Ready
@@ -119,6 +127,9 @@ Whatever the medium, the same principle applies: tailored, relevant, and easy to
 ## A Quick Do's and Don'ts Reference
 
 **Do:**
+
+
+
 
 - Send a concise 1–2 page resume for any company role, whatever the posting calls it.
 - Tailor it to each specific job.

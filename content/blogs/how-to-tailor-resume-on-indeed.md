@@ -10,6 +10,14 @@ keywords: how to tailor resume on indeed, tailor resume indeed, resume for indee
 image: public/blog-images/how-to-tailor-resume-on-indeed.webp
 ---
 
+## Key Takeaways
+
+- Indeed's volume makes the ATS filter unavoidable - when thousands apply, software parses every resume before a human sees one.
+- Tailoring is not rebuilding your resume; it is four focused changes, and knowing them is what lets you move fast.
+- A few things specific to Indeed catch people out.
+- You can tailor by hand, and it is worth knowing that flow before deciding to automate it.
+- The habit travels to every other board, because they all feed the same kind of filter.
+
 Indeed is the biggest job board in the world, and that scale is exactly why applying there feels like shouting into a void. A popular posting can pull thousands of applicants, almost all of whom uploaded the same generic resume they use everywhere. The ones who get called are rarely the most qualified — they are the ones whose resume actually matched the posting.
 
 This guide shows you how to be in that second group: what to change when you tailor a resume to an Indeed job, how to match the language that gets you past the filter, and how to do the whole thing in about a minute instead of ten.
@@ -17,6 +25,13 @@ This guide shows you how to be in that second group: what to change when you tai
 ## Why Generic Resumes Disappear on Indeed
 
 The volume on Indeed makes the [ATS filter](/blog/ats-resume-checker-how-it-works) unavoidable. When thousands apply, no human reads every resume first — software parses each one into structured data and matches it, by exact language, against the job description. Recruiters then filter that data down to a shortlist.
+
+### Tailoring straight from an Indeed listing
+
+![The TailorCV extension open on an Indeed job posting, reading the role and company and showing a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
+
+On Indeed the panel reads the posting off the page and shows the match before you hit Apply - 17% here, which is the kind of gap worth closing first rather than discovering through silence.
+
 
 The catch that sinks most applicants is that [the filter matches language, not meaning](/blog/how-to-match-resume-keywords-to-job-description). If the posting asks for "inventory management" and your resume says "kept stock organised", a person would call those the same thing, but the software will not. Your genuinely relevant experience does not register, and you are filtered out in seconds — with no email to tell you why. Our [tailored vs generic resume](/blog/tailored-vs-generic-resume) breakdown shows how wide that gap is, and [how to pass the ATS in 2026](/blog/how-to-pass-ats-in-2026) explains the mechanism.
 
@@ -58,9 +73,14 @@ Open any Indeed job. A panel opens beside it, reads the description straight off
 
 A minute instead of ten — and because it lives on the page, tailoring survives the length of a real search instead of dying in week three. The same panel works on LinkedIn, Naukri, Greenhouse, Lever, Workday, Ashby, Glassdoor and more, plus any site from the toolbar.
 
+
 ## Step by Step
 
 **Step 1 — Set your base resume once.** Upload the resume you normally send; it becomes the starting point the tool rewrites from every time. If you are unsure it is even solid, run a [free ATS score](/blog/how-to-check-ats-score-free) on it first.
+
+
+
+
 
 **Step 2 — Open an Indeed job you actually want.** Not a stretch, not a safety. Load the full posting.
 

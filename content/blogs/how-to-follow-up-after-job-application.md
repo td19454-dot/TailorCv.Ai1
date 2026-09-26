@@ -14,7 +14,7 @@ keywords: follow up after job application, job application follow up email, how 
 
 - Wait one week after applying before the first follow-up. Sooner reads as anxious.
 - Follow up with a person, not the black-hole careers inbox, whenever you can find one.
-- Keep it to three sentences: who you are, the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and one reason you fit.
+- Keep it to three sentences: who you are, the role, and one reason you fit.
 - Follow up twice at most. After that, move your energy to new applications.
 
 ## The Right Timing
@@ -27,7 +27,7 @@ Following up the day after applying signals impatience. Waiting a full week sign
 
 ## Find the Right Person
 
-A message to `careers@[company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).com` rarely gets read. Instead, search [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for "[recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) [company]" or the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) for the team. A short, specific note to a real person outperforms ten emails to an inbox.
+A message to `careers@company.com` rarely gets read. Instead, search [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for "[recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) [company]" or the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) for the team. A short, specific note to a real person outperforms ten emails to an inbox.
 
 ## Email Template
 
@@ -47,18 +47,25 @@ A message to `careers@[company](https://thetailorcv.com/blog/how-to-use-linkedin
 ## What Makes a Follow-Up Work
 
 - **One concrete result**, not a summary of your whole [resume](https://thetailorcv.com/blog/anatomy-of-a-resume).
-- **A specific [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) title**, so a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) juggling ten reqs knows which one you mean.
+- **A specific role title**, so a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) juggling ten reqs knows which one you mean.
 - **No guilt.** Skip "I haven't heard back." Assume good intent and keep it warm.
+
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
 
 ## A Full Follow-Up Timeline
 
-Most [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) either follow up too much or not at all. Here is a calm, professional cadence that keeps you visible without becoming a nuisance.
+Most candidates either follow up too much or not at all. Here is a calm, professional cadence that keeps you visible without becoming a nuisance.
 
 - **Day 0 — Apply.** Submit a [tailored resume](https://thetailorcv.com/optimize) through the official channel.
-- **Day 1 — Connect quietly.** Find the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) or [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and send a connection request with no ask attached. You are just getting on the radar.
+- **Day 1 — Connect quietly.** Find the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) or [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) on LinkedIn and send a connection request with no ask attached. You are just getting on the radar.
 - **Day 5–7 — First follow-up.** A short, specific message reaffirming interest and adding one relevant result.
 - **Day 12–14 — Second and final follow-up.** One more brief nudge if there has been no reply at all.
-- **After that — Redirect.** Two touches is the ceiling. Put your energy into new applications and, ideally, into finding a [referral](https://thetailorcv.com/blog/networking-messages-for-referrals) for the [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) you want most.
+- **After that — Redirect.** Two touches is the ceiling. Put your energy into new applications and, ideally, into finding a [referral](https://thetailorcv.com/blog/networking-messages-for-referrals) for the roles you want most.
 
 The discipline of this timeline is as much about protecting your own momentum as it is about etiquette. Refreshing your inbox for a reply to a single application is the fastest way to stall a [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
@@ -76,7 +83,7 @@ If your follow-ups never get answered, the message itself is usually the problem
 
 **[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)** is usually your best channel, because it reaches a real person and your message sits next to your profile — which acts as a live [resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Keep it to three or four sentences.
 
-**Email** works well when you can find or reasonably guess the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s address (many [companies](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) use `first.last@[company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).com`). It is also the right channel for anything you want on record.
+**Email** works well when you can find or reasonably guess the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s address (many companies use `first.last@company.com`). It is also the right channel for anything you want on record.
 
 **The application portal** sometimes has a "message [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)" feature. It is lower-signal than a direct message but better than nothing, and it keeps everything attached to your application.
 
@@ -84,18 +91,22 @@ Whatever the channel, one principle holds: a specific, brief message to a named 
 
 ## What to Do While You Wait
 
-The healthiest follow-up strategy is to make each individual application matter less. If you are anxiously tracking one [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), you have too few applications in flight. Keep a steady pipeline of tailored applications going, so a slow or silent response from any one of them barely registers. A pipeline also changes your energy in [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) — [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) with options come across as calmer and more confident, and that shows.
+The healthiest follow-up strategy is to make each individual application matter less. If you are anxiously tracking one company, you have too few applications in flight. Keep a steady pipeline of tailored applications going, so a slow or silent response from any one of them barely registers. A pipeline also changes your energy in [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) — candidates with options come across as calmer and more confident, and that shows.
 
 ## After the Interview
 
 Follow-ups after an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) are different: send a thank-you within 24 hours. See our dedicated guide below for wording that [references](https://thetailorcv.com/blog/should-you-put-references-on-resume) the actual conversation.
 
+
+
+
+
 ## What to Do Before You Even Need to Follow Up
 
 The best follow-up strategy starts at the moment you apply. Two habits make every later follow-up more effective:
 
-- **Log every application.** Keep a simple tracker — [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), date applied, contact, and status. When you follow up a week later, you know exactly which [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and which person, and you never send the awkward "which [position](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) was this again?" message. Your [My Resumes tracker](https://thetailorcv.com/my-resumes) can hold your applications and the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) you sent to each, so nothing gets lost.
-- **Apply with a [tailored resume](https://thetailorcv.com/optimize).** A follow-up only helps if the underlying application is strong. If you sent a generic [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that did not match the posting, a nudge will not save it. [Tailoring the resume](https://thetailorcv.com/optimize) to each [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is what makes the application worth following up on in the first place.
+- **Log every application.** Keep a simple tracker — company, role, date applied, contact, and status. When you follow up a week later, you know exactly which role and which person, and you never send the awkward "which [position](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) was this again?" message. Your [My Resumes tracker](https://thetailorcv.com/my-resumes) can hold your applications and the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) you sent to each, so nothing gets lost.
+- **Apply with a [tailored resume](https://thetailorcv.com/optimize).** A follow-up only helps if the underlying application is strong. If you sent a generic [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that did not match the posting, a nudge will not save it. [Tailoring the resume](https://thetailorcv.com/optimize) to each role is what makes the application worth following up on in the first place.
 
 ## Following Up at Each Stage
 
@@ -105,15 +116,15 @@ Follow-ups look different depending on where you are in the process:
 - **After a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) screen:** A quick thank-you the same day, then patience — they told you the timeline; respect it.
 - **After an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026):** A [thank-you email within 24 hours](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) referencing the actual conversation.
 - **After being told "we'll decide by Friday" and Friday passes:** A brief, warm check-in on Monday. Deadlines slip constantly; a gentle nudge is completely appropriate.
-- **After a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection):** A gracious note thanking them and asking to be kept in mind for future [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). This is underused and can genuinely lead to a callback months later.
+- **After a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection):** A gracious note thanking them and asking to be kept in mind for future roles. This is underused and can genuinely lead to a callback months later.
 
 ## The Psychology of a Good Follow-Up
 
-[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) are busy, overwhelmed, and juggling many [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) at once. Your follow-up succeeds when it makes their life easier, not harder. That means it is short enough to read in ten seconds, specific enough that they instantly know which [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) you mean, and warm enough that responding feels pleasant rather than obligatory. It fails when it is long, vague, or laced with guilt. Think of it less as "chasing" and more as "making it easy for a busy person to remember you favorably." A [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) who feels gently reminded is far more likely to act than one who feels pressured.
+[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) are busy, overwhelmed, and juggling many roles at once. Your follow-up succeeds when it makes their life easier, not harder. That means it is short enough to read in ten seconds, specific enough that they instantly know which role you mean, and warm enough that responding feels pleasant rather than obligatory. It fails when it is long, vague, or laced with guilt. Think of it less as "chasing" and more as "making it easy for a busy person to remember you favorably." A [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) who feels gently reminded is far more likely to act than one who feels pressured.
 
 ## When Silence Really Means No
 
-Sometimes no reply is information. If you have followed up twice over two to three weeks with total silence, the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is very likely filled, paused, or moving with other [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026). That is not a personal [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) — it is the ordinary noise of [hiring](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), where budgets freeze, priorities shift, and internal [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) appear. The healthy response is to close that loop mentally and redirect your energy to fresh, tailored applications and warm [referrals](https://thetailorcv.com/blog/networking-messages-for-referrals). [Candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who keep a full pipeline never hinge their hopes on any single silent application, and they [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) better for it because they are not desperate.
+Sometimes no reply is information. If you have followed up twice over two to three weeks with total silence, the role is very likely filled, paused, or moving with other candidates. That is not a personal [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) — it is the ordinary noise of hiring, where budgets freeze, priorities shift, and internal candidates appear. The healthy response is to close that loop mentally and redirect your energy to fresh, tailored applications and warm [referrals](https://thetailorcv.com/blog/networking-messages-for-referrals). Candidates who keep a full pipeline never hinge their hopes on any single silent application, and they [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) better for it because they are not desperate.
 
 ## Frequently Asked Questions
 
@@ -121,10 +132,10 @@ Sometimes no reply is information. If you have followed up twice over two to thr
 Yes — a short written message is not a call. "No calls" is about not tying up their phone lines, not about interest.
 
 ### What if I never hear anything at all?
-Silence usually means the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) was filled or paused, not a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) of you specifically. Two follow-ups is the ceiling; then redirect your time.
+Silence usually means the role was filled or paused, not a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) of you specifically. Two follow-ups is the ceiling; then redirect your time.
 
 ### Should I follow up on every application?
-No. Prioritize the [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) you genuinely want and are a strong match for. Following up on a hundred long-shot applications is not a good use of your week.
+No. Prioritize the roles you genuinely want and are a strong match for. Following up on a hundred long-shot applications is not a good use of your week.
 
 ### What if the company has a "we'll contact you" auto-reply?
 That is boilerplate, not a rule against following up. A polite, specific note to an actual [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) a week later is still appropriate and often appreciated.
@@ -133,7 +144,7 @@ That is boilerplate, not a rule against following up. A polite, specific note to
 Search [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for "[recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) [company]" or "talent [company]", or look at who posted the job. For the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), search the team or department. Even if you message the wrong person, they will often forward you to the right one.
 
 ### Is it worth following up if it's been a month?
-A single, gracious "still interested if the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is open" note is fine even after a month — [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) reopen and priorities shift. But do not expect much; after a month, your energy is better spent on fresh, tailored applications.
+A single, gracious "still interested if the role is open" note is fine even after a month — roles reopen and priorities shift. But do not expect much; after a month, your energy is better spent on fresh, tailored applications.
 
 ### Should I call instead of message?
 Usually not, unless the posting invites it. A written message respects the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s time and lets them respond when they can. Cold calls tend to interrupt and rarely help.
@@ -146,11 +157,11 @@ Warm, brief, and confident — never anxious or entitled. You are a strong [cand
 
 ## Following Up Without a Contact Name
 
-The hardest follow-up is the one where you applied through a portal and have no idea who to reach. Do not let that stop you — a little detective work usually surfaces a person. Search [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for the [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) plus "[recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)," "talent," or "people," and for the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), search the relevant team or department. Look at who posted the job; often their name is attached. Company email formats are usually predictable (`first.last@[company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).com`), so once you have a name you can often reach them directly. If every avenue genuinely dead-ends, a short message through the application portal's "contact" feature, or a note to a general recruiting address that names the specific role and requisition number, is still better than silence. The effort of finding a real person is itself a signal — most applicants never bother, so the ones who do stand out before they have said a word.
+The hardest follow-up is the one where you applied through a portal and have no idea who to reach. Do not let that stop you — a little detective work usually surfaces a person. Search [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for the company plus "[recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)," "talent," or "people," and for the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), search the relevant team or department. Look at who posted the job; often their name is attached. Company email formats are usually predictable (`first.last@company.com`), so once you have a name you can often reach them directly. If every avenue genuinely dead-ends, a short message through the application portal's "contact" feature, or a note to a general recruiting address that names the specific role and requisition number, is still better than silence. The effort of finding a real person is itself a signal — most applicants never bother, so the ones who do stand out before they have said a word.
 
 ## Turning a Follow-Up Into a Relationship
 
-The best outcome of a follow-up is not always an immediate reply about this one role — it is a warm contact for the future. Even when a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) tells you the [position](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is filled, a gracious response ("Thanks for letting me know — I really admire what your team is building, so please keep me in mind if something opens up") plants a seed. Recruiters remember [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who were pleasant and professional through a no, and they often reach back out when the next role appears. This is why the tone of every follow-up matters so much: you are not just chasing one job, you are building a reputation with people who hire for a living and move between companies. Treat each interaction, including the disappointing ones, as an investment in a network that will still be paying off years from now.
+The best outcome of a follow-up is not always an immediate reply about this one role — it is a warm contact for the future. Even when a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) tells you the [position](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is filled, a gracious response ("Thanks for letting me know — I really admire what your team is building, so please keep me in mind if something opens up") plants a seed. Recruiters remember candidates who were pleasant and professional through a no, and they often reach back out when the next role appears. This is why the tone of every follow-up matters so much: you are not just chasing one job, you are building a reputation with people who hire for a living and move between companies. Treat each interaction, including the disappointing ones, as an investment in a network that will still be paying off years from now.
 
 ## Putting It All Together
 

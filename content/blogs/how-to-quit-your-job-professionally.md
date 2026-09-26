@@ -10,16 +10,6 @@ slug: how-to-quit-your-job-professionally
 keywords: how to quit your job, resignation guide 2026, how to resign professionally, resignation letter, two weeks notice, how to tell your boss you are quitting, notice period
 ---
 
-How you leave a job matters almost as much as how you perform in it. The world is smaller than it seems - former managers become references, ex-colleagues become future hiring managers, and industries have long memories. Quitting professionally protects your reputation and your network. Quitting badly can follow you for years.
-
-![How to Quit Your Job](public/blog-images/how-to-quit-job.webp)
-
-This guide covers exactly how to resign professionally: timing, the conversation, the resignation letter, notice periods, and handling counteroffers.
-
-Before you quit, make sure your next step is secure. If you are [job searching](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume), optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) to ensure your [new offer](https://thetailorcv.com/blog/negotiating-multiple-job-offers) is solid.
-
----
-
 ## Key Takeaways
 
 - Secure your next step before resigning; always have a signed offer letter if moving to a new job.
@@ -28,11 +18,20 @@ Before you quit, make sure your next step is secure. If you are [job searching](
 - Write a formal resignation letter that is concise, professional, and free of complaints to document your departure.
 - Maintain professionalism during your notice period by continuing to work diligently and assisting with the transition.
 
+
+How you leave a job matters almost as much as how you perform in it. The world is smaller than it seems - former managers become references, ex-colleagues become future hiring managers, and industries have long memories. Quitting professionally protects your reputation and your network. Quitting badly can follow you for years.
+
+
+Before you quit, make sure your next step is secure. If you are [job searching](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume), optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) to ensure your new offer is solid.
+
+---
+
 ## Before You Quit: Get Your Next Step Secured
 
 The golden rule: do not resign until you have a signed offer letter in hand (if you are moving to a [new job](https://thetailorcv.com/blog/negotiating-multiple-job-offers)). Verbal offers fall through. Get it in writing before you give notice.
 
 If you are quitting without a [job lined up](https://thetailorcv.com/blog/recession-proof-jobs-2026), make sure you have:
+
 - Financial runway (ideally 6+ months of expenses)
 - A clear plan for what's next
 - Health insurance continuity if applicable
@@ -44,6 +43,7 @@ If you are quitting without a [job lined up](https://thetailorcv.com/blog/recess
 Your direct manager should hear it from you first - before colleagues, before HR, before it leaks. Schedule a private meeting (in person or a video call for remote roles).
 
 Do not:
+
 - Announce your resignation to colleagues before telling your manager
 - Resign over text, Slack, or a casual mention
 - Let your manager hear it secondhand
@@ -59,6 +59,7 @@ Keep it brief, positive, and clear. You do not need to over-explain or justify.
 "Thank you for meeting with me. I wanted to let you know that I've decided to resign from my position. My last day will be [date], giving [notice period] notice. I've really valued my time here and what I've learned, and I want to make this transition as smooth as possible."
 
 Key points:
+
 - Be clear and direct (do not be vague or wishy-washy)
 - State your last day
 - Express genuine appreciation
@@ -67,6 +68,7 @@ Key points:
 ### What If They Ask Why?
 
 You can be honest but diplomatic:
+
 - "I've found an opportunity that aligns better with my long-term goals."
 - "I'm looking for a new challenge in [area]."
 
@@ -104,10 +106,11 @@ Your notice period is your last impression. Make it a good one.
 - Continue working diligently - do not check out mentally
 - Document your work and processes for your successor
 - Offer to train your replacement or hand over to colleagues
-- Complete or responsibly transition your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Complete or responsibly transition your [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Be gracious and helpful
 
 Standard notice periods:
+
 - Most professional roles: 2 weeks to 1 month
 - Senior roles: 1-3 months
 - Some countries/contracts: specific legal notice periods (check your contract)
@@ -121,6 +124,7 @@ Honor your contractual notice period unless there are exceptional circumstances.
 When you resign, your employer may make a counteroffer - more money, a promotion, or new responsibilities to keep you.
 
 Before accepting a counteroffer, consider:
+
 - Why did it take resigning to get this offer? (If they valued you, why not before?)
 - Will the underlying reasons you wanted to leave actually change?
 - Studies suggest a majority of people who accept counteroffers leave within 12 months anyway
@@ -133,12 +137,18 @@ Counteroffers are often about the cost and disruption of replacing you, not a ge
 ## Step 6: Conduct a Graceful Exit
 
 In your final days:
+
 - Say genuine goodbyes to colleagues
 - Thank people who helped you
 - Connect with valuable contacts on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) before you lose access
 - Return company property
 - Complete the exit [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) professionally (be constructive, not bitter)
 - Leave your contact information for those who want to stay in touch
+
+![How to Quit Your Job](public/blog-images/how-to-quit-job.webp)
+
+This guide covers exactly how to resign professionally: timing, the conversation, the resignation letter, notice periods, and handling counteroffers.
+
 
 Your network is one of your most valuable [career assets](https://thetailorcv.com/blog/portfolio-checklist-before-applying). Leave it stronger than you found it.
 

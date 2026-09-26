@@ -10,8 +10,6 @@ slug: social-media-manager-portfolio
 keywords: social media manager portfolio, social media portfolio website, content strategy portfolio, social media case study, community management portfolio
 ---
 
-Anyone can screenshot a few posts and call it a portfolio. What actually gets social media managers hired is proof of growth - follower gains, engagement rate changes, and campaigns tied to real business outcomes. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
-
 ## Key Takeaways
 
 - Include growth metrics, campaign case studies, content samples, and crisis management examples in your social media manager portfolio.
@@ -20,12 +18,18 @@ Anyone can screenshot a few posts and call it a portfolio. What actually gets so
 - Avoid vanity metrics without context and include diverse content formats to match target role requirements.
 - Highlight a turnaround case study and showcase your content calendar to illustrate strategic planning skills.
 
+
+Anyone can screenshot a few posts and call it a portfolio. What actually gets social media managers hired is proof of growth - follower gains, engagement rate changes, and campaigns tied to real business outcomes. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
+
 ## What to Include
-- **Growth metrics** - follower growth, engagement rate, reach, and how they changed under your management
-- **2-4 campaign case studies** - a launch, a viral moment you engineered, a community-building initiative
-- **Content samples** - a mix of formats (short-form video, carousels, static posts) organized by platform
-- **A sample content calendar** - shows planning and consistency, not just one-off posts
-- **Crisis or community management examples** - how you handled a negative comment wave or a customer service escalation on social
+
+| What to include | Why |
+|---|---|
+| **Growth metrics** | follower growth, engagement rate, reach, and how they changed under your management |
+| **2-4 campaign case studies** | a launch, a viral moment you engineered, a community-building initiative |
+| **Content samples** | a mix of formats (short-form video, carousels, static posts) organized by platform |
+| **A sample content calendar** | shows planning and consistency, not just one-off posts |
+| **Crisis or community management examples** | how you handled a negative comment wave or a customer service escalation on social |
 
 ## Frame Strategy, Not Just Content
 A feed of pretty posts does not tell a hiring manager you can grow an account from zero or manage a brand's voice under pressure. For each campaign:
@@ -74,6 +78,13 @@ By following this structure, you can create engaging case studies that will capt
 
 Creating a standout portfolio doesn’t have to be daunting. Use this step-by-step guide to build yours effectively:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 1. **Define Your Niche**: Identify the specific niche of social media management you want to focus on, whether it's content creation, strategy development, or analytics.
 
 2. **Gather Your Work Samples**: Collect examples of your best work, including posts, campaigns, and analytics reports. Ensure that you have permission to share any work that was done for clients.
@@ -103,10 +114,12 @@ Creating a portfolio can be a balancing act. Here’s a handy list of do's and d
 
 ### Don'ts
 
-- **Don’t Overload with Content**: Quality over quantity. Select only your best work to showcase.
-- **Don’t Ignore the User Experience**: Make sure your portfolio is easy to navigate. A cluttered or confusing layout can deter potential employers.
-- **Don’t Forget to Promote Your Portfolio**: Share your portfolio on social media and include it in your job applications. Visibility is key to getting noticed.
-- **Don’t Neglect Your Online Presence**: Ensure your social media profiles are up-to-date and align with the brand you present in your portfolio.
+| What | Details |
+|---|---|
+| **Don’t Overload with Content** | Quality over quantity. Select only your best work to showcase |
+| **Don’t Ignore the User Experience** | Make sure your portfolio is easy to navigate. A cluttered or confusing layout can deter potential employers |
+| **Don’t Forget to Promote Your Portfolio** | Share your portfolio on social media and include it in your job applications. Visibility is key to getting noticed |
+| **Don’t Neglect Your Online Presence** | Ensure your social media profiles are up-to-date and align with the brand you present in your portfolio |
 
 ## Mini Checklist for Your Portfolio
 
@@ -154,7 +167,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, platform focus, and strongest campaigns are easier to discover.
 

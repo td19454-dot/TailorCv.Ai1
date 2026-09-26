@@ -10,8 +10,6 @@ slug: portfolio-website-for-job-applications
 keywords: portfolio website for job applications, job seeker portfolio, resume portfolio website, personal portfolio for jobs
 ---
 
-A [portfolio website](https://thetailorcv.com/blog/how-to-build-professional-portfolio) gives recruiters proof beyond your resume, but most applicants stop at "build the site" and never think through how it actually gets used inside an application. Where you place the link, how you describe it, and what a recruiter sees in the first few seconds after clicking matter as much as the projects themselves. This post is about that second half of the problem: getting a finished [portfolio](https://www.thetailorcv.com/portfolio) to actually do work for you during the application process, not just exist somewhere online.
-
 ## Key Takeaways
 
 - A portfolio website enhances your job application by providing proof of your skills beyond a resume, but its effectiveness depends on how you present it.
@@ -20,9 +18,19 @@ A [portfolio website](https://thetailorcv.com/blog/how-to-build-professional-por
 - In quick-apply scenarios where dedicated portfolio fields are absent, always include the link in your resume to maintain accessibility for recruiters.
 - If submitting a cover letter as free text, reference your portfolio link to guide recruiters to your work effectively.
 
+
+A [portfolio website](https://thetailorcv.com/blog/how-to-build-professional-portfolio) gives recruiters proof beyond your resume, but most applicants stop at "build the site" and never think through how it actually gets used inside an application. Where you place the link, how you describe it, and what a recruiter sees in the first few seconds after clicking matter as much as the projects themselves. This post is about that second half of the problem: getting a finished [portfolio](https://www.thetailorcv.com/portfolio) to actually do work for you during the application process, not just exist somewhere online.
+
 ## Who Actually Needs a Portfolio Link in an Application
 
 Not every application benefits equally from a portfolio link. Where you sit on this spectrum should change how much weight you give it.
+
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
 
 - **High value, almost expected:** UI/UX designers, product designers, front-end and full-stack developers, data analysts, data scientists, video editors, and content or copywriters. In these fields, a missing portfolio link can itself read as a gap.
 - **Medium value, a differentiator:** Product managers, marketers, technical writers, QA engineers, and consultants. A portfolio here is not assumed, but a well-built one with real [case studies](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) sets you apart from candidates who only submit a resume.
@@ -92,6 +100,15 @@ If any of these steps takes more than a couple of seconds, most recruiters will 
 
 Because the click is short, put your strongest, most relevant proof where it can be seen without scrolling. A homepage that requires digging to find real work will lose most of the value of having a portfolio at all.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
+
+
 - **Headline:** Your name and role, stated plainly. "Product Designer" beats a clever tagline that requires interpretation.
 - **One-line value statement:** What kind of problems you solve, for whom. Keep it to a sentence.
 - **Featured work, immediately visible:** One or two of your strongest projects, shown with a thumbnail or a one-line result, not buried in a "Projects" tab three clicks deep.
@@ -145,13 +162,13 @@ If you've had a portfolio link on your resume for a while with no interview upti
 
 Before you attach a portfolio link to your next application, run through this fast:
 
-- Link works and points to the current version of the site
-- URL is short, readable, and uses your own domain if possible
-- Homepage shows your name, role, and strongest project without scrolling
-- At least one full case study follows the problem-role-process-result structure
-- Resume link and contact method are visible on the homepage
-- Site loads quickly and displays correctly on mobile
-- Featured projects are relevant to the specific job you're applying to, not just your best work overall
+- [ ] Link works and points to the current version of the site
+- [ ] URL is short, readable, and uses your own domain if possible
+- [ ] Homepage shows your name, role, and strongest project without scrolling
+- [ ] At least one full case study follows the problem-role-process-result structure
+- [ ] Resume link and contact method are visible on the homepage
+- [ ] Site loads quickly and displays correctly on mobile
+- [ ] Featured projects are relevant to the specific job you're applying to, not just your best work overall
 
 For a more complete version of this process, see [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
 
@@ -159,7 +176,7 @@ For a more complete version of this process, see [Portfolio Checklist Before App
 
 If you don't have a portfolio live yet, use the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) to get a working site up quickly, then structure it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio). Once it's live, place the link correctly using the placements above, and confirm it's working with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
 
-Your portfolio supports the resume, it doesn't replace it. Run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), format it with an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and pair the portfolio link with a tailored [AI-generated cover letter](https://www.thetailorcv.com/cover-letter) that references your strongest project by name, the way the sample closing line above does. If you land an interview off the back of this, practice talking through your case studies out loud with the [AI mock interview](https://www.thetailorcv.com/mock-interview) tool before the call.
+Your portfolio supports the resume, it doesn't replace it. Run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), format it with an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and pair the portfolio link with a tailored [AI-generated cover letter](https://www.thetailorcv.com/cover-letter) that references your strongest project by name, the way the sample closing line above does. If you land an interview off the back of this, practice talking through your case studies out loud with the AI mock interview tool before the call.
 
 ## FAQ
 

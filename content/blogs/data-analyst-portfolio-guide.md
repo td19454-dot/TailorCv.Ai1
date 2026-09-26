@@ -10,8 +10,6 @@ slug: data-analyst-portfolio-guide
 keywords: data analyst portfolio, sql portfolio, tableau portfolio, power bi portfolio, data projects portfolio
 ---
 
-A data analyst portfolio proves one thing above all: you can turn raw data into a decision. Hiring managers do not want another rainbow dashboard - they want the **insight** and the **[business action](https://thetailorcv.com/blog/business-analyst-portfolio-guide)** it supports. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide).
-
 ## Key Takeaways
 
 - Include projects in your portfolio that demonstrate actionable insights, such as polished dashboards, SQL case studies, end-to-end analyses, and A/B tests.
@@ -19,6 +17,9 @@ A data analyst portfolio proves one thing above all: you can turn raw data into 
 - Host your portfolio on platforms like GitHub, Tableau Public, and Kaggle, ensuring it is visually appealing and easy to skim for recruiters.
 - Maintain consistency across your resume, LinkedIn, and portfolio to present a cohesive professional narrative.
 - Avoid common mistakes such as using toy datasets, failing to demonstrate SQL skills, and including dead links in your portfolio.
+
+
+A data analyst portfolio proves one thing above all: you can turn raw data into a decision. Hiring managers do not want another rainbow dashboard - they want the **insight** and the **[business action](https://thetailorcv.com/blog/business-analyst-portfolio-guide)** it supports. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide).
 
 ## Projects to Include
 - A polished **dashboard** (Tableau Public or Power BI Web) on a real dataset
@@ -81,6 +82,13 @@ Creating a standout project for your portfolio doesn't have to be overwhelming. 
 ## Common Pitfalls to Avoid in Your Data Analyst Portfolio
 
 While building your portfolio, be mindful of these common mistakes that can undermine your efforts:
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
 
 - **Overcomplicating Projects**: Focus on quality over quantity. Instead of trying to showcase every tool and technique you know, select a few well-executed projects that demonstrate your skills effectively.
 
@@ -160,7 +168,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

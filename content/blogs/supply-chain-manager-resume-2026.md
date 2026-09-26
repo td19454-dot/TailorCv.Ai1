@@ -10,12 +10,6 @@ slug: supply-chain-manager-resume-2026
 keywords: supply chain manager resume, supply chain resume 2026, logistics resume, procurement resume, supply chain ATS keywords, SCM resume, operations resume
 ---
 
-A supply chain manager resume in 2026 must show that you optimize the flow of goods, reduce costs, manage suppliers, and improve delivery performance. Supply chain is highly measurable - inventory turns, on-time delivery, cost savings, and lead time reductions tell your story. Your resume should be built around these metrics.
-
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For related roles, read the [operations manager resume guide](https://thetailorcv.com/blog/operations-manager-resume-2026).
-
----
-
 ## Key Takeaways
 
 - A supply chain manager resume in 2026 should emphasize measurable metrics such as cost savings, delivery performance, and inventory turns.
@@ -24,6 +18,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 - Include relevant core competencies like demand planning, procurement, logistics, and systems knowledge in the resume.
 - Utilize ATS keywords related to supply chain management to enhance the resume's visibility and effectiveness.
 
+
+A supply chain manager resume in 2026 must show that you optimize the flow of goods, reduce costs, manage suppliers, and improve delivery performance. Supply chain is highly measurable - inventory turns, on-time delivery, cost savings, and lead time reductions tell your story. Your resume should be built around these metrics.
+
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For related roles, read the [operations manager resume guide](https://thetailorcv.com/blog/operations-manager-resume-2026).
+
+---
+
 ## Best Supply Chain Manager Resume Format
 
 1. Header
@@ -31,6 +32,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 3. Core competencies
 4. Work experience
 5. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 One to two pages.
 
@@ -125,6 +133,8 @@ FMCG Company | Apr 2021 - Present
 - CIPS (Chartered Institute of Procurement and Supply)
 - PMP (for project-heavy roles)
 
+
+
 ---
 
 ## Common Supply Chain Resume Mistakes
@@ -166,7 +176,7 @@ Lean, Six Sigma, and S&OP experience are valued. Include them if you have them.
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

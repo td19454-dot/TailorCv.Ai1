@@ -10,10 +10,6 @@ keywords: canadian vs american resume, canada vs usa resume, resume differences 
 image: public/blog-images/canadian-vs-american-resume.png
 ---
 
-Canada and the United States share a border, a language, and many workplace norms — so it's easy to assume a resume that works in one will work in the other. Mostly, that's true: both favour concise, achievement-focused, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resumes. But there are real differences in spelling, terminology, and a few conventions that can subtly mark you as "not local" if you get them wrong.
-
-This guide breaks down the Canadian vs American resume in 2026: what's the same, what's different, and exactly how to adapt your resume when you apply across the border — so you always send the right version for the right market.
-
 ## Key Takeaways
 
 - Canadian and US resumes are **broadly similar**: 1–2 pages, achievement-focused, ATS-friendly, no photo or personal details.
@@ -22,9 +18,21 @@ This guide breaks down the Canadian vs American resume in 2026: what's the same,
 - Adapting the details — spelling, metrics, and local terms — signals you fit the market.
 - When applying across the border, tailor a dedicated version rather than reusing one blindly.
 
+
+Canada and the United States share a border, a language, and many workplace norms — so it's easy to assume a resume that works in one will work in the other. Mostly, that's true: both favour concise, achievement-focused, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resumes. But there are real differences in spelling, terminology, and a few conventions that can subtly mark you as "not local" if you get them wrong.
+
+This guide breaks down the Canadian vs American resume in 2026: what's the same, what's different, and exactly how to adapt your resume when you apply across the border — so you always send the right version for the right market.
+
 ## Why Both Markets Converged on the Same Core Format
 
 It helps to understand *why* Canadian and American resumes look so alike. Both countries have strong anti-discrimination norms, which is why neither includes a photo, age, marital status, or other personal identifiers that could enable bias — a sharp contrast with markets like Malaysia or parts of Europe where photos are common. Both also have results-oriented business cultures and widespread use of applicant tracking systems, which reward concise, keyword-relevant, achievement-focused resumes. So the shared format isn't a coincidence; it reflects shared legal norms, shared hiring technology, and a shared preference for evidence over ornamentation. That common foundation is exactly why adapting between the two is quick — you're adjusting surface details, not rebuilding from scratch.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 ## Who Needs to Worry About This?
 
@@ -38,7 +46,7 @@ Before the differences, note how much overlaps — because it means adapting is 
 - **No photo or personal details:** neither Canadian nor US resumes include a photo, age, marital status, or (in the US) SSN / (in Canada) SIN.
 - **Achievement-focused:** both prioritise [quantified results](https://thetailorcv.com/blog/awards-achievements-on-resume) over duty lists.
 - **Reverse-chronological work history.**
-- **ATS-friendly formatting:** single column, standard headings, text-based PDF, keyword-matched.
+- **[ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore) formatting:** single column, standard headings, text-based PDF, keyword-matched.
 - **A dedicated skills section.**
 
 So a strong resume in one country is 90% of the way to a strong resume in the other. The remaining 10% is what this guide covers.
@@ -100,7 +108,7 @@ The two markets treat cover letters similarly, but with subtle differences in ex
 
 ## Key Difference 6: References and Additional Sections
 
-Both countries typically expect you to omit references from the resume itself (a separate list is provided on request), and neither expects the line "references available upon request." Volunteer experience, however, tends to carry a little more weight on a Canadian resume, where community involvement is genuinely valued — and for newcomers it doubles as a source of local experience and references. In both markets, additional sections (certifications, projects, professional affiliations) should earn their place by strengthening your case for the specific role.
+Both countries typically expect you to omit references from the resume itself (a separate list is provided on request), and neither expects the line "references available upon request." Volunteer experience, however, tends to carry a little more weight on a [Canadian resume](https://thetailorcv.com/blog/canadian-resume-format-guide-2026), where community involvement is genuinely valued — and for newcomers it doubles as a source of local experience and references. In both markets, additional sections (certifications, projects, professional affiliations) should earn their place by strengthening your case for the specific role.
 
 ## A Deeper Look at Spelling Differences
 
@@ -117,6 +125,9 @@ The practical approach: set your word processor's language to English (Canada) o
 ## How to Adapt Your Resume Across the Border
 
 When you apply in the other country, create a dedicated version:
+
+
+
 
 1. **Switch spelling** to match the target country.
 2. **Adjust terminology** (grades, credentials, "resume" conventions).

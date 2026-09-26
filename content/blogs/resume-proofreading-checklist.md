@@ -10,12 +10,6 @@ slug: resume-proofreading-checklist
 keywords: resume proofreading checklist, resume checklist before applying, resume review checklist, things to check on resume, resume mistakes checklist, final resume review, resume quality check
 ---
 
-Most resume mistakes are caught only after you have already submitted. A single typo, a broken link, an inconsistent date, or a missed keyword can cost you an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) at a role you were qualified for. This checklist gives you 25 specific things to verify before submitting your resume to any job application.
-
-After completing this checklist, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) for a full scoring and keyword analysis. Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) to reduce formatting issues from the start.
-
----
-
 ## Key Takeaways
 
 - Use strong action verbs at the start of each bullet point and quantify achievements to enhance impact.
@@ -23,6 +17,13 @@ After completing this checklist, run your resume through the [TailorCV ATS check
 - Ensure consistency in date formats, bullet styles, and font throughout the resume to maintain a professional appearance.
 - Avoid including irrelevant content, such as outdated roles or the phrase "References available upon request."
 - Stick to a single-column layout and keep the resume length appropriate based on your experience level.
+
+
+Most resume mistakes are caught only after you have already submitted. A single typo, a broken link, an inconsistent date, or a missed keyword can cost you an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) at a role you were qualified for. This checklist gives you 25 specific things to verify before submitting your resume to any job application.
+
+After completing this checklist, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) for a full scoring and keyword analysis. Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) to reduce formatting issues from the start.
+
+---
 
 ## How to Use This Checklist
 
@@ -34,6 +35,13 @@ Go through each item methodically before every application. For tailored applica
 
 **1. Every bullet point starts with a strong action verb**  
 Weak openers: "Responsible for," "Helped," "Assisted," "Was part of." Replace with power verbs. Read [best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume).
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 **2. At least 60% of bullets contain quantified results**  
 Numbers, percentages, dollar amounts, time saved, users impacted. If bullets are missing numbers, add estimates. Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
@@ -128,10 +136,13 @@ Run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/s
 ## Bonus: The Read-Out-Loud Test
 
 After completing the checklist, read your entire resume out loud. You will catch:
+
 - Awkward phrasing that reads poorly
 - Missing words your eye skipped over silently
 - Repeated phrases across bullets
 - Inconsistencies in tone
+
+
 
 This takes 3-5 minutes and consistently catches things written review misses.
 
@@ -140,6 +151,7 @@ This takes 3-5 minutes and consistently catches things written review misses.
 ## The "Recruiter Scan" Test
 
 Set a 10-second timer and look at your resume:
+
 - Can you immediately see your name?
 - Can you identify your most recent role and company?
 - Can you spot 1-2 impressive achievements?

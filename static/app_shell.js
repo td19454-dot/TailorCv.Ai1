@@ -88,7 +88,6 @@
             +     '<a class="tcv-pf-link" href="/pricing">Account Settings</a>'
             +     '<a class="tcv-pf-link" href="/privacy">Privacy Policy</a>'
             +     '<a class="tcv-pf-link" href="/terms">Terms</a>'
-            +     '<a class="tcv-pf-link" href="#" id="tcvProfileLogout">Log out</a>'
             +   '</div>'
             + '</div>'
             + '</div>'
@@ -163,8 +162,6 @@
             }
             var logout = document.getElementById("tcvLogout");
             if (logout) logout.addEventListener("click", doLogout);
-            var pLogout = document.getElementById("tcvProfileLogout");
-            if (pLogout) pLogout.addEventListener("click", doLogout);
         }
     }
 

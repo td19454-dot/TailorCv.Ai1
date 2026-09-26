@@ -10,8 +10,6 @@ slug: finance-accounting-portfolio-guide
 keywords: finance portfolio, accounting portfolio website, financial analyst portfolio, fp&a portfolio, accounting case study
 ---
 
-Finance and accounting roles are conservative about confidentiality, which is exactly why most candidates skip a portfolio - and exactly why a well-built one stands out. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around sanitized models and process work shows analytical rigor no resume bullet can capture. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
-
 ## Key Takeaways
 
 - A well-constructed finance and accounting portfolio can highlight analytical skills that a resume cannot convey, especially when built around sanitized models and process work.
@@ -20,12 +18,18 @@ Finance and accounting roles are conservative about confidentiality, which is ex
 - Avoid common mistakes such as sharing unredacted data, lacking a business question, or presenting overly complex spreadsheets without summaries.
 - Craft a compelling narrative by starting with a personal statement, using case studies to present achievements, and highlighting learning experiences to demonstrate growth.
 
+
+Finance and accounting roles are conservative about confidentiality, which is exactly why most candidates skip a portfolio - and exactly why a well-built one stands out. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around sanitized models and process work shows analytical rigor no resume bullet can capture. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
+
 ## What to Include
-- **Financial models** - a DCF, three-statement model, or budget forecast built on public or dummy data
-- **Process improvement case studies** - a close-cycle reduction, a reconciliation automation, an audit finding you resolved
-- **Dashboards** - Excel, Power BI, or Tableau dashboards summarizing variance analysis or KPI tracking
-- **Certifications** - CPA, CFA, CMA, or relevant coursework, clearly listed with status (in progress vs completed)
-- **Tools** - Excel/VBA, SQL, ERP systems (SAP, NetSuite, Oracle), and any modeling or BI tools
+
+| What to include | Why |
+|---|---|
+| **Financial models** | a DCF, three-statement model, or budget forecast built on public or dummy data |
+| **Process improvement case studies** | a close-cycle reduction, a reconciliation automation, an audit finding you resolved |
+| **Dashboards** | Excel, Power BI, or Tableau dashboards summarizing variance analysis or KPI tracking |
+| **Certifications** | CPA, CFA, CMA, or relevant coursework, clearly listed with status (in progress vs completed) |
+| **Tools** | Excel/VBA, SQL, ERP systems (SAP, NetSuite, Oracle), and any modeling or BI tools |
 
 ## Frame the Decision, Not Just the Spreadsheet
 A model with no context is just numbers. For every project, state:
@@ -40,6 +44,13 @@ For real employer work, replace confidential figures with illustrative or indexe
 - **A personal site** via the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) - clean way to present models and dashboards with write-ups
 - **A private, unlisted link** shared only with hiring managers if any of your work is sensitive - see [Private Portfolio Sharing Guide](https://thetailorcv.com/blog/private-portfolio-sharing-guide)
 - **[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Featured section** linking to your portfolio
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
 
 ## Keep Your Resume and Portfolio in Sync
 
@@ -87,6 +98,8 @@ Creating a finance and accounting portfolio can seem daunting. Follow these step
 ## Common Mistakes to Avoid
 
 To ensure your finance and accounting portfolio stands out for the right reasons, avoid these common pitfalls:
+
+
 
 - **Overloading with Information**: While it’s important to showcase your skills, avoid overwhelming the reader with too much detail. Focus on key achievements that align with your career goals.
 
@@ -151,7 +164,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, specialty, and strongest models are easier to discover.
 

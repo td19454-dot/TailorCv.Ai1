@@ -10,8 +10,6 @@ slug: mobile-app-developer-portfolio
 keywords: mobile developer portfolio, ios developer portfolio, android developer portfolio, app portfolio website, flutter portfolio
 ---
 
-Mobile development is one of the few disciplines where you can point a recruiter directly to a live app on the App Store or Google Play - use that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) ties your published apps, code, and store metrics together in one place. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
-
 ## Key Takeaways
 
 - Include 2-4 published apps in your portfolio with links, screenshots, and descriptions of your role.
@@ -20,12 +18,18 @@ Mobile development is one of the few disciplines where you can point a recruiter
 - Create a demo video or GIF for each app to facilitate easy evaluation without requiring installation.
 - Ensure your resume, GitHub, and portfolio align in terms of platforms, architecture patterns, and featured apps for a cohesive narrative.
 
+
+Mobile development is one of the few disciplines where you can point a recruiter directly to a live app on the App Store or Google Play - use that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) ties your published apps, code, and store metrics together in one place. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
+
 ## What to Include
-- **2-4 published apps** - App Store/Google Play links, screenshots, and a short description of your role on each
-- **Store performance** - downloads, ratings, or retention if you are allowed to share them
-- **Code samples** - [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) repos showing architecture (MVVM, Clean Architecture), state management, and testing
-- **Platform-specific skills** - Swift/SwiftUI or Kotlin/Jetpack Compose, or cross-platform (Flutter, React Native) depending on your specialty
-- **A demo video or GIF** - a 15-30 second screen recording of key app flows for anyone who will not install the app
+
+| What to include | Why |
+|---|---|
+| **2-4 published apps** | App Store/Google Play links, screenshots, and a short description of your role on each |
+| **Store performance** | downloads, ratings, or retention if you are allowed to share them |
+| **Code samples** | [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) repos showing architecture (MVVM, Clean Architecture), state management, and testing |
+| **Platform-specific skills** | Swift/SwiftUI or Kotlin/Jetpack Compose, or cross-platform (Flutter, React Native) depending on your specialty |
+| **A demo video or GIF** | a 15-30 second screen recording of key app flows for anyone who will not install the app |
 
 ## Frame Shipping, Not Just Code
 Anyone can show a code sample - what stands out is evidence you can ship and maintain a real product. For each app:
@@ -41,7 +45,7 @@ Anyone can show a code sample - what stands out is evidence you can ship and mai
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), and portfolio should tell the same story - same platforms, same architecture patterns, same headline apps - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), and portfolio should tell the same story - same platforms, same architecture patterns, same headline apps - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See How to Add Your Portfolio Link to Your Resume for placing the link correctly.
 
 ## Common Mistakes
 - Screenshots with no live link or demo video - reviewers rarely install unfamiliar apps
@@ -61,11 +65,14 @@ One of the best ways to showcase your skills as a mobile app developer is throug
 1. **Select Projects Wisely**: Choose projects that highlight a range of skills. Focus on those that had significant challenges or required innovative solutions. If you have multiple projects, consider selecting a mix of personal, freelance, and professional work.
 
 2. **Structure Your Case Study**:
-   - **Project Overview**: Briefly describe the project, including its purpose and target audience.
-   - **Your Role**: Clearly outline your responsibilities and contributions.
-   - **Challenges Faced**: Discuss any obstacles you encountered and how you addressed them.
-   - **Solutions Implemented**: Highlight the technologies, frameworks, and methodologies you used.
-   - **Results and Metrics**: Provide quantifiable outcomes (e.g., user engagement, downloads, or revenue) to demonstrate the success of your project.
+
+| Section | What goes in it |
+|---|---|
+| **Project Overview** | Briefly describe the project, including its purpose and target audience |
+| **Your Role** | Clearly outline your responsibilities and contributions |
+| **Challenges Faced** | Discuss any obstacles you encountered and how you addressed them |
+| **Solutions Implemented** | Highlight the technologies, frameworks, and methodologies you used |
+| **Results and Metrics** | Provide quantifiable outcomes (e.g., user engagement, downloads, or revenue) to demonstrate the success of your project |
 
 3. **Visuals and Demonstrations**: Include screenshots, videos, or links to the app (if available) to provide visual context. This not only makes your case study more engaging but also helps potential employers visualize your work.
 
@@ -74,6 +81,13 @@ One of the best ways to showcase your skills as a mobile app developer is throug
 ## Step-by-Step Guide to Creating a Portfolio Website
 
 Building a portfolio website can seem daunting, but breaking it down into manageable steps can simplify the process. Follow this guide to get your portfolio online:
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
 
 1. **Choose Your Platform**: Decide whether you want to use a website builder (like Wix or Squarespace) or a content management system (like WordPress). For a custom approach, consider using GitHub Pages or a static site generator like Jekyll.
 
@@ -132,7 +146,7 @@ Show whatever matches your target roles. If you know both, lead with your strong
 Keep platform names, architecture patterns, and app names consistent across resume and portfolio. You can also use our [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume aligns well with industry standards.
 ## Build Your Portfolio Now
 
-You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then embed your app store links and demo videos and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell [one consistent story](https://thetailorcv.com/blog/one-page-vs-multi-page-portfolio).
+You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then embed your app store links and demo videos and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.
 
 ## Related Guides
 
@@ -151,7 +165,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, platform, and strongest apps are easier to discover.
 

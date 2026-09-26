@@ -4,9 +4,10 @@ date: 2026-07-12
 author: TailorCV Team
 slug: portfolio-mistakes-to-avoid
 image: public/blog-images/portfolio-mistakes-to-avoid.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
-
-A weak portfolio can sink a strong candidate. The good news: almost every portfolio mistake is fast to fix once you know to look for it. Here are the 11 that cost the most interviews, with the fix for each. Pair this with the [Portfolio Checklist: 20 Things to Check Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying) and the full [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ## Key Takeaways
 
@@ -15,6 +16,9 @@ A weak portfolio can sink a strong candidate. The good news: almost every portfo
 - Provide context for each project by clearly stating the problem, target audience, constraints, and your role.
 - Ensure your portfolio is technically sound by checking for dead links and optimizing for mobile and speed.
 - Keep your portfolio updated with fresh content and a clear contact path to facilitate hiring opportunities.
+
+
+A weak portfolio can sink a strong candidate. The good news: almost every portfolio mistake is fast to fix once you know to look for it. Here are the 11 that cost the most interviews, with the fix for each. Pair this with the [Portfolio Checklist: 20 Things to Check Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying) and the full [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ## Content Mistakes
 
@@ -94,6 +98,13 @@ A weak portfolio can sink a strong candidate. The good news: almost every portfo
 
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ### Additional Strategies for Success
 
 - **Use a Custom Domain:** A professional custom domain (e.g., www.yourname.com) can elevate your portfolio's credibility. Learn how to [Put Your Portfolio on a Custom Domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide).
@@ -105,6 +116,8 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 ## Pro Tips
 
 - **User Testing:** Ask a friend to use your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) on their phone and watch where they get stuck. Their feedback can provide invaluable insights.
+
+
 
 - **Highlight Your Best Work:** Lead with your single strongest project above the fold. This is the first thing potential employers will see, so make it count.
 
@@ -146,7 +159,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

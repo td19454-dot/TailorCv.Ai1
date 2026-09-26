@@ -10,14 +10,6 @@ slug: volunteer-work-on-resume
 keywords: volunteer work on resume, how to add volunteer experience, volunteer resume section, volunteer experience as work experience, resume with volunteer work, unpaid experience resume, volunteer skills resume
 ---
 
-Volunteer experience is one of the most underused assets on a resume. Many candidates either omit it entirely or bury it at the bottom of the page where no one sees it. Done right, volunteer work demonstrates skills, fills gaps, shows character, and - for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) and career changers - can directly substitute for paid experience.
-
-This guide tells you exactly when to include volunteer work, where to put it, and how to write it so it adds real value.
-
-Start building your resume on an [ATS-friendly template](https://www.thetailorcv.com/templates) and verify your score with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - Volunteer experience can showcase transferable skills, fill employment gaps, and reflect strong character traits to employers.
@@ -25,6 +17,15 @@ Start building your resume on an [ATS-friendly template](https://www.thetailorcv
 - Experienced professionals can enhance their resumes by including leadership roles in volunteer positions, demonstrating community involvement.
 - Volunteer work should be integrated with paid experience if it involves significant responsibilities and is relevant to the desired role.
 - Alternatively, a separate "Volunteer Experience" section can be created if there is substantial volunteer history alongside solid paid work experience.
+
+
+Volunteer experience is one of the most underused assets on a resume. Many candidates either omit it entirely or bury it at the bottom of the page where no one sees it. Done right, volunteer work demonstrates skills, fills gaps, shows character, and - for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) and career changers - can directly substitute for paid experience.
+
+This guide tells you exactly when to include volunteer work, where to put it, and how to write it so it adds real value.
+
+Start building your resume on an [ATS-friendly template](https://www.thetailorcv.com/templates) and verify your score with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## Why Volunteer Experience Matters to Employers
 
@@ -43,7 +44,7 @@ Employers care about volunteer experience for three reasons:
 ### Fresh Graduates and Candidates With No Work Experience
 If you have limited paid experience, volunteer work can provide the experience section you would otherwise be missing. A student who volunteered as a web developer for a nonprofit organization has genuine, demonstrable technical experience.
 
-Read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for related guidance.
+Read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for related guidance.
 
 ### Career Changers
 If you are transitioning to a new field and lack formal paid experience in it, volunteer work in the target field is the fastest way to build legitimate credentials. A finance professional transitioning to UX design who volunteers for a nonprofit redesigning their website has real UX project experience to reference.
@@ -72,6 +73,7 @@ If your volunteer work involved professional-level responsibilities and is direc
 > - Mentored 3 junior volunteers on front-end development practices
 
 **When to use this approach:**
+
 - Significant time commitment (6+ months)
 - Real responsibilities and measurable outcomes
 - Directly relevant to the target role
@@ -82,6 +84,7 @@ If your volunteer work involved professional-level responsibilities and is direc
 If you have paid work experience that carries the main section and also have notable volunteer work, add a separate "Volunteer Experience" section after your main Experience and [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) sections.
 
 **When to use this approach:**
+
 - You have solid paid work experience but meaningful volunteer history
 - The volunteer work uses different skills than your paid work
 - You have multiple volunteer roles worth mentioning
@@ -95,6 +98,13 @@ For students, volunteer work on campus or through student organizations can be l
 ## How to Write Volunteer Experience Bullets
 
 Use exactly the same formula as paid work experience: **action verb + what you did + quantified result**.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 Volunteer experience does not get weaker treatment just because it was unpaid. Write it with the same achievement-oriented language.
 
@@ -161,6 +171,8 @@ Read [how to write resume bullet points that get results](https://thetailorcv.co
 - Work you cannot [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) or describe meaningfully
 - Religious or political volunteering when applying to neutral corporate employers (can invite bias)
 
+
+
 ---
 
 ## ATS Considerations for Volunteer Work
@@ -173,7 +185,7 @@ Include technical skills used in volunteer work in your skills section - ATS wil
 
 ## Related Guides
 
-- [Resume With No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Resume With No Experience Guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Career Change Resume Guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)

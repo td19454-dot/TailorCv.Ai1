@@ -10,14 +10,6 @@ slug: how-to-write-two-weeks-notice
 keywords: how to write two weeks notice, two weeks notice letter, resignation letter template 2026, how to give notice, notice letter example, resignation notice
 ---
 
-A two weeks notice is the standard professional courtesy when leaving a job - a formal notification to your employer that you are resigning and will work for two more weeks before departing. Writing it correctly protects your professional reputation, keeps your references intact, and ensures a smooth transition.
-
-This guide gives you templates, examples, and the rules for writing a professional two weeks notice.
-
-This complements the broader [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally). If your resignation is part of a job move, make sure your next step is secure first - optimize your [resume](https://www.thetailorcv.com/templates) with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - A two weeks notice is a formal resignation letter given at least two weeks before your last working day to maintain professionalism.
@@ -26,9 +18,19 @@ This complements the broader [how to quit your job professionally guide](https:/
 - Avoid including complaints, detailed reasons for leaving, or any negativity in your notice to protect your professional reputation.
 - Use one of the provided templates to ensure your letter is concise, positive, and professional.
 
+
+A two weeks notice is the standard professional courtesy when leaving a job - a formal notification to your employer that you are resigning and will work for two more weeks before departing. Writing it correctly protects your professional reputation, keeps your references intact, and ensures a smooth transition.
+
+This guide gives you templates, examples, and the rules for writing a professional two weeks notice.
+
+This complements the broader [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally). If your resignation is part of a job move, make sure your next step is secure first - optimize your [resume](https://www.thetailorcv.com/templates) with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
+
+---
+
 ## What Is a Two Weeks Notice?
 
 A two weeks notice is:
+
 - A formal, written resignation notification
 - Given to your manager (and often HR)
 - Stating your intent to resign and your last working day
@@ -49,6 +51,7 @@ Read the [resignation conversation guide](https://thetailorcv.com/blog/how-to-qu
 ## What to Include in a Two Weeks Notice
 
 A professional two weeks notice includes:
+
 1. The date
 2. A clear statement of resignation
 3. Your last working day
@@ -102,7 +105,7 @@ Dear [Manager's Name],
 
 After careful consideration, I have decided to resign from my position as [Job Title] at [Company]. My last working day will be [date].
 
-These past [time period] have been incredibly valuable to my growth, and I am genuinely grateful for the mentorship and opportunities I have received from you and the team. I am fully committed to making this transition as seamless as possible and will ensure my [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and responsibilities are properly handed over.
+These past [time period] have been incredibly valuable to my growth, and I am genuinely grateful for the mentorship and opportunities I have received from you and the team. I am fully committed to making this transition as seamless as possible and will ensure my [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and responsibilities are properly handed over.
 
 Thank you for everything.
 
@@ -145,9 +148,11 @@ Your two weeks notice may be kept in your personnel file and could be seen by fu
 - Continue working diligently - your final impression matters
 - Document your work and processes for whoever takes over
 - Offer to train your replacement
-- Complete or responsibly transition your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Complete or responsibly transition your [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Stay positive and professional with colleagues
 - Connect with valuable contacts on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) before losing access
+
+
 
 Read the [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally) for full transition advice.
 
@@ -200,7 +205,7 @@ A two weeks notice is brief. A few sentences is enough - do not write an essay.
 
 ## Make This Practical
 
-Turn the career advice into a stronger application system. Start by checking your [resume](https://www.thetailorcv.com/templates) with the [free ATS score checker](https://www.thetailorcv.com/solutions), align it with the role using [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job), and keep your profile consistent with [LinkedIn Resume Tailoring Sync](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync).
+Turn the career advice into a stronger application system. Start by checking your [resume](https://www.thetailorcv.com/templates) with the [free ATS score checker](https://www.thetailorcv.com/solutions), align it with the role using [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job), and keep your profile consistent with LinkedIn Resume Tailoring Sync.
 
 When you are ready to apply, build the supporting pieces around the resume. Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) for targeted outreach, practice with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and review [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) if applications are not converting.
 

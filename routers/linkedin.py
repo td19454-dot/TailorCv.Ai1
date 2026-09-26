@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 import os
 import re
 import secrets
@@ -10,6 +11,10 @@ from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import RedirectResponse
 from openai import AsyncOpenAI
 from pydantic import BaseModel
+
+from functions import user_error_detail
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -28,8 +33,12 @@ def _enforce_linkedin_quota(request: Request):
         user = db.query(User).filter_by(id=user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        # Pro check — bypass quota
-        if user.pro_until and user.pro_until > datetime.utcnow():
+        # Pro check — bypass quota. Goes through main.is_pro rather than
+        # comparing pro_until directly: a stored value that is a string or is
+        # timezone-aware raises on a raw ">", which 500s the request instead of
+        # answering it, and a paying user is then refused.
+        from main import is_pro as _is_pro
+        if _is_pro(user):
             return
         # Beta rollout: only gate users in BILLING_BETA_USER_IDS
         _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
@@ -302,9 +311,14 @@ def _extract_json_block(raw: str) -> str:
 
 
 async def _parse_cv_with_openai(api_key: str, raw_text: str) -> dict:
-    client = AsyncOpenAI(api_key=api_key)
+    # Shares the app's single model constant, and goes through functions'
+    # client so reasoning-model parameters are translated (gpt-5 rejects
+    # max_tokens). Imported lazily to keep this router import-light.
+    from functions import AI_MODEL, _build_openai_client
+
+    client = await _build_openai_client()
     response = await client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=AI_MODEL,
         max_tokens=3500,
         response_format={"type": "json_object"},
         messages=[
@@ -489,10 +503,21 @@ async def parse_linkedin(body: LinkedInParseRequest):
             raise HTTPException(status_code=400, detail="Please paste more text from your LinkedIn profile.")
         parsed = await _parse_cv_with_openai(api_key, raw_text)
         return {"success": True, "data": parsed}
-    except json.JSONDecodeError as exc:
-        raise HTTPException(status_code=500, detail=f"Could not parse response: {exc}")
+    except HTTPException:
+        raise
+    except json.JSONDecodeError:
+        logger.exception("LinkedIn text parse returned invalid JSON")
+        raise HTTPException(
+            status_code=500,
+            detail="We couldn't make sense of that LinkedIn text. Paste your full profile "
+                   "(About, Experience, Education) and try again.",
+        )
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Server error: {exc}")
+        logger.exception("LinkedIn text parse failed")
+        raise HTTPException(
+            status_code=500,
+            detail=user_error_detail(exc, "We couldn't import your LinkedIn profile. Please try again."),
+        )
 
 
 async def _fetch_linkedin_html_text(linkedin_url: str) -> str:

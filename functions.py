@@ -1,4 +1,3 @@
-
 import os
 import logging
 from pathlib import Path
@@ -17,12 +16,70 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 logger = logging.getLogger(__name__)
 
 
+# Domain endings that actually turn up in resume links. The previous list was
+# com|in|org|io|dev|ai|net, which silently dropped every link on a TLD outside
+# it - most damagingly ".app", so every Vercel and Netlify portfolio URL
+# ("jane.vercel.app", "resume.netlify.app") was never linked at all.
+#
+# This stays an allowlist rather than a generic "word.word" pattern on purpose:
+# a loose pattern turns "Node.js", "resume.pdf" and "v1.2" into links. Anything
+# not listed here is left as plain text, which is the safe failure.
+#
+# Matched case-sensitively (lower-case only) so that a missing space after a
+# full stop - "built in Python.It was" - cannot be read as a domain.
+# Unambiguous endings: no English word is "com" or "org", so these are safe to
+# match in ANY case - which is what rescues an all-caps "GITHUB.COM/JANE".
+_LINK_TLDS_ANYCASE = (
+    "com|org|net|info|biz|io|dev|ai|app|tech|live|site|space|online|store|"
+    "blog|cloud|page|xyz|edu|gov"
+)
+# Short country endings that double as English words once a PDF loses the space
+# after a full stop ("Python.In the next role"). Lower-case only, deliberately.
+_LINK_TLDS_LOWER = "in|uk|us|ca|au|de|fr|nl|es|se|ch|sg|ae|me|co"
+# Two-part suffixes must be tried first, or "jane.co.uk" matches only ".co".
+_LINK_MULTI_TLDS = "co\\.uk|co\\.in|com\\.au|ac\\.uk|ac\\.in|co\\.nz|com\\.br"
+
+_DOMAIN_BODY = r'(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+'
+_LINK_PATH = r'(?:/[^\s,;)\]]*)?'
+
+_LINK_RE = re.compile(
+    r'(?<!https://)(?<!http://)(?<![\w@.])'
+    r'(' + _DOMAIN_BODY + rf'(?:(?i:{_LINK_MULTI_TLDS}|{_LINK_TLDS_ANYCASE})|{_LINK_TLDS_LOWER})'
+    r'\b' + _LINK_PATH + r')'
+)
+
+# --- PDF text-extraction artefacts that hide real links -------------------- #
+# 1. a stray space before the dot: "github .com/jane"
+_LINK_SPACED_DOT_RE = re.compile(
+    rf'(\b[a-zA-Z0-9][a-zA-Z0-9-]*)\s+\.\s*((?i:{_LINK_TLDS_ANYCASE})\b)'
+)
+# 2. a long URL wrapped onto the next line, which pdfplumber breaks at the
+#    slash or hyphen: "github.com/jane/\nproject-name"
+_LINK_WRAPPED_RE = re.compile(
+    r'((?:https?://|\b[a-zA-Z0-9-]+\.)[^\s]*[-/])\n[ \t]*(?=[A-Za-z0-9])'
+)
+
+
+def repair_pdf_link_artifacts(text: str) -> str:
+    """Undo the two ways PDF extraction breaks a URL before we try to match it.
+
+    Without this, "github .com/jane" is never seen as a link at all, and a
+    wrapped URL yields a truncated one ("https://github.com/jane/"), which is
+    worse than none because it renders as a dead link.
+    """
+    s = str(text or "")
+    s = _LINK_SPACED_DOT_RE.sub(r'\1.\2', s)
+    s = _LINK_WRAPPED_RE.sub(r'\1', s)
+    return s
+
+
 def normalize_links(text):
-    return re.sub(
-        r'(?<!https://)(?<!http://)(\b[a-zA-Z0-9.-]+\.(com|in|org|io|dev|ai|net)\b)',
-        r'https://\1',
-        text
-    )
+    """Prefix bare domains with https:// so they survive as real links.
+
+    Repairs PDF extraction damage first, then skips anything that already
+    carries a scheme or is part of an email address.
+    """
+    return _LINK_RE.sub(r'https://\1', repair_pdf_link_artifacts(text))
 
 
 def _escape_braces(text: str) -> str:
@@ -41,10 +98,22 @@ def _slice_section(text: str, start_markers: list[str], stop_markers: list[str])
 
     lines = [line.rstrip() for line in raw.splitlines()]
     lowered = [line.strip().lower() for line in lines]
+    # PDF extraction routinely injects stray spaces into letter-spaced headings:
+    # a real resume rendered "Projects" as "Pro jects", so the marker never
+    # matched and the entire Projects section - every project link with it - was
+    # invisible to this function. Compare with all whitespace removed as well.
+    squeezed = [re.sub(r"\s+", "", line) for line in lowered]
+    start_squeezed = [re.sub(r"\s+", "", m) for m in start_markers]
+    stop_squeezed = [re.sub(r"\s+", "", m) for m in stop_markers]
+
+    def _hits(idx: int, markers: list[str], markers_squeezed: list[str]) -> bool:
+        if any(m in lowered[idx] for m in markers):
+            return True
+        return any(m and m in squeezed[idx] for m in markers_squeezed)
 
     start_idx = None
-    for i, line in enumerate(lowered):
-        if any(marker in line for marker in start_markers):
+    for i in range(len(lines)):
+        if _hits(i, start_markers, start_squeezed):
             start_idx = i
             break
     if start_idx is None:
@@ -52,8 +121,7 @@ def _slice_section(text: str, start_markers: list[str], stop_markers: list[str])
 
     stop_idx = len(lines)
     for j in range(start_idx + 1, len(lines)):
-        line = lowered[j]
-        if any(marker in line for marker in stop_markers):
+        if _hits(j, stop_markers, stop_squeezed):
             stop_idx = j
             break
 
@@ -328,18 +396,58 @@ def extract_publication_links(text: str) -> list[str]:
     return filtered
 
 
-def inject_links(data, links, mapped_links, pub_links=None):
+def _url_identity(value) -> str:
+    """A URL reduced to what identifies it, for comparing against the source."""
+    v = str(value or "").strip().lower()
+    v = re.sub(r"^https?://", "", v)
+    v = re.sub(r"^www\.", "", v)
+    return v.rstrip("/")
+
+
+def inject_links(data, links, mapped_links, pub_links=None, known_urls=None):
     """
     Backfill missing project and publication URLs in the AI JSON using URLs extracted from the original PDF text.
 
     Important: only fill projects/publications that are missing their own links. This avoids showing
     unrelated URLs when the user/resume contains multiple projects/links.
+
+    `known_urls` is every URL actually found in the uploaded resume. Anything the
+    model produced that is not in that set is DISCARDED before backfilling.
+    Without it the model's inventions won: asked to rewrite a resume it also
+    rewrote the URLs, turning github.com/td19454-dot/TailorCv.Ai1 into
+    github.com/td19454-dot/tailorcv and inventing myntra-clone-demo.com outright.
+    Those look like URLs, so they counted as "this project already has a link"
+    and the real ones recovered from the PDF were never applied - shipping a
+    resume whose links 404 in front of a recruiter.
+
+    A URL is a fact about the candidate's work, exactly like an employer or a
+    date, so it is held to the same rule: it must exist in the original.
     """
     if pub_links is None:
         pub_links = []
-    
+
     if not isinstance(data, dict):
         return data
+
+    # Drop invented URLs before anything else looks at them.
+    if known_urls:
+        allowed = {_url_identity(u) for u in known_urls if str(u or "").strip()}
+        allowed.discard("")
+        if allowed:
+            for project in (data.get("projects") or []):
+                if not isinstance(project, dict):
+                    continue
+                for field in ("url", "github_link"):
+                    if project.get(field) and _url_identity(project[field]) not in allowed:
+                        project[field] = ""
+                kept = []
+                for item in (project.get("links") or []):
+                    if not isinstance(item, dict):
+                        continue
+                    href = item.get("url") or item.get("href") or item.get("link")
+                    if href and _url_identity(href) in allowed:
+                        kept.append(item)
+                project["links"] = kept
 
     # Handle Projects
     projects = data.get("projects")
@@ -349,18 +457,51 @@ def inject_links(data, links, mapped_links, pub_links=None):
             if isinstance(project, dict):
                 project.setdefault("links", [])
 
+        def _looks_like_url(value) -> bool:
+            """Whether a field actually holds a link rather than a link's LABEL.
+
+            Resumes render links as anchor text - "Live Demo | GitHub" - and the
+            model transcribes what it sees, so it returns url="Live Demo". That
+            is a caption, not an address. Counting it as a link made
+            _project_has_any_link report the project as already linked, so the
+            real URLs recovered from the PDF annotations were never injected: a
+            project showed no links at all while its neighbour, whose row said
+            only "GitHub", kept them.
+            """
+            v = str(value or "").strip()
+            if not v:
+                return False
+            if v.lower().startswith(("http://", "https://", "www.", "mailto:", "tel:")):
+                return True
+            # A bare domain ("github.com/user/repo"). Labels contain spaces and
+            # no dot, so this keeps them out.
+            return "." in v and " " not in v
+
+        # Drop label text sitting in URL fields. Left in place it would render as
+        # a dead link, and it would also poison the used_urls set below.
+        for project in projects:
+            if isinstance(project, dict):
+                for fld in ("url", "github_link"):
+                    if project.get(fld) and not _looks_like_url(project.get(fld)):
+                        project[fld] = ""
+                project["links"] = [
+                    item for item in (project.get("links") or [])
+                    if isinstance(item, dict)
+                    and _looks_like_url(item.get("url") or item.get("href") or item.get("link"))
+                ]
+
         def _project_has_any_link(p: dict) -> bool:
             if not isinstance(p, dict):
                 return False
-            if str(p.get("url") or "").strip():
+            if _looks_like_url(p.get("url")):
                 return True
-            if str(p.get("github_link") or "").strip():
+            if _looks_like_url(p.get("github_link")):
                 return True
             # Check nested links array for any usable url.
             for item in p.get("links") or []:
                 if not isinstance(item, dict):
                     continue
-                if str(item.get("url") or item.get("href") or item.get("link") or "").strip():
+                if _looks_like_url(item.get("url") or item.get("href") or item.get("link")):
                     return True
             return False
 
@@ -392,6 +533,28 @@ def inject_links(data, links, mapped_links, pub_links=None):
             if pname in key and len(pname) >= 5:
                 return True
             return False
+
+        # Where the PDF's own annotation layer names a project's links, those ARE
+        # the links. The model rewrites URLs the way it rewrites prose - it
+        # turned TailorCv.Ai1 into "tailorcv" and invented myntra-clone-demo.com
+        # - and merely filling empty fields let those inventions stand, because a
+        # project holding a fabricated URL does not look empty. Recovered links
+        # replace whatever the model produced for that project rather than
+        # waiting for a gap to fill.
+        for project in projects:
+            if not isinstance(project, dict):
+                continue
+            recovered = None
+            for key, pairs in (links or {}).items():
+                if _match_name(str(project.get("name") or "").strip().lower(),
+                               str(key or "").strip().lower()):
+                    recovered = pairs
+                    break
+            if not recovered:
+                continue
+            project["links"] = [{"label": lbl, "url": u} for lbl, u in recovered]
+            project["url"] = ""
+            project["github_link"] = ""
 
         for project in projects:
             if not isinstance(project, dict):
@@ -477,7 +640,87 @@ load_dotenv(dotenv_path=BASE_DIR / ".env")
 
 # OPTIMIZATION: Reuse a single OpenAI client instance instead of creating new ones
 _openai_client = None
-MOCK_INTERVIEW_MODEL = "gpt-4o-mini"
+# The model for every feature EXCEPT the resume tailoring rewrite: cover
+# letters, mock interviews, interview questions, LinkedIn parsing, resume
+# extraction. These are ordinary generation tasks where gpt-4o-mini is both
+# cheaper and faster, and no measurement suggested they need more.
+# The tailoring call is the exception — see OPTIMIZER_MODEL below.
+AI_MODEL = os.getenv("AI_MODEL", "gpt-4o-mini")
+MOCK_INTERVIEW_MODEL = AI_MODEL
+
+
+_REASONING_MODEL_PREFIXES = ("gpt-5", "o1", "o3", "o4")
+
+
+def _is_reasoning_model(model: str) -> bool:
+    return str(model or "").startswith(_REASONING_MODEL_PREFIXES)
+
+
+def _adapt_call_params(kwargs: dict) -> dict:
+    """Rewrite request parameters into the ones the target model family accepts.
+
+    The gpt-5 / o-series models are reasoning models and REJECT the parameters
+    the gpt-4 family requires — these are hard 400s, not degraded responses:
+      - `max_tokens` is refused; the equivalent is `max_completion_tokens`.
+      - `temperature` accepts only the default 1; any other value is refused.
+      - `reasoning_effort` is theirs alone, and it is the speed/cost dial. At the
+        default the tailoring call took ~65s and burned ~2,800 billed reasoning
+        tokens; at "low" it is ~18s.
+
+    Applied here, at the client, rather than at each of the ten call sites: this
+    codebase calls chat.completions.create from nine places with different
+    parameter sets, and a single missed one is a 500 on a live feature. Doing it
+    centrally also means any call added later is correct by default.
+    """
+    if not _is_reasoning_model(kwargs.get("model")):
+        return kwargs
+
+    out = dict(kwargs)
+    if "max_tokens" in out:
+        out["max_completion_tokens"] = out.pop("max_tokens")
+    # Only the default temperature is accepted, so drop whatever was asked for
+    # rather than 400. Callers use it to trade determinism against variety; on a
+    # reasoning model that dial is `reasoning_effort` instead.
+    out.pop("temperature", None)
+    out.pop("top_p", None)
+    if "reasoning_effort" not in out:
+        effort = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
+        if effort in {"minimal", "low", "medium", "high"}:
+            out["reasoning_effort"] = effort
+    return out
+
+
+class _AdaptingCompletions:
+    """chat.completions proxy that runs every create() through _adapt_call_params."""
+
+    def __init__(self, inner):
+        self._inner = inner
+
+    async def create(self, **kwargs):
+        return await self._inner.create(**_adapt_call_params(kwargs))
+
+    def __getattr__(self, name):
+        return getattr(self._inner, name)
+
+
+class _AdaptingChat:
+    def __init__(self, inner):
+        self._inner = inner
+        self.completions = _AdaptingCompletions(inner.completions)
+
+    def __getattr__(self, name):
+        return getattr(self._inner, name)
+
+
+class _AdaptingClient:
+    """AsyncOpenAI wrapper. Everything except chat.completions passes straight through."""
+
+    def __init__(self, inner):
+        self._inner = inner
+        self.chat = _AdaptingChat(inner.chat)
+
+    def __getattr__(self, name):
+        return getattr(self._inner, name)
 
 
 async def _build_openai_client():
@@ -488,11 +731,11 @@ async def _build_openai_client():
             raise RuntimeError(
                 "OPENAI_API_KEY is not set. Add it to your .env file before using ATS analysis or resume optimization."
             )
-        _openai_client = AsyncOpenAI(
+        _openai_client = _AdaptingClient(AsyncOpenAI(
             api_key=api_key,
             timeout=120.0,
             max_retries=3
-        )
+        ))
     return _openai_client
 
 
@@ -572,6 +815,143 @@ def embedding_match_score(resume_embedding: list[float], job_embedding: list[flo
     """Cosine similarity scaled to a 0-100 match score for the job dashboard."""
     sim = cosine_similarity(resume_embedding, job_embedding)
     return round(max(0.0, min(1.0, sim)) * 100)
+class AIOutputError(ValueError):
+    """The model answered, but with output we could not use. str() is user-facing."""
+
+
+def _error_chain(exc: BaseException):
+    seen = set()
+    while exc is not None and id(exc) not in seen and len(seen) < 8:
+        seen.add(id(exc))
+        yield exc
+        # tenacity's RetryError hides the real failure in last_attempt.
+        last = getattr(exc, "last_attempt", None)
+        if last is not None:
+            try:
+                inner = last.exception()
+            except Exception:
+                inner = None
+            if inner is not None and id(inner) not in seen:
+                exc = inner
+                continue
+        exc = exc.__cause__ or exc.__context__
+
+
+def _classify_one_error(exc: BaseException) -> str | None:
+    name = type(exc).__name__
+    module = type(exc).__module__ or ""
+    low = str(exc).lower()
+
+    if name == "HTTPException" and isinstance(getattr(exc, "detail", None), str):
+        return exc.detail
+    if isinstance(exc, AIOutputError):
+        return str(exc)
+    # Before the substring checks: its message carries char offsets like "char 14290".
+    if isinstance(exc, json.JSONDecodeError):
+        return ("The AI returned an incomplete result. Please try again. If it keeps "
+                "happening, trim the job description to the key requirements.")
+
+    # AI provider. Quota/key problems are ours to fix, not the user's, so say so
+    # instead of asking them to retry into the same wall.
+    if ("insufficient_quota" in low or "exceeded your current quota" in low
+            or "openai quota exceeded" in low):
+        return ("Our AI service has hit its usage limit. This is on our side and we've "
+                "been alerted. Please try again later.")
+    if (name in ("AuthenticationError", "PermissionDeniedError") or "invalid_api_key" in low
+            or "openai_api_key is invalid" in low):
+        return ("Our AI service is misconfigured right now. This is on our side and we've "
+                "been alerted. Please try again later.")
+    if "context_length_exceeded" in low or "maximum context length" in low:
+        return ("Your resume and job description are too long for the AI to read together. "
+                "Trim the job description to the key requirements and try again.")
+    if "content_filter" in low or "content management policy" in low:
+        return ("The AI declined to process this text. Remove any unusual or sensitive "
+                "content from the job description and try again.")
+    if name == "RateLimitError" or "rate limit" in low or "error code: 429" in low:
+        return "The AI service is handling a lot of requests. Please wait a minute and try again."
+    if (name in ("APITimeoutError", "TimeoutError", "ReadTimeout", "ConnectTimeout")
+            or "timed out" in low or "timeout" in low):
+        return ("The AI took too long to respond. Please try again. Long resumes and job "
+                "descriptions are slower, so trimming the job description helps.")
+    if name in ("APIConnectionError", "ConnectError", "RemoteProtocolError"):
+        return "We couldn't reach the AI service. Please try again in a moment."
+    if name == "InternalServerError" and module.startswith("openai"):
+        return "The AI service had an outage on its side. Please try again in a few minutes."
+
+    # Reading the uploaded PDF.
+    if module.startswith(("pdfminer", "pdfplumber", "pypdf")):
+        if "password" in low or "encrypt" in low:
+            return ("This PDF is password-protected. Remove the password (or export a fresh "
+                    "copy from Word or Google Docs) and upload it again.")
+        return ("We couldn't read this PDF. The file may be damaged. Re-export it as a PDF "
+                "from Word or Google Docs and upload it again.")
+
+    # Rendering our own output.
+    if module.startswith(("weasyprint", "tinycss2", "pydyf", "cssselect2")):
+        return ("We couldn't build the PDF for this resume. Try a different template, or "
+                "remove unusual symbols from the text, and download again.")
+    if module.startswith("jinja2"):
+        return "We couldn't fill in this template with your details. Try a different template."
+
+    if module.startswith(("sqlalchemy", "psycopg2", "psycopg")):
+        return "We couldn't reach our database just now. Please try again in a minute."
+    if isinstance(exc, MemoryError):
+        return "This file is too large for us to process. Upload a smaller PDF (under 2 MB)."
+    if isinstance(exc, (PermissionError, FileNotFoundError, IsADirectoryError)) or (
+            isinstance(exc, OSError) and getattr(exc, "errno", None) == 28):
+        return "We couldn't store your file on our server. Please try again in a moment."
+    return None
+
+
+def user_error_detail(exc: BaseException | None, fallback: str) -> str:
+    """A specific, user-facing message for exc, or fallback if the cause is unknown.
+
+    Walks the cause chain because most failures arrive wrapped
+    (_normalize_openai_error, tenacity, asyncio.gather). Never returns raw
+    exception text, which would leak internals.
+    """
+    for e in _error_chain(exc):
+        msg = _classify_one_error(e)
+        if msg:
+            return msg
+    return fallback
+
+# The filler phrases Rule 00 bans from the professional summary. Defined here
+# rather than inline in the prompt so that create_prompt() and the deterministic
+# validator below (_summary_quality_issues) are guaranteed to police the SAME
+# list — when they were written out twice they drifted, and the validator went
+# on passing summaries the prompt had already banned.
+_SUMMARY_BANNED_PHRASES = (
+    "Detail-oriented", "Results-driven", "Proven ability", "Proven track record",
+    "Adept at", "Skilled in", "Passionate about", "Strong analytical skills",
+    "problem-solving skills", "Seeking a challenging role", "Dynamic professional",
+    "Excellent communication skills", "Self-motivated", "wide range of",
+    "various technologies", "Strong background in", "Experienced professional with",
+    # Added with the 6-7 line length. A longer paragraph is an invitation to
+    # fill space with assertion rather than fact, and these are the words that
+    # get reached for when a sentence has nothing left to say.
+    "extensive experience", "robust", "cutting-edge", "seasoned",
+    "demonstrated ability", "proven expertise", "comprehensive understanding",
+    "well-versed", "track record", "deep understanding", "highly skilled",
+    # Weak future-focused closings. They turn a statement of capability into a
+    # statement of hope, and they are most damaging on exactly the early-career
+    # resumes where they are most tempting.
+    "prepared to grow into", "looking to gain experience", "hoping to develop",
+    "eager to learn", "aspiring to", "seeking to gain",
+    # Banned as a TOKEN, not just inside "Applies reproducible ... practices".
+    # It returned in six outputs across three resumes under different framings,
+    # and it never carries information a concrete noun would not carry better.
+    "reproducible", "reproducibility",
+)
+
+# Hedging constructions that shrink real work into mere acquaintance. Banned by
+# Rule 00 and checked by the validator.
+_SUMMARY_HEDGING_PHRASES = (
+    "exposure to", "familiarity with", "understanding of", "knowledge of",
+    "worked with", "involved in", "experience with", "domain experience in",
+)
+
+_SUMMARY_BANNED_PHRASES_TEXT = ", ".join(f'"{p}"' for p in _SUMMARY_BANNED_PHRASES)
 
 
 def create_prompt(resume_string,jd_string):
@@ -593,8 +973,12 @@ def create_prompt(resume_string,jd_string):
     return f"""
 Your objective is to generate a professional, compelling resume content according to the provided job description, maximizing interview chances by integrating best practices in content quality, keyword optimization, measurable achievements, and proper formatting.
 
-Rewrite the content resume to better match the job description and return in json.
-Only improve wording and keyword alignment
+Rewrite the resume's CONTENT so it reads as though it were written for this specific job, and return it as JSON.
+
+There are TWO ways to fail this task and they are equally bad:
+  FAILURE A — deleting information. Compressing a detailed bullet into a shorter, cleaner one strips out the exact keywords the resume is scored on.
+  FAILURE B — returning the bullet unchanged. Handing back the candidate's own sentence, or changing a word or two, means they paid for a tailored resume and received the one they uploaded.
+Avoiding A by committing B is NOT a safe choice — it is just the other failure. The task is to do both: keep every fact AND genuinely rewrite the sentence around it.
 
 IMPORTANT:
 You are NOT formatting a resume.
@@ -605,6 +989,19 @@ You must preserve factual details already present in the resume such as dates, C
 - Include EVERY section that exists in the original resume (summary, experience, projects, education, skills, certifications, publications, achievements, extracurriculars, etc.).
 - Include EVERY entry/sub-section. If the resume has 5 experiences, 8 projects, and 20 certifications, the output MUST contain ALL 5 experiences, ALL 8 projects, and ALL 20 certifications — same count, none merged, summarized away, or omitted.
 - Keep EVERY bullet point of every entry. Do not drop bullets to save space.
+- Keep EVERYTHING INSIDE each bullet too. Keeping the right NUMBER of bullets while quietly deleting what is in them is the same loss, and it is the most damaging thing you can do here: the deleted parts are precisely the keywords the resume is being scored on. Carry ALL of the following from the original bullet into your version:
+  * every named technology, tool, library, platform, or product — e.g. "Pandas", "Playwright", "SMTP", "Netlify", "WMS", "DOM manipulation";
+  * every number and quantity, the secondary ones as well as the headline one — e.g. "30+ countries", "3,116 individuals", "3.5% higher", "50% of Hat purchases", "22 weighted checks", "10-metric rubric";
+  * every enumerated list, with its items intact — "15 job boards (LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday)" must keep all six names, NOT become "job boards"; "covering correctness, reasoning, code quality, and task completion" must keep all four dimensions, NOT become "a comprehensive rubric";
+  * every distinction drawn between named things — "Razorpay for domestic customers and Polar for international" must keep both names AND what separates them; "integrating Razorpay and Polar" has thrown the point away.
+  Rewriting means saying the SAME information in better words — a sharper verb, a tighter structure, the job description's vocabulary. It never means saying LESS. A bullet is space-constrained, so aim for about two printed lines, but that is guidance and it NEVER outranks this rule: where the original bullet is long and packed with specifics, your version is expected to be just as long.
+
+  WORK IN THIS ORDER for every single bullet — preservation FIRST, rewriting SECOND:
+    Step 1 — Before writing anything, list to yourself (internally, never in the output) every concrete item in the original bullet: each technology, each number, each item of each list, each named entity, and the outcome it reports.
+    Step 2 — Now write the improved bullet, carrying EVERY item from that list into it.
+    Step 3 — Check your bullet against your list. If even one item is missing, the bullet is wrong: rewrite it again until all of them are present. A shorter, cleaner sentence that lost an item is NOT an improvement, it is a downgrade.
+    Step 4 — Now check the opposite: is your sentence ACTUALLY DIFFERENT from the original? If it is the same sentence with a word swapped, you have not done the job. Restructure it — lead with the strongest fact, replace the verb with a specific one, and use the job description's vocabulary for the same work. Copying the original through is a failure, not a safe answer.
+  Never skip Step 1 to save effort, and never use Steps 1-3 as an excuse to skip Step 4. Every bullet must come back both COMPLETE and REWRITTEN.
 - Never truncate the output. Return the COMPLETE JSON for the entire resume, however long it is. Length is not a reason to omit content.
 - Preserve EVERY link (project, GitHub, Live/demo, LinkedIn, certification, publication, portfolio, company) on the exact entry it belongs to.
 
@@ -613,8 +1010,120 @@ You must preserve factual details already present in the resume such as dates, C
 - No explanations, no markdown, no extra text
 
 Guidelines to Follow:
+
+### Rule 00: THE PROFESSIONAL SUMMARY (MANDATORY — IT IS THE MOST-READ LINE ON THE RESUME)
+The `summary` is the first thing a recruiter reads and it is where a generic resume gives itself away. A summary that would fit any candidate applying to any job has FAILED, however well written it is. Write it LAST, after the bullets are done, so it can draw on what the tailored resume actually shows.
+
+LENGTH: use the SHORTEST length that communicates the candidate's strongest qualifications.
+- Students and early-career candidates: about 60 to 100 words.
+- Experienced candidates: about 80 to 120 words.
+Never exceed 120 words. One paragraph, 4 to 5 sentences.
+
+Length is a ceiling, not a target. A 75-word summary that lands every point beats a 120-word one carrying the same content more slowly. If you have said everything the resume supports in four sentences, stop — adding a fifth to fill the budget is padding, and padding is visible.
+
+THERE IS NO TEMPLATE. DO NOT follow a fixed sentence order. This is the single most important instruction in this rule, and it replaces an earlier version of this prompt that supplied a numbered sentence plan — that plan produced summaries which were structurally identical across completely different candidates, with only the nouns swapped. If two people in different fields would come out with the same sentence shapes, you are slot-filling, not writing.
+
+DERIVE THE ORDER FROM THE RESUME. Before writing, identify the single most distinctive thing this candidate has for THIS job — a named product they built, a specialism, a scale they operated at, a domain they know. That goes in SENTENCE ONE. Everything else arranges itself behind it, in whatever order this particular profile calls for.
+
+NEVER OPEN WITH A LIFECYCLE LIST. "Across the end-to-end ML lifecycle including data preparation, feature engineering, model training, deployment and evaluation" describes every practitioner in the field and differentiates nobody. It is the single most wasteful opening available — roughly thirteen words spent restating the job title. The same applies to "the full frontend lifecycle", "the full software development lifecycle", "end-to-end data workflows" and every variant. If the candidate built a named product, that product opens the summary.
+
+LENGTH: 2 to 3 sentences, 45 to 60 words. Hard ceiling 65. This is a budget you must fit inside, not a target to approach — a 48-word summary that lands three real claims beats a 60-word one carrying the same content slowly.
+
+DO NOT RESTATE THE BULLETS. The summary sits directly above Experience and Projects, and the reader sees both. If a phrase in your summary also appears in a bullet below it, the summary has spent its most valuable words telling the reader something they are about to read anyway. Its job is to FRAME and PRIORITISE — to tell the reader what to conclude from the entries below — not to preview them. Name the through-line, the scale, or the judgement the work demonstrates; leave the itemised detail to the bullets.
+
+NEVER BORROW VOCABULARY FROM THIS PROMPT'S EXAMPLES. Every illustration in this rule — pipelines, experiment tracking, versioning, containerized deployment, CI/CD, inference services, REST APIs — is an example of SHAPE, never a word list to draw from. If a term appears in this prompt but NOT in the candidate's resume, it must not appear in the summary. Writing "builds repeatable ETL and analysis pipelines" for a candidate whose resume never mentions ETL or pipelines is fabrication, and it happens by copying vocabulary from examples written for a different role.
+
+PREFER THE INSIGHT OVER THE INPUT VOLUME. Given a choice between the size of the dataset processed and the finding that came out of it, always take the finding. "Analysed 3,900 transaction records" describes effort; "found express shipping carries 3.5% higher average transaction value" describes a result that changed a decision. Small input numbers actively invite scepticism — leading with one draws attention to the scale rather than the work. Prefer, in order: a finding that changed a decision, a measured improvement, a scale figure, and only then a volume-processed figure.
+
+PREFER DESIGN DECISIONS OVER CATEGORY NOUNS. "Implements payment rails" names a category and discards the engineering. "Built dual payment rails — Razorpay domestic, Polar international — with usage quotas and subscription lifecycle handling" shows a design decision and the constraint it answered. When choosing between two true specifics, always take the one that reveals a decision, a trade-off, or a measured outcome over the one that merely names the area of work.
+
+DRAW ON AT LEAST TWO ENTRIES where the resume has more than one substantive entry. A summary sourced entirely from a single project is a project description wearing a profile's clothes, and it wastes the rest of the candidate's history. Pick the strongest evidence from the strongest entry, then the strongest complementary evidence from a different one.
+
+NEVER COMPRESS A PHRASE INTO SOMETHING THAT IS NOT TRUE. Shortening is allowed; narrowing is not. If the resume says "owned the full stack", you may not write "full-stack backend" — the compound is false, because a full-stack engineer is precisely not a backend-only one, and every individual word came from the source. Check each compressed phrase against what the source actually claimed.
+
+LEAD WITH THE DIFFERENTIATOR, NOT THE CATEGORY. If the distinctive content is a shipped product (an ATS scoring engine, a Chrome extension, a resume-tailoring pipeline), it opens the summary and it is named in plain words — never parenthesised at the end of sentence four. If the distinctive content is a specialism (NLP, Retrieval Augmented Generation), that opens instead. Whatever a competing candidate with the same job title could NOT write about themselves is what goes first.
+
+SAY EACH CAPABILITY EXACTLY ONCE. "Deployment as services", "post-deployment monitoring" and "deployed features" are ONE capability written three times. So are "REST API integration", "integration with RESTful services" and "frontend-backend contracts". Before finishing, list the distinct claims you are making — if two sentences make the same claim in different words, delete one and spend the words on something new.
+
+NAME AT MOST FOUR TOOLS IN TOTAL. A summary listing eight technologies is a skills section in prose form, and the `skills` array already does that job. Choose the four that most distinguish this candidate for this job and let the rest live in `skills`.
+
+NEVER SPEND SUMMARY WORDS ON ASSUMED SKILLS. Every role has table stakes, and naming them signals junior — only someone without stronger material would spend the most-read line on them.
+  Frontend: HTML, HTML5, CSS, CSS3, JavaScript basics, ES6+, DOM manipulation, responsive design
+  Backend: CRUD, MVC, OOP, Git, basic SQL, REST basics
+  Machine learning: Python, scikit-learn, pandas, NumPy, Jupyter
+  Data: Excel, basic SQL, charts, dashboards
+A Machine Learning Engineer who spends a word on "Python" has wasted it.
+
+NO SENIORITY HEDGES. Never write "(early-career)", "(junior)", "aspiring", "entry-level" or "recent graduate". Leading with the weakest signal in the first six words is self-sabotage. Let the scale and substance of the work establish the level — a reader infers seniority from what was built far more reliably than from a label.
+
+BANNED CONSTRUCTION: "Applies <adjective> <noun> practices". "Applies reproducible evaluation and monitoring practices", "Applies MLOps practices such as...", "Applies engineering practices including..." - this exact frame has appeared in output after output across unrelated candidates. It is a category noun wearing a verb, it claims nothing specific, and it is always replaceable by the concrete thing that was actually done. If you find yourself writing "Applies ... practices", delete the sentence and name the system, decision or outcome instead.
+
+NO FILLER CLOSER. Do not end on "collaborates with cross-functional teams", "documents technical processes", "committed to continuous improvement" or any variant. These carry no information, they could sit on any resume in the world, and they occupy the last thing a recruiter reads. End on the strongest concrete fact instead.
+
+DO NOT ATTACH OUTCOME LANGUAGE TO PLAIN TOOLING CHOICES. "Neon-hosted databases for scale" claims an achievement that a hosting choice does not evidence. "PostgreSQL for persistent state" is padding — persistence is what a database is. Name the tool, or name what was achieved with it, but never dress the former as the latter.
+
+NEVER END ON WEAK FUTURE-FOCUSED LANGUAGE. "Prepared to grow into...", "looking to gain experience in...", "hoping to develop skills in...", "eager to learn...", "aspiring to..." — all banned. They convert a statement of capability into a statement of hope, and they are most damaging exactly where they are most tempting, on an early-career resume that needs to sound capable. State what the candidate CAN do, then connect it to the target work: "Applies these fundamentals to process design, simulation and scale-up work" rather than "prepared to grow into process simulation".
+
+DO NOT INFLATE THE VOCABULARY. Plain, standard industry terminology beats elaborate phrasing every time. "Hands-on experience in process design" is better than "hands-on exposure to process design paradigms". If a simpler word carries the same meaning, use the simpler word — sophistication in a summary reads as compensation, and recruiters discount it.
+
+CUT WHAT DOES NOT STRENGTHEN THE FIT. Every clause must earn its place against THIS job description. Detail that is true, interesting and irrelevant is the most common reason a summary runs long. Remove it rather than shortening everything else to accommodate it.
+
+AT THIS LENGTH THE BUZZWORD RISK IS THE MAIN RISK. A longer paragraph is an invitation to fill space with words that assert instead of describing. Do not take it. Every additional line must add a FACT — a system, a stack, a practice, a domain, a scale, an outcome, a responsibility — never an adjective about the candidate. If you find yourself reaching for "extensive", "robust", "cutting-edge", "dynamic", "seasoned", "demonstrated ability", "strong background", "proven expertise", "comprehensive understanding", "well-versed" or "track record", the sentence has nothing left to say and should be cut rather than written. The banned-filler list below applies with full force to sentences 5 and 6.
+
+DESCRIBE HOW THE SKILLS ARE APPLIED, NEVER LIST THEM. A summary is not a skills section in prose form. Every technology named must sit inside a clause saying what was built, run or decided with it. "Builds and productionizes ML models as REST APIs using Python, FastAPI and Docker" applies the skills; "Skilled in Python, FastAPI, Docker, MLflow and AWS" lists them, and the `skills` array already does that job better.
+
+MATCH THE EMPHASIS TO THE SENIORITY THE RESUME SUPPORTS:
+- SENIOR / LEAD: emphasise ownership, technical decision-making, the scope of systems owned, production responsibility, and mentoring — but ONLY where the resume evidences each one. A senior summary that lists technologies instead of decisions reads as someone describing proximity to work rather than ownership of it.
+- MID-LEVEL: emphasise what was built end to end, the stack it was built with, and the outcomes it produced.
+- JUNIOR / EARLY-CAREER / FRESHER: emphasise relevant projects, technical foundations, internships and demonstrated capability. NEVER inflate seniority to close the gap — no "extensive experience", no invented ownership, no implied team leadership. A junior summary that is honest and concrete outperforms one straining to sound senior, and the strain is obvious to every recruiter who reads it.
+
+PRIORITISE BY THE JOB DESCRIPTION'S OWN TECHNICAL DOMAIN. Work out what this specific role is built around — backend engineering, data, ML, security, design, operations — and lead with the resume evidence closest to that centre. For a backend role that means backend services, API design, the language and framework, relational and non-relational data stores, testing, CI/CD, containerisation, cloud, queues, observability and system ownership. For a data role it means pipelines, modelling, warehousing and analysis. Apply the same logic to whatever domain the JD describes, and include each item ONLY where the resume genuinely evidences it.
+
+It MUST ALSO:
+- Name the role in its CANONICAL form, at the seniority the resume genuinely supports. Write the real job title ("Machine Learning Engineer", "Data Analyst", "Backend Software Engineer"). If the JD says "Data Analyst", do not write "Software Developer". If the resume evidences a total years-of-experience figure, lead with it.
+- Name the job description's HIGHEST-PRIORITY hard skills that the resume genuinely evidences, using the job description's own wording for them. These must be the JD's headline requirements, not whichever technologies were easiest to mention. GROUP them by what they are FOR, never as one flat comma list: "productionizes models as REST APIs and inference services using Python, FastAPI, Flask, and Docker on Amazon Web Services (AWS)" beats "using Python, FastAPI, Flask, Docker, MLflow, AWS".
+- EXPAND ACRONYMS ON FIRST USE, then keep the short form: "Amazon Web Services (AWS)", "Retrieval Augmented Generation (RAG)", "Natural Language Processing (NLP)", "Continuous Integration/Continuous Deployment (CI/CD)". ATS keyword matching is literal, and the expanded form and the acronym are two different keywords — this is the one place in the resume where spending the extra words is worth it. Only expand acronyms the resume genuinely evidences.
+- Write in CANDIDATE VOICE, not job-description voice. "Machine Learning Engineer with 3 years building RAG pipelines for X" describes a person; "Implements interactive UIs", "Applies reproducible practices", "Builds and ships production-capable systems" describe a job opening. Bare present-tense verb openings ("Implements...", "Applies...", "Builds...") are the signature of the JD-echo failure — avoid starting consecutive sentences that way, and never start the summary that way.
+- MATCH THE TITLE TO THE SUBSTANCE. The role you name in sentence one must be supported by what the resume actually shows. If the title says "Machine Learning Engineer" but the resume evidences backend services, API work and product features with only LLM/RAG integration and no model training, modelling or evaluation methodology, then the honest title is "AI Engineer" or "Backend Engineer" — write that instead. A headline the body cannot deliver on is caught immediately by anyone who does the job, and it damages every other claim on the page.
+- Contain no first-person pronouns, and no sentence that could be lifted onto a stranger's resume unchanged.
+
+EXACTLY ONE CONCRETE PROOF POINT IS REQUIRED — a metric, a scale, or a named system — and it must be taken VERBATIM from elsewhere in the resume. This reverses an earlier version of this rule which made proof points optional; that version produced summaries containing no evidence at all, while the source resume carried real numbers further down. Search the experience and project sections for the strongest number or named system relevant to THIS job and bring it up into the summary.
+
+If the resume genuinely contains no numbers anywhere, name the most specific system the candidate actually built — "the ATS scoring engine", "the payments reconciliation service" — never a vague substitute. "Serving a global user base", "at scale", "for real users" and "high-volume" are NOT evidence; they are the vague-claim pattern this rule exists to eliminate. NEVER invent, estimate or inflate a number, and NEVER omit the proof point entirely.
+
+Use AT MOST TWO metrics. One is usually right. An impressive number that has nothing to do with what this job is hiring for actively WEAKENS the summary: it spends the most valuable line on the resume making a point the reader did not ask about, and it reads as the candidate reaching for whatever number they had. If the resume's only metrics are irrelevant to this JD, leave every number out and spend those words on capability instead. NEVER invent, estimate or inflate a number.
+
+DO NOT ECHO THE JOB DESCRIPTION'S HEADLINE. The summary must read as a description of a person, not a compressed restatement of the posting. Specifically BANNED:
+  - "<Role> focused on <the JD's headline/team name>" — e.g. "ML Engineer focused on AI/ML Platform & MLOps". Write "Machine Learning Engineer with ..." and let the capability sentences show the focus.
+  - Any trailing "in the <X> domain" / "in the <X> space" / "in the <X> sector" clause — e.g. "... for RAG, sentiment and pricing systems in the AI/ML domain". The domain is already obvious from the work described; naming it again adds a keyword and claims nothing.
+  - Copying the JD's team, org or product names ("AI/ML Platform & MLOps") into the summary as if they were the candidate's experience.
+Name an INDUSTRY domain (fintech, healthcare, e-commerce, semiconductors, logistics) only when the resume genuinely evidences it and only woven into a claim, never as a trailing tag.
+
+BANNED — these are the exact phrases that make a summary read as filler, and they are what this prompt keeps producing: {_SUMMARY_BANNED_PHRASES_TEXT}. Do not open with any of them. State what was built, in which stack, to what effect.
+
+BANNED — hedging verbs that shrink real work into acquaintance. NEVER write "exposure to", "familiarity with", "understanding of", "knowledge of", "worked with", "involved in", "experience with" or "domain experience in" followed by a list of technologies. If the resume evidences the work, state what was DONE with it: "modelled the Postgres schema behind X" beats "exposure to database modelling". If it does not evidence the work, leave the technology out of the summary entirely — it already appears in `skills`.
+
+NEVER end the summary with a trailing list of technologies, domains or capabilities. A closing clause like "Domain experience in developer tools / AI-enabled SaaS and platform reliability, with exposure to database modelling, query optimization and API integrations" is keyword padding: it names things without claiming anything, and it is the weakest position on the most-read line of the resume. Every sentence must make a claim with a subject and an outcome. End on the strongest verifiable fact, not on a keyword list.
+
+THE CENTRAL EXAMPLE — this pair shows every rule above at once. Both were written from the SAME resume against the SAME "ML Engineer – AI/ML Platform & MLOps" job description:
+BAD  : "ML Engineer focused on AI/ML Platform & MLOps with hands-on delivery of model deployment, CI/CD-driven inference services, and cloud-hosted pipelines using AWS, Docker and MLflow. Improved model prediction accuracy by 15% through rubric-driven evaluation of agent responses and shipped production-grade APIs and pipelines for RAG, sentiment and pricing systems in the AI/ML domain."
+GOOD : "Machine Learning Engineer with hands-on experience across the end-to-end Machine Learning lifecycle, including data pipelines, feature engineering, model training, deployment, and evaluation. Builds and productionizes ML models as REST APIs and inference services using Python, FastAPI, Flask, and Docker on Amazon Web Services (AWS). Applies MLOps practices including MLflow experiment tracking, DVC model and data versioning, containerized deployment, and CI/CD automation to deliver reproducible, production-grade ML systems. Applied background in Natural Language Processing (NLP), Computer Vision, LLM fine-tuning, and Retrieval Augmented Generation (RAG), with deployed projects serving real users."
+Study exactly what changed, because these are the failures this rule exists to stop:
+  - BAD opens by echoing the posting's headline ("focused on AI/ML Platform & MLOps"); GOOD opens with the canonical role and the LIFECYCLE BREADTH the candidate covers, naming each stage.
+  - BAD is two dense sentences carrying a flat tool list; GOOD is four sentences, each owning one capability domain — lifecycle, then build-and-ship stack, then MLOps practice, then applied specialisms.
+  - BAD forces in "15% accuracy", a real number that this platform/MLOps job never asked about; GOOD drops every metric and spends those words on capability. That omission makes it STRONGER, not weaker.
+  - BAD ends on "in the AI/ML domain", a keyword tag claiming nothing; GOOD ends on "deployed projects serving real users", a claim.
+  - GOOD expands the acronyms (Amazon Web Services, Natural Language Processing, Retrieval Augmented Generation) so both forms are matchable, and uses standing-capability verbs ("Builds", "Applies").
+
+A second pair, showing the padded-tail failure specifically:
+BAD  : "Backend Software Engineer with experience building production FastAPI services and data-driven SaaS features in Python, SQL and PostgreSQL. Owned the full-stack backend for a SaaS used by 16,000+ users and implemented the core ATS scoring engine, payment rails and analytics instrumentation. Domain experience in developer tools / AI-enabled SaaS and platform reliability, with exposure to database modelling, query optimization and API integrations."
+GOOD : "Backend Software Engineer building production FastAPI services in Python, SQL and PostgreSQL. Owned the full-stack backend for an AI resume-optimization SaaS serving 16,000+ users across 30+ countries, shipping the ATS scoring engine, Razorpay payment rails and analytics instrumentation that run it."
+The third sentence in BAD names eight things and claims none of them; cutting it makes the summary stronger, not shorter. GOOD ends on the concrete systems the candidate shipped.
+
 1)Keyword and Skill Optimization:
-Rule01: MANDATORY SKILLS INJECTION — The `skills` array in the output JSON MUST contain EVERY hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that is explicitly mentioned in the job description. Do NOT skip any. Even if the candidate does not have a skill, it must still appear in the `skills` array for ATS keyword matching purposes. If a related skill already exists, keep it AND also add the exact JD keyword. Do not fabricate experience, expertise, or accomplishments.
+Rule01: EVIDENCED SKILLS ONLY — The `skills` array MUST contain every hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that the job description names AND the candidate's resume actually evidences anywhere — in a bullet, a project, a summary line, or an existing skills list. Use the job description's exact wording for those (if the resume says "Postgres" and the JD says "PostgreSQL", output "PostgreSQL"), because the filter matches language, not meaning.
+
+If the job description names a hard skill the resume shows NO evidence for, do NOT put it in `skills`. Leave it out entirely. A skills list is a set of claims the candidate has to defend in an interview — a keyword they have never touched clears the filter and then collapses in the conversation, which is a worse outcome for them than not being shortlisted. We surface those separately as gaps so the candidate can add them only if they are genuinely true. Do not fabricate experience, expertise, or accomplishments.
 
 Rule01b: SKILLS ARRAY FORMAT — Every entry in `skills` MUST be a short, concrete, named technology (e.g. "Python", "React", "PostgreSQL", "Docker", "REST APIs") — a proper noun or standard industry term, 1-3 words. NEVER put soft skills, narrative phrases, or generic descriptions in `skills` (e.g. do NOT add things like "cross-functional collaboration", "commercial analytics applications", "marketing performance measurement", "technical report writing"). NEVER extract sentence fragments about the ROLE or COMPANY as skills — e.g. do NOT add "senior IC role", "high-growth startup", "one or more languages", "5+ years experience". If the job description says something like "proficiency in one or more of Python, Java, or C++ for a senior IC role at a high-growth startup", extract ONLY the actual technology names ("Python", "Java", "C++") and discard the surrounding sentence entirely. NEVER extract fragments of a RESPONSIBILITY or ACTIVITY sentence as if they were named technologies — many JD lines describe what the candidate will DO, not a tool they must know, and these must be skipped entirely unless a genuine named technology can be pulled out of them. For example: "designing and implementing scalable API architectures" → skip entirely, do NOT add "designing", "implementing", or "scalable API architectures" as skills (only add "API"/"REST APIs" if that technology is separately and explicitly named elsewhere in the JD, never derived from this sentence). "establishing and maintaining technical standards for multi-agent orchestration" → skip entirely, do NOT add "establishing", "maintaining technical standards", or "multi-agent orchestration". "experience with the Microsoft Copilot ecosystem, including Power Platform integration and Microsoft Graph API" → extract ONLY the real product names ("Microsoft Copilot", "Power Platform", "Microsoft Graph API"); discard "ecosystem" and "integration" as connective words, not skills. Rule of thumb: if a phrase is a verb-led description of an activity ("designing...", "implementing...", "establishing...", "maintaining...", "building...", "developing...", "driving...", "leading...") or a vague noun phrase about scope/process rather than a specific tool ("architecture", "ecosystem", "orchestration", "roadmap", "workload", "standard", "strategy", "pattern" used generically), it is NOT an atomic skill — extract only the concrete proper-noun technology named inside it, if any, never the sentence fragment itself. If the job description mentions a soft skill (communication, leadership, collaboration, stakeholder management, etc.), weave it naturally into the `summary` or experience/project `bullets` instead — never as a standalone `skills` entry.
 
@@ -646,6 +1155,21 @@ Step C — SOFT skills, in the bullets:
 
 The hard rule underneath all of Step B and C: rewriting means expressing the SAME facts in the job description's vocabulary. You may re-word, re-frame, re-order and sharpen. You may NOT add work, people, tools, scale or outcomes that are not in the original resume.
 
+### Rule 1d: EXPERIENCE AND PROJECT BULLETS MUST BE REBUILT, NOT ECHOED (MANDATORY)
+Preserving every fact is only half the job. Handing the facts back in the candidate's original sentence means they uploaded a resume and received the same resume — the most common way this task is failed, and invisible unless you compare the two side by side. For EVERY entry in `experience` AND `projects`:
+
+- Rebuild the sentence into the shape: strong action verb → what was actually built or changed → the technology it was built with → the outcome it produced. The original bullet is your source of FACTS, not a sentence to lightly edit.
+- Open every bullet with a different, specific action verb. Never reuse an opener twice inside one entry.
+  BANNED openers, weak: "Worked on", "Responsible for", "Helped with", "Involved in", "Assisted in", "Participated in", "Tasked with".
+  BANNED openers, passive-learning — these describe what the candidate ABSORBED rather than what they PRODUCED, and they make real work sound like observation: "Gained", "Acquired", "Studied", "Learned", "Observed", "Exposed to", "Familiarised with", "Engaged in".
+  Even for an internship, write what was DONE: "Mapped the end-to-end paint manufacturing process across production planning, raw material handling and quality control" says the same thing as "Gained hands-on exposure to..." and says it as work.
+  PREFER: Built, Designed, Engineered, Automated, Migrated, Instrumented, Refactored, Shipped, Scaled, Consolidated, Benchmarked, Integrated, Diagnosed, Mapped, Modelled, Cut, Eliminated.
+- LEAD with the strongest element. If the bullet has a metric, the metric belongs early, not buried at the end of a subordinate clause.
+- REORDER bullets within each entry so the one most relevant to THIS job description comes first. Recruiters read the top bullet of every role and skim the rest.
+- Keep the SAME NUMBER of bullets per entry as the original. Rewrite them in place; never merge two into one, never split one into two — a later step matches your bullets back against the original resume, and changing the count corrupts that match.
+
+Before returning, compare each rewritten bullet against its original one final time and confirm BOTH: every fact is still present, AND the sentence is genuinely restructured rather than lightly edited. If only the first is true, you have not finished.
+
 Rule 2:Incorporate Measurable Metrics:
 Quantify achievements using the XYZ formula if the user has put such quantifications but not formatted it if user has not put anything quantifyable don't do it: Accomplished X, measured by Y, by doing Z.
 
@@ -661,7 +1185,13 @@ Replace generic phrases with specific examples that showcase expertise and succe
 Focus on selling professional experience, skills, and results, not merely summarizing past roles.
 
 Additional Instructions:
-Keyword Optimize and be specific for each section (Professional Summary, Experience, Skills, Education) to reflect relevance to the job.
+Keyword Optimize and be specific for EVERY section that contains bullets — Professional Summary, Experience, Projects, Skills, Education, AND extracurriculars / leadership / positions of responsibility / volunteering — to reflect relevance to the job.
+
+### EXTRACURRICULAR, LEADERSHIP AND VOLUNTEERING BULLETS (MANDATORY)
+These are bullets like any other and they must be REWRITTEN, not copied through. They were being left almost untouched while the rest of the resume was tailored, which makes the section read as an afterthought — and it is often the only place on a junior resume that evidences leadership, ownership, communication and stakeholder work, exactly the soft skills the job description asks for.
+- Apply the same treatment as experience bullets: open with a strong, specific action verb, say what was actually organised, led or built, and end on the outcome it produced.
+- Frame the activity in terms the job description would recognise. Running an event IS stakeholder coordination and project delivery; mentoring juniors IS knowledge transfer; managing a club budget IS ownership of resources. Name it that way when the resume supports it — but never claim a responsibility the original does not describe.
+- The preservation rule above applies here in full: every number (attendee counts, funds raised, team sizes, editions), every named organisation or event, and every listed item must survive into your version.
 Use concise bullet points, each starting with a strong action verb.
 Preserve all existing links from the resume exactly when they exist. Do not remove project, GitHub, LinkedIn, portfolio, or other URLs.
 If a project has a GitHub/repository/demo/live link in the original resume, keep it in the output using `github_link`, `url`, or `links`.
@@ -691,7 +1221,7 @@ Follow this EXACT schema
     "google_scholar": ""
   }},
 
-  "summary": "",
+  "summary": "3-5 sentences, one capability domain each (see Rule 00): identity + lifecycle scope, what is built and the stack, the production practices, then applied specialisms. Canonical role name, acronyms expanded on first use, no JD-headline echo, no trailing domain tag, metric only if it is the strongest evidence for THIS job.",
 
   "experience": [
     {{
@@ -770,15 +1300,83 @@ Job Description:
 {_escape_braces(jd_string)}
 
 """
+# The model that does the tailoring rewrite itself. Rewrite quality IS the
+# product here, so this one call is chosen on measurement rather than on price.
+# Every other LLM call in the app stays on gpt-4o-mini.
+#
+# Measured end-to-end on a real resume + JD. "reverts" is how often
+# enforce_bullet_facts had to discard the model's rewrite because it dropped a
+# fact, so lower means more of the resume ships genuinely rewritten; "weak
+# verbs" counts bullets still opening with a banned learning verb ("Studied",
+# "Acquired") that the prompt forbids:
+#
+#   gpt-4o-mini @ 0      ~17s   32% reverts   2 weak verbs   $1.95 / 1000
+#   gpt-4o-mini @ 0.35   ~17s   14% reverts   2 weak verbs   $1.97 / 1000
+#   gpt-4o     @ 0.35    ~10s   27% reverts   1 weak verb   $32.56 / 1000
+#   gpt-5-mini (low)     ~18s   14% reverts   0 weak verbs   $6.37 / 1000  <- chosen
+#   gpt-5-mini (medium)  ~34s    5% reverts   0 weak verbs  $11.86 / 1000
+#
+# gpt-5-mini at low effort is the pick: same speed and revert rate as the
+# cheapest option, but it is the only model that reliably stops writing "Studied
+# the process" where the prompt asks for "Mapped the process" — a failure prompt
+# rules alone never fixed. medium halves the reverts again but doubles the wall
+# clock, which is too slow for the Chrome extension, where someone is watching a
+# spinner on a job page. gpt-4o was 16x the cost and measurably worse.
+#
+# Both settings are .env-overridable: OPTIMIZER_MODEL=gpt-4o-mini drops the cost
+# back to ~$2/1000, OPTIMIZER_REASONING_EFFORT=medium buys the 5% revert rate.
+OPTIMIZER_MODEL = os.getenv("OPTIMIZER_MODEL", "gpt-5-mini")
+try:
+    OPTIMIZER_TEMPERATURE = float(os.getenv("OPTIMIZER_TEMPERATURE", "0.35"))
+except ValueError:
+    OPTIMIZER_TEMPERATURE = 0.35
+
+
 @retry(
     stop=stop_after_attempt(5),
-    wait=wait_exponential(multiplier=1, min=4, max=60)
+    wait=wait_exponential(multiplier=1, min=4, max=60),
+    # Re-raise the ORIGINAL error after the last attempt. Without this tenacity
+    # raises RetryError, which hides the cause: a quota problem, an invalid key
+    # and a transient rate limit all surfaced as the same opaque traceback and
+    # the same generic 500, so there was nothing to act on.
+    reraise=True,
 )
-async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0) -> str:
+def _completion_params(model: str, temperature: float) -> dict:
+    """Per-model-family call parameters for the tailoring request.
+
+    The gpt-5 family are reasoning models and reject the parameters the gpt-4
+    family requires:
+      - `max_tokens` is refused outright; they want `max_completion_tokens`.
+      - `temperature` accepts only the default 1 — 0.35 returns a 400.
+      - `reasoning_effort` is theirs alone, and it matters: at the default the
+        tailoring call took ~65s and burned ~2,800 billed reasoning tokens
+        before writing anything, which is far too slow for the Chrome extension
+        where the user is watching a spinner on a job page.
+    Sending the wrong set is a hard 400, not a degraded response, so this is
+    chosen by family rather than left to the caller.
+    """
+    if str(model or "").startswith(("gpt-5", "o1", "o3", "o4")):
+        params = {
+            "max_completion_tokens": 16384,
+            "seed": _ATS_SEED,
+        }
+        effort = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
+        if effort in {"minimal", "low", "medium", "high"}:
+            params["reasoning_effort"] = effort
+        return params
+    return {
+        "temperature": temperature,
+        "seed": _ATS_SEED,  # same resume + same job -> same rewrite
+        "max_tokens": 16384,  # avoids truncating long resumes
+    }
+
+
+async def get_resume_response(prompt: str, model: str = AI_MODEL, temperature: float = 0) -> str:
     """
     Async OpenAI call for resume optimization with retries.
     """
     client = await _build_openai_client()
+    call_params = _completion_params(model, temperature)
     try:
         response = await client.chat.completions.create(
             model=model,
@@ -787,8 +1385,7 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
                 {'role': 'system', "content": 'Expert resume writer and reviewer'},
                 {'role': 'user', 'content': prompt}
             ],
-            temperature=temperature,
-            max_tokens=16384,  # gpt-4o-mini max output; avoids truncating long resumes
+            **call_params,
         )
         choice = response.choices[0] if response.choices else None
         content = choice.message.content if choice else ""
@@ -819,8 +1416,7 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
                             "remaining JSON so the two parts concatenate into one valid object."
                         )},
                     ],
-                    temperature=temperature,
-                    max_tokens=16384,
+                    **call_params,
                 )
             except Exception:
                 break
@@ -939,11 +1535,15 @@ _HARD_SKILL_KEYWORDS_LOWER = frozenset(
 _PHRASE_QUALIFIER_RE = re.compile(
     r'^\s*(?:\d+\+?\s*years?\s+of\s+|'
     r'experience\s+(?:in|with|deploying|building|using)\s+|'
-    r'knowledge\s+of\s+|'
-    r'familiarity\s+with\s+|'
+    r'(?:(?:basic|good|solid|strong|working|in-depth|deep|advanced)\s+)?knowledge\s+of\s+|'
+    r'familiar(?:ity)?\s+with\s+|'
     r'expertise\s+in\s+|'
+    r'expert\s+(?:in|with|at)\s+|'
+    r'experienced\s+(?:in|with)\s+|'
+    r'skilled\s+(?:in|with|at)\s+|'
+    r'hands[-\s]on\s+(?:experience\s+)?(?:in|with)\s+|'
     r'strong\s+(?:experience|background)\s+(?:in|with)\s+|'
-    r'proficien(?:cy|t)\s+(?:in|with)\s+)',
+    r'proficien(?:cy|t)\s+(?:in|with|at)\s+)',
     re.IGNORECASE,
 )
 _PHRASE_DELIMITERS_RE = re.compile(r'[,;/()\[\]]|\band\b|\bor\b|\bvia\b', re.IGNORECASE)
@@ -1051,6 +1651,81 @@ _GENERIC_SKILL_STOPWORDS: set[str] = {
     "such", "etc", "including", "like", "via",
 }
 
+# Proficiency labels. A resume line like "Python (proficient), HTML/CSS" or
+# "..., proficient, HTML/CSS" splits into a bare "proficient", which then
+# rendered as a skill. Only an item made ENTIRELY of these words is rejected,
+# so "Advanced Excel" and "Expert Systems" are untouched.
+_SKILL_LEVEL_WORDS: set[str] = {
+    "proficient", "proficiency", "familiar", "familiarity", "experienced",
+    "experience", "expert", "expertise", "advanced", "intermediate",
+    "beginner", "novice", "basic", "basics", "fundamentals", "fluent",
+    "fluency", "skilled", "skill", "skills", "strong", "good", "solid",
+    "working", "knowledge", "knowledgeable", "hands-on", "competent",
+    "competency", "exposure", "understanding", "mastery", "excellent",
+    "very", "highly", "level", "native", "conversational", "professional",
+}
+
+
+# Real product names that are still NOT professional skills. They pass every
+# other test here — proper nouns, genuinely present in the resume — so the
+# evidence gate lets them through, and a Technical Skills line came back reading
+# "Razorpay, Polar, LeetCode, ChatGPT, Gemini".
+#
+# Two kinds:
+#   - practice and course platforms. Solving problems on LeetCode is not a skill
+#     a recruiter can screen for; the certification belongs under Certifications.
+#   - consumer AI assistants. "ChatGPT" as a listed skill reads as padding. The
+#     underlying capability (LLM evaluation, prompt engineering) is the skill,
+#     and that survives because it is a separate entry.
+_NON_SKILL_PRODUCTS: set[str] = {
+    "leetcode", "hackerrank", "codeforces", "codechef", "geeksforgeeks",
+    "hackerearth", "codewars", "topcoder", "coursera", "udemy", "udacity",
+    "edx", "datacamp", "kaggle learn",
+    "chatgpt", "chat gpt", "gemini", "google gemini", "bard", "copilot",
+    "github copilot", "claude", "perplexity",
+    # Consumer devices. A JD from the company that makes them names them as
+    # the business ("work on Apple Watch"), and the pills then asked a
+    # candidate to claim "Apple Watch" as a skill. The platform (watchOS,
+    # iOS) is the skill and is untouched here.
+    "apple watch", "iphone", "ipad", "mac", "macbook", "imac", "airpods",
+    "apple tv", "homepod", "vision pro", "apple vision pro", "google pixel",
+    "pixel", "samsung galaxy", "galaxy", "kindle", "amazon echo", "xbox",
+    "playstation",
+    # A bare company name is an employer, never a skill. Its real products
+    # (AWS, Google Cloud, Microsoft Excel) are separate entries and unaffected.
+    "apple", "samsung", "google", "microsoft", "amazon",
+}
+
+# "<Brand> software/services/products": how a JD describes its own company's
+# offering ("Apple software", "Apple services"). Nothing a candidate can own.
+_EMPLOYER_OFFERING_NOUNS: set[str] = {
+    "software", "services", "service", "products", "product", "devices",
+    "device", "hardware", "ecosystem", "apps", "offerings", "solutions",
+    "experiences", "customers", "users", "stores", "features",
+}
+# Descriptive heads that make those same nouns a real skill ("Web Services",
+# "Cloud Services"), so the phrase is not a brand's offering.
+_GENERIC_OFFERING_HEADS: set[str] = {
+    "web", "cloud", "rest", "restful", "data", "managed", "financial",
+    "professional", "customer", "it", "network", "enterprise", "mobile",
+    "consumer", "microservices", "backend", "frontend", "platform", "saas",
+    "digital", "field", "shared", "support", "hosting", "embedded",
+}
+
+
+def _is_employer_offering(skill: str) -> bool:
+    """True for "Apple software" style brand-plus-offering phrases."""
+    tokens = skill.split()
+    if not 2 <= len(tokens) <= 3 or tokens[-1].lower() not in _EMPLOYER_OFFERING_NOUNS:
+        return False
+    head = tokens[0]
+    return (
+        head[:1].isupper()
+        and head.lower() not in _GENERIC_OFFERING_HEADS
+        # "AWS services", "Azure services": the brand itself is a skill.
+        and head.lower() not in _HARD_SKILL_KEYWORDS_LOWER
+    )
+
 
 def _strip_skill_qualifiers(value: str) -> str:
     """Remove requirement prose around a possible atomic skill."""
@@ -1064,6 +1739,191 @@ def _strip_skill_qualifiers(value: str) -> str:
     return cleaned.strip().strip("\"'.,:;-")
 
 
+# Version suffixes and parenthetical qualifiers that name the SAME skill.
+# "HTML" and "HTML5" are one entry on a resume, and listing both reads as
+# padding. Dedupe at both call sites keyed on the raw lowercase string, so
+# every pair below survived onto one Languages row:
+#   HTML/HTML5, CSS/CSS3, JavaScript/JavaScript (ES6+), PostgreSQL/postgres sql
+_SKILL_CANONICAL_FORMS = {
+    "html5": "html", "css3": "css", "es6": "javascript", "es6+": "javascript",
+    "ecmascript": "javascript", "js": "javascript",
+    "postgres": "postgresql", "postgres sql": "postgresql", "psql": "postgresql",
+    "postgre sql": "postgresql", "mysql db": "mysql",
+    "node": "node.js", "nodejs": "node.js",
+    "power bi": "powerbi", "powerbi": "powerbi",
+    "scikit learn": "scikit-learn", "sklearn": "scikit-learn",
+    "tensor flow": "tensorflow", "py torch": "pytorch",
+    "rest api": "rest apis", "restful api": "rest apis", "restful apis": "rest apis",
+}
+
+# Misspellings that reach us from real resumes. Kept in the SAME table as the
+# casing and spacing variants deliberately: a typo and a spelling variant are
+# the same problem - two strings naming one skill - and splitting them across
+# two passes is how "Panda" ended up on a different row from "Pandas".
+_SKILL_TYPO_FORMS = {
+    "matpotlib": "matplotlib", "matplotlb": "matplotlib", "matploltib": "matplotlib",
+    "panda": "pandas", "numpny": "numpy", "nunpy": "numpy",
+    "javascripts": "javascript", "pythone": "python", "phyton": "python",
+    "postgressql": "postgresql", "mongo db": "mongodb", "mongdb": "mongodb",
+    "kubernets": "kubernetes", "dokcer": "docker", "githib": "github",
+    "tensorflw": "tensorflow", "sciket-learn": "scikit-learn",
+}
+
+
+def correct_skill_spelling(skill: str) -> str:
+    """Fix a KNOWN misspelling of a skill's name, preserving anything else.
+
+    Dedup alone cannot fix a lone typo: "Panda" collapses onto "Pandas" only
+    because both spellings were present to merge. A resume carrying just
+    "Matpotlib" has nothing to merge into, so the misspelling renders on the
+    finished PDF - the candidate's own typo, now laundered through our
+    optimizer and shipped to a recruiter.
+
+    ONLY spellings in _SKILL_TYPO_FORMS are touched, and the correction keeps
+    the candidate's capitalisation style where it is unambiguous. Anything not
+    in that table is returned exactly as written: this must never "correct" a
+    real name we simply do not know.
+    """
+    text = str(skill or "").strip()
+    if not text:
+        return text
+    norm = re.sub(r"\s+", " ", text.lower())
+    target = _SKILL_TYPO_FORMS.get(norm)
+    if not target:
+        target = _SKILL_TYPO_FORMS.get(re.sub(r"[^a-z0-9+#]", "", norm))
+    if not target:
+        return text
+    # Render the corrected name the way the vocabulary spells it, which is the
+    # conventional casing a recruiter expects ("Matplotlib", not "matpotlib").
+    return _SKILL_DISPLAY_FORMS.get(target, target)
+
+
+# Conventional display spelling for the names correct_skill_spelling() emits.
+# Without this a corrected skill would render in the table's lowercase key.
+_SKILL_DISPLAY_FORMS = {
+    "matplotlib": "Matplotlib", "pandas": "Pandas", "numpy": "NumPy",
+    "javascript": "JavaScript", "python": "Python", "postgresql": "PostgreSQL",
+    "mongodb": "MongoDB", "kubernetes": "Kubernetes", "docker": "Docker",
+    "github": "GitHub", "tensorflow": "TensorFlow", "scikit-learn": "scikit-learn",
+    # Casing the candidate commonly writes casually. A resume that said
+    # "Power Bi", "Mysql", "Postgresql" and "Html" beat the conventional
+    # spelling in _preferred_skill_spelling(), because both forms have a
+    # capital and the tiebreak then fell through to length and arrival order -
+    # so which spelling shipped was luck.
+    "powerbi": "Power BI", "mysql": "MySQL", "html": "HTML", "css": "CSS",
+    "sql": "SQL", "seaborn": "Seaborn", "fastapi": "FastAPI", "mssql": "MS SQL",
+    "sqlite": "SQLite", "nodejs": "Node.js", "node.js": "Node.js",
+    "restapis": "REST APIs", "rest apis": "REST APIs", "graphql": "GraphQL",
+    "openai": "OpenAI", "langchain": "LangChain", "pytorch": "PyTorch",
+    "keras": "Keras", "opencv": "OpenCV", "aws": "AWS", "gcp": "GCP",
+}
+
+
+def _conventional_spelling(value: str) -> str | None:
+    """The vocabulary's own spelling of this skill, if it has one."""
+    key = _dedupe_skill_key(value)
+    return _SKILL_DISPLAY_FORMS.get(key) if key else None
+
+
+def _dedupe_skill_key(skill: str) -> str:
+    """Space- and punctuation-insensitive identity for DEDUPING skills only.
+
+    Deliberately NOT folded into canonical_skill_key(): that key is fed
+    straight into skill_categories.TERM_INDEX, whose keys keep their spaces
+    ("machine learning", "power bi", "rest api"). Stripping spaces there would
+    stop every multi-word skill from matching its category and silently
+    mis-file it - a much larger bug than the duplicates this fixes.
+
+    Collapsing separators is what catches the pairs raw-lowercase dedup missed
+    on a real resume: "FastAPI"/"Fast Api", "JavaScript"/"Java Script",
+    "Pandas"/"Panda", "Matplotlib"/"Matpotlib" - all of which shipped twice on
+    the same Skills line. The "Java Script" case is the worst of them: it also
+    let the fabrication guard read a bare "Java" as candidate-claimed.
+    """
+    base = canonical_skill_key(skill)
+    if not base:
+        return ""
+    collapsed = re.sub(r"[^a-z0-9+#]", "", base)
+    if not collapsed:
+        return base
+    # Re-check both tables against the collapsed form, so "fast api" and
+    # "Matpotlib" resolve even though neither is a key in its spaced spelling.
+    collapsed = _SKILL_TYPO_FORMS.get(collapsed, collapsed)
+    canonical = _SKILL_CANONICAL_FORMS.get(collapsed)
+    if canonical:
+        collapsed = re.sub(r"[^a-z0-9+#]", "", canonical) or collapsed
+    return collapsed
+
+
+def canonical_skill_key(skill: str) -> str:
+    """Identity key for deduping skills that are the same thing spelled twice.
+
+    Collapses parenthetical qualifiers ("JavaScript (ES6+)" -> javascript),
+    spacing ("postgres sql" -> postgresql), aliases, and trailing version
+    digits ("HTML5" -> html). Used as a dedupe KEY only - the displayed
+    spelling stays whatever the resume presented, so this never rewrites what
+    the candidate actually wrote.
+    """
+    s = str(skill or "").strip().lower()
+    if not s:
+        return ""
+    s = re.sub(r"\s*\([^)]*\)\s*$", "", s).strip()   # drop "(ES6+)", "(advanced)"
+    s = re.sub(r"\s+", " ", s)
+    s = _SKILL_TYPO_FORMS.get(s, s)
+    if s in _SKILL_CANONICAL_FORMS:
+        return _SKILL_CANONICAL_FORMS[s]
+    # A bare trailing version number on a real base name: html5, css3, vue3.
+    stripped = re.sub(r"(?<=[a-z])\d+(?:\.\d+)*\+?$", "", s)
+    if stripped != s and len(stripped) >= 3:
+        return _SKILL_CANONICAL_FORMS.get(stripped, stripped)
+    return s
+
+
+def _preferred_skill_spelling(existing: str, candidate: str) -> str:
+    """Which of two spellings of one skill to display.
+
+    Prefers conventional capitalisation ("PostgreSQL" over "postgres sql")
+    and, between equally conventional forms, the one without a parenthetical
+    or trailing version digit - the suffix is what makes the pair read as
+    padding.
+    """
+    a, b = str(existing or "").strip(), str(candidate or "").strip()
+    if not a:
+        return b
+    if not b:
+        return a
+
+    def _is_misspelling(x: str) -> bool:
+        """Whether this spelling only resolves via the typo table."""
+        norm = re.sub(r"\s+", " ", x.strip().lower())
+        if norm in _SKILL_TYPO_FORMS:
+            return True
+        return re.sub(r"[^a-z0-9+#]", "", norm) in _SKILL_TYPO_FORMS
+
+    def score(x: str) -> tuple:
+        return (
+            # The vocabulary's own spelling wins outright. Ranked first because
+            # every later test treats "Power Bi" and "Power BI" as equals - both
+            # have a capital, neither has a parenthetical or version digit - so
+            # the winner fell through to length and arrival order. The resume
+            # then displayed "Mysql", "Postgresql" and "Html" whenever the
+            # candidate's casual casing happened to arrive first.
+            _conventional_spelling(x) == x.strip(),
+            any(c.isupper() for c in x),        # conventional capitals
+            not x.islower(),
+            "(" not in x,                        # no parenthetical qualifier
+            not bool(re.search(r"\d\+?$", x)),   # no trailing version digit
+            # A known spelling beats a misspelling. Ranked ABOVE length because
+            # the length tiebreak picks the shorter string, and a typo is often
+            # shorter than the real name - "Panda" beat "Pandas", so the resume
+            # displayed the misspelling and the correct spelling was discarded.
+            not _is_misspelling(x),
+            -len(x),
+        )
+
+    return a if score(a) >= score(b) else b
+
+
 def _is_atomic_hard_skill(value: str) -> bool:
     """Return whether a value is a concrete, resume-safe hard skill."""
     skill = _strip_skill_qualifiers(value)
@@ -1071,8 +1931,20 @@ def _is_atomic_hard_skill(value: str) -> bool:
         return False
 
     normalized = re.sub(r"\s+", " ", skill).lower()
+    # Checked BEFORE the known-keyword allowlist: some of these are real,
+    # recognised product names, and the point is that being real is not the same
+    # as being a skill worth listing.
+    if normalized in _NON_SKILL_PRODUCTS:
+        return False
+    level_words = re.findall(r"[a-z][a-z0-9+#.\-]*", normalized)
+    if level_words and all(
+        w in _SKILL_LEVEL_WORDS or w in _GENERIC_SKILL_STOPWORDS for w in level_words
+    ):
+        return False
     if normalized in _HARD_SKILL_KEYWORDS_LOWER:
         return True
+    if _is_employer_offering(skill):
+        return False
     if any(
         normalized == generic or normalized.startswith(f"{generic} ")
         for generic in _GENERIC_SKILL_PHRASES
@@ -1116,12 +1988,46 @@ def _explode_skill_phrase(value: str) -> list[str]:
 
 
 def _contains_skill(text: str, skill: str) -> bool:
-    """Match a skill without treating short names such as R or Go as substrings."""
-    return bool(re.search(
-        rf'(?<![A-Za-z0-9]){re.escape(skill)}(?![A-Za-z0-9])',
-        text,
-        re.IGNORECASE,
-    ))
+    """Match a skill without treating short names such as R or Go as substrings.
+
+    The word-boundary class stops at a space, so a multi-word skill on the
+    resume's own skills line satisfies a query for its first word: "Java Script"
+    (a real typo for JavaScript) answered "Java". A Java the model had lifted
+    from the JD's "Python, Java, Go, or Node.js" therefore read as evidenced on
+    a resume that never said Java, and shipped into a skills line the candidate
+    would have had to defend in a screening call.
+
+    So a match that lands inside a LISTED skill has to agree with that whole
+    item, not just its first word. Matches in prose are untouched - a bullet
+    saying "built services in Java" is genuine evidence, and that is the case
+    this function exists to catch.
+    """
+    pattern = rf'(?<![A-Za-z0-9]){re.escape(skill)}(?![A-Za-z0-9])'
+    if not re.search(pattern, text, re.IGNORECASE):
+        return False
+
+    # Only the skills section can produce the false positive above; prose has
+    # no comma-separated items to be a prefix of.
+    listed = _extract_source_skill_list(text)
+    if not listed:
+        return True
+
+    key = _dedupe_skill_key(skill)
+    for item in listed:
+        if _dedupe_skill_key(item) == key:
+            return True          # listed under a spelling of this exact skill
+
+    # Not listed. It still counts if it appears anywhere OUTSIDE the skills
+    # items - i.e. in real prose - so strip those items out and re-check.
+    remainder = text
+    for item in listed:
+        remainder = re.sub(
+            rf'(?<![A-Za-z0-9]){re.escape(item)}(?![A-Za-z0-9])',
+            " ",
+            remainder,
+            flags=re.IGNORECASE,
+        )
+    return bool(re.search(pattern, remainder, re.IGNORECASE))
 
 
 def _extract_hard_skills_from_jd(jd_string: str) -> list[str]:
@@ -1184,7 +2090,11 @@ def _sanitize_hard_skill_list(
         if not _is_atomic_hard_skill(t):
             return
         t_lower = t.lower()
-        if t_lower in resume_lower:
+        # Word-boundary match, not a raw substring test. `t_lower in resume_lower`
+        # counted "R" as present in any word containing an r, "Go" inside
+        # "Google"/"Django", and "C" inside almost everything - inflating the
+        # 25-point skills score with matches that were never really there.
+        if _contains_skill(resume_lower, t_lower):
             if t_lower not in seen_matched:
                 seen_matched.add(t_lower)
                 newly_matched.append(kw_lower_map.get(t_lower, t))
@@ -1235,10 +2145,84 @@ def _sanitize_hard_skill_list(
     return cleaned_missing, newly_matched
 
 
-def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
+def _skill_in_source_resume(resume_evidence: str, skill: str) -> bool:
+    """Did the CANDIDATE write this skill down themselves?
+
+    _contains_skill() applies stemming and multi-word matching, which is right
+    for judging whether prose evidences a capability but wrong for judging
+    whether a named technology appears in a skills list. "Flask" and "Django"
+    sitting on the resume's own Technical Skills line are claimed by the
+    candidate, and no retention rule should ever remove them.
+
+    Compared against the resume's own PARSED skill list, not a regex over the
+    raw document. A word-boundary regex matches inside a neighbouring skill: a
+    resume whose Skills line read "Java Script" (a real typo, for JavaScript)
+    matched a bare "Java", so a Java the MODEL invented from the JD's "Python,
+    Java, Go, or Node.js" was judged candidate-claimed, skipped the strip at
+    the JD loop below, and shipped. The candidate had never written Java.
+
+    Falls back to the old boundary regex only when the resume has no parseable
+    skills section - with nothing to compare against, keeping the previous
+    behaviour is safer than retaining nothing.
     """
-    Post-process: ensure every hard skill from the JD appears in the resume's skills array.
-    Adds missing skills without touching existing ones.
+    text = str(resume_evidence or "")
+    name = str(skill or "").strip()
+    if not text.strip() or not name:
+        return False
+
+    key = _dedupe_skill_key(name)
+    source_skills = _extract_source_skill_list(text)
+    if source_skills:
+        if key and any(_dedupe_skill_key(s) == key for s in source_skills):
+            return True
+        # A multi-word skill ("Machine Learning") may be written as prose in
+        # the skills line rather than as its own comma-separated item, so a
+        # miss above is not proof of absence for those.
+        if " " not in name:
+            return False
+
+    return re.search(
+        r"(?<![\w-])" + re.escape(name.lower()) + r"(?![\w-])", text.lower()
+    ) is not None
+
+
+def inject_jd_hard_skills(
+    data: dict,
+    jd_string: str,
+    resume_text: str = "",
+    jd_skills: list[str] | None = None,
+    auto_add: bool = False,
+) -> dict:
+    """
+    Post-process the skills array.
+
+    Keeps the atomic hard skills the model produced, and adds a JD skill only
+    when the original resume actually evidences it. JD skills with no evidence
+    are returned on `data["skill_gaps"]` instead of being written into the
+    resume, so we never make a claim the candidate cannot defend.
+
+    `resume_text` is the raw text of the uploaded resume. When it is omitted no
+    JD skill can be evidenced, so every unmatched JD skill becomes a gap.
+
+    `auto_add` selects the SKILLS POLICY, and is the only thing that differs
+    between the website and the Chrome extension — the optimization engine
+    itself is shared:
+      False (website)   — a JD skill the resume does not evidence is withheld and
+                          reported on `data["skill_gaps"]`, so the candidate is
+                          shown it and ticks it only if they genuinely have it.
+      True  (extension) — every JD hard skill is written straight onto the
+                          resume and `skill_gaps` comes back empty, because the
+                          sidebar has no way to ask and the whole point there is
+                          one click from a job posting. What got added is
+                          reported on `data["skills_added_from_jd"]`.
+
+    `jd_skills` overrides which skills the job description is considered to
+    require. Callers pass the ATS analysis's own skill list so the optimizer and
+    the ATS score page stop disagreeing about what is missing: the regex
+    extractor used by default has no notion of "PostgreSQL or MySQL" being
+    satisfied by PostgreSQL alone, nor of required vs preferred qualifications,
+    so it reported gaps the ATS page correctly ignored. Falls back to
+    _extract_hard_skills_from_jd() when not supplied.
     """
     if not isinstance(data, dict) or not jd_string:
         return data
@@ -1247,24 +2231,1513 @@ def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
     if not isinstance(skills, list):
         return data
 
+    # Needed by the model-claim check below as well as the JD loop further down.
+    resume_evidence = str(resume_text or "")
+
     cleaned_skills: list[str] = []
     seen_lower: set[str] = set()
+    unevidenced_claims: list[str] = []
     for raw_skill in skills:
         skill = _clean_inline_text(raw_skill)
         key = skill.lower()
         if not _is_atomic_hard_skill(skill) or key in seen_lower:
             continue
+        # Everything the MODEL claimed has to be backed by the resume, not just
+        # the skills the JD extractor happened to recognise.
+        #
+        # The loop below only ever inspects `required_skills`, so a skill the
+        # model invented that the extractor missed was never checked and shipped
+        # unchallenged. The extractor does miss things - it does not recognise
+        # "SAP" - and a real resume came back listing TorchServe, TF Serving and
+        # Dask, none of which appeared anywhere in the candidate's document.
+        # That is the exact claim this function exists to prevent: a keyword the
+        # person has never touched clears the filter and then collapses in the
+        # interview.
+        #
+        # auto_add (the Chrome extension) deliberately skips this: there is no
+        # dialog to ask through there, and adding everything is the chosen
+        # behaviour for that surface.
+        #
+        # Evidence is judged by BOTH checks, and a skill needs only one of them.
+        # _contains_skill alone was not enough: it is a boundary regex over the
+        # raw document, so "\bjava\b" matched inside the source's "Java Script"
+        # typo and a Java the model had lifted from the JD cleared this filter
+        # as though the candidate had written it. _skill_in_source_resume
+        # compares against the resume's own PARSED skills, where "Java Script"
+        # is one item named JavaScript and yields no Java at all. Keeping both
+        # preserves prose evidence (a skill demonstrated in a bullet but absent
+        # from the skills line) while closing the substring hole.
+        if (
+            resume_evidence
+            and not auto_add
+            and not _skill_in_source_resume(resume_evidence, skill)
+            and not _contains_skill(resume_evidence, skill)
+        ):
+            unevidenced_claims.append(skill)
+            continue
         seen_lower.add(key)
         cleaned_skills.append(skill)
 
-    for skill in _extract_hard_skills_from_jd(jd_string):
+    # A JD skill is only added to the resume when the person's own resume backs
+    # it up. Previously every JD skill was appended regardless, which is exactly
+    # the keyword-stuffing our own guides warn against - it clears the filter and
+    # then collapses in the interview, which is a worse outcome for the candidate
+    # than not being shortlisted.
+    #
+    # Skills with no evidence are returned separately as `skill_gaps` so the user
+    # can be shown what this job wants and decide for themselves.
+    skill_gaps: list[str] = []
+    # Skills written onto the resume purely because the job asked for them.
+    auto_added: list[str] = []
+
+    if jd_skills is None:
+        required_skills = _extract_hard_skills_from_jd(jd_string)
+    else:
+        # Supplied lists come from the ATS analysis, i.e. an LLM, so they still
+        # get the same atomic-skill sanitising the regex path relies on.
+        required_skills = []
+        seen_required: set[str] = set()
+        for candidate in jd_skills:
+            skill = _clean_inline_text(candidate)
+            if not skill or not _is_atomic_hard_skill(skill):
+                continue
+            key = skill.lower()
+            if key in seen_required:
+                continue
+            seen_required.add(key)
+            required_skills.append(skill)
+
+    for skill in required_skills:
         key = skill.lower()
-        if key not in seen_lower:
-            seen_lower.add(key)
+        claimed_by_model = key in seen_lower
+
+        if resume_evidence and _contains_skill(resume_evidence, skill):
+            # Named somewhere in the resume but missing from the skills list -
+            # safe to surface, because the evidence is already there.
+            if not claimed_by_model:
+                seen_lower.add(key)
+                cleaned_skills.append(skill)
+            continue
+
+        if auto_add:
+            # Extension policy: surface the skills this job asks for without a
+            # "do you actually have this?" step, because there is no UI in the
+            # sidebar to ask through.
+            #
+            # It may NEVER add a skill the resume does not evidence. This branch
+            # used to append every JD term unconditionally, which put XGBoost,
+            # Seaborn, Tableau, SageMaker and Vertex AI onto a resume that
+            # names none of them - read straight off the target posting. That is
+            # the single worst thing this pipeline can do: the candidate is
+            # asked about Tableau in a screening call and has nothing, and the
+            # fabrication is traceable to the job ad they applied with.
+            #
+            # Unevidenced JD skills now fall through to the gap path below on
+            # BOTH surfaces. The two policies still differ - the extension
+            # promotes evidenced skills silently where the website asks - but
+            # neither invents.
+            if resume_evidence and not _contains_skill(resume_evidence, skill):
+                skill_gaps.append(skill)
+                continue
+            if key not in seen_lower:
+                seen_lower.add(key)
+                cleaned_skills.append(skill)
+                # Recorded so the UI can say what it did.
+                if not resume_evidence or not _contains_skill(resume_evidence, skill):
+                    auto_added.append(skill)
+            continue
+
+        if claimed_by_model:
+            # The model asserted a JD skill the resume does not evidence. This
+            # used to be skipped as already-present, which meant the unbacked
+            # claim shipped in the resume AND was dropped from skill_gaps - the
+            # candidate was told they had a skill they had never touched. That
+            # is the precise failure this function exists to prevent, so strip
+            # the claim and report it as a gap like any other.
+            #
+            # Only done when we actually have resume text to check against;
+            # with no text nothing can be evidenced and stripping the model's
+            # whole skills list would be worse than leaving it alone.
+            if not resume_evidence:
+                continue
+            # NEVER strip a skill the candidate actually wrote down. A skill
+            # present in the source resume's own text is evidenced by
+            # definition - the candidate claimed it themselves - and removing
+            # it is a pure loss. On a real run this deleted Django and Flask
+            # from a resume applying to a JD that required "deploying models
+            # via REST APIs", which were that candidate's ONLY REST-framework
+            # signal, and also deleted Stable-Baselines3 from an ML
+            # application. The strip is meant for skills the MODEL invented,
+            # not for ones the resume lists.
+            if _skill_in_source_resume(resume_evidence, skill):
+                continue
+            cleaned_skills = [s for s in cleaned_skills if s.lower() != key]
+            seen_lower.discard(key)
+
+        skill_gaps.append(skill)
+
+    # Claims stripped above are offered back as gaps rather than silently binned:
+    # some of them the candidate genuinely has and simply never wrote down, and
+    # the editor's dialog is where they say so.
+    if unevidenced_claims:
+        already = {g.strip().lower() for g in skill_gaps}
+        for skill in unevidenced_claims:
+            if skill.strip().lower() not in already:
+                already.add(skill.strip().lower())
+                skill_gaps.append(skill)
+
+    # Put back any skill the CANDIDATE listed that the model silently dropped.
+    #
+    # Nothing above does this: inject_jd_hard_skills() adds JD skills and
+    # strips unevidenced model claims, but a source skill the model simply
+    # omitted from its `skills` array falls out of the resume entirely. On a
+    # real run that deleted Django, Flask, Stable-Baselines3, C, Java and
+    # PineconeDB - and Django/Flask were that candidate's only REST-framework
+    # signal against a JD requiring "deploying models via REST APIs", so the
+    # optimizer removed the most JD-relevant skills on the page.
+    #
+    # JD-relevant ones go back first and in JD order, because the skills list
+    # is read top-down and the ones answering a stated requirement earn the
+    # first line.
+    source_skills = _extract_source_skill_list(resume_evidence)
+    if source_skills:
+        present = {s.strip().lower() for s in cleaned_skills}
+        jd_terms = [str(s).strip().lower() for s in (required_skills or [])
+                    if str(s or "").strip()]
+        jd_blob = str(jd_string or "").lower()
+
+        def _jd_rank(name: str) -> int:
+            """Position of the JD requirement this skill answers, or -1.
+
+            Matching is on whole tokens, never bare substrings. `low in term`
+            let the single-letter skill "C" match the JD requirement "PyTorch",
+            so C was restored onto a machine-learning application where cutting
+            it was the right editorial call.
+            """
+            low = name.strip().lower()
+            if not low:
+                return -1
+            # Aliases and inflections. JD extraction returns "LLMs" and
+            # "Retrieval Augmented Generation" where a resume writes "LLM" and
+            # "RAG", so exact matching dropped the candidate's only LLM/RAG
+            # signal on a JD that names LLMs as a requirement.
+            variants = {low, low.rstrip("s"), low + "s"}
+            for short, longform in _SKILL_ALIASES:
+                if low in (short, longform):
+                    variants |= {short, longform, short + "s", longform + "s"}
+            for i, term in enumerate(jd_terms):
+                if term in variants or term.rstrip("s") in variants:
+                    return i
+            for i, term in enumerate(jd_terms):
+                if not term:
+                    continue
+                if term == low:
+                    return i
+                # Multi-word containment is fine ("rest api" vs "rest apis"),
+                # but only on a word boundary and only for names long enough
+                # that a coincidental match is implausible.
+                if len(low) >= 3 and re.search(
+                    r"(?<![\w-])" + re.escape(low) + r"(?![\w-])", term
+                ):
+                    return i
+                if len(term) >= 3 and re.search(
+                    r"(?<![\w-])" + re.escape(term) + r"(?![\w-])", low
+                ):
+                    return i
+            # Not an extracted requirement, but named in the JD prose. Same
+            # boundary rule, and a minimum length for the same reason.
+            if len(low) >= 3 and re.search(
+                r"(?<![\w-])" + re.escape(low) + r"(?![\w-])", jd_blob
+            ):
+                return len(jd_terms)
+            return -1
+
+        # Restore ONLY what answers a stated JD requirement. Blanket restoration
+        # would put every dropped skill back, including ones legitimately cut
+        # for relevance - dropping C and Java from an ML application is a
+        # reasonable editorial call. Dropping Flask and Django from a JD that
+        # requires "deploying models via REST APIs" is not, because they were
+        # the candidate's only REST-framework signal on the page.
+        # Restore EVERY skill the candidate listed that the model dropped, with
+        # JD-relevant ones ordered first.
+        #
+        # Restoring only JD-mapped skills was too narrow and deleted real
+        # material: Deep Learning, Generative AI, LLM and RAG all vanished from
+        # a Data Scientist application because none matched an extracted JD
+        # term, and CI/CD, Linux, EC2, S3 and ECS went with them. A skill the
+        # candidate wrote down needs no permission from the posting to stay on
+        # his own resume; the JD decides ORDER, not existence.
+        # Keyed on _dedupe_skill_key, not the raw lowercase string. Raw keys let
+        # a source spelling come back alongside the normalized one already in
+        # the list - "Fast Api" restored next to "FastAPI", "Panda" next to
+        # "Pandas" - which is how both spellings reached one Frameworks row.
+        present_keys = {_dedupe_skill_key(s) for s in cleaned_skills}
+        present_keys.discard("")
+        dropped = [s for s in source_skills if _dedupe_skill_key(s) not in present_keys]
+        restored = list(dropped)
+        restored.sort(key=lambda s: (_jd_rank(s) < 0, _jd_rank(s) if _jd_rank(s) >= 0 else 0))
+        for skill in restored:
+            key = _dedupe_skill_key(skill)
+            if not key or key in present_keys:
+                continue
+            present_keys.add(key)
+            present.add(skill.strip().lower())
             cleaned_skills.append(skill)
 
-    data["skills"] = cleaned_skills
+        # Everything else the model dropped is surfaced rather than silently
+        # binned, so the editor can offer it back and the evals can see it.
+        review = [s for s in dropped if _jd_rank(s) < 0]
+        review = []  # nothing is withheld any more; kept for payload shape
+        if restored:
+            data["skills_restored_from_resume"] = restored
+        if review:
+            data["skills_dropped_for_review"] = review
 
+        # Symmetry. Retention was one-directional: JD-relevant source skills
+        # were restored, but skills the model RETAINED with no bearing on this
+        # JD were never questioned - which is how TensorFlow and scikit-learn
+        # survived onto a frontend application. Flagging rather than deleting,
+        # because a skill can be worth keeping for reasons the JD does not
+        # state (a second target role, a recruiter search, an adjacent team).
+        irrelevant = []
+        for skill in cleaned_skills:
+            if _jd_rank(skill) >= 0:
+                continue
+            if not _skill_in_source_resume(resume_evidence, skill):
+                continue
+            irrelevant.append(skill)
+        if irrelevant:
+            data["skills_irrelevant_to_jd"] = irrelevant
+
+    data["skills"] = cleaned_skills
+    data["skill_gaps"] = [g for g in skill_gaps
+                          if g.strip().lower() not in {s.strip().lower() for s in cleaned_skills}]
+    data["skills_added_from_jd"] = auto_added
+
+    return data
+
+
+# Short form <-> long form for skills whose two spellings are both common. A
+# JD saying "LLMs" and a resume saying "LLM" name the same thing, and exact
+# matching treated them as unrelated.
+_SKILL_ALIASES = (
+    ("llm", "large language model"),
+    ("rag", "retrieval augmented generation"),
+    ("nlp", "natural language processing"),
+    ("cv", "computer vision"),
+    ("ml", "machine learning"),
+    ("ci/cd", "continuous integration"),
+    ("k8s", "kubernetes"),
+    ("gcp", "google cloud platform"),
+    ("aws", "amazon web services"),
+)
+
+
+def build_jd_gap_report(jd_string: str, resume_text: str) -> dict:
+    """Which JD requirements the resume evidences, and which it does not.
+
+    The optimizer's job stops at presenting what the candidate has. When a JD
+    asks for six years of MLOps and the resume shows none, no rewrite closes
+    that gap, and prose implying coverage is worse than silence - it reads as
+    padding to a recruiter and cannot be defended in an interview.
+
+    So the gap is reported rather than written around. Returns both lists plus
+    a coverage ratio the caller can surface to the user.
+    """
+    required = _extract_hard_skills_from_jd(jd_string)
+    evidence = str(resume_text or "")
+    evidenced, missing = [], []
+    for skill in required:
+        (evidenced if _contains_skill(evidence, skill) else missing).append(skill)
+    total = len(required) or 1
+    return {
+        "required": required,
+        "evidenced": evidenced,
+        "missing": missing,
+        "coverage": round(100.0 * len(evidenced) / total, 1),
+    }
+
+
+def _extract_source_skill_list(resume_evidence: str) -> list[str]:
+    """Named technologies from the resume's own Skills section.
+
+    Only the skills block is read, because that is where the candidate makes
+    explicit claims. Pulling proper nouns out of bullet prose would recover
+    company and product names alongside real technologies.
+    """
+    text = str(resume_evidence or "")
+    if not text.strip():
+        return []
+    lines = text.splitlines()
+    start = None
+    for i, line in enumerate(lines):
+        if _SKILLS_SECTION_HEADER_RE.match(line):
+            start = i + 1
+            break
+    if start is None:
+        return []
+
+    found: list[str] = []
+    seen: set[str] = set()
+    for line in lines[start:]:
+        stripped = line.strip()
+        if not stripped:
+            continue
+        # Stop at the next section heading (a short line with no separators).
+        if (len(stripped) < 40 and ":" not in stripped and "," not in stripped
+                and stripped[:1].isupper() and not stripped.startswith(("-", "•"))):
+            break
+        body = stripped.split(":", 1)[1] if ":" in stripped else stripped
+        # "LLM(Chatgpt, Gemini)" must split into LLM, not concatenate into
+        # "LLMChatgpt": the comma inside the parenthesis is a list separator
+        # like any other, and stripping the bracket afterwards glued the
+        # fragments together.
+        body = re.sub(r"\(([^)]*)\)", r", \1", body)
+        for raw in re.split(r"[,;|]", body):
+            name = _clean_inline_text(raw)
+            name = re.sub(r"\s*\([^)]*\)\s*$", "", name).strip()
+            if not name or len(name) > 30:
+                continue
+            if not _is_atomic_hard_skill(name):
+                continue
+            key = name.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            found.append(name)
+    return found
+
+
+# Industry/domain nouns a job description uses to describe the BUSINESS, not a
+# tool the candidate could own. "Do you have e-commerce?" is not a question
+# anyone can answer, so these must never be offered as a claimable gap.
+_INDUSTRY_DOMAIN_TERMS: set[str] = {
+    "retail", "e-commerce", "ecommerce", "fintech", "healthcare", "saas",
+    "logistics", "banking", "insurance", "telecom", "telecommunications",
+    "edtech", "gaming", "manufacturing", "consumer goods",
+    "consumer goods analytics", "supply chain", "b2b", "b2c",
+    "startup", "enterprise", "regulated domain", "payments",
+}
+
+# Category names that stand in for a real tool ("version control" is Git;
+# "cloud platform" is AWS). The tool itself is extracted separately, so the
+# category adds nothing and cannot meaningfully be ticked.
+_SKILL_CATEGORY_TERMS: set[str] = {
+    "version control", "source control", "cloud data warehouse",
+    "data warehouse", "data warehousing", "relational database",
+    "relational databases", "database", "databases", "nosql database",
+    "nosql databases", "programming language", "programming languages",
+    "cloud platform", "cloud platforms", "cloud", "web framework",
+    "web frameworks", "scripting language", "scripting languages",
+    "operating system", "operating systems", "api", "apis",
+    "framework", "frameworks", "library", "libraries", "tool", "tools",
+}
+
+# Placeholder references lifted from JD prose ("or another cloud data
+# warehouse", "a comparable caching layer"). They name no specific thing.
+_VAGUE_SKILL_REFERENCE_RE = re.compile(
+    r'^(?:another|other|similar|comparable|equivalent|alternative|any|some|'
+    r'various|several|related|preferred|modern|standard)\b',
+    re.IGNORECASE,
+)
+
+
+def promptable_skill_gaps(gaps) -> list[str]:
+    """The subset of `skill_gaps` worth asking a candidate to confirm.
+
+    `skill_gaps` is built from _extract_hard_skills_from_jd(), which returns
+    sentence fragments alongside real technologies. Shown verbatim it produces
+    prompts like "do you have another cloud data warehouse?" or "do you have
+    consumer goods analytics?", which makes the feature look broken and trains
+    people to ignore it.
+
+    Deliberately conservative. A gap dropped here can never be claimed by the
+    candidate, so a borderline term is kept: one slightly odd pill costs far
+    less than silently hiding a skill the person actually has. Methodologies
+    and artifacts (Agile, BPMN, user stories, wireframes) are therefore KEPT -
+    a business analyst legitimately lists those on a resume.
+
+    This is a display filter. `skill_gaps` itself is untouched, so scoring and
+    anything else reading it are unaffected.
+    """
+    promptable: list[str] = []
+    seen: set[str] = set()
+
+    for raw_gap in (gaps or []):
+        skill = _strip_skill_qualifiers(str(raw_gap or ""))
+        if not skill:
+            continue
+
+        normalized = re.sub(r"\s+", " ", skill).lower()
+        if normalized in seen:
+            continue
+        if not _is_atomic_hard_skill(skill):
+            continue
+        if _VAGUE_SKILL_REFERENCE_RE.match(normalized):
+            continue
+        if normalized in _INDUSTRY_DOMAIN_TERMS or normalized in _SKILL_CATEGORY_TERMS:
+            continue
+
+        # Collapse "Kafka" / "Apache Kafka" style pairs, which the JD extractor
+        # emits together. First seen wins, so the canonical short form is the
+        # one offered rather than two pills for the same thing.
+        if any(_contains_skill(skill, kept) or _contains_skill(kept, skill) for kept in promptable):
+            continue
+
+        seen.add(normalized)
+        promptable.append(skill)
+
+    return promptable
+
+
+# Soft skills that are pure filler when stated outright. Mirrors the BANNED
+# list in create_prompt: a recruiter discounts the claim entirely, and the work
+# in the bullets is what actually demonstrates it. Never appended to a summary.
+_UNSTATEABLE_SOFT_SKILLS = {
+    "problem-solving", "problem solving", "analytical thinking", "critical thinking",
+    "attention to detail", "detail-oriented", "self-motivated", "self motivated",
+    "hard-working", "hard working", "team player", "results-driven", "results driven",
+    "passionate", "proactive", "adaptable", "adaptability", "flexibility",
+    "work ethic", "multitasking", "time management", "interpersonal",
+}
+
+
+def _soft_skill_evidenced(evidence: str, skill: str) -> bool:
+    """Is this soft skill genuinely visible in the original resume text?
+
+    Soft skills surface as verbs, not nouns - a resume says "Mentored two
+    juniors", never "mentoring". Exact matching therefore rejects skills the
+    resume plainly demonstrates, so each word is compared on a crude stem
+    (mentor|mentoring|mentored, collaborate|collaboration) instead. Multi-word
+    skills need every significant word present, which keeps "attention to code
+    quality" from matching a resume that merely says "quality".
+    """
+    text = str(evidence or "").lower()
+    if not text:
+        return False
+
+    def _stem(w: str) -> str:
+        # Longest suffix first: "collaboration" must lose "ation" (-> collabor)
+        # to meet "collaborated" (-> collabor), not stop at the shorter "ion".
+        for suffix in ("ation", "ated", "ising", "izing", "ing", "ship", "ment", "ion", "ed", "es", "s"):
+            if len(w) > len(suffix) + 3 and w.endswith(suffix):
+                return w[: -len(suffix)]
+        return w
+
+    words = [w for w in re.split(r'[^a-z0-9+#]+', str(skill or "").lower()) if len(w) > 2]
+    # Drop connective words so "attention to detail" tests attention + detail.
+    words = [w for w in words if w not in {"and", "the", "for", "with", "to", "of", "in"}]
+    if not words:
+        return False
+
+    text_words = {_stem(w) for w in re.split(r'[^a-z0-9+#]+', text) if w}
+    return all(_stem(w) in text_words for w in words)
+
+
+def weave_soft_skills_into_summary(data: dict, soft_skills, resume_text: str = "") -> dict:
+    """Fold JD soft skills the rewrite missed into the professional summary.
+
+    Rule01c already tells the model to express every JD soft skill through work
+    the resume describes, and Rule01b is explicit that they belong in the summary
+    rather than the `skills` array ("Skills: Python, SQL, mentoring" reads as
+    padding to a recruiter). The model does not always comply, which is why the
+    ATS pass still reports soft skills as missing after tailoring.
+
+    This closes that gap without asking the candidate. Unlike a hard skill -
+    where "do you know Tableau?" is a factual question only they can answer -
+    a soft skill is a matter of how existing work is presented, so it is safe
+    to handle automatically.
+
+    Deliberately conservative: it appends ONE plain capability sentence and never
+    touches the bullets, because a bullet describing a team, mentee or client
+    that appears nowhere in the original resume would be an invented event.
+    Skills already named in the summary are skipped.
+    """
+    if not isinstance(data, dict):
+        return data
+
+    summary = str(data.get("summary") or "").strip()
+    evidence = str(resume_text or "")
+
+    additions: list[str] = []
+    seen: set[str] = set()
+    for raw in (soft_skills or []):
+        skill = _clean_inline_text(raw).strip().rstrip(".")
+        if not skill or len(skill) > 60:
+            continue
+        key = skill.lower()
+        if key in seen:
+            continue
+        # Already stated - do not repeat it.
+        if summary and _contains_skill(summary, skill):
+            continue
+        # Only claim what the ORIGINAL resume backs up. Without this the
+        # function appended whatever the JD asked for, producing a sentence
+        # that could sit on a stranger's resume unchanged - the exact failure
+        # create_prompt's BANNED-phrases rule is written to prevent.
+        if evidence and not _soft_skill_evidenced(evidence, skill):
+            continue
+        seen.add(key)
+        # JD soft skills often arrive already suffixed ("problem-solving
+        # skills"), which produced "Skilled in problem-solving skills" -
+        # redundant, and one of the filler phrases the prompt bans outright.
+        skill = re.sub(r'\s+skills?$', '', skill, flags=re.IGNORECASE).strip()
+        if not skill:
+            continue
+        # Some JD soft skills ARE the filler create_prompt bans by name. A
+        # summary that already proves the trait with a shipped outcome is only
+        # weakened by "Demonstrated problem-solving in this work." appended
+        # underneath it, so these are dropped rather than restated.
+        if skill.lower() in _UNSTATEABLE_SOFT_SKILLS:
+            continue
+        additions.append(skill[0].lower() + skill[1:] if skill[:1].isupper() and not skill.isupper() else skill)
+
+    if not additions:
+        return data
+
+    if len(additions) == 1:
+        phrase = additions[0]
+    elif len(additions) == 2:
+        phrase = f"{additions[0]} and {additions[1]}"
+    else:
+        phrase = ", ".join(additions[:-1]) + f" and {additions[-1]}"
+
+    # "Skilled in" is on create_prompt's BANNED-filler list - appending it here
+    # contradicted the prompt we had just sent. Every generic frame has the same
+    # flaw ("Recognised for X" could sit on a stranger's resume unchanged), so
+    # the sentence is kept to the plainest possible statement and, above, is
+    # only ever built from traits the ORIGINAL resume evidences.
+    #
+    # "Demonstrated X in this work." was that plainest statement, but it is a
+    # bare assertion bolted onto the most-read line, and Rule 00 now bans
+    # exactly that shape. The traits are instead folded into a capability clause
+    # naming WHERE they were applied, which is the same claim in the voice the
+    # rest of the summary is written in. Still purely presentational: the traits
+    # are already evidence-gated above, and no new fact is introduced.
+    # NOTHING is appended to the summary any more.
+    #
+    # This used to add "Applies {phrase} across this work." - and that single
+    # line became the most persistent artifact in the generator, surfacing as
+    # "Applies reproducible ... practices" in five separate outputs across
+    # three different resumes. It is a generic closer with no specific
+    # referent, which is exactly what Rule 00's filler-closer rule bans, so
+    # the post-processor was re-introducing the defect the prompt forbids.
+    #
+    # The soft skills are still recorded for the editor to surface; they are
+    # simply never written into the most-read line of the resume.
+    data["soft_skills_suggested"] = additions
+    return data
+
+
+def _unused_soft_skill_sentence(summary: str, additions: list) -> dict:
+    """Superseded. Retained only to document what was removed and why."""
+    sentence = f"Applies {' and '.join(additions)} across this work."
+    data = {"summary": f"{summary} {sentence}".strip() if summary else sentence}
+    data["soft_skills_added"] = additions
+    return data
+
+
+# Trailing keyword-tag clauses Rule 00 bans: "... in the AI/ML domain",
+# "... in the fintech space". The domain is already implied by the work the
+# summary describes, so the tag adds a keyword and claims nothing - and it sits
+# in the most valuable position on the page.
+_SUMMARY_DOMAIN_TAG_RE = re.compile(
+    r"[,\s]*\b(?:in|within|across)\s+the\s+[A-Za-z0-9/&+\-\s]{2,40}?\s*"
+    r"(?:domain|space|sector|vertical|industry|field)\b\s*",
+    re.IGNORECASE,
+)
+
+# "<Role> focused on <JD headline>" - the posting's own title pasted in.
+_SUMMARY_JD_ECHO_RE = re.compile(r"\bfocus(?:ed|ing)?\s+on\b", re.IGNORECASE)
+
+_SUMMARY_PRONOUN_RE = re.compile(r"\b(?:I|me|my|mine|we|our|ours)\b")
+
+# Literal adjacent repetition: "Applies applied Natural Language Processing",
+# "the the", "and and". No semantic-group check can see this - the words are
+# identical rather than equivalent - and it shipped to a real user.
+_ADJACENT_REPEAT_RE = re.compile(r"\b(\w+)\s+\1\b", re.IGNORECASE)
+
+# Same stem, adjacent: "Applies applied", "engineers engineering". Caught
+# separately because the surface forms differ.
+_ADJACENT_STEM_REPEAT_RE = re.compile(
+    r"\b(\w{4,})(?:s|es|ed|ing|d)?\s+\1(?:s|es|ed|ing|d)?\b", re.IGNORECASE
+)
+
+_SUMMARY_MIN_SENTENCES = 2
+_SUMMARY_MAX_SENTENCES = 4
+
+# Lifecycle-list openings. "Across the end-to-end ML lifecycle including data
+# preparation, feature engineering..." describes every practitioner in the
+# field and differentiates nobody - roughly thirteen words restating the job
+# title, in the most valuable position on the resume.
+_LIFECYCLE_OPENER_RE = re.compile(
+    r"\b(?:across|through(?:out)?|spanning|covering)\s+the\s+"
+    r"(?:full|entire|complete|end[-\s]?to[-\s]?end)\s+\w+",
+    re.IGNORECASE,
+)
+
+# Seniority hedges. Leading with the weakest signal in the first six words is
+# self-sabotage; the work should establish the level.
+_SENIORITY_HEDGE_RE = re.compile(
+    r"\((?:early[-\s]career|junior|entry[-\s]level|graduate|fresher)\)|"
+    r"\b(?:early[-\s]career|entry[-\s]level|aspiring|recent graduate|"
+    r"budding|upcoming)\b",
+    re.IGNORECASE,
+)
+
+# Filler closers that carry no information and could sit on any resume.
+_FILLER_CLOSER_RE = re.compile(
+    # Matches the CLASS, not a list of phrasings. An earlier version enumerated
+    # specific wordings ("collaborates with cross-functional teams"), so the
+    # same empty claim came back as "communicates results to non-technical
+    # stakeholders" and passed untouched. A filler clause is a generic
+    # activity verb pointed at a generic audience or artefact, with no
+    # specific referent - no named team, system, product or number.
+    r"\b(?:collaborat\w+|communicat\w+|partner\w*|liais\w+|engag\w+|"
+    r"present\w*|document\w*|translat\w+)\b[^.]{0,40}?\b(?:"
+    r"cross[-\s]functional|non[-\s]technical|technical\s+(?:processes|"
+    r"documentation|reports?)|stakeholders?|teams?|audiences?|"
+    r"leadership|management|peers|colleagues|clients?)(?![-\w])"
+    r"|\b(?:committed\s+to\s+continuous|passionate\s+about|thrives?\s+in|"
+    r"dedicated\s+to\s+delivering)\b",
+    re.IGNORECASE,
+)
+
+# Vague substitutes people reach for instead of a real proof point.
+_VAGUE_EVIDENCE_RE = re.compile(
+    r"\b(?:global user base|real users|at scale|large[-\s]scale|"
+    r"high[-\s]volume|numerous|various|multiple|several)\b",
+    re.IGNORECASE,
+)
+
+# Outcome language welded onto a plain tooling choice. "Neon-hosted databases
+# for scale" claims an achievement the hosting choice does not evidence.
+_OVERCLAIM_RE = re.compile(
+    r"\b\w+(?:-hosted|-backed|-powered)?\s+(?:databases?|storage|hosting|"
+    r"infrastructure)\s+for\s+(?:scale|performance|reliability|speed)\b",
+    re.IGNORECASE,
+)
+
+# Concepts that are one capability wearing different words. Two members of the
+# same group appearing in one summary is a restatement, not two claims.
+_SEMANTIC_GROUPS = (
+    {"rest api", "restful", "api integration", "frontend-backend contract", "apis"},
+    {"deployment", "deployed", "deploy", "productioniz", "production-capable",
+     "production-ready", "post-deployment"},
+    {"evaluation", "evaluating", "rubric", "assessment"},
+    {"responsive", "mobile-friendly", "adaptive layout"},
+    {"monitoring", "observability", "error tracking"},
+    {"pipeline", "pipelines", "workflow", "workflows"},
+    {"testing", "test automation", "automated testing", "e2e testing"},
+    {"full-stack", "full stack", "end-to-end application", "frontend and backend"},
+    {"model inference", "inference service", "model serving", "serving models"},
+    {"containerised", "containerized", "docker", "containerisation"},
+)
+
+# Table-stakes skills per domain. Naming these signals junior, because only a
+# candidate without stronger material would spend the most-read line on them.
+_BASELINE_SKILLS_BY_DOMAIN = {
+    "frontend": {"html", "html5", "css", "css3", "es6+", "es6",
+                 "dom manipulation", "responsive design", "javascript basics"},
+    "backend": {"crud", "mvc", "oop", "git", "basic sql", "rest basics"},
+    "ml": {"python", "scikit-learn", "sklearn", "pandas", "numpy", "jupyter"},
+    "data": {"excel", "basic sql", "charts", "dashboards"},
+}
+
+# Words whose presence in the JD says which domain's baseline list applies.
+_DOMAIN_HINTS = {
+    "frontend": ("frontend", "front-end", "react", "vue", "angular", "ui ", "ux "),
+    "ml": ("machine learning", "ml engineer", "deep learning", "model training", "mlops"),
+    "backend": ("backend", "back-end", "api", "microservice", "server-side"),
+    "data": ("data analyst", "analytics", "business intelligence", "data engineer"),
+}
+
+# A summary claiming an ML title needs ML substance behind it. LLM/RAG
+# integration alone is AI *application*, not machine learning engineering, and
+# a headline the body cannot deliver on is caught by anyone who does the job.
+_ML_TITLE_RE = re.compile(r"\bmachine learning engineer\b|\bml engineer\b", re.IGNORECASE)
+_ML_SUBSTANCE_RE = re.compile(
+    r"\b(?:model training|trained|training|fine-tun\w+|feature engineering|"
+    r"model evaluation|hyperparameter|cross-validation|scikit-learn|"
+    r"tensorflow|pytorch|xgboost|regression|classification|clustering)\b",
+    re.IGNORECASE,
+)
+
+
+def _has_concrete_evidence(summary: str) -> bool:
+    """Does the summary carry a real proof point rather than a vague claim?
+
+    A number, a percentage, a scale figure, or a capitalised named system all
+    count. "Serving a global user base" does not - that is the vague-claim
+    pattern the rule exists to eliminate.
+    """
+    text = str(summary or "")
+    if not text.strip():
+        return False
+    # An explicit [BRACKETED] placeholder satisfies this gate deliberately.
+    # On a metric-poor resume the honest output names the gap rather than
+    # inventing a number to fill it, so a placeholder must COUNT as evidence -
+    # otherwise the gate pressures exactly the fabrication it exists to stop.
+    if re.search(r"\[[A-Z][A-Z _-]{2,}\]", text):
+        return True
+    # Any digit that is not part of a version/acronym token (ES6, GA4, CSS3).
+    for m in re.finditer(r"\d[\d,.]*\+?%?", text):
+        token = text[max(0, m.start() - 12): m.end() + 2]
+        if re.search(r"[A-Za-z]\d", token) and not re.search(r"\d\s*(?:%|x\b|\+)", m.group(0)):
+            continue  # ES6 / GA4 / CSS3 style token, not a metric
+        return True
+    # A named system: two or more consecutive capitalised words that are not
+    # the opening role title, or a quoted/definite-article named component.
+    body = re.sub(r"^[^.]*\.", "", text, count=1)  # drop sentence one (the title)
+    if re.search(r"\bthe\s+[A-Z][\w-]*(?:\s+[A-Z][\w-]*)*\s+"
+                 r"(?:engine|service|platform|pipeline|extension|system|API)\b", body):
+        return True
+    if re.search(r"\b(?:ATS scoring|Chrome extension|resume tailoring)\b", body, re.IGNORECASE):
+        return True
+    return False
+
+
+def _duplicate_capability(summary: str) -> list[str]:
+    """Concepts stated more than once in different words.
+
+    String matching cannot catch this: "deployment as services",
+    "post-deployment monitoring" and "deployed features" share no common
+    token long enough to match, yet they are one capability written thrice.
+    """
+    lowered = str(summary or "").lower()
+    repeated: list[str] = []
+    for group in _SEMANTIC_GROUPS:
+        # Count OCCURRENCES, not distinct members. "full-stack experience ...
+        # a full-stack agentic trip planner" repeats one concept twice using
+        # the same word, which an earlier version scored as a single hit and
+        # passed - so the most obvious kind of repetition was the one the gate
+        # could not see.
+        hits = sum(lowered.count(term) for term in group)
+        if hits >= 2:
+            repeated.append(sorted(group)[0])
+    return repeated
+
+
+def _summary_domain(jd_string: str) -> str:
+    """Which baseline-skill list applies, inferred from the job description."""
+    jd = str(jd_string or "").lower()
+    best, best_score = "", 0
+    for domain, hints in _DOMAIN_HINTS.items():
+        score = sum(1 for h in hints if h in jd)
+        if score > best_score:
+            best, best_score = domain, score
+    return best
+
+
+def _baseline_skills_present(summary: str, jd_string: str = "") -> list[str]:
+    """Table-stakes skills that should never occupy summary words."""
+    domain = _summary_domain(jd_string)
+    if not domain:
+        return []
+    lowered = str(summary or "").lower()
+    return sorted(
+        skill for skill in _BASELINE_SKILLS_BY_DOMAIN.get(domain, ())
+        if re.search(r"(?<![\w-])" + re.escape(skill) + r"(?![\w-])", lowered)
+    )
+
+
+def _count_named_tools(summary: str) -> int:
+    """Rough count of distinct named technologies in the summary.
+
+    Capitalised or camel-cased proper nouns that are not sentence openers,
+    plus a small set of lowercase tool names that never capitalise.
+    """
+    text = str(summary or "")
+    body = re.sub(r"(?<=[.!?])\s+", "\x00", text)
+    tools: set[str] = set()
+    for sentence in body.split("\x00"):
+        words = sentence.split()
+        for i, w in enumerate(words):
+            clean = w.strip("(),.;:/").replace("/", " ").split()
+            for tok in clean:
+                if i == 0 and tok[:1].isupper():
+                    continue  # sentence-initial capital
+                low = tok.lower()
+                # Capitalisation alone is not toolhood. Job titles, employer
+                # names, segment labels and ordinary capitalised verbs were
+                # all being counted, so a summary naming three tools scored
+                # nine and failed the cap. Only count tokens that are either a
+                # known technology or shaped like one (internal capitals,
+                # digits, or a symbol), and never a word in the stoplist.
+                if low in _NOT_A_TOOL:
+                    continue
+                if low in _KNOWN_TOOL_TOKENS:
+                    tools.add(low)
+                    continue
+                # Version strings are not tools. "v3.15.0" was being counted
+                # alongside the package it belongs to, double-charging the cap.
+                if re.fullmatch(r"v?\d+(?:\.\d+)+[a-z0-9.-]*", low):
+                    continue
+                if re.fullmatch(r"[A-Z]{3,}\d?", tok):      # SQL, AWS, GA4
+                    tools.add(low)
+                elif re.fullmatch(r"[A-Za-z][a-z]+[A-Z][A-Za-z0-9.+#-]*", tok):  # FastAPI, PostHog
+                    tools.add(low)
+                elif re.fullmatch(r"[A-Za-z][A-Za-z0-9.+#-]*[0-9.+#][A-Za-z0-9.+#-]*", tok):
+                    tools.add(low)                          # C++, ES6, Python3
+    return len(tools)
+
+
+# Words that are capitalised mid-sentence but are not technologies: job-title
+# nouns, sentence-initial verbs that survive the split, and common labels.
+_NOT_A_TOOL = {
+    "engineer", "analyst", "designer", "developer", "coordinator", "manager",
+    "scientist", "architect", "consultant", "specialist", "administrator",
+    "delivered", "built", "owns", "owned", "scored", "mapped", "ran", "runs",
+    "shipped", "cut", "rebuilt", "partitioned", "mentored", "evaluated",
+    "loyal", "express", "present", "data", "product", "backend", "frontend",
+    "operations", "machine", "learning", "paints", "wms",
+    # Field abbreviations and product/paper names that read as tools by shape.
+    # Two-letter all-caps tokens are almost never technologies (ML, DL, AI, UI,
+    # UX, QA, PR) and were inflating the count on summaries that named none.
+    "ml", "dl", "ai", "ui", "ux", "qa", "pr", "api", "apis", "mcp",
+    "prettytable", "mediawiki", "bengali", "outlier", "alignerr", "alignerr",
+    # Business/product nouns that happen to be camel-cased or all-caps. "SaaS"
+    # was consuming a slot in the four-tool budget on every summary that named
+    # the product category, leaving a genuinely four-tool summary reading as
+    # five and failing the cap.
+    "saas", "paas", "iaas", "crm", "erp", "sdk", "cli", "ide", "url", "urls",
+    "pdf", "pdfs", "json", "csv", "html5", "dom",
+    # Product names and architectural styles are not tools. "YouTube" is the
+    # platform a dataset came from and "REST" is a style, not a technology, yet
+    # both consumed slots in the four-tool budget and failed summaries naming
+    # only three real tools.
+    "youtube", "rest", "github", "gitlab", "linkedin", "chrome", "google",
+    "amazon", "microsoft", "api", "apis", "etl", "eda",
+}
+
+# Technologies whose names are ordinary lowercase-able words, so the shape
+# heuristics above cannot recognise them.
+_KNOWN_TOOL_TOKENS = {
+    "python", "java", "javascript", "typescript", "go", "rust", "ruby", "php",
+    "react", "vue", "angular", "django", "flask", "rails", "spring", "node",
+    "postgresql", "postgres", "mysql", "redis", "mongodb", "snowflake",
+    "docker", "kubernetes", "terraform", "jenkins", "airflow", "kafka",
+    "pandas", "numpy", "tensorflow", "pytorch", "sklearn", "matplotlib",
+    "tableau", "looker", "excel", "figma", "sketch", "jira", "git",
+    "playwright", "sentry", "posthog", "mlflow", "dvc", "neon",
+}
+
+
+def _summary_body_redundancy(summary: str, resume_text: str = "") -> list[str]:
+    """Phrases the summary lifts near-verbatim from Experience/Projects bullets.
+
+    The summary's job is to frame and prioritise, not to preview. When it
+    restates content that appears a few centimetres below it, the reader gets
+    the same information twice and the most-read line on the resume has added
+    nothing.
+
+    Detects shared content-word runs of 4+ words, which is long enough to be a
+    lifted phrase rather than incidental vocabulary overlap ("REST APIs in
+    Python" is unavoidable; "payment rails, analytics instrumentation and
+    reliability tooling" is a lift).
+    """
+    text = str(summary or "").lower()
+    body = str(resume_text or "").lower()
+    if not text.strip() or not body.strip():
+        return []
+
+    stop = {"and", "the", "a", "an", "of", "in", "to", "with", "for", "on",
+            "as", "that", "by", "from", "at", "across", "into"}
+
+    def runs(s: str) -> list[str]:
+        words = [w for w in re.findall(r"[a-z0-9+#.-]+", s) if w not in stop]
+        return [" ".join(words[i:i + 4]) for i in range(len(words) - 3)]
+
+    body_runs = set(runs(body))
+    shared = {r for r in runs(text) if r in body_runs}
+
+    # Two exemptions, both learned from the gate over-firing on correct output.
+    #
+    # 1. A run carrying a NUMBER is the proof point, not redundancy. The
+    #    evidence rule requires the summary to lift its strongest metric
+    #    verbatim from the resume, so flagging that same text here would make
+    #    the two gates mutually unsatisfiable.
+    #
+    # 2. Redundancy means restating the bullets' CATEGORY CONTENT - a run of
+    #    listed noun phrases such as "payment rails, analytics instrumentation
+    #    and reliability tooling". It does NOT mean any four-word overlap: a
+    #    summary saying "mentored two juniors through their first production
+    #    deploys" shares words with the bullet it summarises because that is
+    #    the only honest way to state the fact. Requiring the ORIGINAL bullet
+    #    to have presented the run as a comma-separated list keeps the gate on
+    #    lifted enumerations and off ordinary factual restatement.
+    def _is_listed_in_source(run: str) -> bool:
+        first = run.split()[0]
+        for line in body.splitlines():
+            if first in line and line.count(",") >= 1:
+                # The run's words appear inside a line that enumerates.
+                if sum(1 for w in run.split() if w in line) >= 3:
+                    return True
+        return False
+
+    return sorted(
+        r for r in shared
+        if not re.search(r"\d", r) and _is_listed_in_source(r)
+    )
+
+
+# Compounds the rewrite can form by welding two source terms together that did
+# not modify each other in the original. "owning the full stack" + "backend"
+# becomes "full-stack backend", which is a narrowing that reads as a
+# contradiction - a full-stack engineer is precisely not a backend-only one.
+_COMPRESSION_TRAPS = (
+    ("full-stack backend", "full stack"),
+    ("full stack backend", "full stack"),
+    ("backend full-stack", "full stack"),
+    ("full-stack frontend", "full stack"),
+    ("end-to-end frontend", "end-to-end"),
+    ("senior junior", ""),
+)
+
+
+def _meaning_corrupting_compression(summary: str, resume_text: str = "") -> list[str]:
+    """Compressions that changed what the source actually said.
+
+    A rewrite may shorten freely, but it may never shorten into something the
+    original does not support. These are narrowings rather than fabrications,
+    which makes them easy to miss: every individual word is present in the
+    source, and the combination is false.
+    """
+    text = str(summary or "").lower()
+    source = str(resume_text or "").lower()
+    hits = []
+    for compound, source_form in _COMPRESSION_TRAPS:
+        if compound in text:
+            # It is only a corruption if the source did NOT use the compound.
+            if compound not in source:
+                hits.append(compound)
+    return hits
+
+
+def _entries_represented(summary: str, resume_text: str = "") -> int:
+    """How many distinct resume entries the summary draws on.
+
+    A summary built entirely from one project is a project description, not a
+    profile. Counts company and project names from the source that appear in
+    the summary, plus distinct metric values traced back to different entries.
+    """
+    text = str(summary or "").lower()
+    body = str(resume_text or "")
+    if not text.strip() or not body.strip():
+        return 0
+
+    # Proper-noun entry names: lines that look like "Name | ..." or "Name, City"
+    names = set()
+    for line in body.splitlines():
+        line = line.strip()
+        if not line or line.startswith("-"):
+            continue
+        head = re.split(r"[|,]", line)[0].strip()
+        if 3 <= len(head) <= 40 and re.match(r"^[A-Z][\w.& -]+$", head):
+            names.add(head.lower())
+
+    # Attribute every summary metric back to the resume BLOCK it came from,
+    # rather than counting distinct numbers. An earlier version used
+    # min(len(nums), 3) as a proxy for entry coverage, which scored a summary
+    # built entirely from one metric-dense project as covering two entries -
+    # the exact failure this gate exists to catch.
+    blocks: list[str] = []
+    current: list[str] = []
+    for line in body.splitlines():
+        if line.strip() and not line.strip().startswith("-") and current:
+            blocks.append("\n".join(current))
+            current = [line]
+        else:
+            current.append(line)
+    if current:
+        blocks.append("\n".join(current))
+
+    covered = set()
+    for idx, block in enumerate(blocks):
+        block_low = block.lower()
+        for num in re.findall(r"\d[\d,.]*\+?%?", text):
+            if num and num in block_low:
+                covered.add(idx)
+        for name in names:
+            if name in text and name in block_low:
+                covered.add(idx)
+    return max(sum(1 for n in names if n in text), len(covered))
+
+
+def _title_substance_mismatch(summary: str, resume_text: str = "") -> str:
+    """Does the claimed headline title match what the resume evidences?
+
+    Returns a suggested replacement title, or "" when the title is supported.
+    Currently checks the failure we have actually observed: an ML Engineer
+    headline over a resume whose only AI content is LLM/RAG integration, with
+    no training, modelling or evaluation methodology anywhere.
+    """
+    head = str(summary or "").split(".")[0]
+    if not _ML_TITLE_RE.search(head):
+        return ""
+    evidence = f"{summary} {resume_text}"
+    if _ML_SUBSTANCE_RE.search(evidence):
+        return ""
+    if re.search(r"\b(?:LLM|RAG|Retrieval Augmented Generation|prompt)\b",
+                 evidence, re.IGNORECASE):
+        return "AI Engineer"
+    return "Backend Engineer"
+
+# Rule 00 asks for 45-60 words with a hard ceiling of 65. The previous ceiling
+# of 130 was the reason a 114-word summary passed validation untouched: the
+# number was set from an older version of the rule and never brought down when
+# the rule tightened. The floor is reported but is NOT a rejection - a thin
+# junior resume produces a short honest summary, and padding it to hit a word
+# count is the exact failure the rule exists to prevent.
+_SUMMARY_MAX_WORDS = 65
+_SUMMARY_MIN_WORDS = 40
+
+
+def _summary_sentences(summary: str) -> list[str]:
+    """Split a summary into sentences for counting and tail surgery.
+
+    Abbreviations that legitimately carry a period mid-sentence would otherwise
+    each read as a sentence break and inflate the count.
+    """
+    text = str(summary or "").strip()
+    if not text:
+        return []
+    guarded = text
+    for abbr in ("e.g.", "i.e.", "etc.", "Inc.", "Ltd.", "Ph.D.", "B.Sc.", "M.Sc.", "vs."):
+        guarded = guarded.replace(abbr, abbr.replace(".", "\x00"))
+    parts = re.split(r"(?<=[.!?])\s+", guarded)
+    return [p.replace("\x00", ".").strip() for p in parts if p.strip()]
+
+
+def _is_keyword_tail(sentence: str) -> bool:
+    """Does this sentence name things without claiming anything?
+
+    The padded-tail failure Rule 00 describes: a closing clause that lists three
+    or more comma-separated items and contains no finite verb, e.g. "Domain
+    experience in developer tools, platform reliability and API integrations."
+    Conservative by design - a sentence with a real verb is never a tail, and
+    this only ever runs on the LAST sentence.
+    """
+    s = str(sentence or "").strip().rstrip(".")
+    # Three or more listed items. The canonical padded tail is "A, B and C",
+    # which carries only ONE comma — requiring two missed every real instance,
+    # including the "developer tools, platform reliability and API integrations"
+    # example Rule 00 is written around. Count list SEPARATORS, not commas.
+    if not s:
+        return False
+    separators = s.count(",") + len(re.findall(r"\b(?:and|&|/)\b", s, re.IGNORECASE))
+    if separators < 2:
+        return False
+    # A finite verb means the sentence makes a claim; leave it alone.
+    #
+    # Every alternative here is an explicit verb FORM. Stemmed patterns are the
+    # trap: "develop\w*" also matches the noun "developer", so the padded tail
+    # "Domain experience in developer tools, platform reliability and API
+    # integrations." read as a claim and survived repair. Noun forms that share
+    # a stem with a verb (developer/development, engineering, automation) must
+    # never appear below.
+    if re.search(
+        r"\b(?:built|build|builds|design|designs|designed|ship|ships|shipped|"
+        r"deliver|delivers|delivered|led|leads|lead|own|owns|owned|apply|applies|"
+        r"applied|automates?|automated|automating|develops?|developed|developing|"
+        r"implements?|implemented|implementing|serving|serve|serves|"
+        r"reduces?|reduced|reducing|improves?|improved|improving|cut|"
+        r"scaled|scales|migrates?|migrated|migrating|"
+        r"productionizes?|productionized|productionizing)\b",
+        s,
+        re.IGNORECASE,
+    ):
+        return False
+    return bool(
+        re.match(
+            r"^(?:domain\s+experience|experience|exposure|familiarity|knowledge|"
+            r"background|skills?|expertise|proficien\w+|competen\w+)\b",
+            s,
+            re.IGNORECASE,
+        )
+    )
+
+
+def _summary_quality_issues(summary: str, jd_string: str = "",
+                            resume_text: str = "") -> list[str]:
+    """Deterministic quality check for the professional summary.
+
+    Rule 00 of create_prompt() is an instruction, not a guarantee. This is the
+    countable half of it: every failure mode here is decidable from the text
+    itself, so it is checked rather than trusted - the same reasoning as
+    _repair_action_verbs(), which counts strong verbs instead of believing the
+    model's arithmetic.
+
+    Returns a list of issue codes (empty means clean). Never raises.
+    """
+    text = str(summary or "").strip()
+    if not text:
+        return ["empty"]
+
+    issues: list[str] = []
+    lowered = text.lower()
+
+    for phrase in _SUMMARY_BANNED_PHRASES:
+        if phrase.lower() in lowered:
+            issues.append(f"banned_phrase:{phrase}")
+
+    for phrase in _SUMMARY_HEDGING_PHRASES:
+        if phrase.lower() in lowered:
+            issues.append(f"hedging:{phrase}")
+
+    if _SUMMARY_DOMAIN_TAG_RE.search(text):
+        issues.append("domain_tag")
+
+    if _SUMMARY_JD_ECHO_RE.search(text):
+        issues.append("jd_echo")
+
+    if _SUMMARY_PRONOUN_RE.search(text):
+        issues.append("pronoun")
+
+    sentences = _summary_sentences(text)
+    if len(sentences) < _SUMMARY_MIN_SENTENCES:
+        issues.append("too_few_sentences")
+    elif len(sentences) > _SUMMARY_MAX_SENTENCES:
+        issues.append("too_many_sentences")
+
+    word_count = len(text.split())
+    if word_count > _SUMMARY_MAX_WORDS:
+        issues.append("too_long")
+    elif word_count < _SUMMARY_MIN_WORDS:
+        issues.append("too_short")
+
+    if sentences and _is_keyword_tail(sentences[-1]):
+        issues.append("keyword_tail")
+
+    # --- checks added after three rounds of real output review --------------
+    # Each of these corresponds to a defect observed in production summaries
+    # that the earlier validator passed without comment.
+    if _LIFECYCLE_OPENER_RE.search(sentences[0] if sentences else ""):
+        issues.append("lifecycle_opener")
+
+    if _SENIORITY_HEDGE_RE.search(text):
+        issues.append("seniority_hedge")
+
+    # A sentence naming two or more concrete technologies is making a specific
+    # claim, whatever its verbs look like. Without this guard the pattern fired
+    # on "Builds responsive interfaces in HTML, CSS and JavaScript with
+    # client-side state" - four named technologies, matched because
+    # "client-side" begins with "client".
+    if sentences and _FILLER_CLOSER_RE.search(sentences[-1]) \
+            and _count_named_tools(sentences[-1]) < 2:
+        issues.append("filler_closer")
+
+    if _OVERCLAIM_RE.search(text):
+        issues.append("overclaim")
+
+    if _ADJACENT_REPEAT_RE.search(text) or _ADJACENT_STEM_REPEAT_RE.search(text):
+        m = _ADJACENT_REPEAT_RE.search(text) or _ADJACENT_STEM_REPEAT_RE.search(text)
+        issues.append(f"adjacent_repetition:{m.group(0)}")
+
+    for concept in _duplicate_capability(text):
+        issues.append(f"duplicate_capability:{concept}")
+
+    for phrase in _summary_body_redundancy(text, resume_text):
+        issues.append(f"body_redundancy:{phrase}")
+
+    for compound in _meaning_corrupting_compression(text, resume_text):
+        issues.append(f"corrupt_compression:{compound}")
+
+    for skill in _baseline_skills_present(text, jd_string):
+        issues.append(f"baseline_skill:{skill}")
+
+    if _count_named_tools(text) > _SUMMARY_MAX_TOOLS:
+        issues.append("tool_laundry")
+
+    if not _has_concrete_evidence(text):
+        issues.append("no_evidence")
+
+    if _VAGUE_EVIDENCE_RE.search(text):
+        issues.append("vague_evidence")
+
+    return issues
+
+
+# How many named technologies may appear before the summary reads as a skills
+# section in prose form. The `skills` array already does that job.
+_SUMMARY_MAX_TOOLS = 4
+
+
+def summary_rejection_reasons(summary: str, jd_string: str = "",
+                              resume_text: str = "") -> list[str]:
+    """The subset of issues that should REJECT a summary outright.
+
+    Distinct from _summary_quality_issues(), which reports everything worth
+    knowing. These are the hard gates: a summary failing any of them is not
+    publishable, because each represents a defect that survived three rounds
+    of prompt-only fixes and reached real users.
+    """
+    hard = {
+        "too_long", "no_evidence", "vague_evidence", "lifecycle_opener",
+        "seniority_hedge", "filler_closer", "overclaim", "tool_laundry",
+        "empty", "body_redundancy", "corrupt_compression",
+        # "Applies applied Natural Language Processing" shipped to a real user
+        # because this check was computed but never promoted to a hard gate.
+        "adjacent_repetition",
+    }
+    reasons = [
+        issue for issue in _summary_quality_issues(summary, jd_string, resume_text)
+        if issue.split(":")[0] in hard or issue.startswith("duplicate_capability")
+    ]
+    suggested = _title_substance_mismatch(summary, resume_text)
+    if suggested:
+        reasons.append(f"title_mismatch:{suggested}")
+    # A summary drawing on only one entry when the resume has several is a
+    # project description rather than a profile.
+    if resume_text and _entries_represented(summary, resume_text) < 2:
+        if len(re.findall(r"^[A-Z][\w.& -]{2,39}\s*[|,]", resume_text, re.M)) >= 2:
+            reasons.append("single_entry_only")
+    return reasons
+
+
+def repair_summary(data: dict, jd_string: str = "", resume_text: str = "") -> dict:
+    """Subtractive repair of the professional summary.
+
+    STRICTLY SUBTRACTIVE. This function only ever DELETES an offending trailing
+    clause or sentence; it never writes new words. That is the whole safety
+    argument: removing keyword padding cannot introduce a claim the resume does
+    not support, so this can run on every optimization without any risk to the
+    never-fabricate invariant. Anything it cannot fix by deletion is left alone
+    and reported on `data["summary_issues"]` instead - the same conservatism as
+    factcheck_against_original(), which reports rather than deletes because a
+    false positive that silently removed real content is the worse failure.
+
+    Never raises; any unexpected shape is returned untouched.
+    """
+    if not isinstance(data, dict):
+        return data
+    summary = data.get("summary")
+    if not isinstance(summary, str) or not summary.strip():
+        return data
+
+    text = summary.strip()
+
+    # 1. Drop a keyword-tag clause ("... in the AI/ML domain") that ENDS ITS OWN
+    #    SENTENCE. Anchoring on the end of the whole summary was wrong: the
+    #    soft-skill weave appends a sentence after this one, so the tag stopped
+    #    being the final characters and survived. Mid-sentence the phrase can be
+    #    load-bearing ("deployed in the healthcare domain for X"), so a tag only
+    #    qualifies when nothing but the sentence terminator follows it.
+    rebuilt: list[str] = []
+    for sentence in _summary_sentences(text):
+        tag = _SUMMARY_DOMAIN_TAG_RE.search(sentence)
+        if tag and sentence[tag.end():].strip() in {"", ".", "!", "?"}:
+            stripped = sentence[: tag.start()].strip().rstrip(",;").strip()
+            # Only if a substantial claim remains once the tag is gone.
+            if len(stripped.split()) >= 8:
+                if not stripped.endswith((".", "!", "?")):
+                    stripped += "."
+                rebuilt.append(stripped)
+                continue
+        rebuilt.append(sentence)
+    text = " ".join(rebuilt).strip()
+
+    # 2. Drop a final sentence that is pure keyword padding.
+    sentences = _summary_sentences(text)
+    if len(sentences) > _SUMMARY_MIN_SENTENCES and _is_keyword_tail(sentences[-1]):
+        text = " ".join(sentences[:-1]).strip()
+
+    if text != summary.strip():
+        data["summary"] = text
+
+    remaining = _summary_quality_issues(text, jd_string)
+    if remaining:
+        data["summary_issues"] = remaining
+    else:
+        data.pop("summary_issues", None)
+    return data
+
+
+def _entry_anchor_window(resume_text: str, anchor: str, window: int = 900) -> str:
+    """Best-effort slice of the ORIGINAL resume text following a company/project
+    name, used as a proxy for "was this skill genuinely evidenced under this
+    specific entry" without needing a full structured parse of the raw PDF
+    text. Returns "" if the anchor cannot be located, in which case the
+    caller must not treat the skill as evidenced for that entry."""
+    text = str(resume_text or "")
+    a = str(anchor or "").strip()
+    if not text or not a or len(a) < 3:
+        return ""
+    idx = text.lower().find(a.lower())
+    if idx == -1:
+        return ""
+    return text[idx: idx + window]
+
+
+def weave_hard_skills_into_bullets(
+    data: dict,
+    resume_text: str,
+    jd_string: str = "",
+    jd_skills: list[str] | None = None,
+    max_injections: int = 3,
+) -> dict:
+    """Deterministic safety net for Rule 1c of create_prompt(): make sure JD
+    hard skills the resume genuinely evidences actually show up INSIDE the
+    summary/experience/project text, not only in the `skills` array.
+
+    Why this exists: the prompt already instructs the model to weave every
+    evidenced hard skill into a bullet (Rule 1c, Step B), and mostly it
+    complies - but an instruction is not a guarantee, the same reason
+    factcheck_against_original() exists for facts and
+    weave_soft_skills_into_summary() exists for soft skills. This is the
+    hard-skill equivalent of weave_soft_skills_into_summary().
+
+    Must run AFTER inject_jd_hard_skills(), because it only ever moves a skill
+    that inject_jd_hard_skills() already decided the candidate can defend
+    (i.e. it already sits in data["skills"]). It NEVER adds a new skill claim
+    on its own - that would defeat the entire evidence-gating
+    inject_jd_hard_skills() does.
+
+    Deliberately conservative:
+      - Only ever considers skills already confirmed onto data["skills"].
+      - Skips any skill already mentioned anywhere in summary/experience/
+        project bullets - the model did its job, there is nothing to do.
+      - Locates the ORIGINAL resume text near the matching company/project
+        name and only injects into that entry when the skill is actually
+        evidenced in that window, so a technology never gets pinned onto an
+        unrelated project just to place a keyword.
+      - Appends as a short parenthetical to the entry's shortest bullet (the
+        one with the most "room"), never rewrites or replaces existing text.
+      - Never touches the summary. If no entry evidences the skill there is
+        nowhere honest to weave it, so it is left in data["skills"] alone
+        rather than asserted as experience in prose.
+      - Capped at `max_injections` total edits so this cannot turn into
+        keyword stuffing - by design it complements Rule 1c, it does not
+        replace it as the primary mechanism.
+
+    Records what it changed on data["hard_skills_woven"] for transparency/
+    debugging, the same way skills_added_from_jd works for the skills array.
+    """
+    if not isinstance(data, dict):
+        return data
+
+    skills = data.get("skills")
+    if not isinstance(skills, list) or not skills:
+        data["hard_skills_woven"] = []
+        return data
+
+    confirmed = {s.lower(): s for s in skills if isinstance(s, str) and s.strip()}
+    if not confirmed:
+        data["hard_skills_woven"] = []
+        return data
+
+    if jd_skills is None:
+        candidates_order = _extract_hard_skills_from_jd(jd_string)
+    else:
+        candidates_order = [str(s or "").strip() for s in jd_skills if str(s or "").strip()]
+
+    # Only ever act on skills inject_jd_hard_skills() already confirmed -
+    # walk the JD's own priority order first.
+    ordered_candidates: list[str] = []
+    seen_c: set[str] = set()
+    for c in candidates_order:
+        key = c.lower()
+        if key in confirmed and key not in seen_c:
+            seen_c.add(key)
+            ordered_candidates.append(confirmed[key])
+    # Anything confirmed but not resurfaced above (e.g. supplied via an
+    # ATS-analysis jd_skills list with slightly different wording) still
+    # deserves a check - append the rest in their original order.
+    for key, original in confirmed.items():
+        if key not in seen_c:
+            seen_c.add(key)
+            ordered_candidates.append(original)
+
+    summary_text = str(data.get("summary") or "")
+    experience = data.get("experience") if isinstance(data.get("experience"), list) else []
+    projects = data.get("projects") if isinstance(data.get("projects"), list) else []
+
+    def _all_bullets_text() -> str:
+        parts = [summary_text]
+        for entry in list(experience) + list(projects):
+            if isinstance(entry, dict):
+                parts.extend(str(b) for b in (entry.get("bullets") or []))
+        return " ".join(parts)
+
+    woven: list[dict] = []
+    resume_evidence = str(resume_text or "")
+    # (id(entry), bullet_idx) -> skills queued for that bullet, combined into
+    # one parenthetical at the end rather than stacking "(using X) (using Y)".
+    pending: "OrderedDict[tuple[int, int], list[str]]" = OrderedDict()
+    pending_entry_by_key: dict[tuple[int, int], dict] = {}
+
+    for skill in ordered_candidates:
+        if len(woven) >= max_injections:
+            break
+        if _contains_skill(_all_bullets_text(), skill):
+            continue  # already woven somewhere - Rule 1c worked, nothing to do
+
+        target_entry = None
+        target_section = None
+        # Prefer projects, then experience - the prompt already asks for the
+        # densest technical signal to live in projects.
+        for section_name, entries in (("projects", projects), ("experience", experience)):
+            for entry in entries:
+                if not isinstance(entry, dict):
+                    continue
+                bullets = entry.get("bullets")
+                if not isinstance(bullets, list) or not bullets:
+                    continue
+                anchor = entry.get("name") or entry.get("company") or entry.get("title") or ""
+                window = _entry_anchor_window(resume_evidence, str(anchor))
+                if window and _contains_skill(window, skill):
+                    target_entry, target_section = entry, section_name
+                    break
+            if target_entry:
+                break
+
+        if target_entry is None:
+            # No entry in the ORIGINAL resume evidences this skill, so there is
+            # nowhere honest to put it. This used to append "Applied X in this
+            # work." to the summary, which produced strings of tacked-on
+            # sentences ("Applied MySQL in this work. Applied Java in this
+            # work.") that read as machine-generated and, worse, asserted
+            # experience the resume never showed - the exact fabrication
+            # Rule01/01b and factcheck_against_original() exist to prevent.
+            # The skill still appears in data["skills"], which inject_jd_hard_
+            # skills() already evidence-gated; that is the honest home for it.
+            continue
+
+        bullets = target_entry["bullets"]
+        shortest_idx = min(range(len(bullets)), key=lambda i: len(str(bullets[i])))
+        key = (id(target_entry), shortest_idx)
+        pending.setdefault(key, []).append(skill)
+        pending_entry_by_key[key] = target_entry
+
+        entry_label = target_entry.get("name") or target_entry.get("company") or target_entry.get("title") or ""
+        woven.append({"skill": skill, "section": target_section, "entry": str(entry_label)})
+
+    # Apply all queued bullet edits, combining multiple skills destined for
+    # the same bullet into a single "(using X and Y)" instead of stacking
+    # separate parentheticals.
+    # The bullet text is deliberately NOT edited any more.
+    #
+    # This loop used to append "(using X and Y)" to the entry's shortest bullet.
+    # On a real resume that produced "...to produce feasible, time-aware travel
+    # plans (using TypeScript)." and "...to populate candidate profiles (using
+    # MySQL and Firebase)." - visibly artificial keyword stuffing that a human
+    # reader spots instantly, on bullets whose project header already lists the
+    # whole stack. The parenthetical added nothing a recruiter or a
+    # context-weighted scanner could not already see, and it made the candidate
+    # look like they were gaming the filter.
+    #
+    # The skill still reaches the resume through data["skills"], which
+    # inject_jd_hard_skills() has already evidence-gated, and the placement
+    # decision is still reported on data["hard_skills_woven"] so the editor and
+    # the evals can see what would have been woven.
+    for key, skill_list in pending.items():
+        _, bullet_idx = key
+        entry = pending_entry_by_key[key]
+        entry.setdefault("_skill_placement_suggestions", []).append(
+            {"bullet_index": bullet_idx, "skills": list(skill_list)}
+        )
+
+    data["hard_skills_woven"] = woven
     return data
 
 
@@ -1391,12 +3864,19 @@ def compute_skill_match_score_structured(parsed: dict, jd_string: str) -> dict:
 
     This checks two sources independently and blends them:
       - the `skills` array (force-injected, ~100% after tailoring by design)
-      - bullet/summary text — experience bullets, project bullets, and the
-        summary — never force-injected, so bounded by what the resume's own
-        content actually supports.
+      - evidence text — summary, experience bullets, project bullets, plus
+        certifications, achievements, extracurriculars, and publications
+        (mirroring the sections _split_resume_skills_section() treats as
+        evidence for the base-resume "before" score) — never force-injected,
+        so bounded by what the resume's own content actually supports. These
+        sections are carried through the tailoring prompt unchanged (see the
+        JSON schema above), so a skill named only in, say, a certification
+        title still counts as evidence here the same way it did before
+        tailoring, instead of silently dropping out and making the after
+        score look worse than the before score for no real reason.
 
     Averaging the two means a resume can't reach 100% on the skills section
-    alone; the bullets have to genuinely back it up too."""
+    alone; the evidence text has to genuinely back it up too."""
     jd_skills = _extract_hard_skills_from_jd(jd_string)
     total = len(jd_skills)
     if not total:
@@ -1412,6 +3892,26 @@ def compute_skill_match_score_structured(parsed: dict, jd_string: str) -> dict:
     for proj in (data.get("projects") or []):
         if isinstance(proj, dict):
             bullet_parts.extend(str(b) for b in (proj.get("bullets") or []))
+    for cert in (data.get("certifications") or []):
+        if isinstance(cert, dict):
+            bullet_parts.append(str(cert.get("name") or ""))
+            bullet_parts.append(str(cert.get("issuer") or ""))
+        else:
+            bullet_parts.append(str(cert))
+    bullet_parts.extend(str(a) for a in (data.get("achievements") or []) if a)
+    for extra in (data.get("extracurriculars") or []):
+        if isinstance(extra, dict):
+            bullet_parts.append(str(extra.get("role") or ""))
+            bullet_parts.append(str(extra.get("organization") or ""))
+            bullet_parts.extend(str(b) for b in (extra.get("bullets") or []))
+        else:
+            bullet_parts.append(str(extra))
+    for pub in (data.get("publications") or []):
+        if isinstance(pub, dict):
+            bullet_parts.append(str(pub.get("title") or ""))
+            bullet_parts.append(str(pub.get("publisher") or ""))
+        else:
+            bullet_parts.append(str(pub))
     bullets_text = " ".join(bullet_parts)
 
     matched: list[str] = []
@@ -1501,15 +4001,35 @@ def sanitize_resume_data(data: dict) -> dict:
     skills = data.get("skills")
     if isinstance(skills, list):
         cleaned: list[str] = []
-        seen: set[str] = set()
+        # Keyed on canonical form, not the raw lowercase string. The old key
+        # treated "HTML" and "HTML5" as different skills, so both shipped on
+        # one Languages row - along with CSS/CSS3, JavaScript/JavaScript
+        # (ES6+) and PostgreSQL/postgres sql.
+        #
+        # _dedupe_skill_key rather than canonical_skill_key: the canonical key
+        # keeps spaces (TERM_INDEX needs them), so it still read "FastAPI" and
+        # "Fast Api" as two skills - and they shipped on one Frameworks row
+        # together, alongside Pandas/Panda and JavaScript/Java Script.
+        seen: dict[str, int] = {}
         for raw in skills:
             s = _clean_inline_text(raw)
             if not _is_atomic_hard_skill(s):
                 continue
-            key = s.lower()
-            if key in seen:
+            # A known misspelling is corrected before it is keyed, so a resume
+            # carrying ONLY "Matpotlib" still renders "Matplotlib". Dedup alone
+            # cannot do this - it collapses "Panda" onto "Pandas" only when
+            # both are present, and a lone typo has nothing to merge into.
+            s = correct_skill_spelling(s)
+            key = _dedupe_skill_key(s)
+            if not key:
                 continue
-            seen.add(key)
+            if key in seen:
+                # Same skill, second spelling: keep whichever presents better
+                # rather than whichever happened to arrive first.
+                idx = seen[key]
+                cleaned[idx] = _preferred_skill_spelling(cleaned[idx], s)
+                continue
+            seen[key] = len(cleaned)
             cleaned.append(s)
         data["skills"] = cleaned
 
@@ -1528,6 +4048,107 @@ def sanitize_resume_data(data: dict) -> dict:
                     b for b in (_clean_inline_text(x) for x in item["bullets"]) if b
                 ]
 
+    return data
+
+
+_FACTCHECK_YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
+# Figures a rewrite might invent: percentages, money, multipliers, plain counts.
+_FACTCHECK_NUMBER_RE = re.compile(
+    r"\b\d+(?:\.\d+)?\s*%"          # 40%, 12.5 %
+    r"|[$₹€£]\s*\d[\d,.]*"          # $2M, ₹50,000
+    r"|\b\d+(?:\.\d+)?\s*[xX]\b"    # 3x
+    r"|\b\d[\d,]{2,}\b"             # 1,200  15000
+)
+
+
+def _factcheck_numbers(text: str) -> set[str]:
+    """Normalised figures appearing in a piece of text.
+
+    Bare four-digit years are excluded - they are reported separately as
+    `year` findings, and counting them here too listed every date twice.
+    """
+    out: set[str] = set()
+    for m in _FACTCHECK_NUMBER_RE.finditer(str(text or "")):
+        token = m.group(0).replace(" ", "").lower()
+        if _FACTCHECK_YEAR_RE.fullmatch(token):
+            continue
+        out.add(token)
+    return out
+
+
+def factcheck_against_original(data: dict, resume_text: str) -> dict:
+    """Catch facts the rewrite introduced that the original resume never had.
+
+    The prompt tells the model repeatedly not to invent, and mostly it obeys -
+    but an instruction is not a guarantee, and the one thing a candidate cannot
+    survive is defending an employer, a date or a number that was never theirs.
+    So we check rather than trust.
+
+    This is deliberately conservative: it only flags a value when the ORIGINAL
+    resume does not contain it anywhere. Rewording is expected and untouched;
+    only genuinely new facts are reported. Findings land on
+    `data["factcheck"]` - nothing is deleted here, because a false positive
+    that silently removed a real job would be worse than the problem.
+    """
+    if not isinstance(data, dict):
+        return data
+
+    original = str(resume_text or "")
+    if not original.strip():
+        return data
+
+    original_lower = original.lower()
+    # finditer, not findall: the pattern has a group, so findall would return
+    # just the century ("20") rather than the whole year.
+    original_years = {m.group(0) for m in _FACTCHECK_YEAR_RE.finditer(original)}
+    original_numbers = _factcheck_numbers(original)
+
+    findings: list[dict] = []
+
+    def _check_value(label: str, value, where: str) -> None:
+        v = str(value or "").strip()
+        if len(v) < 3:
+            return
+        if v.lower() not in original_lower:
+            findings.append({"type": label, "value": v, "where": where})
+
+    # Employers, schools and job titles must already exist in the original.
+    for entry in data.get("experience") or []:
+        if isinstance(entry, dict):
+            _check_value("company", entry.get("company"), "experience")
+    for entry in data.get("education") or []:
+        if isinstance(entry, dict):
+            _check_value("school", entry.get("school"), "education")
+            _check_value("degree", entry.get("degree"), "education")
+
+    # Years that appear nowhere in the original resume.
+    def _walk_text(node):
+        if isinstance(node, str):
+            yield node
+        elif isinstance(node, dict):
+            for v in node.values():
+                yield from _walk_text(v)
+        elif isinstance(node, list):
+            for v in node:
+                yield from _walk_text(v)
+
+    seen_years: set[str] = set()
+    seen_numbers: set[str] = set()
+    for chunk in _walk_text(data):
+        for y in _FACTCHECK_YEAR_RE.finditer(chunk):
+            year = y.group(0)
+            if year not in original_years and year not in seen_years:
+                seen_years.add(year)
+                findings.append({"type": "year", "value": year, "where": "resume"})
+        for num in _factcheck_numbers(chunk):
+            if num not in original_numbers and num not in seen_numbers:
+                seen_numbers.add(num)
+                findings.append({"type": "number", "value": num, "where": "resume"})
+
+    if findings:
+        data["factcheck"] = {"clean": False, "findings": findings}
+    else:
+        data["factcheck"] = {"clean": True, "findings": []}
     return data
 
 
@@ -1565,6 +4186,375 @@ def _formatting_structure_score(resume_text: str) -> float:
 
 def bool_score(value):
     return str(value).lower() == "true"
+
+
+# ---------------------------------------------------------------------------
+# Fused-word repair
+#
+# pdfplumber decides where one word ends and the next begins from the gap
+# between glyphs. Its default x_tolerance is 3 *points*, an absolute figure, so
+# on a resume set in a tight 9-10pt face the inter-word gap falls under the
+# threshold and the two words come out welded: "progresstracking",
+# "maintaininglearnerrecords", "Supportedschoolactivities".
+#
+# That is not a cosmetic problem. A welded token:
+#   1. can never match a JD keyword ("progress tracking"), so the ATS match
+#      rate is scored against text the candidate did not actually write; and
+#   2. is reported to the user as a spelling mistake, which is the bug this
+#      block exists to kill. The prompt already tells the model to ignore
+#      extraction artifacts (see SPELLING RULES) and the model ignores that
+#      instruction often enough that a prompt is not a fix.
+#
+# So the split is done here, deterministically, where it cannot be argued with.
+# ---------------------------------------------------------------------------
+
+# Vocabulary used to decide whether a long token is really several words. It is
+# deliberately a *curated* list rather than a full dictionary: every entry here
+# makes a split more likely, and a wrong split corrupts the resume text. Common
+# English plus the vocabulary resumes actually use covers the observed cases
+# without risking rare-word false positives.
+_SPLIT_VOCAB = frozenset("""
+a an and are as at be been but by for from had has have her his how i if in into is it
+its of on or our out over so than that the their then there these they this to under up
+was we were what when where which while who will with would you your
+ability able about above accurate achieve achieved achievement across action active
+activities activity actual add added additional address adhere administration advanced
+advertising advice advise agile aid all allocate analyse analysis analyst analytical
+analytics analyze annual applicant application applied apply approach appropriate
+approval approve architecture area assess assessment asset assign assist assistant
+assurance attend attendance audit automate automated automation available award aware
+awareness back backend balance bank based basic behaviour benchmark benefit best better
+board book brand budget build building built business calendar campaign candidate
+capability capacity care career case cash centre certification certified chain change
+channel chart check child children claim class classroom clean clear client clinical
+close cloud coach coaching code collaborate collaboration collect collection college
+communicate communication community company compare complete completed completion
+complex compliance component comprehensive computer concept concern condition conduct
+conducted conference confidence configuration confirm connect consent consistent
+consulting consumer contact content continuous contract contribute control convert
+coordinate coordination core corporate correct cost course coverage create created
+creation creative credit criteria critical cross culture curriculum custom customer
+cycle daily dashboard data database day deadline deal decision dedicated deep defect
+define delivered delivery demand department deploy deployment design designed detail
+detailed develop developed developer development device diagnostic digital direct
+director discussion display distribution district document documentation domain drive
+driven due duty dynamic early education effective efficiency efficient effort electronic
+element email employee employer employment enable end energy engage engagement engine
+engineer engineering english enhance ensure ensured ensuring enterprise entry
+environment equipment error escalate establish evaluate evaluation event every evidence
+exam example excel excellent exceed execute execution executive exercise existing
+expand experience expert expertise external facilitate facility factor faculty fault
+feature feedback field file final finance financial first fix flow focus follow food
+forecast form format foundation framework free frequent front full function functional
+fund gap gather general generate global goal good govern government grade graduate
+grant group grow growth guest guidance guide handle hardware health help high hire
+history hospital hour house human identify image impact implement implementation
+improve improved improvement inbound incident include increase individual industry
+information infrastructure initiative innovation input inquiry insight inspection
+install institute instruction insurance integrate integration intelligence interface
+internal international internship interview inventory investment invoice issue item
+job join journal junior key knowledge lab language large launch law lead leader
+leadership learn learner learning lecture legal lesson level leverage library licence
+license life line link liquid list live load loan local location log logic logistics
+long loss machine main maintain maintained maintenance major manage managed management
+manager manual manufacturing map market marketing material math matter measure media
+medical meet meeting member memory mentor mentoring message method metric middle migrate
+migration milestone mobile model module money monitor monitoring month monthly motivate
+multiple national native need negotiate network new news node note number nurse object
+objective observation office officer online operation operational operations
+opportunity optimisation optimise optimization optimize option order organisation
+organise organization organize outcome outreach output outreach overall oversee
+oversight owner ownership package page paper parent part participant participate
+partner party pass patient pattern payment payroll people per perform performance period
+person personal phase phone physical pilot pipeline place plan planning platform play
+point policy portal portfolio position positive post power practice preparation prepare
+present presentation press prevent previous price primary print prior priority private
+problem procedure process processing procurement produce product production
+professional profile program programme programming progress project promote proposal
+protection protocol provide provided provider public publish purchase quality quarter
+query question quick rate ratio reach read ready real record recording records recover
+recruit recruitment reduce reduced reduction reference regional register regular
+regulation relation relationship release relevant reliability reliable remote report
+reporting request require requirement research reservation resolve resolution resource
+response responsibility responsible restaurant result retail retention return revenue
+review revise risk role room root round route routine run safety sale sales sample
+scale schedule scheduling scheme school science scope score screen script search second
+section sector secure security select senior sensor series server service session set
+setting share sharing shift ship shop short show side sign significant similar simple
+single site size skill small smooth social software solution solve source space special
+specialist specification specific speed spend staff stage stakeholder standard start
+state statement station statistics status step stock storage store strategic strategy
+stream strength strong structure student study style subject submit success successful
+summary supervise supervision supervisor supplier supply support supported supporting
+survey sustain system table take talent target task teach teacher teaching team
+technical technique technology telephone template term test testing text theory third
+time tool top total track tracking traffic train trainer training transaction transfer
+transformation transition translate transport travel treatment trend trial trouble
+troubleshoot turn tutor type unit update upgrade usage use user utility validate
+validation value variety vendor verify version video view virtual vision visit visual
+voice volume volunteer warehouse waste web website week weekly welfare well work worker
+workflow working workshop world write writing written year yearly
+""".split())
+
+# Suffixes stripped when a segment is not in the vocabulary as written. Ordered
+# longest first so "-ations" is tried before "-s".
+_SPLIT_SUFFIXES = ("ations", "ities", "ingly", "ation", "ments", "ences", "ances",
+                   "ings", "ment", "ness", "ence", "ance", "ible", "able", "ies",
+                   "ing", "ers", "est", "ely", "ed", "es", "er", "ly", "al", "s")
+
+# Below this length a token is not worth suspecting. Measured against the 12+
+# character tokens in a corpus of real resumes: at 13 the guards below take the
+# false-positive count to zero, and it is low enough to catch the short fusions
+# ("parentconsent", "learnerrecords") that a 16-character floor let through.
+_FUSE_MIN_LEN = 13
+
+# Real single words that the segmenter would otherwise take apart, because
+# their halves happen to be words too. "-ability" and "-ibility" are handled by
+# rule below; these are the leftovers that need naming individually.
+_NEVER_SPLIT = frozenset("""
+extracurricular extracurriculars shortlisting shortlisted streamlining streamlined
+notwithstanding nevertheless understanding undertaking underperforming overperforming
+troubleshooting troubleshoot breakthrough workmanship craftsmanship apprenticeship
+scholarship partnership relationship membership internship leadership entrepreneurship
+stakeholder stakeholders whiteboard dashboard onboarding offboarding storytelling
+timekeeping bookkeeping housekeeping recordkeeping safeguarding fundraising
+groundbreaking forthcoming outstanding overarching throughput turnaround
+""".split())
+
+# A word ending in -ability / -ibility is a real noun built on the stem before
+# it ("maintainability", "sustainability", "transferability"), not the two words
+# "maintain" and "ability" fused. This single rule was the whole false-positive
+# set in the corpus test.
+_ABILITY_SUFFIXES = ("ability", "ibility")
+
+# A segment shorter than this is not accepted as a word on its own. Without it,
+# "management" happily splits into "man"+"age"+"men"+"t"-style nonsense.
+_SEGMENT_MIN_LEN = 3
+
+
+def _vocab_has(word: str) -> bool:
+    """True if `word` is in the split vocabulary, allowing regular inflections."""
+    w = word.lower()
+    if w in _SPLIT_VOCAB:
+        return True
+    for suffix in _SPLIT_SUFFIXES:
+        if len(w) > len(suffix) + 2 and w.endswith(suffix):
+            stem = w[: -len(suffix)]
+            if stem in _SPLIT_VOCAB:
+                return True
+            # "supplies" -> "suppli" -> "supply"; "running" -> "runn" -> "run"
+            if stem.endswith("i") and stem[:-1] + "y" in _SPLIT_VOCAB:
+                return True
+            if stem + "e" in _SPLIT_VOCAB:
+                return True
+            if len(stem) > 2 and stem[-1] == stem[-2] and stem[:-1] in _SPLIT_VOCAB:
+                return True
+    return False
+
+
+def split_fused_word(token: str):
+    """Split a run-together token into its words, or return None.
+
+    Returns the list of parts only when the WHOLE token is consumed by two or
+    more vocabulary words. Partial matches return None on purpose: a token that
+    is mostly a real word plus a stray fragment is far more likely to be a real
+    word than an extraction artifact, and splitting it would damage the text.
+
+    Longest-first dynamic programming, so "supporting" is preferred over
+    "support" + "ing" and the greedy short-prefix traps are avoided.
+    """
+    word = str(token or "")
+    if not word.isalpha() or len(word) < _SEGMENT_MIN_LEN * 2:
+        return None
+
+    lowered = word.lower()
+    # A token that is itself a word is never a fusion, however neatly its
+    # halves happen to segment.
+    if lowered in _NEVER_SPLIT or _vocab_has(lowered):
+        return None
+    for suffix in _ABILITY_SUFFIXES:
+        if lowered.endswith(suffix) and _vocab_has(lowered[: -len(suffix)]):
+            return None
+    n = len(lowered)
+    # best[i] = list of parts covering lowered[i:], or None if uncoverable.
+    best: list = [None] * (n + 1)
+    best[n] = []
+    for start in range(n - 1, -1, -1):
+        # Longest segment first - fewer, longer words is nearly always the
+        # right reading of a fused token.
+        for end in range(n, start + _SEGMENT_MIN_LEN - 1, -1):
+            if best[end] is None:
+                continue
+            segment = lowered[start:end]
+            if len(segment) < _SEGMENT_MIN_LEN:
+                continue
+            if _vocab_has(segment):
+                best[start] = [word[start:end]] + best[end]
+                break
+    parts = best[0]
+    if not parts or len(parts) < 2:
+        return None
+    return parts
+
+
+def looks_like_fused_word(token: str) -> bool:
+    """True if `token` is long enough to suspect and splits cleanly into words."""
+    return len(str(token or "")) >= _FUSE_MIN_LEN and split_fused_word(token) is not None
+
+
+_ALPHA_RUN_RE = re.compile(r"[A-Za-z]+")
+
+
+def count_fused_words(text: str) -> int:
+    """How many run-together tokens a block of extracted text contains.
+
+    Used to choose between two extractions of the same PDF - lower is better.
+    """
+    return sum(
+        1 for match in _ALPHA_RUN_RE.finditer(str(text or ""))
+        if looks_like_fused_word(match.group(0))
+    )
+
+
+def repair_fused_words(text: str) -> str:
+    """Insert the spaces PDF extraction dropped.
+
+    Only touches tokens that clear `_FUSE_MIN_LEN` and split cleanly, so
+    correctly-extracted text passes through unchanged. Capitalisation of the
+    first part is preserved; the rest is lowercased, since a fused token's
+    interior capitals are not meaningful.
+    """
+    def replace(match):
+        token = match.group(0)
+        if not looks_like_fused_word(token):
+            return token
+        parts = split_fused_word(token)
+        if not parts:
+            return token
+        head, *rest = parts
+        return " ".join([head] + [p.lower() for p in rest])
+
+    return _ALPHA_RUN_RE.sub(replace, str(text or ""))
+
+
+# Words the model quotes back inside its spelling explanation, e.g.
+#   The word 'progresstracking' should be 'progress tracking'.
+_QUOTED_WORD_RE = re.compile(r"['\"‘’“”]([A-Za-z][A-Za-z\-']{2,})['\"‘’“”]")
+
+# One "The word 'x' should be 'y'." claim, so a single artifact claim can be
+# removed without disturbing the sentences around it.
+_SPELLING_CLAIM_RE = re.compile(
+    r"[^.]*?['\"‘’“”][A-Za-z][A-Za-z\-']{2,}['\"‘’“”][^.]*\.\s*"
+)
+
+
+def _claim_is_artifact(claim: str) -> bool:
+    """True if every word this sentence calls misspelled is a fused token."""
+    quoted = _QUOTED_WORD_RE.findall(claim)
+    if not quoted:
+        return False
+    # The first quoted word is the alleged misspelling; later ones are the
+    # model's suggested correction and must not be judged.
+    alleged = quoted[0].replace("-", "")
+    return looks_like_fused_word(alleged)
+
+
+# Contact details the model mistakes for misspellings - users were told
+# "The word 'Gerson.craviid@gmail.com' contains a misspelling ... 'craviid'
+# should be 'cravid'". Emails, URLs, handles and phone numbers are
+# identifiers the candidate chose, so no claim about them is ever valid.
+_CONTACT_TOKEN_RE = re.compile(
+    r"[\w.+\-]+@[\w\-]+(?:\.[\w\-]+)+"          # email
+    r"|\bhttps?://\S+|\bwww\.\S+"               # URL
+    r"|\b[\w\-]+\.(?:com|org|net|io|dev|in|co|me|ai|app|edu)\b"  # bare domain
+    r"|(?<!\w)@[A-Za-z0-9_]{2,}"                # handle
+    r"|\+?\d[\d\s().\-]{7,}\d",                 # phone
+    re.I,
+)
+_CONTACT_WORD_RE = re.compile(
+    r"\b(?:e-?mail|domain|url|website|username|handle|linkedin|github|phone)\b",
+    re.I,
+)
+# Quoted spans are removed before the keyword check, so a genuine claim such
+# as "'domian' should be 'domain'" is not mistaken for a contact critique.
+_QUOTED_SPAN_RE = re.compile(r"['\"‘’“”][^'\"‘’“”]*['\"‘’“”]")
+# Sentence boundary: terminal punctuation followed by whitespace, so the dots
+# inside "first.last@gmail.com" never split a sentence.
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+")
+
+
+def _drop_contact_detail_claims(explanation: str) -> str:
+    """Remove every sentence that critiques an email, URL, handle or phone."""
+    sentences = _SENTENCE_SPLIT_RE.split(explanation.strip())
+    kept = [
+        s for s in sentences
+        if not (
+            _CONTACT_TOKEN_RE.search(s)
+            or _CONTACT_WORD_RE.search(_QUOTED_SPAN_RE.sub("", s))
+        )
+    ]
+    return " ".join(kept).strip()
+
+
+def scrub_extraction_artifacts_from_spelling(parsed):
+    """Drop spelling findings that are really PDF extraction artifacts.
+
+    The prompt asks the model not to raise these and it raises them anyway -
+    users were shown "The word 'progresstracking' should be 'progress
+    tracking'" for a resume that had the space all along. This removes each
+    such claim, and when nothing genuine is left, marks the check passed.
+    Claims about contact details (emails, URLs, handles) are dropped too.
+
+    Mutates and returns `parsed`.
+    """
+    if not isinstance(parsed, dict):
+        return parsed
+    section = parsed.get("spelling_and_grammar")
+    if not isinstance(section, dict):
+        return parsed
+    spelling = section.get("spelling")
+    if not isinstance(spelling, dict):
+        return parsed
+
+    explanation = str(spelling.get("explanation") or "")
+    if not explanation.strip():
+        return parsed
+
+    without_contacts = _drop_contact_detail_claims(explanation)
+    if without_contacts != explanation.strip():
+        if not without_contacts:
+            spelling["passed"] = "true"
+            spelling["explanation"] = ""
+            spelling["action"] = ""
+            return parsed
+        explanation = without_contacts
+        spelling["explanation"] = explanation
+
+    claims = _SPELLING_CLAIM_RE.findall(explanation)
+    if not claims:
+        # No per-word claims to pick apart. If the only words it quotes are
+        # artifacts, the whole finding is one.
+        quoted = _QUOTED_WORD_RE.findall(explanation)
+        if quoted and all(looks_like_fused_word(w.replace("-", "")) for w in quoted):
+            spelling["passed"] = "true"
+            spelling["explanation"] = ""
+            spelling["action"] = ""
+        return parsed
+
+    kept = [c for c in claims if not _claim_is_artifact(c)]
+    if len(kept) == len(claims):
+        return parsed  # nothing was an artifact
+
+    remainder = "".join(kept).strip()
+    if remainder:
+        spelling["explanation"] = remainder
+    else:
+        # Every claim was an extraction artifact, so there is no spelling
+        # problem to report and the check must not fail the resume for one.
+        spelling["passed"] = "true"
+        spelling["explanation"] = ""
+        spelling["action"] = ""
+    return parsed
 
 
 def compute_deterministic_ats_score_breakdown(parsed, resume_text: str = ""):
@@ -1924,6 +4914,8 @@ RULE 2 — PARENTHETICAL EXPLOSION: When the job description lists tools inside 
 
 RULE 3 — STRIP QUALIFIERS: Remove experience-level wrappers before extracting. Phrases beginning with "X+ years of", "Experience in/with", "Knowledge of", "Familiarity with", "Strong background in" are NOT skills — extract only the technology name(s) embedded inside them.
 
+RULE 4 — THE EMPLOYER'S PRODUCTS ARE NOT SKILLS: Never list the hiring company's own products, devices, services or brand as hard skills (for an Apple JD: NOT "Apple Watch", "iPhone", "Apple software", "Apple services"). Extract the technology the candidate would actually use instead (e.g. "Swift", "watchOS", "SwiftUI") — only if the JD names it.
+
 BAD (entire phrase as one skill — NEVER do this):
   "3+ years of experience in ML engineering or software engineering with an ML focus"
   "Experience deploying models via REST APIs or model serving frameworks (TorchServe, TF Serving)"
@@ -1973,6 +4965,19 @@ Use the Current Date supplied in the user message for every future-date check.
 Never use a training cutoff or an assumed year. A date in or before the current
 month is not in the future.
 
+An end date written as "Present", "Current", "Now", or "Ongoing" is not a date
+to evaluate — it means the role is still active as of the Current Date supplied.
+Never fail an entry, or cite it in an explanation, as being "in the future"
+because its end date is "Present" (or an equivalent word). Only a specific
+month/year that is later than the Current Date counts as a future date.
+
+This check ONLY evaluates work experience dates. An expected/anticipated
+graduation or completion date in the Education section (e.g. "Expected 2027",
+"Anticipated May 2027", "Expected Graduation: 2027") is normal for a student
+or recent graduate and is never a chronology issue — do not evaluate it for
+future-date sanity, and never cite an Education date in this check's
+explanation.
+
 Fail if:
 
 * dates are missing
@@ -2003,6 +5008,7 @@ RULE: Any token containing 2 or more recognizable English words merged together 
 RULE: Any token where recognizable words are merged around a hyphen (e.g., "drivingcross-teamcollaboration", "end-to-endproblems") is an extraction artifact. Ignore it entirely.
 RULE: When uncertain whether a long token (10+ characters) is an artifact or a genuine misspelling, treat it as an artifact and do NOT flag it.
 RULE: Capitalization differences (e.g., "Medals" vs "medals", "Java", "Team") are NOT spelling errors. Only flag tokens where the specific letters themselves are wrong (e.g., "acomplishment" → "accomplishment").
+RULE: Contact details are NEVER spelling errors. Email addresses, usernames, URLs, domains, LinkedIn/GitHub handles, phone numbers and personal names are identifiers chosen by the candidate — never check or mention their spelling.
 
 ==================================================
 GRAMMAR RULES
@@ -2061,12 +5067,26 @@ AND
 
 Fail otherwise.
 
+Years of experience are a tolerance band, not an exact threshold. Treat
+condition 1 as satisfied when the candidate has at least 80% of the required
+years - a candidate with 8 years against a "10 years required" job description
+SATISFIES it and must NOT be failed on years. Read "8+ years" as a minimum the
+candidate states, never as a ceiling; their dated work history may total more.
+Only a substantial shortfall - below 80% of the requirement, e.g. 4 years
+against 10 - fails on years. If the years are inside that band and the
+responsibilities are represented, Experience Match PASSES.
+
 The explanation must clearly identify:
 
 * missing years of experience
 * missing responsibilities
 * missing technologies
 * missing domain expertise
+
+Use the Current Date supplied in the user message for every date comparison.
+Never call a month "in the future" if it is in or before the current month —
+double-check the arithmetic against the Current Date before writing that
+word into an explanation.
 
 ==================================================
 COMPANY NAME RULES
@@ -2113,6 +5133,60 @@ Migrated
 Produced
 Directed
 Established
+Supervised
+Mentored
+Coached
+Trained
+Oversaw
+Owned
+Spearheaded
+Headed
+Coordinated
+Drove
+Launched
+Scaled
+Streamlined
+Improved
+Enhanced
+Achieved
+Executed
+Integrated
+Configured
+Tested
+Validated
+Debugged
+Refactored
+Conducted
+Investigated
+Diagnosed
+Resolved
+Standardized
+Transformed
+Revamped
+Upgraded
+Consolidated
+Introduced
+Initiated
+Pioneered
+Facilitated
+Negotiated
+Presented
+Authored
+Documented
+Published
+Researched
+Evaluated
+Assessed
+Identified
+Monitored
+Audited
+Benchmarked
+Accelerated
+Minimized
+Maximized
+Secured
+Enabled
+Shipped
 
 Weak verbs include:
 
@@ -2125,6 +5199,13 @@ Involved in
 Contributed to
 
 A bullet point that begins with a word from the Strong action verbs list above MUST be counted as strong, even if the rest of the sentence sounds generic or technical. Never cite a word from the Strong action verbs list (e.g. "Developed") as an example of weak wording in an explanation. Only words from the Weak verbs list (or synonyms of them) may be cited as weak.
+
+Leadership and management verbs — Managed, Led, Supervised, Mentored, Directed,
+Oversaw, Owned, Spearheaded, Headed, Coordinated — are STRONG. They signal
+ownership of people and outcomes, which is exactly what recruiters look for.
+Never describe a bullet such as "Managed development engineers/technicians" as
+weak wording; a bullet naming the people or scope a candidate owned is a
+strength, not a defect.
 
 Pass if at least 4 of bullets begin with strong action verbs.
 
@@ -2241,6 +5322,8 @@ Prioritize:
 5. Formatting problems
 
 Do not include minor issues unless no major issues exist.
+
+Never include a fix about dates being "in the future" or about date chronology. Resume dates are validated separately; every date on or before the Current Date is in the past.
 
 ==================================================
 OUTPUT RULES
@@ -2469,51 +5552,352 @@ _MONTH_YEAR_RE = re.compile(
     r'\b(' + '|'.join(_MONTH_NUMBERS) + r')\s+(20\d{2})\b',
     re.IGNORECASE,
 )
+# An open-ended end date ("Present"/"Current"/"Now"/"Ongoing") is never itself
+# a future date — see _apply_false_future_repair below.
+_PRESENT_TOKEN_RE = re.compile(r'\b(present|current(?:ly)?|ongoing|now)\b', re.IGNORECASE)
+# An expected/anticipated graduation or completion date is a genuinely future
+# date by design (the student hasn't graduated yet) — it's normal, not a
+# chronology defect, so a "future date" explanation naming one is always a
+# false positive regardless of how far out the date is.
+_EDUCATION_DATE_RE = re.compile(
+    r'\b(?:expected|anticipated|projected)\b[^.]{0,60}?\b(?:graduat\w*|degree|diploma|completion)\b'
+    r'|\b(?:graduat\w*|degree|diploma)\b[^.]{0,60}?\b(?:expected|anticipated|projected)\b',
+    re.IGNORECASE,
+)
+
+
+def _apply_false_future_repair(
+    check: dict, current_date: date, independent_issues: tuple
+) -> bool:
+    """Flip a failed pass/explanation check to passed when the *only* stated
+    reason is a resume date being "in the future" that is actually already
+    past (the model miscounts months relative to the supplied Current Date),
+    the "future" date is really an open-ended "Present"/"Current"/"Ongoing"
+    end date that isn't a date to compare at all, or it's an expected/
+    anticipated graduation date (genuinely future by design, and never a
+    chronology defect).
+    Returns True if the check was repaired.
+    """
+    if not isinstance(check, dict) or bool_score(check.get("passed")):
+        return False
+
+    explanation = str(check.get("explanation") or "")
+    explanation_lower = explanation.lower()
+    if "future" not in explanation_lower:
+        return False
+
+    cited_dates = [
+        (int(year), _MONTH_NUMBERS[month.lower()])
+        for month, year in _MONTH_YEAR_RE.findall(explanation)
+    ]
+    mentions_present = bool(_PRESENT_TOKEN_RE.search(explanation))
+    mentions_expected_grad = bool(_EDUCATION_DATE_RE.search(explanation))
+    if not cited_dates and not mentions_present and not mentions_expected_grad:
+        return False
+
+    # An expected graduation date is *supposed* to be future, so skip the
+    # "cited dates must not actually be future" guard in that case — the
+    # defect is the check evaluating an education date at all, not the date
+    # itself.
+    if not mentions_expected_grad:
+        current_month = (current_date.year, current_date.month)
+        if any(cited_date > current_month for cited_date in cited_dates):
+            return False
+
+    if any(issue in explanation_lower for issue in independent_issues):
+        return False
+
+    check["passed"] = "true"
+    if mentions_expected_grad:
+        check["explanation"] = (
+            "An expected/anticipated graduation date is not a chronology issue."
+        )
+    elif mentions_present:
+        check["explanation"] = (
+            f"The cited dates are not in the future as of "
+            f"{current_date.strftime('%B %Y')} "
+            f"(an end date of \"Present\" is not a future date)."
+        )
+    else:
+        check["explanation"] = (
+            f"The cited dates are not in the future as of "
+            f"{current_date.strftime('%B %Y')}."
+        )
+    return True
+
+
+_CHRONOLOGY_INDEPENDENT_ISSUES = (
+    "out of order", "not in reverse chronological order", "missing date",
+    "dates are missing", "cannot be determined", "unable to determine",
+    "overlapping dates",
+)
+
+# Broader/fuzzier on purpose: experience-match failures can legitimately cite
+# many other reasons (years, responsibilities, technologies, domain), and we
+# only want to auto-repair when the false future-date claim is the sole
+# reason given — any of these hints means a real issue may still be there.
+_EXPERIENCE_MATCH_INDEPENDENT_ISSUES = (
+    "missing years", "missing responsibilit", "missing technolog",
+    "missing domain", "does not meet", "insufficient", "not met",
+    "not clearly demonstrated", "not found", "lacks", "lacking", "gap in",
+    "underqualified",
+)
 
 
 def _repair_false_future_chronology(parsed: dict, current_date: date | None = None) -> None:
     """Correct an LLM chronology failure when every cited future date is already past."""
     if not isinstance(parsed, dict):
         return
-
     chronology = parsed.get("sections", {}).get("chronological_dates", {})
-    if not isinstance(chronology, dict) or bool_score(chronology.get("passed")):
+    _apply_false_future_repair(
+        chronology, current_date or date.today(), _CHRONOLOGY_INDEPENDENT_ISSUES
+    )
+
+
+def _force_pass_chronology(parsed: dict) -> None:
+    """The chronology check kept producing false-positive failures (future/
+    Present end dates, expected graduation dates) even after narrowing the
+    prompt and adding targeted repairs — it's no longer trustworthy enough to
+    ever fail a resume, so it's forced to pass unconditionally instead."""
+    if not isinstance(parsed, dict):
+        return
+    sections = parsed.setdefault("sections", {})
+    if not isinstance(sections, dict):
+        return
+    sections["chronological_dates"] = {
+        "passed": "true",
+        "explanation": "Work experience entries are in reverse chronological order.",
+    }
+
+
+# "Future date in experience" / "update the end date ... to a date before
+# September 2026". Matched on the two together so an unrelated fix that merely
+# says "future" (a goals statement) is never dropped.
+_FUTURE_WORD_RE = re.compile(r"\bfuture\b", re.IGNORECASE)
+_DATE_WORD_RE = re.compile(r"\bdat(?:e|es|ed)\b|chronolog", re.IGNORECASE)
+
+
+def _drop_future_date_priority_fixes(parsed: dict) -> None:
+    """Remove "future date" items from top_priority_fixes.
+
+    Same false positive _force_pass_chronology exists for, surfacing in a
+    second place: the model miscounts months against the supplied Current
+    Date and told a user to move a "January 2022 - February 2026" role's end
+    date "to a date before September 2026" - in September 2026. The action
+    cites the current month rather than the resume's date, so the date
+    comparison in _apply_false_future_repair cannot catch it; the chronology
+    check is already never allowed to fail, so its fix is never shown either.
+    """
+    if not isinstance(parsed, dict):
+        return
+    fixes = parsed.get("top_priority_fixes")
+    if not isinstance(fixes, list):
+        return
+    kept = []
+    for fix in fixes:
+        text = (
+            f"{fix.get('issue', '')} {fix.get('action', '')}"
+            if isinstance(fix, dict) else str(fix or "")
+        )
+        if _FUTURE_WORD_RE.search(text) and _DATE_WORD_RE.search(text):
+            continue
+        kept.append(fix)
+    parsed["top_priority_fixes"] = kept
+
+
+def _repair_false_future_experience_match(parsed: dict, current_date: date | None = None) -> None:
+    """The same past-date-miscounted-as-future failure also leaks into the
+    Experience Match explanation, e.g. "most recent experience is dated in
+    the future (Jan 2026 - Mar 2026)" when Jan-Mar 2026 has already passed.
+    """
+    if not isinstance(parsed, dict):
+        return
+    experience_match = parsed.get("experience", {}).get("experience_match", {})
+    _apply_false_future_repair(
+        experience_match, current_date or date.today(), _EXPERIENCE_MATCH_INDEPENDENT_ISSUES
+    )
+
+
+# A candidate one or two years short of a stated requirement is not a mismatch —
+# recruiters interview them, and "8+ years" on a resume is a floor the candidate
+# states, not a ceiling. Experience Match only fails on years below this
+# fraction of the requirement.
+_EXPERIENCE_YEARS_TOLERANCE = 0.8
+
+# Reasons a failed Experience Match may be about something other than years. If
+# the explanation mentions any of these, a real gap may remain and the years
+# tolerance must not flip the check.
+_EXPERIENCE_MATCH_NON_YEARS_ISSUES = (
+    "responsibilit", "technolog", "domain", "skill", "tool", "certification",
+    "education", "degree", "qualification", "leadership", "management",
+)
+
+_YEARS_MENTION_RE = re.compile(r"\byears?\b|\byrs?\b", re.IGNORECASE)
+
+
+def _repair_experience_years_tolerance(
+    parsed: dict, resume_text: str, jd_text: str
+) -> None:
+    """Stop failing Experience Match on a near-miss on years.
+
+    An "8+ years" resume against a "10 years of experience" job description was
+    being failed outright, costing 8 points. Years are a tolerance band: at or
+    above _EXPERIENCE_YEARS_TOLERANCE of the requirement counts as satisfied.
+    Only flips a failure whose stated reason is years alone — an explanation
+    that also cites missing responsibilities, technologies or domain expertise
+    is left exactly as the model wrote it.
+    """
+    if not isinstance(parsed, dict):
+        return
+    experience = parsed.get("experience")
+    if not isinstance(experience, dict):
+        return
+    check = experience.get("experience_match")
+    if not isinstance(check, dict) or bool_score(check.get("passed")):
         return
 
-    explanation = str(chronology.get("explanation") or "")
+    required_years = _extract_years_of_experience(jd_text)
+    candidate_years = _extract_years_of_experience(resume_text)
+    if required_years <= 0 or candidate_years <= 0:
+        return
+    if candidate_years < required_years * _EXPERIENCE_YEARS_TOLERANCE:
+        return
+
+    explanation = str(check.get("explanation") or "")
     explanation_lower = explanation.lower()
-    if "future" not in explanation_lower:
+    if not _YEARS_MENTION_RE.search(explanation_lower):
+        return
+    if any(issue in explanation_lower for issue in _EXPERIENCE_MATCH_NON_YEARS_ISSUES):
         return
 
-    cited_dates = [
-        (int(year), _MONTH_NUMBERS[month.lower()])
-        for month, year in _MONTH_YEAR_RE.findall(explanation)
+    check["passed"] = "true"
+    check["explanation"] = (
+        f"The resume shows {candidate_years}+ years of experience against the "
+        f"{required_years} years the job description asks for — close enough to "
+        "the requirement to be competitive, and the required responsibilities "
+        "are represented."
+    )
+    check["action"] = ""
+
+
+# Mirrors the Strong action verbs list in _ATS_SYSTEM_PROMPT. The prompt already
+# tells the model never to cite one of these as weak wording, and it does it
+# anyway ("'Managed development engineers/technicians' uses weak wording"), so
+# the rule is enforced here deterministically as well.
+_STRONG_ACTION_VERBS = frozenset({
+    "developed", "built", "implemented", "designed", "engineered", "created",
+    "led", "optimized", "optimised", "automated", "managed", "analyzed",
+    "analysed", "delivered", "reduced", "increased", "generated", "architected",
+    "deployed", "migrated", "produced", "directed", "established",
+    # Leadership / ownership — the bucket the model most often mislabels.
+    "supervised", "mentored", "coached", "trained", "oversaw", "owned",
+    "spearheaded", "headed", "coordinated", "drove", "launched", "scaled",
+    # Delivery and improvement
+    "streamlined", "improved", "enhanced", "achieved", "executed", "integrated",
+    "configured", "tested", "validated", "debugged", "refactored", "conducted",
+    "investigated", "diagnosed", "resolved", "standardized", "standardised",
+    "transformed", "revamped", "upgraded", "consolidated", "introduced",
+    "initiated", "pioneered", "facilitated", "negotiated", "presented",
+    "authored", "documented", "published", "researched", "evaluated",
+    "assessed", "identified", "monitored", "audited", "benchmarked",
+    "accelerated", "minimized", "minimised", "maximized", "maximised",
+    "secured", "enabled", "shipped",
+})
+
+_ACTION_VERB_MIN_STRONG_BULLETS = 4
+
+_BULLET_PREFIX_RE = re.compile(r'^[\s•●▪◦‣⁃∙\-\*·>\+]+')
+# Straight or curly quotes around the snippet the explanation is citing.
+_QUOTED_SNIPPET_RE = re.compile(
+    r'[\'"‘“]([^\'"‘’“”]{4,200})[\'"’”]'
+)
+
+
+def _leading_verb(line: str) -> str:
+    """First word of a bullet, with any bullet glyph stripped."""
+    cleaned = _BULLET_PREFIX_RE.sub("", str(line or "")).strip()
+    # A heading or a company name ("Managed Services Inc.") is not a bullet.
+    if len(cleaned.split()) < 5:
+        return ""
+    match = re.match(r"[A-Za-z][A-Za-z\-']*", cleaned)
+    return match.group(0).lower() if match else ""
+
+
+def _count_strong_verb_bullets(resume_text: str) -> int:
+    return sum(
+        1 for line in str(resume_text or "").splitlines()
+        if _leading_verb(line) in _STRONG_ACTION_VERBS
+    )
+
+
+def _snippet_opens_with_strong_verb(snippet: str) -> bool:
+    match = re.match(r"\s*[A-Za-z][A-Za-z\-']*", str(snippet or ""))
+    return bool(match) and match.group(0).strip().lower() in _STRONG_ACTION_VERBS
+
+
+def _scrub_strong_verb_citations(check: dict) -> None:
+    """Drop any sentence that holds up a strong action verb as an example of
+    weak wording. Runs on checks that stay failed, so the user never reads
+    "'Managed ...' uses weak wording" — leadership verbs are a strength."""
+    explanation = str(check.get("explanation") or "")
+    if not explanation:
+        return
+    sentences = re.split(r'(?<=[.!?])\s+', explanation)
+    kept = [
+        sentence for sentence in sentences
+        if not any(
+            _snippet_opens_with_strong_verb(snippet)
+            for snippet in _QUOTED_SNIPPET_RE.findall(sentence)
+        )
     ]
-    if not cited_dates:
+    if len(kept) == len(sentences):
         return
-
-    today = current_date or date.today()
-    current_month = (today.year, today.month)
-    if any(cited_date > current_month for cited_date in cited_dates):
-        return
-
-    independent_issues = (
-        "out of order", "not in reverse chronological order", "missing date",
-        "dates are missing", "cannot be determined", "unable to determine",
-        "overlapping dates",
+    check["explanation"] = " ".join(part for part in kept if part.strip()).strip() or (
+        f"Fewer than {_ACTION_VERB_MIN_STRONG_BULLETS} bullet points begin with a "
+        "strong action verb."
     )
-    if any(issue in explanation_lower for issue in independent_issues):
-        return
 
-    chronology["passed"] = "true"
-    chronology["explanation"] = (
-        f"The cited experience dates are not in the future as of "
-        f"{today.strftime('%B %Y')}."
-    )
+
+def _repair_action_verbs(parsed: dict, resume_text: str) -> None:
+    """The action-verb check is a countable rule — "at least 4 bullets begin
+    with a strong action verb" — so count them here rather than trusting the
+    model's arithmetic, which under-counts and then justifies itself with a
+    leadership verb ("Managed ...") presented as weak wording.
+    Only ever flips a failure to a pass; a genuine failure keeps its
+    explanation, minus any bogus strong-verb example.
+    """
+    if not isinstance(parsed, dict):
+        return
+    strong_bullets = _count_strong_verb_bullets(resume_text)
+    for section in ("experience", "projects"):
+        container = parsed.get(section)
+        if not isinstance(container, dict):
+            continue
+        check = container.get("action_verbs")
+        if not isinstance(check, dict) or bool_score(check.get("passed")):
+            continue
+        if strong_bullets >= _ACTION_VERB_MIN_STRONG_BULLETS:
+            check["passed"] = "true"
+            check["explanation"] = (
+                f"{strong_bullets} bullet points begin with a strong action verb."
+            )
+            check["action"] = ""
+        else:
+            _scrub_strong_verb_citations(check)
 
 
 _ATS_SCORE_CACHE: OrderedDict[str, str] = OrderedDict()
-_ATS_CACHE_MAX = 50
+# ~8.5 KB per entry, so 300 is ~2.5 MB — negligible next to the cost of a miss,
+# which is a paid LLM call rather than just CPU time. Sized by that asymmetry
+# rather than tuned against measured traffic.
+# In-process and wiped on every deploy, so entries live hours in practice —
+# churn evicts them long before the month-scoped key would.
+_ATS_CACHE_MAX = 300
+
+# Fixed seed so the same resume + job description scores the same number on
+# every run and on every machine. A score that moves on its own is not a
+# measurement, and this is a scoring product.
+_ATS_SEED = 7
 
 
 async def ats_scoring(resume_string, jd_string):
@@ -2521,8 +5905,24 @@ async def ats_scoring(resume_string, jd_string):
     current_date = date.today()
     _cache_key = hashlib.md5(
         (
-            "ats-chronology-v2|" + current_date.isoformat() + "|" +
-            str(resume_string) + str(jd_string)
+            # Bump on every prompt/repair change or cached scans keep serving
+            # the old verdicts (v4: action-verb + years-tolerance repairs;
+            # v5: future-date priority fixes dropped).
+            #
+            # Scoped to the MONTH, not the day. The date is a real input — it is
+            # sent to the model (see user_message) and drives the chronology and
+            # years-of-experience checks — so it has to be in the key or a cached
+            # verdict would go stale as time passes. But every consumer of it
+            # works at month granularity: _passes_chronology_recheck compares
+            # (year, month) and the explanations render "%B %Y". Keying on the
+            # day therefore forced a fresh paid LLM call every midnight to
+            # reproduce an identical answer — ~365 re-scans a year where ~12
+            # carry real change.
+            "ats-chronology-v5|" + current_date.strftime("%Y-%m") + "|" +
+            # The separator matters: joining these with nothing meant a resume
+            # ending in "ab" with JD "c" hashed the same as "a" + "bc", so two
+            # different scans could collide and return each other's score.
+            str(resume_string) + "\x00--jd--\x00" + str(jd_string)
         ).encode()
     ).hexdigest()
     if _cache_key in _ATS_SCORE_CACHE:
@@ -2544,14 +5944,22 @@ async def ats_scoring(resume_string, jd_string):
     # Change 2: stream=True — collect chunks as they arrive instead of one big buffer
     try:
         stream = await client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=AI_MODEL,
             response_format={"type": "json_object"},
             messages=[
                 {"role": "system", "content": _ATS_SYSTEM_PROMPT},
                 {"role": "user", "content": user_message},
             ],
             temperature=0,
-            max_tokens=1500,
+            # ~62 of the 100 points come from this call's yes/no answers, so a
+            # user rescanning the same resume could see a different number.
+            # temperature=0 alone does not guarantee identical output; the seed
+            # makes the score reproducible.
+            seed=_ATS_SEED,
+            # 1500 was not enough for the full audit JSON on a long resume - it
+            # truncated and fell back to _repair_truncated_json, silently losing
+            # checks (a missing check scores 0, so truncation cost real points).
+            max_tokens=4000,
             stream=True,
         )
         chunks: list[str] = []
@@ -2650,6 +6058,8 @@ RULE 2 — PARENTHETICAL EXPLOSION: When the job description lists tools inside 
 
 RULE 3 — STRIP QUALIFIERS: Remove experience-level wrappers before extracting. Phrases beginning with "X+ years of", "Experience in/with", "Knowledge of", "Familiarity with", "Strong background in" are NOT skills — extract only the technology name(s) embedded inside them.
 
+RULE 4 — THE EMPLOYER'S PRODUCTS ARE NOT SKILLS: Never list the hiring company's own products, devices, services or brand as hard skills (for an Apple JD: NOT "Apple Watch", "iPhone", "Apple software", "Apple services"). Extract the technology the candidate would actually use instead (e.g. "Swift", "watchOS", "SwiftUI") — only if the JD names it.
+
 BAD (entire phrase as one skill — NEVER do this):
   "3+ years of experience in ML engineering or software engineering with an ML focus"
   "Experience deploying models via REST APIs or model serving frameworks (TorchServe, TF Serving)"
@@ -2745,6 +6155,7 @@ RULE: Any token containing 2 or more recognizable English words merged together 
 RULE: Any token where recognizable words are merged around a hyphen (e.g., "drivingcross-teamcollaboration", "end-to-endproblems") is an extraction artifact. Ignore it entirely.
 RULE: When uncertain whether a long token (10+ characters) is an artifact or a genuine misspelling, treat it as an artifact and do NOT flag it.
 RULE: Capitalization differences (e.g., "Medals" vs "medals", "Java", "Team") are NOT spelling errors. Only flag tokens where the specific letters themselves are wrong (e.g., "acomplishment" → "accomplishment").
+RULE: Contact details are NEVER spelling errors. Email addresses, usernames, URLs, domains, LinkedIn/GitHub handles, phone numbers and personal names are identifiers chosen by the candidate — never check or mention their spelling.
 
 ==================================================
 GRAMMAR RULES
@@ -2827,6 +6238,11 @@ The explanation must clearly identify:
 * missing responsibilities
 * missing technologies
 * missing domain expertise
+
+Use the Current Date supplied in the user message for every date comparison.
+Never call a month "in the future" if it is in or before the current month —
+double-check the arithmetic against the Current Date before writing that
+word into an explanation.
 
 ==================================================
 COMPANY NAME RULES
@@ -3024,6 +6440,8 @@ Prioritize:
 
 Do not include minor issues unless no major issues exist.
 
+Never include a fix about dates being "in the future" or about date chronology. Resume dates are validated separately; every date on or before the Current Date is in the past.
+
 ==================================================
 OUTPUT RULES
 ============
@@ -3210,7 +6628,16 @@ The JSON must strictly follow the schema provided below.
         parsed = json.loads(content)
     except Exception:
         match = re.search(r"\{[\s\S]*\}\s*$", content)
-        parsed = json.loads(match.group(0)) if match else {}
+        try:
+            parsed = json.loads(match.group(0)) if match else {}
+        except json.JSONDecodeError as exc:
+            # JSON mode can degenerate into thousands of blank lines until
+            # max_tokens, leaving an unterminated object.
+            raise AIOutputError(
+                "Our AI scanner returned an incomplete report for this resume. Please scan "
+                "again. If it keeps failing, trim the job description to the key "
+                "requirements, or re-export your resume as a fresh PDF."
+            ) from exc
 
     if not isinstance(parsed, dict):
         parsed = {}
@@ -3224,7 +6651,11 @@ The JSON must strictly follow the schema provided below.
                 base[k] = v
 
     _deep_merge(parsed, precheck)
-    _repair_false_future_chronology(parsed, current_date)
+    _force_pass_chronology(parsed)
+    _drop_future_date_priority_fixes(parsed)
+    _repair_false_future_experience_match(parsed, current_date)
+    _repair_experience_years_tolerance(parsed, resume_string, jd_string)
+    _repair_action_verbs(parsed, resume_string)
 
     hard_matched = parsed.get("skills", {}) \
                      .get("hard_skills", {}) \
@@ -3431,7 +6862,7 @@ Job Description:
         try:
             # Bound output so each call stays fast (~160 tokens/question is plenty).
             resp = await client.chat.completions.create(
-                model="gpt-4o-mini",
+                model=AI_MODEL,
                 response_format={"type": "json_object"},
                 messages=[{"role": "user", "content": _build_prompt(name, count, want_meta)}],
                 temperature=0.4,
@@ -3519,7 +6950,7 @@ Return ONLY valid JSON with this exact schema:
     client = await _build_openai_client()
     try:
         response = await client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=AI_MODEL,
             response_format={"type": "json_object"},
             messages=[{"role": "user", "content": prompt}],
             temperature=0.2,
@@ -3660,7 +7091,7 @@ async def agent_chat_reply(
     page_path: str = "/",
     is_logged_in: bool = False,
     blog_catalog: str = "",
-    model: str = "gpt-4o-mini",
+    model: str = AI_MODEL,
 ) -> str:
     """One assistant turn for the site-wide 'Tailor' agent."""
     client = await _build_openai_client()

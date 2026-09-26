@@ -210,6 +210,64 @@
         .pb-tpl-foot .tick { width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(99,130,200,.4); display:flex;align-items:center;justify-content:center; }
         .pb-tpl.selected .tick { background:#8b5cf6;border-color:#8b5cf6; }
         .pb-tpl.selected .tick::after { content:"✓"; color:#fff; font-size:.8rem; }
+        /* Pro-gated templates: still fully previewable (the demo link works) —
+           only publishing is blocked, so the preview stays legible rather than
+           blurred out. */
+        .pb-pro-badge, .pb-free-badge {
+            position:absolute; top:10px; right:10px; z-index:5; border-radius:999px;
+            padding:4px 11px; font-size:.72rem; font-weight:800; letter-spacing:.02em;
+        }
+        .pb-pro-badge { background:linear-gradient(135deg,#f59e0b,#d97706); color:#fff;
+            box-shadow:0 4px 14px -4px rgba(245,158,11,.8); }
+        .pb-free-badge { background:rgba(16,185,129,.92); color:#fff;
+            box-shadow:0 4px 14px -6px rgba(16,185,129,.8); }
+        .pb-tpl.locked .pb-tpl-prev { opacity:.72; transition:opacity .18s; }
+        .pb-tpl.locked:hover .pb-tpl-prev { opacity:1; }
+        .pb-use-locked { background:linear-gradient(135deg,#b45309,#78350f) !important; }
+        .pb-tpl.locked .pb-tpl-foot strong { opacity:.85; }
+        /* Free cards carry a green edge so the split still reads after the user
+           has scrolled the section heading off screen. */
+        .pb-tpl:not(.locked) { border-color:rgba(16,185,129,.45); }
+        .pb-tpl:not(.locked):hover { border-color:rgba(16,185,129,.85);
+            box-shadow:0 22px 48px -24px rgba(16,185,129,.5); }
+        .pb-tpl.locked { border-color:rgba(245,158,11,.3); }
+        .pb-tpl.locked:hover { border-color:rgba(245,158,11,.7);
+            box-shadow:0 22px 48px -24px rgba(245,158,11,.45); }
+        /* The "Unlock with Pro" bar is always visible on locked cards, not just on
+           hover — a hover-only affordance is invisible on touch devices. */
+        .pb-tpl.locked .pb-use-locked { opacity:1; transform:none; }
+        .pb-plan-note { margin-top:10px; color:#9fb0cc; font-size:.9rem; }
+        .pb-plan-note strong { color:#eaf1ff; }
+        /* Gallery group headings */
+        .pb-gal-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+            margin:6px 0 16px; padding-bottom:10px;
+            border-bottom:1px solid rgba(99,130,200,.18); }
+        .pb-gal-head h3 { margin:0; font-size:1.02rem; color:#eaf1ff; font-weight:800; }
+        .pb-gal-head span { color:#8da3c6; font-size:.85rem; }
+        .pb-gal-head-pro { margin-top:44px; }
+        .pb-gal-upgrade { margin-left:auto; color:#fbbf24; font-size:.85rem;
+            font-weight:700; text-decoration:none; white-space:nowrap; }
+        .pb-gal-upgrade:hover { text-decoration:underline; }
+        /* Pro upsell modal (built by pbShowProUpsell) */
+        #pb-pro-modal { position:fixed; inset:0; z-index:99999; display:flex;
+            align-items:center; justify-content:center; padding:20px; }
+        .pb-pro-back { position:absolute; inset:0; background:rgba(2,8,28,.78);
+            backdrop-filter:blur(6px); }
+        .pb-pro-card { position:relative; z-index:1; width:min(420px,100%);
+            background:linear-gradient(155deg,#0c1730,#071020);
+            border:1px solid rgba(245,158,11,.35); border-radius:20px;
+            padding:2rem 1.8rem; text-align:center;
+            box-shadow:0 30px 80px -30px rgba(0,0,0,.9); }
+        .pb-pro-ic { font-size:2.4rem; line-height:1; margin-bottom:.6rem; }
+        .pb-pro-card h3 { color:#eaf1ff; font-size:1.2rem; margin:0 0 .6rem; }
+        .pb-pro-card p { color:#9fb0cc; font-size:.9rem; line-height:1.6; margin:0 0 1.4rem; }
+        .pb-pro-card .pb-btn-next { display:inline-block; text-decoration:none; }
+        .pb-pro-demo { display:block; margin-top:1rem; color:#7dd3fc;
+            font-size:.85rem; text-decoration:none; }
+        .pb-pro-demo:hover { text-decoration:underline; }
+        .pb-pro-close { display:block; width:100%; margin-top:1rem; background:none;
+            border:none; color:#8da3c6; font-size:.84rem; cursor:pointer; }
+        .pb-pro-close:hover { color:#eaf1ff; }
 
         /* Upload */
         .pb-drop {
@@ -388,7 +446,7 @@
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
-    <link rel="stylesheet" href="/static/feature_landing.css?v=114">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=115">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -433,10 +491,11 @@
                 <div class="solx-kicker">Design gallery</div>
                 <h2 class="solx-h2">Find the perfect portfolio design <span class="g">for your career goals</span></h2>
                 <p class="solx-lead">Click any design to see it live. Publish free on <b>yourname.thetailorcv.com</b>, or go Pro for <b>yourname.netlify.app</b>.</p>
-                <div class="solx-carousel wide big">
+                <div class="solx-carousel wide big gallery-wide">
                     <button type="button" class="solx-car-btn solx-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
                     <div class="solx-car-track">
                         {% for _k, _label in themes.items() %}{% set _m = theme_media.get(_k) %}{% if _m and _m.image %}
+                        {% set _locked = (_k not in (free_themes | default([]))) and not (is_pro_user | default(false)) %}
                         <div class="solx-car-item">
                             {% set _nm = _label.replace('—', '-').split('-')[0].strip() %}
                             {% if _m.demo %}
@@ -448,6 +507,11 @@
                             <div class="solx-car-shot"><img src="{{ _m.image }}" alt="{{ _nm }} portfolio design preview" loading="lazy" decoding="async"></div>
                             {% endif %}
                             <div class="solx-car-name">{{ _nm }}</div>
+                            <button type="button" class="solx-car-use{% if _locked %} locked{% endif %}"
+                                    data-theme="{{ _k }}"
+                                    aria-label="{% if _locked %}Unlock the {{ _nm }} design with Pro{% else %}Use the {{ _nm }} design{% endif %}">
+                                {% if _locked %}&#128274; Unlock with Pro &rarr;{% else %}Use this template &rarr;{% endif %}
+                            </button>
                         </div>
                         {% endif %}{% endfor %}
                     </div>
@@ -495,6 +559,38 @@
             buildDots(); sync();
           }
           document.querySelectorAll('.solx-carousel').forEach(init);
+
+          // "Use this template" sends the visitor to signup.
+          //
+          // This whole marketing section renders inside {% raw %}{% if not is_logged_in %}{% endraw %},
+          // and the builder itself (<main class="pb">, the .pb-tpl cards and
+          // pbPickTheme) renders inside {% raw %}{% if is_logged_in %}{% endraw %} - the two never
+          // exist on the same page. An earlier version of this handler looked
+          // for the matching .pb-tpl card and called pbPickTheme() on it, which
+          // could NEVER match for the only audience that sees these buttons, so
+          // the button quietly did nothing at all.
+          //
+          // The chosen design is stashed under the builder's own localStorage
+          // key first, so it survives the signup round-trip and the template
+          // they clicked is the one already selected when they land in the
+          // builder. Merged into whatever is stored rather than overwriting, so
+          // a returning user keeps their saved details.
+          var PB_KEY = 'tailorcv_portfolio_builder';
+          document.addEventListener('click', function (ev) {
+            var btn = ev.target.closest && ev.target.closest('.solx-car-use');
+            if (!btn) return;
+            ev.preventDefault();
+            var slug = btn.getAttribute('data-theme');
+            if (slug) {
+              try {
+                var saved = {};
+                try { saved = JSON.parse(localStorage.getItem(PB_KEY)) || {}; } catch (e) { saved = {}; }
+                saved.theme = slug;
+                localStorage.setItem(PB_KEY, JSON.stringify(saved));
+              } catch (e) { /* private mode / blocked storage - continue anyway */ }
+            }
+            window.location.href = '/signup?next=/portfolio';
+          });
         })();
         </script>
 
@@ -592,7 +688,7 @@
                         <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
                         <p class="pricing-plan-note">Always free, no card needed.</p>
                         <ul class="pricing-feature-list">
-                            <li>ATS score, unlimited</li>
+                            <li>3 free ATS scans</li>
                             <li>1 free resume optimization</li>
                             <li>1 free cover letter + mock interview</li>
                             <li>All templates &amp; downloads</li>
@@ -685,6 +781,9 @@
         <div class="pb-head">
             <h1>Turn your resume into a portfolio website</h1>
             <p>Convert your resume to a portfolio site in minutes, pick a design, upload your resume, tweak the details, and publish a link you can share anywhere.</p>
+            {% if not (is_pro_user | default(true)) %}
+            <p class="pb-plan-note">{{ (free_themes | default([])) | length }} templates are free on your account. Pro unlocks all {{ themes | length }} — you can preview every one before deciding.</p>
+            {% endif %}
         </div>
 
         <div class="pb-steps">
@@ -697,10 +796,27 @@
 
         <!-- Step 1: template -->
         <section class="pb-panel active" id="panel-1">
+            {# The gallery is split into two labelled groups rather than relying on a
+               badge alone: a heading tells the user the rule before they have to
+               inspect any individual card. Pro users see one ungrouped gallery. #}
+            {% set _free = free_themes | default([]) %}
+            {% set _pro_user = is_pro_user | default(true) %}
+            {% set free_slugs = themes.keys() | select("in", _free) | list %}
+            {% set pro_slugs = themes.keys() | reject("in", _free) | list %}
+
+            {% if not _pro_user %}
+            <div class="pb-gal-head">
+                <h3>✅ Free with your account</h3>
+                <span>{{ free_slugs | length }} templates — publish as many as you like</span>
+            </div>
+            {% endif %}
             <div class="pb-templates">
-                {% for slug, label in themes.items() %}
+                {% for slug in (free_slugs if not _pro_user else themes.keys() | list) %}
+                {% set label = themes[slug] %}
                 {% set media = (theme_media or {}).get(slug) %}
-                <div class="pb-tpl" data-theme="{{ slug }}" onclick="pbPickTheme(this)">
+                {% set locked = (slug not in _free) and not _pro_user %}
+                <div class="pb-tpl{% if locked %} locked{% endif %}" data-theme="{{ slug }}"
+                     data-locked="{{ 'yes' if locked else 'no' }}" onclick="pbPickTheme(this)">
                     <div class="pb-tpl-prev prev-{{ slug }}">
                         {% if media and media.image %}
                         <img class="pb-tpl-img" src="{{ media.image }}" alt="{{ label }} preview" loading="lazy" onerror="this.style.display='none'">
@@ -708,7 +824,13 @@
                         <div class="mini-avatar">AB</div>
                         <div class="mini-lines"><span></span><span></span></div>
                         {% endif %}
+                        {% if locked %}
+                        <span class="pb-pro-badge">🔒 Pro</span>
+                        <span class="pb-use pb-use-locked">Unlock with Pro →</span>
+                        {% else %}
+                        {% if slug in free_themes and not is_pro_user %}<span class="pb-free-badge">Free</span>{% endif %}
                         <span class="pb-use">Use this template →</span>
+                        {% endif %}
                     </div>
                     <div class="pb-tpl-foot">
                         <strong>{{ label }}</strong>
@@ -720,6 +842,42 @@
                 </div>
                 {% endfor %}
             </div>
+
+            {% if not _pro_user %}
+            <div class="pb-gal-head pb-gal-head-pro">
+                <h3>🔒 Pro templates</h3>
+                <span>{{ pro_slugs | length }} more designs — preview any of them free, upgrade to publish</span>
+                <a class="pb-gal-upgrade" href="/pricing">Upgrade to Pro →</a>
+            </div>
+            <div class="pb-templates">
+                {% for slug in pro_slugs %}
+                {% set label = themes[slug] %}
+                {% set media = (theme_media or {}).get(slug) %}
+                {% set locked = true %}
+                <div class="pb-tpl locked" data-theme="{{ slug }}"
+                     data-locked="yes" onclick="pbPickTheme(this)">
+                    <div class="pb-tpl-prev prev-{{ slug }}">
+                        {% if media and media.image %}
+                        <img class="pb-tpl-img" src="{{ media.image }}" alt="{{ label }} preview" loading="lazy" onerror="this.style.display='none'">
+                        {% else %}
+                        <div class="mini-avatar">AB</div>
+                        <div class="mini-lines"><span></span><span></span></div>
+                        {% endif %}
+                        <span class="pb-pro-badge">🔒 Pro</span>
+                        <span class="pb-use pb-use-locked">Unlock with Pro →</span>
+                    </div>
+                    <div class="pb-tpl-foot">
+                        <strong>{{ label }}</strong>
+                        {% if media and media.demo %}
+                        <a class="pb-tpl-demo" href="{{ media.demo }}" target="_blank" rel="noopener" onclick="event.stopPropagation()">View demo ↗</a>
+                        {% endif %}
+                        <span class="tick"></span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
             <div class="pb-nav-row">
                 <span></span>
                 <button class="pb-btn pb-btn-next" id="btn-to-2" onclick="pbGo(2)">Continue →</button>
@@ -906,7 +1064,9 @@
         const KEY = "tailorcv_portfolio_builder";
         const loggedIn = document.querySelector(".pb").dataset.loggedIn === "yes";
         const themeNames = {{ themes | tojson }};
-        let state = { theme: "editor", cv: null, step: 1, photo: null, handle: "" };
+        // Default to a free template; the restore-on-load block below upgrades this
+        // to the user's saved choice (and re-checks that it is still unlocked).
+        let state = { theme: {{ (free_theme | default("panels")) | tojson }}, cv: null, step: 1, photo: null, handle: "" };
         function deriveHandle(s) { return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-{2,}/g, "-").replace(/^-+|-+$/g, "").slice(0, 40); }
 
         // ---- persistence (survives the login round-trip) ----
@@ -942,7 +1102,36 @@
             state.theme = el.dataset.theme; save();
         };
         // Choosing a template selects it AND moves straight on to the details form.
-        window.pbPickTheme = function (el) { pbSelectTheme(el); pbGo(2); };
+        // Pro templates are never selected for a free user — the server rejects them
+        // at publish time anyway, so let them upgrade instead of hitting a 402 three
+        // steps later after filling in the whole form.
+        window.pbPickTheme = function (el) {
+            if (el.dataset.locked === "yes") { pbShowProUpsell(el); return; }
+            pbSelectTheme(el); pbGo(2);
+        };
+        window.pbShowProUpsell = function (el) {
+            const name = (el.querySelector(".pb-tpl-foot strong") || {}).textContent || "This template";
+            const demo = el.querySelector(".pb-tpl-demo");
+            let box = document.getElementById("pb-pro-modal");
+            if (box) box.remove();
+            box = document.createElement("div");
+            box.id = "pb-pro-modal";
+            box.innerHTML =
+                '<div class="pb-pro-back"></div>' +
+                '<div class="pb-pro-card">' +
+                  '<div class="pb-pro-ic">🔒</div>' +
+                  '<h3>' + name.split("—")[0].split(" - ")[0].trim() + ' is a Pro template</h3>' +
+                  '<p>Free accounts include 3 templates. Pro unlocks all ' +
+                    document.querySelectorAll(".pb-tpl").length + ' — plus an unbranded site.</p>' +
+                  '<a class="pb-btn pb-btn-next" href="/pricing">Upgrade to Pro →</a>' +
+                  (demo ? '<a class="pb-pro-demo" href="' + demo.href + '" target="_blank" rel="noopener">Preview this template ↗</a>' : '') +
+                  '<button class="pb-pro-close" type="button">Use a free template instead</button>' +
+                '</div>';
+            document.body.appendChild(box);
+            const close = () => box.remove();
+            box.querySelector(".pb-pro-back").addEventListener("click", close);
+            box.querySelector(".pb-pro-close").addEventListener("click", close);
+        };
 
         // ---- shared image downscaler → small base64 JPEG data URL ----
         function pbResizeImage(file, max, cb) {
@@ -1036,7 +1225,7 @@
                         body: JSON.stringify({ cvText: paste }),
                     });
                 }
-                if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.detail || "Could not read the resume."); }
+                if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(tcvErrorMessage(e, "Could not read the resume.")); }
                 const data = await res.json();
                 state.cv = (data && data.cvData) ? data.cvData : data;
                 save();
@@ -1295,9 +1484,15 @@
 
         // ---- restore on load (after login round-trip) ----
         load();
+        // A theme saved before the user's Pro access lapsed (or picked on another
+        // account) can be locked now — never restore a selection they can't publish.
+        var savedCard = document.querySelector('.pb-tpl[data-theme="' + state.theme + '"]');
+        if (savedCard && savedCard.dataset.locked === "yes") { state.theme = null; save(); }
         document.querySelectorAll(".pb-tpl").forEach(t => t.classList.toggle("selected", t.dataset.theme === state.theme));
         if (!document.querySelector(".pb-tpl.selected")) {
-            const first = document.querySelector(".pb-tpl"); if (first) { first.classList.add("selected"); state.theme = first.dataset.theme; }
+            // Fall back to the first template this user may actually publish.
+            const first = document.querySelector('.pb-tpl:not(.locked)') || document.querySelector(".pb-tpl");
+            if (first) { first.classList.add("selected"); state.theme = first.dataset.theme; save(); }
         }
         // Always start fresh at the template gallery (step 1) on a normal visit,
         // EXCEPT right after the login round-trip, where we resume at the details
@@ -1399,7 +1594,7 @@
         }
     </script>
     {% endif %}
-    <script src="/static/auth_nav.js?v=17" defer></script>
+    <script src="/static/auth_nav.js?v=20" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script src="/static/resume_store.js?v=1"></script>
 <script>

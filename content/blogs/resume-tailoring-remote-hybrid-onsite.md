@@ -10,6 +10,14 @@ slug: resume-tailoring-remote-hybrid-onsite
 keywords: remote work resume tips, hybrid job resume, how to tailor resume for remote job, work from home resume 2026, on-site job resume tailoring, remote vs hybrid resume differences
 ---
 
+## Key Takeaways
+
+- Tailor your resume for each work model—remote, hybrid, or on-site—since each attracts different candidates and requires distinct signals.
+- For remote roles, emphasize demonstrated remote work experience, async communication skills, and self-direction in your accomplishments.
+- Include relevant tools for distributed work, such as Slack, Jira, and Google Docs, to showcase your fluency in remote collaboration.
+- Your professional summary should explicitly mention remote work experience and highlight skills in async communication and team coordination.
+
+
 In 2024, "remote work" changed overnight.
 
 Companies that had been fully remote for four years suddenly announced return-to-office mandates.
@@ -25,13 +33,6 @@ If you are applying to remote roles with the same resume you use for on-site app
 This guide breaks down exactly what changes, and how to tailor your resume for each work model. For a broader look at how targeting the right type of employer changes your resume strategy, see also [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise).
 
 ---
-
-## Key Takeaways
-
-- Tailor your resume for each work model—remote, hybrid, or on-site—since each attracts different candidates and requires distinct signals.
-- For remote roles, emphasize demonstrated remote work experience, async communication skills, and self-direction in your accomplishments.
-- Include relevant tools for distributed work, such as Slack, Jira, and Google Docs, to showcase your fluency in remote collaboration.
-- Your professional summary should explicitly mention remote work experience and highlight skills in async communication and team coordination.
 
 ## Why Work Model Changes What Recruiters Look For
 
@@ -69,6 +70,7 @@ Remote work runs on written communication.
 Companies that operate across time zones need people who can communicate clearly without real-time collaboration.
 
 Include signals like:
+
 - "Produced weekly async status updates consumed by a distributed 12-person team across 4 time zones"
 - "Authored technical documentation that reduced onboarding time for new engineers from 3 weeks to 5 days"
 - "Managed stakeholder reporting across US, India, and EU teams via async written briefs"
@@ -83,6 +85,7 @@ Every [bullet point](https://thetailorcv.com/blog/how-to-write-resume-bullet-poi
 **Relevant tools for distributed work**
 Remote teams run on specific tools.
 List the ones you have actually used in your [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description):
+
 - Communication: Slack, Zoom, Teams
 - Project management: Jira, Asana, Linear, Notion, Trello
 - Documentation: Confluence, Notion, Google Docs
@@ -113,6 +116,7 @@ They want presence, energy, collaboration, and culture contribution.
 
 **Physical presence and team culture signals**
 Mention activities that require or benefit from physical co-location:
+
 - Mentoring junior team members in person
 - Running in-person workshops, brainstorming sessions, or whiteboarding
 - Office-based client relationships
@@ -135,11 +139,13 @@ Hybrid is the most ambiguous of the three.
 It usually means 2-3 days in office per week - but companies define it differently.
 
 For hybrid roles, you need to show:
+
 - Comfort with both independent work and team collaboration
 - Flexibility and adaptability
 - Strong communication in both async and in-person contexts
 
 Your resume should include examples from both modes:
+
 - "Managed project roadmap independently, with weekly in-person stakeholder reviews"
 - "Coordinated a cross-timezone team while maintaining on-site collaboration with local engineering team"
 
@@ -152,27 +158,11 @@ Show that you thrive in both.
 
 Job descriptions for remote, hybrid, and on-site roles contain specific keywords.
 
-**Remote JD keywords to match:**
-- Remote
-- Distributed team
-- Async / asynchronous
-- Self-directed
-- Independent contributor
-- Remote-first
-- Digital-first
-
-**On-site JD keywords to match:**
-- In-person collaboration
-- On-site presence
-- Office environment
-- Team culture
-- Physical co-location (less common, but present)
-
-**Hybrid JD keywords:**
-- Hybrid
-- Flexible work model
-- In-office and remote
-- Collaborative environment
+| Option | What to know |
+|---|---|
+| **Remote JD keywords to match:** | Remote · Distributed team · Async / asynchronous · Self-directed · Independent contributor · Remote-first · Digital-first |
+| **On-site JD keywords to match:** | In-person collaboration · On-site presence · Office environment · Team culture · Physical co-location (less common, but present) |
+| **Hybrid JD keywords:** | Hybrid · Flexible work model · In-office and remote · Collaborative environment |
 
 Match the language the JD uses. This is the same principle as [matching resume keywords to the job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) - but applied to work model language, not just skills.
 If the posting says "remote-first," use "remote-first" in your resume.
@@ -182,6 +172,7 @@ Use [TailorCV's keyword matcher](https://www.thetailorcv.com/solutions) to check
 These keywords are often missed because people focus only on technical skill keywords - but work model language contributes to your overall match score.
 
 ---
+
 
 ## What Happens When Your Preference Conflicts With the Role
 
@@ -208,6 +199,13 @@ If you are applying for a remote role but have never worked remotely, address it
 
 One underrated detail: where you list your location.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
+
+
 For **remote roles:** List your city and state but do not over-emphasize. Many remote employers are open to any location.
 For **on-site roles:** List your city explicitly, especially if it is the same city as the office.
 For **hybrid roles:** List your city if you are within reasonable commuting distance of the office.
@@ -222,9 +220,9 @@ Also make sure your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-pro
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### Should I mention my preference for remote/hybrid/on-site on my resume?

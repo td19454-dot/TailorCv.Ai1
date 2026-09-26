@@ -24,19 +24,19 @@ keywords: employment gap resume, how to explain gap in resume, career break resu
 ## Where to Put the Explanation
 
 - **Short gap (under a year):** Switch to year-only dates (`2024 – 2025` instead of `Mar 2024 – Jan 2025`). Many short gaps vanish entirely.
-- **Long gap (12+ months):** Add a short dated entry in your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) section so the timeline has no blank space.
+- **Long gap (12+ months):** Add a short dated entry in your [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) section so the timeline has no blank space.
 - **[Cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work):** One sentence, forward-looking, never defensive.
 
 ## Wording That Works
 
-Add a real, dated line to the [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) section for a long break:
+Add a real, dated line to the [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) section for a long break:
 
 > **Career Break — Full-Time Caregiver** (2024 – 2025)
 > Managed household logistics and part-time freelance design work; completed Google UX certification.
 
-Notice it has a title, dates, and one line of substance. It reads like a [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), not an excuse.
+Notice it has a title, dates, and one line of substance. It reads like a role, not an excuse.
 
-For a **layoff**, the cause was the [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), not you — say so plainly in the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work):
+For a **layoff**, the cause was the company, not you — say so plainly in the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work):
 
 > "My role was eliminated in a company-wide restructuring in 2024. Since then I have completed two freelance analytics projects and a SQL certification."
 
@@ -46,7 +46,7 @@ For **health or personal reasons**, you owe no medical detail:
 
 ## Fill the Gap Retroactively
 
-If the break is still recent, you can add genuine, verifiable activity: freelance work, a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), open-source contributions, volunteering, or a course. One real line of [upskilling](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026) turns "did nothing" into "stayed sharp."
+If the break is still recent, you can add genuine, verifiable activity: freelance work, a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume), open-source contributions, volunteering, or a course. One real line of [upskilling](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) turns "did nothing" into "stayed sharp."
 
 ## What Not to Do
 
@@ -56,7 +56,14 @@ If the break is still recent, you can add genuine, verifiable activity: freelanc
 
 ## How TailorCV Helps
 
-When you tailor a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) to a job, the [ATS scan](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) reads your dates and structure first. Keeping a clean, gap-free timeline with year-based dates means the parser sees continuous employment, and the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) sees a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who is in control of their own story.
+When you tailor a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) to a job, the [ATS scan](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) reads your dates and structure first. Keeping a clean, gap-free timeline with year-based dates means the parser sees continuous employment, and the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) sees a candidate who is in control of their own story.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 ## A Gap-by-Gap Playbook
 
@@ -64,11 +71,11 @@ Not all gaps are the same, and the right move depends on the cause. Here is how 
 
 ### The Layoff or Redundancy
 
-This is the easiest gap to explain because the cause was external. Restructurings, budget cuts, and whole-team layoffs are so common that no [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) blinks at them. State it once, factually, and pivot immediately to what you did next. The mistake people make is sounding wounded. "My [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) was eliminated" is neutral and true; "I was let go" carries a shadow that "eliminated in a restructuring" does not.
+This is the easiest gap to explain because the cause was external. Restructurings, budget cuts, and whole-team layoffs are so common that no [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) blinks at them. State it once, factually, and pivot immediately to what you did next. The mistake people make is sounding wounded. "My role was eliminated" is neutral and true; "I was let go" carries a shadow that "eliminated in a restructuring" does not.
 
 ### The Caregiving Break
 
-Whether you cared for a child, a parent, or a partner, this gap is nothing to hide — millions of strong [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) have one. Give it a real title on the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) ("Career Break — Family Caregiving") so the timeline stays intact, and if you did anything to stay current (a course, freelance work, volunteering), add one line. [Employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) in 2026 are far more comfortable with caregiving breaks than they were a decade ago, and many have explicit returnship programs.
+Whether you cared for a child, a parent, or a partner, this gap is nothing to hide — millions of strong candidates have one. Give it a real title on the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) ("Career Break — Family Caregiving") so the timeline stays intact, and if you did anything to stay current (a course, freelance work, volunteering), add one line. Employers in 2026 are far more comfortable with caregiving breaks than they were a decade ago, and many have explicit returnship programs.
 
 ### The Health Break
 
@@ -76,11 +83,11 @@ You owe no medical detail, ever. "I took a planned break for health reasons and 
 
 ### The Study or Reskilling Break
 
-This is arguably the strongest gap of all, because it shows initiative. Frame it as an investment: "Completed a full-time data analytics bootcamp" or "Earned AWS Solutions Architect [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026) while studying full time." A study gap is not a hole; it is a credential.
+This is arguably the strongest gap of all, because it shows initiative. Frame it as an investment: "Completed a full-time data analytics bootcamp" or "Earned AWS Solutions Architect [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) while studying full time." A study gap is not a hole; it is a credential.
 
 ### The "I Was Just Job Searching" Gap
 
-The hardest one, because there is no external cause and no obvious activity. The fix is to create activity retroactively and going forward: take on a freelance [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), contribute to open source, volunteer your [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) for a nonprofit, or complete a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026). Even a modest, real [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) converts "unemployed and searching" into "kept building while looking."
+The hardest one, because there is no external cause and no obvious activity. The fix is to create activity retroactively and going forward: take on a freelance [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), contribute to open source, volunteer your [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) for a nonprofit, or complete a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume). Even a modest, real project converts "unemployed and searching" into "kept building while looking."
 
 ## How to Talk About the Gap in an Interview
 
@@ -102,17 +109,19 @@ Notice it is three sentences, ends on the future, and never apologizes. Rehearse
 | Dated "Career Break" entry | An honest, accounted-for period | Neutral to positive |
 | Explain + show upskilling | A candidate who stayed sharp | Often a net positive |
 
+
+
 The pattern is clear: honesty plus framing wins, concealment loses.
 
 ## Update Your LinkedIn to Match
 
-[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) cross-check your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) against [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and a mismatch in dates is a genuine red flag. [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) now supports "Career Break" as a formal entry type with categories like caregiving, health, and layoff. Use it. A gap that is openly labeled on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and matched on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) reads as transparent; a gap that appears on one and is hidden on the other reads as evasive.
+[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) cross-check your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) against [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and a mismatch in dates is a genuine red flag. LinkedIn now supports "Career Break" as a formal entry type with categories like caregiving, health, and layoff. Use it. A gap that is openly labeled on LinkedIn and matched on your resume reads as transparent; a gap that appears on one and is hidden on the other reads as evasive.
 
 ## Step by Step: Reworking Your Timeline
 
 If you are staring at a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) with an obvious hole, here is the exact sequence to fix it without lying.
 
-1. **List every real date first.** Write out your actual start and end dates for each [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). You cannot decide how to present a timeline you have not seen clearly.
+1. **List every real date first.** Write out your actual start and end dates for each role. You cannot decide how to present a timeline you have not seen clearly.
 2. **Measure the gap.** Under six months rarely needs anything beyond a formatting tweak. Six to twelve months usually needs one line somewhere. Over twelve months needs a dated entry.
 3. **Switch to year-only dates if it closes the gap.** If you left a job in March 2024 and started looking, then landed a contract in November 2024, `2024 – 2024` erases the visual gap entirely and is completely honest.
 4. **Add a dated bridge entry for long gaps.** Give the period a title, dates, and one real line of substance — freelance, study, caregiving, or volunteering.
@@ -158,7 +167,7 @@ The gap itself is rarely the problem. These reactions to it are:
 - **Fudged dates.** The fastest way to lose an offer at the background-check stage.
 - **Vagueness.** "I was dealing with some things" invites the imagination to fill in the worst.
 - **Defensiveness.** Over-explaining signals that you think the gap is disqualifying, which teaches the interviewer to think so too.
-- **Inconsistency.** A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that says one thing and a [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) or [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) that says another.
+- **Inconsistency.** A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that says one thing and a [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) or [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) answer that says another.
 - **A gap with genuinely nothing in it.** If the break is recent, add one real activity now — a course, a small freelance job, a volunteering stint — so the [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) is never "nothing."
 
 ## Frequently Asked Questions
@@ -179,13 +188,13 @@ If your gap lines up with a widely understood downturn or mass layoff period, a 
 No. [Applicant tracking systems](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) screen for [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats), titles, and parseable structure — not for continuity of employment. A gap only becomes visible when a human reads the parsed timeline, which is why clean formatting and calm framing matter more than the gap's existence.
 
 ### Is a "Career Break" entry seen as padding my resume?
-Not when it is honest and specific. A dated entry with a real title and one line of genuine activity reads as accounting for your time, not inflating your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience). What reads as padding is a vague entry with no substance behind it.
+Not when it is honest and specific. A dated entry with a real title and one line of genuine activity reads as accounting for your time, not inflating your [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026). What reads as padding is a vague entry with no substance behind it.
 
 ### How do I handle multiple gaps?
 Address the most recent and longest gap directly, since that is what a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) focuses on. Older, shorter gaps from several jobs ago rarely come up. If you have a pattern of short gaps, year-only dates often smooth the whole timeline at once.
 
 ## Putting It All Together
 
-A gap is a formatting-and-framing problem, not a character problem. Measure it, present the timeline cleanly with year-based dates or a dated bridge entry, keep your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) in agreement, and rehearse a short, calm verbal version for the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Do that, and the gap stops being the story. The story becomes what you did, what you learned, and why you are the right hire now — which is exactly where you want a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s attention.
+A gap is a formatting-and-framing problem, not a character problem. Measure it, present the timeline cleanly with year-based dates or a dated bridge entry, keep your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) in agreement, and rehearse a short, calm verbal version for the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Do that, and the gap stops being the story. The story becomes what you did, what you learned, and why you are the right hire now — which is exactly where you want a recruiter's attention.
 
 When you run your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) through TailorCV, the [ATS scan](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) reads your dates and structure the way a real parser does, so you can see immediately whether your timeline reads as continuous before a human ever opens it.

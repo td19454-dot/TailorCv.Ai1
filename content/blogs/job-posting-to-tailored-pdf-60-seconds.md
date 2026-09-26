@@ -10,6 +10,14 @@ keywords: tailored resume in 60 seconds, fast resume tailoring, job posting to r
 image: public/blog-images/job-posting-to-tailored-pdf-60-seconds.webp
 ---
 
+## Key Takeaways
+
+- There is a threshold below which a good habit becomes automatic - ten minutes per application sits above it.
+- The full path from posting to tailored PDF breaks into a handful of steps with honest timings.
+- Fast and good sound like opposites, so it is worth being clear about why the quick version is not worse.
+- Run the arithmetic across a whole search and the time saved compounds.
+- The same flow holds on every board, because they all feed the same filter.
+
 Ten minutes to tailor a resume is why most people stop tailoring. So the interesting question is not whether tailoring works — it does — but how far you can compress it without wrecking the quality. The honest answer in 2026 is about sixty seconds, from open posting to downloaded PDF, and this guide walks the exact flow, what happens in each second, and where the quality actually comes from.
 
 ## Why 60 Seconds Is the Number That Matters
@@ -34,6 +42,9 @@ Here is the full path from posting to PDF, using an on-page tool like [TailorCV'
 
 Sixty seconds, posting to PDF, and every second of it maps to something you would have done by hand — just without the file-duplicating, keyword-hunting, reformatting friction.
 
+
+![Turning an Indeed job posting into a tailored resume without leaving the page](public/blog-images/extension-on-indeed.webp)
+
 ## Where the Quality Comes From
 
 Fast and good sound like opposites, so it is worth being clear about why the sixty-second version is not worse.
@@ -46,9 +57,12 @@ Run the arithmetic across a real search and the compression compounds.
 
 Twenty-five applications a month at ten minutes each is over four hours of tailoring — the exact hours people do not have, so they skip it. At one minute each, it is twenty-five minutes total. That is not just time saved; it is the difference between tailoring every application and tailoring none by week three. The reply rate on twenty-five *matched* applications is a different universe from twenty-five generic ones, and our [tailored vs generic resume](/blog/tailored-vs-generic-resume) piece shows the gap. Speed here does not trade against quality — it *protects* quality by keeping the habit alive.
 
+
 ## The Objections, Answered Honestly
 
 Fast anything invites suspicion, and some of it is fair. Here are the real objections and honest answers.
+
+
 
 **"Sixty seconds means it is shallow."** The depth was never in the minutes — it was in whether the resume carries the right terms and reads true. A careful human spends most of ten minutes on mechanics (copy-paste, reformatting, file naming), not on the two decisions that matter. Automating the mechanics does not make the decisions shallower; it just stops you spending nine minutes on drudgery. The [best keywords](/blog/best-resume-keywords-to-beat-ats) either land or they do not, regardless of how long it took.
 

@@ -10,8 +10,6 @@ slug: devops-engineer-portfolio-guide
 keywords: devops portfolio, sre portfolio, infrastructure as code portfolio, devops engineer portfolio website, kubernetes portfolio
 ---
 
-DevOps and SRE work is often invisible until something breaks - which makes it hard to show on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you demonstrate the pipelines, infrastructure, and incident response that keep systems reliable. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
-
 ## Key Takeaways
 
 - Include Infrastructure-as-code repos, CI/CD pipeline projects, observability setups, incident write-ups, and relevant certifications in your DevOps portfolio.
@@ -20,12 +18,18 @@ DevOps and SRE work is often invisible until something breaks - which makes it h
 - Keep your resume and portfolio aligned in terms of technology stack and project scale to present a cohesive narrative.
 - Avoid common mistakes such as listing tools without context, sharing sensitive information, and providing dead links or expired environments.
 
+
+DevOps and SRE work is often invisible until something breaks - which makes it hard to show on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you demonstrate the pipelines, infrastructure, and incident response that keep systems reliable. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
+
 ## What to Include
-- **Infrastructure-as-code repos** - Terraform, Pulumi, or CloudFormation modules with clear READMEs
-- **CI/CD pipeline projects** - a working pipeline (GitHub Actions, GitLab CI, Jenkins) with build, test, and deploy stages documented
-- **Observability setups** - dashboards or alerting configs (Grafana, Prometheus, Datadog) built for a real or side project
-- **Incident write-ups** - a sanitized postmortem showing root cause, remediation, and prevention steps
-- **Certifications** - AWS/GCP/Azure certifications, CKA/CKAD, HashiCorp certifications
+
+| What to include | Why |
+|---|---|
+| **Infrastructure-as-code repos** | Terraform, Pulumi, or CloudFormation modules with clear READMEs |
+| **CI/CD pipeline projects** | a working pipeline (GitHub Actions, GitLab CI, Jenkins) with build, test, and deploy stages documented |
+| **Observability setups** | dashboards or alerting configs (Grafana, Prometheus, Datadog) built for a real or side project |
+| **Incident write-ups** | a sanitized postmortem showing root cause, remediation, and prevention steps |
+| **Certifications** | AWS/GCP/Azure certifications, CKA/CKAD, HashiCorp certifications |
 
 ## Frame Reliability, Not Just Tools
 Listing "Kubernetes, Terraform, Prometheus" tells a hiring manager what you have used, not what you improved. For each project:
@@ -39,9 +43,16 @@ Listing "Kubernetes, Terraform, Prometheus" tells a hiring manager what you have
 - **A personal site** via the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) - to narrate the projects and link out to the repos
 - A short architecture diagram or Loom-style walkthrough embedded on your site for complex systems
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), and portfolio should tell the same story - same tech stack, same scale (traffic, node count, team size) - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), and portfolio should tell the same story - same tech stack, same scale (traffic, node count, team size) - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See How to Add Your Portfolio Link to Your Resume for placing the link correctly.
 
 ## Common Mistakes
 - A list of tools with no project or outcome behind them
@@ -92,6 +103,8 @@ Creating case studies is an effective way to showcase your work. Follow these st
 ## Common Mistakes to Avoid
 
 When creating your DevOps portfolio, be mindful of these common pitfalls:
+
+
 
 - **Overloading with Technical Jargon**: While it's important to demonstrate your technical knowledge, avoid excessive jargon that may alienate non-technical viewers. Aim for clarity and accessibility.
 
@@ -166,7 +179,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, stack, and strongest projects are easier to discover.
 

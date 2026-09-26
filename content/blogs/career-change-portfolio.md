@@ -4,11 +4,10 @@ date: 2026-07-12
 author: TailorCV Team
 slug: career-change-portfolio
 image: public/blog-images/career-change-portfolio.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
-
-## Career Change Portfolio: Prove Skills From a New Field
-
-When you switch fields, your resume works against you - it is full of the *old* career. A portfolio flips the script: it proves you can already do the *new* work, which is the only thing a skeptical hiring manager actually cares about. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the [Career Change Resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ## Key Takeaways
 
@@ -17,6 +16,10 @@ When you switch fields, your resume works against you - it is full of the *old* 
 - Clearly connect your past experience to your new career by showcasing how your old skills can be an asset in the new context.
 - Craft a compelling narrative that explains your career pivot, including your motivation, completed projects, and future aspirations.
 - Quantify achievements from both your previous and new projects to highlight your impact and capabilities across industries.
+
+## Career Change Portfolio: Prove Skills From a New Field
+
+When you switch fields, your resume works against you - it is full of the *old* career. A portfolio flips the script: it proves you can already do the *new* work, which is the only thing a skeptical hiring manager actually cares about. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the [Career Change Resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ## Lead With New-Field Projects
 
@@ -72,7 +75,7 @@ Use results from your [old career](https://thetailorcv.com/blog/online-cv-maker-
 
 ## Publish and Align
 
-Generate your [career-change portfolio](https://thetailorcv.com/blog/portfolio-website-for-job-applications) from your resume with the [portfolio builder](https://thetailorcv.com/portfolio), then mirror it in a [career-change resume](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and the [Career Change to Tech guide](https://thetailorcv.com/blog/career-change-to-tech-guide).
+Generate your [career-change portfolio](https://thetailorcv.com/blog/portfolio-website-for-job-applications) from your resume with the [portfolio builder](https://thetailorcv.com/portfolio), then mirror it in a [career-change resume](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and the Career Change to Tech guide.
 
 ### Key Alignment Tips
 
@@ -83,10 +86,17 @@ Generate your [career-change portfolio](https://thetailorcv.com/blog/portfolio-w
 
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ## Common Mistakes
 
 - A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) still anchored in the old field.
-- No new-field [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), only courses.
+- No new-field [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), only courses.
 - Apologizing for the switch instead of owning it.
 - In[consistent messaging](https://thetailorcv.com/blog/resume-review-checklist-before-applying) across your resume, LinkedIn, and portfolio.
 
@@ -112,7 +122,7 @@ By following these steps and avoiding common pitfalls, you can create a compelli
 
 ### Can a portfolio really overcome no experience in the new field?
 
-Often yes - concrete [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) in the target field are exactly the proof employers need to take a chance on a switcher. Consider using an [AI portfolio builder](https://www.thetailorcv.com/portfolio) to showcase your work effectively.
+Often yes - concrete [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) in the target field are exactly the proof employers need to take a chance on a switcher. Consider using an [AI portfolio builder](https://www.thetailorcv.com/portfolio) to showcase your work effectively.
 
 ### How many new-field projects do I need?
 
@@ -139,10 +149,11 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 - [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
+- [Teacher and Educator Portfolio Guide: Showcase Your Classroom Impact](https://thetailorcv.com/blog/teacher-educator-portfolio-guide)
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

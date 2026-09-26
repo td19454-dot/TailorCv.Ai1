@@ -10,14 +10,6 @@ keywords: job description requires certification I don't have, resume matching m
 image: public/blog-images/matching-resume-to-certifications-in-job-description.webp
 ---
 
-You find a role that fits everything else, the responsibilities, the seniority level, the industry, but the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) lists a certification you do not have yet. A PMP for a project manager role. An AWS certification for a cloud role. A CPA for a senior accounting position. Do you apply anyway, and if you do, how do you handle it on your resume?
-
-This is one of the most common gaps candidates face when trying to [match their resume to a job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), and how you handle it matters more than most people realize.
-
-Check how a missing certification affects your overall match score with the [TailorCV ATS score checker](/solutions) before deciding whether to apply.
-
----
-
 ## Key Takeaways
 
 - Assess the importance of a missing certification by determining if it is required, preferred, or legally mandatory before applying.
@@ -25,6 +17,15 @@ Check how a missing certification affects your overall match score with the [Tai
 - Highlight equivalent experience if you lack a formal certification, and consider addressing the gap in your cover letter.
 - Avoid applying for roles that require a legal or safety certification you do not possess and cannot obtain before the start date.
 - If a certification frequently appears in job postings, prioritize obtaining it through expedited or online courses.
+
+
+You find a role that fits everything else, the responsibilities, the seniority level, the industry, but the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) lists a certification you do not have yet. A PMP for a project manager role. An AWS certification for a cloud role. A CPA for a senior accounting position. Do you apply anyway, and if you do, how do you handle it on your resume?
+
+This is one of the most common gaps candidates face when trying to [match their resume to a job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), and how you handle it matters more than most people realize.
+
+Check how a missing certification affects your overall match score with the [TailorCV ATS score checker](/solutions) before deciding whether to apply.
+
+---
 
 ## First, Figure Out How "Required" the Certification Really Is
 
@@ -70,7 +71,7 @@ Read [resume tailoring for underqualified candidates](https://thetailorcv.com/bl
 If a certification keeps appearing across postings you want to apply to, it is worth prioritizing:
 
 - Check if a compressed or online certification path exists for a faster completion timeline
-- Look at [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026) for lower-cost or free alternatives that can still strengthen your resume
+- Look at [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) for lower-cost or free alternatives that can still strengthen your resume
 - Once earned or in progress, update your resume immediately using [how to list certifications on your resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 ---
@@ -93,11 +94,20 @@ Precision here builds credibility rather than undermining it.
 
 Paste the job description into [TailorCV's resume optimizer](/solutions) to see exactly how much a missing certification affects your overall match score, and which other requirements you should emphasize to offset the gap. TailorCV highlights your closest equivalent experience so it reads as strongly as possible alongside an honest certification status.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ---
 
 ## Common Mistakes to Avoid When Addressing Missing Certifications
 
 When navigating the challenges of missing certifications, it's easy to make mistakes that can hinder your job application process. Here are some common pitfalls to watch out for:
+
+
 
 1. **Ignoring the Certification Requirement**: Some candidates may overlook the importance of the certification altogether. If it’s listed as a requirement, even if it's labeled as "preferred," acknowledging it in your application is crucial.
 
@@ -177,7 +187,7 @@ Track which certifications repeatedly appear across job descriptions in your tar
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications)
 - [How to List Certifications on Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
+- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
 - [Resume Tailoring for Underqualified Candidates](https://thetailorcv.com/blog/resume-tailoring-underqualified)
 - [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
 - [Resume Matching for Security-Clearance and Government-Contractor Job Descriptions](https://thetailorcv.com/blog/matching-resume-security-clearance-jobs)

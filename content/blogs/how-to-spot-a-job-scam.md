@@ -10,12 +10,6 @@ keywords: how to spot a job scam, fake job posting red flags, recruiter scam war
 image: public/blog-images/how-to-spot-a-job-scam.webp
 ---
 
-Job scams have gotten more sophisticated as remote hiring has grown - fake recruiters now use real company branding, cloned LinkedIn profiles, and convincing interview processes to steal personal information or money from job seekers. Knowing the specific red flags can save you from a scam that looks, at first glance, exactly like a real opportunity.
-
-Scammers succeed by exploiting two things every job seeker feels: urgency and hope. When you have been applying for weeks, a fast, friendly, well-paid offer is exactly what you want to believe. This guide breaks down the red flags, the common scam formats in 2026, how to verify any opportunity in minutes, and what to do if you have already shared information. While you verify any opportunity, keep your actual job search moving with the [free ATS score checker](https://www.thetailorcv.com/solutions) so a scam does not cost you momentum on legitimate applications.
-
----
-
 ## Key Takeaways
 
 - Be cautious of any job offer that requires upfront payment for equipment, training, or background checks, as legitimate employers do not ask for this.
@@ -23,6 +17,13 @@ Scammers succeed by exploiting two things every job seeker feels: urgency and ho
 - Common scam formats include check-cashing scams, task scams that bait with small payments, and data-harvesting schemes that collect personal information without a real job.
 - Verify job opportunities by checking the company's official careers page, searching for the recruiter's name, and inspecting email domains for authenticity.
 - Trust your instincts; if something feels off about the pacing or communication style, it may be a scam.
+
+
+Job scams have gotten more sophisticated as remote hiring has grown - fake recruiters now use real company branding, cloned LinkedIn profiles, and convincing interview processes to steal personal information or money from job seekers. Knowing the specific red flags can save you from a scam that looks, at first glance, exactly like a real opportunity.
+
+Scammers succeed by exploiting two things every job seeker feels: urgency and hope. When you have been applying for weeks, a fast, friendly, well-paid offer is exactly what you want to believe. This guide breaks down the red flags, the common scam formats in 2026, how to verify any opportunity in minutes, and what to do if you have already shared information. While you verify any opportunity, keep your actual job search moving with the [free ATS score checker](https://www.thetailorcv.com/solutions) so a scam does not cost you momentum on legitimate applications.
+
+---
 
 ## The Biggest Red Flags
 
@@ -95,10 +96,13 @@ A well-organized search is also a safer search: when you know exactly which real
 
 Understanding job scams is crucial, but seeing real-life scenarios can help solidify your knowledge. Here are three hypothetical situations to illustrate how to identify scams effectively:
 
+
+
 ### Scenario 1: The Too-Good-To-Be-True Offer
 You receive an email from a company claiming to be a Fortune 500 firm offering you a managerial position with a salary that’s significantly higher than industry standards. The catch? They request that you pay for a background check or training materials upfront. 
 
 **Red Flags:**
+
 - Unsolicited job offer with no prior application.
 - Request for payment before employment.
 - Salary that seems excessively high compared to your experience.
@@ -107,6 +111,7 @@ You receive an email from a company claiming to be a Fortune 500 firm offering y
 A recruiter reaches out on LinkedIn, expressing interest in your profile and offering a job that matches your skills perfectly. However, the message contains numerous grammatical errors and asks you to click a link to view the job description.
 
 **Red Flags:**
+
 - Poor language and spelling mistakes.
 - Request to click on an unknown link.
 - Lack of a professional company email address.
@@ -115,6 +120,7 @@ A recruiter reaches out on LinkedIn, expressing interest in your profile and off
 You find a job posting online with minimal details about the role and responsibilities. It emphasizes immediate hiring and encourages applicants to apply quickly. The application process involves filling out a form that asks for sensitive personal information, like your Social Security number.
 
 **Red Flags:**
+
 - Vague job descriptions with no specifics.
 - Urgency to apply without proper vetting.
 - Requests for personal information early in the process.
@@ -122,6 +128,13 @@ You find a job posting online with minimal details about the role and responsibi
 ## Step-by-Step Checklist for Evaluating Job Postings
 
 When you come across a job posting or a recruiter message, follow this straightforward checklist to assess its legitimacy:
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
 
 1. **Research the Company:**
    - Look up the company’s official website.
@@ -178,7 +191,7 @@ Remote postings are targeted more often simply because there's no in-person veri
 
 ### Is it a scam if they want a video interview?
 
-No - a real video interview is actually a good sign. Be cautious of the opposite: a process that avoids video entirely and stays only in text chat. If you do get a real interview, prepare properly with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+No - a real [video interview](https://thetailorcv.com/blog/video-interview-tips-2026) is actually a good sign. Be cautious of the opposite: a process that avoids video entirely and stays only in text chat. If you do get a real interview, prepare properly with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ### Can a scam happen even on legitimate job boards?
 

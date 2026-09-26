@@ -14,6 +14,18 @@ class User(Base):
     email = Column(String(255), unique=True, index=True, nullable=False)
     hashed_password = Column("password", String(255), nullable=False)
     pro_until = Column(DateTime, nullable=True)                        # Pro iff pro_until > utcnow()
+    # JSON list of skills the candidate personally confirmed they have when shown
+    # their gaps. The tailoring prompt refuses to claim a skill the uploaded
+    # resume does not evidence, which is correct for the MODEL - but the person
+    # is a different source of truth, and their answer used to live only in the
+    # editing session. The Chrome extension re-tailors from the stored base
+    # resume with no confirm step, so every extension run silently dropped every
+    # skill they had ever ticked. Persisted here so it survives both.
+    confirmed_skills = Column(Text, nullable=True)
+    # Chrome extension "Add all automatically": when on, every tailor writes
+    # every missing JD skill onto the resume instead of asking. Opt-in only,
+    # set from the extension's skills pop-up, cleared from its account menu.
+    ext_auto_add_skills = Column(Boolean, nullable=True, default=False)
     plan_provider = Column(String(20), nullable=True)                  # "razorpay" | "polar"
     razorpay_subscription_id = Column(String(100), nullable=True)
     polar_subscription_id = Column(String(100), nullable=True)
@@ -50,6 +62,15 @@ class User(Base):
     base_cover_letter_path = Column(String(500), nullable=True)
     base_cover_letter_filename = Column(String(255), nullable=True)
     base_cover_letter_generated_at = Column(DateTime, nullable=True)
+    # Stored application-form autofill profile used by the Chrome extension.
+    application_profile_json = Column(Text, nullable=True)
+    # Marketing-broadcast suppression (SES campaigns only — never applies to
+    # transactional mail sent via Resend). Set by the /unsubscribe link or by an
+    # SES bounce/complaint webhook; any one of these three excludes the user from
+    # the next campaign send.
+    marketing_opt_out = Column(Boolean, nullable=False, default=False, server_default="false")
+    email_bounced_at = Column(DateTime, nullable=True)
+    email_complained_at = Column(DateTime, nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
@@ -213,6 +234,26 @@ class GuestAtsScan(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
 
 
+class BlogRating(Base):
+    """A single 1-5 star rating for one blog post.
+
+    One row per rater per post, deduped on (slug, voter_hash) so a refresh
+    or a second click updates the existing vote instead of stuffing the
+    average. voter_hash is a salted hash of the client IP - readers are
+    almost always logged out, so there is no user id to key on, and we do
+    not want to store raw IPs.
+    """
+    __tablename__ = "blog_ratings"
+    __table_args__ = (UniqueConstraint("slug", "voter_hash", name="uq_blog_rating_voter"),)
+
+    id = Column(Integer, primary_key=True, index=True)
+    slug = Column(String(255), nullable=False, index=True)
+    rating = Column(Integer, nullable=False)
+    voter_hash = Column(String(64), nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+
 class FeedbackSubmission(Base):
     """Survey submitted from email campaign links (/feedback?reason=...).
 
@@ -266,6 +307,8 @@ class UsageRecord(Base):
     # it goes through enforce_quota()'s lifetime-free rule instead (see
     # FREE_LIMITS in main.py) and is unlimited for Pro.
     autofills = Column(Integer, default=0, nullable=False)
+    cv_uploads = Column(Integer, default=0, nullable=False)
+    template_changes = Column(Integer, default=0, nullable=False)
 
     __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
 

@@ -10,6 +10,14 @@ slug: resume-margins-spacing-formatting
 keywords: resume margins, resume spacing, resume layout, resume formatting guide, resume line spacing, resume white space, how to format a resume 2026, resume page setup
 ---
 
+## Key Takeaways
+
+- Use standard margins of 0.75-1 inch for a professional appearance; avoid going below 0.5 inch to maintain readability.
+- Line spacing should be set between 1.0-1.15 for paragraphs and bullets, with 6-12pt space between sections for clarity.
+- Utilize white space effectively to enhance document scan-ability and prevent a cluttered look.
+- A single-column layout is recommended for ATS compatibility and recruiter preference, while two-column formats should generally be avoided.
+
+
 Resume formatting is not glamorous - but it is the difference between a resume that gets read and one that gets skipped. Correct margins, spacing, and layout create a document that looks professional, scans easily for recruiters, and parses correctly for [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems.
 
 This guide covers the exact measurements and formatting rules for a polished, readable resume in 2026.
@@ -17,13 +25,6 @@ This guide covers the exact measurements and formatting rules for a polished, re
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that has these settings pre-configured, then use this guide to understand and adjust them. Check your final resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
 ---
-
-## Key Takeaways
-
-- Use standard margins of 0.75-1 inch for a professional appearance; avoid going below 0.5 inch to maintain readability.
-- Line spacing should be set between 1.0-1.15 for paragraphs and bullets, with 6-12pt space between sections for clarity.
-- Utilize white space effectively to enhance document scan-ability and prevent a cluttered look.
-- A single-column layout is recommended for ATS compatibility and recruiter preference, while two-column formats should generally be avoided.
 
 ## Resume Margins: The Exact Numbers
 
@@ -65,12 +66,14 @@ Add 2-4pt of space after a section header before the first item under it. This c
 ## White Space: The Underrated Element
 
 White space is the empty space on your resume. Used correctly, it:
+
 - Makes the document easier to scan
 - Prevents the overwhelmed feeling of a wall-of-text resume
 - Creates visual separation between sections
 - Signals organization and professionalism
 
 **White space rules:**
+
 - Never fill every inch of white space just to look "full"
 - Let [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) breathe - do not stack 8+ bullets without visual breaks
 - Use consistent spacing between every section
@@ -85,6 +88,7 @@ A clean, well-spaced one-page resume is vastly preferable to a cramped two-page 
 ### Single Column: Strongly Recommended
 
 A single-column layout is:
+
 - **[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible**: [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) reads left to right, top to bottom. Single column parses reliably.
 - **Recruiter-preferred**: The natural [scan pattern recruiters use](https://thetailorcv.com/blog/how-recruiters-read-resumes) is a top-to-bottom F-shape - single column supports this perfectly.
 - **Printer-friendly**: No alignment issues across pages
@@ -92,6 +96,7 @@ A single-column layout is:
 ### Two Column: Avoid for Most Uses
 
 Two-column resumes look visually appealing but have serious drawbacks:
+
 - **[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) failure**: Many [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems read two-column resumes incorrectly, mixing content from both columns, losing information, or scrambling your experience data
 - **Scan issues**: The right column is often skipped in the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes)'s first scan
 - **Mobile readability**: Two columns are difficult to read on phones
@@ -105,6 +110,13 @@ This is one of the most common ATS resume formatting mistakes. Read [10 ATS resu
 ## Section Spacing Hierarchy
 
 Create visual hierarchy through consistent spacing:
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 1. **Resume name** - Largest text on the page (18-24pt), followed by contact info
 2. **Section headers** - Bold, consistent size (12-14pt or same as body, bold), with clear space above and below
@@ -121,6 +133,7 @@ Never mix indentation styles or spacing patterns within the same section.
 The biggest formatting mistake is inconsistency. Small inconsistencies signal carelessness to recruiters and can confuse [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsing.
 
 **Dates:** Use the same format throughout.
+
 - Correct: "Jan 2021 - Mar 2023" or "January 2021 - March 2023" or "01/2021 - 03/2023"
 - Wrong: mixing formats in the same document
 
@@ -135,6 +148,8 @@ The biggest formatting mistake is inconsistency. Small inconsistencies signal ca
 ## Resume Layout Checklist
 
 Before submitting your resume, verify:
+
+
 
 - [ ] Margins are 0.5-1 inch on all sides
 - [ ] Body font is 10-11pt (never below 10pt)
@@ -209,4 +224,4 @@ White space is crucial in a resume layout as it enhances readability and allows 
 While it might be tempting to use tighter margins to include more content, it's essential to maintain a minimum margin of 0.5 inches. If you have high-value content that exceeds the space available, consider editing out less relevant information instead of cramming everything in. For insights on what to keep or remove, read our article on [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
 
 ### How can I check if my resume is ATS-friendly?  
-To ensure your resume is ATS-compatible, you can use the free ATS score checker available on our website. This tool evaluates your document's formatting and content to help you identify any issues that could prevent it from being parsed correctly by applicant tracking systems. For more details on common mistakes that could lead to rejection, check out our list of [10 ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
+To ensure your resume is ATS-compatible, you can use the free [ATS score checker](https://thetailorcv.com/blog/ats-score-checker-free) available on our website. This tool evaluates your document's formatting and content to help you identify any issues that could prevent it from being parsed correctly by applicant tracking systems. For more details on common mistakes that could lead to rejection, check out our list of [10 ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).

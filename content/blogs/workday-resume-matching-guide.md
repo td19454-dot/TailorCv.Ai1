@@ -10,6 +10,15 @@ keywords: workday resume, workday ats, workday resume format, match resume to wo
 image: public/blog-images/workday-resume-matching-guide.webp
 ---
 
+## Key Takeaways
+
+- Workday's parsing differs from generic ATS platforms, affecting how resumes are scored and matched to job descriptions.
+- The auto-fill extraction process can lead to matching failures if resumes use complex formatting like multi-columns or tables.
+- Workday scores resumes based on exact keyword matches, making it crucial to align your skills with the job description.
+- Always check and correct auto-filled fields before submitting your application, as errors can lead to disqualification.
+- Use a single-column layout, standard section headers, and save as .docx or text-based PDFs to improve parsing accuracy.
+
+
 Workday is the [ATS](https://thetailorcv.com/blog/ats-score-guide) behind more Fortune 500 job applications than almost any other platform. If you have applied to a large company recently, you have probably typed your work history into a Workday form and wondered whether it even read your resume.
 
 It did. But Workday parses differently than a generic [ATS](https://thetailorcv.com/blog/ats-score-guide), and it scores differently too. A resume that is perfectly [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) on one platform can still lose points on Workday if you do not understand its quirks.
@@ -19,14 +28,6 @@ This guide covers exactly how Workday parses and ranks resumes, and how to [matc
 Check your resume against any job description in seconds with the [TailorCV ATS score checker](/solutions) before you submit it through Workday.
 
 ---
-
-## Key Takeaways
-
-- Workday's parsing differs from generic ATS platforms, affecting how resumes are scored and matched to job descriptions.
-- The auto-fill extraction process can lead to matching failures if resumes use complex formatting like multi-columns or tables.
-- Workday scores resumes based on exact keyword matches, making it crucial to align your skills with the job description.
-- Always check and correct auto-filled fields before submitting your application, as errors can lead to disqualification.
-- Use a single-column layout, standard section headers, and save as .docx or text-based PDFs to improve parsing accuracy.
 
 ## What Makes Workday Different From Other ATS Platforms
 
@@ -69,6 +70,13 @@ Workday applications almost always include extra screener questions ("Do you hav
 | Save as .docx or PDF (text-based, not scanned) | Workday's parser reads text layers, not images |
 | Spell out dates clearly (Month Year - Month Year) | Ambiguous date formats can break the employment-history field |
 | List job titles exactly as held | Workday matches parsed titles against the job's title requirements |
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 Start from an [ATS-friendly resume template](/templates) built for exactly this kind of parsing, so you are not troubleshooting formatting after the fact.
 
@@ -119,10 +127,12 @@ To better understand how to tailor your resume for Workday, let’s look at a co
 ### Example 1: Marketing Manager Position
 
 **Job Description Highlights:**
+
 - Required: 5+ years in digital marketing, proficiency in SEO and SEM, experience with Google Analytics.
 - Preferred: Familiarity with CRM tools, content management systems, and social media strategy.
 
 **Matching Strategy:**
+
 1. **Keywords:** Ensure your resume includes terms like "digital marketing," "SEO," "SEM," and "Google Analytics." Highlight these skills in your professional experience section.
 2. **Accomplishments:** Quantify your achievements. For instance, "Increased organic traffic by 30% through targeted SEO strategies" demonstrates your proficiency and aligns with the required qualifications.
 3. **Preferred Qualifications:** While not mandatory, mention your experience with CRM tools and content management systems. This can be included in a separate section titled “Additional Skills” or during your job responsibilities.
@@ -130,10 +140,12 @@ To better understand how to tailor your resume for Workday, let’s look at a co
 ### Example 2: Software Engineer Role
 
 **Job Description Highlights:**
+
 - Required: Proficient in Python and Java, understanding of cloud technologies.
 - Preferred: Experience with Agile methodologies, knowledge of DevOps practices.
 
 **Matching Strategy:**
+
 1. **Technical Skills Section:** Clearly list Python and Java under your technical skills. Use bullet points for clarity.
 2. **Project Descriptions:** Include specific projects where you utilized cloud technologies. For example, "Developed a cloud-based application using Python and deployed it on AWS."
 3. **Agile and DevOps:** Even if these are preferred qualifications, mention any experience you have with Agile methodologies, such as "Worked in a Scrum team to deliver software updates bi-weekly."
@@ -141,6 +153,8 @@ To better understand how to tailor your resume for Workday, let’s look at a co
 ## Step-by-Step Checklist for Workday Resume Preparation
 
 To ensure your resume passes through the Workday ATS effectively, follow this checklist:
+
+
 
 1. **Analyze the Job Description:**
    - Highlight required and preferred qualifications.

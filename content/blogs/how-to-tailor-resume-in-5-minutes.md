@@ -10,12 +10,6 @@ slug: how-to-tailor-resume-in-5-minutes
 keywords: how to tailor a resume in 5 minutes, quick resume tailoring, resume customization checklist, tailor resume fast, resume tailoring tips
 ---
 
-The number one reason qualified candidates don't get interviews is sending the same resume to every job. The fix is not rewriting your resume - it is making five targeted changes in five minutes. This checklist tells you exactly what to change, in order, before every application.
-
-Run your tailored resume through the [free ATS checker](/solutions) to confirm your changes hit the mark.
-
----
-
 ## Key Takeaways
 
 - Tailoring your resume instead of sending a generic one significantly increases your chances of landing interviews.
@@ -23,6 +17,13 @@ Run your tailored resume through the [free ATS checker](/solutions) to confirm y
 - Highlight key terms from the job posting, including job title, required skills, and desired outcomes, to guide your changes.
 - Ensure your professional summary reflects the job's language and includes relevant skills and outcomes you can deliver.
 - Adjust your skills section to match the exact terminology used in the job posting and prioritize must-have skills.
+
+
+The number one reason qualified candidates don't get interviews is sending the same resume to every job. The fix is not rewriting your resume - it is making five targeted changes in five minutes. This checklist tells you exactly what to change, in order, before every application.
+
+Run your tailored resume through the [free ATS checker](/solutions) to confirm your changes hit the mark.
+
+---
 
 ## Why 5 Minutes Is Enough
 
@@ -33,6 +34,13 @@ For why this matters at the [ATS](https://thetailorcv.com/blog/what-is-a-good-at
 ---
 
 ## The 5-Minute Resume Tailoring Checklist
+
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
 
 ### Minute 1 - Read the Job Description Once, Highlight Key Terms
 
@@ -115,9 +123,12 @@ This takes another 60 seconds and removes guesswork. See [how to check your ATS 
 
 ---
 
+
 ## What NOT to Change Every Time
 
 You do not need to rewrite:
+
+
 
 - Your work experience bullets (unless you want to reorder them)
 - Your [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) section
@@ -166,9 +177,9 @@ Yes. Matching your headline, summary, and skills to the job description are the 
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## Conclusion
 Tailoring your resume is not about rewriting it from scratch - it is about a fast, systematic top-layer update that tells both the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and the recruiter you are the right fit for *this specific role*. Run the checklist, verify with a tool, and move on. Consistency beats perfection.

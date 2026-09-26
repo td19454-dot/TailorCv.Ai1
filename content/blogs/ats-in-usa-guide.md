@@ -10,8 +10,6 @@ keywords: ats in usa, us ats systems, ats resume usa, beat ats america
 image: public/blog-images/ats-in-usa-guide.webp
 ---
 
-Understanding how Applicant Tracking Systems (ATS) work is crucial for job seekers in the United States. These systems are designed to streamline the hiring process by filtering resumes before they even reach a human recruiter. With a significant percentage of companies employing ATS, knowing how to optimize your resume for these systems can greatly enhance your chances of landing that coveted interview. In this article, we'll delve into the intricacies of ATS, explore best practices for crafting an [ATS-friendly resume](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), and provide actionable strategies tailored for job seekers, including new graduates, international candidates, and those seeking visa sponsorship.
-
 ## Key Takeaways
 
 - Applicant Tracking Systems (ATS) automate the recruitment process by parsing, ranking, and filtering resumes based on specific criteria.
@@ -19,6 +17,9 @@ Understanding how Applicant Tracking Systems (ATS) work is crucial for job seeke
 - Use standard fonts and headings, avoid graphics, and keep the design simple for better ATS readability.
 - Tailor your resume for each job application by customizing content and incorporating the exact job title to align with ATS criteria.
 - Early-career candidates should aim for a one-page resume focused on relevant experiences and skills.
+
+
+Understanding how Applicant Tracking Systems (ATS) work is crucial for job seekers in the United States. These systems are designed to streamline the hiring process by filtering resumes before they even reach a human recruiter. With a significant percentage of companies employing ATS, knowing how to optimize your resume for these systems can greatly enhance your chances of landing that coveted interview. In this article, we'll delve into the intricacies of ATS, explore best practices for crafting an [ATS-friendly resume](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), and provide actionable strategies tailored for job seekers, including new graduates, international candidates, and those seeking visa sponsorship.
 
 ## What is an ATS?
 
@@ -61,9 +62,11 @@ To beat the ATS and improve your chances of landing a job, follow these guidelin
 **Example**:
 
 Instead of saying:
+
 - "Responsible for managing a team."
 
 Say:
+
 - "Led a team of 5 to achieve a 20% increase in project efficiency over six months."
 
 ### 4. Tailor Your Resume for Each Job
@@ -78,6 +81,13 @@ For early-career candidates, a one-page resume is often preferred. Focus on rele
 ## Utilizing TailorCV Tools
 
 To further enhance your resume and job search strategy, consider leveraging tools available on [TailorCV](https://www.thetailorcv.com):
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
+
 
 - **[Free ATS Score Checker](https://www.thetailorcv.com/solutions)**: Assess how well your resume performs against ATS criteria.
 - **[Resume Templates](https://www.thetailorcv.com/templates)**: Use professionally designed templates that are ATS-friendly.
@@ -95,6 +105,7 @@ For more detailed information on this topic, check out our guide on [Resume for 
 ## The Importance of Cover Letters
 
 A well-crafted cover letter can complement your resume and give you an edge over other candidates. Use the [AI Cover Letter Generator](https://www.thetailorcv.com/cover-letter) to create a compelling cover letter tailored to your target job.
+
 
 ## Preparing for Interviews
 

@@ -10,12 +10,6 @@ keywords: recession proof jobs 2026, recession proof careers, jobs that are safe
 image: public/blog-images/recession-proof-jobs-2026.webp
 ---
 
-No job is truly "recession-proof," but some fields are consistently more resistant to mass layoffs than others - because the demand for them doesn't disappear when budgets tighten. Healthcare, essential infrastructure, and cost-saving roles tend to hold steady while discretionary spending categories get cut first, which is a very different risk profile than jobs tied to [AI-proof careers](https://thetailorcv.com/blog/ai-proof-jobs-2026) or other emerging-risk categories.
-
-If you're evaluating a move into a more stable field, start by checking how your current resume would score against roles in that industry with the [free ATS score checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - No job is completely "recession-proof," but certain fields like healthcare and essential infrastructure are more resistant to layoffs due to consistent demand.
@@ -23,6 +17,13 @@ If you're evaluating a move into a more stable field, start by checking how your
 - Healthcare roles, particularly nursing and pharmacy, remain in demand regardless of economic conditions, with most spending backed by insurance or government funding.
 - Skilled trades benefit from both non-discretionary demand and the trend of repairing rather than replacing, keeping them busy during recessions.
 - Evaluating roles based on their alignment with these resilience patterns can help identify more stable career options.
+
+
+No job is truly "recession-proof," but some fields are consistently more resistant to mass layoffs than others - because the demand for them doesn't disappear when budgets tighten. Healthcare, essential infrastructure, and cost-saving roles tend to hold steady while discretionary spending categories get cut first, which is a very different risk profile than jobs tied to [AI-proof careers](https://thetailorcv.com/blog/ai-proof-jobs-2026) or other emerging-risk categories.
+
+If you're evaluating a move into a more stable field, start by checking how your current resume would score against roles in that industry with the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## What Actually Makes a Job Recession-Resistant
 
@@ -109,6 +110,8 @@ Not all tech jobs behave the same way in a downturn - and tech has proven that n
 
 Insurance is a useful case study in regulatory-driven, non-discretionary demand: most insurance products (auto, health, homeowners, commercial liability) are legally or contractually required, so premiums keep getting paid even when household budgets are tight elsewhere.
 
+
+
 - Underwriting, claims processing, and actuarial roles tend to be stable because the core function of the industry - assessing and paying out risk - doesn't pause in a downturn. See [resume matching for insurance jobs](https://thetailorcv.com/blog/resume-matching-insurance-jobs) for how to tailor your resume to this industry's specific keyword patterns.
 - Beyond insurance, a handful of other roles are genuinely counter-cyclical: debt collection and recovery, bankruptcy and restructuring, discount and value retail, and cost-cutting or efficiency consulting all tend to see increased demand exactly when the broader economy contracts.
 - These counter-cyclical roles are worth knowing about even if they aren't your first choice - they're useful fallback categories if you're actively trying to de-risk a job search during a downturn.
@@ -183,7 +186,7 @@ None of this requires assuming the worst is coming. It just means the difference
 
 ## Make This Practical
 
-If you're considering a move toward a more stable field, start with the [free ATS score checker](https://www.thetailorcv.com/solutions) to see how your resume matches target roles today, tailor your story with the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), and prepare your pivot narrative with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview). Once your resume is aligned, use the [resume templates library](https://www.thetailorcv.com/templates) to format it in a style that reads cleanly in more traditional, ATS-heavy industries like healthcare, government, and finance, and if you're building a supporting case study or work sample, the [portfolio builder](https://www.thetailorcv.com/portfolio) can help even in fields that don't traditionally expect one.
+If you're considering a move toward a more stable field, start with the [free ATS score checker](https://www.thetailorcv.com/solutions) to see how your resume matches target roles today, tailor your story with the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), and prepare your pivot narrative with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview). Once your resume is aligned, use the resume templates library to format it in a style that reads cleanly in more traditional, ATS-heavy industries like healthcare, government, and finance, and if you're building a supporting case study or work sample, the portfolio builder can help even in fields that don't traditionally expect one.
 
 ---
 
@@ -223,3 +226,10 @@ Every few months, or immediately after any measurable win - a completed project,
 ## Next Step
 
 Start by seeing exactly where your resume stands today with the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+

@@ -10,8 +10,6 @@ slug: full-stack-portfolio-guide
 keywords: full stack portfolio, full stack developer projects, end to end project portfolio, mern portfolio
 ---
 
-Full stack is about range *and* depth, and your portfolio has to prove both without looking scattered. The winning formula: one flagship app you go deep on, plus a couple of focused pieces that show your edges. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
-
 ## Key Takeaways
 
 - Create a standout flagship app that demonstrates your full stack capabilities, including authentication, a responsive frontend, a documented API, third-party integrations, and live deployment.
@@ -19,6 +17,9 @@ Full stack is about range *and* depth, and your portfolio has to prove both with
 - Ensure all projects in your portfolio have live demos, clean GitHub repositories, and detailed READMEs to validate your work.
 - Write a mini case study for your flagship app that outlines the problem, your technology choices, challenges faced, and the final outcome.
 - Keep your resume, LinkedIn, and portfolio aligned in messaging to avoid confusion for recruiters, reinforcing your professional narrative across all platforms.
+
+
+Full stack is about range *and* depth, and your portfolio has to prove both without looking scattered. The winning formula: one flagship app you go deep on, plus a couple of focused pieces that show your edges. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
 
 ## Show One Flagship End-to-End App
 Pick a single product and go all the way:
@@ -76,6 +77,13 @@ One of the most effective ways to demonstrate your capabilities as a full stack 
 
 To ensure your projects are comprehensive and impactful, create a mini checklist that covers the essential elements. Here’s a practical example:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - **Project Name**: 
 - **Technologies Used**: (e.g., React, Node.js, MongoDB)
 - **Link to Live Demo**: 
@@ -98,10 +106,13 @@ Creating a portfolio can be daunting, but adhering to these do's and don'ts can 
 - **Do Update Regularly**: Keep your portfolio fresh by adding new projects and removing outdated ones. This shows your growth and adaptability.
 
 ### Don'ts
-- **Don’t Overcomplicate Your Design**: A cluttered design can distract from your work. Keep it simple and focused.
-- **Don’t Include Irrelevant Projects**: Quality over quantity. Only showcase projects that are relevant to the roles you’re applying for.
-- **Don’t Neglect Mobile Responsiveness**: With the prevalence of mobile browsing, ensure your portfolio is responsive and looks good on all devices.
-- **Don’t Forget About SEO**: Use keywords relevant to your skills and projects to help your portfolio rank better in search engines.
+
+| What to include | Why |
+|---|---|
+| **Don’t Overcomplicate Your Design** | A cluttered design can distract from your work. Keep it simple and focused |
+| **Don’t Include Irrelevant Projects** | Quality over quantity. Only showcase projects that are relevant to the roles you’re applying for |
+| **Don’t Neglect Mobile Responsiveness** | With the prevalence of mobile browsing, ensure your portfolio is responsive and looks good on all devices |
+| **Don’t Forget About SEO** | Use keywords relevant to your skills and projects to help your portfolio rank better in search engines |
 
 ## Scenario: Turning a Side Project into a Portfolio Piece
 
@@ -153,7 +164,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

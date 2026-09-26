@@ -10,18 +10,6 @@ slug: how-to-negotiate-salary-offer
 keywords: how to negotiate salary, salary negotiation tactics, salary negotiation 2026, negotiate job offer, salary negotiation script, how to ask for more money
 ---
 
-Most people accept the first salary offer they receive. Most of those people leave money on the table. Studies consistently show that [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-guide) works - employers expect candidates to negotiate, and the vast majority of initial offers have room.
-
-![How to Negotiate a Salary](public/blog-images/how-to-negotiate-a-salary.webp)
-
-A 10-20% increase from negotiation is common. For a mid-level role paying $80,000, that is $8,000-$16,000 per year - more than most people would save by switching to a cheaper coffee. And that difference compounds over years as future raises and offers are often percentages of your current salary.
-
-This guide covers when to negotiate, how to research your market value, what to say, and how to handle every common employer response.
-
-Before negotiating, your resume needs to demonstrate the value you are asking for. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume before applying, and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) to make sure your accomplishments are clearly quantified.
-
----
-
 ## Key Takeaways
 
 - Most candidates accept the first salary offer, often leaving significant money on the table; negotiation can yield a 10-20% increase.
@@ -29,6 +17,16 @@ Before negotiating, your resume needs to demonstrate the value you are asking fo
 - The best time to negotiate is after receiving a written or verbal offer, not during initial interviews.
 - Research your market value using multiple sources to establish a target salary range and understand your negotiation leverage.
 - Use a structured negotiation script: express enthusiasm, clearly state your desired salary, and then remain silent to create pressure on the employer.
+
+
+Most people accept the first salary offer they receive. Most of those people leave money on the table. Studies consistently show that [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-guide) works - employers expect candidates to negotiate, and the vast majority of initial offers have room.
+
+
+This guide covers when to negotiate, how to research your market value, what to say, and how to handle every common employer response.
+
+Before negotiating, your resume needs to demonstrate the value you are asking for. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume before applying, and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) to make sure your accomplishments are clearly quantified.
+
+---
 
 ## Should You Always Negotiate?
 
@@ -70,6 +68,7 @@ Sources to use:
 - **Industry surveys** - Many professional associations publish annual salary benchmarks
 
 Build a range from at least 3 sources. Look at:
+
 - Your title and level (junior, mid, senior)
 - Your city or metro area (cost of living matters)
 - Company size (startup vs. enterprise)
@@ -127,18 +126,25 @@ Take the time. Do not accept or decline on the spot if you feel uncertain. Evalu
 
 Many candidates only negotiate base salary. The full compensation package includes:
 
-- **Signing bonus** - Often has more flexibility than base salary. Companies can call it "non-recurring" which is easier to approve.
-- **Equity / Stock Options / RSUs** - For tech and startup roles, the equity cliff and vesting schedule matter enormously.
-- **Start date** - More time to mentally transition, finish freelance [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), or take a break.
-- **Remote work flexibility** - Fewer commute days = thousands of dollars in time and transport saved.
-- **Title** - Sometimes easier to move than salary, and impacts future offers.
-- **Annual review timing** - Ask if you can have a performance and salary review at 6 months rather than 12.
-- **Professional development budget** - Conferences, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), courses.
-- **PTO / vacation days** - Especially valuable if the standard offer is low.
+| What to include | Why |
+|---|---|
+| **Signing bonus** | Often has more flexibility than base salary. Companies can call it "non-recurring" which is easier to approve |
+| **Equity / Stock Options / RSUs** | For tech and startup roles, the equity cliff and vesting schedule matter enormously |
+| **Start date** | More time to mentally transition, finish freelance [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), or take a break |
+| **Remote work flexibility** | Fewer commute days = thousands of dollars in time and transport saved |
+| **Title** | Sometimes easier to move than salary, and impacts future offers |
+| **Annual review timing** | Ask if you can have a performance and salary review at 6 months rather than 12 |
+| **Professional development budget** | Conferences, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), courses |
+| **PTO / vacation days** | Especially valuable if the standard offer is low |
 
 ---
 
 ## Common Negotiation Mistakes
+
+
+![How to Negotiate a Salary](public/blog-images/how-to-negotiate-a-salary.webp)
+
+A 10-20% increase from negotiation is common. For a mid-level role paying $80,000, that is $8,000-$16,000 per year - more than most people would save by switching to a cheaper coffee. And that difference compounds over years as future raises and offers are often percentages of your current salary.
 
 ### Mistake 1: Apologizing for negotiating
 

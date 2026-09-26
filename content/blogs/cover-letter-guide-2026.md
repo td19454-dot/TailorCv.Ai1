@@ -10,14 +10,6 @@ slug: cover-letter-guide-2026
 keywords: cover letter guide 2026, how to write a cover letter, cover letter example, cover letter template, job application cover letter, ATS cover letter
 ---
 
-A [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) in 2026 is not dead - but a bad one is worse than none at all. When companies ask for a [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), it is one more piece of evidence. When you submit a generic, three-paragraph letter that starts with "I am writing to express my interest in the position," you are telling the recruiter that you did not try.
-
-A strong [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) is specific, short, and connects your evidence to their problem. It does not repeat [your resume](https://thetailorcv.com/blog/resume-file-format-guide) line by line. It answers a different question: why you, why this company, why now.
-
-Before sending any application, make sure your [resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) is optimized first. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to check keyword matching, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide), and ensure [your resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) uses an [ATS-friendly template](https://www.thetailorcv.com/templates). Your [cover letter](https://thetailorcv.com/blog/cover-letter-no-work-experience) is the complement to a strong [resume](https://thetailorcv.com/blog/resume-file-format-guide), not a substitute.
-
----
-
 ## Key Takeaways
 
 - A cover letter in 2026 is still relevant, but a poorly written one can harm your application more than not submitting one at all.
@@ -25,6 +17,15 @@ Before sending any application, make sure your [resume](https://thetailorcv.com/
 - The ideal cover letter length is 250-350 words, structured with a hook, relevant achievements, reasons for interest in the company, and a call to action.
 - Avoid generic openings; instead, lead with a specific achievement or connection to the company's work to capture attention.
 - While large companies may skip cover letters, hiring managers at smaller firms often read them carefully, making a strong cover letter potentially decisive.
+
+
+A [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) in 2026 is not dead - but a bad one is worse than none at all. When companies ask for a [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), it is one more piece of evidence. When you submit a generic, three-paragraph letter that starts with "I am writing to express my interest in the position," you are telling the recruiter that you did not try.
+
+A strong [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) is specific, short, and connects your evidence to their problem. It does not repeat [your resume](https://thetailorcv.com/blog/resume-file-format-guide) line by line. It answers a different question: why you, why this company, why now.
+
+Before sending any application, make sure your [resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) is optimized first. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to check keyword matching, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide), and ensure your resume uses an ATS-friendly template. Your cover letter is the complement to a strong resume, not a substitute.
+
+---
 
 ## Do Companies Still Read Cover Letters?
 
@@ -43,6 +44,13 @@ The safest approach: always write one when asked, make it strong, keep it short.
 ## Cover Letter Format for 2026
 
 Keep it to one page or fewer. Ideal length is 250-350 words.
+
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
+
 
 Structure:
 
@@ -103,6 +111,13 @@ Then sign off: "Best regards, [Your Name]."
 [Email] | [[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)]
 [Date]
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
+
+
 [Hiring Manager Name or "Hiring Team"]
 [Company Name]
 
@@ -118,6 +133,7 @@ Best regards,
 [Your Name]
 
 ---
+
 
 ## Cover Letter Examples by Role
 

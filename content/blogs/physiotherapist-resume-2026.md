@@ -10,12 +10,6 @@ slug: physiotherapist-resume-2026
 keywords: physiotherapist resume, physical therapist resume 2026, PT resume, rehabilitation resume, sports physiotherapy resume, physiotherapy ATS keywords
 ---
 
-A physiotherapist resume in 2026 must show clinical assessment ability, treatment specialization, patient outcomes, and licensure. Whether you work in orthopedics, neurology, sports, pediatrics, or geriatric rehabilitation, your resume should demonstrate that your interventions measurably improved patient function and recovery.
-
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For other healthcare roles, read the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026).
-
----
-
 ## Key Takeaways
 
 - A physiotherapist resume in 2026 should highlight clinical assessment skills, treatment specialization, and measurable patient outcomes.
@@ -23,6 +17,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 - Strong bullet points should follow a specific formula to showcase interventions and their impact on patient recovery.
 - Essential ATS keywords for a physiotherapist resume include terms related to rehabilitation, assessment, treatment modalities, and patient education.
 - Examples of effective resume summaries are provided for both experienced and entry-level physiotherapists, emphasizing relevant skills and achievements.
+
+
+A physiotherapist resume in 2026 must show clinical assessment ability, treatment specialization, patient outcomes, and licensure. Whether you work in orthopedics, neurology, sports, pediatrics, or geriatric rehabilitation, your resume should demonstrate that your interventions measurably improved patient function and recovery.
+
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For other healthcare roles, read the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026).
+
+---
 
 ## Best Physiotherapist Resume Format
 
@@ -32,6 +33,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 4. Clinical skills and specialties
 5. Work experience
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 One to two pages.
 
@@ -138,6 +146,11 @@ Orthopedic, neuro, sports, pediatric - clarify your focus so employers can match
 
 ---
 
+## Conclusion
+A strong physiotherapist resume in 2026 shows clinical specialization, assessment skills, and measurable patient recovery outcomes. Make your licensure visible and your treatment results specific.
+
+Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+
 ## Related Guides
 
 - [Nursing Resume](https://thetailorcv.com/blog/nursing-resume-2026)
@@ -155,16 +168,13 @@ Orthopedic, neuro, sports, pediatric - clarify your focus so employers can match
 - [Cybersecurity Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
+
+
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
-
-## Conclusion
-A strong physiotherapist resume in 2026 shows clinical specialization, assessment skills, and measurable patient recovery outcomes. Make your licensure visible and your treatment results specific.
-
-Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ## Step-by-Step Guide to Customize Your Physiotherapist Resume
 

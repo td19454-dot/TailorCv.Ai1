@@ -78,6 +78,109 @@ header.navbar .nav-links a {
     align-items: start;
 }
 
+.editor-actionbar {
+    grid-column: 1 / -1;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 14px 10px 18px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(2, 6, 23, 0.18);
+    color: #111827;
+}
+
+.editor-actionbar-left {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.editor-actionbar-title {
+    color: #111827;
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+.editor-actionbar-status {
+    color: #64748b;
+    font-size: 0.82rem;
+    line-height: 1.25;
+}
+
+.editor-actionbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.editor-actionbar-btn {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #111827;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .16s ease, border-color .16s ease, color .16s ease, transform .16s ease;
+}
+
+.editor-actionbar-btn svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+}
+
+.editor-actionbar-btn:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+    transform: translateY(-1px);
+}
+
+.editor-actionbar-btn:disabled {
+    cursor: wait;
+    opacity: .72;
+    transform: none;
+}
+
+.editor-actionbar-btn-cloud {
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+    background: #eff6ff;
+}
+
+.editor-actionbar-btn-cloud.saved {
+    color: #166534;
+    border-color: #86efac;
+    background: #f0fdf4;
+}
+
+.editor-actionbar-btn-primary {
+    color: #ffffff;
+    border-color: #2563eb;
+    background: #2563eb;
+}
+
+.editor-actionbar-btn-primary:hover {
+    color: #ffffff;
+    border-color: #1d4ed8;
+    background: #1d4ed8;
+}
+
 .editor-sidebar {
     display: flex;
     flex-direction: column;
@@ -425,11 +528,24 @@ header.navbar .nav-links a {
 /* ─────────────────────────────────────────────────────────────────────────────
    RESPONSIVE – MOBILE (≤900 px)
 ───────────────────────────────────────────────────────────────────────────── */
+/* "See what changed": a sidebar card under the page title on desktop; on phones
+   that card would sit behind the fixed bottom bar, so the bar has its own button.
+   !important because both buttons carry an inline display style. */
+@media (min-width: 901px) {
+    .see-changes-mobile { display: none !important; }
+}
+@media (max-width: 900px) {
+    .see-changes-card { display: none !important; }
+}
+
 @media (max-width: 900px) {
     .editor-page {
         grid-template-columns: 1fr;
         padding-left: 0;
         padding-right: 0;
+        /* No top padding: the desktop action bar is hidden on phones, so this
+           0.9rem only pushed the resume down the screen. */
+        padding-top: 0;
     }
 
     /* Preview occupies the top; width and height are controlled by JS to fill edge-to-edge */
@@ -440,6 +556,30 @@ header.navbar .nav-links a {
         border-radius: 0;
         box-shadow: none;
         overflow: hidden;
+        /* No gap above the paper: the action bar is hidden on phones, so any
+           margin here is just dead dark space at the top of the screen. */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* The grid gap does the same thing between the rows. */
+    .editor-page { gap: 0 !important; }
+    body.optimized-editor-body > .editor-page { padding-top: 0 !important; }
+    /* The browser's default 8px body margin is the last of the gap. */
+    body.optimized-editor-body { margin: 0 !important; }
+
+    /* A fallback size for the preview frame.
+
+       Its width and height are set by applyWordStylePreview() in
+       optimized_editor.js. When that does not run - and on this page it is one
+       throw away from not running, because the whole module is a single IIFE -
+       the iframe falls back to the HTML default of 300x150px, a grey stub in
+       the corner of the screen with the resume invisible inside it. Sizing it
+       in CSS means the preview is readable even when the script is not there,
+       and JS still overrides both values the moment it is. */
+    #resume-preview-frame {
+        width: 100%;
+        min-height: 58vh;
     }
 
     .editor-sidebar {
@@ -457,6 +597,31 @@ header.navbar .nav-links a {
         display: none;
     }
 
+    /* The desktop action bar is redundant on a phone.
+
+       "Optimized Resume / Ready to review and save" plus Save, See what
+       changed and Download Resume stack into a 161px block at the top of the
+       screen - and every one of those actions is already in the fixed strip at
+       the bottom, where a thumb reaches. It was pushing the resume preview
+       down for no gain. */
+    .editor-actionbar {
+        display: none !important;
+    }
+
+    /* The sidebar's only child (.mobile-bar-container) is position:fixed, so
+       the sidebar has no in-flow content to size against and collapsed to 1px.
+       It is also restyled by a LATER `.editor-sidebar` rule further down this
+       file, which outranks a plain selector here - hence the explicit width
+       and the !important on min-height.
+
+       It still has to reserve the height the fixed bar occupies, or the page
+       scrolls up behind the toolbar and the last controls cannot be reached. */
+    .editor-sidebar {
+        width: 100% !important;
+        min-width: 0;
+        min-height: 52vh !important;
+    }
+
     /* ── Fixed bottom toolbar ─────────────────────────────── */
     .mobile-bar-container {
         position: fixed;
@@ -471,6 +636,110 @@ header.navbar .nav-links a {
         -webkit-backdrop-filter: blur(16px);
         border-top: 1px solid rgba(148, 163, 184, 0.25);
         box-shadow: 0 -4px 30px rgba(2, 6, 23, 0.55);
+
+        /* ONLY the action strip is fixed.
+
+           The container wraps the whole style-settings card - paper size,
+           font, every swatch and segmented control - so as a fixed element it
+           was 1183px tall on a 390px phone, anchored bottom, top edge at
+           -339px: it covered the screen and hid the preview. Capping its
+           height only clipped the settings, and left the strip painted on top
+           of Font and Font Size.
+
+           So the container goes back into normal flow and scrolls with the
+           page, and the strip inside it is what stays pinned. The settings are
+           reachable by scrolling; Download and Save never move. */
+        position: static;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-top: 0;
+        box-shadow: none;
+        padding-bottom: 0;
+        /* Must not become a scroll container of its own, or it eats the drag
+           that belongs to the controls panel inside it. */
+        overflow: visible;
+        touch-action: auto;
+    }
+
+    /* "Adjust Size, Spacing & Colour" opens ABOVE the strip.
+
+       The toggle button sits in the fixed strip, but the panel it controls is
+       inside the settings card further up the page - so opening it changed
+       something off-screen and the button looked dead. The panel is pinned
+       just above the strip instead, which is where the button that opens it
+       is and where the reference design puts it.
+
+       The inline `aria-hidden` the template sets is not a styling hook; the
+       .open class the toggle adds is what drives this. */
+    .mobile-controls-panel {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 221px;          /* the measured strip height */
+        z-index: 299;
+        background: rgba(8, 17, 44, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(148, 163, 184, 0.25);
+        overflow-y: scroll;                  /* not `auto`: iOS only reliably
+                                                scrolls a box that always has
+                                                a scroller */
+        -webkit-overflow-scrolling: touch;   /* momentum scrolling on iOS */
+        overscroll-behavior: contain;        /* no scroll-chaining to the page */
+        touch-action: pan-y;                 /* the parent bar's handlers must
+                                                not swallow the drag */
+        /* Collapsed by default. The base rule animates max-height only, which
+           leaves a 1px sliver visible above the strip. */
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top-width: 0;
+    }
+    .mobile-controls-panel.open {
+        /* A fixed height, not just a max, so the panel has something for
+           overflow-y to scroll against. With only a max-height the box grew to
+           its content and the last controls - Left & Right Margins, Top &
+           Bottom Margins, Accent and Link colour - were clipped at the strip
+           with no way to reach them.
+
+           The max-height transition is dropped here too: animating the same
+           property that governs the scroll height leaves the panel mid-
+           animation when a touch starts, and the scroll never engages. */
+        height: min(46vh, 340px);
+        max-height: min(46vh, 340px);
+        transition: none;
+        padding: 0.75rem 0.9rem calc(0.9rem + env(safe-area-inset-bottom, 0px));
+        border-top-width: 1px;
+    }
+
+    /* The always-visible strip: pinned to the bottom of the viewport. */
+    .mobile-bar-container .actions-card {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 300;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        background: rgba(8, 17, 44, 0.98) !important;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(148, 163, 184, 0.25) !important;
+        box-shadow: 0 -4px 30px rgba(2, 6, 23, 0.55);
+        padding-bottom: calc(0.8rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Nothing may sit under the fixed strip.
+
+       The space is reserved on the settings card rather than on
+       .editor-sidebar, because a later `.editor-sidebar { padding: 0 }` rule
+       in this file wins over any padding-bottom set here - the shorthand
+       resets all four sides. The card is what actually holds the controls, so
+       it is the right element to pad anyway. ~222px is the measured strip
+       height; the remainder clears the home indicator. */
+    .style-settings-card {
+        margin-bottom: calc(244px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
     /* ── Collapsible controls panel (Font Size + Spacing) ─── */
@@ -487,8 +756,24 @@ header.navbar .nav-links a {
     }
 
     .mobile-controls-panel.open {
-        max-height: 320px;
-        padding: 0.75rem 0.9rem;
+        /* This is the ORIGINAL open state and it comes after the one above, so
+           it is the one that decides. The scrolling properties live here for
+           that reason:
+
+           - a real `height`, not just a max, or overflow-y has nothing to
+             scroll against and the last controls stay unreachable;
+           - `overflow-y: scroll`, because the collapsed state's
+             `overflow: hidden` shorthand outranks any overflow-y set earlier
+             in this block and left the panel computing to hidden;
+           - no transition, since animating max-height while a touch drag is in
+             flight cancels the scroll. */
+        height: min(46vh, 340px);
+        max-height: min(46vh, 340px);
+        overflow-y: scroll;
+        overflow-x: hidden;
+        transition: none;
+        border-top-width: 1px;
+        padding: 0.75rem 0.9rem calc(0.9rem + env(safe-area-inset-bottom, 0px));
         border-bottom-width: 1px;
     }
 
@@ -738,6 +1023,464 @@ header.navbar .nav-links a {
     background: linear-gradient(135deg, rgba(56, 189, 248, 0.26), rgba(37, 99, 235, 0.22));
     box-shadow: 0 12px 26px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     color: #ffffff;
+}
+
+/* Legacy optimize editor: dark Design sidebar, matching the newer editor layout. */
+.editor-page {
+    grid-template-columns: minmax(390px, 430px) minmax(0, 1fr);
+    gap: 0;
+    max-width: none;
+    padding: 0 !important;
+}
+
+.editor-actionbar {
+    background: linear-gradient(90deg, #0b3a5a 0%, #17205a 100%);
+    border-color: rgba(96, 165, 250, 0.28);
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    box-shadow: none;
+    color: #f8fafc;
+    min-height: 58px;
+    padding-left: 22px;
+    padding-right: 14px;
+}
+
+.editor-actionbar-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.editor-home-link {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(191, 219, 254, 0.28);
+    background: rgba(15, 23, 42, 0.22);
+    color: #dbeafe;
+    text-decoration: none;
+    transition: background .16s ease, border-color .16s ease, color .16s ease, transform .16s ease;
+}
+
+.editor-home-link:hover {
+    background: rgba(96, 165, 250, 0.18);
+    border-color: rgba(191, 219, 254, 0.6);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.editor-home-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.editor-actionbar-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* No gap between the site header and the editor's action bar.
+
+   `.editor-page` carries `padding: 0.9rem 1rem 1rem`, and the 14.4px of that
+   which sits at the top shows as a dark band under the TailorCV header,
+   above "Optimized Resume".
+
+   This used to be cancelled with `header.navbar + .editor-page`, an ADJACENT
+   SIBLING selector - it only matches when .editor-page is the element
+   immediately after the header. The nav is an include and the app shell
+   injects its own markup, so on this page the two are not siblings and the
+   rule silently never applied. Targeting .editor-page directly removes the
+   dependency on where the header happens to sit in the DOM. */
+.editor-page {
+    /* Exactly the fixed navbar's height - no more, no less.
+
+       style2.css reserves the space with `header.navbar + * { padding-top:
+       100px }` while header.navbar is 72px tall, so 28px of bare page
+       background showed as a dark band between the site header and the
+       "Optimized Resume" bar. Zeroing it instead is not right either: the
+       navbar is position:fixed, so with no reservation the action bar slides
+       underneath it.
+
+       72px matches `header.navbar { height: 72px !important }` in
+       header-footer.css. The app-shell path (html.tcv-app) has its own 76px
+       reservation further down this file for its own 76px .tcv-top. */
+    padding-top: 72px !important;
+    margin-top: 0 !important;
+}
+
+html.tcv-app body.optimized-editor-body {
+    padding-top: 76px !important;
+    padding-left: 0 !important;
+    /* The browser's own 8px body margin stacks ON TOP of that reservation, so
+       the page started at 84px while the fixed header ends at 77px - 7px of
+       page background showing as a dark strip between the header and the
+       "Optimized Resume" bar. The padding is the reservation; the margin is
+       just the UA default and has no job here. */
+    margin: 0 !important;
+}
+
+html.tcv-app body.optimized-editor-body .tcv-rail,
+html.tcv-app body.optimized-editor-body .tcv-side-backdrop,
+html.tcv-app body.optimized-editor-body .tcv-burger {
+    display: none !important;
+}
+
+html.tcv-app body.optimized-editor-body .tcv-top {
+    padding-left: 28px !important;
+}
+
+html.tcv-app body.optimized-editor-body > .editor-page,
+body.optimized-editor-body > .editor-page {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.editor-actionbar-title {
+    color: #ffffff;
+}
+
+.editor-actionbar-status {
+    color: #c7d2fe;
+}
+
+.editor-sidebar {
+    min-height: calc(100vh - 146px);
+    padding: 0;
+    gap: 0;
+    background: linear-gradient(180deg, #0b1630 0%, #071126 100%);
+    border-right: 1px solid rgba(79, 108, 173, 0.36);
+    overflow-y: auto;
+    scrollbar-color: rgba(148, 163, 184, 0.7) rgba(8, 17, 38, 0.75);
+}
+
+.legacy-editor-tabs {
+    display: none !important;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    grid-template-columns: minmax(120px, 160px);
+    justify-content: end;
+    align-items: center;
+    gap: 8px;
+    min-height: 74px;
+    padding: 10px 14px;
+    background: rgba(4, 11, 27, 0.9);
+    border-bottom: 1px solid rgba(111, 132, 179, 0.32);
+}
+
+.legacy-tab {
+    min-width: 0;
+    min-height: 52px;
+    padding: 0 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: #e5e7eb;
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 650;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.legacy-tab:hover {
+    background: rgba(15, 31, 67, 0.86);
+    border-color: rgba(111, 132, 179, 0.36);
+}
+
+.legacy-tab.active {
+    background: rgba(29, 78, 216, 0.24);
+    border-color: rgba(96, 165, 250, 0.82);
+    box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.22);
+    color: #dbeafe;
+}
+
+.legacy-tab-icon {
+    flex: 0 0 auto;
+    color: #93c5fd;
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.mobile-bar-container {
+    padding: 18px 20px 20px;
+}
+
+.style-settings-card {
+    padding: 0;
+    gap: 0;
+    overflow: visible;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+.style-settings-head {
+    width: 100%;
+    min-height: 62px;
+    padding: 0 20px;
+    border: 0;
+    border-bottom: 0;
+    background: transparent;
+    color: #f8fafc;
+    font: inherit;
+    font-size: 1.25rem;
+    font-weight: 650;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.style-settings-head svg {
+    color: #e5e7eb;
+}
+
+.style-settings-body {
+    padding: 18px 20px 0;
+}
+
+.style-field {
+    display: block;
+    margin-bottom: 18px;
+}
+
+.style-label,
+.style-settings-card .control-title {
+    display: block;
+    margin-bottom: 8px;
+    color: #f8fafc;
+    font-size: 1rem;
+    font-weight: 450;
+    letter-spacing: 0;
+    line-height: 1.25;
+    text-transform: none;
+}
+
+.style-select {
+    width: 100%;
+    height: 44px;
+    padding: 0 42px 0 14px;
+    border: 1px solid rgba(148, 163, 184, 0.62);
+    border-radius: 8px;
+    background:
+        linear-gradient(45deg, transparent 50%, #cbd5e1 50%) calc(100% - 19px) 19px / 7px 7px no-repeat,
+        linear-gradient(135deg, #cbd5e1 50%, transparent 50%) calc(100% - 14px) 19px / 7px 7px no-repeat,
+        rgba(7, 17, 38, 0.78);
+    color: #f8fafc;
+    font: inherit;
+    font-size: 1rem;
+    appearance: none;
+}
+
+.style-select:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.24);
+}
+
+/* Desktop only.
+
+   `display: contents` dissolves the panel so its controls sit directly in the
+   settings card, which is what the desktop sidebar wants. But it also defeats
+   the panel's own collapse on mobile - .mobile-controls-panel animates
+   max-height, and an element with display:contents generates no box to
+   animate - so Font Size, Line Height and the margin sliders were always
+   expanded and ran underneath the fixed action strip. */
+@media (min-width: 901px) {
+    .style-settings-card .mobile-controls-panel {
+        display: contents;
+    }
+}
+
+.style-settings-card .mobile-controls-panel > .editor-controls {
+    padding: 0;
+    margin: 0 0 18px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+.style-settings-card .font-group {
+    gap: 10px;
+}
+
+.style-slider-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 112px;
+    align-items: center;
+    gap: 16px;
+}
+
+.style-range {
+    width: 100%;
+    min-width: 0;
+    height: 4px;
+    accent-color: #2f7df6;
+    cursor: pointer;
+}
+
+.style-number {
+    width: 112px;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid rgba(148, 163, 184, 0.62);
+    border-radius: 8px;
+    background: rgba(7, 17, 38, 0.78);
+    color: #f8fafc;
+    font: inherit;
+    font-size: 1rem;
+}
+
+.style-number:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.24);
+}
+
+.style-settings-card .font-btn,
+.style-settings-card .font-size-badge {
+    height: 40px;
+    min-width: 58px;
+    border-radius: 10px;
+    background: rgba(7, 17, 38, 0.72);
+    border-color: rgba(148, 163, 184, 0.5);
+    color: #f8fafc;
+    font-size: 1rem;
+}
+
+.style-settings-card .font-size-badge {
+    min-width: 74px;
+    background: rgba(37, 99, 235, 0.25);
+    border-color: rgba(96, 165, 250, 0.72);
+    color: #dbeafe;
+}
+
+.style-settings-card #spacing-guidance {
+    margin-top: 2px !important;
+    color: #dbeafe !important;
+    opacity: 0.86;
+    font-size: 0.95rem !important;
+}
+
+.style-settings-card #tc-accent-panel-container {
+    margin-top: 0;
+}
+
+.style-settings-card #tc-accent-panel-container .tc-accent-presets {
+    gap: 12px;
+}
+
+.style-settings-card #tc-accent-panel-container .tc-accent-swatch {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border-color: rgba(226, 232, 240, 0.85);
+    box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.5), inset 0 0 0 1px rgba(255,255,255,0.16);
+}
+
+.style-settings-card #tc-accent-panel-container .tc-accent-swatch.active {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.42), inset 0 0 0 1px rgba(255,255,255,0.2);
+}
+
+.style-settings-card #tc-accent-panel-container .tc-accent-custom-row {
+    margin-top: 12px;
+}
+
+.style-segmented {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.style-segmented button {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 40px;
+    margin-left: -1px;
+    border: 1px solid rgba(148, 163, 184, 0.62);
+    background: rgba(7, 17, 38, 0.72);
+    color: #f8fafc;
+    font: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.style-segmented button:first-child {
+    margin-left: 0;
+    border-radius: 8px 0 0 8px;
+}
+
+.style-segmented button:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+.style-segmented button.active {
+    z-index: 1;
+    position: relative;
+    background: rgba(37, 99, 235, 0.2);
+    border-color: #60a5fa;
+    color: #bfdbfe;
+}
+
+.actions-card {
+    margin-top: 16px;
+    background: rgba(8, 17, 44, 0.84);
+    border-color: rgba(111, 132, 179, 0.38);
+    border-radius: 16px;
+}
+
+/* Desktop only.
+
+   This hid the actions card - the strip carrying Download and Save to My
+   Resumes - at EVERY width. On a desktop that is right: editor v2 mounts over
+   this page and puts both actions in its own top bar. On a phone v2 is not
+   what renders, so the rule took the only Download button on the page away
+   and left a mobile editor you could style a resume in but never export from.
+
+   901px matches the breakpoint the mobile layout above is built on. */
+@media (min-width: 901px) {
+    .editor-sidebar .actions-card,
+    .editor-sidebar .editor-status {
+        display: none !important;
+    }
+}
+
+.editor-preview-wrap {
+    border-radius: 0;
+    min-height: calc(100vh - 146px);
+    max-height: calc(100vh - 146px);
+}
+
+@media (min-width: 901px) {
+    .editor-sidebar .editor-top,
+    .editor-sidebar .see-changes-card {
+        display: none !important;
+    }
+
+    .editor-sidebar .mobile-bar-container,
+    .editor-sidebar .mobile-controls-panel {
+        display: block;
+    }
 }
 #save-resume-btn:active { transform: translateY(0); }
 

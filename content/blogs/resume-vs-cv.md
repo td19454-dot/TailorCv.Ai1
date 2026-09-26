@@ -10,6 +10,14 @@ slug: resume-vs-cv
 keywords: resume vs cv, difference between resume and cv, when to use a cv, cv vs resume, curriculum vitae vs resume, resume or cv for job application, academic cv vs resume
 ---
 
+## Key Takeaways
+
+- A resume is a concise document (1-2 pages) tailored for specific job applications, while a CV is a comprehensive record of your entire academic and professional history (2-20+ pages).
+- Resumes are commonly used in the US, Canada, and Australia for industry jobs, whereas CVs are standard for academic positions and in many countries in Europe, the Middle East, and Africa.
+- The content of a resume focuses on skills and achievements relevant to the job, while a CV includes all professional details such as publications, research, and teaching experience.
+- Geographic differences in terminology can lead to confusion; for instance, in the UK, "CV" is equivalent to a US resume, while "CV" in the US refers specifically to academic documents.
+
+
 "Should I send a resume or a CV?" is one of the most common questions job seekers ask - and getting it wrong can make you look out of touch with the role or region you are targeting. The answer depends on where you are applying, what industry you are in, and what level of role you are pursuing.
 
 This guide explains the key differences, when each is appropriate, and what to include in each document.
@@ -17,13 +25,6 @@ This guide explains the key differences, when each is appropriate, and what to i
 Before you send either, check your document against the job with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and start from an [ATS-compatible template](https://www.thetailorcv.com/templates).
 
 ---
-
-## Key Takeaways
-
-- A resume is a concise document (1-2 pages) tailored for specific job applications, while a CV is a comprehensive record of your entire academic and professional history (2-20+ pages).
-- Resumes are commonly used in the US, Canada, and Australia for industry jobs, whereas CVs are standard for academic positions and in many countries in Europe, the Middle East, and Africa.
-- The content of a resume focuses on skills and achievements relevant to the job, while a CV includes all professional details such as publications, research, and teaching experience.
-- Geographic differences in terminology can lead to confusion; for instance, in the UK, "CV" is equivalent to a US resume, while "CV" in the US refers specifically to academic documents.
 
 ## The Core Difference
 
@@ -43,6 +44,7 @@ Before you send either, check your document against the job with the [TailorCV A
 A resume is a concise, targeted document - typically one to two pages - that highlights your most relevant experience, skills, and achievements for a specific job application. You tailor it for each role. You cut anything irrelevant.
 
 Resumes are the standard document for:
+
 - Industry jobs (tech, finance, marketing, operations, sales)
 - Corporate and private-sector roles
 - Applications in the US, Canada, and Australia
@@ -56,6 +58,7 @@ Read [what is a resume and why it matters](https://thetailorcv.com/blog/what-is-
 A CV (curriculum vitae, Latin for "course of life") is a comprehensive professional document that records your complete academic and professional history. It grows over your career and is rarely shortened or cut. Everything stays in.
 
 CVs are standard for:
+
 - Academic positions (faculty, lecturer, researcher)
 - Research grants and fellowships
 - Medical residencies and clinical roles
@@ -63,6 +66,7 @@ CVs are standard for:
 - Graduate school applications
 
 A CV typically includes:
+
 - Full employment history
 - All publications (journal articles, books, chapters)
 - Conference presentations
@@ -129,6 +133,7 @@ Academics applying to industry roles must compress their CV into a resume - tran
 
 Follow the job posting's language:
 
+
 1. **Posting says "resume"** - Submit a resume (1-2 pages, targeted)
 2. **Posting says "CV"** - In the US, usually means a resume; in academia, submit a full CV
 3. **Posting says "CV or resume"** - Submit whichever is appropriate for the industry and country
@@ -143,7 +148,10 @@ When in doubt, check what is standard in the industry and location. A two-page t
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems (used by most companies for initial screening) are optimized for resumes, not CVs. A lengthy CV submitted to a corporate job application will likely parse poorly - the sections, the length, and the academic structure are not what [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) expects.
 
+
+
 If you are applying to industry roles:
+
 - Use a resume, not a CV
 - Use an [ATS-friendly template](https://www.thetailorcv.com/templates)
 - Check your score with the [ATS checker](https://www.thetailorcv.com/solutions)

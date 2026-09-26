@@ -10,14 +10,6 @@ keywords: ai generated job description, how to spot ai job posting, matching res
 image: public/blog-images/matching-resume-ai-generated-job-descriptions.webp
 ---
 
-More job postings in 2026 are drafted, expanded, or entirely written by AI. Hiring teams use AI to turn a rough bullet list into a polished, keyword-rich [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in seconds, and while that produces more consistent postings, it also produces a specific pattern: longer, more generic, and sometimes internally inconsistent job descriptions that are harder to match accurately.
-
-Understanding this pattern changes how you should read and [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to these postings.
-
-Paste any job description into the [TailorCV resume optimizer](/solutions) to get a [match score](https://www.thetailorcv.com/solutions) and a clear list of what actually matters, regardless of how the posting was written.
-
----
-
 ## Key Takeaways
 
 - AI-generated job descriptions often have a uniform structure, long qualification lists mixing important and generic requirements, and repetitive phrasing.
@@ -25,6 +17,15 @@ Paste any job description into the [TailorCV resume optimizer](/solutions) to ge
 - Cross-referencing with other job postings from the same company can help distinguish boilerplate language from role-specific priorities.
 - When qualifications are unclear, focus on matching your resume to the job title and core responsibilities for better alignment.
 - Tailor your resume to reflect genuine requirements rather than trying to mirror every buzzword for effective job application results.
+
+
+More job postings in 2026 are drafted, expanded, or entirely written by AI. Hiring teams use AI to turn a rough bullet list into a polished, keyword-rich [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in seconds, and while that produces more consistent postings, it also produces a specific pattern: longer, more generic, and sometimes internally inconsistent job descriptions that are harder to match accurately.
+
+Understanding this pattern changes how you should read and [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to these postings.
+
+Paste any job description into the [TailorCV resume optimizer](/solutions) to get a [match score](https://www.thetailorcv.com/solutions) and a clear list of what actually matters, regardless of how the posting was written.
+
+---
 
 ## How to Spot an AI-Generated or AI-Expanded Job Description
 
@@ -93,6 +94,13 @@ TailorCV's [resume optimizer](/solutions) reads the full job description and ide
 ## Step-by-Step Guide to Tailoring Your Resume for AI-Generated Job Descriptions
 
 To effectively tailor your resume for AI-generated job descriptions, follow this structured approach:
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 1. **Identify Core Requirements**: After extracting key elements from the job description, categorize them into must-have qualifications and preferred qualifications. This will help you prioritize what to highlight in your resume. For a deeper understanding, refer to our guide on [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications).
 

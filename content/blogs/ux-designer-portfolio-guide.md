@@ -10,8 +10,6 @@ slug: ux-designer-portfolio-guide
 keywords: ux designer portfolio, ux case study, design portfolio, product design portfolio, ux portfolio examples
 ---
 
-A UX portfolio is judged on **thinking**, not just visuals. Pretty screens get scrolled past; case studies that show how you framed a problem and drove an outcome get interviews. Hiring managers are evaluating your judgment, and the only way to show judgment is to narrate your decisions. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the full template in [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
-
 ## Key Takeaways
 
 - A UX portfolio should focus on case studies that demonstrate problem framing and decision-making rather than just visual appeal.
@@ -19,6 +17,9 @@ A UX portfolio is judged on **thinking**, not just visuals. Pretty screens get s
 - Include real metrics to illustrate the impact of your work, such as task completion rates and usability test scores.
 - Curate your portfolio to feature three to five strong case studies, prioritizing quality over quantity and ensuring they reflect your design process.
 - Ensure your resume, LinkedIn, and portfolio are aligned in messaging to avoid confusion for recruiters.
+
+
+A UX portfolio is judged on **thinking**, not just visuals. Pretty screens get scrolled past; case studies that show how you framed a problem and drove an outcome get interviews. Hiring managers are evaluating your judgment, and the only way to show judgment is to narrate your decisions. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the full template in [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
 
 ## The Case Study Structure That Works
 Every case study should follow this arc:
@@ -84,6 +85,13 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 ## Common Mistakes to Avoid When Crafting Your Portfolio
 
 - **Overloading with Information**: Avoid cramming too many projects into your portfolio. Focus on quality over quantity. A few well-documented case studies are more impactful than a dozen mediocre ones.
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
 
 - **Neglecting User Feedback**: Failing to incorporate user feedback into your case studies can weaken your credibility. Always include insights gained from user testing and how they influenced your design decisions.
 
@@ -164,7 +172,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

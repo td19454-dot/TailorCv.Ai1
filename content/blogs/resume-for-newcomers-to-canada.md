@@ -10,8 +10,6 @@ keywords: resume for newcomers to canada, immigrant resume canada, first canadia
 image: public/blog-images/resume-for-newcomers-to-canada.webp
 ---
 
-Landing your first job in Canada can be a daunting task, especially for newcomers and international students unfamiliar with local hiring practices. A well-crafted resume is your key to making a strong first impression. In Canada, resumes have specific norms and expectations that differ from those in other countries. This article will guide you through the essentials of creating a standout resume that aligns with Canadian standards, enhances your chances of passing Applicant Tracking Systems (ATS), and ultimately helps you secure that all-important first job.
-
 ## Key Takeaways
 
 - Canadian resumes typically accept a two-page format, focusing on skills and qualifications rather than personal details.
@@ -19,14 +17,19 @@ Landing your first job in Canada can be a daunting task, especially for newcomer
 - Highlight both hard and soft skills relevant to the job, adapting this section to match the job description for better ATS compatibility.
 - Avoid vague descriptions and excessive details in the work experience section; instead, focus on specific accomplishments and relevant experiences.
 
+
+Landing your first job in Canada can be a daunting task, especially for newcomers and international students unfamiliar with local hiring practices. A well-crafted resume is your key to making a strong first impression. In Canada, resumes have specific norms and expectations that differ from those in other countries. This article will guide you through the essentials of creating a standout resume that aligns with Canadian standards, enhances your chances of passing Applicant Tracking Systems (ATS), and ultimately helps you secure that all-important first job.
+
 ## Understanding Canadian Resume Norms
 
 Before diving into the specifics of resume writing, it’s crucial to understand the fundamental differences in Canadian resume expectations compared to other regions. Here are some key points to consider:
 
-- **Length**: While some countries expect concise one-page resumes, Canadian employers typically accept two-page resumes, especially for those with extensive experience.
-- **Personal Information**: In Canada, it is standard to exclude personal details such as your photo, age, marital status, or nationality. Employers are focused on your skills and qualifications.
-- **Format**: Use a clean, professional format. Avoid excessive graphics or colors that may distract from your content. A simple, clear layout enhances readability.
-- **References**: It’s common to include a line stating “References available upon request” rather than listing them on your resume.
+| Rule | What it means |
+|---|---|
+| **Length** | While some countries expect concise one-page resumes, Canadian employers typically accept two-page resumes, especially for those with extensive experience |
+| **Personal Information** | In Canada, it is standard to exclude personal details such as your photo, age, marital status, or nationality. Employers are focused on your skills and qualifications |
+| **Format** | Use a clean, professional format. Avoid excessive graphics or colors that may distract from your content. A simple, clear layout enhances readability |
+| **References** | It’s common to include a line stating “References available upon request” rather than listing them on your resume |
 
 ## Crafting Your Resume
 
@@ -107,6 +110,13 @@ Depending on your background, you may want to include additional sections such a
 
 Most Canadian employers use ATS to screen resumes. To ensure your resume passes through these systems, consider the following:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - **Keywords**: Incorporate keywords from the job description naturally throughout your resume.
 - **Standard Formatting**: Avoid using tables or text boxes, as these can confuse ATS.
 - **File Format**: Save your resume as a PDF or Word document, as these formats are typically ATS-friendly. For further guidance, check our [resume file format guide](https://thetailorcv.com/blog/resume-file-format-guide).
@@ -140,6 +150,8 @@ In today’s job market, a strong LinkedIn profile can complement your resume an
 ## Preparing for Interviews
 
 Once your resume has landed you an interview, preparation is key to success. Consider practicing with our [AI mock interview](https://thetailorcv.com/mock-interview) tool to build confidence and refine your responses.
+
+
 
 ### Interview Preparation Tips
 

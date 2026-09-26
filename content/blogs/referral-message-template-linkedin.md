@@ -10,10 +10,6 @@ slug: referral-message-template-linkedin
 keywords: LinkedIn referral message template, how to ask for referral, referral request message, job referral LinkedIn
 ---
 
-Referrals work best when your message is specific and low-pressure. Do not ask a stranger to "refer me please" with no context. Make it easy for them to understand your fit.
-
----
-
 ## Key Takeaways
 
 - Craft specific and low-pressure referral messages to make it easy for contacts to understand your fit for the role.
@@ -22,9 +18,21 @@ Referrals work best when your message is specific and low-pressure. Do not ask a
 - Avoid common mistakes such as sending long messages, attaching resumes prematurely, or sounding entitled.
 - Optimize your application materials by aligning them closely with the specific job description to demonstrate your relevant skills and experiences.
 
+
+Referrals work best when your message is specific and low-pressure. Do not ask a stranger to "refer me please" with no context. Make it easy for them to understand your fit.
+
+---
+
 ## Best [referral](https://thetailorcv.com/blog/networking-tips-for-job-search) Message Template
 
 Hi [Name],
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
 
 I saw that [Company] is hiring for [Role]. My background is in [skill/role], including [short proof point], and the role looks closely aligned with my experience.
 
@@ -66,12 +74,6 @@ Avoid:
 
 ---
 
-## Conclusion
-
-Referral messages should feel human and easy to answer. Before sending your resume, check it against the role with the [ATS score checker](/solutions) so the referral has a strong application behind it.
-
----
-
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) referral request because small wording choices can change how recruiters and ATS systems understand your fit.
@@ -102,6 +104,8 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 ## Example Before and After
 
 Weak version:
+
+
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.
 
@@ -158,6 +162,12 @@ Use these links as a practical cluster: first fix the resume and ATS alignment, 
 
 ---
 
+## Conclusion
+
+Referral messages should feel human and easy to answer. Before sending your resume, check it against the role with the [ATS score checker](/solutions) so the referral has a strong application behind it.
+
+---
+
 ## Frequently Asked Questions
 
 ### How many times should I customize this before applying?
@@ -170,11 +180,11 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 
-Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
+Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and how to write resume bullet points guides will help you revise before testing again.
 
 ---
 

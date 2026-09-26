@@ -10,8 +10,6 @@ slug: project-manager-portfolio-guide
 keywords: project manager portfolio, pm portfolio website, project management case study, pmp portfolio, project delivery portfolio
 ---
 
-Project management is judged on delivery - on time, on budget, on scope, with a team that did not burn out along the way. A resume line like "managed cross-functional projects" says nothing about how well you actually did that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real project case studies does. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
-
 ## Key Takeaways
 
 - Include 2-4 project case studies detailing scope, timeline, budget, team size, and deliverables in your portfolio.
@@ -20,12 +18,18 @@ Project management is judged on delivery - on time, on budget, on scope, with a 
 - Avoid common mistakes such as omitting challenges faced, sharing confidential information, or failing to connect your portfolio to your certifications.
 - Tailor your portfolio for your target audience and document each project with clear overviews, your role, challenges, and quantifiable results.
 
+
+Project management is judged on delivery - on time, on budget, on scope, with a team that did not burn out along the way. A resume line like "managed cross-functional projects" says nothing about how well you actually did that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real project case studies does. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
+
 ## What to Include
-- **2-4 project case studies** - scope, timeline, budget, team size, and what you delivered
-- **A sample project plan or Gantt chart** - shows how you structure and sequence work
-- **Risk management examples** - a risk you identified early and how you mitigated it
-- **Stakeholder communication samples** - a status report template or a sanitized steering committee update
-- **Certifications** - PMP, CAPM, PRINCE2, or Agile/Scrum certifications (CSM, PSM)
+
+| What to include | Why |
+|---|---|
+| **2-4 project case studies** | scope, timeline, budget, team size, and what you delivered |
+| **A sample project plan or Gantt chart** | shows how you structure and sequence work |
+| **Risk management examples** | a risk you identified early and how you mitigated it |
+| **Stakeholder communication samples** | a status report template or a sanitized steering committee update |
+| **Certifications** | PMP, CAPM, PRINCE2, or Agile/Scrum certifications (CSM, PSM) |
 
 ## Frame Delivery Under Constraint
 Anyone can manage a project with no obstacles - what proves skill is how you handled the ones that came up. For each case study:
@@ -63,10 +67,13 @@ Creating a project manager portfolio can seem daunting, but breaking it down int
 2. **Gather Your Best Projects**: Select 3-5 projects that best showcase your skills and achievements. Ensure these projects highlight diverse aspects of project management, such as planning, execution, and stakeholder communication.
 
 3. **Document Each Project**: For each project, include the following:
-   - **Project Overview**: Briefly describe the project and its objectives.
-   - **Your Role**: Clearly define your responsibilities and contributions.
-   - **Challenges and Solutions**: Highlight any obstacles faced during the project and how you overcame them.
-   - **Results**: Use metrics to quantify your success, such as budget adherence, timeline completion, and stakeholder satisfaction.
+
+| Step | What to do |
+|---|---|
+| **Project Overview** | Briefly describe the project and its objectives |
+| **Your Role** | Clearly define your responsibilities and contributions |
+| **Challenges and Solutions** | Highlight any obstacles faced during the project and how you overcame them |
+| **Results** | Use metrics to quantify your success, such as budget adherence, timeline completion, and stakeholder satisfaction |
 
 4. **Design Your Portfolio**: Choose a clean, professional layout that reflects your personal brand. Use visual elements like graphs and charts to present data effectively.
 
@@ -79,6 +86,13 @@ Creating a project manager portfolio can seem daunting, but breaking it down int
 ## Common Mistakes to Avoid When Creating a Project Manager Portfolio
 
 While assembling your portfolio, it's easy to fall into certain traps. Here are common mistakes to steer clear of:
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
 
 - **Overloading with Information**: Avoid cluttering your portfolio with excessive details. Stick to relevant information that showcases your skills effectively.
   
@@ -146,7 +160,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, methodology, and strongest deliveries are easier to discover.
 

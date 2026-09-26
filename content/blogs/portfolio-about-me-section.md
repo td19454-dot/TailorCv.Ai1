@@ -4,9 +4,10 @@ date: 2026-07-12
 author: TailorCV Team
 slug: portfolio-about-me-section
 image: public/blog-images/portfolio-about-me-section.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
-
-The About Me section is where a visitor decides whether to trust you - and most people get it wrong by writing either a life story or a wall of empty adjectives. A great About Me is specific, human, and short. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 ## Key Takeaways
 
@@ -15,6 +16,9 @@ The About Me section is where a visitor decides whether to trust you - and most 
 - Start with a strong opening line that clearly summarizes your professional identity and avoid jargon.
 - Provide evidence of your skills through notable achievements or metrics that demonstrate your value.
 - Tailor your tone and content to resonate with your target audience, and keep your resume and portfolio aligned in messaging.
+
+
+The About Me section is where a visitor decides whether to trust you - and most people get it wrong by writing either a life story or a wall of empty adjectives. A great About Me is specific, human, and short. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 ## The Formula
 - **Who you are + what you do** (one sharp line)
@@ -31,6 +35,7 @@ The About Me section is where a visitor decides whether to trust you - and most 
 
 ### 1. Identify Your Core Message
 Before you start writing, take a moment to reflect on what you want to convey. Ask yourself:
+
 - What is my professional identity?
 - What unique value do I bring to my field?
 - What kind of opportunities am I seeking?
@@ -41,6 +46,7 @@ Before you start writing, take a moment to reflect on what you want to convey. A
 Your first line is crucial. It should grab attention while succinctly summarizing who you are and what you do. 
 
 **Tips:**
+
 - Use clear, straightforward language.
 - Avoid jargon unless it's commonly understood in your industry.
 
@@ -50,6 +56,7 @@ Your first line is crucial. It should grab attention while succinctly summarizin
 Once you've introduced yourself, back it up with proof. This could be a notable achievement, a project you're proud of, or a specialty that sets you apart.
 
 **Examples of Proof:**
+
 - Metrics (e.g., "increased website traffic by 50% in six months").
 - Awards or recognitions (e.g., "awarded Best New Designer 2023").
 - Specific skills (e.g., "expert in Adobe Creative Suite").
@@ -99,16 +106,26 @@ Your About Me should resonate with your target audience. Avoid overly technical 
 
 Your resume, LinkedIn, and portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ## Pro Tips
 - **Add a Real Photo:** Faces build trust. Use a professional headshot that reflects your personality.
 - **Optimize for SEO:** Include your specialty in the first six words to enhance visibility for search engines and skimmers. Learn more in [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
 - **Use a Portfolio Builder:** Publish your About Me on a site built with the [portfolio builder](https://www.thetailorcv.com/portfolio) to ensure a professional presentation.
+
+
 
 ## Enhancing Your About Me with Analytics
 To continuously improve your About Me section, consider using analytics tools to gauge interest. Using [Portfolio Analytics to Gauge Recruiter Interest](https://thetailorcv.com/blog/portfolio-analytics-view-tracking) can provide insights into how visitors are interacting with your portfolio, allowing you to make informed adjustments.
 
 ### Checklist for Your About Me Section
 Before finalizing your About Me section, make sure to check off the following:
+
 - [ ] Is it concise (3-5 sentences)?
 - [ ] Does it include a strong opening line?
 - [ ] Is there proof of my skills and achievements?
@@ -157,7 +174,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

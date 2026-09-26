@@ -10,6 +10,14 @@ keywords: informational interview, how to ask for an informational interview, in
 image: public/blog-images/informational-interview-guide.webp
 ---
 
+## Key Takeaways
+
+- Informational interviews work for four reasons, none of which involve asking for a job.
+- Ask people one or two steps ahead of you, not twenty - they remember the transition and have time.
+- The outreach message must be short, specific, and must not smell like a job request.
+- Prepare six to eight questions, expect to use four, and ask about their experience rather than about openings.
+- The most damaging mistake is treating it as a covert job application - people feel it immediately.
+
 An informational interview is a short conversation with someone doing work you're interested in, where you ask about their field and they answer. That's it. No job is on the table, and that absence is the entire reason it works.
 
 Most people either never try this or ruin it by treating it as a disguised job application. Done properly it's one of the highest-return activities in a job search — it surfaces roles that never get posted, gives you language that makes your applications land, and builds relationships that pay off months later. Done badly it's a wasted twenty minutes and a contact who won't reply again.
@@ -104,6 +112,7 @@ If a job comes up, they will raise it. Frequently they do.
 
 **Don't pitch yourself.** The temptation is strong and it's the main failure mode. If they ask what you're looking for, answer briefly and honestly, then return to their experience.
 
+
 ## Following Up
 
 **Within 24 hours:** a short thank-you naming one specific thing you're acting on. Specificity proves you listened — the same principle as a good [post-interview follow-up](/blog/how-to-follow-up-after-interview).
@@ -164,6 +173,13 @@ One caution regardless of situation: be alert to anyone who turns an advice conv
 
 **What is an informational interview?**
 A short, informal conversation — usually twenty to thirty minutes — with someone working in a field or role you're interested in, where you ask about their experience. No job is being discussed, which is exactly why people agree to it.
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 
 **How do I ask for an informational interview?**
 A short message stating a genuine connection, a specific reason you're contacting that person, a bounded twenty-minute ask, and an explicit note that you're not job hunting at them. Under 150 words, with all scheduling flexibility on your side.

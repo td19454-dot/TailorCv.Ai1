@@ -10,14 +10,6 @@ slug: resume-keywords-guide
 keywords: resume keywords, resume keywords 2026, ATS keywords, how to find resume keywords, keyword optimization resume, job description keywords
 ---
 
-Resume keywords are the specific words and phrases that [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems and recruiters use to match candidates to jobs. Getting your keywords right is one of the highest-impact things you can do - a perfectly qualified candidate using the wrong terminology can score lower than a less-qualified candidate using the exact right words.
-
-This guide shows you how to find the right keywords for any job and how to use them naturally and effectively.
-
-The fastest way to identify keyword gaps is to run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) against a specific job description - it shows you exactly which keywords you are missing. Pair this with the [ATS-friendly resume guide](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and [ATS-friendly templates](https://www.thetailorcv.com/templates).
-
----
-
 ## Key Takeaways
 
 - Resume keywords are crucial for ATS systems and recruiters to match candidates with job descriptions; using the right terminology can significantly impact your application success.
@@ -25,6 +17,15 @@ The fastest way to identify keyword gaps is to run your resume through the [Tail
 - Analyze multiple job postings for the same role to find universal keywords and include both full terms and variations to improve ATS matching.
 - Utilize tools like the TailorCV ATS score checker to compare your resume against job descriptions and identify missing keywords.
 - Place keywords strategically in the skills section, work experience bullets, and summary to enhance visibility and context in your resume.
+
+
+Resume keywords are the specific words and phrases that [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems and recruiters use to match candidates to jobs. Getting your keywords right is one of the highest-impact things you can do - a perfectly qualified candidate using the wrong terminology can score lower than a less-qualified candidate using the exact right words.
+
+This guide shows you how to find the right keywords for any job and how to use them naturally and effectively.
+
+The fastest way to identify keyword gaps is to run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) against a specific job description - it shows you exactly which keywords you are missing. Pair this with the [ATS-friendly resume guide](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and [ATS-friendly templates](https://www.thetailorcv.com/templates).
+
+---
 
 ## Why Keywords Matter So Much
 
@@ -43,10 +44,12 @@ If your resume says "developed software applications" but the job and [recruiter
 
 ### 1. Hard Skills
 Specific, teachable abilities and tools:
+
 - Python, SQL, AWS, Excel, SolidWorks, Salesforce, Figma
 
 ### 2. Job Titles
 The roles you have held and the role you want:
+
 - Software Engineer, [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026), Product Manager
 
 ### 3. Certifications
@@ -54,6 +57,7 @@ The roles you have held and the role you want:
 
 ### 4. Industry Terms
 Domain-specific vocabulary:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it), MEDDICC, HAZOP, GAAP, MTM, SLO
 
 ### 5. Action and Competency Keywords
@@ -66,6 +70,7 @@ Domain-specific vocabulary:
 ### Step 1: Read the Job Description Carefully
 
 The [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is your primary keyword source. Read it 2-3 times and highlight:
+
 - Every hard skill and tool mentioned
 - Required qualifications and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Repeated words and phrases (repetition signals importance)
@@ -78,8 +83,9 @@ Look at 5-10 job postings for the same role across different companies. Keywords
 ### Step 3: Note Exact Phrasing and Variations
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) matching can be literal. Include both:
+
 - Full terms and acronyms: "Search Engine Optimization (SEO)"
-- Variations: "project management" and "managed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)"
+- Variations: "project management" and "managed [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)"
 
 ### Step 4: Use a Keyword Tool
 
@@ -122,6 +128,13 @@ Then prove the most important ones in your experience bullets.
 
 ## Keyword Mistakes to Avoid
 
+
+### What an ATS score report actually shows you
+
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see which part of the resume is costing you points.
+
 ### Mistake 1: Using only synonyms, not the exact term
 
 If the job says "Kubernetes" and you write "container orchestration," you might not match. Use both - the exact term and the descriptive phrase.
@@ -159,7 +172,7 @@ This 5-minute process can be the difference between getting filtered out and get
 ## Related Guides
 
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [ATS Score Guide for](https://thetailorcv.com/blog/ats-score-guide)
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [How to Write a Resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
@@ -178,9 +191,9 @@ This 5-minute process can be the difference between getting filtered out and get
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## Conclusion
 [resume keywords](https://thetailorcv.com/blog/resume-keywords-guide) are how you get matched to jobs in 2026. Find them in the job description, use the exact phrasing, place them in your skills section and experience bullets, and use them naturally. Tailor your keywords to each application.

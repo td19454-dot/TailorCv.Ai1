@@ -10,12 +10,6 @@ keywords: job in malaysia for foreigners, work in malaysia as expat, malaysia em
 image: public/blog-images/job-in-malaysia-as-foreigner.png
 ---
 
-Malaysia is one of Southeast Asia's most attractive destinations for foreign professionals: a lower cost of living than [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide), widespread use of English, a diverse culture, and a growing base of multinationals and regional headquarters. Getting hired as a foreigner takes more planning than for locals — there are work-authorisation rules and employers must justify hiring from abroad — but for the right skills, it's very achievable.
-
-This guide walks you through getting a job in Malaysia as a foreigner in 2026: which sectors hire expats, how work permits and Employment Passes work, where to search, and how to present yourself so Malaysian employers choose you.
-
-> **Note:** Immigration rules and pass categories change. Treat the permit information here as a practical overview and always confirm current requirements with the Malaysian Immigration Department, the Expatriate Services Division (ESD), or your prospective employer before acting.
-
 ## Key Takeaways
 
 - Foreigners generally need an employer-sponsored **Employment Pass** to work in Malaysia; you usually secure the job first, then the employer sponsors the pass.
@@ -23,6 +17,13 @@ This guide walks you through getting a job in Malaysia as a foreigner in 2026: w
 - Your resume should follow **Malaysian conventions**, not your home country's format.
 - A clear value proposition — skills the local market needs — is what convinces an employer to sponsor you.
 - English is widely used in Malaysian business, which lowers the barrier for many international professionals.
+
+
+Malaysia is one of Southeast Asia's most attractive destinations for foreign professionals: a lower cost of living than [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide), widespread use of English, a diverse culture, and a growing base of multinationals and regional headquarters. Getting hired as a foreigner takes more planning than for locals — there are work-authorisation rules and employers must justify hiring from abroad — but for the right skills, it's very achievable.
+
+This guide walks you through getting a job in Malaysia as a foreigner in 2026: which sectors hire expats, how work permits and Employment Passes work, where to search, and how to present yourself so Malaysian employers choose you.
+
+> **Note:** Immigration rules and pass categories change. Treat the permit information here as a practical overview and always confirm current requirements with the Malaysian Immigration Department, the Expatriate Services Division (ESD), or your prospective employer before acting.
 
 ## Can Foreigners Work in Malaysia?
 
@@ -63,11 +64,18 @@ If your skills fall into these areas, sponsorship is far more likely.
 
 A common expat mistake is submitting a resume in the home-country format. Malaysian employers expect local conventions:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - A concise 1–2 page document (not the long CV common in some countries).
 - Personal details more openly listed than in Western resumes, including nationality and work-authorisation status.
 - Clear evidence of the specific skills the role needs.
 
-Follow our [guide to writing a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs), and note that in Malaysia "CV" usually just means a resume — see [CV vs resume in Malaysia](https://thetailorcv.com/blog/cv-vs-resume-malaysia). Because most employers screen with an ATS, make it [machine-readable](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) and test it with the free [ATS score checker](https://thetailorcv.com/solutions); the mechanics are in [how ATS works in Malaysia](https://thetailorcv.com/blog/ats-in-malaysia-guide).
+Follow our [guide to writing a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs), and note that in Malaysia "CV" usually just means a resume — see [CV vs resume in Malaysia](https://thetailorcv.com/blog/cv-vs-resume-malaysia). Because most employers screen with an ATS, make it [machine-readable](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) and test it with the free [ATS score checker](https://thetailorcv.com/blog/ats-score-checker-free); the mechanics are in how ATS works in Malaysia.
 
 Build a clean, ATS-safe version with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it to each role with the [resume optimizer](https://thetailorcv.com/solutions).
 
@@ -84,11 +92,13 @@ Applying to small local SMEs that rarely sponsor is usually a poor use of effort
 
 ## Step 3: Search in the Right Places
 
-- **LinkedIn** — the most important channel for professional expat roles; recruiters for MNCs source here directly.
-- **JobStreet** — Malaysia's largest portal; filter for roles open to foreigners where possible.
-- **Company career pages** — MNCs and GLCs list roles and their sponsorship policies.
-- **Specialist recruiters** — agencies that place international professionals in tech, finance, and engineering.
-- **Your network** — referrals matter everywhere; connect with expats and professionals already in Malaysia.
+| Step | What to do |
+|---|---|
+| **LinkedIn** | the most important channel for professional expat roles; recruiters for MNCs source here directly |
+| **JobStreet** | Malaysia's largest portal; filter for roles open to foreigners where possible |
+| **Company career pages** | MNCs and GLCs list roles and their sponsorship policies |
+| **Specialist recruiters** | agencies that place international professionals in tech, finance, and engineering |
+| **Your network** | referrals matter everywhere; connect with expats and professionals already in Malaysia |
 
 Optimise your LinkedIn so recruiters find you — see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
 
@@ -140,6 +150,8 @@ Ask prospective employers whether the offer is quoted gross or net, and what sup
 ## Building a Network as a Newcomer
 
 Even as a foreigner, networking accelerates your search and eases your landing. Malaysia has active professional and expat communities, especially in Kuala Lumpur and Penang:
+
+
 
 - **Connect with expats and professionals already in Malaysia** via LinkedIn and professional groups — they offer realistic advice and sometimes referrals.
 - **Engage industry communities** in your field (tech, engineering, finance), which often welcome international members.
@@ -199,7 +211,7 @@ Landing the job is one thing; thriving is another. Malaysian workplaces have the
 - **Multiculturalism is the norm.** Malaysia's Malay, Chinese, Indian, and other communities work side by side, and sensitivity to different customs, festivals, and dietary practices is appreciated.
 - **Communication can be indirect.** Colleagues may avoid blunt disagreement to preserve harmony; learn to read context and respond graciously.
 - **English is widely used** in business, easing the transition, though learning some Bahasa Malaysia is genuinely appreciated socially.
-- **Work-life balance and pace** vary by sector — MNCs may feel familiar to Western professionals, while some local firms are more hierarchical.
+- **[Work-life balance](https://thetailorcv.com/blog/work-life-balance-tips) and pace** vary by sector — MNCs may feel familiar to Western professionals, while some local firms are more hierarchical.
 
 Approaching your new workplace with humility, curiosity, and respect goes a long way, and Malaysians are generally welcoming to newcomers who make the effort.
 
@@ -216,7 +228,7 @@ Because these rules change and depend on your category and sector, always confir
 
 ## Comparing Malaysia to Other Regional Hubs
 
-Foreign professionals often weigh Malaysia against Singapore, Thailand, or Vietnam. Malaysia's distinct advantages are a **lower cost of living than Singapore**, **widespread business English**, a **diverse, welcoming culture**, and a strong base of **MNCs and regional headquarters** — particularly in tech, engineering, oil and gas, and shared services. Salaries may be lower than Singapore's in absolute terms, but the cost-of-living difference often makes the real quality of life competitive. If your skills fit Malaysia's shortage sectors, it can be one of the most comfortable and rewarding bases in Southeast Asia.
+Foreign professionals often weigh Malaysia against Singapore, Thailand, or Vietnam. Malaysia's distinct advantages are a **lower cost of living than Singapore**, **widespread business English**, a **diverse, welcoming culture**, and a strong base of **MNCs and regional headquarters** — particularly in tech, engineering, oil and gas, and shared services. Salaries may be lower than Singapore's in absolute terms, but the cost-of-living difference often makes the real quality of life competitive. If your skills fit Malaysia's shortage sectors, it can be one of the most comfortable and rewarding bases in [Southeast Asia](https://thetailorcv.com/blog/southeast-asia-jobs-compared).
 
 ## Common Mistakes Foreign Job Seekers Make
 

@@ -10,8 +10,6 @@ slug: hr-recruiter-portfolio-guide
 keywords: hr portfolio, recruiter portfolio, human resources portfolio website, talent acquisition portfolio, hr case study
 ---
 
-HR and recruiting work is judgment-heavy and mostly invisible on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you show the process behind a hiring metric - how you cut time-to-fill, redesigned onboarding, or built a sourcing pipeline from scratch. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
-
 ## Key Takeaways
 
 - A portfolio allows HR and recruiters to showcase the impact of their work through metrics and case studies, making their contributions visible.
@@ -20,12 +18,18 @@ HR and recruiting work is judgment-heavy and mostly invisible on a resume. A [po
 - Host your portfolio on a personal site, LinkedIn, or as a shareable PDF, ensuring it aligns with your resume and LinkedIn profile.
 - Avoid common mistakes such as listing tasks instead of outcomes and failing to provide before-and-after metrics to illustrate improvements.
 
+
+HR and recruiting work is judgment-heavy and mostly invisible on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you show the process behind a hiring metric - how you cut time-to-fill, redesigned onboarding, or built a sourcing pipeline from scratch. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+
 ## What to Include
-- **Hiring metrics** - time-to-fill, offer-acceptance rate, quality-of-hire, cost-per-hire, before and after a change you made
-- **Program case studies** - onboarding redesign, DEI initiative, employer branding campaign, performance review overhaul
-- **Sourcing and pipeline work** - a sanitized example of a search strategy for a hard-to-fill role
-- **Sample artifacts** - a job description you wrote, an interview scorecard you built, an onboarding checklist (with any confidential details removed)
-- **Certifications** - SHRM-CP, PHR, or platform certifications (LinkedIn Recruiter, Greenhouse, Workday)
+
+| What to include | Why |
+|---|---|
+| **Hiring metrics** | time-to-fill, offer-acceptance rate, quality-of-hire, cost-per-hire, before and after a change you made |
+| **Program case studies** | onboarding redesign, DEI initiative, employer branding campaign, performance review overhaul |
+| **Sourcing and pipeline work** | a sanitized example of a search strategy for a hard-to-fill role |
+| **Sample artifacts** | a job description you wrote, an interview scorecard you built, an onboarding checklist (with any confidential details removed) |
+| **Certifications** | SHRM-CP, PHR, or platform certifications (LinkedIn Recruiter, Greenhouse, Workday) |
 
 ## Frame Programs, Not Just Tasks
 A hiring manager scanning your portfolio wants to see: what was broken, what you changed, and what moved. For each case study:
@@ -43,7 +47,7 @@ If you cannot share exact company data, use ranges or relative change: "Cut aver
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and portfolio should tell the same story - same specialty (talent acquisition, HRBP, people ops), same headline metrics - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and portfolio should tell the same story - same specialty (talent acquisition, HRBP, people ops), same headline metrics - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See How to Add Your Portfolio Link to Your Resume for placing the link correctly.
 
 ## Common Mistakes
 - Task lists ("posted jobs, screened candidates") instead of outcomes
@@ -79,6 +83,13 @@ To ensure your HR portfolio is comprehensive and effective, follow this checklis
 - [ ] **Regular Updates**: Schedule periodic reviews to add new accomplishments and remove outdated information.
 
 ## Do’s and Don’ts for Crafting an HR Portfolio
+
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 ### Do’s
 
@@ -142,7 +153,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest programs are easier to discover.
 

@@ -10,11 +10,26 @@ keywords: resume keywords singapore, best keywords singapore resume, ats keyword
 image: public/blog-images/best-resume-keywords-singapore-jobs.webp
 ---
 
+## Key Takeaways
+
+- Two forces make keywords unusually important in Singapore, starting with the standard ATS match on exact language.
+- Hard-skill keywords name specific technologies, tools, certifications, and methodologies; soft-skill keywords work differently.
+- You do not guess Singapore keywords - you extract them from the postings you are actually targeting.
+- Placement matters as much as selection.
+- Keyword-stuffing gets you past the filter and then destroyed in the interview, so use them honestly.
+
 In Singapore's ATS-heavy, agency-driven market, keywords are how you get *found* and how you get *past the filter*. Recruiters search their databases by keyword; the [applicant tracking system](/blog/ats-resume-checker-how-it-works) matches your resume to postings by exact terms. Get the keywords right and qualified-but-invisible becomes shortlisted. This guide covers the best resume keywords for Singapore jobs in 2026 — how to find them, where to place them, and how to use them honestly.
 
 ## Why Keywords Decide So Much in Singapore
 
 Two forces make keywords unusually important in Singapore. First, the standard [ATS filter](/blog/how-to-pass-ats-in-2026): your resume is matched, by exact language, against the posting — and [the filter matches words, not meaning](/blog/how-to-match-resume-keywords-to-job-description). Second, the recruitment-agency layer: a huge share of Singapore hiring runs through agencies whose consultants *search* their candidate databases by keyword for current and future roles. If your resume lacks the terms they search, you simply don't appear — the mechanism behind [the ATS in Singapore](/blog/ats-in-singapore-guide).
+
+### What an ATS score report actually shows you
+
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see which part of the resume is costing you points.
+
 
 So keywords aren't decoration. A [generic resume](/blog/tailored-vs-generic-resume) without the right terms is invisible twice over. The fix is to carry the exact language of your target roles, honestly, where you genuinely have the experience.
 
@@ -28,7 +43,10 @@ So keywords aren't decoration. A [generic resume](/blog/tailored-vs-generic-resu
 
 You don't guess Singapore keywords — you extract them from the postings you're targeting.
 
-**1. Read 5–10 real job descriptions** for your target role in Singapore. **2. Note the terms that repeat** across them — the recurring skills, tools, and phrases are the ones the ATS and recruiters weigh. **3. Cross-check against your genuine experience** — you only claim what you can back up. **4. Mirror the exact wording** — if postings say "data visualisation" not "data viz", use theirs.
+1. **Read 5–10 real job descriptions** for your target role in Singapore.
+2. **Note the terms that repeat** across them — the recurring skills, tools, and phrases are the ones the ATS and recruiters weigh.
+3. **Cross-check against your genuine experience** — you only claim what you can back up.
+4. **Mirror the exact wording** — if postings say "data visualisation" not "data viz", use theirs.
 
 This is faster and more accurate than any generic keyword list, because it's specific to *your* roles. A [free ATS score](/blog/how-to-check-ats-score-free) against a specific posting — the way [the ATS reads your resume](/blog/ats-resume-checker-how-it-works) — automates the extraction — it shows the exact keywords you're missing for that job, which is the difference between an [ATS score and a resume score](/blog/ats-score-vs-resume-score).
 
@@ -56,6 +74,8 @@ Placement matters as much as selection:
 ## Use Them Honestly — Stuffing Backfires
 
 The temptation is to cram every keyword from the posting. Don't. Keyword-stuffing gets you past the filter and then [destroyed in the interview](/blog/ai-resume-tailoring-human-voice), because you can't speak to skills you don't have. And a skills list padded with terms you can't evidence [reads as hollow](/blog/how-to-stop-sounding-generic-on-resume) to the human who follows the filter.
+
+
 
 The rule: only include keywords your real experience supports, and evidence them in your bullets. Good tailoring re-expresses genuine experience in the posting's language — it doesn't fabricate. That's the honest, effective way to [tailor for every job](/blog/how-to-tailor-resume-for-every-job), done [fast](/blog/how-to-tailor-resume-in-5-minutes) and [matched to each posting](/blog/how-to-match-resume-to-job-description-fast), the same [tailored vs generic](/blog/tailored-vs-generic-resume) principle that decides whether you're seen. The full build is in [writing an ATS-friendly resume for Singapore](/blog/ats-friendly-resume-singapore) and the [Singapore resume format guide](/blog/singapore-resume-format-guide-2026).
 

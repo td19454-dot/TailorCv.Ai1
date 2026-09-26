@@ -7,7 +7,7 @@
     <meta name="description" content="{{ seo_og_description }}">
     <title>{{ data.name }}{% if data.headline %} — {{ data.headline }}{% endif %} | Portfolio</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/portfolio_editor.css?v=3">
+    <link rel="stylesheet" href="/static/portfolio_editor.css?v=4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -159,13 +159,12 @@
                         {% for g in data.skills %}
                         <div class="ed-skill-group">
                             {% if g['group'] %}<h4>{{ g['group'] }}</h4>{% endif %}
-                            <div class="ed-skillbars">
+                            {# No proficiency bars: we have no evidence for a percentage.
+                               Inventing one from the skill name put fake data about the
+                               candidate on their own public site. #}
+                            <div class="ed-chips">
                                 {% for item in g['items'] %}
-                                {% set lvl = 82 + (loop.index0 * 7 + (item|length) * 3) % 16 %}
-                                <div class="ed-skillbar" data-lvl="{{ lvl }}">
-                                    <div class="ed-skillbar-top"><span class="nm">{{ item }}</span><span class="pct">{{ lvl }}%</span></div>
-                                    <div class="ed-skillbar-track"><span style="--lvl: {{ lvl }}%"></span></div>
-                                </div>
+                                <span class="ed-chip">{{ item }}</span>
                                 {% endfor %}
                             </div>
                         </div>

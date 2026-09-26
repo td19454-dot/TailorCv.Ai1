@@ -10,10 +10,6 @@ slug: product-manager-case-study-resume
 keywords: product manager case study resume, product manager portfolio case study, PM resume examples, product management case study
 ---
 
-Product manager resumes are strongest when they show product judgment. A [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) can prove how you identify user problems, prioritize trade-offs, work with teams, and measure outcomes.
-
----
-
 ## Key Takeaways
 
 - A strong product manager resume should demonstrate product judgment through a well-structured case study.
@@ -22,9 +18,28 @@ Product manager resumes are strongest when they show product judgment. A [case s
 - Tailor your application materials to match the specific job description, emphasizing relevant skills and experiences.
 - Review your application against a checklist to ensure clarity, keyword alignment, and focus on measurable achievements.
 
+
+Product manager resumes are strongest when they show product judgment. A [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) can prove how you identify user problems, prioritize trade-offs, work with teams, and measure outcomes.
+
+---
+
 ## What a PM [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) Should Show
 
 Include:
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
 
 - User problem
 - Business goal
@@ -69,12 +84,6 @@ Keep screenshots focused. Do not make the reader hunt for the outcome.
 
 ---
 
-## Conclusion
-
-A product manager case study should connect decisions to results. Put the strongest metrics in your resume and the deeper story in your portfolio. Then check your resume with the [ATS score checker](/solutions).
-
----
-
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your product manager [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) because small wording choices can change how recruiters and ATS systems understand your fit.
@@ -105,6 +114,10 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 ## Example Before and After
 
 Weak version:
+
+
+
+
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.
 
@@ -161,6 +174,12 @@ Use these links as a practical cluster: first fix the resume and ATS alignment, 
 
 ---
 
+## Conclusion
+
+A product manager case study should connect decisions to results. Put the strongest metrics in your resume and the deeper story in your portfolio. Then check your resume with the [ATS score checker](/solutions).
+
+---
+
 ## Frequently Asked Questions
 
 ### How many times should I customize this before applying?
@@ -173,11 +192,11 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 
-Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
+Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and how to write resume bullet points guides will help you revise before testing again.
 
 ---
 

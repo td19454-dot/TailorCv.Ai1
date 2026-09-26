@@ -10,6 +10,14 @@ keywords: tailor resume greenhouse, workday resume tips, lever ats resume, ashby
 image: public/blog-images/tailor-resume-on-greenhouse-lever-workday.webp
 ---
 
+## Key Takeaways
+
+- On an ATS board there is no aggregation layer - you are applying straight into the employer's system.
+- Each ATS behaves a little differently, and knowing the quirks helps.
+- The four tailoring moves are the same everywhere, but they matter more here because there is no human buffer.
+- By hand the flow is read, note the repeated skills, duplicate, work keywords in honestly, reorder, verify parsing, export and upload.
+- The same habit carries across every board, because they all run the same kind of filter.
+
 Everyone obsesses over LinkedIn and Indeed, but some of the best jobs never really live there. They live on company career pages, powered by applicant tracking systems like Greenhouse, Lever, Ashby and Workday. And these are the pages where tailoring matters *most*, because you are applying directly into the ATS with nothing in between.
 
 This guide covers why ATS-board applications deserve extra care, the quirks of each platform, and how to tailor and apply in one click even on career pages no other tool bothers to support.
@@ -34,6 +42,9 @@ Each ATS behaves a little differently, and knowing the quirks helps.
 
 **Workday** is the strict one. It is used by large enterprises, its forms are long, and its parser is notoriously literal — [formatting mistakes](/blog/ats-resume-formatting-mistakes) that other systems tolerate can scramble your resume here. Keep it simple: no tables, no columns, no text boxes, and follow [ATS-friendly formatting](/blog/how-to-make-resume-ats-friendly) strictly. Workday also often makes you re-enter your history into its own fields even after you upload — tedious, but the fields are what get searched, so do them properly.
 
+
+![TailorCV reading a Greenhouse posting and scoring the resume against it](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
 ## What to Tailor
 
 The four moves are the same everywhere, and they matter more here because there is no human buffer.
@@ -51,6 +62,7 @@ Because ATS-board applications take longer than a LinkedIn quick-apply, the temp
 Most job-search tools only support the big aggregators and leave you on your own on company career pages. That is a real gap, because those pages host some of the best roles. [TailorCV's Chrome extension](/extension) supports Greenhouse, Lever, Ashby and Workday out of the box — and for any career page it has never seen, you can open the panel from the toolbar and it still reads the description.
 
 Open the posting, the panel reads the job description off the page, and shows your [skill-match score](/ats-analysis) against that role before you start the long application. One click tailors your resume to close the gap and downloads the ATS-ready PDF; a second writes a [matching cover letter](/blog/cover-letter-guide-2026). You still fill Workday's forms by hand — nobody can automate those safely — but at least the resume going into them is matched, not generic. It works the same on [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed) and [Naukri](/blog/how-to-tailor-resume-on-naukri) too.
+
 
 ## Step by Step
 
@@ -85,6 +97,13 @@ There is also a compounding benefit. Because these systems store your structured
 ## A Note on Formatting for Strict Parsers
 
 Because Workday and, to a lesser extent, the others are literal parsers, formatting is not a cosmetic concern on these boards — it is a pass/fail gate. A resume that renders beautifully in your PDF viewer can arrive as scrambled fragments if it fights the parser.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
+
 
 The safe rules are boring and they work: a single column, standard section headings ("Experience", "Education", "Skills"), no tables, no text boxes, no images or icons carrying information, and contact details in the body rather than the header. Dates in a consistent format. A common, embeddable font. This is the groundwork covered in [making your resume ATS-friendly](/blog/how-to-make-resume-ats-friendly) and the [parser-friendly format](/blog/ats-resume-parser-friendly-format) guide, and it matters doubly here because there is no human to notice that the machine mangled you.
 

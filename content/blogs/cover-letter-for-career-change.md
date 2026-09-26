@@ -10,18 +10,19 @@ slug: cover-letter-for-career-change
 keywords: cover letter for career change, career change cover letter example, cover letter for switching careers, transferable skills cover letter
 ---
 
-A [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) cover letter has one job the resume can't fully do: explain *why* you're pivoting, in your own voice, before a recruiter decides you're "not a fit" on paper alone. Get this letter right, and it becomes your strongest asset in the entire application - stronger than the resume itself.
-
-Before writing, make sure your [resume is already tailored for the switch](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026). Then use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) to draft a first version in your voice, and check your resume's match with the [free ATS score checker](https://www.thetailorcv.com/solutions) before you send anything.
-
----
-
 ## Key Takeaways
 
 - A career change cover letter should explain the reason for the pivot and highlight transferable skills to address potential concerns from recruiters.
 - Structure the letter with a focus on connection, a clear statement of transition, specific examples of transferable skills, and proof of momentum through relevant projects or coursework.
 - Avoid apologizing for the career change and instead own the narrative while ensuring the letter addresses the specific needs of the target role and company.
 - Customize each cover letter to reflect genuine motivation for the role and the company, rather than using a generic template.
+
+
+A [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) cover letter has one job the resume can't fully do: explain *why* you're pivoting, in your own voice, before a recruiter decides you're "not a fit" on paper alone. Get this letter right, and it becomes your strongest asset in the entire application - stronger than the resume itself.
+
+Before writing, make sure your [resume is already tailored for the switch](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026). Then use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) to draft a first version in your voice, and check your resume's match with the [free ATS score checker](https://www.thetailorcv.com/solutions) before you send anything.
+
+---
 
 ## Why Career Change Cover Letters Are Different
 
@@ -37,6 +38,13 @@ If you skip the explanation, most recruiters will assume the gap in relevance is
 ---
 
 ## The 4-Part Structure
+
+
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
 
 ### 1. Open with the connection, not the confession
 
@@ -62,6 +70,13 @@ Certifications, a portfolio project, freelance work, or coursework all signal th
 
 Dear [Hiring Manager's Name],
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
+
+
 For the past [X years], I've worked in [current field], where I [one strong, specific achievement with a number]. That work built skills in [2-3 transferable skills] that map directly onto what [Company] needs for this [Target Role] position.
 
 I'm making an intentional move into [target field] because [genuine, specific reason - not generic]. I've already started building toward it: [certification / project / freelance work / relevant coursework].
@@ -84,6 +99,7 @@ Sincerely,
 - Sending the same letter to every company without customizing the "why this company" line
 
 ---
+
 
 ## Concrete Steps for Crafting Your Cover Letter
 
@@ -171,7 +187,7 @@ Three to four short paragraphs, under 300 words. Recruiters skim - use the [cove
 
 ### What if I have zero direct experience in the new field?
 
-Lean on projects, coursework, and transferable soft skills. Pair this with [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) even if you're not a fresher - the framing works the same way.
+Lean on projects, coursework, and transferable soft skills. Pair this with [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) even if you're not a fresher - the framing works the same way.
 
 ### Can AI write this letter for me?
 

@@ -10,8 +10,6 @@ slug: private-portfolio-sharing-guide
 keywords: private portfolio link, unlisted portfolio, share portfolio with recruiter, confidential portfolio, portfolio privacy
 ---
 
-Not every [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should be fully public. If you are job searching while employed, working with confidential client data, or simply not ready for your current employer to find your portfolio through a Google search, a private or unlisted link solves the problem without giving up the format. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
-
 ## Key Takeaways
 
 - Use an unlisted link for your portfolio to maintain privacy while job searching or handling sensitive work.
@@ -19,6 +17,9 @@ Not every [portfolio](https://thetailorcv.com/blog/how-to-build-professional-por
 - Share your portfolio link only through private channels to avoid unwanted visibility by current employers or the public.
 - Avoid sharing confidential client data even in private portfolios, as privacy settings do not override confidentiality agreements.
 - Transition your portfolio to public once you are ready to actively seek new job opportunities to maximize visibility.
+
+
+Not every [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should be fully public. If you are job searching while employed, working with confidential client data, or simply not ready for your current employer to find your portfolio through a Google search, a private or unlisted link solves the problem without giving up the format. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
 
 ## When a Private Portfolio Makes Sense
 - **You are job searching while still employed** and do not want your current employer stumbling onto it
@@ -76,6 +77,13 @@ This straightforward process allows you to keep your work secure while still sho
 ## Common Mistakes to Avoid When Sharing Your Portfolio
 
 When sharing your portfolio privately with recruiters, avoid these common pitfalls that can diminish your chances of making a strong impression:
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
 
 - **Neglecting to Personalize Your Message**: Always include a personalized introduction when sending your portfolio link. A generic message may come off as unprofessional.
 
@@ -153,7 +161,7 @@ You do not need to code a site or manage separate hosting for a private page. Tu
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name and strongest work are easier to discover once you go public.
 

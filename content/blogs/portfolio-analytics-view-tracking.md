@@ -10,8 +10,6 @@ slug: portfolio-analytics-view-tracking
 keywords: portfolio analytics, portfolio view tracking, portfolio website traffic, resume click tracking, job search analytics
 ---
 
-A resume gives you no feedback after you hit send. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with view tracking tells you something a resume never can: whether anyone is actually looking at your work, and when. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
-
 ## Key Takeaways
 
 - Portfolio analytics provide feedback on recruiter interest that resumes cannot, including view counts and engagement.
@@ -20,14 +18,27 @@ A resume gives you no feedback after you hit send. A [portfolio](https://thetail
 - Avoid common mistakes like overinterpreting single data points and relying solely on view counts to assess portfolio quality.
 - For targeted tracking, use private links for specific applications and analyze trends over time to refine your job search strategy.
 
+
+A resume gives you no feedback after you hit send. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with view tracking tells you something a resume never can: whether anyone is actually looking at your work, and when. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
+
 ## Why Portfolio Analytics Matter in a Job Search
-- **Confirmation your link works** - if an application says "portfolio attached" and you see zero views a week later, something is broken - a dead link, a typo, or a spam-filtered email
-- **Timing signals** - a spike in views the day after you submit an application, or right before a scheduled interview, tells you someone is doing their homework
-- **Where interest concentrates** - if you have multiple portfolios or project pages, view counts show which work actually gets attention
-- **A gut-check on your outreach** - if you are cold-emailing recruiters with your portfolio link and seeing no views at all, your emails may not be getting opened
+
+| Reason | What it gets you |
+|---|---|
+| **Confirmation your link works** | if an application says "portfolio attached" and you see zero views a week later, something is broken - a dead link, a typo, or a spam-filtered email |
+| **Timing signals** | a spike in views the day after you submit an application, or right before a scheduled interview, tells you someone is doing their homework |
+| **Where interest concentrates** | if you have multiple portfolios or project pages, view counts show which work actually gets attention |
+| **A gut-check on your outreach** | if you are cold-emailing recruiters with your portfolio link and seeing no views at all, your emails may not be getting opened |
 
 ## What the TailorCV Portfolio Builder Tracks
 Every portfolio published with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) includes a built-in view counter, visible from your **My Portfolios** dashboard. This gives you a simple, no-setup way to see total views without installing separate analytics tools.
+
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
 
 ## How to Use the Data
 1. **Set a baseline** - note your view count the moment you send out a batch of applications
@@ -82,6 +93,15 @@ Understanding portfolio analytics is crucial, but many job seekers fall into com
 ## Mini Checklist: Optimizing Your Portfolio Based on Analytics
 
 Use this mini checklist to ensure your portfolio is effectively leveraging analytics data for maximum recruiter interest:
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
+
 
 - [ ] Have I regularly reviewed my portfolio analytics?
 - [ ] Am I tracking the right metrics relevant to my goals?
@@ -151,7 +171,7 @@ You do not need to code a site or bolt on a separate analytics tool. Turn your e
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name and strongest work are easier to discover.
 

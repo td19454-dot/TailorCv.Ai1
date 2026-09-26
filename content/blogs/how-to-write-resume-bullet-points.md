@@ -10,6 +10,14 @@ slug: how-to-write-resume-bullet-points
 keywords: how to write resume bullet points, resume bullet point examples, strong resume bullets, resume achievement bullets, resume work experience bullets, resume bullet formula, resume impact statements
 ---
 
+## Key Takeaways
+
+- Resume bullet points should focus on accomplishments rather than just job duties to stand out to recruiters.
+- A strong bullet point includes an action, method or skill, and the impact or result, ideally quantified.
+- Use specific formulas for crafting bullet points: Action + Result, Action + Method + Result, or Action + Scale + Result for senior roles.
+- Transform weak bullet points into strong ones by adding measurable outcomes and specific actions taken.
+
+
 Most [resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) are weak. They describe job duties rather than accomplishments, use passive language, and give recruiters nothing memorable to anchor their evaluation. A few simple changes to how you write bullets can dramatically increase your callback rate.
 
 This guide gives you the formula, real before-and-after examples, and the rules that separate a good bullet from a forgettable one.
@@ -18,18 +26,12 @@ Before polishing your bullets, make sure your overall resume scores well with th
 
 ---
 
-## Key Takeaways
-
-- Resume bullet points should focus on accomplishments rather than just job duties to stand out to recruiters.
-- A strong bullet point includes an action, method or skill, and the impact or result, ideally quantified.
-- Use specific formulas for crafting bullet points: Action + Result, Action + Method + Result, or Action + Scale + Result for senior roles.
-- Transform weak bullet points into strong ones by adding measurable outcomes and specific actions taken.
-
 ## Why Bullet Points Matter So Much
 
 Bullet points are the primary content recruiters read in the work experience section - the section that carries the most weight in the hiring decision. They are also what [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems scan for keyword matches.
 
 A strong bullet does three things:
+
 1. Shows what you did (action)
 2. Shows how you did it (method or skill)
 3. Shows the impact (result, often quantified)
@@ -84,7 +86,7 @@ A weak bullet only does one of these - usually the first, without any depth.
 **After:** "Resolved an average of 85 customer inquiries daily with a 96% satisfaction rating, consistently ranking in the top 5% of the service team"
 
 ### 6. Project Management
-**Before:** "Managed multiple [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) simultaneously"  
+**Before:** "Managed multiple [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) simultaneously"  
 **After:** "Managed 4 concurrent product launches worth $2.3M, delivering all on schedule and under budget by an average of 8%"
 
 ### 7. HR/Recruiting
@@ -109,13 +111,22 @@ A weak bullet only does one of these - usually the first, without any depth.
 
 The opening verb sets the tone for the entire bullet. Weak openings ("helped," "assisted," "was responsible for") immediately signal a passive, duty-focused bullet.
 
+### Building the resume section by section
+
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You can start from an existing CV or import from LinkedIn instead of retyping everything.
+
+
 Use strong, specific verbs:
 
-- **Building/creating**: Developed, Engineered, Designed, Built, Launched, Created, Established
-- **Improving**: Optimized, Streamlined, Reduced, Accelerated, Improved, Enhanced, Transformed
-- **Leading**: Led, Managed, Directed, Oversaw, Mentored, Coordinated, Spearheaded
-- **Achieving**: Exceeded, Delivered, Achieved, Surpassed, Completed, Generated
-- **Analyzing**: Analyzed, Modeled, Evaluated, Researched, Identified, Assessed
+| What | Details |
+|---|---|
+| **Building/creating** | Developed, Engineered, Designed, Built, Launched, Created, Established |
+| **Improving** | Optimized, Streamlined, Reduced, Accelerated, Improved, Enhanced, Transformed |
+| **Leading** | Led, Managed, Directed, Oversaw, Mentored, Coordinated, Spearheaded |
+| **Achieving** | Exceeded, Delivered, Achieved, Surpassed, Completed, Generated |
+| **Analyzing** | Analyzed, Modeled, Evaluated, Researched, Identified, Assessed |
 
 Read [200 best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume) for a categorized list by function.
 
@@ -148,6 +159,8 @@ You rarely need exact numbers - reasonable estimates and relative comparisons co
 ---
 
 ## Common Bullet Point Mistakes
+
+
 
 ### Mistake 1: Listing duties instead of achievements
 Duties tell recruiters what your job was. Achievements tell them how well you did it. Replace "Responsible for X" with "Achieved X by doing Y."

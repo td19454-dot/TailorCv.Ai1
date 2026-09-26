@@ -10,14 +10,6 @@ slug: resume-red-flags
 keywords: resume red flags, resume rejection reasons, why resume gets rejected, resume mistakes recruiters hate, resume warning signs, resume disqualifiers, job application mistakes
 ---
 
-Recruiters are trained to spot problems fast. In a stack of 200+ applications, they are not looking for reasons to advance every resume - they are scanning for reasons to eliminate. Understanding which red flags trigger immediate rejection lets you remove them before your resume enters the pile.
-
-These are the 15 most common resume red flags, what signals they send, and how to fix each one.
-
-Before submitting, check your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) and build from an [ATS-friendly template](https://www.thetailorcv.com/templates).
-
----
-
 ## Key Takeaways
 
 - Unexplained employment gaps can raise concerns; provide brief explanations for any gaps in your history.
@@ -25,6 +17,15 @@ Before submitting, check your resume with the [TailorCV ATS checker](https://www
 - Generic content signals low interest; tailor your resume for each application to improve callback rates.
 - Typos and inconsistent formatting suggest carelessness; proofread thoroughly and maintain consistency throughout your resume.
 - Focus on achievements rather than duties; use the action + method + result formula to highlight your contributions effectively.
+
+
+Recruiters are trained to spot problems fast. In a stack of 200+ applications, they are not looking for reasons to advance every resume - they are scanning for reasons to eliminate. Understanding which red flags trigger immediate rejection lets you remove them before your resume enters the pile.
+
+These are the 15 most common resume red flags, what signals they send, and how to fix each one.
+
+Before submitting, check your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) and build from an [ATS-friendly template](https://www.thetailorcv.com/templates).
+
+---
 
 ## Red Flag 1: Unexplained Employment Gaps
 
@@ -45,6 +46,13 @@ Multiple short tenures (under 12-18 months per role) - especially a string of th
 ## Red Flag 3: Generic, Untailored Content
 
 A summary that says "results-driven professional seeking challenging opportunities" tells a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) your resume was not written for their role. Generic language immediately signals a mass-application approach - which signals low genuine interest.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 **Fix:** Tailor your summary and top bullets to each role. This takes 15-20 minutes per application and dramatically increases callback rates. Read [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) and use the [TailorCV optimizer](https://www.thetailorcv.com/solutions) to match keywords.
 
@@ -110,6 +118,8 @@ If your phone number is missing, your email is wrong, or your [LinkedIn](https:/
 
 Your part-time job from college, a skill from 15 years ago, an expired certification, or five [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) about a role from 2008 - these fill space with content that actively dilutes your relevance.
 
+
+
 **Fix:** Remove roles older than 10-15 years unless they are exceptional. Update or remove expired [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume). Ruthlessly edit for relevance to the target role.
 
 ---
@@ -169,7 +179,7 @@ A resume from `partyguy88@hotmail.com` or `xX_gamemaster_Xx@gmail.com` signals i
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [Why Is My ATS Score Low?](https://thetailorcv.com/blog/why-is-my-ats-score-low)
 - [Resume Contact Section Guide](https://thetailorcv.com/blog/resume-contact-section)
-- [Resume Mistakes That Freshers Make](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
+- [Resume Mistakes That Freshers Make](https://thetailorcv.com/blog/resume-mistakes-freshers)
 
 ---
 

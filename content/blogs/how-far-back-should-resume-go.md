@@ -10,6 +10,14 @@ keywords: how far back should a resume go, how many years on resume, resume work
 image: public/blog-images/how-far-back-should-resume-go.webp
 ---
 
+## Key Takeaways
+
+- The working standard is 10 to 15 years of detailed work history, with everything inside that window getting full treatment.
+- A resume is not an archive - every section either supports the argument that you can do this job, or dilutes it.
+- The rule adapts to your career stage rather than applying identically to everyone.
+- You do not have to choose between full bullets and deleting a role - a condensed block preserves continuity at almost no cost.
+- Four specific situations justify going further back than fifteen years.
+
 Almost every resume carries at least one job that should not be there. A role from 2004 that has nothing to do with what you do now, a summer job listed for completeness, an early position kept because deleting it feels like erasing history. Meanwhile the roles that actually decide the hire are compressed into three thin bullets because there was no room left.
 
 That's the real cost of getting work-history depth wrong: it isn't that old jobs look bad, it's that they eat the space your recent, relevant work needed. This guide covers how far back a resume should go in 2026, the standard rule, the situations where breaking it is correct, and how to keep older experience that genuinely matters without letting it crowd out everything else.
@@ -71,6 +79,8 @@ Four situations justify going further back.
 ## Age Discrimination: The Honest Version
 
 Many people ask this question because they're worried about age bias. It's a fair concern and it deserves a straight answer.
+
+
 
 Trimming to 10-15 years does reduce obvious age signalling, and that's a legitimate reason to do it. But treat it as a side effect of a decision you should make anyway, not as the goal. A resume trimmed for relevance is a better resume; a resume trimmed purely to hide something reads defensive and usually shows.
 

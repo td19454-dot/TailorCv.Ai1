@@ -10,8 +10,6 @@ keywords: resume for express entry, canada pr resume, resume for permanent resid
 image: public/blog-images/resume-for-express-entry-canada.webp
 ---
 
-When applying for Express Entry and Permanent Residency (PR) in Canada, your resume is not just a summary of your work history; it’s a critical tool that can influence your immigration journey and job search. In a competitive job market, especially for newcomers and international students, understanding the nuances of Canadian resume standards is essential. In this article, we will provide specific, practical advice tailored to help you craft a resume that meets Canadian expectations and maximizes your chances of securing a job.
-
 ## Key Takeaways
 
 - Canadian resumes should exclude personal details like photos, age, or marital status to prevent bias.
@@ -20,21 +18,33 @@ When applying for Express Entry and Permanent Residency (PR) in Canada, your res
 - Structure your resume with clear sections including a header, summary statement, work experience, education, skills, and certifications.
 - Ensure your resume is ATS-friendly by using standard headings, avoiding graphics, and saving in readable formats like .docx or .pdf.
 
+
+When applying for Express Entry and Permanent Residency (PR) in Canada, your resume is not just a summary of your work history; it’s a critical tool that can influence your immigration journey and job search. In a competitive job market, especially for newcomers and international students, understanding the nuances of Canadian resume standards is essential. In this article, we will provide specific, practical advice tailored to help you craft a resume that meets Canadian expectations and maximizes your chances of securing a job.
+
 ## Understand Canadian Resume Norms
 
 Before diving into writing your resume, familiarize yourself with the specific norms and expectations in Canada. Here are key elements to keep in mind:
 
-- **No Personal Details**: Canadian resumes do not typically include personal details such as photos, age, or marital status. This practice helps avoid bias in the hiring process.
-- **Length**: While many countries prefer a one-page resume, Canadian employers often accept resumes that are two pages long, especially for candidates with extensive experience.
-- **Spelling and Language**: Use Canadian English spelling (e.g., "colour" instead of "color") and ensure your language is clear and professional.
-- **Contact Information**: Format your phone number and address correctly. For instance, use (123) 456-7890 for phone numbers and follow the Canadian address format.
-- **References**: It’s customary to state "References available upon request" rather than listing them directly on your resume.
+| Rule | What it means |
+|---|---|
+| **No Personal Details** | Canadian resumes do not typically include personal details such as photos, age, or marital status. This practice helps avoid bias in the hiring process |
+| **Length** | While many countries prefer a one-page resume, Canadian employers often accept resumes that are two pages long, especially for candidates with extensive experience |
+| **Spelling and Language** | Use Canadian English spelling (e.g., "colour" instead of "color") and ensure your language is clear and professional |
+| **Contact Information** | Format your phone number and address correctly. For instance, use (123) 456-7890 for phone numbers and follow the Canadian address format |
+| **References** | It’s customary to state "References available upon request" rather than listing them directly on your resume |
 
 For more in-depth guidance, check out our [Canadian Resume Format Guide (2026)](https://thetailorcv.com/blog/canadian-resume-format-guide-2026).
 
 ## Tailor Your Resume for the Job
 
 One of the most effective strategies for creating a standout resume is tailoring it to match the specific job you are applying for. Here’s how to do it:
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 - **Analyze Job Descriptions**: Carefully read job postings and note the skills and experiences that are frequently mentioned.
 - **Use Keywords**: Incorporate relevant keywords from the job description into your resume. This practice not only aligns your qualifications with the job but also enhances your ATS score, which is crucial given that many Canadian employers utilize Applicant Tracking Systems (ATS).
@@ -95,6 +105,8 @@ Networking plays a vital role in the Canadian job market. Here’s how to enhanc
 ## Common Mistakes to Avoid in Your Resume
 
 When crafting your resume for Express Entry and PR applications in Canada, avoiding common pitfalls can significantly enhance your chances of making a positive impression. Here’s a list of frequent mistakes to watch out for:
+
+
 
 1. **Using Outdated Formatting**: Stick to contemporary formatting styles. Overly creative designs can confuse ATS and hiring managers alike.
    

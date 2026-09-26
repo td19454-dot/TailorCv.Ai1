@@ -10,10 +10,6 @@ slug: ui-ux-case-study-portfolio
 keywords: UI UX case study portfolio, UX portfolio case study, UI UX designer portfolio, UX case study structure
 ---
 
-A UI UX case study [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should not be a gallery of screens. Recruiters and design leads want to understand the problem, your process, your trade-offs, and the outcome.
-
----
-
 ## Key Takeaways
 
 - A strong UI UX case study portfolio should focus on the problem, process, trade-offs, and outcomes rather than just polished visuals.
@@ -22,9 +18,21 @@ A UI UX case study [portfolio](https://thetailorcv.com/blog/how-to-build-profess
 - Tailor your resume to highlight measurable results and align with specific job descriptions to demonstrate relevant experience.
 - Use a practical checklist to ensure your application clearly matches the target role and includes relevant keywords and measurable outcomes.
 
+
+A UI UX case study [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should not be a gallery of screens. Recruiters and design leads want to understand the problem, your process, your trade-offs, and the outcome.
+
+---
+
 ## Best UX [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) Structure
 
 Use:
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
 
 1. Project context
 2. User problem
@@ -75,12 +83,6 @@ Your resume should mention the same project with a concise result:
 
 ---
 
-## Conclusion
-
-A strong UI UX portfolio proves thinking, not just visuals. Add your case study link to your resume and test the resume against job descriptions with the [ATS score checker](/solutions).
-
----
-
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your UI UX [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) because small wording choices can change how recruiters and ATS systems understand your fit.
@@ -111,6 +113,8 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 ## Example Before and After
 
 Weak version:
+
+
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.
 
@@ -167,6 +171,12 @@ Use these links as a practical cluster: first fix the resume and ATS alignment, 
 
 ---
 
+## Conclusion
+
+A strong UI UX portfolio proves thinking, not just visuals. Add your case study link to your resume and test the resume against job descriptions with the [ATS score checker](/solutions).
+
+---
+
 ## Frequently Asked Questions
 
 ### How many times should I customize this before applying?
@@ -179,11 +189,11 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 
-Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
+Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and how to write resume bullet points guides will help you revise before testing again.
 
 ---
 

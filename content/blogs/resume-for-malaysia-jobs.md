@@ -10,10 +10,6 @@ keywords: resume for malaysia, malaysian resume format, how to write a resume ma
 image: public/blog-images/resume-for-malaysia-jobs.png
 ---
 
-Writing a resume for the Malaysian job market is different from writing one for the US, UK, or Europe. Malaysian employers expect a specific mix of personal details, a clean single- or two-page layout, and clear evidence that you can do the job from day one. Get the format wrong and your application can be filtered out before a hiring manager ever sees it — either by an [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) or by a recruiter skimming dozens of CVs a day.
-
-This guide walks you through exactly how to write a resume for Malaysia jobs in 2026: what to include, what to leave out, how to structure each section, how to beat the ATS, and the mistakes that quietly cost Malaysian job seekers interviews. Whether you are a fresh graduate in Kuala Lumpur or an experienced professional switching industries, you will finish with a clear template you can adapt to any role.
-
 ## Key Takeaways
 
 - Malaysian resumes usually run **one to two pages**, list personal details more openly than Western resumes, and prioritise clear, keyword-rich content.
@@ -21,6 +17,11 @@ This guide walks you through exactly how to write a resume for Malaysia jobs in 
 - **Tailoring your resume to each job description** is the single biggest lever for getting interviews — generic resumes underperform badly.
 - Most mid-to-large Malaysian employers screen resumes with an ATS, so **standard formatting and the right keywords** are essential.
 - A strong skills section (technical + language proficiency in BM, English, and often Mandarin) makes your resume far more competitive.
+
+
+Writing a resume for the Malaysian job market is different from writing one for the US, UK, or Europe. Malaysian employers expect a specific mix of personal details, a clean single- or two-page layout, and clear evidence that you can do the job from day one. Get the format wrong and your application can be filtered out before a hiring manager ever sees it — either by an [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) or by a recruiter skimming dozens of CVs a day.
+
+This guide walks you through exactly how to write a resume for Malaysia jobs in 2026: what to include, what to leave out, how to structure each section, how to beat the ATS, and the mistakes that quietly cost Malaysian job seekers interviews. Whether you are a fresh graduate in Kuala Lumpur or an experienced professional switching industries, you will finish with a clear template you can adapt to any role.
 
 ## What Malaysian Employers Actually Look For
 
@@ -37,6 +38,13 @@ If you want a shortcut, you can build a clean, correctly-structured Malaysian re
 ## Malaysian Resume Format: The Rules That Differ
 
 Here is where Malaysia diverges from Western norms. Follow these conventions and your resume will feel familiar and professional to local recruiters.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 ### Length
 
@@ -178,9 +186,11 @@ You can produce a polished version of this in minutes with the [resume builder](
 
 A great resume gets you the interview, but it is one piece of the puzzle. To give yourself the best shot at Malaysian roles:
 
+
+
 - Write a targeted cover letter — see [how to write a cover letter for Malaysia jobs](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).
 - Optimise your LinkedIn so recruiters find you — see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
-- Prepare for local interview norms with our [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia), and practise with a realistic [AI mock interview](https://thetailorcv.com/mock-interview).
+- Prepare for local interview norms with our [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia), and practise with a realistic AI mock interview.
 - If you are targeting the capital specifically, read [how to find a job in Kuala Lumpur](https://thetailorcv.com/blog/how-to-find-a-job-in-kuala-lumpur).
 - Relocating to Malaysia? Start with our [guide to getting a job in Malaysia as a foreigner](https://thetailorcv.com/blog/job-in-malaysia-as-foreigner).
 
@@ -205,12 +215,14 @@ Run it through a free [ATS score checker](https://thetailorcv.com/solutions) aga
 
 Understanding where your resume ends up helps you format it correctly. The main channels in Malaysia are:
 
-- **JobStreet by SEEK** — the dominant [job portal](https://thetailorcv.com/blog/best-job-search-websites-2026) in Malaysia. Its system parses your uploaded resume and your profile, so both need to be complete and keyword-aligned.
-- **LinkedIn** — increasingly important for professional, MNC, and tech roles. Many recruiters source candidates directly here, which is why a strong profile matters; see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
-- **Hiredly (formerly WOBB)** — popular with younger professionals and startups.
-- **Maukerja and Ricebowl** — strong for non-executive, retail, F&B, and Bahasa-Malaysia-first roles.
-- **Indeed Malaysia** — aggregates listings across the market.
-- **Company career pages and GLC portals** — banks, Petronas, Khazanah-linked companies, and MNCs often run their own ATS-driven portals.
+| Reason | What it gets you |
+|---|---|
+| **JobStreet by SEEK** | the dominant [job portal](https://thetailorcv.com/blog/best-job-search-websites-2026) in Malaysia. Its system parses your uploaded resume and your profile, so both need to be complete and keyword-aligned |
+| **LinkedIn** | increasingly important for professional, MNC, and tech roles. Many recruiters source candidates directly here, which is why a strong profile matters; see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia) |
+| **Hiredly (formerly WOBB)** | popular with younger professionals and startups |
+| **Maukerja and Ricebowl** | strong for non-executive, retail, F&B, and Bahasa-Malaysia-first roles |
+| **Indeed Malaysia** | aggregates listings across the market |
+| **Company career pages and GLC portals** | banks, Petronas, Khazanah-linked companies, and MNCs often run their own ATS-driven portals |
 
 On every one of these, an ATS or a matching algorithm reads your resume first. That is why the formatting and keyword advice above is not optional — it is the difference between being surfaced and being buried. Run your resume through the [ATS checker](https://thetailorcv.com/solutions) before uploading it anywhere.
 

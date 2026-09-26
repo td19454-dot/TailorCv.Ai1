@@ -10,27 +10,6 @@ slug: resume-mistakes-every-fresher-makes
 keywords: resume mistakes to avoid, Common resume mistakes , Common resume mistakes for freshers
 ---
 
-## Introduction
-
-You can fix many of these faster by reviewing the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), using the [resume optimization tool](https://www.thetailorcv.com/solutions), and starting from [resume templates for beginners](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience).
-
-Landing your first job is exciting, but it can also feel frustrating when you keep applying and hear nothing back.
-
-Most [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) assume the problem is lack of experience. In reality, the issue is often the resume itself.
-
-Today's hiring process is completely different from what it was a few years ago. Recruiters now rely heavily on [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems, AI hiring tools, and automated resume screening software to filter candidates before a human even sees the application.
-
-That means even talented candidates get rejected because of simple resume mistakes.
-
-If you've been wondering why your applications are not getting responses, this guide will help you understand the biggest resume mistakes every fresher makes and how to fix them effectively.
-
-You'll also learn:
-- How [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems work in 2026
-- What recruiters actually look for
-- How to improve resume visibility
-- How to optimize resumes for job descriptions
-- Ways to increase [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) chances
-
 ## Key Takeaways
 
 - Freshers often struggle to get job responses due to resume mistakes rather than lack of experience.
@@ -39,11 +18,34 @@ You'll also learn:
 - Tailoring resumes to match specific job descriptions improves ATS compatibility and recruiter interest.
 - Key resume elements include relevant keywords, proper formatting, and clear alignment with job roles.
 
+## Introduction
+
+You can fix many of these faster by reviewing the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), using the [resume optimization tool](https://www.thetailorcv.com/solutions), and starting from [resume templates for beginners](https://thetailorcv.com/blog/resume-templates-for-beginners).
+
+Landing your first job is exciting, but it can also feel frustrating when you keep applying and hear nothing back.
+
+Most [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) assume the problem is lack of experience. In reality, the issue is often the resume itself.
+
+Today's hiring process is completely different from what it was a few years ago. Recruiters now rely heavily on [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems, AI hiring tools, and automated resume screening software to filter candidates before a human even sees the application.
+
+That means even talented candidates get rejected because of simple resume mistakes.
+
+If you've been wondering why your applications are not getting responses, this guide will help you understand the biggest resume mistakes every fresher makes and how to fix them effectively.
+
+You'll also learn:
+
+- How [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems work in 2026
+- What recruiters actually look for
+- How to improve resume visibility
+- How to optimize resumes for job descriptions
+- Ways to increase [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) chances
+
 ## Why Resume Optimization Matters More Than Ever
 
 The modern hiring process is heavily driven by automation.
 
 Most companies use:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software
 - AI resume screening
 - Keyword-matching systems
@@ -56,6 +58,7 @@ This is why [resume optimization](https://thetailorcv.com/blog/resume-optimizati
 ### What Happens During ATS Screening
 
 An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) system scans resumes for:
+
 - Keywords
 - Skills
 - Experience relevance
@@ -81,7 +84,7 @@ If you want to improve ATS compatibility, tools like [ATS Resume Optimization So
 
 ### Using the Same Resume for Every Job
 
-This is one of the biggest mistakes [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) make.
+This is one of the biggest mistakes [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) make.
 
 Every job posting is different.
 
@@ -98,6 +101,7 @@ Sending the same [generic resume](https://thetailorcv.com/blog/how-ats-detects-g
 "Computer Science graduate skilled in Java, SQL, and REST APIs seeking an entry-level [backend developer](https://thetailorcv.com/blog/backend-developer-resume-2026) role."
 
 The second example:
+
 - Includes relevant keywords
 - Matches the job role
 - Improves [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
@@ -138,7 +142,7 @@ Using [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendl
 
 ## Writing a Weak Resume Summary
 
-Many [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) either skip the summary section or write vague objectives.
+Many [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) either skip the summary section or write vague objectives.
 
 Recruiters dislike generic statements because they provide no value.
 
@@ -148,9 +152,10 @@ Recruiters dislike generic statements because they provide no value.
 
 ### Better Resume Summary
 
-"B.Tech Computer Science fresher with hands-on experience in Python, React, and SQL through academic [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and internships."
+"B.Tech Computer Science fresher with hands-on experience in Python, React, and SQL through academic [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and internships."
 
 This version:
+
 - Includes technical keywords
 - Shows direction
 - Improves [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) confidence
@@ -158,7 +163,7 @@ This version:
 
 ## Adding Irrelevant Information
 
-[freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) often include unnecessary personal details.
+[freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) often include unnecessary personal details.
 
 ### Information You Should Avoid
 
@@ -169,8 +174,9 @@ This version:
 - Full home address
 
 Recruiters care more about:
+
 - Skills
-- [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Internship experience
 - Achievements
@@ -182,6 +188,7 @@ Keep your resume focused and professional.
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems rely heavily on keyword matching.
 
 If a job posting mentions:
+
 - Python
 - React
 - SQL
@@ -225,6 +232,7 @@ Recruiters want proof.
 "Led a 4-member team project to build an attendance management system using Python and MySQL."
 
 This demonstrates:
+
 - Leadership
 - Technical ability
 - Teamwork
@@ -234,11 +242,11 @@ Always connect skills with practical examples.
 
 ## Writing Poor Project Descriptions
 
-Projects are extremely important for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes).
+Projects are extremely important for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers).
 
 Especially when you have limited work experience.
 
-Unfortunately, many candidates describe [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) poorly.
+Unfortunately, many candidates describe [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) poorly.
 
 ### Weak Project Description
 
@@ -249,17 +257,19 @@ Unfortunately, many candidates describe [projects](https://thetailorcv.com/blog/
 "Developed a responsive e-commerce website using HTML, CSS, JavaScript, and Bootstrap with mobile optimization and user authentication features."
 
 The second version sounds:
+
 - More professional
 - More detailed
 - More credible
 - More [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder)
 
 For additional guidance, read:
-[How to Build a First Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+[How to Build a First Resume With No Experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 
 ## Using Too Many Buzzwords
 
 Recruiters are tired of seeing words like:
+
 - Hardworking
 - Dedicated
 - Passionate
@@ -319,14 +329,14 @@ Simple and professional always works best.
 
 ## Making the Resume Too Long
 
-[freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) should ideally keep resumes to one page.
+[freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) should ideally keep resumes to one page.
 
 Recruiters prefer concise resumes with relevant information.
 
 ### Prioritize These Sections
 
 - Skills
-- [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Internship experience
 - Achievements
@@ -337,7 +347,15 @@ Remove filler content whenever possible.
 
 Technical skills significantly impact [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) rankings in 2026.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 This is especially important for:
+
 - Software engineering
 - Data science
 - Cloud computing
@@ -345,19 +363,21 @@ This is especially important for:
 - [cybersecurity](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 
 A properly optimized technical [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) improves:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) matching
 - [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) visibility
 - Searchability
 
 You can learn more here:
-[Technical Skills in Resume for Freshers Guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+[Technical Skills in Resume for Freshers Guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 
 ## What Recruiters Actually Want in a Fresher Resume
 
 Recruiters focus on:
+
 - Relevant skills
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
-- Practical [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Practical [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Clear communication
 - Measurable achievements
 
@@ -395,10 +415,12 @@ Before applying to any role, review this checklist.
 ### Use Strong Action Verbs
 
 Replace weak phrases like:
+
 - Worked on
 - Helped with
 
 With:
+
 - Developed
 - Implemented
 - Automated
@@ -408,6 +430,7 @@ With:
 ### Add Numbers Wherever Possible
 
 Examples:
+
 - "Improved page speed by 25%"
 - "Analyzed 5,000+ rows of data"
 - "Reduced loading time by 30%"
@@ -417,6 +440,7 @@ Metrics improve credibility significantly.
 ### Tailor Your Resume for Every Job
 
 This improves:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scores
 - Keyword relevance
 - [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) engagement
@@ -430,11 +454,13 @@ A strong resume gets interviews.
 
 Strong [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) performance gets job offers.
 
-[freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) can improve preparation using:
+[freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) can improve preparation using:
+
 - [Interview Preparation Resources](https://thetailorcv.com/interview-prep)
 - [Mock Interview Practice](https://thetailorcv.com/mock-interview)
 
 These tools help candidates:
+
 - Practice common [interview questions](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - Build confidence
 - Improve communication
@@ -477,6 +503,7 @@ You can also analyze your [ATS score](https://thetailorcv.com/blog/ats-score-gui
 AI-powered hiring systems are becoming smarter.
 
 Modern screening tools now analyze:
+
 - Context relevance
 - Skill alignment
 - Resume readability
@@ -484,6 +511,7 @@ Modern screening tools now analyze:
 - Semantic keyword matching
 
 That means resumes must sound:
+
 - Human
 - Clear
 - Specific
@@ -496,6 +524,7 @@ Generic resumes perform poorly in modern hiring systems.
 Yes - when used properly.
 
 AI resume tools can help:
+
 - Improve [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
 - Suggest [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description)
 - Optimize wording
@@ -518,6 +547,7 @@ Using the same generic resume for every application is the biggest mistake. Tail
 ### How do I make my resume ATS-friendly?
 
 Use:
+
 - Simple formatting
 - Relevant keywords
 - Clear headings
@@ -528,11 +558,12 @@ Avoid graphics and complex layouts.
 
 ### How long should a fresher resume be?
 
-[freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) should ideally keep resumes to one page unless they have significant internship or project experience.
+[freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) should ideally keep resumes to one page unless they have significant internship or project experience.
 
 ### Do recruiters care about resume design?
 
 Recruiters care more about:
+
 - Skills
 - Relevance
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
@@ -543,11 +574,12 @@ Overdesigned resumes often hurt [ATS](https://thetailorcv.com/blog/what-is-an-at
 
 ### Should freshers include projects in resumes?
 
-Yes. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are one of the strongest proof points for candidates with little or no work experience.
+Yes. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) are one of the strongest proof points for candidates with little or no work experience.
 
 ### Can ATS systems reject resumes automatically?
 
 Yes. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems can automatically rank resumes lower if they:
+
 - Lack keywords
 - Use poor formatting
 - Have parsing issues
@@ -557,14 +589,14 @@ Yes. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-dec
 
 ## Related Guides
 
-- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary With No Experience (10 Real Examples for](https://thetailorcv.com/blog/resume-summary-with-no-experience)
-- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
@@ -579,15 +611,17 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 ## Conclusion
 The job market in 2026 is more competitive than ever.
 
-But most [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) still make simple resume mistakes that reduce their chances of getting interviews.
+But most [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) still make simple resume mistakes that reduce their chances of getting interviews.
 
 The good news is that fixing these mistakes can dramatically improve:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scores
 - [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) visibility
 - Resume quality
 - [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) opportunities
 
 Focus on:
+
 - [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) formatting
 - Relevant keywords
 - Strong project descriptions

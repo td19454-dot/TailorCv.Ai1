@@ -10,14 +10,6 @@ slug: nursing-resume-2026
 keywords: nursing resume, nursing resume 2026, RN resume, registered nurse resume, new grad nurse resume, healthcare resume, nursing ATS keywords, ICU nurse resume
 ---
 
-A nursing resume in 2026 needs to show your clinical competencies, patient care outcomes, specialization, and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) clearly and quickly. Nurse managers reviewing applications spend very little time on each resume - yours needs to communicate your unit experience, skills, and licensure within the first scan.
-
-The nursing job market remains one of the strongest in healthcare worldwide, but competition for desirable positions in top hospitals, ICUs, and specialized units is real. A well-structured, keyword-rich nursing resume can significantly increase your chances of getting an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
-
-Before submitting, test your resume against the job description using the [ATS score checker](https://www.thetailorcv.com/solutions). Hospital HR systems use ATS software that filters resumes before a human nurse manager sees them. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) to ensure your format is parseable.
-
----
-
 ## Key Takeaways
 
 - A nursing resume in 2026 should highlight clinical competencies, patient care outcomes, and relevant certifications clearly and quickly.
@@ -25,6 +17,15 @@ Before submitting, test your resume against the job description using the [ATS s
 - The recommended structure includes a header with licensure, a professional summary, certifications, clinical skills, work experience, education, and additional training or awards.
 - New graduates should aim for a one-page resume, while experienced nurses may use up to two pages to detail their qualifications and experiences.
 - List certifications and licensure prominently to immediately convey your qualifications to hiring managers.
+
+
+A nursing resume in 2026 needs to show your clinical competencies, patient care outcomes, specialization, and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) clearly and quickly. Nurse managers reviewing applications spend very little time on each resume - yours needs to communicate your unit experience, skills, and licensure within the first scan.
+
+The nursing job market remains one of the strongest in healthcare worldwide, but competition for desirable positions in top hospitals, ICUs, and specialized units is real. A well-structured, keyword-rich nursing resume can significantly increase your chances of getting an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+
+Before submitting, test your resume against the job description using the [ATS score checker](https://www.thetailorcv.com/solutions). Hospital HR systems use ATS software that filters resumes before a human nurse manager sees them. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) to ensure your format is parseable.
+
+---
 
 ## Best Nursing Resume Format for 2026
 
@@ -35,6 +36,13 @@ Before submitting, test your resume against the job description using the [ATS s
 5. Work experience
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. Additional training or awards
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 One to two pages depending on experience. New graduates may keep it to one page. Experienced nurses with multiple specializations and leadership roles may use two pages.
 
@@ -149,6 +157,8 @@ Provided / Managed / Assessed / Administered + [clinical action] + [patient popu
 Staff Nurse - Medical ICU
 City General Hospital | Jan 2022 - Present
 
+
+
 - Provided direct nursing care for 4-6 adult ICU patients per shift, including mechanical ventilation, CRRT, and multi-vasopressor management.
 - Administered IV medications including vasopressors, sedatives, analgesics, and antiarrhythmics with zero medication errors over 3 years.
 - Responded to 12+ rapid response calls per month as primary ICU nurse, stabilizing hemodynamically unstable patients before physician arrival.
@@ -198,12 +208,6 @@ An ICU resume should use critical care vocabulary. A pediatric resume should use
 
 ---
 
-## Sources Checked
-
-This guide draws on nursing career context from the [Bureau of Labor Statistics Registered Nurses Occupational Outlook Handbook](https://www.bls.gov/ooh/healthcare/registered-nurses.htm) and TailorCV resume optimization patterns from healthcare job descriptions.
-
----
-
 ## Related Guides
 
 - [Pharmacist Resume](https://thetailorcv.com/blog/pharmacist-resume-2026)
@@ -223,7 +227,7 @@ This guide draws on nursing career context from the [Bureau of Labor Statistics 
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

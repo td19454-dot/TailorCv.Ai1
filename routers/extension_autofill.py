@@ -13,7 +13,7 @@ The split is deliberate and is the whole security model:
 Endpoints:
   GET  /api/extension/apply-context      what we know about the user (cacheable)
   POST /api/extension/autofill/plan      field labels in, answers out (1 LLM call)
-  POST /api/extension/apply-answers      save an answer the user typed
+  POST /api/extension/autofill/answers   save an answer the user typed
   GET  /api/extension/base-resume/file   the resume bytes, for the file input
 
 One plan call per form page is the performance contract. The context is cached
@@ -534,9 +534,12 @@ async def _compose_answers(resume_text: str, bank: dict, fields, payload) -> dic
     return answers if isinstance(answers, dict) else {}
 
 
-# ── POST /api/extension/apply-answers ─────────────────────────────────────
+# ── POST /api/extension/autofill/answers ──────────────────────────────────
+# Not /api/extension/apply-answers: that path belongs to main.py's endpoint for
+# the Naukri/Internshala "TailorCV Auto Apply" extension, which asks for AI
+# answers — a different contract. Sharing the path let this router shadow it.
 
-@router.post("/api/extension/apply-answers")
+@router.post("/api/extension/autofill/answers")
 async def save_apply_answers(request: Request, payload: ApplyAnswersRequest):
     """Remember an answer the user typed, for next time.
 

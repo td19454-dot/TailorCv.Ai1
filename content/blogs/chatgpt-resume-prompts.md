@@ -10,12 +10,6 @@ slug: chatgpt-resume-prompts
 keywords: chatgpt resume prompts, ai prompts for resume writing, chatgpt resume examples, best ai prompts for job search
 ---
 
-ChatGPT can genuinely improve a resume - if you know what to ask for. Vague prompts like "make my resume better" produce vague, generic output. Specific prompts targeting one section at a time produce something you can actually use. Here are 15 prompts that work, organized by what they fix.
-
-The catch: generic AI chat doesn't know your ATS score against a specific job, and it can't verify your resume is accurate. For that, pair these prompts with the [free ATS score checker](https://www.thetailorcv.com/solutions), which is purpose-built to score your resume against a real job description.
-
----
-
 ## Key Takeaways
 
 - Specific prompts for ChatGPT yield more useful resume improvements than vague requests.
@@ -23,6 +17,13 @@ The catch: generic AI chat doesn't know your ATS score against a specific job, a
 - Incorporate measurable outcomes in bullet points to demonstrate achievements effectively.
 - Utilize prompts to identify essential skills and keywords from job descriptions for better alignment with job requirements.
 - Pair AI-generated suggestions with ATS score checkers to ensure resumes meet applicant tracking system standards.
+
+
+ChatGPT can genuinely improve a resume - if you know what to ask for. Vague prompts like "make my resume better" produce vague, generic output. Specific prompts targeting one section at a time produce something you can actually use. Here are 15 prompts that work, organized by what they fix.
+
+The catch: generic AI chat doesn't know your ATS score against a specific job, and it can't verify your resume is accurate. For that, pair these prompts with the [free ATS score checker](https://www.thetailorcv.com/solutions), which is purpose-built to score your resume against a real job description.
+
+---
 
 ## Summary and Headline Prompts
 
@@ -46,6 +47,13 @@ See [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-re
 
 4. **"Rewrite this bullet point to lead with a measurable result: [paste bullet]"**
    - **Example:** Original: "Managed a team." Improved: "Led a team of 10, increasing project delivery speed by 30%."
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 5. **"Turn this task description into a resume bullet using the format: action verb + what you did + measurable outcome: [paste task]"**
    - **Example:** Task: "Responsible for overseeing marketing campaigns." Output: "Executed marketing campaigns that boosted brand awareness by 50% over six months."
@@ -125,6 +133,8 @@ For a version of this that's actually resume-aware and interactive rather than a
 - **No memory of your full resume across a whole rewrite.** You end up pasting sections repeatedly and losing consistency.
 - **No built-in tailoring workflow.** You have to manually copy suggestions back into your resume every time - see [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) for a faster, structured alternative.
 - **Risk of sounding generic.** Left unedited, AI-generated phrasing has recognizable patterns - see [AI resume tailoring without losing your voice](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice).
+
+
 
 ---
 

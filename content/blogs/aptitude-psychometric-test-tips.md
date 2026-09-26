@@ -4,11 +4,19 @@ description: Prepare for numerical, verbal, logical, and personality assessments
 date: 2026-07-26
 author: TailorCV Team
 tags: [assessment, hiring, job search]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/aptitude-psychometric-test-tips.webp
 slug: aptitude-psychometric-test-tips
 keywords: aptitude test, psychometric test, pre-employment assessment, numerical reasoning test
 ---
+
+## Key Takeaways
+
+- Aptitude and psychometric assessments come in a handful of predictable formats - numerical, verbal, logical, situational judgment, and personality.
+- Practising the format beats cramming content: familiarity with the question style, layout, and pacing is where the score gains come from.
+- Numerical reasoning rewards fast, accurate work with percentages, ratios, tables, and charts rather than advanced maths.
+- These tests are time-pressured by design, so answer and move on instead of getting stuck on a single question.
+- Answer situational judgment and personality tests as the professional the role wants, and keep your resume, applications, and interview prep moving alongside.
 
 Many employers — especially large firms, graduate schemes, and consulting and finance roles — use aptitude and psychometric tests to screen candidates before or between [interviews](https://www.thetailorcv.com/interview-prep). They feel intimidating, particularly under a timer, but here's the reassuring truth: they're highly coachable. Once you know the format and practice against the clock, your scores rise significantly. This guide walks through each test type and how to prepare for it.
 
@@ -18,11 +26,13 @@ These tests usually sit early in the process, sometimes right after your [resume
 
 Aptitude and psychometric assessments come in a handful of predictable formats:
 
-- **Numerical reasoning** — interpreting data, charts, and percentages under time pressure.
-- **Verbal reasoning** — reading passages and judging whether statements are true, false, or cannot be determined.
-- **Logical / abstract reasoning** — spotting patterns and sequences, often with shapes.
-- **Situational judgment tests (SJTs)** — choosing how you'd respond to realistic workplace scenarios.
-- **Personality questionnaires** — no right answers, but consistency and authenticity matter.
+| Type | What it involves |
+|---|---|
+| **Numerical reasoning** | interpreting data, charts, and percentages under time pressure |
+| **Verbal reasoning** | reading passages and judging whether statements are true, false, or cannot be determined |
+| **Logical / abstract reasoning** | spotting patterns and sequences, often with shapes |
+| **Situational judgment tests (SJTs)** | choosing how you'd respond to realistic workplace scenarios |
+| **Personality questionnaires** | no right answers, but consistency and authenticity matter |
 
 Knowing which types a role uses lets you focus your practice — research the company and process, as in [how to research a company before an interview](https://thetailorcv.com/blog/how-to-research-company-before-interview).
 
@@ -54,9 +64,9 @@ Assessments are one step, not the whole process. While you prepare, keep your [r
 
 To walk in ready:
 
-- **Identify the test types** the role uses and practice each.
-- **Do timed practice** to master the format and pacing.
-- **Manage time ruthlessly** — flag and move on, never leave blanks (if unpenalized).
-- **Answer SJTs professionally** and **personality tests honestly and consistently**.
+- [ ] **Identify the test types** the role uses and practice each.
+- [ ] **Do timed practice** to master the format and pacing.
+- [ ] **Manage time ruthlessly** — flag and move on, never leave blanks (if unpenalized).
+- [ ] **Answer SJTs professionally** and **personality tests honestly and consistently**.
 
 Prepare this way and coachable tests become a strength rather than a hurdle. Keep the whole process strong with a tailored [resume](https://www.thetailorcv.com/modify-cv), the [ATS checker](https://www.thetailorcv.com/solutions), and a [free AI mock interview](https://www.thetailorcv.com/mock-interview) for the rounds that follow.

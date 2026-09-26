@@ -10,10 +10,6 @@ keywords: linkedin optimization canada, linkedin profile tips canada, get found 
 image: public/blog-images/linkedin-optimization-canada.png
 ---
 
-In Canada, LinkedIn is where a large share of professional hiring begins. Recruiters at banks, tech companies, government, and agencies search LinkedIn daily — often sourcing candidates directly before a role is even posted. For newcomers especially, an optimised LinkedIn profile is one of the most powerful (and free) tools for breaking into the Canadian job market. An incomplete or keyword-poor profile, on the other hand, leaves you invisible no matter how strong your background is.
-
-This guide shows you how to optimise your LinkedIn profile for the Canadian job market in 2026: how recruiters search, the keywords and sections that matter, and how to turn your profile into a magnet for the right opportunities.
-
 ## Key Takeaways
 
 - Canadian recruiters actively **search LinkedIn** — optimisation determines whether you appear in their results.
@@ -21,6 +17,11 @@ This guide shows you how to optimise your LinkedIn profile for the Canadian job 
 - A professional photo, a strong headline, and a complete profile dramatically raise recruiter interest.
 - **Activity and connections** boost visibility and credibility — especially valuable for newcomers.
 - Your LinkedIn and resume should tell one consistent, keyword-aligned story.
+
+
+In Canada, LinkedIn is where a large share of professional hiring begins. Recruiters at banks, tech companies, government, and agencies search LinkedIn daily — often sourcing candidates directly before a role is even posted. For newcomers especially, an optimised LinkedIn profile is one of the most powerful (and free) tools for breaking into the Canadian job market. An incomplete or keyword-poor profile, on the other hand, leaves you invisible no matter how strong your background is.
+
+This guide shows you how to optimise your LinkedIn profile for the Canadian job market in 2026: how recruiters search, the keywords and sections that matter, and how to turn your profile into a magnet for the right opportunities.
 
 ## Why LinkedIn Matters So Much in Canada
 
@@ -39,7 +40,7 @@ LinkedIn deserves special emphasis in the Canadian job search for a few reasons.
 
 ## How Recruiters Search LinkedIn
 
-Recruiters filter by keywords, titles, skills, location, and industry. To appear, your profile must contain the terms they search — the same principle as beating the ATS on your resume. If a recruiter searches "financial analyst Toronto" and your profile lacks those words, you won't surface. That makes keyword optimisation the foundation.
+Recruiters filter by keywords, titles, skills, location, and industry. To appear, your profile must contain the terms they search — the same principle as beating the ATS on your resume. If a recruiter searches "[financial analyst](https://thetailorcv.com/blog/financial-analyst-resume-2026) Toronto" and your profile lacks those words, you won't surface. That makes keyword optimisation the foundation.
 
 ## Your Profile Is a Living Resume
 
@@ -51,6 +52,13 @@ The most useful way to think about your LinkedIn profile is as a living, searcha
 - **Background banner:** a clean, relevant image reinforces your brand.
 - **Custom URL:** set linkedin.com/in/yourname and add it to your resume.
 - **Location:** set your Canadian city (or target city) so local recruiters find you.
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
 
 ## Step 2: Write a Keyword-Rich Headline
 
@@ -109,6 +117,7 @@ LinkedIn's skills section feeds directly into how you're matched to recruiter se
 ## Measuring and Improving Your Profile Over Time
 
 Optimising LinkedIn isn't a one-off task. Check your search appearances and profile views (LinkedIn shows these) to gauge whether your keywords and activity are landing — rising numbers are a good sign. Update your headline and About whenever your target role shifts, refresh your Experience with new quantified achievements, keep your network growing in your field and region, and stay lightly but consistently active. Think of your profile as a living asset: a little maintenance each month keeps you visible to recruiters and ready the moment the right opportunity appears.
+
 
 ## Turning Profile Views Into Conversations
 

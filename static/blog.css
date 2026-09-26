@@ -1012,6 +1012,7 @@ header.navbar {
 
 .blog-detail-page .post-content strong {
   color: #101827;
+  font-weight: 650;
 }
 
 .blog-detail-page .key-takeaways-box {
@@ -1115,6 +1116,65 @@ header.navbar {
 .blog-detail-page .step-card.step-tone-4 .step-card-head,
 .blog-detail-page .step-card.step-tone-5 .step-card-head {
   color: #ffffff !important;
+}
+
+/* The white-text rule above is inherited by every descendant, including
+   blockquotes / answer boxes - which keep their own light cream background,
+   so their text was rendering white-on-cream and became unreadable. Put the
+   dark ink back inside those boxes only. */
+.blog-detail-page .step-card.step-tone-4 blockquote,
+.blog-detail-page .step-card.step-tone-5 blockquote,
+.blog-detail-page .step-card.step-tone-4 blockquote p,
+.blog-detail-page .step-card.step-tone-5 blockquote p,
+.blog-detail-page .step-card.step-tone-4 blockquote li,
+.blog-detail-page .step-card.step-tone-5 blockquote li,
+.blog-detail-page .step-card.step-tone-4 blockquote strong,
+.blog-detail-page .step-card.step-tone-5 blockquote strong,
+.blog-detail-page .step-card.step-tone-4 .answer-box,
+.blog-detail-page .step-card.step-tone-5 .answer-box,
+.blog-detail-page .step-card.step-tone-4 .answer-box p,
+.blog-detail-page .step-card.step-tone-5 .answer-box p,
+.blog-detail-page .step-card.step-tone-4 .answer-box strong,
+.blog-detail-page .step-card.step-tone-5 .answer-box strong {
+  color: #1e293b !important;
+}
+
+/* Same problem as the blockquotes: a table inside a tone-4/5 card inherits
+   color:#ffffff !important while keeping its own white/near-white cell
+   background, so the first column and every link vanished. */
+.blog-detail-page .step-card.step-tone-4 table,
+.blog-detail-page .step-card.step-tone-5 table,
+.blog-detail-page .step-card.step-tone-4 td,
+.blog-detail-page .step-card.step-tone-5 td,
+.blog-detail-page .step-card.step-tone-4 td p,
+.blog-detail-page .step-card.step-tone-5 td p,
+.blog-detail-page .step-card.step-tone-4 td li,
+.blog-detail-page .step-card.step-tone-5 td li,
+.blog-detail-page .step-card.step-tone-4 td strong,
+.blog-detail-page .step-card.step-tone-5 td strong,
+.blog-detail-page .step-card.step-tone-4 .tcx-bar-val,
+.blog-detail-page .step-card.step-tone-5 .tcx-bar-val {
+  color: #172033 !important;
+}
+
+.blog-detail-page .step-card.step-tone-4 td a,
+.blog-detail-page .step-card.step-tone-5 td a {
+  color: #5B42F3 !important;
+  text-decoration-color: currentColor;
+}
+
+/* th keeps its own blue fill + white text, which is already readable. */
+.blog-detail-page .step-card.step-tone-4 th,
+.blog-detail-page .step-card.step-tone-5 th {
+  color: #ffffff !important;
+}
+
+.blog-detail-page .step-card.step-tone-4 blockquote a,
+.blog-detail-page .step-card.step-tone-5 blockquote a,
+.blog-detail-page .step-card.step-tone-4 .answer-box a,
+.blog-detail-page .step-card.step-tone-5 .answer-box a {
+  color: #5B42F3 !important;
+  text-decoration-color: currentColor;
 }
 
 .blog-detail-page .step-card.step-tone-4 a,
@@ -1609,6 +1669,31 @@ header.navbar {
   margin: 6px 0 0; color: #4b1fa8; font-weight: 700; font-size: 0.9rem; word-break: break-all;
 }
 
+/* Sample-JD picker row above the textarea. Mirrors .solx-ats-jdrow from
+   feature_landing.css, which blog pages do not load - without these the
+   picker renders unstyled, and the dropdown needs the positioned flex parent
+   to anchor against. Colours follow the light blog palette rather than the
+   landing page's dark one. */
+.blog-detail-page .blog-ats-jdrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  flex-wrap: wrap;
+}
+.blog-detail-page .post-content .blog-ats-jdlabel {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b1fa8;
+  white-space: nowrap;
+}
+.blog-detail-page .blog-ats-jdrow > [data-jd-picker] {
+  position: relative;
+  flex: 1;
+  min-width: 190px;
+}
+
 .blog-detail-page .blog-ats-jd {
   width: 100%;
   min-height: 186px;
@@ -1700,4 +1785,2632 @@ header.navbar {
 
 @media (max-width: 760px) {
   .blog-detail-page .blog-ats-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Inline template gallery (resume + portfolio topics) ---- */
+.blog-detail-page .blog-tpl {
+  max-width: 1000px;
+  margin: 40px 0;
+  padding: clamp(24px, 3.2vw, 38px) clamp(20px, 3.2vw, 36px);
+  border: 1px solid #dfe6f3;
+  border-radius: 16px;
+  background: linear-gradient(170deg, #f7f9fe 0%, #eef4ff 100%);
+}
+
+.blog-detail-page .blog-tpl-head { text-align: center; margin-bottom: 22px; }
+
+.blog-detail-page .post-content .blog-tpl h2 {
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+  font-size: clamp(1.4rem, 2.1vw, 1.9rem);
+  color: #10203c;
+}
+
+.blog-detail-page .post-content .blog-tpl-head p {
+  margin: 0 auto;
+  max-width: 58ch;
+  color: #43506b;
+  font-size: 1rem;
+}
+
+.blog-detail-page .blog-tpl-grid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* One preview, shown whole. Resume shots are portrait pages and portfolio
+   shots are landscape screenshots, so the image keeps its natural ratio -
+   no aspect-ratio + object-fit:cover, which cropped the page edges off. */
+.blog-detail-page .blog-tpl-card { margin: 0; width: 100%; max-width: 780px; }
+.blog-detail-page .blog-tpl--portfolio .blog-tpl-card { max-width: 920px; }
+
+.blog-detail-page .blog-tpl-shot {
+  display: block;
+  overflow: hidden;          /* clips the baked-in edge, see img below */
+  border: 1px solid #d8e0ee;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(16, 32, 60, 0.1);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+/* Shown whole at natural ratio. The thin dark scrollbar strips some
+   screenshots carried have been trimmed from the source files instead of
+   cropped here - a blanket CSS crop cut real margin off the clean ones. */
+/* width:auto (not 100%) means an image is never scaled ABOVE its own pixel
+   width - the previews are 487-649px at source, and stretching them to the
+   780px frame is what made them look hazy. Drop in 2x exports and they will
+   fill the frame sharply on their own, with no CSS change needed. */
+.blog-detail-page .blog-tpl-shot img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.blog-detail-page .blog-tpl-shot:hover {
+  transform: translateY(-4px);
+  border-color: #5B42F3;
+  box-shadow: 0 14px 30px rgba(91, 66, 243, 0.2);
+  text-decoration: none;
+}
+
+.blog-detail-page .post-content .blog-tpl-name {
+  margin: 10px 2px 0;
+  color: #10203c;
+  font-size: 0.94rem;
+  font-weight: 700;
+  text-align: center;
+}
+.blog-detail-page .post-content .blog-tpl-demo {
+  display: block;
+  margin-top: 2px;
+  color: #5B42F3;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+/* Same layered glow button as the other blog CTAs. */
+.blog-detail-page .post-content .blog-tpl-cta {
+  --neutral-1: #3392ff;
+  --neutral-2: #7c3aed;
+  --radius: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 58px;
+  padding: 18px 32px;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  color: #ffffff;
+  font-size: 1.02rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+  box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(51,146,255,.35);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.blog-detail-page .post-content .blog-tpl-cta::after {
+  content: ""; position: absolute; inset: 0; border-radius: var(--radius);
+  border: 2px solid transparent;
+  background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+              linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+  z-index: 0;
+}
+.blog-detail-page .post-content .blog-tpl-cta::before {
+  content: ""; position: absolute; inset: 7px 6px 6px 6px;
+  background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+  border-radius: 30px; filter: blur(0.5px); z-index: 1;
+}
+.blog-detail-page .post-content .blog-tpl-cta:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 10px 24px rgba(51,146,255,.5);
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .blog-detail-page .blog-tpl-card { max-width: 100%; }
+}
+
+/* ---- In-article images ----
+   Python-Markdown wraps `![alt](src)` in a <p>, so the earlier
+   `.post-content > img` rule never matched a body image - they rendered at
+   their natural pixel width and overflowed (and were clipped by) the column.
+   Constrain every image inside the article, whatever its wrapper. */
+.blog-detail-page .post-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Product screenshots sit inside a soft tinted panel with the image floating
+   in it, rather than a hard-bordered box. The panel gives the screenshot room
+   to breathe and stops it colliding with body copy. */
+.blog-detail-page .post-content p:has(> img) {
+  margin: 30px 0;
+  padding: clamp(16px, 2.4vw, 30px);
+  border-radius: 16px;
+  background: #f2f5fb;
+  text-align: center;
+}
+.blog-detail-page .post-content p > img {
+  display: block;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(16, 32, 60, 0.16);
+  background: #ffffff;
+}
+
+/* :has() is unsupported in older browsers - keep a sane bare-image fallback. */
+@supports not selector(p:has(> img)) {
+  .blog-detail-page .post-content p > img {
+    margin: 28px auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(16, 32, 60, 0.15);
+  }
+}
+
+/* ---- Checklists ----
+   106 posts write `- [ ] item`. python-markdown has no task-list extension
+   enabled, so the literal "[ ]" was printing beside the bullet; the markup is
+   rewritten in BlogService._render_task_lists and styled here. */
+/* NOT display:flex - that turns every inline child (each <a>, each text
+   node) into its own flex column, which shredded any checklist item
+   containing links into narrow stacked columns. Absolute-positioned box
+   keeps the text in normal inline flow. */
+.blog-detail-page .post-content li.task-item {
+  list-style: none;
+  position: relative;
+  padding-left: 30px;
+  margin-left: -22px;
+}
+
+.blog-detail-page .post-content li.task-item::marker { content: none; }
+
+.blog-detail-page .post-content .task-box {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 19px;
+  height: 19px;
+  border: 2px solid #b9a3ff;
+  border-radius: 5px;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.blog-detail-page .post-content li.task-done .task-box {
+  background: #5B42F3;
+  border-color: #5B42F3;
+}
+
+.blog-detail-page .post-content li.task-done {
+  color: #4a5568;
+}
+
+/* Screen-reader-only state text (the box itself is aria-hidden). */
+.blog-detail-page .post-content .sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Article rating ---- */
+.blog-detail-page .blog-rate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 38px 0 8px;
+  padding: 22px 26px;
+  border: 1px solid #dfe6f3;
+  border-radius: 14px;
+  background: linear-gradient(170deg, #f8fafe 0%, #f1f5ff 100%);
+}
+.blog-detail-page .post-content .blog-rate-title {
+  margin: 0 0 4px;
+  color: #10203c;
+  font-size: 1.12rem;
+  font-weight: 800;
+}
+.blog-detail-page .post-content .blog-rate-sub {
+  margin: 0;
+  color: #56617a;
+  font-size: 0.94rem;
+}
+.blog-detail-page .post-content .blog-rate-sub strong { color: #10203c; }
+
+.blog-detail-page .blog-rate-stars { display: inline-flex; gap: 4px; }
+
+.blog-detail-page .blog-rate-star {
+  padding: 2px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 6px;
+}
+.blog-detail-page .blog-rate-star svg {
+  width: 32px;
+  height: 32px;
+  fill: #dfe3ee;
+  transition: fill .15s ease, transform .15s ease;
+}
+.blog-detail-page .blog-rate-star.is-on svg { fill: #f5a623; }
+.blog-detail-page .blog-rate-star:hover svg { transform: scale(1.12); }
+.blog-detail-page .blog-rate-star:focus-visible { outline: 2px solid #5B42F3; outline-offset: 2px; }
+.blog-detail-page .blog-rate.is-done .blog-rate-star { cursor: default; }
+.blog-detail-page .blog-rate.is-done .blog-rate-star:hover svg { transform: none; }
+
+@media (max-width: 560px) {
+  .blog-detail-page .blog-rate { flex-direction: column; align-items: flex-start; }
+}
+
+/* Stars showing the community average (reader has not voted yet) are filled
+   but slightly muted, so an average is not mistaken for your own rating. */
+.blog-detail-page .blog-rate.is-avg .blog-rate-star.is-on svg { fill: #f7c46a; }
+
+/* ---- Data bars inside article tables ----
+   A visual read of the percentage already printed in the cell (see blog.js).
+   The number stays as text, so the table is still readable without CSS and
+   to a screen reader; the bar is decorative. */
+.blog-detail-page .post-content td.tcx-bar-cell {
+  min-width: 132px;
+  white-space: nowrap;
+}
+.blog-detail-page .post-content .tcx-bar-val {
+  display: block;
+  font-weight: 700;
+  color: #10203c;
+  margin-bottom: 6px;
+}
+.blog-detail-page .post-content .tcx-bar {
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background: #e6ebf5;
+  overflow: hidden;
+}
+.blog-detail-page .post-content .tcx-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #AF40FF 0%, #5B42F3 55%, #00DDEB 100%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .blog-detail-page .post-content .tcx-bar-fill {
+    animation: tcx-bar-grow .9s cubic-bezier(.22,.61,.36,1) both;
+  }
+  @keyframes tcx-bar-grow { from { transform: scaleX(0); transform-origin: left; } to { transform: scaleX(1); } }
+}
+
+/* ---- Highlighted sections (mistakes / examples) ---- */
+.blog-detail-page .post-content .callout-box {
+  max-width: 1000px;
+  margin: 30px 0;
+  padding: 22px 28px 6px;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #94a3b8;
+  border-radius: 10px;
+  background: #ffffff;
+}
+.blog-detail-page .post-content .callout-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.blog-detail-page .post-content .callout-ico { flex: 0 0 auto; line-height: 0; }
+.blog-detail-page .post-content .callout-ico svg { width: 22px; height: 22px; display: block; }
+
+/* the heading sits inline with the icon, so strip its section chrome */
+.blog-detail-page .post-content .callout-head h2,
+.blog-detail-page .post-content .callout-head h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 1.16rem !important;
+  font-weight: 800 !important;
+  line-height: 1.3;
+}
+.blog-detail-page .post-content .callout-head .anchor-link { display: none; }
+
+.blog-detail-page .post-content .callout-mistake {
+  border-top-color: #ef4444;
+  background: #fffafa;
+}
+.blog-detail-page .post-content .callout-mistake .callout-ico svg circle { fill: #ef4444; }
+.blog-detail-page .post-content .callout-mistake .callout-head h2,
+.blog-detail-page .post-content .callout-mistake .callout-head h3 { color: #b42318 !important; }
+
+.blog-detail-page .post-content .callout-example {
+  border-top-color: #16a34a;
+  background: #f8fdfa;
+}
+.blog-detail-page .post-content .callout-example .callout-ico svg circle { fill: #16a34a; }
+.blog-detail-page .post-content .callout-example .callout-head h2,
+.blog-detail-page .post-content .callout-example .callout-head h3 { color: #15803d !important; }
+
+/* blockquotes inside an example read as the sample text itself */
+.blog-detail-page .post-content .callout-example blockquote {
+  border-color: #bbf7d0;
+  border-left-color: #16a34a;
+  background: #f0fdf4;
+}
+
+@media (max-width: 680px) {
+  .blog-detail-page .post-content .callout-box { padding: 18px 18px 4px; }
+}
+
+/* Before/after pairs - weak reads as the problem, strong as the fix. */
+.blog-detail-page .post-content .callout-weak {
+  border-top-color: #f97316;
+  background: #fffbf5;
+}
+.blog-detail-page .post-content .callout-weak .callout-ico svg circle { fill: #f97316; }
+.blog-detail-page .post-content .callout-weak .callout-head h2,
+.blog-detail-page .post-content .callout-weak .callout-head h3 { color: #c2410c !important; }
+
+.blog-detail-page .post-content .callout-strong {
+  border-top-color: #16a34a;
+  background: #f8fdfa;
+}
+.blog-detail-page .post-content .callout-strong .callout-ico svg circle { fill: #16a34a; }
+.blog-detail-page .post-content .callout-strong .callout-head h2,
+.blog-detail-page .post-content .callout-strong .callout-head h3 { color: #15803d !important; }
+
+/* Inline lead-in note: "Pro tip: ...", "Why it works: ..." */
+.blog-detail-page .post-content p.callout-note-inline {
+  margin: 22px 0;
+  padding: 14px 18px 14px 16px;
+  border-left: 4px solid #5B42F3;
+  border-radius: 0 8px 8px 0;
+  background: #f5f3ff;
+  color: #1f2937;
+}
+.blog-detail-page .post-content p.callout-note-inline strong:first-child { color: #4b1fa8; }
+
+/* ---- "Before (generic)" / "After (matched)" pairs ----
+   The label and its code block are joined into one card so the contrast is
+   visible at a glance instead of two identical grey boxes. */
+.blog-detail-page .post-content .ba-block {
+  max-width: 1000px;
+  margin: 20px 0;
+  border: 1px solid #e4e9f2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.blog-detail-page .post-content .ba-block .ba-label {
+  margin: 0;
+  padding: 11px 18px;
+  font-size: 0.94rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+.blog-detail-page .post-content .ba-block .ba-label strong { color: inherit; }
+.blog-detail-page .post-content .ba-block pre,
+.blog-detail-page .post-content .ba-block .codehilite {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: #ffffff;
+}
+.blog-detail-page .post-content .ba-block > :not(.ba-label) { margin: 0; }
+
+.blog-detail-page .post-content .ba-before { border-color: #fbd5b5; }
+.blog-detail-page .post-content .ba-before .ba-label {
+  background: #fff4e8;
+  color: #b45309;
+  border-bottom: 1px solid #fbd5b5;
+}
+.blog-detail-page .post-content .ba-before .ba-label::before { content: "\2715  "; font-weight: 900; }
+
+.blog-detail-page .post-content .ba-after { border-color: #bbf7d0; }
+.blog-detail-page .post-content .ba-after .ba-label {
+  background: #effdf4;
+  color: #15803d;
+  border-bottom: 1px solid #bbf7d0;
+}
+.blog-detail-page .post-content .ba-after .ba-label::before { content: "\2713  "; font-weight: 900; }
+
+/* ---- Do / Don't side-by-side ---- */
+.blog-detail-page .post-content .dd-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 26px 0 32px;
+}
+.blog-detail-page .post-content .dd-col {
+  padding: 20px 22px 6px;
+  border: 1px solid #e4e9f2;
+  border-radius: 12px;
+  background: #f6f8fc;
+}
+.blog-detail-page .post-content .dd-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.blog-detail-page .post-content .dd-ico { flex: 0 0 auto; line-height: 0; }
+.blog-detail-page .post-content .dd-ico svg { width: 24px; height: 24px; display: block; }
+.blog-detail-page .post-content .dd-head h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 1.14rem !important;
+  font-weight: 800 !important;
+}
+.blog-detail-page .post-content .dd-head .anchor-link { display: none; }
+.blog-detail-page .post-content .dd-do .dd-head h3 { color: #15803d !important; }
+.blog-detail-page .post-content .dd-dont .dd-head h3 { color: #b42318 !important; }
+.blog-detail-page .post-content .dd-col ul { margin: 0 0 14px; padding-left: 20px; }
+.blog-detail-page .post-content .dd-col li { margin-bottom: 8px; }
+.blog-detail-page .post-content .dd-col li::marker { color: #94a3b8; }
+
+@media (max-width: 760px) {
+  .blog-detail-page .post-content .dd-grid { grid-template-columns: 1fr; gap: 14px; }
+}
+
+/* Weak/Strong columns reuse .dd-col but with amber/green tones instead of
+   red/green, since "weak" is a lesser version rather than a mistake. */
+.blog-detail-page .post-content .dd-weak .dd-head h3 { color: #b45309 !important; }
+.blog-detail-page .post-content .dd-strong .dd-head h3 { color: #15803d !important; }
+
+/* ---- Readability pass ----
+   The complaint was "overcrowded": headings sat too close to the text above,
+   paragraphs ran long, and link-dense paragraphs turned into walls of purple.
+   Widen the rhythm and calm the links down. */
+.blog-detail-page .post-content p,
+.blog-detail-page .post-content li {
+  line-height: 1.78;
+}
+.blog-detail-page .post-content p { margin: 0 0 1.35em; }
+
+/* Direct children only. Applied to every h2 this overrode the reset inside
+   .key-takeaways-box, .faq-box, .callout-box etc (same specificity, declared
+   later), leaving ~180px of dead space above "KEY TAKEAWAYS". */
+.blog-detail-page .post-content > h2 {
+  margin-top: 64px;
+  padding-top: 40px;
+  letter-spacing: -0.015em;
+}
+.blog-detail-page .post-content > h3 {
+  margin-top: 40px;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.blog-detail-page .post-content h2 + p,
+.blog-detail-page .post-content h3 + p { margin-top: 0; }
+
+/* Links: keep them findable without shouting. A paragraph with eight links
+   was rendering as solid purple underline. */
+.blog-detail-page .post-content p a,
+.blog-detail-page .post-content li a {
+  font-size: 1em;
+  font-weight: 500;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(100, 5, 252, 0.35);
+}
+.blog-detail-page .post-content p a:hover,
+.blog-detail-page .post-content li a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Equal-height comparison columns. */
+.blog-detail-page .post-content .dd-grid { align-items: stretch; }
+.blog-detail-page .post-content .dd-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* FAQ: lift it off the page instead of a flat outlined box. */
+.blog-detail-page .faq-box {
+  border: 0;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(16, 32, 60, .05), 0 18px 40px rgba(16, 32, 60, .09);
+  padding: clamp(26px, 3.2vw, 40px);
+}
+.blog-detail-page .faq-item {
+  padding: 22px 0;
+  border-top: 1px solid #eef2f8;
+}
+.blog-detail-page .faq-item:first-of-type { border-top: 0; padding-top: 6px; }
+.blog-detail-page .post-content .faq-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+}
+
+/* "Common Mistakes" written as bold lead-in + prose. Stacked full-width rows
+   made a tall, sparse column - eight mistakes ran most of a screen. Lay the
+   points out as a two-up card grid instead: same content, roughly half the
+   height, and each point reads as its own item rather than a divider list. */
+/* Scoped off .mistake-grid-item: those cards are themselves .callout-mistake
+   (see blog.js), and gridding them would split a single mistake's own body
+   into columns. */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  padding: 22px 22px 22px;
+  align-items: start;
+}
+/* the heading, and the exploded-list grid, keep the full width */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > .callout-head,
+.blog-detail-page .post-content .callout-mistake > .mistake-grid,
+.blog-detail-page .post-content .callout-mistake > ol,
+.blog-detail-page .post-content .callout-mistake > ul {
+  grid-column: 1 / -1;
+}
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > .callout-head {
+  margin-bottom: 2px;
+}
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p {
+  margin: 0;
+  padding: 13px 15px;
+  border: 1px solid #f6dede;
+  border-left: 3px solid #ef4444;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p > strong:first-child {
+  display: block;
+  margin-bottom: 3px;
+  color: #b42318;
+  font-size: 0.99rem;
+}
+/* a trailing note that is not a "**Label.** body" item spans the row as plain
+   prose. If :has() is unsupported the note just renders as one more card,
+   which is why this sits last rather than being relied on. */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:not(:has(> strong:first-child)) {
+  grid-column: 1 / -1;
+  border: 0;
+  background: transparent;
+  padding: 4px 2px 0;
+}
+@media (max-width: 760px) {
+  .blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px 16px;
+  }
+}
+
+/* ---- Copy-ready template blocks ---- */
+.blog-detail-page .post-content .tpl-block {
+  max-width: 1000px;
+  margin: 30px 0;
+  padding: 24px 28px 8px;
+  border: 1px solid #f0d9a0;
+  border-left: 5px solid #eab308;
+  border-radius: 12px;
+  background: #fffbeb;
+}
+.blog-detail-page .post-content .tpl-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #a16207;
+}
+.blog-detail-page .post-content .tpl-head svg { width: 22px; height: 22px; flex: 0 0 auto; }
+.blog-detail-page .post-content .tpl-head h2,
+.blog-detail-page .post-content .tpl-head h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  color: #92400e !important;
+}
+.blog-detail-page .post-content .tpl-head .anchor-link { display: none; }
+.blog-detail-page .post-content .tpl-block p { color: #422006; }
+.blog-detail-page .post-content .tpl-block pre,
+.blog-detail-page .post-content .tpl-block .codehilite {
+  border: 1px solid #f0d9a0;
+  background: #fffef8;
+}
+.blog-detail-page .post-content .tpl-block blockquote {
+  border-color: #f0d9a0;
+  border-left-color: #eab308;
+  background: #fffef8;
+}
+
+/* ---- FAQ: light blue panel, big section header, questions as sub-headings ----
+   Two FAQ shapes exist in the corpus: questions as <h3>, and questions as a
+   bold lead inside the answer paragraph. Both need to read as a question
+   sitting above its answer, so the bold lead is promoted to its own line. */
+.blog-detail-page .faq-box {
+  background: linear-gradient(180deg, #f2f7ff 0%, #eaf2fe 100%);
+  border: 1px solid #d6e4fb;
+  box-shadow: 0 2px 6px rgba(20, 50, 110, .04), 0 16px 36px rgba(20, 50, 110, .07);
+}
+
+.blog-detail-page .post-content .faq-box > h2 {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+  font-weight: 750;
+  color: #0d2a5c;
+  letter-spacing: -0.015em;
+}
+
+.blog-detail-page .faq-item {
+  padding: 20px 0;
+  border-top: 1px solid #dbe7fa;
+}
+
+/* questions written as "### Question" */
+.blog-detail-page .post-content .faq-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.22rem;
+  font-weight: 750;
+  color: #10305f;
+}
+
+/* questions written as "**Question?** answer..." - lift the lead onto its
+   own line so it reads as a heading rather than running into the answer */
+.blog-detail-page .post-content .faq-box > p {
+  margin: 0;
+  padding: 20px 0;
+  border-top: 1px solid #dbe7fa;
+  color: #253a5c;
+}
+.blog-detail-page .post-content .faq-box > p:first-of-type { border-top: 0; }
+.blog-detail-page .post-content .faq-box > p > strong:first-child {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.22rem;
+  font-weight: 750;
+  line-height: 1.35;
+  color: #10305f;
+}
+.blog-detail-page .post-content .faq-box a { color: #1d4ed8; }
+
+/* ---- Individually numbered mistake cards ----
+   When a "## Common Mistakes" section's list gets exploded (see blog.js),
+   each <li> becomes its own .callout-mistake card. Stack them with a gap so
+   they read as separate items, not one continuous box. */
+.blog-detail-page .post-content .mistake-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 1000px;
+  margin: 20px 0;
+}
+.blog-detail-page .post-content .mistake-grid .mistake-grid-item {
+  margin: 0;
+}
+.blog-detail-page .post-content .mistake-grid-item p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Bold-lead paragraph runs ----
+   Two or more consecutive "**Label.** prose" paragraphs. Each becomes its
+   own card so the labels the author already wrote read as distinct points
+   instead of one grey wall. Reuses the .step-card blue-gradient palette
+   (light -> medium -> a bit deeper, cycling every 3 items) instead of a flat
+   purple accent, so this matches the blue box style already established
+   elsewhere on the site. */
+.blog-detail-page .post-content .lead-run {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 1000px;
+  margin: 24px 0;
+}
+.blog-detail-page .post-content .lead-run > .lead-item {
+  margin: 0 0 14px !important;
+  padding: 16px 22px;
+  border: 1px solid #c8dcf6;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #eef6ff 0%, #e6f1ff 100%);
+}
+.blog-detail-page .post-content .lead-run > .lead-item:last-child {
+  margin-bottom: 0 !important;
+}
+.blog-detail-page .post-content .lead-run > .lead-item:nth-child(3n+2) {
+  border-color: #b9d3f4;
+  background: linear-gradient(180deg, #e1efff 0%, #d8eaff 100%);
+}
+.blog-detail-page .post-content .lead-run > .lead-item:nth-child(3n) {
+  border-color: #a9c8f0;
+  background: linear-gradient(180deg, #cfe3ff 0%, #b9d7ff 100%);
+}
+.blog-detail-page .post-content .lead-run > .lead-item > strong:first-child,
+.blog-detail-page .post-content .lead-run > .lead-item > b:first-child {
+  display: block;
+  margin-bottom: 5px;
+  color: #0f3d82;
+  font-weight: 700;
+}
+/* Body text inside a lead card is reading text like any other paragraph, so
+   it takes the article's serif face and size. It was previously forced to
+   1rem Inter, which made the cards read as UI chrome sitting inside an
+   article rather than as part of the article itself. The bold caption stays
+   sans-serif so it still reads as a label. */
+.blog-detail-page .post-content .lead-run > .lead-item {
+  font-family: var(--tcx-serif);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+.blog-detail-page .post-content .lead-run > .lead-item > strong:first-child,
+.blog-detail-page .post-content .lead-run > .lead-item > b:first-child {
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 1.18rem;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+@media (max-width: 640px) {
+  .blog-detail-page .post-content .lead-run > .lead-item { padding: 14px 16px; }
+}
+
+/* ---- Heading + short-prose runs ---- */
+.blog-detail-page .post-content .point-run {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 1000px;
+  margin: 24px 0;
+}
+.blog-detail-page .post-content .point-run > .point-card {
+  margin: 0;
+  padding: 18px 22px;
+  border: 1px solid #e6e9f2;
+  border-left: 4px solid #5B42F3;
+  border-radius: 10px;
+  background: #fbfbff;
+}
+.blog-detail-page .post-content .point-run > .point-card > h3 {
+  margin: 0 0 7px;
+  padding: 0;
+  border: 0;
+  font-size: 1.08rem;
+  color: #4c34e0;
+}
+.blog-detail-page .post-content .point-run > .point-card > p { margin: 0 0 10px; }
+.blog-detail-page .post-content .point-run > .point-card > p:last-child { margin-bottom: 0; }
+
+/* ---- Lists whose items open with a bold lead ---- */
+.blog-detail-page .post-content ul.lead-list,
+.blog-detail-page .post-content ol.lead-list {
+  list-style: none;
+  counter-reset: tcxlead;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 1000px;
+  margin: 24px 0;
+  padding: 0;
+}
+.blog-detail-page .post-content .lead-list > li {
+  position: relative;
+  margin: 0;
+  padding: 11px 18px 11px 46px;
+  border: 1px solid #e8e6fb;
+  border-left: 4px solid #5B42F3;
+  border-radius: 8px;
+  background: #fbfaff;
+}
+/* Absolute, not flex: a flex container would blockify <strong> and <a> into
+   separate flex items and tear the sentence apart. Offsets are derived from
+   the 27.2px line box so the marker centres on the first line. */
+.blog-detail-page .post-content .lead-list > li::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 20px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #AF40FF, #5B42F3);
+}
+.blog-detail-page .post-content ol.lead-list > li { padding-left: 58px; }
+.blog-detail-page .post-content ol.lead-list > li::before {
+  counter-increment: tcxlead;
+  content: counter(tcxlead);
+  left: 14px;
+  top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.blog-detail-page .post-content .lead-list > li > strong:first-of-type,
+.blog-detail-page .post-content .lead-list > li > b:first-of-type,
+.blog-detail-page .post-content .lead-list > li > p:first-child > strong:first-of-type {
+  color: #4c34e0;
+}
+.blog-detail-page .post-content .lead-list > li > p:last-child { margin-bottom: 0; }
+
+/* Same reasoning as the lead cards: the body of a numbered point is reading
+   text, so it uses the article's serif face and size instead of 1rem Inter.
+   The bold lead stays sans-serif so it still reads as a label. */
+.blog-detail-page .post-content .lead-list > li {
+  font-family: var(--tcx-serif);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+.blog-detail-page .post-content .lead-list > li > strong:first-of-type,
+.blog-detail-page .post-content .lead-list > li > b:first-of-type,
+.blog-detail-page .post-content .lead-list > li > p:first-child > strong:first-of-type {
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 1.18rem;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+@media (max-width: 640px) {
+  .blog-detail-page .post-content .lead-list > li { padding: 10px 14px 10px 38px; }
+  .blog-detail-page .post-content ol.lead-list > li { padding-left: 52px; }
+  .blog-detail-page .post-content .point-run > .point-card { padding: 15px 16px; }
+}
+
+/* Headings inherited a 10px side margin from `.blog-post h2, h3, p` that the
+   paragraph rules later reset to 0 - so every heading sat 10px right of its
+   own body text. Align them back to the text column. */
+.blog-detail-page .post-content h2,
+.blog-detail-page .post-content h3,
+.blog-detail-page .post-content h4 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* ---- Label-per-line rows (day plans, schedules) ---- */
+.blog-detail-page .post-content .row-lines {
+  display: flex;
+  flex-direction: column;
+  margin: 14px 0;
+}
+.blog-detail-page .post-content .row-lines > .row-line {
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.09);
+}
+.blog-detail-page .post-content .row-lines > .row-line:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.blog-detail-page .post-content .row-lines > .row-line:last-child { padding-bottom: 0; }
+.blog-detail-page .post-content .row-lines > .row-line > strong:first-child,
+.blog-detail-page .post-content .row-lines > .row-line > b:first-child {
+  color: #4c34e0;
+}
+.blog-detail-page .post-content .tpl-block .row-lines > .row-line {
+  border-top-color: rgba(180, 130, 20, 0.22);
+}
+.blog-detail-page .post-content .tpl-block .row-lines > .row-line > strong:first-child {
+  color: #92400e;
+}
+
+/* ---- ATS widget: scorecard preview ---- */
+.blog-detail-page .post-content .blog-ats-preview {
+  margin: 22px 0 0;
+}
+.blog-detail-page .post-content .blog-ats-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(91, 66, 243, 0.22);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
+}
+.blog-detail-page .post-content .blog-ats-preview figcaption {
+  margin-top: 10px;
+  color: #64748b;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* Checklist items in a carded list: the checkbox is the marker, so drop the
+   dot and give the box the card's left gutter. */
+.blog-detail-page .post-content .lead-list > li.task-item::before { display: none; }
+.blog-detail-page .post-content .lead-list > li.task-item {
+  margin-left: 0;
+  padding-left: 48px;
+}
+.blog-detail-page .post-content .lead-list > li.task-item > .task-box {
+  left: 18px;
+  top: 17px;
+}
+
+/* An H3 immediately under an H2 was rendering almost as large as its parent,
+   so a section opened with two competing headlines. Make the subheading
+   clearly subordinate and close the gap between the pair. */
+.blog-detail-page .post-content h3 {
+  font-size: clamp(1.3rem, 1.6vw, 1.75rem);
+}
+.blog-detail-page .post-content > h2 + h3 {
+  margin-top: 34px;
+}
+
+/* ---- Before / After comparison panels ---- */
+.blog-detail-page .post-content .ba-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 1000px;
+  margin: 22px 0;
+}
+.blog-detail-page .post-content .ba-panel {
+  padding: 16px 20px;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #94a3b8;
+  border-radius: 10px;
+  background: #fff;
+}
+.blog-detail-page .post-content .ba-panel.ba-before {
+  border-top-color: #f97316;
+  background: #fffbf5;
+}
+.blog-detail-page .post-content .ba-panel.ba-after {
+  border-top-color: #16a34a;
+  background: #f8fdfa;
+}
+.blog-detail-page .post-content .ba-panel-label {
+  margin: 0 0 6px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.blog-detail-page .post-content .ba-panel.ba-before .ba-panel-label { color: #c2410c; }
+.blog-detail-page .post-content .ba-panel.ba-after .ba-panel-label { color: #15803d; }
+.blog-detail-page .post-content .ba-panel-text { margin: 0; }
+@media (max-width: 760px) {
+  .blog-detail-page .post-content .ba-split { grid-template-columns: 1fr; }
+}
+
+/* ---- Single-line dash lists rebuilt as bullets ---- */
+.blog-detail-page .post-content .dash-list-wrap { margin: 18px 0; max-width: 1000px; }
+.blog-detail-page .post-content .dash-list-lead { margin: 0 0 8px; }
+.blog-detail-page .post-content ul.dash-list { margin: 0; }
+
+/* =====================================================================
+   ARTICLE TYPOGRAPHY
+   Serif reading text with bold sans headings, matching the reference
+   layout. Serif is scoped to prose only - the boxed components (Key
+   Takeaways, FAQ, cards, tables, code, ATS widget) stay on the UI sans
+   so they still read as interface rather than article body.
+   ===================================================================== */
+.blog-detail-page .post-content {
+  --tcx-serif: "Source Serif 4", Charter, "Bitstream Charter", Georgia, "Times New Roman", serif;
+  --tcx-display: "Plus Jakarta Sans", Inter, "Segoe UI", sans-serif;
+}
+
+/* --- Headings: bold sans, sized down to the reference proportions --- */
+.blog-detail-page .post-content h2,
+.blog-detail-page .post-content h3,
+.blog-detail-page .post-content h4 {
+  font-family: var(--tcx-display);
+  color: #0f2133;
+  letter-spacing: -0.02em;
+}
+.blog-detail-page .post-content h2 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+.blog-detail-page .post-content h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.blog-detail-page .post-content h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.blog-detail-page .post-content > h2 {
+  padding-top: 30px;
+  margin-top: 46px;
+}
+.blog-detail-page .post-content > h2 + h3 { margin-top: 26px; }
+.blog-detail-page .post-content h2 .anchor-link { top: 30px; }
+
+/* --- Reading text: serif --- */
+.blog-detail-page .post-content p,
+.blog-detail-page .post-content li,
+.blog-detail-page .post-content blockquote {
+  font-family: var(--tcx-serif);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: #1f2a37;
+}
+.blog-detail-page .post-content p { margin-bottom: 15px; }
+.blog-detail-page .post-content li { margin-bottom: 8px; }
+.blog-detail-page .post-content p > strong,
+.blog-detail-page .post-content li > strong { font-weight: 700; }
+
+/* --- Interface blocks stay on the sans stack --- */
+.blog-detail-page .post-content .key-takeaways-box p,
+.blog-detail-page .post-content .key-takeaways-box li,
+.blog-detail-page .post-content .faq-box p,
+.blog-detail-page .post-content .faq-box li,
+.blog-detail-page .post-content .callout-box p,
+.blog-detail-page .post-content .callout-box li,
+.blog-detail-page .post-content .step-card p,
+.blog-detail-page .post-content .step-card li,
+.blog-detail-page .post-content .dd-grid p,
+.blog-detail-page .post-content .dd-grid li,
+.blog-detail-page .post-content .tpl-block p,
+.blog-detail-page .post-content .tpl-block li,
+.blog-detail-page .post-content .ba-split p,
+.blog-detail-page .post-content .point-card p,
+.blog-detail-page .post-content .row-lines p,
+.blog-detail-page .post-content .article-bottomline p,
+.blog-detail-page .post-content .article-bottomline li,
+.blog-detail-page .post-content .blog-ats p,
+.blog-detail-page .post-content .blog-ats li,
+.blog-detail-page .post-content .blog-tpl p,
+.blog-detail-page .post-content .end-cta p,
+.blog-detail-page .post-content .article-cta-strip p,
+.blog-detail-page .post-content .blog-rate p,
+.blog-detail-page .post-content table,
+.blog-detail-page .post-content table p,
+.blog-detail-page .post-content th,
+.blog-detail-page .post-content td {
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.blog-detail-page .post-content pre,
+.blog-detail-page .post-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* The ATS widget owns its colours outright. It can be relocated next to any
+   section, and inheriting a coloured card's text colour made its copy
+   invisible on its own light panel. */
+.blog-detail-page .post-content .blog-ats,
+.blog-detail-page .post-content .blog-ats p,
+.blog-detail-page .post-content .blog-ats li,
+.blog-detail-page .post-content .blog-ats label,
+.blog-detail-page .post-content .blog-ats figcaption {
+  color: #334155;
+}
+.blog-detail-page .post-content .blog-ats h2,
+.blog-detail-page .post-content .blog-ats h3,
+.blog-detail-page .post-content .blog-ats .blog-ats-label,
+.blog-detail-page .post-content .blog-ats .blog-ats-drop-title {
+  color: #0f172a;
+}
+.blog-detail-page .post-content .blog-ats .blog-ats-head p,
+.blog-detail-page .post-content .blog-ats .blog-ats-privacy,
+.blog-detail-page .post-content .blog-ats .blog-ats-drop-sub {
+  color: #52607a;
+}
+.blog-detail-page .post-content .blog-ats .blog-ats-chip { color: #4c34e0; }
+.blog-detail-page .post-content .blog-ats .blog-ats-go { color: #fff; }
+
+/* Bullet lists recovered from mis-fenced code blocks. */
+.blog-detail-page .post-content ul.pre-list {
+  margin: 12px 0;
+  padding-left: 22px;
+}
+.blog-detail-page .post-content ul.pre-list > li { margin-bottom: 7px; }
+.blog-detail-page .post-content .ba-block ul.pre-list { margin: 0; }
+
+/* The rating row is a small footer action, not a content card - the box gave
+   it more weight than it deserves. Plain row with a hairline above it, edges
+   aligned to the article text column. */
+.blog-detail-page .blog-rate {
+  margin: 40px 0 10px;
+  padding: 20px 0 0;
+  border: 0;
+  border-top: 1px solid #e6e9f2;
+  border-radius: 0;
+  background: none;
+}
+/* Keyboard focus only - clicking a star was leaving a blue square behind it. */
+.blog-detail-page .blog-rate-star:focus { outline: none; }
+.blog-detail-page .blog-rate-star:focus-visible {
+  outline: 2px solid #5B42F3;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+
+/* Numbered/bulleted card lists read as one grouped block, not floating boxes:
+   tight stack, solid brand edge, badge centred on the first line. */
+.blog-detail-page .post-content .lead-list > li > p { margin: 0 0 6px; }
+.blog-detail-page .post-content .lead-list > li > p:last-child { margin-bottom: 0; }
+.blog-detail-page .post-content ol.lead-list > li { padding-left: 52px; }
+
+/* =====================================================================
+   AUTHOR CARD — the bio in BLOG_AUTHORS was written and never rendered.
+   ===================================================================== */
+.blog-detail-page .post-content .post-author-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 40px 0 10px;
+  padding: 26px 28px;
+  border: 1px solid #e6e9f2;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #fbfaff 0%, #f4f8ff 100%);
+}
+.blog-detail-page .post-author-avatar {
+  position: relative;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #AF40FF, #5B42F3);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+.blog-detail-page .post-author-avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.blog-detail-page .post-author-body { min-width: 0; }
+.blog-detail-page .post-author-eyebrow {
+  margin: 0 0 2px;
+  color: #7c8aa5;
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.blog-detail-page .post-author-name {
+  margin: 0;
+  color: #0f2133;
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.blog-detail-page .post-author-role {
+  margin: 2px 0 8px;
+  color: #4c34e0;
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.blog-detail-page .post-author-bio {
+  margin: 0;
+  color: #48546b;
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+.blog-detail-page .post-author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  color: #4c34e0;
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.blog-detail-page .post-author-link:hover { text-decoration: underline; }
+@media (max-width: 640px) {
+  .blog-detail-page .post-author-card { flex-direction: column; gap: 14px; padding: 22px 18px; }
+}
+
+/* ---- Hero "Updated" stamp (only rendered when the post declares one) ---- */
+.blog-detail-page .hero-updated {
+  color: #a7f3d0;
+  font-weight: 600;
+}
+
+/* =====================================================================
+   SHARE RAIL
+   ===================================================================== */
+.blog-detail-page .post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 1000px;
+  /* Sits under the hero CTA, so it inherits the hero column's alignment. */
+  margin: 18px 0 0;
+}
+.blog-detail-page .post-share .post-share-label { color: #93a4c4; }
+.blog-detail-page .post-share .post-share-btn {
+  border-color: rgba(147, 197, 253, .28);
+  background: rgba(255, 255, 255, .06);
+  color: #cbd8ef;
+}
+.blog-detail-page .post-share .post-share-btn:hover {
+  color: #fff;
+  border-color: rgba(147, 197, 253, .6);
+  background: rgba(255, 255, 255, .12);
+}
+.blog-detail-page .post-share-label {
+  color: #7c8aa5;
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.blog-detail-page .post-share-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid #e2e6f0;
+  border-radius: 9px;
+  background: #fff;
+  color: #52607a;
+  cursor: pointer;
+  transition: color .15s ease, border-color .15s ease, transform .15s ease;
+}
+.blog-detail-page .post-share-btn:hover {
+  color: #4c34e0;
+  border-color: #c3b6fb;
+  transform: translateY(-1px);
+}
+.blog-detail-page .post-share-btn.is-copied { color: #15803d; border-color: #86efac; }
+.blog-detail-page .post-share-copied {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #0f2133;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+/* =====================================================================
+   MOBILE — collapsible contents + sticky CTA
+   ===================================================================== */
+.blog-detail-page .toc-toggle { display: none; }
+
+@media (max-width: 900px) {
+  /* The contents block collapses to a single tappable bar. Without this a
+     21-heading post pushed the article 2.3 screens down the page. */
+  .blog-detail-page .toc-col .toc-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0;
+    padding: 14px 16px;
+    border: 1px solid #e2e6f0;
+    border-radius: 10px;
+    background: #fff;
+    color: #0f2133;
+    font-family: "Plus Jakarta Sans", Inter, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .blog-detail-page .toc-toggle-label { flex: 1; text-align: left; }
+  .blog-detail-page .toc-toggle-count {
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: #efeafe;
+    color: #4c34e0;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .blog-detail-page .toc-toggle-ico { transition: transform .2s ease; }
+  .blog-detail-page .toc.toc-open .toc-toggle-ico { transform: rotate(180deg); }
+
+  .blog-detail-page .toc.toc-collapsible { padding: 14px 16px; }
+  .blog-detail-page .toc.toc-collapsible > h2 { display: none; }
+  .blog-detail-page .toc.toc-collapsible > ul {
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    transition: max-height .25s ease;
+  }
+  .blog-detail-page .toc.toc-collapsible.toc-open > ul {
+    max-height: 65vh;
+    overflow-y: auto;
+    margin-top: 12px;
+  }
+  /* The sticky bar replaces the sidebar CTA card on small screens. */
+  .blog-detail-page .toc-col .toc-cta { display: none; }
+
+  .blog-detail-page .tcx-mcta {
+    position: fixed;
+    left: 12px;
+    /* Stop short of the support-chat bubble in the bottom-right corner -
+       at full width the bubble sat on top of the dismiss button. */
+    right: 74px;
+    bottom: 12px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 10px 32px rgba(15, 23, 42, .22);
+    backdrop-filter: blur(8px);
+    transform: translateY(140%);
+    transition: transform .28s ease;
+  }
+  .blog-detail-page .tcx-mcta.is-in { transform: translateY(0); }
+  .blog-detail-page .tcx-mcta-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 16px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #AF40FF, #5B42F3);
+    color: #fff;
+    font-family: "Plus Jakarta Sans", Inter, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .blog-detail-page .tcx-mcta-x {
+    flex: 0 0 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 9px;
+    background: #f1f3f8;
+    color: #52607a;
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  /* Back-to-top would otherwise sit under the bar. */
+  .blog-detail-page #backToTop { bottom: 88px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-detail-page .tcx-mcta,
+  .blog-detail-page .toc.toc-collapsible > ul,
+  .blog-detail-page .toc-toggle-ico { transition: none; }
+}
+
+/* =====================================================================
+   BLOG LISTING — featured post, topic chips, in-grid CTA
+   ===================================================================== */
+.blog-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto 34px;
+  border: 1px solid rgba(125, 211, 252, .18);
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(150deg, rgba(76, 52, 224, .22), rgba(20, 28, 48, .55));
+  text-decoration: none;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.blog-featured:hover {
+  transform: translateY(-3px);
+  border-color: rgba(147, 197, 253, .45);
+  box-shadow: 0 22px 48px rgba(4, 10, 24, .5);
+}
+.blog-featured-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  overflow: hidden;
+  background: #f8fbff;
+}
+.blog-featured-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  max-height: 340px;
+  object-fit: contain;
+  object-position: center;
+}
+.blog-featured-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 32px 34px;
+}
+.blog-featured-flag {
+  align-self: flex-start;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #AF40FF, #5B42F3);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.blog-featured-title {
+  color: #f2f6ff;
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+.blog-featured-desc {
+  color: #b9c6df;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blog-featured-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8ea3c4;
+  font-size: 0.84rem;
+}
+.blog-featured-cat {
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(147, 197, 253, .3);
+  color: #9ec1ff;
+  font-weight: 600;
+}
+@media (max-width: 860px) {
+  .blog-featured { grid-template-columns: 1fr; }
+  .blog-featured-media img { min-height: 170px; max-height: 240px; }
+  .blog-featured-body { padding: 22px 20px; }
+}
+
+/* ---- Topic chips (the ?tag= filter finally has a UI) ---- */
+.topic-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+.topic-row-label {
+  color: #7f92b3;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.topic-chip {
+  padding: 6px 13px;
+  border: 1px solid rgba(125, 211, 252, .22);
+  border-radius: 999px;
+  background: rgba(125, 211, 252, .07);
+  color: #b7cbea;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+.topic-chip:hover { color: #e8f2ff; border-color: rgba(147, 197, 253, .5); }
+.topic-chip.active {
+  background: linear-gradient(135deg, #AF40FF, #5B42F3);
+  border-color: transparent;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---- One CTA card inside the grid ---- */
+.blog-card.blog-card-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+  padding: 26px 24px;
+  border: 1px solid rgba(175, 64, 255, .35);
+  background: linear-gradient(155deg, rgba(175, 64, 255, .18), rgba(91, 66, 243, .26));
+  text-decoration: none;
+}
+.blog-card-cta-flag {
+  align-self: flex-start;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .14);
+  color: #e6dcff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.blog-card-cta-title {
+  color: #fff;
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: 1.16rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.blog-card-cta-text { color: #cfd8f2; font-size: 0.92rem; line-height: 1.55; }
+.blog-card-cta-btn {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  background: #fff;
+  color: #4c34e0;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* The author card lives inside .post-content, so the article's serif
+   paragraph rules (.post-content p) outrank the card's own styling by one
+   element selector. Re-assert it at matching specificity. */
+.blog-detail-page .post-content .post-author-card p {
+  font-family: Inter, "Segoe UI", sans-serif;
+  margin: 0;
+}
+.blog-detail-page .post-content .post-author-card .post-author-eyebrow {
+  margin-bottom: 2px;
+  color: #7c8aa5;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.blog-detail-page .post-content .post-author-card .post-author-name {
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #0f2133;
+}
+.blog-detail-page .post-content .post-author-card .post-author-role {
+  margin: 2px 0 8px;
+  color: #4c34e0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.blog-detail-page .post-content .post-author-card .post-author-bio {
+  color: #48546b;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+.blog-detail-page .post-content .post-author-card a.post-author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  color: #4c34e0;
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 0;
+  background: none;
+}
+.blog-detail-page .post-content .post-author-card a.post-author-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── Article readability on phones ───────────────────────────────────────
+   The article body was set once at 1.17rem with no mobile override, so a
+   phone rendered desktop-sized type inside a column narrowed by 28px of side
+   padding. Readable on a laptop, cramped and small on a handset.
+
+   Mobile reading wants LARGER type than desktop, not smaller: the screen is
+   closer to the eye but the measure is a third of the width, so the same size
+   reads as denser. Bumping the body up and pulling the side padding in gives
+   the line a usable character count instead of squeezing it. */
+@media (max-width: 680px) {
+  .blog-detail-page .post-content {
+    font-size: 1.28rem;      /* ~20.5px — comfortable phone reading size */
+    line-height: 1.72;
+    padding: 26px 18px 40px; /* was clamp(28px,6vw,96px) — reclaim side space */
+    letter-spacing: 0.002em;
+  }
+
+  .blog-detail-page .post-content p,
+  .blog-detail-page .post-content li {
+    font-size: inherit;
+  }
+
+  /* Lists were indented for a desktop measure; on a phone that indent is a
+     meaningful share of the line. */
+  .blog-detail-page .post-content ul,
+  .blog-detail-page .post-content ol {
+    padding-left: 1.15rem;
+  }
+
+  .blog-detail-page .post-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Headings keep their hierarchy but stop dwarfing the body at this width. */
+  .blog-detail-page .post-content h2 {
+    font-size: 1.72rem;
+    line-height: 1.24;
+    margin-top: 34px;
+  }
+
+  .blog-detail-page .post-content h3 {
+    font-size: 1.34rem;
+    line-height: 1.3;
+    margin-top: 26px;
+  }
+
+  /* Tables are the one element that cannot simply reflow — let them scroll
+     rather than shrinking the whole page to fit. */
+  .blog-detail-page .post-content table {
+    font-size: 1rem;
+  }
+  .blog-detail-page .post-content .table-wrap,
+  .blog-detail-page .post-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Very small handsets: keep the gain but avoid over-large headings. */
+@media (max-width: 400px) {
+  .blog-detail-page .post-content {
+    font-size: 1.22rem;
+    padding: 22px 15px 36px;
+  }
+  .blog-detail-page .post-content h2 { font-size: 1.56rem; }
+  .blog-detail-page .post-content h3 { font-size: 1.26rem; }
+}
+
+/* ─── Every mistake gets its own card ──────────────────────────────────────
+   Reverted per feedback: the flat hairline-list treatment (above, superseded)
+   read as too plain. Every mistake - whether auto-split from a list into its
+   own .mistake-grid-item, or written as a standalone "**Label:** body" pair -
+   goes back to the original bordered .callout-box card: white background,
+   rounded corners, a red top accent, the icon, and the bold label as its own
+   line above the body. This block only fills in the couple of cases the base
+   rules above (~L2320) don't fully cover; it does not flatten anything. */
+
+/* a **Label:** paragraph followed by its own body paragraph (rather than
+   "**Label:** body" run into one paragraph) should still read as one card:
+   the label paragraph supplies the heading, the next paragraph is the body,
+   both wrapped together. */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:has(> strong:only-child) {
+  margin: 0 0 6px;
+  padding: 13px 15px 0;
+  border: 1px solid #f6dede;
+  border-bottom: 0;
+  border-left: 3px solid #ef4444;
+  border-radius: 8px 8px 0 0;
+  background: #ffffff;
+}
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:has(> strong:only-child) + p {
+  margin: -6px 0 0;
+  padding: 0 15px 13px;
+  border: 1px solid #f6dede;
+  border-top: 0;
+  border-left: 3px solid #ef4444;
+  border-radius: 0 0 8px 8px;
+  background: #ffffff;
+}
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:has(> strong:only-child) > strong {
+  color: #b42318;
+  font-size: 1.04rem;
+}
+
+/* ─── H2 section-divider gap, forced ──────────────────────────────────────
+   Reported bug: a section H2 was rendering flush against the thin top
+   rule above it, with no visible gap. Several earlier rules already set
+   margin-top/padding-top on h2 (some scoped to ">h2" direct children only),
+   and depending on which one a given post's DOM structure actually matches,
+   the gap could come out far smaller than intended or collapse entirely.
+   This is the last word on it: !important so no earlier or future rule can
+   zero it out again, and a plain descendant selector (not ">") so it applies
+   whether or not the heading is a direct child of .post-content. */
+.blog-detail-page .post-content h2:not(:first-of-type) {
+  margin-top: 48px !important;
+  padding-top: 32px !important;
+  border-top: 1px solid rgba(15, 33, 51, 0.08) !important;
+}
+
+/* ─── Intro lines: marker-pen highlight ───────────────────────────────────
+   A short line ending in a colon that introduces the group directly beneath
+   it. The gradient stops at 58% so the colour sits behind the lower half of
+   the text like a highlighter stroke rather than filling a solid block, and
+   box-decoration-break keeps the stroke continuous if the line wraps. */
+.blog-detail-page .post-content p.intro-line {
+  display: block;
+  margin: 26px 0 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+.blog-detail-page .post-content p.intro-line > span.intro-mark {
+  display: inline;
+  padding: 0 2px;
+  background-image: linear-gradient(transparent 58%, #fdea9b 58%, #fdea9b 94%, transparent 94%);
+  background-repeat: no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* ─── Mistake cards: match the article's reading typography ───────────────
+   The card body was 1rem Inter while the surrounding article is serif at
+   1.1875rem, so the cards read as UI chrome dropped into the page rather
+   than part of it. Body text takes the serif face; the caption stays
+   sans-serif and slightly larger so it still reads as a label above it.
+   Also softens the heavy red top rule to a left accent, which stops a run
+   of cards looking like a stack of red lines. */
+.blog-detail-page .post-content .mistake-grid-item p,
+.blog-detail-page .post-content .mistake-grid-item li {
+  font-family: var(--tcx-serif);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: #26303f;
+}
+.blog-detail-page .post-content .mistake-grid-item .callout-head h3 {
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 1.14rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em;
+}
+.blog-detail-page .post-content .mistake-grid .mistake-grid-item {
+  border: 1px solid #f3d6d6;
+  border-top: 1px solid #f3d6d6;
+  border-left: 4px solid #ef4444;
+  border-radius: 10px;
+  background: #fffcfc;
+  padding: 18px 22px;
+}
+.blog-detail-page .post-content .mistake-grid-item .callout-head {
+  margin-bottom: 6px;
+}
+
+/* ─── One typeface for the whole article ─────────────────────────────────
+   Headings, Key Takeaways and the FAQ were on the sans display/UI stack
+   while the reading text was serif, so the page read as three different
+   documents stitched together. Everything now uses the serif reading face;
+   headings keep their own weight and size, so the hierarchy is unchanged -
+   only the letterforms match. */
+.blog-detail-page .post-content h2,
+.blog-detail-page .post-content h3,
+.blog-detail-page .post-content h4,
+.blog-detail-page .post-content .key-takeaways-box,
+.blog-detail-page .post-content .key-takeaways-box p,
+.blog-detail-page .post-content .key-takeaways-box li,
+.blog-detail-page .post-content .key-takeaways-box h2,
+.blog-detail-page .post-content .key-takeaways-box h3,
+.blog-detail-page .post-content .faq-box,
+.blog-detail-page .post-content .faq-box p,
+.blog-detail-page .post-content .faq-box li,
+.blog-detail-page .post-content .faq-box > h2,
+.blog-detail-page .post-content .faq-item h3 {
+  font-family: var(--tcx-serif) !important;
+}
+
+/* Keep the headings' own weight/size after the family swap - a serif at the
+   same numeric weight reads lighter than the sans it replaced, so nudge up. */
+.blog-detail-page .post-content h2 { font-weight: 700; letter-spacing: -0.015em; }
+.blog-detail-page .post-content h3 { font-weight: 700; letter-spacing: -0.01em; }
+.blog-detail-page .post-content .faq-box > h2 { font-weight: 700; }
+.blog-detail-page .post-content .faq-item h3 { font-weight: 700; }
+.blog-detail-page .post-content .key-takeaways-box p,
+.blog-detail-page .post-content .key-takeaways-box li,
+.blog-detail-page .post-content .faq-box p,
+.blog-detail-page .post-content .faq-box li {
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+
+/* ─── Remaining card types onto the serif face ───────────────────────────
+   point-card, step-card, callout boxes, do/don't columns, bottom-line and
+   before/after panels were still on the sans UI stack, so a card dropped
+   mid-article read in a different typeface from the paragraph above it.
+   These all carry article prose, so they take the reading face.
+   Genuine UI widgets (the ATS scanner, CTA strips, the rating bar) are
+   deliberately excluded - they are interface, not article text. */
+.blog-detail-page .post-content .point-card p,
+.blog-detail-page .post-content .point-card li,
+.blog-detail-page .post-content .step-card p,
+.blog-detail-page .post-content .step-card li,
+.blog-detail-page .post-content .callout-box p,
+.blog-detail-page .post-content .callout-box li,
+.blog-detail-page .post-content .dd-grid p,
+.blog-detail-page .post-content .dd-grid li,
+.blog-detail-page .post-content .row-lines p,
+.blog-detail-page .post-content .article-bottomline p,
+.blog-detail-page .post-content .article-bottomline li,
+.blog-detail-page .post-content .ba-split p,
+.blog-detail-page .post-content .tpl-block p,
+.blog-detail-page .post-content .lead-run > .lead-item,
+.blog-detail-page .post-content .lead-list > li {
+  font-family: var(--tcx-serif) !important;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+
+/* Card headings and the small bold labels keep their own weight, on the same
+   serif face, so a card still has a clear label without changing typeface. */
+.blog-detail-page .post-content .point-card h3,
+.blog-detail-page .post-content .step-card .step-card-head,
+.blog-detail-page .post-content .dd-grid h3,
+.blog-detail-page .post-content .callout-head h2,
+.blog-detail-page .post-content .callout-head h3 {
+  font-family: var(--tcx-serif) !important;
+  font-weight: 700 !important;
+}
+
+/* Tables carry article content, not interface, so they take the reading face
+   like every other block. The header row keeps its weight on the same face. */
+.blog-detail-page .post-content table,
+.blog-detail-page .post-content table p,
+.blog-detail-page .post-content th,
+.blog-detail-page .post-content td,
+.blog-detail-page .post-content td li,
+.blog-detail-page .post-content .table-wrap table {
+  font-family: var(--tcx-serif) !important;
+}
+.blog-detail-page .post-content th {
+  font-weight: 700;
+}
+
+/* ─── Links: weight 600, not 500 ─────────────────────────────────────────
+   Source Serif 4 is loaded at weights 400, 600 and 700 only. Links were set
+   to font-weight 500, which the family cannot supply, so the browser
+   substituted a synthesised or fallback face - which is why link text read
+   as a different typeface from the sentence around it. 600 is loaded, so
+   the link now stays in the same serif as its paragraph. */
+.blog-detail-page .post-content p a,
+.blog-detail-page .post-content li a,
+.blog-detail-page .post-content td a,
+.blog-detail-page .post-content .lead-run a,
+.blog-detail-page .post-content .lead-list a,
+.blog-detail-page .post-content .point-card a,
+.blog-detail-page .post-content .callout-box a,
+.blog-detail-page .post-content .faq-box a,
+.blog-detail-page .post-content .key-takeaways-box a {
+  font-family: inherit;
+  font-weight: 600;
+}
+
+/* ─── Card headings sized to sit above the body text ─────────────────────
+   Body text in these cards is 1.1875rem; the headings were 1.02-1.16rem, so
+   the label read as smaller than the prose beneath it. */
+.blog-detail-page .post-content .point-run > .point-card > h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.blog-detail-page .post-content .lead-run > .lead-item > strong:first-child,
+.blog-detail-page .post-content .lead-run > .lead-item > b:first-child,
+.blog-detail-page .post-content .lead-list > li > strong:first-of-type,
+.blog-detail-page .post-content .lead-list > li > p:first-child > strong:first-of-type {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.blog-detail-page .post-content .mistake-grid-item .callout-head h3 {
+  font-size: 1.28rem !important;
+}
+
+/* ─── Card containers, not just their <p> children ───────────────────────
+   Markdown renders a tight list item as inline content with no <p> wrapper,
+   so when blog.js moves an <li>'s children into a mistake card the
+   description ends up as a bare text node on the section itself. Rules
+   targeting ".callout-box p" therefore never matched it and it kept the
+   inherited sans face. Set the family on the containers as well. */
+.blog-detail-page .post-content .mistake-grid-item,
+.blog-detail-page .post-content .callout-box,
+.blog-detail-page .post-content .point-card,
+.blog-detail-page .post-content .dd-col,
+.blog-detail-page .post-content .step-card,
+.blog-detail-page .post-content .lead-item,
+.blog-detail-page .post-content .faq-item {
+  font-family: var(--tcx-serif) !important;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+/* Icons and the small uppercase eyebrow labels stay on the UI stack. */
+.blog-detail-page .post-content .callout-ico,
+.blog-detail-page .post-content .dd-ico,
+.blog-detail-page .post-content .step-card-num {
+  font-family: Inter, "Segoe UI", sans-serif !important;
+  font-size: initial;
+}
+
+/* ─── Card links must not underline on hover ─────────────────────────────
+   A global "a:hover { text-decoration: underline }" applies to the whole
+   featured/blog card, because the entire card is wrapped in one anchor - so
+   hovering underlined the title AND the description together, which is what
+   made the listing look messy. Cards signal hover with lift and border, not
+   with underlined body text. */
+.blog-featured,
+.blog-featured:hover,
+.blog-featured *,
+.blog-featured:hover *,
+.blog-card a,
+.blog-card a:hover,
+.blog-cover-wrap,
+.blog-cover-wrap:hover,
+.blog-card-body h2 a,
+.blog-card-body h2 a:hover {
+  text-decoration: none;
+}
+/* The card title still needs a hover affordance - colour, not an underline. */
+.blog-featured:hover .blog-featured-title {
+  color: #ffffff;
+}
+.blog-card-body h2 a:hover {
+  color: #cfe0ff;
+}
+
+/* ─── Sidebar and CTA copy onto the serif face ───────────────────────────
+   The table of contents and the CTA banners were left on the sans UI stack,
+   so the rail and the promo blocks read in a different typeface from the
+   article beside them. Their prose now matches; buttons keep the sans face,
+   since a button label is a control rather than reading text. */
+.blog-detail-page .toc h2,
+.blog-detail-page .toc a,
+.blog-detail-page .toc-cta-title,
+.blog-detail-page .toc-cta-text,
+.blog-detail-page .article-cta-strip,
+.blog-detail-page .article-cta-strip p,
+.blog-detail-page .article-cta-strip strong,
+.blog-detail-page .post-content .end-cta,
+.blog-detail-page .post-content .end-cta p,
+.blog-detail-page .post-content .end-cta strong,
+.blog-detail-page .post-content .article-cta-strip p,
+.blog-detail-page .post-content .article-cta-strip strong {
+  font-family: var(--tcx-serif) !important;
+}
+/* Buttons stay on the UI stack. */
+.toc-cta-btn,
+.toc-cta-btn .tcx-btn-label,
+.blog-detail-page .post-content .end-cta-btn,
+.blog-detail-page .post-content .end-cta-btn .tcx-btn-label,
+.blog-detail-page .hero-cta-btn,
+.blog-detail-page .hero-cta-btn .tcx-btn-label {
+  font-family: Inter, "Segoe UI", sans-serif !important;
+}
+
+/* ─── CTA card: make the click target actually pull the eye ──────────────
+   The card already faded in and floated, but it sat visually static once on
+   screen, so it read as decoration rather than something to click. Adds a
+   slowly drifting gradient, a light sweep that crosses the card every few
+   seconds, a breathing glow on the button, and a stronger hover response.
+   All of it sits inside prefers-reduced-motion: no-preference. */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* 1. The surface drifts, so the card is never completely still. */
+  @keyframes tcxCtaSurface {
+    0%   { background-position: 0% 50%, 0% 50%; }
+    50%  { background-position: 100% 50%, 100% 50%; }
+    100% { background-position: 0% 50%, 0% 50%; }
+  }
+  .blog-detail-page .article-cta-strip,
+  .blog-detail-page .post-content .end-cta {
+    background-size: 180% 180%, 180% 180%;
+    animation: tcxCtaSurface 18s ease-in-out infinite;
+  }
+
+  /* 2. A light sweep crosses the card periodically. The card already has
+        overflow:hidden, so the sweep is clipped to its rounded corners. */
+  .blog-detail-page .article-cta-strip,
+  .blog-detail-page .post-content .end-cta { position: relative; }
+  .blog-detail-page .article-cta-strip::before,
+  .blog-detail-page .post-content .end-cta::before {
+    content: "";
+    position: absolute;
+    top: -60%;
+    left: -40%;
+    width: 28%;
+    height: 220%;
+    pointer-events: none;
+    background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, .16) 45%,
+      rgba(255, 255, 255, .28) 50%,
+      rgba(255, 255, 255, .16) 55%,
+      rgba(255, 255, 255, 0) 100%);
+    transform: rotate(8deg);
+    animation: tcxCtaSweep 6.5s ease-in-out infinite;
+  }
+  @keyframes tcxCtaSweep {
+    0%, 62%  { left: -40%; opacity: 0; }
+    66%      { opacity: 1; }
+    92%      { left: 115%; opacity: 0; }
+    100%     { left: 115%; opacity: 0; }
+  }
+
+  /* 3. The button breathes, so the eye lands on the actual click target. */
+  @keyframes tcxCtaBtnPulse {
+    0%, 100% { box-shadow: 0 8px 20px rgba(35, 45, 140, .38), 0 0 0 0 rgba(255, 255, 255, .30); }
+    50%      { box-shadow: 0 12px 26px rgba(35, 45, 140, .48), 0 0 0 8px rgba(255, 255, 255, 0); }
+  }
+  .blog-detail-page .post-content .end-cta-btn,
+  .blog-detail-page .article-cta-strip .end-cta-btn {
+    animation: tcxCtaBtnPulse 2.8s ease-in-out infinite;
+  }
+  .blog-detail-page .article-cta-strip:hover .end-cta-btn,
+  .blog-detail-page .post-content .end-cta:hover .end-cta-btn {
+    animation-play-state: paused;
+    transform: translateY(-1px) scale(1.03);
+  }
+
+  /* 4. A firmer hover on the card itself than the previous 3px nudge. */
+  .blog-detail-page .article-cta-strip.tcx-cta-in:hover,
+  .blog-detail-page .post-content .end-cta.tcx-cta-in:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, .45);
+    box-shadow: 0 30px 60px rgba(58, 74, 180, .45);
+  }
+}
+
+/* =====================================================================
+   BLOG LISTING — clean layout, our own dark violet palette
+   The reference we were matching was a light page; what was worth taking
+   from it is the LAYOUT — a centred hero, generous spacing, a featured
+   card that clearly separates from the page, and pill filters — not its
+   colours. This keeps the site's dark violet/blue theme throughout.
+   Scoped to .blog-list-page so article pages are untouched.
+   ===================================================================== */
+
+/* Hero ---------------------------------------------------------------- */
+body.blog-list-page .blog-listing-head {
+  max-width: 1200px;
+  margin: 0 auto 10px;
+  padding: 64px 24px 34px;
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(120% 130% at 50% 0%, rgba(124, 58, 237, .30) 0%, rgba(124, 58, 237, 0) 68%),
+    transparent;
+  text-align: center;
+}
+body.blog-list-page .blog-listing-head h1 {
+  margin: 0 0 14px;
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #f2f6ff;
+}
+body.blog-list-page .blog-listing-head h1 .head-accent {
+  background: linear-gradient(120deg, #AF40FF 0%, #7c5cff 50%, #3392ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+body.blog-list-page .blog-listing-head > p {
+  max-width: 640px;
+  margin: 0 auto;
+  color: #9fb0cc;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Search --------------------------------------------------------------- */
+body.blog-list-page .blog-search {
+  max-width: 800px;
+  margin: 30px auto 22px;
+  gap: 10px;
+}
+body.blog-list-page .blog-search input,
+body.blog-list-page .blog-search select {
+  padding: 13px 16px;
+  border: 1px solid rgba(125, 150, 220, .26);
+  border-radius: 10px;
+  background: rgba(12, 20, 42, .85);
+  color: #e2ecff;
+  font-size: 0.95rem;
+}
+body.blog-list-page .blog-search input::placeholder { color: #7f8fae; }
+body.blog-list-page .blog-search input:focus,
+body.blog-list-page .blog-search select:focus {
+  outline: none;
+  border-color: #7c5cff;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, .22);
+}
+body.blog-list-page .blog-search button {
+  padding: 13px 28px;
+  border-radius: 10px;
+  border: 0;
+  background: linear-gradient(135deg, #AF40FF, #5B42F3);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+body.blog-list-page .blog-search button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(124, 92, 255, .42);
+}
+
+/* Category pills ------------------------------------------------------- */
+body.blog-list-page .tags-row {
+  max-width: 1200px;
+  margin: 0 auto 36px;
+  padding: 0 24px;
+  justify-content: center;
+  gap: 10px;
+}
+body.blog-list-page .tag {
+  padding: 10px 20px;
+  border: 1px solid rgba(125, 150, 220, .24);
+  border-radius: 999px;
+  background: rgba(14, 22, 44, .7);
+  color: #b7c6e6;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+body.blog-list-page .tag:hover {
+  border-color: rgba(175, 64, 255, .6);
+  color: #e6ddff;
+  background: rgba(91, 66, 243, .18);
+  transform: translateY(-1px);
+}
+body.blog-list-page .tag.active {
+  background: linear-gradient(135deg, #AF40FF, #5B42F3);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(124, 92, 255, .35);
+}
+
+/* Featured card -------------------------------------------------------- */
+body.blog-list-page .blog-featured {
+  max-width: 1200px;
+  margin: 0 auto 46px;
+  border: 1px solid rgba(147, 197, 253, .20);
+  border-radius: 18px;
+  background: linear-gradient(150deg, rgba(76, 52, 224, .26), rgba(16, 22, 44, .72));
+  box-shadow: 0 18px 40px rgba(4, 10, 24, .42);
+  align-items: stretch;
+}
+body.blog-list-page .blog-featured:hover {
+  border-color: rgba(175, 64, 255, .5);
+  box-shadow: 0 28px 60px rgba(70, 40, 170, .45);
+}
+body.blog-list-page .blog-featured-body { padding: 40px 44px; }
+body.blog-list-page .blog-featured-title {
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  letter-spacing: -0.025em;
+}
+body.blog-list-page .blog-featured-desc { font-size: 1.02rem; }
+
+/* Card grid ------------------------------------------------------------ */
+body.blog-list-page .blog-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  gap: 26px;
+}
+body.blog-list-page .blog-card {
+  border: 1px solid rgba(125, 150, 220, .18);
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(18, 26, 50, .92), rgba(12, 18, 38, .92));
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+body.blog-list-page .blog-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(175, 64, 255, .45);
+  box-shadow: 0 18px 38px rgba(70, 40, 170, .36);
+}
+body.blog-list-page .blog-card-body { padding: 20px 22px 24px; }
+body.blog-list-page .blog-card-body .meta {
+  color: #8195b5;
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+}
+body.blog-list-page .blog-card-body h2 {
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: 1.14rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+body.blog-list-page .blog-card-body h2 a { color: #eaf1ff; }
+body.blog-list-page .blog-card:hover .blog-card-body h2 a { color: #c9b6ff; }
+body.blog-list-page .blog-card-body > p {
+  color: #9fb0cc;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+body.blog-list-page .blog-meta-tags span {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 11px;
+  border-radius: 8px;
+  border: 1px solid rgba(147, 197, 253, .22);
+  background: rgba(91, 66, 243, .16);
+  color: #b3c6ff;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Pagination ----------------------------------------------------------- */
+body.blog-list-page .pagination {
+  max-width: 1200px;
+  margin: 44px auto 64px;
+  padding: 0 24px;
+}
+body.blog-list-page .pagination a,
+body.blog-list-page .pagination .pg-current {
+  border: 1px solid rgba(125, 150, 220, .22);
+  border-radius: 9px;
+  background: rgba(14, 22, 44, .7);
+  color: #b7c6e6;
+  padding: 9px 15px;
+}
+body.blog-list-page .pagination a:hover {
+  border-color: rgba(175, 64, 255, .55);
+  color: #e6ddff;
+}
+body.blog-list-page .pagination .pg-current {
+  background: linear-gradient(135deg, #AF40FF, #5B42F3);
+  border-color: transparent;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  body.blog-list-page .blog-listing-head { padding: 40px 18px 26px; }
+  body.blog-list-page .blog-search { grid-template-columns: 1fr; padding: 0 18px; }
+  body.blog-list-page .blog-featured-body { padding: 26px 22px; }
+  body.blog-list-page .tags-row {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+  body.blog-list-page .tags-row::-webkit-scrollbar { display: none; }
+}
+
+/* ─── Wave background stacking ───────────────────────────────────────────
+   The wave canvas is position:fixed at z-index 0, matching the other 19
+   pages. Content and chrome need their own stacking context above it,
+   otherwise the canvas paints over the page on some browsers. */
+.blog-list-page .blog-main,
+.blog-detail-page .blog-post-wrap,
+.blog-list-page .navbar,
+.blog-detail-page .navbar,
+.blog-list-page footer,
+.blog-detail-page footer,
+.blog-detail-page .progress {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Listing cards: tighter spacing ─────────────────────────────────────
+   The cards inherited body line-height 1.65 plus generous padding and
+   margins, so each one ran much taller than its content needed and the
+   grid read as mostly empty space. */
+body.blog-list-page .blog-grid { gap: 20px; }
+body.blog-list-page .blog-card-body { padding: 15px 17px 17px; }
+body.blog-list-page .blog-card-body .meta {
+  margin-bottom: 5px;
+  font-size: 0.79rem;
+  line-height: 1.3;
+}
+body.blog-list-page .blog-card-body h2 {
+  margin: 0 0 6px;
+  font-size: 1.04rem;
+  line-height: 1.28;
+}
+body.blog-list-page .blog-card-body > p {
+  margin: 0;
+  font-size: 0.89rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+body.blog-list-page .blog-meta-tags { margin-top: 9px; gap: 6px; }
+body.blog-list-page .blog-meta-tags span {
+  margin-top: 0;
+  padding: 3px 9px;
+  font-size: 0.74rem;
+}
+/* Covers: the source images are 3:2 (1536x1024). An earlier 16/9 + cover
+   override here cropped ~16% off the top and bottom, which is what cut the
+   logo off. Match the real ratio and contain, so the whole image shows. */
+body.blog-list-page .blog-cover {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: #0a1024;
+  display: block;
+}
+
+/* ─── Hero: drop the violet wash, lighten the title ──────────────────────
+   The radial gradient was painted on .blog-listing-head, which is capped at
+   1200px - so instead of blending into the page it rendered as a violet
+   rectangle with visible left/right edges. The wave canvas already provides
+   the background colour, so the hero needs no fill of its own. Title weight
+   also comes down from 800, which was heavy at this size. */
+body.blog-list-page .blog-listing-head {
+  background: none;
+}
+body.blog-list-page .blog-listing-head h1 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+body.blog-list-page .blog-listing-head > p {
+  font-weight: 400;
+}
+
+/* ─── Category pills: one scrolling row ──────────────────────────────────
+   The pills wrapped onto a second line, which pushed the grid down and made
+   the header look unbalanced. Keep them on a single row that scrolls
+   horizontally instead, on every screen size. */
+body.blog-list-page .tags-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 4px 24px 10px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* old Edge */
+  /* Fade the right edge so it reads as scrollable rather than cut off. */
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0, #000 92%, transparent 100%);
+}
+body.blog-list-page .tags-row::-webkit-scrollbar { display: none; }
+body.blog-list-page .tag {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* ─── Nav must sit above page content ────────────────────────────────────
+   The wave-canvas stacking fix gave .blog-main and .navbar the same z-index,
+   and since main comes later in the DOM it painted over the nav - which is
+   why the hero title overlapped the menu. Lift the nav above content. */
+.blog-list-page .navbar,
+.blog-detail-page .navbar {
+  position: relative;
+  z-index: 50;
+}
+.blog-list-page .blog-main,
+.blog-detail-page .blog-post-wrap {
+  z-index: 1;
+}
+
+/* ─── Wider listing, narrower side margins ───────────────────────────────
+   The grid was capped at 1200px with 24px of padding, leaving large empty
+   gutters on a wide screen. Give the listing more of the viewport so the
+   cards read bigger. */
+body.blog-list-page .blog-listing-head,
+body.blog-list-page .blog-search,
+body.blog-list-page .tags-row,
+body.blog-list-page .blog-grid,
+body.blog-list-page .pagination {
+  max-width: 1660px;
+}
+body.blog-list-page .blog-grid {
+  padding: 0 32px;
+  gap: 24px;
+}
+body.blog-list-page .tags-row { padding: 4px 32px 10px; }
+body.blog-list-page .pagination { padding: 0 32px; }
+body.blog-list-page .blog-search { max-width: 900px; }
+
+/* On very wide screens a 3-up grid leaves the cards oversized; go 4-up. */
+@media (min-width: 1500px) {
+  body.blog-list-page .blog-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 860px) {
+  body.blog-list-page .blog-grid { padding: 0 16px; gap: 16px; }
+  body.blog-list-page .tags-row { padding: 4px 16px 10px; }
+  body.blog-list-page .pagination { padding: 0 16px; }
+}
+
+/* ─── Pills row: left-aligned with a visible scrollbar ───────────────────
+   Centring an overflowing flex row pushes its start out of reach, which is
+   why the "All" pill was clipped off the left edge. Always start from the
+   left, and show a slim scrollbar so the row is obviously scrollable. */
+body.blog-list-page .tags-row {
+  justify-content: flex-start !important;
+  padding-bottom: 4px;
+  -webkit-mask-image: none;
+  mask-image: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(147, 160, 200, .45) transparent;
+}
+body.blog-list-page .tags-row::-webkit-scrollbar {
+  display: block;
+  height: 8px;
+}
+body.blog-list-page .tags-row::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, .05);
+  border-radius: 999px;
+}
+body.blog-list-page .tags-row::-webkit-scrollbar-thumb {
+  background: rgba(147, 160, 200, .45);
+  border-radius: 999px;
+}
+body.blog-list-page .tags-row::-webkit-scrollbar-thumb:hover {
+  background: rgba(175, 190, 235, .65);
+}
+
+/* ---- Read next + split related section -------------------------------
+   The related grid below the sign-off carries the posts that genuinely
+   match; the "More from the blog" list carries the ring/recency filler
+   that exists to keep every post linked. Separating them keeps the SEO
+   link graph intact without spending reader attention on cards that do
+   not match what they just finished. */
+
+/* In-article related-article card (resume.io pattern): cover image flush to
+   the left edge, label + title on a pale panel. Scoped to .post-content so it
+   inherits the LIGHT article palette rather than the dark card styling used
+   elsewhere on the page. Every post has an image, so the media half is
+   always populated - but it collapses safely if one ever 404s. */
+.blog-detail-page .post-content .read-next {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  align-items: stretch;
+  margin: 38px 0;
+  border-radius: 10px;
+  background: #eef2fb;
+  overflow: hidden;
+}
+
+.blog-detail-page .post-content .read-next-media {
+  display: block;
+  min-height: 100%;
+  background: #dde5f5;
+}
+
+.blog-detail-page .post-content .read-next-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  object-fit: cover;
+}
+
+.blog-detail-page .post-content .read-next-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 26px 30px;
+}
+
+.blog-detail-page .post-content .read-next-label {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b7a90;
+}
+
+.blog-detail-page .post-content .read-next-link {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.blog-detail-page .post-content .read-next-link:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .blog-detail-page .post-content .read-next { grid-template-columns: 1fr; }
+  .blog-detail-page .post-content .read-next-media img { min-height: 0; aspect-ratio: 16 / 9; }
+  .blog-detail-page .post-content .read-next-body { padding: 20px 22px; }
+  .blog-detail-page .post-content .read-next-link { font-size: 1.15rem; }
+}
+
+.blog-card-desc {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+  /* Two lines: enough to earn the click, not enough to unbalance the grid. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.related-more { padding-top: 6px; }
+.related-more h2 { font-size: 1.15rem; color: var(--muted); margin-bottom: 14px; }
+
+/* Coverage tail: same posts as the ring/recency filler, shown as compact
+   thumbnail rows. Smaller than the "Keep reading" cards on purpose - it is a
+   browse list, not a recommendation - but it still carries an image so the
+   section does not read as broken next to the cards above it. */
+.related-more-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px 26px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related-more-item {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.related-more-thumb {
+  width: 84px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #0d141f;
+}
+
+.related-more-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+
+.related-more-title {
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.related-more-meta { font-size: 0.78rem; color: #6b7a90; }
+
+.related-more-item:hover .related-more-title { color: #eaf1ff; text-decoration: underline; }
+
+/* Read-next card with no cover image yet (post awaiting a generated image):
+   collapse to a single column instead of leaving an empty media slot. */
+.blog-detail-page .post-content .read-next.read-next-noimg {
+  grid-template-columns: 1fr;
 }

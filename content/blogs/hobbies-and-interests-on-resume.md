@@ -10,9 +10,17 @@ slug: hobbies-and-interests-on-resume
 keywords: hobbies on resume, interests on resume, resume hobbies section
 ---
 
+## Key Takeaways
+
+- There are a few specific situations where a hobbies section earns its space - outside those, it usually does not.
+- If you have a full page of strong, relevant experience, cut hobbies to make room for what matters.
+- Be specific and show depth: "Marathon runner (3 completed)" signals something, "fitness" says nothing.
+- Volunteering is usually stronger than a hobby because it shows commitment and real-world skills, so give it its own section.
+- Hobbies are a small supporting detail - the summary, quantified experience, and role-matched keywords do the real work.
+
 Should you put hobbies on your [resume](https://www.thetailorcv.com/modify-cv)? Sometimes — but only when they add real value. Space on a [resume](https://www.thetailorcv.com/modify-cv) is expensive, and a random list of interests can look like filler that pushes your actual [experience and skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) further down the page. Used strategically, though, hobbies can show culture fit or relevant skills that set you apart. This guide covers exactly when to include them, when to cut them, and how to list them so they help.
 
-Before you agonize over hobbies, make sure the core of your [resume](https://www.thetailorcv.com/modify-cv) is strong: a matching job title, [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), and [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) that pass the [ATS](https://thetailorcv.com/blog/ats-score-guide). Confirm all that with the [free ATS score checker](https://www.thetailorcv.com/solutions) first — hobbies are a garnish, never the meal.
+Before you agonize over hobbies, make sure the core of your [resume](https://www.thetailorcv.com/modify-cv) is strong: a matching job title, [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), and [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) that pass the ATS. Confirm all that with the free ATS score checker first — hobbies are a garnish, never the meal.
 
 ## When hobbies help your resume
 
@@ -24,7 +32,7 @@ There are a few clear situations where a hobbies section earns its space:
 
 ## When to skip hobbies
 
-If you have a full page of strong, relevant [experience](https://thetailorcv.com/blog/how-to-write-resume-bullet-points), cut hobbies to make room for what matters. A senior professional's [resume](https://www.thetailorcv.com/modify-cv) almost never needs them. And always skip anything controversial, polarizing, or so generic it says nothing — "reading, music, traveling" is filler that adds zero signal. When space is tight, the [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying) helps you decide what to trim, and [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) covers what to leave off entirely.
+If you have a full page of strong, relevant experience, cut hobbies to make room for what matters. A senior professional's [resume](https://www.thetailorcv.com/modify-cv) almost never needs them. And always skip anything controversial, polarizing, or so generic it says nothing — "reading, music, traveling" is filler that adds zero signal. When space is tight, the [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying) helps you decide what to trim, and [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) covers what to leave off entirely.
 
 ## How to list hobbies well
 
@@ -36,17 +44,26 @@ Keep the section short — a single line near the bottom is plenty — and use a
 
 These overlap but aren't identical. **Volunteering** is often stronger than a hobby because it shows commitment and real-world skills — give it its own treatment, as in [volunteer work on a resume](https://thetailorcv.com/blog/volunteer-work-on-resume). **Interests** that align with the role or company culture can support your fit. Pure **hobbies** are the lightest signal, so reserve them for when you genuinely need to round out a page or reinforce a specific, relevant trait.
 
+
+
 ## Keep the focus on fit
 
-At the end of the day, hobbies are a small supporting detail. Lead with a strong [summary](https://thetailorcv.com/blog/how-to-write-resume-summary), [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) experience, and role-matched [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description). [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) so the most relevant content is front and center, and use the [resume optimizer](https://www.thetailorcv.com/solutions) to confirm your [resume](https://www.thetailorcv.com/modify-cv) matches the role. If a hobby genuinely strengthens that story, keep it; if it doesn't, cut it without a second thought.
+At the end of the day, hobbies are a small supporting detail. Lead with a strong [summary](https://thetailorcv.com/blog/how-to-write-resume-summary), [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) experience, and role-matched [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description). Tailor each application so the most relevant content is front and center, and use the resume optimizer to confirm your resume matches the role. If a hobby genuinely strengthens that story, keep it; if it doesn't, cut it without a second thought.
 
 ## Final checklist
 
 Include hobbies on your [resume](https://www.thetailorcv.com/modify-cv) only when they:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - **Add real signal** — relevance, culture fit, or transferable skill.
 - Are **specific**, not generic ("marathon runner," not "fitness").
-- Don't **crowd out** stronger [experience](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) or [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026).
-- Keep the [resume](https://www.thetailorcv.com/modify-cv) [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passing the [ATS score checker](https://www.thetailorcv.com/solutions).
+- Don't **crowd out** stronger experience or [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026).
+- Keep the [resume](https://www.thetailorcv.com/modify-cv) [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passing the [ATS score checker](https://thetailorcv.com/blog/ats-score-checker-free).
 
 Build a focused [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and only add hobbies if they make your case stronger.

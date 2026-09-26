@@ -10,18 +10,19 @@ slug: why-is-my-ats-score-low
 keywords: why is my ats score low, low ats score, improve ats score, ats resume problems
 ---
 
-You checked your resume and the [ATS score](https://thetailorcv.com/blog/ats-score-guide) came back low. The good news: a low score is almost always caused by a short list of fixable problems - not by your qualifications. This guide walks through the **12 most common reasons your [ATS score](https://thetailorcv.com/blog/ats-score-guide) is low** and how to fix each one.
-
-Re-check your progress anytime with the [free ATS score checker](/solutions).
-
----
-
 ## Key Takeaways
 
 - A low ATS score is often due to missing keywords from the job description, which can be fixed by incorporating relevant terms throughout your resume.
 - Using complex templates or image-based PDFs can hinder ATS parsing; opt for a clean, single-column, text-based format instead.
 - Tailor each resume to specific job postings and use standard section headings to improve ATS readability.
 - Include measurable achievements and a dedicated skills section to enhance your resume's effectiveness in ATS evaluations.
+
+
+You checked your resume and the [ATS score](https://thetailorcv.com/blog/ats-score-guide) came back low. The good news: a low score is almost always caused by a short list of fixable problems - not by your qualifications. This guide walks through the **12 most common reasons your [ATS score](https://thetailorcv.com/blog/ats-score-guide) is low** and how to fix each one.
+
+Re-check your progress anytime with the [free ATS score checker](/solutions).
+
+---
 
 ## 1. Your Resume Is Missing Keywords
 
@@ -103,6 +104,7 @@ The opposite problem - cramming in keywords unnaturally - can be flagged and als
 
 ---
 
+
 ## 11. Spelling Variations and Acronyms
 
 If the posting says "Search Engine Optimization" and you only write "SEO" (or vice versa), you can miss a match.
@@ -135,6 +137,13 @@ Run the [ATS score checker](/solutions), apply the fixes above, and re-scan. Mos
 ## Common Mistakes to Avoid When Optimizing for ATS
 
 When working to improve your ATS score, it's essential to avoid common pitfalls that can undermine your efforts. Here’s a list of mistakes to steer clear of:
+
+### What an ATS score report actually shows you
+
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+The score itself matters less than the breakdown beside it: each check names what passed, what failed, and why it matters - which is the list you actually work through.
+
 
 1. **Overusing Jargon**: While industry-specific terms can be beneficial, excessive jargon may confuse ATS algorithms. Use clear language that's easily understood, focusing on keywords that are relevant to the job description.
   
@@ -233,9 +242,9 @@ Often within an hour. Fixing formatting and adding the right keywords usually pr
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## Conclusion
 A low [ATS score](https://thetailorcv.com/blog/ats-score-guide) is rarely about your qualifications - it is about how your resume is written and formatted. Work through the 12 fixes above, re-scan, and watch your score climb into the competitive range.

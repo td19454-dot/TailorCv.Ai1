@@ -16,6 +16,63 @@ except Exception:  # pragma: no cover
 
 WORD_PER_MINUTE = 220
 
+FILTER_ALIASES = {
+    "ats": "ATS Optimization",
+    "ats optimization": "ATS Optimization",
+    "ats resume": "ATS Optimization",
+    "resume": "Resume Writing",
+    "resume tips": "Resume Writing",
+    "resume writing": "Resume Writing",
+    "resume optimization": "Resume Optimization",
+    "resume tailoring": "Resume Optimization",
+    "career advice": "Career Advice",
+    "job search": "Job Search",
+    "portfolio": "Portfolio",
+    "portfolio guide": "Portfolio",
+    "interview prep": "Interview Preparation",
+    "interview preparation": "Interview Preparation",
+    "cover letter": "Cover Letters",
+    "cover letters": "Cover Letters",
+    "linkedin": "LinkedIn",
+}
+
+CATEGORY_ORDER = [
+    "ATS Optimization",
+    "Resume Optimization",
+    "Resume Writing",
+    "Job Search",
+    "Career Advice",
+    "Cover Letters",
+    "Interview Preparation",
+    "LinkedIn",
+    "Portfolio",
+    "Resume Examples",
+    "Comparisons",
+]
+
+TOPIC_ORDER = [
+    "ATS Resume Checker",
+    "ATS Keywords",
+    "Resume Keywords",
+    "Resume Match",
+    "Resume Tips 2026",
+    "Free Resume Optimizer",
+    "Chrome Extension",
+    "AI Resume",
+    "Mock Interview",
+    "Portfolio Builder",
+]
+
+BROAD_FILTER_LABELS = set(CATEGORY_ORDER)
+
+
+def canonical_filter_label(value: str) -> str:
+    text = re.sub(r"\s+", " ", str(value or "").strip())
+    if not text:
+        return ""
+    key = text.lower()
+    return FILTER_ALIASES.get(key, text)
+
 
 @dataclass
 class BlogPost:
@@ -35,6 +92,17 @@ class BlogPost:
     toc_html: str
     word_count: int
     lastmod_iso: str
+    # Opt-in "Updated" stamp. Only set when a post carries an `updated:` field
+    # in its frontmatter - deliberately NOT derived from file mtime, which
+    # would claim every post was revised on whatever day the files were last
+    # touched in bulk. Empty string means "show nothing".
+    updated_iso: str = ""
+    updated_display: str = ""
+    # Opt-in override for the embedded template gallery. blog_template_showcase()
+    # otherwise infers the gallery from slug/title/tags, which cannot work for a
+    # post whose subject is unrelated to resumes ("usa-day-one-cpt-risks") but
+    # which should still show one. Values: "portfolio", "resume", "none".
+    showcase: str = ""
 
 
 class BlogService:
@@ -159,6 +227,48 @@ class BlogService:
             add(p)
         return picked[:limit]
 
+    def read_next(self, post: BlogPost) -> BlogPost | None:
+        """The single strongest follow-up for a reader who is still engaged.
+
+        related_posts() has to serve two masters - reader relevance AND the
+        no-orphan link ring - so its tail is often irrelevant to the human.
+        This returns only a genuine match (shared tags, or failing that the
+        same category) and None when there isn't one, because showing a
+        weak "Read next" is worse than showing none.
+        """
+        others = [p for p in self.load_posts() if p.slug != post.slug]
+        if not others:
+            return None
+        post_tags = set(post.tags)
+        if post_tags:
+            best = max(others, key=lambda c: (len(post_tags & set(c.tags)), c.date_iso))
+            if len(post_tags & set(best.tags)) > 0:
+                return best
+        same_cat = [p for p in others if post.category and p.category == post.category]
+        if same_cat:
+            seed = sum(ord(ch) for ch in post.slug) % len(same_cat)
+            return same_cat[seed]
+        return None
+
+    def related_split(self, post: BlogPost, relevant: int = 3, limit: int = 6) -> dict:
+        """related_posts() split into what the reader sees first vs. the tail.
+
+        Same posts, same link graph - only the presentation order changes, so
+        the SEO ring is untouched. "relevant" holds posts with real tag/category
+        overlap; "more" holds the ring/recency filler that exists for coverage.
+        """
+        picked = self.related_posts(post, limit=limit)
+        post_tags = set(post.tags)
+
+        def is_relevant(c: BlogPost) -> bool:
+            return bool(post_tags & set(c.tags)) or (
+                bool(post.category) and c.category == post.category
+            )
+
+        strong = [p for p in picked if is_relevant(p)]
+        weak = [p for p in picked if not is_relevant(p)]
+        return {"relevant": strong[:relevant], "more": strong[relevant:] + weak}
+
     def link_hub(self, post: BlogPost, exclude: list[BlogPost] | None = None,
                  per_group: int = 20, min_total: int = 100) -> list[dict]:
         """Curated groups of internal links shown as compact text lists under a
@@ -220,11 +330,41 @@ class BlogService:
             groups[-1][1] = groups[-1][1] + pool[:needed]
         return [{"title": t, "posts": ps} for t, ps in groups if ps]
 
-    def list_filters(self) -> dict[str, list[str]]:
+    def list_filters(self, top_tag_count: int = 10) -> dict[str, list[str]]:
         posts = self.load_posts()
-        tags = sorted({tag for p in posts for tag in p.tags})
-        categories = sorted({p.category for p in posts if p.category})
-        return {"tags": tags, "categories": categories}
+        tags = sorted({canonical_filter_label(tag) for p in posts for tag in p.tags if canonical_filter_label(tag)})
+        category_counts: dict[str, int] = {}
+        for p in posts:
+            category = canonical_filter_label(p.category)
+            if category:
+                category_counts[category] = category_counts.get(category, 0) + 1
+        categories = sorted(
+            category_counts,
+            key=lambda name: (
+                CATEGORY_ORDER.index(name) if name in CATEGORY_ORDER else len(CATEGORY_ORDER),
+                name.lower(),
+            ),
+        )
+        # The full tag list runs to hundreds of entries, which is useless as a
+        # UI. `top_tags` is the handful worth showing as chips - ordered by how
+        # many posts carry them, so the chips lead somewhere populated.
+        counts: dict[str, int] = {}
+        for p in posts:
+            for tag in p.tags:
+                label = canonical_filter_label(tag)
+                if label and label not in BROAD_FILTER_LABELS and label != canonical_filter_label(p.category):
+                    counts[label] = counts.get(label, 0) + 1
+        top_tags = [
+            t for t, _ in sorted(
+                counts.items(),
+                key=lambda kv: (
+                    TOPIC_ORDER.index(kv[0]) if kv[0] in TOPIC_ORDER else len(TOPIC_ORDER),
+                    -kv[1],
+                    kv[0].lower(),
+                ),
+            )[:top_tag_count]
+        ]
+        return {"tags": tags, "categories": categories, "top_tags": top_tags}
 
     def search_posts(
         self,
@@ -236,8 +376,8 @@ class BlogService:
     ) -> dict[str, Any]:
         posts = self.load_posts()
         q = query.strip().lower()
-        t = tag.strip().lower()
-        c = category.strip().lower()
+        t = canonical_filter_label(tag).lower()
+        c = canonical_filter_label(category).lower()
 
         filtered: list[BlogPost] = []
         for post in posts:
@@ -245,9 +385,11 @@ class BlogService:
                 hay = " ".join([post.title, post.description, " ".join(post.tags), post.category]).lower()
                 if q not in hay:
                     continue
-            if t and t not in [x.lower() for x in post.tags]:
+            post_tags = [canonical_filter_label(x).lower() for x in post.tags]
+            post_category = canonical_filter_label(post.category).lower()
+            if t and t not in post_tags and t != post_category:
                 continue
-            if c and post.category.lower() != c:
+            if c and post_category != c:
                 continue
             filtered.append(post)
 
@@ -294,9 +436,23 @@ class BlogService:
         parsed_date = self._parse_date(str(frontmatter.get("date") or ""))
         if parsed_date is None:
             parsed_date = datetime.utcfromtimestamp(os.path.getmtime(file_path)).date()
+        # Only honour an explicit `updated:` field, and only when it is actually
+        # later than the publish date - a stamp that matches the publish date
+        # tells the reader nothing.
+        updated_date = self._parse_date(str(frontmatter.get("updated") or ""))
+        if updated_date is not None and updated_date <= parsed_date:
+            updated_date = None
 
-        md = markdown.Markdown(extensions=["extra", "toc", "fenced_code", "codehilite", "tables", "sane_lists"])
+        # guess_lang=False: an untagged ``` block (a plain-text resume example,
+        # a schedule, anything not actually code) was getting run through
+        # Pygments' language guesser, which tokenized ordinary English words
+        # as if they were syntax - "and", "at", "by" bolded and colored at
+        # random. Only explicitly tagged blocks (```python etc.) get highlighted now.
+        md = markdown.Markdown(extensions=["extra", "toc", "fenced_code", "codehilite", "tables", "sane_lists"],
+                                extension_configs={"codehilite": {"guess_lang": False}})
         content_html = md.convert(body)
+        content_html = self._normalize_content_images(content_html)
+        content_html = self._render_task_lists(content_html)
         toc_html = getattr(md, "toc", "") or ""
 
         word_count = len(re.findall(r"\w+", body))
@@ -325,7 +481,49 @@ class BlogService:
             toc_html=toc_html,
             word_count=word_count,
             lastmod_iso=lastmod_iso,
+            updated_iso=updated_date.strftime("%Y-%m-%d") if updated_date else "",
+            updated_display=updated_date.strftime("%b %d, %Y") if updated_date else "",
+            showcase=str(frontmatter.get("showcase", "") or "").strip().lower(),
         )
+
+    @staticmethod
+    def _render_task_lists(content_html: str) -> str:
+        """Turn markdown task-list syntax into real checkbox rows.
+
+        106 posts use `- [ ] item` for checklists, but python-markdown has no
+        task-list extension enabled, so the literal "[ ]" was being printed as
+        text next to the bullet. Replace it with a styled box and tag the <li>
+        so CSS can drop the bullet.
+        """
+        def repl(m: re.Match) -> str:
+            attrs, mark, rest = m.group(1), m.group(2), m.group(3)
+            done = mark.lower() == "x"
+            cls = "task-item task-done" if done else "task-item"
+            box = '<span class="task-box" aria-hidden="true">' + ("&#10003;" if done else "") + "</span>"
+            label = "checked" if done else "unchecked"
+            return f'<li{attrs} class="{cls}"><span class="sr-only">{label}: </span>{box}{rest}'
+
+        return re.sub(r'<li([^>]*)>\s*\[([ xX])\]\s*(.*)', repl, content_html)
+
+    @staticmethod
+    def _normalize_content_images(content_html: str) -> str:
+        """Make in-article image paths root-relative, and lazy-load them.
+
+        Posts write images as `![alt](public/blog-images/x.webp)`, matching
+        the frontmatter convention. The frontmatter `image` gets fixed up by
+        _normalize_image_path, but body images went through untouched - so on
+        /blog/<slug> the browser resolved them against the post URL and asked
+        for /blog/public/blog-images/x.webp, which 404s. Every inline image
+        in the blog was silently broken.
+        """
+        def fix(m: re.Match) -> str:
+            before, src, after = m.group(1), m.group(2), m.group(3)
+            if not src.startswith(("http://", "https://", "//", "/", "data:")):
+                src = "/" + src.lstrip("./")
+            extra = "" if "loading=" in (before + after) else ' loading="lazy" decoding="async"'
+            return f'<img{before}src="{src}"{after}{extra}>'
+
+        return re.sub(r'<img([^>]*?)src="([^"]+)"([^>]*?)>', fix, content_html)
 
     @staticmethod
     def _read_file(path: str) -> str:

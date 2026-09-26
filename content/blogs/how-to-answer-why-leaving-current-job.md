@@ -10,14 +10,6 @@ slug: how-to-answer-why-leaving-current-job
 keywords: why are you leaving your current job, why leaving current job interview answer, reason for leaving job interview 2026, why do you want to leave your job
 ---
 
-"Why are you leaving your current job?" - or "Why did you leave your last job?" - is one of the most sensitive [interview questions](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Answer poorly and you look like a complainer, a flight risk, or someone with hidden performance issues. Answer well and you look like a motivated professional making a thoughtful career move.
-
-This guide provides positive, honest scripts for 2026 - and ways to practice with [AI mock interviews](https://thetailorcv.com/mock-interview).
-
-Prepare alongside [why should we hire you](https://thetailorcv.com/blog/how-to-answer-why-should-we-hire-you), [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), [HR round questions](https://thetailorcv.com/blog/hr-round-interview-questions-answers), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Keep your resume consistent with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - Frame your answer to "Why are you leaving your current job?" as moving toward new opportunities rather than away from problems.
@@ -25,6 +17,15 @@ Prepare alongside [why should we hire you](https://thetailorcv.com/blog/how-to-a
 - Use specific scripts tailored to your situation, such as seeking growth, better alignment with career goals, or addressing layoffs.
 - Be honest about your reasons for leaving, as dishonesty can be uncovered during reference checks.
 - Pivot your answer to express excitement about the new role and how it aligns with your career aspirations.
+
+
+"Why are you leaving your current job?" - or "Why did you leave your last job?" - is one of the most sensitive [interview questions](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Answer poorly and you look like a complainer, a flight risk, or someone with hidden performance issues. Answer well and you look like a motivated professional making a thoughtful career move.
+
+This guide provides positive, honest scripts for 2026 - and ways to practice with [AI mock interviews](https://thetailorcv.com/mock-interview).
+
+Prepare alongside [why should we hire you](https://thetailorcv.com/blog/how-to-answer-why-should-we-hire-you), [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), [HR round questions](https://thetailorcv.com/blog/hr-round-interview-questions-answers), and the complete interview guide. Keep your resume consistent with the TailorCV ATS checker.
+
+---
 
 ## What Interviewers Are Really Asking
 
@@ -138,10 +139,13 @@ To help you formulate a strong response, consider this handy do's and don'ts lis
 - **Do Tailor Your Answer**: Customize your response based on the job you’re applying for to show alignment with the company’s values and goals.
 
 ### Don'ts
-- **Don’t Badmouth Your Current Job**: Keep your answer professional and avoid personal grievances.
-- **Don’t Make It About Money**: Unless it’s relevant to the opportunity, avoid discussing salary as a primary motivator for leaving.
-- **Don’t Appear Indecisive**: Have a clear and confident explanation for your departure to demonstrate that you have thought through your career path.
-- **Don’t Provide Excessive Detail**: Keep your answer concise and to the point, avoiding unnecessary elaboration.
+
+| Tool | What it does |
+|---|---|
+| **Don’t Badmouth Your Current Job** | Keep your answer professional and avoid personal grievances |
+| **Don’t Make It About Money** | Unless it’s relevant to the opportunity, avoid discussing salary as a primary motivator for leaving |
+| **Don’t Appear Indecisive** | Have a clear and confident explanation for your departure to demonstrate that you have thought through your career path |
+| **Don’t Provide Excessive Detail** | Keep your answer concise and to the point, avoiding unnecessary elaboration |
 
 ## Step-by-Step Guide to Crafting Your Answer
 

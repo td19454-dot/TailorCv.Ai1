@@ -10,14 +10,6 @@ slug: how-to-get-a-promotion
 keywords: how to get a promotion, get promoted 2026, career advancement, promotion at work, how to get promoted faster, career growth strategy
 ---
 
-Getting promoted is not just about working hard. Plenty of hard workers get passed over while others advance faster. Promotions go to people who demonstrate that they are already operating at the next level, who are visible to decision-makers, and who make a clear business case for their advancement.
-
-This guide covers the practical strategy for getting promoted in 2026 - what to do, how to position yourself, and how to make the ask.
-
-This pairs with the [how to ask for a raise guide](https://thetailorcv.com/blog/how-to-ask-for-a-raise) and the [skills to add to your resume guide](https://thetailorcv.com/blog/skills-to-add-to-resume-2026). Keep your resume updated with your achievements using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) - documenting accomplishments as they happen builds your promotion case.
-
----
-
 ## Key Takeaways
 
 - To get promoted, demonstrate that you are already operating at the next level before the promotion is granted.
@@ -25,6 +17,15 @@ This pairs with the [how to ask for a raise guide](https://thetailorcv.com/blog/
 - Deliver results that showcase next-level impact by taking on high-visibility projects and mentoring others.
 - Build visibility by sharing your contributions in team settings and engaging in cross-functional projects with leadership.
 - Secure a sponsor who can advocate for you and have a clear conversation with your manager about your promotion ambitions and roadmap.
+
+
+Getting promoted is not just about working hard. Plenty of hard workers get passed over while others advance faster. Promotions go to people who demonstrate that they are already operating at the next level, who are visible to decision-makers, and who make a clear business case for their advancement.
+
+This guide covers the practical strategy for getting promoted in 2026 - what to do, how to position yourself, and how to make the ask.
+
+This pairs with the [how to ask for a raise guide](https://thetailorcv.com/blog/how-to-ask-for-a-raise) and the [skills to add to your resume guide](https://thetailorcv.com/blog/skills-to-add-to-resume-2026). Keep your resume updated with your achievements using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) - documenting accomplishments as they happen builds your promotion case.
+
+---
 
 ## The Core Principle: Operate at the Next Level First
 
@@ -37,11 +38,13 @@ To get promoted to senior, you must already be operating like a senior. To get p
 ## Step 1: Understand the Requirements for the Next Level
 
 Most companies have a leveling framework or competency matrix. If yours does:
+
 - Get a copy and study it
 - Identify the gaps between your current performance and the next level
 - Build a plan to close those gaps
 
 If your company has no formal framework:
+
 - Ask your manager directly: "What would I need to demonstrate to be promoted to [next level]?"
 - Observe what people at the next level do differently
 - Look at the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) for the next-level role
@@ -52,7 +55,7 @@ If your company has no formal framework:
 
 Promotions require evidence. Take on work that demonstrates next-level impact:
 
-- Volunteer for high-visibility, high-impact [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Volunteer for high-visibility, high-impact [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Solve problems that matter to the business, not just your immediate team
 - Take ownership of outcomes, not just tasks
 - Mentor others (a key signal of seniority)
@@ -72,7 +75,7 @@ Doing great work that nobody sees does not get you promoted. You need decision-m
 - Write clear updates that show impact, not just activity
 - Share wins appropriately (without arrogance) in team channels
 - Contribute in cross-functional settings where senior people are present
-- Take on [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that interface with leadership
+- Take on [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) that interface with leadership
 
 Visibility is not bragging - it is making your real contributions known so they can be evaluated fairly.
 
@@ -83,6 +86,7 @@ Visibility is not bragging - it is making your real contributions known so they 
 A mentor advises you. A sponsor advocates for you when you are not in the room - and promotion decisions happen in rooms you are not in.
 
 To build sponsorship:
+
 - Deliver consistently for senior leaders
 - Make your manager's job easier (managers sponsor people who make them look good)
 - Build genuine relationships with leaders beyond your direct manager
@@ -101,6 +105,7 @@ Do not wait silently hoping to be noticed. Express your ambition clearly.
 "I'm really enjoying my work and I'm ambitious about growing here. I'd like to work toward a promotion to [next level]. Can we talk about what I'd need to demonstrate and what the timeline might look like?"
 
 This does three things:
+
 1. Signals your ambition (managers can't advocate for goals they don't know about)
 2. Gets you a concrete roadmap
 3. Starts the clock on the process
@@ -112,6 +117,13 @@ Then, periodically check in: "I've now done [X, Y, Z] that we discussed. Where d
 ## Step 6: Make the Formal Case
 
 When you are ready, help your manager build the promotion case. Provide them with:
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
 
 - A document of your accomplishments with quantified impact
 - Evidence that you are operating at the next level

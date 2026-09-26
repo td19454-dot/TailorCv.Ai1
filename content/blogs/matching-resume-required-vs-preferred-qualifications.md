@@ -10,14 +10,6 @@ keywords: required vs preferred qualifications, job description must-have vs nic
 image: public/blog-images/matching-resume-required-vs-preferred-qualifications.webp
 ---
 
-Every [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is a ranked list, even when it does not look like one. Some qualifications are non-negotiable filters. Others are wish-list items a hiring manager would love but will not reject a strong candidate over. Treating every line of a job posting with equal weight is one of the most common [resume matching mistakes](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) job seekers make.
-
-Knowing the difference between required and preferred qualifications changes how you should [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), what you should prioritize, and whether a job is even worth applying to in the first place.
-
-Paste any [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) into the [TailorCV resume optimizer](/solutions) to see exactly how your resume stacks up against the posting's true priorities.
-
----
-
 ## Key Takeaways
 
 - Job descriptions often rank qualifications, distinguishing between required non-negotiable filters and preferred wish-list items.
@@ -25,6 +17,15 @@ Paste any [job description](https://thetailorcv.com/blog/job-description-analysi
 - ATS systems prioritize required qualifications heavily; missing them can lead to disqualification, while missing preferred qualifications rarely does.
 - Applicants should consider applying if they lack one or two required skills but are strong in other areas, while missing most required qualifications suggests seeking other opportunities.
 - To effectively tailor a resume, create separate lists for required and preferred qualifications from the job posting and audit your resume accordingly.
+
+
+Every [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is a ranked list, even when it does not look like one. Some qualifications are non-negotiable filters. Others are wish-list items a hiring manager would love but will not reject a strong candidate over. Treating every line of a job posting with equal weight is one of the most common [resume matching mistakes](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) job seekers make.
+
+Knowing the difference between required and preferred qualifications changes how you should [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), what you should prioritize, and whether a job is even worth applying to in the first place.
+
+Paste any [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) into the [TailorCV resume optimizer](/solutions) to see exactly how your resume stacks up against the posting's true priorities.
+
+---
 
 ## How to Spot Required vs Preferred Qualifications
 
@@ -114,26 +115,38 @@ TailorCV's [resume optimizer](/solutions) reads the job description, separates r
 
 When you're faced with a job description, it can be challenging to determine how to present your qualifications effectively. Here are a few scenarios to illustrate how you can prioritize your qualifications based on the required and preferred distinctions.
 
-**Scenario 1: Marketing Manager Position**
-- **Required Qualifications:** 5 years of experience in digital marketing, proficiency in Google Analytics.
+
+**Scenario 1: [Marketing Manager](https://thetailorcv.com/blog/marketing-manager-resume-2026) Position**
+
+- **Required Qualifications:** 5 years of experience in [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026), proficiency in Google Analytics.
 - **Preferred Qualifications:** Familiarity with SEO best practices, experience managing a team.
 
 *Approach:*
+
 - Highlight your 5 years of digital marketing experience prominently at the top of your resume.
 - Mention your proficiency in Google Analytics in the skills section.
 - In your experience section, include specific projects where your SEO knowledge contributed to success, even if it’s not a requirement. This shows you can meet the preferred qualifications, enhancing your candidacy.
 
 **Scenario 2: Software Developer Role**
+
 - **Required Qualifications:** Proficiency in Python, experience with RESTful APIs.
 - **Preferred Qualifications:** Knowledge of cloud services (AWS, Azure), experience in Agile methodology.
 
 *Approach:*
+
 - List Python proficiency first and provide examples of projects where you utilized RESTful APIs.
 - If you have experience with cloud services, mention it in a separate section titled "Additional Skills," ensuring it stands out without overshadowing the required qualifications.
 
 ## Step-by-Step Guide to Tailoring Your Resume
 
 Tailoring your resume can significantly improve your chances of landing an interview. Here's a step-by-step guide to ensure you effectively prioritize required and preferred qualifications.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 1. **Analyze the Job Description:**
    - Identify and list all required and preferred qualifications. Highlight keywords and phrases used.

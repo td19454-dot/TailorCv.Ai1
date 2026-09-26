@@ -10,16 +10,17 @@ keywords: recruiter ghosting after interview, no response after interview, recru
 image: public/blog-images/recruiter-ghosting-after-interview.webp
 ---
 
-You had a great interview, felt genuine momentum, and then - silence. No email, no LinkedIn reply, no answer to the voicemail you left three days ago. Recruiter ghosting after an interview is one of the more disorienting parts of a modern job search, partly because the silence itself gives you nothing to work with - no rejection to process, no offer to celebrate, just an open loop your brain keeps returning to. This guide walks through why it happens, how long is genuinely normal to wait, exactly what to send and when, and how to keep your search moving instead of stalling out on one company's inbox. If you also want to check whether your resume made it past the first screen at all, the [free ATS score checker](https://www.thetailorcv.com/solutions) is a useful gut check while you wait.
-
----
-
 ## Key Takeaways
 
 - Recruiter ghosting often stems from internal processes and circumstances unrelated to your interview performance, such as budget cuts or internal candidates being preferred.
 - It's normal to wait 3-5 business days after an interview before interpreting silence, as various internal discussions take time.
 - If given a specific timeline for feedback, wait until one business day after that date to follow up, as delays are common.
 - After two polite follow-ups with no response over 2-3 weeks, it's reasonable to consider the process closed, even without formal rejection.
+
+
+You had a great interview, felt genuine momentum, and then - silence. No email, no LinkedIn reply, no answer to the voicemail you left three days ago. Recruiter ghosting after an interview is one of the more disorienting parts of a modern job search, partly because the silence itself gives you nothing to work with - no rejection to process, no offer to celebrate, just an open loop your brain keeps returning to. This guide walks through why it happens, how long is genuinely normal to wait, exactly what to send and when, and how to keep your search moving instead of stalling out on one company's inbox. If you also want to check whether your resume made it past the first screen at all, the [free ATS score checker](https://www.thetailorcv.com/solutions) is a useful gut check while you wait.
+
+---
 
 ## Why Recruiters Go Silent (It's Rarely About You)
 
@@ -119,9 +120,12 @@ The waiting period is where most of the emotional damage happens, not because th
 
 ---
 
+
 ## Protecting Yourself Emotionally and Practically
 
 Ghosting has a way of feeling personal even when you intellectually know it probably isn't. It's worth naming that directly, because the emotional toll is real and it compounds across a long search.
+
+
 
 A few things worth holding onto:
 
@@ -137,6 +141,13 @@ If the emotional weight of this particular process is compounding with rejection
 ## Patterns Worth Tracking for Next Time
 
 One silent recruiter is just an unfortunate data point. But if you notice a pattern - the same company ghosting you across multiple roles, or a particular type of company (large-volume tech, agencies, certain industries) consistently going quiet - that's information worth acting on.
+
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
 
 - **Note company-specific behavior.** If a company ghosted you after a strong interview once, factor that into whether it's worth reapplying there later, or at minimum, set your expectations accordingly the second time around.
 - **Watch for patterns in your own process, not just theirs.** If ghosting seems to cluster after a specific interview stage (say, always after the panel round but before an offer), that might be worth examining alongside your interview performance, separate from the ghosting itself - the [final round interview tips](https://thetailorcv.com/blog/final-round-interview-tips) guide is useful if that stage keeps being where things stall.
@@ -157,7 +168,7 @@ Worth a second look: a "recruiter" who never gets on a call, asks for sensitive 
 
 ## Make This Practical
 
-Silence from one recruiter should never be the reason your whole search loses momentum. Keep your resume sharp and ready for the next opportunity with the [free ATS score checker](https://www.thetailorcv.com/solutions), log every application and follow-up date with the [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template), and keep your interview skills warm between processes with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview). If you're mid-search across multiple companies at once, [how to follow up after an interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) and [how to handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) are the natural next reads for keeping your pipeline healthy while you wait on any single outcome.
+Silence from one recruiter should never be the reason your whole search loses momentum. Keep your resume sharp and ready for the next opportunity with the [free ATS score checker](https://www.thetailorcv.com/solutions), log every application and follow-up date with the [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template), and keep your interview skills warm between processes with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview). If you're mid-search across multiple companies at once, how to follow up after an interview and how to handle job rejection are the natural next reads for keeping your pipeline healthy while you wait on any single outcome.
 
 ---
 

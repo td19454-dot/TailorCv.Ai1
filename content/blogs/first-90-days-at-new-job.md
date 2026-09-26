@@ -10,14 +10,6 @@ slug: first-90-days-at-new-job
 keywords: first 90 days at new job, new job tips 2026, how to succeed at a new job, onboarding tips, first month new job, 30 60 90 day plan, new job success
 ---
 
-The first 90 days at a new job set the trajectory for your entire tenure. This is when colleagues form lasting impressions, when you build the relationships and credibility you will rely on for years, and when you demonstrate whether the hiring decision was right. Succeeding early creates momentum; struggling early creates a hole that is hard to climb out of.
-
-This guide gives you a practical framework for your first 90 days - how to learn, build relationships, deliver early wins, and set yourself up for long-term success.
-
-You earned this role with a strong application - keep your resume updated with your new accomplishments using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). For ongoing growth, read the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
-
----
-
 ## Key Takeaways
 
 - Focus on learning and absorbing information in the first 30 days rather than trying to prove yourself.
@@ -25,6 +17,15 @@ You earned this role with a strong application - keep your resume updated with y
 - By the third month, aim to deliver visible work and establish yourself as a reliable team member while setting goals for the next 90 days.
 - Build strong relationships intentionally by scheduling one-on-one meetings and offering help to colleagues.
 - Avoid common mistakes such as trying to implement changes too quickly, not asking questions, and isolating yourself from the team.
+
+
+The first 90 days at a new job set the trajectory for your entire tenure. This is when colleagues form lasting impressions, when you build the relationships and credibility you will rely on for years, and when you demonstrate whether the hiring decision was right. Succeeding early creates momentum; struggling early creates a hole that is hard to climb out of.
+
+This guide gives you a practical framework for your first 90 days - how to learn, build relationships, deliver early wins, and set yourself up for long-term success.
+
+You earned this role with a strong application - keep your resume updated with your new accomplishments using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). For ongoing growth, read the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
+
+---
 
 ## The 30-60-90 Day Framework
 
@@ -46,7 +47,7 @@ Resist the urge to immediately change things. You do not yet understand why thin
 
 In the second month, start contributing meaningfully while continuing to learn.
 
-- Take ownership of initial [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or tasks
+- Take ownership of initial [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or tasks
 - Deliver your first small wins
 - Deepen relationships across the team and adjacent teams
 - Start offering ideas (carefully, with humility)
@@ -57,7 +58,7 @@ In the second month, start contributing meaningfully while continuing to learn.
 
 By the third month, you should be operating with increasing independence.
 
-- Own [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) end-to-end
+- Own [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) end-to-end
 - Deliver visible, valuable work
 - Build a reputation for your specific strengths
 - Establish yourself as a reliable, collaborative team member
@@ -117,6 +118,8 @@ Your relationship with your manager is critical in the first 90 days:
 ---
 
 ## Common First 90 Days Mistakes
+
+
 
 ### Mistake 1: Trying to change everything immediately
 

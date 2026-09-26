@@ -3,7 +3,10 @@ match scoring, save/apply tracking. Kept separate from routers/jobs.py (the
 dormant Gigs board) even though both cache into the same JobListing table, so
 re-enabling one never re-enables the other.
 
-- GET  /dashboard/jobs           the dashboard page
+API only. The /dashboard/jobs page (templates/job_dashboard.html and
+static/job_dashboard.js) was removed while server-side auto-apply isn't
+offered; both are in git history (branch `shubham`) if it comes back.
+
 - GET  /api/dashboard/jobs       jobs for the current user, with matchScore
 - POST /api/saved-jobs           bookmark a job
 - GET  /api/saved-jobs           list bookmarked jobs (Saved tab)
@@ -25,8 +28,7 @@ import logging
 from datetime import datetime, timedelta
 
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
-from fastapi.templating import Jinja2Templates
+from fastapi.responses import JSONResponse
 from sqlalchemy import func, text
 
 from database import SessionLocal, IS_POSTGRES, sync_embedding_vectors
@@ -55,7 +57,6 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
 DEFAULT_QUERY = "software engineer"
 PER_PAGE = 12
@@ -359,14 +360,6 @@ def _to_dashboard_job(row: JobListing, resume_embedding: list[float] | None, sav
         "matchScore": match_score,
         "saved": row.id in saved_ids,
     }
-
-
-@router.get("/dashboard/jobs", response_class=HTMLResponse)
-async def job_dashboard_page(request: Request):
-    user_id = request.session.get("user_id")
-    if not user_id:
-        return RedirectResponse(url="/login?next=/dashboard/jobs", status_code=302)
-    return templates.TemplateResponse(request, "job_dashboard.html", {"request": request})
 
 
 @router.get("/api/dashboard/jobs")

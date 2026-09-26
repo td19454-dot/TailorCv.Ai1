@@ -10,6 +10,15 @@ keywords: legal resume matching, paralegal resume job description, associate att
 image: public/blog-images/resume-matching-legal-jobs.webp
 ---
 
+## Key Takeaways
+
+- Legal job descriptions require precise language matching, as terminology and software requirements vary significantly across practice areas.
+- Use specific keywords related to practice areas, legal software, core skills, credentials, and soft skills to enhance resume relevance.
+- For paralegal roles, mirror the exact practice area and software tools listed in the job posting, and quantify your relevant experience.
+- Associate attorney resumes should emphasize practice area focus, bar admission status, and specific terminology used by the firm.
+- Avoid generic resumes by ensuring alignment with the specific language and requirements of the job description to improve chances of passing ATS filters.
+
+
 Legal hiring is unusually precise about language. A [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) for a litigation paralegal and one for a corporate paralegal can look similar at a glance, but the practice-area terminology, required software, and even the phrasing of responsibilities differ enough that a mismatched resume gets filtered out fast, whether by an [ATS](https://thetailorcv.com/blog/ats-score-guide) or a hiring partner skimming a stack of applications.
 
 Legal employers, from solo practices to large firms, increasingly use [ATS](https://thetailorcv.com/blog/ats-score-guide) software to screen applicants, especially at firms handling high application volumes for paralegal and entry-level associate roles.
@@ -19,14 +28,6 @@ This guide covers exactly how to [match your resume to a legal job description](
 Paste any legal job posting into the [TailorCV resume optimizer](/solutions) to see your match score and close keyword gaps instantly.
 
 ---
-
-## Key Takeaways
-
-- Legal job descriptions require precise language matching, as terminology and software requirements vary significantly across practice areas.
-- Use specific keywords related to practice areas, legal software, core skills, credentials, and soft skills to enhance resume relevance.
-- For paralegal roles, mirror the exact practice area and software tools listed in the job posting, and quantify your relevant experience.
-- Associate attorney resumes should emphasize practice area focus, bar admission status, and specific terminology used by the firm.
-- Avoid generic resumes by ensuring alignment with the specific language and requirements of the job description to improve chances of passing ATS filters.
 
 ## Why Legal Resumes Need Precise Matching
 
@@ -103,11 +104,20 @@ Legal resumes with dense formatting or unconventional layouts risk parsing failu
 
 Paste any paralegal or associate attorney job posting into [TailorCV's resume optimizer](/solutions) to instantly identify which practice-area and software keywords are missing from your resume. TailorCV rewrites your bullets to reflect the posting's exact terminology while keeping your experience accurate, and checks your formatting against [ATS parsing rules](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) before you apply. Pair it with a tailored [cover letter](/cover-letter) for each firm you apply to.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ---
 
 ## Step-by-Step Guide to Analyzing a Legal Job Description
 
 To effectively match your resume to a legal job description, follow this systematic approach:
+
+
 
 1. **Identify Key Responsibilities**: Start by listing the main tasks and responsibilities outlined in the job description. Look for verbs like "draft," "analyze," and "research." These action words can guide you in framing your experience.
 
@@ -146,10 +156,12 @@ When tailoring your resume, be mindful of these common mistakes:
 
 ### Don’ts
 
-- **Don’t Use Jargon**: Avoid overly technical language that may not be understood by HR professionals. Use clear and concise language.
-- **Don’t Include Irrelevant Experience**: Focus on experiences that relate directly to the job description. Remove unrelated job history that may dilute your qualifications.
-- **Don’t Forget to Proofread**: Spelling and grammar errors can undermine your professionalism. Always proofread before submitting your resume.
-- **Don’t Ignore the Cover Letter**: A tailored cover letter can complement your resume by providing context for your experience and enthusiasm for the role. Use [TailorCV's cover letter tool](https://www.thetailorcv.com/cover-letter) to create a compelling letter.
+| What to include | Why |
+|---|---|
+| **Don’t Use Jargon** | Avoid overly technical language that may not be understood by HR professionals. Use clear and concise language |
+| **Don’t Include Irrelevant Experience** | Focus on experiences that relate directly to the job description. Remove unrelated job history that may dilute your qualifications |
+| **Don’t Forget to Proofread** | Spelling and grammar errors can undermine your professionalism. Always proofread before submitting your resume |
+| **Don’t Ignore the Cover Letter** | A tailored cover letter can complement your resume by providing context for your experience and enthusiasm for the role. Use [TailorCV's cover letter tool](https://www.thetailorcv.com/cover-letter) to create a compelling letter |
 
 ## Mini Checklist for Legal Resume Matching
 

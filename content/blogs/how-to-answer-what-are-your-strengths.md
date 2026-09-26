@@ -10,6 +10,14 @@ keywords: what are your strengths, what are your strengths interview answer, gre
 image: public/blog-images/how-to-answer-what-are-your-strengths.webp
 ---
 
+## Key Takeaways
+
+- Three things are being tested at once by this question, not just your self-assessment.
+- Do not start from a list of your best qualities - start from the job.
+- The structure that works has three parts and runs roughly thirty to sixty seconds.
+- Generic virtues like "hard-working" and "team player" carry no information because everyone says them.
+- The question arrives in several forms, and the same prepared material handles all of them.
+
 "What are your strengths?" sounds like the easy one. It isn't — it's just the one people under-prepare, because it feels like it can be improvised. It can't, and the reason is that the question is not really asking what you're good at.
 
 It's asking whether you know what this job requires, and whether you can prove you have it. Most candidates answer the first question ("I'm a hard worker") and skip the second entirely. This guide covers how to pick the right strength for a specific role, the structure that turns a claim into evidence, full sample answers, and the mistakes that make an otherwise strong candidate sound generic.

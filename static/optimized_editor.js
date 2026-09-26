@@ -9,9 +9,13 @@
 
     const A4_WIDTH_MM  = 210;
     const A4_HEIGHT_MM = 297;
+    const LETTER_WIDTH_MM  = 215.9;
+    const LETTER_HEIGHT_MM = 279.4;
     const MM_TO_PX     = 96 / 25.4;
     const A4_WIDTH_PX  = A4_WIDTH_MM  * MM_TO_PX;
     const A4_HEIGHT_PX = A4_HEIGHT_MM * MM_TO_PX;
+    const LETTER_WIDTH_PX  = LETTER_WIDTH_MM  * MM_TO_PX;
+    const LETTER_HEIGHT_PX = LETTER_HEIGHT_MM * MM_TO_PX;
     const PAGE_GAP_PX  = 24;
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -44,7 +48,29 @@
     let currentLineSpacing       = 1;
     let baseLineSpacingsCaptured = false;
     let currentAccentColor       = null;
+    let fontScaleDirty           = false;
+    let lineSpacingDirty         = false;
+    let styleTouched             = {
+        page: false,
+        font: false,
+        nameCase: false,
+        delimiter: false,
+        listStyle: false,
+        dateFormat: false,
+        link: false,
+    };
+    let legacyDesign             = {
+        paper: "A4",
+        font: "Arial",
+        nameCase: "capitalize",
+        delimiter: "◇",
+        listStyle: "disc",
+        dateFormat: "MMM 'YY",
+    };
     let allTemplates             = [];
+    // The frame's load handler re-runs on every srcdoc swap, including the one
+    // that applies confirmed skills, so the prompt is shown at most once.
+    let hasShownSkillGapPrompt   = false;
 
     /* ─────────────────────────────────────────────────────────────────────────
        HELPERS – STATUS / BADGE
@@ -79,6 +105,102 @@
         setStatus("Good fit. You can nudge font (A+) if you like.");
     }
 
+    function pageWidthPx() {
+        return legacyDesign.paper === "Letter" ? LETTER_WIDTH_PX : A4_WIDTH_PX;
+    }
+
+    function pageHeightPx() {
+        return legacyDesign.paper === "Letter" ? LETTER_HEIGHT_PX : A4_HEIGHT_PX;
+    }
+
+    function paperCssSize() {
+        return legacyDesign.paper === "Letter" ? "8.5in 11in" : "8.27in 11.69in";
+    }
+
+    function designMargin(axis) {
+        const fallback = 0.39;
+        const max = axis === "x" ? 1.5 : 2;
+        const raw = axis === "x" ? legacyDesign.marginX : legacyDesign.marginY;
+        return Math.max(0.2, Math.min(max, Number.isFinite(Number(raw)) ? Number(raw) : fallback));
+    }
+
+    /* The horizontal margin a template declares in its OWN @page rule, in
+       inches - or null when it declares none.
+
+       Templates disagree about this by design:
+
+           1-6     0.22in, in the shared style1-4.css
+           7-18    ZERO, deliberately: these inset their content with container
+                   padding instead (.page, .layout, .main/.side/.content)
+           19-22   12-16mm, inline
+
+       A browser applies @page only when PRINTING, never to a document inside
+       an iframe, so the preview never saw any of it and applyWordStylePreview
+       substituted one flat marginX for all 22. On the templates that ask for
+       zero that padding lands ON TOP of the inset they already have, which is
+       the extra left/right white space reported on 7-11 and 14.
+
+       The rule is still parsed into the stylesheet even though it is not
+       applied, so it can simply be read back. The frame is written with
+       srcdoc, so its sheets are same-origin; one that throws on .cssRules is
+       skipped and treated as declaring nothing. */
+    function templatePageMarginXIn(doc) {
+        if (!doc) return null;
+        const LEN = /^([0-9.]+)(mm|cm|in|pt|px)$/;
+        const toIn = (v, u) => u === "in" ? v
+            : u === "mm" ? v / 25.4
+            : u === "cm" ? v / 2.54
+            : u === "pt" ? v / 72
+            : v / 96;                                  // px
+
+        // CSS shorthand: 1 value = all sides, 2 = v/h, 3 = t/h/b, 4 = t/r/b/l.
+        const horizontalOf = decl => {
+            const parts = String(decl).trim().split(/\s+/);
+            if (!parts.length) return null;
+            const h = parts.length === 1 ? parts[0]
+                    : parts.length === 4 ? parts[3]
+                    : parts[1];
+            if (parseFloat(h) === 0) return 0;
+            const m = LEN.exec(h);
+            return m ? toIn(parseFloat(m[1]), m[2]) : null;
+        };
+
+        let found = null;
+        let sheets;
+        try { sheets = Array.from(doc.styleSheets || []); } catch (e) { return null; }
+        for (const sheet of sheets) {
+            // Never read back the sheets this editor injects.
+            const node = sheet.ownerNode;
+            if (node && node.id && /^(tailorcv-|edv2)/.test(node.id)) continue;
+            let rules;
+            try { rules = sheet.cssRules; } catch (e) { continue; }
+            if (!rules) continue;
+            for (const rule of Array.from(rules)) {
+                if (!rule.style) continue;
+                const isPage = (typeof CSSPageRule !== "undefined"
+                                && rule instanceof CSSPageRule)
+                            || rule.type === 6;
+                if (!isPage) continue;
+                const margin = rule.style.margin
+                    || rule.style.getPropertyValue("margin");
+                if (margin) {
+                    const v = horizontalOf(margin);
+                    if (v !== null) found = v;
+                    continue;
+                }
+                const left = (rule.style.marginLeft || "").trim();
+                if (left) {
+                    if (parseFloat(left) === 0) found = 0;
+                    else {
+                        const m = LEN.exec(left);
+                        if (m) found = toIn(parseFloat(m[1]), m[2]);
+                    }
+                }
+            }
+        }
+        return found;
+    }
+
     /* ─────────────────────────────────────────────────────────────────────────
        PAYLOAD
     ───────────────────────────────────────────────────────────────────────── */
@@ -91,11 +213,32 @@
        EDITING OVERLAY
     ───────────────────────────────────────────────────────────────────────── */
     function addEditingOverlay(html) {
+        // The preview body is contentEditable so the resume can be typed into.
+        // A side effect is that browsers stop FOLLOWING links inside it - a click
+        // just drops the caret - so the links looked broken even though the
+        // exported PDF carries them correctly. The handler below restores plain
+        // click-to-open, and alt+click still places the caret for editing the
+        // label text.
         const script = `<script>
 document.addEventListener("DOMContentLoaded", function () {
   document.body.contentEditable = "true";
   document.body.spellcheck      = false;
   document.body.style.outline   = "none";
+
+  var style = document.createElement("style");
+  style.textContent = "a[href]{cursor:pointer;}";
+  document.head.appendChild(style);
+
+  document.addEventListener("click", function (e) {
+    if (e.altKey || e.defaultPrevented) return;
+    var el = e.target;
+    while (el && el.nodeName !== "A") el = el.parentElement;
+    if (!el) return;
+    var href = el.getAttribute("href") || "";
+    if (!href || href.charAt(0) === "#") return;
+    e.preventDefault();
+    window.open(href, "_blank", "noopener,noreferrer");
+  });
 });
 <\/script>`;
         return html.includes("</body>")
@@ -151,13 +294,14 @@ document.addEventListener("DOMContentLoaded", function () {
         doc.body.querySelectorAll(SPACING_SEL).forEach(node => {
             const base = parseFloat(node.getAttribute("data-tailorcv-base-lh") || "");
             if (!Number.isFinite(base) || base <= 0) return;
-            const next = Math.max(8, Math.min(80, base * scale));
+            const next = Math.max(1, Math.min(80, base * scale));
             node.style.setProperty("line-height", `${next}px`, "important");
         });
     }
 
     function changeLineSpacing(delta) {
-        currentLineSpacing = Math.max(0.7, Math.min(1.5, currentLineSpacing + delta));
+        lineSpacingDirty = true;
+        currentLineSpacing = Math.max(0.2 / 1.125, Math.min(1.5, currentLineSpacing + delta));
         if (frame && frame.contentDocument) {
             captureBaseLineSpacing(frame.contentDocument);
             applyLineSpacing(frame.contentDocument, currentLineSpacing);
@@ -177,6 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function resetLineSpacing() {
+        lineSpacingDirty = true;
         currentLineSpacing = 1;
         if (frame && frame.contentDocument) {
             applyLineSpacing(frame.contentDocument, 1);
@@ -187,6 +332,274 @@ document.addEventListener("DOMContentLoaded", function () {
         if (guidance) guidance.textContent = "Default spacing.";
         setStatus("Line spacing reset to default.");
         scheduleServerEstimate();
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       STYLE SETTINGS PANEL
+    ───────────────────────────────────────────────────────────────────────── */
+    const DESIGN_TEXT_SEL = "body,h1,h2,h3,h4,h5,h6,p,li,span,a,strong,em,b,i,small,td,th,div";
+
+    function cssString(value) {
+        return JSON.stringify(String(value == null ? "" : value));
+    }
+
+    function listStyleCss(value) {
+        if (value === "circle" || value === "square" || value === "decimal" || value === "none") return value;
+        return "disc";
+    }
+
+    function nameTransformCss(value) {
+        if (value === "uppercase") return "uppercase";
+        if (value === "lowercase") return "lowercase";
+        return "none";
+    }
+
+    function applyLegacyDesignSettings(doc) {
+        if (!doc || !doc.head) return;
+        let style = doc.getElementById("tailorcv-style-settings");
+        if (!style) {
+            style = doc.createElement("style");
+            style.id = "tailorcv-style-settings";
+            doc.head.appendChild(style);
+        }
+        const rules = [];
+        const marginX = designMargin("x");
+        const marginY = designMargin("y");
+        if (styleTouched.page) {
+            rules.push(`@page { size: ${paperCssSize()}; margin: ${marginY}in ${marginX}in; }`);
+        }
+        if (styleTouched.font) {
+            rules.push(`${DESIGN_TEXT_SEL} {
+  font-family: ${cssString(legacyDesign.font)}, serif !important;
+}`);
+        }
+        rules.push(`body {
+  box-sizing: border-box !important;
+}`);
+        if (styleTouched.nameCase) {
+            rules.push(`h1, .name, .resume-name, .header-name {
+  text-transform: ${nameTransformCss(legacyDesign.nameCase)} !important;
+}`);
+        }
+        if (styleTouched.listStyle) {
+            rules.push(`ul, ol {
+  list-style-type: ${listStyleCss(legacyDesign.listStyle)} !important;
+}`);
+        }
+        if (styleTouched.link) {
+            rules.push(`a, .contact a, .links a {
+  color: ${legacyDesign.link || "#000000"} !important;
+}`);
+        }
+        if (styleTouched.delimiter) {
+            rules.push(`.contact-item + .contact-item::before,
+.project-state-contact-separator::before {
+  content: " ${String(legacyDesign.delimiter || "◇").replace(/\\/g, "\\\\").replace(/"/g, '\\"')} " !important;
+}`);
+        }
+        style.textContent = rules.join("\n");
+        if (styleTouched.dateFormat) formatDates(doc);
+    }
+
+    const MONTHS = {
+        jan: 1, january: 1, feb: 2, february: 2, mar: 3, march: 3,
+        apr: 4, april: 4, may: 5, jun: 6, june: 6, jul: 7, july: 7,
+        aug: 8, august: 8, sep: 9, sept: 9, september: 9,
+        oct: 10, october: 10, nov: 11, november: 11, dec: 12, december: 12,
+    };
+    const MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    function formatDateToken(token) {
+        const raw = String(token || "");
+        let m = raw.match(/\b([A-Za-z]{3,9})\.?\s+('?\d{2}|\d{4})\b/);
+        let month, year;
+        if (m) {
+            month = MONTHS[m[1].toLowerCase()];
+            year = m[2].replace(/^'/, "");
+        } else {
+            m = raw.match(/\b(\d{1,2})\/(\d{2,4})\b/);
+            if (!m) return raw;
+            month = Number(m[1]);
+            year = m[2];
+        }
+        if (!month || month < 1 || month > 12) return raw;
+        const yyyy = year.length === 2 ? "20" + year : year;
+        const yy = yyyy.slice(-2);
+        if (legacyDesign.dateFormat === "MMM YYYY") return `${MONTH_ABBR[month - 1]} ${yyyy}`;
+        if (legacyDesign.dateFormat === "MM/YYYY") return `${String(month).padStart(2, "0")}/${yyyy}`;
+        if (legacyDesign.dateFormat === "YYYY") return yyyy;
+        return `${MONTH_ABBR[month - 1]} '${yy}`;
+    }
+
+    function formatDates(doc) {
+        if (!doc || !doc.body) return;
+        const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+                const parent = node.parentElement;
+                if (!parent || /^(SCRIPT|STYLE|TEXTAREA|INPUT|SELECT)$/i.test(parent.tagName)) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                return /\b([A-Za-z]{3,9}\.?\s+'?\d{2,4}|\d{1,2}\/\d{2,4})\b/.test(node.nodeValue || "")
+                    ? NodeFilter.FILTER_ACCEPT
+                    : NodeFilter.FILTER_REJECT;
+            }
+        });
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+            if (!node.parentElement.dataset.tailorcvOriginalDateText) {
+                node.parentElement.dataset.tailorcvOriginalDateText = node.nodeValue;
+            }
+            const original = node.parentElement.dataset.tailorcvOriginalDateText;
+            node.nodeValue = original.replace(/\b([A-Za-z]{3,9}\.?\s+'?\d{2,4}|\d{1,2}\/\d{2,4})\b/g, formatDateToken);
+        });
+    }
+
+    function setSegmentedValue(control, value) {
+        document.querySelectorAll(`.style-segmented[data-style-control="${control}"] button`).forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.value === value);
+        });
+    }
+
+    function syncRangeNumber(rangeId, inputId, value, unit) {
+        const range = document.getElementById(rangeId);
+        const input = document.getElementById(inputId);
+        if (range) range.value = String(value);
+        if (input) input.value = unit ? `${value} ${unit}` : String(value);
+    }
+
+    function setFontSizePt(value) {
+        fontScaleDirty = true;
+        const v = Math.max(7, Math.min(14, Number(value) || 11));
+        currentZoom = v / 11;
+        syncRangeNumber("font-size-range", "font-size-input", v, "pt");
+        applyWordStylePreview();
+        updateFontSizeBadge();
+        setStatus(`Font size: ${v} pt.`);
+    }
+
+    function setLineHeightValue(value) {
+        lineSpacingDirty = true;
+        const v = Math.max(0.2, Math.min(2.4, Number(value) || 1.125));
+        currentLineSpacing = v / 1.125;
+        syncRangeNumber("line-height-range", "line-height-input", v, "");
+        if (frame && frame.contentDocument) {
+            captureBaseLineSpacing(frame.contentDocument);
+            applyLineSpacing(frame.contentDocument, currentLineSpacing);
+        }
+        const guidance = document.getElementById("spacing-guidance");
+        if (guidance) guidance.textContent = v < 0.9 ? "Very tight — lines may overlap."
+            : v <= 1.15 ? "Default spacing." : "Comfortable spacing.";
+        applyWordStylePreview();
+        setStatus(`Line height: ${v}.`);
+    }
+
+    function setMargin(axis, value) {
+        const max = axis === "x" ? 1.5 : 2;
+        const v = Math.max(0.2, Math.min(max, Number(value) || 0.39));
+        if (axis === "x") {
+            styleTouched.page = true;
+            legacyDesign.marginX = v;
+            syncRangeNumber("margin-x-range", "margin-x-input", v, "in");
+        } else {
+            styleTouched.page = true;
+            legacyDesign.marginY = v;
+            syncRangeNumber("margin-y-range", "margin-y-input", v, "in");
+        }
+        applyWordStylePreview();
+        setStatus("Margins updated.");
+    }
+
+    function buildLinkColorPanel() {
+        const container = document.getElementById("tc-link-panel-container");
+        if (!container) return;
+        const colors = ["#000000", "#0b7de3", "#7c3aed", "#ff5a5f", "#f5a623", "#2ec9bd", "#d61f32"];
+        container.innerHTML = `
+            <div class="tc-accent-presets">
+                ${colors.map(c => `<button class="tc-accent-swatch ${legacyDesign.link === c ? "active" : ""}" type="button" data-hex="${c}" style="background:${c}" title="${c}"></button>`).join("")}
+                <input class="tc-accent-swatch tc-accent-custom-input" type="color" value="${legacyDesign.link || "#000000"}" title="Custom link color">
+            </div>
+        `;
+        container.querySelectorAll("button[data-hex]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                styleTouched.link = true;
+                legacyDesign.link = btn.dataset.hex;
+                buildLinkColorPanel();
+                applyWordStylePreview();
+                setStatus(`Link color: ${legacyDesign.link}`);
+            });
+        });
+        container.querySelector("input[type='color']")?.addEventListener("input", e => {
+            styleTouched.link = true;
+            legacyDesign.link = e.target.value;
+            container.querySelectorAll(".tc-accent-swatch").forEach(s => s.classList.remove("active"));
+            applyWordStylePreview();
+            setStatus(`Link color: ${legacyDesign.link}`);
+        });
+    }
+
+    function bindStyleSettings() {
+        const paper = document.getElementById("paper-size-select");
+        if (paper) {
+            paper.value = legacyDesign.paper;
+            paper.addEventListener("change", () => {
+                styleTouched.page = true;
+                legacyDesign.paper = paper.value === "Letter" ? "Letter" : "A4";
+                applyWordStylePreview();
+                setStatus(`Paper size: ${legacyDesign.paper}.`);
+            });
+        }
+
+        const font = document.getElementById("font-family-select");
+        if (font) {
+            font.value = legacyDesign.font;
+            font.addEventListener("change", () => {
+                styleTouched.font = true;
+                legacyDesign.font = font.value;
+                applyWordStylePreview();
+                setStatus(`Font: ${legacyDesign.font}.`);
+            });
+        }
+
+        [
+            ["font-size-range", "font-size-input", "pt", setFontSizePt],
+            ["line-height-range", "line-height-input", "", setLineHeightValue],
+            ["margin-x-range", "margin-x-input", "in", v => setMargin("x", v)],
+            ["margin-y-range", "margin-y-input", "in", v => setMargin("y", v)],
+        ].forEach(([rangeId, inputId, unit, fn]) => {
+            const range = document.getElementById(rangeId);
+            const input = document.getElementById(inputId);
+            range?.addEventListener("input", () => fn(parseFloat(range.value)));
+            input?.addEventListener("change", () => fn(parseFloat(String(input.value).replace(/[^0-9.]/g, ""))));
+        });
+
+        document.querySelectorAll(".style-segmented[data-style-control]").forEach(group => {
+            group.addEventListener("click", e => {
+                const btn = e.target.closest("button[data-value]");
+                if (!btn) return;
+                const control = group.dataset.styleControl;
+                if (Object.prototype.hasOwnProperty.call(styleTouched, control)) {
+                    styleTouched[control] = true;
+                }
+                legacyDesign[control] = btn.dataset.value;
+                setSegmentedValue(control, btn.dataset.value);
+                applyWordStylePreview();
+                setStatus("Style setting updated.");
+            });
+        });
+
+        const dateFormat = document.getElementById("date-format-select");
+        if (dateFormat) {
+            dateFormat.value = legacyDesign.dateFormat;
+            dateFormat.addEventListener("change", () => {
+                styleTouched.dateFormat = true;
+                legacyDesign.dateFormat = dateFormat.value;
+                applyWordStylePreview();
+                setStatus("Date format updated.");
+            });
+        }
+
+        buildLinkColorPanel();
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -614,11 +1027,16 @@ hr, .divider, [class*="divider"],
 
         removePageGuides(doc);
 
-        captureBaseFonts(doc);
-        applyFontScale(doc, currentZoom);
+        if (fontScaleDirty) {
+            captureBaseFonts(doc);
+            applyFontScale(doc, currentZoom);
+        }
 
-        captureBaseLineSpacing(doc);
-        applyLineSpacing(doc, currentLineSpacing);
+        if (lineSpacingDirty) {
+            captureBaseLineSpacing(doc);
+            applyLineSpacing(doc, currentLineSpacing);
+        }
+        applyLegacyDesignSettings(doc);
 
         if (currentAccentColor) {
             applyAccentColor(doc, currentAccentColor);
@@ -630,31 +1048,35 @@ hr, .divider, [class*="divider"],
         const availableWidth = previewWrap
             ? Math.max(320, previewWrap.clientWidth - (isMobile ? 0 : 32))
             : 760;
-        const viewScale      = Math.min(1, availableWidth / A4_WIDTH_PX);
+        const pageW          = pageWidthPx();
+        const pageH          = pageHeightPx();
+        const viewScale      = Math.min(1, availableWidth / pageW);
+        const marginX        = designMargin("x");
+        const marginY        = designMargin("y");
+        /* Horizontal padding: honour what the template asks for.
 
-        frame.style.width  = `${A4_WIDTH_PX}px`;
+           A template that declares ~0 horizontal @page margin has already
+           inset its own content and must not be padded again - doing so is
+           what put an extra ~37px of white down both sides of templates 7-11
+           and 14. The vertical margin is unaffected: nothing else supplies it.
+
+           Only while the slider sits at its default. Once the reader moves
+           "Left & Right Margins" their value wins, on every template. */
+        const ZERO_IN = 0.02;                       // ~0.5mm, i.e. "none"
+        const ownX    = templatePageMarginXIn(doc);
+        const useOwnX = ownX !== null && ownX < ZERO_IN
+                        && marginX === 0.39;        // the slider's default
+        const padX    = useOwnX ? 0 : marginX;
+
+        const bodyPaddingCss = styleTouched.page
+            ? `  padding: ${marginY}in ${padX}in !important;\n`
+            : "";
+
+        frame.style.width  = `${pageW}px`;
         frame.style.height = "9999px";
 
-        void root.offsetHeight;
-
-        const primaryEl = body.querySelector(".page, .resume-shell, .resume-container, .page-wrap, .cv-page");
-        let contentHeightPx = primaryEl
-            ? Math.max(primaryEl.scrollHeight || 0, primaryEl.offsetHeight || 0)
-            : 0;
-        if (contentHeightPx < 100) {
-            contentHeightPx = Math.max(body.scrollHeight || 0, body.offsetHeight || 0, 100);
-        }
-        
-        // Ensure content fills at least one full page
-        contentHeightPx = Math.max(contentHeightPx, A4_HEIGHT_PX);
-
-        lastFillRatio  = contentHeightPx / A4_HEIGHT_PX;
-        estimatedPages = Math.max(1,
-            lastFillRatio > 1.01 ? Math.ceil(lastFillRatio) : 1
-        );
-
         const wordCss = `
-/* ── TailorCV Word-Style Preview ── */
+/* TailorCV Word-Style Preview */
 html {
   background: #525659 !important;
   margin: 0 !important;
@@ -668,13 +1090,12 @@ html {
   height: auto !important;
 }
 body {
-  width:  ${A4_WIDTH_PX}px !important;
-  min-height: ${A4_HEIGHT_PX}px !important;
+  width:  ${pageW}px !important;
+  min-height: ${pageH}px !important;
   margin: 0 auto !important;
-  padding: 0 !important;
+${bodyPaddingCss}  box-sizing: border-box !important;
   background: #ffffff !important;
   box-shadow: 0 4px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.25) !important;
-  box-sizing: border-box !important;
   overflow: visible !important;
   position: relative !important;
   transform: none !important;
@@ -693,13 +1114,31 @@ body {
         }
         fitStyle.textContent = wordCss;
 
+        void root.offsetHeight;
+
+        const primaryEl = body.querySelector(".page, .resume-shell, .resume-container, .page-wrap, .cv-page");
+        let contentHeightPx = primaryEl
+            ? Math.max(primaryEl.scrollHeight || 0, primaryEl.offsetHeight || 0)
+            : 0;
+        if (contentHeightPx < 100) {
+            contentHeightPx = Math.max(body.scrollHeight || 0, body.offsetHeight || 0, 100);
+        }
+        
+        // Ensure content fills at least one full page
+        contentHeightPx = Math.max(contentHeightPx, pageH);
+
+        lastFillRatio  = contentHeightPx / pageH;
+        estimatedPages = Math.max(1,
+            lastFillRatio > 1.01 ? Math.ceil(lastFillRatio) : 1
+        );
+
         renderPageBreaks(doc, estimatedPages);
 
         // Ensure frame height is at least one full page, with appropriate gaps
-        const minFrameHeight = A4_HEIGHT_PX + PAGE_GAP_PX * 2;
+        const minFrameHeight = pageH + PAGE_GAP_PX * 2;
         const frameHeight = Math.max(minFrameHeight, contentHeightPx + PAGE_GAP_PX * (estimatedPages + 1));
 
-        frame.style.width           = `${A4_WIDTH_PX}px`;
+        frame.style.width           = `${pageW}px`;
         frame.style.height          = `${Math.ceil(frameHeight)}px`;
         frame.style.transform       = `scale(${viewScale})`;
         frame.style.transformOrigin = "top left";
@@ -739,6 +1178,7 @@ body {
     function renderPageBreaks(doc, pages) {
         removePageGuides(doc);
         if (pages <= 1) return;
+        const pageH = pageHeightPx();
 
         const host = doc.createElement("div");
         host.id = "tailorcv-page-guides";
@@ -748,14 +1188,14 @@ body {
             top:           "0",
             left:          "0",
             width:         "100%",
-            height:        `${A4_HEIGHT_PX * pages}px`,
+            height:        `${pageH * pages}px`,
             pointerEvents: "none",
             zIndex:        "2147483646",
             overflow:      "visible",
         });
 
         for (let i = 1; i < pages; i++) {
-            const y = A4_HEIGHT_PX * i;
+            const y = pageH * i;
 
             const gap = doc.createElement("div");
             Object.assign(gap.style, {
@@ -803,6 +1243,7 @@ body {
        FONT SCALE CONTROLS
     ───────────────────────────────────────────────────────────────────────── */
     function changeFontScale(delta) {
+        fontScaleDirty = true;
         currentZoom = Math.max(0.6, Math.min(1.8, currentZoom + delta));
         applyWordStylePreview();
         updateFontSizeBadge();
@@ -810,6 +1251,7 @@ body {
     }
 
     function resetFontScale() {
+        fontScaleDirty = true;
         currentZoom = 1.0;
         applyWordStylePreview();
         updateFontSizeBadge();
@@ -825,7 +1267,14 @@ body {
     }
 
     function buildExportHtml() {
-        if (!frame || !frame.contentDocument) return "";
+        if (typeof window.tcvGetEditorV2Html === "function") {
+            const v2Html = cleanExportHtml(window.tcvGetEditorV2Html());
+            if (v2Html) return v2Html;
+        }
+        if (!frame || !frame.contentDocument) {
+            const payload = getPayload();
+            return cleanExportHtml(payload && payload.html ? payload.html : currentHtml);
+        }
         const src   = frame.contentDocument;
         const clone = src.documentElement.cloneNode(true);
         const body  = clone.querySelector("body");
@@ -839,6 +1288,41 @@ body {
              "overflow-x", "overflow-y", "margin"].forEach(p => body.style.removeProperty(p));
         }
         return "<!DOCTYPE html>\n" + clone.outerHTML;
+    }
+
+    function cleanExportHtml(html) {
+        html = String(html || "").trim();
+        if (!html) return "";
+        try {
+            const doc = new DOMParser().parseFromString(html, "text/html");
+            doc.querySelector("#tailorcv-preview-fit-style")?.remove();
+            doc.querySelector("#tailorcv-page-guides")?.remove();
+            doc.querySelectorAll("script").forEach(s => s.remove());
+            if (doc.body) {
+                doc.body.removeAttribute("contenteditable");
+                doc.body.removeAttribute("spellcheck");
+                ["transform", "transform-origin", "width", "max-width",
+                 "overflow-x", "overflow-y", "margin"].forEach(p => doc.body.style.removeProperty(p));
+            }
+            return "<!DOCTYPE html>\n" + doc.documentElement.outerHTML;
+        } catch (e) {
+            return html;
+        }
+    }
+
+    async function readDownloadError(res) {
+        try {
+            const text = await res.text();
+            if (!text) return "Server error";
+            try {
+                const data = JSON.parse(text);
+                return data && data.detail ? String(data.detail) : text;
+            } catch (e) {
+                return text;
+            }
+        } catch (e) {
+            return "Server error";
+        }
     }
 
     async function refreshServerEstimate() {
@@ -876,6 +1360,23 @@ body {
     /* ─────────────────────────────────────────────────────────────────────────
        PRO UPGRADE POPUP (shown when free download quota exhausted)
     ───────────────────────────────────────────────────────────────────────── */
+    /* The line under the heading. This used to read "You've downloaded 3
+       resumes" no matter what the user had actually done — wrong for anyone who
+       had used one, two, or a different free allowance entirely. The real count
+       is rendered into the page by the server; fall back to the free limit only
+       when it is genuinely unavailable, and never claim a count of zero. */
+    function proDownloadSubline() {
+        var used = parseInt(window.DOWNLOADS_USED, 10);
+        var limit = parseInt(window.FREE_DOWNLOAD_LIMIT, 10);
+        if (!isFinite(used) || used < 0) used = isFinite(limit) ? limit : 0;
+        if (used < 1) {
+            return "You're out of free downloads. Keep tailoring to land your " +
+                   "<strong>next job</strong>.";
+        }
+        return "You've downloaded <strong>" + used + " resume" + (used === 1 ? "" : "s") +
+               "</strong>. Keep tailoring to land your <strong>next job</strong>.";
+    }
+
     function showProDownloadPopup(opts) {
         opts = opts || {};
         const targetDoc = opts.doc || document;
@@ -1038,8 +1539,7 @@ body {
 
                 '<div class="tcv-pro-dl-lock-wrap"><div class="tcv-pro-dl-lock">🔒</div></div>' +
                 '<h2 class="tcv-pro-dl-title">Your resume is ready!</h2>' +
-                '<p class="tcv-pro-dl-sub">You\'ve downloaded <strong>3 resumes</strong>. Keep tailoring ' +
-                'to land your <strong>next job</strong>.</p>' +
+                '<p class="tcv-pro-dl-sub">' + proDownloadSubline() + '</p>' +
 
                 '<div class="tcv-pro-dl-stats">' +
                     '<div class="tcv-pro-dl-stat"><b>10,000+</b><span>resumes optimized by job seekers</span></div>' +
@@ -1110,8 +1610,6 @@ body {
        PDF DOWNLOAD
     ───────────────────────────────────────────────────────────────────────── */
     async function downloadEditedPdf(isAuto = false) {
-        if (!frame || !frame.contentDocument) { setStatus("Preview not ready."); return; }
-
         const html = buildExportHtml();
         if (!html) { setStatus("Could not read resume content."); return; }
 
@@ -1156,11 +1654,13 @@ body {
                     pdf_scale: Math.max(0.6, Math.min(1.8, currentZoom))
                 }),
             });
-            if (!res.ok) throw new Error(await res.text() || "Server error");
+            if (!res.ok) throw new Error(await readDownloadError(res));
             const blob = await res.blob();
             const url  = URL.createObjectURL(blob);
             const a    = document.createElement("a");
-            a.href = url; a.download = "optimized_resume_edited.pdf";
+            const payload = getPayload() || {};
+            a.href = url;
+            a.download = payload.filename || "optimized_resume_edited.pdf";
             document.body.appendChild(a); a.click(); a.remove();
             URL.revokeObjectURL(url);
             setStatus("PDF downloaded successfully.");
@@ -1173,8 +1673,9 @@ body {
                 }
                 setTimeout(showPersonalityCornerPopup, 1500);
             }
-        } catch {
-            setStatus("Could not download PDF. Please try again.");
+        } catch (err) {
+            console.error("[TailorCV] PDF download failed:", err);
+            setStatus((err && err.message) ? err.message : "Could not download PDF. Please try again.");
         } finally {
             if (downloadBtn) downloadBtn.disabled = false;
         }
@@ -1222,9 +1723,9 @@ body {
     /* Explicit "Save to My Resumes" — only runs when the user clicks the button,
        so nothing is stored unless they choose to save. */
     async function saveToMyResumes() {
-        if (!frame || !frame.contentDocument) { setStatus("Preview not ready."); return; }
+        if (!frame || !frame.contentDocument) { setStatus("Preview not ready."); return false; }
         const html = buildExportHtml();
-        if (!html) { setStatus("Could not read resume content."); return; }
+        if (!html) { setStatus("Could not read resume content."); return false; }
 
         let jd = "";
         try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
@@ -1250,7 +1751,7 @@ body {
             });
             if (res.status === 401) {
                 window.location.href = "/login?next=" + encodeURIComponent(location.pathname);
-                return;
+                return false;
             }
             if (!res.ok) throw new Error("Save failed");
             try {
@@ -1266,10 +1767,12 @@ body {
             if (hint) hint.innerHTML = 'Saved — <a href="/my-resumes" style="color:#8b5cf6;text-decoration:underline;">View My Resumes →</a>';
             setStatus("Saved to My Resumes.");
             if (typeof showToast === "function") showToast("Resume saved to My Resumes.", "success", "Saved");
+            return true;
         } catch (e) {
             if (saveBtn) { saveBtn.disabled = false; saveBtn.innerHTML = orig; }
             setStatus("Could not save. Please try again.");
             if (typeof showToast === "function") showToast("Could not save to My Resumes. Please try again.", "error", "Save failed");
+            return false;
         }
     }
 
@@ -1732,15 +2235,1711 @@ body {
         doc._tailorcvQuotaLocked = true;
 
         showProDownloadPopup({ doc: doc, closable: false });
+
+        // window.IS_PRO is stamped into the HTML when the page is rendered and
+        // never changes again. But the user upgrades FROM this very popup, so by
+        // the time the payment clears, the flag on this page is stale — and the
+        // lock is deliberately not closable. A user who has just paid is left
+        // staring at an "upgrade to Pro" wall over their own resume, with Pro
+        // active in the database. Ask the server what it thinks now.
+        refreshProStatus();
     }
+
+    /* Re-check Pro against the server and lift the lock if the user has upgraded.
+       Runs after the lock mounts and whenever the tab regains focus, which is
+       exactly when someone returns from completing a payment. */
+    var _proRefreshInFlight = false;
+    async function refreshProStatus() {
+        if (window.IS_PRO === true || _proRefreshInFlight) return;
+        _proRefreshInFlight = true;
+        try {
+            const res = await fetch("/api/auth/me", { cache: "no-store" });
+            if (!res.ok) return;
+            const data = await res.json();
+            if (!data || data.is_pro !== true) return;
+
+            window.IS_PRO = true;
+            window.QUOTA_EXHAUSTED = false;
+            // Tear the lock down wherever it was mounted. The popup mounts either
+            // on the page or inside the resume iframe (opts.doc), always as
+            // #tcv-pro-dl-overlay, so both have to be cleared.
+            [document, (typeof frame !== "undefined" && frame) ? frame.contentDocument : null]
+                .forEach(function (doc) {
+                    if (!doc) return;
+                    const overlay = doc.getElementById("tcv-pro-dl-overlay");
+                    if (overlay) overlay.remove();
+                    // Clear the guards so nothing re-locks a resume this user has
+                    // now paid for.
+                    doc._tailorcvQuotaLocked = false;
+                });
+        } catch (e) {
+            /* offline or blocked — leave the lock exactly as it was */
+        } finally {
+            _proRefreshInFlight = false;
+        }
+    }
+
+    // Returning to the tab after paying in another window.
+    document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) refreshProStatus();
+    });
+    window.addEventListener("focus", refreshProStatus);
+
+    // The upgrade CTA is a same-tab link to /pricing, so the actual path a paying
+    // user takes is: locked page -> /pricing -> pay -> BACK BUTTON. That restores
+    // this page from the back-forward cache with the ORIGINAL IS_PRO=false still
+    // in it, and no script re-runs — bfcache restores do not re-execute the page,
+    // and focus/visibilitychange are not guaranteed to fire either. `pageshow`
+    // with persisted=true is the one event that does, so it is the only thing
+    // standing between a user who has just paid and a paywall over her own
+    // resume. Also covers a plain reload from cache.
+    window.addEventListener("pageshow", function (evt) {
+        if (evt && evt.persisted) {
+            // Values baked into the restored HTML are from before the payment.
+            refreshProStatus();
+        }
+    });
 
     /* ─────────────────────────────────────────────────────────────────────────
        INIT
     ───────────────────────────────────────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────────────────
+       MISSING SKILLS — tick what you actually have
+
+       The optimizer only writes a JD skill into the resume when the uploaded
+       resume evidences it; everything else is reported as a gap. That keeps the
+       AI from inventing credentials, but it also hides skills the candidate
+       genuinely has and simply never wrote down. This box is where they say so.
+
+       Nothing is pre-ticked, and the copy makes clear they are vouching for the
+       skill — a tick is the candidate's own claim, not ours.
+    ───────────────────────────────────────────────────────────────────────── */
+    function savePayload(patch) {
+        try {
+            const current = getPayload() || {};
+            sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ ...current, ...patch }));
+        } catch (e) {}
+    }
+
+    function injectSkillGapStyles() {
+        if (document.getElementById("tc-gap-styles")) return;
+        const st = document.createElement("style");
+        st.id = "tc-gap-styles";
+        st.textContent = `
+#tc-gap-overlay {
+    position: fixed; inset: 0; z-index: 99998;
+    display: flex; align-items: center; justify-content: center;
+}
+.tc-gap-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(8,15,40,0.62);
+    backdrop-filter: blur(6px);
+    animation: tc-bgin 0.3s ease both;
+}
+.tc-gap-modal {
+    position: relative; z-index: 2; overflow: hidden;
+    background: linear-gradient(170deg, #f6f9ff 0%, #ffffff 42%);
+    border: 1px solid #c7d7f5;
+    border-radius: 18px;
+    padding: 1.9rem 2.1rem 1.6rem;
+    width: min(720px, 94vw);
+    max-height: 88vh; overflow-y: auto;
+    box-shadow: 0 26px 70px rgba(15,32,80,0.30), 0 2px 8px rgba(15,32,80,0.10);
+    animation: tc-modal-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    -webkit-font-smoothing: antialiased;
+}
+/* Accent bar - the colour that makes the card read as ours, not a browser dialog. */
+.tc-gap-modal::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+    background: linear-gradient(90deg, #1d4ed8, #4f46e5 55%, #7c3aed);
+}
+.tc-gap-modal h2 {
+    margin: 0 0 0.28rem;
+    color: #0b1220; font-size: 0.98rem; font-weight: 500; letter-spacing: -0.01em;
+}
+.tc-gap-modal h2 em { font-style: normal; font-weight: 600; color: #1d4ed8; }
+.tc-gap-sub {
+    margin: 0 0 1.15rem;
+    color: #44506b; font-size: 0.78rem; font-weight: 400; line-height: 1.55;
+}
+.tc-gap-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 0.75rem; margin-bottom: 0.85rem;
+    border-top: 1px solid #dbe5f7; padding-top: 0.95rem;
+}
+.tc-gap-count {
+    color: #1e3a8a; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.01em;
+    background: #e4ecfd; border: 1px solid #c7d7f5;
+    padding: 0.3rem 0.75rem; border-radius: 999px;
+}
+/* Deliberately the largest control in the header: ticking 15 pills one by one
+   is the slow path, so the shortcut has to be the thing the eye lands on. */
+.tc-gap-selectall {
+    background: #fff; border: 1.5px solid #1d4ed8;
+    padding: 0.5rem 1.25rem; border-radius: 999px;
+    color: #1d4ed8; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; text-decoration: none; white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(29,78,216,0.16);
+    transition: all 0.18s ease;
+}
+.tc-gap-selectall:hover {
+    background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+    border-color: transparent; color: #fff;
+    box-shadow: 0 5px 16px rgba(29,78,216,0.36);
+    transform: translateY(-1px);
+}
+.tc-gap-selectall:focus { outline: none; }
+.tc-gap-selectall:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(29,78,216,0.26); }
+.tc-gap-btn:focus { outline: none; }
+.tc-gap-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(29,78,216,0.30); }
+.tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
+.tc-gap-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: #fff;
+    border: 1px solid #c3d1ea;
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem 0.4rem 0.55rem;
+    color: #24324e; font-size: 0.76rem; font-weight: 400;
+    cursor: pointer; transition: all 0.16s ease;
+}
+.tc-gap-pill:focus { outline: none; }
+.tc-gap-pill:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(29,78,216,0.22); }
+.tc-gap-pill:hover {
+    border-color: #1d4ed8; background: #f0f5ff; color: #0b1220;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(29,78,216,0.14);
+}
+.tc-gap-pill .tc-gap-tick {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 15px; height: 15px; border-radius: 50%;
+    border: 1px solid #9db3d8; background: #fff;
+    font-size: 9px; line-height: 1; color: transparent;
+    transition: all 0.16s ease;
+}
+/* Selected reads as a solid brand-coloured chip - unmistakable at a glance. */
+.tc-gap-pill[aria-pressed="true"] {
+    background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+    border-color: transparent;
+    color: #fff; font-weight: 400;
+    box-shadow: 0 4px 12px rgba(29,78,216,0.34);
+}
+.tc-gap-pill[aria-pressed="true"]:hover { transform: translateY(-1px); }
+.tc-gap-pill[aria-pressed="true"] .tc-gap-tick {
+    background: #fff; border-color: #fff; color: #1d4ed8;
+}
+.tc-gap-actions {
+    display: flex; justify-content: flex-end; align-items: center;
+    gap: 0.5rem; flex-wrap: wrap;
+}
+.tc-gap-btn {
+    border-radius: 9px; padding: 0.48rem 1rem;
+    font-size: 0.78rem; font-weight: 400; cursor: pointer;
+    transition: all 0.18s; border: 1px solid transparent;
+}
+.tc-gap-skip { background: #fff; border-color: #c3d1ea; color: #24324e; }
+.tc-gap-skip:hover { border-color: #9db3d8; background: #f0f5ff; color: #0b1220; }
+.tc-gap-add {
+    background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+    color: #fff; box-shadow: 0 5px 16px rgba(29,78,216,0.38);
+}
+.tc-gap-add:hover:not(:disabled) { filter: brightness(1.08); box-shadow: 0 7px 20px rgba(29,78,216,0.46); }
+.tc-gap-add:disabled {
+    background: #dbe3f2; color: #8496b8; cursor: not-allowed; box-shadow: none;
+}
+@media (max-width: 480px) {
+    .tc-gap-actions { flex-direction: column-reverse; }
+    .tc-gap-btn { width: 100%; }
+}
+`;
+        document.head.appendChild(st);
+    }
+
+    function showSkillGapPrompt(payload) {
+        // Never offer a skill the resume already lists. The stored gap list can
+        // outlive the add that satisfied it - a template switch or a reload
+        // rewrites the payload while keeping the old gaps - and the box then
+        // showed 15 pills that were already on the resume, so ticking them
+        // correctly did nothing and read as broken.
+        const present = new Set(
+            ((payload && payload.resume_data && payload.resume_data.skills) || [])
+                .map(s => String(s || "").trim().toLowerCase())
+                .filter(Boolean)
+        );
+        const gaps = (Array.isArray(payload?.promptable_skill_gaps)
+            ? payload.promptable_skill_gaps
+            : []
+        ).map(s => String(s || "").trim())
+         .filter(s => s && !present.has(s.toLowerCase()));
+        if (!gaps.length) return;
+        if (document.getElementById("tc-gap-overlay")) return;
+        // Answered already. The in-memory guard alone is not enough: switching
+        // template re-runs the editor from scratch while the stored payload still
+        // lists the same gaps, so the box came back after the user had dealt with
+        // it. Persisting the decision keeps it dismissed for this resume.
+        if (payload && payload.skill_prompt_answered) return;
+
+        injectSkillGapStyles();
+
+        const selected = new Set();
+
+        const overlay = document.createElement("div");
+        overlay.id = "tc-gap-overlay";
+        overlay.innerHTML = `
+            <div class="tc-gap-backdrop"></div>
+            <div class="tc-gap-modal" role="dialog" aria-modal="true" aria-labelledby="tc-gap-title">
+                <h2 id="tc-gap-title">This job asks for <em>${gaps.length}</em> skill${gaps.length === 1 ? "" : "s"} your resume doesn't show</h2>
+                <p class="tc-gap-sub">
+                    Tick the ones you genuinely have and could defend in an interview —
+                    we'll add them to your resume. Leave the rest untouched.
+                </p>
+                <div class="tc-gap-toolbar">
+                    <span class="tc-gap-count"></span>
+                    <button type="button" class="tc-gap-selectall">Select all</button>
+                </div>
+                <div class="tc-gap-pills"></div>
+                <div class="tc-gap-actions">
+                    <button type="button" class="tc-gap-btn tc-gap-skip">Not now</button>
+                    <button type="button" class="tc-gap-btn tc-gap-add" disabled>Add to resume</button>
+                </div>
+            </div>`;
+
+        const pillWrap  = overlay.querySelector(".tc-gap-pills");
+        const addBtn    = overlay.querySelector(".tc-gap-add");
+        const skipBtn   = overlay.querySelector(".tc-gap-skip");
+        const countEl   = overlay.querySelector(".tc-gap-count");
+        const selectAll = overlay.querySelector(".tc-gap-selectall");
+        const pillEls   = [];
+
+        function refreshAddBtn() {
+            addBtn.disabled = selected.size === 0;
+            addBtn.textContent = selected.size
+                ? `Add ${selected.size} skill${selected.size === 1 ? "" : "s"}`
+                : "Add to resume";
+            countEl.textContent = `${selected.size} of ${gaps.length} selected`;
+            // Once everything is ticked the same control clears it, so a
+            // mis-click on "Select all" is one click to undo.
+            selectAll.textContent = selected.size === gaps.length ? "Clear all" : "Select all";
+        }
+
+        /* Ticks (or unticks) every pill. Deliberately fills the boxes rather
+           than submitting: the user still sees exactly what is about to be
+           claimed and can untick anything before pressing add. */
+        function setAll(on) {
+            pillEls.forEach(({ skill, el }) => {
+                el.setAttribute("aria-pressed", on ? "true" : "false");
+                if (on) selected.add(skill); else selected.delete(skill);
+            });
+            refreshAddBtn();
+        }
+
+        gaps.forEach(skill => {
+            const pill = document.createElement("button");
+            pill.type = "button";
+            pill.className = "tc-gap-pill";
+            pill.setAttribute("aria-pressed", "false");
+            // textContent for the label so a skill like "C++" or any odd JD
+            // wording can never be parsed as markup.
+            const tick = document.createElement("span");
+            tick.className = "tc-gap-tick";
+            tick.textContent = "✓";
+            const label = document.createElement("span");
+            label.textContent = skill;
+            pill.append(tick, label);
+
+            pill.addEventListener("click", () => {
+                const on = pill.getAttribute("aria-pressed") === "true";
+                pill.setAttribute("aria-pressed", on ? "false" : "true");
+                if (on) selected.delete(skill); else selected.add(skill);
+                refreshAddBtn();
+            });
+            pillEls.push({ skill, el: pill });
+            pillWrap.appendChild(pill);
+        });
+
+        selectAll.addEventListener("click", () => setAll(selected.size !== gaps.length));
+        refreshAddBtn();
+
+        function close() {
+            overlay.remove();
+            // Remember across template switches and reloads, not just this render.
+            savePayload({ skill_prompt_answered: true });
+        }
+
+        skipBtn.addEventListener("click", close);
+        overlay.querySelector(".tc-gap-backdrop").addEventListener("click", close);
+        document.addEventListener("keydown", function onEsc(e) {
+            if (e.key === "Escape" && document.getElementById("tc-gap-overlay")) {
+                close();
+                document.removeEventListener("keydown", onEsc);
+            }
+        });
+
+        addBtn.addEventListener("click", async () => {
+            if (!selected.size) return;
+            const original = addBtn.textContent;
+            addBtn.disabled = true;
+            addBtn.textContent = "Adding…";
+
+            let jd = "";
+            try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
+            const current = getPayload() || payload || {};
+
+            try {
+                // This route is not in EXEMPT_PATHS, so the double-submit CSRF
+                // token is required or the middleware answers 403.
+                const csrfToken = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || "";
+                const res = await fetch("/api/resume/add-confirmed-skills", {
+                    method:  "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken,
+                        "X-Requested-With": "XMLHttpRequest",
+                    },
+                    body:    JSON.stringify({
+                        // Read the payload NOW, not when the box was opened. A
+                        // template switch rewrites it while the box is up, and
+                        // sending the stale copy meant posting resume_data that
+                        // no longer matched what is on screen.
+                        resume_data: current.resume_data || null,
+                        skills:      Array.from(selected),
+                        jd_string:   jd,
+                        template_id: Number(current.template_id || 1),
+                        style_id:    Number(current.style_id || 1),
+                    }),
+                });
+                if (res.status === 401) {
+                    window.location.href = "/login?next=" + encodeURIComponent(location.pathname);
+                    return;
+                }
+                if (!res.ok) {
+                    // Surface what the server actually said. Replacing it with
+                    // "Request failed" meant every cause - no resume_data, a
+                    // skill no longer listed, a render error - reached the user
+                    // as the same unactionable "Update failed".
+                    let detail = "";
+                    try {
+                        const body = await res.json();
+                        detail = tcvErrorMessage(body, "");
+                    } catch (e) {}
+                    throw new Error(detail || `Request failed (${res.status})`);
+                }
+
+                const data = await res.json();
+
+                // Nothing to do: everything ticked is already on the resume
+                // (a second click, or a click after switching template). The
+                // server returns no HTML in that case - there is nothing to
+                // re-render, and it is not an error.
+                if (data && data.success && (!data.added || !data.added.length)) {
+                    savePayload({ skill_prompt_answered: true });
+                    close();
+                    if (typeof showToast === "function") {
+                        showToast("Those skills are already on your resume.", "info", "Nothing to add");
+                    }
+                    return;
+                }
+
+                if (!data || !data.html) throw new Error("No resume returned");
+
+                // Persist first, so a refresh keeps the added skills.
+                savePayload({
+                    html: data.html,
+                    resume_data: data.resume_data,
+                    promptable_skill_gaps: data.promptable_skill_gaps || [],
+                    skill_prompt_answered: true,
+                });
+
+                // Re-render the preview. captureBaseFonts/captureBaseLineSpacing
+                // stamp data-base-font and data-base-lh onto the nodes of the
+                // document they measure, and both are one-shot guarded. A fresh
+                // srcdoc has none of those attributes, so leaving the flags set
+                // means the A+/A-/S+/S- controls silently stop doing anything.
+                // Same reset the template switcher does on its re-render.
+                //
+                // currentZoom, currentLineSpacing and currentAccentColor are
+                // deliberately kept: the load handler's applyWordStylePreview()
+                // re-applies them once the new document has been re-measured, so
+                // the user's adjustments survive adding a skill.
+                baseFontsCaptured        = false;
+                baseLineSpacingsCaptured = false;
+
+                currentHtml = addEditingOverlay(data.html);
+                frame.srcdoc = currentHtml;
+
+                close();
+                const added = (data.added || []).join(", ");
+                if (typeof showToast === "function") {
+                    showToast(`Added ${added} to your resume.`, "success", "Skills updated");
+                } else {
+                    setStatus(`Added ${added} to your resume.`);
+                }
+            } catch (e) {
+                addBtn.disabled = false;
+                addBtn.textContent = original;
+                const why = (e && e.message) ? String(e.message) : "Please try again.";
+                if (typeof showToast === "function") {
+                    showToast(why, "error", "Could not add skills");
+                } else {
+                    setStatus("Could not add skills: " + why);
+                }
+            }
+        });
+
+        document.body.appendChild(overlay);
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       "SEE WHAT CHANGED" MODAL
+    ───────────────────────────────────────────────────────────────────────── */
+    /* Word-level LCS diff, split on whitespace so word tokens and the spaces
+       between them are both diffed (keeps reconstructed spacing exact). Bullets
+       are short (a sentence or two) so an O(n*m) DP table is fine. */
+    function wordDiff(before, after) {
+        const a = String(before || "").split(/(\s+)/).filter(Boolean);
+        const b = String(after  || "").split(/(\s+)/).filter(Boolean);
+        const n = a.length, m = b.length;
+        const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+        for (let i = n - 1; i >= 0; i--) {
+            for (let j = m - 1; j >= 0; j--) {
+                dp[i][j] = a[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+            }
+        }
+        const beforeParts = [], afterParts = [];
+        let i = 0, j = 0;
+        while (i < n && j < m) {
+            if (a[i] === b[j]) {
+                beforeParts.push({ text: a[i], same: true });
+                afterParts.push({ text: b[j], same: true });
+                i++; j++;
+            } else if (dp[i + 1][j] >= dp[i][j + 1]) {
+                beforeParts.push({ text: a[i], same: false });
+                i++;
+            } else {
+                afterParts.push({ text: b[j], same: false });
+                j++;
+            }
+        }
+        while (i < n) { beforeParts.push({ text: a[i], same: false }); i++; }
+        while (j < m) { afterParts.push({ text: b[j], same: false }); j++; }
+        return { beforeParts, afterParts };
+    }
+
+    /* Builds diffed text as DOM nodes — every word is placed via textContent,
+       never interpolated into innerHTML, so resume/JD text can never be parsed
+       as markup (same rule showSkillPanel follows in the extension). */
+    function renderDiffLine(parts, changedClass) {
+        const frag = document.createDocumentFragment();
+        parts.forEach(p => {
+            if (p.same) {
+                frag.appendChild(document.createTextNode(p.text));
+            } else {
+                const span = document.createElement("span");
+                span.className = changedClass;
+                span.textContent = p.text;
+                frag.appendChild(span);
+            }
+        });
+        return frag;
+    }
+
+    function injectChangesModalStyles() {
+        if (document.getElementById("tc-chg-styles")) return;
+        const st = document.createElement("style");
+        st.id = "tc-chg-styles";
+        st.textContent = `
+#tc-chg-overlay {
+    position: fixed; inset: 0; z-index: 2147483000;
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+/* Third-party support widgets mount themselves fixed in the bottom-right at a
+   very high z-index, landing squarely on "Apply All and Continue". They are
+   injected at runtime under names we do not control, so hide by POSITION while
+   the modal is open rather than by chasing each vendor's class name. */
+body.tc-chg-open iframe[src*="chat"],
+body.tc-chg-open iframe[title*="hat"],
+body.tc-chg-open iframe[id*="chat"],
+body.tc-chg-open [class*="chat-widget"],
+body.tc-chg-open [class*="chat-bubble"],
+body.tc-chg-open [id*="chat-widget"],
+body.tc-chg-open [id*="launcher"],
+body.tc-chg-open .tcx-help-fab,
+body.tc-chg-open #tcx-chat,
+body.tc-chg-open #tawkchat-container,
+body.tc-chg-open .crisp-client,
+body.tc-chg-open #intercom-container { display: none !important; }
+.tc-chg-backdrop {
+    position: absolute; inset: 0; background: rgba(15,23,42,.45);
+    animation: tc-chg-bgin .25s ease both;
+}
+@keyframes tc-chg-bgin { from { opacity: 0 } to { opacity: 1 } }
+.tc-chg-modal {
+    position: relative; z-index: 2; display: flex; flex-direction: column;
+    background: #fff; border-radius: 12px; overflow: hidden;
+    width: min(1400px, 96vw); height: min(900px, 94vh);
+    box-shadow: 0 24px 64px rgba(15,23,42,.28);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    animation: tc-chg-in .28s cubic-bezier(.34,1.3,.64,1) both;
+}
+@keyframes tc-chg-in {
+    from { opacity: 0; transform: scale(.97) translateY(12px) }
+    to   { opacity: 1; transform: none }
+}
+.tc-chg-panes { flex: 1; display: grid; grid-template-columns: 40% 60%; min-height: 0; }
+.tc-chg-rail {
+    min-height: 0; overflow-y: auto; padding: 32px;
+    border-right: 1px solid #e5e7eb;
+}
+.tc-chg-close {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; padding: 0;
+    background: none; border: 0; border-radius: 6px; cursor: pointer;
+    color: #6b7280; font-size: 1.35rem; line-height: 1;
+    transition: background .15s ease, color .15s ease;
+}
+.tc-chg-close:hover { background: #f3f4f6; color: #111827; }
+/* ── A. Hero heading ── */
+.tc-chg-hero {
+    margin: 0 0 28px; font-size: 40px; line-height: 1.15;
+    font-weight: 700; color: #0f172a; letter-spacing: -.02em;
+}
+/* ── B/C. Score rows ── */
+.tc-chg-scorerow { display: flex; align-items: flex-start; gap: 24px; padding: 4px 0 22px; }
+.tc-chg-scorerow + .tc-chg-scorerow { border-top: 1px solid #e5e7eb; padding-top: 22px; }
+.tc-chg-ring-wrap { flex: 0 0 auto; width: 100px; text-align: center; }
+.tc-chg-ring { position: relative; width: 100px; height: 100px; }
+.tc-chg-ring svg { width: 100px; height: 100px; transform: rotate(-90deg); }
+.tc-chg-ring-track { fill: none; stroke: #e8eaed; stroke-width: 8; }
+.tc-chg-ring-fill  { fill: none; stroke: #16a34a; stroke-width: 8; stroke-linecap: round; }
+.tc-chg-ring-num {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 600; color: #0f172a;
+}
+.tc-chg-improved {
+    display: flex; align-items: flex-start; justify-content: center; gap: 4px;
+    margin-top: 8px; color: #16a34a; font-size: .78rem; line-height: 1.3; text-align: left;
+}
+.tc-chg-improved svg { width: 13px; height: 13px; flex: 0 0 auto; margin-top: 1px; }
+.tc-chg-scoretext { flex: 1; min-width: 0; padding-top: 6px; }
+.tc-chg-scoretitle { font-size: 28px; font-weight: 400; color: #0f172a; margin: 0 0 8px; letter-spacing: -.01em; }
+.tc-chg-scoredesc { font-size: .92rem; line-height: 1.55; color: #6b7280; margin: 0; }
+/* ── D/E/F. Keyword cards ── */
+.tc-chg-kwcard {
+    border: 1px solid #e5e7eb; border-radius: 8px; background: #f8fafc;
+    margin-top: 14px; overflow: hidden;
+}
+.tc-chg-kwcard.added { background: #f0fdf4; border-color: #bbf7d0; }
+.tc-chg-kwhead {
+    display: flex; align-items: center; gap: 8px; width: 100%;
+    padding: 13px 15px; background: none; border: 0; cursor: pointer;
+    font-family: inherit; text-align: left;
+}
+.tc-chg-kwtitle { flex: 1; font-size: .94rem; font-weight: 500; color: #111827; }
+.tc-chg-kwcard.added .tc-chg-kwtitle { font-size: 1.05rem; }
+.tc-chg-help {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 15px; height: 15px; border: 1px solid #9ca3af; border-radius: 50%;
+    color: #6b7280; font-size: .6rem; flex: 0 0 auto;
+}
+.tc-chg-kwbody { padding: 0 15px 14px; display: flex; flex-wrap: wrap; gap: 7px; }
+.tc-chg-chip {
+    display: inline-flex; align-items: center; padding: 5px 11px;
+    border-radius: 999px; font-size: .8rem; line-height: 1.2;
+    background: #dcfce7; color: #14532d;
+}
+.tc-chg-chip.miss { background: #fee2e2; color: #7f1d1d; }
+.tc-chg-ico { flex: 0 0 auto; width: 17px; height: 17px; }
+/* Chevron: up = open, down = closed. */
+.tc-chg-chev {
+    flex: 0 0 auto; width: 9px; height: 9px; margin-left: 2px;
+    border-right: 2px solid #6b7280; border-bottom: 2px solid #6b7280;
+    transform: rotate(-135deg); transition: transform .2s ease;
+}
+[aria-expanded="false"] > .tc-chg-chev { transform: rotate(45deg); }
+/* ── G. Nested change cards ── */
+.tc-chg-sec {
+    border: 1px solid #e5e7eb; border-radius: 8px; background: #fff;
+    margin-top: 14px; overflow: hidden;
+}
+.tc-chg-sechead {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 15px 16px; background: none; border: 0; cursor: pointer;
+    font-family: inherit; text-align: left;
+}
+.tc-chg-sectitle { flex: 1; font-size: 1.02rem; font-weight: 500; color: #111827; }
+/* Level 1 chevron sits in a small square button, per the reference. */
+.tc-chg-chevbox {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; flex: 0 0 auto;
+    border: 1px solid #bfdbfe; border-radius: 6px; background: #eff6ff;
+}
+.tc-chg-chevbox .tc-chg-chev { border-color: #2563eb; margin: 0; }
+.tc-chg-secbody { padding: 0 16px 14px; }
+.tc-chg-entry { border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; margin-top: 10px; overflow: hidden; }
+.tc-chg-entryhead {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 13px 14px; background: none; border: 0; cursor: pointer;
+    font-family: inherit; text-align: left;
+}
+.tc-chg-entrytitle { flex: 1; font-size: .95rem; font-weight: 500; color: #111827; }
+.tc-chg-entrybody { padding: 0 14px 12px; }
+.tc-chg-item { border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; margin-top: 10px; overflow: hidden; }
+.tc-chg-itemhead {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 12px 14px; background: none; border: 0; cursor: pointer;
+    font-family: inherit; text-align: left;
+}
+.tc-chg-itemnum { flex: 1; font-size: .92rem; font-weight: 500; color: #111827; }
+.tc-chg-provenance {
+    margin-top: 10px; font-size: .78rem; line-height: 1.5; color: #6b7280;
+}
+.tc-chg-newtag {
+    flex: 0 0 auto; padding: 2px 8px; border-radius: 999px;
+    background: #dcfce7; color: #14532d; font-size: .7rem; font-weight: 600;
+}
+.tc-chg-itembody { padding: 0 14px 14px; }
+.tc-chg-itembody-inner { border-top: 1px solid #e5e7eb; padding-top: 13px; }
+.tc-chg-afterlabel { font-size: .95rem; font-weight: 500; color: #111827; margin-bottom: 7px; }
+.tc-chg-aftertext { font-size: .88rem; line-height: 1.65; color: #4b5563; }
+.tc-chg-compare-link {
+    display: inline-block; margin-top: 12px; padding: 0;
+    background: none; border: 0; cursor: pointer; font-family: inherit;
+    font-size: .88rem; color: #2563eb;
+}
+.tc-chg-compare-link:hover { text-decoration: underline; }
+.tc-chg-ba { margin-top: 12px; font-size: .86rem; line-height: 1.6; }
+.tc-chg-ba-label {
+    font-size: .72rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .05em; color: #9ca3af; margin-bottom: 3px;
+}
+.tc-chg-ba-before { color: #6b7280; margin-bottom: 9px; }
+.tc-chg-ba-after { color: #111827; }
+.tc-chg-empty { font-size: .9rem; color: #6b7280; padding: 16px 0; line-height: 1.6; }
+/* ── Right pane: document viewer ──
+   Header holds the X on its own row, canvas is the ONLY scroller, and the
+   page floats on grey with space above, left and right. Previously the page
+   sat flush against the top and right edges with two nested scrollbars. */
+.tc-chg-preview {
+    position: relative;
+    display: flex; flex-direction: column; height: 100%; min-height: 0;
+    background: #F1F3F6;
+}
+/* The header overlays rather than occupying a row - as a flex child it pushed
+   the page down and stacked its own padding on top of the canvas padding. */
+.tc-chg-preview-header {
+    position: absolute; top: 8px; right: 12px; z-index: 5;
+    display: flex; justify-content: flex-end;
+}
+.tc-chg-preview-canvas {
+    flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 24px 24px 32px;
+}
+/* Inner padding so the document reads as a printed page. Without it the
+   resume text ran flush to both edges of the white sheet and looked cropped. */
+.tc-chg-page {
+    width: 100%; max-width: 794px; margin: 0 auto; background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08); overflow: visible;
+    padding: 40px 56px 48px; box-sizing: border-box;
+}
+/* Height is set from the mirrored document's own scrollHeight on load - a
+   fixed A4 ratio cropped every resume that ran past one page. */
+.tc-chg-mirror { display: block; width: 100%; min-height: 700px; border: 0; background: #fff; }
+/* ── Sticky footer ── */
+.tc-chg-footer {
+    flex: 0 0 auto; display: flex; align-items: center;
+    padding: 14px 24px; background: #fff; border-top: 1px solid #e5e7eb;
+}
+.tc-chg-sugg { margin-left: 40%; display: flex; align-items: center; gap: 8px; font-size: .9rem; color: #6b7280; }
+.tc-chg-suggnum {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 24px; height: 22px; padding: 0 7px; border-radius: 999px;
+    background: #dbeafe; color: #1d4ed8; font-size: .8rem; font-weight: 500;
+}
+.tc-chg-apply {
+    margin-left: auto; padding: 10px 20px; border: 0; border-radius: 6px;
+    background: #2563eb; color: #fff; cursor: pointer;
+    font-family: inherit; font-size: .9rem; font-weight: 500;
+    transition: background .15s ease;
+}
+.tc-chg-apply:hover { background: #1d4ed8; }
+@media (max-width: 1024px) {
+    .tc-chg-panes { grid-template-columns: 1fr; }
+    .tc-chg-preview { display: none; }
+    .tc-chg-rail { border-right: 0; padding: 24px 18px; }
+    .tc-chg-hero { font-size: 28px; }
+    .tc-chg-scoretitle { font-size: 21px; }
+    .tc-chg-sugg { margin-left: 0; }
+}
+`;
+        document.head.appendChild(st);
+    }
+
+    /* Merge change islands separated by only a word or two of survivor.
+
+       Word-level LCS treats every shared token as a match, so a rewritten
+       sentence keeps incidental words - "and", "to", "data" - and the diff
+       fragments into eight separate red/green flickers across one bullet. The
+       reader cannot see what was actually replaced.
+
+       A short bridge between two changes is noise: absorb it into the change so
+       the bullet shows a few clean chunks instead. Longer runs of unchanged
+       text are real and stay untouched. */
+    function coalesceDiff(beforeParts, afterParts, bridgeWords) {
+        const LIMIT = bridgeWords == null ? 2 : bridgeWords;
+        const runLen = (parts, i) => {
+            let n = 0, k = i;
+            while (k < parts.length && parts[k].same) {
+                if (parts[k].text.trim()) n++;
+                k++;
+            }
+            return { words: n, end: k };
+        };
+        const merge = parts => {
+            const out = parts.map(p => ({ ...p }));
+            let i = 0, seenChange = false;
+            while (i < out.length) {
+                if (!out[i].same) { seenChange = true; i++; continue; }
+                const { words, end } = runLen(out, i);
+                if (seenChange && end < out.length && words > 0 && words <= LIMIT) {
+                    for (let k = i; k < end; k++) out[k].same = false;
+                }
+                i = end;
+            }
+            return out;
+        };
+        return { beforeParts: merge(beforeParts), afterParts: merge(afterParts) };
+    }
+
+    /* Draw the diff onto the mirrored resume itself.
+       The rail says WHAT changed; without this the resume beside it is a clean
+       copy and the reader has to find every edit by eye. Each changed bullet is
+       located by its rewritten text and re-rendered with removed words struck
+       through in red and added ones in green, using the same wordDiff the rail
+       uses so the panes can never disagree.
+       Returns "entry:bullet" -> element so a card can scroll to its change. */
+    /* Text-identity index over the ORIGINAL resume.
+
+       The server decides "new" by looking up an entry in the original document
+       by a single identifier field, so a section the template renamed, or an
+       entry whose role/company pair is written differently, fails the lookup
+       and every bullet under it is reported as new. That is how four unchanged
+       Leadership bullets came back fully green.
+
+       Green has to mean "this text is not in the original", so the final say
+       belongs to the text itself rather than to any name or id. */
+    function buildOriginalIndex(originalText) {
+        const exact = new Set();
+        const lines = [];
+        String(originalText || "").split(/\r?\n+/).forEach(raw => {
+            const line = normaliseForCompare(raw);
+            if (line.length < 12) return;       // headings, dates, stray tokens
+            exact.add(line);
+            lines.push(line);
+        });
+        return { exact, lines };
+    }
+
+    /* Lowercase, collapse whitespace, strip bullet glyphs and trailing
+       punctuation, and flatten quote/dash variants - a template that swaps a
+       hyphen for an en dash has not changed the candidate's words. */
+    function normaliseForCompare(s) {
+        return String(s || "")
+            .replace(/[‘’‛]/g, "'")
+            .replace(/[“”]/g, '"')
+            .replace(/[‐-―−]/g, "-")
+            .replace(/^[\s•·\-\*●▪]+/, "")
+            .toLowerCase()
+            .replace(/\s+/g, " ")
+            .replace(/[.,;:!?]+$/, "")
+            .trim();
+    }
+
+    function wordOverlap(a, b) {
+        const A = new Set(normaliseForCompare(a).split(" ").filter(w => w.length > 2));
+        const B = new Set(normaliseForCompare(b).split(" ").filter(w => w.length > 2));
+        if (!A.size || !B.size) return 0;
+        let hit = 0;
+        A.forEach(w => { if (B.has(w)) hit++; });
+        return hit / Math.max(A.size, B.size);
+    }
+
+    /* Re-decide a bullet's status against the original text.
+       Returns null when the text is unchanged, so the caller can skip it
+       entirely - no highlight, no change card, no suggestion counted. */
+    function reconcileStatus(b, idx) {
+        if (!idx || !b || !b.after) return b;
+        const after = normaliseForCompare(b.after);
+        if (!after) return b;
+
+        // Present verbatim somewhere in the original: unchanged, whatever the
+        // server called it and whichever section it now sits under.
+        if (idx.exact.has(after)) return null;
+
+        if (b.status === "reworded" && b.before) {
+            return normaliseForCompare(b.before) === after ? null : b;
+        }
+
+        // Reported as new. Look for the original line it most resembles.
+        let best = null, bestScore = 0;
+        for (const line of idx.lines) {
+            const score = wordOverlap(after, line);
+            if (score > bestScore) { bestScore = score; best = line; }
+        }
+        if (bestScore >= 0.92) return null;                       // same words
+        if (bestScore >= 0.5) return { ...b, status: "reworded", before: best };
+        return b;                                                  // genuinely new
+    }
+
+    function markChangesInPreview(doc, entries, extras) {
+        const index = new Map();
+        if (!doc) return index;
+        entries = Array.isArray(entries) ? entries : [];
+        const origIdx = (extras && extras.originalIndex) || null;
+
+        const norm = t => String(t || "").replace(/\s+/g, " ").trim();
+        // Leaf blocks only: re-rendering a container would destroy its children.
+        const blocks = Array.from(doc.querySelectorAll("li, p, div, td"))
+            .filter(el => !el.querySelector("li, p, div, td"));
+
+        // The summary and the skills lines are changed just as often as the
+        // bullets, and the left panel reports them - but they live outside
+        // `entries`, so they were rendering as plain text while every bullet
+        // around them was highlighted. Treat them as ordinary change records.
+        const synthetic = [];
+        if (extras && extras.summary && extras.summary.status
+            && extras.summary.status !== "unchanged" && extras.summary.after) {
+            synthetic.push({ bullets: [{
+                status: extras.summary.status,
+                before: extras.summary.before,
+                after:  extras.summary.after,
+            }]});
+        }
+        if (extras && Array.isArray(extras.skillLines)) {
+            extras.skillLines.forEach(line => synthetic.push({ bullets: [line] }));
+        }
+        const allEntries = entries.concat(synthetic);
+
+        allEntries.forEach((entry, ei) => {
+            (entry.bullets || []).forEach((change, bi) => {
+                const b = reconcileStatus(change, origIdx);
+                if (!b || b.status === "unchanged" || !b.after) return;
+                const target = norm(b.after);
+                if (!target) return;
+
+                const el = blocks.find(x => !x.dataset.tcvMarked && norm(x.textContent) === target)
+                        || blocks.find(x => !x.dataset.tcvMarked && norm(x.textContent).includes(target));
+                if (!el) return;
+                el.dataset.tcvMarked = "1";
+
+                const key = ei + ":" + bi;
+                el.setAttribute("data-tcv-change", key);
+                index.set(key, el);
+
+                // A skills line is a list, so diff it item by item: wrap only
+                // the skill names that are new and leave the commas plain. A
+                // word diff here marks punctuation and splits "Node.js".
+                if (b._addedSkills && b._addedSkills.length) {
+                    const addedKeys = new Set(b._addedSkills.map(skillKey));
+                    el.textContent = "";
+                    b.after.split(",").forEach((item, n) => {
+                        const text = item.trim();
+                        if (n) el.appendChild(doc.createTextNode(", "));
+                        if (text && addedKeys.has(skillKey(text))) {
+                            const tag = doc.createElement("ins");
+                            tag.className = "tcv-mark-add";
+                            tag.textContent = text;
+                            el.appendChild(tag);
+                        } else {
+                            el.appendChild(doc.createTextNode(text));
+                        }
+                    });
+                    el.style.textAlign = "left";
+                    return;
+                }
+
+                // A new bullet has no "before" - the whole line reads as added.
+                if (b.status !== "reworded" || !b.before) {
+                    const t = el.textContent;
+                    el.textContent = "";
+                    const tag = doc.createElement("ins");
+                    tag.className = "tcv-mark-add";
+                    tag.textContent = t;
+                    el.appendChild(tag);
+                    el.style.textAlign = "left";
+                    return;
+                }
+
+                const diff = wordDiff(b.before, b.after);
+                const { beforeParts, afterParts } = coalesceDiff(diff.beforeParts, diff.afterParts);
+                el.textContent = "";
+
+                // Build ONE run per contiguous stretch of the same type, then
+                // emit one element for it. Emitting a span per token put every
+                // whitespace token inside its own coloured box, so the text
+                // rendered as "potential - data - imbalances" with each word
+                // boxed separately and the gaps stretched by justification.
+                const runs = [];
+                const pushRun = (kind, text) => {
+                    if (!text) return;
+                    const last = runs[runs.length - 1];
+                    if (last && last.kind === kind) last.text += text;
+                    else runs.push({ kind, text });
+                };
+
+                let bi2 = 0, ai = 0;
+                while (bi2 < beforeParts.length || ai < afterParts.length) {
+                    while (bi2 < beforeParts.length && !beforeParts[bi2].same) {
+                        pushRun("del", beforeParts[bi2].text); bi2++;
+                    }
+                    while (ai < afterParts.length && !afterParts[ai].same) {
+                        pushRun("add", afterParts[ai].text); ai++;
+                    }
+                    if (bi2 < beforeParts.length && ai < afterParts.length) {
+                        pushRun("same", afterParts[ai].text); bi2++; ai++;
+                    } else {
+                        while (ai < afterParts.length) {
+                            pushRun(afterParts[ai].same ? "same" : "add", afterParts[ai].text); ai++;
+                        }
+                        while (bi2 < beforeParts.length) {
+                            if (!beforeParts[bi2].same) pushRun("del", beforeParts[bi2].text);
+                            bi2++;
+                        }
+                    }
+                }
+
+                // Trim each highlighted run so the pink/green box hugs the
+                // words and the surrounding spaces stay plain text.
+                runs.forEach(r => {
+                    if (r.kind === "same") { el.appendChild(doc.createTextNode(r.text)); return; }
+                    const lead = r.text.match(/^\s*/)[0];
+                    const tail = r.text.match(/\s*$/)[0];
+                    const core = r.text.slice(lead.length, r.text.length - tail.length);
+                    if (lead) el.appendChild(doc.createTextNode(lead));
+                    if (core) {
+                        const tag = doc.createElement(r.kind === "del" ? "del" : "ins");
+                        tag.className = r.kind === "del" ? "tcv-mark-del" : "tcv-mark-add";
+                        tag.textContent = core;
+                        el.appendChild(tag);
+                    }
+                    if (tail) el.appendChild(doc.createTextNode(tail));
+                });
+
+                // Justified text stretches the spaces around the highlights
+                // into visible gaps - force left alignment on marked bullets.
+                el.style.textAlign = "left";
+            });
+        });
+        return index;
+    }
+
+    /* Scores come from the ATS analysis the user already ran - reading its
+       stored payload rather than re-scoring, because two runs on the same input
+       disagree and the editor would contradict the score page. */
+    /* Canonical form for comparing a skill written two ways.
+       "Node.js", "nodejs" and "Node JS" are one skill; so are "CI/CD" and
+       "CICD", "Postgres" and "PostgreSQL". Without this the missing-keywords
+       list reported skills that were sitting in the resume in a different
+       spelling. */
+    const SKILL_ALIASES = {
+        nodejs: "node", node: "node", nodejs2: "node",
+        postgres: "postgresql", postgre: "postgresql", postgressql: "postgresql",
+        cicd: "cicd", continuousintegration: "cicd",
+        googlecloudplatform: "gcp", gcp: "gcp",
+        amazonwebservices: "aws", aws: "aws",
+        k8s: "kubernetes", kubernetes: "kubernetes",
+        js: "javascript", javascript: "javascript",
+        ts: "typescript", typescript: "typescript",
+        golang: "go", go: "go",
+        githubactions: "githubactions",
+        restapis: "rest", restapi: "rest", rest: "rest",
+        ms: "microsoft", googleanalytics4: "ga4", ga4: "ga4",
+    };
+    function skillKey(s) {
+        const k = String(s || "").toLowerCase().replace(/[^a-z0-9+#]/g, "");
+        return SKILL_ALIASES[k] || k;
+    }
+
+    /* Which of the JD's skills the FINAL resume actually contains.
+       The stored ATS analysis scored the ORIGINAL document, so its "missing"
+       list still names everything the optimiser has since added - which is why
+       the panel listed Java, Go, Docker and Kubernetes as missing while they
+       sat in the rendered Technical Skills line. Re-checking against the full
+       text of the new resume is a string comparison, not a second opinion, so
+       it cannot contradict the score the way a re-scan would. */
+    function partitionKeywords(candidates, resumeText, addedList) {
+        const haystack = new Set();
+        String(resumeText || "")
+            .split(/[^A-Za-z0-9+#.]+/)
+            .forEach(tok => { if (tok) haystack.add(skillKey(tok)); });
+        // Multi-word skills never survive tokenising, so also keep a
+        // whitespace-stripped blob to test them against.
+        const blob = String(resumeText || "").toLowerCase().replace(/[^a-z0-9+#]/g, "");
+        const addedKeys = new Set((addedList || []).map(skillKey));
+
+        const present = [], missing = [], added = [];
+        (candidates || []).forEach(c => {
+            const key = skillKey(c);
+            if (!key) return;
+            const found = haystack.has(key) || (key.length >= 3 && blob.includes(key));
+            if (addedKeys.has(key)) added.push(c);
+            else if (found) present.push(c);
+            else missing.push(c);
+        });
+        return { present, missing, added };
+    }
+
+    /* The ATS analysis the user already ran, wherever it was stored.
+       main_new.js writes "atsAnalysisPayload" on every scan and mirrors it to
+       localStorage for guests; ats_analysis.js reads the same key. Checking
+       both storages for each name matters because a guest's session copy is
+       cleared while the local one survives. Re-scoring here instead would
+       produce a second opinion that contradicts the score page. */
+    function readAtsPayload() {
+        const keys = [
+            "atsAnalysisPayload",
+            "tailorcv_ats_payload_guest",
+            "tailorcv_ats_payload_local",
+        ];
+        for (const k of keys) {
+            for (const store of [sessionStorage, localStorage]) {
+                try {
+                    const raw = store.getItem(k);
+                    if (!raw) continue;
+                    const d = JSON.parse(raw);
+                    if (d && typeof d === "object") return d;
+                } catch (e) {}
+            }
+        }
+        return null;
+    }
+
+    function showChangesModal(payload) {
+        if (document.getElementById("tc-chg-overlay")) return;
+        injectChangesModalStyles();
+
+        const changes = (payload && payload.resume_data && payload.resume_data.changes) || {};
+        const skillsAdded = Array.isArray(changes.skills_added) ? changes.skills_added : [];
+        const skillGaps   = Array.isArray(changes.skill_gaps)   ? changes.skill_gaps   : [];
+        const entries     = Array.isArray(changes.entries)      ? changes.entries      : [];
+        const summary     = changes.summary || null;
+
+        const ats  = readAtsPayload() || {};
+        const skillsBlock = ats.skills || (ats.data && ats.data.skills)
+            || (ats.result && ats.result.skills) || {};
+        const hard = skillsBlock.hard_skills || {};
+        const rawMatched = Array.isArray(hard.matched) ? hard.matched : [];
+        const rawMissing = Array.isArray(hard.missing) ? hard.missing : [];
+
+        // Re-partition every JD skill against the FINAL resume text. The stored
+        // analysis judged the original document, so its lists are stale the
+        // moment the optimiser adds a skill.
+        const finalText = [
+            String((payload && payload.resume_data && payload.resume_data.summary) || ""),
+            ((payload && payload.resume_data && payload.resume_data.skills) || []).join(" "),
+            String(currentHtml || "").replace(/<[^>]*>/g, " "),
+        ].join(" ");
+        const part = partitionKeywords(
+            rawMatched.concat(rawMissing), finalText, skillsAdded);
+        const matchedKw = part.present;
+        const missingKw = part.missing;
+
+        const clampPct = v => Math.round(Math.max(0, Math.min(100, Number(v || 0))));
+        // The score the user's own analysis produced. match_rate is what the ATS
+        // page renders, so the editor cannot contradict the number they saw.
+        // Several shapes reach this page depending on the route taken, so take
+        // the first that carries a real number rather than assuming one.
+        const firstNum = (...vals) => {
+            for (const v of vals) {
+                const n = Number(v);
+                if (v != null && Number.isFinite(n) && n > 0) return n;
+            }
+            return 0;
+        };
+        const atsScore = clampPct(firstNum(
+            ats.match_rate,
+            ats.ats_score,
+            ats.score,
+            ats.data && ats.data.match_rate,
+            ats.result && ats.result.match_rate,
+            payload && payload.match_rate,
+            payload && payload.ats_score,
+            payload && payload.resume_data && payload.resume_data.ats_score
+        ));
+
+        // "Improved by" needs a genuine before-score. The extension flow stores
+        // one (skill_match_before/after); the web flow has never had one, and
+        // inventing a delta would tell the user their resume improved by a
+        // number nobody measured. Absent or non-positive -> the line is hidden.
+        const beforeScore =
+            payload && payload.skill_match_before != null ? Number(payload.skill_match_before)
+          : ats.skill_match_before != null ? Number(ats.skill_match_before)
+          : ats.previous_score != null ? Number(ats.previous_score)
+          : null;
+        const afterScore =
+            payload && payload.skill_match_after != null ? Number(payload.skill_match_after)
+          : null;
+        let improvedBy = null;
+        if (beforeScore != null && Number.isFinite(beforeScore)) {
+            const resolvedAfter =
+                afterScore != null && Number.isFinite(afterScore) ? afterScore : atsScore;
+            const delta = Math.round(resolvedAfter - beforeScore);
+            if (delta > 0) improvedBy = delta;
+        }
+
+        // Built from the candidate's own text so every "new" claim can be
+        // checked against it. Without this, a renamed section made untouched
+        // bullets render fully green and inflated the suggestion count.
+        const origIdx = buildOriginalIndex(
+            (Array.isArray(changes.original_lines) ? changes.original_lines : []).join("\n"));
+
+        // Reconcile once, here, so the preview, the change cards and the count
+        // all describe the same set of changes.
+        entries.forEach(e => {
+            e.bullets = (e.bullets || [])
+                .map(b => reconcileStatus(b, origIdx))
+                .filter(Boolean);
+        });
+
+        const changedBullets = entries.reduce(
+            (n, e) => n + (e.bullets || []).filter(b => b.status !== "unchanged").length, 0);
+        const summaryChange = summary && summary.status && summary.status !== "unchanged"
+            ? reconcileStatus(summary, origIdx) : null;
+        const suggestionCount = changedBullets + skillsAdded.length +
+            (summaryChange ? 1 : 0);
+
+        const ICON = {
+            trend:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+            check:   '<svg class="tc-chg-ico" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 12 6 17 15 8"/><polyline points="9 12 14 17 23 8"/></svg>',
+            warn:    '<svg class="tc-chg-ico" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+        };
+
+        const overlay = document.createElement("div");
+        overlay.id = "tc-chg-overlay";
+        overlay.innerHTML = `
+            <div class="tc-chg-backdrop"></div>
+            <div class="tc-chg-modal" role="dialog" aria-modal="true" aria-labelledby="tc-chg-title">
+                <div class="tc-chg-panes">
+                    <div class="tc-chg-rail">
+                        <h2 class="tc-chg-hero" id="tc-chg-title">Your new ATS-friendly resume is ready!</h2>
+                        <div class="tc-chg-scores"></div>
+                        <div class="tc-chg-body"></div>
+                        <div class="tc-chg-keywords"></div>
+                    </div>
+                    <div class="tc-chg-preview">
+                        <div class="tc-chg-preview-header">
+                            <button type="button" class="tc-chg-close" aria-label="Close">&times;</button>
+                        </div>
+                        <div class="tc-chg-preview-canvas">
+                            <div class="tc-chg-page"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tc-chg-footer">
+                    <span class="tc-chg-sugg">Suggestions
+                        <span class="tc-chg-suggnum">${suggestionCount}</span></span>
+                    <button type="button" class="tc-chg-apply">Apply All and Continue</button>
+                </div>
+            </div>`;
+
+        const rail     = overlay.querySelector(".tc-chg-rail");
+        const scoresEl = overlay.querySelector(".tc-chg-scores");
+        const kwEl     = overlay.querySelector(".tc-chg-keywords");
+        const body     = overlay.querySelector(".tc-chg-body");
+        let markIndex  = new Map();
+
+        /* ── Resume Analysis Results: one ring, driven by the real score ── */
+        function ringColor(pct) {
+            if (pct >= 75) return "#16a34a";   // green  - strong
+            if (pct >= 50) return "#f59e0b";   // orange - middling
+            return "#dc2626";                   // red    - weak
+        }
+
+        function addScoreRow(pct, improved, title, desc) {
+            const C = 2 * Math.PI * 44;
+            const row = document.createElement("div");
+            row.className = "tc-chg-scorerow";
+            row.innerHTML = `
+                <div class="tc-chg-ring-wrap">
+                    <div class="tc-chg-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="tc-chg-ring-track" cx="50" cy="50" r="44"/>
+                            <circle class="tc-chg-ring-fill" cx="50" cy="50" r="44"
+                                stroke="${ringColor(pct)}"
+                                stroke-dasharray="${C}" stroke-dashoffset="${C}"/>
+                        </svg>
+                        <div class="tc-chg-ring-num">0%</div>
+                    </div>
+                    ${improved != null ? `<div class="tc-chg-improved" style="color:${ringColor(pct)}">${ICON.trend}
+                        <span>Improved<br>by ${improved}%</span></div>` : ""}
+                </div>
+                <div class="tc-chg-scoretext">
+                    <div class="tc-chg-scoretitle"></div>
+                    <p class="tc-chg-scoredesc"></p>
+                </div>`;
+            row.querySelector(".tc-chg-scoretitle").textContent = title;
+            row.querySelector(".tc-chg-scoredesc").textContent = desc;
+            scoresEl.appendChild(row);
+
+            // Fill the ring and count the number up to the real value.
+            const fill = row.querySelector(".tc-chg-ring-fill");
+            const num  = row.querySelector(".tc-chg-ring-num");
+            const reduce = window.matchMedia
+                && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            if (reduce) {
+                fill.style.strokeDashoffset = String(C - (pct / 100) * C);
+                num.textContent = pct + "%";
+                return;
+            }
+            requestAnimationFrame(() => {
+                fill.style.transition = "stroke-dashoffset 1s cubic-bezier(.4,0,.2,1)";
+                fill.style.strokeDashoffset = String(C - (pct / 100) * C);
+            });
+            const t0 = performance.now(), DUR = 1000;
+            (function step(now) {
+                const k = Math.min(1, (now - t0) / DUR);
+                num.textContent = Math.round(pct * (1 - Math.pow(1 - k, 3))) + "%";
+                if (k < 1) requestAnimationFrame(step);
+            })(t0);
+        }
+
+        // The section renders whenever a score exists. When the user reached the
+        // editor without running an analysis there is genuinely nothing to show,
+        // and inventing a number would be worse than omitting the block.
+        if (atsScore > 0) {
+            addScoreRow(atsScore, improvedBy, "Resume Analysis Results",
+                "We also analyzed your resume's content, based on the industry best practices for your role and experience level.");
+        } else {
+            // Says WHY the block is absent, so a missing score is diagnosable
+            // from the console instead of looking like broken rendering.
+            console.info(
+                "[TailorCV] Resume Analysis Results hidden: no ATS score found.",
+                { atsPayloadFound: !!readAtsPayload(), keysChecked:
+                    ["atsAnalysisPayload", "tailorcv_ats_payload_guest", "tailorcv_ats_payload_local"] }
+            );
+        }
+
+        /* ── D/E/F. Keyword cards ── */
+        function addKeywordCard(icon, title, chips, chipClass, extraClass) {
+            if (!chips.length) return;
+            const card = document.createElement("div");
+            card.className = "tc-chg-kwcard" + (extraClass ? " " + extraClass : "");
+            const head = document.createElement("button");
+            head.type = "button";
+            head.className = "tc-chg-kwhead";
+            head.setAttribute("aria-expanded", "true");
+            head.innerHTML = `${icon}<span class="tc-chg-kwtitle"></span>
+                <span class="tc-chg-help">?</span><span class="tc-chg-chev"></span>`;
+            head.querySelector(".tc-chg-kwtitle").textContent = title;
+            const bodyEl = document.createElement("div");
+            bodyEl.className = "tc-chg-kwbody";
+            chips.forEach(c => {
+                const chip = document.createElement("span");
+                chip.className = "tc-chg-chip" + (chipClass ? " " + chipClass : "");
+                chip.textContent = c;
+                bodyEl.appendChild(chip);
+            });
+            head.addEventListener("click", () => {
+                const open = !bodyEl.hidden;
+                bodyEl.hidden = open;
+                head.setAttribute("aria-expanded", String(!open));
+            });
+            card.append(head, bodyEl);
+            kwEl.appendChild(card);
+        }
+
+        // addKeywordCard already returns early on an empty list, so a card with
+        // nothing to show never renders.
+        addKeywordCard(ICON.check, "Strong match", matchedKw, "");
+        // Everything the optimiser put on the skills line, whether it came from
+        // the JD or was surfaced from the candidate's own projects.
+        const skillDiffForCard = buildSkillLineDiffs();
+        const allAdded = skillsAdded.slice();
+        const seenAdd = new Set(allAdded.map(skillKey));
+        (skillDiffForCard[0]?._addedSkills || []).forEach(s => {
+            const k = skillKey(s);
+            if (k && !seenAdd.has(k)) { seenAdd.add(k); allAdded.push(s); }
+        });
+        addKeywordCard(ICON.check, "Added Skills", allAdded, "", "added");
+        // Gaps the optimiser withheld are genuinely absent from the new resume,
+        // so they belong in the same Missing Keywords card rather than a second
+        // list with a different name saying the same thing.
+        const stillMissing = missingKw.concat(
+            partitionKeywords(skillGaps, finalText, skillsAdded).missing);
+        const seenMiss = new Set();
+        const missingFinal = stillMissing.filter(k => {
+            const key = skillKey(k);
+            if (!key || seenMiss.has(key)) return false;
+            seenMiss.add(key);
+            return true;
+        });
+        addKeywordCard(ICON.warn, "Missing Keywords", missingFinal, "miss");
+
+        /* ── G. Nested change cards: Section > Entry > Change #N ── */
+        function collapsible(headEl, panelEl, openByDefault) {
+            headEl.setAttribute("aria-expanded", openByDefault ? "true" : "false");
+            if (!openByDefault) panelEl.hidden = true;
+            headEl.addEventListener("click", ev => {
+                if (ev.target.closest(".tc-chg-compare-link")) return;
+                const open = !panelEl.hidden;
+                panelEl.hidden = open;
+                headEl.setAttribute("aria-expanded", String(!open));
+            });
+        }
+
+        // Group entries by their resume section so each gets one Level-1 card.
+        const SECTION_LABEL = {
+            experience: "Work Experience", projects: "Projects",
+            extracurricular: "Leadership & Activities", education: "Education",
+        };
+        const bySection = new Map();
+        entries.forEach((entry, idx) => {
+            const key = entry.section || "experience";
+            if (!bySection.has(key)) bySection.set(key, []);
+            bySection.get(key).push({ entry, idx });
+        });
+
+        // The summary is a change like any other - one card, not a dumped paragraph.
+        if (summaryChange) {
+            bySection.set("summary", [{
+                entry: { label: "Professional Summary",
+                         bullets: [{ status: summaryChange.status,
+                                     before: summaryChange.before,
+                                     after:  summaryChange.after }] },
+                idx: -1,
+            }]);
+        }
+
+        // Technical Skills gets its own section card. The additions are real
+        // changes to the document and were previously reported nowhere.
+        const skillDiff = buildSkillLineDiffs();
+        if (skillDiff.length && skillDiff[0]._addedSkills.length) {
+            const addedSkills = skillDiff[0]._addedSkills;
+            const fromBody = skillsFoundInBody(addedSkills);
+            bySection.set("skills", [{
+                entry: {
+                    label: "Technical Skills",
+                    _chips: { added: addedSkills, fromBody: fromBody },
+                    bullets: [],
+                },
+                idx: -1,
+            }]);
+        }
+
+        let sectionNo = 0;
+        bySection.forEach((list, sectionKey) => {
+            const sec = document.createElement("div");
+            sec.className = "tc-chg-sec";
+            const secHead = document.createElement("button");
+            secHead.type = "button";
+            secHead.className = "tc-chg-sechead";
+            secHead.innerHTML = `<span class="tc-chg-sectitle"></span>
+                <span class="tc-chg-chevbox"><span class="tc-chg-chev"></span></span>`;
+            secHead.querySelector(".tc-chg-sectitle").textContent =
+                SECTION_LABEL[sectionKey] || (sectionKey === "summary" ? "Summary" : sectionKey);
+            const secBody = document.createElement("div");
+            secBody.className = "tc-chg-secbody";
+
+            list.forEach(({ entry, idx }) => {
+                const changed = (entry.bullets || []).filter(b => b.status !== "unchanged");
+                // A chips-only entry (Technical Skills) has no bullets but is
+                // still a real change worth showing.
+                if (!changed.length && !entry._chips) return;
+
+                const ent = document.createElement("div");
+                ent.className = "tc-chg-entry";
+                const entHead = document.createElement("button");
+                entHead.type = "button";
+                entHead.className = "tc-chg-entryhead";
+                entHead.innerHTML = `<span class="tc-chg-entrytitle"></span><span class="tc-chg-chev"></span>`;
+                entHead.querySelector(".tc-chg-entrytitle").textContent =
+                    entry.label || entry.section || "";
+                const entBody = document.createElement("div");
+                entBody.className = "tc-chg-entrybody";
+
+                if (entry._chips) {
+                    const wrap = document.createElement("div");
+                    wrap.className = "tc-chg-item";
+                    const inner = document.createElement("div");
+                    inner.className = "tc-chg-itembody-inner";
+                    inner.style.borderTop = "0";
+                    inner.style.paddingTop = "0";
+
+                    const lbl = document.createElement("div");
+                    lbl.className = "tc-chg-afterlabel";
+                    lbl.textContent = "Added";
+                    inner.appendChild(lbl);
+
+                    const chips = document.createElement("div");
+                    chips.className = "tc-chg-kwbody";
+                    chips.style.padding = "0";
+                    entry._chips.added.forEach(sk => {
+                        const c = document.createElement("span");
+                        c.className = "tc-chg-chip";
+                        c.textContent = sk;
+                        chips.appendChild(c);
+                    });
+                    inner.appendChild(chips);
+
+                    // Says where the skill came from, so the addition reads as
+                    // surfacing the candidate's own work rather than invention.
+                    if (entry._chips.fromBody && entry._chips.fromBody.length) {
+                        const note = document.createElement("div");
+                        note.className = "tc-chg-provenance";
+                        note.textContent = "Found in your Projects / Experience: "
+                            + entry._chips.fromBody.join(", ");
+                        inner.appendChild(note);
+                    }
+
+                    wrap.appendChild(inner);
+                    entBody.appendChild(wrap);
+                }
+
+                (entry.bullets || []).forEach((b, i) => {
+                    if (b.status === "unchanged") return;
+                    const item = document.createElement("div");
+                    item.className = "tc-chg-item";
+                    const itemHead = document.createElement("button");
+                    itemHead.type = "button";
+                    itemHead.className = "tc-chg-itemhead";
+                    itemHead.innerHTML = `<span class="tc-chg-itemnum"></span>` +
+                        `<span class="tc-chg-newtag" hidden>New</span>` +
+                        `<span class="tc-chg-chev"></span>`;
+                    itemHead.querySelector(".tc-chg-itemnum").textContent = "#" + (i + 1);
+                    // Content with no "before" is new rather than reworded, and
+                    // saying so stops the reader hunting for what it replaced.
+                    if (b.status !== "reworded" || !b.before) {
+                        itemHead.querySelector(".tc-chg-newtag").hidden = false;
+                    }
+
+                    const itemBody = document.createElement("div");
+                    itemBody.className = "tc-chg-itembody";
+                    const inner = document.createElement("div");
+                    inner.className = "tc-chg-itembody-inner";
+
+                    const lbl = document.createElement("div");
+                    lbl.className = "tc-chg-afterlabel";
+                    lbl.textContent = "After";
+                    const txt = document.createElement("div");
+                    txt.className = "tc-chg-aftertext";
+                    txt.textContent = b.after || "";
+                    inner.append(lbl, txt);
+
+                    if (b.status === "reworded" && b.before) {
+                        const link = document.createElement("button");
+                        link.type = "button";
+                        link.className = "tc-chg-compare-link";
+                        link.textContent = "Compare Before and After";
+                        const ba = document.createElement("div");
+                        ba.className = "tc-chg-ba";
+                        ba.hidden = true;
+                        const bl = document.createElement("div");
+                        bl.className = "tc-chg-ba-label";
+                        bl.textContent = "Before";
+                        const bt = document.createElement("div");
+                        bt.className = "tc-chg-ba-before";
+                        bt.textContent = b.before;
+                        const al = document.createElement("div");
+                        al.className = "tc-chg-ba-label";
+                        al.textContent = "After";
+                        const at = document.createElement("div");
+                        at.className = "tc-chg-ba-after";
+                        at.textContent = b.after;
+                        ba.append(bl, bt, al, at);
+                        link.addEventListener("click", ev => {
+                            ev.stopPropagation();
+                            const open = !ba.hidden;
+                            ba.hidden = open;
+                            link.textContent = open ? "Compare Before and After" : "Hide comparison";
+                        });
+                        inner.append(link, ba);
+                    }
+
+                    itemBody.appendChild(inner);
+                    collapsible(itemHead, itemBody, true);
+                    item.append(itemHead, itemBody);
+
+                    // Clicking a change scrolls the preview to the bullet it describes.
+                    if (idx >= 0) {
+                        itemHead.addEventListener("click", () => {
+                            const el = markIndex.get(idx + ":" + i);
+                            if (!el) return;
+                            el.scrollIntoView({ behavior: "smooth", block: "center" });
+                            el.classList.add("tcv-mark-focus");
+                            setTimeout(() => el.classList.remove("tcv-mark-focus"), 1600);
+                        });
+                    }
+                    entBody.appendChild(item);
+                });
+
+                collapsible(entHead, entBody, true);
+                ent.append(entHead, entBody);
+                secBody.appendChild(ent);
+            });
+
+            if (!secBody.children.length) return;
+            collapsible(secHead, secBody, sectionNo === 0);
+            sectionNo++;
+            sec.append(secHead, secBody);
+            body.appendChild(sec);
+        });
+
+        if (!scoresEl.children.length && !kwEl.children.length && !body.children.length) {
+            const empty = document.createElement("div");
+            empty.className = "tc-chg-empty";
+            empty.textContent = "No meaningful changes were detected — your resume came through largely as written.";
+            body.appendChild(empty);
+        }
+
+        /* ── Right pane ── */
+        const previewEl = overlay.querySelector(".tc-chg-preview");
+        const pageEl    = overlay.querySelector(".tc-chg-page");
+        // Assigned below, read inside buildMirror's load handler. Declared here
+        // so the handler can never hit it in the temporal dead zone.
+        let previewExtras = { summary: null, skillLines: [] };
+
+        const MARK_CSS =
+            ".tcv-edit-controls,.tcv-add-btn,.tcv-del-btn,[data-tcv-control]{display:none!important}" +
+            "body{cursor:default!important}" +
+            "del.tcv-mark-del{background:#FDE2E2;color:#D93025;text-decoration:line-through;" +
+            "padding:0 2px;border-radius:2px;}" +
+            "ins.tcv-mark-add{background:#B7F5B0;color:inherit;text-decoration:none;" +
+            "padding:0 2px;border-radius:2px;}" +
+            // inline, never inline-block: a block box would break the line flow
+            // and reintroduce the stretched gaps between highlighted words.
+            "del.tcv-mark-del,ins.tcv-mark-add{display:inline;white-space:normal;" +
+            "letter-spacing:normal;word-spacing:normal;}" +
+            ".tcv-mark-focus{outline:2px solid #2563eb;outline-offset:2px;border-radius:3px;}";
+
+        function buildMirror(target, html, marked) {
+            const f = document.createElement("iframe");
+            f.className = "tc-chg-mirror";
+            f.setAttribute("title", "Resume preview");
+            f.srcdoc = html;
+            f.addEventListener("load", () => {
+                try {
+                    const d = f.contentDocument;
+                    if (!d) return;
+                    d.querySelectorAll("[contenteditable]").forEach(el => el.removeAttribute("contenteditable"));
+                    const s = d.createElement("style");
+                    s.textContent = MARK_CSS;
+                    d.head && d.head.appendChild(s);
+                    if (marked) markIndex = markChangesInPreview(d, entries, previewExtras);
+                    // Grow the frame to the document's real height so a
+                    // multi-page resume is scrolled, never cut off. Measured
+                    // after marking, which can reflow the text.
+                    const fit = () => {
+                        const h = Math.max(
+                            d.body ? d.body.scrollHeight : 0,
+                            d.documentElement ? d.documentElement.scrollHeight : 0);
+                        if (h > 0) f.style.height = h + "px";
+                    };
+                    fit();
+                    setTimeout(fit, 120);
+                } catch (e) {}
+            });
+            target.appendChild(f);
+            return f;
+        }
+
+        /* Skills lines change on nearly every run - the optimiser adds JD
+           skills the resume evidences - and they were the one visible part of
+           the document with no highlighting at all. There is no server-side
+           diff for them, so reconstruct one: the skills the resume ENDED with,
+           minus the ones the optimiser reports adding, is what it started with. */
+        function buildSkillLineDiffs() {
+            const rd = (payload && payload.resume_data) || {};
+            const finalSkills = Array.isArray(rd.skills) ? rd.skills.filter(Boolean) : [];
+            if (!finalSkills.length) return [];
+
+            // What the candidate listed before. Prefer the server's parse of
+            // their own skills section; fall back to "final minus added" when
+            // it is unavailable.
+            let beforeList = Array.isArray(changes.original_skills)
+                ? changes.original_skills.filter(Boolean) : [];
+            if (!beforeList.length) {
+                const addedKeys = new Set(skillsAdded.map(skillKey));
+                beforeList = finalSkills.filter(s => !addedKeys.has(skillKey(s)));
+            }
+
+            const beforeKeys = new Set(beforeList.map(skillKey));
+            // Item-by-item, not word-by-word: a word diff over a comma list
+            // splits "Node.js" from its own punctuation and marks commas.
+            // Normalised keys mean PostgreSQL/Postgres is not a change.
+            const added = finalSkills.filter(s => !beforeKeys.has(skillKey(s)));
+            if (!added.length) return [];
+
+            return [{
+                status: "reworded",
+                before: beforeList.join(", "),
+                after:  finalSkills.join(", "),
+                _addedSkills: added,
+            }];
+        }
+
+        /* Skills the optimiser lifted out of the candidate's own Projects and
+           Experience - present in the document already, just never listed. */
+        function skillsFoundInBody(added) {
+            const rd = (payload && payload.resume_data) || {};
+            const body = []
+                .concat((rd.experience || []).flatMap(e => e.bullets || []))
+                .concat((rd.projects   || []).flatMap(e => e.bullets || []))
+                .join(" ")
+                .toLowerCase();
+            const blob = body.replace(/[^a-z0-9+#]/g, "");
+            return (added || []).filter(s => {
+                const k = skillKey(s);
+                return k.length >= 3 && blob.includes(k);
+            });
+        }
+
+        previewExtras = {
+            summary: summaryChange,
+            skillLines: buildSkillLineDiffs(),
+            originalIndex: origIdx,
+        };
+
+        if (currentHtml) buildMirror(pageEl, currentHtml, true);
+
+
+        // Belt and braces for the support widget: the CSS above catches the
+        // vendors we can name, this catches anything else pinned to the bottom
+        // right, which is where every one of them sits.
+        document.body.classList.add("tc-chg-open");
+        const hidden = [];
+        try {
+            const vh = window.innerHeight, vw = window.innerWidth;
+            document.querySelectorAll("body > *").forEach(node => {
+                if (node === overlay || node.nodeType !== 1) return;
+                const cs = getComputedStyle(node);
+                if (cs.position !== "fixed" || cs.display === "none") return;
+                const r = node.getBoundingClientRect();
+                if (!r.width || !r.height) return;
+                if (r.bottom > vh - 160 && r.right > vw - 160 && r.width < 420) {
+                    hidden.push([node, node.style.display]);
+                    node.style.display = "none";
+                }
+            });
+        } catch (e) {}
+
+        function close() {
+            overlay.remove();
+            document.body.classList.remove("tc-chg-open");
+            hidden.forEach(([node, prev]) => { node.style.display = prev; });
+            document.removeEventListener("keydown", onEsc);
+        }
+        function onEsc(e) { if (e.key === "Escape") close(); }
+
+        overlay.querySelector(".tc-chg-close").addEventListener("click", close);
+        overlay.querySelector(".tc-chg-backdrop").addEventListener("click", close);
+        overlay.querySelector(".tc-chg-apply").addEventListener("click", close);
+        document.addEventListener("keydown", onEsc);
+
+        document.body.appendChild(overlay);
+    }
+
     function init() {
         const payload = getPayload();
         if (!payload || !payload.html) {
-            setStatus("No optimised resume found. Please optimise first.");
+            setStatus("No resume found. Please build or optimise one first.");
             return;
         }
 
@@ -1752,6 +3951,7 @@ body {
         currentHtml              = addEditingOverlay(payload.html);
 
         injectHostPageStyles();
+        bindStyleSettings();
 
         frame.srcdoc = currentHtml;
         frame.addEventListener("load", function onLoad() {
@@ -1764,6 +3964,17 @@ body {
             buildAccentPanel();
             applyFreeUserProtection(frame.contentDocument);
             applyQuotaExhaustedLock(frame.contentDocument);
+
+            if (payload.source === "modify-cv") {
+                setStatus("Tip: adjust size, spacing, and colour, then download your resume.");
+            }
+
+            // Ask about missing skills once the resume is on screen, so the
+            // person can see what they are adding it to.
+            if (!hasShownSkillGapPrompt) {
+                hasShownSkillGapPrompt = true;
+                setTimeout(() => showSkillGapPrompt(getPayload() || payload), 600);
+            }
 
             if (AUTO_DOWNLOAD_ON_OPEN && !hasAutoDownloaded) {
                 hasAutoDownloaded = true;
@@ -1788,12 +3999,54 @@ body {
         document.getElementById("spacing-increase-btn")?.addEventListener("click", () => changeLineSpacing(+0.05));
         document.getElementById("spacing-reset-btn")?.addEventListener("click", resetLineSpacing);
 
-        downloadBtn?.addEventListener("click", () => downloadEditedPdf(false));
+        if (downloadBtn && !downloadBtn.dataset.tcvBound) {
+            downloadBtn.dataset.tcvBound = "1";
+            downloadBtn.addEventListener("click", () => downloadEditedPdf(false));
+        }
         saveBtn?.addEventListener("click", () => saveToMyResumes());
+
+        const topStatus = document.getElementById("editor-actionbar-status");
+        const topSave = document.getElementById("top-save-resume-btn");
+        if (topSave && !topSave.dataset.tcvBound) {
+            topSave.dataset.tcvBound = "1";
+            const label = topSave.querySelector("span");
+            topSave.addEventListener("click", async () => {
+                topSave.disabled = true;
+                if (label) label.textContent = "Saving...";
+                if (topStatus) topStatus.textContent = "Saving to My Resumes...";
+                const ok = await saveToMyResumes();
+                topSave.disabled = false;
+                topSave.classList.toggle("saved", ok === true);
+                if (label) label.textContent = ok === true ? "Saved to My Resumes" : "Save to My Resumes";
+                if (topStatus) topStatus.textContent = ok === true ? "Saved. You can find it in My Resumes." : "Could not save. Please try again.";
+            });
+        }
+
+        const topChanges = document.getElementById("top-see-changes-btn");
+        if (topChanges && !topChanges.dataset.tcvBound) {
+            topChanges.dataset.tcvBound = "1";
+            topChanges.addEventListener("click", () => showChangesModal(getPayload() || payload));
+        }
+
+        const topDownload = document.getElementById("top-download-edited-btn");
+        if (topDownload && !topDownload.dataset.tcvBound) {
+            topDownload.dataset.tcvBound = "1";
+            topDownload.addEventListener("click", () => downloadEditedPdf(false));
+        }
 
         document.getElementById("switch-template-btn")?.addEventListener("click", () => {
             buildTemplateSwitcher();
         });
+
+        // Desktop: card under the page title. Phones: copy in the fixed bottom bar.
+        for (const id of ["see-changes-btn", "see-changes-btn-mobile"]) {
+            const btn = document.getElementById(id);
+            if (!btn || btn.dataset.tcvBound) continue;
+            btn.dataset.tcvBound = "1";
+            btn.addEventListener("click", () => {
+                showChangesModal(getPayload() || payload);
+            });
+        }
 
         const pulseTarget = fitGuidance || statusEl;
         pulseTarget?.addEventListener("animationend", e => {
@@ -1802,7 +4055,96 @@ body {
         });
     }
 
-    init();
+    /* Published BEFORE init() on purpose.
+
+       These used to sit at the very bottom of this file. init() runs first,
+       and anything it throws stops the rest of the module from evaluating -
+       so the hooks were never assigned and every "See what changed" click in
+       the new editor fell through to a "not ready" message that reloading
+       could not fix. Both functions are declarations, so they are hoisted and
+       safe to reference here. */
+    window.tcvDownloadEditedPdf = () => {
+        // currentHtml is populated by init(). If that failed, fall back to the
+        // stored payload so Download still produces the right document rather
+        // than an empty file.
+        if (!currentHtml) {
+            const p = getPayload();
+            if (p && p.html) currentHtml = addEditingOverlay(p.html);
+        }
+        return downloadEditedPdf(false);
+    };
+    window.tcvSaveToMyResumes = () => {
+        if (!currentHtml) {
+            const p = getPayload();
+            if (p && p.html) currentHtml = addEditingOverlay(p.html);
+        }
+        return saveToMyResumes();
+    };
+    window.tcvShowChangesModal  = (p) => {
+        try {
+            const data = p || getPayload();
+            if (!data) {
+                console.warn("[TailorCV] No editor payload - cannot open changes.");
+                return false;
+            }
+            const existing = document.getElementById("tc-chg-overlay");
+            if (existing) existing.remove();   // never refuse a second open
+            showChangesModal(data);
+            const ok = !!document.getElementById("tc-chg-overlay");
+            if (!ok) {
+                console.warn("[TailorCV] Changes modal built nothing.",
+                             { hasChanges: !!(data.resume_data || {}).changes });
+            }
+            return ok;
+        } catch (err) {
+            console.error("[TailorCV] Changes modal failed:", err);
+            return false;
+        }
+    };
+
+    /* The two actions the new editor delegates to, bound OUTSIDE init().
+
+       init() wires these near its end, after the preview setup - so anything
+       that throws earlier in it leaves the buttons inert, and the new shell's
+       click-through does nothing. Binding here first means the actions work
+       even when the legacy preview fails to start. Both listeners are
+       idempotent in effect: a second binding from init() just re-runs the
+       same call. */
+    try {
+        for (const id of ["see-changes-btn", "see-changes-btn-mobile"]) {
+            const b = document.getElementById(id);
+            if (b && !b.dataset.tcvBound) {
+                b.dataset.tcvBound = "1";
+                b.addEventListener("click", () => {
+                    try { showChangesModal(getPayload()); }
+                    catch (err) { console.error("[TailorCV] Changes modal failed:", err); }
+                });
+            }
+        }
+        const dlb = document.getElementById("download-edited-btn");
+        if (dlb && !dlb.dataset.tcvBound) {
+            dlb.dataset.tcvBound = "1";
+            dlb.addEventListener("click", () => {
+                if (!currentHtml) {
+                    const p = getPayload();
+                    if (p && p.html) currentHtml = addEditingOverlay(p.html);
+                }
+                downloadEditedPdf(false);
+            });
+        }
+    } catch (err) {
+        console.error("[TailorCV] Early action binding failed:", err);
+    }
+
+    /* Isolated so a failure in the old preview wiring cannot take the rest of
+       the module - and therefore every top-bar action - down with it. The new
+       editor owns the screen now; this init only sets up the legacy preview
+       and the state the hooks above depend on. */
+    try {
+        init();
+    } catch (err) {
+        console.error("[TailorCV] Legacy editor init failed:", err);
+    }
 
     /* ─────────────────────────────────────────────────────────────────────────
        PERSONALITY CARD — Corner popup + full modal
@@ -2320,7 +4662,7 @@ body {
         document.getElementById("pc-dl-btn").onclick = function () {
             const btn = this; btn.textContent = "…"; btn.disabled = true;
             _captureCard(1080, 1920, (err, canvas) => {
-                if (err) alert("PNG generation failed. Use the View link to save the image.");
+                if (err) window.showToast && window.showToast("PNG generation failed. Use the View link to save the image.");
                 else _triggerDownload(canvas, "career-dna-" + card.archetype.toLowerCase().replace(/\s+/g, "-") + ".png");
                 btn.innerHTML = "&#8595; Save PNG"; btn.disabled = false;
             });
@@ -2329,7 +4671,7 @@ body {
         document.getElementById("pc-stories-btn").onclick = function () {
             const btn = this; btn.textContent = "…"; btn.disabled = true;
             _captureCard(1080, 1920, (err, canvas) => {
-                if (err) alert("Stories export failed. Try Save PNG instead.");
+                if (err) window.showToast && window.showToast("Stories export failed. Try Save PNG instead.");
                 else _triggerDownload(canvas, "career-dna-story-" + card.archetype.toLowerCase().replace(/\s+/g, "-") + ".png");
                 btn.innerHTML = "&#10024; Stories"; btn.disabled = false;
             });

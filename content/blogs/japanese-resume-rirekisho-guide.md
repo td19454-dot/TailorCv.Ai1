@@ -10,10 +10,6 @@ keywords: japanese resume, rirekisho, shokumu keirekisho, how to write a japanes
 image: public/blog-images/japanese-resume-rirekisho-guide.png
 ---
 
-Applying for a job in Japan means learning a resume system unlike almost anywhere else. Japanese hiring traditionally uses **two documents**: the *rirekisho* (履歴書), a standardised personal-history form, and the *shokumu-keirekisho* (職務経歴書), a more detailed work-history document. The rirekisho is highly formatted with specific conventions — down to how you write dates and attach your photo — and getting these details right signals respect for Japanese business culture.
-
-This guide explains how to write a Japanese resume in 2026: what the rirekisho and shokumu-keirekisho are, how they differ, the formatting rules that matter, and how foreigners can navigate the system (including when a Western-style resume is acceptable).
-
 ## Key Takeaways
 
 - Japanese hiring typically uses **two documents**: the *rirekisho* (standardised personal-history form) and the *shokumu-keirekisho* (detailed work history).
@@ -21,6 +17,11 @@ This guide explains how to write a Japanese resume in 2026: what the rirekisho a
 - The **shokumu-keirekisho** is where you detail your experience and achievements, more like a Western resume.
 - Foreign-facing and global companies in Japan may accept an **English (or Western-style) resume** — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
 - Neatness, accuracy, and cultural fit matter as much as content.
+
+
+Applying for a job in Japan means learning a resume system unlike almost anywhere else. Japanese hiring traditionally uses **two documents**: the *rirekisho* (履歴書), a standardised personal-history form, and the *shokumu-keirekisho* (職務経歴書), a more detailed work-history document. The rirekisho is highly formatted with specific conventions — down to how you write dates and attach your photo — and getting these details right signals respect for Japanese business culture.
+
+This guide explains how to write a Japanese resume in 2026: what the rirekisho and shokumu-keirekisho are, how they differ, the formatting rules that matter, and how foreigners can navigate the system (including when a Western-style resume is acceptable).
 
 ## The Two Documents: Rirekisho and Shokumu-keirekisho
 
@@ -37,11 +38,18 @@ Because it's standardised, the rirekisho is less about standing out and more abo
 
 ### Shokumu-keirekisho (職務経歴書) — The Work-History Document
 
-The shokumu-keirekisho complements the rirekisho with a fuller account of your career: your roles, responsibilities, achievements, and skills. This is closer to a Western resume and is where you can demonstrate your value with specifics — projects delivered, results achieved, and expertise gained. It's especially important for mid-career and professional roles.
+The [shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide) complements the rirekisho with a fuller account of your career: your roles, responsibilities, achievements, and skills. This is closer to a Western resume and is where you can demonstrate your value with specifics — projects delivered, results achieved, and expertise gained. It's especially important for mid-career and professional roles.
 
 ## Rirekisho Formatting Rules That Matter
 
 Japanese employers notice details. Key conventions:
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 - **The photo:** a formal, recent headshot in business attire against a plain background, attached in the designated spot. Neat and professional is essential.
 - **Dates:** Japan often uses the Japanese era calendar (e.g. Reiwa) alongside or instead of the Western calendar — be consistent throughout the document.
@@ -79,6 +87,8 @@ Present yourself as diligent, respectful, and genuinely interested, and you alig
 - **JLPT (Japanese Language Proficiency Test):** N1–N5 levels; higher levels (N2, N1) strongly boost your prospects at Japanese companies.
 - **TOEIC:** widely used to certify English ability, valued at many Japanese firms.
 - List these clearly — they're concrete, trusted credentials in the Japanese market.
+
+
 
 ## Building Your Application
 

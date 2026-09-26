@@ -10,16 +10,17 @@ slug: resume-review-checklist-before-applying
 keywords: resume review checklist, resume checklist before applying, resume proofreading checklist, ATS resume review
 ---
 
-A resume review checklist helps you catch mistakes before you apply, not after a recruiter has already formed an opinion. Many candidates submit resumes with [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description), weak bullets, broken links, or formatting problems that could have been fixed in five minutes. The gap between a resume that gets opened and one that gets ignored is often this final review, not the writing itself.
-
-Use this checklist alongside the [ATS score checker](https://www.thetailorcv.com/solutions) and the [resume proofreading checklist](https://thetailorcv.com/blog/resume-proofreading-checklist) so you catch both human-readable mistakes and machine-readable ones before you hit submit.
-
 ## Key Takeaways
 
 - Utilize a resume review checklist to catch mistakes before submitting your application, improving your chances of getting noticed by recruiters.
 - Differentiate between a quick 5-minute check for high-volume applications and a deep review for roles you genuinely want, allocating appropriate time for each.
 - Conduct a keyword pass against the job description first during a deep review, ensuring your resume aligns with the specific role.
 - Ensure all contact information is professional and accurate, and that your resume is tailored to reflect the job title and relevant skills for each application.
+
+
+A resume review checklist helps you catch mistakes before you apply, not after a recruiter has already formed an opinion. Many candidates submit resumes with [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description), weak bullets, broken links, or formatting problems that could have been fixed in five minutes. The gap between a resume that gets opened and one that gets ignored is often this final review, not the writing itself.
+
+Use this checklist alongside the [ATS score checker](https://www.thetailorcv.com/solutions) and the [resume proofreading checklist](https://thetailorcv.com/blog/resume-proofreading-checklist) so you catch both human-readable mistakes and machine-readable ones before you hit submit.
 
 ## Quick Check vs. Deep Review: Two Different Workflows
 
@@ -95,6 +96,13 @@ This is the full list. Not every check applies to every resume, but scan through
 
 Checklists are easier to apply when you see them in action. Here is a single bullet taken through a realistic review, step by step.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 > **Before:** "Responsible for managing social media accounts and helping with marketing campaigns."
 
 **Step 1: Check for duty language instead of achievement language.** This bullet only describes a responsibility. It never says what happened as a result of the work.
@@ -128,6 +136,8 @@ The base checklist covers most applications, but certain situations call for ext
 ## Things People Forget to Check
 
 Some mistakes are not about the content of the resume at all. They are small, easy-to-miss details that quietly signal a lack of care, and they are exactly the kind of thing a rushed final pass skips.
+
+
 
 - **Leftover template text.** A previous company name, a placeholder bracket, or a template's sample bullet that never got deleted. This happens more often than people expect when resumes get copied and reused across applications.
 - **File naming.** "Resume_final_v3_ACTUAL_FINAL.pdf" looks unprofessional next to "FirstName_LastName_Resume.pdf." Rename the file every time before you attach it.

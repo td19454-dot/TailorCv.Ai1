@@ -469,7 +469,7 @@
                 <span class="ext-promo-chip">New</span>
                 <span>Tailor your resume on <b>any job posting</b> &mdash; without leaving the page.</span>
             </span>
-            <a href="/extension" class="ext-promo-btn" id="home_promo_bar_extension">
+            <a href="https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb" class="ext-promo-btn" id="home_promo_bar_extension" target="_blank" rel="noopener">
                 <span class="epb-outer">
                     <span class="epb-inner">
                         <span aria-hidden="true">&#129513;</span>
@@ -666,24 +666,36 @@
             padding-top: 0 !important;
         }
         @media (max-width: 768px) {
-            header.navbar + .ext-promo-bar { margin-top: 74px !important; }
+            header.navbar + .ext-promo-bar { margin-top: 38px !important; }
         }
     </style>
 
-
     <style>
-        #primary-nav-index .mobile-feature-link {
-            display: none;
-        }
-
+        /* Mobile navbar: the site-wide base (style3.css `header.navbar{height:100px}`)
+           has higher specificity than style3's own mobile override, so mobile was
+           stuck at the desktop-sized 100px bar — much thicker than intended. Slim
+           it down here, and while at it swap the hamburger (which opens the drawer
+           containing Features) to the left edge with the logo centered, instead of
+           the logo pinned left and the hamburger floating at an awkward 63%. */
         @media (max-width: 768px) {
-            #primary-nav-index .mobile-feature-link {
-                display: block;
-                text-align: center;
+            header.navbar {
+                height: 64px !important;
             }
-
-            #primary-nav-index .features-dropdown {
-                display: none;
+            header.navbar + * {
+                padding-top: 64px !important;
+            }
+            header.navbar .logo {
+                position: absolute !important;
+                left: 50% !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                margin: 0 !important;
+            }
+            header.navbar .mobile-menu-toggle {
+                left: 14px !important;
+                transform: translateY(-50%) !important;
+                width: 46px !important;
+                height: 32px !important;
             }
         }
 
@@ -838,9 +850,9 @@
             display: flex;
             align-items: center;
             gap: 9px;
-            color: #f4f6fb;
-            font-size: 18px;
-            font-weight: 700;
+            color: #f4f5f7;
+            font-size: 15px;
+            font-weight: 400;
             line-height: 1.3;
             text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
         }
@@ -876,10 +888,10 @@
                         Your <span class="gradient-text">dream job</span> starts here
                     </h1>
                     <ul class="hero-features">
-                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Accurate Resume Optimizations</li>
-                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Free Portfolio Website</li>
-                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> ATS Score Check</li>
-                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Mock Interviews &amp; More</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Resume optimized to every job role in 30s</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span>Free Resume to Portfolio Website</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span>Free ATS Score Checker</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span>AI Mock Interviews &amp; More</li>
                     </ul>
                     <div class="hero-cta">
                         <a href="/optimize" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
@@ -1542,6 +1554,230 @@
         })();
     </script>
 
+    <!-- Demo Video Section -->
+    <section class="demo-video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Watch TailorCV <span class="st-hl">in action</span></h2>
+                <p class="section-subtitle">From raw resume to a tailored, ATS-ready PDF — the whole flow, start to
+                    finish.</p>
+            </div>
+
+            <div class="demo-video-card" data-reveal>
+                <!-- Plays with sound. Browsers only grant unmuted autoplay to sites the
+                     visitor already engages with, so the script below tries anyway and
+                     falls back to the play button when it's refused. No loop: the
+                     narration restarting on its own would be jarring. preload="none"
+                     keeps the file off the wire until the section scrolls into view. -->
+                <video id="demoVideo" class="demo-video" playsinline controls preload="none"
+                    poster="/static/videos/demo-poster.jpg">
+                    <source src="/static/videos/demo.mp4" type="video/mp4">
+                    Your browser doesn't support embedded video.
+                    <a href="/static/videos/demo.mp4">Download the demo</a> instead.
+                </video>
+
+                <!-- Fallback only: shown if the browser refuses autoplay (strict data
+                     saver settings, or reduced-motion). -->
+                <button type="button" class="demo-video-play" id="demoVideoPlay" hidden
+                    aria-label="Play the TailorCV demo">
+                    <span class="demo-video-play-ring">
+                        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+                            <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <span class="demo-video-play-label">Play demo</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* ─── Demo Video Section ─── */
+        .demo-video-section {
+            padding: 64px 0 72px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .demo-video-card {
+            position: relative;
+            max-width: 980px;
+            margin: 0 auto;
+            /* Matches the source recording (1920x1032) exactly, so object-fit
+               never crops the edges of the UI in frame. */
+            aspect-ratio: 1920 / 1032;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            box-shadow: 0 24px 70px rgba(3, 8, 25, 0.55), 0 0 0 1px rgba(74, 106, 255, 0.08);
+        }
+
+        /* Accent glow ring, matching the template/pricing cards elsewhere on the page. */
+        .demo-video-card::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 21px;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(91, 140, 255, 0.35), transparent 42%, rgba(138, 140, 255, 0.28));
+            opacity: 0;
+            transition: opacity .35s ease;
+        }
+
+        .demo-video-card:hover::after {
+            opacity: 1;
+        }
+
+        .demo-video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #050b1e;
+        }
+
+        /* Custom play overlay — sits on top until the video starts, so the section
+           still reads as a deliberate frame before a poster image exists. */
+        .demo-video-play {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            width: 100%;
+            border: 0;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: inherit;
+            background: radial-gradient(ellipse at center, rgba(10, 20, 55, 0.35), rgba(5, 11, 30, 0.72));
+            transition: background .3s ease, opacity .3s ease;
+        }
+
+        .demo-video-play:hover {
+            background: radial-gradient(ellipse at center, rgba(10, 20, 55, 0.22), rgba(5, 11, 30, 0.62));
+        }
+
+        .demo-video-card.is-playing .demo-video-play {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .demo-video-play-ring {
+            display: grid;
+            place-items: center;
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 10px 34px rgba(74, 106, 255, 0.5);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .demo-video-play:hover .demo-video-play-ring {
+            transform: scale(1.07);
+            box-shadow: 0 14px 44px rgba(74, 106, 255, 0.62);
+        }
+
+        .demo-video-play-ring svg {
+            margin-left: 3px;
+            /* optically centre the triangle */
+        }
+
+        .demo-video-play-label {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .02em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* The overlay is a fallback now, so [hidden] has to beat the flex above. */
+        .demo-video-play[hidden] {
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .demo-video-card::after,
+            .demo-video-play,
+            .demo-video-play-ring {
+                transition: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .demo-video-section {
+                padding: 44px 0 52px;
+            }
+
+            .demo-video-card {
+                border-radius: 14px;
+            }
+
+            .demo-video-play-ring {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+
+    <script>
+        (function () {
+            var card = document.querySelector('.demo-video-card');
+            var video = document.getElementById('demoVideo');
+            var playBtn = document.getElementById('demoVideoPlay');
+            if (!card || !video || !playBtn) return;
+
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function showFallback() {
+                playBtn.hidden = false;
+                card.classList.remove('is-playing');
+            }
+
+            function attemptPlay() {
+                var p = video.play();
+                if (p && typeof p.catch === 'function') {
+                    p.then(function () {
+                        playBtn.hidden = true;
+                        card.classList.add('is-playing');
+                    }).catch(showFallback);
+                }
+            }
+
+            playBtn.addEventListener('click', function () {
+                playBtn.hidden = true;
+                attemptPlay();
+            });
+
+            // Respect reduced-motion and browsers without IO: no autoplay, just offer
+            // the play button.
+            if (reduce || !('IntersectionObserver' in window)) {
+                showFallback();
+                return;
+            }
+
+            // Only start once the section is actually on screen — that's what keeps the
+            // file off the wire for visitors who never scroll this far. Since the video
+            // carries sound, a refused autoplay just surfaces the play button; and we
+            // always pause on the way out so audio never runs off-screen.
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        attemptPlay();
+                    } else if (!video.paused) {
+                        video.pause();
+                        playBtn.hidden = false;
+                    }
+                });
+            }, { threshold: 0.35 });
+
+            io.observe(card);
+        })();
+    </script>
+
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
@@ -1687,7 +1923,7 @@
                             Add TailorCV to Chrome and tailor your resume, check your ATS score, and auto-fill
                             applications right on the job posting &mdash; without ever switching tabs.
                         </p>
-                        <a href="/signup" data-auth-href="https://chromewebstore.google.com/detail/tailorcv-%E2%80%94-ai-resume-opti/lnkplncemohgcdjlgccgmbcgiokcgmno" class="feature-showcase-btn" id="features_chrome_extension"><span class="fsb-text"><span aria-hidden="true">&#129513;</span>&nbsp; Add to Chrome &mdash; Free</span><span class="fsb-arrow" aria-hidden="true"><svg width="26" height="17" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path class="fsb-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path></g></svg></span></a>
+                        <a href="https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb" target="_blank" rel="noopener" class="feature-showcase-btn" id="features_chrome_extension"><span class="fsb-text"><span aria-hidden="true">&#129513;</span>&nbsp; Add to Chrome &mdash; Free</span><span class="fsb-arrow" aria-hidden="true"><svg width="26" height="17" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path class="fsb-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path></g></svg></span></a>
                     </div>
                     <div class="feature-showcase-visual ext-visual fv-light fv-green" aria-hidden="true">
                         <div class="mock-card ext-mock">
@@ -2398,7 +2634,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Simple, honest <span class="st-hl">pricing</span></h2>
-                <p class="section-subtitle">ATS scoring is free forever. Upgrade for unlimited AI power — cancel any time.</p>
+                <p class="section-subtitle">Start free, no card needed. Upgrade for unlimited AI power — cancel any time.</p>
             </div>
 
             <div class="pricing-preview-grid cols-3">
@@ -2408,10 +2644,10 @@
                     <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">₹</span>0</p>
                     <p class="pricing-plan-note">Always free, no card needed.</p>
                     <ul class="pricing-feature-list">
-                        <li>ATS score — unlimited</li>
+                        <li>3 free ATS scans</li>
                         <li>1 free resume optimization</li>
-                        <li>1 free cover letter + mock interview</li>
-                        <li>All templates &amp; downloads</li>
+                        <li>2 free cover letters + mock interview</li>
+                        <li>1 CV upload + 1 template download</li>
                     </ul>
                     <a href="/login?next=/solutions" class="pricing-plan-btn" id="pricing_free_plan_start">Start free</a>
                 </article>
@@ -2579,7 +2815,7 @@
             aria-label="Close notification">&times;</button>
     </div>
 
-    <a href="/solutions" class="mobile-sticky-cta" id="mobile_sticky_optimize_resume" aria-label="Optimize resume for free">Optimize Resume Free</a>
+    
 
 
 
@@ -2603,7 +2839,7 @@
     <!-- Footer -->
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=17" defer></script>
+    <script src="/static/auth_nav.js?v=20" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script src="/static/main.js" defer></script>
 

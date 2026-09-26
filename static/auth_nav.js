@@ -23,9 +23,18 @@
         // richer popup — skip the generic modal for that endpoint.
         var url = typeof input === "string" ? input : (input && input.url) || "";
         if (url.indexOf("checkout-download") !== -1) return response;
+        // Just came back from a completed checkout: the payment is done and the
+        // webhook may still be in flight, so a 402 here means "not applied YET",
+        // not "you need to pay". Telling someone they are out of free uses
+        // seconds after they paid is the worst moment to be wrong.
+        if (_justUpgraded()) return response;
         response.clone().json().then(function (body) {
-          if (body && body.error === "upgrade_required") {
-            showUpgradeModal(body.feature);
+          // Two shapes reach here: JSONResponse gates put the fields at the top
+          // level, while HTTPException(detail={...}) gates (enforce_quota,
+          // linkedin) nest them under .detail. Accept both.
+          var payload = (body && body.error) ? body : (body && body.detail) || null;
+          if (payload && payload.error === "upgrade_required") {
+            showUpgradeModal(payload.feature);
           }
         }).catch(function () {});
       }
@@ -34,11 +43,76 @@
   };
 })();
 
+/* Did this page load arrive straight from a completed checkout?
+
+   /billing/polar/return waits for the webhook and then sends the buyer here
+   with upgrade=success or upgrade=pending. Either way the money is taken, so
+   for a short grace period after landing we must not accuse them of being out
+   of free uses — the grant is applied by a webhook we do not control the timing
+   of. The window is deliberately short: it suppresses a wrong paywall, it does
+   not hand out access, because every real gate is still enforced server-side. */
+var _UPGRADE_GRACE_MS = 90 * 1000;
+function _justUpgraded() {
+  try {
+    var flag = sessionStorage.getItem("tcvUpgradeAt");
+    if (!flag) {
+      var q = new URLSearchParams(window.location.search).get("upgrade");
+      if (q !== "success" && q !== "pending") return false;
+      sessionStorage.setItem("tcvUpgradeAt", String(Date.now()));
+      return true;
+    }
+    if (Date.now() - parseInt(flag, 10) < _UPGRADE_GRACE_MS) return true;
+    sessionStorage.removeItem("tcvUpgradeAt");
+    return false;
+  } catch (e) {
+    return false;   // storage blocked — behave exactly as before
+  }
+}
+
+/* Turn an error response body into text a person can act on.
+
+   Quota gates raise HTTPException(detail={error, feature}), so `detail` is an
+   object; pages that did `payload.detail || "..."` rendered "[object Object]"
+   and told the user nothing. The 402 modal above is the primary explanation —
+   this is the inline fallback text, and it must never be an object.
+   Global so every page's error handler can share it. */
+var TCV_QUOTA_MESSAGES = {
+  cv_uploads:       "You've used your free CV upload. Upgrade to Pro to import more resumes.",
+  template_changes: "You've used your free template download. Upgrade to Pro for unlimited downloads.",
+  ai_optimizations: "You've used your free AI optimisation. Upgrade to Pro to tailor more resumes.",
+  ats_scans:        "You've used your 3 free ATS scans. Upgrade to Pro for unlimited scans.",
+  cover_letters:    "You've used your free cover letters. Upgrade to Pro to write more.",
+  linkedin_imports: "You've used your free LinkedIn import. Upgrade to Pro to import again.",
+  mock_interviews:  "You've used your free mock interview. Upgrade to Pro for unlimited practice.",
+  interview_questions: "You've used your free interview questions. Upgrade to Pro for more."
+};
+
+function tcvErrorMessage(payload, fallback) {
+  fallback = fallback || "Something went wrong. Please try again.";
+  if (payload == null) return fallback;
+  if (typeof payload === "string") return payload || fallback;
+  var detail = (payload.detail !== undefined && payload.detail !== null) ? payload.detail : payload;
+  if (typeof detail === "string") return detail || fallback;
+  if (detail && typeof detail === "object") {
+    if (detail.error === "upgrade_required") {
+      return TCV_QUOTA_MESSAGES[detail.feature]
+        || "You've used your free allowance for this feature. Upgrade to Pro to continue.";
+    }
+    if (typeof detail.message === "string") return detail.message;
+    if (typeof detail.error === "string") return detail.error;
+  }
+  if (typeof payload.error === "string") return payload.error;
+  return fallback;
+}
+
 // ── Upgrade paywall modal ──────────────────────────────────────────────────
 var _upgradeModalOpen = false;
 
 // Region-aware pricing — mirrors /pricing and home pricing preview.
-var _upgradeRegionCache = null;
+// Pages that can show the paywall modal on load (e.g. the optimized editor)
+// inject window.__TCV_REGION__ server-side so the first render is already
+// correct — no client fetch to race against before the popup is shown.
+var _upgradeRegionCache = (typeof window.__TCV_REGION__ === "string") ? window.__TCV_REGION__ : null;
 var _upgradeRegionFetch = null;
 var _UPGRADE_PRICING = {
   india:  { sym: '₹', pro: '167' },
@@ -75,11 +149,34 @@ var FEATURE_LABELS = {
 function showUpgradeModal(feature) {
   if (_upgradeModalOpen) return;
   _upgradeModalOpen = true;
+  /* Counts here MUST match FREE_LIMITS in main.py — a modal that promises a
+     different number than the server enforces is worse than no modal. Keep the
+     two in step whenever a limit changes. */
   var modalCopy = {
+    ats_scans: {
+      title: "Upgrade to Pro",
+      freeUse: "3 free ATS scans",
+      message: "Upgrade to Pro to scan unlimited resumes against any job description."
+    },
+    cv_uploads: {
+      title: "Upgrade to Pro",
+      freeUse: "1 free CV upload",
+      message: "Upgrade to Pro to import unlimited resumes into the builder."
+    },
+    template_changes: {
+      title: "Upgrade to Pro",
+      freeUse: "1 free template download",
+      message: "Upgrade to Pro for unlimited templates and downloads."
+    },
     cover_letters: {
       title: "Your cover letter is ready!",
-      freeUse: "3 free cover letters",
+      freeUse: "2 free cover letters",
       message: "Upgrade to Pro to create unlimited cover letters."
+    },
+    linkedin_imports: {
+      title: "Upgrade to Pro",
+      freeUse: "1 free LinkedIn import",
+      message: "Upgrade to Pro to import your profile as often as you like."
     },
     interview_questions: {
       title: "Your interview questions are ready!",
@@ -93,7 +190,7 @@ function showUpgradeModal(feature) {
     },
     ai_optimizations: {
       title: "Upgrade to Pro",
-      freeUse: "3 free resume optimizations",
+      freeUse: "1 free resume optimization",
       message: "Upgrade for unlimited resume downloads and AI optimizations."
     }
   };
@@ -146,8 +243,8 @@ function showUpgradeModal(feature) {
       '<p class="tc-up-sub">You\'ve used your <strong>' + copy.freeUse + '</strong>.<br>' +
       copy.message + '</p>' +
       '<div class="tc-up-perks">' +
-        '<div class="tc-up-perk">Unlimited resume downloads</div>' +
-        '<div class="tc-up-perk">Unlimited AI optimizations</div>' +
+        '<div class="tc-up-perk">Unlimited ATS scans &amp; AI optimizations</div>' +
+        '<div class="tc-up-perk">Unlimited resume templates &amp; downloads</div>' +
         '<div class="tc-up-perk">Unlimited cover letters</div>' +
         '<div class="tc-up-perk">Mock interviews &amp; LinkedIn import</div>' +
       '</div>' +
@@ -177,7 +274,16 @@ function showUpgradeModal(feature) {
 // paywall modal instead of silently landing on /pricing.
 (function () {
   var feature = new URLSearchParams(window.location.search).get("upgrade");
-  if (feature) showUpgradeModal(feature);
+  // ?upgrade= carries a FEATURE name here, but the payment providers use the
+  // same parameter to report an OUTCOME — the Polar success URL is
+  // "?upgrade=success". That is truthy, so it opened the paywall for a feature
+  // called "success", which matches nothing and fell through to the generic
+  // "You've used your 1 free use" copy. The result: everyone who completed a
+  // payment was told to upgrade, on the dashboard, seconds after paying.
+  var OUTCOMES = ["success", "pending", "cancel", "cancelled", "canceled", "failed", "true", "1"];
+  if (feature && OUTCOMES.indexOf(String(feature).toLowerCase()) === -1) {
+    showUpgradeModal(feature);
+  }
 })();
 
 (function () {

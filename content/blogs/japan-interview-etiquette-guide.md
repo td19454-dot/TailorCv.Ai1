@@ -10,10 +10,6 @@ keywords: japanese interview etiquette, japan job interview tips, interview in j
 image: public/blog-images/japan-interview-etiquette-guide.png
 ---
 
-In Japan, *how* you interview can matter as much as *what* you say. Japanese business culture places enormous value on etiquette, respect, and attention to detail — and an interview is a stage where all of these are on display. From how you enter the room and bow, to the formal language you use, to when you sit down, every step follows conventions that signal whether you understand and respect Japanese professional culture. For foreigners, mastering this etiquette is a powerful way to stand out and reassure employers you'll fit in.
-
-This guide explains Japanese job interview etiquette in 2026: the manners, language, and preparation that make a strong, respectful impression — plus the common questions you'll face and how to handle them.
-
 ## Key Takeaways
 
 - Japanese interviews follow **detailed etiquette** — bowing, formal language, seating, and punctuality all matter.
@@ -21,6 +17,11 @@ This guide explains Japanese job interview etiquette in 2026: the manners, langu
 - **Humility, respect, and long-term commitment** are the qualities Japanese employers seek.
 - Dress **conservatively and formally** — the "recruit suit" is standard.
 - Preparation, rehearsal, and cultural awareness set foreign candidates apart.
+
+
+In Japan, *how* you interview can matter as much as *what* you say. Japanese business culture places enormous value on etiquette, respect, and attention to detail — and an interview is a stage where all of these are on display. From how you enter the room and bow, to the formal language you use, to when you sit down, every step follows conventions that signal whether you understand and respect Japanese professional culture. For foreigners, mastering this etiquette is a powerful way to stand out and reassure employers you'll fit in.
+
+This guide explains Japanese job interview etiquette in 2026: the manners, language, and preparation that make a strong, respectful impression — plus the common questions you'll face and how to handle them.
 
 ## Before the Interview: Preparation
 
@@ -30,7 +31,7 @@ Japanese employers value candidates who show sincere, specific interest in *thei
 
 ### Prepare Your Documents
 
-Bring neat copies of your documents. For traditional Japanese firms, that means your *rirekisho* and *shokumu-keirekisho* — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide). For global and English-language roles, bring a polished Western-style resume — build one with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it with the [resume optimizer](https://thetailorcv.com/solutions).
+Bring neat copies of your documents. For traditional Japanese firms, that means your *rirekisho* and *[shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide)* — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide). For global and English-language roles, bring a polished Western-style resume — build one with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it with the [resume optimizer](https://thetailorcv.com/solutions).
 
 ### Dress the Part
 
@@ -72,7 +73,15 @@ Even in an English-language interview at a Japanese company, this calm, respectf
 - **"Where do you see yourself in the future?"** Signal commitment and long-term thinking — Japanese firms value stability and dedication.
 - **"How do you work in a team?"** Emphasise cooperation and harmony (*wa*).
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
+
 Prepare clear, sincere answers, and rehearse them so you're calm and fluent. Practise with the [AI mock interview](https://thetailorcv.com/mock-interview) to build confidence.
+
 
 ## Demonstrating the Right Qualities
 
@@ -112,7 +121,7 @@ For the wider picture, see [how to get a job in Japan as a foreigner](https://th
 
 ## Your Interview Is One Stage of a Strong Application
 
-Interview etiquette is decisive in Japan, but it sits within a complete application, and each part should reinforce the others. Match your documents to the employer — a [Japanese rirekisho](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) for traditional firms, or an [ATS-friendly English resume](https://thetailorcv.com/blog/ats-english-resume-japan) for global roles (see also [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume)) — feature the right terms with [the best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan), and add a sincere [Japanese cover letter](https://thetailorcv.com/blog/japanese-cover-letter-guide) where expected. To reach the interview stage, find the right roles through the [best job sites for Japan](https://thetailorcv.com/blog/job-sites-japan), and for the bigger picture see [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner). Preparing your documents and your interview manners together — showing the same diligence and respect throughout — is what wins offers in Japan.
+Interview etiquette is decisive in Japan, but it sits within a complete application, and each part should reinforce the others. Match your documents to the employer — a [Japanese rirekisho](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) for traditional firms, or an [ATS-friendly English resume](https://thetailorcv.com/blog/ats-english-resume-japan) for global roles (see also [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume)) — feature the right terms with the best resume keywords for Japan, and add a sincere [Japanese cover letter](https://thetailorcv.com/blog/japanese-cover-letter-guide) where expected. To reach the interview stage, find the right roles through the best job sites for Japan, and for the bigger picture see how to get a job in Japan as a foreigner. Preparing your documents and your interview manners together — showing the same diligence and respect throughout — is what wins offers in Japan.
 
 ## Frequently Asked Questions
 

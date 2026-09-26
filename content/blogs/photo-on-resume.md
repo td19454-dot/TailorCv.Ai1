@@ -10,14 +10,6 @@ slug: photo-on-resume
 keywords: should you put a photo on resume, resume with photo, resume photo 2026, photo on CV, resume headshot, professional photo on resume, is a photo required on resume
 ---
 
-The photo question divides job seekers more than almost any other resume decision. In some countries, sending a resume without a photo is unusual. In others, including a photo can get your application immediately discarded - or worse, expose you to discrimination claims. The answer depends entirely on where you are applying.
-
-This guide gives you a clear answer by country and situation, plus the risks and rules you need to know.
-
-For overall resume structure, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and test your document with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - Including a photo on your resume is generally not expected in the US, Canada, UK, and Australia, and may lead to bias or discrimination concerns.
@@ -25,6 +17,15 @@ For overall resume structure, read [the anatomy of a perfect resume](https://the
 - Anti-discrimination laws in the US and UK discourage the use of photos to avoid bias in hiring decisions.
 - Applicant Tracking Systems (ATS) cannot read images, so including a photo can disrupt text parsing and negatively affect your resume's visibility.
 - When a photo is required, use a professional headshot with appropriate attire, a neutral background, and ensure it is recent and of high quality.
+
+
+The photo question divides job seekers more than almost any other resume decision. In some countries, sending a resume without a photo is unusual. In others, including a photo can get your application immediately discarded - or worse, expose you to discrimination claims. The answer depends entirely on where you are applying.
+
+This guide gives you a clear answer by country and situation, plus the risks and rules you need to know.
+
+For overall resume structure, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and test your document with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## The Short Answer
 
@@ -67,6 +68,7 @@ Many US and UK recruiters explicitly state they prefer resumes without photos. I
 In countries where photos are expected and culturally normal, including a professional headshot is part of the standard application package. Not including one may actually make your resume look incomplete.
 
 **Countries where photos are commonly expected:**
+
 - Germany: Historically expected, though this is evolving among international companies
 - South Korea: Common, especially for large corporations (chaebols)
 - Japan: Expected for most applications
@@ -81,23 +83,11 @@ If applying to an international company with offices in photo-required countries
 
 If you are in a country or industry where a photo is expected:
 
-**Do:**
-- Use a professional headshot (head and upper shoulders, not a casual selfie)
-- Wear professional clothing appropriate to the industry
-- Use a neutral, clean background
-- Smile naturally - approachable but professional
-- Use a recent photo (within 1-2 years)
-- Use a square or portrait format, small enough not to dominate the page
-
-**Don't:**
-- Use a casual holiday or party photo
-- Include a photo with other people in the background
-- Use a blurry or low-resolution image
-- Use a photo older than 3-4 years
-
-**Technical:**
-- Embed the photo as a small element in the top corner (top right is common in Europe)
-- Keep file size small to avoid bloating the document
+| Option | What to know |
+|---|---|
+| **Do:** | Use a professional headshot (head and upper shoulders, not a casual selfie) · Wear professional clothing appropriate to the industry · Use a neutral, clean background · Smile naturally - approachable but professional · Use a recent photo (within 1-2 years) · Use a square or portrait format, small enough not to dominate the page |
+| **Don't:** | Use a casual holiday or party photo · Include a photo with other people in the background · Use a blurry or low-resolution image · Use a photo older than 3-4 years |
+| **Technical:** | Embed the photo as a small element in the top corner (top right is common in Europe) · Keep file size small to avoid bloating the document |
 
 ---
 
@@ -112,6 +102,8 @@ Make sure your LinkedIn photo is professional and consistent with how you presen
 ## What If an Employer Asks for a Photo?
 
 If a job posting explicitly asks for a photo and you are applying to a country where it is the norm, include it. If you are in a country where photos are not expected and an employer requests one, use your judgment - this may be a small or international company operating under different cultural norms.
+
+
 
 In the US or UK, if a job posting requests a photo, it may signal the company has not updated their practices - or it may be an international employer. You can include one if specifically requested without significant risk.
 

@@ -10,16 +10,6 @@ slug: how-to-ask-for-a-raise
 keywords: how to ask for a raise, asking for a raise 2026, salary increase request, raise negotiation script, how to get a pay raise, request salary increase
 ---
 
-Asking for a raise is one of the most uncomfortable but financially important conversations in your career. A successful raise conversation can increase your income by 5-20% - and since future raises and offers are often percentages of your current salary, the impact compounds for years.
-
-The key is to approach it as a business case, not a personal plea. You are not asking for a favor - you are presenting evidence that your value to the company has grown and that your compensation should reflect it.
-
-This guide covers when to ask, how to build your case, the exact scripts to use, and how to handle every response.
-
-This is related to the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) for new offers and the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion). To understand your [market value](https://thetailorcv.com/blog/how-to-check-ats-score-free), keep your [resume updated](https://www.thetailorcv.com/templates) and run it through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) periodically.
-
----
-
 ## Key Takeaways
 
 - Approach the raise conversation as a business case by presenting evidence of your value rather than making a personal plea.
@@ -27,6 +17,17 @@ This is related to the [salary negotiation guide](https://thetailorcv.com/blog/h
 - Gather evidence of your achievements, market data on salary benchmarks, and demonstrate your growth in value since your last raise.
 - Schedule a meeting with your manager to discuss your contributions and compensation, signaling seriousness and allowing them to prepare.
 - Use a structured script during the conversation, clearly stating your accomplishments and desired salary, then pause to let your manager respond.
+
+
+Asking for a raise is one of the most uncomfortable but financially important conversations in your career. A successful raise conversation can increase your income by 5-20% - and since future raises and offers are often percentages of your current salary, the impact compounds for years.
+
+The key is to approach it as a business case, not a personal plea. You are not asking for a favor - you are presenting evidence that your value to the company has grown and that your compensation should reflect it.
+
+This guide covers when to ask, how to build your case, the exact scripts to use, and how to handle every response.
+
+This is related to the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) for new offers and the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion). To understand your [market value](https://thetailorcv.com/blog/how-to-check-ats-score-free), keep your resume updated and run it through the TailorCV ATS score checker periodically.
+
+---
 
 ## When to Ask for a Raise
 
@@ -52,10 +53,18 @@ This is related to the [salary negotiation guide](https://thetailorcv.com/blog/h
 
 A raise request is a business case. Gather:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 ### Your Accomplishments
 
 Document specific achievements since your last raise:
-- [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) delivered and their business impact
+
+- [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) delivered and their business impact
 - Revenue generated or costs saved
 - Process improvements with [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - Additional responsibilities you have taken on
@@ -66,6 +75,7 @@ Document specific achievements since your last raise:
 ### Market Data
 
 Research what your role pays in your market:
+
 - Levels.fyi (tech), Glassdoor, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Salary, PayScale
 - Filter by your title, location, experience, and company size
 - If you are below market, this is powerful evidence
@@ -73,6 +83,7 @@ Research what your role pays in your market:
 ### Your Value Growth
 
 Show that you are doing more than when you were hired or last raised:
+
 - Expanded scope
 - Higher complexity work
 - Mentoring or leadership responsibilities
@@ -146,6 +157,8 @@ Also ask: "What specifically would I need to demonstrate to justify this raise w
 ## If You Get a No
 
 A no is not the end. Your options:
+
+
 
 1. **Get a roadmap**: Ask exactly what you need to achieve for a yes, and a timeline.
 2. **Negotiate non-salary benefits**: PTO, flexibility, development budget, title.

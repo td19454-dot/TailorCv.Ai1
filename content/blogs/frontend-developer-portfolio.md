@@ -10,10 +10,6 @@ slug: frontend-developer-portfolio
 keywords: frontend developer portfolio, react portfolio, frontend projects, ui developer portfolio, frontend portfolio examples
 ---
 
-For frontend roles, your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) *is* the interview. Before anyone reads a line of your code, they judge the site itself - its speed, polish, responsiveness, and taste. A sloppy [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site from a frontend developer is a contradiction the recruiter will not forgive.
-
-This guide covers what to build, what to show, and the details that separate "junior" from "hire this person." Pair it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas).
-
 ## Key Takeaways
 
 - Your portfolio is a crucial demonstration of your skills as a frontend developer; it should be fast, polished, and responsive.
@@ -21,6 +17,11 @@ This guide covers what to build, what to show, and the details that separate "ju
 - Document your work thoroughly, showcasing responsiveness, accessibility efforts, and clean code on GitHub while explaining challenges faced in each project.
 - Ensure your resume, LinkedIn, and portfolio are consistent in messaging to avoid confusing recruiters.
 - Avoid common mistakes like slow performance, lack of live demos, and dead links to maintain credibility.
+
+
+For frontend roles, your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) *is* the interview. Before anyone reads a line of your code, they judge the site itself - its speed, polish, responsiveness, and taste. A sloppy [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site from a frontend developer is a contradiction the recruiter will not forgive.
+
+This guide covers what to build, what to show, and the details that separate "junior" from "hire this person." Pair it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas).
 
 ## Your Site Is Your First Project
 Treat your own [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) as your flagship demo.
@@ -47,7 +48,7 @@ React, Next.js, TypeScript, Tailwind, testing libraries, and a build/deploy pipe
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, your LinkedIn, and [your portfolio](https://thetailorcv.com/blog/custom-domain-portfolio-guide) should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, your LinkedIn, and [your portfolio](https://thetailorcv.com/blog/custom-domain-portfolio-guide) should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See How to Add Your Portfolio Link to Your Resume for placing the link correctly.
 
 
 ## Common Mistakes
@@ -66,6 +67,13 @@ See the full list in [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/
 ## Step-by-Step Guide to Building Your Frontend Developer Portfolio
 
 Creating a standout frontend developer portfolio involves more than just showcasing your projects. Follow this step-by-step guide to ensure your portfolio is comprehensive and effective.
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
 
 1. **Choose a [Domain Name](https://thetailorcv.com/blog/custom-domain-portfolio-guide)**: Select a domain name that reflects your personal brand. Ideally, it should be your name or something closely related to your work. Check availability and purchase it from a reputable registrar.
 
@@ -106,10 +114,13 @@ When building your frontend developer portfolio, be wary of these common pitfall
 - **Do Add a Call to Action**: Encourage potential employers or clients to contact you with a [clear call to action](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ### Don'ts
-- **Don’t Use Stock Photos**: Authenticity is key. Use your own images or visuals that reflect your personality and work.
-- **Don’t Overcomplicate Navigation**: Ensure that visitors can easily navigate your portfolio without confusion.
-- **Don’t Skip Testing**: Test your portfolio on multiple devices and browsers to catch any issues before launch.
-- **Don’t Ignore Analytics**: Implement analytics tools like Google Analytics to track visitors and understand user behavior.
+
+| Check | What to look for |
+|---|---|
+| **Don’t Use Stock Photos** | Authenticity is key. Use your own images or visuals that reflect your personality and work |
+| **Don’t Overcomplicate Navigation** | Ensure that visitors can easily navigate your portfolio without confusion |
+| **Don’t Skip Testing** | Test your portfolio on multiple devices and browsers to catch any issues before launch |
+| **Don’t Ignore Analytics** | Implement analytics tools like Google Analytics to track visitors and understand user behavior |
 
 ## Mini Checklist for Your Frontend Developer Portfolio
 
@@ -143,7 +154,7 @@ Three to five, each deployed with a live demo. Lead with your most polished, rea
 Mirror your portfolio in the [Frontend Developer Resume guide](https://thetailorcv.com/blog/frontend-developer-resume-2026) and run it through the [ATS checker](https://www.thetailorcv.com/solutions). Consider also reviewing the [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide) for additional insights.
 ## Build Your Portfolio Now
 
-You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a [live, shareable portfolio website](https://www.thetailorcv.com/portfolio) in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
+You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a [live, shareable portfolio website](https://www.thetailorcv.com/portfolio) in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an ATS-friendly template so your portfolio and resume tell one clean, consistent story to every recruiter.
 
 ## Related Guides
 
@@ -162,7 +173,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

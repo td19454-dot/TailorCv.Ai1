@@ -10,8 +10,6 @@ slug: marketing-portfolio-guide
 keywords: marketing portfolio, digital marketing portfolio, campaign case study, marketing results portfolio
 ---
 
-Marketing portfolios live and die on numbers. Anyone can show a pretty ad; you show what it **did** - the traffic, the leads, the revenue. The fastest way to stand out is to be relentlessly outcome-focused. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide).
-
 ## Key Takeaways
 
 - Focus on showcasing measurable results in your marketing portfolio, such as traffic, leads, and revenue, rather than just deliverables.
@@ -20,11 +18,21 @@ Marketing portfolios live and die on numbers. Anyone can show a pretty ad; you s
 - Ensure your resume, LinkedIn, and portfolio tell a consistent story to avoid confusing recruiters.
 - Avoid common mistakes like lacking metrics, having an unfocused layout, and including dead links in your portfolio.
 
+
+Marketing portfolios live and die on numbers. Anyone can show a pretty ad; you show what it **did** - the traffic, the leads, the revenue. The fastest way to stand out is to be relentlessly outcome-focused. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide).
+
 ## Lead With Results
 For each campaign, present: the goal, the audience, the strategy and channels, the creative, and the **results** (traffic, leads, ROAS, revenue). A traffic graph beats a paragraph of adjectives.
 
 ## Build Campaign Case Studies
 Create a simple page or deck per major campaign using the [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) structure:
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
 
 - Objective and target audience
 - Strategy and channel mix
@@ -75,6 +83,8 @@ In marketing, visuals can often communicate complex ideas more effectively than 
 ## Step-by-Step Guide to Creating a Case Study
 
 Creating a case study is a powerful way to demonstrate your skills and the impact of your work. Here’s a step-by-step guide to crafting an effective case study:
+
+
 
 1. **Choose Your Project**: Select a project that had a significant impact on your company or client. Ideally, it should showcase a variety of skills and strategies.
 
@@ -160,7 +170,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

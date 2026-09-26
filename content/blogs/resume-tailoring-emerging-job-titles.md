@@ -10,12 +10,21 @@ slug: resume-tailoring-emerging-job-titles
 keywords: AI engineer resume, prompt engineer resume 2026, emerging job titles resume, new tech jobs resume tailoring, how to apply for AI jobs, GenAI resume tips
 ---
 
+## Key Takeaways
+
+- Emerging job titles like "AI Engineer" and "Prompt Engineer" lack standardized job descriptions and skill sets, making resume tailoring challenging.
+- To tailor your resume effectively, analyze 10-15 job descriptions to identify common skills and responsibilities across postings.
+- Research LinkedIn profiles of individuals in your target roles to understand their backgrounds, emphasized skills, and daily work descriptions.
+- Investigate the specific AI stack used by companies before applying, as context is crucial for emerging roles.
+
+
 Three years ago, "Prompt Engineer" did not exist as a job title.
 
 Two years ago, a handful of companies listed it.
 Today, it is a category on major job boards - and it pays six figures.
 
 The same is true for:
+
 - AI Engineer
 - [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026) Engineer (with LLM focus)
 - GenAI [product manager](https://thetailorcv.com/blog/product-manager-resume-2026)
@@ -34,13 +43,6 @@ And they are almost impossible to tailor a resume for using traditional advice -
 This guide gives you the strategy for breaking into emerging roles before the market catches up to them. For context on what makes these roles challenging to apply for, see also [how to tailor your resume when you're underqualified](https://thetailorcv.com/blog/resume-tailoring-underqualified) - the same principles of reframing transferable experience apply here.
 
 ---
-
-## Key Takeaways
-
-- Emerging job titles like "AI Engineer" and "Prompt Engineer" lack standardized job descriptions and skill sets, making resume tailoring challenging.
-- To tailor your resume effectively, analyze 10-15 job descriptions to identify common skills and responsibilities across postings.
-- Research LinkedIn profiles of individuals in your target roles to understand their backgrounds, emphasized skills, and daily work descriptions.
-- Investigate the specific AI stack used by companies before applying, as context is crucial for emerging roles.
 
 ## The Challenge With Emerging Roles
 
@@ -68,6 +70,7 @@ Go to [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search
 Search for every variant of the role title.
 
 For "Prompt Engineer," search:
+
 - Prompt Engineer
 - Prompt Designer
 - LLM Engineer
@@ -80,6 +83,7 @@ Read every [job description](https://thetailorcv.com/blog/job-description-keywor
 Identify the skills, tools, and responsibilities that appear across most of them - these are the emerging standards.
 
 For AI/prompt engineering roles in 2026, you will likely find:
+
 - Python (almost universal)
 - LLM frameworks: LangChain, LlamaIndex, OpenAI API, Anthropic API
 - Prompt design and evaluation
@@ -98,6 +102,7 @@ Search for people with the emerging title you are targeting.
 Look at their "About" sections, their listed skills, their previous experience.
 
 This tells you:
+
 - What backgrounds people actually come from (often software engineering, data science, NLP research, or surprisingly, writing and content)
 - What skills they emphasize on their profiles
 - How they describe their day-to-day work
@@ -109,6 +114,7 @@ This is your real-world benchmark - people who already have the job you want.
 For emerging roles, company-specific context matters more than standard role expectations.
 
 Before applying:
+
 - Check the company's engineering blog (most tech companies have one)
 - Look at recent tech talks or conference presentations by the team
 - Check [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) for open-source contributions or tools the team has built
@@ -121,6 +127,13 @@ The [hidden keywords guide](https://thetailorcv.com/blog/hidden-keywords-in-job-
 
 ## How to Tailor Your Resume for an Emerging Role
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 ### 1. Build a Bridge From Your Past to Their Future
 
 You probably do not have 3 years of "Prompt Engineering" experience.
@@ -129,7 +142,7 @@ Nobody does.
 Your job is to show how your existing background makes you uniquely suited for this emerging role.
 
 **If you are a [software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang):**
-Show Python proficiency, API integration experience, and any LLM or ML project work - even hobby [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+Show Python proficiency, API integration experience, and any LLM or ML project work - even hobby [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
 **If you are a [data scientist](https://thetailorcv.com/blog/data-scientist-resume-2026):**
 Show NLP work, text processing, and any generative AI experimentation.
@@ -147,9 +160,10 @@ For a deeper framework on this kind of bridging, see the [career change resume g
 
 ### 2. Show Projects More Prominently Than Job History
 
-For emerging roles, personal and side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) often carry more weight than prior job titles.
+For emerging roles, personal and side [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) often carry more weight than prior job titles.
 
 If you have:
+
 - Built a RAG pipeline as a side project
 - Fine-tuned a model on a custom dataset
 - Built a GPT-powered tool that is live and used
@@ -158,7 +172,7 @@ If you have:
 
 - these belong in a prominent section on your resume.
 
-Read [how to list projects in a resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for the best format and placement.
+Read [how to list projects in a resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for the best format and placement.
 
 For emerging roles, what you have built matters more than where you worked. Pair this with a strong [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) where you can showcase live work.
 
@@ -167,6 +181,7 @@ For emerging roles, what you have built matters more than where you worked. Pair
 "AI Engineer" at Anthropic means something very different from "AI Engineer" at a retail analytics company.
 
 After researching the company's tech stack and approach, use their specific language:
+
 - If they use LangChain - mention LangChain explicitly
 - If they use RAG architectures - mention RAG
 - If they focus on evaluation frameworks - mention evals
@@ -202,7 +217,7 @@ Learn [how to write resume bullet points](https://thetailorcv.com/blog/how-to-wr
 ### AI Engineer (2026)
 Core skills: Python, LangChain or LlamaIndex, OpenAI/Anthropic API, vector databases, API integration, [system design](https://thetailorcv.com/blog/system-design-interview-guide)  
 Background: Software engineering + AI curiosity  
-Key resume signals: Live AI [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), API integrations, production deployments
+Key resume signals: Live AI [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), API integrations, production deployments
 
 ### Prompt Engineer
 Core skills: Prompt design, evaluation frameworks, LLM behavior understanding, Python (often), technical writing  
@@ -226,11 +241,15 @@ Key resume signals: ESG reporting, sustainability initiative outcomes, industry 
 
 ---
 
+
 ## The Application Timing Advantage
 
 Emerging roles are easier to get into before they become mainstream.
 
+
+
 When a field is new:
+
 - There are fewer "perfect" candidates
 - Hiring managers are more open to adjacent backgrounds
 - Showing curiosity and initiative carries disproportionate weight
@@ -244,14 +263,14 @@ Consider using [AI to tailor your resume](https://thetailorcv.com/blog/ai-resume
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### Do I need a certification for emerging AI roles?
 
-Formal certifications are less important than demonstrated project work in AI. A completed Coursera ML course plus a live [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) on [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) beats a certification with no applied work.
+Formal certifications are less important than demonstrated project work in AI. A completed Coursera ML course plus a live [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) on [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) beats a certification with no applied work.
 
 ### What if I apply and get rejected for lacking "required" experience?
 
@@ -263,7 +282,7 @@ Absolutely. For emerging roles, personal projects are primary evidence. They sho
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [Projects in Resume for Freshers](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [Projects in Resume for Freshers](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - [Machine Learning Engineer Resume 2026](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
 - [Data Scientist Resume 2026](https://thetailorcv.com/blog/data-scientist-resume-2026)
 - [Resume Tailoring When Underqualified](https://thetailorcv.com/blog/resume-tailoring-underqualified)
@@ -285,7 +304,7 @@ They are the ones who research what each company actually needs, show specific w
 
 Reverse-engineer the role from 15 job descriptions.
 Study people who already have the title.
-Build and show relevant [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+Build and show relevant [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 Match the specific company's language.
 Check your [keyword match](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) before applying.
 

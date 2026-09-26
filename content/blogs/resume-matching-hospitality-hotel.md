@@ -10,6 +10,15 @@ keywords: hospitality resume matching, hotel job description resume, front desk 
 image: public/blog-images/resume-matching-hospitality-hotel.webp
 ---
 
+## Key Takeaways
+
+- A successful hospitality resume must balance measurable service standards and interpersonal qualities to meet hiring manager expectations.
+- Key pillars in hospitality job descriptions include guest-facing skills, operational metrics, and physical/scheduling requirements.
+- Use specific keywords related to property management systems and guest experience metrics to enhance your resume's match score.
+- Tailor your resume to reflect exact language from job postings, especially regarding shift availability and required skills.
+- Avoid generic terms like "customer service" and ensure to mention specific experience with property management systems to prevent being filtered out.
+
+
 Hospitality and hotel job descriptions blend two very different priorities: measurable service standards (guest satisfaction scores, occupancy targets, upsell revenue) and softer interpersonal qualities (hospitality, composure under pressure, cultural awareness). A resume that leans too far into either direction, all metrics or all personality, misses the [match](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) that hiring managers in this industry are looking for.
 
 Larger hotel groups and resort chains increasingly run applications through an [ATS](https://thetailorcv.com/blog/ats-score-guide), especially for high-turnover front-of-house roles, which means your resume needs to satisfy both the software and the human reviewer.
@@ -19,14 +28,6 @@ This guide covers how to match your resume to hospitality and hotel job descript
 Paste any hospitality job posting into the [TailorCV resume optimizer](/solutions) to see your match score instantly.
 
 ---
-
-## Key Takeaways
-
-- A successful hospitality resume must balance measurable service standards and interpersonal qualities to meet hiring manager expectations.
-- Key pillars in hospitality job descriptions include guest-facing skills, operational metrics, and physical/scheduling requirements.
-- Use specific keywords related to property management systems and guest experience metrics to enhance your resume's match score.
-- Tailor your resume to reflect exact language from job postings, especially regarding shift availability and required skills.
-- Avoid generic terms like "customer service" and ensure to mention specific experience with property management systems to prevent being filtered out.
 
 ## What Hospitality Job Descriptions Actually Prioritize
 
@@ -123,6 +124,13 @@ Paste any front desk, guest services, or hotel management job posting into [Tail
 ## Common Mistakes to Avoid When Tailoring Your Resume
 
 1. **Using a Generic Resume**: One of the biggest mistakes is submitting a one-size-fits-all resume. Tailor your resume for each application by focusing on the specific job description.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 2. **Ignoring Keywords**: Failing to incorporate relevant keywords can lead your resume to be overlooked by Applicant Tracking Systems (ATS). Always align your resume with the job description keywords.
 

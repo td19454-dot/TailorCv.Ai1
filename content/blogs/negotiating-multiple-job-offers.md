@@ -10,12 +10,6 @@ keywords: negotiating multiple job offers, competing job offers negotiation, how
 image: public/blog-images/negotiating-multiple-job-offers.webp
 ---
 
-Having multiple job offers at once is the strongest negotiating position you'll ever be in - but it's also easy to mishandle. Done well, mentioning a competing offer is a normal, expected part of the process. Done poorly, it can come across as manipulative or make a company walk away entirely. Here's how to navigate it cleanly.
-
-Before any negotiation conversation, make sure you're comparing offers on equal footing - re-check both roles against your resume and priorities with the [free ATS score checker](https://www.thetailorcv.com/solutions) and your own notes from each interview.
-
----
-
 ## Key Takeaways
 
 - Always obtain written offers before negotiating to ensure clarity and leverage during discussions.
@@ -24,9 +18,23 @@ Before any negotiation conversation, make sure you're comparing offers on equal 
 - Negotiate transparently by honestly communicating about competing offers while expressing genuine interest in the preferred role.
 - Use provided email scripts to request extensions, leverage competing offers, and decline offers gracefully.
 
+
+Having multiple job offers at once is the strongest negotiating position you'll ever be in - but it's also easy to mishandle. Done well, mentioning a competing offer is a normal, expected part of the process. Done poorly, it can come across as manipulative or make a company walk away entirely. Here's how to navigate it cleanly.
+
+Before any negotiation conversation, make sure you're comparing offers on equal footing - re-check both roles against your resume and priorities with the [free ATS score checker](https://www.thetailorcv.com/solutions) and your own notes from each interview.
+
+---
+
 ## Step 1: Get Every Offer in Writing First
 
 Never negotiate against a verbal offer alone. Ask for the full written offer - base salary, bonus structure, equity, benefits, and start date - from every company before starting any negotiation conversation. A written offer provides you with a concrete basis for negotiation and helps ensure that all parties are on the same page.
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
 
 ### Why Written Offers Matter
 
@@ -40,19 +48,23 @@ Build a simple side-by-side: base pay, bonus, equity, benefits, remote flexibili
 
 ### Additional Factors to Consider
 
-- **Company Culture**: Does the company align with your values and work style?
-- **Career Development**: What opportunities for growth and learning are available?
-- **Work-Life Balance**: Are there policies in place that support a healthy work-life balance?
-- **Job Security**: How stable is the company and its industry?
+| Factor | What it covers |
+|---|---|
+| **Company Culture** | Does the company align with your values and work style? |
+| **Career Development** | What opportunities for growth and learning are available? |
+| **Work-Life Balance** | Are there policies in place that support a healthy work-life balance? |
+| **Job Security** | How stable is the company and its industry? |
 
 ## Step 3: Decide Your Real Priority Order
 
 Know privately which offer you'd take if neither improved at all - this keeps you grounded and prevents you from over-leveraging a role you don't actually want more. Be honest with yourself about your priorities, which can include:
 
-- **Salary and Benefits**: What is your minimum acceptable salary?
-- **Role and Responsibilities**: Which position excites you the most?
-- **Location**: Is remote work or a specific location more important to you?
-- **Team and Leadership**: Who will you be working with, and how do you feel about them?
+| Step | What to do |
+|---|---|
+| **Salary and Benefits** | What is your minimum acceptable salary? |
+| **Role and Responsibilities** | Which position excites you the most? |
+| **Location** | Is remote work or a specific location more important to you? |
+| **Team and Leadership** | Who will you be working with, and how do you feel about them? |
 
 ## Step 4: Negotiate Transparently, Not Deceptively
 
@@ -117,6 +129,10 @@ Once you've decided, decline the other offer professionally and promptly - see t
 
 ## Additional Strategies for Successful Negotiation
 
+
+
+
+
 ### Create a Negotiation Checklist
 
 1. **List Your Offers**: Include details like salary, benefits, and work culture.
@@ -159,7 +175,7 @@ The right approach can lead to a fulfilling career and a mutually beneficial rel
 ## Common Mistakes to Avoid During Negotiation
 
 - **Focusing Solely on Salary**  
-  Many candidates make the mistake of concentrating only on the salary figure. Remember to consider other elements like benefits, work-life balance, and career advancement opportunities. For tips on how to express your salary expectations, see [How to Answer Salary Expectations Without Underselling Yourself](https://thetailorcv.com/blog/salary-expectation-answer-guide).
+  Many candidates make the mistake of concentrating only on the salary figure. Remember to consider other elements like benefits, [work-life balance](https://thetailorcv.com/blog/work-life-balance-tips), and career advancement opportunities. For tips on how to express your salary expectations, see [How to Answer Salary Expectations Without Underselling Yourself](https://thetailorcv.com/blog/salary-expectation-answer-guide).
 
 - **Being Unprepared for Counteroffers**  
   When negotiating, expect the employer to counter your request. If you haven’t prepared for this, you may accept an offer that falls short of your needs. Always have a minimum acceptable offer in mind.

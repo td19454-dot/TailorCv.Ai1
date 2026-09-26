@@ -10,6 +10,14 @@ keywords: security clearance resume, government contractor resume keywords, clea
 image: public/blog-images/matching-resume-security-clearance-jobs.webp
 ---
 
+## Key Takeaways
+
+- Security clearance status is a critical, non-negotiable filter for government contractor job applications, often determining eligibility before resume review.
+- Clearly state your clearance status at the top of your resume to ensure visibility for recruiters and screening software.
+- Use specific keywords related to clearance levels, compliance frameworks, and relevant systems to align your resume with job descriptions.
+- Tailor your experience to reflect specific compliance frameworks and contract types mentioned in the job posting to enhance your match.
+
+
 Security-clearance and government-contractor [job descriptions](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) operate under rules most other industries do not deal with. Clearance level is frequently a hard, non-negotiable filter, applied before a resume is even fully read, and the language used to describe programs, systems, and compliance frameworks is dense with acronyms that either match precisely or do not match at all.
 
 This is different from the [federal government resume guide](https://thetailorcv.com/blog/federal-government-resume-guide), which covers USAJobs-style federal hiring formats. This guide focuses specifically on matching your resume to private-sector defense contractor and cleared-role job descriptions, where clearance status is the dominant filtering criterion.
@@ -17,13 +25,6 @@ This is different from the [federal government resume guide](https://thetailorcv
 Paste any cleared or contractor job posting into the [TailorCV resume optimizer](/solutions) to see your match score and identify keyword gaps instantly.
 
 ---
-
-## Key Takeaways
-
-- Security clearance status is a critical, non-negotiable filter for government contractor job applications, often determining eligibility before resume review.
-- Clearly state your clearance status at the top of your resume to ensure visibility for recruiters and screening software.
-- Use specific keywords related to clearance levels, compliance frameworks, and relevant systems to align your resume with job descriptions.
-- Tailor your experience to reflect specific compliance frameworks and contract types mentioned in the job posting to enhance your match.
 
 ## Why Clearance Status Dominates the Matching Process
 
@@ -119,6 +120,13 @@ Paste any cleared or government-contractor job posting into [TailorCV's resume o
 ## Step-by-Step Guide to Tailoring Your Resume for Security-Cleared Positions
 
 1. **Analyze the Job Description**: Start by thoroughly reading the job description. Highlight key phrases and requirements, especially those related to security clearance and specific skills. Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to ensure you don't miss any critical elements.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 2. **Create a Keyword Map**: Once you've identified the keywords, create a keyword map. This visual representation will help you see how your experience matches the job requirements. Use our [Resume Keyword Map Template - Match Your Resume to Any Job Description](https://thetailorcv.com/blog/resume-keyword-map-template) to efficiently organize your thoughts.
 

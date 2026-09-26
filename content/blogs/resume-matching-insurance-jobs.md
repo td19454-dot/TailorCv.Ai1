@@ -10,6 +10,15 @@ keywords: insurance resume matching, underwriter resume keywords, claims adjuste
 image: public/blog-images/resume-matching-insurance-jobs.webp
 ---
 
+## Key Takeaways
+
+- Insurance job descriptions require precise matching of licenses, lines of business, and systems to avoid being filtered out by ATS software.
+- Key resume elements include specific licensing requirements, domain knowledge for different lines of business, and familiarity with designated software tools.
+- For underwriting roles, highlight relevant licenses, exact lines of business, and quantify achievements like book size or loss ratios.
+- Claims adjuster resumes should specify claims management systems used, track metrics like claim volume, and mirror licensing requirements.
+- Sales resumes must emphasize production numbers, match product lines, and clearly state licensing status to align with job postings.
+
+
 Insurance job descriptions are dense with regulatory and licensing requirements that most other industries do not have to deal with. A [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) for an underwriter, a claims adjuster, and an insurance sales agent will each specify different licenses, software systems, and lines of business, and a resume that does not reflect these specifics precisely can be filtered out before a human ever reads it.
 
 Insurance carriers and large agencies commonly use [ATS](https://thetailorcv.com/blog/ats-score-guide) software to manage high applicant volumes, particularly for claims and underwriting roles.
@@ -19,14 +28,6 @@ This guide covers how to [match your resume to an insurance job description](htt
 Paste any insurance job posting into the [TailorCV resume optimizer](/solutions) to see your match score and close keyword gaps instantly.
 
 ---
-
-## Key Takeaways
-
-- Insurance job descriptions require precise matching of licenses, lines of business, and systems to avoid being filtered out by ATS software.
-- Key resume elements include specific licensing requirements, domain knowledge for different lines of business, and familiarity with designated software tools.
-- For underwriting roles, highlight relevant licenses, exact lines of business, and quantify achievements like book size or loss ratios.
-- Claims adjuster resumes should specify claims management systems used, track metrics like claim volume, and mirror licensing requirements.
-- Sales resumes must emphasize production numbers, match product lines, and clearly state licensing status to align with job postings.
 
 ## Why Insurance Resumes Need Precise Matching
 
@@ -114,6 +115,13 @@ Paste any underwriting, claims, or insurance sales job posting into [TailorCV's 
 ## Step-by-Step Guide: Tailoring Your Resume for an Insurance Job
 
 To successfully tailor your resume for an insurance job, follow this structured approach:
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 1. **Analyze the Job Description**: Start by thoroughly reading the job description. Highlight key responsibilities and required skills. For a comprehensive breakdown, refer to our [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist).
 

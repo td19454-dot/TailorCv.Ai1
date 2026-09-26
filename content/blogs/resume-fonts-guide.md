@@ -10,18 +10,19 @@ slug: resume-fonts-guide
 keywords: best resume fonts, resume font size, professional fonts for resume, resume fonts 2026, what font to use for resume, ATS-safe resume fonts, worst fonts for resume
 ---
 
-Your choice of font affects how professional your resume looks, how easy it is to read, and - critically - whether an Applicant Tracking System ([ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)) can parse it correctly. Most candidates spend hours on resume content and seconds on typography. This guide fixes that.
-
-After choosing your font, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that already uses optimal typography, and run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm it parses cleanly.
-
----
-
 ## Key Takeaways
 
 - Font choice significantly impacts readability, professionalism, and ATS compatibility of your resume.
 - Recommended fonts for 2026 include Calibri, Garamond, Georgia, Arial, Cambria, Lato, and Helvetica for their clarity and ATS support.
 - Avoid using fonts like Comic Sans, Papyrus, and script styles, as they hinder readability and ATS parsing.
 - Times New Roman and Verdana are acceptable but not ideal; consider more modern alternatives for a contemporary feel.
+
+
+Your choice of font affects how professional your resume looks, how easy it is to read, and - critically - whether an Applicant Tracking System ([ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)) can parse it correctly. Most candidates spend hours on resume content and seconds on typography. This guide fixes that.
+
+After choosing your font, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that already uses optimal typography, and run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm it parses cleanly.
+
+---
 
 ## Why Font Choice Matters
 
@@ -40,57 +41,28 @@ Some decorative, script, or unusual fonts do not render correctly in [ATS](https
 
 ### Top Tier - Highly Recommended
 
-**Calibri**
-- Clean, modern, professional
-- Microsoft's default since 2007 - universally supported
-- Excellent [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
-- Slightly informal but works for almost all industries
-- Body text: 10-11pt
-
-**Garamond**
-- Elegant, classic, excellent readability
-- Great for business, finance, law, consulting
-- Slightly smaller at same point size - use 11-12pt for body
-- Strong [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
-
-**Georgia**
-- Serif font with excellent digital readability
-- Works well on screen and in print
-- Good for finance, consulting, legal
-- Body text: 10-11pt
-
-**Arial**
-- Clean, sans-serif, highly legible
-- Universally supported, excellent [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
-- Works for tech, healthcare, corporate roles
-- Body text: 10-11pt
-
-**Cambria**
-- Traditional serif, professional
-- Designed for on-screen readability
-- Works well for conservative industries (finance, law, government)
-- Body text: 10-11pt
-
-**Lato**
-- Modern, clean, popular in tech and startup environments
-- Google Font - not universally pre-installed but widely supported
-- Body text: 10-11pt
-
-**Helvetica**
-- Design-world standard, highly professional
-- Commonly used in design, marketing, architecture
-- May not be available on all systems - use Arial as a fallback
+| Option | What to know |
+|---|---|
+| **Calibri** | Clean, modern, professional · Microsoft's default since 2007 - universally supported · Excellent [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility · Slightly informal but works for almost all industries · Body text: 10-11pt |
+| **Garamond** | Elegant, classic, excellent readability · Great for business, finance, law, consulting · Slightly smaller at same point size - use 11-12pt for body · Strong [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility |
+| **Georgia** | Serif font with excellent digital readability · Works well on screen and in print · Good for finance, consulting, legal · Body text: 10-11pt |
+| **Arial** | Clean, sans-serif, highly legible · Universally supported, excellent [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility · Works for tech, healthcare, corporate roles · Body text: 10-11pt |
+| **Cambria** | Traditional serif, professional · Designed for on-screen readability · Works well for conservative industries (finance, law, government) · Body text: 10-11pt |
+| **Lato** | Modern, clean, popular in tech and startup environments · Google Font - not universally pre-installed but widely supported · Body text: 10-11pt |
+| **Helvetica** | Design-world standard, highly professional · Commonly used in design, marketing, architecture · May not be available on all systems - use Arial as a fallback |
 
 ---
 
 ### Acceptable But Not Ideal
 
 **Times New Roman**
+
 - Still readable and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-safe
 - Often associated with academic papers rather than modern resumes
 - Use Garamond or Georgia instead for a more contemporary feel
 
 **Verdana**
+
 - Very readable but takes more horizontal space than other fonts
 - Works but may make your resume feel wide
 
@@ -98,21 +70,13 @@ Some decorative, script, or unusual fonts do not render correctly in [ATS](https
 
 ## Worst Fonts for a Resume
 
-**Comic Sans**
-- Never use on a resume. Full stop.
-
-**Papyrus, Curlz, Bradley Hand**
-- Decorative fonts that are nearly impossible to read professionally and fail [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
-
-**Impact**
-- Designed for headlines and memes, not professional documents
-
-**Script and cursive fonts**
-- Beautiful visually, but [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot reliably parse many script fonts
-- Recruiters cannot read cursive quickly
-
-**Very thin or very heavy weight fonts**
-- Extreme font weights reduce readability at small sizes
+| Option | What to know |
+|---|---|
+| **Comic Sans** | Never use on a resume. Full stop. |
+| **Papyrus, Curlz, Bradley Hand** | Decorative fonts that are nearly impossible to read professionally and fail [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) |
+| **Impact** | Designed for headlines and memes, not professional documents |
+| **Script and cursive fonts** | Beautiful visually, but [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot reliably parse many script fonts · Recruiters cannot read cursive quickly |
+| **Very thin or very heavy weight fonts** | Extreme font weights reduce readability at small sizes |
 
 ---
 
@@ -137,6 +101,7 @@ Do not go below 10pt to squeeze content onto one page. It signals poor editing j
 Multiple fonts on a single resume look cluttered and amateur. Instead, use font weight (bold), size, and italics to create hierarchy within one font.
 
 **Example hierarchy using Calibri:**
+
 - Name: Calibri Bold 20pt
 - Section headers: Calibri Bold 12pt
 - Job title: Calibri Bold 11pt
@@ -166,6 +131,8 @@ The most important thing is consistency and readability, not the serif vs sans-s
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems convert your PDF to text. Some fonts introduce special characters or unusual encodings that cause words to be misread. Stick to widely used, standard fonts to avoid this.
 
+
+
 **[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-safe fonts:** Calibri, Arial, Garamond, Georgia, Cambria, Helvetica, Times New Roman, Verdana
 
 **Risky for [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it):** Script fonts, decorative fonts, any non-standard font you downloaded from a font website
@@ -183,6 +150,13 @@ After formatting your resume, run it through the [TailorCV ATS checker](https://
 - Stick to standard fonts: Calibri, Arial, Garamond, Georgia, Cambria
 - Avoid decorative, script, and novelty fonts entirely
 - Test your PDF export - some fonts embed oddly
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 ---
 

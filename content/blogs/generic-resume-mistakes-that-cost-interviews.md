@@ -10,12 +10,6 @@ slug: generic-resume-mistakes-that-cost-interviews
 keywords: generic resume mistakes, resume mistakes costing interviews, resume errors, resume mistakes 2026, resume mistakes job search
 ---
 
-Generic resume mistakes are not obvious - that is what makes them dangerous. They look like "fine" resumes until you realize they have been filtered out by every [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and glanced at for 6 seconds by every recruiter without triggering a callback. Here are the 10 mistakes that quietly cost you interviews, and the fix for each.
-
-Run your resume through the [free ATS checker](/solutions) to see your specific gaps before you apply.
-
----
-
 ## Key Takeaways
 
 - Replace outdated objective statements with a concise professional summary that highlights relevant skills and outcomes.
@@ -23,6 +17,13 @@ Run your resume through the [free ATS checker](/solutions) to see your specific 
 - Focus on achievements rather than responsibilities; quantify results to differentiate your impact.
 - Include specific hard skills and tools in your skills section instead of generic soft skills that do not add value.
 - Mirror the language of the job description in your resume to ensure ATS scoring and clear connections for recruiters.
+
+
+Generic resume mistakes are not obvious - that is what makes them dangerous. They look like "fine" resumes until you realize they have been filtered out by every [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and glanced at for 6 seconds by every recruiter without triggering a callback. Here are the 10 mistakes that quietly cost you interviews, and the fix for each.
+
+Run your resume through the [free ATS checker](/solutions) to see your specific gaps before you apply.
+
+---
 
 ## Mistake 1 - Objective Statements
 
@@ -90,11 +91,13 @@ Two-column layouts, text boxes, tables for section content, icons, graphics, and
 
 ---
 
+
 ## Mistake 7 - No Numbers Anywhere in the Resume
 
 Resumes without quantified achievements score lower in [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and perform poorly with recruiters. Numbers provide evidence, scale, and context - all three of which a generic resume lacks.
 
 If you don't have clear metrics, estimate:
+
 - Team size ("led a 5-person team")
 - Time saved ("reduced manual process from 3 hours to 20 minutes")
 - Volume ("managed $200K quarterly budget")
@@ -132,6 +135,13 @@ See [how to check your ATS score for free](https://thetailorcv.com/blog/how-to-c
 
 ## Frequently Asked Questions
 
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ### How do I know if my resume is generic?
 
 If it hasn't been updated for the specific job you're applying to - new headline, new summary, keyword-matched skills - it is generic by definition. Run it through [TailorCV](/solutions) to see the score.
@@ -155,7 +165,7 @@ The [5-minute checklist](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How Much Should You Change Your Resume for Every Job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
-- [Resume Mistakes Freshers Make](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
+- [Resume Mistakes Freshers Make](https://thetailorcv.com/blog/resume-mistakes-freshers)
 - [ATS Mistakes Experienced Professionals Make](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 
 ---

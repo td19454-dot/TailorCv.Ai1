@@ -10,14 +10,6 @@ slug: can-recruiters-tell-if-resume-was-written-by-ai
 keywords: can recruiters tell if resume is ai written, ai detection resume, does ats detect ai resume, chatgpt resume detection
 ---
 
-## Can Recruiters Tell If Your Resume Was Written by AI? What ATS and Humans Actually Check
-
-ATS systems don't run "AI detection" on your resume the way plagiarism checkers scan essays - they're built to parse and score content, not fingerprint its origin. Recruiters, however, absolutely can tell when a resume was generated and never edited: the tell isn't that it's AI-written, it's that it's generic.
-
-The safest path isn't avoiding AI tools - it's using ones built specifically for resumes, which keep your real experience central instead of generating filler. Test yours with the [free ATS score checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - ATS systems focus on parsing resumes for structure and keyword relevance, not detecting AI-generated content.
@@ -25,6 +17,14 @@ The safest path isn't avoiding AI tools - it's using ones built specifically for
 - To avoid sounding generic, always edit AI-generated content to reflect your unique voice and experiences.
 - Use specific metrics and context in your resume to create a compelling narrative that stands out to recruiters.
 - Practice discussing every bullet point on your resume to ensure you can confidently elaborate during interviews.
+
+## Can Recruiters Tell If Your Resume Was Written by AI? What ATS and Humans Actually Check
+
+ATS systems don't run "AI detection" on your resume the way plagiarism checkers scan essays - they're built to parse and score content, not fingerprint its origin. Recruiters, however, absolutely can tell when a resume was generated and never edited: the tell isn't that it's AI-written, it's that it's generic.
+
+The safest path isn't avoiding AI tools - it's using ones built specifically for resumes, which keep your real experience central instead of generating filler. Test yours with the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## What ATS Systems Actually Check
 
@@ -88,16 +88,25 @@ By providing specific details and outcomes, you create a more compelling narrati
 
 Even with AI's assistance, it's easy to make mistakes that can hurt your chances. Here are some common pitfalls to avoid:
 
-- **Over-reliance on AI**: Trusting AI to create your resume without any personal input can result in a lack of authenticity.
-- **Ignoring Formatting Guidelines**: Ensure your resume follows ATS-friendly formatting rules. This includes using standard fonts, avoiding graphics, and keeping it concise.
-- **Failing to Update Regularly**: As you gain new experiences, ensure your resume reflects your most current skills and achievements.
-- **Neglecting Soft Skills**: While hard skills are crucial, soft skills are equally important. See how [matching your resume to the soft skills buried in a job description](https://thetailorcv.com/blog/matching-resume-to-soft-skills-in-job-description) can enhance your application.
+| Mistake | Why it costs you |
+|---|---|
+| **Over-reliance on AI** | Trusting AI to create your resume without any personal input can result in a lack of authenticity |
+| **Ignoring Formatting Guidelines** | Ensure your resume follows ATS-friendly formatting rules. This includes using standard fonts, avoiding graphics, and keeping it concise |
+| **Failing to Update Regularly** | As you gain new experiences, ensure your resume reflects your most current skills and achievements |
+| **Neglecting Soft Skills** | While hard skills are crucial, soft skills are equally important. See how [matching your resume to the soft skills buried in a job description](https://thetailorcv.com/blog/matching-resume-to-soft-skills-in-job-description) can enhance your application |
 
 ---
 
 ## Is Using AI to Write Your Resume "Cheating"?
 
 No - using AI to speed up writing is no different than using a template or asking a friend to review your resume. What matters is that the content stays accurate and that you can speak to every claim confidently in an interview. See [how to write a resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai) for a responsible approach.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 ### Embracing AI as a Tool, Not a Crutch
 AI should be viewed as a valuable tool that can enhance your resume writing process. Here’s how to maximize its benefits:
@@ -111,6 +120,8 @@ By incorporating AI thoughtfully into your resume writing process, you can creat
 ## How to Identify AI-Generated Content in Your Resume
 
 Before you submit your resume, it's essential to assess whether any sections may appear AI-generated. Here’s a step-by-step guide to help you identify potential red flags:
+
+
 
 1. **Analyze Sentence Structure**: AI often generates sentences that are overly complex or too uniform in structure. Read your resume aloud. If the sentences sound robotic or lack natural variation, consider rephrasing them.
 
