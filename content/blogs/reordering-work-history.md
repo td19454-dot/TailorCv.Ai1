@@ -157,6 +157,20 @@ The reader sees the full timeline and immediately understands the story. More on
 
 The internship and project lead, the retail job still shows he has been working, and every date is in order within its section. For more on project placement, see [fresher resume projects that get interviews](/blog/fresher-resume-projects-that-get-interviews).
 
+## Worked Example 4: A Teacher Moving Into Corporate Training
+
+**Situation:** Nandita taught secondary school for seven years, then spent two years as an academic coordinator. She is applying for learning and development (L&D) roles in companies. Her most relevant work - designing a teacher-training programme for 40 staff - sits inside the coordinator role, but her resume opens with a long list of classroom duties.
+
+**Why reordering jobs is not the answer:** her two roles are already in the right order, and both are relevant in different ways. What needs to change is emphasis inside each role and a summary that tells the reader where to look.
+
+> **Before (coordinator role, first bullet):** "Coordinated academic schedules and timetables for Classes 6-10."
+>
+> **After (first bullet):** "Designed and ran a 12-session training programme for 40 teachers on assessment design; post-programme observation scores rose from 3.1 to 3.9 out of 5."
+
+> **Summary:** "Educator with nine years in teaching and staff development - most recently designed and delivered a training programme for 40 teachers - moving into corporate learning and development."
+
+Her teaching role is condensed to three bullets that show facilitation and measurement: large-group delivery, needs assessment through test results, and parent workshops. No section split was needed; the right bullet in the right place did the job. For the vocabulary shift into a corporate setting, see [tailoring across industries](/blog/tailoring-across-industries).
+
 ## Edge Cases: Overlaps, Promotions and Side Work
 
 The four layouts cover most situations, but three patterns trip people up.

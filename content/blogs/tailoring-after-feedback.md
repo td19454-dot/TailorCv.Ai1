@@ -132,6 +132,20 @@ When a recruiter asks for a resume update, speed matters - they may be submittin
 
 A resume edit would not have fixed this. Recognising that quickly saved him from misrepresenting himself. [Tailoring for a stretch role](/blog/tailoring-for-a-stretch-role) covers applying to roles where you are partway there.
 
+## Worked Example 4: A Fresher Told "Not Enough Practical Experience"
+
+**Situation:** Aditi, a final-year student, was rejected after a first interview for a junior web developer role. The recruiter's feedback: "Good fundamentals, but not enough practical experience."
+
+**Decoding:** her resume lists three course projects described in one line each, and a skills section with eight technologies. The interviewer probably could not tell how much she had actually built. That points to Type 1 and Type 2 - she has some practical work but shows it poorly.
+
+> **Before:** "E-commerce website - HTML, CSS, JavaScript, React."
+>
+> **After:** "Built a React storefront for a college society's merchandise sale - product listing, cart and UPI payment link; handled about 120 orders in two weeks."
+
+She also adds a GitHub link with the repository and a short README explaining her decisions, and cuts her skills list to the five technologies she used in real projects.
+
+For the next application she also closes part of the Type 3 gap: a two-week freelance project building a small site for a local tutor. By her next interview, "practical experience" has concrete answers. See [fresher resume projects that get interviews](/blog/fresher-resume-projects-that-get-interviews).
+
 ## Base Resume or Just This Version?
 
 Not all feedback should change your base resume.
@@ -172,6 +186,41 @@ If you are speaking to a recruiter by phone, specific questions get specific ans
 2. "Was there anything on my resume that raised a question?"
 3. "Would you consider me for a different role on the team?"
 
+## At Each Career Stage
+
+| Stage | Most common feedback | Usual type |
+|---|---|---|
+| Fresher | "Not enough practical experience" | Often Type 2 - work exists but is described vaguely |
+| Early career | "Wanted someone more hands-on with X" | Type 1 or 3 |
+| Mid-career | "Not senior enough" / "not enough leadership" | Often Type 2 - scope is hidden |
+| Senior | "Not the right fit" / "went with someone with more X industry" | Often not a resume problem at all |
+
+### Freshers: feedback usually means "show it better"
+
+Early-career feedback often reflects thin descriptions, not thin experience. Adding scale, decisions and results to existing projects fixes much of it.
+
+### Senior candidates: feedback is often about fit
+
+At senior levels, rejections frequently come down to domain, timing or team fit. Resist rewriting a strong resume because of one vague senior rejection.
+
+## Edge Cases and Exceptions
+
+### The feedback contradicts itself
+
+"Too senior for this role, but we'd like to see more leadership" happens. Usually one part is the real reason and the other is softening. Ask a follow-up question if you can.
+
+### You got feedback after a final round
+
+Late-stage feedback is usually about interview performance or fit, not the resume. Treat resume changes cautiously and focus on interview preparation.
+
+### The feedback came from an automated system
+
+Automated rejection messages are not feedback. Do not change your resume based on them.
+
+### The feedback is clearly wrong
+
+Sometimes a reader simply missed something that is on the page. That is still useful: it means the evidence is not visible enough. Move it up.
+
 ## Common Mistakes
 
 ### Rewriting everything after one comment
@@ -194,6 +243,19 @@ Replying "but I do have leadership experience - it's in bullet four" rarely chan
 
 One manager's view is one data point. Look for patterns across applications before overhauling your base. A simple log - company, role, feedback in their words, your decoded type - makes patterns visible after five or six applications instead of leaving you to remember them.
 
+## How This Comes Up in Interviews
+
+If you reapply or interview elsewhere after feedback, expect the same weakness to be probed - often more carefully.
+
+| Feedback you got | What to prepare |
+|---|---|
+| "Not enough leadership" | Two stories where you led people or a project, with outcomes |
+| "Not hands-on enough with X" | A recent, specific example of using X, or an honest account of how you are learning it |
+| "Not senior enough" | Examples with scope: budget, team size, decisions you owned |
+| "Communication could be clearer" | Practise concise answers with a clear structure |
+
+If the same company interviews you again, it is fine to acknowledge the feedback: "Last time the team mentioned wanting more leadership evidence - since then I've led the migration project..." The [mock interview tool](/mock-interview) can help you rehearse the weak area specifically.
+
 ## Reapplying After Feedback
 
 If the feedback came from a company you want to reapply to, the rewritten resume should visibly answer it - that is exactly what the reviewer will look for next time. Timing, what to change and how to frame the reapplication are covered in [reapplying to the same company](/blog/reapplying-to-same-company).
@@ -214,6 +276,16 @@ Feedback-driven tailoring follows the same logic as normal tailoring, with the f
 6. Decide: base resume or single version?
 
 If you want to check whether the updated version now reads as strong on the feedback area, run it against the posting with the free [ATS scan](/solutions) - about a minute. The [AI resume optimizer](/optimize) can reframe existing bullets toward the gap the feedback named, using only evidence already in your resume. And if the feedback came after an interview, the [mock interview tool](/mock-interview) helps you rehearse the part they said was weak.
+
+## Quick Checklist
+
+1. Have you written down the feedback word for word?
+2. Have you decoded it into what the reader probably did not see?
+3. Is each point sorted into Type 1, 2 or 3?
+4. For Types 1 and 2, is the evidence now near the top?
+5. For Type 3, do you have a plan outside the resume?
+6. Is the change going into your base resume or only this version?
+7. Have you checked whether the fix belongs in the cover letter or LinkedIn instead?
 
 ## Frequently Asked Questions
 
@@ -248,6 +320,14 @@ Usually yes, after a reasonable gap, with a resume that visibly addresses the fe
 ### Is recruiter feedback reliable?
 
 It is useful but often summarised and second-hand. Treat it as a strong clue about what the reader did not see, and look for patterns across multiple companies.
+
+### How quickly should I update my resume after feedback?
+
+If a recruiter asks for changes before submitting you, the same day. For rejection feedback, update before your next application to a similar role.
+
+### Should I tell the next employer about feedback I received?
+
+No need. Use the feedback to improve your resume and interview answers. Only mention it if you are reapplying to the same company and it helps show your progress.
 
 ## What to Do Now
 

@@ -163,6 +163,21 @@ The bullet now shows operations ownership (stage definitions, forecasting proces
 
 Both show the overlap directly. His skills are split: "Technical: Python, Flask, REST APIs, Git, Markdown" and "Writing: API documentation, tutorials, docs-as-code". For fresher positioning more generally, see [fresher resume projects that get interviews](/blog/fresher-resume-projects-that-get-interviews).
 
+## Worked Example 4: A Salesperson Applying for Sales Engineer Roles
+
+**Situation:** Harish has four years in B2B software sales. He is technical for a salesperson - he configures demo environments himself and can read API documentation - and wants sales engineer roles. The postings lean roughly 60/40 toward technical depth.
+
+**His rare skill:** hands-on technical work. Many salespeople apply for sales engineer roles; few can show they built anything.
+
+> **Before (top bullet):** "Exceeded quota by 120% selling a SaaS integration platform to mid-market companies."
+>
+> **After (top bullets):**
+> - "Built and ran custom demo environments for 40+ prospects, including sample integrations with Salesforce and HubSpot APIs; demos with custom environments closed at roughly twice the rate of standard ones."
+> - "Scoped technical requirements for 15 enterprise deals with prospects' engineering teams, reducing post-sale implementation issues."
+> - "Exceeded quota by 120% in FY25."
+
+His skills are split: "Technical: REST APIs, Postman, SQL basics, Salesforce and HubSpot administration" and "Sales: discovery, solution selling, enterprise deal cycles". His quota result stays - it proves the sales half - but it no longer leads. For the vocabulary of moving between functions, see [what counts as relevant experience](/blog/what-counts-as-relevant-experience).
+
 ## When One Side Is Weak
 
 Almost everyone applying for a hybrid role is stronger in one half. That is expected.
@@ -179,9 +194,44 @@ If the posting lists a secondary-side tool you have used lightly, list it in the
 
 If you meet the primary side well and the secondary side only lightly, apply - hybrid postings often expect that. If you are weak on the primary side, the role is a real stretch; see [tailoring for a stretch role](/blog/tailoring-for-a-stretch-role).
 
-### Expect the interview to test both halves
+## How This Comes Up in Interviews
 
 Hybrid interview loops usually include one round per discipline - a coding exercise and a case study for a growth engineer, a technical deep-dive and a mock demo for a sales engineer. Whatever you claim on the weaker side will be tested in its own round, so claim only what you can hold up for 30 minutes. Prepare one overlap story you can tell in either round. The [mock interview tool](/mock-interview) can drill you on both sides from your own resume, and the [technical interview preparation guide](/blog/technical-interview-preparation-guide) covers the technical round.
+
+## At Each Career Stage
+
+| Stage | Typical hybrid move | What to lead with |
+|---|---|---|
+| Fresher | Technical writer, analyst-developer, design-and-code roles | Projects that combine both disciplines |
+| Early career | Growth engineer, RevOps, design engineer | One or two strong overlap bullets from your job |
+| Mid-career | Sales engineer, data product manager, BizOps | Overlap evidence plus depth in the primary discipline |
+| Senior | Head of growth, solutions architecture lead, product-minded engineering lead | Leading teams across both disciplines |
+
+### Freshers: projects are your overlap evidence
+
+Students rarely have jobs that mix disciplines, but projects often do. A project where you built something and measured it in another discipline's terms is exactly what a hybrid posting wants.
+
+### Senior candidates: show you can lead both
+
+At senior levels, hybrid roles often mean managing people from both disciplines. Show you have hired, reviewed or led work on both sides.
+
+## Edge Cases and Exceptions
+
+### The posting is secretly two jobs
+
+Some "hybrid" postings list everything a small company needs - a marketer, a designer and an analyst in one. If the requirements are impossibly broad, focus on the two or three the company clearly needs most.
+
+### The hybrid title is new or unusual
+
+Titles like "design technologist" or "analytics engineer" vary between companies. Read the requirements, not the title, to work out the balance.
+
+### You are strong in both halves
+
+Rare but real. Lead with whichever half the posting leans toward and let overlap bullets prove the rest.
+
+### The two disciplines use conflicting vocabulary
+
+Engineering and marketing may describe the same experiment differently ("feature flag test" vs "A/B campaign"). Use the posting's vocabulary for each half.
 
 ## Common Mistakes
 
@@ -212,13 +262,23 @@ Hybrid roles need one extra step before normal tailoring: reading the balance. A
 1. Identify the two disciplines and the lean.
 2. Identify your rarer skill.
 3. Rewrite the summary with both disciplines and a connecting result.
-4. Move your best overlap bullets to the top of your recent role.
+4. Lead your recent role with the work that used both skills at once.
 5. Split the skills section into two labelled groups.
 6. Check the weak side is shown honestly, not inflated.
 
 If you apply to both pure and hybrid versions of your field, you may need separate bases; see [splitting resume versions](/blog/splitting-resume-versions).
 
 A match scan helps here because hybrid postings have two keyword sets: the free [ATS scan](/solutions) shows which side your resume under-covers, in about a minute. The [AI resume optimizer](/optimize) can then reword bullets toward the posting without inventing experience on the weaker side.
+
+## Quick Checklist
+
+1. Have you identified the two disciplines and which way the role leans?
+2. Have you identified your rarer skill?
+3. Does your summary name both disciplines with a connecting result?
+4. Do your top bullets show overlap - both disciplines in one piece of work?
+5. Can a reader see both disciplines in your skills section at a glance?
+6. Is the weaker side shown honestly, not inflated?
+7. Are you ready for an interview round on each discipline?
 
 ## Frequently Asked Questions
 
@@ -254,8 +314,16 @@ A hybrid role mixes two disciplines, like engineering and marketing. A hybrid wo
 
 The same as any resume at your level - usually one page early in your career and up to two later. Split skills and overlap bullets help you cover both disciplines without adding length.
 
+### Is a hybrid role the same as a generalist role?
+
+No. Generalist roles cover many areas at a shallow level, while hybrid postings name two specific disciplines and expect real depth in each - usually tested in separate interview rounds.
+
+### Can I get a hybrid role without experience in both areas?
+
+Often yes, if you are strong in the primary discipline and can show some honest evidence in the secondary one - a project, coursework or cross-functional work.
+
 ## What to Do Now
 
-Take the posting and mark each requirement as discipline A, discipline B, or overlap. Work out the lean and identify your rarer skill. Then find your two best overlap bullets and move them to the top of your most recent role.
+Take the posting and mark each requirement as discipline A, discipline B, or overlap. Work out the lean and identify your rarer skill. Then pick the two projects where you used both skills together and lead your current role with them.
 
 Rewrite your summary with both disciplines in the first sentence, split your skills into two groups, and scan the result. Next, read [tailoring across industries](/blog/tailoring-across-industries) if the hybrid role is also in a new industry, and [first management role](/blog/first-management-role-resume) if the hybrid includes people leadership.

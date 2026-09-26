@@ -194,6 +194,57 @@ Cluster C is only three postings and would need a very different lead. She decid
 
 Same launch, two angles. She spends her Tier 1 time on four product marketing roles where she is strongest. More on picking the right angle for the same achievement is in [same job posted twice with different wording](/blog/same-job-different-wording).
 
+## Worked Example 3: A Senior Candidate Who Should Not Apply at Volume
+
+**Situation:** Vikram, a director of engineering, decides to apply to 25 roles in a week using the clustering method. He finds only six postings that genuinely fit his level; the rest are senior manager roles he would be overqualified for or VP roles he is not ready for.
+
+**The lesson:** volume systems work best where there are many similar roles - early and mid-career. At senior levels, the pool is small and each role is different enough to deserve individual attention.
+
+**What he does instead:**
+
+- Drops the 19 poor fits entirely.
+- Treats all six remaining roles as Tier 1: custom summary, tailored top bullets, a cover letter for each.
+- Spends the time he saved on outreach - messaging hiring managers and former colleagues at four of the six companies.
+
+> **Tailored summary for one role:** "Engineering director who scaled a platform organisation from 18 to 60 engineers through a Series C, and rebuilt the on-call and incident process that cut major outages by two-thirds - the scaling stage your posting describes."
+
+Six strong applications with warm introductions produced more conversations than 25 clustered ones would have. For approaches that come to you at this level, see [tailoring when you're being poached](/blog/tailoring-when-approached).
+
+## At Each Career Stage
+
+| Stage | Realistic volume per week | Tier mix | Main watch-out |
+|---|---|---|---|
+| Fresher / graduate | 20-30 | Few Tier 1, many Tier 2-3 | Keep projects specific; avoid one generic version |
+| Early career | 15-20 | 3-5 Tier 1 | Cluster carefully - titles vary a lot at this level |
+| Mid-career | 10-15 | Half Tier 1 | Fewer, better-matched roles; more cover letters |
+| Senior | 3-8 | Almost all Tier 1 | Volume systems matter less than networking |
+
+### Freshers: volume is normal, generic is not
+
+Graduates often apply widely, and that is fine. The clustering method stops wide applying from turning into one resume sent everywhere. For placement season specifically, see [campus placement resume: one document, many companies](/blog/placement-resume-many-companies).
+
+### Mid-career and above: shrink the list
+
+As seniority rises, the number of genuinely matching roles drops. Spend the saved time on referrals and tailored cover letters rather than more applications.
+
+## Edge Cases and Exceptions
+
+### Postings with very short deadlines
+
+A role closing tomorrow can jump the queue. Give it a fast Tier 2 treatment rather than skipping it - [job closes tomorrow: fast tailoring](/blog/job-closes-tomorrow-fast-tailor) has a routine for this.
+
+### Easy-apply buttons
+
+One-click applications on job boards often send your profile rather than a tailored resume. Where the portal lets you upload a file, upload the cluster version for that posting.
+
+### The same company has several roles in different clusters
+
+Apply to the one or two that fit best. Applying to five roles at one company from different cluster versions can look unfocused to the recruiter who sees all of them.
+
+### A posting fits no cluster but is your dream job
+
+Make it Tier 1 and tailor it individually. Clusters are a tool for efficiency, not a rule.
+
 ## Common Mistakes at Volume
 
 ### Tailoring in submission order
@@ -215,6 +266,19 @@ Auto-tailored output at volume is where invented or awkward phrasing slips throu
 ### Applying to roles you would not accept
 
 Every posting you include costs time. If you would not accept an offer, remove it from the list. Twenty applications you care about beat forty you do not.
+
+## How This Comes Up in Interviews
+
+Volume applying creates one real interview risk: forgetting which version you sent. Recruiters call days or weeks later, and your answers need to match the resume in front of them.
+
+| Situation | How to handle it |
+|---|---|
+| A recruiter calls about a role you barely remember | Ask them to resend the job description; check your tracker for the version |
+| The interviewer quotes a bullet you rephrased | Know every cluster version's top bullets |
+| "Why are you interested in us specifically?" | Have one company-specific reason per Tier 1 and Tier 2 application |
+| "What else are you applying for?" | Be honest and general: "similar analyst roles in e-commerce and fintech" |
+
+Keep a copy of the exact posting and the resume version in your tracker for every application. Before any call, spend five minutes rereading both. The [interview prep tool](/interview-prep) can generate likely questions from the saved posting.
 
 ## A Checklist for Each Batch
 
@@ -262,6 +326,14 @@ Use a simple tracker with company, role, cluster version, date sent and posting 
 ### What if a posting doesn't fit any cluster?
 
 Either give it a Tier 3 treatment from the closest cluster version, or drop it. Building a whole new version for one posting rarely pays off unless it is a Tier 1 role.
+
+### Is it better to apply to many jobs or a few?
+
+A moderate number of well-matched, tailored applications usually beats a very large number of untailored ones. Clustering lets you do a moderate-to-high volume without losing tailoring.
+
+### Should I use a different resume for every job?
+
+Use one version per cluster of similar postings, with small per-posting edits. A completely different resume for every job is rarely worth the time.
 
 ## What to Do Now
 

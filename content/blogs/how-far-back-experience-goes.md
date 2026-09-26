@@ -192,6 +192,19 @@ Here the older experience is the relevant experience, so the window moves to fit
 
 One page, every line earning its place. For how the summary should change at this stage, see [two years in and applying for a mid-level role](/blog/two-years-in-going-mid-level).
 
+## Worked Example 4: A Mid-Career Candidate Who Kept Too Little
+
+**Situation:** Deepa has 14 years in HR and is applying for an HR director role that asks for "12+ years of progressive HR experience, including employee relations and HR operations." Following the "10-year rule" strictly, her resume starts in 2016 - and the employee-relations and HR operations work she did from 2012 to 2016 is gone.
+
+The result: her resume shows 10 years, the posting asks for 12, and the employee-relations experience the posting names is missing entirely.
+
+**Fix:** extend the window to cover what the posting asks for, in condensed form.
+
+> **HR Manager** - Manufacturing company, Chennai, 2012-2016
+> - Handled employee relations for a 1,100-person plant, including 3 union negotiations; set up the HR operations team and its payroll and attendance processes.
+
+One entry with one strong bullet adds four years of qualifying, directly named experience. Her resume is still two pages because she condensed the 2016-2019 role instead. The lesson: the window follows the posting, not a fixed rule. For where to trim instead, see [cutting irrelevant experience without creating a gap](/blog/cutting-experience-without-gaps).
+
 ## Edge Cases and Exceptions
 
 ### Your only relevant experience is old and short

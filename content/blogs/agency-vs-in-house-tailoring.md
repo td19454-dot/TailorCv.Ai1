@@ -178,6 +178,18 @@ Her summary highlights category expertise ("D2C food and consumer"), agency mana
 
 She builds two versions. The agency version leads with her client roster, coverage volume and media relationships. The in-house version leads with her deepest account - a healthcare client she worked with for 18 months - and the reputation outcomes she tracked, such as share of positive coverage and crisis response times. For maintaining the two, see [splitting resume versions](/blog/splitting-resume-versions).
 
+## Worked Example 4: A Copywriter Moving From a Big Agency to a Startup
+
+**Situation:** Farzana spent five years as a copywriter at a large advertising agency, working on TV scripts, print ads and festive campaigns for FMCG brands. She is applying for a content lead role at a 60-person fintech startup, where she would own the blog, app copy, emails and social - mostly alone.
+
+**The gap the startup worries about:** she has only worked in big teams with art directors, account managers and long approval chains. Can she ship on her own, across formats, and measure what works?
+
+> **Agency-style bullet:** "Wrote TV and digital scripts for a leading detergent brand's festive campaign, part of a team that won a regional creative award."
+>
+> **Startup-ready bullet:** "Wrote and shipped the full copy set for a festive campaign - 3 TV scripts, 40 social posts, 12 email variants - on a 4-week timeline; email variants tested at up to 2x open rate over the brand's baseline."
+
+She adds a small side project that shows ownership: a personal finance newsletter she writes and publishes alone, with about 1,800 subscribers. Her summary names both sides: "Copywriter with five years across TV, digital and email at a national agency - now writing and running a 1,800-subscriber finance newsletter on my own." The award stays, but volume, formats and measured results now lead.
+
 ## Client Names, Awards and Confidentiality
 
 ### Listing clients
@@ -203,6 +215,24 @@ Creative and campaign work is collaborative. Say what you did - account lead, ar
 Point to volume: number of campaigns, launches, briefs and agencies managed per year. Numbers answer this better than enthusiasm.
 
 Prepare both sets of stories using the [interview story bank method](/blog/interview-story-bank-star-method), and rehearse with the [mock interview tool](/mock-interview).
+
+## Edge Cases and Exceptions
+
+### Holding company or network agencies
+
+Very large agency networks can feel more like in-house teams - one big client, long tenure. If you worked on one account for years, emphasise depth, not range, even when moving between agencies.
+
+### In-house creative studios
+
+Some large companies run internal agencies that serve many brands. Present that work like agency experience: many briefs, many stakeholders, fast turnaround.
+
+### Freelancers moving to either side
+
+Freelancers have agency-like range and in-house-like ownership. Pick the frame that matches the target: client range for agencies, end-to-end ownership for in-house roles.
+
+### Moving from client-side to a specialist agency
+
+Specialist agencies - performance, SEO, influencer - value depth in their channel. Lead with channel results rather than general brand marketing.
 
 ## Common Mistakes
 
@@ -241,6 +271,16 @@ The per-posting edits are covered in [what to change when tailoring](/blog/what-
 
 Check each version against its target posting with the free [ATS scan](/solutions) - agency and in-house postings use different vocabulary for similar work. The [AI resume optimizer](/optimize) can reframe your bullets toward either reader using only what is already on your resume, and the [portfolio builder](/portfolio) lets you publish a case-study page that matches the version you send.
 
+## Quick Checklist
+
+1. Which reader are you writing for - agency or in-house?
+2. Does your summary lead with range (agency) or depth and outcomes (in-house)?
+3. Agency to in-house: are clients grouped by category, with the relevant category first?
+4. In-house to agency: are channels, formats and campaign volume counted?
+5. Are campaign results matched to the reader's preferred metrics?
+6. Is your portfolio aligned with the version you are sending?
+7. Is your role on shared campaigns stated precisely?
+
 ## Frequently Asked Questions
 
 ### How do I tailor my resume from agency to in-house?
@@ -274,6 +314,22 @@ Yes. For agencies, show range and your strongest creative across clients. For in
 ### Can I apply to both agency and in-house roles at once?
 
 Yes, but build two versions. The two readers want different lead evidence, and one resume usually serves neither well.
+
+### Is agency experience valued by in-house teams?
+
+Yes - especially for pace, range and client-management skills. It is most valued when you also show business outcomes and interest in going deep on one brand.
+
+### Should I mention which agency network I worked for?
+
+Yes. Well-known agencies and networks help readers gauge the scale and standard of your work.
+
+### Do agencies care about in-house candidates' brand experience?
+
+Yes. Agencies value people who understand the client side - budgets, approvals, internal politics - because it helps them serve clients better, especially in the same category.
+
+### How do I list many short agency projects on one resume?
+
+Group them under the agency with category subheadings, and show two or three of the most relevant results per group rather than listing every project.
 
 ## What to Do Now
 

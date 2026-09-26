@@ -157,6 +157,27 @@ Charge-nurse shifts, precepting and leading a change are exactly the leadership 
 
 Her quota achievement stays - it gives her credibility with the team - but leadership now comes first.
 
+## Worked Example 4: A Teacher Applying for Head of Department
+
+**Situation:** Arjun has taught physics for eight years and wants his first head of department role. He has never had a formal leadership title.
+
+**Leadership evidence he found:**
+
+- Coordinates the physics curriculum for Classes 9-12 across four teachers.
+- Mentored two newly qualified teachers through their first year.
+- Set up the school's science olympiad programme, which grew from 12 to 70 students.
+- Covered as acting head of department for a term.
+
+> **Before (top bullet):** "Taught physics to Classes 9-12, achieving strong board results."
+>
+> **After (top bullets):**
+> - "Coordinate the physics curriculum for Classes 9-12 across a team of 4 teachers, including shared assessments and lesson plans."
+> - "Acting head of department for one term (2025) - timetabling, staff observations and parent escalations for a 7-person science team."
+> - "Mentored 2 newly qualified teachers through their first year; both passed probation with strong observation scores."
+> - "Class 12 physics board average rose from 72% to 81% over three years."
+
+His teaching results stay as the credibility bullet, but the leadership evidence now leads. For school-to-school moves more broadly, see [what to tailor when everything is already relevant](/blog/when-everything-is-relevant).
+
 ## Management Keywords Without Overclaiming
 
 Management postings use a recognisable vocabulary: people management, performance reviews, hiring, coaching, team planning, stakeholder management, roadmap ownership. Some of these you can claim honestly; others you should show indirectly.
@@ -183,6 +204,24 @@ Your own company already knows your leadership. Many first-time managers are pro
 | Clinical or frontline expert | Supervisor / charge / ward manager | Shift leadership, training, operational improvement |
 
 Aim for the first rung that matches your evidence. A senior IC with mentoring experience is a strong candidate for managing a small team; managing managers usually needs more.
+
+## Edge Cases and Exceptions
+
+### You managed people in a previous career
+
+If you managed a team in a different field or earlier job, it counts. Present it clearly, even if your current role is individual.
+
+### Your leadership is all informal
+
+Informal leadership - the go-to person, the unofficial reviewer - is common. Describe it concretely with outcomes; avoid titles you did not hold.
+
+### The posting wants "3+ years managing people"
+
+That is a real requirement for many roles. If you have none, target team lead or first-line manager roles that accept strong IC leadership evidence instead.
+
+### You led a volunteer team
+
+Leading volunteers - a society committee, a community project, a nonprofit team - is genuine people leadership, often harder than managing paid staff. Include it with scale and results.
 
 ## Common Mistakes
 
@@ -231,6 +270,16 @@ The rebalance is a new base for management applications. Then tailor each postin
 
 If you apply to both IC and management roles, keep two bases - see [splitting resume versions](/blog/splitting-resume-versions). The free [ATS scan](/solutions) shows whether your management version covers the posting's leadership terms, in about a minute, and the [AI resume optimizer](/optimize) can reframe bullets toward management without inventing authority you did not have.
 
+## Quick Checklist
+
+1. Have you listed every example of mentoring, hiring, project leadership and team processes?
+2. Do leadership bullets lead each recent role?
+3. Do they show outcomes for people and teams, not just activities?
+4. Are one or two strong craft bullets still there for credibility?
+5. Does your summary name your craft, your leadership and your goal?
+6. Are titles accurate, with clarifiers only where your manager would agree?
+7. Do you have a story ready for each leadership bullet?
+
 ## Frequently Asked Questions
 
 ### How do I get my first management role with no management experience?
@@ -264,6 +313,14 @@ Yes, briefly - usually one line in your summary. It helps readers understand why
 ### Do I need a management course or certification?
 
 It is not required. Real leadership evidence matters far more. A course can help if it fills a specific gap, but list it as supporting evidence, not a substitute.
+
+### How do I answer "Why do you want to be a manager?"
+
+Talk about what you enjoy in the leadership you already do - helping people grow, improving how the team works - with an example. Avoid reasons that are only about title or pay.
+
+### Can I become a manager without being the best performer on my team?
+
+Yes. Management depends on developing others, communication and judgement. Strong but not top-performing ICs often make excellent managers if they show those skills.
 
 ## What to Do Now
 

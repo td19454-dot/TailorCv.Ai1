@@ -170,6 +170,21 @@ He applies to "2+ years" roles; he is close enough, and the evidence is strong. 
 
 Her experience was always relevant; the resume now shows it. The title clarifier helps both ATS and human readers.
 
+## Worked Example 4: A Homemaker Returning to Work
+
+**Situation:** Meena left her job as an accounts assistant eight years ago to raise her children. During that time she managed the finances of her husband's small business, kept the books for her housing society (120 flats), and ran a small tiffin service. She is applying for accounts executive roles.
+
+**What counts:**
+
+| Experience | Relevant? | How she presents it |
+|---|---|---|
+| Accounts assistant, 2012-2017 | Yes - same function | Original role, condensed |
+| Housing society treasurer (volunteer), 2019-present | Yes | "Treasurer (volunteer), 120-flat housing society - maintain accounts, collect maintenance of about ₹30 lakh a year, prepare annual statements for audit" |
+| Small-business bookkeeping, 2018-present | Yes | "Bookkeeper (part-time), family trading business - GST filings, Tally, monthly reconciliations" |
+| Tiffin service | Partly | One line under "Other": customer and cost management |
+
+Eight years that looked like a gap contain six years of relevant accounting experience. She lists a short career break line for accuracy, but the resume is led by current, relevant work. For more on how volunteer and part-time work count, see the table above; for presenting the career break itself, [dates and gaps parsing errors](/blog/dates-and-gaps-parsing-errors) covers formatting.
+
 ## Edge Cases: Does This Count?
 
 ### Experience from a family business
@@ -218,6 +233,19 @@ If you worked a full-time job and freelanced at the same time, the overlapping p
 
 Attending meetings where marketing was discussed is not marketing experience. [Tailoring without lying](/blog/tailoring-without-lying) covers where the line sits.
 
+## How This Comes Up in Interviews
+
+When relevant experience comes from non-standard places - volunteering, freelance, projects - interviewers probe it to confirm it was real work.
+
+| Experience type | Likely question | Strong answer ingredients |
+|---|---|---|
+| Volunteer role | "How much time did this take, and what were you responsible for?" | Hours, responsibilities, a result |
+| Freelance | "Who were your clients and what did you deliver?" | Client types, deliverables, outcomes |
+| Project | "Was this for a course or self-directed? What was hardest?" | Context, decisions, obstacles |
+| Different job title | "Your title was coordinator - what did you actually manage?" | Scope, budget, team, decisions |
+
+Treat these questions as a chance to show depth, not as doubt. Prepare one detailed story for each non-standard experience on your resume. The [interview story bank method](/blog/interview-story-bank-star-method) keeps them organised.
+
 ## How to Check Your Resume's Relevance
 
 A quick self-test, using the posting:
@@ -229,6 +257,16 @@ A quick self-test, using the posting:
 5. Add or rewrite bullets to fill the real gaps; leave genuine gaps honest.
 
 The free [ATS scan](/solutions) does a version of this automatically, showing which requirements your resume covers against a posting in about a minute. For turning the result into changes, see [turning a scan result into three edits](/blog/scan-result-into-three-edits). If you want existing bullets reworded to make their relevance clearer, the [AI resume optimizer](/optimize) rewrites toward the posting using only what your resume already shows.
+
+## Quick Checklist
+
+1. Have you listed the posting's top five requirements?
+2. For each, have you searched jobs, internships, freelance, projects and volunteering for evidence?
+3. Does each piece of relevant evidence appear on your resume?
+4. Is it near the top of its entry, in the posting's vocabulary?
+5. Are non-standard experiences labelled clearly (volunteer, freelance, part-time)?
+6. Are your years of relevant experience counted honestly?
+7. Can you talk about each relevant item for two minutes?
 
 ## Frequently Asked Questions
 
@@ -263,6 +301,14 @@ Your experience still counts. Make the tasks obvious in your bullets, and consid
 ### Should I apply if I have slightly less relevant experience than required?
 
 Often yes. Experience thresholds are frequently guidelines. If you are close and your evidence is strong, apply. If you are far below, it is a stretch - see [tailoring for a stretch role](/blog/tailoring-for-a-stretch-role).
+
+### Does a career break count against relevant experience?
+
+A break does not erase earlier experience, and work done during the break - freelance, volunteering, managing finances - can count if it matches the role.
+
+### Is teaching or tutoring relevant experience for other jobs?
+
+Often yes: training, presenting, assessing performance and explaining complex topics transfer to training, sales, customer success and many other roles.
 
 ## What to Do Now
 

@@ -178,6 +178,22 @@ Same education, same dates, same projects - different order and emphasis. For pl
 
 **Decision:** no third base. He uses the performance base and tailors per application - swapping the summary's second sentence toward CRM operations and reordering skills. A third base would have meant a third set of documents to maintain for little gain.
 
+## Worked Example 4: A Researcher Choosing Between Academia and Industry
+
+**Situation:** Dr. Ayesha has a PhD in computational biology and two postdoc years. She is applying for both academic postdoc positions and industry data scientist roles at biotech companies.
+
+**Split test:** the ideal summary, headline and lead evidence are completely different. Academic readers want publications, grants and research direction; industry readers want applied results, tools and speed. Split.
+
+| Element | Academic version (CV) | Industry version (resume) |
+|---|---|---|
+| Length | Full CV, 4-5 pages | Two pages |
+| Headline | "Postdoctoral Researcher - Computational Biology" | "Data Scientist - Genomics & Machine Learning" |
+| Lead section | Publications and research interests | Summary + applied experience |
+| Top bullet | "First author, 3 papers on single-cell analysis methods" | "Built a Python pipeline that cut single-cell analysis time from 3 days to 4 hours; adopted by 2 other labs" |
+| Skills | Methods and techniques | Python, R, SQL, cloud tools, ML libraries |
+
+Her facts - degrees, dates, institutions, results - are identical in both. The academic version is a CV with full publication lists; the industry version condenses publications to one line ("7 peer-reviewed publications, 3 first-author") and leads with applied results. For the industry side, [what counts as relevant experience](/blog/what-counts-as-relevant-experience) helps decide how research work translates.
+
 ## When Splitting Is the Wrong Move
 
 ### Your targets are too scattered
@@ -192,7 +208,7 @@ If the two roles want the same lead evidence and differ only in a few tools, one
 
 Two bases means updating both when you finish a project or change jobs. If you know you will not, keep one base and tailor more heavily - accepting the extra time per application.
 
-## Answering "Why Are You Applying for Both?"
+## How This Comes Up in Interviews: "Why Both?"
 
 Two bases can surface in interviews. A recruiter who sees your LinkedIn, or an interviewer at a company where you applied to two roles, may ask why you are pursuing both directions. Have a clear answer that connects them.
 

@@ -152,6 +152,21 @@ Because this came through a referral, her resume will be read with more attentio
 
 He decides it is not worth moving for. Asking first saved him an hour of tailoring and an awkward interview process. When approaches are generic, treat them like any posting and apply your normal filters. [Resume for recruiter outreach](/blog/resume-for-recruiter-outreach) covers the reverse situation - when you reach out to recruiters.
 
+## Worked Example 4: A Fresher Approached After a Hackathon
+
+**Situation:** Tanmay, a final-year student, won a hackathon sponsored by a startup. A week later, their engineering manager messages him on LinkedIn: "Loved your project - would you be interested in a graduate role? Send over your resume."
+
+His resume is his generic placement version, led by a CGPA line and three course projects. The hackathon is at the bottom under "Achievements".
+
+**What he does:**
+
+- Asks one question: "Thanks! Could you share what the graduate role focuses on?" The reply: backend work on their payments API.
+- Moves the hackathon project to the top of his projects section and describes it technically: "Built a UPI split-payment API in Node.js and PostgreSQL in 36 hours; won first place among 80 teams at the [startup] hackathon."
+- Leads his skills line with Node.js, PostgreSQL and REST APIs.
+- Adds a GitHub link to the project repository with a short README.
+
+The manager approached him because of the hackathon, so the resume now opens with it. For fresher project framing, see [fresher resume projects that get interviews](/blog/fresher-resume-projects-that-get-interviews).
+
 ## Timing and the Note You Send With It
 
 ### Reply quickly, send carefully
@@ -181,6 +196,41 @@ An approach is a two-way evaluation. Have questions ready about the team, the pr
 
 Headhunters often prepare a candidate profile from your resume for the client, so clarity and structure matter even more. They also tend to read the top half first and move on quickly.
 
+## At Each Career Stage
+
+| Stage | Typical approach | What to prioritise |
+|---|---|---|
+| Fresher | Engineering manager after a hackathon, competition or project | The project that caught their eye, with technical detail |
+| Early career | Agency or in-house recruiter via LinkedIn | Clear match to the JD; quick turnaround |
+| Mid-career | Recruiter or former colleague for a step-up role | Scope, results and the capability behind the approach |
+| Senior / executive | Executive search firm on retainer | Leadership, strategic results, a polished two-page resume |
+
+### Freshers: approaches are rare, so move fast
+
+An approach at graduate level usually comes from one specific thing you did. Put that thing first and reply quickly.
+
+### Senior candidates: the resume becomes a briefing document
+
+At executive levels, search consultants often turn your resume into a client briefing. Clear structure, scope and a crisp summary make their job easier - and present you better.
+
+## Edge Cases and Exceptions
+
+### The approach is for a role you already applied to
+
+If a recruiter approaches you about a role you applied to directly, tell them. Duplicate submissions can cause ownership disputes between agencies and companies.
+
+### Two recruiters approach you for the same role
+
+Only let one submit you. Ask each which company it is before agreeing, and choose the recruiter with the clearest relationship to the hiring manager.
+
+### The approach comes from a competitor of your employer
+
+Be extra careful with confidential information and consider any non-compete or non-solicitation terms in your contract before proceeding.
+
+### You are not looking but the role is interesting
+
+It is fine to explore. Say so openly - "I'm happy where I am, but I'd like to learn more" - and tailor your resume as seriously as if you were looking.
+
 ## Common Mistakes
 
 ### Sending an old, untailored resume
@@ -203,6 +253,19 @@ Some candidates treat an approach as "they came to me" and send a flat, modest r
 
 If the recruiter pitched you as a scaling expert and your resume does not mention scaling, the hiring manager notices the gap.
 
+## How This Comes Up in Interviews
+
+Approached candidates face a slightly different first conversation: the company is partly selling to you, but still assessing you.
+
+| Question | Why they ask | Strong answer |
+|---|---|---|
+| "What made you open to talking?" | They want to know if you are serious | A specific reason the role interests you |
+| "What would make you move?" | Gauging what it would take | Honest priorities: scope, team, problem, compensation |
+| "Are you talking to other companies?" | Assessing competition and timing | Honest but brief |
+| "What do you know about us?" | Checking genuine interest | Specific details from your research |
+
+Being approached does not excuse weak preparation. Research the company as thoroughly as for any application, and prepare stories that match the capability they approached you for. The [interview prep tool](/interview-prep) can generate questions from the job description the recruiter shared.
+
 ## How This Fits With Tailoring
 
 Tailoring after an approach is the same process with better inputs:
@@ -215,6 +278,16 @@ Tailoring after an approach is the same process with better inputs:
 6. Remove confidential current-employer detail.
 
 The free [ATS scan](/solutions) checks your tailored version against the JD the recruiter shared in about a minute; many agencies and companies still run submissions through an ATS. The [AI resume optimizer](/optimize) can rework your bullets toward that JD without adding anything you have not done. Before the first call, the [interview prep tool](/interview-prep) can generate likely questions from the JD and your resume.
+
+## Quick Checklist
+
+1. Have you asked for the full job description and what matters most?
+2. Do you know why they approached you specifically?
+3. Is the role worth pursuing (level, scope, compensation)?
+4. Does your summary's first sentence answer the reason for the approach?
+5. Is the matching evidence at the top of your recent role?
+6. Have you removed confidential current-employer details?
+7. Are you sending from personal email, with a short cover note?
 
 ## Frequently Asked Questions
 
@@ -249,6 +322,14 @@ Your resume is used in levelling and compensation discussions. Clear scope - tea
 ### What if the recruiter's message is generic?
 
 Treat it like any job posting. Ask for details, decide whether it is worth pursuing, and tailor fully if you proceed.
+
+### Should I update my LinkedIn when a recruiter approaches me?
+
+Keep changes small and gradual if you are employed. Your tailored resume can carry the detail; a sudden LinkedIn overhaul can signal to your employer that you are looking.
+
+### Is it rude to ask a recruiter about salary before sending my resume?
+
+No. Asking about the compensation range early is normal and saves both sides time if the role is not a fit.
 
 ## What to Do Now
 

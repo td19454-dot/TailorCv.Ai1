@@ -160,6 +160,28 @@ She keeps the writer's clean layout and several strong bullets that were accurat
 
 **Fixes:** He rewrites the summary from scratch around his own testing experience, replaces every borrowed bullet with his own work, and keeps only the section structure. He then tailors to QA postings, leading with test automation work. For the career-change side, see [resume matching for career changers](/blog/resume-matching-for-career-changers).
 
+## Worked Example 4: A Recent Graduate Whose Father Wrote the Resume
+
+**Situation:** Rohan's father, a retired bank manager, wrote his first resume. It is three pages long and follows conventions from the 1990s: an "Objective", a "Personal Details" section with date of birth, marital status and father's name, a list of every school achievement since Class 6, and a signed declaration at the end.
+
+**Audit findings:**
+
+| Pass | Finding |
+|---|---|
+| Facts | Internship dates slightly wrong; project name misspelled |
+| Claims | "Expert in MS Office and programming" - Rohan knows Excel well and basic Python |
+| Voice | "I hereby declare that the above information is true to the best of my knowledge" - not how anyone writes today |
+| Structure | Three pages, personal details on top, school achievements before college |
+
+**Rewrite:**
+
+- One page: summary, projects and internship, skills, education.
+- Personal details reduced to name, phone, email, city and LinkedIn.
+- "Expert in MS Office and programming" becomes "Excel (pivot tables, lookups), Python (pandas, basic)".
+- School achievements cut except one national-level maths olympiad rank.
+
+His father's care shows in the accurate education details and the complete internship record, which Rohan keeps. The rest now reads like a 2026 graduate's resume. For more on first-resume mistakes, see [resume mistakes freshers make](/blog/resume-mistakes-freshers).
+
 ## When It Was Written for a Different Job
 
 Inherited resumes are often aimed at the wrong target: a writer built it for the role you had in mind two years ago, or a template assumed a field you have since left. Accuracy is not the only problem - the whole document may point the wrong way.
@@ -204,6 +226,41 @@ An audit is not a rewrite from scratch. Keep:
 
 Replace only what fails the facts, claims or voice test.
 
+## At Each Career Stage
+
+| Stage | Most common source of an inherited resume | Most common problem |
+|---|---|---|
+| Fresher | College template, a senior's resume, a parent | Generic objective, borrowed phrasing, skills you cannot back up |
+| Early career | AI tool, online template | Invented metrics, two-column layouts that break parsing |
+| Mid-career | Paid professional writer | Inflated claims and a polished but generic summary |
+| Senior / executive | Executive resume service | Long, grand language; achievements that belong to the organisation |
+
+### Freshers: borrowed phrasing is the risk
+
+Using a senior's resume as a template is common and fine for structure. The danger is keeping their phrases, which interviewers can tell do not match your experience.
+
+### Senior candidates: check attribution
+
+Executive resume writers often describe organisational results as yours. Keep your leadership role clear - "Led the team that..." - rather than claiming every company outcome.
+
+## Edge Cases and Exceptions
+
+### A recruiter reformatted your resume
+
+Agencies sometimes put your resume into their own template before sending it to a client. Ask to see the version they send, and check it for errors or changed claims.
+
+### A career coach rewrote it with you
+
+Collaborative rewrites are usually accurate, but still run the voice pass - coaches sometimes polish language beyond how you speak.
+
+### You translated it from another language
+
+Translated resumes can shift meaning - titles, degree names and responsibilities may not map neatly. Check titles and qualifications against the target country's conventions.
+
+### Your old employer's HR team drafted it
+
+Outplacement services sometimes produce resumes for departing employees. They are often generic; treat them as a starting structure, not a finished document.
+
 ## Common Mistakes
 
 ### Tailoring without auditing
@@ -226,11 +283,34 @@ A design-heavy template can break ATS parsing. Test it before you tailor.
 
 A resume that sounds nothing like you creates doubt when the interviewer meets you.
 
+## How This Comes Up in Interviews
+
+An inherited resume is most exposed in the interview, where you have to own every line.
+
+| Risky line | Question it triggers | Fix before the interview |
+|---|---|---|
+| An inflated verb ("spearheaded") | "What exactly did spearheading involve?" | Replace with the accurate verb |
+| A number you did not calculate | "How did you arrive at 35%?" | Replace with a number you can explain |
+| A skill added by the writer | "Tell me about a project using X." | Remove it, or prepare a real example |
+| A phrase that doesn't sound like you | Interviewer notices the mismatch | Rewrite in your own words |
+
+Once the audit is done, read every line aloud and answer "tell me more about this" for each. Anything you cannot answer comfortably should change. The [mock interview tool](/mock-interview) generates questions directly from your resume, which makes it a fast way to test an inherited document.
+
 ## How This Fits With Tailoring
 
 Auditing is a one-time step on your base resume. After that, every tailored version starts from a document you fully own.
 
 If you want help, the free [ATS scan](/solutions) shows how the audited version matches a posting and flags parsing issues, in about a minute. TailorCV's [AI resume optimizer](/optimize) is designed to reword only what your resume already shows and to leave out skills without evidence - useful after an audit, because it will not reintroduce the inflated claims you just removed. You can also switch to an ATS-friendly layout from the [templates](/templates) page without retyping. Afterwards, [practising answers from your own resume](/blog/interview-story-bank-star-method) is the best way to confirm every line holds up.
+
+## Quick Checklist
+
+1. Facts pass: are titles, dates, employers, degrees and tools all accurate?
+2. Claims pass: can you defend every bullet for two minutes?
+3. Voice pass: does the summary sound like you when read aloud?
+4. Does the layout pass the copy-paste test?
+5. Is the length right for your level?
+6. Have outdated sections (declarations, personal details) been removed?
+7. Have you kept the good structure and accurate phrasing?
 
 ## Frequently Asked Questions
 
@@ -265,6 +345,14 @@ Using the structure is fine. Replace every phrase and bullet with your own exper
 ### How do I know if a claim on my resume is too strong?
 
 Ask whether you could explain it for two minutes with specifics, and whether a former manager would agree with it. If not, tone it down to what you can defend.
+
+### Is it worth paying someone to write my resume?
+
+It can be, for structure and clarity, but you must still audit the result for accuracy and voice. You will be interviewed on every line as if you wrote it.
+
+### How do I make an AI-written resume sound like me?
+
+Replace generic phrases with specific facts from your own work, cut buzzwords, and read it aloud. If a sentence is not something you would say, rewrite it in your own words.
 
 ## What to Do Now
 

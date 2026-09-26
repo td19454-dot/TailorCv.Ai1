@@ -142,6 +142,18 @@ The 3,000 a day is his service's result; the 40% is the team's. Both are honest.
 
 The leadership actions are hers; the result is the team's; the bullet makes both clear. Managers are judged on team results, so claiming them as "led a team that..." is expected. For first-time managers presenting this, see [moving from senior IC to first management role](/blog/first-management-role-resume).
 
+## Worked Example 4: A Researcher on a Multi-Author Paper
+
+**Situation:** Arnav is one of seven authors on a published paper about a new crop-disease detection model. He is applying for machine learning engineer roles. He built the data augmentation pipeline and ran the ablation studies; others designed the model and wrote most of the paper.
+
+> **Overclaim:** "Developed a crop-disease detection model published in [journal]."
+>
+> **Undersell:** "Co-authored a paper on crop-disease detection."
+>
+> **Balanced:** "Built the data augmentation pipeline and ran ablation studies for a 7-author paper on crop-disease detection (published 2025); augmentation improved model accuracy on rare diseases by about 6 points."
+
+The balanced version names his specific contributions, the team size, the publication and a result tied to his part. In an interview, he can speak in depth about augmentation and ablations - the parts he owns - and describe the model design at a level appropriate to someone who worked alongside it. For research work more generally, see [what counts as relevant experience](/blog/what-counts-as-relevant-experience).
+
 ## Underselling: The More Common Mistake
 
 Overclaiming gets the warnings, but many candidates - especially early-career and those from cultures that discourage self-promotion - consistently undersell.
@@ -178,6 +190,24 @@ A cover letter has room the bullet does not: one or two sentences on how the tea
 ### Collaboration keywords
 
 Postings often ask for "cross-functional collaboration" or "stakeholder management". Team bullets are exactly where those skills show. Rather than listing the phrase in your skills section, let a coordination bullet demonstrate it; [soft skills nobody can verify](/blog/soft-skills-nobody-can-verify) explains why showing beats listing.
+
+## Edge Cases and Exceptions
+
+### You were the only person who worked on it, but it sounds like a team effort
+
+Solo work at a company often gets described as "we". If you did it alone, say so plainly - "Built alone over 6 weeks" is a strong detail.
+
+### Your contribution was cancelled or reversed
+
+Work that was later scrapped still shows skill. Describe what you did and, if relevant, what you learned: "Prototyped a recommendation feature for 3 months; the company shifted strategy before launch."
+
+### The team was external - an agency, a vendor or a client
+
+Say who was on the team and your role in it: "Managed a 4-person agency team to redesign the website."
+
+### Credit is disputed
+
+If a former colleague might describe the work differently, stay conservative. Claim only what nobody would dispute.
 
 ## Common Mistakes
 
@@ -223,6 +253,16 @@ When a posting emphasises a skill that your team projects demonstrate, rewrite t
 
 For choosing which bullets to rewrite, see [which bullets to rewrite](/blog/which-bullets-to-rewrite). TailorCV's [AI resume optimizer](/optimize) rewords existing bullets toward the posting without upgrading your role or inventing outcomes - review the team bullets it produces for the "I vs we" balance. Then run the free [ATS scan](/solutions) to see how the tailored version reads against the posting.
 
+## Quick Checklist
+
+1. Does each team bullet lead with your own action verb?
+2. Is team size or your role stated where the work was shared?
+3. Is the team outcome connected with "contributing to" or "as part of" where needed?
+4. Have you replaced "helped with", "assisted" and "involved in" with real verbs?
+5. Does each version lead with the contribution that matches the posting?
+6. Would your teammates agree with every claim?
+7. Do you have a two-minute answer for "what was your specific role?"
+
 ## Frequently Asked Questions
 
 ### How do I put team achievements on my resume?
@@ -256,6 +296,22 @@ Describe your part accurately and connect it to the bigger outcome with "contrib
 ### How do I show collaboration skills on a resume?
 
 Through coordination bullets rather than a skills-list word: "Coordinated engineering, legal and sales to launch X in six weeks." That demonstrates collaboration and stakeholder management with evidence.
+
+### How do I describe a hackathon team project?
+
+Name the team size, your role and what you built, plus the result: "Built the backend API for a 4-person hackathon team; the app placed 2nd of 60 teams."
+
+### Should I list team awards on my resume?
+
+Yes, if they are meaningful, but pair them with your contribution: "Part of the 6-person team that won the regional sales award - closed the largest deal of the year."
+
+### How do I show individual impact on a team KPI?
+
+Tie your specific action to the metric and describe your share honestly: "Built the churn-risk report behind a 3-point retention improvement the team achieved." If you know your part's own number, add it.
+
+### What if my manager took credit for my work?
+
+Describe what you did accurately on your resume regardless. Your own contribution is yours to claim, as long as you can explain it in detail and would not be contradicted by a colleague who saw the work.
 
 ## What to Do Now
 

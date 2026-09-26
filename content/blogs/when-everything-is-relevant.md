@@ -188,6 +188,23 @@ He moves his generic bullets ("Developed REST APIs in Go", "Participated in on-c
 
 Her generic lines ("Planned and delivered lessons", "Conducted parent-teacher meetings") are condensed into one line.
 
+## Worked Example 4: An Accountant Moving to a Bigger Firm
+
+**Situation:** Suresh is a chartered accountant with six years at a mid-size audit firm, applying for a senior associate role at a Big Four firm's audit practice. Every line on his resume is audit experience.
+
+**What the posting emphasises:** audits of listed companies, IFRS/Ind AS reporting, and "leading field teams".
+
+**His distinctive evidence:** he led audits for two listed clients (rare at a mid-size firm), handled the firm's first Ind AS transition audit, and trained five article assistants a year.
+
+> **Before (top bullets):** "Conducted statutory audits for clients across manufacturing, retail and services." / "Prepared audit working papers and financial statements."
+>
+> **After (top bullets):**
+> - "Led the statutory audit for 2 listed manufacturing clients (combined revenue about ₹3,000 crore), managing field teams of 4-5."
+> - "Ran the firm's first Ind AS transition audit and wrote the internal checklist now used on 12 clients."
+> - "Train and review about 5 article assistants a year."
+
+The generic audit bullets are merged or cut. What remains is exactly what separates him from other six-year auditors applying: listed-company work, Ind AS depth and team leadership.
+
 ## Edge Cases
 
 ### Two roles at the same company
@@ -224,6 +241,19 @@ A high match gets you considered alongside other high matches. The specific, com
 
 "Experienced X with Y years in Z" is true for everyone on the shortlist. Make the first sentence specific to this company's problem.
 
+## How This Comes Up in Interviews
+
+When every candidate is qualified, interviews become comparisons. Expect questions designed to separate you from similar candidates.
+
+| Question | What they are really testing | How to answer |
+|---|---|---|
+| "Why should we hire you over someone with the same experience?" | Your distinctive value | One specific achievement that matches their situation |
+| "What would you do in your first 90 days?" | Whether you understood their problem | Tie your plan to the problem in the posting |
+| "Tell me about your most difficult project." | Depth beyond the resume | A story with a real obstacle and decision |
+| "What's something you'd do differently from your current company?" | Judgement | A thoughtful improvement, not criticism |
+
+Prepare your distinctive achievements as stories using the [interview story bank method](/blog/interview-story-bank-star-method). The [mock interview tool](/mock-interview) can simulate "why you over others?" style questions based on your resume.
+
 ## How This Fits With Tailoring
 
 When you already fit, tailoring is mostly selection and order:
@@ -236,6 +266,16 @@ When you already fit, tailoring is mostly selection and order:
 6. Rewrite the summary's first sentence around their problem.
 
 The free [ATS scan](/solutions) will likely show a high match here - use it to confirm nothing important is missing, then focus on specificity. The [AI resume optimizer](/optimize) can reorder and reword toward the posting's specific problems using only your existing achievements. For the stopping point, see [how much tailoring is too much](/blog/how-much-tailoring-is-too-much).
+
+## Quick Checklist
+
+1. Have you identified what is specific about this company's situation?
+2. Have you listed your three most distinctive achievements?
+3. Does the achievement answering their top problem lead your recent role?
+4. Does your summary's first sentence name their problem and your matching result?
+5. Have you cut or merged bullets any qualified candidate could write?
+6. Is your skills line trimmed to the posting's tools plus a few distinctive ones?
+7. Is the framing matched to their stage - startup, scale-up or enterprise?
 
 ## Frequently Asked Questions
 
@@ -270,6 +310,22 @@ Usually one page early in your career and up to two pages for experienced candid
 ### Should I tailor my summary for every application?
 
 For roles you care about, yes - at least the first sentence. It is the fastest way to show you understand the company's specific need.
+
+### What if I can't find anything distinctive about my experience?
+
+Look at scale, constraints and firsts: the largest thing you handled, the hardest limitation you worked under, or something you did first at your company. Almost everyone has at least one.
+
+### Should I apply to roles where I'm a perfect match?
+
+Yes - and tailor them carefully, because you will be competing with other strong matches. Perfect-fit applications still need distinctive evidence to stand out.
+
+### Can a resume be too relevant?
+
+Not exactly, but a resume full of relevant yet generic lines can blend in with other candidates. The goal is relevant and distinctive, with the most company-specific evidence first.
+
+### How do I tailor for a competitor of my current company?
+
+Lead with the achievements that match their current priorities, avoid sharing your employer's confidential details, and let your direct industry experience speak through specific results.
 
 ## What to Do Now
 

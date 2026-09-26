@@ -160,6 +160,20 @@ Because the readers differ so much, he builds two bases:
 
 For maintaining two bases like this, see [splitting resume versions](/blog/splitting-resume-versions).
 
+## Worked Example 4: A Consultant Returning to Consulting After Industry
+
+**Situation:** Priya spent three years at a strategy consulting firm, then four years in a corporate strategy team at an FMCG company. She now wants to return to consulting as a manager in the consumer practice.
+
+**Challenge:** her industry resume emphasises ownership and implementation - the right frame for industry, but she now needs to show she still thinks like a consultant and brings value beyond it.
+
+> **Industry-style bullet:** "Owned the annual operating plan for a ₹2,000 crore business unit and ran monthly performance reviews with the leadership team."
+>
+> **Consulting-style bullet:** "Diagnosed a two-year margin decline in a ₹2,000 crore business unit - traced it to trade-spend leakage across 4 channels - and led the fix with sales and finance; margin recovered 1.8 points in a year."
+
+Her summary positions the industry years as an asset: "Strategy professional with three years in consulting and four in FMCG corporate strategy - I've run the plans consultants recommend, and I'd bring that operating view back to consumer clients."
+
+Consulting firms value returnees who have seen implementation from the inside. The key is framing that experience as problems diagnosed and solved, with quantified outcomes.
+
 ## How the Move Changes by Seniority
 
 The same direction plays out differently at each level, because each reader expects different evidence from a junior and a senior candidate.
@@ -215,6 +229,24 @@ Percentages and ranges often work better than exact figures that could identify 
 
 Your current employer's name is usually fine, but internal numbers may be sensitive. Use percentages and scale indicators rather than exact revenue or cost figures if in doubt.
 
+## Edge Cases and Exceptions
+
+### Boutique vs large firms
+
+Boutique consultancies often want deeper domain expertise and more hands-on delivery; large firms emphasise structured problem-solving and polish. Tailor the balance to the firm.
+
+### In-house consulting or strategy teams
+
+Internal strategy teams at large companies sit between the two. Show both structured analysis and implementation.
+
+### Implementation-focused consulting
+
+Technology and operations consultancies value delivery as much as strategy. For these, implementation experience from industry is a direct strength.
+
+### Your consulting stint was short
+
+A year or less in consulting is usually best presented as a strong analytical role rather than as "consulting experience". Emphasise the specific problems you worked on.
+
 ## Common Mistakes
 
 ### Consultant to industry: listing every engagement
@@ -252,6 +284,16 @@ For the per-posting edits, see [what to change when tailoring](/blog/what-to-cha
 
 Run each version against the target posting using the free [ATS scan](/solutions) to check that its vocabulary matches - consulting and industry postings use very different terms for similar work. The [AI resume optimizer](/optimize) can rephrase bullets toward either reader without adding experience you do not have.
 
+## Quick Checklist
+
+1. Which reader are you writing for - consulting or industry?
+2. Does your summary tell that reader how to read your experience?
+3. Consultant to industry: are engagements grouped and advisory verbs replaced with outcomes?
+4. Industry to consulting: is each bullet framed as problem, analysis, result?
+5. Are consulting titles clarified in plain language?
+6. Are client names anonymised where required?
+7. Do you have a forward-looking answer to "why the move?"
+
 ## Frequently Asked Questions
 
 ### How do I write a resume to leave consulting for industry?
@@ -285,6 +327,22 @@ It tends to have more quantified bullets, stronger emphasis on education for jun
 ### Do I need two resumes if I'm applying to both consulting and industry?
 
 Usually yes. The two readers want different lead evidence and different language, so separate base versions perform better. See [splitting resume versions](/blog/splitting-resume-versions).
+
+### Do consulting firms hire people from industry?
+
+Yes, especially at experienced-hire levels, where domain expertise in a specific industry or function is valuable to a practice.
+
+### Is it easier to go from consulting to industry or the other way?
+
+Consulting to industry is generally more common and often easier, since consulting skills transfer widely. Industry to consulting usually requires strong domain expertise and a structured problem-solving record.
+
+### How long should I stay in consulting before moving to industry?
+
+There is no fixed rule, but many people move after two to four years, once they have led workstreams and built a clear functional or industry specialism that industry employers can place.
+
+### Do industry employers care which consulting firm I worked at?
+
+Brand helps at the screening stage, especially for strategy roles, but specific results and a clear specialism matter more once a hiring manager reads the resume.
 
 ## What to Do Now
 

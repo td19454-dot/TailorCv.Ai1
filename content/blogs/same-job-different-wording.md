@@ -155,6 +155,26 @@ He tailors toward the senior version - leading with team leadership and budget o
 
 The manager's post changed what he led with, while the company listing kept his keyword coverage intact. For fresher project framing, see [fresher resume projects that get interviews](/blog/fresher-resume-projects-that-get-interviews).
 
+## Worked Example 4: A Posting Rewritten by AI on a Job Board
+
+**Situation:** Gaurav finds a "Supply Chain Analyst" role on the company's careers page and again on an aggregator. The aggregator version is longer and more polished - it seems to have been rewritten by an AI tool, adding requirements like "advanced machine learning" and "blockchain supply-chain visibility" that the company page never mentions.
+
+**Comparison:**
+
+| Requirement | Company page | Aggregator version |
+|---|---|---|
+| Excel and SQL | Yes | Yes |
+| Demand forecasting | Yes | Yes |
+| SAP experience | Yes | Yes |
+| Advanced machine learning | - | Yes |
+| Blockchain visibility | - | Yes |
+
+**Decision:** the company page is the source of truth. The extra aggregator requirements appear nowhere else and read like filler. He tailors to Excel, SQL, forecasting and SAP, ignores the machine learning and blockchain lines, and applies through the company's careers page.
+
+> **Tailored top bullet:** "Built a weekly demand forecast in Excel and SQL for 800 SKUs, pulling actuals from SAP; forecast error fell from about 28% to 17%."
+
+For more on postings padded by AI, see [JD written by AI: how to read it](/blog/jd-written-by-ai-how-to-read-it).
+
 ## When the Company Listing Is Missing or Expired
 
 Sometimes you only have the secondary versions - the careers page link is dead, or the role is only advertised through an agency.
@@ -186,6 +206,41 @@ When the same job is listed in several places, where you apply matters.
 
 Avoid applying through several routes to the same job. Duplicate applications can confuse ownership between an agency and the company, and occasionally cause your candidacy to be set aside. [Resume matching: recruiter vs direct application](/blog/resume-matching-recruiter-vs-direct-application) and [resume for a referral vs a cold application](/blog/resume-for-referral-vs-cold-application) cover the trade-offs. For platform-specific tailoring, see [tailoring on LinkedIn](/blog/how-to-tailor-resume-on-linkedin) and [tailoring on Naukri](/blog/how-to-tailor-resume-on-naukri).
 
+## At Each Career Stage
+
+| Stage | Where versions usually differ | What to watch |
+|---|---|---|
+| Fresher / graduate | Campus portal vs company careers page vs job boards | Eligibility criteria that differ between versions |
+| Early career | LinkedIn vs company page vs agency posts | Tool lists that vary; match the company's |
+| Mid-career | Agency vs company, often with different seniority | Confirm the level before tailoring |
+| Senior | Search firm briefs vs public posting | The search brief is usually more accurate |
+
+### Freshers: check eligibility in every version
+
+Graduate postings sometimes show different eligibility (degree, year, CGPA) on different sites. Follow the strictest official version to avoid wasting an application.
+
+### Senior candidates: the brief beats the posting
+
+At senior levels, a search firm's detailed brief often reflects the latest conversation with the board or CEO more accurately than the public posting. Ask for it.
+
+## Edge Cases and Exceptions
+
+### The versions list different salaries
+
+Salary ranges can differ between sites, especially aggregators that estimate pay. Trust the company or recruiter's figure, and confirm in your first conversation.
+
+### One version says remote, another says on-site
+
+Work arrangement differences matter. Ask the recruiter before tailoring; the answer may change how you present location or relocation.
+
+### The company page is in a different language
+
+Multinational companies sometimes post locally in one language and globally in another. Use the version in the language of your application, but check the other for missing requirements.
+
+### The role has been split into two
+
+A repost with narrower requirements may mean the original role was split. Treat the new versions as separate jobs and decide which fits you.
+
 ## Common Mistakes
 
 ### Tailoring to the most detailed-looking version
@@ -208,6 +263,19 @@ Applying through an agency and the company's portal for the same role can create
 
 A manager's own words about what they care about are among the best clues you can get.
 
+## How This Comes Up in Interviews
+
+Interviewers work from their own version of the job description - usually the company's. If you tailored to a different version, you may be surprised by what they focus on.
+
+| Situation | What to do |
+|---|---|
+| The interviewer mentions a requirement you did not see | Ask which version they are working from; answer with relevant experience |
+| The recruiter's pitch differs from the interviewer's questions | Trust the interviewer - they wrote or own the role |
+| You saved several versions | Review all of them before the interview; prepare for the union of requirements |
+| Seniority differed between versions | Clarify early: "Could you tell me how the team sees the level of this role?" |
+
+Bring your saved versions to your preparation. The [interview prep tool](/interview-prep) can generate questions from the company's listing, which is usually what the panel uses.
+
 ## How This Fits With Tailoring
 
 When a job has several versions, add a comparison step before normal tailoring:
@@ -220,6 +288,16 @@ When a job has several versions, add a comparison step before normal tailoring:
 6. Apply through one channel.
 
 The free [ATS scan](/solutions) lets you compare your resume against each version in about a minute - if one version scores much lower, look at what it emphasises that the others do not. The [AI resume optimizer](/optimize) can tailor toward the company listing while leaving out skills your resume does not support. For the general edit sequence, see [what to change when tailoring](/blog/what-to-change-when-tailoring).
+
+## Quick Checklist
+
+1. Have you confirmed it is one job (ID, level, location, team)?
+2. Have you picked the company listing as the source of truth?
+3. Have you marked each requirement by how many versions include it?
+4. Does your summary answer the core requirements (in every version)?
+5. Are core skills in the company listing's exact spelling?
+6. Are you applying through one channel only?
+7. Have you saved every version with its date and source?
 
 ## Frequently Asked Questions
 
@@ -254,6 +332,14 @@ Yes. If you apply through the company's portal, its listing is usually what your
 ### Can I use keywords from all versions on my resume?
 
 Use core keywords in the company listing's exact form, and include other versions' terms only where you genuinely have the skill and they fit naturally. Avoid stuffing every variant.
+
+### Why does a job posting change after I apply?
+
+Companies edit postings as priorities shift, after early interviews, or to attract different candidates. Save the version you applied to so you can prepare accurately.
+
+### Should I contact the company if the versions conflict?
+
+If the difference matters - seniority, location or core skills - asking the recruiter is reasonable. For small wording differences, tailor to the company listing and move on.
 
 ## What to Do Now
 

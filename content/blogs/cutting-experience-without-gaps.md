@@ -172,6 +172,22 @@ One line, one bullet, and it is actually relevant - inventory and supplier manag
 
 The resume drops to two pages, the timeline stays continuous, and nothing is hidden. More on length is in [one page or two: the decision](/blog/resume-length-one-page-or-two-decision).
 
+## Worked Example 4: A Graduate With Five Short Jobs
+
+**Situation:** Kunal graduated in 2023 and, while looking for a marketing role, worked five short jobs: two months at a call centre, three months as a delivery partner, four months in retail, a two-month event staffing contract, and seven months (and counting) as a content intern. He is applying for junior content marketing roles.
+
+Listing all five in full makes him look scattered. Deleting four of them leaves most of 2023-2024 blank.
+
+**Approach:** group the unrelated roles, keep the relevant one in full.
+
+> **Content Intern** - Digital agency, Mumbai, 2025-present
+> - Write 3 blog posts and 10 social captions a week for 4 clients; two posts ranked on the first page for their target keywords.
+>
+> **Customer-facing roles** - Various employers, Mumbai, 2023-2025
+> - Worked in call-centre, retail and event roles while building a writing portfolio; handled 60+ customer calls a day at the call centre.
+
+The timeline is continuous, the relevant role leads, and the grouped entry turns five short jobs into evidence of work ethic and customer communication. If an application form asks for each employer, he lists them there. Pairing this with a small portfolio link makes the case even stronger - see [adding a portfolio link to your resume](/blog/add-portfolio-link-to-resume).
+
 ## At Each Career Stage
 
 | Stage | What usually gets cut | What should stay |

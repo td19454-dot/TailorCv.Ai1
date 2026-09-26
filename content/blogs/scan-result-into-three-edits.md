@@ -166,6 +166,20 @@ The full list, with edge cases, is in [ATS missing skills you can ignore](/blog/
 
 This is the important outcome. A small score move after good edits means the remaining gap is fit, not wording. His best next step is not more editing; it is deciding whether to apply as a stretch, which [tailoring for a stretch role](/blog/tailoring-for-a-stretch-role) covers. [High ATS score, no interviews](/blog/high-ats-score-no-interviews) covers the opposite situation.
 
+## Worked Example 3: A Designer Whose Scan Was Mostly Noise
+
+**Situation:** Ira, a product designer, scans her resume against a "Senior Product Designer" posting and gets 61%. The report lists 22 missing terms.
+
+**Sorting the list:** 11 are soft skills ("empathetic", "curious", "collaborative"), 5 are company-specific ("our design principles", product names), 3 are tools she does not use (Sketch, InVision, Principle), and 3 are real: "design systems", "usability testing" and "Figma" (she wrote "Figma" only in her portfolio, not her resume).
+
+**Her three edits:**
+
+1. **Edit 1:** No parsing problems, so she changes her headline from "UI/UX Designer" to "Senior Product Designer - Design Systems & Research".
+2. **Edit 2:** She adds Figma inside her top bullet: "Built and maintain a 150-component design system in Figma used by 6 designers and 20 engineers."
+3. **Edit 3:** The posting's top requirement is research-led design, so her summary now opens: "Product designer who runs usability testing on every major flow before handoff - 40+ sessions last year."
+
+**Re-scan:** 76%. The remaining 19 terms are the soft skills, company jargon and tools she does not use. She stops there - adding any of them would be filler or false.
+
 ## How Long the Three Edits Should Take
 
 The whole routine fits in about 20 minutes. If an edit is taking much longer, that is a signal - usually that you are trying to write around a skill you do not have.
@@ -190,6 +204,41 @@ Sometimes three is not quite enough. Make one more edit only if all of these are
 
 Otherwise, stop. More edits past this point usually add length and repetition, not relevance. [What counts as a good ATS score and when to stop](/blog/good-ats-score-when-to-stop) gives score thresholds.
 
+## At Each Career Stage
+
+| Stage | Most common Edit 1 | Most common Edit 2 | Most common Edit 3 |
+|---|---|---|---|
+| Fresher | Skills shown as graphics or ratings | A tool used in a project but not listed | Objective replaced by a specific summary |
+| Early career | Title too vague ("Associate") | Tool buried in a duty bullet | First bullet is a duty, not a result |
+| Mid-career | Title doesn't match posting's term | Key method named differently | Summary describes the career, not the role |
+| Senior | Two-column or design-heavy layout | Leadership skills listed but not shown | Summary too broad for the specific role |
+
+### Freshers: parsing first
+
+Student resumes built from design templates often fail parsing. Fix the layout before anything else, or every other edit counts for less.
+
+### Senior candidates: summary first
+
+Experienced resumes usually parse well and cover skills, but open with a summary that tries to describe everything. Edit 3 matters most.
+
+## Edge Cases and Exceptions
+
+### Your score is already high
+
+If you score 80% or more, skip straight to Edit 3 and check the top of the page reads well. More edits rarely help at this point.
+
+### Your score is very low (under 30%)
+
+A very low score after parsing is fixed usually means a real fit gap. Check the posting's top requirements against your experience before editing.
+
+### The report lists your own company's jargon as missing
+
+Some scanners flag your employer's internal terms as irrelevant. Replace them with generic equivalents anyway - recruiters will not know them either.
+
+### Two scanners disagree
+
+Different tools weight terms differently. Focus on the substance both agree on. See [why ATS checkers disagree](/blog/why-ats-checkers-disagree).
+
 ## Common Mistakes After a Scan
 
 ### Pasting missing keywords into a hidden or extra section
@@ -208,6 +257,18 @@ If your score falls after an edit, check whether you removed a term or changed a
 
 A human still reads the resume. [ATS score vs recruiter judgment](/blog/ats-score-vs-recruiter-judgment) covers where the two diverge.
 
+## How This Comes Up in Interviews
+
+Every edit you make from a scan puts a skill in front of the interviewer. Make sure each one holds up.
+
+| Edit | What the interviewer may ask |
+|---|---|
+| New headline matching their title | "What does a typical week look like in your current role?" |
+| A hard skill added in a bullet | "Tell me about a time you used Power BI to change a decision." |
+| Summary rewritten around their top requirement | "Walk me through your experience with end-to-end reporting." |
+
+For each of your three edits, prepare one short story with a specific example. If a scan-driven edit leaves you without a story, the edit was too far. The [mock interview tool](/mock-interview) can drill you on exactly the lines you changed.
+
 ## How This Fits Into Tailoring
 
 The three-edit routine is the tailoring loop for one application:
@@ -220,6 +281,16 @@ The three-edit routine is the tailoring loop for one application:
 6. Submit, or decide the role is a stretch.
 
 TailorCV's free [ATS scan](/solutions) gives the score and missing terms against any posting in about a minute. If you want the edits drafted for you, the [AI resume optimizer](/optimize) rewrites toward the posting but only uses skills your resume already shows evidence for - so the output still passes the "can I defend this?" test. Either way, read the result before sending. For the broader per-application process, see the [tailoring checklist per application](/blog/tailoring-checklist-per-application).
+
+## Quick Checklist
+
+1. Did you read parsing warnings before anything else?
+2. Edit 1: parsing fixed, or title matched truthfully?
+3. Edit 2: top missing hard skill you actually have, added inside a bullet?
+4. Edit 3: summary or first bullet rewritten around the top requirement?
+5. Did you skip soft skills, tools you lack and company jargon?
+6. Did you re-scan once, not repeatedly?
+7. If the score barely moved, have you considered whether it is a fit gap?
 
 ## Frequently Asked Questions
 
@@ -254,6 +325,14 @@ Yes - they come first. If the scanner cannot read your dates, sections or skills
 ### Can I trust one scanner's results?
 
 Treat any single scanner as a guide, not a verdict. Different tools weight terms differently. Focus on the substance - parsing, title, real hard skills - which every system cares about.
+
+### Can I trust the missing-keyword list completely?
+
+No. It is a mix of real gaps and noise. Treat it as a list of candidates to consider, not instructions to follow.
+
+### What if the report shows no missing skills but my score is still low?
+
+Check parsing and layout first, then the job title match. A low score with few missing terms often means the scanner could not read part of your resume.
 
 ## What to Do Now
 

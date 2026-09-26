@@ -167,6 +167,26 @@ She keeps the healthcare context honest ("outpatient operation") and adds a shor
 
 "Shop-floor" and "contract labour compliance" were specific to manufacturing and could read as irrelevant to a startup. The rewritten version keeps the scale and coordination - both valued anywhere. For freshers, [adjacent skills resume credit](/blog/adjacent-skills-resume-credit) covers how to frame internship experience that does not match perfectly.
 
+## Worked Example 4: A Government Officer Moving to the Private Sector
+
+**Situation:** Rajesh spent nine years in a state government department managing procurement and contracts. He is applying for procurement manager roles at private manufacturing companies.
+
+**Translation table (his version):**
+
+| Government term | Private-sector equivalent |
+|---|---|
+| Tender process | Competitive sourcing / RFP process |
+| L1 bidder selection | Supplier selection on cost and compliance |
+| Works contracts | Capital and services contracts |
+| Audit compliance (CAG) | Audit and compliance |
+| Budget head | Cost centre / budget line |
+
+> **Before:** "Processed tenders under GFR norms and ensured L1 selection for works contracts worth ₹40 crore annually."
+>
+> **After:** "Ran competitive sourcing for about ₹40 crore of capital and services contracts a year - RFPs, supplier evaluation and contract award - with a clean audit record over 9 years."
+
+His summary names the move: "Procurement professional with nine years running competitive sourcing and contract management in the public sector, moving into manufacturing procurement." He adds a short supply-chain management course to show interest in the private-sector context. The facts are unchanged; the vocabulary is now the reader's.
+
 ## Industry Pairs: What Travels Easily
 
 Some moves are easier than others. This helps set expectations for how much translation you will need.
@@ -182,7 +202,7 @@ Some moves are easier than others. This helps set expectations for how much tran
 | Government | Private sector | Medium to high | Pace, vocabulary and metrics differ |
 | Academia | Industry research | Medium to high | Output measures differ |
 
-## Handling "Why This Industry?"
+## How This Comes Up in Interviews: "Why This Industry?"
 
 If your summary names the switch, the interviewer will ask why. Have a two-sentence answer that shows intent, not escape.
 
@@ -199,6 +219,40 @@ It names the skill that transfers, the reason for the new industry, and evidence
 - Anything implying you would take any job in any industry
 
 Practise the answer out loud - the [mock interview tool](/mock-interview) can prompt you with "why this industry?" style questions based on your resume.
+
+## At Each Career Stage
+
+| Stage | How hard the switch is | What carries you |
+|---|---|---|
+| Fresher / early career | Easiest - you are hired for potential | Transferable skills and learning speed |
+| Mid-career | Moderate | Function depth plus translated metrics |
+| Senior | Hardest - readers want domain depth | Leadership that transcends industry, plus a clear reason |
+
+### Early career: switch while it is cheap
+
+At one to three years, industry experience matters less than function skills. This is the easiest time to move industries.
+
+### Senior: lead with what transfers at your level
+
+Senior hires are often expected to bring domain knowledge. Lead with capabilities that work in any industry - building teams, turnarounds, scaling operations - and show one clear piece of target-industry understanding.
+
+## Edge Cases and Exceptions
+
+### The target industry is heavily regulated
+
+Moving into healthcare, banking or pharma often requires specific regulatory knowledge. If you lack it, say so honestly and show how you are learning it rather than implying experience.
+
+### Your old industry has a poor reputation
+
+If you are leaving an industry the reader may view negatively, focus on the function and results rather than the industry name, while keeping the employer name honest.
+
+### The two industries share customers
+
+Selling to the same buyers - retailers, hospitals, schools - is a strong bridge. Lead with it.
+
+### You are switching both industry and seniority
+
+Changing industry and stepping up at the same time is two jumps. Consider making one move first, or be ready to explain both clearly.
 
 ## Common Mistakes
 
@@ -239,6 +293,16 @@ If you are also changing function, not just industry, the problem is larger - se
 
 Run the translated version against a target posting with the free [ATS scan](/solutions) to see which industry terms still show as missing - it takes about a minute. The [AI resume optimizer](/optimize) can help reword bullets into the posting's vocabulary, and it leaves out terms your resume has no evidence for, which keeps the translation honest.
 
+## Quick Checklist
+
+1. Have you collected three postings from the target industry?
+2. Have you built a translation table for your key terms?
+3. Is every translated term genuinely the same work?
+4. Are industry-specific metrics translated or explained?
+5. Does your summary lead with the function and name the switch?
+6. Is there one line of evidence you understand the new industry?
+7. Do you have a two-sentence answer to "why this industry?"
+
 ## Frequently Asked Questions
 
 ### Can I switch industries in the same role?
@@ -272,6 +336,14 @@ Often, yes, as a default. But a well-translated resume with clear transferable e
 ### How long does it take to tailor a resume for a new industry?
 
 The first industry-translated version takes one to two hours. After that, each application is normal tailoring from that base - 10 to 30 minutes.
+
+### How do I find out what terms a new industry uses?
+
+Read several job postings, company websites and LinkedIn profiles of people in the role you want. Recurring nouns and metrics are the vocabulary to adopt.
+
+### Should I take a lower title to switch industries?
+
+Sometimes it is necessary, especially into specialised industries. Weigh it against the long-term move; a lateral title in a better-fitting industry often recovers quickly.
 
 ## What to Do Now
 

@@ -172,6 +172,22 @@ Her match to the real requirements is now visible, and her interview can referen
 
 She has never worked in telecom revenue assurance, but she has done the core task. For framing student evidence, see [adjacent skills resume credit](/blog/adjacent-skills-resume-credit).
 
+## Worked Example 4: A Marketer Facing a Posting Full of Team Rituals
+
+**Situation:** Rhea sees a "Growth Marketing Manager" posting that asks for someone to "own the Monday GTM sync, run the WBR growth deck, and partner with the Pods on quarterly bets".
+
+**Decoded:**
+
+| Insider phrase | Generic meaning | Rhea's evidence |
+|---|---|---|
+| "Monday GTM sync" | Weekly go-to-market coordination meeting | Runs a weekly campaign planning meeting with sales and product |
+| "WBR growth deck" | Weekly business review reporting on growth metrics | Builds the weekly acquisition dashboard for leadership |
+| "Partner with the Pods on quarterly bets" | Work with cross-functional product teams on quarterly experiments | Planned quarterly acquisition experiments with two product teams |
+
+> **Tailored bullet:** "Run the weekly go-to-market planning meeting with sales and product and present the weekly growth review to leadership; planned 8 quarterly acquisition experiments with two product teams, 3 of which scaled."
+
+She uses their non-proprietary words - "weekly business review", "go-to-market", "quarterly experiments" - without claiming their internal names. In her cover letter she notes she has run "the same kind of weekly GTM rhythm your posting describes", showing she decoded it.
+
 ## Insider JDs at Different Levels
 
 The same decoding applies at every level, but what you emphasise changes.
@@ -196,6 +212,24 @@ Show you decoded it: "Your posting describes weekly margin reporting for the gro
 
 Ask about the internal systems: "The posting mentions ORBIT - is that built on SAP or custom?" It shows you read carefully and are thinking about ramp-up. Prepare examples of learning new systems quickly using the [interview story bank method](/blog/interview-story-bank-star-method).
 
+## Edge Cases and Exceptions
+
+### The posting mentions a person by name
+
+"You'll work closely with Priya on the data platform" is a sign of an insider-written post. It is not a red flag - it tells you who your key collaborator is. You can mention it in your cover letter.
+
+### The internal tool is actually a well-known product with a nickname
+
+Sometimes "Falcon" is just the team's name for Salesforce. If research shows the real product, and you have used it, list it by its real name.
+
+### The posting was written by an agency from an internal brief
+
+Agency-written postings can carry insider terms without explanation. Ask the recruiter what they mean - they may know, and asking signals care.
+
+### The requirements seem written to exclude outsiders
+
+Occasionally a posting is written so only one person can meet it. If every requirement is internal and specific, treat it as a low-effort application.
+
 ## Common Mistakes
 
 ### Assuming you cannot match because of internal terms
@@ -218,6 +252,19 @@ If the signals strongly suggest an internal candidate, apply with a solid but pr
 
 Languages, licences and locations in insider JDs are often real. Check them before applying.
 
+## How This Comes Up in Interviews
+
+Insider JDs lead to interviews focused on continuity: can you pick up an existing workflow and run it without months of support?
+
+| Question | What they want to hear |
+|---|---|
+| "Our team uses [internal tool]. How quickly could you get up to speed?" | A specific example of learning a new system fast |
+| "How would you take over this process from the previous owner?" | A plan: observe, document, then improve |
+| "You haven't worked with our exact setup - why should we take the risk?" | Your experience with the same underlying task in a similar environment |
+| "What would you change in the first three months?" | Respect for the existing process, with one thoughtful improvement |
+
+Prepare one story about inheriting and improving an existing process, and one about learning a new tool quickly. The [interview prep tool](/interview-prep) can generate questions from the posting itself, including its internal terms.
+
 ## How This Fits With Tailoring
 
 An insider JD adds a decoding step before normal tailoring:
@@ -230,6 +277,16 @@ An insider JD adds a decoding step before normal tailoring:
 6. Decide the effort tier.
 
 A scanner will flag internal tool names as "missing" - that is expected, and those terms are safe to ignore. The free [ATS scan](/solutions) still shows whether you cover the generic skills, in about a minute. [Turning a scan result into three edits](/blog/scan-result-into-three-edits) helps you ignore the internal terms and act on the rest, and the [AI resume optimizer](/optimize) won't add tools you have not used.
+
+## Quick Checklist
+
+1. Have you highlighted every internal term, acronym and oddly specific detail?
+2. Have you translated each into its generic equivalent?
+3. Have you separated genuine requirements from leftover details?
+4. Does your resume match the decoded tasks with your own evidence?
+5. Have you used the posting's non-proprietary vocabulary where accurate?
+6. Is there a bullet showing fast ramp-up on a new system?
+7. Have you avoided claiming any internal tool by name?
 
 ## Frequently Asked Questions
 
@@ -264,6 +321,14 @@ You can reference their processes in generic terms and show you understand them.
 ### Are oddly precise experience requirements strict?
 
 Rarely. "4.5 years" or a specific tool version usually reflects the previous person's profile. Treat them as approximate.
+
+### What does "or equivalent experience" mean on an insider JD?
+
+It means they will accept similar experience with different tools or in a different setting. It is a strong signal that outsiders are welcome to apply.
+
+### Should I ask the recruiter what internal terms mean?
+
+Yes. It is a reasonable question, shows you read the posting carefully, and often gives you useful detail for tailoring.
 
 ## What to Do Now
 

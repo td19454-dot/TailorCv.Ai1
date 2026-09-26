@@ -164,6 +164,23 @@ Her portfolio is updated to show hands-on work from her management years, not ju
 
 The recent project addresses the "rusty" worry directly. His summary: "Senior analyst returning to hands-on work after two years leading a 3-person analytics team - most recently built our revenue attribution model."
 
+## Worked Example 4: A Sales Manager Returning to Enterprise Sales
+
+**Situation:** Vivek managed a team of six account executives for three years. He misses selling directly and wants a senior enterprise account executive role - which pays well through commission.
+
+**The worry he must address:** a hiring manager may think he could not handle management, or that he has lost his selling edge.
+
+> **Management-first bullets:**
+> - "Managed a team of 6 AEs; team hit 104% of target in FY25."
+> - "Hired 4 AEs and ran weekly pipeline reviews."
+>
+> **IC-first bullets:**
+> - "Personally closed the team's 3 largest deals in FY25 (combined ₹4.2 crore) while managing, including a 14-month enterprise cycle with a listed manufacturer."
+> - "Built the discovery-call framework the team used on every enterprise opportunity."
+> - "Managed a team of 6 AEs to 104% of target, hiring 4."
+
+His summary: "Enterprise seller who spent three years leading a 6-person sales team - and kept closing the biggest deals myself. Returning to a senior AE role to focus on complex enterprise sales." The deals he closed personally answer the "lost his edge" worry directly.
+
 ## Let the Cover Letter Carry the Story
 
 The resume has room for one line of explanation. The cover letter has room for the full reason - and it is where a hiring manager decides whether your move is deliberate or a retreat.
@@ -177,6 +194,24 @@ The resume has room for one line of explanation. The cover letter has room for t
 > "Over three years managing the platform team, the work I looked forward to most was the architecture reviews and the incidents I helped debug. I kept my hands in - I designed our order platform's routing service and wrote its core. I'm applying for this senior role because I want that to be my whole job, and I'd bring what managing taught me about planning and mentoring to the team."
 
 The structure is similar to a career-change letter; [cover letter for a career change](/blog/cover-letter-for-career-change) covers it in more depth. The [cover letter generator](/cover-letter) can draft one from the posting that you then edit into your own voice.
+
+## Edge Cases and Exceptions
+
+### You were moved out of management involuntarily
+
+If a reorganisation removed your management role, you can still frame the move positively and honestly: "After the reorganisation, I chose to stay hands-on, which is where I do my best work."
+
+### You managed for a long time (8+ years)
+
+After many years of management, the "rusty skills" worry is strongest. Recent, substantial hands-on evidence - projects, contributions, courses with real output - is essential.
+
+### The IC role reports to someone junior to your old level
+
+This is common and usually fine. Show in interviews that you can support a manager's decisions without taking over.
+
+### You might want to manage again later
+
+Say so honestly if asked, framed as a long-term possibility after building depth. Most companies value managers who have returned to IC work.
 
 ## Common Mistakes
 
@@ -225,6 +260,16 @@ Build an IC-focused base resume first, then tailor per posting:
 
 If you are applying to both management and IC roles, keep two bases; see [splitting resume versions](/blog/splitting-resume-versions). The free [ATS scan](/solutions) checks that your IC version covers the posting's technical terms, in about a minute, and the [AI resume optimizer](/optimize) can reorder and reword your bullets toward an IC posting without inventing hands-on work you did not do. For the reverse move, see [first management role resume](/blog/first-management-role-resume).
 
+## Quick Checklist
+
+1. Does each recent role lead with hands-on work?
+2. Is there recent evidence your skills are current (work, projects, contributions)?
+3. Is your skills section updated to current tools?
+4. Are management titles kept accurate, with one or two management bullets below?
+5. Does your summary explain the move positively in one line?
+6. Have you checked the target company's IC levels and pay bands?
+7. Are you preparing for a thorough technical or craft assessment?
+
 ## Frequently Asked Questions
 
 ### Is it bad to go from manager back to individual contributor?
@@ -258,6 +303,22 @@ Describe the pull toward the craft, give evidence you stayed close to it, and be
 ### Does management experience help in an IC role?
 
 Yes. Understanding priorities, mentoring, running hiring and influencing across teams make senior ICs more effective. Present these as supporting strengths, not your headline.
+
+### Will companies think I failed as a manager?
+
+Some may wonder, which is why a positive, specific reason and evidence of recent hands-on work matter. Many companies actively value former managers in senior IC roles.
+
+### Should I mention I was a manager in my summary?
+
+Yes, briefly. Hiding it would look odd once they see your titles. Mention it and immediately connect it to why you are returning to hands-on work.
+
+### How long can I manage before going back to IC becomes hard?
+
+It gets harder the longer you are fully hands-off, but there is no fixed limit. What matters is recent hands-on evidence - many people return after five or more years with current projects to show.
+
+### Should my portfolio or GitHub show recent work?
+
+Yes. Recent commits, designs or analyses are the most direct proof that your skills are current, and interviewers for former managers often look for them.
 
 ## What to Do Now
 

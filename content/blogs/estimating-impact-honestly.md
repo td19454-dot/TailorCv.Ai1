@@ -178,6 +178,62 @@ He could have written "boosted productivity 22%", but the counts are more concre
 
 She resisted adding "saving 30 hours of employee time per day" - that multiplication assumes every user waited the full time every visit, which she could not defend. Engineers are especially prone to this kind of inflated derived metric; [ATS mistakes tech professionals make](/blog/ats-mistakes-tech-professionals) covers the other common ones.
 
+## Worked Example 4: A Customer Support Agent With Only Anecdotes
+
+**Situation:** Rukhsar has two years in customer support at an e-commerce company and wants a team lead role. She has no reports, just her memory of the work.
+
+**What she can reconstruct:**
+
+- She handled about 50 chats a day on a typical shift.
+- She wrote 14 saved-reply templates that the team adopted; she remembers colleagues saying replies got faster.
+- The team's weekly CSAT report showed her scores near the top most weeks.
+
+**What she writes:**
+
+> **Before:** "Provided excellent customer service and helped the team improve response times."
+>
+> **After:**
+> - "Handled about 50 customer chats a day across order, refund and delivery issues."
+> - "Wrote 14 saved-reply templates adopted by a 12-person support team for common order issues."
+> - "Consistently ranked in the top three of 12 agents on weekly CSAT."
+
+She does not claim a percentage improvement in team response time, because she never saw one. The template count and adoption are facts she can verify; "top three of 12 on weekly CSAT" is specific and checkable with her former manager. Each line passes the "would my manager nod?" test. For moving into a lead role, see [two years in and applying for a mid-level role](/blog/two-years-in-going-mid-level).
+
+## At Each Career Stage
+
+| Stage | Numbers you usually have | Numbers you usually lack | Best method |
+|---|---|---|---|
+| Fresher / intern | Volumes, counts, dataset sizes | Business outcomes | Scope metrics, before/after counts |
+| Early career | Time saved, tickets, tasks, users | Revenue impact | Time saved x frequency |
+| Mid-career | Team outcomes, budgets, KPIs | Your isolated contribution | Share of total, attributed carefully |
+| Senior | Business results, budgets, headcount | Clean attribution | Ranges and conservative bounds |
+
+### Freshers: scope beats outcome
+
+A student project rarely has a business outcome, but it almost always has scale: rows of data, users, requests, participants. Scope metrics are honest and persuasive at this stage.
+
+### Senior candidates: attribution is the risk
+
+Senior people usually have big numbers available - the risk is claiming more of them than they drove. Use "led the team that..." and ranges rather than precise attributions you cannot defend.
+
+## Edge Cases and Exceptions
+
+### Your employer's numbers are confidential
+
+Use relative figures - percentages, multiples, ranges - instead of absolute ones. [Confidential work on your resume](/blog/confidential-work-on-resume) covers anonymising numbers.
+
+### The result came after you left
+
+If you started something and the result arrived after you moved on, say so honestly: "Designed the onboarding flow launched after my departure; the team later reported activation up about 10%."
+
+### The outcome was negative, but you limited the damage
+
+Damage limitation is impact too: "Rebuilt the rollback process after a failed release, cutting recovery time from 6 hours to 40 minutes."
+
+### Two sources give different numbers
+
+Use the lower, more conservative figure, or give a range. Never pick the higher number because it looks better.
+
 ## Common Mistakes
 
 ### Multiplying assumptions together
@@ -235,6 +291,16 @@ For choosing which bullets to rewrite, see [which bullets to rewrite](/blog/whic
 
 TailorCV's [AI resume optimizer](/optimize) is built not to invent numbers: it rewords around the metrics already in your resume, so estimates should come from you. Add yours first, then run the free [ATS scan](/solutions) to see how the updated bullets read against the posting.
 
+## Quick Checklist
+
+1. Is every estimate built from something you directly observed?
+2. Can you explain each calculation in one or two sentences?
+3. Did you round down rather than up?
+4. Does each estimated number use one approximation word ("about", "roughly", "~")?
+5. Are team outcomes attributed with your specific part?
+6. Would your former manager recognise each number as fair?
+7. Have you written a one-line calculation note for every estimate?
+
 ## Frequently Asked Questions
 
 ### Is it OK to estimate numbers on a resume?
@@ -268,6 +334,14 @@ Rounding up a real number slightly is common, but rounding down is safer and mor
 ### What if my work had no measurable impact?
 
 Most work has at least a scope metric - how much, how often, for whom. If an outcome truly cannot be estimated, describe the result qualitatively and specifically ("adopted by all three regional teams") rather than inventing a figure.
+
+### Is "about" or "~" better on a resume?
+
+Both are fine. "About" reads more naturally in sentences; "~" saves space in tables or dense bullets. Use one consistently and only once per bullet.
+
+### Should I leave a bullet without a number rather than estimate?
+
+If you cannot build an estimate you can explain, yes. A specific, qualitative result ("adopted by all three regional teams") is better than an invented figure.
 
 ## What to Do Now
 

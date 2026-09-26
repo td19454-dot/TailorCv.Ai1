@@ -156,6 +156,26 @@ His version strategy puts strength first where the template allows: projects and
 
 His projects section leads with a deployed app with real users. The [low CGPA placement guide](/blog/campus-placement-low-cgpa-guide) and [backlog guide](/blog/campus-placement-backlog-guide) cover eligibility strategy in more depth.
 
+## Worked Example 4: An ECE Student Targeting Core Electronics and IT
+
+**Situation:** Sneha studies electronics and communication. She wants core electronics roles (embedded systems, VLSI) but is also applying to IT service companies as a safety net. Her projects: an IoT-based home automation system, a Verilog processor design for coursework, and a Python attendance app.
+
+**Core version:**
+
+- First project: the Verilog design - "Designed a 5-stage pipelined RISC-V processor in Verilog; verified with 200+ test programs in ModelSim."
+- Second project: the IoT system, described with hardware detail (ESP32, sensors, power management).
+- Skills: Verilog, embedded C, MATLAB, microcontrollers (ESP32, Arduino).
+- Industrial training at a PCB manufacturer listed prominently.
+
+**IT service version:**
+
+- First project: the IoT system, described around the software side - "Built the mobile dashboard and cloud backend (Python, Firebase) for a home-automation system controlling 8 devices."
+- Second project: the attendance app.
+- Skills: Python, C, SQL, basic web development.
+- The Verilog project kept as one line to show engineering depth.
+
+Same projects, same facts, different lead. For branch-specific placement preparation, see the [campus placement preparation timeline](/blog/campus-placement-preparation-timeline).
+
 ## The One-Page Problem: What to Cut First
 
 Most placement templates enforce one page. When each version needs different content at the top, something has to go. Cut in this order:
@@ -196,6 +216,43 @@ For a more detailed approach to keeping versions straight, see [managing multipl
 
 CGPA, dates, internship names, project results - these must be the same in every version. Different emphasis is fine; different facts are not. Interviewers sometimes have your portal data alongside your resume.
 
+## At Each Stage of the Season
+
+Placement tailoring changes as the season moves on.
+
+| Stage | Your situation | What to do with your resume |
+|---|---|---|
+| Pre-final year / internships | Applying for internships through campus | One version, lead with your best project and skills |
+| Early placement season | Top companies and dream offers | Your strongest version per company type; maximum detail |
+| Mid-season | Mass recruiters and repeat drives | Service and product versions ready; quick turnaround |
+| Late season / off-campus | Fewer campus drives | Off-campus applications with per-posting tailoring |
+
+### Early in the season: invest in the lead
+
+Dream companies often come first. Your product or analytics version should be at its best before the first drive - there is little time to revise between rounds.
+
+### Late in the season: switch to off-campus habits
+
+When campus drives thin out, off-campus applications go through ATS portals, where per-posting tailoring matters. See [campus placement vs off-campus](/blog/campus-placement-vs-off-campus).
+
+## Edge Cases and Exceptions
+
+### The placement cell edits your resume
+
+Some colleges review and standardise resumes. If a coordinator changes your wording, check that every line is still true and something you can explain in an interview.
+
+### A company asks for a resume outside the portal
+
+If a recruiter emails asking for your resume directly, you can send a better-tailored version - as long as the facts match what is on the portal.
+
+### You hold an offer and keep applying
+
+Some colleges restrict applying after an offer. If you are allowed to continue, add the offer only if the policy and the company expect it, and keep your other versions updated.
+
+### Dual-degree or minor specialisations
+
+A minor in data science or management can justify a separate version for analytics or consulting drives, leading with that coursework and related projects.
+
 ## Common Mistakes During Placements
 
 ### One resume for every company type
@@ -218,11 +275,35 @@ Every line is interview material. If you list a technology in the product versio
 
 If you convert an internship or get new results mid-season, update all versions. [Internship to PPO conversion](/blog/internship-to-ppo-conversion-guide) covers how to present a pre-placement offer if you continue applying.
 
+## How This Comes Up in Interviews
+
+At placements, the panel usually has your resume printed in front of them and asks about almost every line. Each version you submit is a script for your interview.
+
+| Resume element | Typical placement question |
+|---|---|
+| First project | "Explain your project architecture and why you chose that stack." |
+| Skills line | "You've listed Java - what's the difference between an interface and an abstract class?" |
+| Internship | "What exactly did you build, and what did you learn?" |
+| Position of responsibility | "Tell me about a conflict in your team and how you handled it." |
+| CGPA or backlog | "What happened in that semester?" |
+
+Prepare answers for every line in every version you submit. [Campus placement technical interview questions](/blog/campus-placement-technical-interview-questions) and the [HR round questions](/blog/campus-placement-hr-interview-questions) show how panels use resumes. The [mock interview tool](/mock-interview) can drill you on your own lines.
+
 ## Off-Campus Applications Are Different
 
 Off-campus applications go through company portals and ATS systems, where you can and should tailor per posting. There, a match scan and per-posting edits make a real difference. [Campus placement vs off-campus](/blog/campus-placement-vs-off-campus) compares the two tracks.
 
 For off-campus postings, the free [ATS scan](/solutions) shows how your version matches a specific JD in about a minute, and the [AI resume optimizer](/optimize) can tailor your base toward it without adding skills you do not have. For campus drives, focus on your two or three type-based versions.
+
+## Quick Checklist
+
+1. Which company types are you targeting, and do you have a version for each?
+2. Does each version lead with the evidence that company type screens for?
+3. Is every project bullet specific - scale, a decision, a result?
+4. Are CGPA, dates and internship details identical across versions?
+5. Does the resume fit the college template's one-page limit?
+6. Are files named clearly by version?
+7. Can you answer interview questions on every line of every version?
 
 ## Frequently Asked Questions
 
@@ -257,6 +338,14 @@ Yes, as long as the facts are the same in every version. Changing order and emph
 ### What if I don't meet a company's CGPA cut-off?
 
 Generally, do not apply to that drive - you will likely be filtered out and may waste your application slot. Focus on drives where you meet eligibility and on off-campus roles with flexible criteria.
+
+### Can I change my resume between placement rounds?
+
+Often not for the same company once submitted, but you can usually update your resume on the portal between different companies' drives. Check your placement cell's rules.
+
+### Should I include a photo on my placement resume?
+
+Follow your college template and the company's requirements. Most tech and corporate recruiters do not need one; some colleges include it by default.
 
 ## What to Do Now
 

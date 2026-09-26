@@ -204,6 +204,19 @@ She describes the category (consumer hardware), her role, the tools and a relati
 
 He checks with his former employer's security office about what he may state publicly. For translating government experience to private-sector language, see [tailoring across industries](/blog/tailoring-across-industries).
 
+## Worked Example 4: A Lawyer With Only Privileged Matters
+
+**Situation:** Kavitha is a corporate lawyer with seven years at a law firm, applying for in-house legal counsel roles. Almost every matter she worked on is privileged, and client names cannot be disclosed.
+
+> **Before:** "Advised clients on various confidential corporate transactions and legal matters."
+>
+> **After:**
+> - "Advised on 9 private equity investments in consumer and technology companies (₹50-400 crore) - due diligence, share purchase agreements and closing."
+> - "Drafted and negotiated 60+ commercial contracts for technology clients, including SaaS licences and data processing agreements."
+> - "Led the legal workstream on a cross-border acquisition by a listed Indian company, coordinating with counsel in 3 jurisdictions."
+
+No client is named, no deal is identifiable, and every bullet still shows the type of work, scale and her role. For in-house roles, she adds a line on business-facing work: "Trained 3 client teams on contract negotiation basics." In interviews, she discusses her approach to matters in general terms, which in-house hiring managers - often former law firm lawyers themselves - expect.
+
 ## Portfolios and Case Studies Under NDA
 
 Designers, developers and consultants often need a portfolio too.
@@ -227,6 +240,41 @@ Interviewers will ask about your work. Prepare one calm line.
 > "A lot of my work was under NDA, so I'll describe the problem and my approach without naming the client. The client was a large private bank; the problem was fraud false-positives..."
 
 Then give as much detail as you safely can about your method and reasoning. Interviewers respect people who protect confidential information - it signals you will protect theirs. Stories built this way fit well in the [interview story bank method](/blog/interview-story-bank-star-method), and you can rehearse them with the [mock interview tool](/mock-interview).
+
+## At Each Career Stage
+
+| Stage | Typical confidentiality issue | Best approach |
+|---|---|---|
+| Fresher / intern | Internship under NDA | Describe tools, tasks and scale; skip client and product names |
+| Early career | Unreleased product or client work | Problem category + your role + relative results |
+| Mid-career | Many client engagements | Group by industry; anonymise with size and region |
+| Senior | Strategic, financial or board-level work | Scope and relative impact; ranges for money |
+
+### Interns: you can still say a lot
+
+An NDA on an internship rarely stops you describing what you did. "Built data-cleaning scripts in Python for a retail client's sales data (about 2M rows)" reveals nothing protected.
+
+### Senior candidates: numbers become sensitive
+
+Senior roles involve revenue, margins and strategy. Ranges and percentages protect the company while still showing scale.
+
+## Edge Cases and Exceptions
+
+### The confidential project later became public
+
+Once a product launches or a deal is announced, you can usually describe it more openly. Check the public record and your agreement.
+
+### Your employer is itself confidential
+
+Stealth startups sometimes ask employees not to name them. Use a description - "Stealth-stage fintech startup (Series A)" - and name it once it launches.
+
+### A reference checker asks about the project
+
+Your former manager can confirm your role without breaching confidentiality. Let them know how you have described the work so your accounts match.
+
+### You worked on something controversial
+
+If a project became publicly controversial, describe your specific work neutrally and be ready to discuss it calmly in interviews.
 
 ## Common Mistakes
 
@@ -255,6 +303,16 @@ LinkedIn is public. Apply the same or stricter anonymisation there, and keep it 
 Confidential work does not change the tailoring steps - it changes how you describe evidence. Pick the posting's top requirements, find matching work, anonymise it precisely, and lead with it.
 
 The free [ATS scan](/solutions) shows whether your anonymised bullets still contain the terms the posting needs - about a minute. If tools and methods are missing, add them; those are rarely confidential. The [AI resume optimizer](/optimize) can reword anonymised bullets toward the posting without adding details you did not include. For choosing which bullets to rework, see [which bullets to rewrite](/blog/which-bullets-to-rewrite).
+
+## Quick Checklist
+
+1. Have you checked your NDA or employment contract?
+2. Are clients described by industry, size and region rather than name?
+3. Does no combination of details identify a client?
+4. Are exact financial figures replaced with percentages, multiples or ranges?
+5. Are tools, methods and your role named clearly?
+6. Is LinkedIn anonymised at least as carefully as your resume?
+7. Do you have a calm one-line explanation for interviews?
 
 ## Frequently Asked Questions
 
@@ -289,6 +347,14 @@ Explain briefly that the work was under NDA, then describe the problem, your app
 ### Should I list security clearance on my resume?
 
 Only if relevant to the role and permitted. Some private-sector roles value clearance; others do not need it.
+
+### Can I be sued for describing my work on a resume?
+
+Describing your role, skills and general results is very unlikely to breach a typical confidentiality agreement. Revealing protected information - client names, trade secrets, exact financials - could. When unsure, ask your employer or get legal advice.
+
+### Should I mention the NDA itself on my resume?
+
+Usually not. A precisely anonymised bullet speaks for itself. Mention the NDA in interviews when explaining why some details are general.
 
 ## What to Do Now
 
