@@ -575,9 +575,14 @@ export function attachFile(input, file) {
     const dt = new globalThis.DataTransfer();
     dt.items.add(file);
     input.files = dt.files;
+    // Whether the WRITE took, read before the page reacts: Workday takes the
+    // file in its change handler and clears the input at once, so reading it
+    // afterwards reported a successful upload as a failure — and the caller
+    // then dropped the file on the zone as well, uploading it twice.
+    const set = !!(input.files && input.files.length > 0);
     fire(input, 'input');
     fire(input, 'change');
-    return input.files && input.files.length > 0;
+    return set;
   } catch (e) {
     return false;
   }
@@ -614,6 +619,9 @@ export function findDropZone(input) {
   while (n && depth < 5) {
     const cls = (n.className && String(n.className)) || '';
     if (/dropzone|drop-zone|filepond|uppy|drag/i.test(cls)) return n;
+    // Workday: hashed classes, but a stable automation id on the zone.
+    const auto = (n.getAttribute && n.getAttribute('data-automation-id')) || '';
+    if (/drop-?zone/i.test(auto)) return n;
     if (n.hasAttribute && (n.hasAttribute('data-uppy') || n.hasAttribute('data-filepond'))) return n;
     n = n.parentElement; depth++;
   }

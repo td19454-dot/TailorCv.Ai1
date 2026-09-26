@@ -216,6 +216,7 @@ export async function runAutofill(ctx, onProgress) {
     state.origin = globalThis.location.origin;
   }
 
+  attachedThisRun.clear();
   progress('scanning');
   let rows = describeFields(form);
   if (!rows.length) return { error: 'no_fields', decisions: [], counts: summarize([]) };
@@ -451,8 +452,21 @@ function outcomeReason(d) {
   }
 }
 
+// Documents already sent to an upload field during this run, by slot. Workday
+// redraws the upload box after taking a file — a new <input type=file>, the
+// filename only listed once its server has the file — and the pass that looks
+// for fields revealed by an answer saw that redrawn box as a new, empty upload
+// and attached the resume a second time. One document goes up once per run;
+// "Autofill this page" starts a new run, where the filled-upload check applies.
+const attachedThisRun = new Set();
+
 async function attachDocument(decision, ctx) {
   const slot = decision.slot;
+  if (slot && attachedThisRun.has(slot)) {
+    console.info(`[TailorCV] ${slot} already attached this run — skipping "${decision.label}"`);
+    return { ok: true, shown: 'already attached' };
+  }
+  console.info(`[TailorCV] attaching ${slot || 'a document'} to "${decision.label}"`);
   const res = await send({ type: 'AF_GET_RESUME_FILE', doc: slot });
   if (res.error || !res.data || !res.data.base64) {
     return { ok: false, shown: '' };
@@ -475,17 +489,22 @@ async function attachDocument(decision, ctx) {
   // claimed as successful is exactly the lie this whole layer avoids.
   if (decision.row.dropOnly) {
     const dropped = dropFile(target, file);
+    if (slot && dropped) attachedThisRun.add(slot);
     await sleep(TIMING.settleMs + 120);
     return { ok: false, shown: dropped ? `${file.name} (check it attached)` : '' };
   }
 
-  let ok = attachFile(target, file);
+  const set = attachFile(target, file);
+  if (slot) attachedThisRun.add(slot);
 
-  // Uppy, Dropzone and FilePond listen for `drop` and never for `change`, so a
-  // form using one of those ignores the input write even when it succeeds.
-  if (!ok || !(target.files && target.files.length)) {
+  // Uppy, Dropzone and FilePond listen for `drop` and never for `change`, so
+  // the zone is the fallback — but only when the input write itself failed.
+  // An input that took the file and is now empty was EMPTIED BY THE PAGE, which
+  // is how Workday says "got it"; dropping the file on the zone as well
+  // uploaded the resume twice.
+  if (!set) {
     const zone = findDropZone(target);
-    if (zone) ok = dropFile(zone, file) || ok;
+    if (zone) dropFile(zone, file);
   }
   // Taken when the input still holds it, or when the page shows its name —
   // Workday uploads first, then clears the input and lists the file, so
@@ -498,7 +517,8 @@ async function attachDocument(decision, ctx) {
     if (attached || Date.now() >= deadline) break;
     await sleep(150);
   }
-  return { ok: ok && attached, shown: attached ? file.name : '' };
+  // What the page shows is the verdict, however the file got there.
+  return { ok: attached, shown: attached ? file.name : '' };
 }
 
 // ── answering a field from the sidebar ───────────────────────

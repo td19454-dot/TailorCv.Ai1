@@ -3342,9 +3342,10 @@ what when where which who will with would you your now future
       const dt = new globalThis.DataTransfer();
       dt.items.add(file);
       input.files = dt.files;
+      const set = !!(input.files && input.files.length > 0);
       fire(input, "input");
       fire(input, "change");
-      return input.files && input.files.length > 0;
+      return set;
     } catch (e) {
       return false;
     }
@@ -3373,6 +3374,8 @@ what when where which who will with would you your now future
     while (n && depth < 5) {
       const cls = n.className && String(n.className) || "";
       if (/dropzone|drop-zone|filepond|uppy|drag/i.test(cls)) return n;
+      const auto = n.getAttribute && n.getAttribute("data-automation-id") || "";
+      if (/drop-?zone/i.test(auto)) return n;
       if (n.hasAttribute && (n.hasAttribute("data-uppy") || n.hasAttribute("data-filepond"))) return n;
       n = n.parentElement;
       depth++;
@@ -3636,6 +3639,7 @@ what when where which who will with would you your now future
       state.startedAt = Date.now();
       state.origin = globalThis.location.origin;
     }
+    attachedThisRun.clear();
     progress("scanning");
     let rows = describeFields(form);
     if (!rows.length) return { error: "no_fields", decisions: [], counts: summarize([]) };
@@ -3815,8 +3819,14 @@ what when where which who will with would you your now future
         return "we could not fill this one";
     }
   }
+  var attachedThisRun = /* @__PURE__ */ new Set();
   async function attachDocument(decision, ctx) {
     const slot = decision.slot;
+    if (slot && attachedThisRun.has(slot)) {
+      console.info(`[TailorCV] ${slot} already attached this run \u2014 skipping "${decision.label}"`);
+      return { ok: true, shown: "already attached" };
+    }
+    console.info(`[TailorCV] attaching ${slot || "a document"} to "${decision.label}"`);
     const res = await send({ type: "AF_GET_RESUME_FILE", doc: slot });
     if (res.error || !res.data || !res.data.base64) {
       return { ok: false, shown: "" };
@@ -3831,13 +3841,15 @@ what when where which who will with would you your now future
     const target = decision.row.el;
     if (decision.row.dropOnly) {
       const dropped = dropFile(target, file);
+      if (slot && dropped) attachedThisRun.add(slot);
       await sleep(TIMING.settleMs + 120);
       return { ok: false, shown: dropped ? `${file.name} (check it attached)` : "" };
     }
-    let ok = attachFile(target, file);
-    if (!ok || !(target.files && target.files.length)) {
+    const set = attachFile(target, file);
+    if (slot) attachedThisRun.add(slot);
+    if (!set) {
       const zone = findDropZone(target);
-      if (zone) ok = dropFile(zone, file) || ok;
+      if (zone) dropFile(zone, file);
     }
     const deadline = Date.now() + TIMING.uploadConfirmMs;
     let attached = false;
@@ -3847,7 +3859,7 @@ what when where which who will with would you your now future
       if (attached || Date.now() >= deadline) break;
       await sleep(150);
     }
-    return { ok: ok && attached, shown: attached ? file.name : "" };
+    return { ok: attached, shown: attached ? file.name : "" };
   }
   async function answerField(decision, value, remember) {
     decision.value = String(value == null ? "" : value);
