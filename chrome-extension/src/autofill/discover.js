@@ -68,6 +68,49 @@ export function isVisible(el) {
  * engine (jsdom) nothing can be measured, and dropping what we cannot measure
  * would hide every option from the tests.
  */
+/**
+ * An option node that is really a value already CHOSEN in another widget.
+ *
+ * Workday draws a multiselect's committed answers as tags in a selectedItem
+ * list, and marks each one data-automation-id="promptOption" — the same marker
+ * as a row in an open list. Read as options, the Country Phone Code tag
+ * "India (+91)" became the only choice for Phone Device Type, the model picked
+ * it, and Workday rejected it.
+ */
+export function isChosenValue(node) {
+  try {
+    return !!(node && node.closest
+      && node.closest('[data-automation-id="selectedItem"], [data-automation-id="selectedItemList"]'));
+  } catch (e) { return false; }
+}
+
+/**
+ * A text input that only stores the value of a <button> dropdown beside it.
+ *
+ * Workday renders each dropdown as <button aria-haspopup="listbox"> plus an
+ * input the user never sees or reaches, which holds the value for its
+ * validation. It carries the same label, so it came out as a second copy of the
+ * question ("Phone Device Type" as a dropdown AND as a text box) and was given
+ * the dropdown's answer as free text. Only skipped when the user can neither
+ * see nor tab to it — a real text box beside a dropdown is still a field.
+ */
+function isListboxCompanion(el) {
+  if (!el || (el.tagName || '').toLowerCase() !== 'input') return false;
+  const type = String(el.getAttribute('type') || 'text').toLowerCase();
+  if (type !== 'text' && type !== '') return false;
+  const unreachable = !isNodeVisible(el) || el.getAttribute('tabindex') === '-1'
+                      || el.getAttribute('aria-hidden') === 'true';
+  if (!unreachable) return false;
+  let n = el.parentElement;
+  for (let depth = 0; n && depth < 3; depth++, n = n.parentElement) {
+    let buttons = [];
+    try { buttons = n.querySelectorAll('button[aria-haspopup="listbox"]'); } catch (e) { return false; }
+    if (buttons.length === 1) return true;
+    if (buttons.length > 1) return false;       // now spanning several fields
+  }
+  return false;
+}
+
 export function isNodeVisible(node) {
   if (!node) return false;
   if (inAriaHidden(node)) return false;
@@ -472,6 +515,8 @@ export function describeFields(form) {
 
   const fields = (form.fields || []).concat(orphanFileInputs(form));
   for (const el of fields) {
+    // Workday's value store behind a <button> dropdown, not a question of its own.
+    if (isListboxCompanion(el)) continue;
     // Workday dates: three spinbutton inputs (month, day, year) that are one
     // question. Described individually they come out as three fields labelled
     // "Month", "Day" and "Year", none of which matches anything the user has
@@ -575,6 +620,7 @@ export function describeFields(form) {
         }
       }
       row.documentSlot = slot;
+      row.filled = hasUploadedFile(el);
     }
     out.push(row);
   }
@@ -594,7 +640,7 @@ export function describeFields(form) {
     out.push({
       key, el: zone, members: [zone], kind: 'file',
       label: label || 'File upload', ident: key, value: '',
-      filled: false, invalid: false, required: /\*|\(required\)/.test(label),
+      filled: hasUploadedFile(zone), invalid: false, required: /\*|\(required\)/.test(label),
       options: [], readable: true,
       documentSlot: documentSlotFor(label),
       hints: { tag: 'dropzone' }, dropOnly: true,
@@ -713,6 +759,38 @@ function isFileField(el) {
 // required upload back to the user on every Greenhouse application.
 const UPLOAD_ACTION_RE =
   /^(attach|upload|browse|choose|select|add|replace)(\s+(a|an|your)?\s*(file|document|resume|cv|another))?\.?$/i;
+
+// A document filename as an ATS displays an upload it has taken:
+// "Shubham_Sarkar_resume.pdf". A word character must sit right before the dot,
+// so instructions like "Upload a .pdf or .docx" never read as an uploaded file.
+const UPLOADED_NAME_RE = /[\w)\]-]\.(pdf|docx?|rtf|txt|odt|pages)\b/i;
+
+/**
+ * Does this upload field already hold a document?
+ *
+ * The input's own FileList when the page kept it; otherwise the filename the
+ * ATS shows in the field's box. Greenhouse, Lever and Workday all clear the
+ * input once they have taken the file and show only its name, so the FileList
+ * alone would call a finished upload empty — and autofill would replace the
+ * resume the person just chose (often one tailored for this job) with their
+ * base resume. Same climb as uploadGroupLabel: never past a box that also
+ * holds another upload, so the Cover Letter's filename can't fill the Resume.
+ */
+export function hasUploadedFile(el) {
+  try { if (el.files && el.files.length) return true; } catch (e) { /* ignore */ }
+  const own = (el.tagName || '').toLowerCase() !== 'input' ? el : null;   // a drop zone
+  if (own && UPLOADED_NAME_RE.test(own.textContent || '')) return true;
+  let n = el.parentElement, depth = 0;
+  while (n && depth < 6) {
+    let files = 0;
+    try { files = n.querySelectorAll('input[type="file"]').length; } catch (e) { break; }
+    if (files > 1) break;
+    if (isFormLevel(n)) break;
+    if (UPLOADED_NAME_RE.test(n.textContent || '')) return true;
+    n = n.parentElement; depth++;
+  }
+  return false;
+}
 
 /**
  * The accessible name of the group wrapping a file input, or ''.
@@ -1007,6 +1085,7 @@ function optionLabelsIn(node) {
   const nodes = p && p.optionNodes ? p.optionNodes(node) : [];
   const out = [];
   for (const n of nodes) {
+    if (isChosenValue(n)) continue;
     const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
     if (t && out.length < MAX_OPTIONS_READ) out.push(t);
   }
@@ -1032,7 +1111,7 @@ function waitForOptions() {
       if (!p || !p.optionNodes) return [];
       const out = [];
       for (const n of p.optionNodes(doc)) {
-        if (!isNodeVisible(n)) continue;
+        if (!isNodeVisible(n) || isChosenValue(n)) continue;
         const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
         if (t && out.length < MAX_OPTIONS_READ) out.push(t);
       }

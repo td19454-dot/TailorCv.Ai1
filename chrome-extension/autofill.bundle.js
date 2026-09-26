@@ -1229,6 +1229,32 @@ what when where which who will with would you your now future
     }
     return true;
   }
+  function isChosenValue(node) {
+    try {
+      return !!(node && node.closest && node.closest('[data-automation-id="selectedItem"], [data-automation-id="selectedItemList"]'));
+    } catch (e) {
+      return false;
+    }
+  }
+  function isListboxCompanion(el) {
+    if (!el || (el.tagName || "").toLowerCase() !== "input") return false;
+    const type = String(el.getAttribute("type") || "text").toLowerCase();
+    if (type !== "text" && type !== "") return false;
+    const unreachable = !isNodeVisible(el) || el.getAttribute("tabindex") === "-1" || el.getAttribute("aria-hidden") === "true";
+    if (!unreachable) return false;
+    let n = el.parentElement;
+    for (let depth = 0; n && depth < 3; depth++, n = n.parentElement) {
+      let buttons = [];
+      try {
+        buttons = n.querySelectorAll('button[aria-haspopup="listbox"]');
+      } catch (e) {
+        return false;
+      }
+      if (buttons.length === 1) return true;
+      if (buttons.length > 1) return false;
+    }
+    return false;
+  }
   function isNodeVisible(node) {
     if (!node) return false;
     if (inAriaHidden(node)) return false;
@@ -1558,6 +1584,7 @@ what when where which who will with would you your now future
     const dateGroups = /* @__PURE__ */ new Map();
     const fields = (form.fields || []).concat(orphanFileInputs(form));
     for (const el of fields) {
+      if (isListboxCompanion(el)) continue;
       const dateWrap = dateWrapperOf(el);
       if (dateWrap) {
         const existing = dateGroups.get(dateWrap);
@@ -1656,6 +1683,7 @@ what when where which who will with would you your now future
           }
         }
         row.documentSlot = slot;
+        row.filled = hasUploadedFile(el);
       }
       out.push(row);
     }
@@ -1672,7 +1700,7 @@ what when where which who will with would you your now future
         label: label || "File upload",
         ident: key,
         value: "",
-        filled: false,
+        filled: hasUploadedFile(zone),
         invalid: false,
         required: /\*|\(required\)/.test(label),
         options: [],
@@ -1777,6 +1805,30 @@ what when where which who will with would you your now future
     return el.getAttribute && (el.getAttribute("type") || "").toLowerCase() === "file";
   }
   var UPLOAD_ACTION_RE = /^(attach|upload|browse|choose|select|add|replace)(\s+(a|an|your)?\s*(file|document|resume|cv|another))?\.?$/i;
+  var UPLOADED_NAME_RE = /[\w)\]-]\.(pdf|docx?|rtf|txt|odt|pages)\b/i;
+  function hasUploadedFile(el) {
+    try {
+      if (el.files && el.files.length) return true;
+    } catch (e) {
+    }
+    const own = (el.tagName || "").toLowerCase() !== "input" ? el : null;
+    if (own && UPLOADED_NAME_RE.test(own.textContent || "")) return true;
+    let n = el.parentElement, depth = 0;
+    while (n && depth < 6) {
+      let files = 0;
+      try {
+        files = n.querySelectorAll('input[type="file"]').length;
+      } catch (e) {
+        break;
+      }
+      if (files > 1) break;
+      if (isFormLevel(n)) break;
+      if (UPLOADED_NAME_RE.test(n.textContent || "")) return true;
+      n = n.parentElement;
+      depth++;
+    }
+    return false;
+  }
   function uploadGroupLabel(el) {
     const doc = el.ownerDocument;
     if (!doc) return "";
@@ -1989,6 +2041,7 @@ what when where which who will with would you your now future
     const nodes = p && p.optionNodes ? p.optionNodes(node) : [];
     const out = [];
     for (const n of nodes) {
+      if (isChosenValue(n)) continue;
       const t = (n.textContent || "").replace(/\s+/g, " ").trim();
       if (t && out.length < MAX_OPTIONS_READ) out.push(t);
     }
@@ -2002,7 +2055,7 @@ what when where which who will with would you your now future
         if (!p || !p.optionNodes) return [];
         const out = [];
         for (const n of p.optionNodes(doc)) {
-          if (!isNodeVisible(n)) continue;
+          if (!isNodeVisible(n) || isChosenValue(n)) continue;
           const t = (n.textContent || "").replace(/\s+/g, " ").trim();
           if (t && out.length < MAX_OPTIONS_READ) out.push(t);
         }
@@ -2206,6 +2259,7 @@ what when where which who will with would you your now future
         return done(d, SKIP, "", "", 0, "we never fill this kind of field");
       }
       if (row.kind === "file" || row.documentSlot) {
+        if (row.filled) return done(d, SKIP, "", "", 0, "already has a file");
         const slot = row.documentSlot;
         const have = slot === "cover_letter" ? ctx && ctx.hasCoverLetter : slot === "resume" ? ctx && ctx.hasResume : false;
         d.slot = slot;
@@ -3075,7 +3129,7 @@ what when where which who will with would you your now future
   function visibleOptionNodes(doc) {
     const p = probe2();
     const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
-    return nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n));
+    return nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n) && !isChosenValue(n));
   }
   function waitForOptions2(el, timeout) {
     return new Promise((resolve) => {

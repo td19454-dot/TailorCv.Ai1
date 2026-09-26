@@ -12,7 +12,7 @@
 //
 // Run: node test/integration.test.mjs
 
-import { test, run, ok, notOk, eq } from './harness.mjs';
+import { test, run, ok, notOk, eq, deepEq } from './harness.mjs';
 import { mount, polyfillFileApis } from './dom.mjs';
 import * as fixtures from './fixtures.mjs';
 import * as d from '../src/autofill/discover.js';
@@ -402,6 +402,50 @@ test('a field the user fills while the server is thinking is never overwritten',
   });
 });
 
+// ── uploads that already hold a file ─────────────────────────
+
+const resumeFetches = sent => sent.filter(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'resume');
+const addToBox = (env, inputId, html) =>
+  env.document.getElementById(inputId).parentElement.insertAdjacentHTML('beforeend', html);
+
+test('a resume the ATS already took (filename shown) is left alone', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    // What Greenhouse shows after an upload: the input cleared, the name beside it.
+    addToBox(env, 'resume', '<span class="filename">Shubham_Sarkar_tailored.pdf</span> <button type="button">Remove</button>');
+    const result = await run_.runAutofill(CTX, null);
+    eq(byLabel(result.decisions, 'resume').action, p.SKIP);
+    eq(resumeFetches(sent).length, 0, 'the base resume must not even be fetched');
+  });
+});
+
+test('an upload input already holding a file is left alone', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    const input = env.document.getElementById('resume');
+    const dt = new env.window.DataTransfer();
+    dt.items.add(new env.window.File(['%PDF'], 'mine.pdf', { type: 'application/pdf' }));
+    input.files = dt.files;
+    await run_.runAutofill(CTX, null);
+    eq(resumeFetches(sent).length, 0);
+    eq(input.files[0].name, 'mine.pdf', 'their file stays');
+  });
+});
+
+test('upload instructions mentioning .pdf are not mistaken for a file', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    addToBox(env, 'resume', '<small>Upload a .pdf or .docx (max 5MB). Accepted file types: pdf, doc, docx</small>');
+    await run_.runAutofill(CTX, null);
+    eq(resumeFetches(sent).length, 1, 'still attached');
+  });
+});
+
+test("the cover letter's filename does not make the resume look uploaded", async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    addToBox(env, 'cover_letter', '<span class="filename">cover_letter.pdf</span>');
+    await run_.runAutofill(CTX, null);
+    eq(resumeFetches(sent).length, 1, 'the resume box is still empty, so it is attached');
+  });
+});
+
 test('Greenhouse: the marketing opt-in checkbox is ticked', async () => {
   await withForm(fixtures.GREENHOUSE, {
     serverAnswers: { "I'd like to receive updates about future roles": 'yes' },
@@ -544,6 +588,59 @@ test('Workday (real markup): the Save and Continue button is never a field', asy
   await withForm(fixtures.WORKDAY_MYINFO, {}, () => {
     const rows = d.describeFields(d.findForm());
     notOk(rows.some(r => /save and continue/i.test(r.label)));
+  });
+});
+
+// The Phone section of nvidia.wd5.myworkdayjobs.com, where "Phone Device Type"
+// showed up twice (dropdown + text box) and its only "option" was the Country
+// Phone Code's committed tag "India (+91)".
+const WD_PHONE_SECTION = `
+  <div data-automation-id="formField-countryPhoneCode">
+    <label for="input-12">Country Phone Code<abbr title="required">*</abbr></label>
+    <div data-automation-id="multiSelectContainer">
+      <ul data-automation-id="selectedItemList">
+        <li><div data-automation-id="selectedItem"><div data-automation-id="promptOption">India (+91)</div></div></li>
+      </ul>
+      <div data-automation-id="multiselectInputContainer">
+        <input data-automation-id="searchBox" id="input-12" type="text" placeholder="Search">
+      </div>
+    </div>
+  </div>
+  <div data-automation-id="formField-phoneType">
+    <label for="input-13">Phone Device Type<abbr title="required">*</abbr></label>
+    <div>
+      <button type="button" aria-haspopup="listbox" id="input-13"
+              aria-label="Phone Device Type Select One Required">Select One</button>
+      <input type="text" tabindex="-1" class="css-77hcv" value="">
+    </div>
+  </div>`;
+
+function wirePhoneType(doc) {
+  const portal = doc.getElementById('wd-portal');
+  const button = doc.getElementById('input-13');
+  button.addEventListener('mousedown', () => {
+    portal.innerHTML = '<ul role="listbox">' + ['Home', 'Home Cellular'].map(o =>
+      `<li role="option" data-automation-id="promptOption">${o}</li>`).join('') + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]')) {
+      li.addEventListener('mousedown', () => { button.textContent = li.textContent; portal.innerHTML = ''; });
+    }
+  });
+}
+
+test('Workday: a dropdown is one field, and another widget\'s chosen tag is not its option', async () => {
+  const html = fixtures.WORKDAY_MYINFO.replace(
+    '<div data-automation-id="formField-email">', WD_PHONE_SECTION + '\n    <div data-automation-id="formField-email">');
+  await withForm(html, {}, async (env, sent) => {
+    fixtures.wireWorkday(env.document);
+    wirePhoneType(env.document);
+    const result = await run_.runAutofill(CTX, null);
+    const rows = result.decisions.filter(x => /phone device type/i.test(x.label || ''));
+    eq(rows.length, 1, `one row, not a dropdown plus a text box (got ${rows.map(r => r.kind).join(', ')})`);
+    eq(rows[0].kind, 'combobox');
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    const asked = plan && plan.payload.fields.filter(x => /phone device type/i.test(x.label));
+    eq(asked.length, 1, 'asked about once');
+    deepEq(asked[0].options, ['Home', 'Home Cellular'], 'its own options, not "India (+91)"');
   });
 });
 

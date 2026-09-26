@@ -17,7 +17,7 @@
 
 import { commitMatches, bestOptionMatch, looksLikeDecline } from './match.js';
 import { coerce, candidatesFor } from './plan.js';
-import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible } from './discover.js';
+import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isChosenValue } from './discover.js';
 import { TIMING, sleep } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
@@ -489,7 +489,7 @@ function visibleOptionNodes(doc) {
   // waitForOptions returned those immediately, for every dropdown on the page
   // — so "Bachelor's Degree" was matched against a list of countries, matched
   // nothing, and every dropdown reported "we could not get this to stick".
-  return nodes.filter(n => (n.textContent || '').trim() && isNodeVisible(n));
+  return nodes.filter(n => (n.textContent || '').trim() && isNodeVisible(n) && !isChosenValue(n));
 }
 
 function waitForOptions(el, timeout) {

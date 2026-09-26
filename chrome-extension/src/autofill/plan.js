@@ -104,6 +104,10 @@ export function decide(rows, ctx, server, state) {
 
     // Documents are attached, not typed.
     if (row.kind === 'file' || row.documentSlot) {
+      // Already holds a document — one the person uploaded (often tailored for
+      // this job) or the ATS kept. Never replaced with the base resume, and not
+      // reported: nothing happened here worth a line in the results.
+      if (row.filled) return done(d, SKIP, '', '', 0, 'already has a file');
       const slot = row.documentSlot;
       const have = slot === 'cover_letter' ? (ctx && ctx.hasCoverLetter)
                  : slot === 'resume' ? (ctx && ctx.hasResume) : false;
