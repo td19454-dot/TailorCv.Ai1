@@ -2227,7 +2227,8 @@ what when where which who will with would you your now future
         const entry2 = matchFieldKey(row.label);
         const stored = entry2 && entry2.sensitive ? bank[entry2.key] : "";
         if (!stored) {
-          return done(d, PROFILE, "", "", 0, profileHint(category));
+          const onProfile = PROFILE_CATEGORIES.has(category) || !!(entry2 && entry2.sensitive);
+          return onProfile ? done(d, PROFILE, "", "", 0, profileHint(category, entry2)) : done(d, ASK, "", "", 0, "we never guess this \u2014 choose your answer");
         }
         const shapes = candidatesFor(entry2 ? entry2.key : "", stored, bank);
         if (shapes.length > 1) d.candidates = shapes;
@@ -2375,24 +2376,20 @@ what when where which who will with would you your now future
     const t = String(s || "");
     return t.length <= n ? t : `${t.slice(0, n - 1)}\u2026`;
   }
-  function profileHint(category) {
+  var PROFILE_CATEGORIES = /* @__PURE__ */ new Set(["work_authorization", "sponsorship", "salary", "demographic"]);
+  function profileHint(category, entry) {
+    if (entry && entry.key === "nationality") return "add your nationality to your profile";
     switch (category) {
       case "work_authorization":
         return "add your work authorization to your profile";
       case "sponsorship":
         return "add your sponsorship answer to your profile";
-      case "citizenship":
-        return "answer this one yourself";
-      case "clearance":
-        return "answer this one yourself";
-      case "criminal":
-        return "answer this one yourself";
       case "salary":
         return "add your salary expectation to your profile";
       case "demographic":
         return "set your voluntary disclosures in your profile";
       default:
-        return "answer this one yourself";
+        return "";
     }
   }
   var LOCATION_KEYS = /* @__PURE__ */ new Set(["location", "address_city", "address_state", "address_country"]);
@@ -3905,10 +3902,12 @@ what when where which who will with would you your now future
     return `
     <div class="tcv-af-ask-form">
       ${control}
+      ${d.sensitive ? `
+      <div class="tcv-af-remember">Used on this form only \u2014 never saved.</div>` : `
       <label class="tcv-af-remember">
         <input type="checkbox" class="tcv-af-remember-box" data-index="${index}" checked>
         Remember this answer
-      </label>
+      </label>`}
       <button class="tcv-btn tcv-btn-outline tcv-af-ask-save" data-index="${index}">
         Save &amp; fill
       </button>
@@ -4047,6 +4046,7 @@ what when where which who will with would you your now future
           page: result.page,
           ats: result.ats,
           opaqueHosts: result.opaqueHosts,
+          serverError: result.serverError,
           decisions: lastRunDecisions.map(serializeDecision),
           learnable: learnableAnswers(lastRunDecisions).map((l) => ({
             key: l.key,

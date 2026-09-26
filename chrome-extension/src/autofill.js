@@ -85,6 +85,7 @@ async function handleFrameMessage(msg) {
         page: result.page,
         ats: result.ats,
         opaqueHosts: result.opaqueHosts,
+        serverError: result.serverError,
         decisions: lastRunDecisions.map(serializeDecision),
         learnable: learnableAnswers(lastRunDecisions).map(l => ({
           key: l.key, question: l.question, answer: l.answer,

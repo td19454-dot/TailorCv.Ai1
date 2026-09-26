@@ -81,7 +81,7 @@
 
   let tcvBusy = false;
   let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer;
-  let accountBtn, accountMenu, accountEmailEl, tabsEl;
+  let accountBtn, accountMenu, accountEmailEl, tabsEl, resultsEl;
   // Base resume's filename, shown in the job view's Resume card.
   let baseResumeName = '';
   let successTick, scoreCard, scoreBeforeEl, scoreAfterEl, successTickTimer;
@@ -586,6 +586,7 @@
       </div>
       <div class="tcv-scroll">
       <div id="tcvBody"></div>
+      <div class="tcv-results" id="tcvResults">
       <div class="tcv-progress-wrap" id="tcvProgressWrap">
         <div class="tcv-progress-circle">
           <svg class="tcv-progress-ring" width="88" height="88" viewBox="0 0 88 88">
@@ -614,6 +615,7 @@
         </div>
       </div>
       <div class="tcv-status-text" id="tcvGlobalStatus"></div>
+      </div>
       </div>
     `;
     document.body.appendChild(sb);
@@ -657,7 +659,8 @@
       if (!tab || tab.disabled) return;
       onTabClick(tab.dataset.tab);
     });
-    new MutationObserver(syncTabs).observe(body, { childList: true });
+    resultsEl = sb.querySelector('#tcvResults');
+    new MutationObserver(() => { syncTabs(); placeResults(); }).observe(body, { childList: true });
     syncTabs();
 
     sb.querySelector('.tcv-toggle').addEventListener('click', () => {
@@ -732,6 +735,21 @@
       // have been set up (in another tab) since this state was last shown —
       // a cheap fallback alongside the push notification and retry link.
       refreshFull();
+    }
+  }
+
+  // The progress ring, success tick, score card and status line are built once
+  // and outlive every re-render, so a tailor in flight survives switching views.
+  // The job view gives them a slot between the Resume card and Cover Letter;
+  // every other view has them after the body. Moved, never rebuilt, so the
+  // ring's progress and any skills panel inside go with them.
+  function placeResults() {
+    if (!resultsEl) return;
+    const slot = body.querySelector('#tcvResultSlot');
+    if (slot) {
+      if (resultsEl.parentNode !== slot) slot.appendChild(resultsEl);
+    } else if (resultsEl.previousElementSibling !== body) {
+      body.after(resultsEl);
     }
   }
 
@@ -1025,6 +1043,7 @@
         </div>
         <button class="tcv-btn tcv-btn-outline-accent" id="tcvTailorBtn">${tcvBusy ? tailorLabel : '✎ Tailor Resume'}</button>
       </div>
+      <div id="tcvResultSlot"></div>
       <button class="tcv-card tcv-row-card" id="tcvCoverBtn" type="button">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/><path d="M17.5 2.5a2.1 2.1 0 013 3L12 14l-4 1 1-4z"/></svg>
         <span class="tcv-row-title">Cover Letter</span>

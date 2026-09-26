@@ -272,16 +272,18 @@ function askFormHtml(d, index) {
        </select>`
     : `<input class="tcv-af-ask-input" data-index="${index}" type="text"
               placeholder="Your answer">`;
-  // Remembering defaults ON for an ordinary question and is replaced by a link
-  // to the profile for anything sensitive — those belong on file as one
-  // deliberate answer, not captured from one employer's form.
+  // Remembering defaults ON for an ordinary question. A sensitive one
+  // (citizenship, clearance, criminal history) is never remembered — answerField
+  // refuses it — so it gets no checkbox that would pretend otherwise.
   return `
     <div class="tcv-af-ask-form">
       ${control}
+      ${d.sensitive ? `
+      <div class="tcv-af-remember">Used on this form only — never saved.</div>` : `
       <label class="tcv-af-remember">
         <input type="checkbox" class="tcv-af-remember-box" data-index="${index}" checked>
         Remember this answer
-      </label>
+      </label>`}
       <button class="tcv-btn tcv-btn-outline tcv-af-ask-save" data-index="${index}">
         Save &amp; fill
       </button>

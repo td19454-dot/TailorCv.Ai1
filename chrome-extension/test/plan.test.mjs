@@ -130,6 +130,23 @@ test('a sensitive field is never sent to the server', () => {
      'not one sensitive question may leave the browser');
 });
 
+test('citizenship status and clearance are answered in the sidebar, not sent to the profile', () => {
+  // SpaceX (greenhouse spacex/8569186002): the profile has no field for either,
+  // so "Set once in your profile" would be a dead end.
+  const citizenship = field('Citizenship Status*', { kind: 'combobox', required: true,
+    options: ['(a) U.S. citizen or national of the United States', '(b) U.S. lawful permanent resident'] });
+  const clearance = field('Active Security Clearance(s)*', { kind: 'combobox', required: true,
+    options: ['Secret', 'Never held a clearance', 'Do not wish to disclose'] });
+  const felony = field('Have you ever been convicted of a felony?', { required: true });
+  const decisions = p.decide([citizenship, clearance, felony], CTX, null, null);
+  for (const d of decisions) {
+    eq(d.action, p.ASK, d.label);
+    eq(d.value, '', 'never guessed');
+    ok(d.sensitive, 'still sensitive, so never remembered');
+  }
+  eq(p.fieldsForServer(decisions).length, 0, 'and never sent to the model');
+});
+
 test('the AI tier cannot answer a sensitive field even if the server returns one', () => {
   // Defence in depth: the server already refuses these, and the client never
   // sends them — but if a response carried one anyway it must still be ignored.

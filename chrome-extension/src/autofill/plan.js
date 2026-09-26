@@ -127,7 +127,15 @@ export function decide(rows, ctx, server, state) {
       const entry = matchFieldKey(row.label);
       const stored = entry && entry.sensitive ? bank[entry.key] : '';
       if (!stored) {
-        return done(d, PROFILE, '', '', 0, profileHint(category));
+        // Only point at the profile when the profile has a place for it.
+        // Citizenship, clearance and criminal-history questions don't: they are
+        // worded too differently per employer to hold one stored answer, so the
+        // person answers them here, on this form.
+        // A specific profile field (nationality) counts as a place for it too.
+        const onProfile = PROFILE_CATEGORIES.has(category) || !!(entry && entry.sensitive);
+        return onProfile
+          ? done(d, PROFILE, '', '', 0, profileHint(category, entry))
+          : done(d, ASK, '', '', 0, 'we never guess this — choose your answer');
       }
       // The stored answer, in whatever wording this form offers for it. Still
       // only ever THEIR answer — the shapes widen it ("South Asian" ->
@@ -326,16 +334,17 @@ function truncate(s, n) {
   return t.length <= n ? t : `${t.slice(0, n - 1)}…`;
 }
 
-function profileHint(category) {
+// Sensitive categories the profile page has a field for (routers/profile_page.py).
+const PROFILE_CATEGORIES = new Set(['work_authorization', 'sponsorship', 'salary', 'demographic']);
+
+function profileHint(category, entry) {
+  if (entry && entry.key === 'nationality') return 'add your nationality to your profile';
   switch (category) {
     case 'work_authorization': return 'add your work authorization to your profile';
     case 'sponsorship': return 'add your sponsorship answer to your profile';
-    case 'citizenship': return 'answer this one yourself';
-    case 'clearance': return 'answer this one yourself';
-    case 'criminal': return 'answer this one yourself';
     case 'salary': return 'add your salary expectation to your profile';
     case 'demographic': return 'set your voluntary disclosures in your profile';
-    default: return 'answer this one yourself';
+    default: return '';
   }
 }
 
