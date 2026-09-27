@@ -698,6 +698,11 @@ export const FIELD_SYNONYMS = [
   { key: 'address', labels: ['address', 'mailing address', 'full address', 'residential address', 'postal address'] },
   { key: 'address_city', labels: ['city', 'town', 'current city', 'city of residence'] },
   { key: 'address_state', labels: ['state', 'province', 'region', 'state province'] },
+  // The phone's dial code, asked on its own ("Country code" beside the number
+  // on Oracle, "Country Phone Code" on Workday). Answered from the stored phone
+  // number — before this it matched nothing, went to the model, and Oracle's
+  // picker was left empty, so the form rejected the number beside it.
+  { key: 'phone_country_code', labels: ['country code', 'phone country code', 'country phone code', 'dial code', 'dialing code', 'calling code', 'country calling code', 'phone code'] },
   { key: 'address_country', labels: ['country', 'country of residence'] },
   { key: 'postal_code', labels: ['zip', 'zip code', 'postal code', 'postcode', 'pin code'] },
 

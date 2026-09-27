@@ -343,6 +343,15 @@
         // CLEARS the inner input, so the input is not the place to look.
         if (single) { value = txt(single); }
         else if (hidden && hidden.value) { value = String(hidden.value).trim(); }
+        // A combobox whose own input shows the choice and is CLOSED: Oracle
+        // Candidate Experience keeps its listbox (and an in-field label) in the
+        // wrapper after a pick, so the two rules below read every filled Oracle
+        // dropdown as empty — the phone code was reported as not sticking, and
+        // Country was retried with "+91". Only a widget that SAYS it is closed
+        // (aria-expanded="false") counts: one that reports nothing may be a
+        // widget that ignored the pick and left the typed text in the box.
+        else if (String(el.value || '').trim() && attr(el, 'aria-expanded') === 'false'
+                 && attr(el, 'role') === 'combobox') { value = String(el.value).trim(); }
         else if (ph) { value = ''; }
         else if (cont.querySelector('[role="option"], [role="listbox"], [class*="menu"]')) {
           // The menu is OPEN, so nothing has been chosen yet. Falling through

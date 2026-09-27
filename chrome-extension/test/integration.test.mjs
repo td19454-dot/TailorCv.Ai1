@@ -834,6 +834,145 @@ test("Workday: the Terms and Conditions checkbox is ticked when the profile allo
   });
 });
 
+// Oracle Candidate Experience (jpmc.fa.oraclecloud.com): the phone "Country
+// code" list stays up after a choice, and the address "Country" opens its own.
+// Options were read from the whole page, so "India" was clicked in the stale
+// "+91 (India)" row of the other list, and Country stayed empty.
+const ORACLE_FORM = `
+<form id="oracle-apply">
+  <label for="fn">First Name *</label><input id="fn" name="firstName">
+  <label for="em">Email *</label><input id="em" type="email" name="email">
+  <div class="phone-row">
+    <label for="cc">Country code</label>
+    <div class="oj-select-container">
+      <input id="cc" role="combobox" aria-controls="cc-list" aria-expanded="false" aria-autocomplete="list">
+      <ul id="cc-list" role="listbox"><li role="option">+246 (British Indian Ocean Territory)</li><li role="option">+91 (India)</li><li role="option">+1 (United States)</li></ul>
+    </div>
+    <label for="ph">Phone Number *</label><input id="ph" type="tel" name="phone">
+  </div>
+  <div class="address-row">
+    <label for="co">Country *</label>
+    <div class="oj-select-container">
+      <input id="co" role="combobox" aria-controls="co-list" aria-expanded="false" aria-autocomplete="list">
+      <ul id="co-list" role="listbox"></ul>
+    </div>
+  </div>
+  <button type="submit">Next</button>
+</form>`;
+
+function wireOracle(doc) {
+  const combo = (inputId, listId, options, display, closeOnPick) => {
+    const input = doc.getElementById(inputId);
+    const list = doc.getElementById(listId);
+    const show = () => {
+      input.setAttribute('aria-expanded', 'true');
+      const q = (input.value || '').toLowerCase().replace(/^\+/, '');
+      list.innerHTML = options.filter(o => !q || o.toLowerCase().includes(q))
+        .map(o => `<li role="option">${o}</li>`).join('');
+      for (const li of list.querySelectorAll('[role=option]')) {
+        li.addEventListener('mousedown', () => {
+          input.value = display(li.textContent);
+          input.setAttribute('aria-expanded', 'false');
+          // Oracle keeps the (now closed) listbox element in the wrapper.
+          if (closeOnPick) list.innerHTML = '';
+        });
+      }
+    };
+    input.addEventListener('mousedown', show);
+    input.addEventListener('input', show);
+  };
+  // Country code: its options are on the page from the start (so the plan
+  // picks "+91 (India)"), it closes after one choice, and then shows only "+91".
+  combo('cc', 'cc-list', ['+246 (British Indian Ocean Territory)', '+91 (India)', '+1 (United States)'],
+        t => t.split(' ')[0], true);
+  combo('co', 'co-list', ['India', 'Indonesia', 'Ireland'], t => t, true);
+}
+
+test('Oracle: a filled dropdown whose closed listbox stays in the page reads as filled', async () => {
+  await withForm(ORACLE_FORM, {}, async (env) => {
+    wireOracle(env.document);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+      { phone: '+918240044652', address_country: 'India' }) });
+    const result = await run_.runAutofill(ctx, null);
+    eq(valueOf(env, '#co'), 'India', 'Country is filled');
+    eq(valueOf(env, '#cc'), '+91', 'the country code shows its own short form');
+    eq(byLabel(result.decisions, 'country code').outcome, 'ok', '"+91" counts as the chosen +91 (India)');
+    eq(valueOf(env, '#ph'), '8240044652', 'national number beside the code picker');
+  });
+});
+
+// Oracle Candidate Experience, page 2: every question is answered with pill
+// buttons — no inputs, no dropdowns — and the page was reported as "no
+// application form found".
+const ORACLE_PILLS = `
+<div class="apply-flow-section">
+  <h3>Application Questions</h3>
+  <p>Please complete the below questions.</p>
+  <div class="question">
+    <div class="question-label">Are you at least 18 years of age? *</div>
+    <div class="cx-select-pills-container">
+      <button type="button" class="cx-select-pill-section" aria-pressed="false">Yes</button>
+      <button type="button" class="cx-select-pill-section" aria-pressed="false">No</button>
+    </div>
+  </div>
+  <div class="question">
+    <div class="question-label">For the position you are applying to, are you legally authorized to work in this country? *</div>
+    <div class="cx-select-pills-container">
+      <button type="button" class="cx-select-pill-section" aria-pressed="false">Yes</button>
+      <button type="button" class="cx-select-pill-section" aria-pressed="false">No</button>
+    </div>
+  </div>
+  <div class="question">
+    <div class="question-label">Will you now or in the future require sponsorship for an employment-based visa status? *</div>
+    <div class="cx-select-pills-container">
+      <button type="button" class="cx-select-pill-section" aria-pressed="false">Yes</button>
+      <button type="button" class="cx-select-pill-section" aria-pressed="false">No</button>
+    </div>
+  </div>
+  <div class="apply-flow-pagination">
+    <button type="button">BACK</button>
+    <button type="button">1</button><button type="button">2</button><button type="button">3</button>
+    <button type="button">NEXT</button>
+  </div>
+</div>`;
+
+function wirePills(doc) {
+  for (const group of doc.querySelectorAll('.cx-select-pills-container')) {
+    for (const pill of group.querySelectorAll('button')) {
+      pill.addEventListener('click', () => {
+        for (const other of group.querySelectorAll('button')) other.setAttribute('aria-pressed', 'false');
+        pill.setAttribute('aria-pressed', 'true');
+      });
+    }
+  }
+}
+
+test('Oracle: a page of Yes/No pill buttons is an application form, answered from the profile', async () => {
+  await withForm(ORACLE_PILLS, {}, async (env) => {
+    wirePills(env.document);
+    ok(d.findForm(), 'detected as an application form');
+    const rows = d.describeFields(d.findForm());
+    const choices = rows.filter(r => r.kind === 'choice');
+    eq(choices.length, 3, `three questions (got: ${choices.map(r => r.label).join(' | ')})`);
+    notOk(rows.some(r => /^(back|next|\d)$/i.test(r.label || '')), 'navigation is never a question');
+
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+      { authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: 'No' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const pressed = label => {
+      const q = [...env.document.querySelectorAll('.question')]
+        .find(x => x.textContent.includes(label));
+      const on = q && q.querySelector('button[aria-pressed="true"]');
+      return on ? on.textContent.trim() : '';
+    };
+    eq(pressed('legally authorized'), 'Yes');
+    eq(pressed('sponsorship'), 'No');
+    eq(pressed('at least 18'), 'Yes', 'every applicant is an adult');
+    eq(byLabel(result.decisions, 'at least 18').action, p.FILL, 'filled, not left for review');
+    eq(byLabel(result.decisions, 'legally authorized').outcome, 'ok');
+  });
+});
+
 test('Workday (real markup): names, city and email fill and verify', async () => {
   await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
     fixtures.wireWorkday(env.document);

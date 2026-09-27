@@ -405,7 +405,22 @@ test('candidatesFor has no dial code to offer without a stored phone', () => {
 test('candidatesFor offers a location at every granularity, most specific first', () => {
   deepEq(p.candidatesFor('location', BANK.location, BANK),
          ['Kolkata, West Bengal, India', 'Kolkata, West Bengal', 'Kolkata',
-          'West Bengal', 'India']);
+          'West Bengal, India', 'West Bengal', 'India']);
+});
+
+test('City and State dropdowns try their longest form first, then shorter — and only their own', () => {
+  deepEq(p.candidatesFor('address_city', 'Kolkata', BANK),
+         ['Kolkata, West Bengal, India', 'Kolkata, West Bengal', 'Kolkata, India', 'Kolkata'],
+         'no state or country on its own: those are not cities');
+  deepEq(p.candidatesFor('address_state', 'West Bengal', BANK),
+         ['Kolkata, West Bengal, India', 'West Bengal, India', 'West Bengal'],
+         'no city on its own: that is not a state');
+  const city = one(field('City *', { kind: 'combobox', required: true,
+    options: ['Kolkata, West Bengal', 'Kolhapur, Maharashtra'] }));
+  eq(city.value, 'Kolkata, West Bengal');
+  const state = one(field('State *', { kind: 'combobox', required: true, options: ['Maharashtra', 'West Bengal'] }));
+  eq(state.value, 'West Bengal');
+  eq(one(field('City *', { kind: 'text' })).value, 'Kolkata', 'a text box still gets just the city');
 });
 
 test('candidatesFor leaves an ordinary field with exactly one shape', () => {
@@ -897,6 +912,38 @@ test('the terms permission does not tick marketing or talent-pool opt-ins', () =
     const d = p.decide([termsBox(label)], ctx, null, null)[0];
     notOk(d.action === p.FILL && d.source === 'profile', `${label} -> ${d.action}`);
   }
+});
+
+// Oracle Candidate Experience (jpmc.fa.oraclecloud.com): "Country code" beside
+// the phone number, options worded "+91 (India)".
+test('a phone "Country code" is answered from the stored phone, in the list\'s own wording', () => {
+  const ctx = { answerBank: { phone: '+918240044652', address_country: 'India' } };
+  const oracle = p.decide([field('Country code', { kind: 'combobox', required: true,
+    options: ['+246 (British Indian Ocean Territory)', '+91 (India)', '+1 (United States)'] })], ctx, null, null)[0];
+  eq(oracle.action, p.FILL);
+  eq(oracle.value, '+91 (India)', 'not British Indian Ocean Territory');
+  eq(p.fieldsForServer([oracle]).length, 0, 'no model involved');
+  const workday = p.decide([field('Country Phone Code*', { kind: 'combobox', required: true,
+    options: ['India (+91)', 'United States of America (+1)'] })], ctx, null, null)[0];
+  eq(workday.value, 'India (+91)');
+  const country = p.decide([field('Country', { kind: 'combobox', options: ['India', 'Canada'] })], ctx, null, null)[0];
+  eq(country.value, 'India', 'a plain "Country" is still the country');
+});
+
+test('"Are you at least 18?" is always Yes, with no model; "under 18" is No; 21 is left alone', () => {
+  const yn = { required: true, options: ['Yes', 'No'] };
+  for (const kind of ['combobox', 'radio', 'choice']) {
+    const d = one(field('Are you at least 18 years of age?*', Object.assign({ kind }, yn)));
+    eq(d.action, p.FILL, kind);
+    eq(d.value, 'Yes', kind);
+    eq(d.source, 'standard');
+    eq(p.fieldsForServer([d]).length, 0, 'never asked of the model');
+  }
+  eq(one(field('Are you under the age of 18?', Object.assign({ kind: 'combobox' }, yn))).value, 'No');
+  const box = one(field('I confirm I am 18 years of age or older', { kind: 'checkbox', options: [{ value: 'on', label: 'x' }] }));
+  eq(box.value, 'yes');
+  notOk(one(field('Are you at least 21 years of age?', Object.assign({ kind: 'combobox' }, yn))).source === 'standard',
+        '21 is not true of every applicant');
 });
 
 test('decide does not mutate the rows it is given', () => {

@@ -234,6 +234,10 @@ export async function runAutofill(ctx, onProgress) {
     for (const d of broken) {
       if (d.row && isPhoneRow(d.row)) {
         const alt = alternatePhone(d.value, ctx);
+        // Beside a country-code picker the box wants the national number, and
+        // a rejection there means the PICKER is empty, not that the format is
+        // wrong — switching to "+91…" only made it worse (Oracle).
+        if (d.row.hasCountryWidget && String(alt).startsWith('+')) continue;
         if (alt && alt !== d.value) d.value = alt;
         continue;
       }

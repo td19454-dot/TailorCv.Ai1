@@ -257,6 +257,8 @@
             value = txt(single);
           } else if (hidden && hidden.value) {
             value = String(hidden.value).trim();
+          } else if (String(el.value || "").trim() && attr(el, "aria-expanded") === "false" && attr(el, "role") === "combobox") {
+            value = String(el.value).trim();
           } else if (ph) {
             value = "";
           } else if (cont.querySelector('[role="option"], [role="listbox"], [class*="menu"]')) {
@@ -1161,6 +1163,11 @@ what when where which who will with would you your now future
     { key: "address", labels: ["address", "mailing address", "full address", "residential address", "postal address"] },
     { key: "address_city", labels: ["city", "town", "current city", "city of residence"] },
     { key: "address_state", labels: ["state", "province", "region", "state province"] },
+    // The phone's dial code, asked on its own ("Country code" beside the number
+    // on Oracle, "Country Phone Code" on Workday). Answered from the stored phone
+    // number — before this it matched nothing, went to the model, and Oracle's
+    // picker was left empty, so the form rejected the number beside it.
+    { key: "phone_country_code", labels: ["country code", "phone country code", "country phone code", "dial code", "dialing code", "calling code", "country calling code", "phone code"] },
     { key: "address_country", labels: ["country", "country of residence"] },
     { key: "postal_code", labels: ["zip", "zip code", "postal code", "postcode", "pin code"] },
     // links
@@ -1364,6 +1371,77 @@ what when where which who will with would you your now future
     }
     return false;
   }
+  var CHOICE_SEL = 'button:not([type="submit"]), [role="radio"]:not(input), [role="button"][aria-pressed]';
+  var NAV_TEXT = /^(back|next|previous|prev|continue|submit|save|cancel|close|add|remove|delete|edit|upload|browse|attach|apply|search|sign in|log in|\d+|[<>‹›«»←→]+)$/i;
+  function choiceText(el) {
+    return (el.textContent || "").replace(/\s+/g, " ").trim();
+  }
+  function isChoiceSelected(el) {
+    if (!el) return false;
+    const a = (n) => el.getAttribute && el.getAttribute(n) || "";
+    if (a("aria-pressed") === "true" || a("aria-checked") === "true" || a("aria-selected") === "true") return true;
+    const cls = el.className && String(el.className) || "";
+    return /(^|[\s_-])(selected|active|is-selected|checked|pressed)($|[\s_-])/i.test(cls);
+  }
+  function choiceQuestion(group) {
+    let n = group;
+    for (let depth = 0; n && depth < 4; depth++, n = n.parentElement) {
+      if (isFormLevel(n)) break;
+      let groups = 0, fields = 0;
+      try {
+        groups = n.querySelectorAll(CHOICE_SEL).length;
+        fields = n.querySelectorAll('input:not([type="hidden"]), select, textarea').length;
+      } catch (e) {
+        return "";
+      }
+      if (fields > 0 || groups > group.querySelectorAll(CHOICE_SEL).length) {
+        if (depth > 0) break;
+      }
+      let clone = null;
+      try {
+        clone = n.cloneNode(true);
+        for (const x of clone.querySelectorAll(CHOICE_SEL)) x.remove();
+      } catch (e) {
+        return "";
+      }
+      const t = choiceText(clone);
+      if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
+    }
+    return "";
+  }
+  function choiceGroups(root) {
+    if (!root || !root.querySelectorAll) return [];
+    const byParent = /* @__PURE__ */ new Map();
+    let all = [];
+    try {
+      all = Array.from(root.querySelectorAll(CHOICE_SEL));
+    } catch (e) {
+      return [];
+    }
+    for (const b of all) {
+      if (b.closest('#tailorcv-sidebar, nav, header, footer, [role="navigation"], [role="tablist"], [role="menu"]')) continue;
+      if (!isVisible(b)) continue;
+      const t = choiceText(b);
+      if (!t || t.length > 40 || NAV_TEXT.test(t)) continue;
+      const parent = b.closest('[role="radiogroup"]') || b.parentElement;
+      if (!parent) continue;
+      if (!byParent.has(parent)) byParent.set(parent, []);
+      byParent.get(parent).push(b);
+    }
+    const out = [];
+    for (const [group, buttons] of byParent) {
+      if (buttons.length < 2 || buttons.length > 6) continue;
+      try {
+        if (group.querySelector('input:not([type="hidden"]), select, textarea')) continue;
+      } catch (e) {
+        continue;
+      }
+      const question = choiceQuestion(group);
+      if (!question) continue;
+      out.push({ group, buttons, question });
+    }
+    return out;
+  }
   var APP_ROOT_SELECTORS = [
     "form",
     '[role="form"]',
@@ -1441,8 +1519,9 @@ what when where which who will with would you your now future
     if (el.closest && el.closest("#tailorcv-sidebar")) return null;
     const { elements, opaqueHosts } = p.fillableIn(el);
     const visible = elements.filter(isVisible);
-    if (visible.length < 2) return null;
-    let score = visible.length;
+    const choices = choiceGroups(el).length;
+    if (visible.length + choices < 2) return null;
+    let score = visible.length + choices;
     const has = (sel) => {
       try {
         return !!el.querySelector(sel);
@@ -1508,7 +1587,7 @@ what when where which who will with would you your now future
       }
     }
     if (!scored.length || scored.every((s) => s.fields.length < 3)) {
-      const all = probe().fillableIn(d).elements.filter(isVisible);
+      const all = probe().fillableIn(d).elements.filter(isVisible).concat(choiceGroups(d.body).map((c) => c.group));
       if (all.length >= 2) {
         const root = commonAncestor(all);
         const s = root && scoreRoot(root, d);
@@ -1781,6 +1860,29 @@ what when where which who will with would you your now future
         row.filled = hasUploadedFile(el);
       }
       out.push(row);
+    }
+    for (const { group, buttons, question } of choiceGroups(form.root)) {
+      let key = questionSignature(question) || `choice ${out.length}`;
+      const n = (keyCounts.get(key) || 0) + 1;
+      keyCounts.set(key, n);
+      if (n > 1) key = `${key}#${n}`;
+      const selected = buttons.find(isChoiceSelected);
+      out.push({
+        key,
+        el: group,
+        members: buttons,
+        kind: "choice",
+        label: question,
+        ident: key,
+        value: selected ? choiceText(selected) : "",
+        filled: !!selected,
+        invalid: false,
+        required: /\*\s*$|\*|\(required\)/.test(question),
+        options: buttons.map((b) => ({ value: choiceText(b), label: choiceText(b), el: b })),
+        readable: true,
+        documentSlot: null,
+        hints: { tag: "choice" }
+      });
     }
     for (const zone of dropOnlyZones(form.root)) {
       const label = zoneLabel(zone, p);
@@ -2296,6 +2398,15 @@ what when where which who will with would you your now future
     const p = probe();
     if (!p || !row) return null;
     if (row.kind === "date-parts") return readDateParts(row);
+    if (row.kind === "choice") {
+      const selected = (row.members || []).find((b) => b.isConnected && isChoiceSelected(b));
+      return {
+        value: selected ? choiceText(selected) : "",
+        filled: !!selected,
+        invalid: false,
+        required: !!row.required
+      };
+    }
     let el = row.el;
     if (!el || !el.isConnected) {
       el = reresolve(row);
@@ -2450,9 +2561,17 @@ what when where which who will with would you your now future
           return done(d, FILL, value, "profile", 0.95, "you allowed agreeing to employers' terms");
         }
       }
+      const ageAnswer = adultAgeAnswer(row.label);
+      if (ageAnswer) {
+        const value = coerce(ageAnswer, row);
+        if (value !== null) {
+          return done(d, FILL, value, "standard", 0.95, "");
+        }
+      }
       const entry = matchFieldKey(row.label);
-      if (entry && bank[entry.key]) {
-        const raw = entry.key === "middle_name" && /\binitial\b/i.test(row.label) ? String(bank[entry.key]).trim().charAt(0).toUpperCase() : bank[entry.key];
+      const storedValue = entry ? bankValue(entry.key, bank) : "";
+      if (entry && storedValue) {
+        const raw = entry.key === "middle_name" && /\binitial\b/i.test(row.label) ? String(storedValue).trim().charAt(0).toUpperCase() : storedValue;
         const shapes = candidatesFor(entry.key, raw, bank);
         d.candidates = shapes.length > 1 ? shapes : [];
         const value = coerce(raw, Object.assign(
@@ -2476,7 +2595,7 @@ what when where which who will with would you your now future
           );
         }
       }
-      if (entry && !bank[entry.key] && !PROSE_KEYS.has(entry.key)) {
+      if (entry && !storedValue && !PROSE_KEYS.has(entry.key)) {
         d.knownEmpty = true;
         const recalled = answered[String(row.serverIndex != null ? row.serverIndex : position)];
         if (recalled && recalled.source === "saved_answer" && String(recalled.value || "").trim()) {
@@ -2514,7 +2633,7 @@ what when where which who will with would you your now future
       if (row.required) {
         return done(d, ASK, "", "", 0, "we have no answer for this on file");
       }
-      const choice = row.kind === "select" || row.kind === "combobox" || row.kind === "radio" || row.kind === "checkbox";
+      const choice = row.kind === "select" || row.kind === "combobox" || row.kind === "radio" || row.kind === "checkbox" || row.kind === "choice";
       d.askable = looksLikeConsent(row.label) || choice || !!entry;
       return done(d, SKIP, "", "", 0, "optional, and we have no answer for it");
     });
@@ -2531,6 +2650,14 @@ what when where which who will with would you your now future
   }
   var TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b/i;
   var OPT_IN_RE = /\bmarketing\b|\bpromotional\b|\bnewsletter\b|\bsubscribe\b|\btext messages?\b|\bsms\b|\bwhatsapp\b|\bupdates about\b|\btalent (pool|community|network)\b|\bfuture (roles|openings|opportunities)\b|\bjob alerts?\b|\bcontact me\b|\bkeep me\b|\bnotify me\b/i;
+  var ADULT_RE = /\b(at least|over|above|older than|minimum age of|aged?)\s*(the age of\s*)?(18|eighteen|16|sixteen)\b|\b(18|eighteen|16|sixteen)\s*(years?\s*(of age|old)?|\+)?\s*(or|and)\s*(older|over|above)\b|\b(18|eighteen)\s*\+|\blegal (working )?age\b|\bage of majority\b/i;
+  var MINOR_RE = /\b(under|younger than|below)\s*(the age of\s*)?(18|eighteen|16|sixteen)\b/i;
+  function adultAgeAnswer(label) {
+    const t = String(label == null ? "" : label);
+    if (MINOR_RE.test(t)) return "no";
+    if (ADULT_RE.test(t)) return "yes";
+    return "";
+  }
   function looksLikeTermsAgreement(label) {
     const t = String(label == null ? "" : label);
     return TERMS_RE.test(t) && !OPT_IN_RE.test(t);
@@ -2747,9 +2874,23 @@ what when where which who will with would you your now future
     }
     return out;
   }
+  function bankValue(key, bank) {
+    const b = bank || {};
+    if (key === "phone_country_code") return splitPhone(String(b.phone || "")).dialCode || "";
+    return b[key];
+  }
   function candidatesFor(key, value, bank) {
     const b = bank || {};
     const text = String(value == null ? "" : value).trim();
+    if (key === "phone_country_code") {
+      const country2 = String(b.address_country || "").trim();
+      return uniq([
+        country2 ? `${text} (${country2})` : "",
+        country2 ? `${country2} (${text})` : "",
+        text,
+        country2
+      ]);
+    }
     if (key === "degree") return uniq(degreeShapes(text).concat([text]));
     if (key === "race_ethnicity") return uniq([text].concat(ethnicityShapes(text)));
     if (EEO_GROUPS[key]) return uniq([text].concat(eeoShapes(key, text)));
@@ -2762,14 +2903,23 @@ what when where which who will with would you your now future
       const plus = splitPhone(String(b.phone || "")).dialCode;
       return uniq([text, plus, plus && country ? `${country} (${plus})` : ""]);
     }
+    const cityStateCountry = city && state2 && country ? `${city}, ${state2}, ${country}` : "";
+    const cityState = city && state2 ? `${city}, ${state2}` : "";
+    if (key === "address_city") {
+      return uniq([cityStateCountry, cityState, city && country ? `${city}, ${country}` : "", city, text]);
+    }
+    if (key === "address_state") {
+      return uniq([cityStateCountry, state2 && country ? `${state2}, ${country}` : "", state2, text]);
+    }
     return uniq([
-      text,
       full,
-      city && state2 && country ? `${city}, ${state2}, ${country}` : "",
-      city && state2 ? `${city}, ${state2}` : "",
+      cityStateCountry,
+      cityState,
       city,
+      state2 && country ? `${state2}, ${country}` : "",
       state2,
-      country
+      country,
+      text
     ]);
   }
   var OTHER_OPTION_MARKERS = [
@@ -2814,7 +2964,7 @@ what when where which who will with would you your now future
   function coerce(value, row) {
     const text = String(value == null ? "" : value).trim();
     if (!text) return null;
-    if (row.kind === "checkbox" || row.kind === "radio") {
+    if (row.kind === "checkbox" || row.kind === "radio" || row.kind === "choice") {
       return coerceChoice(text, row);
     }
     if (row.kind === "date-parts") {
@@ -2822,7 +2972,9 @@ what when where which who will with would you your now future
     }
     if (row.kind === "select" || row.kind === "combobox") {
       const options = (row.options || []).map((o) => typeof o === "string" ? o : o.label);
-      if (!options.length) return text;
+      if (!options.length) {
+        return LOCATION_KEYS.has(row.candidateKey) && row.candidates && row.candidates.length ? row.candidates[0] : text;
+      }
       const candidates = row.candidates && row.candidates.length ? row.candidates : [text];
       const guard = row.candidateKey === "degree" ? degreeGuard : row.candidateKey === "race_ethnicity" ? ethnicityGuardFor(candidates[0]) : EEO_GROUPS[row.candidateKey] ? eeoGuardFor(row.candidateKey, candidates[0]) : null;
       const bare = READ_FIRST_KEYS.has(row.candidateKey) ? options.map(stripRegionSuffix) : options;
@@ -3074,6 +3226,18 @@ what when where which who will with would you your now future
     blur(el);
     return true;
   }
+  function setChoice(row, value) {
+    const buttons = (row.members || []).filter((el) => el && el.isConnected);
+    const labels = buttons.map((b) => (b.textContent || "").replace(/\s+/g, " ").trim());
+    const match = bestOptionMatch(value, labels);
+    const target = match != null ? buttons[labels.indexOf(match)] : null;
+    if (!target) return false;
+    if (isChoiceSelected(target)) return true;
+    scrollIntoView(target);
+    focus(target);
+    pressPointer(target);
+    return isChoiceSelected(target);
+  }
   function setCheckable(row, value) {
     const members = (row.members || []).filter((el) => el && el.isConnected);
     if (!members.length) return false;
@@ -3149,22 +3313,21 @@ what when where which who will with would you your now future
         options = await waitForOptions2(el, TIMING.optionWaitMs);
       } else {
         const input = typableInput(row) || el;
-        const query = searchToken(value);
-        setText(input, query, { blur: false });
-        focus(input);
-        options = await waitForOptions2(el, TIMING.optionWaitMs);
-        if (!options.length && query !== value) {
-          setText(input, value, { blur: false });
+        const queries = dedupe(shapes.map(searchToken)).slice(0, 4);
+        for (const query of queries) {
+          setText(input, query, { blur: false });
+          focus(input);
           options = await waitForOptions2(el, TIMING.optionWaitMs);
-        }
-        if (!options.length) {
-          await typeText(input, value, 8);
-          options = await waitForOptions2(el, TIMING.optionWaitMs);
-        }
-        if (!options.length) {
-          fireKey(input, "keydown", "Enter");
-          fireKey(input, "keyup", "Enter");
-          options = await waitForOptions2(el, TIMING.optionWaitMs);
+          if (!options.length) {
+            await typeText(input, query, 8);
+            options = await waitForOptions2(el, TIMING.optionWaitMs);
+          }
+          if (!options.length) {
+            fireKey(input, "keydown", "Enter");
+            fireKey(input, "keyup", "Enter");
+            options = await waitForOptions2(el, TIMING.optionWaitMs);
+          }
+          if (options.length && listOffersAny(shapes, options)) break;
         }
       }
       if (readFirst) {
@@ -3181,12 +3344,12 @@ what when where which who will with would you your now future
         }
         pressPointer(node);
         await sleep(TIMING.settleMs);
-        return committed(row, pick);
+        return committed(row, pick) || shapes.some((sh) => committed(row, sh));
       }
       for (const shape of options.length ? shapes : []) {
         if (!await clickMatchingOption(el, shape, options)) continue;
         await sleep(TIMING.settleMs);
-        if (committed(row, shape)) return true;
+        if (shapes.some((sh) => committed(row, sh))) return true;
       }
       if (!isButton) {
         const input = typableInput(row) || el;
@@ -3270,15 +3433,45 @@ what when where which who will with would you your now future
       return null;
     }
   }
-  function visibleOptionNodes(doc) {
+  function visibleOptionNodes(doc, el) {
     const p = probe2();
     const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
-    return nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n) && !isChosenValue(n));
+    const shown = nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n) && !isChosenValue(n));
+    return el ? ownOptions(doc, el, shown) : shown;
+  }
+  function ownOptions(doc, el, nodes) {
+    const ref = (n) => n && n.getAttribute && (n.getAttribute("aria-controls") || n.getAttribute("aria-owns")) || "";
+    let mine = null;
+    for (let n = el, i = 0; n && i < 4 && !mine; n = n.parentElement, i++) {
+      const id = ref(n).split(/\s+/)[0];
+      if (id) {
+        try {
+          mine = doc.getElementById(id);
+        } catch (e) {
+          mine = null;
+        }
+      }
+    }
+    if (mine) {
+      const inMine = nodes.filter((n) => mine.contains(n));
+      if (inMine.length) return inMine;
+    }
+    return nodes.filter((n) => {
+      const lb = n.closest && n.closest('[role="listbox"]');
+      if (!lb || !lb.id) return true;
+      let owner = null;
+      try {
+        owner = doc.querySelector(`[aria-controls~="${lb.id}"], [aria-owns~="${lb.id}"]`);
+      } catch (e) {
+        owner = null;
+      }
+      return !owner || owner === el || owner.contains(el) || el.contains(owner);
+    });
   }
   function waitForOptions2(el, timeout) {
     return new Promise((resolve) => {
       const doc = el.ownerDocument || globalThis.document;
-      const immediate = visibleOptionNodes(doc);
+      const immediate = visibleOptionNodes(doc, el);
       if (immediate.length) {
         resolve(immediate);
         return;
@@ -3292,10 +3485,10 @@ what when where which who will with would you your now future
         } catch (e) {
         }
         clearTimeout(timer);
-        resolve(visibleOptionNodes(doc));
+        resolve(visibleOptionNodes(doc, el));
       };
       const obs = new globalThis.MutationObserver(() => {
-        if (visibleOptionNodes(doc).length) finish();
+        if (visibleOptionNodes(doc, el).length) finish();
       });
       try {
         obs.observe(doc.body, { childList: true, subtree: true });
@@ -3303,6 +3496,10 @@ what when where which who will with would you your now future
       }
       const timer = setTimeout(finish, timeout);
     });
+  }
+  function listOffersAny(shapes, nodes) {
+    const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+    return shapes.some((sh) => labels.some((t) => commitMatches(sh, t)) || bestOptionMatch(sh, labels) != null);
   }
   async function clickMatchingOption(el, value, nodes) {
     const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
@@ -3469,6 +3666,9 @@ what when where which who will with would you your now future
       case "radio":
       case "checkbox":
         wrote = setCheckable(row, value);
+        break;
+      case "choice":
+        wrote = setChoice(row, value);
         break;
       case "contenteditable":
         wrote = setContentEditable(row.el, value);
@@ -3650,6 +3850,7 @@ what when where which who will with would you your now future
       for (const d of broken) {
         if (d.row && isPhoneRow(d.row)) {
           const alt = alternatePhone(d.value, ctx);
+          if (d.row.hasCountryWidget && String(alt).startsWith("+")) continue;
           if (alt && alt !== d.value) d.value = alt;
           continue;
         }
@@ -3996,6 +4197,7 @@ what when where which who will with would you your now future
     saved_answer: "a saved answer",
     ai: "AI",
     ai_written: "AI, written for this job",
+    standard: "a standard answer",
     you: "you"
   };
   function renderReady(body, form, ctx, handlers, extra) {

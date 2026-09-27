@@ -167,6 +167,83 @@ function inAriaHidden(node) {
   return false;
 }
 
+// ── choice buttons ───────────────────────────────────────────
+//
+// A question answered by pressing one of a few buttons — Oracle Candidate
+// Experience's "Are you at least 18 years of age?  [Yes] [No]" — rather than a
+// radio input or a dropdown. None of the fillable selectors match a plain
+// <button>, so a page made only of these read as "no application form found".
+// Found here as groups: 2-6 sibling buttons (or ARIA radios) with short answer
+// texts, a question above them, and nothing else fillable in the group.
+
+const CHOICE_SEL = 'button:not([type="submit"]), [role="radio"]:not(input), [role="button"][aria-pressed]';
+const NAV_TEXT = /^(back|next|previous|prev|continue|submit|save|cancel|close|add|remove|delete|edit|upload|browse|attach|apply|search|sign in|log in|\d+|[<>‹›«»←→]+)$/i;
+
+function choiceText(el) {
+  return (el.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+/** Is this choice button currently the selected one? */
+export function isChoiceSelected(el) {
+  if (!el) return false;
+  const a = n => (el.getAttribute && el.getAttribute(n)) || '';
+  if (a('aria-pressed') === 'true' || a('aria-checked') === 'true' || a('aria-selected') === 'true') return true;
+  const cls = (el.className && String(el.className)) || '';
+  return /(^|[\s_-])(selected|active|is-selected|checked|pressed)($|[\s_-])/i.test(cls);
+}
+
+/** The question a choice group answers: the text around it, never another field's. */
+function choiceQuestion(group) {
+  let n = group;
+  for (let depth = 0; n && depth < 4; depth++, n = n.parentElement) {
+    if (isFormLevel(n)) break;
+    let groups = 0, fields = 0;
+    try {
+      groups = n.querySelectorAll(CHOICE_SEL).length;
+      fields = n.querySelectorAll('input:not([type="hidden"]), select, textarea').length;
+    } catch (e) { return ''; }
+    if (fields > 0 || groups > group.querySelectorAll(CHOICE_SEL).length) {
+      if (depth > 0) break;          // reached a box holding another question
+    }
+    let clone = null;
+    try {
+      clone = n.cloneNode(true);
+      for (const x of clone.querySelectorAll(CHOICE_SEL)) x.remove();
+    } catch (e) { return ''; }
+    const t = choiceText(clone);
+    if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
+  }
+  return '';
+}
+
+/** The choice-button groups under `root`, each { group, buttons, question }. */
+export function choiceGroups(root) {
+  if (!root || !root.querySelectorAll) return [];
+  const byParent = new Map();
+  let all = [];
+  try { all = Array.from(root.querySelectorAll(CHOICE_SEL)); } catch (e) { return []; }
+  for (const b of all) {
+    if (b.closest('#tailorcv-sidebar, nav, header, footer, [role="navigation"], [role="tablist"], [role="menu"]')) continue;
+    if (!isVisible(b)) continue;
+    const t = choiceText(b);
+    if (!t || t.length > 40 || NAV_TEXT.test(t)) continue;
+    const parent = b.closest('[role="radiogroup"]') || b.parentElement;
+    if (!parent) continue;
+    if (!byParent.has(parent)) byParent.set(parent, []);
+    byParent.get(parent).push(b);
+  }
+  const out = [];
+  for (const [group, buttons] of byParent) {
+    if (buttons.length < 2 || buttons.length > 6) continue;
+    try { if (group.querySelector('input:not([type="hidden"]), select, textarea')) continue; }
+    catch (e) { continue; }
+    const question = choiceQuestion(group);
+    if (!question) continue;
+    out.push({ group, buttons, question });
+  }
+  return out;
+}
+
 // ── form root ────────────────────────────────────────────────
 
 const APP_ROOT_SELECTORS = [
@@ -262,9 +339,12 @@ function scoreRoot(el, doc) {
 
   const { elements, opaqueHosts } = p.fillableIn(el);
   const visible = elements.filter(isVisible);
-  if (visible.length < 2) return null;
+  // Choice-button questions count as fields: a page of only "[Yes] [No]"
+  // questions (Oracle) is still an application page.
+  const choices = choiceGroups(el).length;
+  if (visible.length + choices < 2) return null;
 
-  let score = visible.length;
+  let score = visible.length + choices;
   const has = sel => { try { return !!el.querySelector(sel); } catch (e) { return false; } };
   if (has('input[type="email"]') || has('input[type="tel"]')) score += 3;
   if (has('input[type="file"]')) score += 3;
@@ -343,7 +423,10 @@ export function findForm(doc) {
   // two-field box in a page header wins by default and the real form, which
   // matched no selector, is never considered.
   if (!scored.length || scored.every(s => s.fields.length < 3)) {
-    const all = probe().fillableIn(d).elements.filter(isVisible);
+    // Choice-button groups too: a page of only "[Yes] [No]" questions has no
+    // other fillable control to be found by (Oracle's application questions).
+    const all = probe().fillableIn(d).elements.filter(isVisible)
+      .concat(choiceGroups(d.body).map(c => c.group));
     if (all.length >= 2) {
       const root = commonAncestor(all);
       const s = root && scoreRoot(root, d);
@@ -664,6 +747,23 @@ export function describeFields(form) {
   // required fields, and leaving them undiscovered is the worst outcome
   // available: the user is told the form is filled and never learns a document
   // slot was missed. Surfaced here so they appear in the results either way.
+  // Choice-button questions ("Are you at least 18?  [Yes] [No]").
+  for (const { group, buttons, question } of choiceGroups(form.root)) {
+    let key = questionSignature(question) || `choice ${out.length}`;
+    const n = (keyCounts.get(key) || 0) + 1;
+    keyCounts.set(key, n);
+    if (n > 1) key = `${key}#${n}`;
+    const selected = buttons.find(isChoiceSelected);
+    out.push({
+      key, el: group, members: buttons, kind: 'choice',
+      label: question, ident: key,
+      value: selected ? choiceText(selected) : '', filled: !!selected,
+      invalid: false, required: /\*\s*$|\*|\(required\)/.test(question),
+      options: buttons.map(b => ({ value: choiceText(b), label: choiceText(b), el: b })),
+      readable: true, documentSlot: null, hints: { tag: 'choice' },
+    });
+  }
+
   for (const zone of dropOnlyZones(form.root)) {
     const label = zoneLabel(zone, p);
     const key = questionSignature(label) || `dropzone ${out.length}`;
@@ -1296,6 +1396,11 @@ export function reprobe(row) {
   const p = probe();
   if (!p || !row) return null;
   if (row.kind === 'date-parts') return readDateParts(row);
+  if (row.kind === 'choice') {
+    const selected = (row.members || []).find(b => b.isConnected && isChoiceSelected(b));
+    return { value: selected ? choiceText(selected) : '', filled: !!selected,
+             invalid: false, required: !!row.required };
+  }
   let el = row.el;
   if (!el || !el.isConnected) {
     el = reresolve(row);

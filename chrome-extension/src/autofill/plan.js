@@ -218,12 +218,25 @@ export function decide(rows, ctx, server, state) {
       }
     }
 
+    // "Are you at least 18 years of age?" — every applicant is an adult, so
+    // this has one answer everywhere and never needs a model (which marked it
+    // for review) or the person. Only the 18/16 threshold: "at least 21" is
+    // not true of every applicant, so it is left alone.
+    const ageAnswer = adultAgeAnswer(row.label);
+    if (ageAnswer) {
+      const value = coerce(ageAnswer, row);
+      if (value !== null) {
+        return done(d, FILL, value, 'standard', 0.95, '');
+      }
+    }
+
     // Tier 1 — deterministic profile match.
     const entry = matchFieldKey(row.label);
-    if (entry && bank[entry.key]) {
+    const storedValue = entry ? bankValue(entry.key, bank) : '';
+    if (entry && storedValue) {
       const raw = entry.key === 'middle_name' && /\binitial\b/i.test(row.label)
-        ? String(bank[entry.key]).trim().charAt(0).toUpperCase()
-        : bank[entry.key];
+        ? String(storedValue).trim().charAt(0).toUpperCase()
+        : storedValue;
       // Built BEFORE coerce so it can weigh every shape against the options.
       // Passed on a COPY of the row: decide() is a pure reducer over the
       // descriptors and is re-run on every pass, so it must not write to them.
@@ -259,7 +272,7 @@ export function decide(rows, ctx, server, state) {
     // Still sent to the server, but RECALL-ONLY: an answer the user typed for
     // this field before (the learning loop) is legitimately theirs and is used;
     // the model is never asked.
-    if (entry && !bank[entry.key] && !PROSE_KEYS.has(entry.key)) {
+    if (entry && !storedValue && !PROSE_KEYS.has(entry.key)) {
       d.knownEmpty = true;
       const recalled = answered[String(row.serverIndex != null ? row.serverIndex : position)];
       if (recalled && recalled.source === 'saved_answer' && String(recalled.value || '').trim()) {
@@ -310,7 +323,7 @@ export function decide(rows, ctx, server, state) {
     //    the answer; we just cannot map it, which is precisely what the model is
     //    for.
     const choice = row.kind === 'select' || row.kind === 'combobox'
-                || row.kind === 'radio' || row.kind === 'checkbox';
+                || row.kind === 'radio' || row.kind === 'checkbox' || row.kind === 'choice';
     d.askable = looksLikeConsent(row.label) || choice || !!entry;
     return done(d, SKIP, '', '', 0, 'optional, and we have no answer for it');
   });
@@ -336,6 +349,17 @@ export function looksLikeConsent(label) {
 // person never said yes to being contacted, only to the employer's terms.
 const TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b/i;
 const OPT_IN_RE = /\bmarketing\b|\bpromotional\b|\bnewsletter\b|\bsubscribe\b|\btext messages?\b|\bsms\b|\bwhatsapp\b|\bupdates about\b|\btalent (pool|community|network)\b|\bfuture (roles|openings|opportunities)\b|\bjob alerts?\b|\bcontact me\b|\bkeep me\b|\bnotify me\b/i;
+
+const ADULT_RE = /\b(at least|over|above|older than|minimum age of|aged?)\s*(the age of\s*)?(18|eighteen|16|sixteen)\b|\b(18|eighteen|16|sixteen)\s*(years?\s*(of age|old)?|\+)?\s*(or|and)\s*(older|over|above)\b|\b(18|eighteen)\s*\+|\blegal (working )?age\b|\bage of majority\b/i;
+const MINOR_RE = /\b(under|younger than|below)\s*(the age of\s*)?(18|eighteen|16|sixteen)\b/i;
+
+/** "yes" for "Are you at least 18?", "no" for "Are you under 18?", else ''. */
+export function adultAgeAnswer(label) {
+  const t = String(label == null ? '' : label);
+  if (MINOR_RE.test(t)) return 'no';
+  if (ADULT_RE.test(t)) return 'yes';
+  return '';
+}
 
 export function looksLikeTermsAgreement(label) {
   const t = String(label == null ? '' : label);
@@ -623,9 +647,27 @@ function uniq(list) {
  * table: a table would have to be kept correct forever, and the number in the
  * profile is already the authority on which country they dial from.
  */
+/** The stored answer for a key — a few are derived from another field. */
+function bankValue(key, bank) {
+  const b = bank || {};
+  if (key === 'phone_country_code') return splitPhone(String(b.phone || '')).dialCode || '';
+  return b[key];
+}
+
 export function candidatesFor(key, value, bank) {
   const b = bank || {};
   const text = String(value == null ? '' : value).trim();
+  if (key === 'phone_country_code') {
+    // Every way a dial-code list words it: Oracle "+91 (India)", Workday
+    // "India (+91)", a bare "+91", or just the country.
+    const country = String(b.address_country || '').trim();
+    return uniq([
+      country ? `${text} (${country})` : '',
+      country ? `${country} (${text})` : '',
+      text,
+      country,
+    ]);
+  }
   // Level phrasings first: a dropdown offering "Bachelor's Degree" is answered
   // by the level, while the raw "Bachelor of Technology" is only right on the
   // lists that spell it out — so it stays, last.
@@ -647,16 +689,22 @@ export function candidatesFor(key, value, bank) {
     return uniq([text, plus, plus && country ? `${country} (${plus})` : '']);
   }
 
-  // City / state / free-text location: every granularity the box might want.
-  return uniq([
-    text,
-    full,
-    city && state && country ? `${city}, ${state}, ${country}` : '',
-    city && state ? `${city}, ${state}` : '',
-    city,
-    state,
-    country,
-  ]);
+  // Longest first, then shorter: "Kolkata, West Bengal, India", then
+  // "Kolkata, West Bengal", then "Kolkata". A dropdown that offers the fuller
+  // form gets it; one that only has the short form still matches further down.
+  // Only shapes that ARE this field: a state alone is not a city, and a city
+  // alone is not a state.
+  const cityStateCountry = city && state && country ? `${city}, ${state}, ${country}` : '';
+  const cityState = city && state ? `${city}, ${state}` : '';
+  if (key === 'address_city') {
+    return uniq([cityStateCountry, cityState, city && country ? `${city}, ${country}` : '', city, text]);
+  }
+  if (key === 'address_state') {
+    return uniq([cityStateCountry, state && country ? `${state}, ${country}` : '', state, text]);
+  }
+  // The one-line location: every granularity, longest to shortest.
+  return uniq([full, cityStateCountry, cityState, city, state && country ? `${state}, ${country}` : '',
+               state, country, text]);
 }
 
 // Catch-alls, tried only after every real candidate has missed. Kept separate
@@ -730,7 +778,7 @@ export function coerce(value, row) {
   const text = String(value == null ? '' : value).trim();
   if (!text) return null;
 
-  if (row.kind === 'checkbox' || row.kind === 'radio') {
+  if (row.kind === 'checkbox' || row.kind === 'radio' || row.kind === 'choice') {
     return coerceChoice(text, row);
   }
   // Workday's split date: carried as ISO and split into month/day/year by the
@@ -740,7 +788,12 @@ export function coerce(value, row) {
   }
   if (row.kind === 'select' || row.kind === 'combobox') {
     const options = (row.options || []).map(o => (typeof o === 'string' ? o : o.label));
-    if (!options.length) return text;     // options unreadable: let the writer try
+    // Options unreadable: let the writer try. A location dropdown starts from
+    // its longest shape ("Kolkata, West Bengal, India") and works down.
+    if (!options.length) {
+      return LOCATION_KEYS.has(row.candidateKey) && row.candidates && row.candidates.length
+        ? row.candidates[0] : text;
+    }
     // Every shape of the answer, not just the one the label suggested: a
     // "Country" list of dial codes matches "+91" and nothing else.
     const candidates = (row.candidates && row.candidates.length) ? row.candidates : [text];

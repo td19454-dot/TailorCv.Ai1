@@ -470,6 +470,41 @@ test('commitCombobox reports failure when nothing commits', async () => {
   });
 });
 
+test('commitCombobox searches with a short term, trying each shape, on a keystroke-only search box', async () => {
+  // Oracle Candidate Experience: the City box searches only on real typing and
+  // matches options by prefix. Retried with "Kolkata, West Bengal, India", the
+  // old writer typed that whole string — no results — and the field stayed empty.
+  const html = `<form><input name="x"><input name="y">
+    <div class="oj-select-container">
+      <input role="combobox" name="city" aria-expanded="false">
+    </div>
+    <div id="portal"></div></form>`;
+  await withDoc(html, async (env) => {
+    const input = env.document.querySelector('[role=combobox]');
+    const portal = env.document.getElementById('portal');
+    const CITIES = ['Kolkata, West Bengal', 'Kolhapur, Maharashtra'];
+    input.addEventListener('input', (e) => {
+      if (!e.inputType) return;                         // programmatic writes: ignored
+      const q = input.value.toLowerCase();
+      input.setAttribute('aria-expanded', 'true');
+      portal.innerHTML = '<div role="listbox">' + CITIES.filter(c => c.toLowerCase().startsWith(q))
+        .map(c => `<div role="option">${c}</div>`).join('') + '</div>';
+      for (const o of portal.querySelectorAll('[role=option]')) {
+        o.addEventListener('mousedown', () => {
+          input.value = o.textContent;
+          input.setAttribute('aria-expanded', 'false');
+          portal.innerHTML = '';
+        });
+      }
+    });
+    const row = rowFor(env, '[role=combobox]');
+    ok(await w.commitCombobox(row, 'Kolkata, West Bengal, India',
+      ['Kolkata, West Bengal, India', 'Kolkata, West Bengal', 'Kolkata', 'West Bengal', 'India']),
+      'found by searching "Kolkata", not the whole address');
+    eq(input.value, 'Kolkata, West Bengal');
+  });
+});
+
 test('commitCombobox refuses to replace a real answer with a decline', async () => {
   const html = `<form><input name="x"><input name="y">
     <div class="select__container"><div class="select__control">

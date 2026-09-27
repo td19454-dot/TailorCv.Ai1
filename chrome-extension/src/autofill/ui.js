@@ -121,6 +121,7 @@ const SOURCE_LABEL = {
   saved_answer: 'a saved answer',
   ai: 'AI',
   ai_written: 'AI, written for this job',
+  standard: 'a standard answer',
   you: 'you',
 };
 

@@ -17,7 +17,8 @@
 
 import { commitMatches, bestOptionMatch, looksLikeDecline } from './match.js';
 import { coerce, candidatesFor } from './plan.js';
-import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isChosenValue } from './discover.js';
+import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isChosenValue, isChoiceSelected }
+  from './discover.js';
 import { TIMING, sleep } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
@@ -212,6 +213,20 @@ export function setSelect(el, value) {
  * React, so the visual tick appears and the form state does not change. The
  * click is also what triggers any conditional fields the choice reveals.
  */
+/** Press the choice button that answers `value` ("Yes" in "[Yes] [No]"). */
+export function setChoice(row, value) {
+  const buttons = (row.members || []).filter(el => el && el.isConnected);
+  const labels = buttons.map(b => (b.textContent || '').replace(/\s+/g, ' ').trim());
+  const match = bestOptionMatch(value, labels);
+  const target = match != null ? buttons[labels.indexOf(match)] : null;
+  if (!target) return false;
+  if (isChoiceSelected(target)) return true;
+  scrollIntoView(target);
+  focus(target);
+  pressPointer(target);
+  return isChoiceSelected(target);
+}
+
 export function setCheckable(row, value) {
   const members = (row.members || []).filter(el => el && el.isConnected);
   if (!members.length) return false;
@@ -336,28 +351,36 @@ export async function commitCombobox(row, value, candidates, readFirst) {
       const input = typableInput(row) || el;
       // What we TYPE and what we SELECT are different strings. A remote-search
       // city box returns nothing for "Kolkata, West Bengal, India" and the row
-      // we want for "Kolkata", so the query is the first segment of the answer
-      // while the selection is still matched against every full shape below.
-      const query = searchToken(value);
-      // Keep the focus: this input IS the open menu's search box.
-      setText(input, query, { blur: false });
-      focus(input);
-      options = await waitForOptions(el, TIMING.optionWaitMs);
-      if (!options.length && query !== value) {
-        setText(input, value, { blur: false });
+      // we want for "Kolkata", so each query is a short search term while the
+      // selection is still matched against every full shape below.
+      //
+      // One query per shape, not just the first: a State box searched for
+      // "West Bengal" may list only "Kolkata, West Bengal" — or nothing, while
+      // "Kolkata" finds it. Before this only the first shape was ever searched,
+      // and when that search came back empty the other shapes never got a list
+      // to be matched against (Oracle's City and State both stayed empty).
+      const queries = dedupe(shapes.map(searchToken)).slice(0, 4);
+      for (const query of queries) {
+        // Keep the focus: this input IS the open menu's search box.
+        setText(input, query, { blur: false });
+        focus(input);
         options = await waitForOptions(el, TIMING.optionWaitMs);
-      }
-      if (!options.length) {
-        await typeText(input, value, 8);
-        options = await waitForOptions(el, TIMING.optionWaitMs);
-      }
-      if (!options.length) {
-        // Workday's multiselect search only shows results on Enter. Here Enter
-        // runs the search; it does not pick anything, so it is safe to press
-        // before an option is chosen.
-        fireKey(input, 'keydown', 'Enter');
-        fireKey(input, 'keyup', 'Enter');
-        options = await waitForOptions(el, TIMING.optionWaitMs);
+        if (!options.length) {
+          // Widgets that filter from keydown (Oracle): typed key by key. The
+          // SHORT term — typing the full "Kolkata, West Bengal, India" into a
+          // remote search returns nothing.
+          await typeText(input, query, 8);
+          options = await waitForOptions(el, TIMING.optionWaitMs);
+        }
+        if (!options.length) {
+          // Workday's multiselect search only shows results on Enter. Here Enter
+          // runs the search; it does not pick anything, so it is safe to press
+          // before an option is chosen.
+          fireKey(input, 'keydown', 'Enter');
+          fireKey(input, 'keyup', 'Enter');
+          options = await waitForOptions(el, TIMING.optionWaitMs);
+        }
+        if (options.length && listOffersAny(shapes, options)) break;
       }
     }
 
@@ -375,7 +398,7 @@ export async function commitCombobox(row, value, candidates, readFirst) {
       try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
       pressPointer(node);
       await sleep(TIMING.settleMs);
-      return committed(row, pick);
+      return committed(row, pick) || shapes.some(sh => committed(row, sh));
     }
 
     // Every shape, against the list we already have open: no extra open, no
@@ -383,7 +406,9 @@ export async function commitCombobox(row, value, candidates, readFirst) {
     for (const shape of options.length ? shapes : []) {
       if (!await clickMatchingOption(el, shape, options)) continue;
       await sleep(TIMING.settleMs);
-      if (committed(row, shape)) return true;
+      // Any wording we were prepared to use counts: Oracle picks "+91 (India)"
+      // and then displays "+91" — the same answer, shown its own way.
+      if (shapes.some(sh => committed(row, sh))) return true;
     }
 
     // Fallback: Enter on whatever is highlighted. Not for a button dropdown, where
@@ -482,7 +507,7 @@ function typableInput(row) {
   catch (e) { return null; }
 }
 
-function visibleOptionNodes(doc) {
+function visibleOptionNodes(doc, el) {
   // Through the shared probe, which also reads Workday's promptOption rows and
   // de-duplicates a row that carries both markers.
   const p = probe();
@@ -495,13 +520,44 @@ function visibleOptionNodes(doc) {
   // waitForOptions returned those immediately, for every dropdown on the page
   // — so "Bachelor's Degree" was matched against a list of countries, matched
   // nothing, and every dropdown reported "we could not get this to stick".
-  return nodes.filter(n => (n.textContent || '').trim() && isNodeVisible(n) && !isChosenValue(n));
+  const shown = nodes.filter(n => (n.textContent || '').trim() && isNodeVisible(n) && !isChosenValue(n));
+  return el ? ownOptions(doc, el, shown) : shown;
+}
+
+/**
+ * Of the options on screen, the ones that belong to THIS control.
+ *
+ * The sweep above is document-wide, so a list another dropdown left open was
+ * read as this one's. On Oracle Candidate Experience the phone "Country code"
+ * list ("+91 (India)") was still up when the address "Country" opened, and
+ * "India" matched "+91 (India)" in the wrong list — Country stayed empty.
+ * A control that names its listbox (aria-controls / aria-owns) gets exactly
+ * that list; otherwise a list some OTHER control claims is left out.
+ */
+function ownOptions(doc, el, nodes) {
+  const ref = n => (n && n.getAttribute && (n.getAttribute('aria-controls') || n.getAttribute('aria-owns'))) || '';
+  let mine = null;
+  for (let n = el, i = 0; n && i < 4 && !mine; n = n.parentElement, i++) {
+    const id = ref(n).split(/\s+/)[0];
+    if (id) { try { mine = doc.getElementById(id); } catch (e) { mine = null; } }
+  }
+  if (mine) {
+    const inMine = nodes.filter(n => mine.contains(n));
+    if (inMine.length) return inMine;
+  }
+  return nodes.filter(n => {
+    const lb = n.closest && n.closest('[role="listbox"]');
+    if (!lb || !lb.id) return true;
+    let owner = null;
+    try { owner = doc.querySelector(`[aria-controls~="${lb.id}"], [aria-owns~="${lb.id}"]`); } catch (e) { owner = null; }
+    return !owner || owner === el || owner.contains(el) || el.contains(owner);
+  });
 }
 
 function waitForOptions(el, timeout) {
   return new Promise(resolve => {
     const doc = (el.ownerDocument) || globalThis.document;
-    const immediate = visibleOptionNodes(doc);
+    const immediate = visibleOptionNodes(doc, el);
     if (immediate.length) { resolve(immediate); return; }
     let settled = false;
     const finish = () => {
@@ -509,16 +565,22 @@ function waitForOptions(el, timeout) {
       settled = true;
       try { obs.disconnect(); } catch (e) {}
       clearTimeout(timer);
-      resolve(visibleOptionNodes(doc));
+      resolve(visibleOptionNodes(doc, el));
     };
     // Observing the whole document, because react-select renders its menu into
     // a <body>-level portal rather than inside the field.
     const obs = new globalThis.MutationObserver(() => {
-      if (visibleOptionNodes(doc).length) finish();
+      if (visibleOptionNodes(doc, el).length) finish();
     });
     try { obs.observe(doc.body, { childList: true, subtree: true }); } catch (e) {}
     const timer = setTimeout(finish, timeout);
   });
+}
+
+/** Does this open list hold an option for any of the answer's shapes? */
+function listOffersAny(shapes, nodes) {
+  const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+  return shapes.some(sh => labels.some(t => commitMatches(sh, t)) || bestOptionMatch(sh, labels) != null);
 }
 
 async function clickMatchingOption(el, value, nodes) {
@@ -773,6 +835,9 @@ export async function applyDecision(decision) {
     case 'radio':
     case 'checkbox':
       wrote = setCheckable(row, value);
+      break;
+    case 'choice':
+      wrote = setChoice(row, value);
       break;
     case 'contenteditable':
       wrote = setContentEditable(row.el, value);
