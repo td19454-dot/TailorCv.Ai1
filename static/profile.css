@@ -52,6 +52,34 @@
   border-color: rgba(124,58,237,.7);
 }
 
+/* Work experience: one card per job, Workday's My Experience shape */
+.pf-exp-title { font-size: .82rem; font-weight: 700; color: #b9c8e4; }
+.pf-exp-list { display: flex; flex-direction: column; gap: 12px; margin: 8px 0 10px; }
+.pf-job {
+  position: relative; display: flex; flex-direction: column; gap: 10px;
+  border: 1px solid rgba(99,130,200,.22); border-radius: 12px; padding: 14px 14px 16px;
+  background: rgba(255,255,255,.02);
+}
+.pf-job > label, .pf-job-dates label {
+  display: flex; flex-direction: column; gap: 5px; font-size: .8rem; font-weight: 600; color: #b9c8e4;
+}
+.pf-job input:not([type="checkbox"]), .pf-job textarea {
+  width: 100%; box-sizing: border-box; padding: 9px 11px; border-radius: 8px;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(99,130,200,.28); color: #eaf1ff;
+  font: inherit; font-size: .9rem;
+}
+.pf-job > label.pf-check { flex-direction: row; align-items: center; }
+.pf-job textarea { resize: vertical; min-height: 96px; line-height: 1.45; }
+.pf-job input:disabled { opacity: .45; }
+.pf-job-dates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pf-job-remove {
+  position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid rgba(239,68,68,.4); background: rgba(239,68,68,.12); color: #fca5a5;
+  font-size: .8rem; line-height: 1; cursor: pointer;
+}
+.pf-job-remove:hover { background: rgba(239,68,68,.25); }
+.pf-job > label:first-of-type { padding-right: 34px; }
+
 /* Tabs: the user's own details vs answers remembered from specific forms */
 .pf-tabs {
   display: flex; gap: 4px; margin: 0 0 18px; border-bottom: 1px solid rgba(99,130,200,.22);

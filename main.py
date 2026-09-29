@@ -700,6 +700,12 @@ def _ensure_apply_profile_columns() -> None:
         to_add.append("ADD COLUMN skills TEXT")
     if "nationality" not in cols:
         to_add.append("ADD COLUMN nationality VARCHAR(80)")
+    if "name_title" not in cols:
+        to_add.append("ADD COLUMN name_title VARCHAR(20)")
+    if "work_experience" not in cols:
+        to_add.append("ADD COLUMN work_experience TEXT")
+    if "education_history" not in cols:
+        to_add.append("ADD COLUMN education_history TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:

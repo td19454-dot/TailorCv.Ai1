@@ -22,6 +22,7 @@ saves and reports its effective value with no second place to update.
 
 from __future__ import annotations
 
+import json
 import os
 from dataclasses import dataclass, field
 
@@ -42,6 +43,8 @@ YES_NO = [("", "Not set"), ("yes", "Yes"), ("no", "No")]
 REMOTE = [("", "Not set"), ("remote", "Remote"), ("hybrid", "Hybrid"),
           ("onsite", "On-site"), ("flexible", "Flexible")]
 EEO_NOTE = "Not set — we answer “Decline to self-identify”"
+TITLE_OPTIONS = [("", "Not set"), ("Mr.", "Mr."), ("Ms.", "Ms."), ("Mrs.", "Mrs."),
+                 ("Miss", "Miss"), ("Mx.", "Mx."), ("Dr.", "Dr.")]
 
 # EEO answers as the MOST detailed lists real forms use (these are Greenhouse's
 # demographic questions, e.g. job-boards.greenhouse.io/robinhood). Storing the
@@ -127,6 +130,8 @@ class Spec:
 
 SECTIONS: list[tuple[str, str, list[Spec]]] = [
     ("name", "Legal name", [
+        Spec("nameTitle", "name_title", "Title", kind="select", options=TITLE_OPTIONS,
+             help="For forms that ask Mr. / Ms. / Dr. Left empty, those stay blank.", max_len=20),
         Spec("firstName", "first_name", "First name", max_len=80),
         Spec("middleName", "middle_name", "Middle name", placeholder="Leave empty if you have none",
              max_len=80),
@@ -157,21 +162,24 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
              help="Used for “Where are you based?” when the parts above are empty.", max_len=160),
     ]),
     ("work", "Work experience", [
-        Spec("currentCompany", "current_company", "Current / latest company", max_len=160,
-             help="Where you work now, or most recently."),
-        Spec("currentTitle", "current_title", "Current job title", max_len=120),
+        # Every job, in the shape Workday's My Experience asks for. The current
+        # title / company and previous company that single-box forms ask for
+        # are read from this list.
+        Spec("workExperience", "work_experience", "Jobs", kind="experience", wide=True,
+             help="Most recent first. Dates as MM/YYYY, the way Workday asks for them.",
+             max_len=60000),
         Spec("yearsExperience", "years_experience", "Years of experience", placeholder="e.g. 3",
              max_len=20),
-        Spec("previousCompany", "previous_company", "Previous company", max_len=160),
         Spec("skills", "skills", "Key skills", kind="textarea", wide=True,
              placeholder="Comma-separated", max_len=2000),
     ]),
     ("education", "Education", [
-        Spec("university", "university", "University / college"),
-        Spec("degree", "degree", "Degree", placeholder="e.g. B.Tech", max_len=120),
-        Spec("major", "major", "Major / field of study", max_len=120),
-        Spec("graduationDate", "graduation_date", "Graduation date", placeholder="e.g. Jun 2024",
-             max_len=40),
+        # Every school, in the shape Workday's Education section asks for. The
+        # single University / Degree / Major boxes other forms have are read
+        # from the first (most recent) entry.
+        Spec("educationHistory", "education_history", "Schools", kind="education", wide=True,
+             help="Most recent first. Years only; “To” can be your expected graduation year.",
+             max_len=20000),
         Spec("gpa", "gpa", "GPA / CGPA / percentage", placeholder="e.g. 8.7/10 or 85%",
              max_len=20),
     ]),
@@ -274,6 +282,8 @@ async def _effective(db, user, prof) -> dict:
         "addressLine1": p.address_line1, "addressLine2": p.address_line2,
         "city": p.address_city, "state": p.address_state, "postalCode": p.postal_code,
         "country": p.address_country, "location": p.location,
+        "workExperience": p.work_experience,
+        "educationHistory": p.education_entries,
         "currentTitle": p.current_title, "currentCompany": p.current_company,
         "previousCompany": p.previous_company, "yearsExperience": p.years_experience,
         "university": p.university, "degree": p.degree, "major": p.major,
@@ -287,7 +297,7 @@ async def _effective(db, user, prof) -> dict:
 
 def _stored(prof, user) -> dict:
     """What is actually saved, per field. Empty string = nothing saved."""
-    from auto_apply.profile import split_phone
+    from auto_apply.profile import parse_saved_education, parse_saved_experience, split_phone
 
     out = {}
     for key, spec in ALL_SPECS.items():
@@ -300,6 +310,10 @@ def _stored(prof, user) -> dict:
         elif key == "phone":
             code, number = split_phone(getattr(prof, "phone", "") if prof else "")
             out[key] = {"code": code, "number": number}
+        elif spec.kind == "experience":
+            out[key] = parse_saved_experience(getattr(prof, spec.column, "") if prof else "")
+        elif spec.kind == "education":
+            out[key] = parse_saved_education(getattr(prof, spec.column, "") if prof else "")
         else:
             out[key] = str((getattr(prof, spec.column, "") if prof else "") or "")
     return out
@@ -381,6 +395,61 @@ async def get_profile(request: Request):
         db.close()
 
 
+EXPERIENCE_LIMITS = {"title": 160, "company": 160, "location": 160, "from": 7, "to": 7,
+                     "description": 5000}
+MAX_JOBS = 20
+
+
+def _validated_experience(raw) -> list:
+    """The job list as sent by the page, checked. Raises 422 with a message that
+    names the job and the box, since the page shows it as-is."""
+    from auto_apply.profile import MONTH_YEAR_RE, parse_saved_experience
+
+    if not isinstance(raw, list):
+        raise HTTPException(status_code=422, detail="Work experience must be a list of jobs.")
+    jobs = parse_saved_experience(raw)
+    if len(jobs) > MAX_JOBS:
+        raise HTTPException(status_code=422, detail=f"At most {MAX_JOBS} jobs can be saved.")
+    for n, job in enumerate(jobs, 1):
+        for fld, limit in EXPERIENCE_LIMITS.items():
+            if len(job[fld]) > limit and fld not in ("from", "to"):
+                raise HTTPException(status_code=422,
+                                    detail=f"Job {n}: {fld} is too long (max {limit}).")
+        for fld, name in (("from", "From"), ("to", "To")):
+            if job[fld] and not MONTH_YEAR_RE.match(job[fld]):
+                raise HTTPException(status_code=422,
+                                    detail=f"Job {n}: {name} should look like 01/2026.")
+    return jobs
+
+
+EDUCATION_LIMITS = {"school": 200, "degree": 120, "field": 120}
+MAX_SCHOOLS = 10
+
+
+def _validated_education(raw) -> list:
+    """The school list as sent by the page, checked; 422 names the school and box."""
+    from auto_apply.profile import YEAR_RE, parse_saved_education
+
+    if not isinstance(raw, list):
+        raise HTTPException(status_code=422, detail="Education must be a list of schools.")
+    schools = parse_saved_education(raw)
+    if len(schools) > MAX_SCHOOLS:
+        raise HTTPException(status_code=422, detail=f"At most {MAX_SCHOOLS} schools can be saved.")
+    for n, school in enumerate(schools, 1):
+        for fld, limit in EDUCATION_LIMITS.items():
+            if len(school[fld]) > limit:
+                raise HTTPException(status_code=422,
+                                    detail=f"School {n}: {fld} is too long (max {limit}).")
+        for fld, name in (("from", "From"), ("to", "To")):
+            if school[fld] and not YEAR_RE.match(school[fld]):
+                raise HTTPException(status_code=422,
+                                    detail=f"School {n}: {name} should be a year, like 2023.")
+        if school["from"] and school["to"] and school["from"] > school["to"]:
+            raise HTTPException(status_code=422,
+                                detail=f"School {n}: From is after To.")
+    return schools
+
+
 class ProfileSave(BaseModel):
     """Only keys present change. Unknown keys are refused rather than ignored,
     so a typo in the page cannot silently drop a value."""
@@ -425,6 +494,14 @@ async def save_profile(request: Request, payload: ProfileSave):
                 if len(phone) > 40:
                     raise HTTPException(status_code=422, detail="Phone number is too long.")
                 prof.phone = phone
+                continue
+            if spec.kind == "experience":
+                jobs = _validated_experience(raw)
+                prof.work_experience = json.dumps(jobs, ensure_ascii=False) if jobs else None
+                continue
+            if spec.kind == "education":
+                schools = _validated_education(raw)
+                prof.education_history = json.dumps(schools, ensure_ascii=False) if schools else None
                 continue
             text = str(raw if raw is not None else "").strip()
             if len(text) > spec.max_len:

@@ -192,8 +192,41 @@ export function isChoiceSelected(el) {
   return /(^|[\s_-])(selected|active|is-selected|checked|pressed)($|[\s_-])/i.test(cls);
 }
 
+// Text around a control that is NOT its question: validation messages,
+// live-region announcements, helper text. Oracle keeps "This information is
+// required." inside every choice group's box — the nearest text to the buttons
+// — and it was read as the question for all five questions on the page, so
+// "Will you require sponsorship?" reached the model as "This information is
+// required." and was answered Yes.
+export const NOT_QUESTION_SEL = '[role="alert"], [aria-live], [class*="error" i], [class*="validation" i], '
+  + '[class*="invalid" i], [class*="helper" i], [class*="hint" i], [class*="message" i], [id*="error" i]';
+
+/** A label that is only a validation prompt, never a question. */
+export const PROMPT_ONLY_RE =
+  /^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i;
+
+/** Text of `node` without the parts that are never the question. */
+function questionTextOf(node, dropSel) {
+  let clone = null;
+  try {
+    clone = node.cloneNode(true);
+    for (const x of clone.querySelectorAll(dropSel + ', ' + NOT_QUESTION_SEL)) x.remove();
+  } catch (e) { return ''; }
+  const t = choiceText(clone);
+  return PROMPT_ONLY_RE.test(t) ? '' : t;
+}
+
 /** The question a choice group answers: the text around it, never another field's. */
 function choiceQuestion(group) {
+  // A radiogroup that names itself says which text is the question.
+  const rg = group.closest && group.closest('[role="radiogroup"]');
+  if (rg) {
+    const by = rg.getAttribute('aria-labelledby') || '';
+    const named = by.split(/\s+/).map(id => {
+      try { const e = rg.ownerDocument.getElementById(id); return e ? choiceText(e) : ''; } catch (x) { return ''; }
+    }).filter(Boolean).join(' ') || rg.getAttribute('aria-label') || '';
+    if (named && !PROMPT_ONLY_RE.test(named)) return named.slice(0, 600);
+  }
   let n = group;
   for (let depth = 0; n && depth < 4; depth++, n = n.parentElement) {
     if (isFormLevel(n)) break;
@@ -205,12 +238,7 @@ function choiceQuestion(group) {
     if (fields > 0 || groups > group.querySelectorAll(CHOICE_SEL).length) {
       if (depth > 0) break;          // reached a box holding another question
     }
-    let clone = null;
-    try {
-      clone = n.cloneNode(true);
-      for (const x of clone.querySelectorAll(CHOICE_SEL)) x.remove();
-    } catch (e) { return ''; }
-    const t = choiceText(clone);
+    const t = questionTextOf(n, CHOICE_SEL);
     if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
   }
   return '';
@@ -388,6 +416,7 @@ export function detectAts(url) {
   if (/bamboohr\.com/.test(u)) return 'bamboohr';
   if (/taleo\.net/.test(u)) return 'taleo';
   if (/successfactors\.(com|eu)/.test(u)) return 'successfactors';
+  if (/oraclecloud\.com\/hcmui\/candidateexperience/.test(u)) return 'oracle';
   return 'generic';
 }
 

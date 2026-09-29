@@ -321,6 +321,21 @@
 }
 .tcv-toggle:hover { background: rgba(255,255,255,0.08) !important; }
 
+/* Dev builds only: the delayed page-structure capture. Dashed amber so it is
+   never mistaken for a product control. */
+.tcv-dev-capture {
+  cursor: pointer !important;
+  font: 600 11px/1 inherit !important;
+  color: #fcd34d !important;
+  background: rgba(245,158,11,0.10) !important;
+  border: 1px dashed rgba(245,158,11,0.55) !important;
+  border-radius: 6px !important;
+  padding: 5px 7px !important;
+  margin-right: 4px !important;
+  white-space: nowrap !important;
+}
+.tcv-dev-capture:hover { background: rgba(245,158,11,0.2) !important; }
+
 /* Account menu: only shown once GET_PROFILE confirms a logged-in session.
    The trigger is a round avatar carrying the user's initial, so it reads as
    an account icon rather than another toolbar action. */
@@ -1236,6 +1251,44 @@
   color: #64748b !important;
   padding: 4px 0 0 !important;
   font-size: 11px !important;
+}
+
+/* \u2500\u2500 Job review form (Tailor tab on a page that only holds the application) \u2500\u2500 */
+.tcv-review-banner {
+  padding: 12px 14px !important;
+  margin: 0 0 16px !important;
+  border-radius: 12px !important;
+  text-align: center !important;
+  font-size: 13.5px !important;
+  color: #86efac !important;
+  background: rgba(52,211,153,0.12) !important;
+  border: 1px solid rgba(52,211,153,0.28) !important;
+}
+.tcv-review-banner.tcv-review-warn {
+  color: #fcd34d !important;
+  background: rgba(251,191,36,0.10) !important;
+  border-color: rgba(251,191,36,0.3) !important;
+}
+.tcv-review-company {
+  position: relative !important;
+}
+.tcv-review-company img {
+  position: absolute !important;
+  left: 10px !important;
+  top: 9px !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 5px !important;
+  object-fit: contain !important;
+  background: #fff !important;
+}
+.tcv-review-company img + .tcv-input {
+  padding-left: 42px !important;
+}
+.tcv-textarea.tcv-review-jd {
+  min-height: 180px !important;
+  font-size: 13px !important;
+  margin-bottom: 4px !important;
 }
 `;
 

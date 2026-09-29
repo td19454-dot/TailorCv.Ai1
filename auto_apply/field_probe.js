@@ -530,10 +530,15 @@
       let clone = null;
       try {
         clone = n.cloneNode(true);
-        const drop = clone.querySelectorAll('button, input, select, textarea, [role="listbox"], [role="option"]');
+        // Controls, and text that is never the question: validation messages
+        // ("This information is required." on Oracle), live regions, helper text.
+        const drop = clone.querySelectorAll('button, input, select, textarea, [role="listbox"], [role="option"], '
+          + '[role="alert"], [aria-live], [class*="error" i], [class*="validation" i], [class*="invalid" i], '
+          + '[class*="helper" i], [class*="hint" i], [class*="message" i], [id*="error" i]');
         for (let i = 0; i < drop.length; i++) drop[i].remove();
       } catch (e) { return ''; }
       const t = txt(clone);
+      if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(t)) continue;
       if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
     }
     return '';
@@ -565,10 +570,36 @@
   // be listed twice and the option-count guards would be off by double.
   const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"]';
 
+  // Oracle Candidate Experience draws its dropdown lists as a grid, not a
+  // listbox: <input role="combobox" aria-haspopup="grid" aria-controls="city-17-listbox">
+  // opens <div role="grid" id="city-17-listbox"> of <div role="row"><div
+  // role="gridcell">Kolkata, West Bengal</div></div>. Read from a real page —
+  // every City / State / Country pick failed with "options seen: 0" until then.
+  // A gridcell counts only when its grid is a combobox's popup, so a calendar
+  // date-picker's day cells (also role="gridcell") are never read as options.
+  function comboGridCells(scope) {
+    let cells = [];
+    try { cells = Array.prototype.slice.call((scope || document).querySelectorAll('[role="grid"] [role="gridcell"]')); }
+    catch (e) { return []; }
+    const owned = new Map();
+    return cells.filter(c => {
+      const grid = c.closest('[role="grid"]');
+      if (!grid || !grid.id) return false;
+      if (!owned.has(grid)) {
+        let owner = null;
+        try { owner = (grid.ownerDocument || document).querySelector(`[role="combobox"][aria-controls~="${grid.id}"], [role="combobox"][aria-owns~="${grid.id}"]`); }
+        catch (e) { owner = null; }
+        owned.set(grid, !!owner);
+      }
+      return owned.get(grid);
+    });
+  }
+
   function optionNodes(scope) {
     let nodes = [];
     try { nodes = Array.prototype.slice.call((scope || document).querySelectorAll(OPTION_SEL)); }
     catch (e) { return []; }
+    nodes = nodes.concat(comboGridCells(scope));
     return nodes.filter(n => !nodes.some(o => o !== n && o.contains(n)));
   }
 

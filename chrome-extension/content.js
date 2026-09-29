@@ -31,6 +31,8 @@
   // the toolbar-click injection chain in background.js). The fallback is the
   // production URL, so a missing env.js degrades to shipping behaviour.
   const BASE_URL = (window.__TCV_ENV && window.__TCV_ENV.BASE_URL) || 'https://thetailorcv.com';
+  // Pointed at a local backend: shows developer-only tools (the delayed capture).
+  const IS_DEV_BUILD = BASE_URL.indexOf('thetailorcv.com') === -1;
   const MIN_JD_LENGTH = 200;
   // Where the application profile (name, address, eligibility, EEO answers) is
   // viewed and edited: the dedicated profile page.
@@ -790,6 +792,8 @@
     heading: 'Detected on this page',
     heuristic: 'Detected on this page',
     manual: 'Using the text you provided',
+    remembered: 'From the job posting you came from',
+    posting: 'Read from the job posting',
   };
 
   // ── Panel shell ──────────────────────────────────────
@@ -838,6 +842,7 @@
           <span class="tcv-logo">TailorCV</span>
         </div>
         <div class="tcv-header-actions">
+          ${IS_DEV_BUILD ? '<button class="tcv-dev-capture" id="tcvDevCapture" type="button" title="Dev build: capture the page structure after a 5-second delay, so an open dropdown is included">Capture in 5s</button>' : ''}
           <button class="tcv-account-btn" id="tcvAccountBtn" title="Account"></button>
           <button class="tcv-toggle" title="Minimize">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
@@ -855,6 +860,7 @@
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-cover-template" target="_blank">Change cover letter template</a>
           <a class="tcv-account-item" href="${PROFILE_URL}" target="_blank">Application profile (name, address…)</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension" target="_blank">Extension settings</a>
+          <button class="tcv-account-item" id="tcvCopyStructure" type="button">Copy page structure for TailorCV</button>
           <button class="tcv-account-item tcv-account-logout" id="tcvAccountLogout" type="button">Log out</button>
         </div>
       </div>
@@ -987,6 +993,14 @@
       track('auto_add_skills_toggled', { enabled: autoSkillsInput.checked, via: 'account_menu' });
     });
 
+    sb.querySelector('#tcvCopyStructure').addEventListener('click', async () => {
+      accountMenu.classList.remove('tcv-visible');
+      await copyPageStructure();
+      syncDevCaptureBtn();
+    });
+    const devCaptureBtn = sb.querySelector('#tcvDevCapture');
+    if (devCaptureBtn) devCaptureBtn.addEventListener('click', onDevCaptureClick);
+
     sb.querySelector('#tcvAccountLogout').addEventListener('click', async () => {
       const logoutBtn = sb.querySelector('#tcvAccountLogout');
       accountMenu.classList.remove('tcv-visible');
@@ -1041,6 +1055,137 @@
     }
   }
 
+  // ── "Copy page structure for TailorCV" ─────────────────────
+  // The form's markup, scrubbed of the person's data (src/autofill/capture.js),
+  // copied to the clipboard to paste to TailorCV — how ATS adapters and their
+  // tests get built from real pages instead of screenshots.
+  // A chat message holds ~50,000 characters and an Oracle step is bigger than
+  // that, so a large capture is copied in parts: each click copies the next
+  // part of the same capture until all are copied, then the next click starts
+  // a fresh capture.
+  const CAPTURE_PART_CHARS = 45000;
+  let captureParts = null;   // { parts, next, url }
+
+  function splitCapture(text) {
+    const parts = [];
+    let rest = text;
+    while (rest.length > CAPTURE_PART_CHARS) {
+      let cut = rest.lastIndexOf('\n', CAPTURE_PART_CHARS);
+      if (cut < CAPTURE_PART_CHARS / 2) cut = CAPTURE_PART_CHARS;
+      parts.push(rest.slice(0, cut));
+      rest = rest.slice(cut);
+    }
+    parts.push(rest);
+    return parts.length === 1 ? parts
+      : parts.map((p, i) => `<!-- TailorCV capture part ${i + 1} of ${parts.length} -->\n${p}`);
+  }
+
+  function capturePending() {
+    return !!(captureParts && captureParts.url === location.href
+              && captureParts.next < captureParts.parts.length);
+  }
+
+  async function copyPageStructure() {
+    if (!AF || !AF.capturePageStructure) return;
+    if (capturePending()) return copyCapturePart();
+    await takeCapture();
+    return copyCapturePart();
+  }
+
+  // Reads the page into captureParts without touching it — no click, no focus
+  // change — so a dropdown the person opened stays open while it is read.
+  async function takeCapture() {
+    let values = [];
+    try {
+      const ctx = await ensureApplyContext();
+      const bank = (ctx && ctx.answerBank) || {};
+      values = Object.values(bank).filter(v => typeof v === 'string');
+    } catch (e) { values = []; }
+    const email = accountEmailEl && accountEmailEl.textContent;
+    if (email) values.push(email);
+
+    let text = '';
+    if (!applyForm && applyFrame) {
+      const res = await toFrame({ type: 'AF_FRAME_CAPTURE', profileValues: values });
+      text = (res && res.text) || '';
+    }
+    if (!text) text = AF.capturePageStructure(document, values);
+    captureParts = { parts: splitCapture(text), next: 0, url: location.href };
+  }
+
+  // Dev builds only: a capture button in the header. Any click outside a page's
+  // dropdown closes it, so the capture cannot be started by a click while the
+  // list is open. Instead: click, open the dropdown within 5 seconds, and the
+  // capture is taken on its own; the next clicks copy it (a click is needed
+  // for the clipboard anyway).
+  const DEV_CAPTURE_DELAY_S = 5;
+  let devCaptureTimer = null;
+
+  function syncDevCaptureBtn() {
+    const btn = sb && sb.querySelector('#tcvDevCapture');
+    if (!btn) return;
+    if (devCaptureTimer) return;
+    btn.textContent = capturePending()
+      ? `Copy ${captureParts.next + 1}/${captureParts.parts.length}`
+      : `Capture in ${DEV_CAPTURE_DELAY_S}s`;
+  }
+
+  async function onDevCaptureClick() {
+    if (!AF || !AF.capturePageStructure || devCaptureTimer) return;
+    if (capturePending()) {
+      await copyCapturePart();
+      syncDevCaptureBtn();
+      return;
+    }
+    const btn = sb.querySelector('#tcvDevCapture');
+    let left = DEV_CAPTURE_DELAY_S;
+    const tick = () => {
+      btn.textContent = `Capturing in ${left}…`;
+      globalStatus.className = 'tcv-status-text';
+      globalStatus.textContent = `Open the dropdown on the page now — capturing in ${left}s`;
+    };
+    tick();
+    devCaptureTimer = setInterval(async () => {
+      left -= 1;
+      if (left > 0) { tick(); return; }
+      clearInterval(devCaptureTimer);
+      await takeCapture();
+      devCaptureTimer = null;
+      const open = document.querySelector('[aria-expanded="true"][aria-controls]');
+      globalStatus.className = 'tcv-status-text tcv-ok';
+      globalStatus.textContent = `✓ Captured${open ? ' with a list open' : ' (no list was open)'} — `
+        + `click "Copy 1/${captureParts.parts.length}" and paste each part to TailorCV`;
+      syncDevCaptureBtn();
+    }, 1000);
+  }
+
+  async function copyCapturePart() {
+    const { parts } = captureParts;
+    const index = captureParts.next;
+    const text = parts[index];
+
+    let copied = false;
+    try { await navigator.clipboard.writeText(text); copied = true; } catch (e) { copied = false; }
+    if (!copied) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      try { copied = document.execCommand('copy'); } catch (e) { copied = false; }
+      ta.remove();
+    }
+    if (copied) captureParts.next = index + 1;
+    const more = parts.length - (index + 1);
+    const partNote = parts.length > 1 ? ` part ${index + 1} of ${parts.length}` : '';
+    globalStatus.className = copied ? 'tcv-status-text tcv-ok' : 'tcv-status-text tcv-error';
+    globalStatus.textContent = !copied
+      ? '✗ Could not copy — your browser blocked clipboard access'
+      : more > 0
+        ? `✓ Page structure${partNote} copied — paste it to TailorCV (one part per message), then copy part ${index + 2}`
+        : `✓ Page structure${partNote} copied (personal details removed) — paste it to TailorCV`;
+  }
+
   // ── Tabs ─────────────────────────────────────────────
   // Tailor and Autofill are two views of the same page, not separate modes:
   // they only pick which renderer draws #tcvBody. Profile lives on the website.
@@ -1071,12 +1216,164 @@
     if (tab === 'autofill') {
       renderApplyReady();
     } else if (lastJob) {
-      renderReady(lastJob);
+      if (lastJob === applicationJob) renderJobReview(applicationJob);
+      else renderReady(lastJob);
     } else if (hasForm()) {
-      renderManual();   // an apply page with no posting on it — same as the apply view's tailor button
+      renderTailorForApplication();   // an apply page with no posting on it
     } else {
       renderJobFromPage();
     }
+  }
+
+  // ── Tailoring from a page that only holds the application ────────────
+  //
+  // Workday step 2, Oracle ".../apply/section/1", a Lever "/apply": the form is
+  // here, the description is not. It is found (background.js JOB_RECALL /
+  // JOB_FETCH): first the posting the person came from, remembered this
+  // session; then the ATS's own posting data, via this page's "Back to Job
+  // Posting" link or its URL. Only when all of that misses is the person asked
+  // to paste it.
+
+  let applicationJob = null;    // found once per page; steps 2..N reuse it
+  let rememberedJd = '';
+  const BACK_TO_POSTING_RE =
+    /^\s*(back to (the )?job( posting| description| details)?|view (the )?job( posting| description| details)?|job details|view posting)\s*$/i;
+
+  function rememberPosting(job, extraUrls) {
+    if (!job || !job.jd_string) return;
+    if (['manual', 'remembered', 'posting'].includes(job.source)) return;
+    if (rememberedJd === job.jd_string && !extraUrls) return;   // re-renders: once is enough
+    rememberedJd = job.jd_string;
+    sendMessage({ type: 'JOB_REMEMBER',
+                  job: { role: job.role, company: job.company, jd_string: job.jd_string, url: location.href },
+                  urls: [location.href].concat(extraUrls || []) });
+  }
+
+  function backToPostingHref() {
+    for (const a of document.querySelectorAll('a[href]')) {
+      if (a.closest('#tailorcv-sidebar')) continue;
+      if (!BACK_TO_POSTING_RE.test(a.textContent || '')) continue;
+      try { return new URL(a.getAttribute('href'), location.href).href; } catch (e) { /* next */ }
+    }
+    return '';
+  }
+
+  async function findJobForApplication() {
+    if (applicationJob) return applicationJob;
+    const urls = [backToPostingHref(), location.href].filter(Boolean);
+    const title = jobContext().jobTitle;
+    let res = await sendMessage({ type: 'JOB_RECALL', urls, title });
+    let found = res && res.data && res.data.job ? res.data : null;
+    if (!found) {
+      res = await sendMessage({ type: 'JOB_FETCH', urls });
+      found = res && res.data && res.data.job ? res.data : null;
+    }
+    if (!found) return null;
+    applicationJob = enrichJob(Object.assign({}, found.job, { source: found.source }));
+    return applicationJob;
+  }
+
+  async function renderTailorForApplication() {
+    currentView = 'job';
+    const ctx = jobContext();
+    body.innerHTML = `
+      <div class="tcv-card tcv-job-card">
+        <div class="tcv-job-main">
+          <div class="tcv-job-avatar">${esc((ctx.jobCompany || ctx.jobTitle || '?').trim().charAt(0).toUpperCase() || '?')}</div>
+          <div class="tcv-job-text">
+            <div class="tcv-job-title">${esc(ctx.jobTitle || 'This application')}</div>
+            <div class="tcv-job-meta">${ctx.jobCompany ? esc(ctx.jobCompany) + ' · ' : ''}Finding the job description…</div>
+          </div>
+        </div>
+      </div>`;
+    const job = await findJobForApplication();
+    // The person may have moved on (Autofill tab) while this was looking.
+    if (currentView !== 'job' || !document.getElementById('tailorcv-sidebar')) return;
+    if (job) { renderJobReview(job); return; }
+    // Nothing found: the same form, with the description left for them.
+    const tp = globalThis.TCVJobSource;
+    applicationJob = { role: ctx.jobTitle || '', company: ctx.jobCompany || '', jd_string: '',
+                       url: tp ? tp.postingUrl(location.href) : location.href, source: 'manual' };
+    renderJobReview(applicationJob, { missing: true });
+  }
+
+  const REVIEW_BANNER = {
+    remembered: 'Job details are ready to review — from the posting you came from.',
+    posting: 'Job details are ready to review — read from the job posting.',
+  };
+
+  // The job this application is for, as an editable form: title, the posting's
+  // URL, company, description — then Tailor. Whatever the person corrects here
+  // is what gets tailored, and it stays corrected when they come back.
+  function renderJobReview(job, opts) {
+    currentView = 'job';
+    lastJob = job;
+    const missing = !!(opts && opts.missing) || !job.jd_string;
+    body.innerHTML = `
+      <div class="tcv-review-banner${missing ? ' tcv-review-warn' : ''}">${missing
+        ? "We couldn't find this job's description — paste it below."
+        : esc(REVIEW_BANNER[job.source] || 'Job details are ready to review.')}</div>
+      <label class="tcv-field-label" for="tcvRvTitle">Job title *</label>
+      <input id="tcvRvTitle" class="tcv-input" value="${esc(job.role || '')}" placeholder="e.g. Data Scientist">
+      <label class="tcv-field-label" for="tcvRvUrl">URL of the original posting</label>
+      <input id="tcvRvUrl" class="tcv-input" value="${esc(job.url || '')}" placeholder="https://…">
+      <label class="tcv-field-label" for="tcvRvCompany">Company name *</label>
+      <div class="tcv-review-company">
+        ${job.logo ? `<img src="${esc(job.logo)}" alt="" referrerpolicy="no-referrer">` : ''}
+        <input id="tcvRvCompany" class="tcv-input" value="${esc(job.company || '')}">
+      </div>
+      <label class="tcv-field-label" for="tcvRvJd">Job description *</label>
+      <textarea id="tcvRvJd" class="tcv-textarea tcv-review-jd" rows="10"
+                placeholder="Paste the job description here…">${esc(job.jd_string || '')}</textarea>
+      <div class="tcv-error" id="tcvRvError"></div>
+      <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvRvTailor">${tcvBusy
+        ? 'Working on another job…' : 'Tailor my resume <span aria-hidden="true">▸</span>'}</button>
+      <button class="tcv-btn tcv-btn-ghost" id="tcvRvCover">✉ Write a cover letter</button>
+      <div id="tcvResultSlot"></div>`;
+
+    const logo = body.querySelector('.tcv-review-company img');
+    if (logo) logo.addEventListener('error', () => logo.remove(), { once: true });
+
+    // Read the form back into the job, so a correction survives a redraw.
+    const readForm = () => Object.assign(job, {
+      role: body.querySelector('#tcvRvTitle').value.trim(),
+      url: body.querySelector('#tcvRvUrl').value.trim(),
+      company: body.querySelector('#tcvRvCompany').value.trim(),
+      jd_string: body.querySelector('#tcvRvJd').value.trim(),
+    });
+    const collect = () => {
+      const edited = readForm();
+      const err = body.querySelector('#tcvRvError');
+      if (!edited.role) { err.textContent = 'Add the job title.'; return null; }
+      if (edited.jd_string.length < MIN_JD_LENGTH) {
+        err.textContent = `Add the job description — at least ${MIN_JD_LENGTH} characters.`;
+        return null;
+      }
+      err.textContent = '';
+      return edited;
+    };
+    for (const id of ['#tcvRvTitle', '#tcvRvUrl', '#tcvRvCompany', '#tcvRvJd']) {
+      body.querySelector(id).addEventListener('change', readForm);
+    }
+
+    const tailorBtn = body.querySelector('#tcvRvTailor');
+    const coverBtn = body.querySelector('#tcvRvCover');
+    if (tcvBusy) { tailorBtn.disabled = true; coverBtn.disabled = true; return; }
+    const labelOf = j => `${j.role || 'this job'}${j.company ? ' at ' + j.company : ''}`;
+    tailorBtn.addEventListener('click', () => {
+      const j = collect();
+      if (j) runTailor(j, labelOf(j));
+    });
+    coverBtn.addEventListener('click', () => {
+      const j = collect();
+      if (j) runCoverLetter(j, labelOf(j));
+    });
+  }
+
+  // After a tailor or cover letter: the view it started from.
+  function refreshJobView() {
+    if (lastJob && lastJob === applicationJob) renderJobReview(applicationJob);
+    else renderJobFromPage();
   }
 
   // ── State renderers ──────────────────────────────────
@@ -1227,7 +1524,7 @@
 
   // Layer 4. The page beat every extractor, so let the user hand us the text —
   // this is what keeps the extension useful on login-gated SPAs and odd career pages.
-  function renderManual(prefill) {
+  function renderManual(prefill, note) {
     currentView = 'manual';
     // No prefill means this is the auto-fallback (every extractor missed), not
     // the user deliberately opening "not right? edit" on an already-found job —
@@ -1235,6 +1532,7 @@
     // in-progress edit of a job that WAS detected.
     const showRetry = !prefill;
     body.innerHTML = `
+      ${note ? `<div class="tcv-af-note">${esc(note)}</div>` : ''}
       <div class="tcv-msg">Paste the job description, or select it on the page and click Use&nbsp;selection.</div>
       <textarea id="tcvManualJd" class="tcv-textarea" rows="7"
                 placeholder="Paste the job description here…">${esc(prefill || '')}</textarea>
@@ -1279,6 +1577,7 @@
     if (quotaExceeded) { renderUpgradePrompt(); return; }
     currentView = 'job';
     lastJob = job;
+    rememberPosting(job);
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     const initial = (job.company || job.role || '?').trim().charAt(0).toUpperCase() || '?';
     const tailorLabel = 'Working on another job…';
@@ -1446,6 +1745,9 @@
   function startApplication() {
     const target = findApplyTarget();
     if (target && target.url) {
+      // The application page will not carry this description; hand it over
+      // under the job id its URL names (background.js JOB_REMEMBER).
+      if (lastJob) rememberPosting(lastJob, [target.url]);
       window.open(target.url, '_blank', 'noopener');
       track('start_application_clicked', { host: location.hostname, via: 'link' });
     } else if (target && target.button) {
@@ -1787,7 +2089,7 @@
   async function runCoverLetter(job, label) {
     if (tcvBusy || !job) return;
     tcvBusy = true;
-    renderJobFromPage();
+    refreshJobView();
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Writing a cover letter for "${label}"…`;
     startProgress();
@@ -1832,14 +2134,14 @@
     if (!res.error) showSuccessTick();
     track(res.error ? 'cover_letter_failed' : 'cover_letter_downloaded', { error: res.error });
 
-    if (sessionReady) renderJobFromPage();
+    if (sessionReady) refreshJobView();
   }
 
   async function runTailor(job, label) {
     if (tcvBusy || !job) return;
     const jobUrl = window.location.href; // snapshot now — navigation shouldn't retag this request
     tcvBusy = true;
-    renderJobFromPage(); // re-render current button as disabled/"busy"
+    refreshJobView(); // re-render current button as disabled/"busy"
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Tailoring "${label}"… this can take up to a minute.`;
     startProgress();
@@ -1899,7 +2201,7 @@
           }
           finishTailorSuccess(job, label, res.data, added, false);
         }
-        if (sessionReady) renderJobFromPage();
+        if (sessionReady) refreshJobView();
       });
     } else {
       const added = (res.data && Array.isArray(res.data.skillsAdded)) ? res.data.skillsAdded : [];
@@ -1907,7 +2209,7 @@
     }
 
     // Refresh whichever job is on screen now that we're free to tailor again.
-    if (sessionReady) renderJobFromPage();
+    if (sessionReady) refreshJobView();
   }
 
   function finishTailorSuccess(job, label, data, added, auto) {
@@ -2182,7 +2484,7 @@
     if (!hasForm() && !page) { renderManual(); return; }
     AF.ui.renderReady(body, applyForm || refreshApplyMode() || { fields: [], ats: 'generic' }, applyCtx, {
       onFill: () => runAutofill(),
-      onTailor: () => renderManual(),
+      onTailor: () => renderTailorForApplication(),
       onOpenProfile: () => window.open(PROFILE_URL, '_blank'),
       onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
     }, { page });

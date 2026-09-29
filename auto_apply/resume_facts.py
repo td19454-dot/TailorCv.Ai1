@@ -40,7 +40,9 @@ logger = logging.getLogger(__name__)
 
 # Bumped when the shape of facts_json changes incompatibly, so cached rows from
 # an older shape are re-parsed rather than half-read.
-FACTS_VERSION = 1
+# 2: work entries carry their bullets ("description") for the profile's
+#    Workday-shaped experience list.
+FACTS_VERSION = 2
 
 _MODEL = "gpt-4o-mini"
 _MAX_RESUME_CHARS = 12000
@@ -71,7 +73,7 @@ Return ONLY a JSON object of exactly this shape:
   ],
   "work_history": [
     {{"company": "", "role": "", "location": "",
-      "start_date": "", "end_date": "", "is_current": false}}
+      "start_date": "", "end_date": "", "is_current": false, "description": ""}}
   ],
   "skills": []
 }}
@@ -84,6 +86,8 @@ RULES:
 - "description" for an education entry: copy any line mentioning grades, GPA,
   CGPA, percentage or honours VERBATIM. Do not compute or normalise a score.
 - Order education and work_history most recent first.
+- "description" for a work entry: that role's bullet points copied VERBATIM,
+  one per line, without the bullet symbols. Do not summarise or reword.
 - "is_current" is true only where the resume says the role is ongoing
   ("Present", "Current"), never because it looks like the latest one.
 - Do NOT output a GPA field. Do NOT split the location into parts. Those are
@@ -419,6 +423,7 @@ def _normalize(parsed: dict, resume_text: str) -> dict:
             "start_date": _clean_str(w.get("start_date")),
             "end_date": _clean_str(w.get("end_date")),
             "is_current": bool(w.get("is_current")),
+            "description": _clean_str(w.get("description"))[:5000],
         }
         if any(v for k, v in entry.items() if k != "is_current"):
             work.append(entry)

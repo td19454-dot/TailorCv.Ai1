@@ -40,7 +40,7 @@ SENSITIVE_PATTERNS: list[tuple[str, re.Pattern]] = [
         r"|\b(authori[sz]\w*|eligib\w*) to (work|be employed)\b"
         r"|\b(authori[sz]\w*|eligib\w*|legal\w*)\b[\s\S]*\b(work|employ\w*)\b")),
     ("citizenship", re.compile(
-        r"\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b")),
+        r"\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b|\bpassports?\b")),
     ("clearance", re.compile(
         r"\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b")),
     ("criminal", re.compile(

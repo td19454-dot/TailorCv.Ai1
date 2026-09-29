@@ -21,7 +21,7 @@ import { describeFields, findForm, isApplicationPage, readComboboxOptions, repro
   from './discover.js';
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
-import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64 } from './write.js';
+import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo } from './write.js';
 import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone }
   from './match.js';
 import { TIMING, sleep } from './timing.js';
@@ -221,11 +221,62 @@ export async function runAutofill(ctx, onProgress) {
   let rows = describeFields(form);
   if (!rows.length) return { error: 'no_fields', decisions: [], counts: summarize([]) };
 
-  let decisions = await fillInTwoWaves(await planFor(rows, ctx, progress), ctx, progress);
+  // Documents first, then the form as it stands AFTER them. Oracle's "Import
+  // your profile" upload reads the resume and fills name, country, state… and
+  // clears what it did not find (a Title picked earlier went blank while the
+  // panel said filled). So the upload goes first, the form reads it, and only
+  // then is the form read and planned: what the ATS filled is left as it filled
+  // it (plan.js skips a filled, valid field) and only the gaps are ours.
+  let decisions = [];
+  const fileRows = rows.filter(r => r.kind === 'file');
+  if (fileRows.length) {
+    const filledBefore = new Set(rows.filter(r => r.filled).map(r => r.key));
+    // Decided locally: which file goes where never needs the server, and waiting
+    // on it here would hold every profile answer back behind the model.
+    decisions = decide(fileRows, ctx, null, state);
+    await writeAll(decisions, ctx, progress);
+    if (decisions.some(d => d.action === DOCUMENT && d.outcome === 'ok')) {
+      // The form read the resume (Oracle): let it finish redrawing what it
+      // filled — the address block reloads for the country it found.
+      if (decisions.some(d => d.formRead)) {
+        progress('scanning', { detail: 'letting the form read your resume' });
+        await waitForQuiet(form.root);
+      }
+      rows = describeFields(findForm() || form);
+      // Only what the upload filled: a value already there before it (the
+      // account email, a country the page pre-set) did not come from the resume.
+      for (const r of rows) {
+        if (r.kind !== 'file' && r.filled && !r.invalid && !filledBefore.has(r.key)) r.filledByForm = true;
+      }
+    }
+  }
+  const fieldRows = rows.filter(r => r.kind !== 'file');
+  decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
+  for (const d of decisions) {
+    if (d.row && d.row.filledByForm && d.action === SKIP) {
+      d.byForm = true;
+      d.reason = 'filled by the form from your resume — check it';
+    }
+  }
 
   // One repair sweep, no LLM: retry only what the page disagreed about.
   for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
-    const broken = decisions.filter(d => d.outcome && d.outcome !== 'ok' && d.value);
+    let broken = decisions.filter(d => d.outcome && d.outcome !== 'ok' && d.value);
+    if (!broken.length) break;
+    // Re-read before retrying. A pick can land after its check gave up — on
+    // Oracle, Country took, the address block redrew, and the "repair" then typed
+    // the dial code "+91" over a Country that already read India.
+    await sleep(TIMING.settleMs);
+    for (const d of broken) {
+      const shapes = [d.value].concat(d.candidates || []);
+      if (d.row && d.row.kind !== 'file' && await settlesTo(d.row, shapes, 0)) {
+        const now = reprobe(d.row);
+        d.outcome = 'ok';
+        d.shown = (now && now.value) || d.value;
+        if (d.key) state.registry[d.key] = d.value;
+      }
+    }
+    broken = broken.filter(d => d.outcome !== 'ok');
     if (!broken.length) break;
     // A phone number the form rejected is retried in the OTHER shape, not the
     // same one again: some forms want "+918240044652", others (with their own
@@ -259,7 +310,7 @@ export async function runAutofill(ctx, onProgress) {
   let revealed = 0;
   while (revealed < MAX_REVEAL_ROUNDS) {
     const before = new Set(rows.map(r => r.key));
-    await sleep(TIMING.revealWatchMs);
+    await waitForQuiet(form.root);
     const fresh = describeFields(findForm() || form);
     const added = fresh.filter(r => r.key && !before.has(r.key));
     if (!added.length) break;
@@ -269,6 +320,8 @@ export async function runAutofill(ctx, onProgress) {
     decisions = decisions.concat(extra);
     rows = fresh;
   }
+
+  await refillCleared(decisions, progress);
 
   await saveState();
   watchUserEdits(form, null);
@@ -287,6 +340,73 @@ function isPhoneRow(row) {
   const label = row.label || '';
   if (/extension|\bext\b|device|type|code/i.test(label)) return false;
   return (row.hints && row.hints.type === 'tel') || /\b(phone|mobile)\b/i.test(label);
+}
+
+/**
+ * The last look before the panel says "filled": every field we filled is read
+ * again, and one the page has since EMPTIED is filled once more — or, if it
+ * will not stay, handed to the person. A page can clear an answer after it was
+ * checked (Oracle's resume import cleared Title and the panel still said Mr.).
+ * Only emptied fields: one the page reformatted ("+91" for "+91 (India)", a
+ * spaced phone number) still holds the answer and is left alone, and a field
+ * the person changed is theirs.
+ */
+async function refillCleared(decisions, progress) {
+  const lost = decisions.filter(d => {
+    if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== 'ok') return false;
+    if (!d.row || d.row.kind === 'file') return false;
+    if (d.key && state.userEdited.includes(d.key)) return false;
+    const now = reprobe(d.row);
+    return !!now && !now.filled;
+  });
+  if (!lost.length) return;
+  console.info(`[TailorCV] the form emptied ${lost.length} answer(s) after they were filled — filling again:`,
+               lost.map(d => d.label).join(' | '));
+  progress('repairing', { total: lost.length, detail: 'the form cleared some answers — filling them again' });
+  for (const d of lost) {
+    const result = await applyDecision(d);
+    d.outcome = result.outcome;
+    d.shown = result.shown;
+    if (!result.ok) {
+      d.action = ASK;
+      d.reason = 'the form cleared this after we filled it';
+    }
+  }
+}
+
+/**
+ * Wait for fields an answer reveals: at least revealWatchMs, then for as long
+ * as the page keeps changing (until revealQuietMs pass with no change), capped
+ * at revealMaxMs. Oracle builds Address Line 1 / Pin Code / City / State only
+ * after Country is picked, loading them from its server ("dependency fields
+ * loading" → "Address form loaded"); a single look at 900 ms could miss them.
+ * A page that is not changing still costs only revealWatchMs.
+ */
+function waitForQuiet(root) {
+  const doc = (root && root.ownerDocument) || globalThis.document;
+  const target = (doc && doc.body) || root;
+  return new Promise(resolve => {
+    const start = Date.now();
+    let last = start;
+    let obs = null;
+    try {
+      obs = new globalThis.MutationObserver(() => { last = Date.now(); });
+      obs.observe(target, { childList: true, subtree: true, attributes: true });
+    } catch (e) { obs = null; }
+    const tick = () => {
+      const now = Date.now();
+      const waited = now - start;
+      const quiet = now - last;
+      if (waited >= TIMING.revealMaxMs
+          || (waited >= TIMING.revealWatchMs && (quiet >= TIMING.revealQuietMs || last === start))) {
+        try { if (obs) obs.disconnect(); } catch (e) { /* ignore */ }
+        resolve();
+        return;
+      }
+      setTimeout(tick, 100);
+    };
+    setTimeout(tick, Math.min(100, TIMING.revealWatchMs));
+  });
 }
 
 /** The next shape of the answer this row has not tried yet, or ''. */
@@ -420,6 +540,7 @@ async function writeAll(decisions, ctx, progress, isRepair) {
       const result = await attachDocument(d, ctx);
       d.outcome = result.ok ? 'ok' : 'failed';
       d.shown = result.shown || '';
+      d.formRead = !!result.formRead;
       if (!result.ok) {
         d.action = ASK;
         d.reason = 'attach this one yourself';
@@ -521,8 +642,29 @@ async function attachDocument(decision, ctx) {
     if (attached || Date.now() >= deadline) break;
     await sleep(150);
   }
+  const formRead = await waitWhileReadingResume(target);
   // What the page shows is the verdict, however the file got there.
-  return { ok: attached, shown: attached ? file.name : '' };
+  return { ok: attached, shown: attached ? file.name : '', formRead };
+}
+
+/**
+ * Some ATSs read an uploaded resume and pre-fill the form from it. Oracle's
+ * "Import your profile" upload does, and disables itself while it reads
+ * (`disable: isResumeParsingInProgress` in its markup). Confirmed on JPMC:
+ * uploading the resume by hand filled name, country and state, and cleared a
+ * Title picked before it. The run reads the form only after this returns, so
+ * what the import filled is left alone and only the gaps are filled.
+ * An upload that never disables itself costs a 300 ms look. Returns whether
+ * the form read the resume.
+ */
+async function waitWhileReadingResume(input) {
+  await sleep(TIMING.resumeParseStartMs);
+  if (!input || !input.isConnected || !input.disabled) return false;
+  console.info('[TailorCV] the form is reading the resume — waiting for it to finish before filling on');
+  const deadline = Date.now() + TIMING.resumeParseMaxMs;
+  while (input.isConnected && input.disabled && Date.now() < deadline) await sleep(250);
+  await sleep(TIMING.settleMs + 300);    // let it write what it read
+  return true;
 }
 
 // ── answering a field from the sidebar ───────────────────────

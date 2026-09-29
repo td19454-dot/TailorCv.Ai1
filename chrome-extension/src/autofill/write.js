@@ -360,17 +360,22 @@ export async function commitCombobox(row, value, candidates, readFirst) {
       // and when that search came back empty the other shapes never got a list
       // to be matched against (Oracle's City and State both stayed empty).
       const queries = dedupe(shapes.map(searchToken)).slice(0, 4);
+      row.searchTrace = [];
       for (const query of queries) {
         // Keep the focus: this input IS the open menu's search box.
         setText(input, query, { blur: false });
         focus(input);
         options = await waitForOptions(el, TIMING.optionWaitMs);
-        if (!options.length) {
-          // Widgets that filter from keydown (Oracle): typed key by key. The
-          // SHORT term — typing the full "Kolkata, West Bengal, India" into a
-          // remote search returns nothing.
+        if (!options.length || !listOffersAny(shapes, options)) {
+          // Widgets that filter only on real keystrokes (Oracle): typed key by
+          // key. Also when the list is NOT empty but lacks the answer — Oracle
+          // opens on its full, unfiltered list (Andaman…, Andhra Pradesh…) and
+          // draws only the rows in view, so "West Bengal" was never among them
+          // and, with options showing, typing was never tried. The SHORT term:
+          // typing the full "Kolkata, West Bengal, India" into a remote search
+          // returns nothing.
           await typeText(input, query, 8);
-          options = await waitForOptions(el, TIMING.optionWaitMs);
+          options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
         }
         if (!options.length) {
           // Workday's multiselect search only shows results on Enter. Here Enter
@@ -380,6 +385,7 @@ export async function commitCombobox(row, value, candidates, readFirst) {
           fireKey(input, 'keyup', 'Enter');
           options = await waitForOptions(el, TIMING.optionWaitMs);
         }
+        row.searchTrace.push(searchStep(query, input, el, options));
         if (options.length && listOffersAny(shapes, options)) break;
       }
     }
@@ -397,23 +403,25 @@ export async function commitCombobox(row, value, candidates, readFirst) {
       const node = options[labels.indexOf(pick)];
       try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
       pressPointer(node);
-      await sleep(TIMING.settleMs);
-      return committed(row, pick) || shapes.some(sh => committed(row, sh));
+      return settlesTo(row, [pick].concat(shapes));
     }
 
     // Every shape, against the list we already have open: no extra open, no
     // extra wait, and the list itself settles what the field meant.
     for (const shape of options.length ? shapes : []) {
       if (!await clickMatchingOption(el, shape, options)) continue;
-      await sleep(TIMING.settleMs);
       // Any wording we were prepared to use counts: Oracle picks "+91 (India)"
       // and then displays "+91" — the same answer, shown its own way.
-      if (shapes.some(sh => committed(row, sh))) return true;
+      if (await settlesTo(row, shapes)) return true;
+      // Clicked the answer and it never took: another shape will not help.
+      break;
     }
 
-    // Fallback: Enter on whatever is highlighted. Not for a button dropdown, where
-    // the highlighted row is simply the first one and Enter would commit it.
-    if (!isButton) {
+    // Fallback: Enter on the highlighted row — only when that row IS one of the
+    // answer's shapes. A list that never filtered highlights its first entry
+    // ("Andhra Pradesh" on Oracle's State), and Enter would commit a wrong answer.
+    // Not for a button dropdown, where the highlighted row is simply the first one.
+    if (!isButton && highlightedMatches(el, shapes)) {
       const input = typableInput(row) || el;
       fireKey(input, 'keydown', 'Enter');
       fireKey(input, 'keyup', 'Enter');
@@ -441,6 +449,26 @@ export async function commitCombobox(row, value, candidates, readFirst) {
  * different fixes. This prints the evidence for whichever one happened, so a
  * failure on a live form is diagnosable from one paste instead of by guessing.
  */
+/**
+ * One search step, for the failure report: what was typed, what the box then
+ * held, whether it was still on the page (Oracle redraws its whole address
+ * block mid-fill), whether its list was open, and what was offered.
+ */
+function searchStep(query, input, el, options) {
+  const doc = el.ownerDocument || globalThis.document;
+  let cells = 0;
+  try { cells = doc.querySelectorAll('[role="gridcell"], [role="option"]').length; } catch (e) { cells = -1; }
+  return {
+    typed: query,
+    boxNowHolds: input ? String(input.value || '') : '',
+    stillOnPage: !!(el.isConnected),
+    listOpen: el.getAttribute ? el.getAttribute('aria-expanded') : null,
+    optionsMatched: (options || []).length,
+    rowsOnPage: cells,
+    firstOffered: (options || []).slice(0, 5).map(n => (n.textContent || '').replace(/\s+/g, ' ').trim()),
+  };
+}
+
 function reportDropdownFailure(row, value, options) {
   // Kept on the row so the sidebar can offer these as a dropdown: the options of
   // a field answered from the profile are only read here, at write time.
@@ -460,6 +488,14 @@ function reportDropdownFailure(row, value, options) {
     console.log('option markup (first):',
       options && options[0] && options[0].outerHTML ? options[0].outerHTML.slice(0, 400) : '(none)');
     console.log('field now reads:', after);
+    // As text, so a pasted console copy carries it (objects paste as "Object").
+    console.log('report: ' + JSON.stringify({
+      field: row.label,
+      stillOnPage: !!(el && el.isConnected),
+      boxHolds: el ? String(el.value || '') : '',
+      steps: row.searchTrace || [],
+      fieldNow: after ? { filled: after.filled, value: after.value, invalid: after.invalid } : null,
+    }));
     console.groupEnd();
   } catch (e) { /* diagnostics must never break a run */ }
 }
@@ -577,6 +613,40 @@ function waitForOptions(el, timeout) {
   });
 }
 
+/**
+ * Wait for the list to show an option for the answer, up to `timeout`.
+ *
+ * After typing, the list re-renders on its own schedule — Oracle's City list
+ * comes back from its server — so reading it at once returns the stale list
+ * from before the keystrokes. Resolves with whatever is showing at the end.
+ */
+async function waitForMatchingOptions(el, shapes, timeout) {
+  const doc = el.ownerDocument || globalThis.document;
+  const deadline = Date.now() + timeout;
+  let nodes = [];
+  for (;;) {
+    nodes = visibleOptionNodes(doc, el);
+    if (nodes.length && listOffersAny(shapes, nodes)) return nodes;
+    if (Date.now() >= deadline) return nodes;
+    await sleep(100);
+  }
+}
+
+/** The option the widget has highlighted (aria-activedescendant, or marked), if it is one of ours. */
+function highlightedMatches(el, shapes) {
+  const doc = el.ownerDocument || globalThis.document;
+  let hl = null;
+  const active = (el.getAttribute && el.getAttribute('aria-activedescendant')) || '';
+  if (active) { try { hl = doc.getElementById(active); } catch (e) { hl = null; } }
+  if (!hl) {
+    hl = visibleOptionNodes(doc, el).find(n => n.getAttribute('aria-selected') === 'true'
+      || /(^|[\s_-])(focused|highlighted|active|hover)($|[\s_-])/i.test(String(n.className || '')));
+  }
+  if (!hl) return false;
+  const text = (hl.textContent || '').replace(/\s+/g, ' ').trim();
+  return shapes.some(sh => commitMatches(sh, text));
+}
+
 /** Does this open list hold an option for any of the answer's shapes? */
 function listOffersAny(shapes, nodes) {
   const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
@@ -617,6 +687,24 @@ function committed(row, value) {
   if (after.invalid) return false;
   if (!after.filled) return false;          // typed but never committed
   return commitMatches(value, after.value);
+}
+
+/**
+ * Whether the field holds any of `shapes`, re-checked until `ms` has passed.
+ *
+ * One read straight after the click was too early for Oracle: the pick lands,
+ * the field stays flagged invalid for a moment, then the whole block is redrawn
+ * (reprobe follows the field to its new node). Reading once reported a correct
+ * Country / City pick as a failure, and the repair that followed typed over it.
+ * Returns as soon as it holds, so a quick widget costs no extra time.
+ */
+export async function settlesTo(row, shapes, ms) {
+  const deadline = Date.now() + (ms == null ? TIMING.commitWaitMs : ms);
+  for (;;) {
+    if ((shapes || []).some(sh => committed(row, sh))) return true;
+    if (Date.now() >= deadline) return false;
+    await sleep(Math.max(TIMING.settleMs, 100));
+  }
 }
 
 // ── file inputs ──────────────────────────────────────────────

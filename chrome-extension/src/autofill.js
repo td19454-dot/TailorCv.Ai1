@@ -23,6 +23,7 @@ import {
   watchUserEdits, stopWatchingUserEdits, answerField, learnableAnswers, rememberAnswers,
 } from './autofill/run.js';
 import * as ui from './autofill/ui.js';
+import { capturePageStructure } from './autofill/capture.js';
 import * as match from './autofill/match.js';
 
 const isTopFrame = globalThis.window === globalThis.window.parent;
@@ -49,6 +50,7 @@ function serializeDecision(d, index) {
     source: d.source,
     confidence: d.confidence,
     reason: d.reason,
+    byForm: !!d.byForm,
     outcome: d.outcome,
     shown: d.shown,
     options: (d.options || []).map(o => (typeof o === 'string' ? o : o.label)).filter(Boolean),
@@ -69,6 +71,8 @@ let lastRunDecisions = [];
  */
 async function handleFrameMessage(msg) {
   switch (msg && msg.type) {
+    case 'AF_FRAME_CAPTURE':
+      return { text: capturePageStructure(globalThis.document, msg.profileValues) };
     case 'AF_PING': {
       const form = isApplicationPage();
       return form
@@ -139,6 +143,7 @@ if (!globalThis.__tcvAutofill) {
     stopWatchingUserEdits,
 
     // Inspection, for the panel and for debugging a page by hand.
+    capturePageStructure,
     describeFields,
     decide,
     summarize,

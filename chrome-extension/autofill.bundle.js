@@ -420,12 +420,13 @@
         let clone = null;
         try {
           clone = n.cloneNode(true);
-          const drop = clone.querySelectorAll('button, input, select, textarea, [role="listbox"], [role="option"]');
+          const drop = clone.querySelectorAll('button, input, select, textarea, [role="listbox"], [role="option"], [role="alert"], [aria-live], [class*="error" i], [class*="validation" i], [class*="invalid" i], [class*="helper" i], [class*="hint" i], [class*="message" i], [id*="error" i]');
           for (let i = 0; i < drop.length; i++) drop[i].remove();
         } catch (e) {
           return "";
         }
         const t = txt(clone);
+        if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(t)) continue;
         if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
       }
       return "";
@@ -450,6 +451,29 @@
       return null;
     }
     const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"]';
+    function comboGridCells(scope) {
+      let cells = [];
+      try {
+        cells = Array.prototype.slice.call((scope || document).querySelectorAll('[role="grid"] [role="gridcell"]'));
+      } catch (e) {
+        return [];
+      }
+      const owned = /* @__PURE__ */ new Map();
+      return cells.filter((c) => {
+        const grid = c.closest('[role="grid"]');
+        if (!grid || !grid.id) return false;
+        if (!owned.has(grid)) {
+          let owner = null;
+          try {
+            owner = (grid.ownerDocument || document).querySelector(`[role="combobox"][aria-controls~="${grid.id}"], [role="combobox"][aria-owns~="${grid.id}"]`);
+          } catch (e) {
+            owner = null;
+          }
+          owned.set(grid, !!owner);
+        }
+        return owned.get(grid);
+      });
+    }
     function optionNodes(scope) {
       let nodes = [];
       try {
@@ -457,6 +481,7 @@
       } catch (e) {
         return [];
       }
+      nodes = nodes.concat(comboGridCells(scope));
       return nodes.filter((n) => !nodes.some((o) => o !== n && o.contains(n)));
     }
     function visibleOptionLabels(limit) {
@@ -577,6 +602,7 @@
     eeoShapes: () => eeoShapes,
     findDeclineOption: () => findDeclineOption,
     formatDateForField: () => formatDateForField,
+    hasHonorificOptions: () => hasHonorificOptions,
     isConditionalFollowUp: () => isConditionalFollowUp,
     isMotivationQuestion: () => isMotivationQuestion,
     isNeverFill: () => isNeverFill,
@@ -796,7 +822,7 @@ what when where which who will with would you your now future
       // The general shape: an eligibility word somewhere before a work word.
       /\b(authori[sz]\w*|eligib\w*|legal\w*)\b[\s\S]*\b(work|employ\w*)\b/.source
     ].join("|"))],
-    ["citizenship", /\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b/],
+    ["citizenship", /\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b|\bpassports?\b/],
     ["clearance", /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
     ["criminal", /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
     ["salary", /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
@@ -835,6 +861,7 @@ what when where which who will with would you your now future
     /\bdate of birth\b|\bbirth date\b|\bbirthdate\b|\bdob\b/
   ];
   function looksLikeOpaqueId(label) {
+    if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(String(label || ""))) return true;
     const t = String(label || "").replace(/\*+\s*$/, "").trim();
     if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;
     const hex = t.match(/[0-9a-f]{10,}/ig) || [];
@@ -1151,10 +1178,18 @@ what when where which who will with would you your now future
     { key: "last_name", labels: ["last name", "surname", "family name", "legal last name"] },
     { key: "full_name", labels: ["full name", "your name", "name", "legal name", "candidate name"] },
     { key: "preferred_name", labels: ["preferred name", "nickname", "preferred first name"] },
+    // Mr. / Ms. / Dr. A bare "Title" also means job title, so plan.js fills this
+    // only into a field whose options are honorifics (hasHonorificOptions).
+    { key: "name_title", labels: ["title", "salutation", "name prefix", "honorific", "prefix"] },
     { key: "email", labels: ["email", "email address", "e mail", "contact email"] },
     { key: "phone", labels: ["phone", "phone number", "mobile", "mobile number", "telephone", "contact number", "cell"] },
     // location
     { key: "location", labels: ["location", "current location", "where are you based", "where do you live"] },
+    // Where the person would like to WORK (Oracle: "Select up to 3 work
+    // locations"). Not where they live, and no profile value answers it — listed
+    // so "Preferred Location" stops matching the home location above through the
+    // "preferred" qualifier. plan.js leaves it to the person.
+    { key: "preferred_work_location", labels: ["preferred location", "preferred locations", "preferred work location", "preferred work locations", "location preference", "desired location", "desired work location"] },
     // Line 1 / line 2 are their own keys. "address line 1" used to map to the
     // whole-address key, which held city+state+country — so a street box got a
     // place name.
@@ -1247,6 +1282,12 @@ what when where which who will with would you your now future
     "main",
     "preferred"
   ]);
+  var HONORIFIC_RE = /^(mr|mrs|ms|miss|mx|dr|doctor|prof|professor|sir|madam)\.?$/i;
+  function hasHonorificOptions(options) {
+    const labels = (options || []).map((o) => String(o && (o.label || o.value) || "").trim()).filter((l) => l && !/^(select|choose|none|--)/i.test(l));
+    if (labels.length < 2) return false;
+    return labels.filter((l) => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
+  }
   function matchFieldKey(label) {
     const sig = questionSignature(label);
     if (!sig) return null;
@@ -1277,9 +1318,23 @@ what when where which who will with would you your now future
     optionWaitMs: 600,
     // How long to watch for fields that appear in response to an answer.
     revealWatchMs: 900,
+    // ...and, while the page is still changing, how much longer. Oracle loads its
+    // Address Line / City / State boxes only after Country is picked, from its
+    // server; looking once at 900 ms saw none of them.
+    revealQuietMs: 700,
+    revealMaxMs: 5e3,
+    // How long a picked dropdown option may take to show as committed. Oracle
+    // keeps the field flagged invalid for a moment after a correct pick, then
+    // redraws it — a single early read called a good pick a failure.
+    commitWaitMs: 2e3,
     // How long an upload may take to show as taken. Workday sends the file to its
     // server first and only then shows the filename (clearing the input).
-    uploadConfirmMs: 4e3
+    uploadConfirmMs: 4e3,
+    // How long an ATS may take to read an uploaded resume into its form (Oracle's
+    // "Import your profile") before filling carries on regardless.
+    resumeParseMaxMs: 3e4,
+    // How long after an upload to look for the form starting to read it.
+    resumeParseStartMs: 300
   };
   var sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -1383,7 +1438,33 @@ what when where which who will with would you your now future
     const cls = el.className && String(el.className) || "";
     return /(^|[\s_-])(selected|active|is-selected|checked|pressed)($|[\s_-])/i.test(cls);
   }
+  var NOT_QUESTION_SEL = '[role="alert"], [aria-live], [class*="error" i], [class*="validation" i], [class*="invalid" i], [class*="helper" i], [class*="hint" i], [class*="message" i], [id*="error" i]';
+  var PROMPT_ONLY_RE = /^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i;
+  function questionTextOf(node, dropSel) {
+    let clone = null;
+    try {
+      clone = node.cloneNode(true);
+      for (const x of clone.querySelectorAll(dropSel + ", " + NOT_QUESTION_SEL)) x.remove();
+    } catch (e) {
+      return "";
+    }
+    const t = choiceText(clone);
+    return PROMPT_ONLY_RE.test(t) ? "" : t;
+  }
   function choiceQuestion(group) {
+    const rg = group.closest && group.closest('[role="radiogroup"]');
+    if (rg) {
+      const by = rg.getAttribute("aria-labelledby") || "";
+      const named = by.split(/\s+/).map((id) => {
+        try {
+          const e = rg.ownerDocument.getElementById(id);
+          return e ? choiceText(e) : "";
+        } catch (x) {
+          return "";
+        }
+      }).filter(Boolean).join(" ") || rg.getAttribute("aria-label") || "";
+      if (named && !PROMPT_ONLY_RE.test(named)) return named.slice(0, 600);
+    }
     let n = group;
     for (let depth = 0; n && depth < 4; depth++, n = n.parentElement) {
       if (isFormLevel(n)) break;
@@ -1397,14 +1478,7 @@ what when where which who will with would you your now future
       if (fields > 0 || groups > group.querySelectorAll(CHOICE_SEL).length) {
         if (depth > 0) break;
       }
-      let clone = null;
-      try {
-        clone = n.cloneNode(true);
-        for (const x of clone.querySelectorAll(CHOICE_SEL)) x.remove();
-      } catch (e) {
-        return "";
-      }
-      const t = choiceText(clone);
+      const t = questionTextOf(n, CHOICE_SEL);
       if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
     }
     return "";
@@ -1564,6 +1638,7 @@ what when where which who will with would you your now future
     if (/bamboohr\.com/.test(u)) return "bamboohr";
     if (/taleo\.net/.test(u)) return "taleo";
     if (/successfactors\.(com|eu)/.test(u)) return "successfactors";
+    if (/oraclecloud\.com\/hcmui\/candidateexperience/.test(u)) return "oracle";
     return "generic";
   }
   var MIN_CONFIDENT_SCORE = 6;
@@ -2568,7 +2643,11 @@ what when where which who will with would you your now future
           return done(d, FILL, value, "standard", 0.95, "");
         }
       }
-      const entry = matchFieldKey(row.label);
+      let entry = matchFieldKey(row.label);
+      if (entry && entry.key === "name_title" && !hasHonorificOptions(row.options)) entry = null;
+      if (entry && entry.key === "preferred_work_location") {
+        return row.required ? done(d, ASK, "", "", 0, "which locations you would like to work in") : done(d, SKIP, "", "", 0, "optional \u2014 your work-location preference");
+      }
       const storedValue = entry ? bankValue(entry.key, bank) : "";
       if (entry && storedValue) {
         const raw = entry.key === "middle_name" && /\binitial\b/i.test(row.label) ? String(storedValue).trim().charAt(0).toUpperCase() : storedValue;
@@ -3314,19 +3393,21 @@ what when where which who will with would you your now future
       } else {
         const input = typableInput(row) || el;
         const queries = dedupe(shapes.map(searchToken)).slice(0, 4);
+        row.searchTrace = [];
         for (const query of queries) {
           setText(input, query, { blur: false });
           focus(input);
           options = await waitForOptions2(el, TIMING.optionWaitMs);
-          if (!options.length) {
+          if (!options.length || !listOffersAny(shapes, options)) {
             await typeText(input, query, 8);
-            options = await waitForOptions2(el, TIMING.optionWaitMs);
+            options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
           }
           if (!options.length) {
             fireKey(input, "keydown", "Enter");
             fireKey(input, "keyup", "Enter");
             options = await waitForOptions2(el, TIMING.optionWaitMs);
           }
+          row.searchTrace.push(searchStep(query, input, el, options));
           if (options.length && listOffersAny(shapes, options)) break;
         }
       }
@@ -3343,15 +3424,14 @@ what when where which who will with would you your now future
         } catch (e) {
         }
         pressPointer(node);
-        await sleep(TIMING.settleMs);
-        return committed(row, pick) || shapes.some((sh) => committed(row, sh));
+        return settlesTo(row, [pick].concat(shapes));
       }
       for (const shape of options.length ? shapes : []) {
         if (!await clickMatchingOption(el, shape, options)) continue;
-        await sleep(TIMING.settleMs);
-        if (shapes.some((sh) => committed(row, sh))) return true;
+        if (await settlesTo(row, shapes)) return true;
+        break;
       }
-      if (!isButton) {
+      if (!isButton && highlightedMatches(el, shapes)) {
         const input = typableInput(row) || el;
         fireKey(input, "keydown", "Enter");
         fireKey(input, "keyup", "Enter");
@@ -3365,6 +3445,24 @@ what when where which who will with would you your now future
     } finally {
       dismissListbox(row.el);
     }
+  }
+  function searchStep(query, input, el, options) {
+    const doc = el.ownerDocument || globalThis.document;
+    let cells = 0;
+    try {
+      cells = doc.querySelectorAll('[role="gridcell"], [role="option"]').length;
+    } catch (e) {
+      cells = -1;
+    }
+    return {
+      typed: query,
+      boxNowHolds: input ? String(input.value || "") : "",
+      stillOnPage: !!el.isConnected,
+      listOpen: el.getAttribute ? el.getAttribute("aria-expanded") : null,
+      optionsMatched: (options || []).length,
+      rowsOnPage: cells,
+      firstOffered: (options || []).slice(0, 5).map((n) => (n.textContent || "").replace(/\s+/g, " ").trim())
+    };
   }
   function reportDropdownFailure(row, value, options) {
     try {
@@ -3386,6 +3484,13 @@ what when where which who will with would you your now future
         options && options[0] && options[0].outerHTML ? options[0].outerHTML.slice(0, 400) : "(none)"
       );
       console.log("field now reads:", after);
+      console.log("report: " + JSON.stringify({
+        field: row.label,
+        stillOnPage: !!(el && el.isConnected),
+        boxHolds: el ? String(el.value || "") : "",
+        steps: row.searchTrace || [],
+        fieldNow: after ? { filled: after.filled, value: after.value, invalid: after.invalid } : null
+      }));
       console.groupEnd();
     } catch (e) {
     }
@@ -3497,6 +3602,35 @@ what when where which who will with would you your now future
       const timer = setTimeout(finish, timeout);
     });
   }
+  async function waitForMatchingOptions(el, shapes, timeout) {
+    const doc = el.ownerDocument || globalThis.document;
+    const deadline = Date.now() + timeout;
+    let nodes = [];
+    for (; ; ) {
+      nodes = visibleOptionNodes(doc, el);
+      if (nodes.length && listOffersAny(shapes, nodes)) return nodes;
+      if (Date.now() >= deadline) return nodes;
+      await sleep(100);
+    }
+  }
+  function highlightedMatches(el, shapes) {
+    const doc = el.ownerDocument || globalThis.document;
+    let hl = null;
+    const active = el.getAttribute && el.getAttribute("aria-activedescendant") || "";
+    if (active) {
+      try {
+        hl = doc.getElementById(active);
+      } catch (e) {
+        hl = null;
+      }
+    }
+    if (!hl) {
+      hl = visibleOptionNodes(doc, el).find((n) => n.getAttribute("aria-selected") === "true" || /(^|[\s_-])(focused|highlighted|active|hover)($|[\s_-])/i.test(String(n.className || "")));
+    }
+    if (!hl) return false;
+    const text = (hl.textContent || "").replace(/\s+/g, " ").trim();
+    return shapes.some((sh) => commitMatches(sh, text));
+  }
   function listOffersAny(shapes, nodes) {
     const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
     return shapes.some((sh) => labels.some((t) => commitMatches(sh, t)) || bestOptionMatch(sh, labels) != null);
@@ -3532,6 +3666,14 @@ what when where which who will with would you your now future
     if (after.invalid) return false;
     if (!after.filled) return false;
     return commitMatches(value, after.value);
+  }
+  async function settlesTo(row, shapes, ms) {
+    const deadline = Date.now() + (ms == null ? TIMING.commitWaitMs : ms);
+    for (; ; ) {
+      if ((shapes || []).some((sh) => committed(row, sh))) return true;
+      if (Date.now() >= deadline) return false;
+      await sleep(Math.max(TIMING.settleMs, 100));
+    }
   }
   function attachFile(input, file) {
     if (!input || !file) return false;
@@ -3843,9 +3985,45 @@ what when where which who will with would you your now future
     progress("scanning");
     let rows = describeFields(form);
     if (!rows.length) return { error: "no_fields", decisions: [], counts: summarize([]) };
-    let decisions = await fillInTwoWaves(await planFor(rows, ctx, progress), ctx, progress);
+    let decisions = [];
+    const fileRows = rows.filter((r) => r.kind === "file");
+    if (fileRows.length) {
+      const filledBefore = new Set(rows.filter((r) => r.filled).map((r) => r.key));
+      decisions = decide(fileRows, ctx, null, state);
+      await writeAll(decisions, ctx, progress);
+      if (decisions.some((d) => d.action === DOCUMENT && d.outcome === "ok")) {
+        if (decisions.some((d) => d.formRead)) {
+          progress("scanning", { detail: "letting the form read your resume" });
+          await waitForQuiet(form.root);
+        }
+        rows = describeFields(findForm() || form);
+        for (const r of rows) {
+          if (r.kind !== "file" && r.filled && !r.invalid && !filledBefore.has(r.key)) r.filledByForm = true;
+        }
+      }
+    }
+    const fieldRows = rows.filter((r) => r.kind !== "file");
+    decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
+    for (const d of decisions) {
+      if (d.row && d.row.filledByForm && d.action === SKIP) {
+        d.byForm = true;
+        d.reason = "filled by the form from your resume \u2014 check it";
+      }
+    }
     for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
-      const broken = decisions.filter((d) => d.outcome && d.outcome !== "ok" && d.value);
+      let broken = decisions.filter((d) => d.outcome && d.outcome !== "ok" && d.value);
+      if (!broken.length) break;
+      await sleep(TIMING.settleMs);
+      for (const d of broken) {
+        const shapes = [d.value].concat(d.candidates || []);
+        if (d.row && d.row.kind !== "file" && await settlesTo(d.row, shapes, 0)) {
+          const now = reprobe(d.row);
+          d.outcome = "ok";
+          d.shown = now && now.value || d.value;
+          if (d.key) state.registry[d.key] = d.value;
+        }
+      }
+      broken = broken.filter((d) => d.outcome !== "ok");
       if (!broken.length) break;
       for (const d of broken) {
         if (d.row && isPhoneRow(d.row)) {
@@ -3866,7 +4044,7 @@ what when where which who will with would you your now future
     let revealed = 0;
     while (revealed < MAX_REVEAL_ROUNDS) {
       const before = new Set(rows.map((r) => r.key));
-      await sleep(TIMING.revealWatchMs);
+      await waitForQuiet(form.root);
       const fresh = describeFields(findForm() || form);
       const added = fresh.filter((r) => r.key && !before.has(r.key));
       if (!added.length) break;
@@ -3876,6 +4054,7 @@ what when where which who will with would you your now future
       decisions = decisions.concat(extra);
       rows = fresh;
     }
+    await refillCleared(decisions, progress);
     await saveState();
     watchUserEdits(form, null);
     return {
@@ -3891,6 +4070,62 @@ what when where which who will with would you your now future
     const label = row.label || "";
     if (/extension|\bext\b|device|type|code/i.test(label)) return false;
     return row.hints && row.hints.type === "tel" || /\b(phone|mobile)\b/i.test(label);
+  }
+  async function refillCleared(decisions, progress) {
+    const lost = decisions.filter((d) => {
+      if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== "ok") return false;
+      if (!d.row || d.row.kind === "file") return false;
+      if (d.key && state.userEdited.includes(d.key)) return false;
+      const now = reprobe(d.row);
+      return !!now && !now.filled;
+    });
+    if (!lost.length) return;
+    console.info(
+      `[TailorCV] the form emptied ${lost.length} answer(s) after they were filled \u2014 filling again:`,
+      lost.map((d) => d.label).join(" | ")
+    );
+    progress("repairing", { total: lost.length, detail: "the form cleared some answers \u2014 filling them again" });
+    for (const d of lost) {
+      const result = await applyDecision(d);
+      d.outcome = result.outcome;
+      d.shown = result.shown;
+      if (!result.ok) {
+        d.action = ASK;
+        d.reason = "the form cleared this after we filled it";
+      }
+    }
+  }
+  function waitForQuiet(root) {
+    const doc = root && root.ownerDocument || globalThis.document;
+    const target = doc && doc.body || root;
+    return new Promise((resolve) => {
+      const start = Date.now();
+      let last = start;
+      let obs = null;
+      try {
+        obs = new globalThis.MutationObserver(() => {
+          last = Date.now();
+        });
+        obs.observe(target, { childList: true, subtree: true, attributes: true });
+      } catch (e) {
+        obs = null;
+      }
+      const tick = () => {
+        const now = Date.now();
+        const waited = now - start;
+        const quiet = now - last;
+        if (waited >= TIMING.revealMaxMs || waited >= TIMING.revealWatchMs && (quiet >= TIMING.revealQuietMs || last === start)) {
+          try {
+            if (obs) obs.disconnect();
+          } catch (e) {
+          }
+          resolve();
+          return;
+        }
+        setTimeout(tick, 100);
+      };
+      setTimeout(tick, Math.min(100, TIMING.revealWatchMs));
+    });
   }
   function nextCandidate(d) {
     if (!d || !d.candidates || d.candidates.length < 2) return "";
@@ -3984,6 +4219,7 @@ what when where which who will with would you your now future
         const result2 = await attachDocument(d, ctx);
         d.outcome = result2.ok ? "ok" : "failed";
         d.shown = result2.shown || "";
+        d.formRead = !!result2.formRead;
         if (!result2.ok) {
           d.action = ASK;
           d.reason = "attach this one yourself";
@@ -4060,7 +4296,17 @@ what when where which who will with would you your now future
       if (attached || Date.now() >= deadline) break;
       await sleep(150);
     }
-    return { ok: attached, shown: attached ? file.name : "" };
+    const formRead = await waitWhileReadingResume(target);
+    return { ok: attached, shown: attached ? file.name : "", formRead };
+  }
+  async function waitWhileReadingResume(input) {
+    await sleep(TIMING.resumeParseStartMs);
+    if (!input || !input.isConnected || !input.disabled) return false;
+    console.info("[TailorCV] the form is reading the resume \u2014 waiting for it to finish before filling on");
+    const deadline = Date.now() + TIMING.resumeParseMaxMs;
+    while (input.isConnected && input.disabled && Date.now() < deadline) await sleep(250);
+    await sleep(TIMING.settleMs + 300);
+    return true;
   }
   async function answerField(decision, value, remember) {
     decision.value = String(value == null ? "" : value);
@@ -4190,7 +4436,15 @@ what when where which who will with would you your now future
     { action: SUGGEST, title: "Needs your review", badge: "review", icon: "!" },
     { action: DOCUMENT, title: "Attached", badge: "ok", icon: "\u2713" },
     { action: ASK, title: "Needs your answer", badge: "ask", icon: "?" },
-    { action: PROFILE, title: "Set once in your profile", badge: "ask", icon: "?" }
+    { action: PROFILE, title: "Set once in your profile", badge: "ask", icon: "?" },
+    // Left exactly as the ATS filled them from the resume (Oracle's profile
+    // import). Listed so a misread value is easy to spot; never overwritten.
+    {
+      title: "Filled by the form from your resume \u2014 check these",
+      badge: "review",
+      icon: "\u2713",
+      match: (d) => d.byForm
+    }
   ];
   var SOURCE_LABEL = {
     profile: "your profile",
@@ -4261,10 +4515,12 @@ what when where which who will with would you your now future
     const decisions = result.decisions || [];
     const counts = result.counts || {};
     const filled = (counts[FILL] || 0) + (counts[DOCUMENT] || 0);
+    const byForm = decisions.filter((d) => d.byForm).length;
     body.innerHTML = `
     <div class="tcv-af-panel">
       <div class="tcv-af-summary" id="tcvAfSummary">
         ${pill("ok", `${filled} filled`)}
+        ${byForm ? pill("review", `${byForm} from your resume`) : ""}
         ${counts[SUGGEST] ? pill("review", `${counts[SUGGEST]} to review`) : ""}
         ${counts[ASK] ? pill("ask", `${counts[ASK]} need you`) : ""}
         ${counts[PROFILE] ? pill("ask", `${counts[PROFILE]} for your profile`) : ""}
@@ -4296,7 +4552,7 @@ what when where which who will with would you your now future
     return `<span class="tcv-af-summary-pill tcv-af-${esc(kind)}">${esc(text)}</span>`;
   }
   function groupHtml(group, decisions) {
-    const rows = decisions.filter((d) => d.action === group.action);
+    const rows = decisions.filter(group.match || ((d) => d.action === group.action));
     if (!rows.length) return "";
     return `
     <div class="tcv-af-group">
@@ -4431,6 +4687,129 @@ what when where which who will with would you your now future
     repairing: "Fixing what didn\u2019t take\u2026"
   };
 
+  // src/autofill/capture.js
+  var MAX_CHARS = 4e5;
+  var EMAIL_RE = /[\w.+-]+@[\w-]+\.[\w.-]+/g;
+  var PHONE_RE = /\+?\d[\d\s().-]{6,}\d/g;
+  function stripQuery(url) {
+    try {
+      const u = new URL(url, globalThis.location && globalThis.location.href);
+      return `${u.origin}${u.pathname}`;
+    } catch (e) {
+      return "";
+    }
+  }
+  var MAX_ATTR_CHARS = 300;
+  function scrubText(text, secrets) {
+    let t = String(text || "");
+    for (const re of secrets) t = t.replace(re, "[redacted]");
+    return t.replace(EMAIL_RE, "[email]").replace(PHONE_RE, "[number]");
+  }
+  function secretsFrom(values) {
+    const out = /* @__PURE__ */ new Set();
+    for (const v of values || []) {
+      const s = String(v == null ? "" : v).trim();
+      if (s.length >= 3) out.add(s);
+    }
+    return [...out].sort((a, b) => b.length - a.length).map((s) => new RegExp(`(?<![\\w])${s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\w])`, "g"));
+  }
+  function sanitize(node, secrets) {
+    for (const el of node.querySelectorAll("script, style, noscript, link, meta, template")) el.remove();
+    for (const el of node.querySelectorAll("svg")) el.replaceChildren();
+    for (const el of node.querySelectorAll("textarea")) el.textContent = "";
+    for (const el of node.querySelectorAll('[contenteditable="true"]')) el.textContent = "";
+    for (const el of node.querySelectorAll('button[aria-haspopup="listbox"]')) {
+      if (!/^(select one|none selected|choose one)$/i.test((el.textContent || "").trim())) el.textContent = "[chosen value]";
+    }
+    for (const el of node.querySelectorAll('[data-automation-id="selectedItem"]')) el.textContent = "[chosen value]";
+    for (const el of [node, ...node.querySelectorAll("*")]) {
+      const tag = (el.tagName || "").toLowerCase();
+      const type = (el.getAttribute && (el.getAttribute("type") || "")).toLowerCase();
+      for (const attr of Array.from(el.attributes || [])) {
+        const name = attr.name.toLowerCase();
+        if (name === "style" || name === "params" || name.startsWith("on")) {
+          el.removeAttribute(attr.name);
+          continue;
+        }
+        if (name === "value" && !(tag === "option" || type === "radio" || type === "checkbox" || type === "submit" || type === "button")) {
+          el.removeAttribute(attr.name);
+          continue;
+        }
+        if (name === "href" || name === "src" || name === "action" || name === "srcset") {
+          el.setAttribute(attr.name, name === "srcset" ? "" : stripQuery(attr.value));
+          continue;
+        }
+        let clean2 = scrubText(attr.value, secrets).replace(/\s+/g, " ").trim();
+        if (clean2.length > MAX_ATTR_CHARS) clean2 = clean2.slice(0, MAX_ATTR_CHARS) + "\u2026";
+        if (clean2 !== attr.value) el.setAttribute(attr.name, clean2);
+      }
+    }
+    const walker = node.ownerDocument.createTreeWalker(node, 128 | 4);
+    const drop = [];
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      if (n.nodeType === 8) {
+        drop.push(n);
+        continue;
+      }
+      const collapsed = n.nodeValue.replace(/\s+/g, " ");
+      if (collapsed === " ") {
+        n.nodeValue = "\n";
+        continue;
+      }
+      n.nodeValue = scrubText(collapsed, secrets);
+    }
+    for (const n of drop) n.remove();
+  }
+  function capturePageStructure(doc, profileValues) {
+    const d = doc || globalThis.document;
+    const secrets = secretsFrom(profileValues);
+    const form = findForm(d);
+    let root = form ? form.root : d.body;
+    for (let i = 0; i < 2 && root.parentElement && root.parentElement !== d.body && root.parentElement !== d.documentElement; i++) {
+      root = root.parentElement;
+    }
+    const clone = root.cloneNode(true);
+    for (const el of clone.querySelectorAll("#tailorcv-sidebar, #tailorcv-launcher")) el.remove();
+    sanitize(clone, secrets);
+    const popups = new Set(d.querySelectorAll('[role="listbox"], [role="grid"]'));
+    for (const c of d.querySelectorAll('[aria-expanded="true"][aria-controls]')) {
+      const target = d.getElementById(c.getAttribute("aria-controls"));
+      if (target) popups.add(target);
+    }
+    const lists = Array.from(popups).filter((l) => !root.contains(l) && !l.closest("#tailorcv-sidebar")).filter((l, _, all) => !all.some((o) => o !== l && o.contains(l))).map((l) => {
+      const c = l.cloneNode(true);
+      sanitize(c, secrets);
+      return c.outerHTML;
+    });
+    let detected = [];
+    try {
+      detected = (form ? describeFields(form) : []).map((r) => ({
+        label: scrubText(r.label, secrets).slice(0, 160),
+        kind: r.kind,
+        required: !!r.required,
+        options: (r.options || []).length
+      }));
+    } catch (e) {
+      detected = [{ error: String(e && e.message) }];
+    }
+    const url = stripQuery(d.location ? d.location.href : "");
+    const header = [
+      "<!-- TailorCV page structure",
+      `  url: ${url}`,
+      `  ats: ${detectAts(d.location ? d.location.href : "")}`,
+      `  form found: ${form ? "yes (score " + form.score + ")" : "no"}`,
+      `  captured: ${(/* @__PURE__ */ new Date()).toISOString()}`,
+      `  detected fields: ${JSON.stringify(detected)}`,
+      "-->"
+    ].join("\n");
+    let text = `${header}
+${clone.outerHTML}` + (lists.length ? `
+<!-- open option lists -->
+${lists.join("\n")}` : "");
+    if (text.length > MAX_CHARS) text = text.slice(0, MAX_CHARS) + "\n<!-- truncated -->";
+    return text;
+  }
+
   // src/autofill.js
   var isTopFrame = globalThis.window === globalThis.window.parent;
   function serializeDecision(d, index) {
@@ -4447,6 +4826,7 @@ what when where which who will with would you your now future
       source: d.source,
       confidence: d.confidence,
       reason: d.reason,
+      byForm: !!d.byForm,
       outcome: d.outcome,
       shown: d.shown,
       options: (d.options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean)
@@ -4455,6 +4835,8 @@ what when where which who will with would you your now future
   var lastRunDecisions = [];
   async function handleFrameMessage(msg) {
     switch (msg && msg.type) {
+      case "AF_FRAME_CAPTURE":
+        return { text: capturePageStructure(globalThis.document, msg.profileValues) };
       case "AF_PING": {
         const form = isApplicationPage();
         return form ? {
@@ -4530,6 +4912,7 @@ what when where which who will with would you your now future
       watchUserEdits,
       stopWatchingUserEdits,
       // Inspection, for the panel and for debugging a page by hand.
+      capturePageStructure,
       describeFields,
       decide,
       summarize,

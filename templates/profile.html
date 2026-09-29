@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/static/header-footer.css?v=8">
     <link rel="stylesheet" href="/static/style2.css?v=7">
     <link rel="stylesheet" href="/static/job_dashboard.css?v=2">
-    <link rel="stylesheet" href="/static/profile.css?v=2">
+    <link rel="stylesheet" href="/static/profile.css?v=3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -70,8 +70,17 @@
                     <div class="jd-fields">
                     {% for spec in specs %}
                         {% set f = model.fields[spec.key] %}
-                        <div class="jd-field{{ ' wide' if spec.wide or spec.kind == 'checkbox' }}" data-key="{{ spec.key }}">
-                        {% if spec.kind == "checkbox" %}
+                        <div class="jd-field{{ ' wide' if spec.wide or spec.kind == 'checkbox' }}{{ ' pf-exp' if spec.kind in ('experience', 'education') }}" data-key="{{ spec.key }}">
+                        {% if spec.kind in ("experience", "education") %}
+                            <div class="pf-exp-head">
+                                <span class="pf-exp-title">{{ spec.label }}
+                                {% if f.source == "suggested" %}<span class="pf-badge pf-badge-suggested" title="From your resume — not saved yet">Suggested</span>{% endif %}
+                                </span>
+                            </div>
+                            <script type="application/json" class="pf-list-data">{{ f.value | tojson }}</script>
+                            <div class="pf-exp-list" data-list="{{ spec.kind }}"></div>
+                            <button type="button" class="pf-mini pf-exp-add">+ Add {{ "a job" if spec.kind == "experience" else "a school" }}</button>
+                        {% elif spec.kind == "checkbox" %}
                             <label class="pf-check">
                                 <input type="checkbox" name="{{ spec.key }}" {{ "checked" if f.value }}>
                                 <span>{{ spec.label }}</span>
@@ -137,6 +146,39 @@
             </section>
         </div>
 
+        <datalist id="pf-degrees">
+            <option value="High School Diploma"></option>
+            <option value="Diploma"></option>
+            <option value="Associate's Degree"></option>
+            <option value="Bachelor's Degree"></option>
+            <option value="Bachelor of Technology (B.Tech)"></option>
+            <option value="Bachelor of Engineering (B.E.)"></option>
+            <option value="Bachelor of Science (B.Sc)"></option>
+            <option value="Bachelor of Arts (B.A.)"></option>
+            <option value="Bachelor of Commerce (B.Com)"></option>
+            <option value="Master's Degree"></option>
+            <option value="Master of Technology (M.Tech)"></option>
+            <option value="Master of Science (M.Sc / M.S.)"></option>
+            <option value="Master of Business Administration (MBA)"></option>
+            <option value="Doctorate (Ph.D.)"></option>
+        </datalist>
+        <datalist id="pf-fields">
+            <option value="Computer Science"></option>
+            <option value="Computer Science and Engineering"></option>
+            <option value="Information Technology"></option>
+            <option value="Electronics and Communication Engineering"></option>
+            <option value="Electrical Engineering"></option>
+            <option value="Mechanical Engineering"></option>
+            <option value="Chemical Engineering"></option>
+            <option value="Civil Engineering"></option>
+            <option value="Data Science"></option>
+            <option value="Mathematics"></option>
+            <option value="Statistics"></option>
+            <option value="Physics"></option>
+            <option value="Economics"></option>
+            <option value="Business Administration"></option>
+            <option value="Finance"></option>
+        </datalist>
         <datalist id="pf-dial-codes">
             <option value="+91">India</option>
             <option value="+1">United States / Canada</option>
@@ -163,6 +205,6 @@
       window.TAILORCV_EXTENSION_IDS = ['lnkplncemohgcdjlgccgmbcgiokcgmno'
         {%- if dev_extension_id %}, {{ dev_extension_id | tojson }}{% endif -%}];
     </script>
-    <script src="/static/profile_page.js?v=2" defer></script>
+    <script src="/static/profile_page.js?v=3" defer></script>
 </body>
 </html>

@@ -505,6 +505,166 @@ test('commitCombobox searches with a short term, trying each shape, on a keystro
   });
 });
 
+// Oracle Candidate Experience State / City: the list opens UNFILTERED with only
+// the rows in view drawn, and filters only on real keystrokes (City's results
+// come back from the server a moment later). Programmatic text is ignored.
+function wireOracleSelect(env, all, { remoteMs = 0 } = {}) {
+  const input = env.document.querySelector('[role=combobox]');
+  const portal = env.document.getElementById('portal');
+  const draw = (items) => {
+    input.setAttribute('aria-expanded', 'true');
+    portal.innerHTML = '<div role="listbox">' + items.slice(0, 8)
+      .map((c, i) => `<div role="option" class="${i === 0 ? 'oj-hover' : ''}">${c}</div>`).join('') + '</div>';
+    for (const o of portal.querySelectorAll('[role=option]')) {
+      o.addEventListener('mousedown', () => {
+        input.value = o.textContent;
+        input.setAttribute('aria-expanded', 'false');
+        portal.innerHTML = '';
+      });
+    }
+  };
+  input.addEventListener('mousedown', () => draw(remoteMs ? [] : all));   // opens on the full list
+  input.addEventListener('focus', () => draw(remoteMs ? [] : all));
+  input.addEventListener('input', (e) => {
+    if (!e.inputType) return;                                           // programmatic: ignored
+    const q = input.value.toLowerCase();
+    const hits = all.filter(c => c.toLowerCase().startsWith(q));
+    if (remoteMs) setTimeout(() => draw(hits), remoteMs); else draw(hits);
+  });
+  return input;
+}
+const ORACLE_SELECT = `<form><input name="x"><input name="y">
+  <div class="oj-select-container"><input role="combobox" name="s" aria-expanded="false"></div>
+  <div id="portal"></div></form>`;
+const STATES = ['Andaman & Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar',
+  'Chandigarh', 'Chhattisgarh', 'Dadra & Nagar Haveli', 'Daman & Diu', 'Delhi', 'Goa', 'Gujarat',
+  'Karnataka', 'Kerala', 'Maharashtra', 'Tamil Nadu', 'Uttar Pradesh', 'West Bengal'];
+
+test('Oracle State: types when the open list does not offer the answer, and picks it', async () => {
+  await withDoc(ORACLE_SELECT, async (env) => {
+    const input = wireOracleSelect(env, STATES);
+    const row = rowFor(env, '[role=combobox]');
+    ok(await w.commitCombobox(row, 'Kolkata, West Bengal, India',
+      ['Kolkata, West Bengal, India', 'West Bengal, India', 'West Bengal']), 'West Bengal selected');
+    eq(input.value, 'West Bengal', 'never "Andhra Pradesh", the highlighted first row');
+  });
+});
+
+test('Oracle City: waits for results that arrive after typing', async () => {
+  await withDoc(ORACLE_SELECT, async (env) => {
+    const input = wireOracleSelect(env, ['Kolkata, West Bengal', 'Kolhapur, Maharashtra'], { remoteMs: 300 });
+    const row = rowFor(env, '[role=combobox]');
+    ok(await w.commitCombobox(row, 'Kolkata, West Bengal, India',
+      ['Kolkata, West Bengal, India', 'Kolkata, West Bengal', 'Kolkata']), 'Kolkata selected');
+    eq(input.value, 'Kolkata, West Bengal');
+  });
+});
+
+// The REAL Oracle markup, from a JPMC section 1 capture with City open: the
+// list is a role="grid" drawn inside the field (not a listbox of options),
+// rows of role="gridcell" whose text is split by a highlight span, filtered
+// by the server a moment after each keystroke, committed by clicking a cell.
+const ORACLE_CITY_REAL = `<form><input name="x"><input name="y">
+  <div class="input-row input-row--has-picker geo-hierarchy-form-element">
+    <label class="input-row__label cx-select__label" for="city-17"><span class="input-row__label-text">City <span aria-hidden="true">*</span></span></label>
+    <div class="input-row__control-container"><div class="cx-select-container"><div class="input-field-container">
+      <div class="input-field-container__left"><input autocomplete="none" name="city" id="city-17" type="text" role="combobox"
+        aria-autocomplete="list" aria-haspopup="grid" aria-controls="city-17-listbox" aria-expanded="false" aria-required="true" class="cx-select-input"></div>
+      <div class="input-field-container__right"><button type="button" id="city-17-toggle-button" tabindex="-1" aria-expanded="false" aria-controls="city-17-listbox" class="icon-dropdown-arrow"></button></div>
+      <div id="city-17-modal"></div>
+    </div></div></div>
+  </div>
+  <div role="grid" id="calendar-1" aria-label="Pick a date"><div role="row"><div role="gridcell">Kolkata, West Bengal</div></div></div>
+</form>`;
+
+function wireOracleGrid(env, all, { remoteMs = 0 } = {}) {
+  const input = env.document.getElementById('city-17');
+  const modal = env.document.getElementById('city-17-modal');
+  const close = () => { input.setAttribute('aria-expanded', 'false'); modal.innerHTML = ''; };
+  const draw = (items) => {
+    input.setAttribute('aria-expanded', 'true');
+    const q = input.value;
+    modal.innerHTML = '<div class="cx-select__options"><div class="cx-select__listbox">'
+      + '<div role="grid" id="city-17-listbox" aria-label="City" aria-busy="false" class="cx-select__list">'
+      + items.slice(0, 30).map((c, i) => `<div role="row"><div tabindex="-1" role="gridcell" id="city-17-listitem-${i}" aria-selected="false" class="cx-select__list-item">`
+        + `<div class="cx-select__list-item-container"><span class="cx-select__list-item--content">`
+        + `<span class="highlight">${c.slice(0, q.length)}</span><span>${c.slice(q.length)}</span></span></div></div></div>`).join('')
+      + '</div></div></div>';
+    for (const cell of modal.querySelectorAll('[role=gridcell]')) {
+      cell.addEventListener('click', () => { input.value = cell.textContent; close(); });
+    }
+  };
+  input.addEventListener('focus', () => draw(remoteMs ? [] : all));
+  input.addEventListener('input', (e) => {
+    if (!e.inputType) return;                                           // programmatic: ignored
+    const q = input.value.toLowerCase();
+    const hits = all.filter(c => c.toLowerCase().startsWith(q));
+    if (remoteMs) setTimeout(() => draw(hits), remoteMs); else draw(hits);
+  });
+  return input;
+}
+
+const CITIES = ['Kolabira, Odisha', 'Kolachal, Tamil Nadu', 'Kolaghat, West Bengal', 'Kolar, Karnataka',
+  'Kolhapur, Maharashtra', 'Kolkata, West Bengal', 'Kollam, Kerala'];
+
+test('Oracle City (real grid markup): reads the gridcells and picks Kolkata, not Kolaghat', async () => {
+  await withDoc(ORACLE_CITY_REAL, async (env) => {
+    const input = wireOracleGrid(env, CITIES, { remoteMs: 250 });
+    const row = rowFor(env, '#city-17');
+    ok(await w.commitCombobox(row, 'Kolkata, West Bengal, India',
+      ['Kolkata, West Bengal, India', 'Kolkata, West Bengal', 'Kolkata']), 'Kolkata selected');
+    eq(input.value, 'Kolkata, West Bengal');
+  });
+});
+
+test('Oracle Country: a pick that shows as invalid for a moment, then redraws the field, is a success', async () => {
+  // From a live run: India was clicked, the field stayed aria-invalid="true"
+  // while Oracle loaded the address block, then the field was replaced by a new
+  // node reading India. One early read called it a failure, and the repair
+  // typed "+91" into Country.
+  await withDoc(ORACLE_CITY_REAL, async (env) => {
+    const doc = env.document;
+    const input = wireOracleGrid(env, ['Iceland', 'India', 'Indonesia']);
+    let typedAfterPick = false;
+    doc.getElementById('city-17-modal').addEventListener('click', (e) => {
+      const cell = e.target.closest && e.target.closest('[role=gridcell]');
+      if (!cell) return;
+      input.setAttribute('aria-invalid', 'true');                      // flagged a moment longer
+      setTimeout(() => {
+        const fresh = input.cloneNode(true);                            // the redraw
+        fresh.value = cell.textContent.trim();
+        fresh.setAttribute('aria-invalid', 'false');
+        fresh.setAttribute('aria-expanded', 'false');
+        fresh.addEventListener('input', () => { typedAfterPick = true; });
+        input.replaceWith(fresh);
+      }, 300);
+    }, true);
+    const row = rowFor(env, '#city-17');
+    ok(await w.commitCombobox(row, 'India', ['India', '+91', 'India (+91)']), 'reported as committed');
+    eq(doc.getElementById('city-17').value, 'India');
+    notOk(typedAfterPick, 'nothing typed over the pick');
+  });
+});
+
+test('a date picker\'s gridcells are never read as a dropdown\'s options', async () => {
+  await withDoc(ORACLE_CITY_REAL, async (env) => {
+    const cells = env.probe.optionNodes(env.document).map(n => n.textContent);
+    eq(cells.length, 0, `read: ${cells.join(' | ')}`);
+  });
+});
+
+test('Enter is never pressed on a highlighted row that is not the answer', async () => {
+  await withDoc(ORACLE_SELECT, async (env) => {
+    const input = wireOracleSelect(env, STATES.filter(s => s !== 'West Bengal'));
+    let entered = false;
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') entered = true; });
+    const row = rowFor(env, '[role=combobox]');
+    notOk(await w.commitCombobox(row, 'West Bengal', ['West Bengal']), 'nothing to pick');
+    notOk(/Andhra|Andaman/.test(input.value), `wrong state committed: "${input.value}"`);
+    void entered;
+  });
+});
+
 test('commitCombobox refuses to replace a real answer with a decline', async () => {
   const html = `<form><input name="x"><input name="y">
     <div class="select__container"><div class="select__control">

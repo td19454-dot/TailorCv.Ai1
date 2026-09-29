@@ -52,6 +52,8 @@ class ApplicantProfile:
     # a blank one.
     middle_name: str = ""
     last_name: str = ""
+    # Mr. / Ms. / Dr. as the user chose it; empty stays empty.
+    name_title: str = ""
     email: str = ""
     phone: str = ""
     location: str = ""
@@ -123,6 +125,12 @@ class ApplicantProfile:
     # box each. Not flattened into the answer bank's label->value map.
     education: list[dict] = field(default_factory=list)
     work_history: list[dict] = field(default_factory=list)
+    # The profile page's job list, in the shape Workday's My Experience asks for:
+    # {title, company, location, from, to, current, description}, from/to as
+    # MM/YYYY. What the user saved, else suggested from the resume.
+    work_experience: list[dict] = field(default_factory=list)
+    # The same for Workday's Education section: {school, degree, field, from, to}.
+    education_entries: list[dict] = field(default_factory=list)
 
     # Narrative — LLM may write these
     current_title: str = ""
@@ -239,6 +247,132 @@ def resolve_address_parts(stored: dict, *free_text: str, phone: str = "") -> dic
     return s
 
 
+# ── work experience list ──────────────────────────────────────────────────
+
+EXPERIENCE_FIELDS = ("title", "company", "location", "from", "to", "description")
+MONTH_YEAR_RE = re.compile(r"^(0[1-9]|1[0-2])/\d{4}$")
+_MONTHS = ("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec")
+_PRESENT_RE = re.compile(r"^(present|current|now|ongoing|till date|to date|today)$", re.I)
+
+
+def to_month_year(text: str) -> str:
+    """A resume date as MM/YYYY, the way Workday asks for it.
+
+    "" for an empty or ongoing ("Present") date. A date with no month ("2021")
+    is returned as written: picking January would be a guess, and the profile
+    page asks the user to finish it instead."""
+    t = str(text or "").strip()
+    if not t or _PRESENT_RE.match(t):
+        return ""
+    m = re.fullmatch(r"(\d{1,2})\s*[/.-]\s*(\d{4})", t)
+    if m and 1 <= int(m.group(1)) <= 12:
+        return f"{int(m.group(1)):02d}/{m.group(2)}"
+    m = re.fullmatch(r"(\d{4})\s*[/.-]\s*(\d{1,2})", t)
+    if m and 1 <= int(m.group(2)) <= 12:
+        return f"{int(m.group(2)):02d}/{m.group(1)}"
+    m = re.fullmatch(r"([A-Za-z]{3,9})\.?,?\s*'?(\d{4})", t)
+    if m and m.group(1)[:3].lower() in _MONTHS:
+        return f"{_MONTHS.index(m.group(1)[:3].lower()) + 1:02d}/{m.group(2)}"
+    return t
+
+
+def experience_from_facts(work_history: list) -> list[dict]:
+    """The resume's parsed work history as profile experience entries."""
+    out = []
+    for w in work_history or []:
+        if not isinstance(w, dict):
+            continue
+        end = str(w.get("end_date") or "").strip()
+        current = bool(w.get("is_current")) or bool(_PRESENT_RE.match(end))
+        entry = {
+            "title": str(w.get("role") or "").strip(),
+            "company": str(w.get("company") or "").strip(),
+            "location": str(w.get("location") or "").strip(),
+            "from": to_month_year(w.get("start_date")),
+            "to": "" if current else to_month_year(end),
+            "current": current,
+            "description": str(w.get("description") or "").strip(),
+        }
+        if any(entry[k] for k in EXPERIENCE_FIELDS):
+            out.append(entry)
+    return out
+
+
+def parse_saved_experience(raw) -> list[dict]:
+    """The stored JSON list, tolerant of anything malformed (read as empty)."""
+    if isinstance(raw, str):
+        try:
+            raw = json.loads(raw) if raw.strip() else []
+        except ValueError:
+            return []
+    out = []
+    for e in raw if isinstance(raw, list) else []:
+        if not isinstance(e, dict):
+            continue
+        entry = {k: str(e.get(k) or "").strip() for k in EXPERIENCE_FIELDS}
+        entry["current"] = bool(e.get("current"))
+        if entry["current"]:
+            entry["to"] = ""
+        if any(entry[k] for k in EXPERIENCE_FIELDS):
+            out.append(entry)
+    return out
+
+
+# ── education list ────────────────────────────────────────────────────────
+# Workday's Education section: School or University, Degree, Field of Study,
+# From, To (Actual or Expected) — the years only.
+
+EDUCATION_FIELDS = ("school", "degree", "field", "from", "to")
+YEAR_RE = re.compile(r"^(19|20)\d{2}$")
+
+
+def to_year(text: str, last: bool = False) -> str:
+    """The year in a resume date ("Aug 2023" → "2023"). For a range written in
+    one box ("2023 - 2027") the first year, or the last with last=True. Empty
+    when the text holds no year."""
+    years = re.findall(r"\b(?:19|20)\d{2}\b", str(text or ""))
+    if not years:
+        return ""
+    return years[-1] if last else years[0]
+
+
+def education_from_facts(education: list) -> list[dict]:
+    """The resume's parsed education as profile education entries."""
+    out = []
+    for e in education or []:
+        if not isinstance(e, dict):
+            continue
+        start, end = str(e.get("start_date") or ""), str(e.get("end_date") or "")
+        entry = {
+            "school": str(e.get("institution") or "").strip(),
+            "degree": str(e.get("degree") or "").strip(),
+            "field": str(e.get("field_of_study") or "").strip(),
+            # A range written only in end_date ("2023 - 2027") still yields both.
+            "from": to_year(start) or (to_year(end) if to_year(end) != to_year(end, last=True) else ""),
+            "to": to_year(end, last=True),
+        }
+        if any(entry.values()):
+            out.append(entry)
+    return out
+
+
+def parse_saved_education(raw) -> list[dict]:
+    """The stored JSON list, tolerant of anything malformed (read as empty)."""
+    if isinstance(raw, str):
+        try:
+            raw = json.loads(raw) if raw.strip() else []
+        except ValueError:
+            return []
+    out = []
+    for e in raw if isinstance(raw, list) else []:
+        if not isinstance(e, dict):
+            continue
+        entry = {k: str(e.get(k) or "").strip() for k in EDUCATION_FIELDS}
+        if any(entry.values()):
+            out.append(entry)
+    return out
+
+
 def resolve_name_parts(stored: dict, account_name: str) -> dict:
     """The name parts to fill forms with: stored parts win, else the split guess.
 
@@ -341,6 +475,7 @@ def _profile_to_dict(prof) -> dict:
         "first_name": getattr(prof, "first_name", "") or "",
         "middle_name": getattr(prof, "middle_name", "") or "",
         "last_name": getattr(prof, "last_name", "") or "",
+        "name_title": getattr(prof, "name_title", "") or "",
         "university": getattr(prof, "university", "") or "",
         "degree": getattr(prof, "degree", "") or "",
         "major": getattr(prof, "major", "") or "",
@@ -349,6 +484,8 @@ def _profile_to_dict(prof) -> dict:
         "current_company": getattr(prof, "current_company", "") or "",
         "previous_company": getattr(prof, "previous_company", "") or "",
         "skills": getattr(prof, "skills", "") or "",
+        "work_experience": getattr(prof, "work_experience", "") or "",
+        "education_history": getattr(prof, "education_history", "") or "",
         "address_line1": getattr(prof, "address_line1", "") or "",
         "address_line2": getattr(prof, "address_line2", "") or "",
         "city": getattr(prof, "city", "") or "",
@@ -486,6 +623,7 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         first_name=names["first"],
         middle_name=names["middle"],
         last_name=names["last"],
+        name_title=str(prof.get("name_title") or "").strip(),
         email=(snap.get("email") or derived.get("email") or "").strip(),
         phone=pick("phone"),
         location=pick("location"),
@@ -536,6 +674,28 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         years_experience=str(prof.get("years_experience") or "").strip(),
         why_this_role=str(prof.get("why_this_role") or "").strip(),
     )
+
+    # The job list the user saved on the profile page is the source of truth for
+    # work; until they save one, it is suggested from the resume.
+    saved_jobs = parse_saved_experience(prof.get("work_experience"))
+    p.work_experience = saved_jobs or experience_from_facts(p.work_history)
+    if saved_jobs:
+        current = next((j for j in saved_jobs if j["current"]), saved_jobs[0])
+        previous = next((j for j in saved_jobs if j is not current), {})
+        p.current_title = current["title"] or p.current_title
+        p.current_company = current["company"] or p.current_company
+        p.previous_company = previous.get("company") or p.previous_company
+
+    # Education the same way: the saved list (most recent first) answers the
+    # single University / Degree / Major / Graduation boxes too.
+    saved_schools = parse_saved_education(prof.get("education_history"))
+    p.education_entries = saved_schools or education_from_facts(p.education)
+    if saved_schools:
+        latest = saved_schools[0]
+        p.university = latest["school"] or p.university
+        p.degree = latest["degree"] or p.degree
+        p.major = latest["field"] or p.major
+        p.graduation_date = latest["to"] or p.graduation_date
 
     # The resume's own work history names the current role when the profile
     # doesn't — still below the stored value, same rule as everything above.
@@ -619,6 +779,7 @@ def answer_bank(p: ApplicantProfile) -> dict:
         # to put in a Middle Name box.
         "middle_name": p.middle_name,
         "last_name": p.last_name,
+        "name_title": p.name_title,
         "email": p.email,
         "phone": p.phone,
         # "Location" questions want a place, not a street address: the saved or

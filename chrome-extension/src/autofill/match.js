@@ -337,7 +337,7 @@ export const SENSITIVE_PATTERNS = [
     // The general shape: an eligibility word somewhere before a work word.
     /\b(authori[sz]\w*|eligib\w*|legal\w*)\b[\s\S]*\b(work|employ\w*)\b/.source,
   ].join('|'))],
-  ['citizenship', /\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b/],
+  ['citizenship', /\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b|\bpassports?\b/],
   ['clearance', /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
   ['criminal', /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
   ['salary', /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
@@ -394,6 +394,9 @@ const NEVER_FILL_PATTERNS = [
  * least of all, which is how "Do you reside in NYC?" got a random Yes.
  */
 export function looksLikeOpaqueId(label) {
+  // A validation prompt standing in for the question is just as unreadable.
+  if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i
+      .test(String(label || ''))) return true;
   const t = String(label || '').replace(/\*+\s*$/, '').trim();
   if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;
   // A hash or UUID: a long hex run with real digits in it — not a field name
@@ -685,11 +688,19 @@ export const FIELD_SYNONYMS = [
   { key: 'last_name', labels: ['last name', 'surname', 'family name', 'legal last name'] },
   { key: 'full_name', labels: ['full name', 'your name', 'name', 'legal name', 'candidate name'] },
   { key: 'preferred_name', labels: ['preferred name', 'nickname', 'preferred first name'] },
+  // Mr. / Ms. / Dr. A bare "Title" also means job title, so plan.js fills this
+  // only into a field whose options are honorifics (hasHonorificOptions).
+  { key: 'name_title', labels: ['title', 'salutation', 'name prefix', 'honorific', 'prefix'] },
   { key: 'email', labels: ['email', 'email address', 'e mail', 'contact email'] },
   { key: 'phone', labels: ['phone', 'phone number', 'mobile', 'mobile number', 'telephone', 'contact number', 'cell'] },
 
   // location
   { key: 'location', labels: ['location', 'current location', 'where are you based', 'where do you live'] },
+  // Where the person would like to WORK (Oracle: "Select up to 3 work
+  // locations"). Not where they live, and no profile value answers it — listed
+  // so "Preferred Location" stops matching the home location above through the
+  // "preferred" qualifier. plan.js leaves it to the person.
+  { key: 'preferred_work_location', labels: ['preferred location', 'preferred locations', 'preferred work location', 'preferred work locations', 'location preference', 'desired location', 'desired work location'] },
   // Line 1 / line 2 are their own keys. "address line 1" used to map to the
   // whole-address key, which held city+state+country — so a street box got a
   // place name.
@@ -813,6 +824,16 @@ const NEUTRAL_QUALIFIERS = new Set([
  * label can be claimed by a longer entry that merely contains it, and — worse
  * — "gender" would match before "gender identity" purely on list order.
  */
+const HONORIFIC_RE = /^(mr|mrs|ms|miss|mx|dr|doctor|prof|professor|sir|madam)\.?$/i;
+
+/** True when most of a field's options are honorifics: the Title of a name. */
+export function hasHonorificOptions(options) {
+  const labels = (options || []).map(o => String((o && (o.label || o.value)) || '').trim())
+    .filter(l => l && !/^(select|choose|none|--)/i.test(l));
+  if (labels.length < 2) return false;
+  return labels.filter(l => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
+}
+
 export function matchFieldKey(label) {
   const sig = questionSignature(label);
   if (!sig) return null;

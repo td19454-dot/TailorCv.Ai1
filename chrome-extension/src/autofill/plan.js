@@ -29,6 +29,7 @@ import {
   findDeclineOption,
   isNeverFill,
   matchFieldKey,
+  hasHonorificOptions,
   formatDateForField,
   splitPhone,
   looksLikeDecline,
@@ -231,7 +232,16 @@ export function decide(rows, ctx, server, state) {
     }
 
     // Tier 1 — deterministic profile match.
-    const entry = matchFieldKey(row.label);
+    let entry = matchFieldKey(row.label);
+    // "Title" beside Mr. / Ms. / Dr. is the name's title; the same word in a
+    // work-history block is a job title, never to be given "Mr.".
+    if (entry && entry.key === 'name_title' && !hasHonorificOptions(row.options)) entry = null;
+    // A work-location preference is the person's choice; nothing on file says it.
+    if (entry && entry.key === 'preferred_work_location') {
+      return row.required
+        ? done(d, ASK, '', '', 0, 'which locations you would like to work in')
+        : done(d, SKIP, '', '', 0, 'optional — your work-location preference');
+    }
     const storedValue = entry ? bankValue(entry.key, bank) : '';
     if (entry && storedValue) {
       const raw = entry.key === 'middle_name' && /\binitial\b/i.test(row.label)

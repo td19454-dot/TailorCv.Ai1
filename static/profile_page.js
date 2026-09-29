@@ -69,6 +69,123 @@
   });
   if (location.hash === "#saved-answers") showTab("answers");
 
+  // ── job and school lists: one card per entry, in Workday's shapes ──
+  // Work: My Experience (title, company, location, From/To as MM/YYYY, "I
+  // currently work here", role description). Education: School or University,
+  // Degree, Field of Study, From/To as years.
+
+  var MONTH_YEAR = /^(0[1-9]|1[0-2])\/\d{4}$/;
+  var YEAR = /^(19|20)\d{2}$/;
+
+  function escAttr(s) {
+    return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function input(f, label, value, attrs) {
+    return '<label>' + label + '<input data-f="' + f + '" value="' + escAttr(value) + '" ' + (attrs || "") + '></label>';
+  }
+
+  var LISTS = {
+    experience: {
+      noun: "job",
+      fields: ["title", "company", "location", "from", "to", "description"],
+      render: function (job) {
+        return input("title", "Job title", job.title, 'maxlength="160"') +
+          input("company", "Company", job.company, 'maxlength="160"') +
+          input("location", "Location", job.location, 'maxlength="160" placeholder="City, State, Country"') +
+          '<div class="pf-job-dates">' +
+            input("from", "From", job.from, 'maxlength="7" placeholder="MM/YYYY" inputmode="numeric"') +
+            input("to", "To", job.to, 'maxlength="7" placeholder="MM/YYYY" inputmode="numeric"') +
+          '</div>' +
+          '<label class="pf-check"><input type="checkbox" data-f="current"' + (job.current ? " checked" : "") +
+            '><span>I currently work here</span></label>' +
+          '<label>Role description<textarea data-f="description" maxlength="5000" rows="5">' +
+            escAttr(job.description) + '</textarea></label>';
+      },
+    },
+    education: {
+      noun: "school",
+      fields: ["school", "degree", "field", "from", "to"],
+      render: function (s) {
+        return input("school", "School or university", s.school, 'maxlength="200"') +
+          input("degree", "Degree", s.degree, 'maxlength="120" list="pf-degrees" placeholder="e.g. Bachelor of Technology (B.Tech)"') +
+          input("field", "Field of study", s.field, 'maxlength="120" list="pf-fields" placeholder="e.g. Chemical Engineering"') +
+          '<div class="pf-job-dates">' +
+            input("from", "From", s.from, 'maxlength="4" placeholder="YYYY" inputmode="numeric"') +
+            input("to", "To (actual or expected)", s.to, 'maxlength="4" placeholder="YYYY" inputmode="numeric"') +
+          '</div>';
+      },
+    },
+  };
+
+  function entryCard(kind, entry) {
+    var card = document.createElement("div");
+    card.className = "pf-job";
+    card.innerHTML = '<button type="button" class="pf-job-remove" aria-label="Remove this ' + LISTS[kind].noun +
+      '" title="Remove this ' + LISTS[kind].noun + '">✕</button>' + LISTS[kind].render(entry || {});
+    syncCurrent(card);
+    return card;
+  }
+
+  // "I currently work here" means there is no end date.
+  function syncCurrent(card) {
+    var box = card.querySelector('[data-f="current"]');
+    if (!box) return;
+    var to = card.querySelector('[data-f="to"]');
+    to.disabled = box.checked;
+    if (box.checked) to.value = "";
+  }
+
+  function readList(listEl) {
+    var spec = LISTS[listEl.getAttribute("data-list")];
+    return Array.prototype.map.call(listEl.querySelectorAll(".pf-job"), function (card) {
+      var entry = {};
+      spec.fields.forEach(function (f) {
+        entry[f] = (card.querySelector('[data-f="' + f + '"]').value || "").trim();
+      });
+      var box = card.querySelector('[data-f="current"]');
+      if (box) entry.current = box.checked;
+      return entry;
+    }).filter(function (entry) {
+      return spec.fields.some(function (f) { return entry[f]; });
+    });
+  }
+
+  Array.prototype.forEach.call(form.querySelectorAll(".pf-exp-list[data-list]"), function (listEl) {
+    var kind = listEl.getAttribute("data-list");
+    var wrap = listEl.closest(".jd-field");
+    var entries = [];
+    try { entries = JSON.parse(wrap.querySelector(".pf-list-data").textContent) || []; } catch (e) { entries = []; }
+    if (!entries.length) entries = [{}];
+    entries.forEach(function (x) { listEl.appendChild(entryCard(kind, x)); });
+
+    wrap.querySelector(".pf-exp-add").addEventListener("click", function () {
+      var card = entryCard(kind, {});
+      listEl.appendChild(card);
+      card.querySelector("input").focus();
+      form.dispatchEvent(new Event("change"));
+    });
+    listEl.addEventListener("click", function (e) {
+      if (!e.target.classList.contains("pf-job-remove")) return;
+      e.target.closest(".pf-job").remove();
+      if (!listEl.querySelector(".pf-job")) listEl.appendChild(entryCard(kind, {}));
+      form.dispatchEvent(new Event("change"));
+    });
+    listEl.addEventListener("change", function (e) {
+      if (e.target.getAttribute("data-f") === "current") syncCurrent(e.target.closest(".pf-job"));
+    });
+    // Work dates: "012026" or "1/2026" typed → 01/2026.
+    if (kind === "experience") {
+      listEl.addEventListener("blur", function (e) {
+        var f = e.target.getAttribute && e.target.getAttribute("data-f");
+        if (f !== "from" && f !== "to") return;
+        var m = e.target.value.trim().match(/^(\d{1,2})\s*[\/.\-]?\s*(\d{4})$/);
+        if (m && +m[1] >= 1 && +m[1] <= 12) e.target.value = (m[1].length === 1 ? "0" : "") + m[1] + "/" + m[2];
+      }, true);
+    }
+  });
+
   // ── collecting the form ────────────────────────────────────
 
   function collect() {
@@ -76,6 +193,8 @@
     Array.prototype.forEach.call(form.querySelectorAll(".jd-field[data-key]"), function (wrap) {
       var key = wrap.getAttribute("data-key");
       if (key === "email") return;   // read-only: the account email
+      var listEl = wrap.querySelector(".pf-exp-list[data-list]");
+      if (listEl) { values[key] = readList(listEl); return; }
       if (key === "phone") {
         values.phone = {
           code: (form.elements.phoneCode.value || "").trim(),
@@ -120,6 +239,17 @@
       return "Enter the phone number without the country code, digits only.";
     }
     if (number && /^\+/.test(number)) return "Put the country code in its own box.";
+    var jobs = values.workExperience || [];
+    for (var i = 0; i < jobs.length; i++) {
+      if (jobs[i].from && !MONTH_YEAR.test(jobs[i].from)) return "Job " + (i + 1) + ": From should look like 01/2026.";
+      if (jobs[i].to && !MONTH_YEAR.test(jobs[i].to)) return "Job " + (i + 1) + ": To should look like 04/2026.";
+    }
+    var schools = values.educationHistory || [];
+    for (var j = 0; j < schools.length; j++) {
+      if (schools[j].from && !YEAR.test(schools[j].from)) return "School " + (j + 1) + ": From should be a year, like 2023.";
+      if (schools[j].to && !YEAR.test(schools[j].to)) return "School " + (j + 1) + ": To should be a year, like 2027.";
+      if (schools[j].from && schools[j].to && schools[j].from > schools[j].to) return "School " + (j + 1) + ": From is after To.";
+    }
     return "";
   }
 

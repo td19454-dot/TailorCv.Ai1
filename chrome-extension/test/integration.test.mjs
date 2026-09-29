@@ -26,7 +26,8 @@ import { setTiming } from '../src/autofill/timing.js';
 // minutes — long enough that it stops being run on every change, which is the
 // thing worth avoiding. The waits themselves are exercised by write.test.mjs
 // against real React.
-setTiming({ settleMs: 0, optionWaitMs: 20, revealWatchMs: 10, uploadConfirmMs: 400 });
+setTiming({ settleMs: 0, optionWaitMs: 20, revealWatchMs: 10, revealQuietMs: 30, revealMaxMs: 400,
+            commitWaitMs: 150, uploadConfirmMs: 400, resumeParseMaxMs: 2000, resumeParseStartMs: 20 });
 
 const BANK = {
   full_name: 'Ada Lovelace',
@@ -378,10 +379,14 @@ test('Greenhouse: a motivation question is written for the job and flagged for r
 });
 
 test('profile answers are in the form while the server is still writing', async () => {
-  await withForm(fixtures.GREENHOUSE, { composeAnswer: 'Written for this job.', planDelayMs: 400 },
+  await withForm(fixtures.GREENHOUSE, { composeAnswer: 'Written for this job.', planDelayMs: 1500 },
                  async (env) => {
     const running = run_.runAutofill(CTX, null);
-    await new Promise(r => setTimeout(r, 200));
+    // The resume upload goes first (so an ATS's resume import cannot overwrite
+    // answers), then the profile answers. What matters is the order: the
+    // profile answers are in before the server's reply, not after it.
+    const t0 = Date.now();
+    while (!valueOf(env, '#first_name') && Date.now() - t0 < 3000) await new Promise(r => setTimeout(r, 10));
     eq(valueOf(env, '#first_name'), 'Ada', 'wave 1 must not wait for the server');
     eq(valueOf(env, '#q_why'), '', 'the server has not answered yet');
     const result = await running;
@@ -971,6 +976,186 @@ test('Oracle: a page of Yes/No pill buttons is an application form, answered fro
     eq(byLabel(result.decisions, 'at least 18').action, p.FILL, 'filled, not left for review');
     eq(byLabel(result.decisions, 'legally authorized').outcome, 'ok');
   });
+});
+
+// The same Oracle page as it really renders: each pill group keeps its
+// validation message ("This information is required.") inside the group's box —
+// the nearest text to the buttons. It was read as the question for all of them.
+const ORACLE_PILLS_WITH_ERRORS = ORACLE_PILLS
+  .replace(/<div class="cx-select-pills-container">/g,
+    '<div class="cx-select-pills-container"><div class="oj-message-error" aria-live="polite">This information is required.</div>')
+  .replace('<div class="apply-flow-pagination">', `
+  <div class="question">
+    <div class="question-label">Do you hold an Indian Passport? *</div>
+    <div class="cx-select-pills-container"><div class="oj-message-error" aria-live="polite">This information is required.</div>
+      <button type="button" class="cx-select-pill-section" aria-pressed="false">Yes</button>
+      <button type="button" class="cx-select-pill-section" aria-pressed="false">No</button>
+    </div>
+  </div>
+  <div class="apply-flow-pagination">`);
+
+test('Oracle: a validation message beside the buttons is never read as the question', async () => {
+  await withForm(ORACLE_PILLS_WITH_ERRORS, {}, async (env, sent) => {
+    wirePills(env.document);
+    const rows = d.describeFields(d.findForm()).filter(r => r.kind === 'choice');
+    notOk(rows.some(r => /information is required/i.test(r.label)),
+          `labels: ${rows.map(r => r.label).join(' | ')}`);
+    ok(rows.some(r => /at least 18 years of age/.test(r.label)), 'the real questions are read');
+
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+      { authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: 'No' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    const asked = plan ? plan.payload.fields.map(f => f.label) : [];
+    notOk(asked.some(l => /sponsorship|authorized|passport/i.test(l)),
+          `sensitive questions reached the model: ${asked.join(' | ')}`);
+    eq(byLabel(result.decisions, 'sponsorship').value, 'No', 'sponsorship from the profile');
+    eq(byLabel(result.decisions, 'Indian Passport').action, p.ASK, 'a passport question is the person\'s');
+    eq(byLabel(result.decisions, 'at least 18').value, 'Yes');
+  });
+});
+
+// Trimmed from a real JPMC Oracle section 1 capture. On this form the
+// "Import your profile" Resume button IS where the resume goes.
+const ORACLE_IMPORT_THEN_UPLOAD = `
+  <form class="apply-flow__content apply-flow__content-form">
+    <div class="apply-flow-profile-import">
+      <h2 class="apply-flow-block__title">Import your profile</h2>
+      <div class="apply-flow-profile-import-awli__button--file-upload">
+        <input type="file" accept=".doc,.docx,.pdf" class="apply-flow-profile-import-awli__file-upload"
+               aria-labelledby="resumeParserLabel" aria-label="Import your profile from resume">
+        <button class="apply-flow-profile-import-awli__button" type="button" tabindex="-1" aria-hidden="true">Resume</button>
+      </div>
+    </div>
+    <div class="input-row input-row--has-picker">
+      <label class="input-row__label" for="title-19"><span class="input-row__linebreak" id="labelText-title-19">Title</span></label>
+      <div class="input-row__control-container" data-qa="title"><div>
+        <ul role="radiogroup" aria-label="Title" class="cx-select-pills-container">
+          <li role="presentation"><button type="button" role="radio" aria-checked="false" class="cx-select-pill-section"><span class="cx-select-pill-name"> Doctor</span></button></li>
+          <li role="presentation"><button type="button" role="radio" aria-checked="false" class="cx-select-pill-section"><span class="cx-select-pill-name"> Miss</span></button></li>
+          <li role="presentation"><button type="button" role="radio" aria-checked="false" class="cx-select-pill-section"><span class="cx-select-pill-name"> Mr.</span></button></li>
+          <li role="presentation"><button type="button" role="radio" aria-checked="false" class="cx-select-pill-section"><span class="cx-select-pill-name"> Mrs.</span></button></li>
+          <li role="presentation"><button type="button" role="radio" aria-checked="false" class="cx-select-pill-section"><span class="cx-select-pill-name"> Ms.</span></button></li>
+        </ul></div></div>
+    </div>
+    <label for="firstName-20"><span>First Name</span><span class="input-row__label--required-star" aria-hidden="true"></span></label>
+    <input class="input-row__control" id="firstName-20" name="firstName" autocomplete="given-name" aria-required="true">
+    <label for="lastName-22"><span>Last Name</span></label>
+    <input class="input-row__control" id="lastName-22" name="lastName" autocomplete="family-name" aria-required="true">
+  </form>`;
+
+function wireRadioPills(doc) {
+  for (const group of doc.querySelectorAll('[role="radiogroup"]')) {
+    for (const pill of group.querySelectorAll('[role="radio"]')) {
+      pill.addEventListener('click', () => {
+        for (const other of group.querySelectorAll('[role="radio"]')) other.setAttribute('aria-checked', 'false');
+        pill.setAttribute('aria-checked', 'true');
+      });
+    }
+  }
+}
+
+test('Oracle: the resume goes to the Import-your-profile Resume upload', async () => {
+  await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env, sent) => {
+    wireRadioPills(env.document);
+    const files = d.describeFields(d.findForm()).filter(r => r.kind === 'file');
+    eq(files.length, 1);
+    eq(files[0].documentSlot, 'resume');
+    await run_.runAutofill(CTX, null);
+    eq(env.document.querySelector('.apply-flow-profile-import-awli__file-upload').files.length, 1);
+    ok(sent.some(m => m.type === 'AF_GET_RESUME_FILE'));
+  });
+});
+
+test('Oracle: Title (Mr. / Ms. pills) is filled from the profile title', async () => {
+  await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
+    wireRadioPills(env.document);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { name_title: 'Mr.' }) });
+    await run_.runAutofill(ctx, null);
+    const chosen = [...env.document.querySelectorAll('[role="radio"][aria-checked="true"]')].map(b => b.textContent.trim());
+    deepEq(chosen, ['Mr.']);
+  });
+});
+
+// Oracle's resume import, as confirmed on JPMC: the upload disables itself
+// while it reads, then fills what it found in the resume and clears what it
+// did not (a Title picked before it went blank).
+function wireResumeImport(env, { readMs = 150, fills = {} } = {}) {
+  const doc = env.document;
+  const input = doc.querySelector('.apply-flow-profile-import-awli__file-upload');
+  input.addEventListener('change', () => {
+    input.disabled = true;
+    setTimeout(() => {
+      for (const b of doc.querySelectorAll('ul[aria-label="Title"] [role=radio]')) b.setAttribute('aria-checked', 'false');
+      for (const [id, v] of Object.entries(fills)) doc.getElementById(id).value = v;
+      input.disabled = false;
+    }, readMs);
+  });
+}
+
+test('Oracle: the resume import runs first; what it filled is left alone, only the gaps are filled', async () => {
+  await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
+    wireRadioPills(env.document);
+    wireResumeImport(env, { fills: { 'firstName-20': 'FromResume' } });
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { name_title: 'Mr.' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const doc = env.document;
+
+    eq(doc.getElementById('firstName-20').value, 'FromResume', 'what the import filled is untouched');
+    ok(byLabel(result.decisions, 'First Name').byForm, 'and listed as filled by the form');
+    eq(doc.getElementById('lastName-22').value, BANK.last_name, 'a gap the import left is filled');
+    const chosen = [...doc.querySelectorAll('[role="radio"][aria-checked="true"]')].map(b => b.textContent.trim());
+    deepEq(chosen, ['Mr.'], 'Title, cleared by the import, is filled after it');
+    eq(byLabel(result.decisions, 'Title').action, p.FILL);
+  });
+});
+
+test('a field the page empties after it was filled is filled again, never left showing ✓', async () => {
+  await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
+    wireRadioPills(env.document);
+    // Clears the Title once, a moment after it is picked — as a late re-render would.
+    let cleared = false;
+    for (const b of env.document.querySelectorAll('[role=radio]')) {
+      b.addEventListener('click', () => {
+        if (cleared) return;
+        cleared = true;
+        setTimeout(() => b.setAttribute('aria-checked', 'false'), 20);
+      });
+    }
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { name_title: 'Mr.' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const chosen = [...env.document.querySelectorAll('[role="radio"][aria-checked="true"]')].map(b => b.textContent.trim());
+    deepEq(chosen, ['Mr.']);
+    eq(byLabel(result.decisions, 'Title').action, p.FILL);
+  });
+});
+
+test('Oracle "Preferred Location" (work locations) never gets the home location', () => {
+  const row = { key: 'preferredLocations', el: null, members: [], kind: 'combobox', label: 'Preferred Location',
+    ident: 'preferredLocations', value: '', filled: false, invalid: false, required: false,
+    options: [], readable: true, hints: {} };
+  const ctx = { answerBank: Object.assign({}, BANK, { location: 'Kolkata, West Bengal, India',
+                                                       current_city: 'Kolkata' }) };
+  const decision = p.decide([row], ctx, null, null)[0];
+  eq(decision.action, p.SKIP, `decided: ${decision.action} ${decision.value}`);
+  eq(p.fieldsForServer([decision]).length, 0, 'not sent to the model either');
+});
+
+test('a job-history "Title" text box is never given the name title', () => {
+  const row = { key: 'title', el: null, members: [], kind: 'text', label: 'Title', ident: 'title',
+    value: '', filled: false, invalid: false, required: true, options: [], readable: true, hints: {} };
+  const ctx = { answerBank: Object.assign({}, BANK, { name_title: 'Mr.' }) };
+  const decision = p.decide([row], ctx, null, null)[0];
+  notOk(decision.value === 'Mr.', `decided: ${decision.action} ${decision.value}`);
+});
+
+test('a label that is only a validation prompt is never sent to the model', () => {
+  const rows = [{ key: 'x', el: null, members: [], kind: 'choice', label: 'This information is required.',
+    ident: 'x', value: '', filled: false, invalid: false, required: true,
+    options: [{ value: 'Yes', label: 'Yes' }, { value: 'No', label: 'No' }], readable: true, hints: {} }];
+  const decision = p.decide(rows, CTX, null, null)[0];
+  eq(decision.action, p.ASK);
+  eq(p.fieldsForServer([decision]).length, 0);
 });
 
 test('Workday (real markup): names, city and email fill and verify', async () => {

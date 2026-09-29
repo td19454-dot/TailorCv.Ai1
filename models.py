@@ -424,6 +424,8 @@ class UserApplyProfile(Base):
     # first/last name means "I have no middle name" and is respected as such.
     first_name = Column(String(80), nullable=True)
     middle_name = Column(String(80), nullable=True)
+    # Mr. / Ms. / Dr. — chosen by the user, never derived from gender.
+    name_title = Column(String(20), nullable=True)
     last_name = Column(String(80), nullable=True)
 
     phone = Column(String(40), nullable=True)
@@ -452,6 +454,14 @@ class UserApplyProfile(Base):
     current_company = Column(String(160), nullable=True)
     previous_company = Column(String(160), nullable=True)
     skills = Column(Text, nullable=True)   # comma-separated
+    # JSON list of jobs in Workday's My Experience shape — see
+    # auto_apply/profile.py parse_saved_experience. Supersedes the
+    # current_company / previous_company / current_title columns once saved.
+    work_experience = Column(Text, nullable=True)
+    # JSON list of schools in Workday's Education shape — see
+    # parse_saved_education. Supersedes university / degree / major /
+    # graduation_date once saved.
+    education_history = Column(Text, nullable=True)
     linkedin_url = Column(String(300), nullable=True)
     github_url = Column(String(300), nullable=True)
     portfolio_url = Column(String(300), nullable=True)

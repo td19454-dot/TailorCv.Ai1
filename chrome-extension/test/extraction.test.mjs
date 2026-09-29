@@ -64,6 +64,10 @@ function loadPage(html, url, withAutofill, opts) {
       // A form inside an iframe (Greenhouse embedded on careers.airbnb.com),
       // as background.js reports it once the frame announces itself.
       case 'AF_FRAME_DISCOVER': return { data: options.frames || [] };
+      // The job-description sources for a form-only page (background.js).
+      case 'JOB_REMEMBER': return { data: { ok: true } };
+      case 'JOB_RECALL': return { data: options.recall || {} };
+      case 'JOB_FETCH': return { data: options.fetched || {} };
       default: return { data: null };
     }
   };
@@ -495,6 +499,82 @@ test("LinkedIn's single-job title names the company when no link does", async ()
   const page = loadPage(html, 'https://www.linkedin.com/jobs/view/4428170145/', true);
   ok(await waitForText(page, /Data Scientist I/, 10000), 'the job view renders');
   ok(await waitForText(page, /Bank of America/, 3000), 'the company comes from the tab title');
+});
+
+// A page that only holds the application: the Tailor tab finds the posting's
+// description instead of asking for it to be pasted.
+const CITI_JD = 'Build and deploy generative AI systems for risk. '.repeat(20);
+
+test('form-only page: the Tailor tab shows the job for review, then a Tailor my resume button', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true, {
+    recall: { job: { role: 'Machine Learning with Gen AI', company: 'Citi', jd_string: CITI_JD,
+                     url: 'https://citi.wd5.myworkdayjobs.com/en-US/2/job/Pune/ML_26991325' }, source: 'remembered' },
+  });
+  renderLater(page, fixtures.WORKDAY_MYINFO, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'the apply view comes first');
+  page.document.querySelector('.tcv-tab[data-tab="tailor"]').click();
+  ok(await waitForText(page, /Job details are ready to review/, 5000), 'the review form');
+  const val = id => page.document.getElementById(id).value;
+  eq(val('tcvRvTitle'), 'Machine Learning with Gen AI');
+  eq(val('tcvRvCompany'), 'Citi');
+  eq(val('tcvRvUrl'), 'https://citi.wd5.myworkdayjobs.com/en-US/2/job/Pune/ML_26991325');
+  ok(val('tcvRvJd').startsWith('Build and deploy generative AI'), 'the description, editable');
+  ok(await waitForText(page, /Tailor my resume/, 2000), 'with the Tailor button');
+  notOk(page.document.getElementById('tcvManualJd'), 'no separate paste box');
+});
+
+test('form-only page: what is tailored is the description as the person edited it', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true, {
+    recall: { job: { role: 'ML Engineer', company: 'Citi', jd_string: CITI_JD }, source: 'remembered' },
+  });
+  renderLater(page, fixtures.WORKDAY_MYINFO, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'the apply view comes first');
+  page.document.querySelector('.tcv-tab[data-tab="tailor"]').click();
+  ok(await waitForText(page, /Job details are ready to review/, 5000), 'the review form');
+  const edited = 'Edited: design retrieval pipelines and evaluate LLM agents. '.repeat(6);
+  page.document.getElementById('tcvRvJd').value = edited;
+  page.document.getElementById('tcvRvTailor').click();
+  await new Promise(r => setTimeout(r, 300));
+  const call = page.sent.find(m => m.type === 'TAILOR_AND_DOWNLOAD');
+  ok(call, 'tailoring started');
+  eq(call && call.payload.jd_string, edited.trim(), 'with the edited description');
+});
+
+test('form-only page: the posting is fetched when nothing was remembered', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true, {
+    fetched: { job: { role: 'Machine Learning with Gen AI', company: 'Citi', jd_string: CITI_JD }, source: 'posting' },
+  });
+  renderLater(page, fixtures.WORKDAY_MYINFO, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'the apply view comes first');
+  page.document.querySelector('.tcv-tab[data-tab="tailor"]').click();
+  ok(await waitForText(page, /read from the job posting/, 5000), 'read from the posting data');
+  const recall = page.sent.findIndex(m => m.type === 'JOB_RECALL');
+  const fetchAt = page.sent.findIndex(m => m.type === 'JOB_FETCH');
+  ok(recall >= 0 && fetchAt > recall, 'memory first, then the posting');
+});
+
+test('form-only page: when nothing is found, the same form asks for the description', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
+  renderLater(page, fixtures.WORKDAY_MYINFO, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'the apply view comes first');
+  page.document.querySelector('.tcv-tab[data-tab="tailor"]').click();
+  ok(await waitForText(page, /couldn't find this job's description/, 5000), 'says why it is asking');
+  eq(page.document.getElementById('tcvRvJd').value, '', 'an empty description to paste into');
+  page.document.getElementById('tcvRvTailor').click();
+  ok(await waitForText(page, /Add the job title/, 2000), 'a title is required');
+  page.document.getElementById('tcvRvTitle').value = 'Machine Learning with Gen AI';
+  page.document.getElementById('tcvRvTailor').click();
+  ok(await waitForText(page, /Add the job description/, 2000), 'and will not tailor without a description');
+  notOk(page.sent.some(m => m.type === 'TAILOR_AND_DOWNLOAD'), 'nothing sent');
+});
+
+test('a posting page remembers its description for the application that follows', async () => {
+  const page = loadPage(JSON_LD_PAGE, 'https://job-boards.greenhouse.io/acme/jobs/1234567', true);
+  ok(await waitForText(page, /Senior Backend Engineer/, 10000), 'the job view renders');
+  const remember = page.sent.find(m => m.type === 'JOB_REMEMBER');
+  ok(remember, 'JOB_REMEMBER sent');
+  ok(remember && /senior backend engineer/i.test(remember.job.jd_string), 'with the description');
+  ok(remember && remember.urls.includes('https://job-boards.greenhouse.io/acme/jobs/1234567'), 'under this posting');
 });
 
 test('content.js contains no code that submits a form', () => {

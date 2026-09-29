@@ -11,6 +11,111 @@ try {
 }
 const BASE_URL = (self.__TCV_ENV && self.__TCV_ENV.BASE_URL) || 'https://thetailorcv.com';
 
+// Maps an application URL to its job posting (jobsource.js, shared with the
+// content scripts). Optional: without it, tailoring on a form-only page falls
+// back to pasting the description, exactly as before.
+try {
+  importScripts('jobsource.js');
+} catch (e) {
+  console.error('TailorCV: jobsource.js failed to load —', e);
+}
+
+// ── Job descriptions for application pages ──────────────────────────────────
+//
+// A page holding only the application (Workday step 2, Oracle ".../apply/
+// section/1") has no description on it. The posting the person came from
+// usually does, and the extension read it there — so it is remembered for the
+// session, keyed by the posting's ATS job id, and handed to the application.
+// When nothing was remembered, the posting is fetched from the ATS's own data.
+const JOBS_KEY = 'tcv_jobs';
+const JOBS_TTL_MS = 2 * 60 * 60 * 1000;
+const JOBS_MAX = 25;
+const HANDOFF_TTL_MS = 15 * 60 * 1000;
+
+async function readJobs() {
+  const stored = await chrome.storage.session.get(JOBS_KEY);
+  const jobs = stored[JOBS_KEY] || { byKey: {}, handoff: null };
+  const now = Date.now();
+  for (const [k, v] of Object.entries(jobs.byKey)) {
+    if (!v || now - v.at > JOBS_TTL_MS) delete jobs.byKey[k];
+  }
+  return jobs;
+}
+
+async function writeJobs(jobs) {
+  const entries = Object.entries(jobs.byKey).sort((a, b) => b[1].at - a[1].at).slice(0, JOBS_MAX);
+  jobs.byKey = Object.fromEntries(entries);
+  await chrome.storage.session.set({ [JOBS_KEY]: jobs });
+}
+
+function keysFor(urls) {
+  const J = self.TCVJobSource;
+  if (!J) return [];
+  return (urls || []).map(u => J.jobKey(u)).filter(Boolean);
+}
+
+function slimJob(job) {
+  return { role: String(job.role || ''), company: String(job.company || ''),
+           url: String(job.url || ''), jd_string: String(job.jd_string || '').slice(0, 20000) };
+}
+
+async function rememberJob(job, urls) {
+  if (!job || !job.jd_string) return;
+  const jobs = await readJobs();
+  const entry = { job: slimJob(job), at: Date.now() };
+  for (const k of keysFor(urls)) jobs.byKey[k.key] = entry;
+  jobs.handoff = entry;
+  await writeJobs(jobs);
+}
+
+async function recallJob(urls, title) {
+  const jobs = await readJobs();
+  for (const k of keysFor(urls)) {
+    const hit = jobs.byKey[k.key];
+    if (hit) return { job: hit.job, source: 'remembered' };
+  }
+  // Nothing under this job's id: the posting it came from may have had no id
+  // we can read (a LinkedIn Apply button). Accepted only if recent AND the
+  // same job by title — never a different application from earlier.
+  const h = jobs.handoff;
+  const J = self.TCVJobSource;
+  if (h && Date.now() - h.at < HANDOFF_TTL_MS && J && J.sameRole(h.job.role, title)) {
+    return { job: h.job, source: 'remembered' };
+  }
+  return {};
+}
+
+async function fetchJob(urls) {
+  const J = self.TCVJobSource;
+  if (!J) return {};
+  for (const url of urls || []) {
+    const k = J.jobKey(url);
+    try {
+      let job = null;
+      if (k) {
+        const res = await fetch(k.api, { credentials: 'include', headers: { Accept: 'application/json' } });
+        if (res.ok) job = J.parsePosting(k.ats, await res.json());
+      } else if (/^https:\/\//.test(String(url))) {
+        const res = await fetch(url, { credentials: 'include' });
+        if (res.ok) job = J.jobPostingFromHtml(await res.text());
+      }
+      if (job && job.jd_string) {
+        if (!job.url) job.url = J.postingUrl(url);
+        if (k) {
+          const jobs = await readJobs();
+          jobs.byKey[k.key] = { job: slimJob(job), at: Date.now() };
+          await writeJobs(jobs);
+        }
+        if (!job.url) job.url = J.postingUrl(url);
+        return { job: slimJob(job), source: 'posting' };
+      }
+    } catch (e) {
+      console.warn('[TailorCV] could not read the job posting at', url, '—', e && e.message);
+    }
+  }
+  return {};
+}
+
 async function getCsrfToken() {
   // Make sure a csrftoken cookie exists (the server sets one on every response),
   // then read it back — the double-submit CSRF pattern needs it echoed as a header.
@@ -607,6 +712,16 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       } else if (msg.type === 'AF_FRAME_ANNOUNCE') {
         recordFormFrame(sender, msg);
         sendResponse({ data: { ok: true } });
+
+      } else if (msg.type === 'JOB_REMEMBER') {
+        await rememberJob(msg.job, msg.urls);
+        sendResponse({ data: { ok: true } });
+
+      } else if (msg.type === 'JOB_RECALL') {
+        sendResponse({ data: await recallJob(msg.urls, msg.title) });
+
+      } else if (msg.type === 'JOB_FETCH') {
+        sendResponse({ data: await fetchJob(msg.urls) });
 
       } else if (msg.type === 'AF_FRAME_DISCOVER') {
         sendResponse({ data: discoverFormFrames(sender) });

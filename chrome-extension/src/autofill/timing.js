@@ -16,9 +16,23 @@ export const TIMING = {
   optionWaitMs: 600,
   // How long to watch for fields that appear in response to an answer.
   revealWatchMs: 900,
+  // ...and, while the page is still changing, how much longer. Oracle loads its
+  // Address Line / City / State boxes only after Country is picked, from its
+  // server; looking once at 900 ms saw none of them.
+  revealQuietMs: 700,
+  revealMaxMs: 5000,
+  // How long a picked dropdown option may take to show as committed. Oracle
+  // keeps the field flagged invalid for a moment after a correct pick, then
+  // redraws it — a single early read called a good pick a failure.
+  commitWaitMs: 2000,
   // How long an upload may take to show as taken. Workday sends the file to its
   // server first and only then shows the filename (clearing the input).
   uploadConfirmMs: 4000,
+  // How long an ATS may take to read an uploaded resume into its form (Oracle's
+  // "Import your profile") before filling carries on regardless.
+  resumeParseMaxMs: 30000,
+  // How long after an upload to look for the form starting to read it.
+  resumeParseStartMs: 300,
 };
 
 export function setTiming(overrides) {

@@ -28,6 +28,7 @@ const SHIPPED = [
   'env.js',
   'background.js',
   'content.js',
+  'jobsource.js',
   'analytics.bundle.js',
   'styles.bundle.js',
   'autofill.bundle.js',

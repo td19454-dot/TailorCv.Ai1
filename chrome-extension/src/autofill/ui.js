@@ -114,6 +114,10 @@ const GROUPS = [
   { action: DOCUMENT, title: 'Attached', badge: 'ok', icon: '✓' },
   { action: ASK, title: 'Needs your answer', badge: 'ask', icon: '?' },
   { action: PROFILE, title: 'Set once in your profile', badge: 'ask', icon: '?' },
+  // Left exactly as the ATS filled them from the resume (Oracle's profile
+  // import). Listed so a misread value is easy to spot; never overwritten.
+  { title: 'Filled by the form from your resume — check these', badge: 'review', icon: '✓',
+    match: d => d.byForm },
 ];
 
 const SOURCE_LABEL = {
@@ -201,11 +205,13 @@ export function renderResults(body, result, ctx, handlers) {
   const decisions = result.decisions || [];
   const counts = result.counts || {};
   const filled = (counts[FILL] || 0) + (counts[DOCUMENT] || 0);
+  const byForm = decisions.filter(d => d.byForm).length;
 
   body.innerHTML = `
     <div class="tcv-af-panel">
       <div class="tcv-af-summary" id="tcvAfSummary">
         ${pill('ok', `${filled} filled`)}
+        ${byForm ? pill('review', `${byForm} from your resume`) : ''}
         ${counts[SUGGEST] ? pill('review', `${counts[SUGGEST]} to review`) : ''}
         ${counts[ASK] ? pill('ask', `${counts[ASK]} need you`) : ''}
         ${counts[PROFILE] ? pill('ask', `${counts[PROFILE]} for your profile`) : ''}
@@ -242,7 +248,7 @@ function pill(kind, text) {
 }
 
 function groupHtml(group, decisions) {
-  const rows = decisions.filter(d => d.action === group.action);
+  const rows = decisions.filter(group.match || (d => d.action === group.action));
   if (!rows.length) return '';
   return `
     <div class="tcv-af-group">

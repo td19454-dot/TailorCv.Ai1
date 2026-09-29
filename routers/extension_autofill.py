@@ -109,6 +109,10 @@ async def apply_context(request: Request):
             "facts": {
                 "education": facts.get("education") or [],
                 "workHistory": facts.get("work_history") or [],
+                # The profile's job list (saved, else from the resume) in
+                # Workday's My Experience shape, for experience repeaters.
+                "workExperience": profile.work_experience,
+                "educationEntries": profile.education_entries,
                 "address": facts.get("address") or {},
             },
             # Which sensitive categories the user has actually answered. The
