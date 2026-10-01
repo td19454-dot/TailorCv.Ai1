@@ -58,3 +58,4 @@ polar-sdk>=0.1.0
 # the old Browserbase-backed setup, this now launches a real local browser.
 stagehand>=4.0.0
 playwright>=1.47.0
+resend
