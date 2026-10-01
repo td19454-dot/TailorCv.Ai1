@@ -9,7 +9,7 @@
 //
 // Run: node test/write.test.mjs
 
-import { test, run, ok, notOk, eq } from './harness.mjs';
+import { test, run, ok, notOk, eq, deepEq } from './harness.mjs';
 import { mount, polyfillFileApis } from './dom.mjs';
 import { mountReact } from './react-host.mjs';
 import * as w from '../src/autofill/write.js';
@@ -643,6 +643,20 @@ test('Oracle Country: a pick that shows as invalid for a moment, then redraws th
     ok(await w.commitCombobox(row, 'India', ['India', '+91', 'India (+91)']), 'reported as committed');
     eq(doc.getElementById('city-17').value, 'India');
     notOk(typedAfterPick, 'nothing typed over the pick');
+  });
+});
+
+test('a dropdown that does not take hands the sidebar its real options, even ones never seen', async () => {
+  // Oracle's "Uniformed forces" question reached the panel as a text box: the
+  // write failed before any list was read, so the panel had no choices to offer.
+  await withDoc(ORACLE_CITY_REAL, async (env) => {
+    const choices = ['Defense Forces (Army, Navy, Airforce)', 'Paramilitary', 'Police Force', 'No', 'I do not wish to answer'];
+    wireOracleGrid(env, choices);
+    const row = rowFor(env, '#city-17');
+    const decision = { row, value: 'Coast Guard', candidates: [], label: row.label };
+    const res = await w.applyDecision(decision);
+    notOk(res.ok);
+    deepEq((decision.options || []).map(o => o.label), choices);
   });
 });
 

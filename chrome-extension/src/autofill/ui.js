@@ -155,7 +155,12 @@ export function renderReady(body, form, ctx, handlers, extra) {
           </div>
         </div>
       </div>
-      ${!count ? `
+      ${form && form.tilesOnly ? `
+        <div class="tcv-af-note">
+          This step lists your Education and Experience entries. Autofill opens
+          each one the form marks as needing a fix, fills it from your profile,
+          and saves it.
+        </div>` : !count ? `
         <div class="tcv-af-note">
           No fields found on this step yet. If a section opens with <b>Add</b>
           (Work Experience, Education), open it first, then autofill this page.

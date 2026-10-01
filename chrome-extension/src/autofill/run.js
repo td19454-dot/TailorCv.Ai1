@@ -17,8 +17,10 @@
 //     fields the page disagreed about, using the other mechanism.
 //   * Fields that appear in response to an answer get one extra round, capped.
 
-import { describeFields, findForm, isApplicationPage, readComboboxOptions, reprobe, hasUploadedFile }
+import { describeFields, findForm, isApplicationPage, readComboboxOptions, reprobe, hasUploadedFile,
+         profileTileBlocks }
   from './discover.js';
+import { fillProfileTiles } from './tiles.js';
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
 import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo } from './write.js';
@@ -52,6 +54,7 @@ let state = {
   registry: {},      // key -> value we wrote and verified
   userEdited: [],    // keys the person typed in themselves
   answeredByUser: {},// key -> answer they gave in the sidebar
+  imported: {},      // application -> when the resume went into its profile import
   page: 1,
   startedAt: 0,
   origin: '',
@@ -80,11 +83,12 @@ async function saveState() {
     registry: state.registry,
     userEdited: state.userEdited,
     answeredByUser: state.answeredByUser,
+    imported: state.imported,
   } });
 }
 
 export async function clearState() {
-  state = { registry: {}, userEdited: [], answeredByUser: {}, page: 1, startedAt: 0, origin: '' };
+  state = { registry: {}, userEdited: [], answeredByUser: {}, imported: {}, page: 1, startedAt: 0, origin: '' };
   await send({ type: 'AF_STATE_CLEAR' });
 }
 
@@ -208,8 +212,15 @@ export async function runAutofill(ctx, onProgress) {
     }
   };
 
-  const form = findForm();
+  // A page of only Education / Experience tiles (Oracle) has no fillable box
+  // until an entry is opened; it is still an application page with work to do.
+  let form = findForm();
+  if (!form) {
+    const page = isApplicationPage();
+    if (page && page.tilesOnly) form = page;
+  }
   if (!form) return { error: 'no_form', decisions: [], counts: summarize([]) };
+  const hasTiles = profileTileBlocks().some(b => b.kind);
 
   if (!state.startedAt) {
     state.startedAt = Date.now();
@@ -219,7 +230,7 @@ export async function runAutofill(ctx, onProgress) {
   attachedThisRun.clear();
   progress('scanning');
   let rows = describeFields(form);
-  if (!rows.length) return { error: 'no_fields', decisions: [], counts: summarize([]) };
+  if (!rows.length && !hasTiles) return { error: 'no_fields', decisions: [], counts: summarize([]) };
 
   // Documents first, then the form as it stands AFTER them. Oracle's "Import
   // your profile" upload reads the resume and fills name, country, state… and
@@ -234,7 +245,22 @@ export async function runAutofill(ctx, onProgress) {
     // Decided locally: which file goes where never needs the server, and waiting
     // on it here would hold every profile answer back behind the model.
     decisions = decide(fileRows, ctx, null, state);
+    // Oracle keeps its "Import your profile" upload on every step. Importing
+    // the resume again on a later step would re-read it into the form and undo
+    // what was filled and fixed since — so it goes in once per application.
+    const app = applicationKey();
+    const step = Number((globalThis.location.pathname.match(/\/section\/(\d+)/) || [])[1] || 1);
+    for (const d of decisions) {
+      if (d.action === DOCUMENT && isProfileImport(d.row)
+          && ((state.imported && state.imported[app]) || step > 1)) {
+        d.action = SKIP;
+        d.reason = 'your resume was already imported on an earlier page of this application';
+      }
+    }
     await writeAll(decisions, ctx, progress);
+    if (decisions.some(d => d.action === DOCUMENT && d.outcome === 'ok' && isProfileImport(d.row))) {
+      state.imported = Object.assign({}, state.imported, { [app]: Date.now() });
+    }
     if (decisions.some(d => d.action === DOCUMENT && d.outcome === 'ok')) {
       // The form read the resume (Oracle): let it finish redrawing what it
       // filled — the address block reloads for the country it found.
@@ -312,7 +338,8 @@ export async function runAutofill(ctx, onProgress) {
     const before = new Set(rows.map(r => r.key));
     await waitForQuiet(form.root);
     const fresh = describeFields(findForm() || form);
-    const added = fresh.filter(r => r.key && !before.has(r.key));
+    // Never the profile import: it was handled (or deliberately skipped) above.
+    const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r)));
     if (!added.length) break;
     revealed++;
     progress('scanning', { detail: `${added.length} new field(s) appeared` });
@@ -320,6 +347,10 @@ export async function runAutofill(ctx, onProgress) {
     decisions = decisions.concat(extra);
     rows = fresh;
   }
+
+  // Education / Experience entries the form flags (Oracle's tiles): opened,
+  // filled from the matching profile entry, saved, and checked.
+  if (hasTiles) decisions = decisions.concat(await fillProfileTiles(ctx, progress));
 
   await refillCleared(decisions, progress);
 
@@ -342,6 +373,20 @@ function isPhoneRow(row) {
   return (row.hints && row.hints.type === 'tel') || /\b(phone|mobile)\b/i.test(label);
 }
 
+/** One application across its steps: Oracle's URL ends in /apply/section/N. */
+function applicationKey() {
+  const loc = globalThis.location;
+  return `${loc.origin}${loc.pathname.replace(/\/section\/\d+\/?$/, '').replace(/\/+$/, '')}`;
+}
+
+/** An upload that feeds the ATS's resume reader (Oracle's "Import your profile"). */
+function isProfileImport(row) {
+  if (!row) return false;
+  if (/\bimport\b|\bpars(e|er|ing)\b/i.test(row.label || '')) return true;
+  const cls = (row.el && row.el.className) || '';
+  return /profile-import/i.test(String(cls));
+}
+
 /**
  * The last look before the panel says "filled": every field we filled is read
  * again, and one the page has since EMPTIED is filled once more — or, if it
@@ -354,7 +399,7 @@ function isPhoneRow(row) {
 async function refillCleared(decisions, progress) {
   const lost = decisions.filter(d => {
     if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== 'ok') return false;
-    if (!d.row || d.row.kind === 'file') return false;
+    if (!d.row || d.row.kind === 'file' || d.row.kind === 'tile') return false;
     if (d.key && state.userEdited.includes(d.key)) return false;
     const now = reprobe(d.row);
     return !!now && !now.filled;

@@ -55,6 +55,10 @@ SENSITIVE_PATTERNS: list[tuple[str, re.Pattern]] = [
         r"|\bpronoun\w*")),
     ("demographic", re.compile(
         r"\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b")),
+    # Military service asked without the word "military" (Oracle's India form:
+    # "Have you served in any of the below India Uniformed forces?").
+    ("demographic", re.compile(
+        r"\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b")),
 ]
 
 # Never filled from any source, and never stored either. Unlike the sensitive

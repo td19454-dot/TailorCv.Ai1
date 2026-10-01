@@ -42,8 +42,11 @@ function secretsFrom(values) {
     const s = String(v == null ? '' : v).trim();
     if (s.length >= 3) out.add(s);
   }
+  // A "word" edge is a letter or digit only: an underscore or dot around a
+  // value still hides it, so "Shubham_Sarkar_JU.pdf" — a resume file name
+  // Oracle shows — loses the name too.
   return [...out].sort((a, b) => b.length - a.length).map(s =>
-    new RegExp(`(?<![\\w])${s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\w])`, 'g'));
+    new RegExp(`(?<![A-Za-z0-9])${s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![A-Za-z0-9])`, 'gi'));
 }
 
 function sanitize(node, secrets) {

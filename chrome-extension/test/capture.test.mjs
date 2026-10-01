@@ -81,6 +81,16 @@ test('profile values are hidden as whole words only, never inside other words', 
   });
 });
 
+test('a profile value inside a file name is hidden too', async () => {
+  await withDoc(`<form><label for="n">Name</label><input id="n" name="n"><input name="m"><input name="o">
+      <button type="button" class="attachment-upload-button__download">Shubham_Sarkar_JU.pdf</button></form>`,
+  async (env) => {
+    const out = capturePageStructure(env.document, ['Shubham', 'Sarkar']);
+    notOk(/Shubham|Sarkar/i.test(out), 'the name leaked through the file name');
+    ok(out.includes('[redacted]_[redacted]_JU.pdf'));
+  });
+});
+
 test('an open Oracle grid popup is captured through aria-controls; indentation is collapsed', async () => {
   await withDoc(`<main><form>
         <label for="city-28">City</label>

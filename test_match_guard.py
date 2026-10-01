@@ -61,6 +61,9 @@ MUST_FLAG = [
     ("demographic", "Disability status"),
     ("demographic", "Do you have a disability?"),
     ("demographic", "What are your pronouns?"),
+    # Oracle's India form: military service without the word "military".
+    ("demographic", "Have you served in any of the below India Uniformed forces?"),
+    ("demographic", "Have you served in the armed forces?"),
     ("demographic", "Do you identify as LGBTQ+?"),
     ("demographic", "Sexual orientation"),
 ]

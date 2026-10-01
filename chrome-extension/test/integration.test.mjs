@@ -18,6 +18,7 @@ import * as fixtures from './fixtures.mjs';
 import * as d from '../src/autofill/discover.js';
 import * as p from '../src/autofill/plan.js';
 import * as run_ from '../src/autofill/run.js';
+import * as tiles from '../src/autofill/tiles.js';
 import { setTiming } from '../src/autofill/timing.js';
 
 // The production waits exist to let a framework re-render before a field is read
@@ -27,7 +28,8 @@ import { setTiming } from '../src/autofill/timing.js';
 // thing worth avoiding. The waits themselves are exercised by write.test.mjs
 // against real React.
 setTiming({ settleMs: 0, optionWaitMs: 20, revealWatchMs: 10, revealQuietMs: 30, revealMaxMs: 400,
-            commitWaitMs: 150, uploadConfirmMs: 400, resumeParseMaxMs: 2000, resumeParseStartMs: 20 });
+            commitWaitMs: 150, uploadConfirmMs: 400, resumeParseMaxMs: 2000, resumeParseStartMs: 20,
+            tileOpenMs: 500, tileSaveMs: 500 });
 
 const BANK = {
   full_name: 'Ada Lovelace',
@@ -1127,6 +1129,270 @@ test('a field the page empties after it was filled is filled again, never left s
     const chosen = [...env.document.querySelectorAll('[role="radio"][aria-checked="true"]')].map(b => b.textContent.trim());
     deepEq(chosen, ['Mr.']);
     eq(byLabel(result.decisions, 'Title').action, p.FILL);
+  });
+});
+
+// ── Oracle Education / Experience tiles ───────────────────────
+// Trimmed from a real JPMC section 3 capture. Each entry is a tile; Edit opens
+// its form inline (Degree is Oracle's grid dropdown; School and End Date were
+// filled by Oracle's resume import); Save refuses while Degree is empty, as
+// Oracle does ("The Degree field is required.").
+
+const TILES_PAGE = `
+  <form class="apply-flow__content apply-flow__content-form">
+    <div class="apply-flow-block apply-flow-block--tile-profile-items">
+      <div class="apply-flow-block__header"><h2 class="apply-flow-block__title"><span>Education</span></h2></div>
+      <div class="apply-flow-block__form-list" role="region" aria-label="Education">
+        <div class="standard-apply-flow-profile-item">
+          <div class="profile-item-list" role="group"></div>
+          <div class="profile-add-item"><button type="button" class="button apply-flow-profile-item-tile__new-tile"><span class="button__label">Add Education</span></button></div>
+          <div class="editor-slot"></div>
+        </div>
+      </div>
+    </div>
+  </form>`;
+
+const DEGREES = ["Associate's Degree", "Bachelor's Degree", "Master's Degree", 'Doctorate', 'High School Diploma'];
+
+function editorHtml(item) {
+  return `
+    <div class="profile-item-content"><div class="profile-item-content--form"><form-builder>
+      <div class="input-row input-row--has-picker">
+        <label class="input-row__label input-row__label--required" for="contentItemId-26"><span class="input-row__linebreak">Degree</span><span class="input-row__label--required-star" aria-hidden="true"></span></label>
+        <div class="input-row__control-container"><div class="cx-select-container"><div class="input-field-container">
+          <div class="input-field-container__left"><input autocomplete="none" name="contentItemId" id="contentItemId-26" type="text" role="combobox"
+            aria-autocomplete="list" aria-haspopup="grid" aria-controls="contentItemId-26-listbox" aria-expanded="false"
+            aria-invalid="${item.degree ? 'false' : 'true'}" aria-required="true" class="cx-select-input" value="${item.degree}"></div>
+          <div id="contentItemId-26-modal"></div>
+        </div></div></div>
+      </div>
+      <div class="input-row input-row--text input-row--filled">
+        <label class="input-row__label" for="educationalEstablishment-27"><span class="input-row__linebreak">School</span></label>
+        <input autocomplete="none" name="educationalEstablishment" id="educationalEstablishment-27" type="text" role="combobox"
+          aria-haspopup="grid" aria-controls="educationalEstablishment-27-listbox" aria-expanded="false" class="cx-select-input" value="${item.school}">
+      </div>
+      <div class="datepicker-row input-row" aria-label="End Date">
+        <label class="input-row__label" for="endDate-28"><span class="input-row__linebreak" id="labelText-endDate-28">End Date</span></label>
+        <span id="inputFieldLabel-month-endDate-28" class="input-field__label">Month</span>
+        <input autocomplete="none" name="endDate" id="month-endDate-28" type="text" role="combobox" aria-haspopup="grid"
+          aria-controls="month-endDate-28-listbox" aria-expanded="false" aria-labelledby="labelText-endDate-28 inputFieldLabel-month-endDate-28" value="${item.end.split('/')[0]}">
+        <span id="inputFieldLabel-year-endDate-28" class="input-field__label">Year</span>
+        <input autocomplete="none" name="endDate" id="year-endDate-28" type="text" role="combobox" aria-haspopup="grid"
+          aria-controls="year-endDate-28-listbox" aria-expanded="false" aria-labelledby="labelText-endDate-28 inputFieldLabel-year-endDate-28" value="${item.end.split('/')[1]}">
+      </div>
+      <div class="input-row input-row--text">
+        <label class="input-row__label" for="areaOfStudy-30"><span class="input-row__linebreak">Area of Study</span></label>
+        <input class="input-row__control" id="areaOfStudy-30" name="areaOfStudy" value="${item.area}">
+      </div>
+    </form-builder></div>
+    <div class="profile-item-footer"><div class="app-dialog__buttons-bar">
+      <button type="button" class="button app-dialog__footer-button cancel-btn"><span class="button__label">Cancel</span></button>
+      <button type="button" class="button app-dialog__footer-button save-btn" data-qa="profileItemInlineSaveButton"><span class="button__label">Save</span></button>
+    </div></div></div>`;
+}
+
+/** Oracle's tiles over a small model; returns it, plus a log of what was opened. */
+function wireTiles(env, items) {
+  const doc = env.document;
+  const list = doc.querySelector('.profile-item-list');
+  const slot = doc.querySelector('.editor-slot');
+  const log = { opened: [] };
+  const render = () => {
+    list.innerHTML = items.map(it => {
+      const flagged = !it.degree;
+      const title = it.area || 'Unnamed Major';
+      const sub = `${it.school ? it.school + ' ' : ''}${it.end}`;
+      return `<article class="apply-flow-profile-item-tile${flagged ? ' apply-flow-profile-item-tile--invalid' : ''}">
+        <div class="apply-flow-profile-item-tile__summary" role="group" aria-label="${title} ${sub}">
+          <div class="apply-flow-profile-item-tile__summary-content">
+            <div class="apply-flow-profile-item-tile__summary-title"><span>${title}</span></div>
+            <div class="apply-flow-profile-item-tile__summary-subtitle">${sub}</div>
+            ${flagged ? '<div class="apply-flow-profile-item-tile__summary-validation"><span>Fields to fix: 1</span></div>' : ''}
+          </div>
+          <div class="apply-flow-profile-item-tile__actions-container">
+            <button class="apply-flow-profile-item-tile__edit-item-icon" title="Edit" aria-label="Edit"></button>
+            <button class="apply-flow-profile-item-tile__delete-icon" title="Delete" aria-label="Delete"></button>
+          </div>
+        </div></article>`;
+    }).join('');
+    list.querySelectorAll('.apply-flow-profile-item-tile__edit-item-icon').forEach((b, i) =>
+      b.addEventListener('click', () => open(i)));
+  };
+  const open = (i) => {
+    log.opened.push(i);
+    const item = items[i];
+    slot.innerHTML = editorHtml(item);
+    const degree = doc.getElementById('contentItemId-26');
+    const modal = doc.getElementById('contentItemId-26-modal');
+    const draw = (opts) => {
+      degree.setAttribute('aria-expanded', 'true');
+      modal.innerHTML = `<div role="grid" id="contentItemId-26-listbox" aria-label="Degree">` + opts.map((o, k) =>
+        `<div role="row"><div tabindex="-1" role="gridcell" id="contentItemId-26-listitem-${k}" class="cx-select__list-item">`
+        + `<span class="cx-select__list-item--content">${o}</span></div></div>`).join('') + '</div>';
+      modal.querySelectorAll('[role=gridcell]').forEach(c => c.addEventListener('click', () => {
+        degree.value = c.textContent.trim();
+        degree.setAttribute('aria-invalid', 'false');
+        degree.setAttribute('aria-expanded', 'false');
+        modal.innerHTML = '';
+      }));
+    };
+    degree.addEventListener('focus', () => draw(DEGREES));
+    degree.addEventListener('input', (e) => {
+      if (!e.inputType) return;
+      const q = degree.value.toLowerCase();
+      draw(DEGREES.filter(d => d.toLowerCase().startsWith(q)));
+    });
+    slot.querySelector('.save-btn').addEventListener('click', () => {
+      if (!degree.value) { degree.setAttribute('aria-invalid', 'true'); return; }   // stays open
+      item.degree = degree.value;
+      item.area = doc.getElementById('areaOfStudy-30').value;
+      item.school = doc.getElementById('educationalEstablishment-27').value;
+      slot.innerHTML = '';
+      render();
+    });
+    slot.querySelector('.cancel-btn').addEventListener('click', () => { slot.innerHTML = ''; });
+  };
+  render();
+  return log;
+}
+
+const JU_ENTRY = { school: 'Jadavpur University', degree: 'Bachelor of Engineering', field: 'Chemical Engineering', from: '2023', to: '2027' };
+
+test('a page of only Education tiles is an application page (not "no form found")', async () => {
+  await withForm(TILES_PAGE, {}, async (env) => {
+    wireTiles(env, [{ school: 'Jadavpur University', end: '12/2027', degree: '', area: '' }]);
+    const page = d.isApplicationPage();
+    ok(page && page.tilesOnly, 'detected');
+  });
+});
+
+test('Oracle tiles: a flagged entry is opened, filled from the matching profile school, saved', async () => {
+  await withForm(TILES_PAGE, {}, async (env) => {
+    const items = [{ school: 'Jadavpur University', end: '12/2027', degree: '', area: '' }];
+    wireTiles(env, items);
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: [JU_ENTRY] } });
+    const result = await run_.runAutofill(ctx, null);
+    eq(items[0].degree, "Bachelor's Degree", 'the level Oracle offers, from "Bachelor of Engineering"');
+    eq(items[0].area, 'Chemical Engineering', 'the empty Area of Study');
+    eq(items[0].school, 'Jadavpur University', 'what Oracle filled is untouched');
+    const tile = result.decisions.find(x => x.kind === 'tile');
+    eq(tile.action, p.FILL, tile.reason);
+    notOk(env.document.querySelector('.apply-flow-profile-item-tile--invalid'), 'no tile flagged any more');
+  });
+});
+
+test('Oracle tiles: an entry no profile school clearly matches is left for the person, never opened', async () => {
+  await withForm(TILES_PAGE, {}, async (env) => {
+    const items = [{ school: 'Jadavpur University', end: '12/2027', degree: '', area: '' },
+                   { school: '', end: '04/2022', degree: '', area: '' }];
+    const log = wireTiles(env, items);
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: [JU_ENTRY] } });
+    const result = await run_.runAutofill(ctx, null);
+    deepEq(log.opened, [0], 'only the tile we could place was opened');
+    eq(items[1].degree, '', 'nothing written into the unplaced one');
+    const asked = result.decisions.filter(x => x.kind === 'tile' && x.action === p.ASK);
+    eq(asked.length, 1);
+    ok(/could not tell which school/.test(asked[0].reason), asked[0].reason);
+  });
+});
+
+test('Oracle tiles: the second entry is placed by its year when the profile has it', async () => {
+  await withForm(TILES_PAGE, {}, async (env) => {
+    const items = [{ school: 'Jadavpur University', end: '12/2027', degree: '', area: '' },
+                   { school: '', end: '04/2022', degree: '', area: '' }];
+    wireTiles(env, items);
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: [JU_ENTRY,
+      { school: 'Delhi Public School', degree: 'High School Diploma', field: '', from: '2020', to: '2022' }] } });
+    await run_.runAutofill(ctx, null);
+    eq(items[1].degree, 'High School Diploma');
+    eq(items[0].degree, "Bachelor's Degree", 'and the first keeps its own');
+  });
+});
+
+test('Oracle tiles: an entry that will not save is cancelled and handed over with what it still needs', async () => {
+  await withForm(TILES_PAGE, {}, async (env) => {
+    const items = [{ school: 'Jadavpur University', end: '12/2027', degree: '', area: '' }];
+    wireTiles(env, items);
+    // A degree Oracle's list does not have: Degree stays empty, Save refuses.
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: [Object.assign({}, JU_ENTRY, { degree: 'Diploma in Fine Arts' })] } });
+    const result = await run_.runAutofill(ctx, null);
+    notOk(env.document.querySelector('.profile-item-content--form'), 'the entry form is closed again');
+    const tile = result.decisions.find(x => x.kind === 'tile');
+    eq(tile.action, p.ASK, `degree became "${items[0].degree}"; ${tile.value}`);
+    ok(/still needs: Degree/.test(tile.reason), tile.reason);
+  });
+});
+
+test('Oracle\'s "I agree to receive marketing communications" is not ticked as a terms agreement', () => {
+  const row = { key: 'optin', el: null, members: [], kind: 'checkbox', label: 'I agree to receive marketing communications',
+    ident: 'optin', value: '', filled: false, invalid: false, required: false,
+    options: [{ value: 'on', label: 'I agree to receive marketing communications' }], readable: true, hints: {} };
+  const ctx = { answerBank: Object.assign({}, BANK, { accepts_employer_terms_and_privacy_policy: 'Yes' }) };
+  const decision = p.decide([row], ctx, null, null)[0];
+  notOk(decision.action === p.FILL && decision.source === 'profile',
+        'the "agree to employer terms" permission does not cover marketing');
+});
+
+const ORACLE_UNIFORMED = `
+  <form class="apply-flow__content"><input name="a"><input name="b">
+    <div class="input-row input-row--has-picker">
+      <label class="input-row__label" for="IN-DFF-indiaMilitaryStatus-ATTRIBUTE16-7"><span class="input-row__linebreak">Have you served in any of the below India Uniformed forces?</span></label>
+      <div class="input-row__control-container reset-z-index"><div class="cx-select-container"><div class="input-field-container">
+        <div class="input-field-container__left"><input autocomplete="none" name="IN-DFF-indiaMilitaryStatus-ATTRIBUTE16" id="IN-DFF-indiaMilitaryStatus-ATTRIBUTE16-7"
+          type="text" role="combobox" aria-haspopup="grid" aria-controls="mil-listbox" aria-expanded="false" class="cx-select-input"></div>
+        <div id="mil-modal"></div>
+      </div></div></div>
+    </div>
+  </form>`;
+
+function wireUniformed(env) {
+  const input = env.document.getElementById('IN-DFF-indiaMilitaryStatus-ATTRIBUTE16-7');
+  const modal = env.document.getElementById('mil-modal');
+  const all = ['Defense Forces (Army, Navy, Airforce)', 'Paramilitary', 'Police Force', 'No', 'I do not wish to answer'];
+  const draw = (opts) => {
+    input.setAttribute('aria-expanded', 'true');
+    modal.innerHTML = '<div role="grid" id="mil-listbox">' + opts.map(o =>
+      `<div role="row"><div role="gridcell" class="cx-select__list-item">${o}</div></div>`).join('') + '</div>';
+    modal.querySelectorAll('[role=gridcell]').forEach(c => c.addEventListener('click', () => {
+      input.value = c.textContent; input.setAttribute('aria-expanded', 'false'); modal.innerHTML = '';
+    }));
+  };
+  input.addEventListener('focus', () => draw(all));
+  input.addEventListener('input', (e) => {
+    if (!e.inputType) return;
+    draw(all.filter(o => o.toLowerCase().includes(input.value.toLowerCase())));
+  });
+  return input;
+}
+
+test('Oracle "India Uniformed forces" is military service: answered from the profile, never by the model', async () => {
+  await withForm(ORACLE_UNIFORMED, { serverAnswers: { 'Have you served in any of the below India Uniformed forces?': 'no' } },
+    async (env, sent) => {
+      const input = wireUniformed(env);
+      const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+        { veteran_status: 'I have never served in the military' }) });
+      await run_.runAutofill(ctx, null);
+      eq(input.value, 'No');
+      const plan = sent.find(m => m.type === 'AF_PLAN');
+      const asked = plan ? plan.payload.fields.map(f => f.label) : [];
+      notOk(asked.some(l => /uniformed/i.test(l)), `sent to the model: ${asked.join(' | ')}`);
+    });
+});
+
+test('matchTileEntry: two profile entries fitting equally well is "not sure"', () => {
+  const entries = [{ school: 'A College', to: '2022' }, { school: 'B College', to: '2022' }];
+  eq(tiles.matchTileEntry('education', 'Unnamed Major 04/2022', entries), null);
+  eq(tiles.matchTileEntry('education', 'Unnamed Major A College 04/2022', entries), entries[0]);
+});
+
+test('Oracle: the resume import is never used on a later step of the application', async () => {
+  await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
+    env.dom.reconfigure({ url: 'https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/1/apply/section/3' });
+    wireRadioPills(env.document);
+    const result = await run_.runAutofill(CTX, null);
+    eq(env.document.querySelector('.apply-flow-profile-import-awli__file-upload').files.length, 0,
+       'no second import: it would re-read the resume over the answers');
+    ok(/already imported/.test(byLabel(result.decisions, 'Import your profile').reason || ''));
   });
 });
 

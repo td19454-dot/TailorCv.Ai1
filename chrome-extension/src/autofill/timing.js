@@ -33,6 +33,10 @@ export const TIMING = {
   resumeParseMaxMs: 30000,
   // How long after an upload to look for the form starting to read it.
   resumeParseStartMs: 300,
+  // Oracle's Education / Experience tiles: how long an entry's form may take
+  // to open after Edit, and to close after Save.
+  tileOpenMs: 3000,
+  tileSaveMs: 4000,
 };
 
 export function setTiming(overrides) {

@@ -17,7 +17,8 @@
 
 import { commitMatches, bestOptionMatch, looksLikeDecline } from './match.js';
 import { coerce, candidatesFor } from './plan.js';
-import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isChosenValue, isChoiceSelected }
+import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isChosenValue, isChoiceSelected,
+         controlAncestor, readComboboxOptions }
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
 
@@ -521,9 +522,10 @@ function openWidget(row) {
     // closed (aria-expanded="false", "options seen: Array(0)") while pressing
     // the control opened it with its full list. The input is a child of the
     // control, so `contains` keeps this to the widget that owns this field.
-    let ctl = null;
-    try { ctl = wrap.querySelector('[class*="control"]'); } catch (e) { ctl = null; }
-    if (ctl && ctl.contains(el)) target = ctl;
+    // A class ENDING in "control" only: Oracle's "input-row__control-container"
+    // wraps every field, and pressing it instead of the input opens nothing.
+    const ctl = controlAncestor(el);
+    if (ctl && ctl.contains(el) && (!wrap || wrap.contains(ctl) || ctl.contains(wrap))) target = ctl;
   }
   focus(target);
   pressPointer(target);
@@ -945,14 +947,32 @@ export async function applyDecision(decision) {
       break;
   }
 
-  // A dropdown answered from the profile never had its options read at plan
-  // time. If it did not take, hand the options the writer saw to the sidebar,
-  // so the person picks from the real list instead of typing into a text box.
-  if (!wrote && row.seenOptions && row.seenOptions.length
-      && !(decision.options && decision.options.length)) {
-    decision.options = row.seenOptions.map(label => ({ value: label, label }));
-  }
+  const result = await verdict(decision, row, value, wrote);
 
+  // A dropdown that did not end up filled goes to the sidebar — with its real
+  // options, so the person picks from the list instead of typing into a text
+  // box that cannot match it. The options the writer saw if it saw any, else
+  // read now: Oracle's "Uniformed forces" question reached the panel as a bare
+  // text box because nothing had read its five choices.
+  if (!result.ok && (row.kind === 'combobox' || row.kind === 'select')
+      && !(decision.options && decision.options.length)) {
+    let labels = (row.seenOptions && row.seenOptions.length) ? row.seenOptions : [];
+    if (!labels.length) {
+      // Our failed search text would filter the list down to nothing ("No
+      // results were found"), and a box that still has focus does not reopen.
+      const input = typableInput(row) || row.el;
+      const after = reprobe(row);
+      if (input && input.value && !(after && after.filled)) setText(input, '');
+      else blur(row.el);
+      await sleep(TIMING.settleMs);
+      try { labels = await readComboboxOptions(row); } catch (e) { labels = []; }
+    }
+    if (labels.length) decision.options = labels.map(label => ({ value: label, label }));
+  }
+  return result;
+}
+
+async function verdict(decision, row, value, wrote) {
   await sleep(TIMING.settleMs);
   const after = reprobe(row);
   if (!after) return { ok: wrote, outcome: wrote ? 'ok' : 'failed', shown: '' };

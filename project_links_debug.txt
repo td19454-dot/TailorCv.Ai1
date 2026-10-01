@@ -8,7 +8,7 @@
  "TailorCV": [
   [
    "Link",
-   "https://www.thetailorcv.com"
+   "https://thetailorcv.com"
   ],
   [
    "GitHub",
@@ -34,17 +34,17 @@
 }
 
 === TITLE POSITIONS FOUND IN PDF ===
-  page0 top=217.9  'TailorCV'
-  page0 top=307.8  'Marketing Analytics'
-  page0 top=326.6  'Youtube Sentiment Analysis'
+  page0 top=273.7  'TailorCV'
+  page0 top=380.0  'Marketing Analytics'
+  page0 top=400.3  'Youtube Sentiment Analysis'
   NOT LOCATED: []
 
 === LINK POSITIONS AND DECISIONS ===
-  page0 top=  233.1 x0=  30.6 -> 'TailorCV' (dist 7.5)  https://www.thetailorcv.com
-  page0 top=  233.1 x0=  74.2 -> 'TailorCV' (dist 7.5)  https://github.com/td19454-dot/TailorCv.Ai1
-  page0 top=  341.7 x0=  30.6 -> 'Youtube Sentiment Analysis' (dist 7.5)  https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view
-  page0 top=  341.7 x0=  82.4 -> 'Youtube Sentiment Analysis' (dist 7.5)  https://github.com/SSarkar-1/Youtube_Sentiment_Insights
-  page0 top=  402.8 x0=  30.6 -> 'Marketing Analytics' (dist 7.5)  https://github.com/SSarkar-1/Marketing-Analytics
+  page0 top=  290.3 x0=  27.1 -> 'TailorCV' (dist 8.2)  https://thetailorcv.com
+  page0 top=  290.3 x0=  75.7 -> 'TailorCV' (dist 8.2)  https://github.com/td19454-dot/TailorCv.Ai1
+  page0 top=  416.9 x0=  27.1 -> 'Youtube Sentiment Analysis' (dist 8.2)  https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view
+  page0 top=  416.9 x0=  84.9 -> 'Youtube Sentiment Analysis' (dist 8.2)  https://github.com/SSarkar-1/Youtube_Sentiment_Insights
+  page0 top=  491.7 x0=  27.1 -> 'Marketing Analytics' (dist 8.2)  https://github.com/SSarkar-1/Marketing-Analytics
 
 === TEXT MAP ===
 {}
@@ -54,7 +54,7 @@
  "TailorCV": [
   [
    "Link",
-   "https://www.thetailorcv.com"
+   "https://thetailorcv.com"
   ],
   [
    "GitHub",
@@ -81,7 +81,7 @@
 
 === AFTER inject_links ===
   'TailorCV'
-     links=[{"label": "Link", "url": "https://www.thetailorcv.com"}, {"label": "GitHub", "url": "https://github.com/td19454-dot/TailorCv.Ai1"}]
+     links=[{"label": "Link", "url": "https://thetailorcv.com"}, {"label": "GitHub", "url": "https://github.com/td19454-dot/TailorCv.Ai1"}]
      github_link='' url=''
   'Youtube Sentiment Analysis'
      links=[{"label": "Link", "url": "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"}, {"label": "GitHub", "url": "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"}]

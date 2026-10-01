@@ -621,7 +621,50 @@ function describeNode(el) {
 /** The cheap public predicate content.js calls on every render. */
 export function isApplicationPage(doc) {
   const form = findForm(doc);
-  return form && form.isForm ? form : null;
+  if (form && form.isForm) return form;
+  return tilesOnlyForm(doc);
+}
+
+// ── profile-item tiles (Oracle Candidate Experience) ─────────
+//
+// Oracle's Education and Experience steps show each entry as a summary tile —
+// "Unnamed Major / Jadavpur University 12/2027 / Fields to fix: 1" — with
+// Edit and Delete buttons, and no boxes to fill until Edit opens the entry's
+// form inline. From a real JPMC capture:
+//   <div class="apply-flow-block apply-flow-block--tile-profile-items">
+//     <h2 class="apply-flow-block__title"><span>Education</span></h2>
+//     <article class="apply-flow-profile-item-tile apply-flow-profile-item-tile--invalid">
+//       <div class="apply-flow-profile-item-tile__summary" aria-label="Unnamed Major Jadavpur University 12/2027">
+//       <button class="apply-flow-profile-item-tile__edit-item-icon" aria-label="Edit">
+// A page of only tiles has no fillable control, so it was reported as having
+// no application form at all.
+
+export const TILE_BLOCK_SEL = '.apply-flow-block--tile-profile-items';
+export const TILE_SEL = 'article.apply-flow-profile-item-tile';
+
+/** The tile blocks on screen: [{ block, kind: 'education'|'experience'|'', title }]. */
+export function profileTileBlocks(doc) {
+  const d = doc || globalThis.document;
+  let blocks = [];
+  try { blocks = Array.from(d.querySelectorAll(TILE_BLOCK_SEL)); } catch (e) { return []; }
+  return blocks.filter(isNodeVisible).map(block => {
+    const heading = block.querySelector('.apply-flow-block__title');
+    const title = ((heading && heading.textContent) || '').replace(/\s+/g, ' ').trim();
+    const kind = /educat|school|qualification/i.test(title) ? 'education'
+      : /experience|employment|work history/i.test(title) ? 'experience' : '';
+    return { block, kind, title };
+  });
+}
+
+function tilesOnlyForm(doc) {
+  const d = doc || globalThis.document;
+  const blocks = profileTileBlocks(d).filter(b => b.kind);
+  if (!blocks.length) return null;
+  const url = (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '';
+  return {
+    root: blocks[0].block.closest('form') || blocks[0].block.parentElement || d.body,
+    score: 0, fields: [], opaqueHosts: 0, ats: detectAts(url), url, isForm: true, tilesOnly: true,
+  };
 }
 
 // ── field descriptors ────────────────────────────────────────
@@ -1361,6 +1404,20 @@ export function clickOpen(el) {
  * but Workday and some design systems render a button and keep the input for
  * typing only, in which case clicking the input does nothing.
  */
+/**
+ * react-select's control around its search input ("select__control",
+ * "css-13cymwt-control"): a class token that ENDS in "control". Not any class
+ * merely containing the word — Oracle wraps every field in
+ * "input-row__control-container", and clicking that wrapper instead of the
+ * input left Oracle's dropdowns closed, so their options were never read.
+ */
+export function controlAncestor(el) {
+  for (let n = el && el.parentElement, i = 0; n && i < 6; n = n.parentElement, i++) {
+    if (Array.from(n.classList || []).some(c => /(^|[-_])control$/i.test(c))) return n;
+  }
+  return null;
+}
+
 function pickClickTarget(el, p) {
   const role = el.getAttribute && el.getAttribute('role');
   // A react-select's inner search input carries role="combobox", but the
@@ -1369,7 +1426,7 @@ function pickClickTarget(el, p) {
   // returned nothing: the menu never opened, the sidebar got no choices, and
   // it offered a free-text box for a question that has eight fixed answers.
   if (role === 'combobox') {
-    const ctl = el.closest && el.closest('[class*="control"]');
+    const ctl = controlAncestor(el);
     if (ctl && ctl !== el) return ctl;
     return el;
   }

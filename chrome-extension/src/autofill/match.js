@@ -343,6 +343,10 @@ export const SENSITIVE_PATTERNS = [
   ['salary', /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
   // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
   ['demographic', /\bgender\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
+  // Military service asked without the word "military": Oracle's India form
+  // asks "Have you served in any of the below India Uniformed forces?" and the
+  // model answered it.
+  ['demographic', /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
   ['demographic', /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/],
 ];
 
@@ -762,7 +766,7 @@ export const FIELD_SYNONYMS = [
   { key: 'race_ethnicity', sensitive: true, labels: ['race', 'ethnicity', 'race ethnicity', 'racial identity', 'hispanic or latino'] },
   // "Have you ever served or are you currently serving in the United States
   // military?" — the same fact as veteran status, asked as a Yes/No.
-  { key: 'veteran_status', sensitive: true, labels: ['veteran status', 'military status', 'protected veteran', 'military service', 'served in the military', 'serving in the military', 'served military', 'serving military'] },
+  { key: 'veteran_status', sensitive: true, labels: ['veteran status', 'military status', 'protected veteran', 'military service', 'served in the military', 'serving in the military', 'served military', 'serving military', 'uniformed forces', 'armed forces', 'defence forces', 'defense forces'] },
   { key: 'disability_status', sensitive: true, labels: ['disability status', 'disability', 'disabled'] },
   { key: 'gender_pronouns', sensitive: true, labels: ['pronouns', 'preferred pronouns'] },
   { key: 'lgbtq_identity', sensitive: true, labels: ['lgbtq', 'sexual orientation', 'transgender'] },

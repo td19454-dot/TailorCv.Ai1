@@ -828,6 +828,10 @@ what when where which who will with would you your now future
     ["salary", /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
     // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
     ["demographic", /\bgender\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
+    // Military service asked without the word "military": Oracle's India form
+    // asks "Have you served in any of the below India Uniformed forces?" and the
+    // model answered it.
+    ["demographic", /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
     ["demographic", /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/]
   ];
   var EEO_FIELD_MARKERS = [
@@ -1245,7 +1249,7 @@ what when where which who will with would you your now future
     { key: "race_ethnicity", sensitive: true, labels: ["race", "ethnicity", "race ethnicity", "racial identity", "hispanic or latino"] },
     // "Have you ever served or are you currently serving in the United States
     // military?" — the same fact as veteran status, asked as a Yes/No.
-    { key: "veteran_status", sensitive: true, labels: ["veteran status", "military status", "protected veteran", "military service", "served in the military", "serving in the military", "served military", "serving military"] },
+    { key: "veteran_status", sensitive: true, labels: ["veteran status", "military status", "protected veteran", "military service", "served in the military", "serving in the military", "served military", "serving military", "uniformed forces", "armed forces", "defence forces", "defense forces"] },
     { key: "disability_status", sensitive: true, labels: ["disability status", "disability", "disabled"] },
     { key: "gender_pronouns", sensitive: true, labels: ["pronouns", "preferred pronouns"] },
     { key: "lgbtq_identity", sensitive: true, labels: ["lgbtq", "sexual orientation", "transgender"] }
@@ -1334,7 +1338,11 @@ what when where which who will with would you your now future
     // "Import your profile") before filling carries on regardless.
     resumeParseMaxMs: 3e4,
     // How long after an upload to look for the form starting to read it.
-    resumeParseStartMs: 300
+    resumeParseStartMs: 300,
+    // Oracle's Education / Experience tiles: how long an entry's form may take
+    // to open after Edit, and to close after Save.
+    tileOpenMs: 3e3,
+    tileSaveMs: 4e3
   };
   var sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -1814,7 +1822,41 @@ what when where which who will with would you your now future
   }
   function isApplicationPage(doc) {
     const form = findForm(doc);
-    return form && form.isForm ? form : null;
+    if (form && form.isForm) return form;
+    return tilesOnlyForm(doc);
+  }
+  var TILE_BLOCK_SEL = ".apply-flow-block--tile-profile-items";
+  var TILE_SEL = "article.apply-flow-profile-item-tile";
+  function profileTileBlocks(doc) {
+    const d = doc || globalThis.document;
+    let blocks = [];
+    try {
+      blocks = Array.from(d.querySelectorAll(TILE_BLOCK_SEL));
+    } catch (e) {
+      return [];
+    }
+    return blocks.filter(isNodeVisible).map((block) => {
+      const heading = block.querySelector(".apply-flow-block__title");
+      const title = (heading && heading.textContent || "").replace(/\s+/g, " ").trim();
+      const kind = /educat|school|qualification/i.test(title) ? "education" : /experience|employment|work history/i.test(title) ? "experience" : "";
+      return { block, kind, title };
+    });
+  }
+  function tilesOnlyForm(doc) {
+    const d = doc || globalThis.document;
+    const blocks = profileTileBlocks(d).filter((b) => b.kind);
+    if (!blocks.length) return null;
+    const url = d.defaultView && d.defaultView.location && d.defaultView.location.href || "";
+    return {
+      root: blocks[0].block.closest("form") || blocks[0].block.parentElement || d.body,
+      score: 0,
+      fields: [],
+      opaqueHosts: 0,
+      ats: detectAts(url),
+      url,
+      isForm: true,
+      tilesOnly: true
+    };
   }
   function describeFields(form) {
     const p = probe();
@@ -2412,10 +2454,16 @@ what when where which who will with would you your now future
       }
     }
   }
+  function controlAncestor(el) {
+    for (let n = el && el.parentElement, i = 0; n && i < 6; n = n.parentElement, i++) {
+      if (Array.from(n.classList || []).some((c) => /(^|[-_])control$/i.test(c))) return n;
+    }
+    return null;
+  }
   function pickClickTarget(el, p) {
     const role = el.getAttribute && el.getAttribute("role");
     if (role === "combobox") {
-      const ctl = el.closest && el.closest('[class*="control"]');
+      const ctl = controlAncestor(el);
       if (ctl && ctl !== el) return ctl;
       return el;
     }
@@ -2812,8 +2860,17 @@ what when where which who will with would you your now future
       shapes: ["Associate's Degree", "Associates", "Associate"]
     },
     {
-      test: /\b(high school|secondary school|higher secondary|12th|hsc|diploma)\b/i,
+      test: /\b(high school|secondary school|higher secondary|12th|hsc)\b/i,
       shapes: ["High School", "High School Diploma", "Secondary School"]
+    },
+    // A diploma on its own is post-school (a polytechnic "Diploma in Mechanical
+    // Engineering", a "Diploma in Fine Arts") — not a high-school qualification.
+    // Listed after high school so "High School Diploma" still reads as that.
+    // Before, any "diploma" was the high-school level, and a Diploma in Fine
+    // Arts was entered on Oracle as "High School Diploma".
+    {
+      test: /\bdiploma\b/i,
+      shapes: ["Diploma"]
     }
   ];
   var ETHNICITY_GROUPS = [
@@ -3513,13 +3570,8 @@ what when where which who will with would you your now future
         target = ctl || el;
       }
     } else if (role === "combobox" && wrap) {
-      let ctl = null;
-      try {
-        ctl = wrap.querySelector('[class*="control"]');
-      } catch (e) {
-        ctl = null;
-      }
-      if (ctl && ctl.contains(el)) target = ctl;
+      const ctl = controlAncestor(el);
+      if (ctl && ctl.contains(el) && (!wrap || wrap.contains(ctl) || ctl.contains(wrap))) target = ctl;
     }
     focus(target);
     pressPointer(target);
@@ -3827,9 +3879,26 @@ what when where which who will with would you your now future
         }
         break;
     }
-    if (!wrote && row.seenOptions && row.seenOptions.length && !(decision.options && decision.options.length)) {
-      decision.options = row.seenOptions.map((label) => ({ value: label, label }));
+    const result = await verdict(decision, row, value, wrote);
+    if (!result.ok && (row.kind === "combobox" || row.kind === "select") && !(decision.options && decision.options.length)) {
+      let labels = row.seenOptions && row.seenOptions.length ? row.seenOptions : [];
+      if (!labels.length) {
+        const input = typableInput(row) || row.el;
+        const after = reprobe(row);
+        if (input && input.value && !(after && after.filled)) setText(input, "");
+        else blur(row.el);
+        await sleep(TIMING.settleMs);
+        try {
+          labels = await readComboboxOptions(row);
+        } catch (e) {
+          labels = [];
+        }
+      }
+      if (labels.length) decision.options = labels.map((label) => ({ value: label, label }));
     }
+    return result;
+  }
+  async function verdict(decision, row, value, wrote) {
     await sleep(TIMING.settleMs);
     const after = reprobe(row);
     if (!after) return { ok: wrote, outcome: wrote ? "ok" : "failed", shown: "" };
@@ -3840,6 +3909,242 @@ what when where which who will with would you your now future
       return { ok: false, outcome: "mismatch", shown: after.value };
     }
     return { ok: true, outcome: "ok", shown: after.value };
+  }
+
+  // src/autofill/tiles.js
+  var probe3 = () => globalThis.__tcvFieldProbe;
+  var norm = (s) => String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  var MONTHS2 = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  function tileText(tile) {
+    const summary = tile.querySelector(".apply-flow-profile-item-tile__summary");
+    return (summary && summary.getAttribute("aria-label") || tile.textContent || "").replace(/\s+/g, " ").trim();
+  }
+  function tileFlagged(tile) {
+    return tile.classList.contains("apply-flow-profile-item-tile--invalid") || /fields to fix/i.test(tile.textContent || "");
+  }
+  function tileTitle(tile) {
+    const t = tile.querySelector(".apply-flow-profile-item-tile__summary-title");
+    const s = tile.querySelector(".apply-flow-profile-item-tile__summary-subtitle");
+    return [t && t.textContent, s && s.textContent].map((x) => (x || "").replace(/\s+/g, " ").trim()).filter(Boolean).join(" \xB7 ");
+  }
+  function matchTileEntry(kind, text, entries) {
+    const t = norm(text);
+    const years = new Set(String(text).match(/\b(19|20)\d{2}\b/g) || []);
+    const scored = (entries || []).map((e, i) => {
+      let score = 0;
+      const name = norm(kind === "education" ? e.school : e.company);
+      if (name && t.includes(name)) score += 3;
+      if (kind === "experience" && e.title && t.includes(norm(e.title))) score += 3;
+      const yearOf2 = (v) => (String(v || "").match(/\b(19|20)\d{2}\b/) || [])[0];
+      if (yearOf2(e.to) && years.has(yearOf2(e.to))) score += 2;
+      if (yearOf2(e.from) && years.has(yearOf2(e.from))) score += 1;
+      return { e, i, score };
+    }).sort((a, b) => b.score - a.score);
+    if (!scored.length || scored[0].score < 2) return null;
+    if (scored[1] && scored[1].score === scored[0].score) return null;
+    return scored[0].e;
+  }
+  function monthShapes(mmYYYY) {
+    const m = String(mmYYYY || "").match(/^(\d{1,2})\//);
+    if (!m) return null;
+    const n = Number(m[1]);
+    if (n < 1 || n > 12) return null;
+    const name = MONTHS2[n - 1];
+    return [name, name.slice(0, 3), String(n).padStart(2, "0"), String(n)];
+  }
+  var yearOf = (v) => (String(v || "").match(/\b(19|20)\d{2}\b/) || [])[0] || "";
+  function tileAnswer(kind, label, entry) {
+    const l = String(label || "").toLowerCase();
+    const isStart = /\b(start|from|begin)/.test(l);
+    const isEnd = /\b(end|to|graduat|complet)/.test(l);
+    if (/\bmonth\b/.test(l) && (isStart || isEnd)) {
+      const shapes = monthShapes(isStart ? entry.from : entry.to);
+      return shapes;
+    }
+    if (/\byear\b/.test(l) && (isStart || isEnd)) {
+      const y = yearOf(isStart ? entry.from : entry.to);
+      return y ? [y] : null;
+    }
+    if (kind === "education") {
+      if (/degree|qualification/.test(l)) return entry.degree ? candidatesFor("degree", entry.degree) : null;
+      if (/area of study|major|field of study|discipline|speciali|subject/.test(l)) return entry.field ? [entry.field] : null;
+      if (/school|university|college|institution|establishment/.test(l)) return entry.school ? [entry.school] : null;
+      return null;
+    }
+    if (/job title|\btitle\b|position|role|designation/.test(l)) return entry.title ? [entry.title] : null;
+    if (/company|employer|organi[sz]ation/.test(l)) return entry.company ? [entry.company] : null;
+    if (/description|responsibilit|duties|summary|achievement/.test(l)) return entry.description ? [entry.description] : null;
+    if (/current/.test(l)) return entry.current ? ["Yes"] : null;
+    return null;
+  }
+  async function waitFor(fn, ms) {
+    const deadline = Date.now() + ms;
+    for (; ; ) {
+      const v = fn();
+      if (v) return v;
+      if (Date.now() >= deadline) return null;
+      await sleep(100);
+    }
+  }
+  function openEditor(block) {
+    const f = block.querySelector(".profile-item-content--form");
+    return f && isNodeVisible(f) ? f : null;
+  }
+  function press(el) {
+    const doc = el.ownerDocument || globalThis.document;
+    const noSubmit = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
+    doc.addEventListener("submit", noSubmit, true);
+    try {
+      try {
+        el.scrollIntoView({ block: "center" });
+      } catch (e) {
+      }
+      for (const type of ["pointerdown", "mousedown", "pointerup", "mouseup"]) {
+        try {
+          el.dispatchEvent(new globalThis.MouseEvent(type, { bubbles: true, cancelable: true, view: globalThis.window || null }));
+        } catch (e) {
+        }
+      }
+      const click = new globalThis.MouseEvent("click", { bubbles: true, cancelable: true, view: globalThis.window || null });
+      const cancelDefault = (e) => {
+        if (e === click) e.preventDefault();
+      };
+      doc.defaultView.addEventListener("click", cancelDefault);
+      try {
+        el.dispatchEvent(click);
+      } finally {
+        doc.defaultView.removeEventListener("click", cancelDefault);
+      }
+    } finally {
+      doc.removeEventListener("submit", noSubmit, true);
+    }
+  }
+  function editorRows(editor) {
+    const p = probe3();
+    if (!p) return [];
+    const els = p.fillableIn(editor).elements.filter(isVisible);
+    return describeFields({ root: editor, fields: els });
+  }
+  async function fillEditor(kind, editor, entry) {
+    const filled = [];
+    for (const row of editorRows(editor)) {
+      if (row.kind === "file") continue;
+      if (row.filled && !row.invalid) continue;
+      const shapes = tileAnswer(kind, row.label, entry);
+      if (!shapes || !shapes.length) continue;
+      let value = shapes[0];
+      if (row.kind === "combobox" || row.kind === "select") {
+        if (!(row.options || []).length) {
+          const labels = await readComboboxOptions(row);
+          if (labels.length) row.options = labels.map((l) => ({ value: l, label: l }));
+        }
+        const key = kind === "education" && /degree|qualification/i.test(row.label) ? "degree" : "";
+        if ((row.options || []).length) {
+          value = coerce(shapes[0], Object.assign({}, row, { candidates: shapes, candidateKey: key }));
+          if (value == null) continue;
+        } else if (key === "degree") {
+          continue;
+        }
+      }
+      const res = await applyDecision({ row, value, candidates: [value].concat(shapes), label: row.label });
+      if (res.ok) filled.push(`${row.label.replace(/\s*\*$/, "")}: ${res.shown || value}`);
+    }
+    return filled;
+  }
+  function stillRejected(editor) {
+    return editorRows(editor).filter((r) => r.invalid || r.required && !r.filled).map((r) => r.label);
+  }
+  async function fillProfileTiles(ctx, progress) {
+    const facts = ctx && ctx.facts || {};
+    const lists = {
+      education: facts.educationEntries || [],
+      experience: facts.workExperience || []
+    };
+    const out = [];
+    for (const { block, kind } of profileTileBlocks()) {
+      if (!kind) continue;
+      const count = block.querySelectorAll(TILE_SEL).length;
+      for (let i = 0; i < count; i++) {
+        const tile = block.querySelectorAll(TILE_SEL)[i];
+        if (!tile || !tileFlagged(tile)) continue;
+        const shownAs = tileTitle(tile);
+        const label = `${kind === "education" ? "Education" : "Experience"}: ${shownAs}`;
+        const decision = {
+          key: `tile:${kind}:${i}`,
+          label,
+          kind: "tile",
+          row: { el: tile, kind: "tile" },
+          action: ASK,
+          value: "",
+          source: "",
+          reason: "",
+          outcome: ""
+        };
+        out.push(decision);
+        const entry = matchTileEntry(kind, tileText(tile), lists[kind]);
+        if (!entry) {
+          decision.reason = lists[kind].length ? `we could not tell which ${kind === "education" ? "school" : "job"} in your profile this is \u2014 open it and fix it` : `add your ${kind} to your profile, or fix this one here`;
+          continue;
+        }
+        if (progress) progress("filling", { detail: label });
+        const edit = tile.querySelector(".apply-flow-profile-item-tile__edit-item-icon");
+        if (!edit) {
+          decision.reason = "open this entry and fix it yourself";
+          continue;
+        }
+        press(edit);
+        const editor = await waitFor(() => openEditor(block), TIMING.tileOpenMs);
+        if (!editor) {
+          decision.reason = "the entry did not open \u2014 fix it yourself";
+          continue;
+        }
+        await sleep(TIMING.settleMs + 150);
+        const filled = await fillEditor(kind, editor, entry);
+        const save = block.querySelector('.profile-item-footer .save-btn, [data-qa="profileItemInlineSaveButton"]');
+        if (!save) {
+          decision.reason = "fix this entry and save it yourself";
+          continue;
+        }
+        press(save);
+        const closed = await waitFor(() => !openEditor(block), TIMING.tileSaveMs);
+        if (!closed) {
+          const missing = stillRejected(editor);
+          const cancel = block.querySelector(".profile-item-footer .cancel-btn");
+          if (cancel) press(cancel);
+          await waitFor(() => !openEditor(block), TIMING.tileSaveMs);
+          decision.reason = missing.length ? `still needs: ${missing.join(", ")} \u2014 fix it yourself` : "it would not save \u2014 fix it yourself";
+          continue;
+        }
+        await sleep(TIMING.settleMs + 150);
+        const after = block.querySelectorAll(TILE_SEL)[i];
+        if (after && tileFlagged(after)) {
+          decision.reason = "saved, but the form still flags it \u2014 open it and check";
+          continue;
+        }
+        decision.action = FILL;
+        decision.source = "profile";
+        decision.outcome = "ok";
+        decision.value = filled.join(" \xB7 ") || "saved";
+        decision.shown = decision.value;
+      }
+    }
+    return out;
   }
 
   // src/autofill/run.js
@@ -3864,6 +4169,8 @@ what when where which who will with would you your now future
     // keys the person typed in themselves
     answeredByUser: {},
     // key -> answer they gave in the sidebar
+    imported: {},
+    // application -> when the resume went into its profile import
     page: 1,
     startedAt: 0,
     origin: ""
@@ -3888,11 +4195,12 @@ what when where which who will with would you your now future
       startedAt: state.startedAt,
       registry: state.registry,
       userEdited: state.userEdited,
-      answeredByUser: state.answeredByUser
+      answeredByUser: state.answeredByUser,
+      imported: state.imported
     } });
   }
   async function clearState() {
-    state = { registry: {}, userEdited: [], answeredByUser: {}, page: 1, startedAt: 0, origin: "" };
+    state = { registry: {}, userEdited: [], answeredByUser: {}, imported: {}, page: 1, startedAt: 0, origin: "" };
     await send({ type: "AF_STATE_CLEAR" });
   }
   async function resumeIfContinuing() {
@@ -3975,8 +4283,13 @@ what when where which who will with would you your now future
         }
       }
     };
-    const form = findForm();
+    let form = findForm();
+    if (!form) {
+      const page = isApplicationPage();
+      if (page && page.tilesOnly) form = page;
+    }
     if (!form) return { error: "no_form", decisions: [], counts: summarize([]) };
+    const hasTiles = profileTileBlocks().some((b) => b.kind);
     if (!state.startedAt) {
       state.startedAt = Date.now();
       state.origin = globalThis.location.origin;
@@ -3984,13 +4297,24 @@ what when where which who will with would you your now future
     attachedThisRun.clear();
     progress("scanning");
     let rows = describeFields(form);
-    if (!rows.length) return { error: "no_fields", decisions: [], counts: summarize([]) };
+    if (!rows.length && !hasTiles) return { error: "no_fields", decisions: [], counts: summarize([]) };
     let decisions = [];
     const fileRows = rows.filter((r) => r.kind === "file");
     if (fileRows.length) {
       const filledBefore = new Set(rows.filter((r) => r.filled).map((r) => r.key));
       decisions = decide(fileRows, ctx, null, state);
+      const app = applicationKey();
+      const step = Number((globalThis.location.pathname.match(/\/section\/(\d+)/) || [])[1] || 1);
+      for (const d of decisions) {
+        if (d.action === DOCUMENT && isProfileImport(d.row) && (state.imported && state.imported[app] || step > 1)) {
+          d.action = SKIP;
+          d.reason = "your resume was already imported on an earlier page of this application";
+        }
+      }
       await writeAll(decisions, ctx, progress);
+      if (decisions.some((d) => d.action === DOCUMENT && d.outcome === "ok" && isProfileImport(d.row))) {
+        state.imported = Object.assign({}, state.imported, { [app]: Date.now() });
+      }
       if (decisions.some((d) => d.action === DOCUMENT && d.outcome === "ok")) {
         if (decisions.some((d) => d.formRead)) {
           progress("scanning", { detail: "letting the form read your resume" });
@@ -4046,7 +4370,7 @@ what when where which who will with would you your now future
       const before = new Set(rows.map((r) => r.key));
       await waitForQuiet(form.root);
       const fresh = describeFields(findForm() || form);
-      const added = fresh.filter((r) => r.key && !before.has(r.key));
+      const added = fresh.filter((r) => r.key && !before.has(r.key) && !(r.kind === "file" && isProfileImport(r)));
       if (!added.length) break;
       revealed++;
       progress("scanning", { detail: `${added.length} new field(s) appeared` });
@@ -4054,6 +4378,7 @@ what when where which who will with would you your now future
       decisions = decisions.concat(extra);
       rows = fresh;
     }
+    if (hasTiles) decisions = decisions.concat(await fillProfileTiles(ctx, progress));
     await refillCleared(decisions, progress);
     await saveState();
     watchUserEdits(form, null);
@@ -4071,10 +4396,20 @@ what when where which who will with would you your now future
     if (/extension|\bext\b|device|type|code/i.test(label)) return false;
     return row.hints && row.hints.type === "tel" || /\b(phone|mobile)\b/i.test(label);
   }
+  function applicationKey() {
+    const loc = globalThis.location;
+    return `${loc.origin}${loc.pathname.replace(/\/section\/\d+\/?$/, "").replace(/\/+$/, "")}`;
+  }
+  function isProfileImport(row) {
+    if (!row) return false;
+    if (/\bimport\b|\bpars(e|er|ing)\b/i.test(row.label || "")) return true;
+    const cls = row.el && row.el.className || "";
+    return /profile-import/i.test(String(cls));
+  }
   async function refillCleared(decisions, progress) {
     const lost = decisions.filter((d) => {
       if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== "ok") return false;
-      if (!d.row || d.row.kind === "file") return false;
+      if (!d.row || d.row.kind === "file" || d.row.kind === "tile") return false;
       if (d.key && state.userEdited.includes(d.key)) return false;
       const now = reprobe(d.row);
       return !!now && !now.filled;
@@ -4353,7 +4688,7 @@ what when where which who will with would you your now future
     renderRunning: () => renderRunning,
     setPhase: () => setPhase
   });
-  var probe3 = () => globalThis.__tcvFieldProbe;
+  var probe4 = () => globalThis.__tcvFieldProbe;
   var HIGHLIGHT_STYLE_ID = "tailorcv-af-styles";
   var HIGHLIGHT_CSS = `
 .tcv-af-hl { outline: 2px solid rgba(79,127,255,0.9) !important;
@@ -4392,7 +4727,7 @@ what when where which who will with would you your now future
   function highlight(decisions) {
     clearHighlights();
     ensureHighlightStyles();
-    const p = probe3();
+    const p = probe4();
     for (const d of decisions || []) {
       if (d.action === SKIP) continue;
       const el = d.row && d.row.el;
@@ -4414,7 +4749,7 @@ what when where which who will with would you your now future
     highlighted = [];
   }
   function jumpTo(decision) {
-    const p = probe3();
+    const p = probe4();
     const el = decision.row && decision.row.el;
     if (!el || !el.isConnected) return;
     const node = p && p.fieldWrapper(el) || el;
@@ -4472,7 +4807,12 @@ what when where which who will with would you your now future
           </div>
         </div>
       </div>
-      ${!count ? `
+      ${form && form.tilesOnly ? `
+        <div class="tcv-af-note">
+          This step lists your Education and Experience entries. Autofill opens
+          each one the form marks as needing a fix, fills it from your profile,
+          and saves it.
+        </div>` : !count ? `
         <div class="tcv-af-note">
           No fields found on this step yet. If a section opens with <b>Add</b>
           (Work Experience, Education), open it first, then autofill this page.
@@ -4711,7 +5051,7 @@ what when where which who will with would you your now future
       const s = String(v == null ? "" : v).trim();
       if (s.length >= 3) out.add(s);
     }
-    return [...out].sort((a, b) => b.length - a.length).map((s) => new RegExp(`(?<![\\w])${s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\w])`, "g"));
+    return [...out].sort((a, b) => b.length - a.length).map((s) => new RegExp(`(?<![A-Za-z0-9])${s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![A-Za-z0-9])`, "gi"));
   }
   function sanitize(node, secrets) {
     for (const el of node.querySelectorAll("script, style, noscript, link, meta, template")) el.remove();

@@ -1650,6 +1650,12 @@ def _sidebar_page_css(html_content: str) -> str:
         return g.group(1) if g else ""
 
     def _lum(hex_colour: str) -> float:
+        if hex_colour.startswith("rgb"):
+            nums = re.findall(r"[0-9.]+", hex_colour)[:3]
+            if len(nums) < 3:
+                return 1.0
+            r, g, b = (float(n) / 255 for n in nums)
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b
         h = hex_colour.lstrip("#")
         if len(h) == 3:
             h = "".join(c * 2 for c in h)
@@ -1687,17 +1693,45 @@ def _sidebar_page_css(html_content: str) -> str:
     if not colour:
         return ""
 
+    # A white "paper" wrapper (template 7: `.resume { background:
+    # rgba(255,255,255,.97) }`) is painted ABOVE the @page background, so it
+    # hid the panel on every page and left the sidebar's white text on white.
+    # Clear such wrappers, and give the canvas a plain white paper instead.
+    clear = []
+    for sel in ("resume", "resume-wrap", "page", "layout", "sheet"):
+        wm = re.search(rf"\.{sel}\s*\{{[^}}]*?\bbackground(?:-color)?:\s*([^;]+);",
+                       html_content, re.S)
+        if not wm:
+            continue
+        decl = wm.group(1)
+        if "gradient" in decl or "url(" in decl:
+            continue
+        lit = _literal(decl)
+        if lit and _lum(lit) >= 0.92:
+            clear.append(f".{sel}")
+    paper = ""
+    if clear:
+        paper = (f"\n{', '.join(clear)} {{ background: transparent !important; }}"
+                 # The root/body background is painted over @page's, so it
+                 # must be clear too or the panel stays hidden.
+                 "\nhtml, body { background: transparent !important; }")
+
     return f"""
 /* BUG A: sidebar as a repeating page background (full height, every page).
    Drawn on @page so it exists on pages the sidebar's own content never
    reaches; the column itself goes transparent so the two cannot disagree. */
 @page {{
   background-image: linear-gradient(to right,
-    {colour} 0 {width}, transparent {width} 100%);
+    {colour} {width}, #ffffff {width});
   background-repeat: no-repeat;
   background-position: left top;
 }}
-.sidebar {{ background: transparent !important; }}
+/* Print only. A browser preview never paints @page backgrounds, so making the
+   column transparent there left white text on white. On screen the template's
+   own sidebar colour must stay. */
+@media print {{
+.sidebar {{ background: transparent !important; }}{paper}
+}}
 """
 
 
@@ -12390,141 +12424,13 @@ def _all_pdf_annotation_urls(pdf_path: str) -> set[str]:
     return urls
 
 
-async def _optimize_resume_core(
-    file_path: str,
-    jd_string: str,
-    ats_payload: str | None = None,
-    confirmed_skills: list[str] | None = None,
-    auto_add_skills: bool = False,
+async def _recover_project_and_publication_links(
+    parsed: dict, file_path: str, project_link_map, extracted_links,
+    extracted_pub_links, mapped_links,
 ) -> dict:
-    """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
-    resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
-    and the extension's /api/extension/tailor-resume, which differ only in where the
-    source PDF comes from (fresh upload vs. a user's stored base resume).
-
-    `ats_payload` is the ATS analysis the user has already been shown, forwarded
-    by the client. When present it is used verbatim and no second scoring call is
-    made. This is the only way to guarantee the editor's missing-skill list
-    matches the score page: two separate LLM calls do not reliably agree even on
-    identical input, which is how the score page came to list 13 missing hard
-    skills while the editor listed 5 for the same resume and job."""
-    resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
-    normalized_resume_string = normalize_links(resume_string)
-
-    # OPTIMIZATION: Run all link extractions in parallel instead of sequentially.
-    # The last two rebuild the exact resume text /get-score feeds ats_scoring;
-    # see _ats_resume_text_for below for why that has to match byte for byte.
-    link_tasks = [
-        asyncio.to_thread(extract_project_links, normalized_resume_string),
-        asyncio.to_thread(extract_publication_links, normalized_resume_string),
-        asyncio.to_thread(map_project_demo_links, normalized_resume_string),
-        asyncio.to_thread(extract_project_link_map, normalized_resume_string),
-        asyncio.to_thread(_extract_pdf_text_for_ats, file_path),
-        asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
-    ]
-    (
-        extracted_links, extracted_pub_links, mapped_links, project_link_map,
-        ats_pdf_text, ats_linkedin_url,
-    ) = await asyncio.gather(*link_tasks)
-
-    ats_resume_string = _ats_resume_text_for(ats_pdf_text, ats_linkedin_url)
-
-    prompt = create_prompt(resume_string, jd_string)
-
-    # Prefer the analysis the user was already shown. Re-scoring would be a
-    # second LLM call whose answer can differ from the first, and the user has
-    # no way to tell which is right - they just see two screens disagreeing.
-    forwarded_ats = _usable_ats_payload(ats_payload)
-
-    if forwarded_ats is not None:
-        try:
-            response_string = await get_resume_response(
-                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
-            )
-        except Exception as exc:
-            logger.exception("AI generation failed")
-            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
-        ats_result = forwarded_ats
-    else:
-        # No analysis to reuse (optimized without scoring first). Score it here,
-        # CONCURRENTLY with the rewrite so wall-clock cost is close to zero.
-        try:
-            response_string, ats_result = await asyncio.gather(
-                get_resume_response(
-                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
-                ),
-                ats_scoring(ats_resume_string, jd_string),
-                return_exceptions=True,
-            )
-        except Exception as exc:
-            logger.exception("AI generation failed")
-            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
-
-    if isinstance(response_string, BaseException):
-        logger.exception("AI generation failed", exc_info=response_string)
-        raise HTTPException(status_code=500, detail=_ai_failure_detail(response_string))
-
-    # A failed ATS pass must never break tailoring. Falling back to None makes
-    # inject_jd_hard_skills use its own regex extractor, which is what shipped
-    # before this call existed.
-    jd_hard_skills = None
-    ats_missing_hard: list[str] = []
-    missing_soft_skills: list[str] = []
-    if isinstance(ats_result, BaseException):
-        logger.warning("ATS skill list unavailable; falling back to regex JD extraction.", exc_info=ats_result)
-    else:
-        jd_hard_skills, ats_missing_hard, missing_soft_skills = _jd_skills_from_ats_result(ats_result)
-
-    parsed = parse_ai_json_response(response_string)
-
-    # Recover any bullet point the optimizer silently dropped/merged on a
-    # long resume, restoring it onto the exact entry it came from.
-    parsed = restore_dropped_bullets(parsed, resume_string)
-
-    # A dropped ENTRY is worse than a dropped bullet, and it also orphans that
-    # entry's links, which then leak into neighbouring sections.
-    parsed = restore_dropped_entries(parsed, resume_string)
-
-    # A bullet can also be hollowed out from the inside: the entry survives, the
-    # count is right, and the rewrite has quietly dropped the tools, figures and
-    # lists that made it worth reading. Preserve first, rewrite second - and
-    # enforce it here rather than trusting the model to have obeyed.
-    parsed = enforce_bullet_facts(parsed, resume_string)
-
-    # Runs last of the bullet passes: restore_dropped_bullets() and
-    # enforce_bullet_facts() can each put an original back, and neither checks
-    # whether its content is already carried by a bullet that merged several
-    # originals into one paragraph. That is how the same content shipped twice
-    # in one entry on a real resume.
-    parsed = dedupe_overlapping_bullets(parsed)
-
-    # Appended-purpose fabrication: a bullet that keeps every source fact and
-    # then states a plausible reason for it that the resume never claimed.
-    # Reported rather than stripped - see report_new_claims' docstring.
-    parsed = report_new_claims(parsed, resume_string)
-
-    # Observational source verbs promoted into ownership verbs. Same class of
-    # indefensible claim as an invented outcome, and invisible to every fact
-    # check because only the verb moved.
-    parsed = report_verb_inflation(parsed, resume_string)
-
-    # Metrics re-pointed at a different subject, and compound adjectives
-    # invented from JD vocabulary. Both keep every number and word traceable
-    # to an input while changing what is actually being claimed.
-    parsed = report_metric_reframing(parsed, resume_string)
-    parsed = report_coined_terms(parsed, resume_string, jd_string)
-
-    # What this JD asks for that the resume cannot evidence. Surfaced rather
-    # than silently written around: on a large gap the honest output is a
-    # report, not prose implying coverage the candidate would have to defend.
-    try:
-        parsed["jd_gap_report"] = build_jd_gap_report(jd_string, resume_string)
-    except Exception:
-        pass
-
-    # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
-    # The AI response already contains the optimized data - no need to re-extract original data
-
+    """PDF-annotation + text link recovery for projects and publications, then
+    inject_links. Shared by the tailoring pipeline and the resume-builder import
+    so both recover links identically."""
     # Extract project links from PDF for better accuracy (only if needed)
     project_names = [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)]
     if project_names:
@@ -12617,87 +12523,13 @@ async def _optimize_resume_core(
                     _pf.write(f"     github_link={_p.get('github_link')!r} url={_p.get('url')!r}\n")
     except Exception:
         pass
-    # resume_string is the ORIGINAL uploaded text - it is what decides whether a
-    # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
-    # ATS analysis's verdict on which skills the job actually requires.
-    # Previously-confirmed skills apply ONLY where the user cannot be asked -
-    # i.e. the Chrome extension, which re-tailors from the stored base resume
-    # with no dialog and would otherwise drop every skill they ever ticked.
-    #
-    # On the website they are deliberately NOT applied. Reusing an old answer
-    # there means the skill is added silently and, because it also counts as
-    # evidence, the matching JD requirement stops being reported as a gap - so
-    # the dialog has nothing to ask about and never appears. The website asks
-    # every time; that is the whole point of the page.
-    apply_confirmed = bool(confirmed_skills) and auto_add_skills
+    return parsed
 
-    skill_evidence = resume_string
-    if apply_confirmed:
-        skill_evidence = f"{resume_string}\nConfirmed skills: {', '.join(confirmed_skills)}"
 
-    parsed = inject_jd_hard_skills(
-        parsed, jd_string, skill_evidence, jd_skills=jd_hard_skills,
-        auto_add=auto_add_skills,
-    )
-
-    # A confirmed skill the JD never mentions still belongs on the resume — but
-    # again only on the surface that cannot ask.
-    if apply_confirmed:
-        existing = {str(s).strip().lower() for s in (parsed.get("skills") or [])}
-        for skill in confirmed_skills:
-            if skill.strip().lower() not in existing:
-                parsed.setdefault("skills", []).append(skill)
-                existing.add(skill.strip().lower())
-
-    # What the user is TOLD is missing should match the score page, so the ATS
-    # analysis's own `missing` list leads. But it must not REPLACE the list
-    # outright: inject_jd_hard_skills has just decided what it actually withheld
-    # from the resume, and anything it held back has to be offered or the
-    # candidate is never asked about a skill that is genuinely absent. Replacing
-    # the list meant a shorter (or empty) ATS list silently swallowed those, and
-    # the editor then had nothing to ask about at all.
-    #
-    # The extension gets the same list: inject_jd_hard_skills withholds
-    # unevidenced JD skills on both surfaces, and the extension's pop-up is where
-    # the user adds them. Wiping it here used to make those skills vanish.
-    if jd_hard_skills is not None:
-        withheld = [str(s) for s in (parsed.get("skill_gaps") or []) if str(s).strip()]
-        seen = {s.strip().lower() for s in ats_missing_hard}
-        parsed["skill_gaps"] = list(ats_missing_hard) + [
-            s for s in withheld if s.strip().lower() not in seen
-        ]
-
-    # Soft skills the rewrite failed to express go into the summary, not the
-    # skills array (Rule01b). Handled automatically rather than asked about:
-    # unlike "do you know Tableau?", this is presentation, not a credential.
-    parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills, resume_string)
-
-    # Rule 00 is an instruction, not a guarantee, so the countable half of it is
-    # checked here rather than trusted — the same reasoning as _repair_action_verbs.
-    # Strictly subtractive: it deletes keyword padding (a trailing "in the X
-    # domain" tag, a final sentence that names things without claiming any of
-    # them) and never writes new words, so it cannot introduce a claim the resume
-    # does not support. Runs AFTER the soft-skill weave so it sees the final
-    # assembled text, including anything that step appended. Whatever it cannot
-    # fix by deletion is reported on parsed["summary_issues"] instead.
-    parsed = repair_summary(parsed, jd_string, resume_string)
-
-    # The hard gates. repair_summary above is subtractive and can only delete;
-    # these decide whether what survived is publishable at all. Previously the
-    # gate layer existed in functions.py but was called from NOWHERE in this
-    # module, so every defect it detects shipped to users annotated but intact.
-    # Reported rather than blocking: a rejected summary still reaches the page,
-    # because an empty summary is worse than a flawed one — but the reasons now
-    # travel with the payload so the editor and the evals can see them.
-    try:
-        summary_rejections = summary_rejection_reasons(
-            str(parsed.get("summary") or ""), jd_string, resume_string,
-        )
-    except Exception:
-        summary_rejections = []
-    if summary_rejections:
-        parsed["summary_rejected"] = summary_rejections
-
+async def _recover_contact_and_section_links(parsed: dict, file_path: str) -> None:
+    """Contact links, plus Education / Experience / Certification links, recovered
+    from the PDF annotation layer. Mutates `parsed`. Shared by the tailoring
+    pipeline and the resume-builder import."""
     # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
     # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
     # the true URL lives in the annotation, so the AI loses or mangles them.
@@ -12925,6 +12757,229 @@ async def _optimize_resume_core(
             pass
     except Exception:
         pass
+
+
+async def _optimize_resume_core(
+    file_path: str,
+    jd_string: str,
+    ats_payload: str | None = None,
+    confirmed_skills: list[str] | None = None,
+    auto_add_skills: bool = False,
+) -> dict:
+    """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
+    resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
+    and the extension's /api/extension/tailor-resume, which differ only in where the
+    source PDF comes from (fresh upload vs. a user's stored base resume).
+
+    `ats_payload` is the ATS analysis the user has already been shown, forwarded
+    by the client. When present it is used verbatim and no second scoring call is
+    made. This is the only way to guarantee the editor's missing-skill list
+    matches the score page: two separate LLM calls do not reliably agree even on
+    identical input, which is how the score page came to list 13 missing hard
+    skills while the editor listed 5 for the same resume and job."""
+    resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
+    normalized_resume_string = normalize_links(resume_string)
+
+    # OPTIMIZATION: Run all link extractions in parallel instead of sequentially.
+    # The last two rebuild the exact resume text /get-score feeds ats_scoring;
+    # see _ats_resume_text_for below for why that has to match byte for byte.
+    link_tasks = [
+        asyncio.to_thread(extract_project_links, normalized_resume_string),
+        asyncio.to_thread(extract_publication_links, normalized_resume_string),
+        asyncio.to_thread(map_project_demo_links, normalized_resume_string),
+        asyncio.to_thread(extract_project_link_map, normalized_resume_string),
+        asyncio.to_thread(_extract_pdf_text_for_ats, file_path),
+        asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
+    ]
+    (
+        extracted_links, extracted_pub_links, mapped_links, project_link_map,
+        ats_pdf_text, ats_linkedin_url,
+    ) = await asyncio.gather(*link_tasks)
+
+    ats_resume_string = _ats_resume_text_for(ats_pdf_text, ats_linkedin_url)
+
+    prompt = create_prompt(resume_string, jd_string)
+
+    # Prefer the analysis the user was already shown. Re-scoring would be a
+    # second LLM call whose answer can differ from the first, and the user has
+    # no way to tell which is right - they just see two screens disagreeing.
+    forwarded_ats = _usable_ats_payload(ats_payload)
+
+    if forwarded_ats is not None:
+        try:
+            response_string = await get_resume_response(
+                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+            )
+        except Exception as exc:
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
+        ats_result = forwarded_ats
+    else:
+        # No analysis to reuse (optimized without scoring first). Score it here,
+        # CONCURRENTLY with the rewrite so wall-clock cost is close to zero.
+        try:
+            response_string, ats_result = await asyncio.gather(
+                get_resume_response(
+                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+                ),
+                ats_scoring(ats_resume_string, jd_string),
+                return_exceptions=True,
+            )
+        except Exception as exc:
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
+
+    if isinstance(response_string, BaseException):
+        logger.exception("AI generation failed", exc_info=response_string)
+        raise HTTPException(status_code=500, detail=_ai_failure_detail(response_string))
+
+    # A failed ATS pass must never break tailoring. Falling back to None makes
+    # inject_jd_hard_skills use its own regex extractor, which is what shipped
+    # before this call existed.
+    jd_hard_skills = None
+    ats_missing_hard: list[str] = []
+    missing_soft_skills: list[str] = []
+    if isinstance(ats_result, BaseException):
+        logger.warning("ATS skill list unavailable; falling back to regex JD extraction.", exc_info=ats_result)
+    else:
+        jd_hard_skills, ats_missing_hard, missing_soft_skills = _jd_skills_from_ats_result(ats_result)
+
+    parsed = parse_ai_json_response(response_string)
+
+    # Recover any bullet point the optimizer silently dropped/merged on a
+    # long resume, restoring it onto the exact entry it came from.
+    parsed = restore_dropped_bullets(parsed, resume_string)
+
+    # A dropped ENTRY is worse than a dropped bullet, and it also orphans that
+    # entry's links, which then leak into neighbouring sections.
+    parsed = restore_dropped_entries(parsed, resume_string)
+
+    # A bullet can also be hollowed out from the inside: the entry survives, the
+    # count is right, and the rewrite has quietly dropped the tools, figures and
+    # lists that made it worth reading. Preserve first, rewrite second - and
+    # enforce it here rather than trusting the model to have obeyed.
+    parsed = enforce_bullet_facts(parsed, resume_string)
+
+    # Runs last of the bullet passes: restore_dropped_bullets() and
+    # enforce_bullet_facts() can each put an original back, and neither checks
+    # whether its content is already carried by a bullet that merged several
+    # originals into one paragraph. That is how the same content shipped twice
+    # in one entry on a real resume.
+    parsed = dedupe_overlapping_bullets(parsed)
+
+    # Appended-purpose fabrication: a bullet that keeps every source fact and
+    # then states a plausible reason for it that the resume never claimed.
+    # Reported rather than stripped - see report_new_claims' docstring.
+    parsed = report_new_claims(parsed, resume_string)
+
+    # Observational source verbs promoted into ownership verbs. Same class of
+    # indefensible claim as an invented outcome, and invisible to every fact
+    # check because only the verb moved.
+    parsed = report_verb_inflation(parsed, resume_string)
+
+    # Metrics re-pointed at a different subject, and compound adjectives
+    # invented from JD vocabulary. Both keep every number and word traceable
+    # to an input while changing what is actually being claimed.
+    parsed = report_metric_reframing(parsed, resume_string)
+    parsed = report_coined_terms(parsed, resume_string, jd_string)
+
+    # What this JD asks for that the resume cannot evidence. Surfaced rather
+    # than silently written around: on a large gap the honest output is a
+    # report, not prose implying coverage the candidate would have to defend.
+    try:
+        parsed["jd_gap_report"] = build_jd_gap_report(jd_string, resume_string)
+    except Exception:
+        pass
+
+    # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
+    # The AI response already contains the optimized data - no need to re-extract original data
+
+    parsed = await _recover_project_and_publication_links(
+        parsed, file_path, project_link_map, extracted_links,
+        extracted_pub_links, mapped_links,
+    )
+    # resume_string is the ORIGINAL uploaded text - it is what decides whether a
+    # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
+    # ATS analysis's verdict on which skills the job actually requires.
+    # Previously-confirmed skills apply ONLY where the user cannot be asked -
+    # i.e. the Chrome extension, which re-tailors from the stored base resume
+    # with no dialog and would otherwise drop every skill they ever ticked.
+    #
+    # On the website they are deliberately NOT applied. Reusing an old answer
+    # there means the skill is added silently and, because it also counts as
+    # evidence, the matching JD requirement stops being reported as a gap - so
+    # the dialog has nothing to ask about and never appears. The website asks
+    # every time; that is the whole point of the page.
+    apply_confirmed = bool(confirmed_skills) and auto_add_skills
+
+    skill_evidence = resume_string
+    if apply_confirmed:
+        skill_evidence = f"{resume_string}\nConfirmed skills: {', '.join(confirmed_skills)}"
+
+    parsed = inject_jd_hard_skills(
+        parsed, jd_string, skill_evidence, jd_skills=jd_hard_skills,
+        auto_add=auto_add_skills,
+    )
+
+    # A confirmed skill the JD never mentions still belongs on the resume — but
+    # again only on the surface that cannot ask.
+    if apply_confirmed:
+        existing = {str(s).strip().lower() for s in (parsed.get("skills") or [])}
+        for skill in confirmed_skills:
+            if skill.strip().lower() not in existing:
+                parsed.setdefault("skills", []).append(skill)
+                existing.add(skill.strip().lower())
+
+    # What the user is TOLD is missing should match the score page, so the ATS
+    # analysis's own `missing` list leads. But it must not REPLACE the list
+    # outright: inject_jd_hard_skills has just decided what it actually withheld
+    # from the resume, and anything it held back has to be offered or the
+    # candidate is never asked about a skill that is genuinely absent. Replacing
+    # the list meant a shorter (or empty) ATS list silently swallowed those, and
+    # the editor then had nothing to ask about at all.
+    #
+    # The extension gets the same list: inject_jd_hard_skills withholds
+    # unevidenced JD skills on both surfaces, and the extension's pop-up is where
+    # the user adds them. Wiping it here used to make those skills vanish.
+    if jd_hard_skills is not None:
+        withheld = [str(s) for s in (parsed.get("skill_gaps") or []) if str(s).strip()]
+        seen = {s.strip().lower() for s in ats_missing_hard}
+        parsed["skill_gaps"] = list(ats_missing_hard) + [
+            s for s in withheld if s.strip().lower() not in seen
+        ]
+
+    # Soft skills the rewrite failed to express go into the summary, not the
+    # skills array (Rule01b). Handled automatically rather than asked about:
+    # unlike "do you know Tableau?", this is presentation, not a credential.
+    parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills, resume_string)
+
+    # Rule 00 is an instruction, not a guarantee, so the countable half of it is
+    # checked here rather than trusted — the same reasoning as _repair_action_verbs.
+    # Strictly subtractive: it deletes keyword padding (a trailing "in the X
+    # domain" tag, a final sentence that names things without claiming any of
+    # them) and never writes new words, so it cannot introduce a claim the resume
+    # does not support. Runs AFTER the soft-skill weave so it sees the final
+    # assembled text, including anything that step appended. Whatever it cannot
+    # fix by deletion is reported on parsed["summary_issues"] instead.
+    parsed = repair_summary(parsed, jd_string, resume_string)
+
+    # The hard gates. repair_summary above is subtractive and can only delete;
+    # these decide whether what survived is publishable at all. Previously the
+    # gate layer existed in functions.py but was called from NOWHERE in this
+    # module, so every defect it detects shipped to users annotated but intact.
+    # Reported rather than blocking: a rejected summary still reaches the page,
+    # because an empty summary is worse than a flawed one — but the reasons now
+    # travel with the payload so the editor and the evals can see them.
+    try:
+        summary_rejections = summary_rejection_reasons(
+            str(parsed.get("summary") or ""), jd_string, resume_string,
+        )
+    except Exception:
+        summary_rejections = []
+    if summary_rejections:
+        parsed["summary_rejected"] = summary_rejections
+
+    await _recover_contact_and_section_links(parsed, file_path)
 
     # Final safety net: clean the optimized data (balance parens, dedupe
     # skills, strip stray bullets) so malformed AI/post-processing output
@@ -14026,6 +14081,27 @@ async def extract_cv_from_pdf(request: Request, file: UploadFile = File(...)):
 
         parsed = parse_ai_json_response(response_string)
         parsed = restore_dropped_bullets(parsed, resume_text)
+
+        # Recover links exactly as the tailoring pipeline does. Without this the
+        # builder only kept whatever URLs the model happened to copy out of the
+        # extracted text, and PDFs hide most project / certification URLs behind
+        # clickable anchor text that only the annotation layer contains.
+        try:
+            normalized_text = normalize_links(resume_text)
+            (extracted_links, extracted_pub_links, mapped_links,
+             project_link_map) = await asyncio.gather(
+                asyncio.to_thread(extract_project_links, normalized_text),
+                asyncio.to_thread(extract_publication_links, normalized_text),
+                asyncio.to_thread(map_project_demo_links, normalized_text),
+                asyncio.to_thread(extract_project_link_map, normalized_text),
+            )
+            parsed = await _recover_project_and_publication_links(
+                parsed, file_path, project_link_map, extracted_links,
+                extracted_pub_links, mapped_links,
+            )
+            await _recover_contact_and_section_links(parsed, file_path)
+        except Exception:
+            logger.exception("Link recovery failed during CV import; continuing without it")
         return _template_parsed_to_editor_payload(parsed)
     except HTTPException:
         raise

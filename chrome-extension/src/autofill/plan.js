@@ -469,8 +469,15 @@ const DEGREE_LEVELS = [
     shapes: ["Bachelor's Degree", "Bachelors", "Bachelor", "Undergraduate Degree", "Undergraduate"] },
   { test: /\bassociate'?s?\b/i,
     shapes: ["Associate's Degree", "Associates", "Associate"] },
-  { test: /\b(high school|secondary school|higher secondary|12th|hsc|diploma)\b/i,
+  { test: /\b(high school|secondary school|higher secondary|12th|hsc)\b/i,
     shapes: ["High School", "High School Diploma", "Secondary School"] },
+  // A diploma on its own is post-school (a polytechnic "Diploma in Mechanical
+  // Engineering", a "Diploma in Fine Arts") — not a high-school qualification.
+  // Listed after high school so "High School Diploma" still reads as that.
+  // Before, any "diploma" was the high-school level, and a Diploma in Fine
+  // Arts was entered on Oracle as "High School Diploma".
+  { test: /\bdiploma\b/i,
+    shapes: ['Diploma'] },
 ];
 
 // Race / ethnicity, which every form words differently: "South Asian" on the
