@@ -146,9 +146,30 @@ var FEATURE_LABELS = {
   interview_questions:"Interview Questions",
 };
 
+/* upgrade_prompt_shown: one event per (feature, surface) per page load, shared by
+   every paywall popup on the site (generic modal, editor download/lock popup,
+   portfolio paywalls). The editor's quota lock re-runs on each preview reload,
+   hence the dedupe. Same event name the extension already uses; `source`
+   separates them. */
+var _upgradePromptSeen = {};
+function tcvTrackUpgradePrompt(feature, surface) {
+  try {
+    var f = feature || "unknown";
+    var s = surface || location.pathname;
+    var k = f + "|" + s;
+    if (_upgradePromptSeen[k]) return;
+    _upgradePromptSeen[k] = true;
+    if (window.posthog && typeof posthog.capture === "function") {
+      posthog.capture("upgrade_prompt_shown", { source: "web", feature: f, surface: s });
+    }
+  } catch (e) {}
+}
+window.tcvTrackUpgradePrompt = tcvTrackUpgradePrompt;
+
 function showUpgradeModal(feature) {
   if (_upgradeModalOpen) return;
   _upgradeModalOpen = true;
+  tcvTrackUpgradePrompt(feature);
   /* Counts here MUST match FREE_LIMITS in main.py — a modal that promises a
      different number than the server enforces is worse than no modal. Keep the
      two in step whenever a limit changes. */

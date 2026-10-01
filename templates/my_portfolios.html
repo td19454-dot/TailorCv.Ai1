@@ -180,6 +180,7 @@
                 () => pfhToast('Copy failed — select and copy manually.'));
         }
         function pfhShowPaywall(upgradeUrl) {
+            if (window.tcvTrackUpgradePrompt) window.tcvTrackUpgradePrompt('portfolio_pro', 'my_portfolios');
             const existing = document.getElementById('tcv-pro-dl-overlay');
             if (existing) existing.remove();
             if (!document.getElementById('tcv-pro-dl-style')) {
@@ -288,7 +289,7 @@
             }
         }
     </script>
-    <script src="/static/auth_nav.js?v=20" defer></script>
+    <script src="/static/auth_nav.js?v=21" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
 </body>
 </html>

@@ -1382,6 +1382,10 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
         const targetDoc = opts.doc || document;
         const closable  = opts.closable !== false;
 
+        if (typeof window.tcvTrackUpgradePrompt === "function") {
+            window.tcvTrackUpgradePrompt("ai_optimizations", opts.closable === false ? "editor_quota_lock" : "editor_download");
+        }
+
         const existing = targetDoc.getElementById("tcv-pro-dl-overlay");
         if (existing) existing.remove();
 
