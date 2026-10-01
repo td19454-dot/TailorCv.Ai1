@@ -1530,6 +1530,7 @@
     </script>
     <script>
         function pbShowPaywall(upgradeUrl) {
+            if (window.tcvTrackUpgradePrompt) window.tcvTrackUpgradePrompt('portfolio_pro', 'portfolio_builder');
             const existing = document.getElementById('tcv-pro-dl-overlay');
             if (existing) existing.remove();
             if (!document.getElementById('tcv-pro-dl-style')) {
@@ -1594,7 +1595,7 @@
         }
     </script>
     {% endif %}
-    <script src="/static/auth_nav.js?v=20" defer></script>
+    <script src="/static/auth_nav.js?v=21" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script src="/static/resume_store.js?v=1"></script>
 <script>
