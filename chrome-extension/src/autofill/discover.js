@@ -1,0 +1,1543 @@
+// Finding the application form and describing its fields. Deterministic: no
+// LLM is involved in deciding what is on the page.
+//
+// This deliberately replaces the server engine's observe() call rather than
+// porting it. observe() is an LLM page-read, and it is not exhaustive: the same
+// Greenhouse page returned 22, 19 and 18 candidates on three consecutive runs
+// (see the comment at auto_apply/runner.py:794). That non-determinism is why
+// the server needs _MAX_FILL_SWEEPS = 3, and it is how a final "Do you consent
+// to receive marketing?" question went unanswered — it was never surfaced, so
+// it appeared in neither the filled list nor the missing list. A DOM query
+// returns the same set every time, which makes one pass sufficient and makes
+// "we saw N fields" an honest number.
+
+import { questionSignature, documentSlotFor } from './match.js';
+import { TIMING } from './timing.js';
+
+const probe = () => globalThis.__tcvFieldProbe;
+
+// ── visibility ───────────────────────────────────────────────
+
+/**
+ * Whether a field is really on screen for the user.
+ *
+ * Checked on the WRAPPER, not the control: react-select's inner input and
+ * Greenhouse's file input are legitimately zero-size or display:none while the
+ * field itself is plainly visible (which is the same reason the server engine
+ * discriminates file inputs by attribute rather than by observing them).
+ *
+ * Fails OPEN. Where no layout information is available at all — a detached
+ * node, a zero-size document, jsdom — this returns true. Dropping a field we
+ * could not measure would silently shrink the form; including one that turns
+ * out to be hidden costs at most a wasted write that verification then reports.
+ */
+export function isVisible(el) {
+  if (!el) return false;
+  const p = probe();
+  const node = (p && p.fieldWrapper(el)) || el;
+
+  if (el.disabled === true) return false;
+  if (el.readOnly === true && (el.tagName || '').toLowerCase() !== 'select') return false;
+  const type = (el.getAttribute && (el.getAttribute('type') || '').toLowerCase()) || '';
+  if (type === 'hidden') return false;
+  // A file input is a field even when the site hides it behind an Attach
+  // button, so it skips every geometric test below.
+  if (type === 'file') return !inAriaHidden(node);
+  if (inAriaHidden(node)) return false;
+
+  if (hiddenByStyle(node)) return false;
+
+  if (typeof node.getBoundingClientRect === 'function') {
+    const r = node.getBoundingClientRect();
+    // All-zero is what a detached node and jsdom both report, and is not
+    // evidence of being hidden — see "fails open" above.
+    const measured = r && (r.width || r.height || r.top || r.left);
+    if (measured && r.width < 2 && r.height < 2) return false;
+  }
+  return true;
+}
+
+/**
+ * Is this node actually on screen?
+ *
+ * The part of isVisible() that applies to any element rather than to a form
+ * control: no field wrapper, no disabled/readonly rules. Used for dropdown
+ * option rows, which are plain <li>/<div> nodes.
+ *
+ * Fails OPEN for the same reason isVisible() does — where there is no layout
+ * engine (jsdom) nothing can be measured, and dropping what we cannot measure
+ * would hide every option from the tests.
+ */
+/**
+ * An option node that is really a value already CHOSEN in another widget.
+ *
+ * Workday draws a multiselect's committed answers as tags in a selectedItem
+ * list, and marks each one data-automation-id="promptOption" — the same marker
+ * as a row in an open list. Read as options, the Country Phone Code tag
+ * "India (+91)" became the only choice for Phone Device Type, the model picked
+ * it, and Workday rejected it.
+ */
+export function isChosenValue(node) {
+  try {
+    return !!(node && node.closest
+      && node.closest('[data-automation-id="selectedItem"], [data-automation-id="selectedItemList"]'));
+  } catch (e) { return false; }
+}
+
+/**
+ * A text input that only stores the value of a <button> dropdown beside it.
+ *
+ * Workday renders each dropdown as <button aria-haspopup="listbox"> plus an
+ * input the user never sees or reaches, which holds the value for its
+ * validation. It carries the same label, so it came out as a second copy of the
+ * question ("Phone Device Type" as a dropdown AND as a text box) and was given
+ * the dropdown's answer as free text. Only skipped when the user can neither
+ * see nor tab to it — a real text box beside a dropdown is still a field.
+ */
+function isListboxCompanion(el) {
+  if (!el || (el.tagName || '').toLowerCase() !== 'input') return false;
+  const type = String(el.getAttribute('type') || 'text').toLowerCase();
+  if (type !== 'text' && type !== '') return false;
+  const unreachable = !isNodeVisible(el) || el.getAttribute('tabindex') === '-1'
+                      || el.getAttribute('aria-hidden') === 'true';
+  if (!unreachable) return false;
+  let n = el.parentElement;
+  for (let depth = 0; n && depth < 3; depth++, n = n.parentElement) {
+    let buttons = [];
+    try { buttons = n.querySelectorAll('button[aria-haspopup="listbox"]'); } catch (e) { return false; }
+    if (buttons.length === 1) return true;
+    if (buttons.length > 1) return false;       // now spanning several fields
+  }
+  return false;
+}
+
+export function isNodeVisible(node) {
+  if (!node) return false;
+  if (inAriaHidden(node)) return false;
+  if (hiddenByStyle(node)) return false;
+  if (typeof node.getBoundingClientRect === 'function') {
+    const r = node.getBoundingClientRect();
+    const measured = r && (r.width || r.height || r.top || r.left);
+    if (measured && r.width < 2 && r.height < 2) return false;
+  }
+  return true;
+}
+
+/**
+ * Whether this node or any ancestor is styled out of existence.
+ *
+ * The ancestor walk is the point. `display` is not an inherited property, so
+ * getComputedStyle(child).display on the child of a display:none parent
+ * reports the child's OWN display ("block", "inline-block") in every engine —
+ * it does not report "none". Checking only the node itself therefore misses
+ * the single most common way a form hides a field (a collapsed step, an
+ * inactive tab, a closed accordion), and those fields would be offered to the
+ * user as though they were on screen.
+ *
+ * offsetParent === null and getClientRects().length === 0 are the usual
+ * shortcuts, but both are layout reads, and layout is exactly what is
+ * unavailable where these tests run — so this walks the cascade explicitly and
+ * works with or without a layout engine.
+ */
+function hiddenByStyle(node) {
+  const win = node.ownerDocument && node.ownerDocument.defaultView;
+  if (!win || typeof win.getComputedStyle !== 'function') return false;
+  let n = node, depth = 0;
+  while (n && n.nodeType === 1 && depth < 25) {
+    let cs = null;
+    try { cs = win.getComputedStyle(n); } catch (e) { cs = null; }
+    if (cs) {
+      if (cs.display === 'none') return true;
+      if (cs.visibility === 'hidden' || cs.visibility === 'collapse') return true;
+      if (cs.opacity !== '' && cs.opacity != null && parseFloat(cs.opacity) === 0) return true;
+    }
+    n = n.parentElement;
+    depth++;
+  }
+  return false;
+}
+
+function inAriaHidden(node) {
+  let n = node, depth = 0;
+  while (n && n.nodeType === 1 && depth < 25) {
+    if (n.getAttribute && n.getAttribute('aria-hidden') === 'true') return true;
+    if (n.hidden === true) return true;
+    n = n.parentElement; depth++;
+  }
+  return false;
+}
+
+// ── choice buttons ───────────────────────────────────────────
+//
+// A question answered by pressing one of a few buttons — Oracle Candidate
+// Experience's "Are you at least 18 years of age?  [Yes] [No]" — rather than a
+// radio input or a dropdown. None of the fillable selectors match a plain
+// <button>, so a page made only of these read as "no application form found".
+// Found here as groups: 2-6 sibling buttons (or ARIA radios) with short answer
+// texts, a question above them, and nothing else fillable in the group.
+
+const CHOICE_SEL = 'button:not([type="submit"]), [role="radio"]:not(input), [role="button"][aria-pressed]';
+const NAV_TEXT = /^(back|next|previous|prev|continue|submit|save|cancel|close|add|remove|delete|edit|upload|browse|attach|apply|search|sign in|log in|\d+|[<>‹›«»←→]+)$/i;
+
+function choiceText(el) {
+  return (el.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+/** Is this choice button currently the selected one? */
+export function isChoiceSelected(el) {
+  if (!el) return false;
+  const a = n => (el.getAttribute && el.getAttribute(n)) || '';
+  if (a('aria-pressed') === 'true' || a('aria-checked') === 'true' || a('aria-selected') === 'true') return true;
+  const cls = (el.className && String(el.className)) || '';
+  return /(^|[\s_-])(selected|active|is-selected|checked|pressed)($|[\s_-])/i.test(cls);
+}
+
+// Text around a control that is NOT its question: validation messages,
+// live-region announcements, helper text. Oracle keeps "This information is
+// required." inside every choice group's box — the nearest text to the buttons
+// — and it was read as the question for all five questions on the page, so
+// "Will you require sponsorship?" reached the model as "This information is
+// required." and was answered Yes.
+export const NOT_QUESTION_SEL = '[role="alert"], [aria-live], [class*="error" i], [class*="validation" i], '
+  + '[class*="invalid" i], [class*="helper" i], [class*="hint" i], [class*="message" i], [id*="error" i]';
+
+/** A label that is only a validation prompt, never a question. */
+export const PROMPT_ONLY_RE =
+  /^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i;
+
+/** Text of `node` without the parts that are never the question. */
+function questionTextOf(node, dropSel) {
+  let clone = null;
+  try {
+    clone = node.cloneNode(true);
+    for (const x of clone.querySelectorAll(dropSel + ', ' + NOT_QUESTION_SEL)) x.remove();
+  } catch (e) { return ''; }
+  const t = choiceText(clone);
+  return PROMPT_ONLY_RE.test(t) ? '' : t;
+}
+
+/** The question a choice group answers: the text around it, never another field's. */
+function choiceQuestion(group) {
+  // A radiogroup that names itself says which text is the question.
+  const rg = group.closest && group.closest('[role="radiogroup"]');
+  if (rg) {
+    const by = rg.getAttribute('aria-labelledby') || '';
+    const named = by.split(/\s+/).map(id => {
+      try { const e = rg.ownerDocument.getElementById(id); return e ? choiceText(e) : ''; } catch (x) { return ''; }
+    }).filter(Boolean).join(' ') || rg.getAttribute('aria-label') || '';
+    if (named && !PROMPT_ONLY_RE.test(named)) return named.slice(0, 600);
+  }
+  let n = group;
+  for (let depth = 0; n && depth < 4; depth++, n = n.parentElement) {
+    if (isFormLevel(n)) break;
+    let groups = 0, fields = 0;
+    try {
+      groups = n.querySelectorAll(CHOICE_SEL).length;
+      fields = n.querySelectorAll('input:not([type="hidden"]), select, textarea').length;
+    } catch (e) { return ''; }
+    if (fields > 0 || groups > group.querySelectorAll(CHOICE_SEL).length) {
+      if (depth > 0) break;          // reached a box holding another question
+    }
+    const t = questionTextOf(n, CHOICE_SEL);
+    if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
+  }
+  return '';
+}
+
+/** The choice-button groups under `root`, each { group, buttons, question }. */
+export function choiceGroups(root) {
+  if (!root || !root.querySelectorAll) return [];
+  const byParent = new Map();
+  let all = [];
+  try { all = Array.from(root.querySelectorAll(CHOICE_SEL)); } catch (e) { return []; }
+  for (const b of all) {
+    if (b.closest('#tailorcv-sidebar, nav, header, footer, [role="navigation"], [role="tablist"], [role="menu"]')) continue;
+    if (!isVisible(b)) continue;
+    const t = choiceText(b);
+    if (!t || t.length > 40 || NAV_TEXT.test(t)) continue;
+    const parent = b.closest('[role="radiogroup"]') || b.parentElement;
+    if (!parent) continue;
+    if (!byParent.has(parent)) byParent.set(parent, []);
+    byParent.get(parent).push(b);
+  }
+  const out = [];
+  for (const [group, buttons] of byParent) {
+    if (buttons.length < 2 || buttons.length > 6) continue;
+    try { if (group.querySelector('input:not([type="hidden"]), select, textarea')) continue; }
+    catch (e) { continue; }
+    const question = choiceQuestion(group);
+    if (!question) continue;
+    out.push({ group, buttons, question });
+  }
+  return out;
+}
+
+// ── form root ────────────────────────────────────────────────
+
+const APP_ROOT_SELECTORS = [
+  'form',
+  '[role="form"]',
+  '[class*="application" i]',
+  '[id*="application" i]',
+  // Workday. There is no <form> element on a Workday application at all; every
+  // step renders inside applyFlowPage. (An earlier version listed
+  // "jobApplication" here — an invented id that matched nothing real.)
+  '[data-automation-id="applyFlowPage"]',
+  '[data-automation-id*="applyFlow" i]',
+  '[data-ui="application-form"]',      // Ashby
+  '#application-form',                 // Greenhouse classic
+  '.application--form',                // Lever
+];
+
+const SEARCHY = /search|filter|newsletter|subscribe|login|sign ?in|sign ?up|cookie|consent ?banner/i;
+
+/**
+ * Does this container look like a real application rather than a search box?
+ *
+ * The signals scoreRoot() rewards below, asked as a yes/no. A site-search or
+ * newsletter box has one or two text inputs and none of these; an application
+ * form has a file upload, a phone/email field, a submit button, or simply more
+ * fields than a search box ever carries.
+ */
+function hasApplicationSignal(el) {
+  const has = sel => { try { return !!el.querySelector(sel); } catch (e) { return false; } };
+  if (has('input[type="file"]')) return true;
+  if (has('input[type="email"]') || has('input[type="tel"]')) return true;
+  if (has('button[type="submit"], input[type="submit"]')) return true;
+  const p = probe();
+  if (!p) return false;
+  try {
+    return p.fillableIn(el).elements.filter(isVisible).length > SEARCH_VETO_MAX_FIELDS;
+  } catch (e) { return false; }
+}
+
+// A search box with more fields than this is not a search box.
+const SEARCH_VETO_MAX_FIELDS = 3;
+
+// A login box is email + password; a sign-up box adds a name and a confirm.
+const ACCOUNT_FORM_MAX_FIELDS = 6;
+
+/** A form holding a password that is still, unmistakably, an application. */
+function isApplicationWithAccount(el) {
+  const has = sel => { try { return !!el.querySelector(sel); } catch (e) { return false; } };
+  if (has('input[type="file"]')) return true;
+  const p = probe();
+  if (!p) return false;
+  try {
+    return p.fillableIn(el).elements.filter(isVisible).length > ACCOUNT_FORM_MAX_FIELDS;
+  } catch (e) { return false; }
+}
+
+/** Is this container a search/filter/login box rather than an application? */
+function looksLikeNotAnApplication(el) {
+  if (!el) return true;
+  try {
+    if (el.matches('[role="search"]')) return true;
+    // A password box marks a login or sign-up box — unless the container is an
+    // application that also creates an account, as iCIMS, Taleo and
+    // SuccessFactors ship: "Create a password" inside the same form as the name,
+    // address and resume. Vetoing those found no form at all. The password
+    // itself is never filled either way (NEVER_FILL_PATTERNS in match.js).
+    if (el.querySelector('input[type="password"]') && !isApplicationWithAccount(el)) return true;
+    const action = (el.getAttribute && el.getAttribute('action')) || '';
+    const id = (el.getAttribute && (el.getAttribute('id') || '')) || '';
+    const cls = (el.className && String(el.className)) || '';
+    // The container naming ITSELF a search/login/newsletter box is decisive.
+    if (SEARCHY.test(action) || SEARCHY.test(id) || SEARCHY.test(cls)) return true;
+    // A DESCENDANT search input is not, and treating it as such cost us every
+    // Greenhouse application: the phone field's country picker is an
+    // intl-tel-input widget containing <input type="search" id="iti-0__search-input">,
+    // so form#application-form and .application--container were both vetoed.
+    // Discovery then fell through to one SECTION of the form — Greenhouse
+    // renders two sibling .application--questions divs — and picked the larger
+    // one, the custom questions. First name, last name, email, phone, country
+    // and the resume upload live in the other one, so they were never found,
+    // never planned and never reported: the panel did not list them at all.
+    // A widget's own search box says nothing about its container's purpose.
+    if (el.querySelector('input[type="search"]') && !hasApplicationSignal(el)) return true;
+  } catch (e) { /* treat an unqueryable node as unusable */ }
+  return false;
+}
+
+function scoreRoot(el, doc) {
+  const p = probe();
+  if (!p) return null;
+  if (looksLikeNotAnApplication(el)) return null;
+  if (el.closest && el.closest('#tailorcv-sidebar')) return null;
+
+  const { elements, opaqueHosts } = p.fillableIn(el);
+  const visible = elements.filter(isVisible);
+  // Choice-button questions count as fields: a page of only "[Yes] [No]"
+  // questions (Oracle) is still an application page.
+  const choices = choiceGroups(el).length;
+  if (visible.length + choices < 2) return null;
+
+  let score = visible.length + choices;
+  const has = sel => { try { return !!el.querySelector(sel); } catch (e) { return false; } };
+  if (has('input[type="email"]') || has('input[type="tel"]')) score += 3;
+  if (has('input[type="file"]')) score += 3;
+  if (has('button[type="submit"], input[type="submit"]')) score += 2;
+  // A <form> is a stronger signal than a div that happens to contain inputs.
+  if ((el.tagName || '').toLowerCase() === 'form') score += 2;
+  // A container an ATS names as its application flow is stronger still — and on
+  // Workday it is the ONLY signal, since there is no <form> to score.
+  const automation = (el.getAttribute && el.getAttribute('data-automation-id')) || '';
+  if (/applyFlow/i.test(automation)) score += 4;
+  void doc;
+  return { root: el, score, fields: visible, opaqueHosts };
+}
+
+const APPLY_URL_RE = new RegExp([
+  /\/apply(\/|$|\?)/.source,
+  /\/application(s)?(\/|$|\?)/.source,
+  /jobs\.lever\.co\/[^/]+\/[^/]+\/apply/.source,
+  /(job-boards|boards)\.greenhouse\.io\/[^/]+\/jobs\//.source,
+  /greenhouse\.io\/embed\/job_app/.source,
+  /myworkdayjobs\.com\/.*\/job\//.source,
+  /\.ashbyhq\.com\/[^/]+\/[0-9a-f-]{8,}/.source,
+  /smartrecruiters\.com\/.*\/.*\/?(apply)?/.source,
+  /workable\.com\/j\//.source,
+  /icims\.com\/jobs\//.source,
+  /jobvite\.com\/.*\/job\//.source,
+  /bamboohr\.com\/(careers|jobs)\//.source,
+]. join('|'), 'i');
+
+/** Which ATS we appear to be on, for telemetry and per-site quirks. */
+export function detectAts(url) {
+  const u = String(url || '').toLowerCase();
+  if (/greenhouse\.io/.test(u)) return 'greenhouse';
+  if (/lever\.co/.test(u)) return 'lever';
+  if (/ashbyhq\.com/.test(u)) return 'ashby';
+  if (/myworkdayjobs\.com|myworkdaysite\.com/.test(u)) return 'workday';
+  if (/smartrecruiters\.com/.test(u)) return 'smartrecruiters';
+  if (/workable\.com/.test(u)) return 'workable';
+  if (/icims\.com/.test(u)) return 'icims';
+  if (/jobvite\.com/.test(u)) return 'jobvite';
+  if (/bamboohr\.com/.test(u)) return 'bamboohr';
+  if (/taleo\.net/.test(u)) return 'taleo';
+  if (/successfactors\.(com|eu)/.test(u)) return 'successfactors';
+  if (/oraclecloud\.com\/hcmui\/candidateexperience/.test(u)) return 'oracle';
+  return 'generic';
+}
+
+const MIN_CONFIDENT_SCORE = 6;
+
+/**
+ * The application form on this page, or null.
+ *
+ * `{ root, score, fields, opaqueHosts, ats, isForm }`. Cheap enough (one
+ * querySelectorAll per candidate) to call on every sidebar render.
+ */
+export function findForm(doc) {
+  const d = doc || globalThis.document;
+  if (!d || !probe()) return null;
+
+  const seen = new Set();
+  const scored = [];
+  for (const sel of APP_ROOT_SELECTORS) {
+    let nodes = [];
+    try { nodes = Array.prototype.slice.call(d.querySelectorAll(sel)); } catch (e) { continue; }
+    for (const node of nodes) {
+      if (seen.has(node)) continue;
+      seen.add(node);
+      const s = scoreRoot(node, d);
+      if (s) scored.push(s);
+    }
+  }
+
+  // Nothing convincing declared itself. Fall back to the smallest element that
+  // contains every visible fillable control on the page — a careers page that
+  // renders its form into bare divs still has one. Run not only when nothing
+  // scored but also when everything that did is tiny: otherwise a stray
+  // two-field box in a page header wins by default and the real form, which
+  // matched no selector, is never considered.
+  if (!scored.length || scored.every(s => s.fields.length < 3)) {
+    // Choice-button groups too: a page of only "[Yes] [No]" questions has no
+    // other fillable control to be found by (Oracle's application questions).
+    const all = probe().fillableIn(d).elements.filter(isVisible)
+      .concat(choiceGroups(d.body).map(c => c.group));
+    if (all.length >= 2) {
+      const root = commonAncestor(all);
+      const s = root && scoreRoot(root, d);
+      if (s) scored.push(s);
+    }
+  }
+  if (!scored.length) return null;
+
+  // Prefer the highest score; on a tie prefer the TIGHTEST root, so a <form>
+  // inside a page wrapper wins over the wrapper.
+  scored.sort((a, b) => (b.score - a.score) || (a.fields.length - b.fields.length));
+  const best = scored[0];
+  const url = (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '';
+  return {
+    root: best.root,
+    score: best.score,
+    fields: best.fields,
+    opaqueHosts: best.opaqueHosts,
+    ats: detectAts(url),
+    url,
+    isForm: best.score >= MIN_CONFIDENT_SCORE || APPLY_URL_RE.test(url),
+  };
+}
+
+function commonAncestor(els) {
+  let node = els[0];
+  for (let i = 1; i < els.length; i++) {
+    node = pairAncestor(node, els[i]);
+    if (!node) return null;
+  }
+  // Never return <body>/<html> as a form root: scoring it would sweep in the
+  // page nav and the sidebar's own controls.
+  while (node && ['body', 'html'].includes((node.tagName || '').toLowerCase())) {
+    return node;   // caller's scoreRoot will reject it on the searchy/size tests
+  }
+  return node;
+}
+
+function pairAncestor(a, b) {
+  if (!a || !b) return null;
+  if (a === b) return a;
+  if (a.contains && a.contains(b)) return a;
+  if (b.contains && b.contains(a)) return b;
+  let n = a.parentElement;
+  while (n) {
+    if (n.contains(b)) return n;
+    n = n.parentElement;
+  }
+  return null;
+}
+
+/** Whether a URL has the shape of an application page. */
+export function looksLikeApplyUrl(url) {
+  return APPLY_URL_RE.test(String(url || ''));
+}
+
+/**
+ * Everything detection saw on this page, for the console.
+ *
+ * Built for the case where autofill does not appear and nobody can see why. The
+ * point is to print the page's own markup back — which candidate containers
+ * scored what, why each rejected one was rejected, and which interactive-looking
+ * controls no part of discovery handles — so an unsupported ATS widget becomes a
+ * visible, specific gap rather than a mystery.
+ */
+export function diagnose(doc) {
+  const d = doc || globalThis.document;
+  const p = probe();
+  const report = { summary: {}, roots: [], fields: [], uncovered: [] };
+  if (!p) { report.summary.error = 'field probe not installed'; return report; }
+
+  const seen = new Set();
+  for (const sel of APP_ROOT_SELECTORS) {
+    let nodes = [];
+    try { nodes = Array.prototype.slice.call(d.querySelectorAll(sel)); } catch (e) { continue; }
+    for (const node of nodes.slice(0, 12)) {
+      if (seen.has(node)) continue;
+      seen.add(node);
+      const all = p.fillableIn(node).elements;
+      const scored = scoreRoot(node, d);
+      report.roots.push({
+        selector: sel,
+        node: describeNode(node),
+        fillable: all.length,
+        visible: all.filter(isVisible).length,
+        score: scored ? scored.score : null,
+        rejected: scored ? '' : rootRejection(node, all),
+      });
+    }
+  }
+
+  const form = findForm(d);
+  if (form) {
+    for (const row of describeFields(form)) {
+      report.fields.push({
+        label: String(row.label || '').slice(0, 60), kind: row.kind, key: row.key,
+        filled: row.filled, required: row.required, readable: row.readable,
+      });
+    }
+  }
+
+  // Interactive-looking controls discovery does not select at all.
+  const covered = new Set(form ? form.fields : []);
+  let candidates = [];
+  try {
+    candidates = Array.prototype.slice.call(d.querySelectorAll(
+      '[aria-haspopup], [role="listbox"], [role="spinbutton"], [role="radio"], '
+      + '[role="checkbox"], [role="switch"], [role="textbox"], [data-automation-id]'));
+  } catch (e) { candidates = []; }
+  for (const el of candidates) {
+    if (covered.has(el) || (el.closest && el.closest('#tailorcv-sidebar'))) continue;
+    if (el.matches && el.matches(p.FILLABLE_SEL)) continue;
+    const role = el.getAttribute('role') || '';
+    const automation = el.getAttribute('data-automation-id') || '';
+    // Only report data-automation-id nodes that look like inputs.
+    if (!role && !el.getAttribute('aria-haspopup')
+        && !/input|select|dropdown|radio|checkbox|date|prompt|textbox/i.test(automation)) continue;
+    report.uncovered.push({ node: describeNode(el), role, automation,
+                            text: clean(el.textContent).slice(0, 40) });
+    if (report.uncovered.length >= 40) break;
+  }
+
+  report.summary = {
+    url: (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '',
+    applyShapedUrl: looksLikeApplyUrl(d.defaultView && d.defaultView.location
+                                      && d.defaultView.location.href),
+    formFound: !!form,
+    isForm: !!(form && form.isForm),
+    root: form ? describeNode(form.root) : null,
+    fieldCount: form ? form.fields.length : 0,
+    totalFillableOnPage: p.fillableIn(d).elements.length,
+    opaqueHosts: form ? form.opaqueHosts : 0,
+  };
+  return report;
+}
+
+function rootRejection(node, fillable) {
+  if (node.closest && node.closest('#tailorcv-sidebar')) return 'inside the TailorCV panel';
+  try {
+    if (node.matches('[role="search"]')) return 'role=search';
+    if (node.querySelector('input[type="search"]')) return 'contains a search input';
+    if (node.querySelector('input[type="password"]') && !isApplicationWithAccount(node)) {
+      return 'contains a password field (and is login/sign-up sized)';
+    }
+  } catch (e) { /* ignore */ }
+  const text = `${node.getAttribute('action') || ''} ${node.id || ''} ${node.className || ''}`;
+  if (SEARCHY.test(text)) return `id/class/action looks like search/login: ${text.trim().slice(0, 60)}`;
+  const visible = fillable.filter(isVisible).length;
+  if (visible < 2) return `only ${visible} visible field(s)`;
+  return 'unknown';
+}
+
+function describeNode(el) {
+  if (!el || !el.tagName) return '';
+  const tag = el.tagName.toLowerCase();
+  const id = el.id ? `#${el.id}` : '';
+  const automation = el.getAttribute && el.getAttribute('data-automation-id');
+  const cls = typeof el.className === 'string' && el.className
+    ? `.${el.className.trim().split(/\s+/).slice(0, 2).join('.')}` : '';
+  return `${tag}${id}${automation ? `[data-automation-id=${automation}]` : ''}${cls}`.slice(0, 120);
+}
+
+/** The cheap public predicate content.js calls on every render. */
+export function isApplicationPage(doc) {
+  const form = findForm(doc);
+  if (form && form.isForm) return form;
+  return tilesOnlyForm(doc);
+}
+
+// ── profile-item tiles (Oracle Candidate Experience) ─────────
+//
+// Oracle's Education and Experience steps show each entry as a summary tile —
+// "Unnamed Major / Jadavpur University 12/2027 / Fields to fix: 1" — with
+// Edit and Delete buttons, and no boxes to fill until Edit opens the entry's
+// form inline. From a real JPMC capture:
+//   <div class="apply-flow-block apply-flow-block--tile-profile-items">
+//     <h2 class="apply-flow-block__title"><span>Education</span></h2>
+//     <article class="apply-flow-profile-item-tile apply-flow-profile-item-tile--invalid">
+//       <div class="apply-flow-profile-item-tile__summary" aria-label="Unnamed Major Jadavpur University 12/2027">
+//       <button class="apply-flow-profile-item-tile__edit-item-icon" aria-label="Edit">
+// A page of only tiles has no fillable control, so it was reported as having
+// no application form at all.
+
+export const TILE_BLOCK_SEL = '.apply-flow-block--tile-profile-items';
+export const TILE_SEL = 'article.apply-flow-profile-item-tile';
+
+/** The tile blocks on screen: [{ block, kind: 'education'|'experience'|'', title }]. */
+export function profileTileBlocks(doc) {
+  const d = doc || globalThis.document;
+  let blocks = [];
+  try { blocks = Array.from(d.querySelectorAll(TILE_BLOCK_SEL)); } catch (e) { return []; }
+  return blocks.filter(isNodeVisible).map(block => {
+    const heading = block.querySelector('.apply-flow-block__title');
+    const title = ((heading && heading.textContent) || '').replace(/\s+/g, ' ').trim();
+    const kind = /educat|school|qualification/i.test(title) ? 'education'
+      : /experience|employment|work history/i.test(title) ? 'experience' : '';
+    return { block, kind, title };
+  });
+}
+
+function tilesOnlyForm(doc) {
+  const d = doc || globalThis.document;
+  const blocks = profileTileBlocks(d).filter(b => b.kind);
+  if (!blocks.length) return null;
+  const url = (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '';
+  return {
+    root: blocks[0].block.closest('form') || blocks[0].block.parentElement || d.body,
+    score: 0, fields: [], opaqueHosts: 0, ats: detectAts(url), url, isForm: true, tilesOnly: true,
+  };
+}
+
+// ── field descriptors ────────────────────────────────────────
+
+/**
+ * Describe every field in `form`, collapsing radio/checkbox groups and
+ * assigning each a key that survives a re-render.
+ *
+ * The key is questionSignature(ident), exactly the server engine's registry
+ * key: ident comes from name || label || id, so a react-select id carrying a
+ * render-order counter cannot change it. Duplicate keys on one page are
+ * suffixed by document order rather than merged — two fields that genuinely
+ * ask the same thing (a second "Company" row in a work-history repeater) are
+ * different fields.
+ */
+export function describeFields(form) {
+  const p = probe();
+  if (!p || !form) return [];
+
+  const out = [];
+  const groupKeys = new Map();   // logical identity -> index in `out`
+  const keyCounts = new Map();
+  const dateGroups = new Map();  // date wrapper -> its row
+
+  const fields = (form.fields || []).concat(orphanFileInputs(form));
+  for (const el of fields) {
+    // Workday's value store behind a <button> dropdown, not a question of its own.
+    if (isListboxCompanion(el)) continue;
+    // Workday dates: three spinbutton inputs (month, day, year) that are one
+    // question. Described individually they come out as three fields labelled
+    // "Month", "Day" and "Year", none of which matches anything the user has
+    // on file — so the date is never filled, and three noise rows appear.
+    const dateWrap = dateWrapperOf(el);
+    if (dateWrap) {
+      const existing = dateGroups.get(dateWrap);
+      if (existing) { existing.members.push(el); continue; }
+      const row = dateRow(dateWrap, el, p, keyCounts);
+      dateGroups.set(dateWrap, row);
+      out.push(row);
+      continue;
+    }
+
+    let d = p.describeEl(el);
+    // A file input with no id, name, label or aria-* has no identity to read —
+    // Adobe's is literally <input type="file" tabindex="-1" hidden>. That is
+    // not an unreadable field, it is an upload whose name is on the control
+    // beside it, so it gets described from that instead of being dropped.
+    if (!d && isFileField(el)) {
+      const named = uploadGroupLabel(el);
+      if (named) {
+        d = { ident: named, kind: 'file', label: named, value: '', filled: false,
+              invalid: false, required: false, options: null };
+      }
+    }
+    // No stable identity. Reported rather than dropped, so the review UI can
+    // say "we could not read N fields" instead of quietly showing a short list.
+    if (!d) {
+      out.push(unreadable(el, p));
+      continue;
+    }
+
+    const kind = d.kind;
+    const logical = groupIdentity(el, d, kind);
+    if (logical && groupKeys.has(logical)) {
+      // Another member of a group already seen: add its option, don't add a field.
+      const existing = out[groupKeys.get(logical)];
+      existing.members.push(el);
+      const label = p.labelFor(el) || el.value || '';
+      if (label) existing.options.push({ value: el.value || label, label, el });
+      if (el.checked) { existing.filled = true; existing.value = label; }
+      if (p.requiredFor(el)) existing.required = true;
+      continue;
+    }
+
+    let key = questionSignature(d.ident);
+    if (!key) { out.push(unreadable(el, p)); continue; }
+    const n = (keyCounts.get(key) || 0) + 1;
+    keyCounts.set(key, n);
+    if (n > 1) key = `${key}#${n}`;
+
+    const row = {
+      key,
+      el,
+      members: [el],
+      kind,
+      label: (d.label || '').trim() || d.ident,
+      ident: d.ident,
+      // Collapsed the same way the server engine collapses it: a value is only
+      // carried when the field is genuinely filled. An unfilled <select> still
+      // reports its placeholder ("Select…") as displayed text, and `value` feeds
+      // the anti-downgrade guard, which treats any non-empty current value as a
+      // real answer worth protecting — so leaking a placeholder through here
+      // makes it refuse a legitimate first "prefer not to answer".
+      value: d.filled ? (d.value || '') : '',
+      filled: !!d.filled,
+      invalid: !!d.invalid,
+      required: !!d.required,
+      options: normalizeOptions(d.options),
+      readable: true,
+      documentSlot: null,
+      hints: fieldHints(el),
+      // A separate country-code picker beside a phone box means the box wants
+      // the national number only; pasting "+91 98765 43210" into it produces a
+      // doubled dial code the form then rejects.
+      hasCountryWidget: hasCountryWidget(el),
+    };
+
+    if (kind === 'radio' || kind === 'checkbox') {
+      const label = p.labelFor(el) || el.value || '';
+      row.options = label ? [{ value: el.value || label, label, el }] : [];
+      row.optionLabel = label;
+      if (logical) groupKeys.set(logical, out.length);
+    }
+
+    if (isFileField(el)) {
+      row.kind = 'file';
+      let slot = documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
+      // The label we have names no document, or names only the button ("Attach").
+      // Either way the field's real name is on the control beside it: Greenhouse
+      // puts it on the wrapping group, Adobe on the "Upload Resume" button while
+      // the row itself reads "Upload options". Only taken when it actually names
+      // a document, so a genuine "Portfolio" row is never rewritten.
+      if (!slot || UPLOAD_ACTION_RE.test(row.label)) {
+        const group = uploadGroupLabel(el);
+        const groupSlot = documentSlotFor(group);
+        if (group && (groupSlot || UPLOAD_ACTION_RE.test(row.label))) {
+          row.label = group;
+          slot = groupSlot || slot;
+        }
+      }
+      // Still unnamed: Workday labels the box "Upload a file (5MB max)" and the
+      // button "Select files", and says "Resume/CV" only in the section heading
+      // above them — outside the box uploadGroupLabel is allowed to read.
+      if (!slot) {
+        const heading = sectionHeadingBefore(el);
+        const headingSlot = documentSlotFor(heading);
+        if (headingSlot) {
+          slot = headingSlot;
+          row.label = heading;
+        }
+      }
+      row.documentSlot = slot;
+      row.filled = hasUploadedFile(el);
+    }
+    out.push(row);
+  }
+
+  // Drag-and-drop uploaders that have no <input type="file"> at all.
+  //
+  // Most do have one, hidden, and it is found by the scan above. A few (FilePond
+  // and Uppy in some configurations) render only a drop target. Those are real
+  // required fields, and leaving them undiscovered is the worst outcome
+  // available: the user is told the form is filled and never learns a document
+  // slot was missed. Surfaced here so they appear in the results either way.
+  // Choice-button questions ("Are you at least 18?  [Yes] [No]").
+  for (const { group, buttons, question } of choiceGroups(form.root)) {
+    let key = questionSignature(question) || `choice ${out.length}`;
+    const n = (keyCounts.get(key) || 0) + 1;
+    keyCounts.set(key, n);
+    if (n > 1) key = `${key}#${n}`;
+    const selected = buttons.find(isChoiceSelected);
+    out.push({
+      key, el: group, members: buttons, kind: 'choice',
+      label: question, ident: key,
+      value: selected ? choiceText(selected) : '', filled: !!selected,
+      invalid: false, required: /\*\s*$|\*|\(required\)/.test(question),
+      options: buttons.map(b => ({ value: choiceText(b), label: choiceText(b), el: b })),
+      readable: true, documentSlot: null, hints: { tag: 'choice' },
+    });
+  }
+
+  for (const zone of dropOnlyZones(form.root)) {
+    const label = zoneLabel(zone, p);
+    const key = questionSignature(label) || `dropzone ${out.length}`;
+    if (keyCounts.has(key)) continue;
+    keyCounts.set(key, 1);
+    out.push({
+      key, el: zone, members: [zone], kind: 'file',
+      label: label || 'File upload', ident: key, value: '',
+      filled: hasUploadedFile(zone), invalid: false, required: /\*|\(required\)/.test(label),
+      options: [], readable: true,
+      documentSlot: documentSlotFor(label),
+      hints: { tag: 'dropzone' }, dropOnly: true,
+    });
+  }
+
+  // A form with its own country-code FIELD wants the phone number without the
+  // dial code. Workday's "Country / Territory Phone Code" is a separate field
+  // entirely, not a picker inside the phone box, so the per-field
+  // hasCountryWidget() check (which looks only at the box's own surroundings)
+  // missed it — and "+918240044652" went into a box that already had +91
+  // selected beside it, which Workday rejects as an invalid format.
+  const phoneCode = out.find(r => PHONE_CODE_RE.test(r.label || ''));
+  if (phoneCode) {
+    for (const row of out) {
+      if (row === phoneCode) continue;
+      if (row.hints && row.hints.type === 'tel' || /\b(phone|mobile)\b/i.test(row.label || '')) {
+        if (!/extension|\bext\b|device|type|code/i.test(row.label || '')) row.hasCountryWidget = true;
+      }
+    }
+  }
+
+  // The group question can only be worked out once every option is known, so it
+  // is a second pass: during the first, a group's later members have not been
+  // seen yet and the smallest-common-ancestor search would find the wrong node.
+  for (const row of out) {
+    if (row.kind === 'date-parts') {
+      const now = readDateParts(row);
+      row.filled = now.filled;
+      row.value = now.value;
+      continue;
+    }
+    if (row.kind !== 'radio' && row.kind !== 'checkbox') continue;
+    const question = groupLabel(row.members, p);
+    // A lone checkbox is its own question ("I agree to the terms"), so its own
+    // label is the right one and a wrapper search would only find something
+    // broader and less specific.
+    if (question && (row.members.length > 1 || row.kind === 'radio')) {
+      row.label = question;
+      // The required marker lives on the QUESTION (Workday puts the asterisk in
+      // the fieldset legend), never on "Yes"/"No". Read only off the options, a
+      // required group looked optional — and an optional unknown is skipped
+      // rather than asked, so the user was never told it needed an answer.
+      if (/\*|\(required\)/i.test(question)) row.required = true;
+      const group = row.members[0].closest && row.members[0].closest('fieldset, [role="radiogroup"]');
+      if (group && group.getAttribute('aria-required') === 'true') row.required = true;
+    } else if (row.optionLabel) row.label = row.optionLabel;
+  }
+  return out;
+}
+
+function unreadable(el, p) {
+  return {
+    key: '', el, members: [el], kind: 'unknown',
+    label: (p.labelFor(el) || '').trim(), ident: '', value: '',
+    filled: false, invalid: false, required: !!p.requiredFor(el),
+    options: [], readable: false, documentSlot: null, hints: fieldHints(el),
+  };
+}
+
+const DATE_PART_RE = /dateSection(Month|Day|Year)/i;
+
+// "Country / Territory Phone Code", "Country Code", "Dial Code", "Calling code".
+const PHONE_CODE_RE = /\b(phone|dial(ing)?|calling|country)\s*(\/\s*territory\s*)?(phone\s*)?code\b/i;
+
+function dateWrapperOf(el) {
+  const automation = (el.getAttribute && el.getAttribute('data-automation-id')) || '';
+  if (!DATE_PART_RE.test(automation)) return null;
+  return (el.closest && el.closest('[data-automation-id="dateInputWrapper"]'))
+      || el.parentElement;
+}
+
+function dateRow(wrap, first, p, keyCounts) {
+  let label = '';
+  const by = wrap.getAttribute && wrap.getAttribute('aria-labelledby');
+  if (by) {
+    const ref = wrap.ownerDocument.getElementById(by);
+    if (ref) label = clean(ref.textContent);
+  }
+  if (!label) {
+    const field = wrap.closest && wrap.closest('[data-automation-id^="formField"]');
+    const lab = field && field.querySelector('label, legend');
+    if (lab) label = clean(lab.textContent);
+  }
+  label = label || 'Date';
+  let key = questionSignature(label) || 'date';
+  const n = (keyCounts.get(key) || 0) + 1;
+  keyCounts.set(key, n);
+  if (n > 1) key = `${key}#${n}`;
+  return {
+    key, el: first, members: [first], kind: 'date-parts', label, ident: label,
+    value: '', filled: false, invalid: false,
+    required: /\*/.test(label) || (first.getAttribute && first.getAttribute('aria-required') === 'true'),
+    options: [], readable: true, documentSlot: null,
+    hints: { type: 'date-parts', tag: 'input' },
+  };
+}
+
+/** Which part of a date a Workday spinbutton holds: 'month', 'day' or 'year'. */
+export function datePartOf(el) {
+  const automation = (el.getAttribute && el.getAttribute('data-automation-id')) || '';
+  const m = automation.match(DATE_PART_RE);
+  return m ? m[1].toLowerCase() : '';
+}
+
+function isFileField(el) {
+  return (el.getAttribute && (el.getAttribute('type') || '').toLowerCase() === 'file');
+}
+
+// A label that names the BUTTON rather than the field. Greenhouse ships
+// <label class="visually-hidden" for="resume">Attach</label> beside the file
+// input and puts the field's real name on the wrapper, so labelFor() — which
+// takes label[for] first, correctly for every other field — reads "Attach".
+// "Attach" matches no document slot, so the resume was never attached: the
+// planner reported "we could not tell which file this wants" and handed a
+// required upload back to the user on every Greenhouse application.
+const UPLOAD_ACTION_RE =
+  /^(attach|upload|browse|choose|select|add|replace)(\s+(a|an|your)?\s*(file|document|resume|cv|another))?\.?$/i;
+
+// A document filename as an ATS displays an upload it has taken:
+// "Shubham_Sarkar_resume.pdf". A word character must sit right before the dot,
+// so instructions like "Upload a .pdf or .docx" never read as an uploaded file.
+const UPLOADED_NAME_RE = /[\w)\]-]\.(pdf|docx?|rtf|txt|odt|pages)\b/i;
+
+/**
+ * Does this upload field already hold a document?
+ *
+ * The input's own FileList when the page kept it; otherwise the filename the
+ * ATS shows in the field's box. Greenhouse, Lever and Workday all clear the
+ * input once they have taken the file and show only its name, so the FileList
+ * alone would call a finished upload empty — and autofill would replace the
+ * resume the person just chose (often one tailored for this job) with their
+ * base resume. Same climb as uploadGroupLabel: never past a box that also
+ * holds another upload, so the Cover Letter's filename can't fill the Resume.
+ */
+export function hasUploadedFile(el) {
+  try { if (el.files && el.files.length) return true; } catch (e) { /* ignore */ }
+  const own = (el.tagName || '').toLowerCase() !== 'input' ? el : null;   // a drop zone
+  if (own && UPLOADED_NAME_RE.test(own.textContent || '')) return true;
+  let n = el.parentElement, depth = 0;
+  while (n && depth < 6) {
+    let files = 0;
+    try { files = n.querySelectorAll('input[type="file"]').length; } catch (e) { break; }
+    if (files > 1) break;
+    if (isFormLevel(n)) break;
+    if (UPLOADED_NAME_RE.test(n.textContent || '')) return true;
+    n = n.parentElement; depth++;
+  }
+  return false;
+}
+
+/**
+ * The section heading an upload sits under, or ''.
+ *
+ * Only a HEADING (h1-h6, role=heading), never nearby label text: a heading is
+ * a section's title, while a label beside the box may belong to the previous
+ * field. And only when no other upload sits between that heading and this
+ * one — under "Resume/CV" followed by an unheaded cover-letter box, the second
+ * box must not inherit "Resume/CV".
+ */
+function sectionHeadingBefore(el) {
+  const doc = el.ownerDocument;
+  if (!doc) return '';
+  const FOLLOWS = 4;   // Node.DOCUMENT_POSITION_FOLLOWING
+  let heading = null;
+  try {
+    for (const h of doc.querySelectorAll('h1, h2, h3, h4, h5, h6, [role="heading"]')) {
+      if (h.closest('#tailorcv-sidebar')) continue;
+      if (h.compareDocumentPosition(el) & FOLLOWS) heading = h;
+      else break;
+    }
+    if (!heading) return '';
+    for (const other of doc.querySelectorAll('input[type="file"]')) {
+      if (other === el) continue;
+      const afterHeading = heading.compareDocumentPosition(other) & FOLLOWS;
+      const beforeEl = other.compareDocumentPosition(el) & FOLLOWS;
+      if (afterHeading && beforeEl) return '';
+    }
+  } catch (e) { return ''; }
+  const text = (heading.textContent || '').replace(/\s+/g, ' ').trim();
+  return text.length <= 60 ? text : '';
+}
+
+/**
+ * The accessible name of the group wrapping a file input, or ''.
+ *
+ * Only the standard naming mechanisms — an ancestor's `aria-labelledby` (what
+ * Greenhouse's <div role="group" aria-labelledby="upload-label-resume"> uses)
+ * or a <fieldset><legend>. Scraping nearby text instead would read the
+ * PREVIOUS field's label on a compact form, which is worse than no label: a
+ * confident wrong slot attaches the resume to "Cover Letter".
+ *
+ * Climbs only while the ancestor still wraps this one file input, so a section
+ * holding both Resume and Cover Letter can never name either of them.
+ */
+function uploadGroupLabel(el) {
+  const doc = el.ownerDocument;
+  if (!doc) return '';
+  const text = n => (n && n.textContent ? n.textContent.replace(/\s+/g, ' ').trim() : '');
+  let n = el.parentElement, depth = 0;
+  while (n && depth < 6) {
+    let files = 0;
+    try { files = n.querySelectorAll('input[type="file"]').length; } catch (e) { break; }
+    if (files > 1) break;                       // now covering a sibling upload
+    if (isFormLevel(n)) break;
+
+    const by = (n.getAttribute && n.getAttribute('aria-labelledby')) || '';
+    if (by) {
+      const named = by.split(/\s+/)
+        .map(id => { try { return text(doc.getElementById(id)); } catch (e) { return ''; } })
+        .filter(Boolean).join(' ');
+      if (named && !UPLOAD_ACTION_RE.test(named)) return named;
+    }
+    if ((n.tagName || '').toLowerCase() === 'fieldset') {
+      const lg = n.querySelector('legend');
+      const named = text(lg);
+      if (named && !UPLOAD_ACTION_RE.test(named)) return named;
+    }
+    // The button that opens the file picker, or a heading over the block.
+    // Adobe (Phenom) ships <div class="resume-upload-wrapper"><button>Upload
+    // Resume</button><input type="file" hidden></div> — the input carries no
+    // id, name, aria-label or <label for>, so the ONLY thing naming this field
+    // is the button's own text. Bare action words are still refused, which is
+    // what keeps Greenhouse's "Attach" from winning over its group label.
+    let named = '';
+    try {
+      const texts = Array.from(
+        n.querySelectorAll('button, label, legend, [role="button"], h1, h2, h3, h4'))
+        .map(text).filter(t => t && t.length <= 60);
+      // "Upload Resume" is an action phrase AND names the document, and on
+      // Adobe it is the only name the field has — so naming beats the
+      // action-word rule. A bare "Attach" names nothing and is still refused.
+      named = texts.find(t => documentSlotFor(t)) || '';
+      // Anything else is only trusted in the field's OWN wrapper: one level up
+      // sits "Apply With LinkedIn" beside the Dropbox and Drive buttons, and
+      // any of those would be a confident wrong name.
+      if (!named && depth === 0) named = texts.find(t => !UPLOAD_ACTION_RE.test(t)) || '';
+    } catch (e) { /* ignore */ }
+    if (named) return named;
+    n = n.parentElement; depth++;
+  }
+  return '';
+}
+
+/**
+ * File inputs that belong to this application but sit OUTSIDE the form root.
+ *
+ * Adobe's apply page puts the whole upload block above the <form> and inside no
+ * form at all, so enumerating the root found no upload and the resume was never
+ * attached. Deliberately narrow: only when the root itself holds no file input,
+ * only inputs that belong to no other <form> (an avatar or search upload
+ * elsewhere on the page stays out), and at most two.
+ */
+function orphanFileInputs(form) {
+  const root = form && form.root;
+  const doc = root && root.ownerDocument;
+  if (!doc) return [];
+  try {
+    if (root.querySelectorAll('input[type="file"]').length) return [];
+    return Array.from(doc.querySelectorAll('input[type="file"]'))
+      .filter(el => !root.contains(el) && !(el.closest && el.closest('form')) && isVisible(el))
+      .slice(0, 2);
+  } catch (e) { return []; }
+}
+
+/** Is `el` the form/page level rather than one field's wrapper? */
+function isFormLevel(el) {
+  const tag = (el.tagName || '').toLowerCase();
+  return tag === 'form' || tag === 'body' || tag === 'html' || tag === 'main';
+}
+
+const DROP_ZONE_SEL = [
+  '[class*="dropzone" i]', '[class*="drop-zone" i]', '[class*="filepond" i]',
+  '[class*="uppy" i]', '[data-uppy]', '[data-filepond]',
+].join(', ');
+
+/** Drop targets in `root` that contain no file input of their own. */
+function dropOnlyZones(root) {
+  if (!root) return [];
+  let zones = [];
+  try { zones = Array.prototype.slice.call(root.querySelectorAll(DROP_ZONE_SEL)); }
+  catch (e) { return []; }
+  const out = [];
+  for (const zone of zones) {
+    let hasInput = false;
+    try { hasInput = !!zone.querySelector('input[type="file"]'); } catch (e) { hasInput = true; }
+    // Nested matches (an Uppy root inside an Uppy dashboard) would otherwise each
+    // become a field; keep only the innermost.
+    const nested = out.some(other => zone.contains(other) || other.contains(zone));
+    if (!hasInput && !nested && isVisible(zone)) out.push(zone);
+  }
+  return out;
+}
+
+function zoneLabel(zone, p) {
+  const aria = zone.getAttribute && zone.getAttribute('aria-label');
+  if (aria) return aria.trim();
+  const viaProbe = p.labelFor(zone);
+  if (viaProbe) return viaProbe;
+  // The label usually sits just above the zone.
+  const prev = zone.previousElementSibling;
+  if (prev && /^(label|legend|h[1-6]|p|span|div)$/i.test(prev.tagName || '')) {
+    const text = clean(prev.textContent);
+    if (text && text.length < 120) return text;
+  }
+  return clean(zone.textContent).slice(0, 80);
+}
+
+/**
+ * The identity that makes several controls ONE field.
+ *
+ * A shared `name` is what collapses three radios into one question. Workday
+ * renders radio groups with no name at all, so a [role=radiogroup] or fieldset
+ * ancestor is the fallback — without it each option reads as its own yes/no
+ * field and the group gets three conflicting answers.
+ */
+function groupIdentity(el, d, kind) {
+  if (kind !== 'radio' && kind !== 'checkbox') return null;
+  const name = el.getAttribute && el.getAttribute('name');
+  if (name) return `name:${kind}:${name}`;
+  const group = el.closest && el.closest('[role="radiogroup"], fieldset');
+  if (group) {
+    if (!group.__tcvGroupId) {
+      group.__tcvGroupId = `g${Math.random().toString(36).slice(2, 10)}`;
+    }
+    return `grp:${kind}:${group.__tcvGroupId}`;
+  }
+  void d;
+  return null;
+}
+
+/**
+ * The QUESTION a radio/checkbox group asks — not the label of one option.
+ *
+ * describeEl's label for a radio is its own option text ("Yes"), which is the
+ * right answer for that element and the wrong one for the field. A fieldset
+ * legend or a radiogroup's aria-label gives the question directly; where neither
+ * exists (Lever wraps the question in a plain <label> beside the options, with no
+ * fieldset anywhere) the smallest ancestor containing every member is found and
+ * searched for a label that does not itself wrap a control.
+ *
+ * Getting this wrong is not cosmetic: with "Yes" as the question, the group is
+ * unanswerable, and a group we cannot name is a required field left blank.
+ */
+function groupLabel(members, p) {
+  const el = members[0];
+  const group = el.closest && el.closest('[role="radiogroup"], fieldset');
+  if (group) {
+    const aria = group.getAttribute && group.getAttribute('aria-label');
+    if (aria) return aria.trim();
+    const legend = group.querySelector && group.querySelector('legend');
+    if (legend) return clean(legend.textContent);
+    const viaProbe = p.labelFor(group);
+    if (viaProbe) return viaProbe;
+  }
+
+  // Smallest ancestor that contains all the options.
+  let n = el.parentElement, depth = 0;
+  while (n && depth < 6) {
+    if (members.every(m => n.contains(m))) {
+      const found = questionLabelIn(n);
+      if (found) return found;
+    }
+    n = n.parentElement; depth++;
+  }
+  return '';
+}
+
+/** A label inside `node` that describes the group rather than one option. */
+function questionLabelIn(node) {
+  let labels = null;
+  try { labels = node.querySelectorAll('label, legend'); } catch (e) { return ''; }
+  for (const label of labels) {
+    // A label wrapping a control is that control's own option text.
+    if (label.querySelector && label.querySelector(probe().CONTROL_SEL)) continue;
+    if (label.getAttribute && label.getAttribute('for')) continue;
+    const text = clean(label.textContent);
+    // An option label is short and answer-shaped; a question is not.
+    if (text && !/^(yes|no|n\/a|other|male|female)$/i.test(text)) return text;
+  }
+  return '';
+}
+
+function clean(text) {
+  return String(text == null ? '' : text).replace(/\s+/g, ' ').trim();
+}
+
+function normalizeOptions(options) {
+  if (!Array.isArray(options)) return [];
+  return options.map(o => (typeof o === 'string' ? { value: o, label: o } : o));
+}
+
+/**
+ * Whether this control sits next to its own country/dial-code picker.
+ *
+ * Bounded to the field's immediate surroundings rather than the whole form: a
+ * Country field elsewhere on the application says nothing about how the phone
+ * box wants its value.
+ */
+function hasCountryWidget(el) {
+  let n = el.parentElement, depth = 0;
+  while (n && depth < 3) {
+    try {
+      const found = n.querySelector(
+        '[class*="country" i], [class*="dial" i], [data-country], [class*="flag" i]');
+      if (found && found !== el) return true;
+    } catch (e) { /* ignore */ }
+    n = n.parentElement; depth++;
+  }
+  return false;
+}
+
+/** Everything a writer needs to shape a value for this specific control. */
+function fieldHints(el) {
+  const g = a => (el.getAttribute && el.getAttribute(a)) || '';
+  return {
+    type: g('type').toLowerCase(),
+    placeholder: g('placeholder'),
+    pattern: g('pattern'),
+    maxLength: el.maxLength > 0 ? el.maxLength : null,
+    autocomplete: g('autocomplete').toLowerCase(),
+    inputmode: g('inputmode').toLowerCase(),
+    multiple: el.multiple === true,
+    tag: (el.tagName || '').toLowerCase(),
+  };
+}
+
+// ── custom dropdown option reading ───────────────────────────
+
+const MAX_OPTIONS_READ = 200;
+
+/**
+ * Open a custom combobox and read the options it really offers.
+ *
+ * Needed because native <select> option lists come free but react-select's do
+ * not: no <option> tags exist, the menu is portal-rendered into <body>, and it
+ * only exists after a click. Without this the answering tier names values
+ * blind, which is how "Where are you currently based?" — whose only choices
+ * were USA / Canada / Located Elsewhere — got answered "India": a perfectly
+ * sensible answer to the question, and not on the menu.
+ *
+ * Callers MUST NOT call this for a field that already holds a value.
+ * react-select filters its menu against the current selection, so re-reading a
+ * filled field returns fewer options or none, and losing the list is how a
+ * correct "I am not a military Veteran" became "I do not wish to answer" on a
+ * later pass (auto_apply/browser.py:911).
+ */
+export async function readComboboxOptions(row) {
+  const p = probe();
+  if (!p || !row || !row.el) return [];
+  const el = row.el;
+
+  // Already in the DOM? Read it without touching anything.
+  const existing = p.listboxFor(el);
+  if (existing) {
+    const labels = optionLabelsIn(existing);
+    if (labels.length) return labels;
+  }
+
+  try {
+    scrollIntoView(el);
+    clickOpen(el);
+    const labels = await waitForOptions();
+    return labels;
+  } catch (e) {
+    return [];
+  } finally {
+    dismissListbox(el);
+  }
+}
+
+function optionLabelsIn(node) {
+  const p = probe();
+  const nodes = p && p.optionNodes ? p.optionNodes(node) : [];
+  const out = [];
+  for (const n of nodes) {
+    if (isChosenValue(n)) continue;
+    const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
+    if (t && out.length < MAX_OPTIONS_READ) out.push(t);
+  }
+  return out;
+}
+
+function waitForOptions() {
+  return new Promise(resolve => {
+    const doc = globalThis.document;
+    // Captured now, not read inside the timer: the timer can outlive the frame
+    // (or, in tests, the mounted document), and probe() would then be undefined.
+    const p = probe();
+    // ON SCREEN only. The probe's visibleOptionLabels() does not actually check
+    // visibility, and every Greenhouse form carries the phone country picker's
+    // 244 hidden <li role="option"> rows — so this returned a capped list of
+    // countries for whatever dropdown was being read. The sidebar then had 200
+    // "options" for "What time zone are you in?", blew past the 40-option cap
+    // in askFormHtml(), and offered a free-text box instead of the four real
+    // choices. (The probe itself is shared byte-for-byte with the server
+    // Playwright engine, which has the same latent bug; fixing it there is its
+    // own change.)
+    const read = () => {
+      if (!p || !p.optionNodes) return [];
+      const out = [];
+      for (const n of p.optionNodes(doc)) {
+        if (!isNodeVisible(n) || isChosenValue(n)) continue;
+        const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
+        if (t && out.length < MAX_OPTIONS_READ) out.push(t);
+      }
+      return out;
+    };
+    const immediate = read();
+    if (immediate.length) { resolve(immediate); return; }
+
+    let done = false;
+    const finish = labels => {
+      if (done) return;
+      done = true;
+      try { obs.disconnect(); } catch (e) {}
+      clearTimeout(timer);
+      resolve(labels);
+    };
+    // The menu is portalled to <body>, so the whole document is the scope.
+    const obs = new globalThis.MutationObserver(() => {
+      const labels = read();
+      if (labels.length) finish(labels);
+    });
+    try { obs.observe(doc.body, { childList: true, subtree: true }); } catch (e) {}
+    const timer = setTimeout(() => finish(read()), TIMING.optionWaitMs);
+  });
+}
+
+export function scrollIntoView(el) {
+  try {
+    const p = probe();
+    const node = (p && p.fieldWrapper(el)) || el;
+    if (node.scrollIntoView) node.scrollIntoView({ block: 'center', inline: 'nearest' });
+  } catch (e) { /* not fatal */ }
+}
+
+export function clickOpen(el) {
+  const p = probe();
+  const target = pickClickTarget(el, p);
+  try { target.focus({ preventScroll: true }); } catch (e) { try { target.focus(); } catch (_) {} }
+  // A bare .click() is not enough: react-select commits and opens on
+  // MOUSEDOWN, and several component libraries open on pointerdown. The write
+  // path already sends the full sequence (pressPointer in write.js); reading
+  // has to send the same one or it sees a widget that never opened.
+  const win = (el.ownerDocument && el.ownerDocument.defaultView) || globalThis;
+  for (const type of ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click']) {
+    try {
+      const Ctor = type.startsWith('pointer') && win.PointerEvent ? win.PointerEvent : win.MouseEvent;
+      target.dispatchEvent(new Ctor(type, { bubbles: true, cancelable: true, view: win, button: 0 }));
+    } catch (e) { /* best effort, same as the writer */ }
+  }
+}
+
+/**
+ * What to click to open a widget. The combobox input itself is usually right,
+ * but Workday and some design systems render a button and keep the input for
+ * typing only, in which case clicking the input does nothing.
+ */
+/**
+ * react-select's control around its search input ("select__control",
+ * "css-13cymwt-control"): a class token that ENDS in "control". Not any class
+ * merely containing the word — Oracle wraps every field in
+ * "input-row__control-container", and clicking that wrapper instead of the
+ * input left Oracle's dropdowns closed, so their options were never read.
+ */
+export function controlAncestor(el) {
+  for (let n = el && el.parentElement, i = 0; n && i < 6; n = n.parentElement, i++) {
+    if (Array.from(n.classList || []).some(c => /(^|[-_])control$/i.test(c))) return n;
+  }
+  return null;
+}
+
+function pickClickTarget(el, p) {
+  const role = el.getAttribute && el.getAttribute('role');
+  // A react-select's inner search input carries role="combobox", but the
+  // widget listens on its CONTROL and ignores events whose target is that
+  // input. Returning the input here is why reading a dropdown's options
+  // returned nothing: the menu never opened, the sidebar got no choices, and
+  // it offered a free-text box for a question that has eight fixed answers.
+  if (role === 'combobox') {
+    const ctl = controlAncestor(el);
+    if (ctl && ctl !== el) return ctl;
+    return el;
+  }
+  if (role === 'button') return el;
+  // A native <button> dropdown (Workday) is its own trigger. Searching its
+  // wrapper for "something clickable" instead finds unrelated controls.
+  if ((el.tagName || '').toLowerCase() === 'button') return el;
+  const wrap = (p && p.rsContainer(el)) || el.parentElement;
+  if (wrap) {
+    let ctl = null;
+    try { ctl = wrap.querySelector('[role="combobox"], [role="button"], [class*="control"]'); }
+    catch (e) { ctl = null; }
+    if (ctl) return ctl;
+  }
+  return el;
+}
+
+/**
+ * Read a Workday date back as one value. Filled only when EVERY part is: a date
+ * with a month and a year but no day is not an answer the form will accept.
+ */
+function readDateParts(row) {
+  const parts = {};
+  for (const el of row.members || []) {
+    if (!el.isConnected) continue;
+    const part = datePartOf(el);
+    if (part) parts[part] = String(el.value || '').trim();
+  }
+  const order = ['month', 'day', 'year'].filter(k => k in parts);
+  const values = order.map(k => parts[k]);
+  const filled = order.length > 0 && values.every(Boolean);
+  const invalid = (row.members || []).some(el => el.getAttribute
+    && el.getAttribute('aria-invalid') === 'true');
+  return { value: filled ? values.join('/') : '', filled, invalid, required: !!row.required,
+           parts };
+}
+
+/** Escape, unconditionally — cheap, idempotent, never worth failing on. */
+export function dismissListbox(el) {
+  try {
+    const target = el && el.isConnected ? el : globalThis.document.activeElement;
+    if (!target) return;
+    for (const type of ['keydown', 'keyup']) {
+      target.dispatchEvent(new globalThis.KeyboardEvent(type, {
+        key: 'Escape', code: 'Escape', keyCode: 27, which: 27, bubbles: true, cancelable: true,
+      }));
+    }
+  } catch (e) { /* best effort by design */ }
+}
+
+/** Re-describe one row in place, after a write or a re-render. */
+export function reprobe(row) {
+  const p = probe();
+  if (!p || !row) return null;
+  if (row.kind === 'date-parts') return readDateParts(row);
+  if (row.kind === 'choice') {
+    const selected = (row.members || []).find(b => b.isConnected && isChoiceSelected(b));
+    return { value: selected ? choiceText(selected) : '', filled: !!selected,
+             invalid: false, required: !!row.required };
+  }
+  let el = row.el;
+  if (!el || !el.isConnected) {
+    el = reresolve(row);
+    if (!el) return null;
+    row.el = el;
+  }
+  const d = p.describeEl(el);
+  if (!d) return null;
+  if (row.kind === 'radio' || row.kind === 'checkbox') {
+    // Read the group, not the one member we happen to hold.
+    const checked = row.members.filter(x => x.isConnected && x.checked);
+    return {
+      value: checked.map(x => p.labelFor(x) || x.value || '').filter(Boolean).join(' | '),
+      filled: checked.length > 0,
+      invalid: checked.length > 0 && !!d.invalid,
+      required: !!d.required,
+    };
+  }
+  return {
+    value: d.value || '', filled: !!d.filled, invalid: !!d.invalid, required: !!d.required,
+  };
+}
+
+/**
+ * Find a row's element again after the framework replaced it.
+ *
+ * Keyed on the identity, not a selector: React hands out a new node for the
+ * same logical field on re-render, and a stored selector would either miss or —
+ * worse — resolve to a different field.
+ */
+function reresolve(row) {
+  const p = probe();
+  const doc = globalThis.document;
+  if (!p || !row.ident) return null;
+  const esc = s => String(s).replace(/["\\]/g, '\\$&');
+  for (const sel of [`[name="${esc(row.ident)}"]`, `#${cssId(row.ident)}`]) {
+    if (!sel || sel === '#') continue;
+    let el = null;
+    try { el = doc.querySelector(sel); } catch (e) { el = null; }
+    if (el && isVisible(el)) return el;
+  }
+  // Last resort: rescan and match on the normalised key.
+  const form = findForm(doc);
+  if (!form) return null;
+  for (const el of form.fields) {
+    const d = p.describeEl(el);
+    if (d && questionSignature(d.ident) === row.key.split('#')[0]) return el;
+  }
+  return null;
+}
+
+function cssId(ident) {
+  return /^[A-Za-z_][\w-]*$/.test(ident) ? ident : '';
+}

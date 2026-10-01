@@ -58,6 +58,10 @@ TRUSTED_SOURCES = {
     "mercor", "outlier", "alignerr", "fleet", "scale", "remotasks",
     "dataannotation", "surge", "prolific", "appen", "telus", "turing",
     "toloka", "clickworker", "braintrust",
+    # ATS-hosted company job boards — each listing is a real company's own
+    # posting on their public applicant-tracking-system board, not a
+    # third-party aggregation, so the same "trusted platform" reasoning applies.
+    "greenhouse", "lever", "ashby", "smartrecruiters",
 }
 
 # Text patterns that signal a scam — never verify a listing containing these.

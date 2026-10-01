@@ -1,5 +1,120 @@
 // TailorCV — AI Resume Optimizer — Background Service Worker
-const BASE_URL = 'https://thetailorcv.com';
+
+// The backend URL lives in env.js so there is exactly one place to switch it —
+// see the comments there. importScripts is available because this worker is not
+// declared as a module; the fallback keeps the worker alive if env.js is ever
+// missing from a package, rather than failing to register at all.
+try {
+  importScripts('env.js');
+} catch (e) {
+  console.error('TailorCV: env.js failed to load, falling back to production —', e);
+}
+const BASE_URL = (self.__TCV_ENV && self.__TCV_ENV.BASE_URL) || 'https://thetailorcv.com';
+
+// Maps an application URL to its job posting (jobsource.js, shared with the
+// content scripts). Optional: without it, tailoring on a form-only page falls
+// back to pasting the description, exactly as before.
+try {
+  importScripts('jobsource.js');
+} catch (e) {
+  console.error('TailorCV: jobsource.js failed to load —', e);
+}
+
+// ── Job descriptions for application pages ──────────────────────────────────
+//
+// A page holding only the application (Workday step 2, Oracle ".../apply/
+// section/1") has no description on it. The posting the person came from
+// usually does, and the extension read it there — so it is remembered for the
+// session, keyed by the posting's ATS job id, and handed to the application.
+// When nothing was remembered, the posting is fetched from the ATS's own data.
+const JOBS_KEY = 'tcv_jobs';
+const JOBS_TTL_MS = 2 * 60 * 60 * 1000;
+const JOBS_MAX = 25;
+const HANDOFF_TTL_MS = 15 * 60 * 1000;
+
+async function readJobs() {
+  const stored = await chrome.storage.session.get(JOBS_KEY);
+  const jobs = stored[JOBS_KEY] || { byKey: {}, handoff: null };
+  const now = Date.now();
+  for (const [k, v] of Object.entries(jobs.byKey)) {
+    if (!v || now - v.at > JOBS_TTL_MS) delete jobs.byKey[k];
+  }
+  return jobs;
+}
+
+async function writeJobs(jobs) {
+  const entries = Object.entries(jobs.byKey).sort((a, b) => b[1].at - a[1].at).slice(0, JOBS_MAX);
+  jobs.byKey = Object.fromEntries(entries);
+  await chrome.storage.session.set({ [JOBS_KEY]: jobs });
+}
+
+function keysFor(urls) {
+  const J = self.TCVJobSource;
+  if (!J) return [];
+  return (urls || []).map(u => J.jobKey(u)).filter(Boolean);
+}
+
+function slimJob(job) {
+  return { role: String(job.role || ''), company: String(job.company || ''),
+           url: String(job.url || ''), jd_string: String(job.jd_string || '').slice(0, 20000) };
+}
+
+async function rememberJob(job, urls) {
+  if (!job || !job.jd_string) return;
+  const jobs = await readJobs();
+  const entry = { job: slimJob(job), at: Date.now() };
+  for (const k of keysFor(urls)) jobs.byKey[k.key] = entry;
+  jobs.handoff = entry;
+  await writeJobs(jobs);
+}
+
+async function recallJob(urls, title) {
+  const jobs = await readJobs();
+  for (const k of keysFor(urls)) {
+    const hit = jobs.byKey[k.key];
+    if (hit) return { job: hit.job, source: 'remembered' };
+  }
+  // Nothing under this job's id: the posting it came from may have had no id
+  // we can read (a LinkedIn Apply button). Accepted only if recent AND the
+  // same job by title — never a different application from earlier.
+  const h = jobs.handoff;
+  const J = self.TCVJobSource;
+  if (h && Date.now() - h.at < HANDOFF_TTL_MS && J && J.sameRole(h.job.role, title)) {
+    return { job: h.job, source: 'remembered' };
+  }
+  return {};
+}
+
+async function fetchJob(urls) {
+  const J = self.TCVJobSource;
+  if (!J) return {};
+  for (const url of urls || []) {
+    const k = J.jobKey(url);
+    try {
+      let job = null;
+      if (k) {
+        const res = await fetch(k.api, { credentials: 'include', headers: { Accept: 'application/json' } });
+        if (res.ok) job = J.parsePosting(k.ats, await res.json());
+      } else if (/^https:\/\//.test(String(url))) {
+        const res = await fetch(url, { credentials: 'include' });
+        if (res.ok) job = J.jobPostingFromHtml(await res.text());
+      }
+      if (job && job.jd_string) {
+        if (!job.url) job.url = J.postingUrl(url);
+        if (k) {
+          const jobs = await readJobs();
+          jobs.byKey[k.key] = { job: slimJob(job), at: Date.now() };
+          await writeJobs(jobs);
+        }
+        if (!job.url) job.url = J.postingUrl(url);
+        return { job: slimJob(job), source: 'posting' };
+      }
+    } catch (e) {
+      console.warn('[TailorCV] could not read the job posting at', url, '—', e && e.message);
+    }
+  }
+  return {};
+}
 
 async function getCsrfToken() {
   // Make sure a csrftoken cookie exists (the server sets one on every response),
@@ -16,6 +131,18 @@ async function downloadPdfBase64(pdfBase64, filename) {
     filename: filename || 'tailored_resume.pdf',
     saveAs: false,
   });
+}
+
+// What the "See what changed" pop-up needs (changes_modal.js): the rendered
+// resume, the structured data its edits are marked from, and both scores.
+function previewOf(data) {
+  if (!data || !data.html) return null;
+  return {
+    html: data.html,
+    resumeData: data.resume_data || { changes: data.changes || {} },
+    before: typeof data.skill_match_before === 'number' ? data.skill_match_before : null,
+    after: typeof data.skill_match_after === 'number' ? data.skill_match_after : null,
+  };
 }
 
 function arrayBufferToBase64(buffer) {
@@ -38,7 +165,18 @@ function arrayBufferToBase64(buffer) {
 // uncached call) keeps it correct sooner than that; AUTH_CACHE_TTL_MS is only
 // a backstop for a session cookie silently expiring with none of those firing.
 const AUTH_CACHE_KEY = 'tcv_auth_cache';
-const AUTH_CACHE_TTL_MS = 5 * 60 * 1000;
+
+const AF_CONTEXT_KEY = 'tcv_autofill_context';
+const AF_FILE_KEY = 'tcv_autofill_file';
+// Short relative to the auth cache: the answer bank changes whenever the user
+// edits their profile or saves an answer, and both of those happen mid-session.
+// Explicit invalidation (below) is what keeps it correct sooner than this.
+const AF_CONTEXT_TTL_MS = 10 * 60 * 1000;
+const AF_FILE_TTL_MS = 30 * 60 * 1000;
+
+// 30 minutes: one real check covers a job-hunting session across many careers
+// sites. Staleness is bounded by the explicit invalidation above, not by this.
+const AUTH_CACHE_TTL_MS = 30 * 60 * 1000;
 
 async function readAuthCache() {
   const stored = await chrome.storage.session.get(AUTH_CACHE_KEY);
@@ -58,7 +196,11 @@ async function writeAuthCacheField(field, value) {
 }
 
 async function clearAuthCache() {
-  await chrome.storage.session.remove(AUTH_CACHE_KEY);
+  // The autofill context is a per-user artifact too — it carries the answer bank
+  // and the quota state — so anything that invalidates the auth cache
+  // invalidates it as well. Keeping them separate once let a logged-out user's
+  // panel keep offering the previous user's answers.
+  await chrome.storage.session.remove([AUTH_CACHE_KEY, AF_CONTEXT_KEY, AF_FILE_KEY]);
 }
 
 // Clicking the toolbar icon toggles the sidebar (no popup — the sidebar is the
@@ -68,14 +210,49 @@ async function clearAuthCache() {
 // the click itself grants us that one tab via activeTab and we inject on demand.
 // That is what lets the extension work everywhere without asking every user for
 // "read your data on all websites" at install time.
+// ── SPA navigation ───────────────────────────────────────────
+//
+// A client-routed board (LinkedIn, Workday, Ashby, most careers sites built on
+// React) changes the URL with history.pushState and never reloads, so the
+// content script is never re-run and its view of "which job is this?" goes
+// stale. It already noticed by comparing location.href inside a
+// MutationObserver, which works only when the route change happens to mutate
+// the DOM, and pays a callback on every mutation of every page we now run on.
+//
+// webNavigation reports the navigation itself. onHistoryStateUpdated covers
+// pushState AND replaceState; onReferenceFragmentUpdated covers #fragment
+// routing, which is how several older ATS SPAs page through an application.
+//
+// Top frame only (frameId 0): the sidebar lives there, and an embedded ATS
+// iframe routing internally is the filler's business, not the panel's.
+function notifyUrlChanged(details) {
+  if (!details || details.frameId !== 0 || !details.tabId || details.tabId < 0) return;
+  chrome.tabs.sendMessage(
+    details.tabId, { type: 'URL_CHANGED', url: details.url }, { frameId: 0 },
+  ).catch(() => { /* no content script in that tab (chrome://, the store) */ });
+}
+
+if (chrome.webNavigation) {
+  chrome.webNavigation.onHistoryStateUpdated.addListener(notifyUrlChanged);
+  chrome.webNavigation.onReferenceFragmentUpdated.addListener(notifyUrlChanged);
+}
+
 chrome.action.onClicked.addListener(async (tab) => {
   if (!tab || !tab.id) return;
 
+  // TOP FRAME ONLY. chrome.tabs.sendMessage broadcasts to every frame in the
+  // tab, and the filler registers its own onMessage listener in each one
+  // (src/autofill.js) — so on a company careers page that embeds its ATS form
+  // in an iframe (Stripe embeds Greenhouse), the click could be answered by
+  // that iframe, which ignores TOGGLE_PANEL. The result was a click that did
+  // nothing at all: the top frame never got the message and never got the
+  // content script either. frameId 0 addresses the page itself, so the reply
+  // can only come from the frame that owns the sidebar.
   try {
-    await chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' });
+    await chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' }, { frameId: 0 });
     return;   // content script was already running — toggled it
   } catch (_) {
-    // No listener on that tab: not a declared site, so inject now.
+    // Nothing listening in the top frame: inject now.
   }
 
   try {
@@ -83,6 +260,17 @@ chrome.action.onClicked.addListener(async (tab) => {
       target: { tabId: tab.id },
       func: () => { window.__tailorcvFromToolbar = true; },
     });
+    // The filler goes into EVERY frame: Greenhouse and Lever embed their form in
+    // an iframe on company-branded domains, and the form is what we need to
+    // reach. The sidebar and the job-description reader stay in the top frame
+    // only — injecting those into every frame would paint a panel inside ad
+    // iframes and run the div-walking JD heuristic dozens of times per page.
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id, allFrames: true }, files: ['autofill.bundle.js'],
+    });
+    // env.js before content.js, mirroring the manifest's script order — this is
+    // the other place BASE_URL gets decided and it is easy to forget.
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['env.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['analytics.bundle.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['styles.bundle.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content.js'] });
@@ -108,7 +296,10 @@ chrome.action.onClicked.addListener(async (tab) => {
 // actually saved — so a panel stuck on "no base resume set" catches up on
 // its own instead of the user having to notice and refresh it by hand.
 chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
-  if (!msg || (msg.type !== 'tailorcv-login-success' && msg.type !== 'tailorcv-base-resume-updated')) return;
+  // tailorcv-profile-updated: the application profile was saved on the website,
+  // so the cached answer bank (see AF_GET_CONTEXT) is stale.
+  if (!msg || !['tailorcv-login-success', 'tailorcv-base-resume-updated',
+                'tailorcv-profile-updated'].includes(msg.type)) return;
   (async () => {
     // Clear before broadcasting so every tab that reacts to REFRESH_AUTH is
     // guaranteed a fresh fetch instead of racing a cache write that hasn't
@@ -116,7 +307,9 @@ chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
     await clearAuthCache();
     const tabs = await chrome.tabs.query({});
     for (const tab of tabs) {
-      if (tab.id) chrome.tabs.sendMessage(tab.id, { type: 'REFRESH_AUTH' }).catch(() => {});
+      if (tab.id) {
+        chrome.tabs.sendMessage(tab.id, { type: 'REFRESH_AUTH', reason: msg.type }).catch(() => {});
+      }
     }
     sendResponse({ ok: true });
   })();
@@ -333,6 +526,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           if (data.pending_skill_choice && skillGaps.length) {
             sendResponse({ data: {
               success: true, pendingSkillChoice: true, afterScore, skillsAdded, skillGaps, changes,
+              preview: previewOf(data),
               savedResumeId: data.saved_resume_id,
               pdfBase64: data.pdf_base64,
               filename: data.filename || 'tailored_resume.pdf',
@@ -341,7 +535,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           }
 
           await downloadPdfBase64(data.pdf_base64, data.filename);
-          sendResponse({ data: { success: true, afterScore, skillsAdded, skillGaps, changes, autoAddSkills: !!data.auto_add_skills } });
+          sendResponse({ data: { success: true, afterScore, skillsAdded, skillGaps, changes,
+                                 autoAddSkills: !!data.auto_add_skills, preview: previewOf(data) } });
         } catch (e) {
           sendResponse({ error: e.message });
         }
@@ -362,7 +557,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           // The profile carries auto_add_skills for the account-menu switch.
           if (msg.payload && msg.payload.enable_auto) await clearAuthCache();
           await downloadPdfBase64(data.pdf_base64, data.filename);
-          sendResponse({ data: { success: true, added: data.added || [] } });
+          sendResponse({ data: { success: true, added: data.added || [],
+                                 preview: data.html ? { html: data.html, resumeData: data.resume_data || {} } : null } });
         } catch (e) {
           sendResponse({ error: e.message });
         }
@@ -394,6 +590,153 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           sendResponse({ error: e.message });
         }
 
+      // ── Client-side application autofill ──────────────────────────────
+      //
+      // The content script owns the DOM; these four just move data. Note what
+      // is NOT here: no endpoint that submits anything. The extension has no
+      // code path that sends an application.
+
+      } else if (msg.type === 'AF_GET_CONTEXT') {
+        // Cached for the browser session and keyed on profileVersion, so a
+        // second application on the same site costs one request, not three.
+        const cached = await readAutofillContext();
+        if (cached) {
+          sendResponse({ data: cached });
+          return;
+        }
+        const res = await fetch(`${BASE_URL}/api/extension/apply-context`, {
+          credentials: 'include',
+        });
+        if (!res.ok) {
+          sendResponse({
+            error: res.status === 401
+              ? 'Not logged in to TailorCV. Open the TailorCV panel to log in.'
+              : 'Could not load your profile.',
+            code: res.status === 401 ? 'not_logged_in' : null,
+          });
+          return;
+        }
+        const data = await res.json();
+        await writeAutofillContext(data);
+        sendResponse({ data });
+
+      } else if (msg.type === 'AF_PLAN') {
+        const res = await fetch(`${BASE_URL}/api/extension/autofill/plan`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(msg.payload || {}),
+        });
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          const detail = data.detail || {};
+          if (res.status === 402 || detail.error === 'upgrade_required') {
+            sendResponse({
+              error: "You've used your free autofills. Upgrade to Pro at thetailorcv.com.",
+              code: 'upgrade_required',
+            });
+            return;
+          }
+          if (res.status === 401) {
+            await clearAuthCache();
+            await clearAutofillContext();
+            sendResponse({ error: 'Not logged in to TailorCV.', code: 'not_logged_in' });
+            return;
+          }
+          sendResponse({ error: 'Could not work out the answers for this form.' });
+          return;
+        }
+        sendResponse({ data: await res.json() });
+
+      } else if (msg.type === 'AF_SAVE_ANSWERS') {
+        const res = await fetch(`${BASE_URL}/api/extension/autofill/answers`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(msg.payload || {}),
+        });
+        if (!res.ok) {
+          sendResponse({ error: 'Could not save that answer.' });
+          return;
+        }
+        // A saved answer changes what the next form can be filled from.
+        await clearAutofillContext();
+        sendResponse({ data: await res.json() });
+
+      } else if (msg.type === 'AF_GET_RESUME_FILE') {
+        // Fetched here and passed as base64 rather than as a blob URL: MV3
+        // service workers have no URL.createObjectURL (the same constraint the
+        // download helper above works around), and a URL minted here would not
+        // be fetchable from a content script anyway.
+        const doc = msg.doc === 'cover_letter' ? 'cover_letter' : 'resume';
+        const cached = await readResumeFile(doc);
+        if (cached) {
+          sendResponse({ data: cached });
+          return;
+        }
+        const res = await fetch(`${BASE_URL}/api/extension/base-resume/file?doc=${doc}`, {
+          credentials: 'include',
+        });
+        if (!res.ok) {
+          sendResponse({ error: res.status === 404 ? 'no_file' : 'fetch_failed' });
+          return;
+        }
+        const buffer = await res.arrayBuffer();
+        const payload = {
+          base64: arrayBufferToBase64(buffer),
+          filename: filenameFromResponse(res, doc),
+          mime: res.headers.get('content-type') || 'application/pdf',
+        };
+        await writeResumeFile(doc, payload);
+        sendResponse({ data: payload });
+
+      } else if (msg.type === 'AF_STATE_GET') {
+        // Keyed on the sender's own tab id, which comes from Chrome and not from
+        // the page, so one tab's run state can never be read or spoofed by
+        // another. Wiped when the browser closes, like the auth cache.
+        const key = autofillStateKey(sender);
+        if (!key) { sendResponse({ data: null }); return; }
+        const stored = await chrome.storage.session.get(key);
+        sendResponse({ data: stored[key] || null });
+
+      } else if (msg.type === 'AF_STATE_SET') {
+        const key = autofillStateKey(sender);
+        if (key) await chrome.storage.session.set({ [key]: msg.data });
+        sendResponse({ data: { ok: true } });
+
+      } else if (msg.type === 'AF_STATE_CLEAR') {
+        const key = autofillStateKey(sender);
+        if (key) await chrome.storage.session.remove(key);
+        sendResponse({ data: { ok: true } });
+
+      } else if (msg.type === 'AF_FRAME_ANNOUNCE') {
+        recordFormFrame(sender, msg);
+        sendResponse({ data: { ok: true } });
+
+      } else if (msg.type === 'JOB_REMEMBER') {
+        await rememberJob(msg.job, msg.urls);
+        sendResponse({ data: { ok: true } });
+
+      } else if (msg.type === 'JOB_RECALL') {
+        sendResponse({ data: await recallJob(msg.urls, msg.title) });
+
+      } else if (msg.type === 'JOB_FETCH') {
+        sendResponse({ data: await fetchJob(msg.urls) });
+
+      } else if (msg.type === 'AF_FRAME_DISCOVER') {
+        sendResponse({ data: discoverFormFrames(sender) });
+
+      } else if (msg.type === 'AF_FRAME_SEND') {
+        const tabId = sender.tab && sender.tab.id;
+        if (!tabId) { sendResponse({ error: 'no_tab' }); return; }
+        try {
+          const res = await chrome.tabs.sendMessage(
+            tabId, msg.payload || {}, { frameId: msg.frameId });
+          sendResponse({ data: res });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
       } else {
         sendResponse({ error: 'Unknown message type' });
       }
@@ -402,4 +745,115 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     }
   })();
   return true; // keep channel open for async response
+});
+
+// ── Autofill caches and helpers ────────────────────────────────────────────
+
+async function readAutofillContext() {
+  const stored = await chrome.storage.session.get(AF_CONTEXT_KEY);
+  const entry = stored[AF_CONTEXT_KEY];
+  if (!entry || (Date.now() - entry.cachedAt) > AF_CONTEXT_TTL_MS) return null;
+  return entry.data;
+}
+
+async function writeAutofillContext(data) {
+  await chrome.storage.session.set({
+    [AF_CONTEXT_KEY]: { cachedAt: Date.now(), data },
+  });
+}
+
+async function clearAutofillContext() {
+  await chrome.storage.session.remove([AF_CONTEXT_KEY, AF_FILE_KEY]);
+}
+
+async function readResumeFile(doc) {
+  const stored = await chrome.storage.session.get(AF_FILE_KEY);
+  const entry = stored[AF_FILE_KEY];
+  if (!entry || (Date.now() - entry.cachedAt) > AF_FILE_TTL_MS) return null;
+  return entry[doc] || null;
+}
+
+async function writeResumeFile(doc, payload) {
+  const stored = await chrome.storage.session.get(AF_FILE_KEY);
+  const entry = stored[AF_FILE_KEY] || {};
+  const fresh = (Date.now() - (entry.cachedAt || 0)) <= AF_FILE_TTL_MS
+    ? { ...entry } : {};
+  fresh[doc] = payload;
+  fresh.cachedAt = Date.now();
+  await chrome.storage.session.set({ [AF_FILE_KEY]: fresh });
+}
+
+function filenameFromResponse(res, doc) {
+  const disposition = res.headers.get('content-disposition') || '';
+  const match = disposition.match(/filename\*?=(?:UTF-8'')?"?([^";]+)"?/i);
+  if (match) {
+    try { return decodeURIComponent(match[1]); } catch (_) { return match[1]; }
+  }
+  return doc === 'cover_letter' ? 'cover_letter.pdf' : 'resume.pdf';
+}
+
+function autofillStateKey(sender) {
+  const tabId = sender && sender.tab && sender.tab.id;
+  return tabId ? `tcv_af:${tabId}` : null;
+}
+
+/**
+ * Which frames of the sender's tab contain an application form.
+ *
+ * ANNOUNCE-based, and that shape is forced by two constraints. Enumerating
+ * frames would need the webNavigation permission, which is a new install-time
+ * prompt and a harder store review for one feature. And broadcasting an AF_PING
+ * with chrome.tabs.sendMessage and no frameId fans out to every frame but only
+ * ever resolves with the FIRST reply — which on a page full of ad iframes is
+ * reliably the wrong one.
+ *
+ * So instead each sub-frame that finds a form announces itself once on load, and
+ * Chrome stamps the announcement with a frameId the page cannot forge. This map
+ * is the collected result.
+ */
+const formFrames = new Map();   // tabId -> Map(frameId -> {fieldCount, url, ats, at})
+
+function recordFormFrame(sender, info) {
+  const tabId = sender && sender.tab && sender.tab.id;
+  const frameId = sender && sender.frameId;
+  if (tabId == null || frameId == null) return;
+  if (!formFrames.has(tabId)) formFrames.set(tabId, new Map());
+  formFrames.get(tabId).set(frameId, {
+    fieldCount: Number(info.fieldCount) || 0,
+    url: String(info.url || ''),
+    ats: String(info.ats || 'generic'),
+    at: Date.now(),
+  });
+  // Tell the top frame now: an embedded form (Greenhouse on careers.airbnb.com)
+  // renders after the panel has drawn, and nothing else would make it look again.
+  if (frameId !== 0) {
+    chrome.tabs.sendMessage(tabId, { type: 'AF_FRAME_FOUND' }, { frameId: 0 }).catch(() => {});
+  }
+}
+
+function discoverFormFrames(sender) {
+  const tabId = sender && sender.tab && sender.tab.id;
+  if (tabId == null) return [];
+  const frames = formFrames.get(tabId);
+  if (!frames) return [];
+  const out = [];
+  for (const [frameId, info] of frames) {
+    // Skip the top frame: the caller already knows whether it has a form of its
+    // own, and it fills that one in-process with no messaging at all.
+    if (frameId === 0) continue;
+    out.push(Object.assign({ frameId }, info));
+  }
+  // The frame with the most fields is the application; an ad iframe with a
+  // two-field newsletter box never wins.
+  out.sort((a, b) => b.fieldCount - a.fieldCount);
+  return out;
+}
+
+// A navigation replaces the frames, so their announcements are stale.
+chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
+  if (changeInfo.status === 'loading') formFrames.delete(tabId);
+});
+chrome.tabs.onRemoved.addListener((tabId) => {
+  formFrames.delete(tabId);
+  chrome.storage.session.remove(`tcv_af:${tabId}`).catch(() => {});
 });

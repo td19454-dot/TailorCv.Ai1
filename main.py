@@ -1,4 +1,5 @@
-﻿import asyncio
+import asyncio
+import asyncio
 import base64
 import copy
 import hashlib
@@ -7,6 +8,8 @@ import logging
 import os
 import random
 import re
+import resend
+import sys
 import time
 from secrets import token_hex, token_urlsafe
 from urllib.parse import quote
@@ -76,6 +79,9 @@ from functions import (
     score_mock_interview,
     generate_tts_audio,
     agent_chat_reply,
+    display_link,
+    _clean_resume_line,
+    _extract_contact_from_resume_text,
     user_error_detail,
 )
 
@@ -88,6 +94,9 @@ from routers.linkedin import router as linkedin_router
 from routers.billing import router as billing_router
 from routers.billing import _get_region
 from routers.feedback import router as feedback_router
+from routers.job_dashboard import router as job_dashboard_router
+from routers.extension_autofill import router as extension_autofill_router
+from routers.profile_page import router as profile_page_router
 from routers.marketing import router as marketing_router
 # Gigs feature disabled — import kept out so the route isn't registered.
 # from routers.jobs import router as jobs_router
@@ -171,6 +180,13 @@ async def csrf_middleware(request: Request, call_next):
         "/api/extension/settings",
         "/api/extension/cover-letter",
         "/api/extension/skill-match",
+        # Client-side autofill. Exempt for the same reason as the four above:
+        # getCsrfToken() in the extension pings /api/auth/me on every call, which
+        # would double the latency of a request the user is watching a form wait
+        # on, and the session cookie is SameSite=lax so it is not sent on a
+        # cross-site POST at all.
+        "/api/extension/autofill/plan",
+        "/api/extension/autofill/answers",
         "/api/extension/apply-profile",
         "/api/extension/apply-answers",
         "/api/billing/razorpay/webhook",
@@ -412,9 +428,19 @@ templates.env.filters["skilliconurl"] = _skill_icon_url
 # Make the GSC verification token available to every template (used by
 # _seo_head.html to emit the verification meta tag).
 templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
+# An UNPACKED extension gets a different, machine-specific id from the published
+# one, so the login page's "tell the extension I'm signed in" message never
+# arrives during local development and the sidebar sits on its logged-out view
+# after a successful Google sign-in. Set TAILORCV_DEV_EXTENSION_ID to the id
+# shown in chrome://extensions and the page notifies both. Empty in production,
+# where the published id is the only one that exists.
+templates.env.globals["dev_extension_id"] = os.getenv("TAILORCV_DEV_EXTENSION_ID", "").strip()
 app.include_router(linkedin_router)
 app.include_router(billing_router)
 app.include_router(feedback_router)
+app.include_router(job_dashboard_router)
+app.include_router(extension_autofill_router)
+app.include_router(profile_page_router)
 app.include_router(marketing_router)
 # Gigs feature hidden/disabled — route intentionally not registered (files kept dormant on disk).
 # app.include_router(jobs_router)
@@ -565,6 +591,10 @@ def _ensure_usage_columns() -> None:
         to_add.append("ADD COLUMN cover_letters INTEGER NOT NULL DEFAULT 0")
     if "linkedin_imports" not in cols:
         to_add.append("ADD COLUMN linkedin_imports INTEGER NOT NULL DEFAULT 0")
+    if "auto_applies" not in cols:
+        to_add.append("ADD COLUMN auto_applies INTEGER NOT NULL DEFAULT 0")
+    if "autofills" not in cols:
+        to_add.append("ADD COLUMN autofills INTEGER NOT NULL DEFAULT 0")
     if "cv_uploads" not in cols:
         to_add.append("ADD COLUMN cv_uploads INTEGER NOT NULL DEFAULT 0")
     if "template_changes" not in cols:
@@ -575,6 +605,278 @@ def _ensure_usage_columns() -> None:
                 conn.execute(_text(f"ALTER TABLE usage_records {clause}"))
 
 
+def _ensure_job_dashboard_columns() -> None:
+    """Add the embedding columns (job dashboard match scoring) to the existing
+    users and job_listings tables if missing. New tables (saved_jobs,
+    job_board_applications, job_search_queries) are created by create_all."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if insp.has_table("users"):
+        cols = {c["name"] for c in insp.get_columns("users")}
+        to_add = []
+        if "base_resume_embedding" not in cols:
+            to_add.append("ADD COLUMN base_resume_embedding TEXT")
+        if "base_resume_embedding_model" not in cols:
+            to_add.append("ADD COLUMN base_resume_embedding_model VARCHAR(60)")
+        if to_add:
+            with engine.begin() as conn:
+                for clause in to_add:
+                    conn.execute(_text(f"ALTER TABLE users {clause}"))
+
+    if insp.has_table("job_listings"):
+        cols = {c["name"] for c in insp.get_columns("job_listings")}
+        to_add = []
+        if "embedding" not in cols:
+            to_add.append("ADD COLUMN embedding TEXT")
+        if "embedding_model" not in cols:
+            to_add.append("ADD COLUMN embedding_model VARCHAR(60)")
+        if to_add:
+            with engine.begin() as conn:
+                for clause in to_add:
+                    conn.execute(_text(f"ALTER TABLE job_listings {clause}"))
+
+    if insp.has_table("job_search_queries"):
+        cols = {c["name"] for c in insp.get_columns("job_search_queries")}
+        if "embedding" not in cols:
+            with engine.begin() as conn:
+                conn.execute(_text("ALTER TABLE job_search_queries ADD COLUMN embedding TEXT"))
+
+
+def _ensure_apply_profile_columns() -> None:
+    """Add the gender-pronouns/LGBTQ+-identity EEO columns to the existing
+    user_apply_profiles table if missing.
+
+    Also widens user_apply_qa.question_text from its original VARCHAR(400) to
+    TEXT — real EEO/compliance questions run well past 400 characters
+    (observed in practice: a 538-character Robinhood conflict-of-interest
+    question), which was rejecting the save-answers endpoint with a 422.
+    create_all() only creates missing tables, it never alters an existing
+    column's type, so this table (new this release) still needs one manual
+    widen despite needing no ALTER for its *existence*. Postgres only —
+    SQLite has no real VARCHAR length enforcement, so String(400) there
+    already behaves like TEXT."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if insp.has_table("user_apply_qa"):
+        qa_cols = {c["name"]: c for c in insp.get_columns("user_apply_qa")}
+        if engine.dialect.name != "sqlite":
+            col = qa_cols.get("question_text")
+            if col is not None and str(col["type"]).upper().startswith("VARCHAR"):
+                with engine.begin() as conn:
+                    conn.execute(_text("ALTER TABLE user_apply_qa ALTER COLUMN question_text TYPE TEXT"))
+        # Semantic recall of a stored answer for the same question worded
+        # differently — see UserApplyQA.embedding.
+        qa_add = []
+        if "embedding" not in qa_cols:
+            qa_add.append("ADD COLUMN embedding TEXT")
+        if "embedding_model" not in qa_cols:
+            qa_add.append("ADD COLUMN embedding_model VARCHAR(60)")
+        if qa_add:
+            with engine.begin() as conn:
+                for clause in qa_add:
+                    conn.execute(_text(f"ALTER TABLE user_apply_qa {clause}"))
+
+    if not insp.has_table("user_apply_profiles"):
+        return
+    cols = {c["name"] for c in insp.get_columns("user_apply_profiles")}
+    to_add = []
+    if "gender_pronouns" not in cols:
+        to_add.append("ADD COLUMN gender_pronouns VARCHAR(40)")
+    if "lgbtq_identity" not in cols:
+        to_add.append("ADD COLUMN lgbtq_identity VARCHAR(60)")
+    for name_col in ("first_name", "middle_name", "last_name"):
+        if name_col not in cols:
+            to_add.append(f"ADD COLUMN {name_col} VARCHAR(80)")
+    for addr_col, width in (("address_line1", 200), ("address_line2", 200), ("city", 100),
+                            ("state", 100), ("postal_code", 20), ("country", 80),
+                            ("university", 200), ("degree", 120), ("major", 120),
+                            ("graduation_date", 40), ("gpa", 20),
+                            ("current_company", 160), ("previous_company", 160)):
+        if addr_col not in cols:
+            to_add.append(f"ADD COLUMN {addr_col} VARCHAR({width})")
+    if "skills" not in cols:
+        to_add.append("ADD COLUMN skills TEXT")
+    if "nationality" not in cols:
+        to_add.append("ADD COLUMN nationality VARCHAR(80)")
+    if "name_title" not in cols:
+        to_add.append("ADD COLUMN name_title VARCHAR(20)")
+    if "work_experience" not in cols:
+        to_add.append("ADD COLUMN work_experience TEXT")
+    if "education_history" not in cols:
+        to_add.append("ADD COLUMN education_history TEXT")
+    if to_add:
+        with engine.begin() as conn:
+            for clause in to_add:
+                conn.execute(_text(f"ALTER TABLE user_apply_profiles {clause}"))
+
+
+def _ensure_base_cover_letter_columns() -> None:
+    """Add the base-cover-letter columns to the existing users table if missing."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if not insp.has_table("users"):
+        return
+    cols = {c["name"] for c in insp.get_columns("users")}
+    to_add = []
+    if "base_cover_letter_path" not in cols:
+        to_add.append("ADD COLUMN base_cover_letter_path VARCHAR(500)")
+    if "base_cover_letter_filename" not in cols:
+        to_add.append("ADD COLUMN base_cover_letter_filename VARCHAR(255)")
+    if "base_cover_letter_generated_at" not in cols:
+        is_pg = engine.dialect.name != "sqlite"
+        to_add.append("ADD COLUMN base_cover_letter_generated_at TIMESTAMP" if is_pg else "ADD COLUMN base_cover_letter_generated_at TEXT")
+    if to_add:
+        with engine.begin() as conn:
+            for clause in to_add:
+                conn.execute(_text(f"ALTER TABLE users {clause}"))
+
+
+def _reap_stale_auto_apply_runs() -> None:
+    """Fail any auto-apply run still queued/running at boot.
+
+    Runs are driven by an asyncio task in this process, so a run left in a
+    non-terminal state belongs to a process that no longer exists — nothing
+    will ever finish it, and the dashboard would spin on it forever.
+
+    Single-instance only: on a 2+ instance deploy this would fail the *other*
+    instance's live runs on every boot. Gate it on an env flag before scaling."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    if not _inspect(engine).has_table("auto_apply_runs"):
+        return
+    try:
+        with engine.begin() as conn:
+            conn.execute(
+                _text(
+                    "UPDATE auto_apply_runs SET status = 'failed', "
+                    "error = 'reaped_on_startup', "
+                    "detail = 'Interrupted by a server restart. Please try again.', "
+                    "finished_at = :now "
+                    "WHERE status IN ('queued', 'running')"
+                ),
+                {"now": datetime.utcnow()},
+            )
+    except Exception as exc:
+        print(f"⚠️  Could not reap stale auto-apply runs: {exc}")
+
+
+def _reap_timed_out_auto_apply_runs() -> int:
+    """Fail runs that have been running far longer than any run legitimately can.
+
+    Distinct from _reap_stale_auto_apply_runs, which only ever runs at boot and
+    so cannot rescue a run that wedges while the process stays up — the case
+    actually observed: a row sitting `running` with finished_at NULL for 584s
+    while the dashboard polled it forever.
+
+    The age filter is not optional. The boot-time reaper can safely skip it
+    (nothing is in flight at boot); on a timer, an unfiltered version would
+    kill every healthy in-flight run on its first tick. The 2x multiplier
+    leaves room for a run that is legitimately near its own timeout, so this
+    only ever fires for runs the in-process timeout already failed to catch."""
+    from sqlalchemy import inspect as _inspect, text as _text
+    from auto_apply import config as _aa_config
+
+    if not _inspect(engine).has_table("auto_apply_runs"):
+        return 0
+    cutoff = datetime.utcnow() - timedelta(seconds=_aa_config.run_timeout_seconds() * 2)
+    with engine.begin() as conn:
+        result = conn.execute(
+            _text(
+                "UPDATE auto_apply_runs SET status = 'failed', "
+                "error = 'reaped_timeout', "
+                "detail = 'This run stopped responding and was closed out. Please try again.', "
+                "finished_at = :now "
+                "WHERE status IN ('queued', 'running') "
+                "AND COALESCE(started_at, created_at) < :cutoff"
+            ),
+            {"now": datetime.utcnow(), "cutoff": cutoff},
+        )
+        return result.rowcount or 0
+
+
+async def _auto_apply_reaper_loop() -> None:
+    """Belt-and-braces: whatever else breaks, no run stays `running` forever."""
+    from auto_apply import config as _aa_config
+
+    interval = max(60.0, _aa_config.run_timeout_seconds() / 2)
+    while True:
+        try:
+            await asyncio.sleep(interval)
+            reaped = await asyncio.to_thread(_reap_timed_out_auto_apply_runs)
+            if reaped:
+                logger.warning("reaped %s auto-apply run(s) that overran their timeout", reaped)
+        except asyncio.CancelledError:
+            raise
+        except Exception:
+            logger.exception("auto-apply reaper tick failed; continuing")
+
+
+def _sweep_orphaned_chromium() -> None:
+    """Kill Playwright Chromiums left behind by a previous process.
+
+    Matched strictly on `ms-playwright` in the executable path — that is
+    Playwright's own browser cache directory, so this can never match the
+    user's installed Chrome (Program Files) or any other browser. Best-effort
+    and never fatal: a failure here costs some memory, not correctness."""
+    import subprocess
+
+    try:
+        if sys.platform == "win32":
+            script = (
+                "Get-CimInstance Win32_Process -Filter \"Name='chrome.exe'\" | "
+                "Where-Object { $_.ExecutablePath -like '*ms-playwright*' } | "
+                "ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue; $_.ProcessId }"
+            )
+            out = subprocess.run(
+                ["powershell", "-NoProfile", "-NonInteractive", "-Command", script],
+                capture_output=True, text=True, timeout=30,
+            )
+        else:
+            out = subprocess.run(
+                ["pkill", "-f", "ms-playwright.*chrome"], capture_output=True, text=True, timeout=30
+            )
+        killed = [ln for ln in (out.stdout or "").split() if ln.strip()]
+        if killed:
+            print(f"🧹 Swept {len(killed)} orphaned Playwright Chromium process(es)")
+    except Exception as exc:
+        print(f"⚠️  Could not sweep orphaned Chromium processes: {exc}")
+
+
+def _ensure_pgvector() -> None:
+    """Enable pgvector and add a native vector column + HNSW index on
+    job_listings, so the job dashboard's semantic search can ask Postgres for
+    the top-K nearest jobs directly instead of pulling every embedding into
+    Python and scoring them one by one (measured at 30-90s per search once
+    the corpus reached ~5,000 rows — the whole point of this migration).
+
+    SQLite (the local/no-DATABASE_URL fallback) has no pgvector equivalent,
+    so this is a no-op there; job_dashboard.py keeps its Python-side scan as
+    a fallback for that case."""
+    if engine.dialect.name != "postgresql":
+        return
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    with engine.begin() as conn:
+        conn.execute(_text("CREATE EXTENSION IF NOT EXISTS vector"))
+
+    insp = _inspect(engine)
+    cols = {c["name"] for c in insp.get_columns("job_listings")}
+    if "embedding_vec" not in cols:
+        with engine.begin() as conn:
+            conn.execute(_text("ALTER TABLE job_listings ADD COLUMN embedding_vec vector(1536)"))
+
+    # HNSW: no training/build-time data requirement (unlike ivfflat), good
+    # default for an index that needs to stay usable as the corpus grows.
+    with engine.begin() as conn:
+        conn.execute(_text(
+            "CREATE INDEX IF NOT EXISTS ix_job_listings_embedding_vec "
+            "ON job_listings USING hnsw (embedding_vec vector_cosine_ops)"
+        ))
+
+
 def initialize_database() -> None:
     """Create tables if the configured database is reachable."""
     try:
@@ -583,6 +885,11 @@ def initialize_database() -> None:
         _ensure_portfolio_columns()
         _ensure_user_columns()
         _ensure_usage_columns()
+        _ensure_job_dashboard_columns()
+        _ensure_apply_profile_columns()
+        _ensure_base_cover_letter_columns()
+        _ensure_pgvector()
+        _reap_stale_auto_apply_runs()
         db_init_status["ok"] = True
         db_init_status["error"] = None
     except Exception as exc:
@@ -591,9 +898,33 @@ def initialize_database() -> None:
         logger.exception("Database initialization failed during startup")
 
 
+_BACKGROUND_TASKS: set[asyncio.Task] = set()
+
+
 @app.on_event("startup")
 async def startup_event() -> None:
     initialize_database()
+    _sweep_orphaned_chromium()
+    task = asyncio.create_task(_auto_apply_reaper_loop())
+    _BACKGROUND_TASKS.add(task)
+    task.add_done_callback(_BACKGROUND_TASKS.discard)
+
+
+@app.on_event("shutdown")
+async def shutdown_event() -> None:
+    """Close out live auto-apply work instead of abandoning it.
+
+    Without this, every restart (and every --reload) orphaned whatever
+    Chromium was mid-run and left its row `running` forever — the boot reaper
+    only catches that on the *next* start, so the dashboard spins in between."""
+    for task in list(_BACKGROUND_TASKS):
+        task.cancel()
+    try:
+        from auto_apply.runner import shutdown_runs
+
+        await asyncio.wait_for(shutdown_runs(), timeout=30)
+    except Exception:
+        logger.warning("auto-apply shutdown cleanup did not complete", exc_info=True)
 
 
 def get_db() -> Session:
@@ -713,6 +1044,11 @@ FREE_LIMITS: dict[str, int] = {
     "linkedin_imports": 1,
     "mock_interviews": 1,
     "interview_questions": 1,
+    # Extension autofill: 10 applications filled, ever, then Pro. Priced low
+    # because a fill is one small LLM call in the user's own browser — unlike
+    # auto_applies, which has its own monthly cap (enforce_auto_apply_quota)
+    # because every run burns a cloud browser session and applies to Pro too.
+    "autofills": 10,
     "ats_scans": 3,
     "cv_uploads": 1,
     "template_changes": 1,
@@ -793,6 +1129,41 @@ def quota_exhausted(db: Session, user, field: str) -> bool:
     return used >= limit
 
 
+def enforce_auto_apply_quota(db: Session, user) -> None:
+    """Cap auto-apply runs per calendar month. Raises HTTP 429 when exhausted.
+
+    Deliberately not enforce_quota(): that one sums usage across all months (a
+    lifetime "N free ever" rule) and exempts Pro entirely. Auto-apply costs real
+    Browserbase minutes and agent tokens on every single run, so the cap has to
+    reset monthly and has to apply to Pro too — just at a higher number."""
+    from auto_apply import config as aa_config
+
+    # Serialize concurrent clicks from the same user so two requests can't both
+    # observe the same remaining allowance (same lock enforce_quota uses).
+    db.query(User).filter(User.id == user.id).with_for_update().one()
+
+    limit = aa_config.pro_monthly_cap() if is_pro(user) else aa_config.free_monthly_cap()
+    month = datetime.utcnow().strftime("%Y-%m")
+    rec = get_or_create_usage(db, user.id, month)
+    used = int(rec.auto_applies or 0)
+    if used >= limit:
+        raise HTTPException(
+            status_code=429,
+            detail={"error": "auto_apply_limit", "limit": limit, "isPro": is_pro(user)},
+        )
+    rec.auto_applies = used + 1
+    db.commit()
+
+
+def auto_apply_remaining(db: Session, user) -> int:
+    """Read-only counterpart to enforce_auto_apply_quota — no lock, no increment."""
+    from auto_apply import config as aa_config
+
+    limit = aa_config.pro_monthly_cap() if is_pro(user) else aa_config.free_monthly_cap()
+    month = datetime.utcnow().strftime("%Y-%m")
+    rec = db.query(UsageRecord).filter_by(user_id=user.id, month=month).first()
+    used = int(getattr(rec, "auto_applies", 0) or 0) if rec else 0
+    return max(0, limit - used)
 def get_confirmed_skills(user) -> list[str]:
     """Skills this candidate has personally confirmed they have, newest last.
 
@@ -1279,6 +1650,12 @@ def _sidebar_page_css(html_content: str) -> str:
         return g.group(1) if g else ""
 
     def _lum(hex_colour: str) -> float:
+        if hex_colour.startswith("rgb"):
+            nums = re.findall(r"[0-9.]+", hex_colour)[:3]
+            if len(nums) < 3:
+                return 1.0
+            r, g, b = (float(n) / 255 for n in nums)
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b
         h = hex_colour.lstrip("#")
         if len(h) == 3:
             h = "".join(c * 2 for c in h)
@@ -1316,17 +1693,45 @@ def _sidebar_page_css(html_content: str) -> str:
     if not colour:
         return ""
 
+    # A white "paper" wrapper (template 7: `.resume { background:
+    # rgba(255,255,255,.97) }`) is painted ABOVE the @page background, so it
+    # hid the panel on every page and left the sidebar's white text on white.
+    # Clear such wrappers, and give the canvas a plain white paper instead.
+    clear = []
+    for sel in ("resume", "resume-wrap", "page", "layout", "sheet"):
+        wm = re.search(rf"\.{sel}\s*\{{[^}}]*?\bbackground(?:-color)?:\s*([^;]+);",
+                       html_content, re.S)
+        if not wm:
+            continue
+        decl = wm.group(1)
+        if "gradient" in decl or "url(" in decl:
+            continue
+        lit = _literal(decl)
+        if lit and _lum(lit) >= 0.92:
+            clear.append(f".{sel}")
+    paper = ""
+    if clear:
+        paper = (f"\n{', '.join(clear)} {{ background: transparent !important; }}"
+                 # The root/body background is painted over @page's, so it
+                 # must be clear too or the panel stays hidden.
+                 "\nhtml, body { background: transparent !important; }")
+
     return f"""
 /* BUG A: sidebar as a repeating page background (full height, every page).
    Drawn on @page so it exists on pages the sidebar's own content never
    reaches; the column itself goes transparent so the two cannot disagree. */
 @page {{
   background-image: linear-gradient(to right,
-    {colour} 0 {width}, transparent {width} 100%);
+    {colour} {width}, #ffffff {width});
   background-repeat: no-repeat;
   background-position: left top;
 }}
-.sidebar {{ background: transparent !important; }}
+/* Print only. A browser preview never paints @page backgrounds, so making the
+   column transparent there left white text on white. On screen the template's
+   own sidebar colour must stay. */
+@media print {{
+.sidebar {{ background: transparent !important; }}{paper}
+}}
 """
 
 
@@ -3951,17 +4356,6 @@ def normalize_url(value: str) -> str:
     return f"https://{value}"
 
 
-def display_link(value: str) -> str:
-    value = str(value or "").strip()
-    if not value:
-        return ""
-    for prefix in ("https://", "http://", "mailto:", "tel:"):
-        if value.startswith(prefix):
-            value = value[len(prefix):]
-            break
-    return value.rstrip("/")
-
-
 # Domain -> short, human-friendly label. Used so links display "GitHub", "Kaggle",
 # "Live Demo", "Coursera", etc. instead of a generic "Link" or a giant URL.
 _LINK_LABELS = (
@@ -3994,11 +4388,6 @@ def smart_link_label(url: str, fallback: str = "Link") -> str:
         if domain in u:
             return label
     return fallback
-
-
-def _clean_resume_line(line: str) -> str:
-    line = re.sub(r"\s+", " ", str(line or "")).strip()
-    return line.strip("|_: ")
 
 
 def _normalize_resume_text(text: str) -> str:
@@ -4100,71 +4489,6 @@ def _split_resume_sections(text: str) -> dict[str, list[str]]:
         sections[current_section].append(line)
 
     return sections
-
-
-def _extract_contact_from_resume_text(text: str, lines: list[str]) -> dict[str, str]:
-    email_match = re.search(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b", text)
-    email = email_match.group(0).strip() if email_match else ""
-
-    phone = ""
-    for match in re.finditer(r"(?:\+?\d[\d()\-\s]{7,}\d)", text):
-        candidate = re.sub(r"\s+", " ", match.group(0)).strip()
-        digits = re.sub(r"\D", "", candidate)
-        if 8 <= len(digits) <= 15:
-            phone = candidate
-            break
-
-    urls = re.findall(r"(https?://[^\s)]+|www\.[^\s)]+|[A-Za-z0-9.-]+\.(?:com|in|org|io|dev|ai|net)/[^\s)]*)", text)
-    normalized_urls = []
-    for url in urls:
-        clean = str(url).strip().rstrip(".,);")
-        if not clean:
-            continue
-        normalized_urls.append(clean if clean.startswith(("http://", "https://")) else f"https://{clean}")
-
-    def first_url_containing(keyword: str) -> str:
-        for url in normalized_urls:
-            if keyword in url.lower():
-                return url
-        return ""
-
-    linkedin = first_url_containing("linkedin")
-    github = first_url_containing("github")
-    kaggle = first_url_containing("kaggle")
-    leetcode = first_url_containing("leetcode")
-    google_scholar = first_url_containing("scholar.google")
-
-    portfolio = ""
-    for url in normalized_urls:
-        lower = url.lower()
-        if all(token not in lower for token in ("linkedin", "github", "kaggle", "leetcode", "scholar.google")):
-            portfolio = url
-            break
-
-    top_lines = [_clean_resume_line(line) for line in lines[:8] if _clean_resume_line(line)]
-    location = ""
-    for line in top_lines:
-        if email and email in line:
-            continue
-        if phone and phone in line:
-            continue
-        if "@" in line or "http" in line.lower() or "www." in line.lower():
-            continue
-        if re.search(r"\b(?:india|usa|united states|uk|canada|australia|remote)\b", line.lower()) or "," in line:
-            location = line
-            break
-
-    return {
-        "email": email,
-        "phone": phone,
-        "linkedin": display_link(linkedin) if linkedin else "",
-        "github": display_link(github) if github else "",
-        "kaggle": display_link(kaggle) if kaggle else "",
-        "leetcode": display_link(leetcode) if leetcode else "",
-        "googleScholar": display_link(google_scholar) if google_scholar else "",
-        "portfolio": display_link(portfolio) if portfolio else "",
-        "location": location,
-    }
 
 
 def _split_paragraphs(lines: list[str]) -> list[list[str]]:
@@ -7661,6 +7985,39 @@ COVER_LETTER_TONES = {
 }
 
 
+def _build_base_cover_letter_prompt(resume_text: str) -> str:
+    """A reusable, non-job-specific cover letter — for auto-apply to attach
+    as a document wherever a form requires one, the same way base_resume_path
+    is attached wherever a form requires a resume. Deliberately generic
+    (no company/role name, no specific "job description" to match against)
+    since the same file gets reused across different employers and roles;
+    _build_cover_letter_prompt's per-job version is for the standalone
+    generator and the extension, which always have a real JD in hand."""
+    return (
+        "You are an expert career writer. Write a general-purpose cover letter for the "
+        "candidate below, based only on their resume — there is no specific job description "
+        "for this one; it will be reused across different applications.\n\n"
+        "Rules:\n"
+        "- 3 to 4 short paragraphs, under 300 words total.\n"
+        "- Professional and confident tone.\n"
+        "- Open by introducing the candidate's professional focus and what they're looking "
+        "for next, in general terms — do not name a specific company or role, and do not "
+        "claim to be applying to \"this position\" or similar.\n"
+        "- Use concrete, relevant achievements and skills FROM THE RESUME. Never invent "
+        "experience that is not in the resume.\n"
+        "- Close with a confident, general call to action. No markdown, no placeholder "
+        "brackets like [Company Name], no sign-off name line.\n\n"
+        "Also extract the candidate's contact details FROM THE RESUME (never invent them; "
+        "use an empty string if a field is not present).\n"
+        "Return ONLY a JSON object of the form "
+        "{\"cover_letter\": \"<the full letter as plain text, with \\n between paragraphs>\", "
+        "\"name\": \"<candidate full name>\", "
+        "\"email\": \"<candidate email address>\", "
+        "\"location\": \"<candidate city, state/country>\"}.\n\n"
+        f"=== RESUME ===\n{resume_text}\n"
+    )
+
+
 @app.post("/api/generate-cover-letter")
 async def generate_cover_letter(request: Request):
     """Generate a tailored cover letter from a resume (PDF upload — preferred — or
@@ -8097,6 +8454,14 @@ async def set_extension_base_resume(request: Request):
         user.base_style_id = style_id
         user.base_cover_template = cover_template if cover_template in COVER_TEMPLATES else "classic"
         db.commit()
+        if has_upload:
+            # The cached education/address facts describe the OLD resume. Dropped
+            # rather than re-parsed: re-parsing would put an LLM call on the
+            # upload path for facts that may never be needed, and the extension's
+            # apply-context endpoint parses lazily on first use anyway.
+            from auto_apply.resume_facts import invalidate_facts
+
+            invalidate_facts(db, user_id)
         if has_upload and old_path and old_path != new_path and os.path.exists(old_path):
             os.remove(old_path)
     finally:
@@ -8146,6 +8511,139 @@ async def delete_extension_base_resume(request: Request):
         user.base_resume_filename = None
         user.base_resume_uploaded_at = None
         user.base_resume_text = None
+        db.commit()
+        # Facts parsed from a resume the user just removed must go with it.
+        from auto_apply.resume_facts import invalidate_facts
+
+        invalidate_facts(db, user_id)
+        if old_path and os.path.exists(old_path):
+            os.remove(old_path)
+    finally:
+        db.close()
+    return JSONResponse({"success": True})
+
+
+@app.get("/api/dashboard/base-cover-letter")
+async def get_base_cover_letter(request: Request):
+    """Status the auto-apply profile modal reads to know whether a base
+    cover letter is configured yet, mirroring GET /api/extension/base-resume."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        has_one = bool(user.base_cover_letter_path and os.path.exists(user.base_cover_letter_path))
+        return JSONResponse({
+            "has_base_cover_letter": has_one,
+            "filename": user.base_cover_letter_filename if has_one else None,
+            "generated_at": user.base_cover_letter_generated_at.isoformat() if (has_one and user.base_cover_letter_generated_at) else None,
+        })
+    finally:
+        db.close()
+
+
+@app.post("/api/dashboard/base-cover-letter/generate")
+async def generate_base_cover_letter(request: Request):
+    """Write a general-purpose cover letter from the user's base resume and
+    store it as a PDF — auto-apply attaches this to any "Cover Letter" file
+    field it finds, the same way it attaches base_resume_path to a Resume
+    field. Deliberately NOT gated by enforce_quota("cover_letters") — that
+    quota is for the per-job tailored letters /cover-letter and the
+    extension generate; this is a one-time reusable-baseline setup action,
+    the same category as uploading a base resume, not a per-application
+    generation."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+            raise HTTPException(status_code=400, detail="Upload a base resume first — the cover letter is written from it.")
+        base_resume_path = user.base_resume_path
+        cover_template = user.base_cover_template or "classic"
+        old_path = user.base_cover_letter_path
+    finally:
+        db.close()
+
+    resume_text = (await asyncio.to_thread(extract_pdf_text, base_resume_path) or "").strip()
+    if len(resume_text) < 50:
+        raise HTTPException(
+            status_code=400,
+            detail="Could not read your base resume. Re-upload a text-based PDF first.",
+        )
+
+    prompt = _build_base_cover_letter_prompt(resume_text[:8000])
+    try:
+        async with request_semaphore:
+            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+        parsed = parse_ai_json_response(raw)
+        if not isinstance(parsed, dict):
+            parsed = {}
+        letter = str(parsed.get("cover_letter") or "").strip()
+        if not letter:
+            raise ValueError("Empty cover letter returned")
+    except Exception:
+        logger.exception("Base cover letter generation failed")
+        raise HTTPException(status_code=502, detail="Could not write the cover letter. Please try again.")
+
+    letter_html = _render_cover_letter_html(
+        cover_template,
+        str(parsed.get("name") or "").strip(),
+        str(parsed.get("email") or "").strip(),
+        str(parsed.get("location") or "").strip(),
+        letter,
+    )
+
+    new_path = os.path.join(resumes_dir, f"base_cover_letter_{uuid.uuid4()}.pdf")
+    try:
+        from weasyprint import HTML
+        await asyncio.to_thread(lambda: HTML(string=letter_html, base_url=BASE_DIR).write_pdf(new_path))
+    except Exception:
+        logger.exception("Base cover letter PDF render failed")
+        if os.path.exists(new_path):
+            os.remove(new_path)
+        raise HTTPException(status_code=500, detail="Failed to render the cover letter PDF.")
+
+    db2 = get_db()
+    try:
+        user = db2.query(User).filter(User.id == user_id).first()
+        if not user:
+            os.remove(new_path)
+            raise HTTPException(status_code=401, detail="Not logged in")
+        user.base_cover_letter_path = new_path
+        user.base_cover_letter_filename = "cover_letter.pdf"
+        user.base_cover_letter_generated_at = datetime.utcnow()
+        db2.commit()
+    finally:
+        db2.close()
+    if old_path and old_path != new_path and os.path.exists(old_path):
+        os.remove(old_path)
+
+    return JSONResponse({"success": True, "filename": "cover_letter.pdf"})
+
+
+@app.delete("/api/dashboard/base-cover-letter")
+async def delete_base_cover_letter(request: Request):
+    """Remove the base cover letter, mirroring DELETE /api/extension/base-resume."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        old_path = user.base_cover_letter_path
+        user.base_cover_letter_path = None
+        user.base_cover_letter_filename = None
+        user.base_cover_letter_generated_at = None
         db.commit()
         if old_path and os.path.exists(old_path):
             os.remove(old_path)
@@ -8379,6 +8877,13 @@ async def extension_tailor_resume(request: Request):
                 "skills_added": added,
                 "skill_gaps": gaps,
                 "changes": (parsed or {}).get("changes") or {},
+                # For the extension's "See what changed" pop-up, which is the
+                # editor's own modal (static/changes_modal.js): it shows this
+                # rendered resume with each edit marked inline, and reads the
+                # skills/summary/bullets it marks from resume_data.
+                "html": html_content,
+                "resume_data": parsed if isinstance(parsed, dict) else {},
+                "skill_match_before": before_score,
                 "saved_resume_id": saved_resume_id,
                 # The extension holds the download and shows the skills pop-up;
                 # this PDF is what "Not now" downloads.
@@ -11919,141 +12424,13 @@ def _all_pdf_annotation_urls(pdf_path: str) -> set[str]:
     return urls
 
 
-async def _optimize_resume_core(
-    file_path: str,
-    jd_string: str,
-    ats_payload: str | None = None,
-    confirmed_skills: list[str] | None = None,
-    auto_add_skills: bool = False,
+async def _recover_project_and_publication_links(
+    parsed: dict, file_path: str, project_link_map, extracted_links,
+    extracted_pub_links, mapped_links,
 ) -> dict:
-    """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
-    resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
-    and the extension's /api/extension/tailor-resume, which differ only in where the
-    source PDF comes from (fresh upload vs. a user's stored base resume).
-
-    `ats_payload` is the ATS analysis the user has already been shown, forwarded
-    by the client. When present it is used verbatim and no second scoring call is
-    made. This is the only way to guarantee the editor's missing-skill list
-    matches the score page: two separate LLM calls do not reliably agree even on
-    identical input, which is how the score page came to list 13 missing hard
-    skills while the editor listed 5 for the same resume and job."""
-    resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
-    normalized_resume_string = normalize_links(resume_string)
-
-    # OPTIMIZATION: Run all link extractions in parallel instead of sequentially.
-    # The last two rebuild the exact resume text /get-score feeds ats_scoring;
-    # see _ats_resume_text_for below for why that has to match byte for byte.
-    link_tasks = [
-        asyncio.to_thread(extract_project_links, normalized_resume_string),
-        asyncio.to_thread(extract_publication_links, normalized_resume_string),
-        asyncio.to_thread(map_project_demo_links, normalized_resume_string),
-        asyncio.to_thread(extract_project_link_map, normalized_resume_string),
-        asyncio.to_thread(_extract_pdf_text_for_ats, file_path),
-        asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
-    ]
-    (
-        extracted_links, extracted_pub_links, mapped_links, project_link_map,
-        ats_pdf_text, ats_linkedin_url,
-    ) = await asyncio.gather(*link_tasks)
-
-    ats_resume_string = _ats_resume_text_for(ats_pdf_text, ats_linkedin_url)
-
-    prompt = create_prompt(resume_string, jd_string)
-
-    # Prefer the analysis the user was already shown. Re-scoring would be a
-    # second LLM call whose answer can differ from the first, and the user has
-    # no way to tell which is right - they just see two screens disagreeing.
-    forwarded_ats = _usable_ats_payload(ats_payload)
-
-    if forwarded_ats is not None:
-        try:
-            response_string = await get_resume_response(
-                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
-            )
-        except Exception as exc:
-            logger.exception("AI generation failed")
-            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
-        ats_result = forwarded_ats
-    else:
-        # No analysis to reuse (optimized without scoring first). Score it here,
-        # CONCURRENTLY with the rewrite so wall-clock cost is close to zero.
-        try:
-            response_string, ats_result = await asyncio.gather(
-                get_resume_response(
-                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
-                ),
-                ats_scoring(ats_resume_string, jd_string),
-                return_exceptions=True,
-            )
-        except Exception as exc:
-            logger.exception("AI generation failed")
-            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
-
-    if isinstance(response_string, BaseException):
-        logger.exception("AI generation failed", exc_info=response_string)
-        raise HTTPException(status_code=500, detail=_ai_failure_detail(response_string))
-
-    # A failed ATS pass must never break tailoring. Falling back to None makes
-    # inject_jd_hard_skills use its own regex extractor, which is what shipped
-    # before this call existed.
-    jd_hard_skills = None
-    ats_missing_hard: list[str] = []
-    missing_soft_skills: list[str] = []
-    if isinstance(ats_result, BaseException):
-        logger.warning("ATS skill list unavailable; falling back to regex JD extraction.", exc_info=ats_result)
-    else:
-        jd_hard_skills, ats_missing_hard, missing_soft_skills = _jd_skills_from_ats_result(ats_result)
-
-    parsed = parse_ai_json_response(response_string)
-
-    # Recover any bullet point the optimizer silently dropped/merged on a
-    # long resume, restoring it onto the exact entry it came from.
-    parsed = restore_dropped_bullets(parsed, resume_string)
-
-    # A dropped ENTRY is worse than a dropped bullet, and it also orphans that
-    # entry's links, which then leak into neighbouring sections.
-    parsed = restore_dropped_entries(parsed, resume_string)
-
-    # A bullet can also be hollowed out from the inside: the entry survives, the
-    # count is right, and the rewrite has quietly dropped the tools, figures and
-    # lists that made it worth reading. Preserve first, rewrite second - and
-    # enforce it here rather than trusting the model to have obeyed.
-    parsed = enforce_bullet_facts(parsed, resume_string)
-
-    # Runs last of the bullet passes: restore_dropped_bullets() and
-    # enforce_bullet_facts() can each put an original back, and neither checks
-    # whether its content is already carried by a bullet that merged several
-    # originals into one paragraph. That is how the same content shipped twice
-    # in one entry on a real resume.
-    parsed = dedupe_overlapping_bullets(parsed)
-
-    # Appended-purpose fabrication: a bullet that keeps every source fact and
-    # then states a plausible reason for it that the resume never claimed.
-    # Reported rather than stripped - see report_new_claims' docstring.
-    parsed = report_new_claims(parsed, resume_string)
-
-    # Observational source verbs promoted into ownership verbs. Same class of
-    # indefensible claim as an invented outcome, and invisible to every fact
-    # check because only the verb moved.
-    parsed = report_verb_inflation(parsed, resume_string)
-
-    # Metrics re-pointed at a different subject, and compound adjectives
-    # invented from JD vocabulary. Both keep every number and word traceable
-    # to an input while changing what is actually being claimed.
-    parsed = report_metric_reframing(parsed, resume_string)
-    parsed = report_coined_terms(parsed, resume_string, jd_string)
-
-    # What this JD asks for that the resume cannot evidence. Surfaced rather
-    # than silently written around: on a large gap the honest output is a
-    # report, not prose implying coverage the candidate would have to defend.
-    try:
-        parsed["jd_gap_report"] = build_jd_gap_report(jd_string, resume_string)
-    except Exception:
-        pass
-
-    # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
-    # The AI response already contains the optimized data - no need to re-extract original data
-
+    """PDF-annotation + text link recovery for projects and publications, then
+    inject_links. Shared by the tailoring pipeline and the resume-builder import
+    so both recover links identically."""
     # Extract project links from PDF for better accuracy (only if needed)
     project_names = [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)]
     if project_names:
@@ -12146,87 +12523,13 @@ async def _optimize_resume_core(
                     _pf.write(f"     github_link={_p.get('github_link')!r} url={_p.get('url')!r}\n")
     except Exception:
         pass
-    # resume_string is the ORIGINAL uploaded text - it is what decides whether a
-    # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
-    # ATS analysis's verdict on which skills the job actually requires.
-    # Previously-confirmed skills apply ONLY where the user cannot be asked -
-    # i.e. the Chrome extension, which re-tailors from the stored base resume
-    # with no dialog and would otherwise drop every skill they ever ticked.
-    #
-    # On the website they are deliberately NOT applied. Reusing an old answer
-    # there means the skill is added silently and, because it also counts as
-    # evidence, the matching JD requirement stops being reported as a gap - so
-    # the dialog has nothing to ask about and never appears. The website asks
-    # every time; that is the whole point of the page.
-    apply_confirmed = bool(confirmed_skills) and auto_add_skills
+    return parsed
 
-    skill_evidence = resume_string
-    if apply_confirmed:
-        skill_evidence = f"{resume_string}\nConfirmed skills: {', '.join(confirmed_skills)}"
 
-    parsed = inject_jd_hard_skills(
-        parsed, jd_string, skill_evidence, jd_skills=jd_hard_skills,
-        auto_add=auto_add_skills,
-    )
-
-    # A confirmed skill the JD never mentions still belongs on the resume — but
-    # again only on the surface that cannot ask.
-    if apply_confirmed:
-        existing = {str(s).strip().lower() for s in (parsed.get("skills") or [])}
-        for skill in confirmed_skills:
-            if skill.strip().lower() not in existing:
-                parsed.setdefault("skills", []).append(skill)
-                existing.add(skill.strip().lower())
-
-    # What the user is TOLD is missing should match the score page, so the ATS
-    # analysis's own `missing` list leads. But it must not REPLACE the list
-    # outright: inject_jd_hard_skills has just decided what it actually withheld
-    # from the resume, and anything it held back has to be offered or the
-    # candidate is never asked about a skill that is genuinely absent. Replacing
-    # the list meant a shorter (or empty) ATS list silently swallowed those, and
-    # the editor then had nothing to ask about at all.
-    #
-    # The extension gets the same list: inject_jd_hard_skills withholds
-    # unevidenced JD skills on both surfaces, and the extension's pop-up is where
-    # the user adds them. Wiping it here used to make those skills vanish.
-    if jd_hard_skills is not None:
-        withheld = [str(s) for s in (parsed.get("skill_gaps") or []) if str(s).strip()]
-        seen = {s.strip().lower() for s in ats_missing_hard}
-        parsed["skill_gaps"] = list(ats_missing_hard) + [
-            s for s in withheld if s.strip().lower() not in seen
-        ]
-
-    # Soft skills the rewrite failed to express go into the summary, not the
-    # skills array (Rule01b). Handled automatically rather than asked about:
-    # unlike "do you know Tableau?", this is presentation, not a credential.
-    parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills, resume_string)
-
-    # Rule 00 is an instruction, not a guarantee, so the countable half of it is
-    # checked here rather than trusted — the same reasoning as _repair_action_verbs.
-    # Strictly subtractive: it deletes keyword padding (a trailing "in the X
-    # domain" tag, a final sentence that names things without claiming any of
-    # them) and never writes new words, so it cannot introduce a claim the resume
-    # does not support. Runs AFTER the soft-skill weave so it sees the final
-    # assembled text, including anything that step appended. Whatever it cannot
-    # fix by deletion is reported on parsed["summary_issues"] instead.
-    parsed = repair_summary(parsed, jd_string, resume_string)
-
-    # The hard gates. repair_summary above is subtractive and can only delete;
-    # these decide whether what survived is publishable at all. Previously the
-    # gate layer existed in functions.py but was called from NOWHERE in this
-    # module, so every defect it detects shipped to users annotated but intact.
-    # Reported rather than blocking: a rejected summary still reaches the page,
-    # because an empty summary is worse than a flawed one — but the reasons now
-    # travel with the payload so the editor and the evals can see them.
-    try:
-        summary_rejections = summary_rejection_reasons(
-            str(parsed.get("summary") or ""), jd_string, resume_string,
-        )
-    except Exception:
-        summary_rejections = []
-    if summary_rejections:
-        parsed["summary_rejected"] = summary_rejections
-
+async def _recover_contact_and_section_links(parsed: dict, file_path: str) -> None:
+    """Contact links, plus Education / Experience / Certification links, recovered
+    from the PDF annotation layer. Mutates `parsed`. Shared by the tailoring
+    pipeline and the resume-builder import."""
     # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
     # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
     # the true URL lives in the annotation, so the AI loses or mangles them.
@@ -12454,6 +12757,229 @@ async def _optimize_resume_core(
             pass
     except Exception:
         pass
+
+
+async def _optimize_resume_core(
+    file_path: str,
+    jd_string: str,
+    ats_payload: str | None = None,
+    confirmed_skills: list[str] | None = None,
+    auto_add_skills: bool = False,
+) -> dict:
+    """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
+    resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
+    and the extension's /api/extension/tailor-resume, which differ only in where the
+    source PDF comes from (fresh upload vs. a user's stored base resume).
+
+    `ats_payload` is the ATS analysis the user has already been shown, forwarded
+    by the client. When present it is used verbatim and no second scoring call is
+    made. This is the only way to guarantee the editor's missing-skill list
+    matches the score page: two separate LLM calls do not reliably agree even on
+    identical input, which is how the score page came to list 13 missing hard
+    skills while the editor listed 5 for the same resume and job."""
+    resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
+    normalized_resume_string = normalize_links(resume_string)
+
+    # OPTIMIZATION: Run all link extractions in parallel instead of sequentially.
+    # The last two rebuild the exact resume text /get-score feeds ats_scoring;
+    # see _ats_resume_text_for below for why that has to match byte for byte.
+    link_tasks = [
+        asyncio.to_thread(extract_project_links, normalized_resume_string),
+        asyncio.to_thread(extract_publication_links, normalized_resume_string),
+        asyncio.to_thread(map_project_demo_links, normalized_resume_string),
+        asyncio.to_thread(extract_project_link_map, normalized_resume_string),
+        asyncio.to_thread(_extract_pdf_text_for_ats, file_path),
+        asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
+    ]
+    (
+        extracted_links, extracted_pub_links, mapped_links, project_link_map,
+        ats_pdf_text, ats_linkedin_url,
+    ) = await asyncio.gather(*link_tasks)
+
+    ats_resume_string = _ats_resume_text_for(ats_pdf_text, ats_linkedin_url)
+
+    prompt = create_prompt(resume_string, jd_string)
+
+    # Prefer the analysis the user was already shown. Re-scoring would be a
+    # second LLM call whose answer can differ from the first, and the user has
+    # no way to tell which is right - they just see two screens disagreeing.
+    forwarded_ats = _usable_ats_payload(ats_payload)
+
+    if forwarded_ats is not None:
+        try:
+            response_string = await get_resume_response(
+                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+            )
+        except Exception as exc:
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
+        ats_result = forwarded_ats
+    else:
+        # No analysis to reuse (optimized without scoring first). Score it here,
+        # CONCURRENTLY with the rewrite so wall-clock cost is close to zero.
+        try:
+            response_string, ats_result = await asyncio.gather(
+                get_resume_response(
+                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+                ),
+                ats_scoring(ats_resume_string, jd_string),
+                return_exceptions=True,
+            )
+        except Exception as exc:
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
+
+    if isinstance(response_string, BaseException):
+        logger.exception("AI generation failed", exc_info=response_string)
+        raise HTTPException(status_code=500, detail=_ai_failure_detail(response_string))
+
+    # A failed ATS pass must never break tailoring. Falling back to None makes
+    # inject_jd_hard_skills use its own regex extractor, which is what shipped
+    # before this call existed.
+    jd_hard_skills = None
+    ats_missing_hard: list[str] = []
+    missing_soft_skills: list[str] = []
+    if isinstance(ats_result, BaseException):
+        logger.warning("ATS skill list unavailable; falling back to regex JD extraction.", exc_info=ats_result)
+    else:
+        jd_hard_skills, ats_missing_hard, missing_soft_skills = _jd_skills_from_ats_result(ats_result)
+
+    parsed = parse_ai_json_response(response_string)
+
+    # Recover any bullet point the optimizer silently dropped/merged on a
+    # long resume, restoring it onto the exact entry it came from.
+    parsed = restore_dropped_bullets(parsed, resume_string)
+
+    # A dropped ENTRY is worse than a dropped bullet, and it also orphans that
+    # entry's links, which then leak into neighbouring sections.
+    parsed = restore_dropped_entries(parsed, resume_string)
+
+    # A bullet can also be hollowed out from the inside: the entry survives, the
+    # count is right, and the rewrite has quietly dropped the tools, figures and
+    # lists that made it worth reading. Preserve first, rewrite second - and
+    # enforce it here rather than trusting the model to have obeyed.
+    parsed = enforce_bullet_facts(parsed, resume_string)
+
+    # Runs last of the bullet passes: restore_dropped_bullets() and
+    # enforce_bullet_facts() can each put an original back, and neither checks
+    # whether its content is already carried by a bullet that merged several
+    # originals into one paragraph. That is how the same content shipped twice
+    # in one entry on a real resume.
+    parsed = dedupe_overlapping_bullets(parsed)
+
+    # Appended-purpose fabrication: a bullet that keeps every source fact and
+    # then states a plausible reason for it that the resume never claimed.
+    # Reported rather than stripped - see report_new_claims' docstring.
+    parsed = report_new_claims(parsed, resume_string)
+
+    # Observational source verbs promoted into ownership verbs. Same class of
+    # indefensible claim as an invented outcome, and invisible to every fact
+    # check because only the verb moved.
+    parsed = report_verb_inflation(parsed, resume_string)
+
+    # Metrics re-pointed at a different subject, and compound adjectives
+    # invented from JD vocabulary. Both keep every number and word traceable
+    # to an input while changing what is actually being claimed.
+    parsed = report_metric_reframing(parsed, resume_string)
+    parsed = report_coined_terms(parsed, resume_string, jd_string)
+
+    # What this JD asks for that the resume cannot evidence. Surfaced rather
+    # than silently written around: on a large gap the honest output is a
+    # report, not prose implying coverage the candidate would have to defend.
+    try:
+        parsed["jd_gap_report"] = build_jd_gap_report(jd_string, resume_string)
+    except Exception:
+        pass
+
+    # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
+    # The AI response already contains the optimized data - no need to re-extract original data
+
+    parsed = await _recover_project_and_publication_links(
+        parsed, file_path, project_link_map, extracted_links,
+        extracted_pub_links, mapped_links,
+    )
+    # resume_string is the ORIGINAL uploaded text - it is what decides whether a
+    # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
+    # ATS analysis's verdict on which skills the job actually requires.
+    # Previously-confirmed skills apply ONLY where the user cannot be asked -
+    # i.e. the Chrome extension, which re-tailors from the stored base resume
+    # with no dialog and would otherwise drop every skill they ever ticked.
+    #
+    # On the website they are deliberately NOT applied. Reusing an old answer
+    # there means the skill is added silently and, because it also counts as
+    # evidence, the matching JD requirement stops being reported as a gap - so
+    # the dialog has nothing to ask about and never appears. The website asks
+    # every time; that is the whole point of the page.
+    apply_confirmed = bool(confirmed_skills) and auto_add_skills
+
+    skill_evidence = resume_string
+    if apply_confirmed:
+        skill_evidence = f"{resume_string}\nConfirmed skills: {', '.join(confirmed_skills)}"
+
+    parsed = inject_jd_hard_skills(
+        parsed, jd_string, skill_evidence, jd_skills=jd_hard_skills,
+        auto_add=auto_add_skills,
+    )
+
+    # A confirmed skill the JD never mentions still belongs on the resume — but
+    # again only on the surface that cannot ask.
+    if apply_confirmed:
+        existing = {str(s).strip().lower() for s in (parsed.get("skills") or [])}
+        for skill in confirmed_skills:
+            if skill.strip().lower() not in existing:
+                parsed.setdefault("skills", []).append(skill)
+                existing.add(skill.strip().lower())
+
+    # What the user is TOLD is missing should match the score page, so the ATS
+    # analysis's own `missing` list leads. But it must not REPLACE the list
+    # outright: inject_jd_hard_skills has just decided what it actually withheld
+    # from the resume, and anything it held back has to be offered or the
+    # candidate is never asked about a skill that is genuinely absent. Replacing
+    # the list meant a shorter (or empty) ATS list silently swallowed those, and
+    # the editor then had nothing to ask about at all.
+    #
+    # The extension gets the same list: inject_jd_hard_skills withholds
+    # unevidenced JD skills on both surfaces, and the extension's pop-up is where
+    # the user adds them. Wiping it here used to make those skills vanish.
+    if jd_hard_skills is not None:
+        withheld = [str(s) for s in (parsed.get("skill_gaps") or []) if str(s).strip()]
+        seen = {s.strip().lower() for s in ats_missing_hard}
+        parsed["skill_gaps"] = list(ats_missing_hard) + [
+            s for s in withheld if s.strip().lower() not in seen
+        ]
+
+    # Soft skills the rewrite failed to express go into the summary, not the
+    # skills array (Rule01b). Handled automatically rather than asked about:
+    # unlike "do you know Tableau?", this is presentation, not a credential.
+    parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills, resume_string)
+
+    # Rule 00 is an instruction, not a guarantee, so the countable half of it is
+    # checked here rather than trusted — the same reasoning as _repair_action_verbs.
+    # Strictly subtractive: it deletes keyword padding (a trailing "in the X
+    # domain" tag, a final sentence that names things without claiming any of
+    # them) and never writes new words, so it cannot introduce a claim the resume
+    # does not support. Runs AFTER the soft-skill weave so it sees the final
+    # assembled text, including anything that step appended. Whatever it cannot
+    # fix by deletion is reported on parsed["summary_issues"] instead.
+    parsed = repair_summary(parsed, jd_string, resume_string)
+
+    # The hard gates. repair_summary above is subtractive and can only delete;
+    # these decide whether what survived is publishable at all. Previously the
+    # gate layer existed in functions.py but was called from NOWHERE in this
+    # module, so every defect it detects shipped to users annotated but intact.
+    # Reported rather than blocking: a rejected summary still reaches the page,
+    # because an empty summary is worse than a flawed one — but the reasons now
+    # travel with the payload so the editor and the evals can see them.
+    try:
+        summary_rejections = summary_rejection_reasons(
+            str(parsed.get("summary") or ""), jd_string, resume_string,
+        )
+    except Exception:
+        summary_rejections = []
+    if summary_rejections:
+        parsed["summary_rejected"] = summary_rejections
+
+    await _recover_contact_and_section_links(parsed, file_path)
 
     # Final safety net: clean the optimized data (balance parens, dedupe
     # skills, strip stray bullets) so malformed AI/post-processing output
@@ -12989,6 +13515,9 @@ async def extension_add_skills(request: Request):
         "filename": "tailored_resume.pdf",
         "added": added,
         "auto_add_skills": enable_auto,
+        # The re-rendered resume, so "See what changed" shows the skills just added.
+        "html": html_content,
+        "resume_data": resume_data if isinstance(resume_data, dict) else {},
     })
 
 
@@ -13552,6 +14081,27 @@ async def extract_cv_from_pdf(request: Request, file: UploadFile = File(...)):
 
         parsed = parse_ai_json_response(response_string)
         parsed = restore_dropped_bullets(parsed, resume_text)
+
+        # Recover links exactly as the tailoring pipeline does. Without this the
+        # builder only kept whatever URLs the model happened to copy out of the
+        # extracted text, and PDFs hide most project / certification URLs behind
+        # clickable anchor text that only the annotation layer contains.
+        try:
+            normalized_text = normalize_links(resume_text)
+            (extracted_links, extracted_pub_links, mapped_links,
+             project_link_map) = await asyncio.gather(
+                asyncio.to_thread(extract_project_links, normalized_text),
+                asyncio.to_thread(extract_publication_links, normalized_text),
+                asyncio.to_thread(map_project_demo_links, normalized_text),
+                asyncio.to_thread(extract_project_link_map, normalized_text),
+            )
+            parsed = await _recover_project_and_publication_links(
+                parsed, file_path, project_link_map, extracted_links,
+                extracted_pub_links, mapped_links,
+            )
+            await _recover_contact_and_section_links(parsed, file_path)
+        except Exception:
+            logger.exception("Link recovery failed during CV import; continuing without it")
         return _template_parsed_to_editor_payload(parsed)
     except HTTPException:
         raise

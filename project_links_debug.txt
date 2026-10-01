@@ -1,0 +1,91 @@
+=== PROJECT NAMES FROM AI ===
+  'TailorCV'
+  'Youtube Sentiment Analysis'
+  'Marketing Analytics'
+
+=== ANNOTATION MAP (pdf) ===
+{
+ "TailorCV": [
+  [
+   "Link",
+   "https://thetailorcv.com"
+  ],
+  [
+   "GitHub",
+   "https://github.com/td19454-dot/TailorCv.Ai1"
+  ]
+ ],
+ "Youtube Sentiment Analysis": [
+  [
+   "Link",
+   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"
+  ],
+  [
+   "GitHub",
+   "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"
+  ]
+ ],
+ "Marketing Analytics": [
+  [
+   "GitHub",
+   "https://github.com/SSarkar-1/Marketing-Analytics"
+  ]
+ ]
+}
+
+=== TITLE POSITIONS FOUND IN PDF ===
+  page0 top=273.7  'TailorCV'
+  page0 top=380.0  'Marketing Analytics'
+  page0 top=400.3  'Youtube Sentiment Analysis'
+  NOT LOCATED: []
+
+=== LINK POSITIONS AND DECISIONS ===
+  page0 top=  290.3 x0=  27.1 -> 'TailorCV' (dist 8.2)  https://thetailorcv.com
+  page0 top=  290.3 x0=  75.7 -> 'TailorCV' (dist 8.2)  https://github.com/td19454-dot/TailorCv.Ai1
+  page0 top=  416.9 x0=  27.1 -> 'Youtube Sentiment Analysis' (dist 8.2)  https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view
+  page0 top=  416.9 x0=  84.9 -> 'Youtube Sentiment Analysis' (dist 8.2)  https://github.com/SSarkar-1/Youtube_Sentiment_Insights
+  page0 top=  491.7 x0=  27.1 -> 'Marketing Analytics' (dist 8.2)  https://github.com/SSarkar-1/Marketing-Analytics
+
+=== TEXT MAP ===
+{}
+
+=== EFFECTIVE MAP ===
+{
+ "TailorCV": [
+  [
+   "Link",
+   "https://thetailorcv.com"
+  ],
+  [
+   "GitHub",
+   "https://github.com/td19454-dot/TailorCv.Ai1"
+  ]
+ ],
+ "Youtube Sentiment Analysis": [
+  [
+   "Link",
+   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"
+  ],
+  [
+   "GitHub",
+   "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"
+  ]
+ ],
+ "Marketing Analytics": [
+  [
+   "GitHub",
+   "https://github.com/SSarkar-1/Marketing-Analytics"
+  ]
+ ]
+}
+
+=== AFTER inject_links ===
+  'TailorCV'
+     links=[{"label": "Link", "url": "https://thetailorcv.com"}, {"label": "GitHub", "url": "https://github.com/td19454-dot/TailorCv.Ai1"}]
+     github_link='' url=''
+  'Youtube Sentiment Analysis'
+     links=[{"label": "Link", "url": "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"}, {"label": "GitHub", "url": "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"}]
+     github_link='' url=''
+  'Marketing Analytics'
+     links=[{"label": "GitHub", "url": "https://github.com/SSarkar-1/Marketing-Analytics"}]
+     github_link='' url=''

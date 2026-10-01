@@ -19,8 +19,46 @@
   if (window.__tailorcvInjected) return;   // toolbar click on an auto-injected page
   window.__tailorcvInjected = true;
 
-  const BASE_URL = 'https://thetailorcv.com';
+  // Top frame only. The sidebar must never paint inside an iframe, and the
+  // job-description heuristic below walks every div on the page — running it in
+  // every ad frame on LinkedIn would be a visible bug and a real slowdown. The
+  // manifest already scopes this file to the top frame; this is the belt to that
+  // braces, because the toolbar-click injection path is a separate code path.
+  // (autofill.bundle.js, which DOES load in every frame, has no UI of its own.)
+  if (window.top !== window) return;
+
+  // env.js is loaded before this file (see the manifest's content_scripts, and
+  // the toolbar-click injection chain in background.js). The fallback is the
+  // production URL, so a missing env.js degrades to shipping behaviour.
+  const BASE_URL = (window.__TCV_ENV && window.__TCV_ENV.BASE_URL) || 'https://thetailorcv.com';
+  // Pointed at a local backend: shows developer-only tools (the delayed capture).
+  const IS_DEV_BUILD = BASE_URL.indexOf('thetailorcv.com') === -1;
   const MIN_JD_LENGTH = 200;
+  // Where the application profile (name, address, eligibility, EEO answers) is
+  // viewed and edited: the dedicated profile page.
+  const PROFILE_URL = `${BASE_URL}/profile`;
+
+  // The autofill bundle, loaded before this file by the manifest. Feature-checked
+  // at every call site so a bundle that failed to load leaves the extension
+  // behaving exactly as it did before autofill existed.
+  const AF = window.__tcvAutofill || null;
+  // The application form in THIS document, or null. Set by refreshApplyMode().
+  let applyForm = null;
+  // The sub-frame that holds the form, when it isn't in this document — Greenhouse
+  // and Lever embed theirs on company-branded domains. {frameId, fieldCount, ats}.
+  let applyFrame = null;
+  // The context the answer tiers need (answer bank, blockers, quota), fetched
+  // once per browser session by the background worker.
+  let applyCtx = null;
+  let applyBusy = false;
+  // Which view #tcvBody is showing: 'loading' | 'blocked' (login, no resume,
+  // upgrade) | 'reading' | 'manual' | 'job' | 'apply' | 'running' | 'results'.
+  // The form watcher only repaints the views it is safe to repaint — never the
+  // login form, never a run in progress, never results the user is reviewing.
+  let currentView = 'loading';
+  // The job last shown by renderReady, so the watcher can redraw that view with
+  // the Autofill button added, without re-running extraction.
+  let lastJob = null;
 
   // analytics.bundle.js (loaded before this file, see manifest.json) installs
   // these globals — guarded in case it failed to load on some page.
@@ -28,6 +66,8 @@
     if (typeof window.__tcvTrack === 'function') window.__tcvTrack(event, props);
   }
   const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 30; // r=30 in the SVG below
+  const MATCH_RING_R = 26;                           // the job view's skill-match ring
+  const MATCH_RING_C = 2 * Math.PI * MATCH_RING_R;
   // The lock-check.svg loop is 4.7s at 30fps (141 frames). Frame 74 is the last
   // moment before it starts turning green / drawing the checkmark, so looping
   // [0, 74) reads as a pure "spinning lock" — the tick only plays once we know
@@ -43,7 +83,9 @@
 
   let tcvBusy = false;
   let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer;
-  let accountBtn, accountMenu, accountEmailEl;
+  let accountBtn, accountMenu, accountEmailEl, tabsEl, resultsEl;
+  // Base resume's filename, shown in the job view's Resume card.
+  let baseResumeName = '';
   let successTick, scoreCard, scoreBeforeEl, scoreAfterEl, successTickTimer;
   let sessionReady = false;
   // True only while renderNoBaseResume() is on screen — lets reopening the
@@ -505,8 +547,8 @@
     // Not every /company/ link is the employer's name: LinkedIn's own controls
     // ("Show Premium Insights", "Follow", "See all jobs") point there too, and
     // one of those is what put "at Show Premium Insights" on screen next to the
-    // job title. Drop anything that reads as a button rather than a name.
-    const COMPANY_NOISE = /^(show|see|view|follow|unfollow|about|more|less|jobs?|all jobs|company page|premium|save|apply)\b|premium insight|\bfollowers?\b/i;
+    // job title. Drop anything that reads as a button rather than a name
+    // (COMPANY_NOISE, shared with enrichJob below).
     const pickLink = (root) => {
       for (const a of root.querySelectorAll('a[href*="/company/"]')) {
         if (a.closest('#tailorcv-sidebar')) continue;
@@ -533,16 +575,173 @@
     return '';
   }
 
+  // ── Company and logo, whichever layer found the job ────────────────────
+  //
+  // A layer can find the description and the title and still miss the
+  // employer: LinkedIn's redesign replaced every class the adapter named with
+  // hashed ones, and guessCompany() without a scope element had nothing to
+  // search from. So once any layer has the job, these fill in what it missed.
+
+  // Names of job boards and ATSs — a site's name, never the hiring company.
+  const SITE_NAMES = /^(linkedin|indeed|glassdoor|naukri(\.com)?|monster|dice|ziprecruiter|wellfound|angellist|simplyhired|greenhouse|lever|workday|ashby|icims|smartrecruiters|jobvite|bamboohr|workable|careers?|jobs?|job search|home)$/i;
+
+  // The element showing this job's title, found by its text. The /company/
+  // link and logo sit beside it on LinkedIn (and most boards) in every layout
+  // so far, whatever the classes are called this month.
+  function titleElement(role) {
+    const want = (role || '').replace(/\s+/g, ' ').trim().toLowerCase();
+    if (!want || !document.body) return null;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      const t = (node.nodeValue || '').replace(/\s+/g, ' ').trim().toLowerCase();
+      if (t !== want) continue;
+      const el = node.parentElement;
+      if (!el || el.closest('#tailorcv-sidebar, script, style, title')) continue;
+      return el;
+    }
+    return null;
+  }
+
+  const COMPANY_NOISE = /^(show|see|view|follow|unfollow|about|more|less|jobs?|all jobs|company page|premium|save|apply)\b|premium insight|\bfollowers?\b/i;
+
+  // The employer named by a /company/ link: its text, or its logo's alt text.
+  function companyFromLink(a) {
+    const text = (a.textContent || '').replace(/\s+/g, ' ').trim();
+    if (text && text.length <= 80 && !COMPANY_NOISE.test(text)) return text;
+    const img = a.querySelector('img[alt]');
+    const alt = img ? (img.getAttribute('alt') || '').replace(/\s+logo$/i, '').trim() : '';
+    return alt && alt.length <= 80 && !COMPANY_NOISE.test(alt) ? alt : '';
+  }
+
+  // The nearest /company/ link around the title, climbing a few levels.
+  function companyLinksNear(el) {
+    let node = el;
+    for (let i = 0; i < 8 && node && node !== document.body; i++) {
+      const links = Array.from(node.querySelectorAll('a[href*="/company/"]'))
+        .filter(a => !a.closest('#tailorcv-sidebar'));
+      if (links.length) return links;
+      node = node.parentElement;
+    }
+    return [];
+  }
+
+  // "Data Scientist I | Bank of America | LinkedIn", "Role - Company", or
+  // "Job Application for Role at Company": the part that is neither the role
+  // nor the site. On LinkedIn's search view the title is the SEARCH, not the
+  // job, which is why the page itself is read first.
+  function companyFromTitle(role) {
+    const t = (document.title || '').replace(/^\(\d+\+?\)\s*/, '').trim();
+    if (!t) return '';
+    const at = t.match(/\bat\s+([^|–—]{2,60}?)\s*(?:[|–—]|$)/i);
+    if (at && !SITE_NAMES.test(at[1].trim())) return at[1].trim();
+    const want = (role || '').trim().toLowerCase();
+    const parts = t.split(/\s[|–—]\s|[|–—]|\s-\s/).map(p => p.trim()).filter(Boolean);
+    if (parts.length < 2 || !want || parts[0].toLowerCase() !== want) return '';
+    const next = parts[1];
+    if (!next || SITE_NAMES.test(next) || next.length > 60) return '';
+    // "Senior Data Scientist - Payments | Airbnb Careers": "Payments" is the rest
+    // of the title, not the employer. If the page's own heading carries the
+    // two joined, the second half belongs to the role.
+    const joined = `${parts[0]} - ${next}`.toLowerCase();
+    for (const h of document.querySelectorAll('h1, h2')) {
+      if ((h.textContent || '').replace(/\s+/g, ' ').toLowerCase().includes(joined)) return '';
+    }
+    return next;
+  }
+
+  // A company's own careers site names itself: "Airbnb Careers" -> "Airbnb".
+  // Never trusted on a job board or ATS, whose site name is theirs, not the employer's.
+  function companyFromSiteName() {
+    if (adapterForHost() || /icims|greenhouse|lever|workday|ashby|smartrecruiters|jobvite|bamboohr|workable/i.test(location.hostname)) return '';
+    const meta = document.querySelector('meta[property="og:site_name"]');
+    const name = ((meta && meta.getAttribute('content')) || '')
+      .replace(/\s*(careers?|jobs?|job openings|work with us)\s*$/i, '').trim();
+    return name && !SITE_NAMES.test(name) && name.length <= 60 ? name : '';
+  }
+
+  function absoluteHttps(src) {
+    try {
+      const u = new URL(src, location.href);
+      return u.protocol === 'https:' ? u.href : '';
+    } catch (_) { return ''; }
+  }
+
+  function logoFromJsonLd() {
+    for (const block of document.querySelectorAll('script[type="application/ld+json"]')) {
+      let parsed;
+      try { parsed = JSON.parse(block.textContent); } catch (_) { continue; }
+      const job = walkForJobPosting(parsed);
+      const org = job && job.hiringOrganization;
+      const logo = org && typeof org === 'object' ? org.logo : null;
+      const url = typeof logo === 'string' ? logo : (logo && (logo.url || logo.contentUrl)) || '';
+      if (url) return absoluteHttps(url);
+    }
+    return '';
+  }
+
+  // The employer's logo: never the site's own (LinkedIn's, Greenhouse's).
+  function resolveLogo(company, anchor) {
+    const fromLd = logoFromJsonLd();
+    if (fromLd) return fromLd;
+    const usable = img => img && !img.closest('#tailorcv-sidebar')
+      && absoluteHttps(img.currentSrc || img.getAttribute('src') || '');
+    for (const a of anchor ? companyLinksNear(anchor) : []) {
+      const img = a.querySelector('img');
+      const src = usable(img);
+      if (src) return src;
+    }
+    const name = (company || '').trim().toLowerCase();
+    if (name) {
+      for (const img of document.querySelectorAll('img[alt]')) {
+        const alt = (img.getAttribute('alt') || '').toLowerCase();
+        if (/logo/.test(alt) && alt.includes(name)) {
+          const src = usable(img);
+          if (src) return src;
+        }
+      }
+    }
+    // LinkedIn's preview image for a posting is the employer's logo.
+    const og = document.querySelector('meta[property="og:image"]');
+    const ogUrl = og ? absoluteHttps(og.getAttribute('content') || '') : '';
+    if (ogUrl && /company-logo/i.test(ogUrl)) return ogUrl;
+    // On a company's own careers site, its icon is its logo.
+    if (companyFromSiteName()) {
+      const icon = document.querySelector('link[rel~="apple-touch-icon"], link[rel~="icon"]');
+      const href = icon ? absoluteHttps(icon.getAttribute('href') || '') : '';
+      if (href) return href;
+    }
+    return '';
+  }
+
+  function enrichJob(job) {
+    if (!job) return job;
+    const anchor = titleElement(job.role);
+    if (!job.company) {
+      let fromLink = '';
+      for (const a of anchor ? companyLinksNear(anchor) : []) {
+        fromLink = companyFromLink(a);
+        if (fromLink) break;
+      }
+      // A careers site's own name before the tab title: it is the employer by
+      // definition, while titles mix the role, the team and the site together.
+      job.company = cleanCompany(fromLink || companyFromSiteName()
+        || companyFromTitle(job.role) || companyFromPage());
+    }
+    if (!job.logo) job.logo = resolveLogo(job.company, anchor);
+    return job;
+  }
+
   // ── The pipeline ─────────────────────────────────────
 
   function extractJob() {
     if (manualJd && manualJd.length >= MIN_JD_LENGTH) {
-      return { jd_string: manualJd, role: guessRole(), company: cleanCompany(guessCompany()), source: 'manual' };
+      return enrichJob({ jd_string: manualJd, role: guessRole(), company: cleanCompany(guessCompany()), source: 'manual' });
     }
     for (const layer of [fromJsonLd, fromAdapter, fromHeadingLabel, fromHeuristic]) {
       let job = null;
       try { job = layer(); } catch (_) { /* a broken layer must not kill the panel */ }
-      if (job && job.jd_string && job.jd_string.length >= MIN_JD_LENGTH) return job;
+      if (job && job.jd_string && job.jd_string.length >= MIN_JD_LENGTH) return enrichJob(job);
     }
     return null;
   }
@@ -593,6 +792,8 @@
     heading: 'Detected on this page',
     heuristic: 'Detected on this page',
     manual: 'Using the text you provided',
+    remembered: 'From the job posting you came from',
+    posting: 'Read from the job posting',
   };
 
   // ── Panel shell ──────────────────────────────────────
@@ -641,8 +842,11 @@
           <span class="tcv-logo">TailorCV</span>
         </div>
         <div class="tcv-header-actions">
+          ${IS_DEV_BUILD ? '<button class="tcv-dev-capture" id="tcvDevCapture" type="button" title="Dev build: capture the page structure after a 5-second delay, so an open dropdown is included">Capture in 5s</button>' : ''}
           <button class="tcv-account-btn" id="tcvAccountBtn" title="Account"></button>
-          <button class="tcv-toggle" title="Minimize">✕</button>
+          <button class="tcv-toggle" title="Minimize">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
         </div>
         <div class="tcv-account-menu" id="tcvAccountMenu">
           <div class="tcv-account-email" id="tcvAccountEmail"></div>
@@ -654,11 +858,29 @@
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-base-resume" target="_blank">Change base resume</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-resume-template" target="_blank">Change resume template</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-cover-template" target="_blank">Change cover letter template</a>
+          <a class="tcv-account-item" href="${PROFILE_URL}" target="_blank">Application profile (name, address…)</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension" target="_blank">Extension settings</a>
+          <button class="tcv-account-item" id="tcvCopyStructure" type="button">Copy page structure for TailorCV</button>
           <button class="tcv-account-item tcv-account-logout" id="tcvAccountLogout" type="button">Log out</button>
         </div>
       </div>
+      <div class="tcv-tabs" id="tcvTabs" role="tablist">
+        <button class="tcv-tab" type="button" data-tab="tailor">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 17l.8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8z"/></svg>
+          Tailor
+        </button>
+        <button class="tcv-tab" type="button" data-tab="autofill">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>
+          Autofill
+        </button>
+        <button class="tcv-tab" type="button" data-tab="profile">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          Profile
+        </button>
+      </div>
+      <div class="tcv-scroll">
       <div id="tcvBody"></div>
+      <div class="tcv-results" id="tcvResults">
       <div class="tcv-progress-wrap" id="tcvProgressWrap">
         <div class="tcv-progress-circle">
           <svg class="tcv-progress-ring" width="88" height="88" viewBox="0 0 88 88">
@@ -687,6 +909,8 @@
         </div>
       </div>
       <div class="tcv-status-text" id="tcvGlobalStatus"></div>
+      </div>
+      </div>
     `;
     document.body.appendChild(sb);
 
@@ -720,6 +944,18 @@
     accountEmailEl = sb.querySelector('#tcvAccountEmail');
     progressBar.style.strokeDasharray = String(PROGRESS_CIRCUMFERENCE);
     progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE);
+
+    // Every render replaces #tcvBody's children, so watching that one node keeps
+    // the tab bar in step with currentView without touching each renderer.
+    tabsEl = sb.querySelector('#tcvTabs');
+    tabsEl.addEventListener('click', (e) => {
+      const tab = e.target.closest('.tcv-tab');
+      if (!tab || tab.disabled) return;
+      onTabClick(tab.dataset.tab);
+    });
+    resultsEl = sb.querySelector('#tcvResults');
+    new MutationObserver(() => { syncTabs(); placeResults(); }).observe(body, { childList: true });
+    syncTabs();
 
     sb.querySelector('.tcv-toggle').addEventListener('click', () => {
       sb.classList.add('tcv-collapsed');
@@ -757,6 +993,14 @@
       track('auto_add_skills_toggled', { enabled: autoSkillsInput.checked, via: 'account_menu' });
     });
 
+    sb.querySelector('#tcvCopyStructure').addEventListener('click', async () => {
+      accountMenu.classList.remove('tcv-visible');
+      await copyPageStructure();
+      syncDevCaptureBtn();
+    });
+    const devCaptureBtn = sb.querySelector('#tcvDevCapture');
+    if (devCaptureBtn) devCaptureBtn.addEventListener('click', onDevCaptureClick);
+
     sb.querySelector('#tcvAccountLogout').addEventListener('click', async () => {
       const logoutBtn = sb.querySelector('#tcvAccountLogout');
       accountMenu.classList.remove('tcv-visible');
@@ -770,6 +1014,7 @@
     });
 
     refreshFull();
+    startFormWatcher();
   }
 
   function togglePanel() {
@@ -795,6 +1040,342 @@
     }
   }
 
+  // The progress ring, success tick, score card and status line are built once
+  // and outlive every re-render, so a tailor in flight survives switching views.
+  // The job view gives them a slot between the Resume card and Cover Letter;
+  // every other view has them after the body. Moved, never rebuilt, so the
+  // ring's progress and any skills panel inside go with them.
+  function placeResults() {
+    if (!resultsEl) return;
+    const slot = body.querySelector('#tcvResultSlot');
+    if (slot) {
+      if (resultsEl.parentNode !== slot) slot.appendChild(resultsEl);
+    } else if (resultsEl.previousElementSibling !== body) {
+      body.after(resultsEl);
+    }
+  }
+
+  // ── "Copy page structure for TailorCV" ─────────────────────
+  // The form's markup, scrubbed of the person's data (src/autofill/capture.js),
+  // copied to the clipboard to paste to TailorCV — how ATS adapters and their
+  // tests get built from real pages instead of screenshots.
+  // A chat message holds ~50,000 characters and an Oracle step is bigger than
+  // that, so a large capture is copied in parts: each click copies the next
+  // part of the same capture until all are copied, then the next click starts
+  // a fresh capture.
+  const CAPTURE_PART_CHARS = 45000;
+  let captureParts = null;   // { parts, next, url }
+
+  function splitCapture(text) {
+    const parts = [];
+    let rest = text;
+    while (rest.length > CAPTURE_PART_CHARS) {
+      let cut = rest.lastIndexOf('\n', CAPTURE_PART_CHARS);
+      if (cut < CAPTURE_PART_CHARS / 2) cut = CAPTURE_PART_CHARS;
+      parts.push(rest.slice(0, cut));
+      rest = rest.slice(cut);
+    }
+    parts.push(rest);
+    return parts.length === 1 ? parts
+      : parts.map((p, i) => `<!-- TailorCV capture part ${i + 1} of ${parts.length} -->\n${p}`);
+  }
+
+  function capturePending() {
+    return !!(captureParts && captureParts.url === location.href
+              && captureParts.next < captureParts.parts.length);
+  }
+
+  async function copyPageStructure() {
+    if (!AF || !AF.capturePageStructure) return;
+    if (capturePending()) return copyCapturePart();
+    await takeCapture();
+    return copyCapturePart();
+  }
+
+  // Reads the page into captureParts without touching it — no click, no focus
+  // change — so a dropdown the person opened stays open while it is read.
+  async function takeCapture() {
+    let values = [];
+    try {
+      const ctx = await ensureApplyContext();
+      const bank = (ctx && ctx.answerBank) || {};
+      values = Object.values(bank).filter(v => typeof v === 'string');
+    } catch (e) { values = []; }
+    const email = accountEmailEl && accountEmailEl.textContent;
+    if (email) values.push(email);
+
+    let text = '';
+    if (!applyForm && applyFrame) {
+      const res = await toFrame({ type: 'AF_FRAME_CAPTURE', profileValues: values });
+      text = (res && res.text) || '';
+    }
+    if (!text) text = AF.capturePageStructure(document, values);
+    captureParts = { parts: splitCapture(text), next: 0, url: location.href };
+  }
+
+  // Dev builds only: a capture button in the header. Any click outside a page's
+  // dropdown closes it, so the capture cannot be started by a click while the
+  // list is open. Instead: click, open the dropdown within 5 seconds, and the
+  // capture is taken on its own; the next clicks copy it (a click is needed
+  // for the clipboard anyway).
+  const DEV_CAPTURE_DELAY_S = 5;
+  let devCaptureTimer = null;
+
+  function syncDevCaptureBtn() {
+    const btn = sb && sb.querySelector('#tcvDevCapture');
+    if (!btn) return;
+    if (devCaptureTimer) return;
+    btn.textContent = capturePending()
+      ? `Copy ${captureParts.next + 1}/${captureParts.parts.length}`
+      : `Capture in ${DEV_CAPTURE_DELAY_S}s`;
+  }
+
+  async function onDevCaptureClick() {
+    if (!AF || !AF.capturePageStructure || devCaptureTimer) return;
+    if (capturePending()) {
+      await copyCapturePart();
+      syncDevCaptureBtn();
+      return;
+    }
+    const btn = sb.querySelector('#tcvDevCapture');
+    let left = DEV_CAPTURE_DELAY_S;
+    const tick = () => {
+      btn.textContent = `Capturing in ${left}…`;
+      globalStatus.className = 'tcv-status-text';
+      globalStatus.textContent = `Open the dropdown on the page now — capturing in ${left}s`;
+    };
+    tick();
+    devCaptureTimer = setInterval(async () => {
+      left -= 1;
+      if (left > 0) { tick(); return; }
+      clearInterval(devCaptureTimer);
+      await takeCapture();
+      devCaptureTimer = null;
+      const open = document.querySelector('[aria-expanded="true"][aria-controls]');
+      globalStatus.className = 'tcv-status-text tcv-ok';
+      globalStatus.textContent = `✓ Captured${open ? ' with a list open' : ' (no list was open)'} — `
+        + `click "Copy 1/${captureParts.parts.length}" and paste each part to TailorCV`;
+      syncDevCaptureBtn();
+    }, 1000);
+  }
+
+  async function copyCapturePart() {
+    const { parts } = captureParts;
+    const index = captureParts.next;
+    const text = parts[index];
+
+    let copied = false;
+    try { await navigator.clipboard.writeText(text); copied = true; } catch (e) { copied = false; }
+    if (!copied) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      try { copied = document.execCommand('copy'); } catch (e) { copied = false; }
+      ta.remove();
+    }
+    if (copied) captureParts.next = index + 1;
+    const more = parts.length - (index + 1);
+    const partNote = parts.length > 1 ? ` part ${index + 1} of ${parts.length}` : '';
+    globalStatus.className = copied ? 'tcv-status-text tcv-ok' : 'tcv-status-text tcv-error';
+    globalStatus.textContent = !copied
+      ? '✗ Could not copy — your browser blocked clipboard access'
+      : more > 0
+        ? `✓ Page structure${partNote} copied — paste it to TailorCV (one part per message), then copy part ${index + 2}`
+        : `✓ Page structure${partNote} copied (personal details removed) — paste it to TailorCV`;
+  }
+
+  // ── Tabs ─────────────────────────────────────────────
+  // Tailor and Autofill are two views of the same page, not separate modes:
+  // they only pick which renderer draws #tcvBody. Profile lives on the website.
+
+  const TAB_FOR_VIEW = {
+    reading: 'tailor', manual: 'tailor', job: 'tailor',
+    apply: 'autofill', running: 'autofill', results: 'autofill',
+  };
+
+  function syncTabs() {
+    if (!tabsEl) return;
+    const active = TAB_FOR_VIEW[currentView];
+    // Login, no resume, upgrade, and the auth animation have nothing to switch to.
+    tabsEl.classList.toggle('tcv-hidden', !active);
+    const hasForm = !!(AF && (applyForm || applyFrame));
+    tabsEl.querySelectorAll('.tcv-tab').forEach((t) => {
+      t.classList.toggle('tcv-active', t.dataset.tab === active);
+      if (t.dataset.tab === 'autofill') {
+        t.disabled = !hasForm;
+        t.title = hasForm ? '' : 'No application form on this page';
+      }
+    });
+  }
+
+  function onTabClick(tab) {
+    if (tab === 'profile') { window.open(PROFILE_URL, '_blank'); return; }
+    if (applyBusy || tab === TAB_FOR_VIEW[currentView]) return;
+    if (tab === 'autofill') {
+      renderApplyReady();
+    } else if (lastJob) {
+      if (lastJob === applicationJob) renderJobReview(applicationJob);
+      else renderReady(lastJob);
+    } else if (hasForm()) {
+      renderTailorForApplication();   // an apply page with no posting on it
+    } else {
+      renderJobFromPage();
+    }
+  }
+
+  // ── Tailoring from a page that only holds the application ────────────
+  //
+  // Workday step 2, Oracle ".../apply/section/1", a Lever "/apply": the form is
+  // here, the description is not. It is found (background.js JOB_RECALL /
+  // JOB_FETCH): first the posting the person came from, remembered this
+  // session; then the ATS's own posting data, via this page's "Back to Job
+  // Posting" link or its URL. Only when all of that misses is the person asked
+  // to paste it.
+
+  let applicationJob = null;    // found once per page; steps 2..N reuse it
+  let rememberedJd = '';
+  const BACK_TO_POSTING_RE =
+    /^\s*(back to (the )?job( posting| description| details)?|view (the )?job( posting| description| details)?|job details|view posting)\s*$/i;
+
+  function rememberPosting(job, extraUrls) {
+    if (!job || !job.jd_string) return;
+    if (['manual', 'remembered', 'posting'].includes(job.source)) return;
+    if (rememberedJd === job.jd_string && !extraUrls) return;   // re-renders: once is enough
+    rememberedJd = job.jd_string;
+    sendMessage({ type: 'JOB_REMEMBER',
+                  job: { role: job.role, company: job.company, jd_string: job.jd_string, url: location.href },
+                  urls: [location.href].concat(extraUrls || []) });
+  }
+
+  function backToPostingHref() {
+    for (const a of document.querySelectorAll('a[href]')) {
+      if (a.closest('#tailorcv-sidebar')) continue;
+      if (!BACK_TO_POSTING_RE.test(a.textContent || '')) continue;
+      try { return new URL(a.getAttribute('href'), location.href).href; } catch (e) { /* next */ }
+    }
+    return '';
+  }
+
+  async function findJobForApplication() {
+    if (applicationJob) return applicationJob;
+    const urls = [backToPostingHref(), location.href].filter(Boolean);
+    const title = jobContext().jobTitle;
+    let res = await sendMessage({ type: 'JOB_RECALL', urls, title });
+    let found = res && res.data && res.data.job ? res.data : null;
+    if (!found) {
+      res = await sendMessage({ type: 'JOB_FETCH', urls });
+      found = res && res.data && res.data.job ? res.data : null;
+    }
+    if (!found) return null;
+    applicationJob = enrichJob(Object.assign({}, found.job, { source: found.source }));
+    return applicationJob;
+  }
+
+  async function renderTailorForApplication() {
+    currentView = 'job';
+    const ctx = jobContext();
+    body.innerHTML = `
+      <div class="tcv-card tcv-job-card">
+        <div class="tcv-job-main">
+          <div class="tcv-job-avatar">${esc((ctx.jobCompany || ctx.jobTitle || '?').trim().charAt(0).toUpperCase() || '?')}</div>
+          <div class="tcv-job-text">
+            <div class="tcv-job-title">${esc(ctx.jobTitle || 'This application')}</div>
+            <div class="tcv-job-meta">${ctx.jobCompany ? esc(ctx.jobCompany) + ' · ' : ''}Finding the job description…</div>
+          </div>
+        </div>
+      </div>`;
+    const job = await findJobForApplication();
+    // The person may have moved on (Autofill tab) while this was looking.
+    if (currentView !== 'job' || !document.getElementById('tailorcv-sidebar')) return;
+    if (job) { renderJobReview(job); return; }
+    // Nothing found: the same form, with the description left for them.
+    const tp = globalThis.TCVJobSource;
+    applicationJob = { role: ctx.jobTitle || '', company: ctx.jobCompany || '', jd_string: '',
+                       url: tp ? tp.postingUrl(location.href) : location.href, source: 'manual' };
+    renderJobReview(applicationJob, { missing: true });
+  }
+
+  const REVIEW_BANNER = {
+    remembered: 'Job details are ready to review — from the posting you came from.',
+    posting: 'Job details are ready to review — read from the job posting.',
+  };
+
+  // The job this application is for, as an editable form: title, the posting's
+  // URL, company, description — then Tailor. Whatever the person corrects here
+  // is what gets tailored, and it stays corrected when they come back.
+  function renderJobReview(job, opts) {
+    currentView = 'job';
+    lastJob = job;
+    const missing = !!(opts && opts.missing) || !job.jd_string;
+    body.innerHTML = `
+      <div class="tcv-review-banner${missing ? ' tcv-review-warn' : ''}">${missing
+        ? "We couldn't find this job's description — paste it below."
+        : esc(REVIEW_BANNER[job.source] || 'Job details are ready to review.')}</div>
+      <label class="tcv-field-label" for="tcvRvTitle">Job title *</label>
+      <input id="tcvRvTitle" class="tcv-input" value="${esc(job.role || '')}" placeholder="e.g. Data Scientist">
+      <label class="tcv-field-label" for="tcvRvUrl">URL of the original posting</label>
+      <input id="tcvRvUrl" class="tcv-input" value="${esc(job.url || '')}" placeholder="https://…">
+      <label class="tcv-field-label" for="tcvRvCompany">Company name *</label>
+      <div class="tcv-review-company">
+        ${job.logo ? `<img src="${esc(job.logo)}" alt="" referrerpolicy="no-referrer">` : ''}
+        <input id="tcvRvCompany" class="tcv-input" value="${esc(job.company || '')}">
+      </div>
+      <label class="tcv-field-label" for="tcvRvJd">Job description *</label>
+      <textarea id="tcvRvJd" class="tcv-textarea tcv-review-jd" rows="10"
+                placeholder="Paste the job description here…">${esc(job.jd_string || '')}</textarea>
+      <div class="tcv-error" id="tcvRvError"></div>
+      <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvRvTailor">${tcvBusy
+        ? 'Working on another job…' : 'Tailor my resume <span aria-hidden="true">▸</span>'}</button>
+      <button class="tcv-btn tcv-btn-ghost" id="tcvRvCover">✉ Write a cover letter</button>
+      <div id="tcvResultSlot"></div>`;
+
+    const logo = body.querySelector('.tcv-review-company img');
+    if (logo) logo.addEventListener('error', () => logo.remove(), { once: true });
+
+    // Read the form back into the job, so a correction survives a redraw.
+    const readForm = () => Object.assign(job, {
+      role: body.querySelector('#tcvRvTitle').value.trim(),
+      url: body.querySelector('#tcvRvUrl').value.trim(),
+      company: body.querySelector('#tcvRvCompany').value.trim(),
+      jd_string: body.querySelector('#tcvRvJd').value.trim(),
+    });
+    const collect = () => {
+      const edited = readForm();
+      const err = body.querySelector('#tcvRvError');
+      if (!edited.role) { err.textContent = 'Add the job title.'; return null; }
+      if (edited.jd_string.length < MIN_JD_LENGTH) {
+        err.textContent = `Add the job description — at least ${MIN_JD_LENGTH} characters.`;
+        return null;
+      }
+      err.textContent = '';
+      return edited;
+    };
+    for (const id of ['#tcvRvTitle', '#tcvRvUrl', '#tcvRvCompany', '#tcvRvJd']) {
+      body.querySelector(id).addEventListener('change', readForm);
+    }
+
+    const tailorBtn = body.querySelector('#tcvRvTailor');
+    const coverBtn = body.querySelector('#tcvRvCover');
+    if (tcvBusy) { tailorBtn.disabled = true; coverBtn.disabled = true; return; }
+    const labelOf = j => `${j.role || 'this job'}${j.company ? ' at ' + j.company : ''}`;
+    tailorBtn.addEventListener('click', () => {
+      const j = collect();
+      if (j) runTailor(j, labelOf(j));
+    });
+    coverBtn.addEventListener('click', () => {
+      const j = collect();
+      if (j) runCoverLetter(j, labelOf(j));
+    });
+  }
+
+  // After a tailor or cover letter: the view it started from.
+  function refreshJobView() {
+    if (lastJob && lastJob === applicationJob) renderJobReview(applicationJob);
+    else renderJobFromPage();
+  }
+
   // ── State renderers ──────────────────────────────────
 
   // An <img>-loaded SVG can't be scripted (isolated rendering context), so to
@@ -802,6 +1383,7 @@
   // let the green-tick ending play once login is confirmed — the SVG has to be
   // inlined into the page DOM instead.
   async function renderLoading() {
+    currentView = 'loading';
     body.innerHTML = `
       <div class="tcv-loading-anim" id="tcvLoadingAnim"></div>
       <div class="tcv-loading-label">Authenticating</div>
@@ -847,6 +1429,7 @@
   }
 
   function renderLogin(errorMsg) {
+    currentView = 'blocked';
     body.innerHTML = `
       <div class="tcv-msg">Log in to TailorCV to tailor your resume.</div>
       <form id="tcvLoginForm">
@@ -887,6 +1470,7 @@
   }
 
   function renderNoBaseResume() {
+    currentView = 'blocked';
     body.innerHTML = `
       <div class="tcv-empty-state">
         <div class="tcv-doc-wrap">
@@ -923,6 +1507,7 @@
   }
 
   function renderUpgradePrompt() {
+    currentView = 'blocked';
     body.innerHTML = `
       <div class="tcv-upgrade-box">
         <div class="tcv-msg">You've used all your free resume tailors for this month.</div>
@@ -939,13 +1524,15 @@
 
   // Layer 4. The page beat every extractor, so let the user hand us the text —
   // this is what keeps the extension useful on login-gated SPAs and odd career pages.
-  function renderManual(prefill) {
+  function renderManual(prefill, note) {
+    currentView = 'manual';
     // No prefill means this is the auto-fallback (every extractor missed), not
     // the user deliberately opening "not right? edit" on an already-found job —
     // only that case gets a retry link, so we don't offer to overwrite an
     // in-progress edit of a job that WAS detected.
     const showRetry = !prefill;
     body.innerHTML = `
+      ${note ? `<div class="tcv-af-note">${esc(note)}</div>` : ''}
       <div class="tcv-msg">Paste the job description, or select it on the page and click Use&nbsp;selection.</div>
       <textarea id="tcvManualJd" class="tcv-textarea" rows="7"
                 placeholder="Paste the job description here…">${esc(prefill || '')}</textarea>
@@ -988,24 +1575,87 @@
 
   function renderReady(job) {
     if (quotaExceeded) { renderUpgradePrompt(); return; }
+    currentView = 'job';
+    lastJob = job;
+    rememberPosting(job);
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
+    const initial = (job.company || job.role || '?').trim().charAt(0).toUpperCase() || '?';
+    const tailorLabel = 'Working on another job…';
+    // One loud button that moves the application forward: autofill when this
+    // page is the form, otherwise Start Application, which follows the
+    // posting's own Apply button out to the company's ATS. Tailoring lives in
+    // the Resume card either way.
     body.innerHTML = `
-      <div class="tcv-job-info">Job Title: <b>${esc(job.role || 'this job')}</b>${job.company ? ' at ' + esc(job.company) : ''}</div>
-      <div class="tcv-source">${SOURCE_LABEL[job.source] || ''} · <a href="#" id="tcvEditJd">not right?</a></div>
-      <div class="tcv-match" id="tcvMatch">
-        <div class="tcv-match-head">
-          <span class="tcv-match-label">Skill match</span>
-          <span class="tcv-match-value" id="tcvMatchBefore">…</span>
+      <div class="tcv-card tcv-job-card">
+        <div class="tcv-job-main">
+          <div class="tcv-job-avatar${job.logo ? ' tcv-has-logo' : ''}" id="tcvJobAvatar">${job.logo
+            ? `<img src="${esc(job.logo)}" alt="" referrerpolicy="no-referrer">` : esc(initial)}</div>
+          <div class="tcv-job-text">
+            <div class="tcv-job-title">${esc(job.role || 'This job')}</div>
+            <div class="tcv-job-meta">${job.company ? esc(job.company) + ' · ' : ''}${SOURCE_LABEL[job.source] || ''}</div>
+          </div>
         </div>
-        <div class="tcv-match-bar"><span class="tcv-match-fill" id="tcvMatchFill"></span></div>
+        <div class="tcv-job-foot">Wrong job? <a href="#" id="tcvEditJd">Edit the description</a></div>
       </div>
-      <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
-        ${tcvBusy ? 'Working on another job…' : '✦ Tailor & Download Resume'}
-      </button>
-      <button class="tcv-btn tcv-btn-ghost" id="tcvCoverBtn">
-        ✉ Write a Cover Letter
+      ${hasForm() ? `
+      <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">Autofill this application <span aria-hidden="true">▸</span></button>` : `
+      <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvStartAppBtn">Start Application <span aria-hidden="true">▸</span></button>`}
+      <div class="tcv-card tcv-resume-card">
+        <div class="tcv-card-head">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+          <span>Resume</span>
+        </div>
+        <a class="tcv-resume-file" href="${BASE_URL}/extension#ext-base-resume" target="_blank" title="Change base resume">
+          <span class="tcv-resume-name">${esc(baseResumeName || 'Base resume')}</span>
+          <span class="tcv-chev" aria-hidden="true">›</span>
+        </a>
+        <div class="tcv-match" id="tcvMatch">
+          <div class="tcv-ring-wrap">
+            <svg class="tcv-ring" width="64" height="64" viewBox="0 0 64 64">
+              <defs>
+                <linearGradient id="tcvMatchGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#4f7fff"></stop>
+                  <stop offset="100%" stop-color="#c9b8ff"></stop>
+                </linearGradient>
+              </defs>
+              <circle class="tcv-ring-track" cx="32" cy="32" r="${MATCH_RING_R}"></circle>
+              <circle class="tcv-ring-bar" id="tcvMatchRing" cx="32" cy="32" r="${MATCH_RING_R}"
+                      style="stroke-dasharray:${MATCH_RING_C};stroke-dashoffset:${MATCH_RING_C}"></circle>
+            </svg>
+            <span class="tcv-match-value" id="tcvMatchBefore">…</span>
+          </div>
+          <div class="tcv-match-text">
+            <div class="tcv-match-verdict" id="tcvMatchVerdict">Checking your match…</div>
+            <div class="tcv-match-sub" id="tcvMatchSub">Skill match for this job</div>
+          </div>
+        </div>
+        <button class="tcv-btn tcv-btn-outline-accent" id="tcvTailorBtn">${tcvBusy ? tailorLabel : '✎ Tailor Resume'}</button>
+      </div>
+      <div id="tcvResultSlot"></div>
+      <button class="tcv-card tcv-row-card" id="tcvCoverBtn" type="button">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/><path d="M17.5 2.5a2.1 2.1 0 013 3L12 14l-4 1 1-4z"/></svg>
+        <span class="tcv-row-title">Cover Letter</span>
+        <span class="tcv-row-meta">Write one <span class="tcv-chev" aria-hidden="true">›</span></span>
       </button>
     `;
+
+    // On a page that is BOTH a posting and an application form, autofill leads
+    // and the resume actions stay where they were — one view, no mode switch.
+    // A logo that fails to load (moved, blocked) falls back to the initial.
+    const logoImg = body.querySelector('#tcvJobAvatar img');
+    if (logoImg) {
+      logoImg.addEventListener('error', () => {
+        const box = logoImg.parentElement;
+        if (!box) return;
+        box.classList.remove('tcv-has-logo');
+        box.textContent = initial;
+      }, { once: true });
+    }
+
+    const fillBtn = body.querySelector('#tcvAfFillBtn');
+    if (fillBtn) fillBtn.addEventListener('click', () => runAutofill());
+    const startBtn = body.querySelector('#tcvStartAppBtn');
+    if (startBtn) startBtn.addEventListener('click', () => startApplication());
 
     body.querySelector('#tcvEditJd').addEventListener('click', (e) => {
       e.preventDefault();
@@ -1024,6 +1674,93 @@
       coverBtn.addEventListener('click', () => runCoverLetter(job, label));
     }
     loadBeforeScore(job);
+    if (!hasForm()) onFrameFormFound();
+  }
+
+  // ── Start Application ────────────────────────────────
+  // The posting's own Apply control is the source of truth for where the
+  // application lives. It is looked up at click time, not render time:
+  // LinkedIn paints the top card's buttons after the description, and
+  // switching jobs in a list view swaps them without a reload.
+
+  const APPLY_SELECTORS = [
+    '.jobs-apply-button',                       // LinkedIn (both <a> and <button> variants)
+    '[data-live-test-job-apply-button]',
+    '.jobs-s-apply a', '.jobs-s-apply button',
+    '#indeedApplyButton', '[data-testid="indeedApplyButton"]',
+    '#applyButtonLinkContainer a',              // Indeed "Apply on company site"
+    '[data-automation-id="adventureButton"]',   // Workday
+    'a[href*="/apply"]',
+  ];
+  const APPLY_TEXT = /^\s*(easy\s+)?apply(\s+now|\s+on\s+company\s+(site|website)|\s+for\s+this\s+job)?\s*$/i;
+
+  // LinkedIn and others route outbound links through their own redirector.
+  function unwrapRedirect(href) {
+    try {
+      const u = new URL(href, location.href);
+      if (/\/(safety\/go|redir\/redirect|redirect)\/?$/i.test(u.pathname)) {
+        const inner = u.searchParams.get('url') || u.searchParams.get('u');
+        if (inner) return new URL(inner).href;
+      }
+      return u.href;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function isVisible(el) {
+    const r = el.getBoundingClientRect();
+    return r.width > 0 && r.height > 0;
+  }
+
+  function findApplyTarget() {
+    const seen = new Set();
+    const candidates = [];
+    const add = (el) => {
+      if (!el || seen.has(el) || el.closest('#tailorcv-sidebar')) return;
+      seen.add(el);
+      candidates.push(el);
+    };
+    APPLY_SELECTORS.forEach((sel) => {
+      try { document.querySelectorAll(sel).forEach(add); } catch (_) {}
+    });
+    document.querySelectorAll('a[href], button').forEach((el) => {
+      if (APPLY_TEXT.test(el.textContent || '') || APPLY_TEXT.test(el.getAttribute('aria-label') || '')) add(el);
+    });
+
+    const visible = candidates.filter(isVisible);
+    const pool = visible.length ? visible : candidates;
+    // A real outbound link beats a button whose destination we can't see.
+    for (const el of pool) {
+      const a = el.tagName === 'A' ? el : el.querySelector('a[href]');
+      const href = a && a.getAttribute('href');
+      if (!href || href.startsWith('#') || /^javascript:/i.test(href)) continue;
+      const url = unwrapRedirect(href);
+      // Same-site links (LinkedIn's Easy Apply) open in-page flows; press those instead.
+      if (url && new URL(url).host !== location.host) return { url };
+    }
+    return pool.length ? { button: pool[0] } : null;
+  }
+
+  function startApplication() {
+    const target = findApplyTarget();
+    if (target && target.url) {
+      // The application page will not carry this description; hand it over
+      // under the job id its URL names (background.js JOB_REMEMBER).
+      if (lastJob) rememberPosting(lastJob, [target.url]);
+      window.open(target.url, '_blank', 'noopener');
+      track('start_application_clicked', { host: location.hostname, via: 'link' });
+    } else if (target && target.button) {
+      // No readable URL (LinkedIn's off-site Apply is often a <button> that
+      // opens the ATS from its own handler; Easy Apply opens a modal). Pressing
+      // it still counts as the user's gesture, so the page's pop-up goes through.
+      target.button.click();
+      track('start_application_clicked', { host: location.hostname, via: 'button' });
+    } else {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = "✗ Couldn't find this job's Apply button — use the one on the page.";
+      track('start_application_missing', { host: location.hostname });
+    }
   }
 
   // Fires immediately whenever a job is detected — deterministic and LLM-free
@@ -1060,13 +1797,16 @@
   function paintMatch(score) {
     const wrap = body.querySelector('#tcvMatch');
     const valueEl = body.querySelector('#tcvMatchBefore');
-    const fillEl = body.querySelector('#tcvMatchFill');
-    if (!wrap || !valueEl || !fillEl) return;
-    wrap.classList.remove('tcv-na');
-    valueEl.textContent = score + '%';
-    wrap.classList.remove('tcv-low', 'tcv-mid', 'tcv-high');
-    wrap.classList.add(score < 40 ? 'tcv-low' : score < 70 ? 'tcv-mid' : 'tcv-high');
-    requestAnimationFrame(() => { fillEl.style.width = Math.max(2, Math.min(100, score)) + '%'; });
+    const ringEl = body.querySelector('#tcvMatchRing');
+    const verdictEl = body.querySelector('#tcvMatchVerdict');
+    if (!wrap || !valueEl || !ringEl) return;
+    const level = score < 40 ? 'low' : score < 70 ? 'mid' : 'high';
+    wrap.classList.remove('tcv-na', 'tcv-low', 'tcv-mid', 'tcv-high');
+    wrap.classList.add('tcv-' + level);
+    valueEl.textContent = String(score);
+    if (verdictEl) verdictEl.textContent = { low: 'Low', mid: 'Medium', high: 'High' }[level] + ' Resume Match';
+    const pct = Math.max(2, Math.min(100, score));
+    requestAnimationFrame(() => { ringEl.style.strokeDashoffset = String(MATCH_RING_C * (1 - pct / 100)); });
   }
 
   function paintMatchUnavailable() {
@@ -1075,10 +1815,12 @@
     if (!wrap || !valueEl) return;
     wrap.classList.remove('tcv-low', 'tcv-mid', 'tcv-high');
     wrap.classList.add('tcv-na');
-    valueEl.textContent = 'N/A';
-    // Swap the bar for a one-line explanation so the box does not read as a bug.
-    const bar = wrap.querySelector('.tcv-match-bar');
-    if (bar) bar.outerHTML = '<div class="tcv-match-note">This posting lists no specific skills to match — you can still tailor to it.</div>';
+    valueEl.textContent = '–';
+    // Say why the ring is empty so the card does not read as a bug.
+    const verdictEl = body.querySelector('#tcvMatchVerdict');
+    const subEl = body.querySelector('#tcvMatchSub');
+    if (verdictEl) verdictEl.textContent = 'No skills to match';
+    if (subEl) subEl.textContent = 'This posting lists no specific skills — you can still tailor to it.';
   }
 
   // The backend gives no incremental progress events for a single tailor
@@ -1220,7 +1962,42 @@
   // shown (unchanged ones add no information and the sidebar is narrow); the
   // roomier "See what changed" modal on the web editor shows the full picture
   // with word-level highlighting.
-  function showChangesPanel(changes) {
+  // "See what changed", full size, over the page — the same modal the website's
+  // editor opens (static/changes_modal.js, copied in by the build). It runs in
+  // an extension page inside a full-viewport frame rather than in this
+  // document: the host page's CSS (LinkedIn resets aggressively) can't reach
+  // it, and its styles can't leak onto the host page.
+  let changesFrame = null;
+
+  function openChangesOverlay(preview) {
+    closeChangesOverlay();
+    const url = chrome.runtime.getURL('changes.html');
+    const frame = document.createElement('iframe');
+    frame.id = 'tailorcv-changes-frame';
+    frame.src = url;
+    frame.setAttribute('title', 'What changed in your resume');
+    frame.setAttribute('allowtransparency', 'true');
+    frame.style.cssText = 'position:fixed!important;inset:0!important;width:100vw!important;' +
+      'height:100vh!important;border:0!important;margin:0!important;padding:0!important;' +
+      'z-index:2147483647!important;background:transparent!important;color-scheme:normal!important;';
+    frame.addEventListener('load', () => {
+      frame.contentWindow.postMessage({ type: 'tcv-changes-open', preview }, new URL(url).origin);
+    });
+    document.documentElement.appendChild(frame);
+    changesFrame = frame;
+    track('changes_opened', { host: location.hostname });
+  }
+
+  function closeChangesOverlay() {
+    if (changesFrame) { changesFrame.remove(); changesFrame = null; }
+  }
+
+  window.addEventListener('message', (e) => {
+    if (!changesFrame || e.source !== changesFrame.contentWindow) return;
+    if (e.data && e.data.type === 'tcv-changes-closed') closeChangesOverlay();
+  });
+
+  function showChangesPanel(changes, preview) {
     const existing = document.getElementById('tcv-changes-panel');
     if (existing) existing.remove();
     if (!changes || typeof changes !== 'object') return;
@@ -1250,9 +2027,12 @@
     toggleLabel.textContent = 'See what changed';
     const chevron = document.createElement('span');
     chevron.className = 'tcv-changes-chevron';
-    chevron.textContent = '▾';
+    // With the rendered resume in hand, open the editor's full "See what
+    // changed" view over the page; without it, expand the short list below.
+    chevron.textContent = preview ? '↗' : '▾';
     toggle.append(toggleLabel, chevron);
     toggle.addEventListener('click', function () {
+      if (preview) { openChangesOverlay(preview); return; }
       panel.classList.toggle('tcv-changes-open');
     });
     panel.appendChild(toggle);
@@ -1309,7 +2089,7 @@
   async function runCoverLetter(job, label) {
     if (tcvBusy || !job) return;
     tcvBusy = true;
-    renderJobFromPage();
+    refreshJobView();
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Writing a cover letter for "${label}"…`;
     startProgress();
@@ -1354,14 +2134,14 @@
     if (!res.error) showSuccessTick();
     track(res.error ? 'cover_letter_failed' : 'cover_letter_downloaded', { error: res.error });
 
-    if (sessionReady) renderJobFromPage();
+    if (sessionReady) refreshJobView();
   }
 
   async function runTailor(job, label) {
     if (tcvBusy || !job) return;
     const jobUrl = window.location.href; // snapshot now — navigation shouldn't retag this request
     tcvBusy = true;
-    renderJobFromPage(); // re-render current button as disabled/"busy"
+    refreshJobView(); // re-render current button as disabled/"busy"
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Tailoring "${label}"… this can take up to a minute.`;
     startProgress();
@@ -1409,15 +2189,19 @@
       globalStatus.textContent = `Almost done — pick the skills to add for "${label}".`;
       const gaps = Array.isArray(res.data.skillGaps) ? res.data.skillGaps : [];
       track('skill_prompt_shown', { skill_gap_count: gaps.length });
-      showSkillPrompt(gaps, res.data, (added, error) => {
+      showSkillPrompt(gaps, res.data, (added, error, rerendered) => {
         tcvBusy = false;
         if (error) {
           globalStatus.className = 'tcv-status-text tcv-error';
           globalStatus.textContent = `✗ ${label}: ${error}`;
         } else {
+          // Skills were added: the preview is the re-rendered resume, same scores.
+          if (rerendered && res.data.preview) {
+            res.data.preview = Object.assign({}, res.data.preview, rerendered);
+          }
           finishTailorSuccess(job, label, res.data, added, false);
         }
-        if (sessionReady) renderJobFromPage();
+        if (sessionReady) refreshJobView();
       });
     } else {
       const added = (res.data && Array.isArray(res.data.skillsAdded)) ? res.data.skillsAdded : [];
@@ -1425,7 +2209,7 @@
     }
 
     // Refresh whichever job is on screen now that we're free to tailor again.
-    if (sessionReady) renderJobFromPage();
+    if (sessionReady) refreshJobView();
   }
 
   function finishTailorSuccess(job, label, data, added, auto) {
@@ -1434,7 +2218,7 @@
     const after = data && typeof data.afterScore === 'number' ? data.afterScore : null;
     showSuccessTick(job.beforeScore, after);
     showSkillPanel(added, [], auto);
-    showChangesPanel(data && data.changes);
+    showChangesPanel(data && data.changes, data && data.preview);
     track('tailor_downloaded', {
       before_score: job.beforeScore,
       after_score: after,
@@ -1541,7 +2325,7 @@
       if (enableAuto) setAutoSkillsSwitch(true);
       track('skill_prompt_added', { via: via, count: skills.length, enable_auto: enableAuto });
       box.remove();
-      done((res.data && res.data.added) || skills, null);
+      done((res.data && res.data.added) || skills, null, res.data && res.data.preview);
     }
 
     addSel.addEventListener('click', function () { submit(Array.from(selected), false, addSel, 'selected'); });
@@ -1597,6 +2381,12 @@
   }
   function tryAutoRefreshOnce() {
     if (!isLinkedInCollectionsPage()) return false;
+    // Never reload a page holding an application form. On a half-filled form that
+    // throws away the user's work — and ours — and it is the single worst thing
+    // this extension could do. The LinkedIn collections check above already makes
+    // this unreachable in practice; asserted anyway because the cost of being
+    // wrong is unrecoverable.
+    if (hasForm()) return false;
     const key = 'tailorcv_auto_refreshed:' + location.href;
     try {
       if (sessionStorage.getItem(key)) return false;
@@ -1608,9 +2398,467 @@
     return true;
   }
 
+  // ── Application autofill ─────────────────────────────────
+  //
+  // Additive by design. Every function below is new, and the only changes to the
+  // existing state machine are: one extra button in renderReady(), and one
+  // branch in renderJobFromPage() that shows the apply panel instead of the
+  // paste-the-JD box when the page is an application form with no readable
+  // description. The four extraction layers are untouched.
+
+  /** Cheap, synchronous: is there an application form in THIS document? */
+  function refreshApplyMode() {
+    if (!AF) { applyForm = null; return null; }
+    try {
+      applyForm = AF.isApplicationPage();
+    } catch (err) {
+      console.warn('[TailorCV] form detection failed —', err && err.message);
+      applyForm = null;
+    }
+    syncTabs();
+    return applyForm || (applyFrame ? { fields: new Array(applyFrame.fieldCount), ats: applyFrame.ats, framed: true } : null);
+  }
+
+  /**
+   * Look for an application form in a sub-frame.
+   *
+   * Greenhouse and Lever serve the form in an iframe when a company fronts the
+   * board with its own domain, so the top document has no form at all and the
+   * sync check above finds nothing. The frames announce themselves to the
+   * background worker as they load (see discoverFormFrames there), so this is a
+   * cheap lookup rather than a broadcast — but it is async, hence separate.
+   */
+  /** An application form here — in this document, or in a frame (Greenhouse
+   *  embedded on careers.airbnb.com, Lever on a company domain). */
+  function hasForm() {
+    return !!(AF && (applyForm || applyFrame));
+  }
+
+  // A frame's form usually renders after this panel has drawn the job view, so
+  // the frame announcing it (background.js recordFormFrame) is pushed here and
+  // the current view is redrawn with Autofill in it.
+  async function onFrameFormFound() {
+    if (applyForm || !AF) return;
+    const had = !!applyFrame;
+    if (!(await checkFrameForm()) || had) return;
+    if (!document.getElementById('tailorcv-sidebar')) return;
+    if (currentView === 'job' && lastJob) renderReady(lastJob);
+    else if (currentView === 'manual' || currentView === 'reading') renderApplyReady();
+    syncTabs();
+  }
+
+  async function checkFrameForm() {
+    if (!AF || applyForm) return null;
+    const res = await sendMessage({ type: 'AF_FRAME_DISCOVER' });
+    const frames = (res && res.data) || [];
+    if (!frames.length) return null;
+    applyFrame = frames[0];
+    return applyFrame;
+  }
+
+  /** Send a message to the frame that holds the form. */
+  async function toFrame(payload) {
+    if (!applyFrame) return { error: 'no_frame' };
+    const res = await sendMessage({
+      type: 'AF_FRAME_SEND', frameId: applyFrame.frameId, payload,
+    });
+    if (res.error) return { error: res.error };
+    return res.data || {};
+  }
+
+  async function ensureApplyContext() {
+    if (applyCtx) return applyCtx;
+    const res = await sendMessage({ type: 'AF_GET_CONTEXT' });
+    if (res.error) return { error: res.error, code: res.code };
+    applyCtx = res.data;
+    return applyCtx;
+  }
+
+  /** The "form detected" view, for an apply page with no job description. */
+  function renderApplyReady(extra) {
+    currentView = 'apply';
+    if (!lastStep) lastStep = stepMarker();
+    const page = (extra && extra.page) || 0;
+    // A later step of an application we are already filling may have nothing to
+    // fill yet; it still gets this view (and its button), not the paste-a-JD box.
+    if (!hasForm() && !page) { renderManual(); return; }
+    AF.ui.renderReady(body, applyForm || refreshApplyMode() || { fields: [], ats: 'generic' }, applyCtx, {
+      onFill: () => runAutofill(),
+      onTailor: () => renderTailorForApplication(),
+      onOpenProfile: () => window.open(PROFILE_URL, '_blank'),
+      onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
+    }, { page });
+
+    // Fetch the context in the background and repaint once. It carries the
+    // blockers ("upload your base resume first") and the quota state, and both
+    // are worth telling the user BEFORE they click Autofill and wait — finding
+    // out afterwards that no resume was on file wastes the click and reads as a
+    // failure rather than as something they can fix.
+    if (!applyCtx) {
+      const gen = extractGen;
+      ensureApplyContext().then((ctx) => {
+        if (gen !== extractGen || applyBusy || currentView !== 'apply') return;
+        if (!ctx || ctx.error) return;
+        if (!document.getElementById('tailorcv-sidebar')) return;
+        renderApplyReady(extra);
+      });
+    }
+  }
+
+  // ── The form watcher ─────────────────────────────────────
+  //
+  // Detection used to run exactly once, about a second after the page loaded.
+  // That is fine for a static careers page and wrong for Workday, which renders
+  // its application seconds later and then moves between steps (My Information,
+  // My Experience, Questions…) WITHOUT changing the URL. The single check ran
+  // before the form existed and never ran again; the posting's JSON-LD was still
+  // on the page, so the panel showed the job view with no Autofill button at all.
+  //
+  // So the page is watched. Cheaply: mutations are debounced and throttled, and
+  // each check first compares a signature built from plain attribute reads (no
+  // layout, no field description). Only when that changes is the form actually
+  // re-detected and described.
+
+  const WATCH_DEBOUNCE_MS = 700;
+  const WATCH_MIN_INTERVAL_MS = 1500;
+  const DIAGNOSE_AFTER_MS = 8000;
+
+  let watcherStarted = false;
+  let watchTimer = null;
+  let lastWatchRun = 0;
+  let cheapSignature = '';
+  let formSignature = '';
+  // The field keys the form had when the last fill finished. A later form whose
+  // keys barely overlap with these is the application's next step.
+  let lastFillKeys = null;
+  let diagnosedUrl = '';
+
+  function startFormWatcher() {
+    if (!AF || watcherStarted || !document.body) return;
+    watcherStarted = true;
+    new MutationObserver(scheduleFormCheck)
+      .observe(document.body, { childList: true, subtree: true });
+    scheduleFormCheck();
+    scheduleDiagnostics();
+  }
+
+  function scheduleFormCheck() {
+    if (watchTimer) return;
+    const sinceLast = Date.now() - lastWatchRun;
+    const wait = Math.max(WATCH_DEBOUNCE_MS, WATCH_MIN_INTERVAL_MS - sinceLast);
+    watchTimer = setTimeout(() => {
+      watchTimer = null;
+      lastWatchRun = Date.now();
+      try { checkForm(); } catch (err) {
+        console.warn('[TailorCV] form watcher error —', err && err.message);
+      }
+    }, wait);
+  }
+
+  /** Attribute-only fingerprint of the fillable controls. No layout reads. */
+  // The step a Workday application is on, by its heading ("My Information",
+  // "My Experience"). Workday swaps steps without changing the URL, and a step
+  // can hold no fields at all until "Add" is pressed — so the field list alone
+  // cannot tell the watcher it moved on. '' where there is no such heading.
+  function stepMarker() {
+    let h = null;
+    try {
+      h = document.querySelector('[data-automation-id="applyFlowPage"] h2, [data-automation-id*="applyFlow" i] h2');
+    } catch (e) { h = null; }
+    return h ? (h.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80) : '';
+  }
+  let lastStep = '';
+
+  function fillableFingerprint() {
+    const sel = window.__tcvFieldProbe && window.__tcvFieldProbe.FILLABLE_SEL;
+    if (!sel) return '';
+    let nodes;
+    try { nodes = document.querySelectorAll(sel); } catch (e) { return ''; }
+    let out = stepMarker() + '#' + String(nodes.length);
+    for (let i = 0; i < nodes.length && i < 80; i++) {
+      const n = nodes[i];
+      if (n.closest && n.closest('#tailorcv-sidebar')) continue;
+      out += '|' + (n.getAttribute('data-automation-id') || n.getAttribute('name')
+                   || n.id || n.tagName);
+    }
+    return out;
+  }
+
+  function fieldKeysOf(form) {
+    try {
+      return AF.describeFields(form).map(r => r.key).filter(Boolean);
+    } catch (e) { return []; }
+  }
+
+  function checkForm() {
+    if (!document.getElementById('tailorcv-sidebar')) return;
+    // Nothing is repainted while a fill runs, or while the user is typing an
+    // answer into the panel — a redraw would throw away what they typed.
+    if (applyBusy) return;
+    const active = document.activeElement;
+    if (active && active.closest && active.closest('#tailorcv-sidebar')
+        && /^(input|textarea|select)$/i.test(active.tagName)) return;
+
+    const fp = fillableFingerprint();
+    if (fp === cheapSignature) return;
+    cheapSignature = fp;
+
+    // A new Workday step after a fill: show it, form or not. Before this, a
+    // step with nothing to fill yet ("My Experience": only Add buttons) left
+    // the sidebar on the previous page's results with no way forward.
+    const step = stepMarker();
+    const prevStep = lastStep;
+    lastStep = step;
+    if (step && prevStep && step !== prevStep
+        && (currentView === 'results' || currentView === 'apply')) {
+      refreshApplyMode();
+      const keysNow = applyForm ? fieldKeysOf(applyForm) : [];
+      formSignature = keysNow.slice().sort().join('|');
+      onNextStep();
+      return;
+    }
+
+    const had = !!applyForm;
+    refreshApplyMode();
+    const keys = applyForm ? fieldKeysOf(applyForm) : [];
+    const sig = keys.slice().sort().join('|');
+    const changed = sig !== formSignature;
+    formSignature = sig;
+    if (!applyForm || !changed) return;
+
+    // Workday passes through a moment with no form between steps (the old one
+    // is torn down before the next renders), so the next step arrives as a form
+    // "appearing" — and onFormAppeared() leaves the results view alone. Checked
+    // first: after a fill, a mostly-new set of fields is the next step, however
+    // it arrived. Before this, the sidebar kept page 1's results and only a tab
+    // switch redrew it.
+    if (currentView === 'results' && lastFillKeys && isNewStep(lastFillKeys, keys)) {
+      onNextStep();
+      return;
+    }
+    if (!had) onFormAppeared();
+  }
+
+  /**
+   * Whether `now` is a different step of the application rather than the same
+   * step with a field or two revealed by an answer. A new step replaces most of
+   * the form; a conditional field adds to it. Treating the second as the first
+   * would announce "Page 2" every time the user picked "Yes" on something.
+   */
+  function isNewStep(before, now) {
+    const a = new Set(before);
+    const shared = now.filter(k => a.has(k)).length;
+    return shared / Math.max(before.length, now.length, 1) < 0.5;
+  }
+
+  function onFormAppeared() {
+    if (currentView === 'job' && lastJob) {
+      renderReady(lastJob);             // same job view, now with the button
+    } else if (currentView === 'manual' || currentView === 'reading') {
+      renderApplyReady();
+    }
+    // Any other view is left alone: the login form, a run in progress, and
+    // results the user is reviewing all take priority over a new button.
+  }
+
+  async function onNextStep() {
+    let page = 0;
+    try { page = await AF.nextPage(); } catch (e) { page = 0; }
+    lastFillKeys = null;
+    renderApplyReady({ page: page || 2 });
+    globalStatus.className = 'tcv-status-text';
+    globalStatus.textContent = `Page ${page || 2} of this application — ready to autofill`;
+  }
+
+  /**
+   * On an apply-shaped URL where no form turns up, print what the page looked
+   * like, once. Mirrors logDiagnostics() for the job-description reader: a real
+   * page's own markup is worth more than any amount of guessing from outside,
+   * and this turns the next unsupported ATS into a one-line fix. console is
+   * shared between the page and this script, so it shows in the ordinary
+   * DevTools console with no context switching.
+   */
+  function scheduleDiagnostics() {
+    setTimeout(() => {
+      if (!AF || applyForm || applyFrame) return;
+      if (diagnosedUrl === location.href) return;
+      if (!AF.looksLikeApplyUrl || !AF.looksLikeApplyUrl(location.href)) return;
+      diagnosedUrl = location.href;
+      try {
+        const report = AF.diagnose();
+        console.groupCollapsed('%c[TailorCV] autofill could not find a form — diagnostics',
+                               'color:#7c3aed;font-weight:700');
+        console.log(report.summary);
+        if (report.roots.length) console.table(report.roots);
+        if (report.fields.length) console.table(report.fields);
+        if (report.uncovered.length) {
+          console.log('controls that look interactive but are not handled:');
+          console.table(report.uncovered);
+        }
+        console.groupEnd();
+      } catch (err) {
+        console.warn('[TailorCV] diagnostics failed —', err && err.message);
+      }
+    }, DIAGNOSE_AFTER_MS);
+  }
+
+  async function runAutofill() {
+    if (!AF || applyBusy) return;
+    const form = refreshApplyMode();
+    if (!form) {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = '✗ No application form found on this page.';
+      return;
+    }
+
+    applyBusy = true;
+    currentView = 'running';
+    AF.ui.renderRunning(body, AF.ui.PHASE_TEXT.scanning);
+    globalStatus.className = 'tcv-status-text';
+    globalStatus.textContent = '';
+    startProgress();
+    track('autofill_started', { host: location.hostname, ats: form.ats });
+
+    const ctx = await ensureApplyContext();
+    if (!ctx || ctx.error) {
+      finishProgress(false);
+      applyBusy = false;
+      if (ctx && ctx.code === 'not_logged_in') { refreshFull(); return; }
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = `✗ ${(ctx && ctx.error) || 'Could not load your profile.'}`;
+      renderApplyReady();
+      return;
+    }
+
+    // The job this form is for, so motivation questions ("Why Anthropic?") are
+    // written for it. A copy: the cached context is shared across pages.
+    const runCtx = Object.assign({}, ctx, jobContext());
+
+    let result;
+    try {
+      if (applyForm) {
+        result = await AF.runAutofill(runCtx, (p) => {
+          const text = AF.ui.PHASE_TEXT[p.phase];
+          if (text) {
+            AF.ui.setPhase(body, p.total && p.done != null
+              ? `${text} (${p.done}/${p.total})` : text);
+          }
+        });
+      } else {
+        // The form lives in a sub-frame. It runs the identical code path there
+        // and sends back serialized decisions — there is no progress streaming
+        // across the boundary, so the panel just says what it is doing.
+        AF.ui.setPhase(body, AF.ui.PHASE_TEXT.filling);
+        result = await toFrame({ type: 'AF_FRAME_APPLY', ctx: runCtx });
+      }
+    } catch (err) {
+      console.error('[TailorCV] autofill failed', err);
+      result = { error: String((err && err.message) || err), decisions: [], counts: {} };
+    }
+
+    finishProgress(!result.error);
+    applyBusy = false;
+
+    if (result.error) {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = `✗ ${humanFillError(result.error)}`;
+      track('autofill_failed', { error: result.error, host: location.hostname });
+      renderApplyReady();
+      return;
+    }
+
+    const counts = result.counts || {};
+    const filled = (counts.fill || 0) + (counts.document || 0);
+    globalStatus.className = 'tcv-status-text tcv-ok';
+    globalStatus.textContent = `✓ Filled ${filled} field${filled === 1 ? '' : 's'} — review before submitting`;
+    track('autofill_completed', {
+      host: location.hostname,
+      ats: result.ats,
+      field_count: (result.decisions || []).length,
+      filled,
+      review: counts.suggest || 0,
+      ask: counts.ask || 0,
+      profile: counts.profile || 0,
+      page: result.page || 1,
+    });
+    // Remember what this step looked like, so the watcher can tell the next
+    // Workday step (most fields replaced) from the same step gaining a field.
+    // Also resynchronise its signatures: the fill itself mutated the DOM, and that
+    // must not read as "the form changed".
+    if (applyForm) {
+      lastFillKeys = fieldKeysOf(applyForm);
+      formSignature = lastFillKeys.slice().sort().join('|');
+      cheapSignature = fillableFingerprint();
+    }
+    // The step just filled. Recorded here, not only by the watcher: a form that
+    // arrived by another path never passed through it, and without a previous
+    // step the move to the next one went unnoticed.
+    lastStep = stepMarker();
+    renderApplyResults(result);
+  }
+
+  // ATS URLs carry the company as a slug: job-boards.greenhouse.io/anthropic,
+  // jobs.lever.co/acme, jobs.ashbyhq.com/acme, acme.wd5.myworkdayjobs.com.
+  function companyFromPage() {
+    const title = document.title || '';
+    const at = title.match(/\bat\s+([^|–—-]{2,60}?)\s*(?:[|–—-]|$)/i);
+    if (at) return at[1].trim();
+    const host = location.hostname;
+    const first = location.pathname.split('/').filter(Boolean)[0] || '';
+    let slug = '';
+    if (/(^|\.)greenhouse\.io$|(^|\.)lever\.co$|(^|\.)ashbyhq\.com$/i.test(host)) slug = first;
+    else if (/\.myworkdayjobs\.com$/i.test(host)) slug = host.split('.')[0];
+    return slug
+      ? slug.replace(/[-_]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+      : '';
+  }
+
+  function jobContext() {
+    // This page first: lastJob may belong to a posting the user has since left.
+    let job = null;
+    try { job = extractJob(); } catch (_) { job = null; }
+    job = job || lastJob;
+    return {
+      jobTitle: (job && job.role) || guessRole() || '',
+      jobCompany: (job && job.company) || companyFromPage(),
+      jdExcerpt: String((job && job.jd_string) || '').slice(0, 2000),
+    };
+  }
+
+  function renderApplyResults(result) {
+    currentView = 'results';
+    AF.ui.renderResults(body, result, applyCtx, {
+      onFill: () => runAutofill(),
+      // Re-render in place after the user answers a field, so the row moves out
+      // of "needs your answer" and into "filled" without re-running anything.
+      onRefresh: () => renderApplyResults(result),
+      onOpenProfile: () => window.open(PROFILE_URL, '_blank'),
+      onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
+      // These three only fire for a framed form; a local run acts on the live
+      // decision objects directly and never calls them.
+      onAnswer: async (index, value, remember) => {
+        const res = await toFrame({ type: 'AF_FRAME_ANSWER', index, value, remember });
+        if (res && res.decision) result.decisions[index] = res.decision;
+        return res;
+      },
+      onJump: (index) => toFrame({ type: 'AF_FRAME_JUMP', index }),
+      onRemember: (items) => toFrame({ type: 'AF_FRAME_REMEMBER', items }),
+    });
+  }
+
+  function humanFillError(code) {
+    if (code === 'no_form') return 'No application form found on this page.';
+    if (code === 'no_fields') return 'We could not read any fields on this form.';
+    return code;
+  }
+
   function renderJobFromPage(attempt = 0, gen = ++extractGen) {
     if (gen !== extractGen) return;   // a newer page took over
     if (quotaExceeded) { renderUpgradePrompt(); return; }
+
+    // Checked before extraction so renderReady() knows whether to offer the
+    // autofill button. Deterministic and synchronous — no network, no LLM.
+    refreshApplyMode();
 
     const job = extractJob();
     if (job) {
@@ -1619,25 +2867,61 @@
       return;
     }
 
-    const maxTries = isLinkedInCollectionsPage() ? LINKEDIN_COLLECTIONS_TRIES : EXTRACT_TRIES;
-    if (attempt >= maxTries) {
-      if (tryAutoRefreshOnce()) return;   // page is reloading — nothing left to render
-      logDiagnostics();
-      renderManual();
+    // An application page usually has no job description on it — that lived on
+    // the posting the user came from. Retrying the extractor ten times and then
+    // showing a paste-the-JD box would be the wrong answer to the wrong
+    // question, so an unambiguous form short-circuits to the apply panel.
+    // Any attempt, not only the first: a SPA form that finishes rendering during
+    // the retry window must stop the retries, or the next one overwrites the
+    // apply panel with "Reading the job description…".
+    if (applyForm) {
+      renderApplyReady();
       return;
     }
 
+    const maxTries = isLinkedInCollectionsPage() ? LINKEDIN_COLLECTIONS_TRIES : EXTRACT_TRIES;
+    if (attempt >= maxTries) {
+      if (applyForm) { renderApplyReady(); return; }
+      if (tryAutoRefreshOnce()) return;   // page is reloading — nothing left to render
+      // Last resort before the paste box: the form may be in an iframe, which
+      // only an async lookup can see. Checked here rather than up front so a
+      // normal posting never pays for it.
+      checkFrameForm().then((frame) => {
+        if (gen !== extractGen) return;
+        if (frame) { refreshApplyMode(); renderApplyReady(); return; }
+        logDiagnostics();
+        renderManual();
+      });
+      return;
+    }
+
+    currentView = 'reading';
     body.innerHTML = `<div class="tcv-status-text">Reading the job description…</div>`;
     setTimeout(() => renderJobFromPage(attempt + 1, gen), EXTRACT_EVERY);
   }
 
+  // How long the login check may take before "Authenticating" is shown. Every
+  // full page load (a new careers site, unlike LinkedIn's in-page navigation)
+  // starts this script afresh and checks again, but after the first page in a
+  // browsing session the answer comes from background.js's auth cache in a few
+  // milliseconds. Playing the ~4.7s lock animation for that — and then waiting
+  // for it to finish — made every new site look like it was logging in again.
+  // Only a real network check is slow enough to deserve the animation.
+  const AUTH_ANIMATION_DELAY_MS = 250;
+
   async function refreshFull() {
-    await renderLoading();
     sessionReady = false;
     noBaseResumeShown = false;
     quotaExceeded = false;
 
-    const profileRes = await sendMessage({ type: 'GET_PROFILE' });
+    const profileReq = sendMessage({ type: 'GET_PROFILE' });
+    const quick = await Promise.race([
+      profileReq,
+      new Promise((resolve) => setTimeout(() => resolve(null), AUTH_ANIMATION_DELAY_MS)),
+    ]);
+    const animated = !quick;
+    if (animated) await renderLoading();
+    const profileRes = quick || await profileReq;
     if (profileRes.error || !profileRes.data) {
       clearInterval(lockLoopTimer); // not authenticated — cut the loop, no unlock flourish
       accountBtn.classList.remove('tcv-visible');
@@ -1655,12 +2939,13 @@
     // Login confirmed: let the lock finish unlocking (green tick) while the
     // base-resume check runs at the same time, so the flourish adds no extra
     // wait beyond whichever of the two actually takes longer.
-    const remainingMs = finishLockAnimation();
+    const remainingMs = animated ? finishLockAnimation() : 0;
     const [baseRes] = await Promise.all([
       sendMessage({ type: 'GET_BASE_RESUME' }),
       new Promise((resolve) => setTimeout(resolve, remainingMs)),
     ]);
     if (baseRes.error || !baseRes.data || !baseRes.data.has_base_resume) { renderNoBaseResume(); return; }
+    baseResumeName = baseRes.data.filename || '';
 
     sessionReady = true;
     renderJobFromPage();
@@ -1692,35 +2977,118 @@
   const openedFromToolbar = window.__tailorcvFromToolbar === true;
   if (openedFromToolbar || looksLikeJobPage()) {
     setTimeout(createPanel, openedFromToolbar ? 0 : 1200);
+  } else {
+    // An application page often fails looksLikeJobPage(): its URL is
+    // /application or /apply, not a posting, and there may be no per-host
+    // adapter. The form itself is the signal, so check for one once the page has
+    // had a chance to render — this is the only reason the panel appears on a
+    // page the JD heuristic would have skipped, and it appears collapsed.
+    setTimeout(async () => {
+      if (document.getElementById('tailorcv-sidebar')) return;
+      if (!refreshApplyMode()) {
+        // Nothing in this document — the form may be inside an iframe.
+        if (!(await checkFrameForm())) return;
+        refreshApplyMode();
+      }
+      createPanel();
+    }, 1600);
+  }
+
+  // A multi-step application navigates between pages, which destroys this script
+  // every time. Picking the run back up means the panel says "page 2 of this
+  // application" and keeps the record of what was already filled, instead of
+  // presenting each step as an unrelated form.
+  if (AF) {
+    setTimeout(async () => {
+      try {
+        const page = await AF.resumeIfContinuing();
+        if (page > 1 && document.getElementById('tailorcv-sidebar')) {
+          globalStatus.className = 'tcv-status-text';
+          globalStatus.textContent = `Continuing — page ${page} of this application`;
+        }
+      } catch (err) {
+        console.warn('[TailorCV] could not resume the autofill run —', err && err.message);
+      }
+    }, 1800);
   }
 
   // These boards are client-routed SPAs — re-read the page when the URL changes.
+  //
+  // Driven from THREE places, all funnelling into handleUrlChange(), which is
+  // idempotent because it returns early when the URL has not actually moved:
+  //
+  //   * webNavigation in the worker (URL_CHANGED) — the real signal, and the
+  //     only one that fires for a pushState route change that mutates nothing
+  //     this observer would see;
+  //   * popstate / hashchange — free, and they arrive before the worker's
+  //     message on a back/forward;
+  //   * the MutationObserver below — kept as the fallback for a build where
+  //     the webNavigation permission is absent or refused.
   let lastUrl = location.href;
-  new MutationObserver(() => {
+
+  function handleUrlChange() {
     if (location.href === lastUrl) return;
     lastUrl = location.href;
     manualJd = '';   // a new posting: never carry the last one's text over
-    setTimeout(() => {
+    // Same reasoning for the form: a different URL is a different form, and a
+    // stale frameId would route a fill at whatever now occupies that frame.
+    applyForm = null;
+    applyFrame = null;
+    lastFillKeys = null;
+    cheapSignature = '';
+    formSignature = '';
+    scheduleDiagnostics();
+    setTimeout(async () => {
       if (!document.getElementById('tailorcv-sidebar')) {
-        if (looksLikeJobPage()) createPanel();
+        if (looksLikeJobPage()) { createPanel(); return; }
+        // An application STEP inside an SPA is not job-shaped by URL — the
+        // form is the only signal, the same as on first load. Without this a
+        // multi-step application that never reloads showed the panel on step
+        // one and nothing afterwards.
+        if (refreshApplyMode() || await checkFrameForm()) {
+          refreshApplyMode();
+          createPanel();
+        }
         return;
       }
       if (!looksLikeJobPage()) return;   // e.g. LinkedIn nav'd back to a list with no job picked — nothing to (re-)detect
       if (sessionReady) renderJobFromPage();
       else refreshFull();
     }, 1200);
-  }).observe(document.body, { childList: true, subtree: true });
+  }
+
+  window.addEventListener('popstate', handleUrlChange);
+  window.addEventListener('hashchange', handleUrlChange);
+  new MutationObserver(handleUrlChange)
+    .observe(document.body, { childList: true, subtree: true });
 
   chrome.runtime.onMessage.addListener((msg) => {
     if (msg.type === 'TOGGLE_PANEL') {
       togglePanel();
+    } else if (msg.type === 'AF_FRAME_FOUND') {
+      onFrameFormFound();
+    } else if (msg.type === 'URL_CHANGED') {
+      // webNavigation saw a pushState/replaceState/#fragment route change in
+      // this tab's top frame. handleUrlChange() re-checks location itself, so
+      // a duplicate with the observer below costs one string compare.
+      handleUrlChange();
     } else if (msg.type === 'REFRESH_AUTH') {
       // The login tab we opened (Continue with Google / Forgot password, both
       // carry ?ext=1) told background.js it succeeded via externally_connectable
       // — see tailorCvFinishLogin() in login.html — which broadcasts this to
       // every open tab. Re-check auth so the panel updates itself instead of
       // the user having to click "Already logged in? Retry".
-      if (document.getElementById('tailorcv-sidebar')) refreshFull();
+      //
+      // Also fired when the application profile is saved on the website. The
+      // panel's in-memory copy of it is dropped either way, so the next fill
+      // reads the new name/address. But a profile edit does not repaint over a
+      // fill in progress or results the user is reviewing — those stay, and the
+      // new values apply from the next "Scan again".
+      applyCtx = null;
+      if (!document.getElementById('tailorcv-sidebar')) return;
+      if (msg.reason === 'tailorcv-profile-updated'
+          && (currentView === 'results' || currentView === 'running')) return;
+      refreshFull();
     }
   });
 

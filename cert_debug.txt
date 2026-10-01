@@ -1,15 +1,15 @@
 === CERT NAMES (from AI) ===
-  - LeetCode SQL 50 Badge
-  - Internship Trainee Certificate
+  - Leetcode SQL 50
+  - Internship Training Certificate
 
 === CERT SECTION LINKS (reading order) [2] ===
-  - https://drive.google.com/file/d/1zXVHv38EO7Ur5t_2O1_n5HwhpRnsJjeq/view
-  - https://pdflink.to/4d942525
+  - https://drive.google.com/file/d/11uN00Vw-dVFZlurbvZqECoDyeF7JxPQs/view?usp=sharing
+  - https://drive.google.com/file/d/1MLppSZ4lFzW6ummff_nLDqjt4bw1HNqr/view?usp=sharing
 
 === FINAL cert.url PER ENTRY ===
-  - LeetCode SQL 50 Badge  ->  https://drive.google.com/file/d/1zXVHv38EO7Ur5t_2O1_n5HwhpRnsJjeq/view
-  - Internship Trainee Certificate  ->  https://pdflink.to/4d942525
+  - Leetcode SQL 50  ->  https://drive.google.com/file/d/11uN00Vw-dVFZlurbvZqECoDyeF7JxPQs/view?usp=sharing
+  - Internship Training Certificate  ->  https://drive.google.com/file/d/1MLppSZ4lFzW6ummff_nLDqjt4bw1HNqr/view?usp=sharing
 
 === READING-ORDER FILL ASSIGNED [2] ===
-  - LeetCode SQL 50 Badge  ->  https://drive.google.com/file/d/1zXVHv38EO7Ur5t_2O1_n5HwhpRnsJjeq/view
-  - Internship Trainee Certificate  ->  https://pdflink.to/4d942525
+  - Leetcode SQL 50  ->  https://drive.google.com/file/d/11uN00Vw-dVFZlurbvZqECoDyeF7JxPQs/view?usp=sharing
+  - Internship Training Certificate  ->  https://drive.google.com/file/d/1MLppSZ4lFzW6ummff_nLDqjt4bw1HNqr/view?usp=sharing

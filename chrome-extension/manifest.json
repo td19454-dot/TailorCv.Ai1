@@ -1,39 +1,24 @@
 {
   "manifest_version": 3,
-  "name": "TailorCV \u2014 AI Resume Optimizer",
-  "version": "3.2.3",
-  "description": "Tailor your resume to any job posting and write a matching cover letter — download both as ATS-ready PDFs in one click.",
+  "name": "TailorCV — AI Resume Optimizer",
+  "version": "3.3.0",
+  "description": "Tailor your resume to any job posting, write a matching cover letter, and autofill job application forms — you review and submit.",
   "permissions": [
     "activeTab",
     "cookies",
     "downloads",
     "scripting",
-    "storage"
+    "storage",
+    "webNavigation"
   ],
   "host_permissions": [
-    "*://*.linkedin.com/*",
-    "*://*.indeed.com/*",
-    "*://*.naukri.com/*",
-    "*://*.greenhouse.io/*",
-    "*://*.lever.co/*",
-    "*://*.myworkdayjobs.com/*",
-    "*://*.myworkdaysite.com/*",
-    "*://*.ashbyhq.com/*",
-    "*://*.glassdoor.com/*",
-    "*://*.glassdoor.co.in/*",
-    "*://*.ziprecruiter.com/*",
-    "*://*.monster.com/*",
-    "*://*.simplyhired.com/*",
-    "*://*.dice.com/*",
-    "*://*.wellfound.com/*",
-    "https://thetailorcv.com/*"
-  ],
-  "optional_host_permissions": [
-    "*://*/*"
+    "<all_urls>"
   ],
   "externally_connectable": {
     "matches": [
-      "https://thetailorcv.com/*"
+      "https://thetailorcv.com/*",
+      "http://localhost/*",
+      "http://127.0.0.1/*"
     ]
   },
   "background": {
@@ -42,27 +27,26 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.linkedin.com/jobs/*",
-        "*://*.indeed.com/*",
-        "*://*.naukri.com/*",
-        "*://*.greenhouse.io/*",
-        "*://*.lever.co/*",
-        "*://*.myworkdayjobs.com/*",
-        "*://*.myworkdaysite.com/*",
-        "*://*.ashbyhq.com/*",
-        "*://*.glassdoor.com/*",
-        "*://*.glassdoor.co.in/*",
-        "*://*.ziprecruiter.com/*",
-        "*://*.monster.com/*",
-        "*://*.simplyhired.com/*",
-        "*://*.dice.com/*",
-        "*://*.wellfound.com/*"
+        "<all_urls>"
       ],
       "js": [
+        "env.js",
         "analytics.bundle.js",
         "styles.bundle.js",
+        "autofill.bundle.js",
+        "jobsource.js",
         "content.js"
       ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "autofill.bundle.js"
+      ],
+      "all_frames": true,
       "run_at": "document_idle"
     }
   ],
@@ -78,7 +62,8 @@
     {
       "resources": [
         "icons/*.png",
-        "icons/*.svg"
+        "icons/*.svg",
+        "changes.html"
       ],
       "matches": [
         "<all_urls>"
