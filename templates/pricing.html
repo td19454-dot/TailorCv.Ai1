@@ -757,10 +757,30 @@
     function checkoutPro() { checkout(_proPlan); }
 
     // ── Fetch region and apply pricing on load ────────────────────────────────
+    // pricing_viewed fires once per page load, after the region resolves (or
+    // fails) so it can carry the region the visitor actually saw priced.
+    var _pricingViewedSent = false;
+    function trackPricingViewed() {
+        if (_pricingViewedSent) return;
+        _pricingViewedSent = true;
+        try {
+            if (window.posthog && typeof posthog.capture === 'function') {
+                var ref = '';
+                try { ref = document.referrer ? new URL(document.referrer).pathname : ''; } catch (e) {}
+                posthog.capture('pricing_viewed', {
+                    region: _region,
+                    trigger_feature: new URLSearchParams(location.search).get('upgrade') || null,
+                    referrer_path: ref || null,
+                });
+            }
+        } catch (e) {}
+    }
+
     fetch('/api/billing/region')
         .then(function(r) { return r.ok ? r.json() : null; })
         .then(function(d) { if (d && d.region) applyRegionPricing(d.region); })
-        .catch(function() { /* keep default india pricing */ });
+        .catch(function() { /* keep default india pricing */ })
+        .then(trackPricingViewed);
 
     // ── Checkout ──────────────────────────────────────────────────────────────
     async function checkout(plan) {

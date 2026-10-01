@@ -852,7 +852,7 @@
         if (data.requires_verification) throw new Error('Please verify your email before signing in.');
         if (!data.user) throw new Error(data.message || 'Login succeeded but user details were missing.');
 
-        if (window.TailorCVAuth) window.TailorCVAuth.saveUser(data.user);
+        if (window.TailorCVAuth) { window.TailorCVAuth.saveUser(data.user); window.TailorCVAuth.identify(data.user.id); }
 
         statusMessage.textContent = `Welcome back, ${data.user.name}!`;
         statusMessage.className = 'status success';
@@ -888,7 +888,7 @@
         if (!res.ok) throw new Error(apiErrorDetail(data) || 'Google login failed');
         if (!data.user) throw new Error(data.message || 'Login succeeded but user details were missing.');
 
-        if (window.TailorCVAuth) window.TailorCVAuth.saveUser(data.user);
+        if (window.TailorCVAuth) { window.TailorCVAuth.saveUser(data.user); window.TailorCVAuth.identify(data.user.id); }
 
         statusMessage.textContent = `Welcome, ${data.user.name}!`;
         statusMessage.className = 'status success';

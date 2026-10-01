@@ -560,6 +560,11 @@
             a.click();
             a.remove();
             setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+            try {
+                if (window.posthog && typeof posthog.capture === 'function') {
+                    posthog.capture('resume_downloaded', { source: 'my_resumes' });
+                }
+            } catch (e) {}
 
             if (btn) {
                 btn.textContent = 'Downloaded ✓';

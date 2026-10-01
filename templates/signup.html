@@ -789,7 +789,7 @@
         if (!res.ok) throw new Error(apiErrorDetail(data) || 'Google signup failed');
         if (!data.user) throw new Error(data.message || 'Signup succeeded but user details were missing.');
 
-        if (window.TailorCVAuth) window.TailorCVAuth.saveUser(data.user);
+        if (window.TailorCVAuth) { window.TailorCVAuth.saveUser(data.user); window.TailorCVAuth.identify(data.user.id); }
 
         statusMessage.textContent = `Welcome, ${data.user.name}! Redirecting...`;
         statusMessage.className = 'status success';

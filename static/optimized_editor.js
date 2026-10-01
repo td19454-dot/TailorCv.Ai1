@@ -1665,6 +1665,15 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
             URL.revokeObjectURL(url);
             setStatus("PDF downloaded successfully.");
             if (!isAuto) {
+                try {
+                    if (window.posthog && typeof posthog.capture === "function") {
+                        posthog.capture("resume_downloaded", {
+                            source: "editor",
+                            template_id: templateId,
+                            is_pro: window.IS_PRO === true,
+                        });
+                    }
+                } catch (e) {}
                 // Resume is NOT auto-saved to My Resumes anymore — the user must
                 // explicitly click "Save to My Resumes". After a download we just
                 // nudge them to save it.
@@ -2711,6 +2720,22 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
         currentLineSpacing       = 1;
         currentAccentColor       = null;
         currentHtml              = addEditingOverlay(payload.html);
+
+        // result_viewed: once per optimisation. main_new.js stamps "optimize" on
+        // success; consuming it here means a reload or back-nav doesn't re-fire,
+        // and "reformat" / modify-cv entries never count as an optimisation result.
+        try {
+            if (sessionStorage.getItem("tailorcv_editor_source") === "optimize") {
+                sessionStorage.setItem("tailorcv_editor_source", "viewed");
+                if (window.posthog && typeof posthog.capture === "function") {
+                    posthog.capture("result_viewed", {
+                        template_id: templateId,
+                        is_pro: window.IS_PRO === true,
+                        quota_exhausted: window.QUOTA_EXHAUSTED === true,
+                    });
+                }
+            }
+        } catch (e) {}
 
         injectHostPageStyles();
         bindStyleSettings();

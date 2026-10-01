@@ -295,8 +295,30 @@ function showUpgradeModal(feature) {
     }
   }
 
+  // PostHog identity: the server user id (never email/name) so browser, backend
+  // (analytics.py) and extension events resolve to one person. The session flag
+  // keeps this to one identify per tab instead of one per page load.
+  function phIdentify(id, props) {
+    try {
+      if (id == null || typeof posthog === "undefined" || typeof posthog.identify !== "function") return;
+      var sid = String(id);
+      if (sessionStorage.getItem("tcv_ph_id") === sid) return;
+      posthog.identify(sid, props || {});
+      sessionStorage.setItem("tcv_ph_id", sid);
+    } catch (e) {}
+  }
+
+  function phReset() {
+    try {
+      if (sessionStorage.getItem("tcv_ph_id") === null) return;
+      sessionStorage.removeItem("tcv_ph_id");
+      if (typeof posthog !== "undefined" && typeof posthog.reset === "function") posthog.reset();
+    } catch (e) {}
+  }
+
   function clearStoredUser() {
     localStorage.removeItem("tailorcv_user");
+    phReset();
   }
 
   // Logged-in users should never be bounced through /login. Any CTA that points
@@ -555,6 +577,7 @@ function showUpgradeModal(feature) {
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (data) {
           if (!data) return;
+          phIdentify(data.user_id, { is_pro: !!data.is_pro });
           const fresh = { name: data.name, email: data.email, is_pro: data.is_pro, pro_until: data.pro_until };
           try { localStorage.setItem("tailorcv_user", JSON.stringify(fresh)); } catch (e) {}
           slot.innerHTML = createAuthWidget(fresh, fresh.is_pro);
@@ -587,6 +610,7 @@ function showUpgradeModal(feature) {
           try { sessionStorage.removeItem("tailorcv_pending_ats"); } catch (e) {}
           return;
         }
+        phIdentify(data.user_id, { is_pro: !!data.is_pro });
         const cachedPro = !!(user && user.is_pro);
         const livePro = !!data.is_pro;
         // Always persist latest data including Pro status
@@ -616,6 +640,7 @@ function showUpgradeModal(feature) {
     },
     clearUser: clearStoredUser,
     getUser: getStoredUser,
+    identify: phIdentify,
   };
 
   document.addEventListener("DOMContentLoaded", function() {
