@@ -27,6 +27,8 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+import analytics
+
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
@@ -144,6 +146,39 @@ def _extend_pro(db: Session, user, days: int,
     db.commit()
 
 
+def _track_payment_confirmed(user, plan, provider, region, payment_id, amount_minor, currency) -> None:
+    """payment_success, called only from signature-verified webhooks. Razorpay's
+    verify endpoint and several Polar events can describe the same payment, so
+    the payment id is the exactly-once key. `amount` is in major units."""
+    if not payment_id:
+        return
+    try:
+        amount = round(float(amount_minor) / 100, 2) if amount_minor is not None else None
+    except (TypeError, ValueError):
+        amount = None
+    analytics.track(
+        user.id, "payment_success",
+        {"plan": plan, "provider": provider, "region": region, "amount": amount,
+         "currency": str(currency).upper() if currency else None},
+        dedupe_key=f"payment:{provider}:{payment_id}",
+    )
+
+
+def _track_subscription_created(user, plan, provider, region, sub_id) -> None:
+    if sub_id:
+        analytics.track(user.id, "subscription_created",
+                        {"plan": plan, "provider": provider, "region": region},
+                        dedupe_key=f"sub_created:{provider}:{sub_id}")
+
+
+def _track_subscription_cancelled(user, provider, sub_id) -> None:
+    # Same key from the user's cancel click and the provider's webhook, so it
+    # counts once whichever lands first.
+    if sub_id:
+        analytics.track(user.id, "subscription_cancelled", {"provider": provider},
+                        dedupe_key=f"sub_cancel:{provider}:{sub_id}")
+
+
 def _require_polar():
     access_token = os.getenv("POLAR_ACCESS_TOKEN")
     if not access_token:
@@ -204,6 +239,8 @@ async def razorpay_subscription(body: RazorpaySubscriptionRequest, request: Requ
             "total_count": total_count,
             "notes": {"user_id": str(user.id), "plan": body.plan, "region": region},
         })
+        analytics.track(user.id, "checkout_started",
+                        {"plan": body.plan, "provider": "razorpay", "region": region}, request=request)
         return {
             "subscription_id": subscription["id"],
             "key_id": os.getenv("RAZORPAY_KEY_ID"),
@@ -233,6 +270,8 @@ async def razorpay_order(body: RazorpayOrderRequest, request: Request):
             "receipt": str(uuid.uuid4())[:20],
             "notes": {"user_id": str(user.id), "plan": "weekly", "region": region},
         })
+        analytics.track(user.id, "checkout_started",
+                        {"plan": "weekly", "provider": "razorpay", "region": region}, request=request)
         return {
             "order_id": order["id"],
             "key_id": os.getenv("RAZORPAY_KEY_ID"),
@@ -283,6 +322,7 @@ async def razorpay_cancel(request: Request):
         client.subscription.cancel(sub_id, {"cancel_at_cycle_end": True})
         user.razorpay_subscription_id = None
         db.commit()
+        _track_subscription_cancelled(user, "razorpay", sub_id)
         return {
             "success": True,
             "access_until": user.pro_until.isoformat() if user.pro_until else None,
@@ -344,6 +384,11 @@ async def razorpay_webhook(request: Request):
                 user = db.query(User).filter_by(razorpay_subscription_id=sub_id).first()
 
             if user:
+                region = notes.get("region")
+                _track_payment_confirmed(user, plan, "razorpay", region, entity.get("id"),
+                                         entity.get("amount"), entity.get("currency"))
+                if sub_id:
+                    _track_subscription_created(user, plan, "razorpay", region, sub_id)
                 days = PLAN_DURATIONS.get(plan, 31)
                 _extend_pro(db, user, days, razorpay_subscription_id=sub_id)
 
@@ -355,6 +400,7 @@ async def razorpay_webhook(request: Request):
                 if user:
                     user.razorpay_subscription_id = None
                     db.commit()
+                    _track_subscription_cancelled(user, "razorpay", sub_id)
 
     except Exception as exc:
         logger.exception("Error processing Razorpay webhook: %s", exc)
@@ -413,6 +459,8 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
                 success_url=success_url,
             )
         )
+        analytics.track(user.id, "checkout_started",
+                        {"plan": body.plan, "provider": "polar", "region": region}, request=request)
         return {"checkout_url": checkout.url}
     finally:
         db.close()
@@ -481,8 +529,10 @@ async def polar_cancel(request: Request):
             # Subscription no longer exists on Polar (already cancelled or expired).
             # Clear our stale reference so the user is unblocked.
             logger.warning("Polar subscription %s not found during cancel — clearing stale ID", user.polar_subscription_id)
+        cancelled_sub_id = user.polar_subscription_id
         user.polar_subscription_id = None
         db.commit()
+        _track_subscription_cancelled(user, "polar", cancelled_sub_id)
         return {
             "success": True,
             "access_until": user.pro_until.isoformat() if user.pro_until else None,
@@ -534,6 +584,8 @@ async def polar_webhook(request: Request):
                 except (ValueError, TypeError):
                     pass
             if user:
+                _track_payment_confirmed(user, plan, "polar", metadata.get("region"), str(order.id),
+                                         getattr(order, "total_amount", None), getattr(order, "currency", None))
                 days = PLAN_DURATIONS.get(plan, 7)
                 _extend_pro(db, user, days, polar_subscription_id=str(order.id), provider="polar")
 
@@ -562,6 +614,7 @@ async def polar_webhook(request: Request):
 
             # sub.status is a SubscriptionStatus enum — compare .value not str()
             if user and sub.status.value == "active":
+                _track_subscription_created(user, plan, "polar", metadata.get("region"), sub_id)
                 days = PLAN_DURATIONS.get(plan, 31)
                 _extend_pro(db, user, days, polar_subscription_id=sub_id, provider="polar")
 
@@ -572,6 +625,7 @@ async def polar_webhook(request: Request):
             if user:
                 user.polar_subscription_id = None
                 db.commit()
+                _track_subscription_cancelled(user, "polar", sub_id)
 
     except Exception as exc:
         logger.exception("Error processing Polar webhook: %s", exc)

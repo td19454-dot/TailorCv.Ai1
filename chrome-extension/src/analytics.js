@@ -55,9 +55,11 @@ window.__tcvTrack = function (event, props) {
   init().then(() => posthog.capture(event, props || {}));
 };
 
-window.__tcvIdentify = function (email) {
-  if (!email) return;
-  init().then(() => posthog.identify(email, { email }));
+// Identified by the server user id (same id the website and backend use), not
+// the email, so extension, web and server events merge into one person.
+window.__tcvIdentify = function (userId) {
+  if (userId == null || userId === '') return;
+  init().then(() => posthog.identify(String(userId)));
 };
 
 init();

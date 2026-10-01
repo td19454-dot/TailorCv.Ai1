@@ -939,6 +939,11 @@
                     throw new Error("Could not read CV data from the response.");
                 }
                 cvData = normalizeIncomingCvData(cvPayload);
+                try {
+                    if (window.posthog && typeof posthog.capture === "function") {
+                        posthog.capture("resume_uploaded", { source: "modify_cv", resume_type: "pdf", logged_in: true });
+                    }
+                } catch (e) {}
                 renderAll();
                 persistDraft();
                 if (selectedTemplate) await updatePreview();

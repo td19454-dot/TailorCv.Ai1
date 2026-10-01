@@ -225,6 +225,18 @@ class WelcomeEmailLog(Base):
     user = relationship("User", back_populates="welcome_emails")
 
 
+class AnalyticsEventLog(Base):
+    """Exactly-once guard for server-side PostHog events (payments, subscriptions)
+    and the per-user count behind `optimization_count`. `key` is unique."""
+    __tablename__ = "analytics_event_logs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    key = Column(String(190), nullable=False, unique=True)
+    user_id = Column(Integer, nullable=True, index=True)
+    event = Column(String(60), nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
 class GuestAtsScan(Base):
     """Rate-limits anonymous ATS scans to one per IP per 24 hours."""
     __tablename__ = "guest_ats_scans"

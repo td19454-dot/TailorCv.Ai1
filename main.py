@@ -86,6 +86,7 @@ from functions import (
 )
 
 from extraction import process_resume
+import analytics
 import skill_categories as skillcat
 from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
 from sqlalchemy.exc import IntegrityError
@@ -904,6 +905,7 @@ _BACKGROUND_TASKS: set[asyncio.Task] = set()
 @app.on_event("startup")
 async def startup_event() -> None:
     initialize_database()
+    analytics.init()
     _sweep_orphaned_chromium()
     task = asyncio.create_task(_auto_apply_reaper_loop())
     _BACKGROUND_TASKS.add(task)
@@ -919,6 +921,7 @@ async def shutdown_event() -> None:
     only catches that on the *next* start, so the dashboard spins in between."""
     for task in list(_BACKGROUND_TASKS):
         task.cancel()
+    analytics.shutdown()
     try:
         from auto_apply.runner import shutdown_runs
 
@@ -6211,6 +6214,9 @@ async def api_interview_start_with_pdf(
             audio_b64 = base64.b64encode(audio_bytes).decode()
         except Exception:
             pass
+        analytics.track(uid, "mock_interview_started",
+                        {"interview_type": str(interview_type or "mixed")[:30], "num_questions": int(num_questions or 8)},
+                        request=request)
         return JSONResponse({"success": True, "question": question, "resume_text": resume_text, "audio_b64": audio_b64})
     except HTTPException:
         raise
@@ -6250,7 +6256,7 @@ async def api_interview_next(payload: dict):
 
 
 @app.post("/api/interview/score")
-async def api_interview_score(payload: dict):
+async def api_interview_score(payload: dict, request: Request):
     try:
         scores = await score_mock_interview(
             role=str(payload.get("role", "")).strip() or "Software Engineer",
@@ -6262,6 +6268,11 @@ async def api_interview_score(payload: dict):
             camera_focus_score=(int(payload.get("camera_focus_score")) if payload.get("camera_focus_score") is not None else None),
             num_questions=int(payload.get("num_questions") or len(payload.get("qa_log") or [])),
         )
+        # The endpoint has no auth; only attribute the event when a session exists.
+        analytics.track(request.session.get("user_id"), "mock_interview_completed",
+                        {"interview_type": str(payload.get("interview_type", "mixed"))[:30],
+                         "num_questions": int(payload.get("num_questions") or len(payload.get("qa_log") or []))},
+                        request=request)
         return JSONResponse({"success": True, "scores": scores})
     except Exception as exc:
         logger.exception("Mock interview scoring failed")
@@ -8255,6 +8266,7 @@ async def extension_profile(request: Request):
             .first()
         )
         profile = {
+            "id": user.id,
             "name": user.name,
             "email": user.email,
             "has_resume": bool(latest),
@@ -8761,6 +8773,15 @@ async def extension_tailor_resume(request: Request):
         db.close()
 
     pdf_path = None
+    _opt_props = {
+        "source": "chrome_extension",
+        "jd_source": "extension_scrape",
+        "jd_length_bucket": analytics.jd_length_bucket(len(jd_string)),
+        "template_id": template_id,
+        "ats_forwarded": False,
+    }
+    analytics.track(user_id, "optimization_started", _opt_props, request=request)
+    _opt_stage = "ai"
     try:
         async with request_semaphore:
             # Extension: no confirm step exists in the sidebar, so every JD
@@ -8809,6 +8830,7 @@ async def extension_tailor_resume(request: Request):
                         "skill-match REAL user=%s before=%s after=%s",
                         user_id, before_score, after_score,
                     )
+            _opt_stage = "render"
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
             try:
                 pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)
@@ -8868,6 +8890,10 @@ async def extension_tailor_resume(request: Request):
             os.remove(pdf_path)
             pdf_path = None  # already cleaned up — skip the except-block cleanup below
 
+            analytics.track_optimization_completed(
+                user_id, request,
+                {**_opt_props, "skill_gap_count": len(gaps), "skills_added_count": len(added)},
+            )
             return JSONResponse({
                 "success": True,
                 "pdf_base64": base64.b64encode(pdf_bytes).decode("ascii"),
@@ -8890,12 +8916,16 @@ async def extension_tailor_resume(request: Request):
                 "pending_skill_choice": bool(gaps),
                 "auto_add_skills": auto_add_all,
             })
-    except HTTPException:
+    except HTTPException as exc:
+        analytics.track(user_id, "optimization_failed",
+                        {**_opt_props, "error_category": analytics.error_category(exc, _opt_stage)}, request=request)
         if pdf_path and os.path.exists(pdf_path):
             os.remove(pdf_path)
         raise
     except Exception as exc:
         logger.exception("Extension tailor-resume failed")
+        analytics.track(user_id, "optimization_failed",
+                        {**_opt_props, "error_category": analytics.error_category(exc, _opt_stage)}, request=request)
         if pdf_path and os.path.exists(pdf_path):
             os.remove(pdf_path)
         raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not tailor the resume. Please try again."))
@@ -10341,6 +10371,10 @@ async def generate_portfolio(request: Request):
             if portfolio is None:
                 raise
 
+        # Keyed on the portfolio id: re-generating from the same resume refreshes
+        # the row, it isn't a new portfolio.
+        analytics.track(user_id, "portfolio_created", {"source": "resume", "theme": portfolio.theme},
+                        request=request, dedupe_key=f"portfolio_created:{portfolio.id}")
         return JSONResponse({
             "success": True,
             "id": portfolio.id,
@@ -10436,6 +10470,8 @@ async def build_portfolio(request: Request):
         db.add(portfolio)
         db.commit()
         db.refresh(portfolio)
+        analytics.track(user_id, "portfolio_created", {"source": "builder", "theme": theme},
+                        request=request, dedupe_key=f"portfolio_created:{portfolio.id}")
         return JSONResponse({
             "success": True,
             "id": portfolio.id,
@@ -10829,6 +10865,9 @@ async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
         for p in db.query(Portfolio).filter(Portfolio.user_id == user_id).all():
             p.netlify_url = site_url if p.id == portfolio.id else None
         db.commit()
+        # A redeploy of the same portfolio is an update, not a new publish.
+        analytics.track(user_id, "portfolio_published", {"theme": portfolio.theme, "target": "netlify"},
+                        request=request, dedupe_key=f"portfolio_published:{portfolio.id}")
         return JSONResponse({"success": True, "netlify_url": site_url})
     finally:
         db.close()
@@ -11959,6 +11998,7 @@ async def signup_user(request: Request):
         db.add(user)
         db.commit()
         db.refresh(user)
+        analytics.track(user.id, "sign_up", {"method": "email"}, request=request)
 
         try:
             send_welcome_email_once(db, user, source="signup")
@@ -12083,6 +12123,7 @@ async def login_with_google(request: Request):
             db.add(user)
             db.commit()
             db.refresh(user)
+            analytics.track(user.id, "sign_up", {"method": "google"}, request=request)
 
         try:
             send_welcome_email_once(db, user, source="google_login")
@@ -13147,6 +13188,9 @@ async def upload_resume(
     file_path = None
     pdf_path = None
     response = None
+    _opt_props: dict = {}
+    _opt_stage = "ai"
+    _opt_started = False
     try:
         file_path = save_uploaded_pdf(file)
         with open(file_path, "wb") as f:
@@ -13162,6 +13206,15 @@ async def upload_resume(
         finally:
             _db.close()
 
+        _opt_props = {
+            "source": "web",
+            "jd_source": "paste",
+            "jd_length_bucket": analytics.jd_length_bucket(len(jd_string or "")),
+            "template_id": template_id,
+            "ats_forwarded": _usable_ats_payload(ats_payload) is not None,
+        }
+        analytics.track(user_id, "optimization_started", _opt_props, request=request)
+        _opt_started = True
         async with request_semaphore:
             # Website: unevidenced JD skills stay as gaps so the editor can
             # ask the candidate to tick the ones they actually have.
@@ -13170,7 +13223,12 @@ async def upload_resume(
                 confirmed_skills=web_confirmed_skills,
                 auto_add_skills=False,
             )
+            _opt_stage = "render"
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
+            _opt_done_props = {
+                **_opt_props,
+                "skill_gap_count": len((parsed or {}).get("skill_gaps") or []) if isinstance(parsed, dict) else 0,
+            }
 
             # NOTE: we intentionally do NOT auto-save here. Saving to My Resumes
             # is now an explicit user choice made in the editor ("Save to My
@@ -13182,6 +13240,7 @@ async def upload_resume(
             query_editor_mode = request.query_params.get("editor_mode", "").strip().lower() == "true"
             wants_editor_mode = header_editor_mode or form_editor_mode or query_editor_mode
             if wants_editor_mode:
+                analytics.track_optimization_completed(user_id, request, {**_opt_done_props, "editor_mode": True})
                 return JSONResponse({
                     "success": True,
                     "html": html_content,
@@ -13209,6 +13268,7 @@ async def upload_resume(
             if not os.path.exists(pdf_path):
                 raise HTTPException(status_code=404, detail="PDF file not found after generation")
 
+            analytics.track_optimization_completed(user_id, request, {**_opt_done_props, "editor_mode": False})
             wants_meta = request.headers.get("X-Return-Meta", "").lower() == "true"
             if wants_meta:
                 response = JSONResponse({
@@ -13224,10 +13284,16 @@ async def upload_resume(
                 )
 
             return response
-    except HTTPException:
+    except HTTPException as e:
+        if _opt_started:
+            analytics.track(user_id, "optimization_failed",
+                            {**_opt_props, "error_category": analytics.error_category(e, _opt_stage)}, request=request)
         raise
     except Exception as e:
         logger.exception("Resume tailoring failed")
+        if _opt_started:
+            analytics.track(user_id, "optimization_failed",
+                            {**_opt_props, "error_category": analytics.error_category(e, _opt_stage)}, request=request)
         raise HTTPException(status_code=500, detail=user_error_detail(e, "We couldn't tailor your resume this time. Please try again."))
     finally:
         if file_path and os.path.exists(file_path):

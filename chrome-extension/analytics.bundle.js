@@ -10631,9 +10631,9 @@
   window.__tcvTrack = function(event, props) {
     init().then(() => posthog.capture(event, props || {}));
   };
-  window.__tcvIdentify = function(email) {
-    if (!email) return;
-    init().then(() => posthog.identify(email, { email }));
+  window.__tcvIdentify = function(userId) {
+    if (userId == null || userId === "") return;
+    init().then(() => posthog.identify(String(userId)));
   };
   init();
 })();

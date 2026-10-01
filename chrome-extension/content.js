@@ -2093,7 +2093,7 @@
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Writing a cover letter for "${label}"…`;
     startProgress();
-    track('cover_letter_started', { source: job.source });
+    track('cover_letter_started', { job_source: job.source });
 
     const res = await sendMessage({
       type: 'COVER_LETTER',
@@ -2145,7 +2145,7 @@
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Tailoring "${label}"… this can take up to a minute.`;
     startProgress();
-    track('tailor_started', { source: job.source });
+    track('tailor_started', { job_source: job.source });
 
     const res = await sendMessage({
       type: 'TAILOR_AND_DOWNLOAD',
@@ -2934,7 +2934,7 @@
     accountBtn.textContent = email.trim().charAt(0).toUpperCase() || '?';
     accountBtn.classList.add('tcv-visible');
     setAutoSkillsSwitch(!!profileRes.data.auto_add_skills);
-    if (typeof window.__tcvIdentify === 'function') window.__tcvIdentify(email);
+    if (typeof window.__tcvIdentify === 'function') window.__tcvIdentify(profileRes.data.id);
 
     // Login confirmed: let the lock finish unlocking (green tick) while the
     // base-resume check runs at the same time, so the flourish adds no extra

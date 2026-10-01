@@ -261,6 +261,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 reader.onload = function(evt) {
                     saveResumeFile(evt.target.result, file.name, file.type);
                     updateStoredFileUI(file.name);
+                    // A real selection only: restoring a stored file never fires 'change'.
+                    capturePostHog('resume_uploaded', { source: 'solutions', resume_type: 'pdf', logged_in: isUserLoggedIn() });
                 };
                 reader.readAsDataURL(file);
             } else {
