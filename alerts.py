@@ -9,7 +9,8 @@ the moment a 500 or a checkout failure happens.
   aloud. Env: CALLMEBOT_TELEGRAM_USER (your @username). Best-effort — the
   message is the reliable channel.
 
-Only sends when ENVIRONMENT=production so local dev errors never ring anyone;
+Only sends when ENVIRONMENT=production (or ALERTS_FORCE=1 for a local test) so
+local dev errors never ring anyone;
 a channel whose env vars are missing is skipped.
 
 Sends run on a background thread so a slow API never delays the response.
@@ -31,15 +32,23 @@ logger = logging.getLogger(__name__)
 MSG_DEDUPE_SECONDS = 10 * 60   # same error key messages at most this often
 CALL_GAP_SECONDS = 10 * 60     # at most one call per this window, any error
 MAX_MSG_PER_HOUR = 20          # hard cap across all keys
+# Non-urgent info (abandoned checkouts) has its own hourly budget so a busy
+# hour of abandons can never use up the budget real errors need.
+MAX_INFO_PER_HOUR = 20
 
 _lock = threading.Lock()
 _last_msg: dict[str, float] = {}
 _recent_msg: list[float] = []
+_recent_info: list[float] = []
 _last_call = 0.0
 
 
 def _config():
-    if os.getenv("ENVIRONMENT", "development").lower() != "production":
+    # ALERTS_FORCE=1 enables alerts outside production for a local test,
+    # without flipping ENVIRONMENT (which would also tag Sentry events as
+    # production and make cookies HTTPS-only).
+    forced = os.getenv("ALERTS_FORCE", "").strip() == "1"
+    if not forced and os.getenv("ENVIRONMENT", "development").lower() != "production":
         return None
     cfg = {
         "bot_token": os.getenv("TELEGRAM_BOT_TOKEN"),
@@ -50,18 +59,21 @@ def _config():
     return cfg if (has_msg or cfg["call_user"]) else None
 
 
-def _plan(key: str) -> tuple[bool, bool]:
+def _plan(key: str, urgent: bool) -> tuple[bool, bool]:
     """Decide (send_message, place_call) for this key, recording the decision."""
     global _last_call
     now = time.time()
+    bucket, cap = (_recent_msg, MAX_MSG_PER_HOUR) if urgent else (_recent_info, MAX_INFO_PER_HOUR)
     with _lock:
         if now - _last_msg.get(key, 0) < MSG_DEDUPE_SECONDS:
             return False, False
-        _recent_msg[:] = [t for t in _recent_msg if now - t < 3600]
-        if len(_recent_msg) >= MAX_MSG_PER_HOUR:
+        bucket[:] = [t for t in bucket if now - t < 3600]
+        if len(bucket) >= cap:
             return False, False
         _last_msg[key] = now
-        _recent_msg.append(now)
+        bucket.append(now)
+        if not urgent:
+            return True, False
         call = now - _last_call >= CALL_GAP_SECONDS
         if call:
             _last_call = now
@@ -101,15 +113,20 @@ def _send(cfg: dict, text: str, spoken: str, call: bool) -> None:
             logger.warning("Alert call failed: %s", exc)
 
 
-def notify(title: str, details: str = "", key: str | None = None) -> None:
-    """Message (and, if none in the last 10 min, call) the owner. Safe anywhere."""
+def notify(title: str, details: str = "", key: str | None = None,
+           urgent: bool = True) -> None:
+    """Message (and, if none in the last 10 min, call) the owner. Safe anywhere.
+
+    urgent=False: message only, never a call, and its own hourly budget — for
+    events worth knowing about that aren't errors (abandoned checkouts).
+    """
     cfg = _config()
     if cfg is None:
         return
-    send_msg, call = _plan(key or title)
+    send_msg, call = _plan(key or title, urgent)
     if not send_msg:
         return
-    text = f"🚨 TailorCV ALERT: {title}"
+    text = f"🚨 TailorCV ALERT: {title}" if urgent else f"ℹ️ TailorCV: {title}"
     if details:
         text += f"\n\n{details}"
     spoken = f"TailorCV alert. {title}. Check Telegram for details."
