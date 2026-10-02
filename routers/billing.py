@@ -27,6 +27,7 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+import alerts
 import analytics
 
 logger = logging.getLogger(__name__)
@@ -195,6 +196,41 @@ async def billing_region(request: Request):
     country = request.headers.get("CF-IPCountry", "").upper().strip()
     region = _get_region(request)
     return JSONResponse({"region": region, "country": country or None})
+
+
+# ── Client-side checkout failure reports ─────────────────────────────────────
+
+class CheckoutErrorReport(BaseModel):
+    provider: str = ""
+    plan: str = ""
+    stage: str = ""
+    status: int | None = None
+    message: str = ""
+
+
+@router.post("/api/billing/client-error")
+async def billing_client_error(body: CheckoutErrorReport, request: Request):
+    """Pricing page reports a checkout failure the server never saw as a 5xx
+    (4xx with no checkout_url, network error, Razorpay script/payment failure),
+    so the owner is alerted. Logged-in users only — checkout needs login anyway,
+    and it keeps anonymous traffic from ringing the owner's phone.
+    """
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return JSONResponse({"ok": False}, status_code=401)
+    provider = body.provider[:20] or "unknown"
+    stage = body.stage[:40] or "unknown"
+    logger.warning(
+        "Client checkout failure: user=%s provider=%s plan=%s stage=%s status=%s msg=%s",
+        user_id, provider, body.plan[:20], stage, body.status, body.message[:300],
+    )
+    alerts.notify(
+        f"checkout failed ({provider}, {stage})",
+        f"user {user_id}, plan {body.plan[:20]}, status {body.status}, "
+        f"region {_get_region(request)}: {body.message[:200]}",
+        key=f"checkout:{provider}:{stage}",
+    )
+    return JSONResponse({"ok": True})
 
 
 # ── Razorpay routes ───────────────────────────────────────────────────────────
