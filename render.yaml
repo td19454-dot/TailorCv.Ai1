@@ -9,6 +9,11 @@ services:
     # its own local Chromium (no more Browserbase-hosted session).
     buildCommand: pip install -r requirements.txt && playwright install chromium --with-deps
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    # Render only routes traffic to a new deploy once this returns 2xx, so a
+    # build that can't start or can't reach the DB never goes live — the old
+    # version keeps serving. /health returns 503 only when the DB is
+    # unreachable (see health_check in main.py).
+    healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
         sync: false  # Set this from your Render PostgreSQL database

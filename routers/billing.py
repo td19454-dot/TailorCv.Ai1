@@ -27,6 +27,29 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+# Payment SDKs are imported here, at module load, on purpose — not inside the
+# handlers. A missing or renamed package (polar-sdk 1.0 renamed polar_sdk ->
+# polar) then crashes startup, so Render fails the deploy and keeps the old
+# version live, instead of booting fine and 500ing the first buyer.
+import razorpay
+from polar_sdk import Polar
+from polar_sdk.models import (
+    CheckoutCreate,
+    ResourceNotFound as PolarResourceNotFound,
+    WebhookCheckoutExpiredPayload,
+    WebhookCheckoutUpdatedPayload,
+    WebhookOrderPaidPayload,
+    WebhookSubscriptionActivePayload,
+    WebhookSubscriptionCreatedPayload,
+    WebhookSubscriptionRevokedPayload,
+    WebhookSubscriptionUpdatedPayload,
+)
+from polar_sdk.webhooks import (
+    WebhookUnknownTypeError,
+    WebhookVerificationError,
+    validate_event,
+)
+
 import alerts
 import analytics
 
@@ -87,6 +110,34 @@ POLAR_PRICES = {
 }
 
 
+# Settings a checkout or payment webhook needs at request time. Checked once at
+# startup so a gap is reported on deploy, not when the first buyer clicks.
+# (RAZORPAY_PLAN_*_LIC/_GLOBAL are left out: non-India checkout goes to Polar.)
+REQUIRED_BILLING_ENV = [
+    "APP_BASE_URL",
+    "RAZORPAY_KEY_ID", "RAZORPAY_KEY_SECRET", "RAZORPAY_WEBHOOK_SECRET",
+    "RAZORPAY_PLAN_MONTHLY", "RAZORPAY_PLAN_YEARLY",
+    "POLAR_ACCESS_TOKEN", "POLAR_WEBHOOK_SECRET",
+    "POLAR_PRICE_WEEKLY_LIC", "POLAR_PRICE_MONTHLY_LIC", "POLAR_PRICE_YEARLY_LIC",
+    "POLAR_PRICE_WEEKLY_GLOBAL", "POLAR_PRICE_MONTHLY_GLOBAL", "POLAR_PRICE_YEARLY_GLOBAL",
+]
+
+
+def check_required_config() -> list[str]:
+    """Report missing billing settings at startup. Never raises — a missing
+    price ID should break that one button, not keep the whole site from
+    starting. Returns the missing names."""
+    missing = [name for name in REQUIRED_BILLING_ENV if not os.getenv(name, "").strip()]
+    if missing:
+        logger.error("Missing billing config: %s", ", ".join(missing))
+        alerts.notify(
+            "Missing billing config",
+            "Not set: " + ", ".join(missing) + ". Checkouts using these will fail.",
+            key="startup:billing_config",
+        )
+    return missing
+
+
 # ── Region detection ──────────────────────────────────────────────────────────
 
 def _get_region(request: Request) -> str:
@@ -113,8 +164,7 @@ def _require_razorpay():
     key_secret = os.getenv("RAZORPAY_KEY_SECRET")
     if not key_id or not key_secret:
         raise HTTPException(status_code=503, detail={"error": "payment_not_configured"})
-    import razorpay as _razorpay
-    return _razorpay.Client(auth=(key_id, key_secret))
+    return razorpay.Client(auth=(key_id, key_secret))
 
 
 def _get_db_and_user(request: Request):
@@ -184,7 +234,6 @@ def _require_polar():
     access_token = os.getenv("POLAR_ACCESS_TOKEN")
     if not access_token:
         raise HTTPException(status_code=503, detail={"error": "payment_not_configured"})
-    from polar_sdk import Polar
     return Polar(access_token=access_token)
 
 
@@ -495,7 +544,6 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
         # throws the upgrade paywall in their face seconds after they paid.
         success_url = f"{app_base}/billing/polar/return"
 
-        from polar_sdk.models import CheckoutCreate
         try:
             checkout = polar.checkouts.create(
                 request=CheckoutCreate(
@@ -576,7 +624,6 @@ async def polar_return(request: Request):
 @router.post("/api/billing/polar/cancel")
 async def polar_cancel(request: Request):
     """Cancel the user's active Polar subscription (revokes at period end)."""
-    from polar_sdk.models import ResourceNotFound as PolarResourceNotFound
     polar = _require_polar()
     db, user = _get_db_and_user(request)
     try:
@@ -610,11 +657,6 @@ async def polar_webhook(request: Request):
     payload = await request.body()
     headers = dict(request.headers)
 
-    from polar_sdk.webhooks import (
-        WebhookUnknownTypeError,
-        WebhookVerificationError,
-        validate_event,
-    )
     try:
         event = validate_event(payload, headers, webhook_secret)
     except WebhookVerificationError as exc:
@@ -652,15 +694,6 @@ async def polar_webhook(request: Request):
 
     from database import SessionLocal
     from models import User
-    from polar_sdk.models import (
-        WebhookCheckoutExpiredPayload,
-        WebhookCheckoutUpdatedPayload,
-        WebhookOrderPaidPayload,
-        WebhookSubscriptionCreatedPayload,
-        WebhookSubscriptionUpdatedPayload,
-        WebhookSubscriptionActivePayload,
-        WebhookSubscriptionRevokedPayload,
-    )
 
     db: Session = SessionLocal()
     try:
