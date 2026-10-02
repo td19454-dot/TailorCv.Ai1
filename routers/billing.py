@@ -446,19 +446,28 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
         success_url = f"{app_base}/billing/polar/return"
 
         from polar_sdk.models import CheckoutCreate
-        checkout = polar.checkouts.create(
-            request=CheckoutCreate(
-                products=[price_id],
-                customer_email=user.email,
-                customer_name=user.name,
-                metadata={
-                    "user_id": str(user.id),
-                    "plan": body.plan,
-                    "region": region,
-                },
-                success_url=success_url,
+        try:
+            checkout = polar.checkouts.create(
+                request=CheckoutCreate(
+                    products=[price_id],
+                    customer_email=user.email,
+                    customer_name=user.name or None,
+                    metadata={
+                        "user_id": str(user.id),
+                        "plan": body.plan,
+                        "region": region,
+                    },
+                    success_url=success_url,
+                )
             )
-        )
+        except Exception as exc:
+            # Log the real Polar error (bad product id, sandbox/live token
+            # mismatch, invalid success_url) instead of a bare 500.
+            logger.exception(
+                "Polar checkout failed: region=%s plan=%s product=%s success_url=%r err=%s",
+                region, body.plan, price_id, success_url, exc,
+            )
+            raise HTTPException(status_code=502, detail="Could not start checkout. Please try again.")
         analytics.track(user.id, "checkout_started",
                         {"plan": body.plan, "provider": "polar", "region": region}, request=request)
         return {"checkout_url": checkout.url}
