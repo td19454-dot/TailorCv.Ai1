@@ -86,6 +86,7 @@ from functions import (
 )
 
 from extraction import process_resume
+import alerts
 import analytics
 import skill_categories as skillcat
 from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
@@ -267,6 +268,11 @@ async def global_exception_handler(request: Request, exc: Exception):
     # otherwise the automatic integration would never see it.
     if sentry_sdk is not None:
         sentry_sdk.capture_exception(exc)
+    alerts.notify(
+        f"500 on {request.url.path}",
+        f"{type(exc).__name__}: {str(exc)[:300]}",
+        key=f"500:{request.url.path}:{type(exc).__name__}",
+    )
     accept = request.headers.get("accept", "")
     if "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest":
         message = user_error_detail(exc, "Something went wrong on our end. Please try again.")
@@ -276,6 +282,12 @@ async def global_exception_handler(request: Request, exc: Exception):
 # Branded 404 (and other HTTP errors) for browser navigations; JSON for APIs.
 @app.exception_handler(StarletteHTTPException)
 async def http_exception_handler(request: Request, exc: StarletteHTTPException):
+    if exc.status_code >= 500:
+        alerts.notify(
+            f"{exc.status_code} on {request.url.path}",
+            str(exc.detail)[:300],
+            key=f"{exc.status_code}:{request.url.path}",
+        )
     accept = request.headers.get("accept", "")
     wants_html = "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest"
     if exc.status_code == 404 and wants_html:
