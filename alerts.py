@@ -9,7 +9,8 @@ the moment a 500 or a checkout failure happens.
   aloud. Env: CALLMEBOT_TELEGRAM_USER (your @username). Best-effort — the
   message is the reliable channel.
 
-Only sends when ENVIRONMENT=production so local dev errors never ring anyone;
+Only sends when ENVIRONMENT=production (or ALERTS_FORCE=1 for a local test) so
+local dev errors never ring anyone;
 a channel whose env vars are missing is skipped.
 
 Sends run on a background thread so a slow API never delays the response.
@@ -39,7 +40,11 @@ _last_call = 0.0
 
 
 def _config():
-    if os.getenv("ENVIRONMENT", "development").lower() != "production":
+    # ALERTS_FORCE=1 enables alerts outside production for a local test,
+    # without flipping ENVIRONMENT (which would also tag Sentry events as
+    # production and make cookies HTTPS-only).
+    forced = os.getenv("ALERTS_FORCE", "").strip() == "1"
+    if not forced and os.getenv("ENVIRONMENT", "development").lower() != "production":
         return None
     cfg = {
         "bot_token": os.getenv("TELEGRAM_BOT_TOKEN"),

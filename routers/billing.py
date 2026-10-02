@@ -599,13 +599,21 @@ async def polar_webhook(request: Request):
     try:
         from polar_sdk.webhooks import validate_event
         event = validate_event(payload, headers, webhook_secret)
-    except Exception:
+    except Exception as exc:
         logger.warning("Polar webhook signature verification failed")
+        # A wrong POLAR_WEBHOOK_SECRET rejects every real payment event, so
+        # paying customers silently never get Pro.
+        alerts.notify(
+            "Polar webhook signature failed",
+            f"Check POLAR_WEBHOOK_SECRET. Paid users may not be getting Pro. ({type(exc).__name__})",
+            key="polar_webhook:signature",
+        )
         raise HTTPException(status_code=400, detail="Invalid signature")
 
     from database import SessionLocal
     from models import User
     from polar_sdk.models import (
+        WebhookCheckoutUpdatedPayload,
         WebhookOrderPaidPayload,
         WebhookSubscriptionCreatedPayload,
         WebhookSubscriptionUpdatedPayload,
@@ -615,7 +623,23 @@ async def polar_webhook(request: Request):
 
     db: Session = SessionLocal()
     try:
-        if isinstance(event, WebhookOrderPaidPayload):
+        if isinstance(event, WebhookCheckoutUpdatedPayload):
+            # The buyer is on Polar's hosted page, so a declined card or failed
+            # 3-D Secure never reaches our frontend — this event is the only
+            # place we hear about it.
+            co = event.data
+            status = getattr(co.status, "value", str(co.status))
+            if status == "failed":
+                metadata = co.metadata or {}
+                alerts.notify(
+                    "Polar payment failed",
+                    f"user {metadata.get('user_id')} ({co.customer_email}), "
+                    f"plan {metadata.get('plan')}, region {metadata.get('region')}, "
+                    f"{(co.total_amount or 0) / 100:.2f} {co.currency}, checkout {co.id}",
+                    key=f"polar_checkout_failed:{co.id}",
+                )
+
+        elif isinstance(event, WebhookOrderPaidPayload):
             # One-time purchase (weekly plan)
             order = event.data
             metadata = order.metadata or {}
@@ -633,6 +657,16 @@ async def polar_webhook(request: Request):
                                          getattr(order, "total_amount", None), getattr(order, "currency", None))
                 days = PLAN_DURATIONS.get(plan, 7)
                 _extend_pro(db, user, days, polar_subscription_id=str(order.id), provider="polar")
+            elif plan == "weekly" or not getattr(order, "subscription_id", None):
+                # Money taken, nobody to grant Pro to. (Subscription orders are
+                # granted via the subscription events below, so only alert for
+                # one-time orders.)
+                alerts.notify(
+                    "Polar PAID but no user matched",
+                    f"order {order.id}, metadata user_id={user_id!r}, plan {plan}. "
+                    "Customer paid and did NOT get Pro — grant manually.",
+                    key=f"polar_paid_nouser:{order.id}",
+                )
 
         elif isinstance(event, (WebhookSubscriptionCreatedPayload,
                                 WebhookSubscriptionUpdatedPayload,
@@ -662,6 +696,20 @@ async def polar_webhook(request: Request):
                 _track_subscription_created(user, plan, "polar", metadata.get("region"), sub_id)
                 days = PLAN_DURATIONS.get(plan, 31)
                 _extend_pro(db, user, days, polar_subscription_id=sub_id, provider="polar")
+            elif not user and sub.status.value == "active":
+                alerts.notify(
+                    "Polar subscription active but no user matched",
+                    f"subscription {sub_id}, metadata user_id={user_id!r}, plan {plan}. "
+                    "Customer is paying and did NOT get Pro — grant manually.",
+                    key=f"polar_sub_nouser:{sub_id}",
+                )
+            elif sub.status.value in ("past_due", "unpaid"):
+                # A renewal charge failed.
+                alerts.notify(
+                    f"Polar renewal failed ({sub.status.value})",
+                    f"user {user.id if user else user_id}, subscription {sub_id}, plan {plan}",
+                    key=f"polar_sub_{sub.status.value}:{sub_id}",
+                )
 
         elif isinstance(event, WebhookSubscriptionRevokedPayload):
             sub = event.data
@@ -674,6 +722,13 @@ async def polar_webhook(request: Request):
 
     except Exception as exc:
         logger.exception("Error processing Polar webhook: %s", exc)
+        # Swallowed so Polar doesn't retry forever, which also means no 500
+        # alert fires on its own — and this may be a payment we failed to grant.
+        alerts.notify(
+            "Polar webhook crashed",
+            f"{type(event).__name__}: {type(exc).__name__}: {str(exc)[:250]}",
+            key=f"polar_webhook_error:{type(event).__name__}:{type(exc).__name__}",
+        )
     finally:
         db.close()
 
