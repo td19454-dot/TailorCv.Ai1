@@ -94,7 +94,7 @@ from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
 from routers.billing import router as billing_router
-from routers.billing import _get_region
+from routers.billing import _get_region, check_required_config as _check_billing_config
 from routers.feedback import router as feedback_router
 from routers.job_dashboard import router as job_dashboard_router
 from routers.extension_autofill import router as extension_autofill_router
@@ -909,6 +909,13 @@ def initialize_database() -> None:
         db_init_status["ok"] = False
         db_init_status["error"] = str(exc)
         logger.exception("Database initialization failed during startup")
+        # Doesn't fail /health (see health_check) — the site may mostly work —
+        # but a half-migrated schema breaks whatever reads the missing column.
+        alerts.notify(
+            "Database init failed at startup",
+            f"{type(exc).__name__}: {str(exc)[:300]}",
+            key="startup:db_init",
+        )
 
 
 _BACKGROUND_TASKS: set[asyncio.Task] = set()
@@ -917,6 +924,7 @@ _BACKGROUND_TASKS: set[asyncio.Task] = set()
 @app.on_event("startup")
 async def startup_event() -> None:
     initialize_database()
+    _check_billing_config()
     analytics.init()
     _sweep_orphaned_chromium()
     task = asyncio.create_task(_auto_apply_reaper_loop())
@@ -6481,10 +6489,35 @@ async def api_evaluate_interview_answer(payload: dict):
 
 
 @app.get("/health")
-async def health_check():
-    """Health check endpoint for deployment verification"""
+def health_check():
+    """Health check endpoint for deployment verification.
+
+    Render calls this (healthCheckPath in render.yaml) before routing traffic
+    to a new deploy and periodically after. 503 means "this instance can't
+    serve": the deploy fails and the old version stays live, or a running
+    instance gets restarted. So it only fails on a live DB-unreachable check —
+    NOT on db_init_status, which one transient hiccup in a startup extra
+    (pgvector, the auto-apply reaper) would pin to False until the next
+    restart, and NOT on missing config, which alerts instead (see
+    check_required_config in routers/billing.py) so one missing price ID can't take the site down.
+    """
+    from sqlalchemy import text as _sql_text
+    db_reachable, db_ping_error = True, None
+    try:
+        with engine.connect() as conn:
+            conn.execute(_sql_text("SELECT 1"))
+    except Exception as exc:
+        db_reachable, db_ping_error = False, str(exc)[:300]
+        logger.error("Health check: database unreachable: %s", exc)
+    if not db_reachable:
+        return JSONResponse(
+            status_code=503,
+            content={"status": "unhealthy", "database_reachable": False,
+                     "database_error": db_ping_error},
+        )
     return {
         "status": "healthy",
+        "database_reachable": True,
         "database_initialized": db_init_status["ok"],
         "database_error": db_init_status["error"],
         "templates_dir": templates_dir,
