@@ -48,7 +48,9 @@ sentry-sdk[fastapi]>=2.0.0
 
 # Payments
 razorpay>=1.4.0
-polar-sdk>=0.1.0
+# Pinned: 1.0 renamed the import package polar_sdk -> polar, which breaks
+# every `from polar_sdk ...` in routers/billing.py.
+polar-sdk==0.31.7
 
 # Auto-apply (local browser automation via Stagehand + Playwright — no
 # Browserbase account/session needed). >=4.0.0 is required: that's the first
