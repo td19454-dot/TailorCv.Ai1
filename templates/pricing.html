@@ -886,6 +886,13 @@
                     alert('Verification failed. Please contact support.');
                 }
             },
+            modal: {
+                // Buyer closed the payment window without paying. Razorpay calls
+                // handler (not this) on success, so this is a true abandon.
+                ondismiss: function() {
+                    reportCheckoutError('razorpay', plan, 'abandoned', null, 'closed payment window');
+                },
+            },
         };
         if (plan === 'weekly') {
             opts.order_id = data.order_id;

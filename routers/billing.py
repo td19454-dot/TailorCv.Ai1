@@ -220,6 +220,20 @@ async def billing_client_error(body: CheckoutErrorReport, request: Request):
         return JSONResponse({"ok": False}, status_code=401)
     provider = body.provider[:20] or "unknown"
     stage = body.stage[:40] or "unknown"
+
+    if stage == "abandoned":
+        # Not an error — the buyer closed the payment window. Message only, no
+        # call; keyed per user so each abandoning buyer shows up once.
+        logger.info("Checkout abandoned: user=%s provider=%s plan=%s",
+                    user_id, provider, body.plan[:20])
+        alerts.notify(
+            f"checkout abandoned ({provider})",
+            f"user {user_id}, plan {body.plan[:20]}, region {_get_region(request)}",
+            key=f"abandoned:{provider}:{user_id}",
+            urgent=False,
+        )
+        return JSONResponse({"ok": True})
+
     logger.warning(
         "Client checkout failure: user=%s provider=%s plan=%s stage=%s status=%s msg=%s",
         user_id, provider, body.plan[:20], stage, body.status, body.message[:300],
@@ -596,10 +610,14 @@ async def polar_webhook(request: Request):
     payload = await request.body()
     headers = dict(request.headers)
 
+    from polar_sdk.webhooks import (
+        WebhookUnknownTypeError,
+        WebhookVerificationError,
+        validate_event,
+    )
     try:
-        from polar_sdk.webhooks import validate_event
         event = validate_event(payload, headers, webhook_secret)
-    except Exception as exc:
+    except WebhookVerificationError as exc:
         logger.warning("Polar webhook signature verification failed")
         # A wrong POLAR_WEBHOOK_SECRET rejects every real payment event, so
         # paying customers silently never get Pro.
@@ -609,10 +627,33 @@ async def polar_webhook(request: Request):
             key="polar_webhook:signature",
         )
         raise HTTPException(status_code=400, detail="Invalid signature")
+    except WebhookUnknownTypeError as exc:
+        # Signed and genuine, just an event type this SDK version doesn't
+        # model. Acknowledge so Polar doesn't retry it forever.
+        logger.info("Polar webhook: ignoring unknown event type %s", exc)
+        return {"received": True, "ignored": True}
+    except Exception as exc:
+        # Signed and genuine, but the payload doesn't fit this SDK version's
+        # schema (e.g. a newer Polar API version). If it was a payment event,
+        # someone paid and won't get Pro. 400 keeps it in Polar's failed
+        # deliveries so it can be redelivered once fixed.
+        try:
+            event_type = json.loads(payload).get("type")
+        except Exception:
+            event_type = None
+        logger.exception("Polar webhook payload could not be parsed (type=%s)", event_type)
+        alerts.notify(
+            "Polar webhook could not be parsed",
+            f"event {event_type}: {type(exc).__name__}: {str(exc)[:250]}. "
+            "If this is a payment, the customer did NOT get Pro.",
+            key=f"polar_webhook_parse:{event_type}",
+        )
+        raise HTTPException(status_code=400, detail="Unparseable event")
 
     from database import SessionLocal
     from models import User
     from polar_sdk.models import (
+        WebhookCheckoutExpiredPayload,
         WebhookCheckoutUpdatedPayload,
         WebhookOrderPaidPayload,
         WebhookSubscriptionCreatedPayload,
@@ -623,7 +664,7 @@ async def polar_webhook(request: Request):
 
     db: Session = SessionLocal()
     try:
-        if isinstance(event, WebhookCheckoutUpdatedPayload):
+        if isinstance(event, (WebhookCheckoutUpdatedPayload, WebhookCheckoutExpiredPayload)):
             # The buyer is on Polar's hosted page, so a declined card or failed
             # 3-D Secure never reaches our frontend — this event is the only
             # place we hear about it.
@@ -637,6 +678,18 @@ async def polar_webhook(request: Request):
                     f"plan {metadata.get('plan')}, region {metadata.get('region')}, "
                     f"{(co.total_amount or 0) / 100:.2f} {co.currency}, checkout {co.id}",
                     key=f"polar_checkout_failed:{co.id}",
+                )
+            elif status == "expired" or isinstance(event, WebhookCheckoutExpiredPayload):
+                # Polar expires a checkout the buyer opened but never paid —
+                # the Polar-side equivalent of closing the Razorpay window.
+                metadata = co.metadata or {}
+                alerts.notify(
+                    "checkout abandoned (polar)",
+                    f"user {metadata.get('user_id')} ({co.customer_email}), "
+                    f"plan {metadata.get('plan')}, region {metadata.get('region')}, "
+                    f"{(co.total_amount or 0) / 100:.2f} {co.currency}",
+                    key=f"polar_checkout_expired:{co.id}",
+                    urgent=False,
                 )
 
         elif isinstance(event, WebhookOrderPaidPayload):
