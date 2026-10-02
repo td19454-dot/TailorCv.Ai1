@@ -12,7 +12,8 @@ services:
     # Render only routes traffic to a new deploy once this returns 2xx, so a
     # build that can't start or can't reach the DB never goes live — the old
     # version keeps serving. /health returns 503 only when the DB is
-    # unreachable (see health_check in main.py).
+    # unreachable, and stops querying it after the first success so the
+    # periodic checks don't keep Neon awake (see health_check in main.py).
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL

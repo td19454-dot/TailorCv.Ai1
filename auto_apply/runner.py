@@ -326,6 +326,12 @@ def enqueue_run(run_id: int) -> None:
     task.add_done_callback(_TASKS.discard)
 
 
+def active_run_count() -> int:
+    """Runs this process has queued or is executing. The periodic reaper in
+    main.py reads this to stay off the DB while nothing is in flight."""
+    return sum(1 for t in _TASKS if not t.done())
+
+
 async def shutdown_runs(grace: float = 15.0) -> None:
     """Cancel in-flight runs and make sure no Chromium outlives this process.
 

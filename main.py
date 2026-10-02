@@ -811,13 +811,29 @@ def _reap_timed_out_auto_apply_runs() -> int:
 
 
 async def _auto_apply_reaper_loop() -> None:
-    """Belt-and-braces: whatever else breaks, no run stays `running` forever."""
+    """Belt-and-braces: whatever else breaks, no run stays `running` forever.
+
+    Only touches the DB while this process has runs in flight, plus one cutoff
+    window after the last one ends (catches a run whose task died before it
+    could write its terminal status). Ticking unconditionally queried Neon
+    every 210s, under its 5-minute autosuspend, so the compute never slept
+    and billed 24/7. Runs orphaned by a previous process are the boot
+    reaper's job (_reap_stale_auto_apply_runs), not this loop's."""
+    import time as _time
     from auto_apply import config as _aa_config
+    from auto_apply.runner import active_run_count
 
     interval = max(60.0, _aa_config.run_timeout_seconds() / 2)
+    # Mirrors the 2x cutoff in _reap_timed_out_auto_apply_runs, plus a tick.
+    grace = _aa_config.run_timeout_seconds() * 2 + interval
+    last_active: float | None = None
     while True:
         try:
             await asyncio.sleep(interval)
+            if active_run_count():
+                last_active = _time.monotonic()
+            elif last_active is None or _time.monotonic() - last_active > grace:
+                continue
             reaped = await asyncio.to_thread(_reap_timed_out_auto_apply_runs)
             if reaped:
                 logger.warning("reaped %s auto-apply run(s) that overran their timeout", reaped)
@@ -6488,6 +6504,10 @@ async def api_evaluate_interview_answer(payload: dict):
         raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not evaluate your answer. Please try again."))
 
 
+# Set once this process has reached the DB from /health; see health_check.
+_health_db_verified = False
+
+
 @app.get("/health")
 def health_check():
     """Health check endpoint for deployment verification.
@@ -6500,15 +6520,25 @@ def health_check():
     (pgvector, the auto-apply reaper) would pin to False until the next
     restart, and NOT on missing config, which alerts instead (see
     check_required_config in routers/billing.py) so one missing price ID can't take the site down.
+
+    The DB is pinged only until it first succeeds in this process. That keeps
+    the deploy gate (a new instance that can't reach the DB never goes live)
+    without Render's periodic checks querying Neon every few seconds, which
+    would hold the compute awake under its 5-minute autosuspend and bill it
+    24/7. After that first success a 503 could only trigger a restart, and a
+    restart can't fix an unreachable database.
     """
+    global _health_db_verified
     from sqlalchemy import text as _sql_text
     db_reachable, db_ping_error = True, None
-    try:
-        with engine.connect() as conn:
-            conn.execute(_sql_text("SELECT 1"))
-    except Exception as exc:
-        db_reachable, db_ping_error = False, str(exc)[:300]
-        logger.error("Health check: database unreachable: %s", exc)
+    if not _health_db_verified:
+        try:
+            with engine.connect() as conn:
+                conn.execute(_sql_text("SELECT 1"))
+            _health_db_verified = True
+        except Exception as exc:
+            db_reachable, db_ping_error = False, str(exc)[:300]
+            logger.error("Health check: database unreachable: %s", exc)
     if not db_reachable:
         return JSONResponse(
             status_code=503,
@@ -11731,15 +11761,41 @@ def blog_rating_summary(db: Session, slug: str) -> dict:
     return {"average": round(float(avg), 2) if avg else 0.0, "count": int(count)}
 
 
-def _blog_rating_ctx(slug: str) -> dict:
+# Every post's rating summary, loaded in one GROUP BY and held in memory.
+# Querying per page view meant blog traffic and crawlers alone kept Neon's
+# compute from ever autosuspending. rate_blog_post writes through, so a voter
+# sees their own vote at once; another instance's votes show within the TTL.
+_BLOG_RATINGS_TTL = 6 * 3600
+_BLOG_RATINGS_RETRY = 300  # after a failed load, so a DB outage isn't retried per view
+_blog_ratings_cache: dict = {"data": {}, "expires": 0.0}
+
+
+def _load_blog_ratings() -> dict:
+    from sqlalchemy import func as _func
     db = get_db()
     try:
-        return blog_rating_summary(db, slug)
-    except Exception:
-        logger.exception("blog rating summary failed")
-        return {"average": 0.0, "count": 0}
+        rows = db.query(
+            BlogRating.slug, _func.avg(BlogRating.rating), _func.count(BlogRating.id)
+        ).group_by(BlogRating.slug).all()
     finally:
         db.close()
+    return {
+        slug: {"average": round(float(avg), 2) if avg else 0.0, "count": int(count or 0)}
+        for slug, avg, count in rows
+    }
+
+
+def _blog_rating_ctx(slug: str) -> dict:
+    import time as _time
+    now = _time.monotonic()
+    if now >= _blog_ratings_cache["expires"]:
+        try:
+            _blog_ratings_cache["data"] = _load_blog_ratings()
+            _blog_ratings_cache["expires"] = now + _BLOG_RATINGS_TTL
+        except Exception:
+            logger.exception("blog rating summary failed")
+            _blog_ratings_cache["expires"] = now + _BLOG_RATINGS_RETRY
+    return _blog_ratings_cache["data"].get(slug) or {"average": 0.0, "count": 0}
 
 
 @app.post("/api/blog/{slug}/rate")
@@ -11775,6 +11831,7 @@ async def rate_blog_post(request: Request, slug: str):
         summary = blog_rating_summary(db, slug)
     finally:
         db.close()
+    _blog_ratings_cache["data"][slug] = summary
     return {"ok": True, "your_rating": rating, **summary}
 
 
