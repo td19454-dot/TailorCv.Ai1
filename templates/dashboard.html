@@ -2706,6 +2706,10 @@ Nice to have:
 
             var fd = new FormData();
             fd.append('file', f);
+            function nsTrack(ev, props) {
+                try { if (window.posthog && typeof posthog.capture === 'function') posthog.capture(ev, Object.assign({ source: 'dashboard', logged_in: true }, props || {})); } catch (e) {}
+            }
+            nsTrack('ats_scan_started');
             fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
                 .then(function (r) {
                     if (r.status === 401 || r.status === 403) { window.location.href = '/login?next=/dashboard'; throw new Error('login'); }
@@ -2713,6 +2717,7 @@ Nice to have:
                     return r.json();
                 })
                 .then(function (data) {
+                    nsTrack('ats_scan_completed', { guest_scan: !!data.guest_scan, match_rate: data.match_rate });
                     // Hand the result to the ATS analysis results page for rendering.
                     try { sessionStorage.setItem('atsAnalysisPayload', JSON.stringify(data)); } catch (e) {}
                     msg.style.color = '#9fb6d6'; msg.textContent = 'Opening results…';

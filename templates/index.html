@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -35,7 +35,7 @@
         }
 
         :root {
-            --bg: #07102b;
+            --bg: #010207;
             --bg-card: #0f1e44;
             --bg-feat: #141f4a;
             --border: rgba(80, 110, 200, 0.22);
@@ -45,7 +45,7 @@
             --text-body: #99aacc;
             --accent: #4a6aff;
             --star: #f0c04a;
-            --fade-bg: #07102b;
+            --fade-bg: #010207;
         }
 
         /* ── Moving background ── */
@@ -133,12 +133,31 @@
             z-index: 1;
         }
 
+        /* ── Light-ribbon background (homepage only) ──
+           Near-black page with one large, slowly flowing sheet of light
+           (white-hot core → blue → violet → magenta → red), painted by the
+           light-ribbon script just after <body>. !important beats the
+           animated body gradient in style3.css. */
         body {
-            background: linear-gradient(135deg,
-                    #020010, #06002a, #12003a,
-                    #001830, #0a0020, #1a0030, #020010);
-            background-size: 600% 600%;
-            animation: gradientShift 15s ease infinite;
+            background: #010207 !important;
+            animation: none !important;
+        }
+
+        .aurora-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* The canvas is drawn at a fraction of screen resolution and stretched
+           to fill the viewport; the upscale is what makes the light soft. */
+        #aurora-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .bg-orb {
@@ -274,26 +293,11 @@
             margin-bottom: 0;
         }
 
-        /* Fade masks */
-        .carousel-row::before,
-        .carousel-row::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 120px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .carousel-row::before {
-            left: 0;
-            background: linear-gradient(to right, var(--fade-bg) 30%, transparent);
-        }
-
-        .carousel-row::after {
-            right: 0;
-            background: linear-gradient(to left, var(--fade-bg) 30%, transparent);
+        /* Fade masks — a real alpha mask, not a background-coloured overlay,
+           so the edges stay clean over the moving aurora. */
+        .carousel-row {
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
         }
 
         /* Track */
@@ -445,11 +449,128 @@
 </head>
 
 <body>
-    <div class="bg-orb orb-blue"></div>
-    <div class="bg-orb orb-violet"></div>
-    <div class="wave-bg" aria-hidden="true">
-        <canvas id="wave-canvas"></canvas>
+    <div class="aurora-bg" aria-hidden="true">
+        <canvas id="aurora-canvas"></canvas>
     </div>
+    <script>
+        /* Light ribbon: one broad sheet of light that enters thin and white-hot
+           on the left and widens to the right through blue, violet and magenta
+           into red, over a dark blue haze. Each glow layer shares the ribbon's
+           lower fold and spreads upward, so the bottom edge stays crisp while
+           the top dissolves into the background. It is painted at a quarter of
+           screen resolution and stretched by CSS, which softens it for free. */
+        (function () {
+            const canvas = document.getElementById('aurora-canvas');
+            const ctx = canvas && canvas.getContext('2d');
+            if (!ctx) return;
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const TAU = Math.PI * 2;
+            const SCALE = .25;
+            const canBlur = 'filter' in ctx;
+
+            // Glow layers, widest/faintest first: [upward spread, alpha].
+            const layers = [[2.4, .07], [1.7, .10], [1.2, .15], [.8, .22], [.5, .30]];
+
+            let W = 0, H = 0, w = 0, h = 0, n = 0, cs, ts;
+
+            function resize() {
+                const vw = window.innerWidth, vh = window.innerHeight;
+                // Mobile URL-bar show/hide fires resize with small height
+                // changes; ignore those so the canvas doesn't reset mid-scroll.
+                if (vw === W && Math.abs(vh - H) < 150) return;
+                W = vw; H = vh;
+                w = canvas.width = Math.ceil(W * SCALE);
+                h = canvas.height = Math.ceil(H * SCALE);
+                n = w + 1;
+                cs = new Float32Array(n);
+                ts = new Float32Array(n);
+                if (reduceMotion) draw(8);
+            }
+
+            function band(top, bottom) {
+                ctx.beginPath();
+                for (let i = 0; i < n; i++) {
+                    const y = cs[i] - ts[i] * top;
+                    i === 0 ? ctx.moveTo(i, y) : ctx.lineTo(i, y);
+                }
+                for (let i = n - 1; i >= 0; i--) ctx.lineTo(i, cs[i] + ts[i] * bottom);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            function glow(x, y, r, color) {
+                const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+                g.addColorStop(0, color);
+                g.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = g;
+                ctx.fillRect(0, 0, w, h);
+            }
+
+            function draw(t) {
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.filter = 'none';
+                ctx.clearRect(0, 0, w, h);
+                const m = Math.max(w, h);
+
+                // Ambient haze: deep blue pooled left, a faint wine glow top-right.
+                glow(w * (.2 + .05 * Math.sin(t * .05)), h * .55, m * .75, 'rgba(18,36,170,.55)');
+                glow(w * .92, h * .12, m * .5, 'rgba(90,0,70,.35)');
+                glow(w * .9, h * .62, m * .35, 'rgba(120,0,40,.25)');
+
+                // Ribbon centre line rises gently to the right with an S-curve
+                // that travels along it, and the whole ribbon drifts up and down.
+                // Thickness grows from a thin left entry to a broad right end, and
+                // breathes: a whole-ribbon pulse plus a swell that rolls along
+                // its length, so parts thicken while others thin.
+                const drift = .09 * Math.sin(t * .09) + .03 * Math.sin(t * .23);
+                const pulse = .8 + .35 * Math.sin(t * .3);
+                for (let i = 0; i < n; i++) {
+                    const u = i / w;
+                    cs[i] = h * (.62 - .16 * u + drift
+                        + .07 * Math.sin(TAU * u * .8 + t * .3)
+                        + .03 * Math.sin(TAU * u * 1.7 - t * .22));
+                    const swell = 1 + .45 * Math.sin(TAU * u * .9 - t * .45);
+                    ts[i] = h * (.035 + .26 * Math.pow(u, 1.3)) * pulse * Math.max(.35, swell);
+                }
+
+                ctx.globalCompositeOperation = 'lighter';
+                if (canBlur) ctx.filter = 'blur(3px)';
+
+                const body = ctx.createLinearGradient(0, 0, w, 0);
+                body.addColorStop(0, '#c8c2ff');
+                body.addColorStop(.28, '#4f46ff');
+                body.addColorStop(.58, '#9b10ff');
+                body.addColorStop(.82, '#c2007c');
+                body.addColorStop(1, '#ff1744');
+                ctx.fillStyle = body;
+                layers.forEach(([spread, alpha]) => {
+                    ctx.globalAlpha = alpha;
+                    band(spread, .12 + .06 * spread);
+                });
+
+                // White-hot core along the left half of the ribbon.
+                const core = ctx.createLinearGradient(0, 0, w * .62, 0);
+                core.addColorStop(0, 'rgba(255,255,255,1)');
+                core.addColorStop(.45, 'rgba(225,220,255,.7)');
+                core.addColorStop(1, 'rgba(160,150,255,0)');
+                ctx.fillStyle = core;
+                ctx.globalAlpha = .35; band(.5, .1);
+                ctx.globalAlpha = .45; band(.22, .06);
+
+                ctx.globalAlpha = 1;
+                ctx.filter = 'none';
+                ctx.globalCompositeOperation = 'source-over';
+            }
+
+            resize();
+            window.addEventListener('resize', resize);
+            if (reduceMotion) return;
+            (function frame(ms) {
+                draw(ms / 1000);
+                requestAnimationFrame(frame);
+            })(performance.now());
+        })();
+    </script>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7G56LJF" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -457,216 +578,65 @@
     <!-- Navigation -->
     {% include "_nav.html" %}
 
-    <!-- Chrome extension promo bar. It sits directly after </header> and
-         provides its OWN clearance for the fixed navbar, so its top edge meets
-         the nav's bottom with no gap. The old empty .nav-clear-spacer div was
-         removed because competing clearance rules on it (72px vs 88px vs 100px)
-         left a dark gap under the nav. See the header.navbar + .ext-promo-bar
-         rule below for the clearance. -->
-    <div class="ext-promo-bar">
-        <div class="ext-promo-inner">
-            <span class="ext-promo-text">
-                <span class="ext-promo-chip">New</span>
-                <span>Tailor your resume on <b>any job posting</b> &mdash; without leaving the page.</span>
-            </span>
-            <a href="https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb" class="ext-promo-btn" id="home_promo_bar_extension" target="_blank" rel="noopener">
-                <span class="epb-outer">
-                    <span class="epb-inner">
-                        <span aria-hidden="true">&#129513;</span>
-                        <span class="epb-label">Add to Chrome &mdash; Free</span>
-                    </span>
-                </span>
-            </a>
-        </div>
-    </div>
+    <!-- Spacer that clears the fixed navbar (see header.navbar + .nav-clear). -->
+    <div class="nav-clear" aria-hidden="true"></div>
     <style>
-        .ext-promo-bar {
-            background: #ffffff;
-            border-bottom: 1px solid #e6e9f2;
-            width: 100%;
-        }
-        .ext-promo-inner {
-            max-width: 1180px;
-            margin: 0 auto;
-            padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .ext-promo-text {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 15px;
-            color: #1a2340;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-        .ext-promo-chip {
-            flex: none;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: .04em;
-            text-transform: uppercase;
-            color: #4a6aff;
-            background: #eef1ff;
-            border: 1px solid #dbe1ff;
-            border-radius: 999px;
-            padding: 3px 9px;
-        }
-        .ext-promo-text b { font-weight: 700; color: #0e1633; }
-        .ext-promo-btn {
-            flex: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #4a6aff;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 9px 18px;
-            border-radius: 8px;
-            transition: background .15s ease, transform .15s ease;
-            white-space: nowrap;
-        }
-        .ext-promo-btn:hover { background: #3a56e0; transform: translateY(-1px); }
-        .ext-promo-btn:focus-visible { outline: 3px solid #b9c4ff; outline-offset: 2px; }
-
-        /* Glassy 3D pill button (adapted from a Uiverse.io recipe by
-           FColombati): layered box-shadows fake depth/glass, the label uses a
-           metallic gradient text-clip, and it visually "presses" on hover/click.
-           Scoped tightly to this one homepage promo button via its ID; the
-           emoji sits OUTSIDE the gradient-text-clip span since color-emoji
-           glyphs don't respect background-clip:text reliably. */
-        #home_promo_bar_extension {
-            all: unset;
-            cursor: pointer;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            position: relative;
-            display: inline-block;
-            border-radius: 100em;
-            background-color: rgba(0, 0, 0, 0.75);
-            box-shadow:
-                -0.15em -0.15em 0.15em -0.075em rgba(5, 5, 5, 0.25),
-                0.0375em 0.0375em 0.0675em 0 rgba(5, 5, 5, 0.1);
-        }
-        #home_promo_bar_extension::after {
-            content: "";
-            position: absolute;
-            z-index: 0;
-            width: calc(100% + 0.3em);
-            height: calc(100% + 0.3em);
-            top: -0.15em;
-            left: -0.15em;
-            border-radius: inherit;
-            background: linear-gradient(-135deg, rgba(5, 5, 5, 0.5), transparent 20%, transparent 100%);
-            filter: blur(0.0125em);
-            opacity: 0.25;
-            mix-blend-mode: multiply;
-        }
-        #home_promo_bar_extension .epb-outer {
-            position: relative;
-            z-index: 1;
+        /* Clearance for the fixed navbar. Measured with a real browser: there is
+        a constant 26px anonymous line-box at the top of <body> (whitespace text
+        nodes), so content starts at 26 + this spacer. Homepage nav is 56px
+        desktop / 54px mobile: 26+30=56, 26+28=54, plus 20px / 12px breathing
+        room so the hero headline doesn't sit flush against the nav. The
+        selector (0,2,1) outranks the competing header.navbar + * clearance
+        rules (0,1,1). Keep these in step with the nav heights below. */
+        header.navbar + .nav-clear {
             display: block;
-            border-radius: inherit;
-            transition: box-shadow 300ms ease;
-            will-change: box-shadow;
-            box-shadow:
-                0 0.05em 0.05em -0.01em rgba(5, 5, 5, 1),
-                0 0.01em 0.01em -0.01em rgba(5, 5, 5, 0.5),
-                0.15em 0.3em 0.1em -0.01em rgba(5, 5, 5, 0.25);
-        }
-        #home_promo_bar_extension:hover .epb-outer {
-            box-shadow:
-                0 0 0 0 rgba(5, 5, 5, 1),
-                0 0 0 0 rgba(5, 5, 5, 0.5),
-                0 0 0 0 rgba(5, 5, 5, 0.25);
-        }
-        #home_promo_bar_extension .epb-inner {
-            position: relative;
-            z-index: 1;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border-radius: inherit;
-            padding: 0.7em 1.3em;
-            background-image: linear-gradient(135deg, rgba(230, 230, 230, 1), rgba(180, 180, 180, 1));
-            transition: box-shadow 300ms ease, clip-path 250ms ease, background-image 250ms ease, transform 250ms ease;
-            will-change: box-shadow, clip-path, background-image, transform;
-            overflow: clip;
-            clip-path: inset(0 0 0 0 round 100em);
-            box-shadow:
-                0 0 0 0 inset rgba(5, 5, 5, 0.1),
-                -0.05em -0.05em 0.05em 0 inset rgba(5, 5, 5, 0.25),
-                0 0 0 0 inset rgba(5, 5, 5, 0.1),
-                0 0 0.05em 0.2em inset rgba(255, 255, 255, 0.25),
-                0.025em 0.05em 0.1em 0 inset rgba(255, 255, 255, 1),
-                0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
-                -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
-        }
-        #home_promo_bar_extension:hover .epb-inner {
-            clip-path: inset(clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 100em);
-            box-shadow:
-                0.1em 0.15em 0.05em 0 inset rgba(5, 5, 5, 0.75),
-                -0.025em -0.03em 0.05em 0.025em inset rgba(5, 5, 5, 0.5),
-                0.25em 0.25em 0.2em 0 inset rgba(5, 5, 5, 0.5),
-                0 0 0.05em 0.5em inset rgba(255, 255, 255, 0.15),
-                0 0 0 0 inset rgba(255, 255, 255, 1),
-                0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
-                -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
-        }
-        #home_promo_bar_extension .epb-label {
-            position: relative;
-            z-index: 4;
-            font-family: inherit;
-            letter-spacing: -0.02em;
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0);
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(135deg, rgba(25, 25, 25, 1), rgba(75, 75, 75, 1));
-            -webkit-background-clip: text;
-            background-clip: text;
-            transition: transform 250ms ease;
-            display: inline-block;
-            will-change: transform;
-            text-shadow: rgba(0, 0, 0, 0.1) 0 0 0.1em;
-            -webkit-user-select: none;
-            user-select: none;
-            white-space: nowrap;
-        }
-        #home_promo_bar_extension:hover .epb-label { transform: scale(0.975); }
-        #home_promo_bar_extension:active .epb-inner { transform: scale(0.975); }
-        @media (prefers-reduced-motion: reduce) {
-            #home_promo_bar_extension .epb-outer,
-            #home_promo_bar_extension .epb-inner,
-            #home_promo_bar_extension .epb-label { transition: none; }
-        }
-        @media (max-width: 640px) {
-            .ext-promo-inner { padding: 10px 16px; gap: 10px; }
-            .ext-promo-text { font-size: 13.5px; }
-            .ext-promo-btn { padding: 8px 15px; font-size: 13px; }
-        }
-
-        /* Clearance for the fixed navbar, owned by the bar. Measured with a
-           real browser: the nav is fixed at 72px on desktop and 100px on
-           mobile (it never leaves position:fixed). There is also a constant
-           26px anonymous line-box before the bar (whitespace text nodes at the
-           top of <body>) — invisible on the original dark page, but it shows as
-           a dark strip under the white bar. So the bar's top = 26 + margin-top;
-           to land it exactly on the nav's bottom: desktop 26+46=72, mobile
-           26+74=100. The selector (0,2,1) outranks the competing
-           header.navbar + * clearance rules (0,1,1). Verified gap = 0 across
-           widths with Playwright. */
-        header.navbar + .ext-promo-bar {
-            margin-top: 46px !important;
-            margin-bottom: 22px !important;
-            padding-top: 0 !important;
+            height: 0;
+            margin: 0 !important;
+            padding-top: 50px !important;
         }
         @media (max-width: 768px) {
-            header.navbar + .ext-promo-bar { margin-top: 38px !important; }
+            header.navbar + .nav-clear { padding-top: 40px !important; }
+        }
+
+        /* Homepage nav: transparent over the light-ribbon background, with
+           smaller text. Once scrolled (.tcx-nav-scrolled, set by the nav script
+           at the bottom of this page) it picks up a faint dark glass so the
+           links stay readable over page content. Homepage only — every other
+           page keeps the solid bar from style3.css. */
+        header.navbar {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom-color: transparent !important;
+            box-shadow: none !important;
+            transition: background-color .25s ease, backdrop-filter .25s ease, box-shadow .25s ease;
+        }
+        header.navbar.tcx-nav-scrolled {
+            background: rgba(1, 2, 7, .55) !important;
+            backdrop-filter: blur(14px) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
+            border-bottom-color: rgba(255, 255, 255, .06) !important;
+            box-shadow: 0 6px 26px rgba(2, 8, 30, .38) !important;
+        }
+        @media (min-width: 1025px) {
+            header.navbar .nav-links > a.nav-link,
+            header.navbar .nav-links > .nav-dropdown > .nav-dropdown-toggle {
+                font-size: 13.5px !important;
+                letter-spacing: .6px !important;
+            }
+            header.navbar .logo .logo-mark { height: 34px !important; }
+            header.navbar .logo .logo-word { font-size: 1.4rem !important; }
+        }
+        @media (min-width: 769px) {
+            /* Slimmer bar: 56px instead of header-footer.css's 72px. The promo
+               bar's clearance above is 26 + 30 = 56 to stay flush with it. */
+            header.navbar { height: 56px !important; }
+            header.navbar + * { padding-top: 56px !important; }
+            header.navbar #auth-nav-slot .login,
+            header.navbar .nav-getstarted {
+                font-size: .85rem !important;
+                padding: 8px 16px !important;
+            }
         }
     </style>
 
@@ -679,10 +649,10 @@
            the logo pinned left and the hamburger floating at an awkward 63%. */
         @media (max-width: 768px) {
             header.navbar {
-                height: 64px !important;
+                height: 54px !important;
             }
             header.navbar + * {
-                padding-top: 64px !important;
+                padding-top: 54px !important;
             }
             header.navbar .logo {
                 position: absolute !important;
@@ -1373,26 +1343,10 @@
             width: 100%;
         }
 
-        /* Gradient fade masks */
-        .marquee-wrapper::before,
-        .marquee-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 120px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .marquee-wrapper::before {
-            left: 0;
-            background: linear-gradient(to right, var(--bg) 30%, transparent 100%);
-        }
-
-        .marquee-wrapper::after {
-            right: 0;
-            background: linear-gradient(to left, var(--bg) 30%, transparent 100%);
+        /* Gradient fade masks (alpha mask, see .carousel-row) */
+        .marquee-wrapper {
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
         }
 
         .marquee-container {
@@ -1457,9 +1411,9 @@
 
         @media (max-width: 768px) {
 
-            .marquee-wrapper::before,
-            .marquee-wrapper::after {
-                width: 60px;
+            .marquee-wrapper {
+                -webkit-mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
             }
 
             .logo-item {
@@ -1478,9 +1432,9 @@
 
         @media (max-width: 480px) {
 
-            .marquee-wrapper::before,
-            .marquee-wrapper::after {
-                width: 40px;
+            .marquee-wrapper {
+                -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
             }
 
             .logo-item {
@@ -3207,50 +3161,6 @@
             .t-mobile-dot.active::before { background: #3392ff; width: 22px; border-radius: 5px; }
         }
     </style>
-    <script>
-        (function () {
-            const canvas = document.getElementById('wave-canvas');
-            const ctx = canvas.getContext('2d');
-            let W, H;
-            function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-            resize();
-            window.addEventListener('resize', resize);
-
-            const waves = [
-                { amp: 100, freq: 0.0016, speed: 0.00035, color: [59, 130, 246], yf: 0.38, alpha: 0.14 },
-                { amp: 80, freq: 0.0022, speed: 0.00028, color: [79, 70, 229], yf: 0.50, alpha: 0.11 },
-                { amp: 90, freq: 0.0014, speed: 0.00042, color: [99, 102, 241], yf: 0.60, alpha: 0.10 },
-                { amp: 60, freq: 0.0026, speed: 0.00050, color: [37, 99, 235], yf: 0.44, alpha: 0.09 },
-                { amp: 65, freq: 0.0012, speed: 0.00022, color: [124, 58, 237], yf: 0.70, alpha: 0.09 },
-                { amp: 40, freq: 0.0030, speed: 0.00055, color: [6, 182, 212], yf: 0.54, alpha: 0.07 },
-            ];
-
-            function draw() {
-                ctx.clearRect(0, 0, W, H);
-                const t = Date.now();
-                waves.forEach(wv => {
-                    ctx.beginPath();
-                    for (let x = 0; x <= W; x += 2) {
-                        const y = H * wv.yf
-                            + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
-                            + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
-                            + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
-                        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-                    }
-                    ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-                    const [r, g, b] = wv.color;
-                    const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
-                    gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
-                    gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
-                    gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
-                    ctx.fillStyle = gr;
-                    ctx.fill();
-                });
-                requestAnimationFrame(draw);
-            }
-            draw();
-        })();
-    </script>
     <script>
         (() => {
             const pop = document.getElementById("salesPop");
