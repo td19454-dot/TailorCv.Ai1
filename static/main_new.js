@@ -552,27 +552,38 @@ const atsStepsData = [
 function displayATSLoading() {
     const atsContent = document.getElementById('ats-progress-content');
     if (!atsContent) return;
-    // Own ats-load-* markup (styled in solutions.html) so it matches the light
-    // results report; the optimize flow keeps the shared optimize-progress-* UI.
-    // The ids/data attributes are what updateATS*() below drive.
     atsContent.innerHTML = `
-        <div class="ats-load" id="ats-load">
-            <div class="ats-load-top">
-                <div class="ats-load-spin" aria-hidden="true"></div>
-                <div class="ats-load-head">
-                    <div class="ats-load-title">Scanning your resume against this job</div>
-                    <div class="ats-load-status" id="ats-status-text" aria-live="polite">Uploading resume...</div>
-                </div>
-                <div class="ats-load-pct" id="ats-percentage">0%</div>
+        <div class="optimize-progress-container">
+            <div class="optimize-floating-dots">
+                <div class="optimize-dot"></div>
+                <div class="optimize-dot"></div>
+                <div class="optimize-dot"></div>
             </div>
-            <div class="ats-load-bar"><div class="ats-load-fill" id="ats-progress-fill"></div></div>
-            <ol class="ats-load-steps">
-                <li class="ats-load-step active" data-ats-step="1"><span class="ats-load-dot"></span><span>Reading your resume</span></li>
-                <li class="ats-load-step" data-ats-step="2"><span class="ats-load-dot"></span><span>Matching keywords</span></li>
-                <li class="ats-load-step" data-ats-step="3"><span class="ats-load-dot"></span><span>Running ATS checks</span></li>
-                <li class="ats-load-step" data-ats-step="4"><span class="ats-load-dot"></span><span>Building your report</span></li>
-            </ol>
-            <p class="ats-load-note">Usually 15–40 seconds. Keep this tab open.</p>
+            <div class="optimize-status-text" id="ats-status-text">Uploading resume...</div>
+            <div class="optimize-steps">
+                <div class="optimize-step active" data-ats-step="1">
+                    <div class="optimize-step-icon">1</div>
+                    <div class="optimize-step-label">Upload</div>
+                </div>
+                <div class="optimize-step" data-ats-step="2">
+                    <div class="optimize-step-icon">2</div>
+                    <div class="optimize-step-label">Keywords</div>
+                </div>
+                <div class="optimize-step" data-ats-step="3">
+                    <div class="optimize-step-icon">3</div>
+                    <div class="optimize-step-label">ATS Check</div>
+                </div>
+                <div class="optimize-step" data-ats-step="4">
+                    <div class="optimize-step-icon">4</div>
+                    <div class="optimize-step-label">Report</div>
+                </div>
+            </div>
+            <div class="optimize-progress-bar">
+                <div class="optimize-progress-fill" id="ats-progress-fill">
+                    <div class="optimize-shimmer"></div>
+                </div>
+                <div class="optimize-percentage" id="ats-percentage">0%</div>
+            </div>
         </div>
     `;
 }
@@ -637,8 +648,6 @@ function startATSProgress() {
             updateATSStep(4);
             updateATSStatus('Analysis completed! Redirecting...');
             updateATSProgress(100);
-            const card = document.getElementById('ats-load');
-            if (card) card.classList.add('done');
         }
     };
 }
