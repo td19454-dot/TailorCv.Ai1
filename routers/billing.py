@@ -230,6 +230,107 @@ def _track_subscription_cancelled(user, provider, sub_id) -> None:
                         dedupe_key=f"sub_cancel:{provider}:{sub_id}")
 
 
+def _major(minor):
+    """Minor units (paise/cents) -> Decimal major units; None stays None."""
+    from decimal import Decimal
+    if minor is None:
+        return None
+    try:
+        return (Decimal(int(minor)) / 100).quantize(Decimal("0.01"))
+    except (TypeError, ValueError):
+        return None
+
+
+def _record_payment(db: Session, user_id, provider, payment_id, *, amount_minor, currency,
+                    fee_minor=None, tax_minor=None, plan=None, region=None,
+                    subscription_id=None, paid_at=None) -> None:
+    """Write one `payments` row (idempotent on provider+payment_id) and rebuild
+    the user's `paid_users` summary. Bookkeeping only: it never raises, so a
+    failure here can't stop the caller granting Pro to someone who paid."""
+    from sqlalchemy.exc import IntegrityError
+    from models import Payment
+
+    if not payment_id or amount_minor is None or not currency:
+        return
+    if paid_at is not None and paid_at.tzinfo is not None:
+        # Polar sends aware datetimes; every other column here is naive UTC.
+        from datetime import timezone
+        paid_at = paid_at.astimezone(timezone.utc).replace(tzinfo=None)
+    try:
+        amount = _major(amount_minor)
+        tax = _major(tax_minor)
+        fee = _major(fee_minor)
+        net = amount - (tax or 0) - (fee or 0) if fee is not None else None
+        db.add(Payment(
+            user_id=int(user_id) if user_id else None,
+            provider=provider, payment_id=str(payment_id),
+            subscription_id=str(subscription_id) if subscription_id else None,
+            plan=plan, region=region, currency=str(currency).upper()[:3],
+            amount=amount, tax=tax, fee=fee, net=net,
+            paid_at=paid_at or datetime.utcnow(),
+        ))
+        db.commit()
+    except IntegrityError:
+        db.rollback()          # already recorded (duplicate webhook)
+    except Exception:
+        db.rollback()
+        logger.exception("Could not record %s payment %s", provider, payment_id)
+        return
+    if user_id:
+        _refresh_paid_user(db, int(user_id))
+
+
+def _refresh_paid_user(db: Session, user_id: int) -> None:
+    """Recompute paid_users for one user from their payments rows."""
+    from sqlalchemy import func
+    from models import PaidUser, Payment, User
+
+    try:
+        user = db.query(User).filter_by(id=user_id).first()
+        payments = (db.query(Payment).filter_by(user_id=user_id)
+                    .order_by(Payment.paid_at.asc()).all())
+        if not user or not payments:
+            return
+        row = db.query(PaidUser).filter_by(user_id=user_id).first()
+        if not row:
+            row = PaidUser(user_id=user_id)
+            db.add(row)
+
+        def total(cur, col):
+            return (db.query(func.coalesce(func.sum(col), 0))
+                    .filter(Payment.user_id == user_id, Payment.currency == cur).scalar())
+
+        first, last = payments[0], payments[-1]
+        row.email, row.name = user.email, user.name
+        row.provider, row.plan, row.region = last.provider, last.plan, last.region
+        row.first_paid_at, row.last_paid_at = first.paid_at, last.paid_at
+        row.pro_until = user.pro_until
+        row.days_paid_for = (user.pro_until - first.paid_at).days if user.pro_until else None
+        row.payments_count = len(payments)
+        row.total_paid_inr = total("INR", Payment.amount)
+        row.total_net_inr = total("INR", Payment.net)
+        row.total_paid_usd = total("USD", Payment.amount)
+        row.total_net_usd = total("USD", Payment.net)
+        if row.cancelled_at and last.paid_at > row.cancelled_at:
+            row.cancelled_at = None   # they came back
+        db.commit()
+    except Exception:
+        db.rollback()
+        logger.exception("Could not refresh paid_users for user %s", user_id)
+
+
+def _mark_paid_user_cancelled(db: Session, user_id) -> None:
+    from models import PaidUser
+    try:
+        row = db.query(PaidUser).filter_by(user_id=user_id).first()
+        if row and not row.cancelled_at:
+            row.cancelled_at = datetime.utcnow()
+            db.commit()
+    except Exception:
+        db.rollback()
+        logger.exception("Could not mark paid_users cancelled for user %s", user_id)
+
+
 def _require_polar():
     access_token = os.getenv("POLAR_ACCESS_TOKEN")
     if not access_token:
@@ -422,6 +523,7 @@ async def razorpay_cancel(request: Request):
         user.razorpay_subscription_id = None
         db.commit()
         _track_subscription_cancelled(user, "razorpay", sub_id)
+        _mark_paid_user_cancelled(db, user.id)
         return {
             "success": True,
             "access_until": user.pro_until.isoformat() if user.pro_until else None,
@@ -491,6 +593,17 @@ async def razorpay_webhook(request: Request):
                 days = PLAN_DURATIONS.get(plan, 31)
                 _extend_pro(db, user, days, razorpay_subscription_id=sub_id)
 
+            # Razorpay's `fee` already includes the GST on that fee; there is
+            # no customer-side tax on these payments.
+            created = entity.get("created_at")
+            _record_payment(
+                db, user.id if user else None, "razorpay", entity.get("id"),
+                amount_minor=entity.get("amount"), currency=entity.get("currency"),
+                fee_minor=entity.get("fee"), plan=plan, region=notes.get("region"),
+                subscription_id=sub_id,
+                paid_at=datetime.utcfromtimestamp(created) if created else None,
+            )
+
         elif event_type == "subscription.cancelled":
             sub_entity = event.get("payload", {}).get("subscription", {}).get("entity", {})
             sub_id = sub_entity.get("id")
@@ -500,6 +613,7 @@ async def razorpay_webhook(request: Request):
                     user.razorpay_subscription_id = None
                     db.commit()
                     _track_subscription_cancelled(user, "razorpay", sub_id)
+                    _mark_paid_user_cancelled(db, user.id)
 
     except Exception as exc:
         logger.exception("Error processing Razorpay webhook: %s", exc)
@@ -639,6 +753,7 @@ async def polar_cancel(request: Request):
         user.polar_subscription_id = None
         db.commit()
         _track_subscription_cancelled(user, "polar", cancelled_sub_id)
+        _mark_paid_user_cancelled(db, user.id)
         return {
             "success": True,
             "access_until": user.pro_until.isoformat() if user.pro_until else None,
@@ -754,6 +869,29 @@ async def polar_webhook(request: Request):
                     key=f"polar_paid_nouser:{order.id}",
                 )
 
+            # Every paid order is money in — the weekly pass and each monthly/
+            # yearly renewal alike. Renewal orders may lack our metadata, so
+            # fall back to the subscription id for whose it is.
+            payer = user
+            order_sub_id = getattr(order, "subscription_id", None)
+            if not payer and order_sub_id:
+                payer = db.query(User).filter_by(polar_subscription_id=str(order_sub_id)).first()
+            fee_minor = getattr(order, "platform_fee_amount", None)
+            fee_cur = getattr(order, "platform_fee_currency", None)
+            if fee_cur and str(fee_cur).upper() != str(order.currency).upper():
+                fee_minor = None   # fee charged in another currency — don't mix
+            _record_payment(
+                db, payer.id if payer else None, "polar", str(order.id),
+                amount_minor=getattr(order, "total_amount", None), currency=order.currency,
+                tax_minor=getattr(order, "tax_amount", None), fee_minor=fee_minor,
+                # `plan` above defaults to "weekly" for granting; a renewal with
+                # no metadata is a subscription order, not a weekly pass.
+                plan=metadata.get("plan") or (None if order_sub_id else "weekly"),
+                region=metadata.get("region"),
+                subscription_id=order_sub_id,
+                paid_at=getattr(order, "created_at", None),
+            )
+
         elif isinstance(event, (WebhookSubscriptionCreatedPayload,
                                 WebhookSubscriptionUpdatedPayload,
                                 WebhookSubscriptionActivePayload)):
@@ -805,6 +943,7 @@ async def polar_webhook(request: Request):
                 user.polar_subscription_id = None
                 db.commit()
                 _track_subscription_cancelled(user, "polar", sub_id)
+                _mark_paid_user_cancelled(db, user.id)
 
     except Exception as exc:
         logger.exception("Error processing Polar webhook: %s", exc)
