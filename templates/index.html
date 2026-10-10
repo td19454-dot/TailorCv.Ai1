@@ -598,25 +598,20 @@
             header.navbar + .nav-clear { padding-top: 40px !important; }
         }
 
-        /* Homepage nav: transparent over the light-ribbon background, with
-           smaller text. Once scrolled (.tcx-nav-scrolled, set by the nav script
-           at the bottom of this page) it picks up a faint dark glass so the
-           links stay readable over page content. Homepage only — every other
-           page keeps the solid bar from style3.css. */
+        /* Homepage nav: solid black bar with a thin light border and smaller
+           text. Once scrolled (.tcx-nav-scrolled, set by the nav script at the
+           bottom of this page) it gains a soft shadow. Homepage only — every
+           other page keeps the gradient bar from style3.css. */
         header.navbar {
-            background: transparent !important;
+            background: #000000 !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
-            border-bottom-color: transparent !important;
+            border-bottom: 1px solid rgba(255, 255, 255, .12) !important;
             box-shadow: none !important;
-            transition: background-color .25s ease, backdrop-filter .25s ease, box-shadow .25s ease;
+            transition: box-shadow .25s ease;
         }
         header.navbar.tcx-nav-scrolled {
-            background: rgba(1, 2, 7, .55) !important;
-            backdrop-filter: blur(14px) !important;
-            -webkit-backdrop-filter: blur(14px) !important;
-            border-bottom-color: rgba(255, 255, 255, .06) !important;
-            box-shadow: 0 6px 26px rgba(2, 8, 30, .38) !important;
+            box-shadow: 0 6px 26px rgba(0, 0, 0, .5) !important;
         }
         @media (min-width: 1025px) {
             header.navbar .nav-links > a.nav-link,

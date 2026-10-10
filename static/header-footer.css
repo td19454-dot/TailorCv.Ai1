@@ -1,4 +1,10 @@
-﻿/* Mobile guard: never allow the whole page to scroll sideways. Individual wide
+﻿/* Space Grotesk for the "TailorCV" logo wordmark (nav .logo-word, footer
+   .sf-logo-word; app_shell.css imports the same URL for .tcv-top-word).
+   text=TailorCV subsets the font to just those glyphs, so it costs a few
+   hundred bytes. @import must stay the first rule in this file. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&text=TailorCV&display=swap');
+
+/* Mobile guard: never allow the whole page to scroll sideways. Individual wide
    elements are handled per-page; this stops the worst symptom site-wide. */
 @media (max-width: 768px) {
     html, body { overflow-x: hidden; max-width: 100%; }
@@ -59,13 +65,13 @@
     display: block;
 }
 .site-footer .sf-logo-word {
-    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-weight: 500;
     font-size: 1.55rem;
     letter-spacing: -0.02em;
     line-height: 1;
     white-space: nowrap;
-    color: #3392ff;
+    color: #ffffff;
 }
 .site-footer .sf-text {
     margin: 0 0 18px;
@@ -543,13 +549,13 @@ header.navbar .logo .logo-mark {
     display: block !important;
 }
 header.navbar .logo .logo-word {
-    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+    font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
     font-weight: 500 !important;
     font-size: 1.6rem !important;
     letter-spacing: -0.02em !important;
     line-height: 1 !important;
     white-space: nowrap !important;
-    color: #3392ff !important;
+    color: #ffffff !important;
 }
 
 /* Tablet (769–1024px): tighten the links so mark + wordmark + 6 links + Login +

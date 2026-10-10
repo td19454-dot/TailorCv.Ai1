@@ -3,7 +3,8 @@
     "allow": [
       "PowerShell($p=\"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\templates\\\\index.html\"; \\(Select-String -Path $p -Pattern \"Light ribbon: one broad sheet\"\\).LineNumber; & \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\.venv\\\\Scripts\\\\python.exe\" -c \"from jinja2 import Environment, FileSystemLoader; Environment\\(loader=FileSystemLoader\\(r'C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\templates'\\)\\).get_template\\('index.html'\\); print\\('jinja ok'\\)\"; git -C \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\" log --oneline -3)",
       "PowerShell(& \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\.venv\\\\Scripts\\\\python.exe\" -c \"from jinja2 import Environment, FileSystemLoader; Environment\\(loader=FileSystemLoader\\(r'C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\templates'\\)\\).get_template\\('index.html'\\); print\\('jinja ok'\\)\")",
-      "PowerShell(try { \\(Invoke-WebRequest -Uri \"http://127.0.0.1:8011/\" -UseBasicParsing -TimeoutSec 20\\).StatusCode } catch { $_.Exception.Message }; Get-Content \"$env:TEMP\\\\uv8011.err\" -Tail 8; Get-NetTCPConnection -LocalPort 8011 -State Listen -ErrorAction SilentlyContinue | Select-Object OwningProcess)"
+      "PowerShell(try { \\(Invoke-WebRequest -Uri \"http://127.0.0.1:8011/\" -UseBasicParsing -TimeoutSec 20\\).StatusCode } catch { $_.Exception.Message }; Get-Content \"$env:TEMP\\\\uv8011.err\" -Tail 8; Get-NetTCPConnection -LocalPort 8011 -State Listen -ErrorAction SilentlyContinue | Select-Object OwningProcess)",
+      "Bash(curl -s --noproxy '*' -A \"Mozilla/5.0 Chrome/120\" \"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&text=TailorCV&display=swap\")"
     ]
   }
 }

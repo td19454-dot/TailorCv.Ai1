@@ -1,3 +1,8 @@
+/* Space Grotesk for the "TailorCV" wordmark (.tcv-top-word), subset to those
+   glyphs. Same URL as header-footer.css, so it downloads once. Must stay the
+   first rule in this file. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&text=TailorCV&display=swap');
+
 /* ───────────────────────────────────────────────────────────────────────────
    APP SHELL — top bar (76px) + slim icon rail (64px), Jobscan-style.
    app_shell.js adds `tcv-app` on tool pages for logged-in and guest users.
@@ -48,7 +53,7 @@ html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !im
 .tcv-burger:hover { background: rgba(255, 255, 255, 0.06); }
 .tcv-top-logo { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; height: 76px; }
 .tcv-top-mark { height: 40px; width: auto; display: block; }
-.tcv-top-word { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 500; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; color: #3392ff; }
+.tcv-top-word { font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 500; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; color: #ffffff; }
 .tcv-top-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
 
 /* Guest auth actions — mirror logged-in top bar placement */
