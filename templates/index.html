@@ -815,8 +815,8 @@
             display: flex;
             align-items: center;
             gap: 9px;
-            color: #f4f5f7;
-            font-size: 15px;
+            color: #d7d7da;
+            font-size: 18px;
             font-weight: 400;
             line-height: 1.3;
             text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
@@ -839,6 +839,11 @@
                 grid-template-columns: 1fr;
                 gap: 10px;
             }
+            /* 18px wraps "Resume optimized to every job role in 30s" onto two
+               lines on a phone; 15px keeps every item on one line. */
+            .hero-features li {
+                font-size: 15px;
+            }
         }
     </style>
 
@@ -853,16 +858,16 @@
                         Your <span class="gradient-text">dream job</span> starts here
                     </h1>
                     <ul class="hero-features">
-                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Resume optimized to every job role in 30s</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span>Resume optimized to every job role in 30s</li>
                         <li><span class="feat-tick" aria-hidden="true">&#10003;</span>Free Resume to Portfolio Website</li>
                         <li><span class="feat-tick" aria-hidden="true">&#10003;</span>Free ATS Score Checker</li>
                         <li><span class="feat-tick" aria-hidden="true">&#10003;</span>AI Mock Interviews &amp; More</li>
                     </ul>
                     <div class="hero-cta">
                         <a href="/optimize" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
-                            ><span class="cta-label-full">Optimize My Resume for Free</span><span class="cta-label-short">Optimize for Free</span></a>
+                            ><span class="cta-label-full">Fix My Resume</span><span class="cta-label-short">Fix my Resume</span><span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
                         <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span><span class="hero-cta-meta-text">Takes 2 minutes &bull; No credit card needed &bull; Free to start</span></p>
-                        <p class="hero-cta-trust"><span class="hero-cta-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>Trusted by <strong>10,000+</strong> job seekers</p>
+                        <p class="hero-cta-trust"><span class="hero-cta-stars" role="img" aria-label="Rated 4.5 out of 5"><span class="star-tile"></span><span class="star-tile"></span><span class="star-tile"></span><span class="star-tile"></span><span class="star-tile star-half"></span></span><span class="hero-cta-trust-text">Trusted by <strong>10,000+</strong> job seekers</span></p>
                     </div>
                     <div class="hero-quickstart" aria-label="Quick start steps">
                         <p class="hero-quickstart-title">Start in 3 quick steps</p>
@@ -965,14 +970,33 @@
                         .hero-cta-trust {
                             display: flex;
                             align-items: center;
-                            gap: 8px;
+                            gap: 10px;
                             margin: 2px 0 4px;
-                            font-size: 14px;
+                            font-size: 17px;
                             font-weight: 600;
                             color: #aebfe0;
                         }
                         .hero-cta-trust strong { color: #ffffff; }
-                        .hero-cta-stars { color: #fbbf24; letter-spacing: 1px; font-size: 13px; }
+                        /* Rating: green rounded tiles, each with a white star cut by clip-path. */
+                        .hero-cta-stars { display: inline-flex; gap: 3px; }
+                        .hero-cta-stars .star-tile {
+                            position: relative;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 4px;
+                            background: #4fc796;
+                        }
+                        /* Half star (4.5 rating): green left half, grey right half. */
+                        .hero-cta-stars .star-tile.star-half {
+                            background: linear-gradient(90deg, #4fc796 50%, #c9ced6 50%);
+                        }
+                        .hero-cta-stars .star-tile::before {
+                            content: "";
+                            position: absolute;
+                            inset: 3px;
+                            background: #ffffff;
+                            clip-path: polygon(50% 4%, 62% 37%, 97% 38%, 69% 59%, 79% 93%, 50% 73%, 21% 93%, 31% 59%, 3% 38%, 38% 37%);
+                        }
 
                         .hero-cta-meta-text {
                             flex: 1 1 auto;
@@ -1094,6 +1118,13 @@
                         @media (max-width: 768px) {
                             .hero-cta-meta {
                                 font-size: 14px;
+                            }
+
+                            /* Mobile: stars on top, "Trusted by 10,000+ job seekers" centred below. */
+                            .hero-cta-trust {
+                                flex-direction: column;
+                                gap: 6px;
+                                text-align: center;
                             }
 
                             .hero-testimonials {
@@ -3102,6 +3133,9 @@
         .hero-ats-badge { display: none; }
         @media (max-width: 640px) {
             .hero-visual .resume-card { display: none !important; }
+            /* With the card hidden (and the ATS badge commented out) all that
+               was left was the status caption — drop the whole visual. */
+            .hero-visual { display: none !important; }
             .hero-ats-badge {
                 display: flex; align-items: center; gap: 16px;
                 background: linear-gradient(160deg, rgba(20,32,68,.92), rgba(12,18,42,.94));
@@ -3768,12 +3802,13 @@ details[open] .faq-chevron svg {
     }
   }
 
-  /* Hero "Optimize My Resume for Free" — shiny 3D-tilt bevel button (same
-     recipe as #open-share-modal-btn): fake bevel via text-shadow, a sweeping
-     shine on hover, slight perspective tilt that flips on hover/focus. Scoped
-     tightly via its ID so the shared .btn/.btn-primary/.btn-large classes
-     elsewhere are untouched. color/text-shadow inherit into the existing
-     .cta-label-full/.cta-label-short spans automatically. */
+  /* Hero "Optimize My Resume for Free" — white pill with black text and a
+     black circular ↗ arrow badge on the right (.cta-arrow). Scoped via its ID
+     so the shared .btn/.btn-primary/.btn-large classes elsewhere are
+     untouched. !important on colour/background/shadow/size because style3.css
+     forces `.hero-cta .btn-primary.btn-large` to white text on a purple→cyan
+     gradient with a purple glow, min-height 60-64px and min-width 440px, all
+     !important. */
   #hero_optimize_my_resume_free {
     all: unset;
     box-sizing: border-box;
@@ -3783,43 +3818,81 @@ details[open] .faq-chevron svg {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
+    gap: .75em;
     font-family: inherit;
-    font-weight: 700;
-    font-size: clamp(16px, 1.9vw, 22px) !important;
-    padding: 1.1em 2em !important;
-    border-radius: 10px;
+    font-weight: 600;
+    font-size: clamp(16px, 1.5vw, 20px) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -.01em;
+    /* Tight on the right so the arrow circle sits close to the pill's edge. */
+    padding: .45em .45em .45em 1.5em !important;
+    border-radius: 999px !important;
     border: none;
-    /* Solid, crisp white text — the earlier fake-transparent + blurred
-       bevel-shadow trick read as fuzzy/hard to see, so this button just uses
-       real solid color plus one small, non-blurred drop-shadow for depth. */
-    color: #ffffff;
-    background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat, linear-gradient(135deg, #8b5cf6, #22d3ee);
-    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
-    transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
-    outline-offset: .1em;
-    transition: 0.3s;
+    color: #000000 !important;
+    background: #ffffff !important;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, .12) !important;
+    text-shadow: none;
+    transform: none;
+    outline-offset: .15em;
+    transition: transform .15s ease, box-shadow .25s ease, background-color .25s ease, color .25s ease;
     text-decoration: none !important;
+    white-space: nowrap !important;
+    min-height: 0 !important;
     min-width: 0 !important;
     width: auto !important;
     max-width: none !important;
   }
+  #hero_optimize_my_resume_free .cta-arrow {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 50%;
+    background: #000000;
+    color: #ffffff;
+    transition: transform .25s ease, background-color .25s ease, color .25s ease;
+  }
+  #hero_optimize_my_resume_free .cta-arrow svg {
+    width: 52%;
+    height: 52%;
+    display: block;
+  }
   /* Kill the shared .btn-primary shimmer pseudo-element — it was left active
      underneath this button (leftover from the site-wide button style) and,
      combined with `all: unset` resetting position/overflow, was rendering
-     as a stray misplaced white stripe. This button has its own effect. */
+     as a stray misplaced white stripe. */
   #hero_optimize_my_resume_free::before,
   #hero_optimize_my_resume_free::after {
     content: none !important;
     display: none !important;
   }
+  /* Hover: pill turns brand purple with white text; the arrow badge inverts
+     to white with a purple arrow so it still reads against the purple. */
   #hero_optimize_my_resume_free:hover,
   #hero_optimize_my_resume_free:focus-visible {
-    --_p: 0%;
-    --_i: 1;
+    background: #7c3aed !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 36px rgba(124, 58, 237, .45) !important;
+  }
+  #hero_optimize_my_resume_free:hover .cta-arrow,
+  #hero_optimize_my_resume_free:focus-visible .cta-arrow {
+    background: #ffffff;
+    color: #7c3aed;
+    transform: translate(2px, -2px);
   }
   #hero_optimize_my_resume_free:active {
-    box-shadow: inset 0 0 9e9q #0005;
-    transition: 0s;
+    transform: scale(.97);
+    transition: transform 0s;
+  }
+  /* Mobile: style3.css stretches hero buttons to full width on phones; keep
+     this one a centred pill instead. */
+  @media (max-width: 768px) {
+    #hero_optimize_my_resume_free {
+      align-self: center !important;
+      font-size: 16px !important;
+    }
   }
 </style>
 </body>
