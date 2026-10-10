@@ -328,14 +328,25 @@
                 var fd = new FormData();
                 fd.append('file', f);
 
+                var loggedIn = false;
+                try { loggedIn = !!(window.TailorCVAuth && window.TailorCVAuth.getUser()); } catch (e) {}
+                function landTrack(ev, props) {
+                    try { if (window.posthog && typeof posthog.capture === 'function') posthog.capture(ev, Object.assign({ source: 'landing_widget', logged_in: loggedIn }, props || {})); } catch (e) {}
+                }
+                landTrack('ats_scan_started');
+
                 fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
                     .then(function(res){
                         return res.json().catch(function(){ return {}; }).then(function(body){
-                            if (!res.ok) throw new Error(tcvErrorMessage(body, 'That scan did not go through. Please try again.'));
+                            if (!res.ok) {
+                                if (res.status === 429) landTrack('guest_ats_quota_exceeded');
+                                throw new Error(tcvErrorMessage(body, 'That scan did not go through. Please try again.'));
+                            }
                             return body;
                         });
                     })
                     .then(function(data){
+                        landTrack('ats_scan_completed', { guest_scan: !!data.guest_scan, match_rate: data.match_rate });
                         var payload = JSON.stringify(data);
                         try { sessionStorage.setItem(ATS_PAYLOAD_KEY, payload); } catch (e) {}
                         try { localStorage.setItem(ATS_PAYLOAD_LOCAL_KEY, payload); } catch (e) {}

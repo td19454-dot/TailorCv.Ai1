@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -35,7 +35,7 @@
         }
 
         :root {
-            --bg: #07102b;
+            --bg: #010207;
             --bg-card: #0f1e44;
             --bg-feat: #141f4a;
             --border: rgba(80, 110, 200, 0.22);
@@ -45,7 +45,7 @@
             --text-body: #99aacc;
             --accent: #4a6aff;
             --star: #f0c04a;
-            --fade-bg: #07102b;
+            --fade-bg: #010207;
         }
 
         /* ── Moving background ── */
@@ -133,12 +133,31 @@
             z-index: 1;
         }
 
+        /* ── Light-ribbon background (homepage only) ──
+           Near-black page with one large, slowly flowing sheet of light
+           (white-hot core → blue → violet → magenta → red), painted by the
+           light-ribbon script just after <body>. !important beats the
+           animated body gradient in style3.css. */
         body {
-            background: linear-gradient(135deg,
-                    #020010, #06002a, #12003a,
-                    #001830, #0a0020, #1a0030, #020010);
-            background-size: 600% 600%;
-            animation: gradientShift 15s ease infinite;
+            background: #010207 !important;
+            animation: none !important;
+        }
+
+        .aurora-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* The canvas is drawn at a fraction of screen resolution and stretched
+           to fill the viewport; the upscale is what makes the light soft. */
+        #aurora-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .bg-orb {
@@ -274,26 +293,11 @@
             margin-bottom: 0;
         }
 
-        /* Fade masks */
-        .carousel-row::before,
-        .carousel-row::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 120px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .carousel-row::before {
-            left: 0;
-            background: linear-gradient(to right, var(--fade-bg) 30%, transparent);
-        }
-
-        .carousel-row::after {
-            right: 0;
-            background: linear-gradient(to left, var(--fade-bg) 30%, transparent);
+        /* Fade masks — a real alpha mask, not a background-coloured overlay,
+           so the edges stay clean over the moving aurora. */
+        .carousel-row {
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
         }
 
         /* Track */
@@ -445,11 +449,128 @@
 </head>
 
 <body>
-    <div class="bg-orb orb-blue"></div>
-    <div class="bg-orb orb-violet"></div>
-    <div class="wave-bg" aria-hidden="true">
-        <canvas id="wave-canvas"></canvas>
+    <div class="aurora-bg" aria-hidden="true">
+        <canvas id="aurora-canvas"></canvas>
     </div>
+    <script>
+        /* Light ribbon: one broad sheet of light that enters thin and white-hot
+           on the left and widens to the right through blue, violet and magenta
+           into red, over a dark blue haze. Each glow layer shares the ribbon's
+           lower fold and spreads upward, so the bottom edge stays crisp while
+           the top dissolves into the background. It is painted at a quarter of
+           screen resolution and stretched by CSS, which softens it for free. */
+        (function () {
+            const canvas = document.getElementById('aurora-canvas');
+            const ctx = canvas && canvas.getContext('2d');
+            if (!ctx) return;
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const TAU = Math.PI * 2;
+            const SCALE = .25;
+            const canBlur = 'filter' in ctx;
+
+            // Glow layers, widest/faintest first: [upward spread, alpha].
+            const layers = [[2.4, .07], [1.7, .10], [1.2, .15], [.8, .22], [.5, .30]];
+
+            let W = 0, H = 0, w = 0, h = 0, n = 0, cs, ts;
+
+            function resize() {
+                const vw = window.innerWidth, vh = window.innerHeight;
+                // Mobile URL-bar show/hide fires resize with small height
+                // changes; ignore those so the canvas doesn't reset mid-scroll.
+                if (vw === W && Math.abs(vh - H) < 150) return;
+                W = vw; H = vh;
+                w = canvas.width = Math.ceil(W * SCALE);
+                h = canvas.height = Math.ceil(H * SCALE);
+                n = w + 1;
+                cs = new Float32Array(n);
+                ts = new Float32Array(n);
+                if (reduceMotion) draw(8);
+            }
+
+            function band(top, bottom) {
+                ctx.beginPath();
+                for (let i = 0; i < n; i++) {
+                    const y = cs[i] - ts[i] * top;
+                    i === 0 ? ctx.moveTo(i, y) : ctx.lineTo(i, y);
+                }
+                for (let i = n - 1; i >= 0; i--) ctx.lineTo(i, cs[i] + ts[i] * bottom);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            function glow(x, y, r, color) {
+                const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+                g.addColorStop(0, color);
+                g.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = g;
+                ctx.fillRect(0, 0, w, h);
+            }
+
+            function draw(t) {
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.filter = 'none';
+                ctx.clearRect(0, 0, w, h);
+                const m = Math.max(w, h);
+
+                // Ambient haze: deep blue pooled left, a faint wine glow top-right.
+                glow(w * (.2 + .05 * Math.sin(t * .05)), h * .55, m * .75, 'rgba(18,36,170,.55)');
+                glow(w * .92, h * .12, m * .5, 'rgba(90,0,70,.35)');
+                glow(w * .9, h * .62, m * .35, 'rgba(120,0,40,.25)');
+
+                // Ribbon centre line rises gently to the right with an S-curve
+                // that travels along it, and the whole ribbon drifts up and down.
+                // Thickness grows from a thin left entry to a broad right end, and
+                // breathes: a whole-ribbon pulse plus a swell that rolls along
+                // its length, so parts thicken while others thin.
+                const drift = .09 * Math.sin(t * .09) + .03 * Math.sin(t * .23);
+                const pulse = .8 + .35 * Math.sin(t * .3);
+                for (let i = 0; i < n; i++) {
+                    const u = i / w;
+                    cs[i] = h * (.62 - .16 * u + drift
+                        + .07 * Math.sin(TAU * u * .8 + t * .3)
+                        + .03 * Math.sin(TAU * u * 1.7 - t * .22));
+                    const swell = 1 + .45 * Math.sin(TAU * u * .9 - t * .45);
+                    ts[i] = h * (.035 + .26 * Math.pow(u, 1.3)) * pulse * Math.max(.35, swell);
+                }
+
+                ctx.globalCompositeOperation = 'lighter';
+                if (canBlur) ctx.filter = 'blur(3px)';
+
+                const body = ctx.createLinearGradient(0, 0, w, 0);
+                body.addColorStop(0, '#c8c2ff');
+                body.addColorStop(.28, '#4f46ff');
+                body.addColorStop(.58, '#9b10ff');
+                body.addColorStop(.82, '#c2007c');
+                body.addColorStop(1, '#ff1744');
+                ctx.fillStyle = body;
+                layers.forEach(([spread, alpha]) => {
+                    ctx.globalAlpha = alpha;
+                    band(spread, .12 + .06 * spread);
+                });
+
+                // White-hot core along the left half of the ribbon.
+                const core = ctx.createLinearGradient(0, 0, w * .62, 0);
+                core.addColorStop(0, 'rgba(255,255,255,1)');
+                core.addColorStop(.45, 'rgba(225,220,255,.7)');
+                core.addColorStop(1, 'rgba(160,150,255,0)');
+                ctx.fillStyle = core;
+                ctx.globalAlpha = .35; band(.5, .1);
+                ctx.globalAlpha = .45; band(.22, .06);
+
+                ctx.globalAlpha = 1;
+                ctx.filter = 'none';
+                ctx.globalCompositeOperation = 'source-over';
+            }
+
+            resize();
+            window.addEventListener('resize', resize);
+            if (reduceMotion) return;
+            (function frame(ms) {
+                draw(ms / 1000);
+                requestAnimationFrame(frame);
+            })(performance.now());
+        })();
+    </script>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7G56LJF" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -1373,26 +1494,10 @@
             width: 100%;
         }
 
-        /* Gradient fade masks */
-        .marquee-wrapper::before,
-        .marquee-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 120px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .marquee-wrapper::before {
-            left: 0;
-            background: linear-gradient(to right, var(--bg) 30%, transparent 100%);
-        }
-
-        .marquee-wrapper::after {
-            right: 0;
-            background: linear-gradient(to left, var(--bg) 30%, transparent 100%);
+        /* Gradient fade masks (alpha mask, see .carousel-row) */
+        .marquee-wrapper {
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
         }
 
         .marquee-container {
@@ -1457,9 +1562,9 @@
 
         @media (max-width: 768px) {
 
-            .marquee-wrapper::before,
-            .marquee-wrapper::after {
-                width: 60px;
+            .marquee-wrapper {
+                -webkit-mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
             }
 
             .logo-item {
@@ -1478,9 +1583,9 @@
 
         @media (max-width: 480px) {
 
-            .marquee-wrapper::before,
-            .marquee-wrapper::after {
-                width: 40px;
+            .marquee-wrapper {
+                -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
             }
 
             .logo-item {
@@ -3207,50 +3312,6 @@
             .t-mobile-dot.active::before { background: #3392ff; width: 22px; border-radius: 5px; }
         }
     </style>
-    <script>
-        (function () {
-            const canvas = document.getElementById('wave-canvas');
-            const ctx = canvas.getContext('2d');
-            let W, H;
-            function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-            resize();
-            window.addEventListener('resize', resize);
-
-            const waves = [
-                { amp: 100, freq: 0.0016, speed: 0.00035, color: [59, 130, 246], yf: 0.38, alpha: 0.14 },
-                { amp: 80, freq: 0.0022, speed: 0.00028, color: [79, 70, 229], yf: 0.50, alpha: 0.11 },
-                { amp: 90, freq: 0.0014, speed: 0.00042, color: [99, 102, 241], yf: 0.60, alpha: 0.10 },
-                { amp: 60, freq: 0.0026, speed: 0.00050, color: [37, 99, 235], yf: 0.44, alpha: 0.09 },
-                { amp: 65, freq: 0.0012, speed: 0.00022, color: [124, 58, 237], yf: 0.70, alpha: 0.09 },
-                { amp: 40, freq: 0.0030, speed: 0.00055, color: [6, 182, 212], yf: 0.54, alpha: 0.07 },
-            ];
-
-            function draw() {
-                ctx.clearRect(0, 0, W, H);
-                const t = Date.now();
-                waves.forEach(wv => {
-                    ctx.beginPath();
-                    for (let x = 0; x <= W; x += 2) {
-                        const y = H * wv.yf
-                            + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
-                            + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
-                            + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
-                        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-                    }
-                    ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-                    const [r, g, b] = wv.color;
-                    const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
-                    gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
-                    gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
-                    gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
-                    ctx.fillStyle = gr;
-                    ctx.fill();
-                });
-                requestAnimationFrame(draw);
-            }
-            draw();
-        })();
-    </script>
     <script>
         (() => {
             const pop = document.getElementById("salesPop");

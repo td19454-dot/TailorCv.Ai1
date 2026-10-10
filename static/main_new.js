@@ -434,7 +434,7 @@ async function handleATSAnalysis() {
         return;
     }
 
-    capturePostHog('ats_scan_started', { logged_in: isUserLoggedIn() });
+    capturePostHog('ats_scan_started', { logged_in: isUserLoggedIn(), source: 'solutions' });
 
     analyzeBtn.disabled = true;
     optimizeBtn.disabled = true;
@@ -491,6 +491,7 @@ async function handleATSAnalysis() {
 
         capturePostHog('ats_scan_completed', {
             logged_in: isUserLoggedIn(),
+            source: 'solutions',
             guest_scan: !!data.guest_scan,
             match_rate: data.match_rate,
         });
