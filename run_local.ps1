@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
-$venvPython = "C:\Users\TRISHA\Desktop\cv\.venv\Scripts\python.exe"
+$venvPython = Join-Path $projectRoot "venv\Scripts\python.exe"
 
 if (-not (Test-Path $venvPython)) {
     Write-Host "Python virtual environment not found at $venvPython" -ForegroundColor Red
