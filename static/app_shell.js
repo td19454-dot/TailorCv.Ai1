@@ -183,11 +183,77 @@
     // Chrome extension's own form sets the session cookie directly and never
     // touches this page's localStorage — so always check the real session
     // once and reconcile instead of trusting the cache alone.
+    /* 7-Day Pass → Monthly upsell. A pass buyer is most likely to upgrade
+       right as the pass runs out, so offer Monthly then: in the last 2 days,
+       once the 25 tailorings are used, or up to 14 days after it ended.
+       Dismissing hides it for this pass only (keyed on pro_until). */
+    function maybeShowPassUpsell(data) {
+        if (!data || data.pro_plan !== "weekly" || !data.pro_until) return;
+        if (document.getElementById("tcvPassUpsell")) return;
+        var until = new Date(data.pro_until.replace(/Z?$/, "Z"));   // server sends naive UTC
+        var msLeft = until - new Date();
+        var DAY = 864e5;
+        var used = data.pass_tailorings_used || 0, limit = data.pass_tailor_limit || 25;
+        var title;
+        if (msLeft <= 0) {
+            if (msLeft < -14 * DAY) return;
+            title = "Your 7-Day Pass has ended";
+        } else if (used >= limit) {
+            title = "You've used all " + limit + " tailorings in your 7-Day Pass";
+        } else if (msLeft <= 2 * DAY) {
+            var d = Math.ceil(msLeft / DAY);
+            title = "Your 7-Day Pass ends in " + d + " day" + (d === 1 ? "" : "s");
+        } else {
+            return;
+        }
+        var key = "tcv_pass_upsell_dismissed";
+        try { if (localStorage.getItem(key) === data.pro_until) return; } catch (e) {}
+
+        if (!document.getElementById("tcvPassUpsellStyle")) {
+            var st = document.createElement("style");
+            st.id = "tcvPassUpsellStyle";
+            st.textContent =
+                "#tcvPassUpsell{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:4500;" +
+                "width:min(680px,calc(100vw - 32px));display:flex;align-items:center;gap:14px;padding:14px 16px 14px 18px;" +
+                "border-radius:14px;border:1px solid rgba(99,132,255,.35);color:#eef3ff;" +
+                "background:linear-gradient(100deg,rgba(15,35,80,.97),rgba(22,27,75,.97) 55%,rgba(46,22,92,.97));" +
+                "box-shadow:0 16px 40px rgba(0,0,0,.5);font-family:Inter,system-ui,sans-serif;" +
+                "animation:tcvPassIn .35s cubic-bezier(.22,.61,.36,1);}" +
+                "#tcvPassUpsell .pu-txt{flex:1;min-width:0}" +
+                "#tcvPassUpsell .pu-t{font-size:15px;font-weight:600}" +
+                "#tcvPassUpsell .pu-s{font-size:13px;color:#b7c6e6;margin-top:2px}" +
+                "#tcvPassUpsell .pu-cta{flex-shrink:0;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;" +
+                "color:#fff;text-decoration:none;background:linear-gradient(135deg,#3392ff,#7c3aed);" +
+                "box-shadow:0 6px 18px rgba(51,146,255,.3);white-space:nowrap}" +
+                "#tcvPassUpsell .pu-x{flex-shrink:0;background:none;border:none;color:#8193b8;font-size:22px;line-height:1;cursor:pointer;padding:2px 4px}" +
+                "#tcvPassUpsell .pu-x:hover{color:#fff}" +
+                "@keyframes tcvPassIn{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}" +
+                "@media (max-width:600px){#tcvPassUpsell{flex-wrap:wrap;bottom:12px}#tcvPassUpsell .pu-cta{order:3;width:100%;text-align:center}}" +
+                "@media (prefers-reduced-motion:reduce){#tcvPassUpsell{animation:none}}";
+            document.head.appendChild(st);
+        }
+        var box = document.createElement("div");
+        box.id = "tcvPassUpsell";
+        box.setAttribute("role", "status");
+        box.innerHTML =
+            '<div class="pu-txt"><div class="pu-t"></div>' +
+            '<div class="pu-s">Keep going with Monthly Pro: unlimited tailoring, and it works out to less than half the pass price per week.</div></div>' +
+            '<a class="pu-cta" href="/pricing?plan=monthly">Continue with Monthly</a>' +
+            '<button class="pu-x" type="button" aria-label="Dismiss">&times;</button>';
+        box.querySelector(".pu-t").textContent = title;
+        box.querySelector(".pu-x").onclick = function () {
+            try { localStorage.setItem(key, data.pro_until); } catch (e) {}
+            box.remove();
+        };
+        document.body.appendChild(box);
+    }
+
     function syncAuthState() {
         fetch("/api/auth/me", { headers: { "X-Requested-With": "XMLHttpRequest" } })
             .then(function (r) { return r.ok ? r.json() : null; })
             .then(function (data) {
                 if (data) {
+                    maybeShowPassUpsell(data);
                     var fresh = { name: data.name, email: data.email, is_pro: data.is_pro, pro_until: data.pro_until };
                     var wasGuest = !user;
                     var stale = user && (user.email !== fresh.email || !!user.is_pro !== !!fresh.is_pro);

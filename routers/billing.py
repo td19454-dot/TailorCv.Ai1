@@ -185,11 +185,25 @@ def _get_db_and_user(request: Request):
 def _extend_pro(db: Session, user, days: int,
                 razorpay_subscription_id: str = None,
                 polar_subscription_id: str = None,
-                provider: str = "razorpay") -> None:
-    """Grant or extend Pro access by *days* from now (or from existing pro_until)."""
-    base = max(user.pro_until or datetime.utcnow(), datetime.utcnow())
+                provider: str = "razorpay",
+                plan: str = None) -> None:
+    """Grant or extend Pro access by *days* from now (or from existing pro_until).
+
+    *plan* records which plan this access came from. A 7-Day Pass starts a fresh
+    tailoring allowance (see WEEKLY_PASS_TAILOR_LIMIT in main.py) — unless the
+    user already has an active monthly/yearly plan, which must never be capped
+    because they also bought a pass."""
+    now = datetime.utcnow()
+    was_pro = bool(user.pro_until and user.pro_until > now)
+    base = max(user.pro_until or now, now)
     user.pro_until = base + timedelta(days=days)
     user.plan_provider = provider
+    if plan == "weekly":
+        if not (was_pro and user.pro_plan in ("monthly", "yearly")):
+            user.pro_plan = "weekly"
+            user.pass_tailorings_used = 0
+    elif plan in ("monthly", "yearly"):
+        user.pro_plan = plan
     if provider == "razorpay" and razorpay_subscription_id:
         user.razorpay_subscription_id = razorpay_subscription_id
     elif provider == "polar" and polar_subscription_id:
@@ -504,7 +518,8 @@ async def razorpay_verify(body: RazorpayVerifyRequest, request: Request):
     try:
         days = PLAN_DURATIONS.get(body.plan, 31)
         _extend_pro(db, user, days,
-                    razorpay_subscription_id=body.razorpay_subscription_id or None)
+                    razorpay_subscription_id=body.razorpay_subscription_id or None,
+                    plan=body.plan)
         return {"success": True, "pro_until": user.pro_until.isoformat()}
     finally:
         db.close()
@@ -591,7 +606,7 @@ async def razorpay_webhook(request: Request):
                 if sub_id:
                     _track_subscription_created(user, plan, "razorpay", region, sub_id)
                 days = PLAN_DURATIONS.get(plan, 31)
-                _extend_pro(db, user, days, razorpay_subscription_id=sub_id)
+                _extend_pro(db, user, days, razorpay_subscription_id=sub_id, plan=plan)
 
             # Razorpay's `fee` already includes the GST on that fee; there is
             # no customer-side tax on these payments.
@@ -857,7 +872,11 @@ async def polar_webhook(request: Request):
                 _track_payment_confirmed(user, plan, "polar", metadata.get("region"), str(order.id),
                                          getattr(order, "total_amount", None), getattr(order, "currency", None))
                 days = PLAN_DURATIONS.get(plan, 7)
-                _extend_pro(db, user, days, polar_subscription_id=str(order.id), provider="polar")
+                # A renewal order without our metadata is a subscription order,
+                # not a 7-Day Pass, so it must not start a capped pass.
+                is_renewal = getattr(order, "subscription_id", None) and not metadata.get("plan")
+                _extend_pro(db, user, days, polar_subscription_id=str(order.id), provider="polar",
+                            plan=None if is_renewal else plan)
             elif plan == "weekly" or not getattr(order, "subscription_id", None):
                 # Money taken, nobody to grant Pro to. (Subscription orders are
                 # granted via the subscription events below, so only alert for
@@ -919,7 +938,7 @@ async def polar_webhook(request: Request):
             if user and sub.status.value == "active":
                 _track_subscription_created(user, plan, "polar", metadata.get("region"), sub_id)
                 days = PLAN_DURATIONS.get(plan, 31)
-                _extend_pro(db, user, days, polar_subscription_id=sub_id, provider="polar")
+                _extend_pro(db, user, days, polar_subscription_id=sub_id, provider="polar", plan=plan)
             elif not user and sub.status.value == "active":
                 alerts.notify(
                     "Polar subscription active but no user matched",
