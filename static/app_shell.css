@@ -109,6 +109,9 @@ html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !im
 .tcv-pf-id small { font-size: .76rem; color: #9fb0cc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 184px; }
 .tcv-pf-link { display: block; padding: 10px 12px; border-radius: 8px; color: #cfe0ff; font-size: .88rem; text-decoration: none; }
 .tcv-pf-link:hover { background: rgba(99, 132, 255, .14); color: #fff; }
+.tcv-pf-logout { margin-top: 6px; position: relative; color: #fca5a5; }
+.tcv-pf-logout::before { content: ""; position: absolute; left: 12px; right: 12px; top: -4px; border-top: 1px solid rgba(255, 255, 255, .08); }
+.tcv-pf-logout:hover { background: rgba(248, 113, 113, .12); color: #fecaca; }
 .tcv-pro-label { color: #7dd3fc; font-weight: 700; cursor: default; }
 .tcv-pro-label:hover { background: transparent; color: #7dd3fc; }
 
