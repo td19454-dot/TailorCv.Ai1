@@ -228,7 +228,7 @@
                 "#tcvPassUpsell .pu-x{flex-shrink:0;background:none;border:none;color:#8193b8;font-size:22px;line-height:1;cursor:pointer;padding:2px 4px}" +
                 "#tcvPassUpsell .pu-x:hover{color:#fff}" +
                 "@keyframes tcvPassIn{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}" +
-                "@media (max-width:600px){#tcvPassUpsell{flex-wrap:wrap;bottom:12px}#tcvPassUpsell .pu-cta{order:3;width:100%;text-align:center}}" +
+                "@media (max-width:600px){#tcvPassUpsell{flex-wrap:wrap;bottom:88px}#tcvPassUpsell .pu-cta{order:3;width:100%;text-align:center}}" +
                 "@media (prefers-reduced-motion:reduce){#tcvPassUpsell{animation:none}}";
             document.head.appendChild(st);
         }
