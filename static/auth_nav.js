@@ -211,7 +211,7 @@ function showUpgradeModal(feature) {
     },
     ai_optimizations: {
       title: "Upgrade to Pro",
-      freeUse: "1 free resume optimization",
+      freeUse: "2 free resume optimizations",
       message: "Upgrade for unlimited resume downloads and AI optimizations."
     }
   };

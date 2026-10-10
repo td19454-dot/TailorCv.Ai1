@@ -27,6 +27,11 @@ class User(Base):
     # set from the extension's skills pop-up, cleared from its account menu.
     ext_auto_add_skills = Column(Boolean, nullable=True, default=False)
     plan_provider = Column(String(20), nullable=True)                  # "razorpay" | "polar"
+    # Which plan the current pro_until came from ("weekly" | "monthly" | "yearly").
+    # The 7-Day Pass is capped at WEEKLY_PASS_TAILOR_LIMIT tailorings; the
+    # counter below resets each time a pass is bought. Monthly/yearly: unlimited.
+    pro_plan = Column(String(20), nullable=True)
+    pass_tailorings_used = Column(Integer, nullable=True, default=0)
     razorpay_subscription_id = Column(String(100), nullable=True)
     polar_subscription_id = Column(String(100), nullable=True)
     # One Netlify "live site" per user — reused across all their portfolios so each

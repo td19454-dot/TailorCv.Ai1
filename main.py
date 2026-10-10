@@ -544,6 +544,10 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN pro_until TIMESTAMP" if is_pg else "ADD COLUMN pro_until TEXT")
     if "plan_provider" not in cols:
         to_add.append("ADD COLUMN plan_provider VARCHAR(20)" if is_pg else "ADD COLUMN plan_provider TEXT")
+    if "pro_plan" not in cols:
+        to_add.append("ADD COLUMN pro_plan VARCHAR(20)" if is_pg else "ADD COLUMN pro_plan TEXT")
+    if "pass_tailorings_used" not in cols:
+        to_add.append("ADD COLUMN pass_tailorings_used INTEGER")
     # Skills the candidate personally confirmed. TEXT on both dialects: it holds a
     # JSON list, not a value the database ever needs to interpret.
     if "confirmed_skills" not in cols:
@@ -1076,9 +1080,10 @@ def is_pro(user) -> bool:
 
 
 FREE_LIMITS: dict[str, int] = {
-    # Lowered from 3 to 2 to 1 as model costs rose. The download popup reads
-    # this number rather than hardcoding it, so the copy follows automatically.
-    "ai_optimizations": 1,
+    # Lowered from 3 to 2 to 1 as model costs rose, raised back to 2 (Oct 2026).
+    # The download popup reads this number rather than hardcoding it, so the
+    # copy follows automatically.
+    "ai_optimizations": 2,
     "cover_letters": 2,
     "linkedin_imports": 1,
     "mock_interviews": 1,
