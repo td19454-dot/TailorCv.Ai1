@@ -1392,8 +1392,42 @@
                         <div class="hero-ats-tx"><strong>ATS-Optimized</strong><span>Keyword match &amp; format checked</span></div>
                     </div> -->
                     <div class="hv-stage" id="heroStage" aria-hidden="false">
-                    <!-- Scene 1: the live tailoring card (animated by the hero script) -->
-                    <div class="hv-scene is-active" data-scene="0">
+                    <!-- Scene 1 (shown first): ATS check panel behind a tailored resume -->
+                    <div class="hv-scene is-active" data-scene="1">
+                        <div class="hv-panel hv-ats">
+                            <div class="hv-ats-title">ATS Check</div>
+                            <div class="hv-ats-score"><b>85%</b><span class="hv-ats-track"><span></span></span></div>
+                            <div class="hv-ats-label">Job description</div>
+                            <div class="hv-ats-input">Senior Software Engineer</div>
+                            <div class="hv-ats-sub">Resume tailoring</div>
+                            <div class="hv-ats-box">
+                                <div class="hv-ats-h"><span class="hv-dot red"></span>HARD SKILLS</div>
+                                <div class="hv-ats-row ok">&#10003; Kubernetes</div>
+                                <div class="hv-ats-row ok">&#10003; Distributed systems</div>
+                                <div class="hv-ats-row no">&#10007; Terraform</div>
+                            </div>
+                        </div>
+                        <div class="hv-mini hv-mini-a"><div class="tp"><div class="tp-top"><div class="tp-name">Daniel Carter</div><div class="tp-role">Senior Software Engineer</div><div class="tp-contact"><span class="tp-ci"><a>daniel.carter@email.com</a></span><span class="tp-ci">Seattle, WA</span><span class="tp-ci"><a>linkedin.com/in/dcarter</a></span></div></div><div class="tp-sec"><div class="tp-h2">Summary</div><p class="tp-p">Backend engineer with 8 years building distributed systems at scale. Led platform teams that cut infrastructure cost by 30%.</p></div><div class="tp-sec"><div class="tp-h2">Experience</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Lead Software Engineer</p><span class="tp-date">2021 &ndash; Present</span></div><p class="tp-org">Amazon &middot; Seattle, WA</p><ul class="tp-ul"><li>Led migration of 40+ services to <b>Kubernetes</b>, cutting deploy time by 65%.</li><li>Designed an event pipeline handling <b>2M requests/min</b> at 99.99% uptime.</li><li>Cut monthly AWS spend by $180K through right-sizing and autoscaling.</li><li>Mentored 6 engineers; 3 promoted to senior within 18 months.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Software Engineer</p><span class="tp-date">2017 &ndash; 2021</span></div><p class="tp-org">Stripe &middot; San Francisco, CA</p><ul class="tp-ul"><li>Built payment APIs in <b>Go</b> serving 4M monthly users.</li><li>Cut p95 latency from 480ms to 120ms with caching and query tuning.</li><li>Owned on-call for payouts; reduced incidents by 40% in a year.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Software Engineering Intern</p><span class="tp-date">Summer 2016</span></div><p class="tp-org">Microsoft &middot; Redmond, WA</p><ul class="tp-ul"><li>Shipped a telemetry dashboard used by 120 Azure engineers.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Projects</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">RateGuard &mdash; Open-source rate limiter</p><span class="tp-date">2023</span></div><p class="tp-org">Go, Redis, gRPC</p><ul class="tp-ul"><li>Distributed limiter with 1.2K GitHub stars; 250K checks/sec per node.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Ledger &mdash; Event-sourced accounting</p><span class="tp-date">2022</span></div><p class="tp-org">Kafka, PostgreSQL, Docker</p><ul class="tp-ul"><li>Double-entry ledger with replayable history and audit-ready exports.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Education</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">University of Washington</p><span class="tp-date">2013 &ndash; 2017</span></div><p class="tp-org">B.S. in Computer Science</p></div></div><div class="tp-sec"><div class="tp-h2">Skills</div><div class="tp-skill"><span class="tp-k">Languages:</span> Go, Python, Java, SQL</div><div class="tp-skill"><span class="tp-k">Cloud &amp; Infra:</span> AWS, Kubernetes, Docker, Kafka</div><div class="tp-skill"><span class="tp-k">Practices:</span> System Design, Observability, CI/CD</div></div></div></div>
+                        <span class="hv-tag hv-tag-a">Application at Google</span>
+                        <span class="hv-tag hv-tag-b">Application at Stripe</span>
+                    </div>
+
+                    <!-- Scene 2 (shown second): design controls around a template-19 resume -->
+                    <div class="hv-scene" data-scene="2" aria-hidden="true">
+                        <div class="hv-panel hv-fonts">
+                            <div class="hv-fonts-h">FONT</div>
+                            <div class="hv-font on">Inter</div>
+                            <div class="hv-font f2">Lato</div>
+                            <div class="hv-font f3">Merriweather</div>
+                            <div class="hv-font f4">Raleway</div>
+                        </div>
+                        <div class="hv-mini hv-mini-b"><div class="tp"><div class="tp-top"><div class="tp-name">Emily <span class="tp-last">Clarke</span></div><div class="tp-role">Senior Product Designer</div><div class="tp-contact"><span class="tp-ci"><a>emily.clarke@email.com</a></span><span class="tp-ci">Toronto, ON</span><span class="tp-ci"><a>emilyclarke.design</a></span></div></div><div class="tp-sec"><div class="tp-h2">Summary</div><p class="tp-p">Product designer with 7 years shaping commerce and fintech products, pairing research with systems thinking.</p></div><div class="tp-sec"><div class="tp-h2">Experience</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Senior Product Designer</p><span class="tp-date">2022 &ndash; Present</span></div><p class="tp-org">Shopify &middot; Toronto, ON</p><ul class="tp-ul"><li>Redesigned checkout, lifting conversion by <b>18%</b> for 2M merchants.</li><li>Built a design system of 120+ components used by 9 teams.</li><li>Ran 40+ user interviews that shaped the 2024 roadmap.</li><li>Mentored 4 designers through critique and pairing.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Product Designer</p><span class="tp-date">2019 &ndash; 2022</span></div><p class="tp-org">Wealthsimple &middot; Toronto, ON</p><ul class="tp-ul"><li>Shipped onboarding that cut sign-up drop-off by <b>25%</b>.</li><li>Brought the mobile app to WCAG AA accessibility.</li><li>Designed the tax-filing flow used by 500K Canadians.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">UX Design Intern</p><span class="tp-date">Summer 2018</span></div><p class="tp-org">Ritual &middot; Toronto, ON</p><ul class="tp-ul"><li>Prototyped group ordering, now at 60K weekly orders.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Projects</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Fintech App Redesign</p><span class="tp-date">2023</span></div><p class="tp-org">Figma, Protopie</p><ul class="tp-ul"><li>Banking app for 1M+ users; App Store rating 3.9 &rarr; 4.7.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Open Design Tokens</p><span class="tp-date">2022</span></div><p class="tp-org">Style Dictionary, Figma API</p><ul class="tp-ul"><li>Token pipeline syncing Figma styles to iOS, Android and web.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Education</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">University of Toronto</p><span class="tp-date">2014 &ndash; 2018</span></div><p class="tp-org">B.Des. in Interaction Design</p></div></div><div class="tp-sec"><div class="tp-h2">Skills</div><div class="tp-skill"><span class="tp-k">Design:</span> Figma, Prototyping, Design Systems</div><div class="tp-skill"><span class="tp-k">Research:</span> User Interviews, Usability Testing</div><div class="tp-skill"><span class="tp-k">Tools:</span> Protopie, Maze, Jira, HTML/CSS</div></div></div></div>
+                        <div class="hv-panel hv-slider s1"><div class="hv-sl-h">PAGE MARGINS: <b>1</b></div><div class="hv-sl"><span>&minus;</span><div class="hv-sl-track"><i style="left:18%"></i></div><span>+</span></div><div class="hv-sl-ends"><span>narrow</span><span>wide</span></div></div>
+                        <div class="hv-panel hv-slider s2"><div class="hv-sl-h">SECTION SPACING: <b>3</b></div><div class="hv-sl"><span>&minus;</span><div class="hv-sl-track"><i style="left:58%"></i></div><span>+</span></div><div class="hv-sl-ends"><span>compact</span><span>more space</span></div></div>
+                    </div>
+
+                    <!-- Scene 3 (shown third): the live tailoring card (animated by the hero script) -->
+                    <div class="hv-scene" data-scene="0" aria-hidden="true">
     <div class="resume-card" id="heroResumeCard">
                         <div class="scan-line" id="heroScanLine"></div>
 
@@ -1402,7 +1436,7 @@
 
                         <div class="r-section">
                             <div class="r-heading">Professional Summary</div>
-                            <p class="r-summary">Software engineer with 4+ years building data-driven products at scale. Strong in Python, distributed systems and ML infrastructure, with a track record of shipping features that move retention and reliability.</p>
+                            <p class="r-summary">Software engineer with 4+ years building data-driven products in Python, with a track record of shipping ML features that move retention.</p>
                         </div>
 
                         <div class="r-section">
@@ -1482,43 +1516,14 @@
                         </div>
                     </div>
 
-                    <!-- Scene 2: ATS check panel behind a tailored resume -->
-                    <div class="hv-scene" data-scene="1" aria-hidden="true">
-                        <div class="hv-panel hv-ats">
-                            <div class="hv-ats-title">ATS Check</div>
-                            <div class="hv-ats-score"><b>85%</b><span class="hv-ats-track"><span></span></span></div>
-                            <div class="hv-ats-label">Job description</div>
-                            <div class="hv-ats-input">Senior Software Engineer</div>
-                            <div class="hv-ats-sub">Resume tailoring</div>
-                            <div class="hv-ats-box">
-                                <div class="hv-ats-h"><span class="hv-dot red"></span>HARD SKILLS</div>
-                                <div class="hv-ats-row ok">&#10003; Kubernetes</div>
-                                <div class="hv-ats-row ok">&#10003; Distributed systems</div>
-                                <div class="hv-ats-row no">&#10007; Terraform</div>
-                            </div>
-                        </div>
-                        <div class="hv-mini hv-mini-a"><div class="tp"><div class="tp-top"><div class="tp-name">Daniel Carter</div><div class="tp-role">Senior Software Engineer</div><div class="tp-contact"><span class="tp-ci"><a>daniel.carter@email.com</a></span><span class="tp-ci">Seattle, WA</span><span class="tp-ci"><a>linkedin.com/in/dcarter</a></span></div></div><div class="tp-sec"><div class="tp-h2">Summary</div><p class="tp-p">Backend engineer with 8 years building distributed systems at scale. Led platform teams that cut infrastructure cost by 30%.</p></div><div class="tp-sec"><div class="tp-h2">Experience</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Lead Software Engineer</p><span class="tp-date">2021 &ndash; Present</span></div><p class="tp-org">Amazon &middot; Seattle, WA</p><ul class="tp-ul"><li>Led migration of 40+ services to <b>Kubernetes</b>, cutting deploy time by 65%.</li><li>Designed an event pipeline handling <b>2M requests/min</b> at 99.99% uptime.</li><li>Cut monthly AWS spend by $180K through right-sizing and autoscaling.</li><li>Mentored 6 engineers; 3 promoted to senior within 18 months.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Software Engineer</p><span class="tp-date">2017 &ndash; 2021</span></div><p class="tp-org">Stripe &middot; San Francisco, CA</p><ul class="tp-ul"><li>Built payment APIs in <b>Go</b> serving 4M monthly users.</li><li>Cut p95 latency from 480ms to 120ms with caching and query tuning.</li><li>Owned on-call for payouts; reduced incidents by 40% in a year.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Software Engineering Intern</p><span class="tp-date">Summer 2016</span></div><p class="tp-org">Microsoft &middot; Redmond, WA</p><ul class="tp-ul"><li>Shipped a telemetry dashboard used by 120 Azure engineers.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Projects</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">RateGuard &mdash; Open-source rate limiter</p><span class="tp-date">2023</span></div><p class="tp-org">Go, Redis, gRPC</p><ul class="tp-ul"><li>Distributed limiter with 1.2K GitHub stars; 250K checks/sec per node.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Ledger &mdash; Event-sourced accounting</p><span class="tp-date">2022</span></div><p class="tp-org">Kafka, PostgreSQL, Docker</p><ul class="tp-ul"><li>Double-entry ledger with replayable history and audit-ready exports.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Education</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">University of Washington</p><span class="tp-date">2013 &ndash; 2017</span></div><p class="tp-org">B.S. in Computer Science</p></div></div><div class="tp-sec"><div class="tp-h2">Skills</div><div class="tp-skill"><span class="tp-k">Languages:</span> Go, Python, Java, SQL</div><div class="tp-skill"><span class="tp-k">Cloud &amp; Infra:</span> AWS, Kubernetes, Docker, Kafka</div><div class="tp-skill"><span class="tp-k">Practices:</span> System Design, Observability, CI/CD</div></div></div></div>
-                        <span class="hv-tag hv-tag-a">Application at Google</span>
-                        <span class="hv-tag hv-tag-b">Application at Stripe</span>
+                    <!-- Scene 4 (shown fourth): colours & backgrounds around a template-22 resume -->
+                    <div class="hv-scene" data-scene="3" aria-hidden="true">
+                        <div class="hv-panel hv-bgs"><div class="hv-bgs-h">BACKGROUNDS</div><div class="hv-bgs-grid"><span class="hv-bg on"></span><span class="hv-bg p1"></span><span class="hv-bg p2"></span><span class="hv-bg p3"></span><span class="hv-bg p4"></span><span class="hv-bg p5"></span></div></div>
+                        <div class="hv-mini hv-mini-c"><div class="tp t22"><div class="t22-head"><div><div class="t22-name">Olivia Bennett</div><p class="t22-tag">Senior Project Manager &middot; Agile &amp; Scrum certified</p></div><div class="t22-right"><span>Vancouver, BC</span><span>olivia.bennett@email.com</span><span>linkedin.com/in/obennett</span></div></div><div class="t22-sec"><div class="t22-h">Summary</div><p class="t22-p">Results-oriented project manager with 8 years delivering software and operations programmes on time and under budget. Comfortable leading cross-functional teams through ambiguity.</p></div><div class="t22-sec"><div class="t22-h">Experience</div><div class="t22-e"><div class="t22-row"><span class="t22-t">Senior Project Manager</span><span class="t22-m">2021 &ndash; Present</span></div><div class="t22-s">Hootsuite &middot; Vancouver, BC</div><ul class="t22-ul"><li>Led a 14-person team shipping the analytics suite 3 weeks ahead of plan.</li><li>Cut release cycle from 6 weeks to 2 by introducing Scrum across 4 teams.</li><li>Managed a $2.4M budget with 98% forecast accuracy.</li><li>Introduced OKR tracking adopted by 6 product teams company-wide.</li></ul></div><div class="t22-e"><div class="t22-row"><span class="t22-t">Project Manager</span><span class="t22-m">2018 &ndash; 2021</span></div><div class="t22-s">Telus &middot; Vancouver, BC</div><ul class="t22-ul"><li>Delivered a network-upgrade programme across 120 sites with zero downtime.</li><li>Built vendor scorecards that reduced contractor costs by 15%.</li><li>Ran weekly steering updates for VP-level stakeholders across 3 regions.</li></ul></div><div class="t22-e"><div class="t22-row"><span class="t22-t">Project Coordinator</span><span class="t22-m">2016 &ndash; 2018</span></div><div class="t22-s">Lululemon &middot; Vancouver, BC</div><ul class="t22-ul"><li>Coordinated 30+ store launches, tracking 600 tasks in Jira.</li><li>Standardised launch checklists, cutting set-up time by 20%.</li></ul></div></div><div class="t22-sec"><div class="t22-h">Projects</div><div class="t22-e"><div class="t22-row"><span class="t22-t">CRM Migration</span><span class="t22-m">2023</span></div><div class="t22-s">Salesforce, Jira</div><ul class="t22-ul"><li>Moved 40K customer records with zero data loss in 10 weeks.</li></ul></div><div class="t22-e"><div class="t22-row"><span class="t22-t">Hybrid Work Rollout</span><span class="t22-m">2022</span></div><div class="t22-s">Change management</div><ul class="t22-ul"><li>Led policy and tooling changes for 900 employees; 92% satisfaction.</li></ul></div></div><div class="t22-sec"><div class="t22-h">Education</div><div class="t22-e"><div class="t22-row"><span class="t22-t">University of British Columbia</span><span class="t22-m">2012 &ndash; 2016</span></div><div class="t22-s">B.Com. in Operations Management</div><ul class="t22-ul"></ul></div></div><div class="t22-sec"><div class="t22-h">Skills</div><div class="t22-sk"><span class="t22-k">Methods:</span> Agile, Scrum, Kanban, Risk Management</div><div class="t22-sk"><span class="t22-k">Tools:</span> Jira, Asana, MS Project, Confluence, Excel</div><div class="t22-sk"><span class="t22-k">Certifications:</span> PMP (2020), Certified ScrumMaster (2019)</div></div></div></div>
+                        <span class="hv-hired">HIRED</span>
+                        <div class="hv-panel hv-colors"><div class="hv-colors-h">COLORS</div><div class="hv-colors-grid"><span class="hv-sw" style="--c:#1e3a8a"></span><span class="hv-sw on" style="--c:#0f766e"></span><span class="hv-sw" style="--c:#b91c1c"></span><span class="hv-sw" style="--c:#7e22ce"></span><span class="hv-sw" style="--c:#0891b2"></span><span class="hv-sw" style="--c:#2563eb"></span><span class="hv-sw" style="--c:#4b5563"></span><span class="hv-sw" style="--c:#3730a3"></span><span class="hv-sw" style="--c:#ea580c"></span><span class="hv-sw" style="--c:#a16207"></span></div><div class="hv-colors-c">Use custom color</div></div>
                     </div>
 
-                    <!-- Scene 3: design controls around a two-column resume -->
-                    <div class="hv-scene" data-scene="2" aria-hidden="true">
-                        <div class="hv-panel hv-fonts">
-                            <div class="hv-fonts-h">FONT</div>
-                            <div class="hv-font on">Inter</div>
-                            <div class="hv-font f2">Lato</div>
-                            <div class="hv-font f3">Merriweather</div>
-                            <div class="hv-font f4">Raleway</div>
-                        </div>
-                        <div class="hv-mini hv-mini-b"><div class="tp"><div class="tp-top"><div class="tp-name">Emily <span class="tp-last">Clarke</span></div><div class="tp-role">Senior Product Designer</div><div class="tp-contact"><span class="tp-ci"><a>emily.clarke@email.com</a></span><span class="tp-ci">Toronto, ON</span><span class="tp-ci"><a>emilyclarke.design</a></span></div></div><div class="tp-sec"><div class="tp-h2">Summary</div><p class="tp-p">Product designer with 7 years shaping commerce and fintech products, pairing research with systems thinking.</p></div><div class="tp-sec"><div class="tp-h2">Experience</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Senior Product Designer</p><span class="tp-date">2022 &ndash; Present</span></div><p class="tp-org">Shopify &middot; Toronto, ON</p><ul class="tp-ul"><li>Redesigned checkout, lifting conversion by <b>18%</b> for 2M merchants.</li><li>Built a design system of 120+ components used by 9 teams.</li><li>Ran 40+ user interviews that shaped the 2024 roadmap.</li><li>Mentored 4 designers through critique and pairing.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Product Designer</p><span class="tp-date">2019 &ndash; 2022</span></div><p class="tp-org">Wealthsimple &middot; Toronto, ON</p><ul class="tp-ul"><li>Shipped onboarding that cut sign-up drop-off by <b>25%</b>.</li><li>Brought the mobile app to WCAG AA accessibility.</li><li>Designed the tax-filing flow used by 500K Canadians.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">UX Design Intern</p><span class="tp-date">Summer 2018</span></div><p class="tp-org">Ritual &middot; Toronto, ON</p><ul class="tp-ul"><li>Prototyped group ordering, now at 60K weekly orders.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Projects</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Fintech App Redesign</p><span class="tp-date">2023</span></div><p class="tp-org">Figma, Protopie</p><ul class="tp-ul"><li>Banking app for 1M+ users; App Store rating 3.9 &rarr; 4.7.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Open Design Tokens</p><span class="tp-date">2022</span></div><p class="tp-org">Style Dictionary, Figma API</p><ul class="tp-ul"><li>Token pipeline syncing Figma styles to iOS, Android and web.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Education</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">University of Toronto</p><span class="tp-date">2014 &ndash; 2018</span></div><p class="tp-org">B.Des. in Interaction Design</p></div></div><div class="tp-sec"><div class="tp-h2">Skills</div><div class="tp-skill"><span class="tp-k">Design:</span> Figma, Prototyping, Design Systems</div><div class="tp-skill"><span class="tp-k">Research:</span> User Interviews, Usability Testing</div><div class="tp-skill"><span class="tp-k">Tools:</span> Protopie, Maze, Jira, HTML/CSS</div></div></div></div>
-                        <div class="hv-panel hv-slider s1"><div class="hv-sl-h">PAGE MARGINS: <b>1</b></div><div class="hv-sl"><span>&minus;</span><div class="hv-sl-track"><i style="left:18%"></i></div><span>+</span></div><div class="hv-sl-ends"><span>narrow</span><span>wide</span></div></div>
-                        <div class="hv-panel hv-slider s2"><div class="hv-sl-h">SECTION SPACING: <b>3</b></div><div class="hv-sl"><span>&minus;</span><div class="hv-sl-track"><i style="left:58%"></i></div><span>+</span></div><div class="hv-sl-ends"><span>compact</span><span>more space</span></div></div>
-                    </div>
-
-                    <div class="hv-dots" role="tablist" aria-label="Preview">
-                        <button type="button" class="on" aria-label="Tailoring"></button><button type="button" aria-label="ATS check"></button><button type="button" aria-label="Design"></button>
-                    </div>
                     </div>
 
                     <div class="status-msg" id="heroStatusMsg">AI scan ready</div>
@@ -1540,7 +1545,10 @@
                         .hv-scene.is-prep { transform: rotate(2.5deg) scale(.985) !important; transition: transform .3s cubic-bezier(.4,0,.2,1); }
                         /* idle sway: the individual `rotate`/`translate` properties stack on
                            top of each scene's own transform, so tilts and turns still apply. */
-                        .hv-scene.is-active { animation: hvSway 9s ease-in-out infinite; transform-style: preserve-3d; }
+                        .hv-scene.is-active { animation: hvSway 9s ease-in-out infinite; transform-style: flat; }
+                        /* floating panels always sit above the page, even mid-tilt */
+                        .hv-float, .hv-panel, .hv-tag, .hv-hired { z-index: 6 !important; }
+                        .hv-ats, .hv-bgs { z-index: 0 !important; }
                         @keyframes hvSway {
                             0%, 100% { rotate: 1 -1 .15 4deg; translate: 0 0; }
                             25%      { rotate: -.4 -1 0 3deg; translate: 0 -4px; }
@@ -1648,15 +1656,61 @@
                         .hv-mini .tp-ul b { color: #1a1a1a; }
                         .hv-mini .tp-skill { margin-bottom: 2.5px; color: #444; }
                         .hv-mini .tp-k { font-weight: 700; color: #1a1a1a; }
+                        /* Scene 4: template-22 page with a teal accent, colour + background pickers, HIRED badge */
+                        .hv-mini-c { right: 40px; top: 20px; width: 390px; height: 552px; --s: .6964;
+                            transform: rotate(-3deg); }
+                        .hv-mini .t22 { font-family: "Latin Modern Roman", Cambria, Georgia, "Times New Roman", serif; font-size: 10.6px; line-height: 1.35; color: #111; padding: 30px 38px; }
+                        .hv-mini .t22-head { display: flex; justify-content: space-between; gap: 14px; align-items: flex-start; }
+                        .hv-mini .t22-name { font-size: 24px; font-weight: 700; letter-spacing: .2px; color: #0f766e; line-height: 1.2; }
+                        .hv-mini .t22-tag { font-size: 10.6px; color: #444; margin-top: 2px; }
+                        .hv-mini .t22-right { text-align: right; font-size: 10.6px; color: #333; line-height: 1.5; white-space: nowrap; }
+                        .hv-mini .t22-right span { display: block; }
+                        .hv-mini .t22-sec { margin-top: 9px; }
+                        .hv-mini .t22-h { font-size: 12.5px; font-weight: 700; font-variant: small-caps; letter-spacing: .6px; color: #0f766e; border-bottom: 1px solid #0f766e; padding-bottom: 1px; margin-bottom: 4px; }
+                        .hv-mini .t22-p { color: #444; text-align: justify; }
+                        .hv-mini .t22-e { margin-bottom: 5px; }
+                        .hv-mini .t22-row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+                        .hv-mini .t22-t { font-size: 11px; font-weight: 700; }
+                        .hv-mini .t22-t::before { content: "\2022\00a0"; }
+                        .hv-mini .t22-m, .hv-mini .t22-s { font-size: 10.2px; font-style: italic; color: #444; white-space: nowrap; }
+                        .hv-mini .t22 .t22-ul { list-style: none; margin: 1px 0 0; padding-left: 14px; }
+                        .hv-mini .t22-ul li { position: relative; color: #444; margin-bottom: .5px; }
+                        .hv-mini .t22-ul li::before { content: "\2013"; position: absolute; left: -12px; }
+                        .hv-mini .t22-sk { color: #444; margin-bottom: 1.5px; }
+                        .hv-mini .t22-k { font-weight: 700; color: #111; }
+                        .hv-hired { position: absolute; left: 70px; top: 10px; z-index: 4; padding: 6px 18px; border-radius: 999px;
+                            border: 2px solid #34d399; background: #ecfdf5; color: #059669; font: 700 15px "Inter", sans-serif; letter-spacing: .06em;
+                            opacity: 0; transform: translateY(10px) scale(.9); transition: opacity .5s ease .5s, transform .6s cubic-bezier(.22,.8,.26,1) .5s; }
+                        .is-active .hv-hired { opacity: 1; transform: none; }
+                        .hv-bgs { left: -100px; top: 300px; width: 200px; padding: 14px 16px; z-index: 0; }
+                        .hv-bgs-h, .hv-colors-h { font: 600 13px "Inter", sans-serif; letter-spacing: .08em; color: #334155; margin-bottom: 10px; }
+                        .hv-bgs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+                        .hv-bg { aspect-ratio: 1; border-radius: 8px; border: 1px solid #e2e8f0; background: #fff; }
+                        .hv-bg.on { background: #10b981; border-color: #10b981; position: relative; }
+                        .hv-bg.on::after { content: "\2713"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; font: 700 16px "Inter", sans-serif; }
+                        .hv-bg.p1 { background: repeating-linear-gradient(45deg, #fff 0 5px, #e2e8f0 5px 6px); }
+                        .hv-bg.p2 { background: radial-gradient(circle at 30% 30%, #e2e8f0 2px, transparent 3px) 0 0 / 10px 10px; }
+                        .hv-bg.p3 { background: repeating-linear-gradient(0deg, #fff 0 6px, #e2e8f0 6px 7px); }
+                        .hv-bg.p4 { background: repeating-radial-gradient(circle at 0 100%, #fff 0 6px, #e2e8f0 6px 7px); }
+                        .hv-bg.p5 { background: linear-gradient(135deg, #fff 45%, #e2e8f0 45% 55%, #fff 55%); }
+                        .hv-colors { right: -50px; top: 330px; width: 250px; padding: 16px 18px; z-index: 3; }
+                        .hv-colors-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+                        .hv-sw { aspect-ratio: 1; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 4px #0f172a; }
+                        .hv-sw.on { box-shadow: inset 0 0 0 4px #fff, 0 0 0 2px var(--c); position: relative; }
+                        .hv-sw.on::after { content: "\2713"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; font: 700 14px "Inter", sans-serif; }
+                        .hv-colors-c { margin-top: 12px; font: 600 14px "Inter", sans-serif; color: #7c3aed; }
+                        .hv-bgs, .hv-colors { opacity: 0; transform: translateY(14px) scale(.96); transition: opacity .5s ease, transform .6s cubic-bezier(.22,.8,.26,1); }
+                        .is-active .hv-bgs { opacity: 1; transform: none; transition-delay: .25s; }
+                        .is-active .hv-colors { opacity: 1; transform: none; transition-delay: .6s; }
                         /* Scene 1's live card in the look of resume template 6
                            ("Professional Classic"): LaTeX serif, big bold name, title-case
                            headings over a full-width rule, italic dates and roles. */
                         .hv-scene.is-active[data-scene="0"] { transform: none; }
                         .hv-scene[data-scene="0"] .resume-card { position: absolute !important; left: 70px !important; top: -36px !important; width: 470px !important; height: 665px !important; min-height: 0 !important; margin: 0 !important; overflow: hidden !important; scale: .83; rotate: -2deg; transform-origin: center center !important; }
-                        .hv-scene[data-scene="0"] .hv-ai { right: -24px; bottom: 70px; }
+                        .hv-scene[data-scene="0"] .hv-ai { right: auto; left: -95px; bottom: 120px; width: 230px; }
                         .hv-scene[data-scene="0"] .resume-card,
                         .hv-scene[data-scene="0"] .resume-card * { font-family: "CMU Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif !important; }
-                        .hv-scene[data-scene="0"] .resume-card { color: #111 !important; padding: 26px 30px 22px !important; border-radius: 16px !important; }
+                        .hv-scene[data-scene="0"] .resume-card { color: #111 !important; padding: 22px 30px 18px !important; border-radius: 16px !important; }
                         .hv-scene[data-scene="0"] .resume-card .r-name {
                             font-size: 30px !important; font-weight: 700 !important; letter-spacing: 0 !important; text-transform: none !important;
                             color: #111 !important; text-align: center !important; line-height: 1.15 !important; margin: 0 0 4px !important;
@@ -1754,12 +1808,9 @@
                         .hv-sl-ends { display: flex; justify-content: space-between; font: 12px "Inter", sans-serif; color: #64748b; margin-top: 4px; }
 
                         /* scene dots */
-                        .hv-dots { position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); display: flex; gap: 8px; z-index: 5; }
-                        .hv-dots button { width: 8px; height: 8px; padding: 0; border: none; border-radius: 999px; background: rgba(255, 255, 255, .3); cursor: pointer; transition: width .3s ease, background .3s ease; }
-                        .hv-dots button.on { width: 26px; background: #a78bfa; }
                     }
                     @media (max-width: 1024px) {
-                        .hv-scene[data-scene="1"], .hv-scene[data-scene="2"], .hv-dots, .hv-float { display: none !important; }
+                        .hv-scene[data-scene="1"], .hv-scene[data-scene="2"], .hv-scene[data-scene="3"], .hv-float { display: none !important; }
                     }
                     @media (prefers-reduced-motion: reduce) {
                         .hv-scene, .hv-float, .hv-tag, .hv-slider, .hv-fonts, .hv-ats, .hv-ats-track span { transition: none !important; animation: none !important; }
