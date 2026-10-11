@@ -76,6 +76,12 @@ class User(Base):
     marketing_opt_out = Column(Boolean, nullable=False, default=False, server_default="false")
     email_bounced_at = Column(DateTime, nullable=True)
     email_complained_at = Column(DateTime, nullable=True)
+    # Nullable with no DB default on purpose: rows that predate the column stay
+    # NULL, which is how welcome_email.py tells pre-existing users apart.
+    created_at = Column(DateTime, nullable=True, default=datetime.utcnow)
+    # First successful optimization / ATS scan / CV download / portfolio /
+    # mock interview. The "Did we help you?" email goes 24h after this.
+    first_activity_at = Column(DateTime, nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
