@@ -1346,14 +1346,22 @@
                         /* Resume card: hide its ATS score / bars footer. Hidden rather than
                            removed because the hero animation script updates those elements. */
                         .hero-visual .ats-bar-wrap { display: none !important; }
+                        /* ...and the "Updating role keywords..." caption under the card
+                           (also written by that script, so hidden rather than removed). */
+                        .hero-visual .status-msg { display: none !important; }
                         /* ...and let the card fit its content (style3.css forces 748px). */
                         .hero-visual .resume-card { min-height: 0 !important; }
                         /* Desktop: a narrower, taller card that reads like a portrait
                            resume page (style3.css allows up to 580px wide). */
                         @media (min-width: 1025px) {
-                            .hero-split { align-items: center !important; }
-                            .hero-visual { width: min(100%, 520px) !important; align-self: center !important; }
-                            .hero-visual .resume-card { padding: 30px 30px 26px !important; }
+                            /* Top-align both columns: centring pushed the headline down
+                               whenever the card was taller than the copy. */
+                            .hero-split { align-items: start !important; }
+                            .hero-visual { width: min(100%, 540px) !important; align-self: start !important; }
+                            .hero-copy { padding-top: 12px !important; margin-top: 0 !important; }
+                            /* Fixed 640px at 540px wide; stops the card
+                               growing and shrinking as the skills animate in. */
+                            .hero-visual .resume-card { padding: 30px 30px 26px !important; min-height: 640px !important; }
                         }
                         /* More room under the buttons (style3.css forces 12px). */
                         .hero-copy .hero-cta .hero-cta-meta { margin: 30px 0 0 !important; }
@@ -1383,11 +1391,19 @@
                         <div class="hero-ats-ring"><span class="hero-ats-num">92</span><span class="hero-ats-of">/100</span></div>
                         <div class="hero-ats-tx"><strong>ATS-Optimized</strong><span>Keyword match &amp; format checked</span></div>
                     </div> -->
-                    <div class="resume-card" id="heroResumeCard">
+                    <div class="hv-stage" id="heroStage" aria-hidden="false">
+                    <!-- Scene 1: the live tailoring card (animated by the hero script) -->
+                    <div class="hv-scene is-active" data-scene="0">
+    <div class="resume-card" id="heroResumeCard">
                         <div class="scan-line" id="heroScanLine"></div>
 
                         <div class="r-name">Alex Mitchell</div>
                         <div class="r-title">San Francisco, CA | alex.mitchell@email.com | linkedin.com/in/alexm | github.com/alexm</div>
+
+                        <div class="r-section">
+                            <div class="r-heading">Professional Summary</div>
+                            <p class="r-summary">Software engineer with 4+ years building data-driven products at scale. Strong in Python, distributed systems and ML infrastructure, with a track record of shipping features that move retention and reliability.</p>
+                        </div>
 
                         <div class="r-section">
                             <div class="r-heading">Experience</div>
@@ -1459,8 +1475,354 @@
                             </div>
                         </div>
                     </div>
+                        <div class="hv-float hv-ai">
+                            <div class="hv-ai-head"><span class="hv-dot"></span>AI ASSISTANT</div>
+                            <div class="hv-ai-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/></svg>Match keywords to this job</div>
+                            <div class="hv-ai-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>Rewrite my bullets</div>
+                        </div>
+                    </div>
+
+                    <!-- Scene 2: ATS check panel behind a tailored resume -->
+                    <div class="hv-scene" data-scene="1" aria-hidden="true">
+                        <div class="hv-panel hv-ats">
+                            <div class="hv-ats-title">ATS Check</div>
+                            <div class="hv-ats-score"><b>85%</b><span class="hv-ats-track"><span></span></span></div>
+                            <div class="hv-ats-label">Job description</div>
+                            <div class="hv-ats-input">Senior Software Engineer</div>
+                            <div class="hv-ats-sub">Resume tailoring</div>
+                            <div class="hv-ats-box">
+                                <div class="hv-ats-h"><span class="hv-dot red"></span>HARD SKILLS</div>
+                                <div class="hv-ats-row ok">&#10003; Kubernetes</div>
+                                <div class="hv-ats-row ok">&#10003; Distributed systems</div>
+                                <div class="hv-ats-row no">&#10007; Terraform</div>
+                            </div>
+                        </div>
+                        <div class="hv-mini hv-mini-a"><div class="tp"><div class="tp-top"><div class="tp-name">Daniel Carter</div><div class="tp-role">Senior Software Engineer</div><div class="tp-contact"><span class="tp-ci"><a>daniel.carter@email.com</a></span><span class="tp-ci">Seattle, WA</span><span class="tp-ci"><a>linkedin.com/in/dcarter</a></span></div></div><div class="tp-sec"><div class="tp-h2">Summary</div><p class="tp-p">Backend engineer with 8 years building distributed systems at scale. Led platform teams that cut infrastructure cost by 30%.</p></div><div class="tp-sec"><div class="tp-h2">Experience</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Lead Software Engineer</p><span class="tp-date">2021 &ndash; Present</span></div><p class="tp-org">Amazon &middot; Seattle, WA</p><ul class="tp-ul"><li>Led migration of 40+ services to <b>Kubernetes</b>, cutting deploy time by 65%.</li><li>Designed an event pipeline handling <b>2M requests/min</b> at 99.99% uptime.</li><li>Cut monthly AWS spend by $180K through right-sizing and autoscaling.</li><li>Mentored 6 engineers; 3 promoted to senior within 18 months.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Software Engineer</p><span class="tp-date">2017 &ndash; 2021</span></div><p class="tp-org">Stripe &middot; San Francisco, CA</p><ul class="tp-ul"><li>Built payment APIs in <b>Go</b> serving 4M monthly users.</li><li>Cut p95 latency from 480ms to 120ms with caching and query tuning.</li><li>Owned on-call for payouts; reduced incidents by 40% in a year.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Software Engineering Intern</p><span class="tp-date">Summer 2016</span></div><p class="tp-org">Microsoft &middot; Redmond, WA</p><ul class="tp-ul"><li>Shipped a telemetry dashboard used by 120 Azure engineers.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Projects</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">RateGuard &mdash; Open-source rate limiter</p><span class="tp-date">2023</span></div><p class="tp-org">Go, Redis, gRPC</p><ul class="tp-ul"><li>Distributed limiter with 1.2K GitHub stars; 250K checks/sec per node.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Ledger &mdash; Event-sourced accounting</p><span class="tp-date">2022</span></div><p class="tp-org">Kafka, PostgreSQL, Docker</p><ul class="tp-ul"><li>Double-entry ledger with replayable history and audit-ready exports.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Education</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">University of Washington</p><span class="tp-date">2013 &ndash; 2017</span></div><p class="tp-org">B.S. in Computer Science</p></div></div><div class="tp-sec"><div class="tp-h2">Skills</div><div class="tp-skill"><span class="tp-k">Languages:</span> Go, Python, Java, SQL</div><div class="tp-skill"><span class="tp-k">Cloud &amp; Infra:</span> AWS, Kubernetes, Docker, Kafka</div><div class="tp-skill"><span class="tp-k">Practices:</span> System Design, Observability, CI/CD</div></div></div></div>
+                        <span class="hv-tag hv-tag-a">Application at Google</span>
+                        <span class="hv-tag hv-tag-b">Application at Stripe</span>
+                    </div>
+
+                    <!-- Scene 3: design controls around a two-column resume -->
+                    <div class="hv-scene" data-scene="2" aria-hidden="true">
+                        <div class="hv-panel hv-fonts">
+                            <div class="hv-fonts-h">FONT</div>
+                            <div class="hv-font on">Inter</div>
+                            <div class="hv-font f2">Lato</div>
+                            <div class="hv-font f3">Merriweather</div>
+                            <div class="hv-font f4">Raleway</div>
+                        </div>
+                        <div class="hv-mini hv-mini-b"><div class="tp"><div class="tp-top"><div class="tp-name">Emily <span class="tp-last">Clarke</span></div><div class="tp-role">Senior Product Designer</div><div class="tp-contact"><span class="tp-ci"><a>emily.clarke@email.com</a></span><span class="tp-ci">Toronto, ON</span><span class="tp-ci"><a>emilyclarke.design</a></span></div></div><div class="tp-sec"><div class="tp-h2">Summary</div><p class="tp-p">Product designer with 7 years shaping commerce and fintech products, pairing research with systems thinking.</p></div><div class="tp-sec"><div class="tp-h2">Experience</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Senior Product Designer</p><span class="tp-date">2022 &ndash; Present</span></div><p class="tp-org">Shopify &middot; Toronto, ON</p><ul class="tp-ul"><li>Redesigned checkout, lifting conversion by <b>18%</b> for 2M merchants.</li><li>Built a design system of 120+ components used by 9 teams.</li><li>Ran 40+ user interviews that shaped the 2024 roadmap.</li><li>Mentored 4 designers through critique and pairing.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Product Designer</p><span class="tp-date">2019 &ndash; 2022</span></div><p class="tp-org">Wealthsimple &middot; Toronto, ON</p><ul class="tp-ul"><li>Shipped onboarding that cut sign-up drop-off by <b>25%</b>.</li><li>Brought the mobile app to WCAG AA accessibility.</li><li>Designed the tax-filing flow used by 500K Canadians.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">UX Design Intern</p><span class="tp-date">Summer 2018</span></div><p class="tp-org">Ritual &middot; Toronto, ON</p><ul class="tp-ul"><li>Prototyped group ordering, now at 60K weekly orders.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Projects</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Fintech App Redesign</p><span class="tp-date">2023</span></div><p class="tp-org">Figma, Protopie</p><ul class="tp-ul"><li>Banking app for 1M+ users; App Store rating 3.9 &rarr; 4.7.</li></ul></div><div class="tp-entry"><div class="tp-head"><p class="tp-title">Open Design Tokens</p><span class="tp-date">2022</span></div><p class="tp-org">Style Dictionary, Figma API</p><ul class="tp-ul"><li>Token pipeline syncing Figma styles to iOS, Android and web.</li></ul></div></div><div class="tp-sec"><div class="tp-h2">Education</div><div class="tp-entry"><div class="tp-head"><p class="tp-title">University of Toronto</p><span class="tp-date">2014 &ndash; 2018</span></div><p class="tp-org">B.Des. in Interaction Design</p></div></div><div class="tp-sec"><div class="tp-h2">Skills</div><div class="tp-skill"><span class="tp-k">Design:</span> Figma, Prototyping, Design Systems</div><div class="tp-skill"><span class="tp-k">Research:</span> User Interviews, Usability Testing</div><div class="tp-skill"><span class="tp-k">Tools:</span> Protopie, Maze, Jira, HTML/CSS</div></div></div></div>
+                        <div class="hv-panel hv-slider s1"><div class="hv-sl-h">PAGE MARGINS: <b>1</b></div><div class="hv-sl"><span>&minus;</span><div class="hv-sl-track"><i style="left:18%"></i></div><span>+</span></div><div class="hv-sl-ends"><span>narrow</span><span>wide</span></div></div>
+                        <div class="hv-panel hv-slider s2"><div class="hv-sl-h">SECTION SPACING: <b>3</b></div><div class="hv-sl"><span>&minus;</span><div class="hv-sl-track"><i style="left:58%"></i></div><span>+</span></div><div class="hv-sl-ends"><span>compact</span><span>more space</span></div></div>
+                    </div>
+
+                    <div class="hv-dots" role="tablist" aria-label="Preview">
+                        <button type="button" class="on" aria-label="Tailoring"></button><button type="button" aria-label="ATS check"></button><button type="button" aria-label="Design"></button>
+                    </div>
+                    </div>
 
                     <div class="status-msg" id="heroStatusMsg">AI scan ready</div>
+                    <style>
+                    /* ── Hero preview stage: three scenes that tilt and rotate in turn
+                       (tailoring → ATS check → design). Desktop only; below 1025px
+                       only the live tailoring card shows, as before. */
+                    @media (min-width: 1025px) {
+                        .hv-stage { position: relative; height: 600px; perspective: 1400px; }
+                        .hv-scene {
+                            position: absolute; inset: 0;
+                            opacity: 0; pointer-events: none;
+                            transform: translateX(70px) rotate(7deg) scale(.94);
+                            transform-origin: 60% 70%;
+                            transition: opacity .7s ease, transform 1s cubic-bezier(.22,.8,.26,1);
+                        }
+                        .hv-scene.is-active { opacity: 1; pointer-events: auto; transform: none; }
+                        .hv-scene.is-leaving { opacity: 0; transform: translateX(-70px) rotate(-7deg) scale(.94); }
+                        .hv-scene.is-prep { transform: rotate(2.5deg) scale(.985) !important; transition: transform .3s cubic-bezier(.4,0,.2,1); }
+                        /* idle sway: the individual `rotate`/`translate` properties stack on
+                           top of each scene's own transform, so tilts and turns still apply. */
+                        .hv-scene.is-active { animation: hvSway 9s ease-in-out infinite; transform-style: preserve-3d; }
+                        @keyframes hvSway {
+                            0%, 100% { rotate: 1 -1 .15 4deg; translate: 0 0; }
+                            25%      { rotate: -.4 -1 0 3deg; translate: 0 -4px; }
+                            50%      { rotate: -1 1 -.15 4deg; translate: 0 -7px; }
+                            75%      { rotate: .4 1 0 3deg; translate: 0 -4px; }
+                        }
+                        .hv-scene .resume-card { height: 665px; }
+
+                        /* floating bits pop in after their scene arrives */
+                        .hv-float, .hv-tag, .hv-slider, .hv-fonts {
+                            opacity: 0; transform: translateY(14px) scale(.96);
+                            transition: opacity .5s ease, transform .6s cubic-bezier(.22,.8,.26,1);
+                        }
+                        .hv-ats { opacity: 0; transform: rotate(-9deg) translateY(14px); transition: opacity .5s ease .15s, transform .7s cubic-bezier(.22,.8,.26,1) .15s; }
+                        .is-active .hv-float, .is-active .hv-tag, .is-active .hv-slider, .is-active .hv-fonts { opacity: 1; transform: none; }
+                        .is-active .hv-ats { opacity: 1; transform: perspective(900px) rotateX(calc(var(--rx, 0deg) * .7)) rotateY(calc(var(--ry, 0deg) * .7)) rotate(-5deg); }
+                        .is-active .hv-fonts { transition-delay: .25s; }
+                        .is-active .hv-float { transition-delay: .9s; }
+                        .is-active .hv-tag-a, .is-active .hv-slider.s1 { transition-delay: .55s; }
+                        .is-active .hv-tag-b, .is-active .hv-slider.s2 { transition-delay: .75s; }
+
+                        .hv-panel, .hv-float {
+                            position: absolute; background: #fff; color: #1e293b;
+                            border-radius: 16px; border: 1px solid #e2e8f0;
+                            box-shadow: 0 24px 60px rgba(2, 6, 23, .45);
+                            font-family: "Inter", system-ui, sans-serif;
+                            text-align: left;
+                        }
+
+                        /* Scene 1: AI assistant popup overlapping the live card */
+                        .hv-ai { right: -34px; bottom: 70px; width: 250px; padding: 14px 16px; z-index: 3; }
+                        .hv-ai-head { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .06em; color: #312e81; margin-bottom: 8px; }
+                        .hv-dot { width: 8px; height: 8px; border-radius: 50%; background: #7c3aed; display: inline-block; }
+                        .hv-dot.red { background: #ef4444; }
+                        .hv-ai-item { display: flex; align-items: center; gap: 10px; padding: 8px 4px; font-size: 14px; color: #334155; border-top: 1px solid #f1f5f9; }
+                        .hv-ai-item svg { width: 17px; height: 17px; color: #7c3aed; flex: none; }
+
+                        /* mini resume pages (scenes 2 and 3) */
+                        .hv-mini {
+                            position: absolute; background: #fff; border-radius: 16px;
+                            box-shadow: 0 30px 70px rgba(2, 6, 23, .5);
+                            padding: 26px; color: #0f172a; font-family: Georgia, "Times New Roman", serif;
+                            overflow: hidden; text-align: left;
+                        }
+                        .mr-name { font-size: 22px; text-align: center; letter-spacing: .01em; }
+                        .mr-meta { font-size: 10.5px; text-align: center; color: #475569; margin: 4px 0 6px; font-family: "Inter", sans-serif; }
+                        .mr-h { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; border-bottom: 1px solid #1e293b; padding-bottom: 2px; margin: 12px 0 6px; }
+                        .mr-row { display: flex; justify-content: space-between; font-size: 11px; margin: 6px 0 4px; }
+                        .mr-row span { font-style: italic; color: #475569; }
+                        .mr-lines i, .mrb-side i { display: block; height: 5px; border-radius: 3px; background: #d6dbe4; margin: 5px 0; }
+                        .mr-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+                        .mr-ul { margin: 2px 0 4px; padding-left: 14px; font: 10.5px/1.45 "Inter", sans-serif; color: #334155; }
+                        .mr-ul li { margin: 2px 0; }
+                        .mr-ul b, .mr-p b, .mrb-p b { color: #0f172a; font-weight: 600; }
+                        .mr-p { margin: 2px 0 4px; font: 10.5px/1.45 "Inter", sans-serif; color: #334155; }
+                        .mrb-p { margin: 0 0 8px; font: 10.5px/1.45 "Inter", sans-serif; color: #cbd5e1; }
+                        .mrb-p b { color: #ffffff; }
+                        /* Mini pages use the exact look of resume template 20. */
+                        .hv-mini { font-family: "Calibri", "Carlito", "Arial", sans-serif; color: #1a1a1a; padding: 26px 28px; }
+                        .hv-mini .mr-name { font-size: 21px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; text-align: center; }
+                        .hv-mini .mr-role { font-size: 11.5px; font-weight: 600; color: #444; text-align: center; margin: 2px 0 3px; letter-spacing: .4px; }
+                        .hv-mini .mr-meta { font: 10px/1.5 "Calibri", "Carlito", "Arial", sans-serif; color: #444; text-align: center; margin: 0 0 4px; }
+                        .hv-mini .mr-meta a { color: #1155cc; }
+                        .hv-mini .mr-h { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #1a1a1a; border-bottom: 1.4px solid #000; padding-bottom: 2px; margin: 10px 0 5px; }
+                        .hv-mini .mr-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 11px; margin: 5px 0 0; }
+                        .hv-mini .mr-row b { font-weight: 700; color: #1a1a1a; }
+                        .hv-mini .mr-row span { font-style: normal; font-weight: 600; font-size: 10px; color: #1a1a1a; }
+                        .hv-mini .mr-sub { display: block; font-size: 10.5px; color: #444; margin: 1px 0 2px; }
+                        .hv-mini .mr-ul, .hv-mini .mr-p { font: 10.3px/1.4 "Calibri", "Carlito", "Arial", sans-serif; color: #444; }
+                        .hv-mini .mr-ul { padding-left: 15px; margin: 2px 0 3px; }
+                        .hv-mini .mr-ul b, .hv-mini .mr-p b { color: #1a1a1a; }
+                        .hv-mini .mr-skill { font-size: 10.3px; color: #444; margin-bottom: 2px; }
+                        .hv-mini .mr-skill b { color: #1a1a1a; font-weight: 700; }
+                        /* Mini pages: resume template 20 (same fonts, sizes, rules and
+                           spacing), laid out on an A4-ratio 560x792 sheet and scaled to the
+                           card by --s. Classes are tp-* so site-wide styles (header, .title,
+                           .meta, .section...) can't leak in. */
+                        .hv-mini { padding: 0 !important; overflow: hidden; }
+                        .hv-mini .tp {
+                            width: 560px; height: 792px; transform: scale(var(--s)); transform-origin: top left;
+                            padding: 24px 42px 30px; box-sizing: border-box; background: #fff; color: #1a1a1a; text-align: left;
+                            font-family: "Calibri", "Carlito", "Arial", "Helvetica Neue", sans-serif; font-size: 11.4px; line-height: 1.4;
+                        }
+                        .hv-mini .tp * { box-sizing: border-box; }
+                        /* zero-specificity reset so the template rules below always win */
+                        .hv-mini .tp :where(p, ul, li, div, span) { margin: 0; padding: 0; }
+                        .hv-mini .tp-top { text-align: center; padding-bottom: 6px; }
+                        .hv-mini .tp-name { font-size: 25px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; line-height: 1.3; }
+                        .hv-mini .tp-role { margin: 3px 0 5px; font-size: 12.5px; font-weight: 600; color: #444; letter-spacing: .4px; }
+                        .hv-mini .tp-contact { font-size: 10.8px; color: #444; line-height: 1.5; }
+                        .hv-mini .tp-ci { white-space: nowrap; }
+                        .hv-mini .tp-ci + .tp-ci::before { content: "  |  "; white-space: pre; color: #999; }
+                        .hv-mini .tp a { color: #1155cc; text-decoration: none; }
+                        .hv-mini .tp-sec { margin-top: 11px; }
+                        .hv-mini .tp-h2 { margin: 0 0 5px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1.4px solid #000; padding-bottom: 2px; }
+                        .hv-mini .tp-p { color: #444; text-align: justify; }
+                        .hv-mini .tp-entry { margin-bottom: 7px; }
+                        .hv-mini .tp-head { display: flex !important; flex-flow: row nowrap !important; justify-content: space-between !important; align-items: baseline !important; gap: 12px; height: auto !important; min-height: 0 !important; }
+                        .hv-mini .tp-head .tp-date { margin-left: auto; flex: none; }
+                        .hv-mini .tp-title { font-size: 12px; font-weight: 700; }
+                        .hv-mini .tp-org { margin-top: 1px; font-style: italic; color: #444; }
+                        .hv-mini .tp-date { font-size: 11px; font-weight: 600; white-space: nowrap; }
+                        .hv-mini .tp .tp-ul { margin: 3px 0 0; padding-left: 17px; list-style: disc; }
+                        .hv-mini .tp-ul li { margin-bottom: 1.5px; color: #444; }
+                        .hv-mini .tp-ul b { color: #1a1a1a; }
+                        .hv-mini .tp-skill { margin-bottom: 2.5px; color: #444; }
+                        .hv-mini .tp-k { font-weight: 700; color: #1a1a1a; }
+                        /* Scene 1's live card in the look of resume template 6
+                           ("Professional Classic"): LaTeX serif, big bold name, title-case
+                           headings over a full-width rule, italic dates and roles. */
+                        .hv-scene.is-active[data-scene="0"] { transform: none; }
+                        .hv-scene[data-scene="0"] .resume-card { position: absolute !important; left: 70px !important; top: -36px !important; width: 470px !important; height: 665px !important; min-height: 0 !important; margin: 0 !important; overflow: hidden !important; scale: .83; rotate: -2deg; transform-origin: center center !important; }
+                        .hv-scene[data-scene="0"] .hv-ai { right: -24px; bottom: 70px; }
+                        .hv-scene[data-scene="0"] .resume-card,
+                        .hv-scene[data-scene="0"] .resume-card * { font-family: "CMU Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif !important; }
+                        .hv-scene[data-scene="0"] .resume-card { color: #111 !important; padding: 26px 30px 22px !important; border-radius: 16px !important; }
+                        .hv-scene[data-scene="0"] .resume-card .r-name {
+                            font-size: 30px !important; font-weight: 700 !important; letter-spacing: 0 !important; text-transform: none !important;
+                            color: #111 !important; text-align: center !important; line-height: 1.15 !important; margin: 0 0 4px !important;
+                        }
+                        .hv-scene[data-scene="0"] .resume-card .r-title {
+                            font-size: 10.5px !important; color: #222 !important; text-align: center !important; margin: 0 0 4px !important; font-style: normal !important;
+                        }
+                        .hv-scene[data-scene="0"] .resume-card .r-section { margin-top: 8px !important; }
+                        .hv-scene[data-scene="0"] .resume-card .r-heading {
+                            font-size: 15px !important; font-weight: 600 !important; letter-spacing: 0 !important; text-transform: none !important; font-variant: normal !important;
+                            color: #111 !important; border-bottom: 1px solid #111 !important; padding-bottom: 1px !important; margin: 0 0 4px !important;
+                        }
+                        .hv-scene[data-scene="0"] .resume-card .r-summary { margin: 0 !important; font-size: 11px !important; line-height: 1.4 !important; color: #111 !important; }
+                        .hv-scene[data-scene="0"] .resume-card .r-exp-row { font-size: 11px !important; line-height: 1.35 !important; }
+                        .hv-scene[data-scene="0"] .resume-card .r-exp-title { font-weight: 700 !important; font-size: 11.5px !important; color: #111 !important; font-style: normal !important; }
+                        .hv-scene[data-scene="0"] .resume-card .r-exp-co,
+                        .hv-scene[data-scene="0"] .resume-card .r-exp-sub,
+                        .hv-scene[data-scene="0"] .resume-card .r-exp-loc { font-style: italic !important; font-weight: 400 !important; color: #111 !important; font-size: 11px !important; }
+                        .hv-scene[data-scene="0"] .resume-card .r-proj-tech { font-style: italic !important; font-weight: 400 !important; color: #111 !important; }
+                        .hv-scene[data-scene="0"] .resume-card .r-bullet-list,
+                        .hv-scene[data-scene="0"] .resume-card .r-bullet-list li,
+                        .hv-scene[data-scene="0"] .resume-card .r-skills-cat { font-size: 11px !important; line-height: 1.38 !important; color: #111 !important; }
+                        .hv-scene[data-scene="0"] .resume-card .r-skills-cat b { color: #111 !important; }
+                        /* Emily's page (design scene) uses resume template 19 instead:
+                           LaTeX serif, blue accent, small-caps headings, italic dates. */
+                        .hv-mini-b .tp { font-family: "CMU Serif", Georgia, "Times New Roman", serif; line-height: 1.25; padding: 26px 30px 22px; }
+                        .hv-mini-b .tp-top { margin-bottom: 8px; padding-bottom: 0; }
+                        .hv-mini-b .tp-name { font-size: 33px; font-weight: 700; letter-spacing: .4px; text-transform: none; color: #1a1a1a; }
+                        .hv-mini-b .tp-last { color: #2f5d8a; }
+                        .hv-mini-b .tp-role { margin: 2px 0 5px; font-size: 13px; font-weight: 400; font-style: italic; color: #2f5d8a; letter-spacing: 0; }
+                        .hv-mini-b .tp-contact { font-size: 11px; color: #1a1a1a; }
+                        .hv-mini-b .tp-ci + .tp-ci::before { color: #5b6b7a; }
+                        .hv-mini-b .tp a { color: inherit; }
+                        .hv-mini-b .tp-sec { margin-top: 7px; }
+                        .hv-mini-b .tp-h2 { margin: 0 0 3px; font-size: 14px; font-weight: 700; font-variant: small-caps; text-transform: none; letter-spacing: .7px; color: #2f5d8a; border-bottom: 1px solid #2f5d8a; padding-bottom: 1px; }
+                        .hv-mini-b .tp-p { color: #1a1a1a; margin-top: 2px; }
+                        .hv-mini-b .tp-entry { margin-bottom: 5px; }
+                        .hv-mini-b .tp-title { font-size: 12.4px; }
+                        .hv-mini-b .tp-org { font-size: 11.2px; color: #5b6b7a; }
+                        .hv-mini-b .tp-date { font-size: 11px; font-weight: 400; font-style: italic; }
+                        .hv-mini-b .tp .tp-ul { margin: 2px 0 0 15px; padding-left: 0; }
+                        .hv-mini-b .tp-ul li { color: #1a1a1a; margin-bottom: 1px; }
+                        .hv-mini-b .tp-skill { color: #1a1a1a; margin-bottom: 2px; }
+                        .mr-chips span { font-size: 10px; border: 1px solid #94a3b8; border-radius: 4px; padding: 2px 7px; font-family: "Inter", sans-serif; }
+
+                        /* Scene 2: ATS panel + tilted resume + tags */
+                        .hv-ats { left: -90px; top: 70px; width: 260px; padding: 18px 18px 16px; z-index: 0; }
+                        .hv-ats-title { font-size: 17px; font-weight: 600; text-align: center; margin-bottom: 12px; }
+                        .hv-ats-score { display: flex; align-items: center; gap: 10px; border: 1px solid #e2e8f0; border-radius: 999px; padding: 6px 12px; }
+                        .hv-ats-score b { color: #16a34a; font-size: 16px; }
+                        .hv-ats-track { flex: 1; height: 8px; border-radius: 4px; background: #e2e8f0; overflow: hidden; }
+                        .hv-ats-track span { display: block; height: 100%; width: 0; background: #22c55e; border-radius: 4px; transition: width 1.2s ease .5s; }
+                        .is-active .hv-ats-track span { width: 85%; }
+                        .hv-ats-label { font-size: 13px; font-weight: 600; margin: 14px 0 6px; }
+                        .hv-ats-input { font-size: 13px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px 10px; color: #334155; }
+                        .hv-ats-sub { font-size: 14px; font-weight: 600; margin: 14px 0 8px; }
+                        .hv-ats-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; }
+                        .hv-ats-h { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .05em; margin-bottom: 6px; }
+                        .hv-ats-row { font-size: 13px; padding: 3px 0; }
+                        .hv-ats-row.ok { color: #15803d; }
+                        .hv-ats-row.no { color: #b91c1c; text-decoration: line-through; opacity: .8; }
+                        .hv-mini-a { right: 40px; top: 20px; width: 390px; height: 552px; --s: .6964; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotate(4deg); transition: transform .25s ease-out; }
+                        .hv-tag {
+                            position: absolute; display: inline-flex; align-items: center; gap: 6px;
+                            padding: 7px 14px; border-radius: 10px; font: 600 13px "Inter", sans-serif;
+                            box-shadow: 0 10px 24px rgba(2, 6, 23, .35);
+                        }
+                        .hv-tag::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: currentColor; transform: rotate(45deg); }
+                        .hv-tag-a { right: 0; top: -4px; background: #c4b5fd; color: #3b0764; }
+                        .hv-tag-b { right: -24px; top: 40px; background: #bef264; color: #1a2e05; }
+
+                        /* Scene 3: two-column resume + font list + sliders */
+                        .hv-mini-b { right: 40px; top: 20px; width: 390px; height: 552px; --s: .6964; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotate(3deg); transition: transform .25s ease-out; }
+                        .mr-sub { display: flex; justify-content: space-between; font-size: 10.5px; color: #334155; margin: -2px 0 3px; }
+                        .mrb-side { background: #1e3a5f; color: #e2e8f0; padding: 26px 16px; }
+                        .mrb-side i { background: rgba(226, 232, 240, .3); }
+                        .mrb-name { font-size: 16px; letter-spacing: .08em; margin-bottom: 14px; }
+                        .mrb-sh { font: 700 10.5px "Inter", sans-serif; letter-spacing: .08em; text-transform: uppercase; margin: 14px 0 6px; color: #93c5fd; }
+                        .mrb-main { padding: 26px 18px; }
+                        .mrb-main .mr-meta { text-align: left; }
+                        .hv-fonts { left: -70px; top: 70px; width: 160px; padding: 14px 16px; z-index: 3; }
+                        .hv-fonts-h { font: 600 12px "Inter", sans-serif; letter-spacing: .1em; color: #64748b; margin-bottom: 8px; }
+                        .hv-font { font-size: 19px; padding: 6px 0; color: #334155; }
+                        .hv-font.on { color: #059669; font-weight: 600; }
+                        .hv-font.f2 { font-family: "Lato", "Segoe UI", sans-serif; }
+                        .hv-font.f3 { font-family: Georgia, serif; }
+                        .hv-font.f4 { font-family: "Trebuchet MS", sans-serif; }
+                        .hv-slider { left: -110px; width: 220px; z-index: 3; padding: 12px 16px 10px; }
+                        .hv-slider.s1 { top: 380px; }
+                        .hv-slider.s2 { top: 470px; left: -80px; }
+                        .hv-sl-h { font: 600 12.5px "Inter", sans-serif; letter-spacing: .06em; color: #334155; }
+                        .hv-sl { display: flex; align-items: center; gap: 10px; margin-top: 8px; color: #64748b; font-size: 18px; }
+                        .hv-sl-track { position: relative; flex: 1; height: 5px; border-radius: 3px; background: #cbd5e1; }
+                        .hv-sl-track i { position: absolute; top: 50%; width: 12px; height: 22px; border-radius: 4px; background: #10b981; transform: translate(-50%, -50%); }
+                        .hv-sl-ends { display: flex; justify-content: space-between; font: 12px "Inter", sans-serif; color: #64748b; margin-top: 4px; }
+
+                        /* scene dots */
+                        .hv-dots { position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); display: flex; gap: 8px; z-index: 5; }
+                        .hv-dots button { width: 8px; height: 8px; padding: 0; border: none; border-radius: 999px; background: rgba(255, 255, 255, .3); cursor: pointer; transition: width .3s ease, background .3s ease; }
+                        .hv-dots button.on { width: 26px; background: #a78bfa; }
+                    }
+                    @media (max-width: 1024px) {
+                        .hv-scene[data-scene="1"], .hv-scene[data-scene="2"], .hv-dots, .hv-float { display: none !important; }
+                    }
+                    @media (prefers-reduced-motion: reduce) {
+                        .hv-scene, .hv-float, .hv-tag, .hv-slider, .hv-fonts, .hv-ats, .hv-ats-track span { transition: none !important; animation: none !important; }
+                    }
+                    </style>
+                    <script>
+                    (function () {
+                        var stage = document.getElementById('heroStage');
+                        if (!stage) return;
+                        var scenes = stage.querySelectorAll('.hv-scene');
+                        var dots = stage.querySelectorAll('.hv-dots button');
+                        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                        var desktop = window.matchMedia('(min-width: 1025px)');
+                        var cur = 0, timer = null, HOLD = 6500;
+                        var busy = false;
+                        function show(n) {
+                            if (n === cur || busy) return;
+                            var prev = scenes[cur];
+                            if (!reduce) {
+                                busy = true;
+                                prev.classList.add('is-prep');
+                                setTimeout(function () { prev.classList.remove('is-prep'); busy = false; swap(prev, n); }, 380);
+                            } else swap(prev, n);
+                        }
+                        function swap(prev, n) {
+                            prev.classList.remove('is-active');
+                            prev.classList.add('is-leaving');
+                            prev.setAttribute('aria-hidden', 'true');
+                            setTimeout(function () { prev.classList.remove('is-leaving'); }, 900);
+                            cur = n;
+                            scenes[cur].classList.add('is-active');
+                            scenes[cur].setAttribute('aria-hidden', 'false');
+                            dots.forEach(function (d, i) { d.classList.toggle('on', i === cur); });
+                        }
+                        function next() { show((cur + 1) % scenes.length); }
+                        function stop() { if (timer) clearInterval(timer); timer = null; }
+                        function start() { stop(); if (!reduce && desktop.matches && !document.hidden) timer = setInterval(next, HOLD); }
+                        dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i); start(); }); });
+                        // Tilt is automatic (hvTilt in CSS), not mouse-driven.
+                        var tiltRaf = null, rx = 0, ry = 0;
+                        if (false) {
+                            stage.addEventListener('mousemove', function (e) {
+                                var r = stage.getBoundingClientRect();
+                                ry = ((e.clientX - r.left) / r.width - 0.5) * 8;
+                                rx = (0.5 - (e.clientY - r.top) / r.height) * 6;
+                                if (!tiltRaf) tiltRaf = requestAnimationFrame(function () {
+                                    tiltRaf = null;
+                                    stage.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+                                    stage.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+                                });
+                            });
+                            stage.addEventListener('mouseleave', function () {
+                                stage.style.setProperty('--rx', '0deg');
+                                stage.style.setProperty('--ry', '0deg');
+                            });
+                        }
+                        stage.addEventListener('mouseenter', stop);
+                        stage.addEventListener('mouseleave', start);
+                        document.addEventListener('visibilitychange', start);
+                        if (desktop.addEventListener) desktop.addEventListener('change', function () { if (!desktop.matches) show(0); start(); });
+                        start();
+                    })();
+                    </script>
                 </div>
             </div>
         </div>
@@ -3877,15 +4239,16 @@ details[open] .faq-chevron svg {
     onScroll();
   }
 
-  // Mouse-responsive parallax tilt on the hero resume preview card.
-  if (!reduce) {
+  // Mouse-responsive parallax tilt on the hero resume preview card. Off: the
+  // preview stage now tilts on its own (hvTilt in the stage styles).
+  if (false) {
     var card = document.getElementById('heroResumeCard');
     var scope = document.querySelector('.hero-visual');
     if (card && scope) {
       var raf = null, tx = 0, ty = 0;
       scope.addEventListener('mousemove', function (e) {
         var r = scope.getBoundingClientRect();
-        ty = ((e.clientX - r.left) / r.width - 0.5) * 7;    // rotateY
+        ty = ((e.clientX - r.left) / r.width - 0.5) * 8;    // rotateY
         tx = (0.5 - (e.clientY - r.top) / r.height) * 6;    // rotateX
         if (!raf) raf = requestAnimationFrame(function () {
           raf = null;
