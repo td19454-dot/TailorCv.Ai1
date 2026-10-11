@@ -934,58 +934,87 @@ header.navbar .logo .logo-word {
     .navbar .nav-mega-item .nav-mega-tx small { color: #9fb0d2 !important; -webkit-text-fill-color: #9fb0d2 !important; }
     .navbar .nav-mega-badge { padding: 1px 8px; font-size: 0.64rem; font-weight: 600; }
 
-    /* "Free ATS scan" card at the foot of the third column — kept quiet:
-       flat panel, small ring, slim solid button. */
+    /* "Free ATS scan" at the foot of the third column. No box around it: it
+       sits in line with the rows above (same 12px inset, same 46px icon
+       column), with a thin gradient score ring and the hero-style pill. */
     .navbar .nav-mega-promo {
-        margin: 12px 0 0;
-        padding: 14px;
+        margin: 10px 0 0;
+        padding: 18px 12px 12px;
         display: grid;
-        grid-template-columns: 40px 1fr;
-        gap: 4px 12px;
+        grid-template-columns: 46px 1fr;
+        gap: 4px 14px;
         align-items: center;
-        border-radius: 14px;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
         white-space: normal !important;
-        background: rgba(255, 255, 255, 0.035);
-        border: 1px solid rgba(99, 130, 200, 0.2);
-        transition: border-color .18s ease, background .18s ease;
+        background: none;
+        border: none;
+        /* Thin divider separating it from the interview rows, same tone as
+           the column dividers. */
+        border-top: 1px solid rgba(99, 130, 200, 0.16);
     }
-    .navbar .nav-mega-promo:hover { background: rgba(51, 146, 255, 0.07); border-color: rgba(99, 160, 255, 0.4); }
-    .navbar .nav-mega-promo-ring { position: relative; width: 40px; height: 40px; }
-    .navbar .nav-mega-promo-ring svg { width: 40px; height: 40px; transform: rotate(-90deg); }
-    .navbar .nav-mega-promo-ring .r-bg { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 4; }
+    .navbar .nav-mega-promo-ring { position: relative; width: 46px; height: 46px; }
+    .navbar .nav-mega-promo-ring svg {
+        width: 46px; height: 46px; transform: rotate(-90deg);
+        filter: drop-shadow(0 0 6px rgba(124, 170, 255, 0.35));
+    }
+    .navbar .nav-mega-promo-ring .r-bg { fill: rgba(255, 255, 255, 0.03); stroke: rgba(255, 255, 255, 0.08); stroke-width: 2.5; }
     .navbar .nav-mega-promo-ring .r-fg {
-        fill: none; stroke: #34d399; stroke-width: 4; stroke-linecap: round;
+        fill: none; stroke: url(#navMegaRingGrad); stroke-width: 2.5; stroke-linecap: round;
         stroke-dasharray: 113.1; stroke-dashoffset: 20.4;   /* 82% of 2πr (r=18) */
     }
     .navbar .nav-mega-promo-ring b {
         position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-        font-size: 0.78rem; font-weight: 600;
-        color: #eef3ff !important; -webkit-text-fill-color: #eef3ff !important;
+        font-size: 0.86rem; font-weight: 600; letter-spacing: -0.02em;
+        color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;
     }
     .navbar .nav-mega-promo-tx { display: flex; flex-direction: column; min-width: 0; }
-    .navbar .nav-mega-promo-tx strong { font-size: 0.92rem; font-weight: 600; color: #eef3ff !important; -webkit-text-fill-color: #eef3ff !important; }
-    .navbar .nav-mega-promo-tx small { font-size: 0.78rem; line-height: 1.4; margin-top: 1px; color: #93a3c4 !important; -webkit-text-fill-color: #93a3c4 !important; }
+    .navbar .nav-mega-promo-tx strong { font-size: 0.98rem; font-weight: 600; color: #eef3ff !important; -webkit-text-fill-color: #eef3ff !important; }
+    .navbar .nav-mega-promo-tx small { font-size: 0.78rem; line-height: 1.4; margin-top: 2px; color: #9fb0d2 !important; -webkit-text-fill-color: #93a3c4 !important; }
+    /* Pill in the shape of the homepage hero "Fix My Resume" button, in its
+       brand-purple state: purple pill, white text, white circle with a purple
+       ↗ arrow. Hover brightens it and nudges the arrow. */
     .navbar .nav-mega-promo-cta {
         grid-column: 1 / -1;
-        margin-top: 10px;
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 5px 5px 5px 18px;
+        border-radius: 999px;
+        border: none;
+        background: #7c3aed;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        font-size: 0.92rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        box-shadow: 0 8px 22px rgba(124, 58, 237, 0.35);
+        transition: background-color .25s ease, box-shadow .25s ease;
+    }
+    .navbar .nav-mega-promo-arrow {
+        flex: none;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 6px;
-        padding: 8px 12px;
-        border-radius: 9px;
-        background: #3392ff;
-        color: #fff !important;
-        -webkit-text-fill-color: #fff !important;
-        font-size: 0.84rem;
-        font-weight: 500;
-        transition: background .18s ease;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #ffffff;
+        color: #7c3aed !important;
+        transition: transform .25s ease;
     }
-    .navbar .nav-mega-promo:hover .nav-mega-promo-cta { background: #4aa0ff; }
-    .navbar .nav-mega-promo-cta svg { width: 14px; height: 14px; stroke: #fff !important; }
+    .navbar .nav-mega-promo-arrow svg { width: 52%; height: 52%; stroke: currentColor !important; }
+    .navbar .nav-mega-promo:hover .nav-mega-promo-cta,
+    .navbar .nav-mega-promo:focus-visible .nav-mega-promo-cta {
+        background: #8b4cf6;
+        box-shadow: 0 10px 28px rgba(124, 58, 237, 0.5);
+    }
+    .navbar .nav-mega-promo:hover .nav-mega-promo-arrow,
+    .navbar .nav-mega-promo:focus-visible .nav-mega-promo-arrow { transform: translate(2px, -2px); }
+    }
 
     /* Company menu shares the item styles; give it room for the tiles. */
     .navbar .nav-dropdown .nav-dropdown-menu.nav-company-menu {
