@@ -2632,7 +2632,7 @@
 
             <div class="pricing-preview-grid cols-3">
                 <!-- Free -->
-                <article class="pricing-preview-card basic">
+                <article class="pricing-preview-card basic card-link">
                     <p class="pricing-plan-name">Free</p>
                     <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">₹</span>0</p>
                     <p class="pricing-plan-note">Always free, no card needed.</p>
@@ -2642,8 +2642,15 @@
                         <li>2 free cover letters + mock interview</li>
                         <li>1 CV upload + 1 template download</li>
                     </ul>
-                    <a href="/login?next=/solutions" class="pricing-plan-btn" id="pricing_free_plan_start">Start free</a>
+                    {# /dashboard sends signed-out visitors to /login?next=/dashboard itself. #}
+                    <a href="/dashboard" class="pricing-plan-btn card-link-target" id="pricing_free_plan_start">Start free</a>
                 </article>
+                <style>
+                    /* Whole Free card is clickable: the button's ::after is
+                       stretched over the card (a "stretched link"). */
+                    .card-link { position: relative; cursor: pointer; }
+                    .card-link .card-link-target::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+                </style>
 
                 <!-- 7-Day Pass -->
                 <article class="pricing-preview-card">

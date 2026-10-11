@@ -5,7 +5,10 @@
       "PowerShell(& \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\.venv\\\\Scripts\\\\python.exe\" -c \"from jinja2 import Environment, FileSystemLoader; Environment\\(loader=FileSystemLoader\\(r'C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\templates'\\)\\).get_template\\('index.html'\\); print\\('jinja ok'\\)\")",
       "PowerShell(try { \\(Invoke-WebRequest -Uri \"http://127.0.0.1:8011/\" -UseBasicParsing -TimeoutSec 20\\).StatusCode } catch { $_.Exception.Message }; Get-Content \"$env:TEMP\\\\uv8011.err\" -Tail 8; Get-NetTCPConnection -LocalPort 8011 -State Listen -ErrorAction SilentlyContinue | Select-Object OwningProcess)",
       "Bash(curl -s --noproxy '*' -A \"Mozilla/5.0 Chrome/120\" \"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&text=TailorCV&display=swap\")",
-      "Read(//c/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/9385a7ea-80db-487a-8b07-2a3ec6b22872/scratchpad/**)"
+      "Read(//c/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/9385a7ea-80db-487a-8b07-2a3ec6b22872/scratchpad/**)",
+      "PowerShell(& \"C:\\\\Program Files\\\\nodejs\\\\node.exe\" --check \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\static\\\\app_shell.js\")",
+      "PowerShell(git -C \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\" diff --stat -- templates/dashboard.html static/app_shell.js static/app_shell.css templates/_nav.html)",
+      "PowerShell(& \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\.venv\\\\Scripts\\\\python.exe\" -c \"from jinja2 import Environment, FileSystemLoader; e=Environment\\(loader=FileSystemLoader\\(r'C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\templates'\\)\\); [e.get_template\\(t\\) for t in \\('index.html','pricing.html'\\)]; print\\('jinja ok'\\)\")"
     ]
   }
 }
