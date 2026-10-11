@@ -11969,7 +11969,18 @@ async def sitemap_xml():
     portfolio_urls = []
     _pf_db = get_db()
     try:
-        for pf in _pf_db.query(Portfolio).filter(Portfolio.published == True).all():  # noqa: E712
+        # Streamed, and only the columns used. data_json embeds base64 images
+        # (up to ~1 MB per portfolio), so .all() on full rows held every
+        # portfolio's blob plus its parsed dict at once — ~100 MB on top of a
+        # process already near the 512 MB instance limit, which OOM-killed it
+        # whenever a crawler went robots.txt -> sitemap.xml on a cold cache.
+        pf_rows = (
+            _pf_db.query(Portfolio.slug, Portfolio.handle, Portfolio.data_json,
+                         Portfolio.updated_at, Portfolio.created_at)
+            .filter(Portfolio.published == True)  # noqa: E712
+            .yield_per(10)
+        )
+        for pf in pf_rows:
             try:
                 pdata = json.loads(pf.data_json) if pf.data_json else {}
             except Exception:

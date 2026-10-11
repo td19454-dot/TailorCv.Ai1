@@ -62,4 +62,8 @@ window.__tcvIdentify = function (userId) {
   init().then(() => posthog.identify(String(userId)));
 };
 
-init();
+// No eager init(): this script is injected into every page (<all_urls>), and
+// posthog.init starts session recording, so initialising on load recorded an
+// idle replay of every tab whether or not the user ever opened the panel.
+// The first __tcvTrack/__tcvIdentify call — panel_opened at the earliest —
+// initialises PostHog instead.
