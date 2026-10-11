@@ -2092,6 +2092,212 @@
     </script>
 
 
+    <!-- Free tailored resume (upload → job → tailor) -->
+    <section class="free-tailor" id="free-tailor">
+        <div class="ft-wrap">
+            <div class="section-header"><h2 class="section-title">Get your first tailored resume <span class="st-hl">free</span></h2></div>
+            <p class="ft-sub">Upload your resume, add the job, and get an ATS-ready version tailored to it in about 30 seconds.</p>
+
+            <ol class="ft-steps" aria-label="Progress">
+                <li class="ft-step is-active" data-step="1"><span class="ft-dot"><b>1</b><i>&#10003;</i></span><span class="ft-lbl">Upload Resume</span></li>
+                <li class="ft-step" data-step="2"><span class="ft-dot"><b>2</b><i>&#10003;</i></span><span class="ft-lbl">Add Job</span></li>
+                <li class="ft-step" data-step="3"><span class="ft-dot"><b>3</b><i>&#10003;</i></span><span class="ft-lbl">Tailored Resume</span></li>
+            </ol>
+
+            <div class="ft-panel ft-upload" id="ftUpload">
+                <input type="file" id="ftFile" accept=".pdf,application/pdf" hidden>
+                <label for="ftFile" class="ft-drop" id="ftDrop">
+                    <span class="ft-drop-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9 13 3-3 3 3"/></svg></span>
+                    <span class="ft-drop-t">Drag &amp; drop your resume here, or <u>browse</u></span>
+                    <span class="ft-drop-s">PDF only &middot; your file stays private</span>
+                </label>
+            </div>
+
+                <div class="ft-file ft-chip" id="ftFileRow" hidden>
+                    <span class="ft-file-ic" aria-hidden="true">&#10003;</span>
+                    <span class="ft-file-name" id="ftFileName"></span>
+                    <button type="button" class="ft-file-x" id="ftFileX">Change</button>
+                </div>
+            <div class="ft-panel ft-job" id="ftJob" hidden>
+                <div class="ft-job-l">
+                    <div class="ft-job-h">Paste a job description below</div>
+                    <textarea id="ftJd" placeholder="Copy and paste a job description here" disabled></textarea>
+                </div>
+                <div class="ft-or" aria-hidden="true">OR</div>
+                <div class="ft-job-r">
+                    <div class="ft-job-h">Use a sample job description</div>
+                    <div class="ft-samples"><button type="button" class="ft-sample" data-jd="We are hiring a Software Engineer to design, build and maintain scalable backend services. You will work with Python and Go, design REST APIs, and deploy on AWS using Docker and Kubernetes. Experience with PostgreSQL, CI/CD pipelines and writing clean, tested code is required. You will collaborate with product and design teams and take part in code reviews.">Software Engineer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are looking for a Data Analyst to turn raw data into insights that drive business decisions. You will write SQL queries, build dashboards in Tableau or Power BI, and analyse trends using Python (pandas). Strong Excel skills, experience with A/B testing and the ability to present findings to non-technical stakeholders are essential.">Data Analyst<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are seeking a Product Manager to own the roadmap for our core product. You will gather customer insights, write clear product requirements, prioritise the backlog with engineering, and define success metrics. Experience running Agile ceremonies, analysing product data and launching features end to end is required.">Product Manager<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are hiring a Marketing Manager to plan and run multi-channel campaigns. You will own paid social, SEO and email programmes, manage a budget, and report on CAC, ROAS and conversion. Experience with HubSpot, Google Analytics and A/B testing landing pages is a must, along with strong copywriting skills.">Marketing Manager<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are looking for a Frontend Developer to build fast, accessible web interfaces. You will work with React, TypeScript and modern CSS, collaborate closely with designers in Figma, and write unit tests with Jest. Experience optimising Core Web Vitals and integrating REST or GraphQL APIs is preferred.">Frontend Developer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are seeking a Business Analyst to bridge business needs and technical solutions. You will gather and document requirements, map processes, write user stories, and support UAT. Strong SQL and Excel skills, experience with Jira and Confluence, and excellent stakeholder communication are required.">Business Analyst<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are hiring a Full Stack Developer to build features end to end. You will work with React and TypeScript on the frontend and Node.js or Python on the backend, design REST APIs, and manage PostgreSQL databases. Experience with AWS, Docker and automated testing is required.">Full Stack Developer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are looking for a DevOps Engineer to build and run our cloud infrastructure. You will manage AWS with Terraform, run Kubernetes clusters, build CI/CD pipelines in GitHub Actions, and set up monitoring with Prometheus and Grafana. Strong Linux and scripting skills are required.">DevOps Engineer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are seeking a Data Scientist to build machine learning models that improve our product. You will use Python, pandas and scikit-learn, design experiments, and communicate results to stakeholders. Experience with SQL, statistics, A/B testing and deploying models to production is preferred.">Data Scientist<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are hiring a Machine Learning Engineer to train, deploy and monitor ML models at scale. You will work with PyTorch, build feature pipelines, and serve models via APIs on AWS. Experience with MLOps tools, Docker and Kubernetes is required.">Machine Learning Engineer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are looking for a UX/UI Designer to design intuitive web and mobile experiences. You will run user research, create wireframes and high-fidelity prototypes in Figma, and maintain our design system. A strong portfolio and experience with usability testing are required.">UX/UI Designer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are seeking a Project Manager to lead cross-functional projects from kickoff to delivery. You will plan scope, timelines and budgets, run Agile ceremonies, manage risks and report to stakeholders. PMP or Scrum certification and experience with Jira are preferred.">Project Manager<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are hiring a Sales Executive to grow new business. You will prospect and qualify leads, run product demos, manage a pipeline in Salesforce, and close deals to hit quarterly targets. Strong negotiation and communication skills are essential.">Sales Executive<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are looking for a Customer Success Manager to own relationships with our key accounts. You will onboard customers, drive adoption, run quarterly business reviews and reduce churn. Experience with CRM tools and SaaS products is required.">Customer Success Manager<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are seeking a Financial Analyst to support budgeting, forecasting and reporting. You will build financial models in Excel, analyse variances, and present insights to leadership. Strong accounting knowledge and experience with SQL or BI tools are preferred.">Financial Analyst<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are hiring an HR Generalist to support the employee lifecycle. You will manage recruiting, onboarding, employee relations and HR policies, and maintain records in our HRIS. Knowledge of employment law and strong interpersonal skills are required.">HR Generalist<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are looking for a Graphic Designer to create visual content for digital and print. You will design social media graphics, marketing materials and brand assets using Adobe Illustrator, Photoshop and Figma. A strong portfolio and eye for typography are required.">Graphic Designer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are seeking a Content Writer to produce clear, engaging content. You will write blog posts, landing pages and email campaigns, optimise content for SEO, and work with marketing on strategy. Excellent writing skills and experience with a CMS are required.">Content Writer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are hiring a Mobile App Developer to build iOS and Android apps. You will work with React Native or Flutter, integrate REST APIs, and publish to the App Store and Google Play. Experience with mobile performance and testing is preferred.">Mobile App Developer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are looking for a QA Engineer to ensure product quality. You will write test plans, build automated tests with Selenium or Cypress, run regression testing, and track bugs in Jira. Experience with API testing and CI/CD is preferred.">QA Engineer<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are seeking a Cybersecurity Analyst to protect our systems and data. You will monitor security alerts, investigate incidents, run vulnerability scans, and improve security policies. Knowledge of SIEM tools, networking and certifications like Security+ are preferred.">Cybersecurity Analyst<span class="ft-tick" aria-hidden="true">&#10003;</span></button><button type="button" class="ft-sample" data-jd="We are hiring an Operations Manager to improve how our business runs. You will optimise processes, manage vendors and budgets, track KPIs, and lead a team of coordinators. Strong problem-solving skills and experience with Excel and project tools are required.">Operations Manager<span class="ft-tick" aria-hidden="true">&#10003;</span></button></div>
+                </div>
+            </div>
+
+            <div class="ft-go" id="ftGoWrap" hidden>
+                <button type="button" class="ft-btn" id="ftGo" disabled><span>Tailor my resume free</span><span class="ft-btn-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+                <p class="ft-note" id="ftNote"></p>
+            </div>
+        </div>
+    </section>
+    <style>
+        .free-tailor { position: relative; z-index: 1; padding: 64px 0 24px; }
+        .free-tailor .section-header { margin-bottom: 0 !important; }
+        .free-tailor .section-title { margin-bottom: 0 !important; }
+        .ft-wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; text-align: center; }
+        .ft-sub { margin: 12px auto 0; max-width: 620px; font: 400 18px/1.6 "Inter", sans-serif; color: #b9c6e4; }
+        .ft-steps { display: flex; justify-content: center; align-items: flex-start; gap: 0; margin: 28px 0 24px; padding: 0; list-style: none; }
+        .ft-step { position: relative; width: 170px; display: flex; flex-direction: column; align-items: center; gap: 10px; color: #6f80a8; }
+        .ft-step + .ft-step::before { content: ""; position: absolute; top: 24px; right: calc(50% + 33px); width: calc(100% - 66px); height: 2px; border-radius: 2px; background: rgba(255,255,255,.12); }
+        .ft-step.is-done + .ft-step::before { background: linear-gradient(90deg, #3b82f6, #818cf8); }
+        .ft-dot { position: relative; z-index: 1; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            border: 2px solid rgba(255,255,255,.18); background: #0b1430; font: 600 19px "Inter", sans-serif; color: #6f80a8; }
+        .ft-dot i { display: none; font-style: normal; }
+        .ft-step.is-active .ft-dot { background: #2563eb; border-color: #2563eb; color: #fff; box-shadow: 0 0 0 6px rgba(37,99,235,.18); }
+        .ft-step.is-done .ft-dot { background: #0f1d4a; border-color: #3b82f6; color: #93c5fd; }
+        .ft-step.is-done .ft-dot b { display: none; } .ft-step.is-done .ft-dot i { display: inline; }
+        .ft-lbl { font: 600 15.5px "Inter", sans-serif; }
+        .ft-step.is-active .ft-lbl, .ft-step.is-done .ft-lbl { color: #e6ecff; }
+        .ft-panel { text-align: left; border-radius: 18px; background: rgba(9,14,38,.55); border: 1px solid rgba(148,163,255,.16);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+        .ft-upload { padding: 14px; margin-bottom: 18px; }
+        .ft-drop { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 34px 20px; border-radius: 12px; cursor: pointer;
+            border: 2px dashed rgba(129,140,248,.45); background: rgba(99,102,241,.06); transition: background .2s ease, border-color .2s ease; text-align: center; }
+        .ft-drop:hover, .ft-drop.is-over { background: rgba(99,102,241,.14); border-color: #818cf8; }
+        .ft-drop-ic { width: 42px; height: 42px; color: #a5b4fc; } .ft-drop-ic svg { width: 100%; height: 100%; }
+        .ft-drop-t { font: 500 17px "Inter", sans-serif; color: #e6ecff; } .ft-drop-t u { color: #a5b4fc; }
+        .ft-drop-s { font: 400 14px "Inter", sans-serif; color: #8193b8; }
+        .ft-file { display: flex; align-items: center; gap: 12px; padding: 16px 18px; }
+        .ft-file[hidden], .ft-drop[hidden], .ft-panel[hidden], .ft-go[hidden] { display: none !important; }
+        .ft-chip { justify-content: center; padding: 0 0 14px; }
+        .ft-chip .ft-file-name { flex: 0 1 auto; }
+        .ft-job, .ft-upload { animation: ftIn .4s cubic-bezier(.22,.61,.36,1); }
+        @keyframes ftIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+        .ft-file-ic { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(52,211,153,.16); color: #34d399; font-weight: 700; }
+        .ft-file-name { flex: 1; min-width: 0; font: 500 16px "Inter", sans-serif; color: #e6ecff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .ft-file-x { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.18); color: #e6ecff; transition: background .2s ease; border-radius: 8px; padding: 7px 14px; font: 500 14px "Inter", sans-serif; cursor: pointer; }
+        .ft-job { display: grid; grid-template-columns: 1fr auto 340px; min-height: 330px; transition: opacity .3s ease; }
+        .ft-job[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+        .ft-job-h { padding: 16px 18px; font: 600 15.5px "Inter", sans-serif; color: #e6ecff; border-bottom: 1px solid rgba(255,255,255,.08); }
+        .ft-job-l { display: flex; flex-direction: column; }
+        .ft-job-l textarea { flex: 1; min-height: 260px; resize: none; border: none; outline: none; background: rgba(0,0,0,.18); border-bottom-left-radius: 18px; padding: 16px 18px;
+            font: 400 16px/1.6 "Inter", sans-serif; color: #e6ecff; }
+        .ft-job-l textarea::placeholder { color: #6f80a8; }
+        .ft-or { display: flex; align-items: flex-start; padding: 16px 10px; font: 600 14px "Inter", sans-serif; color: #8193b8;
+            border-left: 1px solid rgba(255,255,255,.08); }
+        .ft-job-r { border-left: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; }
+        .ft-samples { display: flex; flex-direction: column; padding: 6px 0; max-height: 300px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(148,163,255,.35) transparent; }
+        .ft-sample { display: flex; align-items: center; justify-content: space-between; text-align: left; padding: 11px 18px; border: none; background: none; outline: none; transition: background .2s ease, color .2s ease;
+            font: 400 16px "Inter", sans-serif; color: #c7d2ec; cursor: pointer; }
+        .ft-sample:hover { background: rgba(255,255,255,.05); color: #fff; }
+        .ft-sample .ft-tick { opacity: 0; color: #a5b4fc; font-weight: 700; }
+        .ft-sample.is-on { background: linear-gradient(90deg, rgba(99,102,241,.28), rgba(99,102,241,.04)); box-shadow: inset 3px 0 0 #818cf8 !important; color: #fff; outline: none !important; border: none !important; }
+        .ft-sample:focus-visible { box-shadow: inset 0 0 0 2px rgba(129,140,248,.7); } .ft-sample.is-on .ft-tick { opacity: 1; }
+        .ft-go { margin-top: 26px; }
+        /* Same button as the hero "Fix My Resume": white, black arrow tile, purple on hover. */
+        .ft-btn { display: inline-flex; align-items: center; gap: 1.6em; padding: .45em .45em .45em 1.6em; border: none; border-radius: 12px; cursor: pointer;
+            background: #fff; color: #000; font: 600 clamp(16px, 1.4vw, 19px)/1.2 "Inter", sans-serif; letter-spacing: -.01em;
+            box-shadow: 0 10px 30px rgba(255,255,255,.12); transition: background-color .25s ease, color .25s ease, box-shadow .25s ease, transform .15s ease; }
+        .ft-btn-arrow { width: 2.1em; height: 2.1em; border-radius: 9px; background: #000; color: #fff; display: inline-flex; align-items: center; justify-content: center;
+            transition: transform .25s ease, background-color .25s ease, color .25s ease; }
+        .ft-btn-arrow svg { width: 52%; height: 52%; }
+        .ft-btn:hover:not([disabled]), .ft-btn:focus-visible { background: #7c3aed; color: #fff; box-shadow: 0 12px 36px rgba(124,58,237,.45); outline: none; }
+        .ft-btn:hover:not([disabled]) .ft-btn-arrow, .ft-btn:focus-visible .ft-btn-arrow { background: #fff; color: #7c3aed; transform: translate(2px, -2px); }
+        .ft-btn:active:not([disabled]) { transform: scale(.97); }
+        .ft-btn[disabled] { opacity: .4; cursor: not-allowed; box-shadow: none; }
+        .ft-note:empty { display: none; }
+        .ft-note { margin: 12px 0 0; font: 400 14px "Inter", sans-serif; color: #8193b8; }
+        .ft-note.is-err { color: #fca5a5; }
+        @media (max-width: 860px) {
+            .free-tailor { padding-top: 60px; }
+            .ft-step { width: 110px; } .ft-lbl { font-size: 13.5px; }
+            .ft-job { grid-template-columns: 1fr; }
+            .ft-or { border-left: none; border-top: 1px solid rgba(255,255,255,.08); justify-content: center; padding: 8px; }
+            .ft-job-r { border-left: none; }
+            .ft-samples { max-height: 220px; }
+        }
+    </style>
+    <script>
+    (function () {
+        var file = null;
+        var $ = function (id) { return document.getElementById(id); };
+        var input = $('ftFile'), drop = $('ftDrop'), row = $('ftFileRow'), jd = $('ftJd'),
+            job = $('ftJob'), go = $('ftGo'), note = $('ftNote');
+        if (!input) return;
+        var steps = document.querySelectorAll('.ft-step');
+        function setStep(n) {
+            steps.forEach(function (el, i) {
+                el.classList.toggle('is-done', i + 1 < n);
+                el.classList.toggle('is-active', i + 1 === n);
+            });
+        }
+        function refresh() {
+            var hasJd = jd.value.trim().length > 40;
+            $('ftUpload').hidden = !!file;
+            job.hidden = !file;
+            row.hidden = !file;
+            $('ftGoWrap').hidden = !file;
+            jd.disabled = !file;
+            go.disabled = !(file && hasJd);
+            setStep(!file ? 1 : (hasJd ? 3 : 2));
+        }
+        function take(f) {
+            note.classList.remove('is-err');
+            note.textContent = '';
+            if (!f) return;
+            if (!/\.pdf$/i.test(f.name) && f.type !== 'application/pdf') {
+                note.textContent = 'Please upload your resume as a PDF.'; note.classList.add('is-err'); return;
+            }
+            file = f;
+            $('ftFileName').textContent = f.name;
+            refresh();
+            jd.focus();
+        }
+        input.addEventListener('change', function () { take(input.files[0]); });
+        ['dragenter', 'dragover'].forEach(function (ev) {
+            drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('is-over'); });
+        });
+        ['dragleave', 'drop'].forEach(function (ev) {
+            drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('is-over'); });
+        });
+        drop.addEventListener('drop', function (e) { take(e.dataTransfer.files[0]); });
+        $('ftFileX').addEventListener('click', function () {
+            file = null; input.value = ''; refresh();
+        });
+        jd.addEventListener('input', function () {
+            document.querySelectorAll('.ft-sample.is-on').forEach(function (b) { b.classList.remove('is-on'); });
+            refresh();
+        });
+        document.querySelectorAll('.ft-sample').forEach(function (b) {
+            b.addEventListener('click', function () {
+                document.querySelectorAll('.ft-sample.is-on').forEach(function (x) { x.classList.remove('is-on'); });
+                b.classList.add('is-on');
+                jd.value = b.getAttribute('data-jd');
+                refresh();
+            });
+        });
+        // Hand off to the real optimize flow: it restores these two keys on load.
+        go.addEventListener('click', function () {
+            if (go.disabled) return;
+            go.disabled = true;
+            var reader = new FileReader();
+            reader.onload = function () {
+                try {
+                    localStorage.setItem('tailorcv_jobDescription', jd.value.trim());
+                    localStorage.setItem('tailorcv_resumeFile', JSON.stringify({ data: reader.result, name: file.name, type: file.type || 'application/pdf' }));
+                } catch (e) {
+                    try { localStorage.removeItem('tailorcv_resumeFile'); } catch (_) {}
+                    note.textContent = 'That PDF is too large to carry over. Your job description is saved — upload the resume on the next page.';
+                    note.classList.add('is-err');
+                }
+                var loggedIn = false;
+                try { var u = JSON.parse(localStorage.getItem('tailorcv_user') || 'null'); loggedIn = !!(u && (u.email || u.name)); } catch (e) {}
+                if (typeof window.posthog !== 'undefined' && posthog.capture) { try { posthog.capture('home_free_tailor_started', { logged_in: loggedIn }); } catch (e) {} }
+                window.location.href = loggedIn ? '/optimize' : '/signup?next=' + encodeURIComponent('/optimize');
+            };
+            reader.onerror = function () { go.disabled = false; note.textContent = 'Could not read that file. Please try again.'; note.classList.add('is-err'); };
+            reader.readAsDataURL(file);
+        });
+        refresh();
+    })();
+    </script>
+
     <!-- How It Works Section -->
     <section class="how-it-works">
         <div class="container">
@@ -2420,163 +2626,163 @@
                 <h2 class="section-title">ATS-Friendly Resume <span class="st-hl">Templates</span></h2>
                 <p class="section-subtitle">Recruiter-ready, ATS-safe designs. Pick one and build or reformat your resume in minutes.</p>
             </div>
-            <div class="tc-carousel" id="tmplCarousel" data-start="5" aria-roledescription="carousel" aria-label="Resume templates">
+            <div class="tc-carousel" id="tmplCarousel" aria-roledescription="carousel" aria-label="Resume templates">
                 <button type="button" class="tc-arrow tc-prev" aria-label="Previous template">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
                 </button>
                 <div class="tc-viewport">
                     <div class="tc-track">
-                    <article class="tc-card" data-i="0">
-                        <h3 class="tc-name">Modern Professional</h3>
-                        <a class="tc-shot" href="/modify-cv?template=1" tabindex="-1">
-                            <img src="/static/pic1.webp?v=9" alt="Modern Professional resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="1">
-                        <h3 class="tc-name">Executive Minimal</h3>
-                        <a class="tc-shot" href="/modify-cv?template=2" tabindex="-1">
-                            <img src="/static/pic2.webp?v=9" alt="Executive Minimal resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="2">
-                        <h3 class="tc-name">Creative Tech</h3>
-                        <a class="tc-shot" href="/modify-cv?template=3" tabindex="-1">
-                            <img src="/static/pic3.webp?v=9" alt="Creative Tech resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="3">
-                        <h3 class="tc-name">Classic Academic</h3>
-                        <a class="tc-shot" href="/modify-cv?template=4" tabindex="-1">
-                            <img src="/static/pic4.webp?v=9" alt="Classic Academic resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="4">
-                        <h3 class="tc-name">Modern Elegant</h3>
-                        <a class="tc-shot" href="/modify-cv?template=5" tabindex="-1">
-                            <img src="/static/pic5.webp?v=9" alt="Modern Elegant resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
                     <article class="tc-card" data-i="5">
-                        <h3 class="tc-name">Professional Classic</h3>
+                        <h3 class="tc-name">Compact One-Page<span class="tc-tag">Best for 0&ndash;5 years experience</span></h3>
                         <a class="tc-shot" href="/modify-cv?template=6" tabindex="-1">
-                            <img src="/static/pic6.webp?v=9" alt="Professional Classic resume template" loading="lazy" width="1023" height="1537">
+                            <img src="/static/pic6.webp?v=9" alt="Compact One-Page resume template" loading="lazy" width="1023" height="1537">
                             <span class="tc-use">Use this template</span>
                         </a>
                     </article>
                     <article class="tc-card" data-i="6">
-                        <h3 class="tc-name">Navy Sidebar</h3>
+                        <h3 class="tc-name">Fresh Graduate<span class="tc-tag">Best for students & new grads</span></h3>
                         <a class="tc-shot" href="/modify-cv?template=7" tabindex="-1">
-                            <img src="/static/pic7.webp?v=9" alt="Navy Sidebar resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="7">
-                        <h3 class="tc-name">Teal Sidebar</h3>
-                        <a class="tc-shot" href="/modify-cv?template=8" tabindex="-1">
-                            <img src="/static/pic8.webp?v=9" alt="Teal Sidebar resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="8">
-                        <h3 class="tc-name">Burgundy Sidebar</h3>
-                        <a class="tc-shot" href="/modify-cv?template=9" tabindex="-1">
-                            <img src="/static/pic9.webp?v=9" alt="Burgundy Sidebar resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="9">
-                        <h3 class="tc-name">Slate Sidebar</h3>
-                        <a class="tc-shot" href="/modify-cv?template=10" tabindex="-1">
-                            <img src="/static/pic10.webp?v=9" alt="Slate Sidebar resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="10">
-                        <h3 class="tc-name">Forest Sidebar</h3>
-                        <a class="tc-shot" href="/modify-cv?template=11" tabindex="-1">
-                            <img src="/static/pic11.webp?v=9" alt="Forest Sidebar resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="11">
-                        <h3 class="tc-name">Skyline Blue</h3>
-                        <a class="tc-shot" href="/modify-cv?template=12" tabindex="-1">
-                            <img src="/static/pic12.webp?v=9" alt="Skyline Blue resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="12">
-                        <h3 class="tc-name">Gray Executive Panel</h3>
-                        <a class="tc-shot" href="/modify-cv?template=13" tabindex="-1">
-                            <img src="/static/pic13.webp?v=9" alt="Gray Executive Panel resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="13">
-                        <h3 class="tc-name">Olive Timeline Pro</h3>
-                        <a class="tc-shot" href="/modify-cv?template=14" tabindex="-1">
-                            <img src="/static/pic14.webp?v=9" alt="Olive Timeline Pro resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="14">
-                        <h3 class="tc-name">Aqua Timeline Modern</h3>
-                        <a class="tc-shot" href="/modify-cv?template=15" tabindex="-1">
-                            <img src="/static/pic15.webp?v=9" alt="Aqua Timeline Modern resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="15">
-                        <h3 class="tc-name">Navy Rail Editorial</h3>
-                        <a class="tc-shot" href="/modify-cv?template=16" tabindex="-1">
-                            <img src="/static/pic16.webp?v=9" alt="Navy Rail Editorial resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="16">
-                        <h3 class="tc-name">Executive Gray Board</h3>
-                        <a class="tc-shot" href="/modify-cv?template=17" tabindex="-1">
-                            <img src="/static/pic17.webp?v=9" alt="Executive Gray Board resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="17">
-                        <h3 class="tc-name">Classic Gray Professional</h3>
-                        <a class="tc-shot" href="/modify-cv?template=18" tabindex="-1">
-                            <img src="/static/pic18.webp?v=9" alt="Classic Gray Professional resume template" loading="lazy" width="1023" height="1537">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="18">
-                        <h3 class="tc-name">LaTeX Academic</h3>
-                        <a class="tc-shot" href="/modify-cv?template=19" tabindex="-1">
-                            <img src="/static/pic19.webp?v=9" alt="LaTeX Academic resume template" loading="lazy" width="1023" height="1537">
+                            <img src="/static/pic7.webp?v=9" alt="Fresh Graduate resume template" loading="lazy" width="1023" height="1537">
                             <span class="tc-use">Use this template</span>
                         </a>
                     </article>
                     <article class="tc-card" data-i="19">
-                        <h3 class="tc-name">ATS Friendly</h3>
+                        <h3 class="tc-name">ATS Friendly<span class="tc-tag">Best for strict ATS portals</span></h3>
                         <a class="tc-shot" href="/modify-cv?template=20" tabindex="-1">
                             <img src="/static/pic20.webp?v=9" alt="ATS Friendly resume template" loading="lazy" width="1023" height="1537">
                             <span class="tc-use">Use this template</span>
                         </a>
                     </article>
+                    <article class="tc-card" data-i="12">
+                        <h3 class="tc-name">Tech Specialist<span class="tc-tag">Best for engineers</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=13" tabindex="-1">
+                            <img src="/static/pic13.webp?v=9" alt="Tech Specialist resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="18">
+                        <h3 class="tc-name">LaTeX Academic<span class="tc-tag">Best for research & academia</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=19" tabindex="-1">
+                            <img src="/static/pic19.webp?v=9" alt="LaTeX Academic resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="7">
+                        <h3 class="tc-name">Skill Spotlight<span class="tc-tag">Best for skills-first resumes</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=8" tabindex="-1">
+                            <img src="/static/pic8.webp?v=9" alt="Skill Spotlight resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="21">
+                        <h3 class="tc-name">Academic Serif<span class="tc-tag">Best for academic CVs</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=22" tabindex="-1">
+                            <img src="/static/pic22.webp?v=9" alt="Academic Serif resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="14">
+                        <h3 class="tc-name">Product Manager Fit<span class="tc-tag">Best for product roles</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=15" tabindex="-1">
+                            <img src="/static/pic15.webp?v=9" alt="Product Manager Fit resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="0">
+                        <h3 class="tc-name">ATS Friendly Classic<span class="tc-tag">Best for any role</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=1" tabindex="-1">
+                            <img src="/static/pic1.webp?v=9" alt="ATS Friendly Classic resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="8">
+                        <h3 class="tc-name">Chronological Pro<span class="tc-tag">Best for steady career growth</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=9" tabindex="-1">
+                            <img src="/static/pic9.webp?v=9" alt="Chronological Pro resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
                     <article class="tc-card" data-i="20">
-                        <h3 class="tc-name">Modern Tech</h3>
+                        <h3 class="tc-name">Modern Tech<span class="tc-tag">Best for software roles</span></h3>
                         <a class="tc-shot" href="/modify-cv?template=21" tabindex="-1">
                             <img src="/static/pic21.webp?v=9" alt="Modern Tech resume template" loading="lazy" width="1023" height="1537">
                             <span class="tc-use">Use this template</span>
                         </a>
                     </article>
-                    <article class="tc-card" data-i="21">
-                        <h3 class="tc-name">Academic Serif</h3>
-                        <a class="tc-shot" href="/modify-cv?template=22" tabindex="-1">
-                            <img src="/static/pic22.webp?v=9" alt="Academic Serif resume template" loading="lazy" width="1023" height="1537">
+                    <article class="tc-card" data-i="15">
+                        <h3 class="tc-name">Marketing Highlight<span class="tc-tag">Best for marketing roles</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=16" tabindex="-1">
+                            <img src="/static/pic16.webp?v=9" alt="Marketing Highlight resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="2">
+                        <h3 class="tc-name">Professional Clean<span class="tc-tag">Best for corporate roles</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=3" tabindex="-1">
+                            <img src="/static/pic3.webp?v=9" alt="Professional Clean resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="9">
+                        <h3 class="tc-name">Creative Balanced<span class="tc-tag">Best for creative roles</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=10" tabindex="-1">
+                            <img src="/static/pic10.webp?v=9" alt="Creative Balanced resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="3">
+                        <h3 class="tc-name">Executive Edge<span class="tc-tag">Best for senior leaders</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=4" tabindex="-1">
+                            <img src="/static/pic4.webp?v=9" alt="Executive Edge resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="13">
+                        <h3 class="tc-name">Data Analyst Pro<span class="tc-tag">Best for data & analytics</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=14" tabindex="-1">
+                            <img src="/static/pic14.webp?v=9" alt="Data Analyst Pro resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="4">
+                        <h3 class="tc-name">Corporate Blue<span class="tc-tag">Best for business & finance</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=5" tabindex="-1">
+                            <img src="/static/pic5.webp?v=9" alt="Corporate Blue resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="10">
+                        <h3 class="tc-name">Elegant Serif<span class="tc-tag">Best for a classic, refined feel</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=11" tabindex="-1">
+                            <img src="/static/pic11.webp?v=9" alt="Elegant Serif resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="1">
+                        <h3 class="tc-name">Modern Minimal<span class="tc-tag">Best for clean, modern looks</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=2" tabindex="-1">
+                            <img src="/static/pic2.webp?v=9" alt="Modern Minimal resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="16">
+                        <h3 class="tc-name">Modern ATS Plus<span class="tc-tag">Best for tech & startups</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=17" tabindex="-1">
+                            <img src="/static/pic17.webp?v=9" alt="Modern ATS Plus resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="17">
+                        <h3 class="tc-name">Premium Executive<span class="tc-tag">Best for directors & VPs</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=18" tabindex="-1">
+                            <img src="/static/pic18.webp?v=9" alt="Premium Executive resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="11">
+                        <h3 class="tc-name">Impact Resume<span class="tc-tag">Best for results-driven roles</span></h3>
+                        <a class="tc-shot" href="/modify-cv?template=12" tabindex="-1">
+                            <img src="/static/pic12.webp?v=9" alt="Impact Resume resume template" loading="lazy" width="1023" height="1537">
                             <span class="tc-use">Use this template</span>
                         </a>
                     </article>
@@ -2586,85 +2792,82 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                 </button>
             </div>
-            <p class="ats-tmpl-all"><a href="/templates">Browse all 22 templates</a></p>
+            <div class="tc-feats"><div class="tc-feat"><span class="tc-feat-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4z"/></svg></span><p>ATS-friendly, recruiter-approved<br>resume designs</p></div><div class="tc-feat"><span class="tc-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s7 7.6 7 12a7 7 0 0 1-14 0c0-4.4 7-12 7-12z"/><path d="M12 3v19" /><path d="M12 22a7 7 0 0 0 7-7c0-4.4-7-12-7-12" fill="currentColor"/></svg></span><p>Customizable sections,<br>fonts and styles</p></div><div class="tc-feat"><span class="tc-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18"/></svg></span><p>One-page and multi-page<br>layouts for every career stage</p></div></div>
+            <p class="tc-browse"><a href="/templates">Browse all 22 resume templates <span aria-hidden="true">&rarr;</span></a></p>
         </div>
     </section>
     <style>
-        /* ─── Templates carousel: every template in one row, centre card enlarged ─── */
-        .tc-carousel { position: relative; margin: 40px auto 8px; max-width: 1400px; }
-        .tc-carousel .tc-card { background: none !important; border: none !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; }
-        .tc-carousel .tc-name { background: none !important; }
-        .tc-wide .tc-card { flex-basis: 460px; }
-        .tc-wide .tc-shot img { aspect-ratio: 2.08; object-fit: cover; object-position: top; }
-        .tc-demo { display: inline-block; margin-top: 14px; font: 600 14px "Inter", sans-serif; color: #7dd3fc; text-decoration: none; opacity: 0; transition: opacity .3s ease; }
-        .tc-card.is-active .tc-demo { opacity: 1; }
+        /* ─── Template carousels (resume + portfolio): Enhancv-style row of equal
+           cards on soft panels, scroll-snap track, round arrow buttons. ─── */
+        .tc-carousel { position: relative; width: min(1500px, calc(100vw - 48px)); margin: 44px auto 0; left: 50%; transform: translateX(-50%); }
+        .tc-viewport { overflow: hidden; }
+        .tc-track { display: flex; gap: 26px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+            padding: 6px 4px 18px; scrollbar-width: none; }
+        .tc-track::-webkit-scrollbar { display: none; }
+        .tc-carousel .tc-card { flex: 0 0 340px; scroll-snap-align: start; margin: 0; padding: 0; background: none; border: none; box-shadow: none;
+            opacity: 1; transform: none; text-align: left; }
+        .tc-shot { position: relative; display: block; padding: 26px 26px 0; border-radius: 26px; overflow: hidden;
+            background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+            border: 1px solid rgba(255,255,255,.10); transition: transform .3s ease, border-color .3s ease, background .3s ease; }
+        .tc-shot img { display: block; width: 100%; height: auto; aspect-ratio: .74; object-fit: cover; object-position: top; border-radius: 8px 8px 0 0; box-shadow: 0 -2px 30px rgba(0,0,0,.35); }
+        .tc-shot:hover { transform: translateY(-4px); border-color: rgba(124,92,255,.55); background: linear-gradient(180deg, rgba(124,92,255,.18), rgba(255,255,255,.05)); }
+        .tc-name { order: 2; margin: 16px 0 0; text-align: center; font: 600 17px/1.3 "Inter", system-ui, sans-serif; color: #f1f5ff; letter-spacing: -.01em; }
+        .tc-tag { display: block; margin-top: 4px; font: 400 13.5px "Inter", sans-serif; color: #8fa0c4; letter-spacing: 0; }
+        .tc-card { display: flex; flex-direction: column; }
+        .tc-use { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%) scale(.95); opacity: 0;
+            padding: 12px 22px; border-radius: 10px; background: #2563eb; color: #fff; font: 600 15px "Inter", sans-serif;
+            white-space: nowrap; box-shadow: 0 10px 28px rgba(37,99,235,.45); transition: opacity .2s ease, transform .2s ease; }
+        .tc-shot:hover .tc-use, .tc-shot:focus-visible .tc-use { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .tc-demo { order: 3; align-self: center; margin: 6px 0 0; font: 500 13.5px "Inter", sans-serif; color: #7dd3fc; text-decoration: none; }
         .tc-demo:hover { text-decoration: underline; }
-        @media (max-width: 768px) { .tc-wide .tc-card { flex-basis: 300px; } }
-        .tc-viewport { overflow: hidden; padding: 30px 0 40px;
-            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
-                    mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%); }
-        .tc-track { display: flex; gap: 28px; align-items: flex-end; transition: transform .55s cubic-bezier(.22,.8,.26,1); will-change: transform; }
-        .tc-card { flex: 0 0 280px; text-align: center; transition: transform .45s cubic-bezier(.22,.8,.26,1), opacity .45s ease; opacity: .72; transform: scale(.94); transform-origin: center bottom; }
-        .tc-card.is-active { opacity: 1; transform: scale(1.1); z-index: 2; }
-        .tc-name { margin: 0 0 14px; font: 500 18px "Inter", system-ui, sans-serif; color: #eef3ff; letter-spacing: -.01em; }
-        .tc-shot { position: relative; display: block; border-radius: 10px; overflow: hidden; background: #fff;
-            box-shadow: 0 18px 44px rgba(0, 0, 0, .45); border: 1px solid rgba(255, 255, 255, .08); }
-        .tc-card.is-active .tc-shot { box-shadow: 0 26px 60px rgba(0, 0, 0, .55), 0 0 0 2px rgba(124, 92, 255, .55); }
-        .tc-shot img { display: block; width: 100%; height: auto; }
-        .tc-use { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.95); opacity: 0;
-            padding: 12px 24px; border-radius: 10px; background: #2563eb; color: #fff; font: 600 15px "Inter", sans-serif;
-            white-space: nowrap; box-shadow: 0 10px 28px rgba(37, 99, 235, .45); transition: opacity .2s ease, transform .2s ease; }
-        .tc-shot:hover .tc-use, .tc-shot:focus-visible .tc-use, .tc-card.is-active .tc-shot:hover .tc-use { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        .tc-arrow { position: absolute; top: 50%; z-index: 5; width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
-            background: #2563eb; color: #fff; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 28px rgba(37, 99, 235, .45); transition: background .2s ease, transform .2s ease; }
-        .tc-arrow:hover { background: #1d4ed8; transform: scale(1.06); }
-        .tc-arrow svg { width: 24px; height: 24px; }
-        .tc-prev { left: 6%; } .tc-next { right: 6%; }
+        .tc-wide .tc-card { flex-basis: 560px; }
+        .tc-wide .tc-shot { padding: 16px 16px 0; border-radius: 20px; }
+        .tc-wide .tc-shot img { aspect-ratio: 1.75; object-fit: cover; object-position: top; }
+        .tc-arrow { position: absolute; top: 42%; z-index: 5; width: 54px; height: 54px; border-radius: 50%; border: none; cursor: pointer;
+            background: rgba(255,255,255,.92); color: #1e293b; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 28px rgba(0,0,0,.4); transition: transform .2s ease, opacity .2s ease; }
+        .tc-arrow:hover { transform: scale(1.07); }
+        .tc-arrow[disabled] { opacity: 0; pointer-events: none; }
+        .tc-arrow svg { width: 22px; height: 22px; }
+        .tc-prev { left: -8px; } .tc-next { right: -8px; }
+        .tc-feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 48px auto 0; text-align: center; }
+        .tc-feat-ic { display: inline-flex; width: 30px; height: 30px; color: #60a5fa; }
+        .tc-feat-ic svg { width: 100%; height: 100%; }
+        .tc-feat p { margin: 10px 0 0; font: 400 17px/1.55 "Inter", sans-serif; color: #c7d2ec; }
+        .tc-browse { text-align: center; margin: 28px 0 0; }
+        .tc-browse a { display: inline-flex; align-items: center; gap: 8px; font: 600 16px "Inter", sans-serif; color: #a5b4fc; text-decoration: none; }
+        .tc-browse a span { transition: transform .2s ease; }
+        .tc-browse a:hover { color: #c7d2fe; } .tc-browse a:hover span { transform: translateX(4px); }
         @media (max-width: 768px) {
-            .tc-card { flex-basis: 220px; }
-            .tc-name { font-size: 15px; }
-            .tc-arrow { width: 44px; height: 44px; }
-            .tc-prev { left: 8px; } .tc-next { right: 8px; }
+            .tc-carousel { width: calc(100vw - 24px); }
+            .tc-carousel .tc-card { flex-basis: 78vw; }
+            .tc-wide .tc-card { flex-basis: 86vw; }
+            .tc-shot { padding: 16px 16px 0; border-radius: 18px; }
+            .tc-arrow { width: 42px; height: 42px; }
+            .tc-feats { grid-template-columns: 1fr; gap: 18px; margin-top: 32px; }
+            .tc-feat p { font-size: 15.5px; }
         }
-        @media (prefers-reduced-motion: reduce) { .tc-track, .tc-card { transition: none; } }
     </style>
     <script>
     (function () {
+        function initAll() {
         [].forEach.call(document.querySelectorAll('.tc-carousel'), function (root) {
-        var vp = root.querySelector('.tc-viewport'), track = root.querySelector('.tc-track');
-        var cards = [].slice.call(track.querySelectorAll('.tc-card'));
-        var cur = parseInt(root.getAttribute('data-start'), 10) || 0;
-        function layout() {
-            var c = cards[cur], step = c.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 28);
-            var x = vp.clientWidth / 2 - (cur * step + c.offsetWidth / 2);
-            track.style.transform = 'translateX(' + x + 'px)';
-            cards.forEach(function (el, i) {
-                var on = i === cur;
-                el.classList.toggle('is-active', on);
-                el.querySelector('.tc-shot').tabIndex = on ? 0 : -1;
-            });
+            if (root.dataset.ready) return; root.dataset.ready = '1';
+            var track = root.querySelector('.tc-track');
+            var prev = root.querySelector('.tc-prev'), next = root.querySelector('.tc-next');
+            function step() { var c = track.querySelector('.tc-card'); return c ? c.offsetWidth + 26 : 300; }
+            function sync() {
+                prev.disabled = track.scrollLeft < 8;
+                next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 8;
+            }
+            prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+            next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+            track.addEventListener('scroll', sync, { passive: true });
+            window.addEventListener('resize', sync);
+            sync();
+        });
         }
-        function go(n) { cur = (n + cards.length) % cards.length; layout(); }
-        root.querySelector('.tc-prev').addEventListener('click', function () { go(cur - 1); });
-        root.querySelector('.tc-next').addEventListener('click', function () { go(cur + 1); });
-        cards.forEach(function (el, i) {
-            el.addEventListener('click', function (e) { if (i !== cur) { e.preventDefault(); go(i); } });
-        });
-        root.addEventListener('keydown', function (e) {
-            if (e.key === 'ArrowLeft') go(cur - 1);
-            if (e.key === 'ArrowRight') go(cur + 1);
-        });
-        var sx = null;
-        vp.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
-        vp.addEventListener('touchend', function (e) {
-            if (sx === null) return;
-            var dx = e.changedTouches[0].clientX - sx; sx = null;
-            if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1));
-        });
-        window.addEventListener('resize', layout);
-        layout();
-        });
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
     })();
     </script>
 
@@ -2712,136 +2915,187 @@
                 <h2 class="section-title">Portfolio Website <span class="st-hl">Templates</span></h2>
                 <p class="section-subtitle">Turn your resume into a live, shareable portfolio website. Pick a design, edit, and publish in minutes &mdash; no coding.</p>
             </div>
-            <div class="tc-carousel tc-wide" id="pfCarousel" data-start="0" aria-roledescription="carousel" aria-label="Portfolio website templates">
+            <div class="tc-carousel tc-wide" id="pfCarousel" aria-roledescription="carousel" aria-label="Portfolio website templates">
                 <button type="button" class="tc-arrow tc-prev" aria-label="Previous template">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
                 </button>
                 <div class="tc-viewport">
                     <div class="tc-track">
                     <article class="tc-card" data-i="0">
-                        <h3 class="tc-name">Editor</h3>
+                        <h3 class="tc-name">Editor<span class="tc-tag">VS Code-style, for developers</span></h3>
                         <a class="tc-shot" href="/portfolio" tabindex="-1">
                             <img src="/static/portfolio-previews/editor.png" alt="Editor portfolio website template" loading="lazy">
                             <span class="tc-use">Use this template</span>
                         </a>
-                        <a class="tc-demo" href="https://karen-taylor-5.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                        <a class="tc-demo" href="https://thetailorcv.com/trisha-debnath-18" target="_blank" rel="noopener">View demo &#8599;</a>
                     </article>
                     <article class="tc-card" data-i="1">
-                        <h3 class="tc-name">Wave</h3>
+                        <h3 class="tc-name">Wave<span class="tc-tag">Animated neon lines</span></h3>
                         <a class="tc-shot" href="/portfolio" tabindex="-1">
                             <img src="/static/portfolio-previews/wave.png" alt="Wave portfolio website template" loading="lazy">
                             <span class="tc-use">Use this template</span>
                         </a>
-                        <a class="tc-demo" href="https://trisha-debnath-8.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                        <a class="tc-demo" href="https://thetailorcv.com/trisha-debnath-2" target="_blank" rel="noopener">View demo &#8599;</a>
                     </article>
                     <article class="tc-card" data-i="2">
-                        <h3 class="tc-name">Codeflow</h3>
+                        <h3 class="tc-name">Clean<span class="tc-tag">Minimal and light</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/clean.png" alt="Clean portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-4" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="3">
+                        <h3 class="tc-name">Codeflow<span class="tc-tag">Blue, with scroll progress</span></h3>
                         <a class="tc-shot" href="/portfolio" tabindex="-1">
                             <img src="/static/portfolio-previews/codeflow.png" alt="Codeflow portfolio website template" loading="lazy">
                             <span class="tc-use">Use this template</span>
                         </a>
-                        <a class="tc-demo" href="https://joseph-harris.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-5" target="_blank" rel="noopener">View demo &#8599;</a>
                     </article>
-                    <article class="tc-card" data-i="3">
-                        <h3 class="tc-name">Nova</h3>
+                    <article class="tc-card" data-i="4">
+                        <h3 class="tc-name">Editorial<span class="tc-tag">Serif and elegant</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/editorial.png" alt="Editorial portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/trisha-debnath-3" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="5">
+                        <h3 class="tc-name">Nova<span class="tc-tag">Teal with animated particles</span></h3>
                         <a class="tc-shot" href="/portfolio" tabindex="-1">
                             <img src="/static/portfolio-previews/nova.png" alt="Nova portfolio website template" loading="lazy">
                             <span class="tc-use">Use this template</span>
                         </a>
-                        <a class="tc-demo" href="https://william-davis-7ef8.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                        <a class="tc-demo" href="https://thetailorcv.com/william-davis" target="_blank" rel="noopener">View demo &#8599;</a>
                     </article>
-                    <article class="tc-card" data-i="4">
-                        <h3 class="tc-name">Panels</h3>
+                    <article class="tc-card" data-i="6">
+                        <h3 class="tc-name">Panels<span class="tc-tag">Tabbed cards, light</span></h3>
                         <a class="tc-shot" href="/portfolio" tabindex="-1">
                             <img src="/static/portfolio-previews/panels.png" alt="Panels portfolio website template" loading="lazy">
                             <span class="tc-use">Use this template</span>
                         </a>
-                        <a class="tc-demo" href="https://mary-smith-2.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
-                    </article>
-                    <article class="tc-card" data-i="5">
-                        <h3 class="tc-name">GitHub</h3>
-                        <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/github.png" alt="GitHub portfolio website template" loading="lazy">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                        <a class="tc-demo" href="https://karen-taylor.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
-                    </article>
-                    <article class="tc-card" data-i="6">
-                        <h3 class="tc-name">Assistant</h3>
-                        <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/assistant.png" alt="Assistant portfolio website template" loading="lazy">
-                            <span class="tc-use">Use this template</span>
-                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-8" target="_blank" rel="noopener">View demo &#8599;</a>
                     </article>
                     <article class="tc-card" data-i="7">
-                        <h3 class="tc-name">Brutalist</h3>
-                        <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/brutalist.png" alt="Brutalist portfolio website template" loading="lazy">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="8">
-                        <h3 class="tc-name">Cloud</h3>
-                        <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/cloud.png" alt="Cloud portfolio website template" loading="lazy">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="9">
-                        <h3 class="tc-name">Console</h3>
-                        <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/console.png" alt="Console portfolio website template" loading="lazy">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="10">
-                        <h3 class="tc-name">Hacker</h3>
-                        <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/hacker.png" alt="Hacker portfolio website template" loading="lazy">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="11">
-                        <h3 class="tc-name">Magazine</h3>
-                        <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/magazine.png" alt="Magazine portfolio website template" loading="lazy">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="12">
-                        <h3 class="tc-name">Monolith</h3>
-                        <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/monolith.png" alt="Monolith portfolio website template" loading="lazy">
-                            <span class="tc-use">Use this template</span>
-                        </a>
-                    </article>
-                    <article class="tc-card" data-i="13">
-                        <h3 class="tc-name">Neon</h3>
+                        <h3 class="tc-name">Neon<span class="tc-tag">Cyberpunk glow</span></h3>
                         <a class="tc-shot" href="/portfolio" tabindex="-1">
                             <img src="/static/portfolio-previews/neon.png" alt="Neon portfolio website template" loading="lazy">
                             <span class="tc-use">Use this template</span>
                         </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/olivia" target="_blank" rel="noopener">View demo &#8599;</a>
                     </article>
-                    <article class="tc-card" data-i="14">
-                        <h3 class="tc-name">Parchment</h3>
+                    <article class="tc-card" data-i="8">
+                        <h3 class="tc-name">Vibrant<span class="tc-tag">Colourful, for designers</span></h3>
                         <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/parchment.png" alt="Parchment portfolio website template" loading="lazy">
+                            <img src="/static/portfolio-previews/vibrant.png" alt="Vibrant portfolio website template" loading="lazy">
                             <span class="tc-use">Use this template</span>
                         </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-9" target="_blank" rel="noopener">View demo &#8599;</a>
                     </article>
-                    <article class="tc-card" data-i="15">
-                        <h3 class="tc-name">Particle</h3>
+                    <article class="tc-card" data-i="9">
+                        <h3 class="tc-name">GitHub<span class="tc-tag">Profile, repos & contributions</span></h3>
                         <a class="tc-shot" href="/portfolio" tabindex="-1">
-                            <img src="/static/portfolio-previews/particle.png" alt="Particle portfolio website template" loading="lazy">
+                            <img src="/static/portfolio-previews/github.png" alt="GitHub portfolio website template" loading="lazy">
                             <span class="tc-use">Use this template</span>
                         </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/trisha-debnath-4" target="_blank" rel="noopener">View demo &#8599;</a>
                     </article>
-                    <article class="tc-card" data-i="16">
-                        <h3 class="tc-name">Snowcard</h3>
+                    <article class="tc-card" data-i="10">
+                        <h3 class="tc-name">Bold<span class="tc-tag">Big type on dark</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/bold.png" alt="Bold portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-23" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="11">
+                        <h3 class="tc-name">Snowcard<span class="tc-tag">Light, dotted tabs</span></h3>
                         <a class="tc-shot" href="/portfolio" tabindex="-1">
                             <img src="/static/portfolio-previews/snowcard.png" alt="Snowcard portfolio website template" loading="lazy">
                             <span class="tc-use">Use this template</span>
                         </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-2" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="12">
+                        <h3 class="tc-name">Terminal<span class="tc-tag">Developer mono style</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/terminal.png" alt="Terminal portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-22" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="13">
+                        <h3 class="tc-name">Magazine<span class="tc-tag">Editorial print layout</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/magazine.png" alt="Magazine portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/james-haunt" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="14">
+                        <h3 class="tc-name">Assistant<span class="tc-tag">ChatGPT-style AI chat</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/assistant.png" alt="Assistant portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-12" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="15">
+                        <h3 class="tc-name">Cloud<span class="tc-tag">Friendly dev landing, light/dark</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/cloud.png" alt="Cloud portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/trisha-debnath-7" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="16">
+                        <h3 class="tc-name">Brutalist<span class="tc-tag">Bold blocks, hard shadows</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/brutalist.png" alt="Brutalist portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/emma-martinez" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="17">
+                        <h3 class="tc-name">Particle<span class="tc-tag">Neon skill cards</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/particle.png" alt="Particle portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-10" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="18">
+                        <h3 class="tc-name">Parchment<span class="tc-tag">Classic scroll letter</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/parchment.png" alt="Parchment portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/karen-taylor" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="19">
+                        <h3 class="tc-name">Console<span class="tc-tag">Web-developer terminal</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/console.png" alt="Console portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-7" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="20">
+                        <h3 class="tc-name">Monolith<span class="tc-tag">Bold black and white</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/monolith.png" alt="Monolith portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/shubham-sarkar-3" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="21">
+                        <h3 class="tc-name">Hacker<span class="tc-tag">Green typed terminal</span></h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/hacker.png" alt="Hacker portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://thetailorcv.com/joseph-booth" target="_blank" rel="noopener">View demo &#8599;</a>
                     </article>
                     </div>
                 </div>
@@ -2849,7 +3103,6 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                 </button>
             </div>
-            <p class="pf-tmpl-all"><a href="/portfolio">Browse all portfolio templates</a></p>
         </div>
     </section>
 
