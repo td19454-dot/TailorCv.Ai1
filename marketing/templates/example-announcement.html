@@ -1,0 +1,22 @@
+---
+subject: {{ first_name }}, something new in TailorCV
+preheader: A quick update from the TailorCV team
+---
+{% extends "_base.html" %}
+{% block body %}
+<p>Hi {{ first_name }},</p>
+
+<p>This is an example campaign. Copy this file, rename it (the file name is the
+campaign name), and replace this text with your message.</p>
+
+<p>Available variables: first_name, name, email, campaign, base_url.</p>
+
+<p style="margin:28px 0;">
+  <a href="{{ base_url }}/dashboard?utm_source=email&utm_medium=marketing&utm_campaign={{ campaign }}"
+     style="background:#2563eb;color:#ffffff;padding:12px 22px;border-radius:6px;text-decoration:none;font-weight:bold;">
+    Open TailorCV
+  </a>
+</p>
+
+<p>Best,<br>Shubham<br>Co-Founder, TailorCV</p>
+{% endblock %}

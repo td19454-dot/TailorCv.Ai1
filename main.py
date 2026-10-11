@@ -89,6 +89,7 @@ from functions import (
 from extraction import process_resume
 import alerts
 import analytics
+import health_watch
 import skill_categories as skillcat
 from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User
 from sqlalchemy.exc import IntegrityError
@@ -195,6 +196,9 @@ async def csrf_middleware(request: Request, call_next):
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
         "/webhooks/ses-events",
+        # RFC 8058 one-click POST from the mail provider; authorised by the
+        # signed token in the URL, not by a session.
+        "/unsubscribe",
     }
     SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
 
@@ -261,6 +265,29 @@ async def portfolio_subdomain_router(request: Request, call_next):
     return await call_next(request)
 
 
+@app.middleware("http")
+async def failure_alert_middleware(request: Request, call_next):
+    """Alert on every 5xx response, and register the request with health_watch
+    so a memory spike or a hung request can name what was running.
+
+    The exception handlers below only see raised errors; several routes
+    (portfolio, personality card, save resume) return JSONResponse(500)
+    themselves and would otherwise fail silently. Uncaught exceptions propagate
+    past here to global_exception_handler, which alerts on its own."""
+    rid = health_watch.request_started(f"{request.method} {request.url.path}")
+    try:
+        response = await call_next(request)
+    finally:
+        health_watch.request_finished(rid)
+    if response.status_code >= 500 and not getattr(request.state, "failure_alerted", False):
+        alerts.notify(
+            f"{response.status_code} on {request.url.path}",
+            f"{request.method} {request.url.path} returned {response.status_code}.",
+            key=f"{response.status_code}:{request.url.path}",
+        )
+    return response
+
+
 # Add global exception handler for logging
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
@@ -289,6 +316,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
             str(exc.detail)[:300],
             key=f"{exc.status_code}:{request.url.path}",
         )
+        request.state.failure_alerted = True  # failure_alert_middleware: don't repeat
     accept = request.headers.get("accept", "")
     wants_html = "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest"
     if exc.status_code == 404 and wants_html:
@@ -875,8 +903,13 @@ async def _welcome_email_loop() -> None:
                 logger.info("sent %s delayed welcome email(s)", sent)
         except asyncio.CancelledError:
             raise
-        except Exception:
+        except Exception as exc:
             logger.exception("welcome email tick failed; continuing")
+            alerts.notify(
+                "Welcome email loop failed",
+                f"{type(exc).__name__}: {str(exc)[:300]}",
+                key="welcome:tick",
+            )
 
 
 def _sweep_orphaned_chromium() -> None:
@@ -979,7 +1012,8 @@ async def startup_event() -> None:
     _check_billing_config()
     analytics.init()
     _sweep_orphaned_chromium()
-    for loop_fn in (_auto_apply_reaper_loop, _welcome_email_loop):
+    health_watch.notify_startup()
+    for loop_fn in (_auto_apply_reaper_loop, _welcome_email_loop, health_watch.watch_loop):
         task = asyncio.create_task(loop_fn())
         _BACKGROUND_TASKS.add(task)
         task.add_done_callback(_BACKGROUND_TASKS.discard)
@@ -1112,24 +1146,9 @@ def is_pro(user) -> bool:
     return bool(until and until > datetime.utcnow())
 
 
-FREE_LIMITS: dict[str, int] = {
-    # Lowered from 3 to 2 to 1 as model costs rose, raised back to 2 (Oct 2026).
-    # The download popup reads this number rather than hardcoding it, so the
-    # copy follows automatically.
-    "ai_optimizations": 2,
-    "cover_letters": 2,
-    "linkedin_imports": 1,
-    "mock_interviews": 1,
-    "interview_questions": 1,
-    # Extension autofill: 10 applications filled, ever, then Pro. Priced low
-    # because a fill is one small LLM call in the user's own browser — unlike
-    # auto_applies, which has its own monthly cap (enforce_auto_apply_quota)
-    # because every run burns a cloud browser session and applies to Pro too.
-    "autofills": 10,
-    "ats_scans": 3,
-    "cv_uploads": 1,
-    "template_changes": 1,
-}
+# Lives in quota_limits.py so scripts (marketing segments) can read it
+# without importing the app.
+from quota_limits import FREE_LIMITS  # noqa: E402
 
 
 # 7-Day Pass: Pro for a week, but capped at this many resume tailorings per

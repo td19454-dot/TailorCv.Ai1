@@ -209,3 +209,6 @@ static/videos/raw/
 # keys, and a plain `.env` rule does not cover `.env.bak`/`.env.local`.
 .env*
 !.env.example
+
+# Rendered campaign previews contain real users' names and email addresses.
+marketing/previews/

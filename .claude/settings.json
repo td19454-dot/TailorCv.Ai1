@@ -20,7 +20,10 @@
       "Bash(venv/Scripts/python.exe -c ' *)",
       "Bash(python -c ' *)",
       "Bash(python -m py_compile main.py email_service.py)",
-      "Bash(python test_email_service.py)"
+      "Bash(python test_email_service.py)",
+      "Bash(.venv/Scripts/python.exe -c ' *)",
+      "Bash(.venv/Scripts/python.exe -m py_compile marketing_email.py)",
+      "Bash(.venv/Scripts/python.exe test_marketing_email.py)"
     ]
   }
 }

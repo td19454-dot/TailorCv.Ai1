@@ -21,6 +21,8 @@ python test_ats_scoring.py
 python test_project_links.py
 python test_portfolio.py
 python evals/test_graders.py
+python test_welcome_email.py
+python test_marketing_email.py
 
 # Syntax check after touching the big files
 python -m py_compile main.py functions.py
@@ -116,4 +118,4 @@ Server-rendered Jinja plus vanilla JS in [static/](static/) — no framework, no
 
 ## Environment
 
-`.env` at the project root. `OPENAI_API_KEY` is the only one required to run the core flow; `DATABASE_URL` falls back to SQLite. Also read: `SECRET_KEY`, `ENVIRONMENT`, `RESEND_API_KEY` (email), `GOOGLE_CLIENT_ID` (sign-in), `RAZORPAY_*`/`POLAR_*` (billing, region-split), `NETLIFY_AUTH_TOKEN` (portfolio deploy), `SENTRY_DSN`, `SHOW_OPTIMIZED_EDITOR`. Deployment is Render (`render.yaml`, `Procfile`); see [DEPLOYMENT.md](DEPLOYMENT.md).
+`.env` at the project root. `OPENAI_API_KEY` is the only one required to run the core flow; `DATABASE_URL` falls back to SQLite. Also read: `SECRET_KEY`, `ENVIRONMENT`, `SES_SMTP_*` + `EMAIL_FROM` / `EMAIL_FROM_WELCOME` (all email goes through Amazon SES SMTP in `email_service.py`), `GOOGLE_CLIENT_ID` (sign-in), `RAZORPAY_*`/`POLAR_*` (billing, region-split), `NETLIFY_AUTH_TOKEN` (portfolio deploy), `SENTRY_DSN`, `SHOW_OPTIMIZED_EDITOR`. Deployment is Render (`render.yaml`, `Procfile`); see [DEPLOYMENT.md](DEPLOYMENT.md).
