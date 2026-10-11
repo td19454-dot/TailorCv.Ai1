@@ -35,6 +35,7 @@ from auth import hash_password, verify_password
 from seo_roles import ROLE_SEO
 from database import Base, SessionLocal, engine
 from email_service import EmailConfigurationError, send_email
+from welcome_email import mark_first_activity, send_due_welcome_emails
 from functions import (
     ats_scoring,
     _extract_source_skill_list,
@@ -89,7 +90,7 @@ from extraction import process_resume
 import alerts
 import analytics
 import skill_categories as skillcat
-from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
+from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User
 from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
@@ -585,6 +586,12 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN email_complained_at TIMESTAMP" if is_pg else "ADD COLUMN email_complained_at TEXT")
     if "ext_auto_add_skills" not in cols:
         to_add.append("ADD COLUMN ext_auto_add_skills BOOLEAN DEFAULT FALSE" if is_pg else "ADD COLUMN ext_auto_add_skills BOOLEAN DEFAULT 0")
+    # No DEFAULT: existing users must stay NULL (= never eligible for the
+    # delayed welcome email, see welcome_email.py). New rows get it from the ORM.
+    if "created_at" not in cols:
+        to_add.append("ADD COLUMN created_at TIMESTAMP" if is_pg else "ADD COLUMN created_at TEXT")
+    if "first_activity_at" not in cols:
+        to_add.append("ADD COLUMN first_activity_at TIMESTAMP" if is_pg else "ADD COLUMN first_activity_at TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -847,6 +854,31 @@ async def _auto_apply_reaper_loop() -> None:
             logger.exception("auto-apply reaper tick failed; continuing")
 
 
+def _send_due_welcome_emails_tick() -> int:
+    db = SessionLocal()
+    try:
+        return send_due_welcome_emails(db)
+    finally:
+        db.close()
+
+
+async def _welcome_email_loop() -> None:
+    """Send the "Did we help you?" email 24h after a user's first real use.
+
+    Hourly, so it lands 24-25h after. Deliberately not tighter: one query per
+    tick wakes Neon, and the reaper above shows what a 210s poll costs."""
+    while True:
+        try:
+            await asyncio.sleep(3600)
+            sent = await asyncio.to_thread(_send_due_welcome_emails_tick)
+            if sent:
+                logger.info("sent %s delayed welcome email(s)", sent)
+        except asyncio.CancelledError:
+            raise
+        except Exception:
+            logger.exception("welcome email tick failed; continuing")
+
+
 def _sweep_orphaned_chromium() -> None:
     """Kill Playwright Chromiums left behind by a previous process.
 
@@ -947,9 +979,10 @@ async def startup_event() -> None:
     _check_billing_config()
     analytics.init()
     _sweep_orphaned_chromium()
-    task = asyncio.create_task(_auto_apply_reaper_loop())
-    _BACKGROUND_TASKS.add(task)
-    task.add_done_callback(_BACKGROUND_TASKS.discard)
+    for loop_fn in (_auto_apply_reaper_loop, _welcome_email_loop):
+        task = asyncio.create_task(loop_fn())
+        _BACKGROUND_TASKS.add(task)
+        task.add_done_callback(_BACKGROUND_TASKS.discard)
 
 
 @app.on_event("shutdown")
@@ -1893,59 +1926,6 @@ def send_signup_code_email(recipient_email: str, signup_code: str) -> bool:
     except EmailConfigurationError:
         logger.warning("Signup verification email skipped because SES SMTP is not configured")
         return False
-
-
-def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
-    try:
-        return send_email(
-            recipient_email,
-            "Did we help you?",
-            (
-                f"<p>Hi {recipient_name or 'there'},</p>"
-                "<p>I'm Shubham, Co-Founder of TailorCV.</p>"
-                "<p>Behind every resume is someone hoping for an opportunity—a student looking for their first break, "
-                "someone trying to switch careers, or someone simply looking for a better future.</p>"
-                "<p>As a student myself, I know how overwhelming that journey can feel. That's why I started building TailorCV.</p>"
-                "<p>I'd genuinely love to know whether we're creating something that truly helps job seekers.</p>"
-                "<p>If you have few minutes sometime this week, I'd really appreciate your honest feedback.</p>"
-                "<p>I'd especially love to know:</p>"
-                "<ul>"
-                "<li>Does TailorCV actually save you time and effort?</li>"
-                "<li>Would you use it in your job application workflow?</li>"
-                "<li>Was anything confusing or frustrating?</li>"
-                "<li>Would you consider paying for something like this?</li>"
-                "</ul>"
-                "<p>Explore the platform here:<br>"
-                "<a href='https://thetailorcv.com/dashboard'>https://thetailorcv.com/dashboard</a></p>"
-                "<p>While you're there, feel free to explore our AI Resume Builder, ATS Resume Analysis, "
-                "Portfolio Builder, Mock Interviews, Interview Question Generator, and Chrome Extension.</p>"
-                "<p><a href='https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb'>"
-                "TailorCV Chrome Extension</a></p>"
-                "<p>Every feature is being built with one goal in mind: making the job application process less stressful and more effective.</p>"
-                "<p>Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.</p>"
-                "<p>You can also reach me directly at +91 8240044652 (Whatsapp, text or call).</p>"
-                "<p>Thank you for your time and support!</p>"
-                "<p>Best,<br>Shubham<br>Co-Founder, TailorCV</p>"
-            ),
-            # Sent from a monitored inbox: the body asks the user to reply.
-            from_email=os.getenv("EMAIL_FROM_WELCOME"),
-        )
-    except EmailConfigurationError:
-        logger.warning("Welcome email skipped because SES SMTP is not configured")
-        return False
-
-
-def send_welcome_email_once(db: Session, user: User, source: str) -> None:
-    existing_log = db.query(WelcomeEmailLog).filter(WelcomeEmailLog.user_id == user.id).first()
-    if existing_log:
-        return
-
-    sent = send_welcome_email(user.email, user.name)
-    if not sent:
-        return
-
-    db.add(WelcomeEmailLog(user_id=user.id, source=source))
-    db.commit()
 
 
 def is_production_environment() -> bool:
@@ -6288,6 +6268,7 @@ async def api_interview_start_with_pdf(
             audio_b64 = base64.b64encode(audio_bytes).decode()
         except Exception:
             pass
+        mark_first_activity(uid)
         analytics.track(uid, "mock_interview_started",
                         {"interview_type": str(interview_type or "mixed")[:30], "num_questions": int(num_questions or 8)},
                         request=request)
@@ -9005,6 +8986,7 @@ async def extension_tailor_resume(request: Request):
             os.remove(pdf_path)
             pdf_path = None  # already cleaned up — skip the except-block cleanup below
 
+            mark_first_activity(user_id)
             analytics.track_optimization_completed(
                 user_id, request,
                 {**_opt_props, "skill_gap_count": len(gaps), "skills_added_count": len(added)},
@@ -10488,6 +10470,7 @@ async def generate_portfolio(request: Request):
 
         # Keyed on the portfolio id: re-generating from the same resume refreshes
         # the row, it isn't a new portfolio.
+        mark_first_activity(user_id)
         analytics.track(user_id, "portfolio_created", {"source": "resume", "theme": portfolio.theme},
                         request=request, dedupe_key=f"portfolio_created:{portfolio.id}")
         return JSONResponse({
@@ -10585,6 +10568,7 @@ async def build_portfolio(request: Request):
         db.add(portfolio)
         db.commit()
         db.refresh(portfolio)
+        mark_first_activity(user_id)
         analytics.track(user_id, "portfolio_created", {"source": "builder", "theme": theme},
                         request=request, dedupe_key=f"portfolio_created:{portfolio.id}")
         return JSONResponse({
@@ -12153,11 +12137,6 @@ async def signup_user(request: Request):
         db.refresh(user)
         analytics.track(user.id, "sign_up", {"method": "email"}, request=request)
 
-        try:
-            send_welcome_email_once(db, user, source="signup")
-        except Exception:
-            logger.exception("Failed to send signup welcome email")
-
         request.session['user_id'] = user.id
         request.session['email'] = user.email
 
@@ -12184,11 +12163,6 @@ async def login_user(request: Request):
         user = db.query(User).filter(User.email == payload.email.lower()).first()
         if not user or not verify_password(payload.password, user.hashed_password):
             raise HTTPException(status_code=401, detail="Invalid email or password")
-
-        try:
-            send_welcome_email_once(db, user, source="login")
-        except Exception:
-            logger.exception("Failed to send first-login welcome email")
 
         request.session['user_id'] = user.id
         request.session['email'] = user.email
@@ -12277,11 +12251,6 @@ async def login_with_google(request: Request):
             db.commit()
             db.refresh(user)
             analytics.track(user.id, "sign_up", {"method": "google"}, request=request)
-
-        try:
-            send_welcome_email_once(db, user, source="google_login")
-        except Exception:
-            logger.exception("Failed to send Google-login welcome email")
 
         request.session["user_id"] = user.id
         request.session["email"] = user.email
@@ -13399,6 +13368,7 @@ async def upload_resume(
             query_editor_mode = request.query_params.get("editor_mode", "").strip().lower() == "true"
             wants_editor_mode = header_editor_mode or form_editor_mode or query_editor_mode
             if wants_editor_mode:
+                mark_first_activity(user_id)
                 analytics.track_optimization_completed(user_id, request, {**_opt_done_props, "editor_mode": True})
                 return JSONResponse({
                     "success": True,
@@ -13427,6 +13397,7 @@ async def upload_resume(
             if not os.path.exists(pdf_path):
                 raise HTTPException(status_code=404, detail="PDF file not found after generation")
 
+            mark_first_activity(user_id)
             analytics.track_optimization_completed(user_id, request, {**_opt_done_props, "editor_mode": False})
             wants_meta = request.headers.get("X-Return-Meta", "").lower() == "true"
             if wants_meta:
@@ -14057,6 +14028,8 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
         if is_guest:
             mark_guest_ats_used(request, db)
             result["guest_scan"] = True
+        else:
+            mark_first_activity(request.session.get("user_id"))
 
         return result
     except HTTPException:
@@ -14436,6 +14409,7 @@ async def download_cv_pdf(request: Request):
                 optimize_size=("fonts",),
             )
         )
+        mark_first_activity(request.session.get("user_id"))
         return FileResponse(
             pdf_path,
             media_type="application/pdf",
@@ -14485,6 +14459,7 @@ async def download_cv_pdf_browser(
                 optimize_size=("fonts",),
             )
         )
+        mark_first_activity(request.session.get("user_id"))
         return FileResponse(
             pdf_path,
             media_type="application/pdf",
