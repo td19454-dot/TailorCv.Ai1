@@ -1927,6 +1927,8 @@ def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
                 "<p>Thank you for your time and support!</p>"
                 "<p>Best,<br>Shubham<br>Co-Founder, TailorCV</p>"
             ),
+            # Sent from a monitored inbox: the body asks the user to reply.
+            from_email=os.getenv("EMAIL_FROM_WELCOME"),
         )
     except EmailConfigurationError:
         logger.warning("Welcome email skipped because SES SMTP is not configured")

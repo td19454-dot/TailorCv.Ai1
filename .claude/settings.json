@@ -15,7 +15,12 @@
       "PowerShell(Get-ChildItem -Directory | Where-Object { Test-Path \"$\\($_.FullName\\)\\\\Scripts\\\\python.exe\" } | ForEach-Object { $_.Name }; \\(Get-Command python -ErrorAction SilentlyContinue\\).Source)",
       "PowerShell($env:ENVIRONMENT='development'; .venv\\\\Scripts\\\\python.exe -c \"import os,psutil,time; p=psutil.Process\\(\\); b=p.memory_info\\(\\).rss; t=time.time\\(\\); import main; print\\('after import MB', round\\(p.memory_info\\(\\).rss/1e6\\), 'baseline', round\\(b/1e6\\), 'secs', round\\(time.time\\(\\)-t,1\\)\\); import sys; heavy=[m for m in \\('torch','numpy','pandas','sklearn','sentence_transformers','playwright','weasyprint','spacy','transformers','scipy','tiktoken','openai','fitz','pdfplumber','PIL'\\) if m in sys.modules]; print\\('loaded:', heavy\\)\" 2>&1 | Select-String -NotMatch 'SAWarning|get_columns' | Select-Object -Last 8)",
       "PowerShell(.venv\\\\Scripts\\\\python.exe \"C:\\\\Users\\\\SHUBHA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1\\\\59573702-b9c3-4936-b40c-c163433c8835\\\\scratchpad\\\\chromemem.py\" 2>&1)",
-      "PowerShell(.venv\\\\Scripts\\\\python.exe \"C:\\\\Users\\\\SHUBHA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1\\\\59573702-b9c3-4936-b40c-c163433c8835\\\\scratchpad\\\\pfsize.py\" 2>&1)"
+      "PowerShell(.venv\\\\Scripts\\\\python.exe \"C:\\\\Users\\\\SHUBHA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1\\\\59573702-b9c3-4936-b40c-c163433c8835\\\\scratchpad\\\\pfsize.py\" 2>&1)",
+      "Bash(awk 'NR>=8 && NR<=14 || NR>=80 && NR<=90 { line=$0; if \\(match\\(line,/=/\\)\\) { k=substr\\(line,1,RSTART-1\\); v=substr\\(line,RSTART+1\\); printf \"%d: %s = %s \\(len %d\\)\\\\n\", NR, k, \\(k ~ /PASSWORD|KEY|USERNAME/ ? \"***\" : v\\), length\\(v\\) } else print NR\": \"line }' .env)",
+      "Bash(venv/Scripts/python.exe -c ' *)",
+      "Bash(python -c ' *)",
+      "Bash(python -m py_compile main.py email_service.py)",
+      "Bash(python test_email_service.py)"
     ]
   }
 }
