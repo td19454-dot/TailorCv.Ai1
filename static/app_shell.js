@@ -84,8 +84,9 @@
             +     '<div class="tcv-profile-head"><span class="tcv-pf-av">' + initial + '</span>'
             +       '<div class="tcv-pf-id"><strong>' + esc(user.name || "User") + '</strong><small>' + esc(user.email || "") + '</small></div></div>'
             +     '<div id="tcvProLinks"></div>'
-            +     '<a class="tcv-pf-link" href="/pricing">Get more scans</a>'
-            +     '<a class="tcv-pf-link" href="/pricing">Account Settings</a>'
+            // Same items, same order as the marketing nav (auth_nav.js) and the
+            // dashboard menu — keep all three in step.
+            +     '<a class="tcv-pf-link" href="/profile">My profile</a>'
             +     '<a class="tcv-pf-link" href="/privacy">Privacy Policy</a>'
             +     '<a class="tcv-pf-link" href="/terms">Terms</a>'
             // Logout lives here too: pages that hide the icon rail (e.g. the
