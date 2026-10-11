@@ -1538,7 +1538,7 @@
                             opacity: 0; pointer-events: none;
                             transform: translateX(70px) rotate(7deg) scale(.94);
                             transform-origin: 60% 70%;
-                            transition: opacity .7s ease, transform 1s cubic-bezier(.22,.8,.26,1);
+                            transition: opacity .55s ease, transform .75s cubic-bezier(.22,.8,.26,1);
                         }
                         .hv-scene.is-active { opacity: 1; pointer-events: auto; transform: none; }
                         .hv-scene.is-leaving { opacity: 0; transform: translateX(-70px) rotate(-7deg) scale(.94); }
@@ -1824,7 +1824,7 @@
                         var dots = stage.querySelectorAll('.hv-dots button');
                         var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                         var desktop = window.matchMedia('(min-width: 1025px)');
-                        var cur = 0, timer = null, HOLD = 6500;
+                        var cur = 0, timer = null, HOLD = 4000;
                         var busy = false;
                         function show(n) {
                             if (n === cur || busy) return;
@@ -1957,8 +1957,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 96px;
-            padding: 0 60px;
+            height: 64px;
+            padding: 0 44px;
             flex-shrink: 0;
             border-right: 1px solid rgba(255, 255, 255, 0.08);
             cursor: pointer;
@@ -1975,7 +1975,7 @@
         }
 
         .logo-item img {
-            height: 64px;
+            height: 40px;
             width: auto;
             object-fit: contain;
             max-width: 280px;
@@ -2091,286 +2091,6 @@
         })();
     </script>
 
-    <!-- Demo Video Section -->
-    <section class="demo-video-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Watch TailorCV <span class="st-hl">in action</span></h2>
-                <p class="section-subtitle">From raw resume to a tailored, ATS-ready PDF — the whole flow, start to
-                    finish.</p>
-            </div>
-
-            <div class="demo-video-card" data-reveal>
-                <!-- Plays with sound. Browsers only grant unmuted autoplay to sites the
-                     visitor already engages with, so the script below tries anyway and
-                     falls back to the play button when it's refused. No loop: the
-                     narration restarting on its own would be jarring. preload="none"
-                     keeps the file off the wire until the section scrolls into view. -->
-                <video id="demoVideo" class="demo-video" playsinline controls preload="none"
-                    poster="/static/videos/demo-poster.jpg">
-                    <source src="/static/videos/demo.mp4" type="video/mp4">
-                    Your browser doesn't support embedded video.
-                    <a href="/static/videos/demo.mp4">Download the demo</a> instead.
-                </video>
-
-                <!-- Fallback only: shown if the browser refuses autoplay (strict data
-                     saver settings, or reduced-motion). -->
-                <button type="button" class="demo-video-play" id="demoVideoPlay" hidden
-                    aria-label="Play the TailorCV demo">
-                    <span class="demo-video-play-ring">
-                        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
-                            <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
-                        </svg>
-                    </span>
-                    <span class="demo-video-play-label">Play demo</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        /* ─── Demo Video Section ─── */
-        .demo-video-section {
-            padding: 64px 0 72px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .demo-video-card {
-            position: relative;
-            max-width: 980px;
-            margin: 0 auto;
-            /* Matches the source recording (1920x1032) exactly, so object-fit
-               never crops the edges of the UI in frame. */
-            aspect-ratio: 1920 / 1032;
-            border-radius: 20px;
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            box-shadow: 0 24px 70px rgba(3, 8, 25, 0.55), 0 0 0 1px rgba(74, 106, 255, 0.08);
-        }
-
-        /* Accent glow ring, matching the template/pricing cards elsewhere on the page. */
-        .demo-video-card::after {
-            content: "";
-            position: absolute;
-            inset: -1px;
-            border-radius: 21px;
-            pointer-events: none;
-            background: linear-gradient(135deg, rgba(91, 140, 255, 0.35), transparent 42%, rgba(138, 140, 255, 0.28));
-            opacity: 0;
-            transition: opacity .35s ease;
-        }
-
-        .demo-video-card:hover::after {
-            opacity: 1;
-        }
-
-        .demo-video {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background: #050b1e;
-        }
-
-        /* Custom play overlay — sits on top until the video starts, so the section
-           still reads as a deliberate frame before a poster image exists. */
-        .demo-video-play {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            width: 100%;
-            border: 0;
-            cursor: pointer;
-            color: #ffffff;
-            font-family: inherit;
-            background: radial-gradient(ellipse at center, rgba(10, 20, 55, 0.35), rgba(5, 11, 30, 0.72));
-            transition: background .3s ease, opacity .3s ease;
-        }
-
-        .demo-video-play:hover {
-            background: radial-gradient(ellipse at center, rgba(10, 20, 55, 0.22), rgba(5, 11, 30, 0.62));
-        }
-
-        .demo-video-card.is-playing .demo-video-play {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .demo-video-play-ring {
-            display: grid;
-            place-items: center;
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 10px 34px rgba(74, 106, 255, 0.5);
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        .demo-video-play:hover .demo-video-play-ring {
-            transform: scale(1.07);
-            box-shadow: 0 14px 44px rgba(74, 106, 255, 0.62);
-        }
-
-        .demo-video-play-ring svg {
-            margin-left: 3px;
-            /* optically centre the triangle */
-        }
-
-        .demo-video-play-label {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: .02em;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* The overlay is a fallback now, so [hidden] has to beat the flex above. */
-        .demo-video-play[hidden] {
-            display: none;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .demo-video-card::after,
-            .demo-video-play,
-            .demo-video-play-ring {
-                transition: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .demo-video-section {
-                padding: 44px 0 52px;
-            }
-
-            .demo-video-card {
-                border-radius: 14px;
-            }
-
-            .demo-video-play-ring {
-                width: 60px;
-                height: 60px;
-            }
-        }
-    </style>
-
-    <script>
-        (function () {
-            var card = document.querySelector('.demo-video-card');
-            var video = document.getElementById('demoVideo');
-            var playBtn = document.getElementById('demoVideoPlay');
-            if (!card || !video || !playBtn) return;
-
-            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            function showFallback() {
-                playBtn.hidden = false;
-                card.classList.remove('is-playing');
-            }
-
-            function attemptPlay() {
-                var p = video.play();
-                if (p && typeof p.catch === 'function') {
-                    p.then(function () {
-                        playBtn.hidden = true;
-                        card.classList.add('is-playing');
-                    }).catch(showFallback);
-                }
-            }
-
-            playBtn.addEventListener('click', function () {
-                playBtn.hidden = true;
-                attemptPlay();
-            });
-
-            // Respect reduced-motion and browsers without IO: no autoplay, just offer
-            // the play button.
-            if (reduce || !('IntersectionObserver' in window)) {
-                showFallback();
-                return;
-            }
-
-            // Only start once the section is actually on screen — that's what keeps the
-            // file off the wire for visitors who never scroll this far. Since the video
-            // carries sound, a refused autoplay just surfaces the play button; and we
-            // always pause on the way out so audio never runs off-screen.
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        attemptPlay();
-                    } else if (!video.paused) {
-                        video.pause();
-                        playBtn.hidden = false;
-                    }
-                });
-            }, { threshold: 0.35 });
-
-            io.observe(card);
-        })();
-    </script>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">From Job Search Stress to Interview <span class="st-hl">Momentum</span></h2>
-                <p class="section-subtitle">See how TailorCV transforms the way you apply.</p>
-            </div>
-            <div class="career-compare">
-                <div class="career-col career-col-before">
-                    <p class="career-col-label">Before TailorCV</p>
-                    <h3 class="career-col-title">Applying more, hearing back less</h3>
-
-                    <article class="career-item">
-                        <h4 class="career-item-title">Low ATS Match</h4>
-                        <p class="career-item-text">Resumes miss role-specific keywords, so applications get filtered
-                            out early.</p>
-                    </article>
-                    <article class="career-item">
-                        <h4 class="career-item-title">Manual Rewriting</h4>
-                        <p class="career-item-text">Every new job post means re-editing bullets from scratch and losing
-                            hours.</p>
-                    </article>
-                    <article class="career-item">
-                        <h4 class="career-item-title">No Clear Direction</h4>
-                        <p class="career-item-text">It is hard to know what to change first to improve callback rate.
-                        </p>
-                    </article>
-                </div>
-
-                <div class="career-shift-arrow" aria-hidden="true">
-                    <span class="career-shift-dot">&#8594;</span>
-                </div>
-
-                <div class="career-col career-col-after">
-                    <p class="career-col-label">After TailorCV</p>
-                    <h3 class="career-col-title">Targeted applications that convert</h3>
-
-                    <article class="career-item">
-                        <h4 class="career-item-title">High ATS Alignment</h4>
-                        <p class="career-item-text">Get role-matched wording and keywords so your resume passes
-                            screening faster.</p>
-                    </article>
-                    <article class="career-item">
-                        <h4 class="career-item-title">2-Minute Optimization</h4>
-                        <p class="career-item-text">Paste JD, optimize instantly, and apply with confidence in minutes.
-                        </p>
-                    </article>
-                    <article class="career-item">
-                        <h4 class="career-item-title">Actionable Guidance</h4>
-                        <p class="career-item-text">See what changed, why it matters, and what boosts your interview
-                            chances.</p>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- How It Works Section -->
     <section class="how-it-works">
@@ -2700,35 +2420,254 @@
                 <h2 class="section-title">ATS-Friendly Resume <span class="st-hl">Templates</span></h2>
                 <p class="section-subtitle">Recruiter-ready, ATS-safe designs. Pick one and build or reformat your resume in minutes.</p>
             </div>
-            <div class="ats-tmpl-grid">
-                <article class="ats-tmpl-card">
-                    <a class="ats-tmpl-shot" href="/modify-cv?template=6"><img src="/static/pic6.webp?v=9" alt="Compact One-Page ATS resume template" loading="lazy"></a>
-                    <div class="ats-tmpl-body">
-                        <span class="ats-tmpl-name">Compact One-Page</span>
-                        <span class="ats-tmpl-tag">Clean single-page &middot; ATS-safe</span>
-                        <a class="ats-tmpl-btn" href="/modify-cv?template=6">Use this template</a>
+            <div class="tc-carousel" id="tmplCarousel" data-start="5" aria-roledescription="carousel" aria-label="Resume templates">
+                <button type="button" class="tc-arrow tc-prev" aria-label="Previous template">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="tc-viewport">
+                    <div class="tc-track">
+                    <article class="tc-card" data-i="0">
+                        <h3 class="tc-name">Modern Professional</h3>
+                        <a class="tc-shot" href="/modify-cv?template=1" tabindex="-1">
+                            <img src="/static/pic1.webp?v=9" alt="Modern Professional resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="1">
+                        <h3 class="tc-name">Executive Minimal</h3>
+                        <a class="tc-shot" href="/modify-cv?template=2" tabindex="-1">
+                            <img src="/static/pic2.webp?v=9" alt="Executive Minimal resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="2">
+                        <h3 class="tc-name">Creative Tech</h3>
+                        <a class="tc-shot" href="/modify-cv?template=3" tabindex="-1">
+                            <img src="/static/pic3.webp?v=9" alt="Creative Tech resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="3">
+                        <h3 class="tc-name">Classic Academic</h3>
+                        <a class="tc-shot" href="/modify-cv?template=4" tabindex="-1">
+                            <img src="/static/pic4.webp?v=9" alt="Classic Academic resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="4">
+                        <h3 class="tc-name">Modern Elegant</h3>
+                        <a class="tc-shot" href="/modify-cv?template=5" tabindex="-1">
+                            <img src="/static/pic5.webp?v=9" alt="Modern Elegant resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="5">
+                        <h3 class="tc-name">Professional Classic</h3>
+                        <a class="tc-shot" href="/modify-cv?template=6" tabindex="-1">
+                            <img src="/static/pic6.webp?v=9" alt="Professional Classic resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="6">
+                        <h3 class="tc-name">Navy Sidebar</h3>
+                        <a class="tc-shot" href="/modify-cv?template=7" tabindex="-1">
+                            <img src="/static/pic7.webp?v=9" alt="Navy Sidebar resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="7">
+                        <h3 class="tc-name">Teal Sidebar</h3>
+                        <a class="tc-shot" href="/modify-cv?template=8" tabindex="-1">
+                            <img src="/static/pic8.webp?v=9" alt="Teal Sidebar resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="8">
+                        <h3 class="tc-name">Burgundy Sidebar</h3>
+                        <a class="tc-shot" href="/modify-cv?template=9" tabindex="-1">
+                            <img src="/static/pic9.webp?v=9" alt="Burgundy Sidebar resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="9">
+                        <h3 class="tc-name">Slate Sidebar</h3>
+                        <a class="tc-shot" href="/modify-cv?template=10" tabindex="-1">
+                            <img src="/static/pic10.webp?v=9" alt="Slate Sidebar resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="10">
+                        <h3 class="tc-name">Forest Sidebar</h3>
+                        <a class="tc-shot" href="/modify-cv?template=11" tabindex="-1">
+                            <img src="/static/pic11.webp?v=9" alt="Forest Sidebar resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="11">
+                        <h3 class="tc-name">Skyline Blue</h3>
+                        <a class="tc-shot" href="/modify-cv?template=12" tabindex="-1">
+                            <img src="/static/pic12.webp?v=9" alt="Skyline Blue resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="12">
+                        <h3 class="tc-name">Gray Executive Panel</h3>
+                        <a class="tc-shot" href="/modify-cv?template=13" tabindex="-1">
+                            <img src="/static/pic13.webp?v=9" alt="Gray Executive Panel resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="13">
+                        <h3 class="tc-name">Olive Timeline Pro</h3>
+                        <a class="tc-shot" href="/modify-cv?template=14" tabindex="-1">
+                            <img src="/static/pic14.webp?v=9" alt="Olive Timeline Pro resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="14">
+                        <h3 class="tc-name">Aqua Timeline Modern</h3>
+                        <a class="tc-shot" href="/modify-cv?template=15" tabindex="-1">
+                            <img src="/static/pic15.webp?v=9" alt="Aqua Timeline Modern resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="15">
+                        <h3 class="tc-name">Navy Rail Editorial</h3>
+                        <a class="tc-shot" href="/modify-cv?template=16" tabindex="-1">
+                            <img src="/static/pic16.webp?v=9" alt="Navy Rail Editorial resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="16">
+                        <h3 class="tc-name">Executive Gray Board</h3>
+                        <a class="tc-shot" href="/modify-cv?template=17" tabindex="-1">
+                            <img src="/static/pic17.webp?v=9" alt="Executive Gray Board resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="17">
+                        <h3 class="tc-name">Classic Gray Professional</h3>
+                        <a class="tc-shot" href="/modify-cv?template=18" tabindex="-1">
+                            <img src="/static/pic18.webp?v=9" alt="Classic Gray Professional resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="18">
+                        <h3 class="tc-name">LaTeX Academic</h3>
+                        <a class="tc-shot" href="/modify-cv?template=19" tabindex="-1">
+                            <img src="/static/pic19.webp?v=9" alt="LaTeX Academic resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="19">
+                        <h3 class="tc-name">ATS Friendly</h3>
+                        <a class="tc-shot" href="/modify-cv?template=20" tabindex="-1">
+                            <img src="/static/pic20.webp?v=9" alt="ATS Friendly resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="20">
+                        <h3 class="tc-name">Modern Tech</h3>
+                        <a class="tc-shot" href="/modify-cv?template=21" tabindex="-1">
+                            <img src="/static/pic21.webp?v=9" alt="Modern Tech resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="21">
+                        <h3 class="tc-name">Academic Serif</h3>
+                        <a class="tc-shot" href="/modify-cv?template=22" tabindex="-1">
+                            <img src="/static/pic22.webp?v=9" alt="Academic Serif resume template" loading="lazy" width="1023" height="1537">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
                     </div>
-                </article>
-                <article class="ats-tmpl-card">
-                    <a class="ats-tmpl-shot" href="/modify-cv?template=19"><img src="/static/pic19.webp?v=9" alt="LaTeX Academic ATS resume template" loading="lazy"></a>
-                    <div class="ats-tmpl-body">
-                        <span class="ats-tmpl-name">LaTeX Academic</span>
-                        <span class="ats-tmpl-tag">LaTeX-style &middot; Academic</span>
-                        <a class="ats-tmpl-btn" href="/modify-cv?template=19">Use this template</a>
-                    </div>
-                </article>
-                <article class="ats-tmpl-card">
-                    <a class="ats-tmpl-shot" href="/modify-cv?template=22"><img src="/static/pic22.webp?v=9" alt="Academic Serif ATS resume template" loading="lazy"></a>
-                    <div class="ats-tmpl-body">
-                        <span class="ats-tmpl-name">Academic Serif</span>
-                        <span class="ats-tmpl-tag">Elegant serif &middot; Academic</span>
-                        <a class="ats-tmpl-btn" href="/modify-cv?template=22">Use this template</a>
-                    </div>
-                </article>
+                </div>
+                <button type="button" class="tc-arrow tc-next" aria-label="Next template">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
             </div>
-            <p class="ats-tmpl-all"><a href="/templates">Browse all templates</a></p>
+            <p class="ats-tmpl-all"><a href="/templates">Browse all 22 templates</a></p>
         </div>
     </section>
+    <style>
+        /* ─── Templates carousel: every template in one row, centre card enlarged ─── */
+        .tc-carousel { position: relative; margin: 40px auto 8px; max-width: 1400px; }
+        .tc-carousel .tc-card { background: none !important; border: none !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; }
+        .tc-carousel .tc-name { background: none !important; }
+        .tc-wide .tc-card { flex-basis: 460px; }
+        .tc-wide .tc-shot img { aspect-ratio: 2.08; object-fit: cover; object-position: top; }
+        .tc-demo { display: inline-block; margin-top: 14px; font: 600 14px "Inter", sans-serif; color: #7dd3fc; text-decoration: none; opacity: 0; transition: opacity .3s ease; }
+        .tc-card.is-active .tc-demo { opacity: 1; }
+        .tc-demo:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .tc-wide .tc-card { flex-basis: 300px; } }
+        .tc-viewport { overflow: hidden; padding: 30px 0 40px;
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+                    mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%); }
+        .tc-track { display: flex; gap: 28px; align-items: flex-end; transition: transform .55s cubic-bezier(.22,.8,.26,1); will-change: transform; }
+        .tc-card { flex: 0 0 280px; text-align: center; transition: transform .45s cubic-bezier(.22,.8,.26,1), opacity .45s ease; opacity: .72; transform: scale(.94); transform-origin: center bottom; }
+        .tc-card.is-active { opacity: 1; transform: scale(1.1); z-index: 2; }
+        .tc-name { margin: 0 0 14px; font: 500 18px "Inter", system-ui, sans-serif; color: #eef3ff; letter-spacing: -.01em; }
+        .tc-shot { position: relative; display: block; border-radius: 10px; overflow: hidden; background: #fff;
+            box-shadow: 0 18px 44px rgba(0, 0, 0, .45); border: 1px solid rgba(255, 255, 255, .08); }
+        .tc-card.is-active .tc-shot { box-shadow: 0 26px 60px rgba(0, 0, 0, .55), 0 0 0 2px rgba(124, 92, 255, .55); }
+        .tc-shot img { display: block; width: 100%; height: auto; }
+        .tc-use { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.95); opacity: 0;
+            padding: 12px 24px; border-radius: 10px; background: #2563eb; color: #fff; font: 600 15px "Inter", sans-serif;
+            white-space: nowrap; box-shadow: 0 10px 28px rgba(37, 99, 235, .45); transition: opacity .2s ease, transform .2s ease; }
+        .tc-shot:hover .tc-use, .tc-shot:focus-visible .tc-use, .tc-card.is-active .tc-shot:hover .tc-use { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .tc-arrow { position: absolute; top: 50%; z-index: 5; width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
+            background: #2563eb; color: #fff; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 28px rgba(37, 99, 235, .45); transition: background .2s ease, transform .2s ease; }
+        .tc-arrow:hover { background: #1d4ed8; transform: scale(1.06); }
+        .tc-arrow svg { width: 24px; height: 24px; }
+        .tc-prev { left: 6%; } .tc-next { right: 6%; }
+        @media (max-width: 768px) {
+            .tc-card { flex-basis: 220px; }
+            .tc-name { font-size: 15px; }
+            .tc-arrow { width: 44px; height: 44px; }
+            .tc-prev { left: 8px; } .tc-next { right: 8px; }
+        }
+        @media (prefers-reduced-motion: reduce) { .tc-track, .tc-card { transition: none; } }
+    </style>
+    <script>
+    (function () {
+        [].forEach.call(document.querySelectorAll('.tc-carousel'), function (root) {
+        var vp = root.querySelector('.tc-viewport'), track = root.querySelector('.tc-track');
+        var cards = [].slice.call(track.querySelectorAll('.tc-card'));
+        var cur = parseInt(root.getAttribute('data-start'), 10) || 0;
+        function layout() {
+            var c = cards[cur], step = c.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 28);
+            var x = vp.clientWidth / 2 - (cur * step + c.offsetWidth / 2);
+            track.style.transform = 'translateX(' + x + 'px)';
+            cards.forEach(function (el, i) {
+                var on = i === cur;
+                el.classList.toggle('is-active', on);
+                el.querySelector('.tc-shot').tabIndex = on ? 0 : -1;
+            });
+        }
+        function go(n) { cur = (n + cards.length) % cards.length; layout(); }
+        root.querySelector('.tc-prev').addEventListener('click', function () { go(cur - 1); });
+        root.querySelector('.tc-next').addEventListener('click', function () { go(cur + 1); });
+        cards.forEach(function (el, i) {
+            el.addEventListener('click', function (e) { if (i !== cur) { e.preventDefault(); go(i); } });
+        });
+        root.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') go(cur - 1);
+            if (e.key === 'ArrowRight') go(cur + 1);
+        });
+        var sx = null;
+        vp.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+        vp.addEventListener('touchend', function (e) {
+            if (sx === null) return;
+            var dx = e.changedTouches[0].clientX - sx; sx = null;
+            if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1));
+        });
+        window.addEventListener('resize', layout);
+        layout();
+        });
+    })();
+    </script>
+
 
     <!-- Portfolio Website Templates Section -->
     <style>
@@ -2773,67 +2712,142 @@
                 <h2 class="section-title">Portfolio Website <span class="st-hl">Templates</span></h2>
                 <p class="section-subtitle">Turn your resume into a live, shareable portfolio website. Pick a design, edit, and publish in minutes &mdash; no coding.</p>
             </div>
-            <div class="pf-tmpl-grid">
-                <article class="pf-tmpl-card">
-                    <a class="pf-tmpl-prev" href="/portfolio">
-                        <img class="pf-tmpl-img" src="/static/portfolio-previews/editor.png" alt="Editor portfolio website template" loading="lazy">
-                        <span class="pf-tmpl-use">Use this template →</span>
-                    </a>
-                    <div class="pf-tmpl-foot">
-                        <strong>Editor</strong>
-                        <a class="pf-tmpl-demo" href="https://karen-taylor-5.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
+            <div class="tc-carousel tc-wide" id="pfCarousel" data-start="0" aria-roledescription="carousel" aria-label="Portfolio website templates">
+                <button type="button" class="tc-arrow tc-prev" aria-label="Previous template">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="tc-viewport">
+                    <div class="tc-track">
+                    <article class="tc-card" data-i="0">
+                        <h3 class="tc-name">Editor</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/editor.png" alt="Editor portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://karen-taylor-5.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="1">
+                        <h3 class="tc-name">Wave</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/wave.png" alt="Wave portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://trisha-debnath-8.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="2">
+                        <h3 class="tc-name">Codeflow</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/codeflow.png" alt="Codeflow portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://joseph-harris.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="3">
+                        <h3 class="tc-name">Nova</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/nova.png" alt="Nova portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://william-davis-7ef8.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="4">
+                        <h3 class="tc-name">Panels</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/panels.png" alt="Panels portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://mary-smith-2.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="5">
+                        <h3 class="tc-name">GitHub</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/github.png" alt="GitHub portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                        <a class="tc-demo" href="https://karen-taylor.netlify.app/" target="_blank" rel="noopener">View demo &#8599;</a>
+                    </article>
+                    <article class="tc-card" data-i="6">
+                        <h3 class="tc-name">Assistant</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/assistant.png" alt="Assistant portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="7">
+                        <h3 class="tc-name">Brutalist</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/brutalist.png" alt="Brutalist portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="8">
+                        <h3 class="tc-name">Cloud</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/cloud.png" alt="Cloud portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="9">
+                        <h3 class="tc-name">Console</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/console.png" alt="Console portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="10">
+                        <h3 class="tc-name">Hacker</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/hacker.png" alt="Hacker portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="11">
+                        <h3 class="tc-name">Magazine</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/magazine.png" alt="Magazine portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="12">
+                        <h3 class="tc-name">Monolith</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/monolith.png" alt="Monolith portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="13">
+                        <h3 class="tc-name">Neon</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/neon.png" alt="Neon portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="14">
+                        <h3 class="tc-name">Parchment</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/parchment.png" alt="Parchment portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="15">
+                        <h3 class="tc-name">Particle</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/particle.png" alt="Particle portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
+                    <article class="tc-card" data-i="16">
+                        <h3 class="tc-name">Snowcard</h3>
+                        <a class="tc-shot" href="/portfolio" tabindex="-1">
+                            <img src="/static/portfolio-previews/snowcard.png" alt="Snowcard portfolio website template" loading="lazy">
+                            <span class="tc-use">Use this template</span>
+                        </a>
+                    </article>
                     </div>
-                </article>
-                <article class="pf-tmpl-card">
-                    <a class="pf-tmpl-prev" href="/portfolio">
-                        <img class="pf-tmpl-img" src="/static/portfolio-previews/wave.png" alt="Wave portfolio website template" loading="lazy">
-                        <span class="pf-tmpl-use">Use this template →</span>
-                    </a>
-                    <div class="pf-tmpl-foot">
-                        <strong>Wave</strong>
-                        <a class="pf-tmpl-demo" href="https://trisha-debnath-8.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
-                    </div>
-                </article>
-                <article class="pf-tmpl-card">
-                    <a class="pf-tmpl-prev" href="/portfolio">
-                        <img class="pf-tmpl-img" src="/static/portfolio-previews/codeflow.png" alt="Codeflow portfolio website template" loading="lazy">
-                        <span class="pf-tmpl-use">Use this template →</span>
-                    </a>
-                    <div class="pf-tmpl-foot">
-                        <strong>Codeflow</strong>
-                        <a class="pf-tmpl-demo" href="https://joseph-harris.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
-                    </div>
-                </article>
-                <article class="pf-tmpl-card">
-                    <a class="pf-tmpl-prev" href="/portfolio">
-                        <img class="pf-tmpl-img" src="/static/portfolio-previews/nova.png" alt="Nova portfolio website template" loading="lazy">
-                        <span class="pf-tmpl-use">Use this template →</span>
-                    </a>
-                    <div class="pf-tmpl-foot">
-                        <strong>Nova</strong>
-                        <a class="pf-tmpl-demo" href="https://william-davis-7ef8.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
-                    </div>
-                </article>
-                <article class="pf-tmpl-card">
-                    <a class="pf-tmpl-prev" href="/portfolio">
-                        <img class="pf-tmpl-img" src="/static/portfolio-previews/panels.png" alt="Panels portfolio website template" loading="lazy">
-                        <span class="pf-tmpl-use">Use this template →</span>
-                    </a>
-                    <div class="pf-tmpl-foot">
-                        <strong>Panels</strong>
-                        <a class="pf-tmpl-demo" href="https://mary-smith-2.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
-                    </div>
-                </article>
-                <article class="pf-tmpl-card">
-                    <a class="pf-tmpl-prev" href="/portfolio">
-                        <img class="pf-tmpl-img" src="/static/portfolio-previews/github.png" alt="GitHub portfolio website template" loading="lazy">
-                        <span class="pf-tmpl-use">Use this template →</span>
-                    </a>
-                    <div class="pf-tmpl-foot">
-                        <strong>GitHub</strong>
-                        <a class="pf-tmpl-demo" href="https://karen-taylor.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
-                    </div>
-                </article>
+                </div>
+                <button type="button" class="tc-arrow tc-next" aria-label="Next template">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
             </div>
             <p class="pf-tmpl-all"><a href="/portfolio">Browse all portfolio templates</a></p>
         </div>
@@ -2902,6 +2916,230 @@
     </section>
 
     <!-- Pricing Preview Section -->
+    <!-- Demo Video Section -->
+    <section class="demo-video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Watch TailorCV <span class="st-hl">in action</span></h2>
+                <p class="section-subtitle">From raw resume to a tailored, ATS-ready PDF — the whole flow, start to
+                    finish.</p>
+            </div>
+
+            <div class="demo-video-card" data-reveal>
+                <!-- Plays with sound. Browsers only grant unmuted autoplay to sites the
+                     visitor already engages with, so the script below tries anyway and
+                     falls back to the play button when it's refused. No loop: the
+                     narration restarting on its own would be jarring. preload="none"
+                     keeps the file off the wire until the section scrolls into view. -->
+                <video id="demoVideo" class="demo-video" playsinline controls preload="none"
+                    poster="/static/videos/demo-poster.jpg">
+                    <source src="/static/videos/demo.mp4" type="video/mp4">
+                    Your browser doesn't support embedded video.
+                    <a href="/static/videos/demo.mp4">Download the demo</a> instead.
+                </video>
+
+                <!-- Fallback only: shown if the browser refuses autoplay (strict data
+                     saver settings, or reduced-motion). -->
+                <button type="button" class="demo-video-play" id="demoVideoPlay" hidden
+                    aria-label="Play the TailorCV demo">
+                    <span class="demo-video-play-ring">
+                        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+                            <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <span class="demo-video-play-label">Play demo</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* ─── Demo Video Section ─── */
+        .demo-video-section {
+            padding: 64px 0 72px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .demo-video-card {
+            position: relative;
+            max-width: 980px;
+            margin: 0 auto;
+            /* Matches the source recording (1920x1032) exactly, so object-fit
+               never crops the edges of the UI in frame. */
+            aspect-ratio: 1920 / 1032;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            box-shadow: 0 24px 70px rgba(3, 8, 25, 0.55), 0 0 0 1px rgba(74, 106, 255, 0.08);
+        }
+
+        /* Accent glow ring, matching the template/pricing cards elsewhere on the page. */
+        .demo-video-card::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 21px;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(91, 140, 255, 0.35), transparent 42%, rgba(138, 140, 255, 0.28));
+            opacity: 0;
+            transition: opacity .35s ease;
+        }
+
+        .demo-video-card:hover::after {
+            opacity: 1;
+        }
+
+        .demo-video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #050b1e;
+        }
+
+        /* Custom play overlay — sits on top until the video starts, so the section
+           still reads as a deliberate frame before a poster image exists. */
+        .demo-video-play {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            width: 100%;
+            border: 0;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: inherit;
+            background: radial-gradient(ellipse at center, rgba(10, 20, 55, 0.35), rgba(5, 11, 30, 0.72));
+            transition: background .3s ease, opacity .3s ease;
+        }
+
+        .demo-video-play:hover {
+            background: radial-gradient(ellipse at center, rgba(10, 20, 55, 0.22), rgba(5, 11, 30, 0.62));
+        }
+
+        .demo-video-card.is-playing .demo-video-play {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .demo-video-play-ring {
+            display: grid;
+            place-items: center;
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 10px 34px rgba(74, 106, 255, 0.5);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .demo-video-play:hover .demo-video-play-ring {
+            transform: scale(1.07);
+            box-shadow: 0 14px 44px rgba(74, 106, 255, 0.62);
+        }
+
+        .demo-video-play-ring svg {
+            margin-left: 3px;
+            /* optically centre the triangle */
+        }
+
+        .demo-video-play-label {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .02em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* The overlay is a fallback now, so [hidden] has to beat the flex above. */
+        .demo-video-play[hidden] {
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .demo-video-card::after,
+            .demo-video-play,
+            .demo-video-play-ring {
+                transition: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .demo-video-section {
+                padding: 44px 0 52px;
+            }
+
+            .demo-video-card {
+                border-radius: 14px;
+            }
+
+            .demo-video-play-ring {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+
+    <script>
+        (function () {
+            var card = document.querySelector('.demo-video-card');
+            var video = document.getElementById('demoVideo');
+            var playBtn = document.getElementById('demoVideoPlay');
+            if (!card || !video || !playBtn) return;
+
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function showFallback() {
+                playBtn.hidden = false;
+                card.classList.remove('is-playing');
+            }
+
+            function attemptPlay() {
+                var p = video.play();
+                if (p && typeof p.catch === 'function') {
+                    p.then(function () {
+                        playBtn.hidden = true;
+                        card.classList.add('is-playing');
+                    }).catch(showFallback);
+                }
+            }
+
+            playBtn.addEventListener('click', function () {
+                playBtn.hidden = true;
+                attemptPlay();
+            });
+
+            // Respect reduced-motion and browsers without IO: no autoplay, just offer
+            // the play button.
+            if (reduce || !('IntersectionObserver' in window)) {
+                showFallback();
+                return;
+            }
+
+            // Only start once the section is actually on screen — that's what keeps the
+            // file off the wire for visitors who never scroll this far. Since the video
+            // carries sound, a refused autoplay just surfaces the play button; and we
+            // always pause on the way out so audio never runs off-screen.
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        attemptPlay();
+                    } else if (!video.paused) {
+                        video.pause();
+                        playBtn.hidden = false;
+                    }
+                });
+            }, { threshold: 0.35 });
+
+            io.observe(card);
+        })();
+    </script>
+
     <!-- Founder Section -->
     <section class="founder-section" style="padding: 80px 0; background: transparent;">
         <style>
