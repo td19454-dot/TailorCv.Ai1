@@ -740,6 +740,16 @@
         .cv2-solutions strong, .cv2-solutions b {
             font-weight: 500 !important;
         }
+
+        /* ATS scan progress: drop the outer results-card box (and its title
+           bar) so the neon progress card stands on its own. */
+        #ats-progress-section.results-card {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+        }
+        #ats-progress-section .results-header { display: none; }
     </style>
 </head>
 <body>
@@ -924,7 +934,7 @@
     <script src="/static/auth_nav.js?v=21"></script>
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/toast.js"></script>
-    <script src="/static/main_new.js?v=43"></script>
+    <script src="/static/main_new.js?v=45"></script>
 <script>
 (function () {
     const DEFAULT_JDS = {

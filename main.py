@@ -544,6 +544,10 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN pro_until TIMESTAMP" if is_pg else "ADD COLUMN pro_until TEXT")
     if "plan_provider" not in cols:
         to_add.append("ADD COLUMN plan_provider VARCHAR(20)" if is_pg else "ADD COLUMN plan_provider TEXT")
+    if "pro_plan" not in cols:
+        to_add.append("ADD COLUMN pro_plan VARCHAR(20)" if is_pg else "ADD COLUMN pro_plan TEXT")
+    if "pass_tailorings_used" not in cols:
+        to_add.append("ADD COLUMN pass_tailorings_used INTEGER")
     # Skills the candidate personally confirmed. TEXT on both dialects: it holds a
     # JSON list, not a value the database ever needs to interpret.
     if "confirmed_skills" not in cols:
@@ -1076,9 +1080,10 @@ def is_pro(user) -> bool:
 
 
 FREE_LIMITS: dict[str, int] = {
-    # Lowered from 3 to 2 to 1 as model costs rose. The download popup reads
-    # this number rather than hardcoding it, so the copy follows automatically.
-    "ai_optimizations": 1,
+    # Lowered from 3 to 2 to 1 as model costs rose, raised back to 2 (Oct 2026).
+    # The download popup reads this number rather than hardcoding it, so the
+    # copy follows automatically.
+    "ai_optimizations": 2,
     "cover_letters": 2,
     "linkedin_imports": 1,
     "mock_interviews": 1,
@@ -1092,6 +1097,37 @@ FREE_LIMITS: dict[str, int] = {
     "cv_uploads": 1,
     "template_changes": 1,
 }
+
+
+# 7-Day Pass: Pro for a week, but capped at this many resume tailorings per
+# pass so Monthly (unlimited) is the better deal. Shown on the pricing cards —
+# keep those in step with this number.
+WEEKLY_PASS_TAILOR_LIMIT = 25
+
+
+def take_weekly_pass_tailoring(db: Session, user) -> bool:
+    """Consume one tailoring for a Pro user on a 7-Day Pass.
+
+    Returns False when the pass allowance is used up. Monthly/yearly Pro users
+    (and anyone not on a pass) always get True and nothing is counted."""
+    if (getattr(user, "pro_plan", None) or "") != "weekly":
+        return True
+    locked = (db.query(User).filter(User.id == user.id)
+              .with_for_update().populate_existing().one())
+    used = int(locked.pass_tailorings_used or 0)
+    if used >= WEEKLY_PASS_TAILOR_LIMIT:
+        return False
+    locked.pass_tailorings_used = used + 1
+    db.commit()
+    return True
+
+
+def weekly_pass_limit_response() -> JSONResponse:
+    return JSONResponse(
+        status_code=402,
+        content={"allowed": False, "error": "weekly_pass_limit",
+                 "feature": "ai_optimizations", "limit": WEEKLY_PASS_TAILOR_LIMIT},
+    )
 
 
 def get_or_create_usage(db: Session, user_id: int, month: str) -> UsageRecord:
@@ -8809,6 +8845,8 @@ async def extension_tailor_resume(request: Request):
 
         # Atomically gate + consume the same ai_optimizations quota the website
         # enforces via /api/billing/checkout-download before /get-optimised-resume.
+        if is_pro(user) and not take_weekly_pass_tailoring(db, user):
+            return weekly_pass_limit_response()
         if not is_pro(user):
             _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
             _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()} if _beta_env else set()
@@ -12281,6 +12319,10 @@ async def auth_me(request: Request):
             "is_pro": is_pro(user),
             "pro_until": user.pro_until.isoformat() if user.pro_until else None,
             "plan_provider": user.plan_provider,
+            # 7-Day Pass state, for the "continue with Monthly" upsell.
+            "pro_plan": user.pro_plan,
+            "pass_tailorings_used": int(user.pass_tailorings_used or 0),
+            "pass_tailor_limit": WEEKLY_PASS_TAILOR_LIMIT,
         }
     finally:
         db.close()
@@ -12304,6 +12346,8 @@ async def checkout_download(request: Request):
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
         if is_pro(user):
+            if not take_weekly_pass_tailoring(db, user):
+                return weekly_pass_limit_response()
             return JSONResponse({"allowed": True, "is_pro": True})
         _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
         if _beta_env:

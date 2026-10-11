@@ -1366,6 +1366,10 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
        is rendered into the page by the server; fall back to the free limit only
        when it is genuinely unavailable, and never claim a count of zero. */
     function proDownloadSubline() {
+        if (window.__tcvPassLimit) {
+            return "You've used all <strong>" + window.__tcvPassLimit + " tailorings</strong> in your " +
+                   "7-Day Pass. Go <strong>Monthly</strong> for unlimited tailoring.";
+        }
         var used = parseInt(window.DOWNLOADS_USED, 10);
         var limit = parseInt(window.FREE_DOWNLOAD_LIMIT, 10);
         if (!isFinite(used) || used < 0) used = isFinite(limit) ? limit : 0;
@@ -1630,6 +1634,11 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
                     return;
                 }
                 if (gateRes.status === 402) {
+                    // A 7-Day Pass at its cap gets pass-specific copy.
+                    try {
+                        const body = await gateRes.json();
+                        if (body && body.error === "weekly_pass_limit") window.__tcvPassLimit = body.limit || 25;
+                    } catch (e) { /* plain free-quota 402 */ }
                     showProDownloadPopup();
                     return;
                 }
