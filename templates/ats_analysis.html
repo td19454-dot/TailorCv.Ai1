@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
@@ -12,577 +12,178 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        html, body { overflow-x: hidden; }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes floatOrb1 {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-            50% { transform: translate(60px, -40px) scale(1.15); opacity: 0.9; }
-        }
-        @keyframes floatOrb2 {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-            50% { transform: translate(-50px, 30px) scale(1.1); opacity: 0.7; }
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: .15; }
-            50% { opacity: .55; }
-        }
-        body {
-            background: transparent !important;
-        }
-        /* The animated gradient now lives on a fixed, GPU-promoted layer instead of
-           `background-attachment: fixed` on the body — visually identical, but it no
-           longer forces a full-viewport main-thread repaint on every scroll frame
-           (the secondary cause of the blank-flash-on-scroll). html keeps its solid
-           dark fallback so nothing shows through. */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            background: linear-gradient(135deg,
-                    #020010, #06002a, #12003a,
-                    #001830, #0a0020, #1a0030, #020010);
-            background-size: 600% 600%;
-            animation: gradientShift 15s ease infinite;
-            transform: translateZ(0);
-            will-change: transform;
-        }
-        .bg-orb {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .orb-blue {
-            width: 280px;
-            height: 280px;
-            background: #3a00cc;
-            filter: blur(70px);
-            top: -70px;
-            left: -60px;
-            animation: floatOrb1 7s ease-in-out infinite;
-        }
-        .orb-violet {
-            width: 240px;
-            height: 240px;
-            background: #6b00ff;
-            filter: blur(65px);
-            bottom: -50px;
-            right: -30px;
-            animation: floatOrb2 9s ease-in-out infinite;
-        }
-        #bg-stars {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .bg-star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #fff;
-            border-radius: 50%;
-        }
-        .wave-bg {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            opacity: .75;
-        }
-        #wave-canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-        /* Promote the fixed background layers to their own GPU layer so they are
-           NOT repainted on the main thread every scroll frame — this is what was
-           causing the main area to flash blank mid-scroll. */
-        .wave-bg, #wave-canvas, .bg-orb {
-            transform: translateZ(0);
-            will-change: transform;
-            backface-visibility: hidden;
-        }
-        header, main, footer { position: relative; z-index: 1; }
-        /* Clip the oversized logo so it doesn't intercept sidebar/content clicks */
-        header.navbar { overflow: hidden; }
-        @media (min-width: 769px) {
-            .navbar .nav-links { min-width: 560px; gap: 2px; }
-            .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
-        }
-        @keyframes shareScoreGlow {
-            0%, 100% { box-shadow: 0 0 18px rgba(139,92,246,0.6), 0 6px 28px rgba(109,40,217,0.4); }
-            50%       { box-shadow: 0 0 34px rgba(167,139,250,0.9), 0 8px 38px rgba(139,92,246,0.6); }
-        }
-        .guest-signup-banner {
-            background: linear-gradient(135deg, rgba(79,127,255,0.18), rgba(124,58,237,0.14));
-            border: 1px solid rgba(139,92,246,0.45);
-            border-radius: 14px;
-            padding: 18px 20px;
-            margin-bottom: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-        }
-        .guest-signup-banner p {
-            margin: 0;
-            color: #e2e8f0;
-            font-size: 0.95rem;
-            line-height: 1.45;
-            flex: 1 1 260px;
-        }
-        .guest-signup-banner .guest-signup-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .guest-signup-banner .guest-btn-primary,
-        .guest-signup-banner .guest-btn-secondary {
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            padding: 10px 18px;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .guest-signup-banner .guest-btn-primary {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            color: #fff;
-            border: 1px solid rgba(167,139,250,0.6);
-        }
-        .guest-signup-banner .guest-btn-secondary {
-            background: rgba(255,255,255,0.06);
-            color: #cbd5e1;
-            border: 1px solid rgba(148,163,184,0.35);
-        }
-        /* Shiny 3D-tilt bevel button: fake bevel via text-shadow, a sweeping shine
-           on hover, and a slight perspective tilt that flips on hover/focus. */
-        #open-share-modal-btn {
-            all: unset;
-            box-sizing: border-box;
-            cursor: pointer;
-            display: inline-flex !important;
-            align-items: center;
-            gap: 8px;
-            font-family: inherit;
-            font-size: 1.05rem;
-            font-weight: 700;
-            padding: 0.75rem 1.4rem;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat, #7c3aed;
-            transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
-            outline-offset: .1em;
-            transition: 0.3s;
-        }
-        #open-share-modal-btn .somb-text {
-            color: #0000;
-            text-shadow: calc(var(--_i,-1)* 0.08em) -.01em 0 #fff,
-                calc(var(--_i,-1)*-0.08em) .01em 2px #0004;
-            transition: color .2s;
-        }
-        #open-share-modal-btn:hover,
-        #open-share-modal-btn:focus-visible {
-            --_p: 0%;
-            --_i: 1;
-        }
-        #open-share-modal-btn:active {
-            box-shadow: inset 0 0 9e9q #0005;
-            transition: 0s;
-        }
-        #open-share-modal-btn:active .somb-text {
-            text-shadow: none;
-            color: #fff;
-        }
-    </style>
-    <link rel="stylesheet" href="/static/ats_analysis.css?v=5">
+    <link rel="stylesheet" href="/static/ats_analysis.css?v=10">
 </head>
-<body>
-    <div class="bg-orb orb-blue"></div>
-    <div class="bg-orb orb-violet"></div>
-    <div id="bg-stars" aria-hidden="true"></div>
-    <div class="wave-bg" aria-hidden="true">
-        <canvas id="wave-canvas"></canvas>
-    </div>
+<body class="ats-report-body">
     {% include "_nav.html" %}
+    <script>
+    // _nav.html starts with a UTF-8 BOM, which lands in <body> as a text node and
+    // renders as an empty ~25px line above the report on this light page.
+    [].slice.call(document.body.childNodes).forEach(function (n) {
+        if (n.nodeType === 3 && n.textContent.indexOf("﻿") !== -1) n.remove();
+    });
+    </script>
 
-    <main class="analysis-page">
-        <div class="analysis-layout">
+    <main class="analysis-page ats-report">
 
-            <!-- ════════════════════════════════════════════
-                 SIDEBAR
-            ════════════════════════════════════════════ -->
-            <aside class="sidebar" id="analysis-sidebar">
-                <div class="sidebar-header">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
+        <!-- Report header -->
+        <div class="ats-topbar">
+            <div class="ats-topbar-text">
+                <div class="ats-eyebrow">Resume scan results</div>
+                <h1 id="ats-title" class="ats-title">ATS match report</h1>
+            </div>
+            <div class="ats-top-actions">
+                <button id="open-share-modal-btn" class="ats-btn ats-btn-ghost" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+                    Share score
+                </button>
+                <button id="ats-print-btn" class="ats-btn ats-btn-ghost" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    Print
+                </button>
+            </div>
+        </div>
+
+        <div class="ats-layout">
+
+            <!-- ════════ LEFT: match rate + category bars ════════ -->
+            <aside class="ats-side" aria-label="Score summary">
+                <h2 class="ats-side-title">Match Rate</h2>
+                <div class="ats-gauge">
+                    <svg viewBox="0 0 200 200" role="img" aria-label="ATS match rate">
+                        <circle class="gauge-track" cx="100" cy="100" r="86"></circle>
+                        <circle id="ring-fill" class="gauge-fill" cx="100" cy="100" r="86"></circle>
                     </svg>
-                    Resume score
+                    <div class="gauge-center">
+                        <span id="score-number" class="gauge-num">—</span><span class="gauge-pct">%</span>
+                    </div>
                 </div>
-                <nav class="sidebar-nav" aria-label="ATS sections">
+                <div id="match-badge" class="ats-level">Analysing…</div>
+                <p id="score-stats-text" class="ats-stats-text"></p>
 
-                    <button class="sidebar-btn active" type="button" data-tab="overview">
-                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <rect x="3" y="3" width="7" height="7" rx="1"/>
-                            <rect x="14" y="3" width="7" height="7" rx="1"/>
-                            <rect x="3" y="14" width="7" height="7" rx="1"/>
-                            <rect x="14" y="14" width="7" height="7" rx="1"/>
-                        </svg>
-                        <span class="sidebar-btn-label">Overview</span>
-                    </button>
-
-                    <button class="sidebar-btn" type="button" data-tab="contact">
-                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                        <span class="sidebar-btn-label">Contact</span>
-                        <span class="sidebar-badge" id="badge-contact" style="display:none;"></span>
-                    </button>
-
-                    <button class="sidebar-btn" type="button" data-tab="skills">
-                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                        </svg>
-                        <span class="sidebar-btn-label">Skills</span>
-                        <span class="sidebar-badge" id="badge-skills" style="display:none;"></span>
-                    </button>
-
-                    <button class="sidebar-btn" type="button" data-tab="sections">
-                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <line x1="8" y1="6" x2="21" y2="6"/>
-                            <line x1="8" y1="12" x2="21" y2="12"/>
-                            <line x1="8" y1="18" x2="21" y2="18"/>
-                            <line x1="3" y1="6" x2="3.01" y2="6"/>
-                            <line x1="3" y1="12" x2="3.01" y2="12"/>
-                            <line x1="3" y1="18" x2="3.01" y2="18"/>
-                        </svg>
-                        <span class="sidebar-btn-label">Sections</span>
-                        <span class="sidebar-badge" id="badge-sections" style="display:none;"></span>
-                    </button>
-
-                    <button class="sidebar-btn" type="button" data-tab="formatting">
-                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <polyline points="4 7 4 4 20 4 20 7"/>
-                            <line x1="9" y1="20" x2="15" y2="20"/>
-                            <line x1="12" y1="4" x2="12" y2="20"/>
-                        </svg>
-                        <span class="sidebar-btn-label">Format</span>
-                        <span class="sidebar-badge" id="badge-formatting" style="display:none;"></span>
-                    </button>
-
-                    <button class="sidebar-btn" type="button" data-tab="education">
-                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        </svg>
-                        <span class="sidebar-btn-label">Education</span>
-                        <span class="sidebar-badge" id="badge-education" style="display:none;"></span>
-                    </button>
-
-                    <button class="sidebar-btn" type="button" data-tab="experience">
-                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                        </svg>
-                        <span class="sidebar-btn-label">Experience</span>
-                        <span class="sidebar-badge" id="badge-experience" style="display:none;"></span>
-                    </button>
-
-                    <button class="sidebar-btn" type="button" data-tab="projects">
-                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                        </svg>
-                        <span class="sidebar-btn-label">Projects</span>
-                        <span class="sidebar-badge" id="badge-projects" style="display:none;"></span>
-                    </button>
-
-                    <button class="sidebar-btn" type="button" data-tab="fixes">
-                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                            <line x1="12" y1="9" x2="12" y2="13"/>
-                            <line x1="12" y1="17" x2="12.01" y2="17"/>
-                        </svg>
-                        <span class="sidebar-btn-label">Fixes</span>
-                    </button>
-
-                </nav>
+                <nav id="ats-cats" class="ats-cats" aria-label="Report sections"></nav>
             </aside>
 
-            <!-- ════════════════════════════════════════════
-                 CONTENT AREA
-            ════════════════════════════════════════════ -->
-            <div class="content-area">
+            <!-- ════════ RIGHT: report sections ════════ -->
+            <div class="ats-main" id="ats-main">
 
-                <!-- ──────────── TAB: OVERVIEW ──────────── -->
-                <section id="tab-overview" class="tab-panel active">
-
-                    <!-- Score + summary card -->
-                    <div class="card overview-score-card">
-                        <div class="score-ring-wrap">
-                            <svg class="score-ring" viewBox="0 0 150 150" role="img" aria-label="ATS score ring">
-                                <circle class="ring-bg"   cx="75" cy="75" r="65"></circle>
-                                <circle id="ring-fill" class="ring-fill" cx="75" cy="75" r="65"></circle>
-                            </svg>
-                            <div class="score-center">
-                                <div id="score-number" class="score-number">—</div>
-                                <div class="score-denom">/ 100</div>
-                            </div>
-                        </div>
-                        <div class="score-summary">
-                            <div id="match-badge" class="match-title">Analysing…</div>
-                            <p id="score-stats-text" class="score-stats-text"></p>
-                            <div id="score-stats-row" class="score-stats-row"></div>
-                        </div>
-                        <div class="job-role-display" id="job-role-display" style="display:none;">
-                            <div class="job-role-label">Applying for</div>
-                            <div id="job-role-title" class="job-role-title"></div>
-                        </div>
+                <section class="ats-sec" id="sec-fixes">
+                    <div class="ats-sec-head">
+                        <h2>Fix these first</h2>
+                        <span class="ats-tag ats-tag-warn">Biggest score lift</span>
                     </div>
+                    <p class="ats-sec-desc">The changes most likely to raise your match rate for this job, in order.</p>
+                    <div id="priority-fixes" class="ats-fixes"></div>
+                </section>
 
-                    <!-- All checks dot list -->
-                    <div class="card">
-                        <div class="card-title">All Checks</div>
-                        <div id="overview-checks" class="overview-checks-list"></div>
+                <section class="ats-sec" id="sec-searchability">
+                    <div class="ats-sec-head">
+                        <h2>Searchability</h2>
+                        <span class="ats-tag">Important</span>
                     </div>
+                    <p class="ats-sec-desc">An ATS (Applicant Tracking System) parses your resume into fields that recruiters search. Below is how well your resume is read by an ATS and found in a recruiter search.</p>
+                    <p class="ats-sec-tip"><strong>Tip:</strong> Fix the red Xs first. They are what stop your resume being parsed correctly or found by a recruiter.</p>
+                    <div id="tbl-searchability" class="ats-table"></div>
+                </section>
 
-                    <!-- Skills match overview -->
-                    <div class="card">
-                        <div class="card-title">Skills Match</div>
-                        <div class="section-grid">
-                            <div>
-                                <div id="ov-hard-matched" class="pill-section"></div>
-                                <div id="ov-hard-missing" class="pill-section"></div>
-                            </div>
-                            <div>
-                                <div id="ov-soft-matched" class="pill-section"></div>
-                                <div id="ov-soft-missing" class="pill-section"></div>
-                            </div>
-                        </div>
+                <section class="ats-sec" id="sec-hard">
+                    <div class="ats-sec-head">
+                        <h2>Hard skills</h2>
+                        <span class="ats-tag">High score impact</span>
                     </div>
+                    <p class="ats-sec-desc">Hard skills are the job-specific tools, methods and technologies the role asks for. They carry the most weight in your match rate.</p>
+                    <p class="ats-sec-tip"><strong>Tip:</strong> Match the exact spelling used in the job description, and only add a skill you can back up with a bullet in your experience or projects.</p>
+                    <div id="skills-hard" class="ats-skills"></div>
+                </section>
 
-                    <!-- Priority fixes overview -->
-                    <div class="card">
-                        <div class="card-title">🔥 Priority Fixes</div>
-                        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
-                            Address these issues first for the highest ATS ranking improvement.
-                        </p>
-                        <div id="ov-priority-fixes" class="fix-list"></div>
+                <section class="ats-sec" id="sec-soft">
+                    <div class="ats-sec-head">
+                        <h2>Soft skills</h2>
+                        <span class="ats-tag ats-tag-muted">Medium score impact</span>
                     </div>
+                    <p class="ats-sec-desc">Soft skills are how you work — communication, ownership, collaboration. Recruiters look for them in the way your bullets describe your work.</p>
+                    <p class="ats-sec-tip"><strong>Tip:</strong> Show soft skills through results ("led a team of 4 to…") rather than listing them as adjectives.</p>
+                    <div id="skills-soft" class="ats-skills"></div>
+                </section>
 
-                    <!-- CTA -->
-                    <div class="cta-row">
-                        <button id="open-share-modal-btn" type="button">
-                            <span class="somb-emoji" aria-hidden="true">🎯</span><span class="somb-text">Share My Score</span>
-                        </button>
-                        <a href="/solutions" class="btn btn-primary cv2-uiverse-btn ai-rewrite-btn">
-                            <span class="btn-text">Rewrite Resume with AI</span>
-                            <span class="arb-arrow" aria-hidden="true">
-                                <svg width="26" height="17" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg">
-                                    <g fill="none" fill-rule="evenodd">
-                                        <path class="arb-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
-                                        <path class="arb-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
-                                        <path class="arb-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
-                                    </g>
-                                </svg>
-                            </span>
-                            <span class="btn-loader" style="display:none;">●</span>
+                <section class="ats-sec" id="sec-experience">
+                    <div class="ats-sec-head">
+                        <h2>Experience</h2>
+                        <span class="ats-tag">High score impact</span>
+                    </div>
+                    <p class="ats-sec-desc">Your work history is the first thing a recruiter reads after the ATS passes you. These checks compare it with what this job asks for.</p>
+                    <p class="ats-sec-tip"><strong>Tip:</strong> Start every bullet with a strong verb and end it with a result — a number, a time saved, a scale.</p>
+                    <div id="tbl-experience" class="ats-table"></div>
+                </section>
+
+                <section class="ats-sec" id="sec-projects">
+                    <div class="ats-sec-head">
+                        <h2>Projects</h2>
+                        <span class="ats-tag ats-tag-muted">Medium score impact</span>
+                    </div>
+                    <p class="ats-sec-desc">Projects prove you can use the skills this job lists — especially when your work history is short.</p>
+                    <p class="ats-sec-tip"><strong>Tip:</strong> Link each project to a repo or live demo, and say what it achieved, not just what it used.</p>
+                    <div id="tbl-projects" class="ats-table"></div>
+                </section>
+
+                <section class="ats-sec" id="sec-education">
+                    <div class="ats-sec-head">
+                        <h2>Education</h2>
+                        <span class="ats-tag ats-tag-muted">Medium score impact</span>
+                    </div>
+                    <p class="ats-sec-desc">Many ATS filters screen on a required degree or field of study before a person ever sees your resume.</p>
+                    <div id="tbl-education" class="ats-table"></div>
+                </section>
+
+                <section class="ats-sec" id="sec-writing">
+                    <div class="ats-sec-head">
+                        <h2>Writing &amp; tone</h2>
+                        <span class="ats-tag">Recruiter tips</span>
+                    </div>
+                    <p class="ats-sec-desc">Once you pass the ATS, a recruiter reads your resume. Errors and filler are what make them stop reading.</p>
+                    <div id="tbl-writing" class="ats-table"></div>
+                </section>
+
+                <section class="ats-sec" id="sec-formatting">
+                    <div class="ats-sec-head">
+                        <h2>Formatting</h2>
+                        <span class="ats-tag">Important</span>
+                    </div>
+                    <p class="ats-sec-desc">Layout choices that look good to a person can scramble an ATS parser. These checks make sure every line of your resume is read.</p>
+                    <div id="tbl-formatting" class="ats-table"></div>
+                </section>
+
+                <!-- Sticky next-step bar (copy set by ats_analysis.js from the score) -->
+                <div class="ats-cta" id="ats-cta">
+                    <div class="ats-cta-ic" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4V2"/><path d="M15 16v-2"/><path d="M8 9h2"/><path d="M20 9h2"/><path d="M17.8 11.8 19 13"/><path d="M15 9h.01"/><path d="M17.8 6.2 19 5"/><path d="m3 21 9-9"/><path d="M12.2 6.2 11 5"/></svg>
+                    </div>
+                    <div class="ats-cta-text">
+                        <div id="ats-cta-title" class="ats-cta-title">Ready to improve your match?</div>
+                        <div id="ats-cta-sub" class="ats-cta-sub">Let AI tailor your resume to this job, or upload an updated version.</div>
+                    </div>
+                    <div class="ats-cta-actions">
+                        <a id="ats-cta-primary" href="/solutions" class="ats-btn ats-btn-primary">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg>
+                            <span>AI Optimize</span>
+                        </a>
+                        <a id="ats-cta-secondary" href="/solutions#ats-tool" class="ats-btn ats-btn-outline">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <span>Upload &amp; rescan</span>
                         </a>
                     </div>
-                </section>
+                </div>
 
-                <!-- ──────────── TAB: CONTACT ──────────── -->
-                <section id="tab-contact" class="tab-panel">
-                    <div class="card">
-                        <div class="card-title">Contact Information</div>
-                        <div id="contact-list" class="contact-list"></div>
-                    </div>
-
-                    <!-- Portfolio nudge — a portfolio link belongs with your contact/profile info (filled by ats_analysis.js) -->
-                    <div class="card" id="portfolio-section" style="display:none;"></div>
-                </section>
-
-                <!-- ──────────── TAB: SKILLS ──────────── -->
-                <section id="tab-skills" class="tab-panel">
-                    <div class="section-grid">
-                        <div class="card">
-                            <div class="card-title">Hard Skills</div>
-                            <div id="hard-matched" class="pill-section"></div>
-                            <div id="hard-missing" class="pill-section"></div>
-                        </div>
-                        <div class="card">
-                            <div class="card-title">Soft Skills</div>
-                            <div id="soft-matched" class="pill-section"></div>
-                            <div id="soft-missing" class="pill-section"></div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ──────────── TAB: SECTIONS ──────────── -->
-                <section id="tab-sections" class="tab-panel">
-                    <div class="card">
-                        <div class="card-title">Sections Audit</div>
-                        <div id="sections-accordion" class="accordion"></div>
-                    </div>
-                </section>
-
-                <!-- ──────────── TAB: FORMATTING ──────────── -->
-                <section id="tab-formatting" class="tab-panel">
-                    <div class="card">
-                        <div class="card-title">Formatting Audit</div>
-                        <div id="formatting-accordion" class="accordion"></div>
-                    </div>
-                </section>
-
-                <!-- ──────────── TAB: EDUCATION ──────────── -->
-                <section id="tab-education" class="tab-panel">
-                    <div class="card">
-                        <div class="card-title">Education Audit</div>
-                        <div id="education-accordion" class="accordion"></div>
-                    </div>
-                </section>
-
-                <!-- ──────────── TAB: EXPERIENCE ──────────── -->
-                <section id="tab-experience" class="tab-panel">
-                    <div class="card">
-                        <div class="card-title">Experience Audit</div>
-                        <div id="experience-accordion" class="accordion"></div>
-                    </div>
-                </section>
-
-                <!-- ──────────── TAB: PROJECTS ──────────── -->
-                <section id="tab-projects" class="tab-panel">
-                    <div class="card">
-                        <div class="card-title">Projects Audit</div>
-                        <div id="projects-accordion" class="accordion"></div>
-                    </div>
-                </section>
-
-                <!-- ──────────── TAB: PRIORITY FIXES ──────────── -->
-                <section id="tab-fixes" class="tab-panel">
-                    <div class="card">
-                        <div class="card-title">🔥 Priority Fixes</div>
-                        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
-                            Address these issues first for the highest ATS ranking improvement.
-                        </p>
-                        <div id="priority-fixes" class="fix-list"></div>
-                    </div>
-                    <div class="cta-row">
-                        <a href="/solutions" class="btn btn-primary cv2-uiverse-btn ai-rewrite-btn">
-                            <span class="btn-text">Fix Resume with AI</span>
-                            <span class="arb-arrow" aria-hidden="true">
-                                <svg width="26" height="17" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg">
-                                    <g fill="none" fill-rule="evenodd">
-                                        <path class="arb-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
-                                        <path class="arb-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
-                                        <path class="arb-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
-                                    </g>
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </section>
-
-            </div><!-- /.content-area -->
-
-        </div><!-- /.analysis-layout -->
+            </div><!-- /.ats-main -->
+        </div><!-- /.ats-layout -->
     </main>
-
-    <!-- Score-band nudge popup (filled + shown by ats_analysis.js) -->
-    <div id="ats-band-popup" role="alert" aria-live="polite"
-         style="display:none;position:fixed;right:22px;bottom:22px;z-index:9999;max-width:340px;
-                background:linear-gradient(155deg,#0c1730,#0a1124);border:1px solid rgba(56,189,248,.35);
-                border-radius:16px;padding:18px 20px;box-shadow:0 24px 60px rgba(0,5,20,.6);
-                color:#eef4ff;font-family:Inter,system-ui,sans-serif;transform:translateY(16px);opacity:0;
-                transition:opacity .3s ease,transform .3s ease;">
-        <button id="ats-band-popup-close" aria-label="Close"
-                style="position:absolute;top:8px;right:12px;background:none;border:none;color:#64748b;
-                       font-size:20px;line-height:1;cursor:pointer;">&times;</button>
-        <div id="ats-band-popup-icon" style="font-size:24px;margin-bottom:6px;"></div>
-        <div id="ats-band-popup-text" style="font-size:14.5px;line-height:1.5;margin-bottom:14px;"></div>
-        <a id="ats-band-popup-cta" href="#"
-           style="display:inline-block;padding:10px 18px;border-radius:10px;font-weight:700;font-size:14px;
-                  text-decoration:none;color:#fff;background:linear-gradient(135deg,#2563eb,#0ea5e9);"></a>
-    </div>
 
     {% include "_footer.html" %}
 
     <script src="/static/auth_nav.js?v=21"></script>
     <script src="/static/mobile_nav.js"></script>
-    <script src="/static/main_new.js?v=42"></script>
-    <script src="/static/ats_analysis.js?v=5"></script>
-    <script>
-    (function () {
-        const starsContainer = document.getElementById('bg-stars');
-        if (starsContainer) {
-            for (let i = 0; i < 60; i++) {
-                const s = document.createElement('div');
-                s.className = 'bg-star';
-                s.style.left = Math.random() * 100 + '%';
-                s.style.top = Math.random() * 100 + '%';
-                s.style.opacity = Math.random() * 0.4 + 0.1;
-                s.style.animation = `twinkle ${(2 + Math.random() * 4).toFixed(1)}s ease-in-out ${(Math.random() * 4).toFixed(1)}s infinite`;
-                starsContainer.appendChild(s);
-            }
-        }
-
-        const canvas = document.getElementById('wave-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let W, H;
-        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-        resize();
-        window.addEventListener('resize', resize);
-
-        const waves = [
-            { amp: 100, freq: 0.0016, speed: 0.00035, color: [59, 130, 246], yf: 0.38, alpha: 0.14 },
-            { amp: 80, freq: 0.0022, speed: 0.00028, color: [79, 70, 229], yf: 0.50, alpha: 0.11 },
-            { amp: 90, freq: 0.0014, speed: 0.00042, color: [99, 102, 241], yf: 0.60, alpha: 0.10 },
-            { amp: 60, freq: 0.0026, speed: 0.00050, color: [37, 99, 235], yf: 0.44, alpha: 0.09 },
-            { amp: 65, freq: 0.0012, speed: 0.00022, color: [124, 58, 237], yf: 0.70, alpha: 0.09 },
-            { amp: 40, freq: 0.0030, speed: 0.00055, color: [6, 182, 212], yf: 0.54, alpha: 0.07 },
-        ];
-
-        function draw() {
-            ctx.clearRect(0, 0, W, H);
-            const t = Date.now();
-            waves.forEach(wv => {
-                ctx.beginPath();
-                for (let x = 0; x <= W; x += 2) {
-                    const y = H * wv.yf
-                        + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
-                        + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
-                        + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
-                    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-                }
-                ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-                const [r, g, b] = wv.color;
-                const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
-                gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
-                gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
-                gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
-                ctx.fillStyle = gr;
-                ctx.fill();
-            });
-            requestAnimationFrame(draw);
-        }
-        draw();
-    })();
-    </script>
+    <script src="/static/main_new.js?v=45"></script>
+    <script src="/static/ats_analysis.js?v=9"></script>
 
     <!-- Share Score Modal -->
     <div id="share-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:99999;align-items:center;justify-content:center;">

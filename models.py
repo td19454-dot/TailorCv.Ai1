@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Index, Integer, String, Text, UniqueConstraint
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Index, Integer, Numeric, String, Text, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -27,6 +27,11 @@ class User(Base):
     # set from the extension's skills pop-up, cleared from its account menu.
     ext_auto_add_skills = Column(Boolean, nullable=True, default=False)
     plan_provider = Column(String(20), nullable=True)                  # "razorpay" | "polar"
+    # Which plan the current pro_until came from ("weekly" | "monthly" | "yearly").
+    # The 7-Day Pass is capped at WEEKLY_PASS_TAILOR_LIMIT tailorings; the
+    # counter below resets each time a pass is bought. Monthly/yearly: unlimited.
+    pro_plan = Column(String(20), nullable=True)
+    pass_tailorings_used = Column(Integer, nullable=True, default=0)
     razorpay_subscription_id = Column(String(100), nullable=True)
     polar_subscription_id = Column(String(100), nullable=True)
     # One Netlify "live site" per user — reused across all their portfolios so each
@@ -325,6 +330,66 @@ class UsageRecord(Base):
     __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
 
     user = relationship("User", back_populates="usage_records")
+
+
+class Payment(Base):
+    """One row per confirmed payment, written by the Razorpay/Polar webhooks.
+
+    Before this table the only record of money was `users.pro_until` and an
+    analytics event, so "what has this customer paid us" was unanswerable from
+    the database. Amounts are in major units (rupees / dollars), never mixed:
+    sum by `currency`.
+    """
+    __tablename__ = "payments"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True)
+    provider = Column(String(20), nullable=False)                 # "razorpay" | "polar"
+    payment_id = Column(String(100), nullable=False)              # Razorpay pay_… / Polar order id
+    subscription_id = Column(String(100), nullable=True, index=True)
+    plan = Column(String(20), nullable=True)                      # weekly | monthly | yearly
+    region = Column(String(20), nullable=True)                    # india | lic | global
+    currency = Column(String(3), nullable=False)
+    amount = Column(Numeric(12, 2), nullable=False)               # what the customer was charged
+    tax = Column(Numeric(12, 2), nullable=True)                   # sales tax collected (Polar); not ours
+    fee = Column(Numeric(12, 2), nullable=True)                   # processor fee incl. its GST
+    net = Column(Numeric(12, 2), nullable=True)                   # amount - tax - fee: what we keep
+    paid_at = Column(DateTime, nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    # Razorpay sends subscription.charged AND payment.captured for one payment;
+    # this makes the second insert a no-op.
+    __table_args__ = (UniqueConstraint("provider", "payment_id", name="uq_payment_provider_id"),)
+
+
+class PaidUser(Base):
+    """One row per customer who has ever paid — a summary rebuilt from `payments`
+    every time they pay, so it can be read straight off in the Neon console.
+
+    Totals are split by currency because India pays in INR and everyone else in
+    USD. `net_*` is revenue after tax and processor fees, before our own costs
+    (OpenAI, hosting), which no table here knows about.
+    """
+    __tablename__ = "paid_users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, unique=True, index=True)
+    email = Column(String(255), nullable=True)
+    name = Column(String(120), nullable=True)
+    provider = Column(String(20), nullable=True)                  # latest payment's provider
+    plan = Column(String(20), nullable=True)                      # latest payment's plan
+    region = Column(String(20), nullable=True)
+    first_paid_at = Column(DateTime, nullable=True)
+    last_paid_at = Column(DateTime, nullable=True)
+    pro_until = Column(DateTime, nullable=True)                   # copy of users.pro_until at last payment
+    days_paid_for = Column(Integer, nullable=True)                # pro_until - first_paid_at
+    payments_count = Column(Integer, nullable=False, default=0)
+    total_paid_inr = Column(Numeric(12, 2), nullable=False, default=0)
+    total_net_inr = Column(Numeric(12, 2), nullable=False, default=0)
+    total_paid_usd = Column(Numeric(12, 2), nullable=False, default=0)
+    total_net_usd = Column(Numeric(12, 2), nullable=False, default=0)
+    cancelled_at = Column(DateTime, nullable=True)                # cleared again if they pay later
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
 
 class JobListing(Base):
