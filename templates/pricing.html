@@ -492,7 +492,7 @@
             <div class="plan-grid">
 
                 <!-- Free -->
-                <div class="plan-card" style="animation-delay:.05s">
+                <div class="plan-card card-link" style="animation-delay:.05s">
                     <div>
                         <p class="plan-name">Free</p>
                         <p class="plan-tagline">Always free, no card needed</p>
@@ -509,8 +509,15 @@
                         <li><strong>1</strong> free template download</li>
                         <li>Portfolio on <strong>yourname.thetailorcv.com</strong></li>
                     </ul>
-                    <a href="/ats-analysis" class="plan-btn plan-btn-ghost">Start free</a>
+                    {# /dashboard sends signed-out visitors to /login?next=/dashboard itself. #}
+                    <a href="/dashboard" class="plan-btn plan-btn-ghost card-link-target">Start free</a>
                 </div>
+                <style>
+                    /* Whole Free card is clickable: the button's ::after is
+                       stretched over the card (a "stretched link"). */
+                    .card-link { position: relative; cursor: pointer; }
+                    .card-link .card-link-target::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+                </style>
 
                 <!-- 7-Day Pass -->
                 <div class="plan-card" style="animation-delay:.12s">

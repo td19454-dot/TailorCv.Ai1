@@ -10635,5 +10635,4 @@
     if (userId == null || userId === "") return;
     init().then(() => posthog.identify(String(userId)));
   };
-  init();
 })();

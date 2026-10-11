@@ -84,10 +84,14 @@
             +     '<div class="tcv-profile-head"><span class="tcv-pf-av">' + initial + '</span>'
             +       '<div class="tcv-pf-id"><strong>' + esc(user.name || "User") + '</strong><small>' + esc(user.email || "") + '</small></div></div>'
             +     '<div id="tcvProLinks"></div>'
-            +     '<a class="tcv-pf-link" href="/pricing">Get free scans</a>'
-            +     '<a class="tcv-pf-link" href="/pricing">Account Settings</a>'
+            // Same items, same order as the marketing nav (auth_nav.js) and the
+            // dashboard menu — keep all three in step.
+            +     '<a class="tcv-pf-link" href="/profile">My profile</a>'
             +     '<a class="tcv-pf-link" href="/privacy">Privacy Policy</a>'
             +     '<a class="tcv-pf-link" href="/terms">Terms</a>'
+            // Logout lives here too: pages that hide the icon rail (e.g. the
+            // optimized editor) otherwise had no way to sign out.
+            +     '<a class="tcv-pf-link tcv-pf-logout" href="#" id="tcvPfLogout">Log out</a>'
             +   '</div>'
             + '</div>'
             + '</div>'
@@ -162,6 +166,8 @@
             }
             var logout = document.getElementById("tcvLogout");
             if (logout) logout.addEventListener("click", doLogout);
+            var pfLogout = document.getElementById("tcvPfLogout");
+            if (pfLogout) pfLogout.addEventListener("click", doLogout);
         }
     }
 

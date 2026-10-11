@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Dashboard | TailorCV</title>
     <link rel="icon" type="image/png" href="/static/favicon.png">
-    <link rel="stylesheet" href="/static/app_shell.css?v=4">
+    <link rel="stylesheet" href="/static/app_shell.css?v=9">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -589,9 +589,11 @@
                     {% else %}
                     <a class="tcv-pf-link" href="/pricing">Upgrade to Pro</a>
                     {% endif %}
+                    {# Same items, same order as app_shell.js and auth_nav.js — keep in step. #}
+                    <a class="tcv-pf-link" href="/profile">My profile</a>
                     <a class="tcv-pf-link" href="/privacy">Privacy Policy</a>
                     <a class="tcv-pf-link" href="/terms">Terms</a>
-                    <a class="tcv-pf-link" href="#" id="dashProfileLogout">Log out</a>
+                    <a class="tcv-pf-link tcv-pf-logout" href="#" id="dashProfileLogout">Log out</a>
                 </div>
             </div>
         </div>

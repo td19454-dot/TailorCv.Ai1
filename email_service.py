@@ -70,13 +70,17 @@ def send_email(
     subject: str,
     html_body: str,
     *,
+    from_email: str | None = None,
     smtp_factory: Callable[..., smtplib.SMTP] = smtplib.SMTP,
 ) -> bool:
-    """Send an HTML email through Amazon SES SMTP using STARTTLS."""
+    """Send an HTML email through Amazon SES SMTP using STARTTLS.
+
+    from_email overrides EMAIL_FROM for this message; falls back to it when empty.
+    """
     config = load_ses_smtp_config()
 
     message = EmailMessage()
-    message["From"] = config.from_email
+    message["From"] = (from_email or "").strip() or config.from_email
     message["To"] = recipient_email
     message["Subject"] = subject
     message.set_content(html_to_text(html_body) or "This email requires an HTML-capable email client.")

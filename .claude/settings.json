@@ -5,7 +5,22 @@
       "PowerShell(& \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\.venv\\\\Scripts\\\\python.exe\" -c \"from jinja2 import Environment, FileSystemLoader; Environment\\(loader=FileSystemLoader\\(r'C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\templates'\\)\\).get_template\\('index.html'\\); print\\('jinja ok'\\)\")",
       "PowerShell(try { \\(Invoke-WebRequest -Uri \"http://127.0.0.1:8011/\" -UseBasicParsing -TimeoutSec 20\\).StatusCode } catch { $_.Exception.Message }; Get-Content \"$env:TEMP\\\\uv8011.err\" -Tail 8; Get-NetTCPConnection -LocalPort 8011 -State Listen -ErrorAction SilentlyContinue | Select-Object OwningProcess)",
       "Bash(curl -s --noproxy '*' -A \"Mozilla/5.0 Chrome/120\" \"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&text=TailorCV&display=swap\")",
-      "Read(//c/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/9385a7ea-80db-487a-8b07-2a3ec6b22872/scratchpad/**)"
+      "Read(//c/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/9385a7ea-80db-487a-8b07-2a3ec6b22872/scratchpad/**)",
+      "PowerShell(& \"C:\\\\Program Files\\\\nodejs\\\\node.exe\" --check \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\static\\\\app_shell.js\")",
+      "PowerShell(git -C \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\" diff --stat -- templates/dashboard.html static/app_shell.js static/app_shell.css templates/_nav.html)",
+      "PowerShell(& \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\.venv\\\\Scripts\\\\python.exe\" -c \"from jinja2 import Environment, FileSystemLoader; e=Environment\\(loader=FileSystemLoader\\(r'C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\templates'\\)\\); [e.get_template\\(t\\) for t in \\('index.html','pricing.html'\\)]; print\\('jinja ok'\\)\")",
+      "Bash(grep -oE '.{80}\\(gtag|google-analytics|googletagmanager|measurement_id|G-[A-Z0-9]{6,}\\).{80}')",
+      "PowerShell($l = \\(Get-Content \"chrome-extension\\\\analytics.bundle.js\"\\)[8886]; [regex]::Matches\\($l, '.{60}\\(gtag|google-analytics|googletagmanager|measurement_id|G-[A-Z0-9]{6,}\\).{60}'\\) | Select-Object -First 3 | ForEach-Object { $_.Value })",
+      "PowerShell(venv/Scripts/python.exe -c \"import main; print\\('import ok'\\)\" 2>&1 | Select-Object -Last 5; \"---\"; foreach \\($u in \"https://tailorcv.ai/health\",\"https://tailorcv.ai/\"\\) { try { $r = Invoke-WebRequest $u -UseBasicParsing -TimeoutSec 60; \"$u -> $\\($r.StatusCode\\)\" } catch { \"$u -> $\\($_.Exception.Message\\)\" } })",
+      "PowerShell(Get-ChildItem -Directory | Where-Object { Test-Path \"$\\($_.FullName\\)\\\\Scripts\\\\python.exe\" } | ForEach-Object { $_.Name }; \\(Get-Command python -ErrorAction SilentlyContinue\\).Source)",
+      "PowerShell($env:ENVIRONMENT='development'; .venv\\\\Scripts\\\\python.exe -c \"import os,psutil,time; p=psutil.Process\\(\\); b=p.memory_info\\(\\).rss; t=time.time\\(\\); import main; print\\('after import MB', round\\(p.memory_info\\(\\).rss/1e6\\), 'baseline', round\\(b/1e6\\), 'secs', round\\(time.time\\(\\)-t,1\\)\\); import sys; heavy=[m for m in \\('torch','numpy','pandas','sklearn','sentence_transformers','playwright','weasyprint','spacy','transformers','scipy','tiktoken','openai','fitz','pdfplumber','PIL'\\) if m in sys.modules]; print\\('loaded:', heavy\\)\" 2>&1 | Select-String -NotMatch 'SAWarning|get_columns' | Select-Object -Last 8)",
+      "PowerShell(.venv\\\\Scripts\\\\python.exe \"C:\\\\Users\\\\SHUBHA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1\\\\59573702-b9c3-4936-b40c-c163433c8835\\\\scratchpad\\\\chromemem.py\" 2>&1)",
+      "PowerShell(.venv\\\\Scripts\\\\python.exe \"C:\\\\Users\\\\SHUBHA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1\\\\59573702-b9c3-4936-b40c-c163433c8835\\\\scratchpad\\\\pfsize.py\" 2>&1)",
+      "Bash(awk 'NR>=8 && NR<=14 || NR>=80 && NR<=90 { line=$0; if \\(match\\(line,/=/\\)\\) { k=substr\\(line,1,RSTART-1\\); v=substr\\(line,RSTART+1\\); printf \"%d: %s = %s \\(len %d\\)\\\\n\", NR, k, \\(k ~ /PASSWORD|KEY|USERNAME/ ? \"***\" : v\\), length\\(v\\) } else print NR\": \"line }' .env)",
+      "Bash(venv/Scripts/python.exe -c ' *)",
+      "Bash(python -c ' *)",
+      "Bash(python -m py_compile main.py email_service.py)",
+      "Bash(python test_email_service.py)"
     ]
   }
 }
