@@ -2,50 +2,61 @@
    .jd-field, .jd-btn) so it reads as the same product; only layout and the
    page-specific pieces live here. */
 
-.pf-page { max-width: 1080px; }
+.pf-page { max-width: 1320px; }
+
+/* Bigger, roomier fields than the job dashboard's compact modal styles —
+   this page is a long form people sit and fill in, not a quick popover.
+   Scoped to .pf-page so job_dashboard.css's own forms are untouched. */
+.pf-page .jd-fields { gap: 18px 22px; }
+.pf-page .jd-field { gap: 7px; }
+.pf-page .jd-field label { font-size: .9rem; }
+.pf-page .jd-field input, .pf-page .jd-field select, .pf-page .jd-field textarea {
+  padding: 12px 14px; font-size: 1rem; border-radius: 10px;
+}
+.pf-page .jd-field textarea { min-height: 110px; }
 
 .pf-banner {
-  margin: 0 0 16px; padding: 12px 14px; border-radius: 12px;
+  margin: 0 0 18px; padding: 14px 18px; border-radius: 12px;
   background: rgba(79,127,255,.10); border: 1px solid rgba(79,127,255,.25);
-  color: #cfdcf5; font-size: .9rem; line-height: 1.5;
+  color: #cfdcf5; font-size: .98rem; line-height: 1.5;
 }
 .pf-banner a { color: #8fb4ff; text-decoration: underline; }
 .pf-banner-warn { background: rgba(245,158,11,.10); border-color: rgba(245,158,11,.3); }
 
-.pf-layout { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 24px; align-items: start; }
+.pf-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; align-items: start; }
 
 .pf-toc {
   position: sticky; top: 90px; display: flex; flex-direction: column; gap: 2px;
 }
 .pf-toc a {
-  color: #9fb0cc; text-decoration: none; font-size: .86rem; font-weight: 600;
-  padding: 7px 10px; border-radius: 8px;
+  color: #9fb0cc; text-decoration: none; font-size: .95rem; font-weight: 600;
+  padding: 9px 12px; border-radius: 8px;
 }
 .pf-toc a:hover { background: rgba(255,255,255,.05); color: #eaf1ff; }
 
-.pf-form { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.pf-form { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
 
 .pf-card {
   background: rgba(255,255,255,.035); border: 1px solid rgba(99,130,200,.18);
-  border-radius: 14px; padding: 18px 18px 20px; scroll-margin-top: 90px;
+  border-radius: 16px; padding: 26px 28px 30px; scroll-margin-top: 90px;
 }
-.pf-card h2 { font-size: 1rem; font-weight: 800; color: #eaf1ff; margin: 0 0 12px; }
-.pf-intro { color: #9fb0cc; font-size: .86rem; margin: -4px 0 12px; line-height: 1.5; }
+.pf-card h2 { font-size: 1.2rem; font-weight: 800; color: #eaf1ff; margin: 0 0 18px; }
+.pf-intro { color: #9fb0cc; font-size: .95rem; margin: -6px 0 16px; line-height: 1.5; }
 .pf-muted { color: #7c8aa5; font-size: .86rem; margin: 0; }
 
-.pf-help { color: #7c8aa5; font-size: .74rem; line-height: 1.4; }
+.pf-help { color: #7c8aa5; font-size: .84rem; line-height: 1.4; }
 .pf-readonly { opacity: .7; cursor: not-allowed; }
 
 .pf-badge {
   display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 99px;
-  font-size: .66rem; font-weight: 700; letter-spacing: .02em; vertical-align: 1px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .02em; vertical-align: 1px;
 }
 .pf-badge-suggested { background: rgba(245,158,11,.14); color: #fcd34d; border: 1px solid rgba(245,158,11,.3); }
 
-.pf-phone { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 8px; }
+.pf-phone { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 10px; }
 
 .pf-check { display: flex !important; align-items: flex-start; gap: 9px; cursor: pointer;
-  font-size: .86rem !important; color: #cfdcf5 !important; font-weight: 500 !important; }
+  font-size: .95rem !important; color: #cfdcf5 !important; font-weight: 500 !important; }
 .pf-check input { width: auto !important; margin-top: 2px; accent-color: #7c3aed; }
 
 .jd-field.pf-dirty input, .jd-field.pf-dirty select, .jd-field.pf-dirty textarea {
@@ -53,20 +64,20 @@
 }
 
 /* Work experience: one card per job, Workday's My Experience shape */
-.pf-exp-title { font-size: .82rem; font-weight: 700; color: #b9c8e4; }
+.pf-exp-title { font-size: .9rem; font-weight: 700; color: #b9c8e4; }
 .pf-exp-list { display: flex; flex-direction: column; gap: 12px; margin: 8px 0 10px; }
 .pf-job {
   position: relative; display: flex; flex-direction: column; gap: 10px;
-  border: 1px solid rgba(99,130,200,.22); border-radius: 12px; padding: 14px 14px 16px;
+  border: 1px solid rgba(99,130,200,.22); border-radius: 12px; padding: 18px 18px 20px;
   background: rgba(255,255,255,.02);
 }
 .pf-job > label, .pf-job-dates label {
-  display: flex; flex-direction: column; gap: 5px; font-size: .8rem; font-weight: 600; color: #b9c8e4;
+  display: flex; flex-direction: column; gap: 7px; font-size: .9rem; font-weight: 600; color: #b9c8e4;
 }
 .pf-job input:not([type="checkbox"]), .pf-job textarea {
-  width: 100%; box-sizing: border-box; padding: 9px 11px; border-radius: 8px;
+  width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 10px;
   background: rgba(255,255,255,.05); border: 1px solid rgba(99,130,200,.28); color: #eaf1ff;
-  font: inherit; font-size: .9rem;
+  font: inherit; font-size: 1rem;
 }
 .pf-job > label.pf-check { flex-direction: row; align-items: center; }
 .pf-job textarea { resize: vertical; min-height: 96px; line-height: 1.45; }
@@ -86,7 +97,7 @@
 }
 .pf-tabs button {
   background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
-  color: #9fb0cc; font: inherit; font-size: .92rem; font-weight: 700; padding: 10px 14px; cursor: pointer;
+  color: #9fb0cc; font: inherit; font-size: 1rem; font-weight: 700; padding: 12px 16px; cursor: pointer;
 }
 .pf-tabs button:hover { color: #eaf1ff; }
 .pf-tabs button.on { color: #eaf1ff; border-bottom-color: #7c3aed; }
