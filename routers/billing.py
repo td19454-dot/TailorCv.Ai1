@@ -516,13 +516,77 @@ async def razorpay_verify(body: RazorpayVerifyRequest, request: Request):
 
     db, user = _get_db_and_user(request)
     try:
-        days = PLAN_DURATIONS.get(body.plan, 31)
-        _extend_pro(db, user, days,
-                    razorpay_subscription_id=body.razorpay_subscription_id or None,
-                    plan=body.plan)
-        return {"success": True, "pro_until": user.pro_until.isoformat()}
+        # The signature proves THAT a payment happened, not which plan it was
+        # for. `body.plan` comes from the browser and can be edited, so it is
+        # never used for days: read the plan from the order/subscription notes
+        # our own server wrote when checkout was created.
+        plan = _razorpay_paid_plan(body, user)
+        if plan is None:
+            # Couldn't confirm the plan with Razorpay right now. Grant nothing
+            # here; the webhook carries the server-side notes and will grant
+            # the right number of days.
+            return {"success": True, "pending": True}
+
+        # One grant per payment, whichever of this route and the webhook
+        # (subscription.charged / payment.captured) gets here first. A replayed
+        # or repeated confirmation adds no extra days.
+        if _claim_grant(db, "razorpay", body.razorpay_payment_id, user.id):
+            _extend_pro(db, user, PLAN_DURATIONS[plan],
+                        razorpay_subscription_id=body.razorpay_subscription_id or None,
+                        plan=plan)
+        return {"success": True, "pro_until": user.pro_until.isoformat() if user.pro_until else None}
     finally:
         db.close()
+
+
+def _razorpay_paid_plan(body, user):
+    """The plan this verified Razorpay payment was actually for, or None if it
+    can't be confirmed right now. Raises 400 if the purchase belongs to
+    another account."""
+    if not body.razorpay_subscription_id:
+        # One-time orders are only ever created for the 7-Day Pass
+        # (/api/billing/razorpay/order rejects anything else).
+        notes = {}
+        try:
+            notes = (_require_razorpay().order.fetch(body.razorpay_order_id) or {}).get("notes") or {}
+        except Exception:
+            logger.warning("Razorpay order fetch failed for %s", body.razorpay_order_id, exc_info=True)
+        if notes.get("user_id") and str(notes["user_id"]) != str(user.id):
+            raise HTTPException(status_code=400, detail="Payment belongs to another account")
+        return "weekly"
+
+    try:
+        sub = _require_razorpay().subscription.fetch(body.razorpay_subscription_id) or {}
+    except HTTPException:
+        raise
+    except Exception:
+        logger.warning("Razorpay subscription fetch failed for %s",
+                       body.razorpay_subscription_id, exc_info=True)
+        return None
+    notes = sub.get("notes") or {}
+    if notes.get("user_id") and str(notes["user_id"]) != str(user.id):
+        raise HTTPException(status_code=400, detail="Payment belongs to another account")
+    plan = notes.get("plan")
+    return plan if plan in ("monthly", "yearly") else None
+
+
+def _claim_grant(db: Session, provider: str, payment_id, user_id) -> bool:
+    """Exactly-once guard for granting Pro for one payment. True the first time
+    a payment id is seen, False on every repeat. Reuses the unique-key
+    analytics_event_logs table rather than adding a new one."""
+    from sqlalchemy.exc import IntegrityError
+    from models import AnalyticsEventLog
+
+    if not payment_id:
+        return True
+    try:
+        db.add(AnalyticsEventLog(key=f"grant:{provider}:{payment_id}"[:190],
+                                 user_id=user_id, event="pro_granted"))
+        db.commit()
+        return True
+    except IntegrityError:
+        db.rollback()
+        return False
 
 
 @router.post("/api/billing/razorpay/cancel")
@@ -588,10 +652,25 @@ async def razorpay_webhook(request: Request):
     try:
         if event_type in ("subscription.charged", "payment.captured"):
             entity = event.get("payload", {}).get("payment", {}).get("entity", {})
-            notes = entity.get("notes", {})
+            sub_id = entity.get("subscription_id") or (entity.get("notes") or {}).get("subscription_id")
+            # Our checkout notes (user_id, plan, region) live on the order or
+            # subscription; Razorpay doesn't reliably copy them onto each
+            # payment, renewals especially. Merge in the subscription's notes —
+            # from this payload (subscription.charged) or fetched — so a yearly
+            # renewal is never granted as monthly.
+            notes = dict(entity.get("notes") or {})
+            if sub_id and not notes.get("plan"):
+                sub_notes = (event.get("payload", {}).get("subscription", {})
+                             .get("entity", {}).get("notes")) or {}
+                if not sub_notes:
+                    try:
+                        sub_notes = (_require_razorpay().subscription.fetch(sub_id) or {}).get("notes") or {}
+                    except Exception:
+                        logger.warning("Razorpay subscription fetch failed for %s", sub_id, exc_info=True)
+                for k, v in sub_notes.items():
+                    notes.setdefault(k, v)
             user_id = notes.get("user_id")
-            plan = notes.get("plan", "monthly")
-            sub_id = entity.get("subscription_id") or notes.get("subscription_id")
+            plan = notes.get("plan") or ("weekly" if not sub_id else None)
 
             user = None
             if user_id:
@@ -605,8 +684,19 @@ async def razorpay_webhook(request: Request):
                                          entity.get("amount"), entity.get("currency"))
                 if sub_id:
                     _track_subscription_created(user, plan, "razorpay", region, sub_id)
-                days = PLAN_DURATIONS.get(plan, 31)
-                _extend_pro(db, user, days, razorpay_subscription_id=sub_id, plan=plan)
+                # Razorpay sends subscription.charged AND payment.captured for
+                # one payment, and /verify may already have granted it — one
+                # grant per payment id. If the plan is still unknown, don't
+                # claim: the other event or /verify can grant it correctly.
+                if plan in PLAN_DURATIONS and _claim_grant(db, "razorpay", entity.get("id"), user.id):
+                    _extend_pro(db, user, PLAN_DURATIONS[plan], razorpay_subscription_id=sub_id, plan=plan)
+                elif plan not in PLAN_DURATIONS:
+                    alerts.notify(
+                        "Razorpay payment with unknown plan",
+                        f"payment {entity.get('id')}, subscription {sub_id}, user {user.id}. "
+                        "Pro not granted by webhook - check the subscription notes.",
+                        key=f"rzp_unknown_plan:{entity.get('id')}",
+                    )
 
             # Razorpay's `fee` already includes the GST on that fee; there is
             # no customer-side tax on these payments.

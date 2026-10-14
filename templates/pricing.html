@@ -7,7 +7,7 @@
     <meta name="description" content="Simple, transparent pricing for TailorCV. Start free with 3 ATS scans, no card needed. Pro unlocks unlimited AI resume optimization, cover letters, mock interviews and more.">
     <title>Pricing | TailorCV</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/header-footer.css?v=8">
+    <link rel="stylesheet" href="/static/header-footer.css?v=17">
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="stylesheet" href="/static/pricing.css?v=2">
     <link rel="icon" type="image/png" href="/static/favicon.png">
@@ -919,7 +919,11 @@
                         }),
                     });
                     if (vRes.ok) {
-                        window.location.href = '/dashboard?upgrade=success';
+                        // `pending`: the server couldn't confirm the plan with
+                        // Razorpay yet; the webhook grants it shortly.
+                        var vData = {};
+                        try { vData = await vRes.json(); } catch (e) {}
+                        window.location.href = '/dashboard?upgrade=' + (vData.pending ? 'pending' : 'success');
                     } else {
                         if (vRes.status < 500) reportCheckoutError('razorpay', plan, 'verify', vRes.status, 'paid but verify failed');
                         alert('Payment received but verification failed. Please contact support.');
