@@ -583,6 +583,27 @@ test('readComboboxOptions opens a react-select, which ignores a bare click', asy
   });
 });
 
+test('readComboboxOptions ignores a previous dropdown still on screen', async () => {
+  // Workday: the Title dropdown's popup was still open (Escape doesn't close it
+  // at once) when "Phone Device Type" was read, so its Dr. / Miss / Mr. were
+  // returned as Phone Device Type's options and the AI answered "Mr.".
+  await withDoc(`<form><input name="x"><input name="y">
+      <div class="select__container"><input role="combobox" name="device"></div>
+      <div role="listbox"><div data-automation-id="promptOption">Select One</div>
+        <div data-automation-id="promptOption">Dr.</div>
+        <div data-automation-id="promptOption">Mr.</div></div>
+      <div id="portal"></div></form>`, async (env) => {
+    const input = env.document.querySelector('[role=combobox]');
+    input.addEventListener('click', () => {
+      env.document.getElementById('portal').innerHTML =
+        '<div role="listbox"><div data-automation-id="promptOption">Landline</div>' +
+        '<div data-automation-id="promptOption">Mobile</div></div>';
+    });
+    const row = d.describeFields(d.findForm()).find(r => r.kind === 'combobox');
+    deepEq(await d.readComboboxOptions(row), ['Landline', 'Mobile']);
+  });
+});
+
 test('readComboboxOptions gives up quietly when no menu appears', async () => {
   await withDoc(`<form><input name="x"><input name="y">
       <div class="select__container"><input role="combobox" name="based"></div></form>`,

@@ -16,10 +16,7 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 
-@router.get("/unsubscribe", response_class=HTMLResponse)
-async def unsubscribe(token: str = ""):
-    """Public, no-login one-click unsubscribe target for SES marketing campaigns.
-    Never touches transactional mail (sent via Resend) or requires a session."""
+def _opt_out(token: str) -> None:
     user_id = read_unsubscribe_token(token)
     if user_id is None:
         raise HTTPException(status_code=400, detail="Invalid or expired unsubscribe link.")
@@ -33,6 +30,12 @@ async def unsubscribe(token: str = ""):
     finally:
         db.close()
 
+
+@router.get("/unsubscribe", response_class=HTMLResponse)
+async def unsubscribe(token: str = ""):
+    """Public, no-login unsubscribe target for marketing_email.py campaigns.
+    Never touches transactional mail or requires a session."""
+    _opt_out(token)
     return HTMLResponse(
         "<html><body style=\"font-family:sans-serif;max-width:480px;margin:80px auto;"
         "text-align:center;color:#222\">"
@@ -41,6 +44,15 @@ async def unsubscribe(token: str = ""):
         "Account emails (password resets, receipts, etc.) are unaffected.</p>"
         "</body></html>"
     )
+
+
+@router.post("/unsubscribe")
+async def unsubscribe_one_click(token: str = ""):
+    """RFC 8058 one-click: the "Unsubscribe" button Gmail/Yahoo show next to the
+    sender POSTs `List-Unsubscribe=One-Click` to the List-Unsubscribe URL, with
+    the token still in its query string. Without this route that button 405s."""
+    _opt_out(token)
+    return PlainTextResponse("unsubscribed")
 
 
 @router.post("/webhooks/ses-events")

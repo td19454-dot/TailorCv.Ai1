@@ -256,6 +256,7 @@
     <script src="/static/toast.js"></script>
     <script>window.IS_PRO = {{ 'true' if is_pro else 'false' }};</script>
     <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
+    <script>window.CHARGED_OPTIMIZATION_IDS = {{ charged_optimization_ids | default([]) | tojson }};</script>
     <script>window.DOWNLOADS_USED = {{ downloads_used | default(0) | int }};</script>
     <script>window.FREE_DOWNLOAD_LIMIT = {{ free_download_limit | default(3) | int }};</script>
     <!-- The v2 editor reads its resume from sessionStorage, which is empty

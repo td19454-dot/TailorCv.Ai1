@@ -1628,7 +1628,14 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
         if (!isAuto) {
             let gateOk = false;
             try {
-                const gateRes = await fetch("/api/billing/checkout-download", { method: "POST" });
+                // The credit is per optimization: re-downloading the same one
+                // (after a font or spacing tweak) is free once it's charged.
+                const optimizationId = (getPayload() || {}).optimization_id || null;
+                const gateRes = await fetch("/api/billing/checkout-download", {
+                    method:  "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body:    JSON.stringify({ optimization_id: optimizationId }),
+                });
                 if (gateRes.status === 401) {
                     window.location.href = "/login?next=" + encodeURIComponent(location.pathname);
                     return;
@@ -1644,6 +1651,10 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
                 }
                 if (gateRes.ok) {
                     gateOk = true;
+                    if (optimizationId) {
+                        window.CHARGED_OPTIMIZATION_IDS = window.CHARGED_OPTIMIZATION_IDS || [];
+                        window.CHARGED_OPTIMIZATION_IDS.push(optimizationId);
+                    }
                 }
             } catch (e) {
                 // Network error — fail closed: show popup rather than allow
@@ -1723,7 +1734,8 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
                     jd,
                     resume_id: savedId,
                     resume_data: payload && payload.resume_data ? payload.resume_data : null,
-                    candidate_name: payload && payload.candidate_name ? payload.candidate_name : null
+                    candidate_name: payload && payload.candidate_name ? payload.candidate_name : null,
+                    optimization_id: payload && payload.optimization_id ? payload.optimization_id : null
                 }),
             });
             if (!res.ok) throw new Error("Save failed");
@@ -1768,7 +1780,8 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
                     jd,
                     resume_id: savedId,
                     resume_data: payload && payload.resume_data ? payload.resume_data : null,
-                    candidate_name: payload && payload.candidate_name ? payload.candidate_name : null
+                    candidate_name: payload && payload.candidate_name ? payload.candidate_name : null,
+                    optimization_id: payload && payload.optimization_id ? payload.optimization_id : null
                 }),
             });
             if (res.status === 401) {
@@ -2252,6 +2265,10 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
         if (window.IS_PRO === true) return;
         if (window.QUOTA_EXHAUSTED !== true) return;
         if (!doc || !doc.documentElement) return;
+        // Credits being used up is no reason to wall the user out of an
+        // optimization they already spent one on.
+        const optimizationId = (getPayload() || {}).optimization_id;
+        if (optimizationId && (window.CHARGED_OPTIMIZATION_IDS || []).indexOf(optimizationId) !== -1) return;
 
         if (doc._tailorcvQuotaLocked) return;
         doc._tailorcvQuotaLocked = true;

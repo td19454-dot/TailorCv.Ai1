@@ -89,8 +89,9 @@ from functions import (
 from extraction import process_resume
 import alerts
 import analytics
+import health_watch
 import skill_categories as skillcat
-from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User
+from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, ResumeOptimization, SavedResume, SignupVerificationCode, UsageRecord, User
 from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
@@ -195,6 +196,9 @@ async def csrf_middleware(request: Request, call_next):
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
         "/webhooks/ses-events",
+        # RFC 8058 one-click POST from the mail provider; authorised by the
+        # signed token in the URL, not by a session.
+        "/unsubscribe",
     }
     SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
 
@@ -261,6 +265,29 @@ async def portfolio_subdomain_router(request: Request, call_next):
     return await call_next(request)
 
 
+@app.middleware("http")
+async def failure_alert_middleware(request: Request, call_next):
+    """Alert on every 5xx response, and register the request with health_watch
+    so a memory spike or a hung request can name what was running.
+
+    The exception handlers below only see raised errors; several routes
+    (portfolio, personality card, save resume) return JSONResponse(500)
+    themselves and would otherwise fail silently. Uncaught exceptions propagate
+    past here to global_exception_handler, which alerts on its own."""
+    rid = health_watch.request_started(f"{request.method} {request.url.path}")
+    try:
+        response = await call_next(request)
+    finally:
+        health_watch.request_finished(rid)
+    if response.status_code >= 500 and not getattr(request.state, "failure_alerted", False):
+        alerts.notify(
+            f"{response.status_code} on {request.url.path}",
+            f"{request.method} {request.url.path} returned {response.status_code}.",
+            key=f"{response.status_code}:{request.url.path}",
+        )
+    return response
+
+
 # Add global exception handler for logging
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
@@ -289,6 +316,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
             str(exc.detail)[:300],
             key=f"{exc.status_code}:{request.url.path}",
         )
+        request.state.failure_alerted = True  # failure_alert_middleware: don't repeat
     accept = request.headers.get("accept", "")
     wants_html = "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest"
     if exc.status_code == 404 and wants_html:
@@ -497,6 +525,8 @@ def _ensure_saved_resume_columns() -> None:
         to_add.append("ADD COLUMN company VARCHAR(200)")
     if "status" not in cols:
         to_add.append("ADD COLUMN status VARCHAR(30) DEFAULT 'saved'")
+    if "optimization_id" not in cols:
+        to_add.append("ADD COLUMN optimization_id VARCHAR(32)")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -875,8 +905,13 @@ async def _welcome_email_loop() -> None:
                 logger.info("sent %s delayed welcome email(s)", sent)
         except asyncio.CancelledError:
             raise
-        except Exception:
+        except Exception as exc:
             logger.exception("welcome email tick failed; continuing")
+            alerts.notify(
+                "Welcome email loop failed",
+                f"{type(exc).__name__}: {str(exc)[:300]}",
+                key="welcome:tick",
+            )
 
 
 def _sweep_orphaned_chromium() -> None:
@@ -979,7 +1014,8 @@ async def startup_event() -> None:
     _check_billing_config()
     analytics.init()
     _sweep_orphaned_chromium()
-    for loop_fn in (_auto_apply_reaper_loop, _welcome_email_loop):
+    health_watch.notify_startup()
+    for loop_fn in (_auto_apply_reaper_loop, _welcome_email_loop, health_watch.watch_loop):
         task = asyncio.create_task(loop_fn())
         _BACKGROUND_TASKS.add(task)
         task.add_done_callback(_BACKGROUND_TASKS.discard)
@@ -1112,24 +1148,9 @@ def is_pro(user) -> bool:
     return bool(until and until > datetime.utcnow())
 
 
-FREE_LIMITS: dict[str, int] = {
-    # Lowered from 3 to 2 to 1 as model costs rose, raised back to 2 (Oct 2026).
-    # The download popup reads this number rather than hardcoding it, so the
-    # copy follows automatically.
-    "ai_optimizations": 2,
-    "cover_letters": 2,
-    "linkedin_imports": 1,
-    "mock_interviews": 1,
-    "interview_questions": 1,
-    # Extension autofill: 10 applications filled, ever, then Pro. Priced low
-    # because a fill is one small LLM call in the user's own browser — unlike
-    # auto_applies, which has its own monthly cap (enforce_auto_apply_quota)
-    # because every run burns a cloud browser session and applies to Pro too.
-    "autofills": 10,
-    "ats_scans": 3,
-    "cv_uploads": 1,
-    "template_changes": 1,
-}
+# Lives in quota_limits.py so scripts (marketing segments) can read it
+# without importing the app.
+from quota_limits import FREE_LIMITS  # noqa: E402
 
 
 # 7-Day Pass: Pro for a week, but capped at this many resume tailorings per
@@ -7678,6 +7699,17 @@ async def optimized_editor_page(request: Request):
             (not user_is_pro) and bool(user) and quota_exhausted(db, user, "ai_optimizations")
         )
         downloads_used = 0 if user_is_pro else lifetime_usage(db, user, "ai_optimizations")
+        # Optimizations whose credit is already spent. The quota lock below is
+        # decided at page load, so without this a free user who reloads the
+        # editor on a resume they already paid for would be walled out of it.
+        charged_optimization_ids = []
+        if user and not user_is_pro:
+            charged_optimization_ids = [
+                t for (t,) in db.query(ResumeOptimization.token)
+                .filter(ResumeOptimization.user_id == user.id,
+                        ResumeOptimization.charged.is_(True))
+                .all()
+            ]
 
         # Seed for the v2 editor.
         #
@@ -7701,6 +7733,7 @@ async def optimized_editor_page(request: Request):
                         "template_id": recent.template_id or 1,
                         "style_id": recent.style_id or 1,
                         "saved_resume_id": recent.id,
+                        "optimization_id": recent.optimization_id,
                     }
             except Exception:
                 # A malformed row must never take the editor page down.
@@ -7719,6 +7752,7 @@ async def optimized_editor_page(request: Request):
             # who had used a different number.
             "downloads_used": downloads_used,
             "free_download_limit": FREE_LIMITS.get("ai_optimizations", 3),
+            "charged_optimization_ids": charged_optimization_ids,
             "region": _get_region(request),
             # Cache key from the files' own mtimes. A hand-bumped "?v=6" only
             # busts the cache when someone remembers to change it, and a stale
@@ -11145,6 +11179,7 @@ async def save_edited_resume(request: Request):
     resume_id = (body or {}).get("resume_id")
     resume_data = (body or {}).get("resume_data")
     candidate_name = (body or {}).get("candidate_name")
+    optimization_id = str((body or {}).get("optimization_id") or "").strip()[:32] or None
     jd_snippet = (str(jd).strip() or None) if jd else None  # full JD, untruncated
     if not html or not isinstance(html, str):
         return JSONResponse(status_code=400, content={"error": "Missing resume HTML"})
@@ -11205,6 +11240,19 @@ async def save_edited_resume(request: Request):
                 ),
             )
             db.add(record)
+        # Carry the optimization token so reopening this resume in a new tab
+        # re-downloads against the credit it already spent. Only a token this
+        # user was actually issued is accepted, and a missing one never clears
+        # what the row already has.
+        if optimization_id:
+            owns_token = (
+                db.query(ResumeOptimization.id)
+                .filter(ResumeOptimization.token == optimization_id,
+                        ResumeOptimization.user_id == user_id)
+                .first()
+            )
+            if owns_token:
+                record.optimization_id = optimization_id
         db.commit()
         return JSONResponse({"success": True, "id": record.id})
     except Exception:
@@ -12206,7 +12254,12 @@ async def login_with_google(request: Request):
         if pause > 0:
             await asyncio.sleep(pause)
         try:
-            idinfo = id_token.verify_oauth2_token(token, transport_req, GOOGLE_CLIENT_ID)
+            # google-auth's default skew is 0: a server clock even a few seconds
+            # behind Google sees a fresh token's iat in the future and rejects it
+            # ("Token used too early"), surfacing as a 401 on every sign-in.
+            idinfo = id_token.verify_oauth2_token(
+                token, transport_req, GOOGLE_CLIENT_ID, clock_skew_in_seconds=60
+            )
             break
         except ValueError as exc:
             logger.info("Google ID token rejected: %s", exc)
@@ -12307,10 +12360,22 @@ async def checkout_download(request: Request):
     Free users with quota remaining: counter incremented HERE before 200 is returned,
       so the frontend is guaranteed the slot is consumed before the download starts.
     Free users with quota exhausted: 402 returned, frontend shows upgrade popup.
+
+    The credit is per optimization, not per download: the editor sends the
+    optimization_id that /get-optimised-resume issued, and once that token is
+    charged its re-downloads (after a font or spacing tweak) are free. With no
+    token, or one that isn't this user's, every download charges as before.
     """
     user_id = request.session.get("user_id")
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
+    optimization_id = None
+    try:
+        body = await request.json()
+        if isinstance(body, dict):
+            optimization_id = str(body.get("optimization_id") or "").strip()[:32] or None
+    except Exception:
+        pass  # older editor builds POST with no body
     db = get_db()
     try:
         user = db.query(User).filter_by(id=user_id).first()
@@ -12327,6 +12392,17 @@ async def checkout_download(request: Request):
                 return JSONResponse({"allowed": True, "is_pro": False})
         # Serialize quota checks per user — mirrors enforce_quota line 542.
         db.query(User).filter(User.id == user.id).with_for_update().one()
+        optimization = None
+        if optimization_id:
+            optimization = (
+                db.query(ResumeOptimization)
+                .filter(ResumeOptimization.token == optimization_id,
+                        ResumeOptimization.user_id == user.id)
+                .first()
+            )
+            if optimization and optimization.charged:
+                db.commit()  # release the row lock
+                return JSONResponse({"allowed": True, "is_pro": False})
         from sqlalchemy import func as _func
         used = (
             db.query(_func.coalesce(_func.sum(UsageRecord.ai_optimizations), 0))
@@ -12342,6 +12418,8 @@ async def checkout_download(request: Request):
         month = datetime.utcnow().strftime("%Y-%m")
         rec = get_or_create_usage(db, user.id, month)
         rec.ai_optimizations = (rec.ai_optimizations or 0) + 1
+        if optimization:
+            optimization.charged = True
         db.commit()
         return JSONResponse({"allowed": True, "is_pro": False})
     finally:
@@ -13370,8 +13448,25 @@ async def upload_resume(
             if wants_editor_mode:
                 mark_first_activity(user_id)
                 analytics.track_optimization_completed(user_id, request, {**_opt_done_props, "editor_mode": True})
+                # Token that lets checkout-download charge this optimization's
+                # credit once, however many times it is downloaded. If the row
+                # can't be written the editor gets no token and falls back to
+                # charging per download - never a broken optimization.
+                optimization_id = None
+                _odb = get_db()
+                try:
+                    _token = uuid.uuid4().hex
+                    _odb.add(ResumeOptimization(user_id=user_id, token=_token))
+                    _odb.commit()
+                    optimization_id = _token
+                except Exception:
+                    logger.exception("Failed to record optimization token (non-fatal)")
+                    _odb.rollback()
+                finally:
+                    _odb.close()
                 return JSONResponse({
                     "success": True,
+                    "optimization_id": optimization_id,
                     "html": html_content,
                     "template_id": template_id,
                     "style_id": style_id,

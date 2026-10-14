@@ -69,8 +69,8 @@ class User(Base):
     base_cover_letter_generated_at = Column(DateTime, nullable=True)
     # Stored application-form autofill profile used by the Chrome extension.
     application_profile_json = Column(Text, nullable=True)
-    # Marketing-broadcast suppression (SES campaigns only — never applies to
-    # transactional mail sent via Resend). Set by the /unsubscribe link or by an
+    # Marketing-broadcast suppression (marketing_email.py campaigns only — never
+    # applies to transactional mail). Set by the /unsubscribe link or by an
     # SES bounce/complaint webhook; any one of these three excludes the user from
     # the next campaign send.
     marketing_opt_out = Column(Boolean, nullable=False, default=False, server_default="false")
@@ -168,6 +168,9 @@ class SavedResume(Base):
     status = Column(String(30), nullable=False, default="saved")  # saved, applied, interview, selected, rejected
     resume_json = Column(Text, nullable=True)   # the optimized resume dict, JSON-encoded
     html_content = Column(Text, nullable=True)  # rendered HTML, for instant re-download
+    # ResumeOptimization.token this resume came from, so reopening it in a new
+    # tab re-downloads against the credit already spent instead of a new one.
+    optimization_id = Column(String(32), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
@@ -234,6 +237,21 @@ class WelcomeEmailLog(Base):
     source = Column(String(30), nullable=False, default="login")
 
     user = relationship("User", back_populates="welcome_emails")
+
+
+class MarketingSend(Base):
+    """One row per (campaign, user) marketing email, written by marketing_email.py.
+
+    Inserted *before* the send as a claim, so rerunning a campaign that crashed
+    halfway resumes instead of mailing the first half again. Also the record
+    behind the --min-gap-days frequency cap."""
+    __tablename__ = "marketing_sends"
+    __table_args__ = (UniqueConstraint("campaign", "user_id", name="uq_marketing_send_campaign_user"),)
+
+    id = Column(Integer, primary_key=True, index=True)
+    campaign = Column(String(100), nullable=False, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    sent_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
 
 
 class AnalyticsEventLog(Base):
@@ -328,7 +346,7 @@ class UsageRecord(Base):
     # priced against a cloud browser session that actually submits, and applies
     # to Pro too. A local fill costs one small LLM call and submits nothing, so
     # it goes through enforce_quota()'s lifetime-free rule instead (see
-    # FREE_LIMITS in main.py) and is unlimited for Pro.
+    # FREE_LIMITS in quota_limits.py) and is unlimited for Pro.
     autofills = Column(Integer, default=0, nullable=False)
     cv_uploads = Column(Integer, default=0, nullable=False)
     template_changes = Column(Integer, default=0, nullable=False)
@@ -336,6 +354,25 @@ class UsageRecord(Base):
     __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
 
     user = relationship("User", back_populates="usage_records")
+
+
+class ResumeOptimization(Base):
+    """One row per website optimization, so its free-tier credit is spent once.
+
+    The ai_optimizations credit is consumed at the editor's first download
+    (/api/billing/checkout-download), not when the LLM runs. Without this row
+    every re-download of the same optimization (after a font or spacing tweak)
+    spent another credit. The token travels in the editor payload; a download
+    carrying an already-charged token is free. New table, so create_all builds
+    it and no _ensure_* function is needed.
+    """
+    __tablename__ = "resume_optimizations"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    token = Column(String(32), unique=True, index=True, nullable=False)
+    charged = Column(Boolean, default=False, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
 
 class Payment(Base):

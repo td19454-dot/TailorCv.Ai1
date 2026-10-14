@@ -1304,10 +1304,17 @@ export async function readComboboxOptions(row) {
     if (labels.length) return labels;
   }
 
+  // Options already on screen BEFORE the click belong to some other widget —
+  // typically the dropdown read just before this one, whose popup is still
+  // closing. dismissListbox() only sends Escape, and Workday tears its popup
+  // down on its own schedule, so "Phone Device Type" (Landline / Mobile) read
+  // the Title dropdown's Dr. / Miss / Mr. that were still visible, and the AI
+  // then answered it "Mr.". Only options that appear after the click count.
+  const stale = new Set(visibleOptionNodes(p));
   try {
     scrollIntoView(el);
     clickOpen(el);
-    const labels = await waitForOptions();
+    const labels = await waitForOptions(stale);
     return labels;
   } catch (e) {
     return [];
@@ -1328,7 +1335,14 @@ function optionLabelsIn(node) {
   return out;
 }
 
-function waitForOptions() {
+function visibleOptionNodes(p) {
+  if (!p || !p.optionNodes) return [];
+  try { return p.optionNodes(globalThis.document).filter(n => isNodeVisible(n)); }
+  catch (e) { return []; }
+}
+
+function waitForOptions(stale) {
+  const skip = stale || new Set();
   return new Promise(resolve => {
     const doc = globalThis.document;
     // Captured now, not read inside the timer: the timer can outlive the frame
@@ -1347,7 +1361,7 @@ function waitForOptions() {
       if (!p || !p.optionNodes) return [];
       const out = [];
       for (const n of p.optionNodes(doc)) {
-        if (!isNodeVisible(n) || isChosenValue(n)) continue;
+        if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n)) continue;
         const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
         if (t && out.length < MAX_OPTIONS_READ) out.push(t);
       }

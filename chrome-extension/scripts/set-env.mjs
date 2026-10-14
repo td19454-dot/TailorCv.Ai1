@@ -1,6 +1,6 @@
 // Point the extension at a backend.
 //
-//   node scripts/set-env.mjs dev              -> http://localhost:8005
+//   node scripts/set-env.mjs dev              -> http://127.0.0.1:8005
 //   node scripts/set-env.mjs prod             -> https://thetailorcv.com
 //   node scripts/set-env.mjs http://host:1234 -> anything explicit
 //   node scripts/set-env.mjs                  -> print the current value
@@ -14,7 +14,7 @@ import { dirname, resolve } from 'node:path';
 
 const ENV_FILE = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'env.js');
 const PROD = 'https://thetailorcv.com';
-const DEV = 'http://localhost:8005';
+const DEV = 'http://127.0.0.1:8005';
 const LINE_RE = /^(\s*var BASE_URL = ')([^']*)(';\s*\/\/ tcv:base-url\s*)$/m;
 
 const source = readFileSync(ENV_FILE, 'utf8');
@@ -37,7 +37,7 @@ else target = arg;
 
 if (!/^https?:\/\/[^/\s]+$/.test(target)) {
   console.error(`Not a usable base URL: ${target}`);
-  console.error('Expected something like http://localhost:8005 (no trailing slash, no path).');
+  console.error('Expected something like http://127.0.0.1:8005 (no trailing slash, no path).');
   process.exit(1);
 }
 

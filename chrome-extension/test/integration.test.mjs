@@ -1968,4 +1968,208 @@ test('learnable answers exclude the sensitive and the secret', async () => {
   });
 });
 
+// ── Workday My Experience: Work Experience 1, 2, … ────────────
+// Block markup from a real PwC capture (Oct 2026). "Add Another" appends a
+// block with fresh ids, as Workday does; ticking "I currently work here" takes
+// the block's "To" away. Education has an identical "Add Another" that must
+// never be pressed.
+
+function wdDate(id, label) {
+  const part = (p, max) => `<div id="${id}-dateSection${p}"><div aria-hidden="true" data-automation-id="dateSection${p}-display">${p === 'Month' ? 'MM' : 'YYYY'}</div>
+    <input role="spinbutton" aria-label="${p}" aria-valuemax="${max}" aria-valuemin="1" aria-valuetext="${p === 'Month' ? 'MM' : 'YYYY'}" id="${id}-dateSection${p}-input" data-automation-id="dateSection${p}-input"></div>`;
+  return `<div data-automation-id="formField-${id.split('--')[1]}"><fieldset><legend><label><span>${label}<abbr aria-hidden="true">*</abbr></span></label></legend>
+    <div id="${id}" role="group" data-automation-id="dateInputWrapper">${part('Month', 12)}<div>/</div>${part('Year', 9999)}</div></fieldset></div>`;
+}
+
+function wdExperienceBlock(n, k) {
+  const f = `workExperience-${k}--`;
+  const text = (name, label, req) => `<div data-automation-id="formField-${name}"><label for="${f}${name}"><span>${label}${req ? '<abbr aria-hidden="true">*</abbr>' : ''}</span></label>
+    <input type="text" id="${f}${name}" name="${name}" aria-required="${req}"></div>`;
+  return `<div role="group" aria-labelledby="Work-Experience-${n}-panel">
+    <div><h5 id="Work-Experience-${n}-panel">Work Experience ${n}</h5>${n > 1 ? '<button>Delete</button>' : ''}</div>
+    <div data-fkit-id="${f}null">
+      ${text('jobTitle', 'Job Title', true)}${text('companyName', 'Company', true)}${text('location', 'Location', false)}
+      <div data-automation-id="formField-currentlyWorkHere"><label for="${f}currentlyWorkHere">I currently work here</label>
+        <input id="${f}currentlyWorkHere" type="checkbox" aria-checked="false" name="currentlyWorkHere"></div>
+      <div class="dates">${wdDate(f + 'startDate', 'From')}${wdDate(f + 'endDate', 'To')}</div>
+      <div data-automation-id="formField-roleDescription"><label for="${f}roleDescription">Role Description</label>
+        <textarea id="${f}roleDescription"></textarea></div>
+    </div></div>`;
+}
+
+const wdPage = (blocks = 1) => `
+  <div data-automation-id="applyFlowPage"><h3>My Experience</h3>
+  <div data-automation-id="applyFlowMyExpPage">
+    <div role="group" aria-labelledby="Work-Experience-section"><h4 id="Work-Experience-section">Work Experience</h4>
+      ${blocks ? wdExperienceBlock(1, 5) : ''}
+      <div><div><button data-automation-id="add-button">Add Another</button></div></div>
+    </div>
+    <div role="group" aria-labelledby="Education-section"><h4 id="Education-section">Education</h4>
+      <div role="group" aria-labelledby="Education-1-panel"><h5 id="Education-1-panel">Education 1</h5>
+        <div data-automation-id="formField-gradeAverage"><label for="education-6--gradeAverage">Overall Result (GPA)</label>
+          <input type="text" id="education-6--gradeAverage" name="gradeAverage"></div></div>
+      <div><button data-automation-id="add-button" id="edu-add">Add Another</button></div>
+    </div>
+    <div role="group" aria-labelledby="Social-section"><h4 id="Social-section">Social Network URLs</h4>
+      <label for="li">LinkedIn (optional)</label><input type="text" id="li" name="linkedInAccount"></div>
+  </div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+const WD_MY_EXPERIENCE = wdPage(1);
+
+function wireWorkdayExperience(env) {
+  const doc = env.document;
+  const log = { eduAdds: 0, next: 0, adds: 0 };
+  const section = doc.querySelector('[aria-labelledby="Work-Experience-section"]');
+  const add = section.querySelector('[data-automation-id="add-button"]');
+  let k = 26;
+  const wireCurrent = (block) => {
+    const cb = block.querySelector('input[name="currentlyWorkHere"]');
+    cb.addEventListener('change', () => {
+      const end = block.querySelector('[data-automation-id="formField-endDate"]');
+      if (cb.checked && end) end.remove();
+    });
+  };
+  const first = section.querySelector('[aria-labelledby="Work-Experience-1-panel"]');
+  if (first) wireCurrent(first);
+  add.addEventListener('click', () => {
+    const n = section.querySelectorAll('[aria-labelledby$="-panel"]').length + 1;
+    log.adds++;
+    add.parentElement.parentElement.insertAdjacentHTML('beforebegin', wdExperienceBlock(n, k++));
+    wireCurrent(section.querySelector(`[aria-labelledby="Work-Experience-${n}-panel"]`));
+  });
+  doc.getElementById('edu-add').addEventListener('click', () => { log.eduAdds++; });
+  doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => { log.next++; });
+  return log;
+}
+
+const WD_JOBS = [
+  { title: 'AI/ML Engineer', company: 'Zorba AI', location: 'Kolkata', from: '04/2024', to: '', current: true,
+    description: 'Built RAG pipelines on GCP.' },
+  { title: 'Data Analyst', company: 'Prospus', location: 'Remote', from: '06/2022', to: '03/2024', current: false,
+    description: 'Dashboards in Power BI.' },
+];
+
+const wdBlock = (doc, n) => doc.querySelector(`[aria-labelledby="Work-Experience-${n}-panel"]`);
+const wdVal = (block, name) => block.querySelector(`[name="${name}"], [id$="--${name}"]`).value;
+const wdDateVal = (block, which) => ['Month', 'Year'].map(p =>
+  block.querySelector(`[id$="--${which}-dateSection${p}-input"]`).value).join('/');
+
+test('Workday experience: each job fills its own block, "Add Another" adds the next', async () => {
+  await withForm(WD_MY_EXPERIENCE, {}, async (env) => {
+    const log = wireWorkdayExperience(env);
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: WD_JOBS } });
+    const result = await run_.runAutofill(ctx, null);
+    const doc = env.document;
+
+    const b1 = wdBlock(doc, 1), b2 = wdBlock(doc, 2);
+    ok(b2, 'a second block was added');
+    notOk(wdBlock(doc, 3), 'exactly one press — no empty third block');
+    eq(wdVal(b1, 'jobTitle'), 'AI/ML Engineer');
+    eq(wdVal(b1, 'companyName'), 'Zorba AI');
+    eq(wdVal(b1, 'location'), 'Kolkata');
+    ok(b1.querySelector('[name="currentlyWorkHere"]').checked, 'current job ticked');
+    eq(wdDateVal(b1, 'startDate'), '04/2024');
+    notOk(b1.querySelector('[data-automation-id="formField-endDate"]'), 'no To for the current job');
+    eq(wdVal(b1, 'roleDescription'), 'Built RAG pipelines on GCP.', 'Role Description is the description, not the title');
+
+    eq(wdVal(b2, 'jobTitle'), 'Data Analyst', 'block 2 is job 2, not the current title again');
+    eq(wdVal(b2, 'companyName'), 'Prospus');
+    notOk(b2.querySelector('[name="currentlyWorkHere"]').checked);
+    eq(wdDateVal(b2, 'startDate'), '06/2022');
+    eq(wdDateVal(b2, 'endDate'), '03/2024');
+
+    eq(log.eduAdds, 0, "Education's Add Another is never pressed");
+    eq(log.next, 0, 'never Save and Continue');
+    const rows = result.decisions.filter(x => String(x.key).startsWith('repeater:experience'));
+    eq(rows.length, 2);
+    ok(rows.every(x => x.action === p.FILL), rows.map(x => x.reason).join(' | '));
+  });
+});
+
+test('Workday experience: one job means no "Add Another" at all', async () => {
+  await withForm(WD_MY_EXPERIENCE, {}, async (env) => {
+    wireWorkdayExperience(env);
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: [WD_JOBS[1]] } });
+    await run_.runAutofill(ctx, null);
+    eq(wdVal(wdBlock(env.document, 1), 'jobTitle'), 'Data Analyst');
+    notOk(wdBlock(env.document, 2), 'no block added');
+  });
+});
+
+test('Workday experience: a block the form already filled is matched by company, not overwritten', async () => {
+  await withForm(WD_MY_EXPERIENCE, {}, async (env) => {
+    wireWorkdayExperience(env);
+    const b1 = wdBlock(env.document, 1);
+    b1.querySelector('[name="jobTitle"]').value = 'Analyst';          // Workday's resume read
+    b1.querySelector('[name="companyName"]').value = 'Prospus';
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: WD_JOBS } });
+    await run_.runAutofill(ctx, null);
+    eq(wdVal(b1, 'jobTitle'), 'Analyst', 'what Workday filled stays');
+    eq(wdDateVal(b1, 'endDate'), '03/2024', 'its empty boxes come from the Prospus job');
+    const b2 = wdBlock(env.document, 2);
+    ok(b2, 'the other job got its own block');
+    eq(wdVal(b2, 'companyName'), 'Zorba AI');
+  });
+});
+
+test('Workday experience: a half-filled block 1 gets the rest of job 1 — not skipped (PwC, Oct 2026)', async () => {
+  // What a live run left: block 1 had job 1's title / company / location and
+  // nothing else; the step skipped it, put job 1 in block 2 and job 2 in block 3.
+  await withForm(WD_MY_EXPERIENCE, {}, async (env) => {
+    const log = wireWorkdayExperience(env);
+    const b1 = wdBlock(env.document, 1);
+    b1.querySelector('[name="jobTitle"]').value = 'AI/ML Engineer';
+    b1.querySelector('[name="companyName"]').value = 'Zorba AI';
+    b1.querySelector('[name="location"]').value = 'Kolkata';
+    await run_.runAutofill(Object.assign({}, CTX, { facts: { workExperience: WD_JOBS } }), null);
+    ok(b1.querySelector('[name="currentlyWorkHere"]').checked, 'block 1 completed: ticked');
+    eq(wdDateVal(b1, 'startDate'), '04/2024', 'block 1 completed: From');
+    eq(wdVal(b1, 'roleDescription'), 'Built RAG pipelines on GCP.');
+    eq(log.adds, 1, 'one block added, for job 2 only');
+    eq(wdVal(wdBlock(env.document, 2), 'companyName'), 'Prospus');
+    notOk(wdBlock(env.document, 3), 'no third block');
+  });
+});
+
+test('Workday experience: no block open yet — "Add Another" opens block 1, then one per further job', async () => {
+  await withForm(wdPage(0), {}, async (env) => {
+    const log = wireWorkdayExperience(env);
+    await run_.runAutofill(Object.assign({}, CTX, { facts: { workExperience: WD_JOBS } }), null);
+    eq(log.adds, 2);
+    eq(wdVal(wdBlock(env.document, 1), 'companyName'), 'Zorba AI');
+    eq(wdVal(wdBlock(env.document, 2), 'companyName'), 'Prospus');
+  });
+});
+
+test('Workday experience: five jobs fill five blocks, in profile order', async () => {
+  const five = ['A Corp', 'B Labs', 'C Systems', 'D Analytics', 'E Ventures'].map((company, i) => ({
+    title: `Role ${i + 1}`, company, location: 'Kolkata', from: `0${i + 1}/20${20 - i}`, to: `0${i + 1}/20${21 - i}`,
+    current: false, description: `Did thing ${i + 1}.` }));
+  await withForm(WD_MY_EXPERIENCE, {}, async (env) => {
+    const log = wireWorkdayExperience(env);
+    await run_.runAutofill(Object.assign({}, CTX, { facts: { workExperience: five } }), null);
+    eq(log.adds, 4, 'n - 1 presses when block 1 is already open');
+    five.forEach((job, i) => {
+      const b = wdBlock(env.document, i + 1);
+      eq(wdVal(b, 'companyName'), job.company, `block ${i + 1}`);
+      eq(wdVal(b, 'jobTitle'), job.title, `block ${i + 1}`);
+      eq(wdDateVal(b, 'endDate'), job.to, `block ${i + 1}`);
+    });
+    notOk(wdBlock(env.document, 6));
+  });
+});
+
+test('Workday experience: a block holding a company not in the profile is left alone', async () => {
+  await withForm(WD_MY_EXPERIENCE, {}, async (env) => {
+    const log = wireWorkdayExperience(env);
+    const b1 = wdBlock(env.document, 1);
+    b1.querySelector('[name="companyName"]').value = 'Someone Else Inc';
+    await run_.runAutofill(Object.assign({}, CTX, { facts: { workExperience: WD_JOBS } }), null);
+    eq(wdVal(b1, 'jobTitle'), '', 'no job title from a different job mixed in');
+    eq(log.adds, 2, 'both jobs get their own block');
+    eq(wdVal(wdBlock(env.document, 2), 'companyName'), 'Zorba AI');
+    eq(wdVal(wdBlock(env.document, 3), 'companyName'), 'Prospus');
+  });
+});
+
 await run('integration');

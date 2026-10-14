@@ -2363,10 +2363,11 @@ what when where which who will with would you your now future
       const labels = optionLabelsIn(existing);
       if (labels.length) return labels;
     }
+    const stale = new Set(visibleOptionNodes(p));
     try {
       scrollIntoView(el);
       clickOpen(el);
-      const labels = await waitForOptions();
+      const labels = await waitForOptions(stale);
       return labels;
     } catch (e) {
       return [];
@@ -2385,7 +2386,16 @@ what when where which who will with would you your now future
     }
     return out;
   }
-  function waitForOptions() {
+  function visibleOptionNodes(p) {
+    if (!p || !p.optionNodes) return [];
+    try {
+      return p.optionNodes(globalThis.document).filter((n) => isNodeVisible(n));
+    } catch (e) {
+      return [];
+    }
+  }
+  function waitForOptions(stale) {
+    const skip = stale || /* @__PURE__ */ new Set();
     return new Promise((resolve) => {
       const doc = globalThis.document;
       const p = probe();
@@ -2393,7 +2403,7 @@ what when where which who will with would you your now future
         if (!p || !p.optionNodes) return [];
         const out = [];
         for (const n of p.optionNodes(doc)) {
-          if (!isNodeVisible(n) || isChosenValue(n)) continue;
+          if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n)) continue;
           const t = (n.textContent || "").replace(/\s+/g, " ").trim();
           if (t && out.length < MAX_OPTIONS_READ) out.push(t);
         }
@@ -3590,7 +3600,7 @@ what when where which who will with would you your now future
       return null;
     }
   }
-  function visibleOptionNodes(doc, el) {
+  function visibleOptionNodes2(doc, el) {
     const p = probe2();
     const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
     const shown = nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n) && !isChosenValue(n));
@@ -3628,7 +3638,7 @@ what when where which who will with would you your now future
   function waitForOptions2(el, timeout) {
     return new Promise((resolve) => {
       const doc = el.ownerDocument || globalThis.document;
-      const immediate = visibleOptionNodes(doc, el);
+      const immediate = visibleOptionNodes2(doc, el);
       if (immediate.length) {
         resolve(immediate);
         return;
@@ -3642,10 +3652,10 @@ what when where which who will with would you your now future
         } catch (e) {
         }
         clearTimeout(timer);
-        resolve(visibleOptionNodes(doc, el));
+        resolve(visibleOptionNodes2(doc, el));
       };
       const obs = new globalThis.MutationObserver(() => {
-        if (visibleOptionNodes(doc, el).length) finish();
+        if (visibleOptionNodes2(doc, el).length) finish();
       });
       try {
         obs.observe(doc.body, { childList: true, subtree: true });
@@ -3659,7 +3669,7 @@ what when where which who will with would you your now future
     const deadline = Date.now() + timeout;
     let nodes = [];
     for (; ; ) {
-      nodes = visibleOptionNodes(doc, el);
+      nodes = visibleOptionNodes2(doc, el);
       if (nodes.length && listOffersAny(shapes, nodes)) return nodes;
       if (Date.now() >= deadline) return nodes;
       await sleep(100);
@@ -3677,7 +3687,7 @@ what when where which who will with would you your now future
       }
     }
     if (!hl) {
-      hl = visibleOptionNodes(doc, el).find((n) => n.getAttribute("aria-selected") === "true" || /(^|[\s_-])(focused|highlighted|active|hover)($|[\s_-])/i.test(String(n.className || "")));
+      hl = visibleOptionNodes2(doc, el).find((n) => n.getAttribute("aria-selected") === "true" || /(^|[\s_-])(focused|highlighted|active|hover)($|[\s_-])/i.test(String(n.className || "")));
     }
     if (!hl) return false;
     const text = (hl.textContent || "").replace(/\s+/g, " ").trim();
@@ -3984,9 +3994,9 @@ what when where which who will with would you your now future
       if (/school|university|college|institution|establishment/.test(l)) return entry.school ? [entry.school] : null;
       return null;
     }
+    if (/description|responsibilit|duties|summary|achievement/.test(l)) return entry.description ? [entry.description] : null;
     if (/job title|\btitle\b|position|role|designation/.test(l)) return entry.title ? [entry.title] : null;
     if (/company|employer|organi[sz]ation/.test(l)) return entry.company ? [entry.company] : null;
-    if (/description|responsibilit|duties|summary|achievement/.test(l)) return entry.description ? [entry.description] : null;
     if (/current/.test(l)) return entry.current ? ["Yes"] : null;
     return null;
   }
@@ -4145,6 +4155,206 @@ what when where which who will with would you your now future
       }
     }
     return out;
+  }
+
+  // src/autofill/repeaters.js
+  var probe4 = () => globalThis.__tcvFieldProbe;
+  var MAX_JOBS = 20;
+  function headingText(group) {
+    const id = group.getAttribute("aria-labelledby") || "";
+    const doc = group.ownerDocument || globalThis.document;
+    const h = id && doc.getElementById(id);
+    return (h && h.textContent || "").replace(/\s+/g, " ").trim();
+  }
+  function experienceSection(doc) {
+    const d = doc || globalThis.document;
+    for (const g of d.querySelectorAll('[role="group"][aria-labelledby]')) {
+      if (/^(work )?experience$/i.test(headingText(g))) return g;
+    }
+    return null;
+  }
+  function experiencePanels(section) {
+    return Array.from(section.querySelectorAll('[role="group"][aria-labelledby]')).filter((g) => /\b\d+$/.test(headingText(g)) && g.parentElement && g.parentElement.closest('[role="group"][aria-labelledby]') === section);
+  }
+  function addButton(section) {
+    return Array.from(section.querySelectorAll("button")).find((b) => /^add( another)?$/i.test((b.textContent || "").trim()) && b.closest('[role="group"][aria-labelledby]') === section) || null;
+  }
+  function inSection(section, row) {
+    if (!section || !row) return false;
+    const els = (row.members && row.members.length ? row.members : [row.el]).filter(Boolean);
+    return els.some((el) => section.contains(el));
+  }
+  function panelRows(panel) {
+    const p = probe4();
+    if (!p) return [];
+    const els = p.fillableIn(panel).elements.filter(isVisible);
+    return describeFields({ root: panel, fields: els });
+  }
+  function isoMonth(v) {
+    const s = String(v || "").trim();
+    let m = s.match(/^(\d{1,2})\/(\d{4})$/);
+    if (m) return `${m[2]}-${m[1].padStart(2, "0")}-01`;
+    m = s.match(/^(\d{4})-(\d{1,2})/);
+    if (m) return `${m[1]}-${m[2].padStart(2, "0")}-01`;
+    return "";
+  }
+  function experienceAnswer(row, entry) {
+    const label = String(row.label || "").replace(/\*\s*$/, "").trim();
+    if (row.kind === "date-parts") {
+      if (/\b(from|start|begin)/i.test(label)) return isoMonth(entry.from) || null;
+      if (/\b(to|end)\b/i.test(label)) return entry.current ? null : isoMonth(entry.to) || null;
+      return null;
+    }
+    if (row.kind === "checkbox") return /current/i.test(label) && entry.current ? "Yes" : null;
+    if (/\blocation\b|\bcity\b/i.test(label)) return entry.location || null;
+    const shapes = tileAnswer("experience", label, entry);
+    return shapes && shapes.length ? shapes[0] : null;
+  }
+  async function fillPanel(panel, entry) {
+    const filled = [];
+    let rows = panelRows(panel);
+    const current = rows.find((r) => r.kind === "checkbox" && /current/i.test(r.label || ""));
+    if (current && entry.current && !current.filled) {
+      const res = await applyDecision({ row: current, value: "Yes", candidates: ["Yes"], label: current.label });
+      if (res.ok) filled.push("Currently work here");
+      else log(`"${current.label}" did not take (${res.outcome})`);
+      await sleep(TIMING.settleMs + 100);
+      rows = panelRows(panel);
+    }
+    for (const row of rows) {
+      if (row.kind === "checkbox" || row.kind === "file") continue;
+      if (row.filled && !row.invalid) continue;
+      const value = experienceAnswer(row, entry);
+      if (!value) continue;
+      const res = await applyDecision({ row, value, candidates: [value], label: row.label });
+      if (res.ok) filled.push(String(row.label || "").replace(/\s*\*$/, ""));
+      else log(`"${row.label}" did not take (${res.outcome})`);
+    }
+    return filled;
+  }
+  function stillMissing(panel) {
+    return panelRows(panel).filter((r) => r.required && (!r.filled || r.invalid)).map((r) => String(r.label || "").replace(/\s*\*$/, ""));
+  }
+  async function waitFor2(fn, ms) {
+    const deadline = Date.now() + ms;
+    for (; ; ) {
+      const v = fn();
+      if (v) return v;
+      if (Date.now() >= deadline) return null;
+      await sleep(100);
+    }
+  }
+  async function fillExperienceSection(ctx, progress, doc) {
+    const section = experienceSection(doc);
+    const jobs = (ctx && ctx.facts && ctx.facts.workExperience || []).slice(0, MAX_JOBS);
+    if (!section || !jobs.length) return [];
+    const out = [];
+    const decisionFor = (job, n) => {
+      const d = {
+        key: `repeater:experience:${n}`,
+        kind: "tile",
+        row: { el: section, kind: "tile" },
+        label: `Experience: ${[job.title, job.company].filter(Boolean).join(" \xB7 ") || `job ${n + 1}`}`,
+        action: ASK,
+        value: "",
+        source: "",
+        reason: "",
+        outcome: ""
+      };
+      out.push(d);
+      return d;
+    };
+    const finish = (d, panel, filled) => {
+      const missing = stillMissing(panel);
+      if (missing.length) {
+        d.reason = `still needs: ${missing.join(", ")} \u2014 fix it yourself`;
+        return;
+      }
+      d.action = FILL;
+      d.source = "profile";
+      d.outcome = "ok";
+      d.value = d.shown = filled.length ? filled.join(" \xB7 ") : "already filled";
+    };
+    const existing = experiencePanels(section);
+    log(`${existing.length} block(s) on the page, ${jobs.length} job(s) in the profile`);
+    const plan = assignJobs(existing.map(panelRows), jobs);
+    const placed = /* @__PURE__ */ new Set();
+    for (let b = 0; b < existing.length; b++) {
+      const a = plan[b];
+      if (a.job == null) {
+        if (a.reason) log(`block ${b + 1}: left alone \u2014 ${a.reason}`);
+        continue;
+      }
+      placed.add(a.job);
+      const job = jobs[a.job];
+      const d = decisionFor(job, a.job);
+      log(`block ${b + 1} \u2190 job ${a.job + 1} (${job.company || job.title})${a.why ? " \u2014 " + a.why : ""}`);
+      if (progress) progress("filling", { detail: d.label });
+      finish(d, existing[b], await fillPanel(existing[b], job));
+    }
+    const rest = jobs.map((job, i) => i).filter((i) => !placed.has(i));
+    for (let r = 0; r < rest.length; r++) {
+      const i = rest[r];
+      const d = decisionFor(jobs[i], i);
+      const add = addButton(section);
+      if (!add) {
+        d.reason = 'could not find "Add Another" \u2014 add this job yourself';
+        continue;
+      }
+      const before = experiencePanels(section).length;
+      press(add);
+      const ok = await waitFor2(() => experiencePanels(section).length > before, TIMING.tileOpenMs);
+      if (!ok) {
+        d.reason = 'pressing "Add Another" did not add a block \u2014 add this job yourself';
+        for (const j of rest.slice(r + 1)) decisionFor(jobs[j], j).reason = "add this job yourself";
+        log(`"Add Another" did not add a block (still ${before}) \u2014 stopped`);
+        break;
+      }
+      await sleep(TIMING.settleMs + 150);
+      const panel = experiencePanels(section)[before];
+      log(`added block ${before + 1} \u2190 job ${i + 1} (${jobs[i].company || jobs[i].title})`);
+      if (progress) progress("filling", { detail: d.label });
+      finish(d, panel, await fillPanel(panel, jobs[i]));
+    }
+    return out;
+  }
+  function log(msg) {
+    try {
+      console.info(`[TailorCV] work experience: ${msg}`);
+    } catch (e) {
+    }
+  }
+  var normText = (s) => String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  function blockCompany(rows) {
+    const r = rows.find((x) => x.kind !== "checkbox" && /company|employer|organi[sz]ation/i.test(x.label || ""));
+    return r && r.filled && r.value || "";
+  }
+  var sameCompany = (a, b) => {
+    const x = normText(a), y = normText(b);
+    return !!x && !!y && (x === y || x.includes(y) || y.includes(x));
+  };
+  function assignJobs(blocks, jobs) {
+    const taken = /* @__PURE__ */ new Set();
+    const plan = blocks.map((rows) => {
+      const company = blockCompany(rows);
+      if (!company) return { job: null, positional: true };
+      const i = jobs.findIndex((j, k) => !taken.has(k) && sameCompany(company, j.company));
+      if (i < 0) return { job: null, reason: `it already holds "${company}", which is not in your profile` };
+      taken.add(i);
+      return { job: i, why: `already shows ${company}` };
+    });
+    let next = 0;
+    for (const a of plan) {
+      if (!a.positional) continue;
+      while (next < jobs.length && taken.has(next)) next++;
+      if (next >= jobs.length) {
+        a.job = null;
+        continue;
+      }
+      taken.add(next);
+      a.job = next++;
+    }
+    return plan;
   }
 
   // src/autofill/run.js
@@ -4326,8 +4536,14 @@ what when where which who will with would you your now future
         }
       }
     }
-    const fieldRows = rows.filter((r) => r.kind !== "file");
+    const jobs = ctx && ctx.facts && ctx.facts.workExperience || [];
+    const expSection = jobs.length ? experienceSection() : null;
+    const fieldRows = rows.filter((r) => r.kind !== "file" && !inSection(expSection, r));
     decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
+    if (expSection) {
+      await waitForQuiet(form.root);
+      decisions = decisions.concat(await fillExperienceSection(ctx, progress));
+    }
     for (const d of decisions) {
       if (d.row && d.row.filledByForm && d.action === SKIP) {
         d.byForm = true;
@@ -4370,7 +4586,7 @@ what when where which who will with would you your now future
       const before = new Set(rows.map((r) => r.key));
       await waitForQuiet(form.root);
       const fresh = describeFields(findForm() || form);
-      const added = fresh.filter((r) => r.key && !before.has(r.key) && !(r.kind === "file" && isProfileImport(r)));
+      const added = fresh.filter((r) => r.key && !before.has(r.key) && !(r.kind === "file" && isProfileImport(r)) && !inSection(expSection, r));
       if (!added.length) break;
       revealed++;
       progress("scanning", { detail: `${added.length} new field(s) appeared` });
@@ -4688,7 +4904,7 @@ what when where which who will with would you your now future
     renderRunning: () => renderRunning,
     setPhase: () => setPhase
   });
-  var probe4 = () => globalThis.__tcvFieldProbe;
+  var probe5 = () => globalThis.__tcvFieldProbe;
   var HIGHLIGHT_STYLE_ID = "tailorcv-af-styles";
   var HIGHLIGHT_CSS = `
 .tcv-af-hl { outline: 2px solid rgba(79,127,255,0.9) !important;
@@ -4727,7 +4943,7 @@ what when where which who will with would you your now future
   function highlight(decisions) {
     clearHighlights();
     ensureHighlightStyles();
-    const p = probe4();
+    const p = probe5();
     for (const d of decisions || []) {
       if (d.action === SKIP) continue;
       const el = d.row && d.row.el;
@@ -4749,7 +4965,7 @@ what when where which who will with would you your now future
     highlighted = [];
   }
   function jumpTo(decision) {
-    const p = probe4();
+    const p = probe5();
     const el = decision.row && decision.row.el;
     if (!el || !el.isConnected) return;
     const node = p && p.fieldWrapper(el) || el;

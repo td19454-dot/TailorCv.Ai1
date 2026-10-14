@@ -1,7 +1,7 @@
 // Which backend the extension talks to. THE ONLY PLACE THIS IS DECIDED.
 //
 // Flip it with the npm scripts rather than by hand:
-//   npm run dev    -> http://localhost:8005   (local uvicorn)
+//   npm run dev    -> http://127.0.0.1:8005   (local uvicorn)
 //   npm run prod   -> https://thetailorcv.com (the default, and what ships)
 //
 // `npm run package` REFUSES to build a store package unless this says
@@ -26,7 +26,7 @@
 //     Windows — so the connection goes to a port nothing is listening on. Run
 //     uvicorn with --host 0.0.0.0, or set the URL below to 127.0.0.1.
 (function () {
-  var BASE_URL = 'http://localhost:8005';   // tcv:base-url
+  var BASE_URL = 'https://thetailorcv.com';   // tcv:base-url
 
   var self_ = typeof self !== 'undefined' ? self : window;
   self_.__TCV_ENV = { BASE_URL: BASE_URL };

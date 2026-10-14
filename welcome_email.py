@@ -20,6 +20,7 @@ from typing import Callable
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+import alerts
 from email_service import EmailConfigurationError, send_email
 from models import User, WelcomeEmailLog
 
@@ -71,8 +72,10 @@ def send_welcome_email(
             from_email=os.getenv("EMAIL_FROM_WELCOME"),
             smtp_factory=smtp_factory,
         )
-    except EmailConfigurationError:
+    except EmailConfigurationError as exc:
         logger.warning("Welcome email skipped because SES SMTP is not configured")
+        # Silent for months once already (SES unset on Render) — make it loud.
+        alerts.notify("Welcome email not sent: SES not configured", str(exc), key="welcome:config")
         return False
 
 
