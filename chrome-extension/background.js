@@ -178,6 +178,18 @@ const AF_FILE_TTL_MS = 30 * 60 * 1000;
 // sites. Staleness is bounded by the explicit invalidation above, not by this.
 const AUTH_CACHE_TTL_MS = 30 * 60 * 1000;
 
+// FastAPI's `detail` is a string for an HTTPException but a list of error
+// objects for a 422 validation failure. Passed straight to the panel, the list
+// rendered as "[object Object]". The website has tcvErrorMessage() in
+// static/auth_nav.js for this; the service worker can't load it.
+function detailText(detail, fallback) {
+  if (typeof detail === 'string' && detail) return detail;
+  if (Array.isArray(detail) && detail.length) {
+    return detail.map((d) => (d && d.msg) || '').filter(Boolean).join(' ') || fallback;
+  }
+  return fallback;
+}
+
 async function readAuthCache() {
   const stored = await chrome.storage.session.get(AUTH_CACHE_KEY);
   const cache = stored[AUTH_CACHE_KEY];
@@ -365,7 +377,12 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           });
           const data = await res.json().catch(() => ({}));
           if (!res.ok) {
-            sendResponse({ error: data.detail || 'Login failed. Check your email and password.' });
+            // A 422 (e.g. a password under the 6-char minimum) gets the same
+            // message as a wrong password, so the form doesn't reveal which
+            // check failed.
+            sendResponse({ error: res.status === 422
+              ? 'Invalid email or password.'
+              : detailText(data.detail, 'Login failed. Check your email and password.') });
             return;
           }
           await clearAuthCache();
@@ -396,20 +413,26 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         }
 
       } else if (msg.type === 'GET_BASE_RESUME') {
-        const cached = await readAuthCache();
+        // msg.fresh: the panel's "Already set one up? Retry" link — the user is
+        // telling us the cached answer is wrong, so it must reach the server.
+        const cached = msg.fresh ? null : await readAuthCache();
         if (cached && cached.baseResume) {
           sendResponse(cached.baseResume);
           return;
         }
         const res = await fetch(`${BASE_URL}/api/extension/base-resume`, { credentials: 'include' });
         if (!res.ok) {
-          const result = { error: 'Not logged in to TailorCV.' };
-          await writeAuthCacheField('baseResume', result);
-          sendResponse(result);
+          sendResponse({ error: 'Not logged in to TailorCV.' });
           return;
         }
         const result = { data: await res.json() };
-        await writeAuthCacheField('baseResume', result);
+        // Only a positive answer is cached. "No base resume" is exactly the state
+        // the user is about to fix in another tab, and a cached "no" outlived the
+        // upload whenever the base-resume-updated ping couldn't reach this
+        // extension (an unpacked build's id isn't the published one).
+        if (result.data && result.data.has_base_resume) {
+          await writeAuthCacheField('baseResume', result);
+        }
         sendResponse(result);
 
       } else if (msg.type === 'GET_SKILL_MATCH') {
@@ -454,8 +477,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               } else if (res.status === 404) {
                 detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
                 code = 'no_base_resume';
-              } else if (data.detail) {
-                detail = data.detail;
+              } else {
+                detail = detailText(data.detail, detail);
               }
             } catch (_) { /* keep the default */ }
             if (code) await clearAuthCache();   // live call disproved the cached auth/base-resume state
@@ -498,8 +521,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               } else if (res.status === 404) {
                 detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
                 code = 'no_base_resume';
-              } else if (data.detail) {
-                detail = data.detail;
+              } else {
+                detail = detailText(data.detail, detail);
               }
             } catch (_) { /* ignore parse errors, use default detail */ }
             if (code) await clearAuthCache();   // live call disproved the cached auth/base-resume state
@@ -551,7 +574,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           });
           const data = await res.json().catch(() => ({}));
           if (!res.ok) {
-            sendResponse({ error: data.detail || 'Could not add those skills.' });
+            sendResponse({ error: detailText(data.detail, 'Could not add those skills.') });
             return;
           }
           // The profile carries auto_add_skills for the account-menu switch.
@@ -581,7 +604,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           });
           const data = await res.json().catch(() => ({}));
           if (!res.ok) {
-            sendResponse({ error: data.detail || 'Could not save that setting.' });
+            sendResponse({ error: detailText(data.detail, 'Could not save that setting.') });
             return;
           }
           await clearAuthCache();

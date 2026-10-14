@@ -1502,7 +1502,7 @@
     noBaseResumeShown = true;
     body.querySelector('#tcvNoResumeRetry').addEventListener('click', (e) => {
       e.preventDefault();
-      refreshFull();
+      refreshFull({ fresh: true });
     });
   }
 
@@ -2909,7 +2909,8 @@
   // Only a real network check is slow enough to deserve the animation.
   const AUTH_ANIMATION_DELAY_MS = 250;
 
-  async function refreshFull() {
+  // fresh: bypass background.js's cached base-resume answer (the Retry link).
+  async function refreshFull({ fresh = false } = {}) {
     sessionReady = false;
     noBaseResumeShown = false;
     quotaExceeded = false;
@@ -2941,7 +2942,7 @@
     // wait beyond whichever of the two actually takes longer.
     const remainingMs = animated ? finishLockAnimation() : 0;
     const [baseRes] = await Promise.all([
-      sendMessage({ type: 'GET_BASE_RESUME' }),
+      sendMessage({ type: 'GET_BASE_RESUME', fresh }),
       new Promise((resolve) => setTimeout(resolve, remainingMs)),
     ]);
     if (baseRes.error || !baseRes.data || !baseRes.data.has_base_resume) { renderNoBaseResume(); return; }

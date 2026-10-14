@@ -23,7 +23,15 @@
       "Bash(python test_email_service.py)",
       "Bash(.venv/Scripts/python.exe -c ' *)",
       "Bash(.venv/Scripts/python.exe -m py_compile marketing_email.py)",
-      "Bash(.venv/Scripts/python.exe test_marketing_email.py)"
+      "Bash(.venv/Scripts/python.exe test_marketing_email.py)",
+      "Bash(echo \"exit $?\")",
+      "Bash(cp src/autofill/run.js /tmp/run.js.bak)",
+      "Bash(sed -i 's/^  if \\(expSection\\) decisions = decisions.concat\\(await fillExperienceSection\\(ctx, progress\\)\\);/  \\\\/\\\\/DISABLED/' src/autofill/run.js)",
+      "Bash(grep -c \"//DISABLED\" src/autofill/run.js)",
+      "Bash(env)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
     ]
   }
 }

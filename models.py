@@ -168,6 +168,9 @@ class SavedResume(Base):
     status = Column(String(30), nullable=False, default="saved")  # saved, applied, interview, selected, rejected
     resume_json = Column(Text, nullable=True)   # the optimized resume dict, JSON-encoded
     html_content = Column(Text, nullable=True)  # rendered HTML, for instant re-download
+    # ResumeOptimization.token this resume came from, so reopening it in a new
+    # tab re-downloads against the credit already spent instead of a new one.
+    optimization_id = Column(String(32), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
@@ -351,6 +354,25 @@ class UsageRecord(Base):
     __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
 
     user = relationship("User", back_populates="usage_records")
+
+
+class ResumeOptimization(Base):
+    """One row per website optimization, so its free-tier credit is spent once.
+
+    The ai_optimizations credit is consumed at the editor's first download
+    (/api/billing/checkout-download), not when the LLM runs. Without this row
+    every re-download of the same optimization (after a font or spacing tweak)
+    spent another credit. The token travels in the editor payload; a download
+    carrying an already-charged token is free. New table, so create_all builds
+    it and no _ensure_* function is needed.
+    """
+    __tablename__ = "resume_optimizations"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    token = Column(String(32), unique=True, index=True, nullable=False)
+    charged = Column(Boolean, default=False, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
 
 class Payment(Base):

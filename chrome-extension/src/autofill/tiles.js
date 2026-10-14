@@ -95,9 +95,10 @@ export function tileAnswer(kind, label, entry) {
     if (/school|university|college|institution|establishment/.test(l)) return entry.school ? [entry.school] : null;
     return null;
   }
+  // Description before title: Workday's "Role Description" contains "role".
+  if (/description|responsibilit|duties|summary|achievement/.test(l)) return entry.description ? [entry.description] : null;
   if (/job title|\btitle\b|position|role|designation/.test(l)) return entry.title ? [entry.title] : null;
   if (/company|employer|organi[sz]ation/.test(l)) return entry.company ? [entry.company] : null;
-  if (/description|responsibilit|duties|summary|achievement/.test(l)) return entry.description ? [entry.description] : null;
   if (/current/.test(l)) return entry.current ? ['Yes'] : null;
   return null;
 }
@@ -123,7 +124,7 @@ function openEditor(block) {
  * handler cancels it, but pressing one must never be able to submit the
  * application, so a submit during the press is cancelled here as well.
  */
-function press(el) {
+export function press(el) {
   const doc = el.ownerDocument || globalThis.document;
   const noSubmit = e => { e.preventDefault(); e.stopPropagation(); };
   doc.addEventListener('submit', noSubmit, true);

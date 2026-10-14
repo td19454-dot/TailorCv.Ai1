@@ -21,6 +21,7 @@ import { describeFields, findForm, isApplicationPage, readComboboxOptions, repro
          profileTileBlocks }
   from './discover.js';
 import { fillProfileTiles } from './tiles.js';
+import { experienceSection, fillExperienceSection, inSection } from './repeaters.js';
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
 import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo } from './write.js';
@@ -276,8 +277,21 @@ export async function runAutofill(ctx, onProgress) {
       }
     }
   }
-  const fieldRows = rows.filter(r => r.kind !== 'file');
+  // Workday's Work Experience blocks belong to fillExperienceSection, which
+  // fills block N from job N. Planned as ordinary questions, every block's Job
+  // Title got the current job. Only taken over when there are jobs to put in.
+  const jobs = (ctx && ctx.facts && ctx.facts.workExperience) || [];
+  const expSection = jobs.length ? experienceSection() : null;
+  const fieldRows = rows.filter(r => r.kind !== 'file' && !inSection(expSection, r));
   decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
+  if (expSection) {
+    // Workday reads the resume uploaded on this step and fills Work Experience
+    // itself — title, company, location, usually not dates. That lands a few
+    // seconds later; reading the blocks before it settles meant planning
+    // against a block 1 that then filled in underneath us.
+    await waitForQuiet(form.root);
+    decisions = decisions.concat(await fillExperienceSection(ctx, progress));
+  }
   for (const d of decisions) {
     if (d.row && d.row.filledByForm && d.action === SKIP) {
       d.byForm = true;
@@ -339,7 +353,9 @@ export async function runAutofill(ctx, onProgress) {
     await waitForQuiet(form.root);
     const fresh = describeFields(findForm() || form);
     // Never the profile import: it was handled (or deliberately skipped) above.
-    const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r)));
+    // Nor the blocks "Add Another" created: fillExperienceSection filled them.
+    const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
+                                    && !inSection(expSection, r));
     if (!added.length) break;
     revealed++;
     progress('scanning', { detail: `${added.length} new field(s) appeared` });
