@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="stylesheet" href="/static/header-footer.css?v=17">
     <link rel="stylesheet" href="/static/optimized_editor.css?v={{ asset_v }}">
-    <link rel="stylesheet" href="/static/editor_v2.css?v={{ asset_v }}">
 </head>
 
 <body class="optimized-editor-body">
@@ -265,9 +264,11 @@
     <script>window.__TCV_EDITOR_BOOTSTRAP__ = {{ editor_bootstrap | tojson }};</script>
     <script src="/static/changes_modal.js?v={{ asset_v }}"></script>
     <script src="/static/optimized_editor.js?v={{ asset_v }}"></script>
-    <!-- Editor v2 mounts a full-screen light-theme shell over the old page and
-         reuses its download / change-review functions through window hooks. -->
-    <script src="/static/editor_v2.js?v={{ asset_v }}"></script>
+    <!-- Editor v2 (static/editor_v2.js + editor_v2.css) is switched off: this
+         page uses the editor above. To bring v2 back, re-add its stylesheet in
+         <head> and <script src="/static/editor_v2.js?v={{ asset_v }}"></script>
+         here; it mounts over this page and reuses its window hooks. -->
+
     <script>
     /* Page entrance: stagger control cards up, slide preview in. Start states are
        applied here (progressive enhancement) so no-JS users see everything. */
