@@ -1166,6 +1166,8 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
         updatePageBadge();
         updateFitGuidance();
         scheduleServerEstimate();
+        // A re-layout (resize, late fonts) moves the cutoff and the card.
+        if (lockActive) applyLockedPreview(doc);
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -1280,6 +1282,9 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
         const body  = clone.querySelector("body");
         clone.querySelector("#tailorcv-preview-fit-style")?.remove();
         clone.querySelector("#tailorcv-page-guides")?.remove();
+        // Locked-preview scaffolding never belongs in a document.
+        ["#tcv-lock-css", "#tcv-lk-shield", "#tcv-lk-fade"].forEach(s => clone.querySelector(s)?.remove());
+        clone.querySelectorAll(".tcv-lk-blur").forEach(n => n.classList.remove("tcv-lk-blur"));
         clone.querySelectorAll("script").forEach(s => s.remove());
         if (body) {
             body.removeAttribute("contenteditable");
@@ -2261,19 +2266,255 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
        (not the close-able page-wide overlay) so it blurs the resume behind it
        and can't be dismissed.
     ───────────────────────────────────────────────────────────────────────── */
-    function applyQuotaExhaustedLock(doc) {
-        if (window.IS_PRO === true) return;
-        if (window.QUOTA_EXHAUSTED !== true) return;
-        if (!doc || !doc.documentElement) return;
+    /* ─────────────────────────────────────────────────────────────────────────
+       LOCKED PREVIEW — the free user has spent both credits. The optimization
+       still runs and is shown, but only the top half of page 1 is readable:
+       below it the resume fades into a blur under an unlock card, and nothing
+       can be selected, copied, edited or restyled.
+
+       The blur is applied per ELEMENT, not as a band at a fixed height, so the
+       later sections stay blurred wherever they sit. The style controls are
+       disabled as well: a smaller font would otherwise pull more of the resume
+       up into the clear half.
+
+       Presentation only. The 402 from /api/billing/checkout-download is still
+       what stops the download.
+    ───────────────────────────────────────────────────────────────────────── */
+    const LOCK_CLEAR_FRACTION = 0.5;   // share of page 1 left readable
+    const LOCK_COPY_TEXT =
+        "— Created with TailorCV (www.thetailorcv.com)\n" +
+        "Unlock the full resume at www.thetailorcv.com/pricing";
+    let lockActive = false;
+    let lockCard   = null;
+
+    /* Blur every element that starts below the cutoff. One that straddles it
+       is descended into, so a long Experience section is split at the job or
+       bullet that crosses the line rather than left readable. A leaf that
+       straddles by more than the fade can hide is blurred whole. */
+    function lockBlurBelow(node, cutoff, depth) {
+        Array.from(node.children).forEach(function (ch) {
+            if (ch.tagName === "STYLE" || ch.tagName === "SCRIPT" || ch.id === "tailorcv-page-guides") return;
+            const r = ch.getBoundingClientRect();
+            if (!r.width && !r.height) return;
+            if (r.top >= cutoff) {
+                ch.classList.add("tcv-lk-blur");
+            } else if (r.bottom > cutoff) {
+                if (ch.children.length && depth < 10) lockBlurBelow(ch, cutoff, depth + 1);
+                else if (r.bottom - cutoff > 40) ch.classList.add("tcv-lk-blur");
+            }
+        });
+    }
+
+    function applyLockedPreview(doc) {
+        if (!doc || !doc.body || !doc.documentElement) return;
+        const body = doc.body;
+        // Read-only. addEditingOverlay() turns editing on at DOMContentLoaded;
+        // this runs on load, after it.
+        body.contentEditable = "false";
+
+        if (!doc.getElementById("tcv-lock-css")) {
+            const st = doc.createElement("style");
+            st.id = "tcv-lock-css";
+            st.textContent =
+                "html,body{-webkit-user-select:none!important;user-select:none!important;}" +
+                ".tcv-lk-blur{filter:blur(5px)!important;}" +
+                // Takes every pointer event meant for the resume: no selecting,
+                // dragging, right-clicking or placing a caret.
+                "#tcv-lk-shield{position:absolute;left:0;top:0;width:100%;z-index:2147483000;background:transparent;}" +
+                "#tcv-lk-fade{position:absolute;height:150px;pointer-events:none;z-index:2147482999;" +
+                "background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,.75) 60%,rgba(255,255,255,.92) 100%);}";
+            doc.head.appendChild(st);
+        }
+        if (!doc._tcvLockGuard) {
+            doc._tcvLockGuard = true;
+            doc.addEventListener("copy", function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                try { e.clipboardData.setData("text/plain", LOCK_COPY_TEXT); } catch (_) {}
+            }, true);
+            ["cut", "contextmenu", "selectstart", "dragstart"].forEach(function (t) {
+                doc.addEventListener(t, function (e) { e.preventDefault(); }, true);
+            });
+        }
+
+        // Frame-document coordinates. The frame is scaled from outside, so
+        // inside it a page is always its true pixel height.
+        const scrollY = doc.defaultView ? doc.defaultView.scrollY : 0;
+        const br = body.getBoundingClientRect();
+        const cutoff = br.top + pageHeightPx() * LOCK_CLEAR_FRACTION;
+
+        doc.querySelectorAll(".tcv-lk-blur").forEach(function (n) { n.classList.remove("tcv-lk-blur"); });
+        lockBlurBelow(body, cutoff, 0);
+
+        // Shield and fade hang off <html>, outside the (export) body.
+        let shield = doc.getElementById("tcv-lk-shield");
+        let fade   = doc.getElementById("tcv-lk-fade");
+        if (!shield) {
+            shield = doc.createElement("div");
+            shield.id = "tcv-lk-shield";
+            fade = doc.createElement("div");
+            fade.id = "tcv-lk-fade";
+            doc.documentElement.append(shield, fade);
+        }
+        shield.style.height = doc.documentElement.scrollHeight + "px";
+        fade.style.left  = (br.left) + "px";
+        fade.style.width = br.width + "px";
+        fade.style.top   = Math.max(0, cutoff + scrollY - 90) + "px";
+
+        placeLockCard(cutoff + scrollY);
+    }
+
+    /* The card sits in the host page, not the frame: the frame is scaled down
+       on phones, which would shrink the card's text with it. */
+    function placeLockCard(cutoffDocY) {
+        if (!previewWrap || !frame) return;
+        if (!lockCard) {
+            injectLockCardStyles();
+            lockCard = buildLockCard();
+            if (getComputedStyle(previewWrap).position === "static") previewWrap.style.position = "relative";
+            previewWrap.appendChild(lockCard);
+        }
+        const fr = frame.getBoundingClientRect();
+        const wr = previewWrap.getBoundingClientRect();
+        const scale = frame.offsetWidth ? fr.width / frame.offsetWidth : 1;
+        // Starts on the fade rather than below it, so the button is on screen
+        // without scrolling the preview on an ordinary laptop.
+        const top = fr.top - wr.top + previewWrap.scrollTop + cutoffDocY * scale - 10;
+        const maxTop = previewWrap.scrollHeight - lockCard.offsetHeight - 16;
+        lockCard.style.top = Math.max(0, Math.min(top, maxTop)) + "px";
+    }
+
+    function buildLockCard() {
+        const priceOnly = typeof _getUpgradePriceOnly === "function"
+            ? _getUpgradePriceOnly(typeof _upgradeRegionCache !== "undefined" ? _upgradeRegionCache : null)
+            : "₹167/month";
+        const card = document.createElement("div");
+        card.id = "tcv-lk-card";
+        // Our own markup; proDownloadSubline() is a count and <strong>, never resume text.
+        card.innerHTML =
+            '<div class="tcv-lk-icon">🔒</div>' +
+            '<h3 class="tcv-lk-title">Your tailored resume is ready</h3>' +
+            '<p class="tcv-lk-sub">' + proDownloadSubline() + '</p>' +
+            '<a href="/pricing" target="_top" class="tcv-lk-cta">' +
+                '<span class="tcv-lk-cta-main">Unlock your full resume</span>' +
+                '<span class="tcv-lk-cta-sub" id="tcv-lk-price">' + priceOnly + ' · Cancel anytime</span>' +
+            '</a>' +
+            '<div class="tcv-lk-badges"><span>⚡ Instant access</span><span>🛡️ Secure payment</span><span>↺ Cancel anytime</span></div>';
+        if (typeof _upgradeRegionFetch !== "undefined" && !_upgradeRegionCache && _upgradeRegionFetch) {
+            _upgradeRegionFetch.then(function (region) {
+                const el = card.querySelector("#tcv-lk-price");
+                if (el && region && typeof _getUpgradePriceOnly === "function") {
+                    el.textContent = _getUpgradePriceOnly(region) + " · Cancel anytime";
+                }
+            });
+        }
+        return card;
+    }
+
+    /* Matches the existing paywall modal (showProDownloadPopup). */
+    function injectLockCardStyles() {
+        if (document.getElementById("tcv-lk-card-style")) return;
+        const s = document.createElement("style");
+        s.id = "tcv-lk-card-style";
+        s.textContent = [
+            "#tcv-lk-card{position:absolute;left:50%;transform:translateX(-50%);z-index:20;",
+            "width:min(92%,440px);box-sizing:border-box;text-align:center;",
+            "padding:1.25rem 1.4rem 1.1rem;border-radius:20px;",
+            "background:linear-gradient(155deg,#0c1730,#071020);",
+            "border:1px solid rgba(56,189,248,.35);",
+            "box-shadow:0 30px 70px rgba(0,5,20,.65),0 0 0 1px rgba(56,189,248,.12);",
+            "font-family:inherit;animation:tcvLkUp .35s ease;}",
+            "#tcv-lk-card *{box-sizing:border-box;}",
+            ".tcv-lk-icon{width:44px;height:44px;margin:0 auto .5rem;border-radius:50%;",
+            "display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;",
+            "background:radial-gradient(circle,rgba(56,189,248,.18),transparent 70%);",
+            "border:1px solid rgba(56,189,248,.35);}",
+            ".tcv-lk-title{margin:0 0 .35rem;font-size:1.15rem;font-weight:800;color:#f1f8ff;}",
+            ".tcv-lk-sub{margin:0 0 .9rem;font-size:.85rem;line-height:1.45;color:#94a3b8;}",
+            ".tcv-lk-sub strong{color:#7dd3fc;font-weight:700;}",
+            ".tcv-lk-cta{display:flex;flex-direction:column;align-items:center;gap:1px;width:100%;",
+            "padding:.75rem .9rem .7rem;border-radius:12px;text-decoration:none;",
+            "background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;",
+            "box-shadow:0 10px 30px rgba(37,99,235,.5);transition:opacity .2s,transform .2s;}",
+            ".tcv-lk-cta:hover{opacity:.92;transform:translateY(-2px);}",
+            ".tcv-lk-cta-main{font-size:.98rem;font-weight:800;}",
+            ".tcv-lk-cta-sub{font-size:.74rem;font-weight:600;color:rgba(255,255,255,.85);}",
+            ".tcv-lk-badges{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;",
+            "margin-top:.7rem;font-size:.7rem;color:#8291ab;}",
+            "@keyframes tcvLkUp{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translateX(-50%)}}",
+            "@media(max-width:480px){#tcv-lk-card{padding:1rem .9rem .9rem;border-radius:16px;}",
+            ".tcv-lk-title{font-size:1rem;}.tcv-lk-sub{font-size:.78rem;}}",
+        ].join("");
+        document.head.appendChild(s);
+    }
+
+    /* Everything around the preview that would hand over the text or change
+       the layout: Save (a dead row in My Resumes), "See what changed" (lists
+       every rewritten bullet in full), and the style controls. */
+    function lockEditorChrome() {
+        ["top-save-resume-btn", "top-see-changes-btn", "save-resume-btn",
+         "save-resume-hint", "see-changes-btn-mobile"].forEach(function (id) {
+            const el = document.getElementById(id);
+            if (el) el.style.display = "none";
+        });
+        document.querySelectorAll(".see-changes-card").forEach(function (el) { el.style.display = "none"; });
+
+        [document.querySelector(".style-settings-card"),
+         document.getElementById("mobile-controls-toggle"),
+         fontDecreaseBtn, fontResetBtn, fontIncreaseBtn].forEach(function (el) {
+            if (!el) return;
+            el.inert = true;
+            el.setAttribute("aria-disabled", "true");
+            // Inline + important: the page's entrance animation sets opacity on
+            // these cards and would otherwise win over a class.
+            el.style.setProperty("opacity", ".45", "important");
+            el.style.setProperty("filter", "grayscale(.3)", "important");
+            el.style.setProperty("pointer-events", "none", "important");
+        });
+
+        // Download still goes through the gate, whose 402 opens the upgrade
+        // popup - the label just says so up front.
+        const topDl = document.querySelector("#top-download-edited-btn span");
+        if (topDl) topDl.textContent = "Unlock to download";
+        // The phone toolbar's button is narrow; the long label truncated.
+        if (downloadBtn) downloadBtn.textContent = "🔒 Unlock";
+        const status = document.getElementById("editor-actionbar-status");
+        if (status) status.textContent = "Upgrade to edit and download.";
+    }
+
+    /* Whether the resume on screen is locked behind the paywall. Shared with
+       editor_v2.js, which draws the locked preview (top of page 1 clear, the
+       rest blurred) - so both editors decide "locked" the same way. */
+    function isQuotaLocked() {
+        // Lock-only preview switch for checking the locked view. It can never
+        // unlock anything, so it gives nothing away.
+        try {
+            if (new URLSearchParams(location.search).get("tcv_lock_preview") === "1") return true;
+        } catch (e) {}
+        if (window.IS_PRO === true) return false;
+        if (window.QUOTA_EXHAUSTED !== true) return false;
         // Credits being used up is no reason to wall the user out of an
         // optimization they already spent one on.
         const optimizationId = (getPayload() || {}).optimization_id;
-        if (optimizationId && (window.CHARGED_OPTIMIZATION_IDS || []).indexOf(optimizationId) !== -1) return;
+        if (optimizationId && (window.CHARGED_OPTIMIZATION_IDS || []).indexOf(optimizationId) !== -1) return false;
+        return true;
+    }
 
-        if (doc._tailorcvQuotaLocked) return;
-        doc._tailorcvQuotaLocked = true;
+    function applyQuotaExhaustedLock(doc) {
+        // editor_v2 (when it is switched on) covers this frame and draws its
+        // own locked preview; anything mounted down here would be invisible.
+        if (window.__TCV_EDITOR_V2__ === true) { if (isQuotaLocked()) refreshProStatus(); return; }
+        if (!isQuotaLocked()) return;
+        if (!doc || !doc.documentElement) return;
 
-        showProDownloadPopup({ doc: doc, closable: false });
+        applyLockedPreview(doc);
+        if (!lockActive) {
+            lockActive = true;
+            lockEditorChrome();
+            if (typeof window.tcvTrackUpgradePrompt === "function") {
+                window.tcvTrackUpgradePrompt("ai_optimizations", "editor_blur_lock");
+            }
+        }
 
         // window.IS_PRO is stamped into the HTML when the page is rendered and
         // never changes again. But the user upgrades FROM this very popup, so by
@@ -2299,6 +2540,10 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
 
             window.IS_PRO = true;
             window.QUOTA_EXHAUSTED = false;
+            // The v2 locked preview strips the editing panes out at mount, so
+            // there is nothing to tear down - re-render the page instead. It is
+            // served no-store, so the reload comes back with Pro applied.
+            if (window.__TCV_EDITOR_V2_LOCKED__ === true || lockActive) { location.reload(); return; }
             // Tear the lock down wherever it was mounted. The popup mounts either
             // on the page or inside the resume iframe (opts.doc), always as
             // #tcv-pro-dl-overlay, so both have to be cleared.
@@ -2738,6 +2983,15 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
     }
 
     function init() {
+        // sessionStorage is per tab, so a new tab or a direct visit has no
+        // resume. The server seeds the user's latest saved resume (carrying its
+        // optimization_id, so a re-download doesn't spend a second credit).
+        if (!getPayload()) {
+            const boot = window.__TCV_EDITOR_BOOTSTRAP__;
+            if (boot && boot.html) {
+                try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(boot)); } catch (e) {}
+            }
+        }
         const payload = getPayload();
         if (!payload || !payload.html) {
             setStatus("No resume found. Please build or optimise one first.");
@@ -2788,7 +3042,9 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
 
             // Ask about missing skills once the resume is on screen, so the
             // person can see what they are adding it to.
-            if (!hasShownSkillGapPrompt) {
+            // Not on a locked preview: ticking skills into a resume the user
+            // can't edit or download only invites confusion.
+            if (!hasShownSkillGapPrompt && !isQuotaLocked()) {
                 hasShownSkillGapPrompt = true;
                 setTimeout(() => showSkillGapPrompt(getPayload() || payload), 600);
             }
@@ -2880,6 +3136,8 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
        the new editor fell through to a "not ready" message that reloading
        could not fix. Both functions are declarations, so they are hoisted and
        safe to reference here. */
+    window.tcvIsQuotaLocked = isQuotaLocked;
+    window.tcvProDownloadSubline = proDownloadSubline;
     window.tcvDownloadEditedPdf = () => {
         // currentHtml is populated by init(). If that failed, fall back to the
         // stored payload so Download still produces the right document rather

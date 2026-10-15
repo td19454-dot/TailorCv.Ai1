@@ -15,6 +15,10 @@
 (function () {
     "use strict";
 
+    // Tells optimized_editor.js this shell owns the screen, so its legacy
+    // full-cover paywall popup stays out of the (hidden) legacy frame.
+    window.__TCV_EDITOR_V2__ = true;
+
     const STORAGE_KEY = "tailorcv_optimized_editor_payload";
     const DESIGN_KEY  = "tailorcv_editor_design";
 
@@ -165,6 +169,9 @@
     // shrunk to the column, so the browser's line breaks match WeasyPrint's.
     let frameScale = 1;
     let root, frameEl, saveBtn, pagesEl, pageHintEl, tipEl;
+    // Out of free credits: the preview shows the top of page 1, the rest
+    // blurred, nothing editable or copyable. Decided once at boot.
+    let LOCKED = false;
 
     /* ── Helpers ─────────────────────────────────────────────────────────── */
     const el = (tag, cls, txt) => {
@@ -581,8 +588,8 @@
                 content: " ${delimiter.replace(/\\/g, "\\\\").replace(/"/g, '\\"')} " !important;
             }
             /* Set the MARKER only. The indent belongs to the template:
-               `.bullets { margin: 0.9mm 0 0 3mm; padding: 0 }` in t15/t18.
-               Forcing `padding-left: 1.15em` on top of that, and wiping the
+               ".bullets { margin: 0.9mm 0 0 3mm; padding: 0 }" in t15/t18.
+               Forcing "padding-left: 1.15em" on top of that, and wiping the
                template's margin-left, pushed bullets right - and the two
                indents compounded where a list continued onto a second page
                (measured: bullets at 54px on page 1, 66px on page 2). */
@@ -895,6 +902,8 @@
         paintSafeInk();
         fitFrame();
         updatePageHint();
+        // The body was just rebuilt from clones, which carry no blur classes.
+        applyLockedPreview();
     }
 
     /* Page count for the current HTML, from the same engine as the PDF.
@@ -1544,10 +1553,169 @@
         pane.appendChild(c);
     }
 
+    /* ── Locked preview ────────────────────────────────────────────────────
+
+       A free user who has spent both credits can still optimize and see the
+       result, but not take it away. The old lock covered the whole resume with
+       a popup, so the user never saw what they were being asked to pay for.
+       Now the top of page 1 stays readable and everything after it fades into
+       a blur under an unlock card.
+
+       The blur is applied per ELEMENT, not as a band at a fixed height. A
+       band could be dodged with the design controls (a smaller font pulls the
+       later sections up into the clear area); a blurred element stays blurred
+       wherever it moves. The design controls are disabled anyway, and the
+       saved design is ignored, for the same reason.
+
+       This is presentation only. The 402 from /api/billing/checkout-download
+       is still what stops the download. */
+    const LOCK_CLEAR_FRACTION = 0.5;   // share of page 1 left readable
+    const LOCK_COPY_TEXT =
+        "— Created with TailorCV (www.thetailorcv.com)\n" +
+        "Unlock the full resume at www.thetailorcv.com/pricing";
+    let lockEls = null;                // { shield, fade, card } over the preview
+
+    function lockCta(label) {
+        const a = el("a", "edv2-btn edv2-btn-primary edv2-lk-cta", label);
+        a.href = "/pricing";
+        a.target = "_top";
+        return a;
+    }
+
+    function lockPriceLine() {
+        try {
+            if (typeof _getUpgradePriceOnly === "function") {
+                const region = typeof _upgradeRegionCache !== "undefined" ? _upgradeRegionCache : null;
+                return _getUpgradePriceOnly(region) + " · Cancel anytime";
+            }
+        } catch (e) {}
+        return "Cancel anytime";
+    }
+
+    function buildLockCard() {
+        const card = el("div", "edv2-lk-card");
+        card.appendChild(el("div", "edv2-lk-icon", "🔒"));
+        card.appendChild(el("h3", "edv2-lk-title", "Your tailored resume is ready"));
+        const sub = el("p", "edv2-lk-sub");
+        // Our own markup (a count and <strong>), never resume content.
+        sub.innerHTML = typeof window.tcvProDownloadSubline === "function"
+            ? window.tcvProDownloadSubline()
+            : "You've used your free optimizations.";
+        card.appendChild(sub);
+        card.appendChild(lockCta("Unlock your full resume"));
+        card.appendChild(el("p", "edv2-lk-price", lockPriceLine()));
+        return card;
+    }
+
+    /* Stands in for the Resume Content and AI panes, which would otherwise
+       list every bullet as editable text beside the blur. */
+    function buildLockedNotice(pane) {
+        const box = el("div", "edv2-lk-notice");
+        box.appendChild(el("div", "edv2-lk-icon", "🔒"));
+        box.appendChild(el("h3", "edv2-lk-title", "Editing is locked"));
+        box.appendChild(el("p", "edv2-lk-sub",
+            "You've used your free optimizations. Go Pro to edit, download and " +
+            "tailor unlimited resumes."));
+        box.appendChild(lockCta("Unlock editing"));
+        pane.appendChild(box);
+    }
+
+    /* Inside the frame: no selecting, copying, dragging or context menu.
+       Attached once per document - each render is a fresh srcdoc document,
+       while layoutPages() only rebuilds <body>, so the <head> style survives. */
+    function guardFrameDoc(doc) {
+        if (!doc.getElementById("edv2-lockcss")) {
+            const st = doc.createElement("style");
+            st.id = "edv2-lockcss";
+            st.textContent =
+                "html,body{-webkit-user-select:none!important;user-select:none!important;}" +
+                ".edv2-lk-blur{filter:blur(5px)!important;}";
+            (doc.head || doc.documentElement).appendChild(st);
+        }
+        if (doc._edv2LockGuard) return;
+        doc._edv2LockGuard = true;
+        const block = e => e.preventDefault();
+        doc.addEventListener("copy", e => {
+            e.preventDefault();
+            try { e.clipboardData.setData("text/plain", LOCK_COPY_TEXT); } catch (_) {}
+        }, true);
+        ["cut", "contextmenu", "selectstart", "dragstart"].forEach(t =>
+            doc.addEventListener(t, block, true));
+    }
+
+    /* Blur every element that starts below the cutoff. An element that
+       straddles it is descended into, so a long Experience section is split
+       at the job or bullet that crosses the line rather than left clear. A
+       leaf that straddles by more than the fade can hide is blurred whole. */
+    function blurBelow(node, cutoff, depth) {
+        Array.from(node.children).forEach(ch => {
+            if (ch.tagName === "STYLE" || ch.tagName === "SCRIPT") return;
+            const r = ch.getBoundingClientRect();
+            if (!r.width && !r.height) return;
+            if (r.top >= cutoff) {
+                ch.classList.add("edv2-lk-blur");
+            } else if (r.bottom > cutoff) {
+                if (ch.children.length && depth < 10) blurBelow(ch, cutoff, depth + 1);
+                else if (r.bottom - cutoff > 40) ch.classList.add("edv2-lk-blur");
+            }
+        });
+    }
+
+    function applyLockedPreview() {
+        if (!LOCKED || !frameEl) return;
+        const doc = frameEl.contentDocument;
+        if (!doc || !doc.body) return;
+        guardFrameDoc(doc);
+
+        const sheets = Array.from(doc.querySelectorAll(".edv2-sheet"));
+        const first = sheets[0] || doc.body;
+        // Frame-viewport coordinates: the frame never scrolls (it is sized to
+        // its content), so these are offsets from the frame's top, with the
+        // body's scale already applied.
+        const r = first.getBoundingClientRect();
+        if (!(r.height > 0)) return;
+        const cutoff = r.top + r.height * LOCK_CLEAR_FRACTION;
+
+        doc.querySelectorAll(".edv2-lk-blur").forEach(n => n.classList.remove("edv2-lk-blur"));
+        (sheets.length ? sheets : [doc.body]).forEach(s => blurBelow(s, cutoff, 0));
+        placeLockOverlay(cutoff);
+    }
+
+    function placeLockOverlay(cutoff) {
+        const page = frameEl.parentElement;
+        if (!page) return;
+        if (!lockEls) {
+            // The shield takes every pointer event meant for the frame, so
+            // nothing in it can be selected, dragged or right-clicked.
+            const shield = el("div", "edv2-lk-shield");
+            const fade = el("div", "edv2-lk-fade");
+            const card = buildLockCard();
+            page.append(shield, fade, card);
+            lockEls = { shield, fade, card };
+            if (typeof window.tcvTrackUpgradePrompt === "function") {
+                window.tcvTrackUpgradePrompt("ai_optimizations", "editor_blur_lock");
+            }
+        }
+        const top = frameEl.offsetTop + cutoff;
+        lockEls.fade.style.top = Math.max(0, top - 90) + "px";
+        // Keep the card inside the page box (it clips): on a phone the whole
+        // first page can be shorter than cutoff + card.
+        const maxTop = page.clientHeight - lockEls.card.offsetHeight - 16;
+        lockEls.card.style.top = Math.max(0, Math.min(top + 40, maxTop)) + "px";
+    }
+
     /* ── Shell ───────────────────────────────────────────────────────────── */
 
     function buildShell() {
         root = el("div", "edv2");
+        if (LOCKED) {
+            root.classList.add("edv2-locked");
+            // On a phone the panel stacks above the preview, which pushed the
+            // resume and its unlock card below the fold behind a locked panel.
+            try {
+                if (window.matchMedia("(max-width: 900px)").matches) root.classList.add("panel-collapsed");
+            } catch (e) {}
+        }
         document.body.classList.add("edv2-active");
         hideFloatingWidgets();
 
@@ -1609,13 +1777,16 @@
             saveBtn.classList.toggle("saved", ok === true);
             saveText.textContent = ok === true ? "Saved to My Resumes" : "Save to My Resumes";
         });
-        actions.appendChild(saveBtn);
+        // Locked: nothing to keep - saving a resume they can't open or
+        // download only adds a dead row to My Resumes.
+        if (!LOCKED) actions.appendChild(saveBtn);
 
         // "See what changed" only appears when there is something to review,
         // and carries the count so the review has a visible size before it is
         // opened. Sits left of the optimiser, per the reference bar.
+        // Not when locked: the review lists every rewritten bullet in full.
         const n = countChanges();
-        if (n > 0) {
+        if (n > 0 && !LOCKED) {
             const seen = el("button", "edv2-btn edv2-btn-outline");
             seen.type = "button";
             seen.innerHTML = SVG.diff;
@@ -1640,7 +1811,9 @@
         const dl = el("button", "edv2-btn edv2-btn-outline");
         dl.type = "button";
         dl.innerHTML = SVG.download;
-        dl.appendChild(el("span", null, "Download Resume"));
+        // Locked, the click still goes through the gate, whose 402 opens the
+        // upgrade popup - the label just says so up front.
+        dl.appendChild(el("span", null, LOCKED ? "Unlock to download" : "Download Resume"));
         dl.addEventListener("click", () => {
             callHook("tcvDownloadEditedPdf", undefined, "Download Resume",
                 () => toast("Couldn't start the download.",
@@ -1701,6 +1874,14 @@
             applyDesignToFrame();
             fitFrame();
             layoutPages();
+            if (LOCKED) {
+                applyLockedPreview();
+                // Web fonts arriving late reflow the page; re-place the cutoff.
+                try {
+                    const fonts = frameEl.contentDocument && frameEl.contentDocument.fonts;
+                    if (fonts && fonts.ready) fonts.ready.then(applyLockedPreview);
+                } catch (e) {}
+            }
         });
         page.appendChild(frameEl);
         preview.appendChild(page);
@@ -1709,9 +1890,23 @@
         root.appendChild(body);
         document.body.appendChild(root);
 
-        buildContentPane(paneMap.content);
-        buildAiPane(paneMap.ai);
-        buildDesignPane(paneMap.design);
+        if (LOCKED) {
+            buildLockedNotice(paneMap.content);
+            buildLockedNotice(paneMap.ai);
+            // Design stays visible so the user sees what Pro unlocks, but
+            // inert: font size and spacing would move content across the cutoff.
+            buildDesignPane(paneMap.design);
+            const off = el("div", "edv2-pane-locked");
+            off.inert = true;
+            off.setAttribute("aria-disabled", "true");
+            while (paneMap.design.firstChild) off.appendChild(paneMap.design.firstChild);
+            buildLockedNotice(paneMap.design);
+            paneMap.design.appendChild(off);
+        } else {
+            buildContentPane(paneMap.content);
+            buildAiPane(paneMap.ai);
+            buildDesignPane(paneMap.design);
+        }
 
         if (payload.html) paintFrame(payload.html);
         // The page count only arrived with a render response, and nothing
@@ -1753,7 +1948,11 @@
             changes: (payload.resume_data || {}).changes ? countChanges() : 0,
         });
         data = payload.resume_data || {};
-        loadDesign();
+        LOCKED = typeof window.tcvIsQuotaLocked === "function" && window.tcvIsQuotaLocked() === true;
+        if (LOCKED) window.__TCV_EDITOR_V2_LOCKED__ = true;
+        // Locked, the saved design is ignored: a tiny font chosen earlier (or
+        // planted in localStorage) would fit more of the resume above the cutoff.
+        if (!LOCKED) loadDesign();
         try { hidden = JSON.parse(sessionStorage.getItem("tailorcv_editor_hidden") || "{}"); }
         catch (e) { hidden = {}; }
         buildShell();
