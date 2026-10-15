@@ -91,7 +91,7 @@ import alerts
 import analytics
 import health_watch
 import skill_categories as skillcat
-from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, ResumeOptimization, SavedResume, SignupVerificationCode, UsageRecord, User
+from models import AtsLockedReport, BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, ResumeOptimization, SavedResume, SignupVerificationCode, UsageRecord, User
 from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
@@ -484,6 +484,11 @@ app.include_router(job_dashboard_router)
 app.include_router(extension_autofill_router)
 app.include_router(profile_page_router)
 app.include_router(marketing_router)
+# Campaign editor/sender at /admin/email. Local-only by design: whoever reaches it
+# can mail every user, so it is never registered in production (see the module docstring).
+if os.getenv("ENABLE_EMAIL_ADMIN", "").strip() == "1" and not IS_PRODUCTION:
+    from routers.marketing_admin import router as marketing_admin_router
+    app.include_router(marketing_admin_router)
 # Gigs feature hidden/disabled — route intentionally not registered (files kept dormant on disk).
 # app.include_router(jobs_router)
 blog_service = BlogService(BLOG_CONTENT_DIR)
@@ -1150,7 +1155,8 @@ def is_pro(user) -> bool:
 
 # Lives in quota_limits.py so scripts (marketing segments) can read it
 # without importing the app.
-from quota_limits import FREE_LIMITS  # noqa: E402
+from quota_limits import FREE_LIMITS, LOCKED_ATS_DAILY_LIMIT  # noqa: E402
+from ats_lock import redact_ats_for_lock  # noqa: E402
 
 
 # 7-Day Pass: Pro for a week, but capped at this many resume tailorings per
@@ -12546,6 +12552,12 @@ def _usable_ats_payload(ats_payload: str | None):
     if not isinstance(parsed, dict):
         return None
 
+    # A locked scan's skill names are placeholders (ats_lock.py), so it can't
+    # stand in for an analysis. The user never saw that skill list in full,
+    # so scoring again here doesn't show them two lists that disagree.
+    if parsed.get("locked"):
+        return None
+
     hard = (parsed.get("skills") or {}).get("hard_skills")
     if not isinstance(hard, dict) or not (hard.get("matched") or hard.get("missing")):
         logger.warning("Forwarded ATS payload had no hard-skills block; scoring instead.")
@@ -14046,18 +14058,50 @@ def _ats_match_level(score) -> str:
     return "Poor" if s < 40 else "Fair" if s < 60 else "Good" if s < 75 else "Strong" if s < 90 else "Excellent"
 
 
+def _locked_ats_allowed(db: Session, user_id: int) -> bool:
+    """May this out-of-scans free user run another locked scan today?"""
+    since = datetime.utcnow() - timedelta(hours=24)
+    used = db.query(AtsLockedReport).filter(
+        AtsLockedReport.user_id == user_id, AtsLockedReport.created_at > since
+    ).count()
+    return used < LOCKED_ATS_DAILY_LIMIT
+
+
+def _lock_ats_result(db: Session, user_id: int, result: dict) -> dict:
+    """Store the full analysis and return the redacted copy for the browser."""
+    token = uuid.uuid4().hex
+    db.add(AtsLockedReport(token=token, user_id=user_id, payload=json.dumps(result)))
+    db.commit()
+    return redact_ats_for_lock(result, token)
+
+
 @app.post("/get-ats-score")
 async def get_score(request: Request, jd_string: str, file: UploadFile = File(...)):
     """Upload a resume PDF file and JD"""
     db = get_db()
     is_guest = False
+    locked = False
+    user = None
     try:
         is_guest = enforce_guest_ats_allowed(request, db)
         if not is_guest:
             user_id = request.session.get("user_id")
             user = db.query(User).filter(User.id == user_id).first() if user_id else None
             if user:
-                enforce_quota(db, user, "ats_scans")
+                try:
+                    enforce_quota(db, user, "ats_scans")
+                except HTTPException as exc:
+                    # Free scans used up: still scan, but return a locked report
+                    # (score + one fix + Searchability, rest blurred) - see ats_lock.py.
+                    # enforce_quota raised while holding its FOR UPDATE row lock;
+                    # end that transaction before using the session again.
+                    db.rollback()
+                    detail = exc.detail if isinstance(exc.detail, dict) else {}
+                    if exc.status_code != 402 or detail.get("error") != "upgrade_required":
+                        raise
+                    if not _locked_ats_allowed(db, user.id):
+                        raise
+                    locked = True
     except HTTPException:
         db.close()
         raise
@@ -14126,6 +14170,8 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
         else:
             mark_first_activity(request.session.get("user_id"))
 
+        if locked:
+            result = _lock_ats_result(db, user.id, result)
         return result
     except HTTPException:
         raise
@@ -14136,6 +14182,32 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
         db.close()
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
+
+
+@app.get("/api/ats-report/{token}")
+def unlock_ats_report(request: Request, token: str):
+    """The full analysis behind a locked scan, for its owner once they're Pro.
+
+    Not Pro yet answers 200 {"locked": true} rather than 402: the report page
+    asks on every load, and a 402 would open auth_nav.js's global upgrade modal
+    on top of the page's own unlock card.
+    """
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in.")
+    db = get_db()
+    try:
+        row = db.query(AtsLockedReport).filter(
+            AtsLockedReport.token == token, AtsLockedReport.user_id == user_id
+        ).first()
+        if not row:
+            raise HTTPException(status_code=404, detail="Report not found.")
+        user = db.query(User).filter(User.id == user_id).first()
+        if not is_pro(user):
+            return {"locked": True}
+        return json.loads(row.payload)
+    finally:
+        db.close()
 
 
 def _proj_to_editor_entry(proj: dict, t, bullets_to_details) -> dict:

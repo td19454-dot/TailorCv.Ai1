@@ -9,10 +9,13 @@ from sqlalchemy.orm import sessionmaker
 
 from database import Base
 from email_suppression import read_unsubscribe_token
-from marketing.render import Campaign, load_campaign
+from marketing import render as render_mod
+from marketing.render import Campaign, build_campaign, inner_body, load_campaign, save_campaign
 from marketing.segments import recipients
 from marketing.sender import build_campaign_message, send_campaign
-from models import MarketingSend, Payment, UsageRecord, User
+from models import (
+    JobApplication, MarketingSend, Payment, Portfolio, ResumeOptimization, SavedResume, UsageRecord, User,
+)
 from quota_limits import FREE_LIMITS
 
 NOW = datetime(2026, 10, 11, 12, 0, 0)
@@ -62,6 +65,7 @@ def _db():
     engine = create_engine("sqlite://")
     Base.metadata.create_all(engine, tables=[
         User.__table__, UsageRecord.__table__, Payment.__table__, MarketingSend.__table__,
+        SavedResume.__table__, ResumeOptimization.__table__, Portfolio.__table__, JobApplication.__table__,
     ])
     return sessionmaker(bind=engine)()
 
@@ -87,7 +91,9 @@ def _emails(db, segment, **kwargs):
 
 def _fixture():
     db = _db()
-    future, past = NOW + timedelta(days=3), NOW - timedelta(days=3)
+    # Far future: test_send_log_rerun_gap_and_failure also checks at the real
+    # utcnow(), and a pro_until a few days past NOW turned paying users free.
+    future, past = NOW + timedelta(days=3650), NOW - timedelta(days=3)
     _user(db, "free@x.com")
     monthly = _user(db, "monthly@x.com", pro_until=future, pro_plan="monthly")
     _pay(db, monthly, "monthly")
@@ -187,6 +193,95 @@ def test_example_template_renders():
     assert "utm_campaign=example-announcement" in message.get_body(preferencelist=("html",)).get_content()
 
 
+def test_retention_segments():
+    db = _db()
+    old, recent = NOW - timedelta(days=30), NOW - timedelta(days=3)
+    _user(db, "ghost@x.com", created_at=old)                       # signed up, did nothing
+    _user(db, "brandnew@x.com", created_at=NOW - timedelta(hours=5))  # too new to nag
+    scanner = _user(db, "scanner@x.com", created_at=old)
+    db.add(UsageRecord(user_id=scanner.id, month="2026-09", ats_scans=2))
+    quiet = _user(db, "quiet@x.com", created_at=old, first_activity_at=old)
+    db.add(SavedResume(user_id=quiet.id, created_at=old))
+    db.add(UsageRecord(user_id=quiet.id, month="2026-09", ats_scans=1, ai_optimizations=1))
+    active = _user(db, "active@x.com", created_at=old, first_activity_at=old)
+    db.add(ResumeOptimization(user_id=active.id, token="t1", created_at=old))
+    db.add(ResumeOptimization(user_id=active.id, token="t2", created_at=recent))
+    # Used the product in ways other than scan/tailor: none of these is "never used".
+    interviewer = _user(db, "interviewer@x.com", created_at=old)
+    db.add(UsageRecord(user_id=interviewer.id, month="2026-09", mock_interviews=1))
+    builder = _user(db, "builder@x.com", created_at=old)
+    db.add(Portfolio(user_id=builder.id, slug="b", token="tok", data_json="{}"))
+    _user(db, "profile@x.com", created_at=old, base_resume_path="uploads/x.pdf")
+    _user(db, "pro@x.com", created_at=old, pro_until=old)  # Pro use is never counted
+    db.commit()
+    assert _emails(db, "never_used") == ["ghost@x.com"]
+    assert _emails(db, "scanned_not_tailored") == ["scanner@x.com"]
+    assert _emails(db, "tailored_gone_quiet") == ["quiet@x.com"], "a tailoring 3 days ago is not quiet"
+
+
+def test_editor_campaign_roundtrip():
+    original_dir = render_mod.TEMPLATES_DIR
+    import tempfile, shutil
+    tmp = tempfile.mkdtemp()
+    try:
+        shutil.copy(original_dir / "_base.html", tmp)
+        render_mod.TEMPLATES_DIR = type(original_dir)(tmp)
+        body = '<p>Hi {{ first_name }},</p>\n<p>Come back.</p>'
+        campaign = build_campaign("come-back", "{{ first_name }}, quick one", "Preview text", body)
+        save_campaign(campaign)
+        loaded = load_campaign("come-back")
+        assert (loaded.subject, loaded.preheader) == ("{{ first_name }}, quick one", "Preview text")
+        assert inner_body(loaded) == body
+        db = _fixture()
+        user = db.query(User).filter_by(email="free@x.com").one()
+        html = build_campaign_message(loaded, user, "n@example.com").get_body(preferencelist=("html",)).get_content()
+        assert "Come back." in html and "Unsubscribe" in html, "editor body must get the footer"
+    finally:
+        render_mod.TEMPLATES_DIR = original_dir
+        shutil.rmtree(tmp)
+    for bad in [("Bad Name", "s", "", "x"), ("ok-name", "", "", "x"), ("ok-name", "a\nb", "", "x"),
+                ("ok-name", "s", "", "{% endblock %}")]:
+        try:
+            build_campaign(*bad)
+        except ValueError:
+            continue
+        raise AssertionError(f"build_campaign should reject {bad!r}")
+
+
+def test_template_sandbox_blocks_python_internals():
+    db = _fixture()
+    user = db.query(User).filter_by(email="free@x.com").one()
+    evil = build_campaign("evil", "hi", "", "{{ ''.__class__.__mro__[1].__subclasses__() }}")
+    try:
+        build_campaign_message(evil, user, "n@example.com")
+    except Exception as exc:
+        assert "unsafe" in str(exc).lower() or "__class__" in str(exc), exc
+        return
+    raise AssertionError("the sandbox must refuse access to Python internals")
+
+
+def test_admin_router_is_local_only():
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    from routers.marketing_admin import router
+
+    app = FastAPI()
+    app.include_router(router)
+    # TestClient's client host is "testclient": not loopback, so 404.
+    assert TestClient(app).get("/admin/email/api/campaigns/example-announcement").status_code == 404
+    local = TestClient(app, client=("127.0.0.1", 50000))
+    ok = local.get("/admin/email/api/campaigns/example-announcement", headers={"host": "localhost:8006"})
+    assert ok.status_code == 200 and ok.json()["subject"] == "{{ first_name }}, something new in TailorCV"
+    rebound = local.get("/admin/email/api/campaigns/example-announcement", headers={"host": "evil.example"})
+    assert rebound.status_code == 404, "a non-localhost Host header (DNS rebinding) must be refused"
+    os.environ["ENVIRONMENT"] = "production"
+    try:
+        assert local.get("/admin/email/api/campaigns/example-announcement",
+                         headers={"host": "localhost"}).status_code == 404
+    finally:
+        os.environ.pop("ENVIRONMENT", None)
+
+
 if __name__ == "__main__":
     previous = {key: os.environ.get(key) for key in ENV}
     os.environ.update(ENV)
@@ -197,6 +292,10 @@ if __name__ == "__main__":
         test_message_personalised_with_working_unsubscribe()
         test_template_typo_fails_loudly()
         test_example_template_renders()
+        test_retention_segments()
+        test_editor_campaign_roundtrip()
+        test_template_sandbox_blocks_python_internals()
+        test_admin_router_is_local_only()
     finally:
         for key, value in previous.items():
             if value is None:

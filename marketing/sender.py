@@ -17,6 +17,29 @@ from models import MarketingSend
 
 logger = logging.getLogger(__name__)
 
+# email_suppression.py signs with this when SECRET_KEY is unset — production
+# never accepts tokens signed with it.
+_FALLBACK_SECRET = "your-secret-key"
+
+
+def sender_address() -> str:
+    return (os.getenv("MARKETING_FROM", "").strip() or os.getenv("EMAIL_FROM", "").strip()).strip("'\"")
+
+
+def preflight() -> list[str]:
+    """Reasons a real send must not go ahead. Shared by marketing_email.py and /admin/email."""
+    problems = []
+    secret = os.getenv("SECRET_KEY", "").strip()
+    if not secret or secret == _FALLBACK_SECRET:
+        problems.append(
+            "SECRET_KEY is not set. Set it to production's value (Render > Environment): "
+            "unsubscribe links are signed with it, and with any other value every "
+            "unsubscribe link in this campaign would fail."
+        )
+    if not sender_address():
+        problems.append("Set MARKETING_FROM (or EMAIL_FROM) to the sender address.")
+    return problems
+
 
 @dataclass
 class SendResult:

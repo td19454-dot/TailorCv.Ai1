@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Email campaigns · TailorCV admin</title>
+<style>
+  :root {
+    --bg: #f5f6f8; --card: #fff; --line: #e3e6eb; --text: #1b1f24; --muted: #667085;
+    --accent: #2563eb; --accent-ink: #fff; --danger: #c62828; --danger-bg: #fdecec;
+    --warn-bg: #fff6dd; --warn: #8a5a00; --ok: #18794e; --ok-bg: #e7f6ee;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 14px/1.5 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center;
+           padding: 14px 20px; background: var(--card); border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 17px; margin: 0 8px 0 0; }
+  .pill { font-size: 12px; padding: 3px 9px; border-radius: 999px; background: var(--bg);
+          border: 1px solid var(--line); color: var(--muted); }
+  .pill b { color: var(--text); font-weight: 600; }
+  .pill.bad { background: var(--danger-bg); border-color: #f5c2c2; color: var(--danger); }
+  .banner { margin: 12px 20px 0; padding: 10px 14px; border-radius: 8px; font-size: 13px; }
+  .banner.err { background: var(--danger-bg); color: var(--danger); }
+  .banner.warn { background: var(--warn-bg); color: var(--warn); }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; padding: 16px 20px 40px; }
+  @media (max-width: 1100px) { main { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+  .card h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 12px; }
+  label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin: 10px 0 4px; }
+  input[type=text], input[type=email], input[type=number], select, textarea {
+    width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+    font: inherit; color: inherit; background: #fff; }
+  textarea { font: 13px/1.5 ui-monospace, Consolas, monospace; min-height: 340px; resize: vertical; tab-size: 2; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid #bfd3fb; border-color: var(--accent); }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .row > .grow { flex: 1; min-width: 160px; }
+  button { font: inherit; font-weight: 600; padding: 8px 14px; border-radius: 6px; cursor: pointer;
+           border: 1px solid var(--line); background: #fff; color: var(--text); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  button.danger { background: var(--danger); border-color: var(--danger); color: #fff; }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 6px; }
+  .chip { font: 12px ui-monospace, Consolas, monospace; padding: 3px 8px; border-radius: 5px;
+          background: #eef2ff; color: #3730a3; border: 1px solid #dfe3fb; cursor: pointer; font-weight: 400; }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .status { font-size: 13px; min-height: 20px; margin-top: 8px; }
+  .status.err { color: var(--danger); } .status.ok { color: var(--ok); }
+  .segments { display: grid; gap: 6px; }
+  .seg { display: grid; grid-template-columns: auto 1fr auto; gap: 2px 10px; align-items: start;
+         padding: 8px 10px; border: 1px solid var(--line); border-radius: 7px; }
+  .seg.on { border-color: var(--accent); background: #f5f8ff; }
+  .seg .name { font: 600 13px ui-monospace, Consolas, monospace; }
+  .seg .desc { grid-column: 2; font-size: 12px; color: var(--muted); }
+  .seg .ex { grid-row: 1 / span 2; grid-column: 3; font-size: 12px; color: var(--muted); display: flex; gap: 4px; align-items: center; margin: 0; font-weight: 400; }
+  .count { font-size: 28px; font-weight: 700; line-height: 1.1; }
+  .sample { font: 12px ui-monospace, Consolas, monospace; color: var(--muted); margin: 6px 0 0; padding: 0; list-style: none; }
+  .preview-wrap { position: sticky; top: 16px; }
+  .meta { border: 1px solid var(--line); border-radius: 8px 8px 0 0; border-bottom: 0; padding: 10px 12px; background: #fafbfc; }
+  .meta .subj { font-weight: 700; font-size: 15px; }
+  .meta .pre { color: var(--muted); font-size: 12px; }
+  iframe { display: block; width: 100%; height: 720px; border: 1px solid var(--line); border-radius: 0 0 8px 8px; background: #f4f5f7; margin: 0 auto; transition: width .2s; }
+  .seg-toggle button { padding: 4px 10px; font-size: 12px; }
+  .seg-toggle button.active { background: var(--text); color: #fff; border-color: var(--text); }
+  progress { width: 100%; height: 10px; }
+  dialog { border: 1px solid var(--line); border-radius: 10px; padding: 20px; max-width: 440px; width: calc(100% - 32px); }
+  dialog::backdrop { background: rgba(15, 20, 30, .45); }
+  dialog h3 { margin: 0 0 8px; }
+  .dirty { color: var(--warn); font-size: 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Email campaigns</h1>
+  <span class="pill" id="dbPill">Database: <b></b></span>
+  <span class="pill">From: <b id="fromVal"></b></span>
+  <span class="pill">Local only</span>
+</header>
+<div id="banners"></div>
+
+<main>
+  <div>
+    <section class="card">
+      <h2>Campaign</h2>
+      <div class="row">
+        <select id="pick" class="grow"></select>
+        <span id="dirty" class="dirty" hidden>Unsaved changes</span>
+      </div>
+      <label for="name">Name <span style="font-weight:400">(logged per recipient and used as the utm_campaign, e.g. come-back-oct)</span></label>
+      <input id="name" type="text" placeholder="come-back-oct" autocomplete="off">
+      <label for="subject">Subject</label>
+      <input id="subject" type="text" placeholder="{{ '{{ first_name }}' }}, your resume is waiting" autocomplete="off">
+      <label for="preheader">Preheader <span style="font-weight:400">(grey preview text in the inbox)</span></label>
+      <input id="preheader" type="text" autocomplete="off">
+      <label for="body">Body HTML</label>
+      <div class="chips" id="chips"></div>
+      <textarea id="body" spellcheck="false"></textarea>
+      <div class="hint">Just the body. The TailorCV header, footer and unsubscribe link are added automatically. Use inline styles, since email clients ignore &lt;style&gt; tags.</div>
+      <div class="row" style="margin-top:12px">
+        <button class="primary" id="saveBtn">Save</button>
+      </div>
+      <div class="status" id="saveStatus"></div>
+    </section>
+
+    <section class="card">
+      <h2>Audience</h2>
+      <div class="hint" style="margin:0 0 8px">Pick one segment to send to. Tick "exclude" on others to leave them out.</div>
+      <div class="segments" id="segments"></div>
+      <label for="gap">Skip anyone who got any marketing email in the last N days</label>
+      <input id="gap" type="number" min="0" max="365" value="7" style="max-width:120px">
+      <div style="margin-top:14px">
+        <div class="count" id="count">–</div>
+        <div class="hint" id="countNote">Choose a segment.</div>
+        <ul class="sample" id="sample"></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Send</h2>
+      <label for="testTo">Send a test to</label>
+      <div class="row">
+        <input id="testTo" type="email" class="grow" placeholder="you@gmail.com">
+        <button id="testBtn">Send test</button>
+      </div>
+      <div class="hint">Rendered as the first real recipient so you see their actual name. Not logged.</div>
+      <div class="status" id="testStatus"></div>
+      <div style="border-top:1px solid var(--line);margin:14px 0 12px"></div>
+      <button class="danger" id="sendBtn" disabled>Send to 0 people</button>
+      <div class="hint" id="sendHint">Save the campaign and choose an audience first.</div>
+      <div id="jobBox" hidden style="margin-top:12px">
+        <progress id="jobBar" value="0" max="1"></progress>
+        <div class="status" id="jobStatus"></div>
+      </div>
+    </section>
+  </div>
+
+  <div>
+    <div class="preview-wrap">
+      <div class="row" style="justify-content:space-between;margin-bottom:8px">
+        <h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:0">Preview <span style="text-transform:none;font-weight:400">(as Asha Rao)</span></h2>
+        <div class="row seg-toggle">
+          <button data-w="100%" class="active">Desktop</button>
+          <button data-w="390px">Mobile</button>
+        </div>
+      </div>
+      <div class="meta"><div class="subj" id="pvSubject">&nbsp;</div><div class="pre" id="pvPre">&nbsp;</div></div>
+      <iframe id="pv" sandbox title="Email preview"></iframe>
+      <div class="status err" id="pvErr"></div>
+    </div>
+  </div>
+</main>
+
+<dialog id="confirm">
+  <h3>Send for real?</h3>
+  <p id="confirmText"></p>
+  <label for="confirmInput">Type the number of recipients to confirm</label>
+  <input id="confirmInput" type="text" inputmode="numeric" autocomplete="off">
+  <div class="row" style="justify-content:flex-end;margin-top:14px">
+    <button id="confirmCancel">Cancel</button>
+    <button class="danger" id="confirmGo" disabled>Send</button>
+  </div>
+</dialog>
+
+<script>
+const BOOT = {{ boot | tojson }};
+const API = "/admin/email/api";
+const NEW = "__new__";
+const STARTER = `<p>Hi {{ '{{ first_name }}' }},</p>
+
+<p>Write your message here.</p>
+
+<p style="margin:28px 0;">
+  <a href="{{ '{{ base_url }}' }}/dashboard?utm_source=email&utm_medium=marketing&utm_campaign={{ '{{ campaign }}' }}"
+     style="background:#2563eb;color:#ffffff;padding:12px 22px;border-radius:6px;text-decoration:none;font-weight:bold;">
+    Open TailorCV
+  </a>
+</p>
+
+<p>Best,<br>Shubham<br>Co-Founder, TailorCV</p>`;
+
+const $ = (id) => document.getElementById(id);
+const els = { pick: $("pick"), name: $("name"), subject: $("subject"), preheader: $("preheader"), body: $("body") };
+const state = { savedName: null, dirty: false, segment: null, exclude: new Set(), count: 0, jobTimer: null };
+
+function csrf() {
+  const m = document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/);
+  return m ? decodeURIComponent(m[1]) : "";
+}
+async function api(path, body) {
+  const opts = body === undefined ? {} : {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-CSRFToken": csrf() },
+    body: JSON.stringify(body),
+  };
+  const res = await fetch(API + path, opts);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const d = data.detail;
+    throw new Error(Array.isArray(d) ? d.map(x => x.msg).join("; ") : (d || res.statusText));
+  }
+  return data;
+}
+function setStatus(id, text, kind) { const el = $(id); el.textContent = text || ""; el.className = "status" + (kind ? " " + kind : ""); }
+function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
+function fields() { return { name: els.name.value.trim(), subject: els.subject.value, preheader: els.preheader.value, body: els.body.value }; }
+function audience() {
+  return { campaign: els.name.value.trim(), segment: state.segment,
+           exclude: [...state.exclude].filter(x => x !== state.segment), min_gap_days: Number($("gap").value) || 0 };
+}
+
+// ── header + banners ──────────────────────────────────────────────
+$("dbPill").querySelector("b").textContent = BOOT.database;
+if (BOOT.is_sqlite) $("dbPill").classList.add("bad");
+$("fromVal").textContent = BOOT.sender || "not set";
+const banners = $("banners");
+function banner(text, kind) { const d = document.createElement("div"); d.className = "banner " + kind; d.textContent = text; banners.appendChild(d); }
+if (BOOT.is_sqlite) banner("Connected to the local SQLite database, not production. Set DATABASE_URL to production's to reach real users.", "warn");
+BOOT.problems.forEach(p => banner(p, "err"));
+if (!BOOT.has_mailing_address) banner("COMPANY_MAILING_ADDRESS is not set. CAN-SPAM requires a postal address in commercial email sent to US recipients.", "warn");
+
+// ── campaign picker ───────────────────────────────────────────────
+function fillPicker(names, selected) {
+  els.pick.innerHTML = "";
+  els.pick.add(new Option("+ New campaign", NEW));
+  names.forEach(n => els.pick.add(new Option(n, n)));
+  els.pick.value = selected || NEW;
+}
+function markDirty(on) { state.dirty = on; $("dirty").hidden = !on; updateSendButton(); }
+
+async function openCampaign(name) {
+  if (state.dirty && !confirm("Discard unsaved changes?")) { els.pick.value = state.savedName || NEW; return; }
+  if (name === NEW) {
+    Object.assign(els.name, { value: "", disabled: false });
+    els.subject.value = ""; els.preheader.value = ""; els.body.value = STARTER;
+    state.savedName = null;
+  } else {
+    try {
+      const c = await api("/campaigns/" + encodeURIComponent(name));
+      els.name.value = c.name; els.subject.value = c.subject; els.preheader.value = c.preheader; els.body.value = c.body;
+      state.savedName = c.name;
+    } catch (e) { setStatus("saveStatus", e.message, "err"); return; }
+  }
+  markDirty(false); setStatus("saveStatus", "");
+  refreshPreview(); refreshAudience();
+}
+els.pick.addEventListener("change", () => openCampaign(els.pick.value));
+
+$("saveBtn").addEventListener("click", async () => {
+  const f = fields();
+  if (f.name !== state.savedName && BOOT.campaigns.includes(f.name) &&
+      !confirm(`"${f.name}" already exists. Overwrite it?`)) return;
+  try {
+    const r = await api("/campaigns", f);
+    BOOT.campaigns = r.campaigns; state.savedName = r.saved;
+    fillPicker(r.campaigns, r.saved); markDirty(false);
+    setStatus("saveStatus", `Saved to marketing/templates/${r.saved}.html`, "ok");
+    refreshAudience();
+  } catch (e) { setStatus("saveStatus", e.message, "err"); }
+});
+
+// ── variable chips ────────────────────────────────────────────────
+["first_name", "name", "email", "base_url", "campaign"].forEach(v => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.textContent = "{{ '{{' }} " + v + " {{ '}}' }}";
+  b.addEventListener("click", () => {
+    const t = els.body, s = t.selectionStart, e = t.selectionEnd;
+    t.setRangeText(b.textContent, s, e, "end"); t.focus(); t.dispatchEvent(new Event("input"));
+  });
+  $("chips").appendChild(b);
+});
+els.body.addEventListener("keydown", (e) => {
+  if (e.key === "Tab") { e.preventDefault(); els.body.setRangeText("  ", els.body.selectionStart, els.body.selectionEnd, "end"); }
+});
+
+// ── live preview ──────────────────────────────────────────────────
+const refreshPreview = debounce(async () => {
+  const f = fields();
+  if (!f.name) f.name = "untitled-preview";
+  if (!f.subject.trim()) f.subject = "(no subject)";
+  try {
+    const r = await api("/preview", f);
+    $("pvSubject").textContent = r.subject; $("pvPre").textContent = els.preheader.value || " ";
+    $("pv").srcdoc = r.html; setStatus("pvErr", "");
+  } catch (e) { setStatus("pvErr", e.message, "err"); }
+}, 350);
+["name", "subject", "preheader", "body"].forEach(k => els[k].addEventListener("input", () => { markDirty(true); refreshPreview(); }));
+els.name.addEventListener("change", () => refreshAudience());
+document.querySelectorAll(".seg-toggle button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".seg-toggle button").forEach(x => x.classList.toggle("active", x === b));
+  $("pv").style.width = b.dataset.w;
+}));
+
+// ── audience ──────────────────────────────────────────────────────
+BOOT.segments.forEach(s => {
+  const row = document.createElement("div");
+  row.className = "seg";
+  row.innerHTML = `<input type="radio" name="seg" value="${s.name}" id="seg-${s.name}">
+    <label for="seg-${s.name}" class="name" style="margin:0;color:inherit">${s.name}</label>
+    <label class="ex"><input type="checkbox" value="${s.name}"> exclude</label>
+    <div class="desc"></div>`;
+  row.querySelector(".desc").textContent = s.description;
+  row.querySelector("input[type=radio]").addEventListener("change", () => {
+    state.segment = s.name;
+    document.querySelectorAll(".seg").forEach(r => r.classList.toggle("on", r === row));
+    refreshAudience();
+  });
+  row.querySelector("input[type=checkbox]").addEventListener("change", (e) => {
+    e.target.checked ? state.exclude.add(s.name) : state.exclude.delete(s.name);
+    refreshAudience();
+  });
+  $("segments").appendChild(row);
+});
+$("gap").addEventListener("input", debounce(() => refreshAudience(), 300));
+
+let audienceSeq = 0;
+async function refreshAudience() {
+  const a = audience();
+  if (!a.segment) return;
+  const seq = ++audienceSeq;
+  $("countNote").textContent = "Counting…";
+  try {
+    const r = await api("/audience", { ...a, campaign: a.campaign || "untitled-preview" });
+    if (seq !== audienceSeq) return;
+    state.count = r.count;
+    $("count").textContent = r.count.toLocaleString() + (r.count === 1 ? " person" : " people");
+    const ex = a.exclude.length ? `, excluding ${a.exclude.join(", ")}` : "";
+    $("countNote").textContent = `in ${a.segment}${ex}. Unsubscribed, bounced and complained addresses are already removed` +
+      (r.already_sent ? `, as are ${r.already_sent} who already got this campaign.` : ".");
+    const ul = $("sample"); ul.innerHTML = "";
+    r.sample.forEach(e => { const li = document.createElement("li"); li.textContent = e; ul.appendChild(li); });
+    if (r.count > r.sample.length) { const li = document.createElement("li"); li.textContent = `… and ${r.count - r.sample.length} more`; ul.appendChild(li); }
+  } catch (e) {
+    if (seq !== audienceSeq) return;
+    state.count = 0; $("count").textContent = "–"; $("countNote").textContent = e.message;
+  }
+  updateSendButton();
+}
+
+function updateSendButton() {
+  const btn = $("sendBtn"), hint = $("sendHint");
+  const saved = state.savedName && state.savedName === els.name.value.trim() && !state.dirty;
+  const running = !!state.jobTimer;
+  btn.textContent = `Send to ${state.count.toLocaleString()} ${state.count === 1 ? "person" : "people"}`;
+  btn.disabled = !saved || !state.segment || !state.count || running || BOOT.problems.length > 0;
+  hint.textContent = BOOT.problems.length ? "Fix the errors at the top first."
+    : running ? "A send is running."
+    : !saved ? "Save the campaign first. The saved file is what gets sent."
+    : !state.segment ? "Choose a segment." : !state.count ? "Nobody to send to." : "You'll be asked to confirm.";
+}
+
+// ── test + send ───────────────────────────────────────────────────
+$("testBtn").addEventListener("click", async () => {
+  const to = $("testTo").value.trim();
+  if (!to) return setStatus("testStatus", "Enter an address.", "err");
+  if (!state.segment) return setStatus("testStatus", "Choose a segment first. The test is rendered as its first recipient.", "err");
+  setStatus("testStatus", "Sending…");
+  try {
+    const a = audience();
+    const r = await api("/test", { campaign: fields(), audience: { ...a, campaign: a.campaign || "untitled-preview" }, to });
+    setStatus("testStatus", `Sent to ${r.sent_to}, rendered as ${r.rendered_as}.`, "ok");
+  } catch (e) { setStatus("testStatus", e.message, "err"); }
+});
+
+const dlg = $("confirm");
+$("sendBtn").addEventListener("click", () => {
+  const a = audience();
+  $("confirmText").textContent = `"${a.campaign}" will go to ${state.count.toLocaleString()} people in ${a.segment}` +
+    (a.exclude.length ? ` (excluding ${a.exclude.join(", ")})` : "") + ` from ${BOOT.sender}, using database ${BOOT.database}.`;
+  $("confirmInput").value = ""; $("confirmGo").disabled = true;
+  dlg.showModal(); $("confirmInput").focus();
+});
+$("confirmInput").addEventListener("input", (e) => { $("confirmGo").disabled = e.target.value.trim() !== String(state.count); });
+$("confirmCancel").addEventListener("click", () => dlg.close());
+$("confirmGo").addEventListener("click", async () => {
+  dlg.close();
+  try {
+    const r = await api("/send", { audience: audience(), confirm_count: state.count });
+    $("jobBox").hidden = false; setStatus("jobStatus", "Starting…");
+    state.jobTimer = setInterval(() => pollJob(r.job), 1500);
+    updateSendButton();
+  } catch (e) { $("jobBox").hidden = false; setStatus("jobStatus", e.message, "err"); }
+});
+
+async function pollJob(id) {
+  let j;
+  try { j = await api("/jobs/" + id); } catch (e) { return; }
+  $("jobBar").max = Math.max(j.total, 1); $("jobBar").value = j.sent + j.failed;
+  const tail = j.log.length ? "\n" + j.log.join("\n") : "";
+  if (j.status === "running") {
+    setStatus("jobStatus", `Sending… ${j.sent} of ${j.total}${tail}`);
+    return;
+  }
+  clearInterval(state.jobTimer); state.jobTimer = null;
+  if (j.status === "done") {
+    setStatus("jobStatus", `Done. Sent ${j.sent}, failed ${j.failed}, skipped ${j.skipped}.` +
+      (j.failed ? " Failed recipients weren't logged; send again to retry just them." : "") + tail, j.failed ? "err" : "ok");
+  } else {
+    setStatus("jobStatus", `Stopped: ${j.error}. Recipients already sent are logged; sending again resumes from there.`, "err");
+  }
+  refreshAudience();
+}
+$("jobStatus").style.whiteSpace = "pre-wrap";
+
+window.addEventListener("beforeunload", (e) => { if (state.dirty || state.jobTimer) { e.preventDefault(); e.returnValue = ""; } });
+
+fillPicker(BOOT.campaigns, null);
+openCampaign(NEW);
+</script>
+</body>
+</html>

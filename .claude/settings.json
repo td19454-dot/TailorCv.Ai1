@@ -28,7 +28,18 @@
       "Bash(cp src/autofill/run.js /tmp/run.js.bak)",
       "Bash(sed -i 's/^  if \\(expSection\\) decisions = decisions.concat\\(await fillExperienceSection\\(ctx, progress\\)\\);/  \\\\/\\\\/DISABLED/' src/autofill/run.js)",
       "Bash(grep -c \"//DISABLED\" src/autofill/run.js)",
-      "Bash(env)"
+      "Bash(env)",
+      "Bash(venv/Scripts/python.exe test_marketing_email.py)",
+      "Bash(venv/Scripts/python.exe -m py_compile main.py routers/marketing_admin.py marketing_email.py)",
+      "Bash(.venv/Scripts/python.exe -m py_compile main.py routers/marketing_admin.py marketing_email.py)",
+      "PowerShell($env:ENABLE_EMAIL_ADMIN = '1'; $env:HTTP_PROXY=''; $env:HTTPS_PROXY=''; .\\\\.venv\\\\Scripts\\\\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8016)",
+      "Bash(sed -i '94s/^from models import BlogRating, GuestAtsScan,/from models import AtsLockedReport, BlogRating, GuestAtsScan,/' main.py)",
+      "Bash(sed -i '1158s/^from quota_limits import FREE_LIMITS  # noqa: E402/from quota_limits import FREE_LIMITS, LOCKED_ATS_DAILY_LIMIT  # noqa: E402/' main.py)",
+      "Bash(.venv/Scripts/python.exe -m py_compile main.py ats_lock.py models.py)",
+      "Bash(.venv/Scripts/python.exe test_ats_lock.py)",
+      "Bash(node -e \"require\\('fs'\\).readFileSync\\('static/ats_analysis.js','utf8'\\); new Function\\(require\\('fs'\\).readFileSync\\('static/ats_analysis.js','utf8'\\)\\); console.log\\('js parses'\\)\")",
+      "Bash(timeout 300 .venv/Scripts/python.exe \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/4683fe13-ea1c-4331-ab01-173db77d6737/scratchpad/e2e_ats_lock.py\")",
+      "Bash(sed -i 's/^assert SECRET not in r.text and \"Tableau\" not in r.text$/import re; print\\(\"LEAK CONTEXT:\", [r.text[max\\(0,m.start\\(\\)-160\\):m.end\\(\\)+40] for m in re.finditer\\(\"SECRET-DETAIL|Tableau\", r.text\\)][:3]\\); print\\(json.dumps\\(body\\)[:1500]\\)/' \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/4683fe13-ea1c-4331-ab01-173db77d6737/scratchpad/e2e_ats_lock.py\")"
     ],
     "additionalDirectories": [
       "\\tmp"

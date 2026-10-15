@@ -7,11 +7,16 @@ top of every segment, so a new segment can't forget it.
 import os
 from datetime import datetime, timedelta
 
-from sqlalchemy import func, or_
+from sqlalchemy import and_, func, or_
 from sqlalchemy.orm import Query, Session
 
-from models import MarketingSend, Payment, UsageRecord, User
+from models import (
+    JobApplication, MarketingSend, Payment, Portfolio, ResumeOptimization, SavedResume, UsageRecord, User,
+)
 from quota_limits import FREE_LIMITS
+
+# "Gone quiet" = no tailoring in this many days.
+QUIET_DAYS = 14
 
 
 def _not_paying(now: datetime):
@@ -71,6 +76,53 @@ def seg_upgrade_prompt(db: Session, now: datetime) -> Query:
     return query
 
 
+_USAGE_COUNTERS = ("ats_scans", "ai_optimizations", "mock_interviews", "interview_questions", "cover_letters",
+                   "linkedin_imports", "auto_applies", "autofills", "cv_uploads", "template_changes")
+
+
+def seg_never_used(db: Session, now: datetime) -> Query:
+    """Signed up 2+ days ago and has no trace of using any feature."""
+    # first_activity_at only exists for users active since it was added, so
+    # every other trace of use is checked too. Usage rows alone aren't enough:
+    # enforce_quota() records nothing for Pro users, so anyone who has ever had
+    # a plan is left out as well.
+    used = db.query(UsageRecord.user_id).filter(or_(*(getattr(UsageRecord, c) > 0 for c in _USAGE_COUNTERS)))
+    return db.query(User.id).filter(
+        User.first_activity_at.is_(None),
+        User.pro_until.is_(None),
+        User.base_resume_path.is_(None),
+        or_(User.created_at.is_(None), User.created_at <= now - timedelta(days=2)),
+        ~User.id.in_(used),
+        ~User.id.in_(db.query(SavedResume.user_id)),
+        ~User.id.in_(db.query(ResumeOptimization.user_id)),
+        ~User.id.in_(db.query(Portfolio.user_id)),
+        ~User.id.in_(db.query(JobApplication.user_id)),
+    )
+
+
+def seg_scanned_not_tailored(db: Session, now: datetime) -> Query:
+    """Ran an ATS scan but never tailored a resume."""
+    scanned_only = db.query(UsageRecord.user_id).group_by(UsageRecord.user_id).having(and_(
+        func.coalesce(func.sum(UsageRecord.ats_scans), 0) > 0,
+        func.coalesce(func.sum(UsageRecord.ai_optimizations), 0) == 0,
+    ))
+    return db.query(User.id).filter(
+        User.id.in_(scanned_only),
+        ~User.id.in_(db.query(SavedResume.user_id)),
+        ~User.id.in_(db.query(ResumeOptimization.user_id)),
+    )
+
+
+def seg_tailored_gone_quiet(db: Session, now: datetime) -> Query:
+    """Tailored at least one resume, but none in the last 14 days."""
+    cutoff = now - timedelta(days=QUIET_DAYS)
+    return db.query(User.id).filter(
+        or_(User.id.in_(db.query(SavedResume.user_id)), User.id.in_(db.query(ResumeOptimization.user_id))),
+        ~User.id.in_(db.query(SavedResume.user_id).filter(SavedResume.created_at > cutoff)),
+        ~User.id.in_(db.query(ResumeOptimization.user_id).filter(ResumeOptimization.created_at > cutoff)),
+    )
+
+
 SEGMENTS = {
     "all": seg_all,
     "free": seg_free,
@@ -78,6 +130,9 @@ SEGMENTS = {
     "weekly_active": seg_weekly_active,
     "weekly_expired": seg_weekly_expired,
     "upgrade_prompt": seg_upgrade_prompt,
+    "never_used": seg_never_used,
+    "scanned_not_tailored": seg_scanned_not_tailored,
+    "tailored_gone_quiet": seg_tailored_gone_quiet,
 }
 
 
