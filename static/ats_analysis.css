@@ -604,3 +604,57 @@ html.tcv-app body main.ats-report.analysis-page { padding-top: 0 !important; mar
   .ats-sec { break-inside: avoid-page; }
   .ats-skill-panel[hidden] { display: block; }
 }
+
+/* ── Locked report (free scans used up) ───────────────────────────────────────
+   ats_analysis.js moves every section after Searchability into .ats-lk-zone.
+   The content renders from placeholders (the server never sent the real text),
+   blurred and unclickable; the card stays in view while you scroll past it. */
+.ats-lk-blurred { filter: blur(5px); user-select: none; pointer-events: none; }
+.ats-lk-zone { position: relative; margin-top: 56px; }
+.ats-lk-content {
+  filter: blur(6px); opacity: .55;
+  user-select: none; -webkit-user-select: none; pointer-events: none;
+}
+.ats-lk-zone::before {   /* soften the edge where the clear part ends */
+  content: ""; position: absolute; left: 0; right: 0; top: -40px; height: 120px; z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(6, 13, 34, 0), rgba(6, 13, 34, .85) 55%, rgba(6, 13, 34, 0));
+}
+.ats-lk-overlay { position: absolute; inset: 0; z-index: 2; }
+.ats-lk-card {
+  position: sticky; top: calc(var(--ats-top) + 40px);
+  width: min(100%, 440px); margin: 24px auto 0; box-sizing: border-box;
+  padding: 22px 22px 18px; text-align: center; border-radius: 18px;
+  background: linear-gradient(155deg, #0c1730, #071020);
+  border: 1px solid rgba(56, 189, 248, .35);
+  box-shadow: 0 30px 70px rgba(0, 5, 20, .65), 0 0 0 1px rgba(56, 189, 248, .12);
+  animation: atsLkUp .35s ease;
+}
+.ats-lk-icon {
+  width: 44px; height: 44px; margin: 0 auto 10px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem; line-height: 1;
+  background: radial-gradient(circle, rgba(56, 189, 248, .18), transparent 70%);
+  border: 1px solid rgba(56, 189, 248, .35);
+}
+.ats-lk-title { margin: 0 0 6px; font-size: 1.15rem; font-weight: 800; color: var(--ats-text); }
+.ats-lk-sub { margin: 0 0 14px; font-size: .9rem; line-height: 1.5; color: var(--ats-text-2); }
+.ats-lk-sub strong { color: #7dd3fc; font-weight: 700; }
+.ats-lk-cta {
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  padding: 12px 14px 11px; border-radius: 12px; text-decoration: none; color: #fff;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, .5); transition: opacity .2s, transform .2s;
+}
+.ats-lk-cta:hover { opacity: .92; transform: translateY(-2px); }
+.ats-lk-cta-main { font-size: 1rem; font-weight: 800; }
+.ats-lk-cta-sub { font-size: .75rem; font-weight: 600; color: rgba(255, 255, 255, .85); }
+.ats-lk-foot { margin: 10px 0 0; font-size: .75rem; line-height: 1.45; color: var(--ats-muted); }
+body.ats-locked #ats-print-btn { display: none; }
+@keyframes atsLkUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (max-width: 860px) { .ats-lk-zone { margin-top: 44px; } }
+@media (max-width: 480px) {
+  .ats-lk-card { padding: 16px 14px 14px; border-radius: 14px; }
+  .ats-lk-title { font-size: 1rem; }
+  .ats-lk-sub { font-size: .82rem; }
+}
+@media print { .ats-lk-zone, .ats-lk-blurred { display: none; } }

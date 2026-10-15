@@ -254,6 +254,21 @@ class MarketingSend(Base):
     sent_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
 
 
+class AtsLockedReport(Base):
+    """The full analysis behind a locked ATS scan (see ats_lock.py). The
+    browser only ever gets the redacted copy; /api/ats-report/<token> returns
+    this to its owner once they are Pro, so upgrading unlocks the report they
+    were looking at without a rescan. Also the counter for
+    LOCKED_ATS_DAILY_LIMIT."""
+    __tablename__ = "ats_locked_reports"
+
+    id = Column(Integer, primary_key=True, index=True)
+    token = Column(String(32), unique=True, index=True, nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    payload = Column(Text, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+
+
 class AnalyticsEventLog(Base):
     """Exactly-once guard for server-side PostHog events (payments, subscriptions)
     and the per-user count behind `optimization_count`. `key` is unique."""

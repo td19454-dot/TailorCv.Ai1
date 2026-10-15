@@ -685,6 +685,94 @@
     if (pr) pr.addEventListener("click", () => window.print());
   }
 
+  /* ─── Locked report ──────────────────────────────────────────────────────────
+     Free scans used up: /get-ats-score still scanned, but sent a redacted copy
+     (ats_lock.py) - score, check pass/fail, skill counts, the first priority
+     fix and the Searchability section. Everything below Searchability renders
+     from placeholders and sits blurred under an unlock card. The blur hides
+     nothing real: the real text never reached the browser.
+  ───────────────────────────────────────────────────────────────────────────── */
+  function applyLock(d, counts) {
+    const main = document.getElementById("ats-main");
+    const open = document.getElementById("sec-searchability");
+    if (!main || !open || document.getElementById("ats-lk-zone")) return;
+
+    // Placeholder fixes 2+ blur in place, between the open fix and Searchability.
+    document.querySelectorAll("#priority-fixes .ats-fix:nth-child(n+2)").forEach(f => {
+      f.classList.add("ats-lk-blurred");
+      f.setAttribute("aria-hidden", "true");
+    });
+
+    const zone = el("div", "ats-lk-zone");
+    zone.id = "ats-lk-zone";
+    const content = el("div", "ats-lk-content");
+    content.setAttribute("aria-hidden", "true");
+    content.inert = true;
+    let node = open.nextElementSibling;
+    while (node) {
+      const next = node.nextElementSibling;
+      if (node.id === "ats-cta") node.hidden = true;   // its links would be blurred
+      else content.appendChild(node);
+      node = next;
+    }
+    zone.appendChild(content);
+
+    const missing = (d?.skills?.hard_skills?.missing || []).length + (d?.skills?.soft_skills?.missing || []).length;
+    const moreFixes = Math.max(0, (d?.top_priority_fixes || []).length - 1);
+    const found = [];
+    if (missing) found.push(`<strong>${missing} missing ${missing === 1 ? "keyword" : "keywords"}</strong>`);
+    if (moreFixes) found.push(`<strong>${moreFixes} more ${moreFixes === 1 ? "fix" : "fixes"}</strong>`);
+    const sub = found.length
+      ? `${found.join(" and ")} for this job, with exactly what to change, are in your full report.`
+      : `${counts.failed} ${counts.failed === 1 ? "issue" : "issues"} to fix for this job, with exactly what to change, are in your full report.`;
+
+    const price = typeof _getUpgradePriceOnly === "function"
+      ? _getUpgradePriceOnly(typeof _upgradeRegionCache !== "undefined" ? _upgradeRegionCache : null) : "";
+    const overlay = el("div", "ats-lk-overlay");
+    overlay.innerHTML = `
+      <div class="ats-lk-card" role="dialog" aria-labelledby="ats-lk-title">
+        <div class="ats-lk-icon" aria-hidden="true">🔒</div>
+        <h3 class="ats-lk-title" id="ats-lk-title">Your full report is ready</h3>
+        <p class="ats-lk-sub">${sub}</p>
+        <a href="/pricing" class="ats-lk-cta">
+          <span class="ats-lk-cta-main">Unlock full report</span>
+          ${price ? `<span class="ats-lk-cta-sub" id="ats-lk-price">${esc(price)} · Cancel anytime</span>` : ""}
+        </a>
+        <p class="ats-lk-foot">You've used your free scans. Pro unlocks every report, including this one, with no rescan.</p>
+      </div>`;
+    zone.appendChild(overlay);
+    main.appendChild(zone);
+
+    if (typeof _prefetchUpgradeRegion === "function" && typeof _upgradeRegionCache !== "undefined" && !_upgradeRegionCache) {
+      _prefetchUpgradeRegion();
+      if (_upgradeRegionFetch) _upgradeRegionFetch.then(region => {
+        const p = document.getElementById("ats-lk-price");
+        if (p && region) p.textContent = _getUpgradePriceOnly(region) + " · Cancel anytime";
+      });
+    }
+
+    document.body.classList.add("ats-locked");   // hides Print
+    ["copy", "cut", "contextmenu", "dragstart"].forEach(t =>
+      content.addEventListener(t, e => e.preventDefault()));
+    if (typeof window.tcvTrackUpgradePrompt === "function") {
+      window.tcvTrackUpgradePrompt("ats_scans", "ats_blur_lock");
+    }
+  }
+
+  // After upgrading, the same page shows the full report: the server keeps it
+  // and hands it over once the account is Pro. Not Pro yet answers {locked}.
+  function tryUnlock(d) {
+    if (!d.report_id) return;
+    fetch("/api/ats-report/" + encodeURIComponent(d.report_id), { credentials: "same-origin" })
+      .then(r => (r.ok ? r.json() : null))
+      .then(full => {
+        if (!full || full.locked) return;
+        try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(full)); } catch { return; }
+        location.reload();
+      })
+      .catch(() => {});
+  }
+
   /* ─── No-data fallback ───────────────────────────────────────────────────── */
   function showNoData() {
     const layout = document.querySelector(".ats-layout");
@@ -746,6 +834,10 @@
     renderTable("tbl-writing", writ, d);
     renderTable("tbl-formatting", fmt, d);
     renderCta(score);
+    if (d.locked) {
+      applyLock(d, counts);
+      tryUnlock(d);
+    }
 
     // Expose score globally as fallback for the share modal listener
     window._atsFinalScore = score;

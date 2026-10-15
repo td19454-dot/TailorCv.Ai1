@@ -14,7 +14,12 @@ FREE_LIMITS: dict[str, int] = {
     # auto_applies, which has its own monthly cap (enforce_auto_apply_quota)
     # because every run burns a cloud browser session and applies to Pro too.
     "autofills": 10,
-    "ats_scans": 3,
+    "ats_scans": 3,  # after these, scans still run but come back locked (ats_lock.py)
     "cv_uploads": 1,
     "template_changes": 1,
 }
+
+# Locked ATS scans (score + one fix + Searchability, rest blurred) a free user
+# may run per 24h once FREE_LIMITS["ats_scans"] is spent. Each is a paid LLM
+# call that earns nothing until they upgrade; past this they get the plain 402.
+LOCKED_ATS_DAILY_LIMIT = 5

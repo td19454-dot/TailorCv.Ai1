@@ -43,30 +43,10 @@ from email_service import smtp_session  # noqa: E402
 from marketing.render import load_campaign  # noqa: E402
 from marketing.segments import SEGMENTS, recipients  # noqa: E402
 from marketing.sender import build_campaign_message, send_campaign  # noqa: E402
+from marketing.sender import preflight as _preflight, sender_address as _sender_address  # noqa: E402
 from models import MarketingSend  # noqa: E402
 
 PREVIEW_DIR = Path(__file__).parent / "marketing" / "previews"
-# email_suppression.py signs with this when SECRET_KEY is unset — production
-# never accepts tokens signed with it.
-_FALLBACK_SECRET = "your-secret-key"
-
-
-def _sender_address() -> str:
-    return (os.getenv("MARKETING_FROM", "").strip() or os.getenv("EMAIL_FROM", "").strip()).strip("'\"")
-
-
-def _preflight() -> list[str]:
-    problems = []
-    secret = os.getenv("SECRET_KEY", "").strip()
-    if not secret or secret == _FALLBACK_SECRET:
-        problems.append(
-            "SECRET_KEY is not set. Set it to production's value (Render > Environment): "
-            "unsubscribe links are signed with it, and with any other value every "
-            "unsubscribe link in this campaign would fail."
-        )
-    if not _sender_address():
-        problems.append("Set MARKETING_FROM (or EMAIL_FROM) to the sender address.")
-    return problems
 
 
 def main() -> int:
