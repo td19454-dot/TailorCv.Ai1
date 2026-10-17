@@ -1,17 +1,19 @@
 """Render and send one campaign to a list of users over a single SES SMTP session."""
 import logging
 import os
+import re
 import smtplib
 import time
 from contextlib import ExitStack
 from dataclasses import dataclass
+from html import unescape
 from typing import Callable
 
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from email_service import build_message, smtp_session
-from email_suppression import unsubscribe_url
+from email_suppression import base_url, make_track_token, unsubscribe_url
 from marketing.render import Campaign, render, template_vars
 from models import MarketingSend
 
@@ -48,9 +50,36 @@ class SendResult:
     skipped: int = 0  # claimed by another run first
 
 
-def build_campaign_message(campaign: Campaign, user, from_email: str, to_email: str | None = None):
-    unsub = unsubscribe_url(user.id)
+_HREF_RE = re.compile(r'href="(https?://[^"]+)"', re.I)
+
+
+def _instrument(html: str, campaign: str, user_id: int, unsub: str) -> str:
+    """Route each link through /e/c/ (click tracking) and add the /e/o/ open
+    pixel. The unsubscribe link is left alone so it never depends on tracking."""
+    base = base_url()
+
+    def rewrite(match: re.Match) -> str:
+        url = unescape(match.group(1))
+        if url == unsub:
+            return match.group(0)
+        return f'href="{base}/e/c/{make_track_token(campaign, user_id, url)}"'
+
+    html = _HREF_RE.sub(rewrite, html)
+    pixel = (f'<img src="{base}/e/o/{make_track_token(campaign, user_id)}.gif" width="1" height="1" '
+             f'alt="" style="display:block;width:1px;height:1px;border:0;">')
+    if "</body>" in html:
+        return html.replace("</body>", pixel + "\n</body>", 1)
+    return html + pixel
+
+
+def build_campaign_message(campaign: Campaign, user, from_email: str, to_email: str | None = None,
+                           track: bool = False):
+    """`track` is only set by send_campaign: previews and test sends must not
+    record opens and clicks against the real user they are rendered as."""
+    unsub = unsubscribe_url(user.id, campaign.name if track else None)
     subject, html = render(campaign, template_vars(user, campaign, unsub))
+    if track:
+        html = _instrument(html, campaign.name, user.id, unsub)
     headers = {
         # RFC 8058 one-click: Gmail/Yahoo show an "Unsubscribe" button next to
         # the sender and POST to this URL (routers/marketing.py handles both).
@@ -94,7 +123,7 @@ def send_campaign(
                 continue
 
             try:
-                message = build_campaign_message(campaign, user, from_email)
+                message = build_campaign_message(campaign, user, from_email, track=True)
                 try:
                     smtp.send_message(message)
                 except smtplib.SMTPServerDisconnected:

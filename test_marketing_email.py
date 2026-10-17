@@ -6,15 +6,19 @@ from urllib.parse import parse_qs, urlparse
 from jinja2 import UndefinedError
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
 
+import database
 from database import Base
-from email_suppression import read_unsubscribe_token
+from email_suppression import (
+    make_unsubscribe_token, read_track_token, read_unsubscribe_campaign, read_unsubscribe_token,
+)
 from marketing import render as render_mod
 from marketing.render import Campaign, build_campaign, inner_body, load_campaign, save_campaign
 from marketing.segments import recipients
 from marketing.sender import build_campaign_message, send_campaign
 from models import (
-    JobApplication, MarketingSend, Payment, Portfolio, ResumeOptimization, SavedResume, UsageRecord, User,
+    JobApplication, MarketingEvent, MarketingSend, Payment, Portfolio, ResumeOptimization, SavedResume, UsageRecord, User,
 )
 from quota_limits import FREE_LIMITS
 
@@ -62,9 +66,11 @@ class FakeSMTP:
 
 
 def _db():
-    engine = create_engine("sqlite://")
+    # StaticPool: one shared connection, so sessions made by the tracking routes
+    # see the same in-memory database as the test.
+    engine = create_engine("sqlite://", poolclass=StaticPool, connect_args={"check_same_thread": False})
     Base.metadata.create_all(engine, tables=[
-        User.__table__, UsageRecord.__table__, Payment.__table__, MarketingSend.__table__,
+        User.__table__, UsageRecord.__table__, Payment.__table__, MarketingSend.__table__, MarketingEvent.__table__,
         SavedResume.__table__, ResumeOptimization.__table__, Portfolio.__table__, JobApplication.__table__,
     ])
     return sessionmaker(bind=engine)()
@@ -282,6 +288,126 @@ def test_admin_router_is_local_only():
         os.environ.pop("ENVIRONMENT", None)
 
 
+LINKED = Campaign(
+    name="c-track",
+    subject="Hi",
+    preheader="",
+    body='{% extends "_base.html" %}{% block body %}'
+         '<a href="{{ base_url }}/ats-analysis?utm_source=email&utm_campaign={{ campaign }}">Scan</a>'
+         '<a href="mailto:hi@x.com">Mail</a>{% endblock %}',
+)
+
+
+def _tokens(html, kind):
+    import re
+    return re.findall(rf'https://thetailorcv\.com/e/{kind}/([A-Za-z0-9_.\-]+?)(?:\.gif)?"', html)
+
+
+def test_tracking_instrumentation():
+    db = _fixture()
+    user = db.query(User).filter_by(email="free@x.com").one()
+    tracked = build_campaign_message(LINKED, user, "n@example.com", track=True)
+    html = tracked.get_body(preferencelist=("html",)).get_content()
+
+    clicks = _tokens(html, "c")
+    assert len(clicks) == 1, "one http link rewritten; mailto and unsubscribe left alone"
+    assert read_track_token(clicks[0]) == (
+        "c-track", user.id, "https://thetailorcv.com/ats-analysis?utm_source=email&utm_campaign=c-track")
+    opens = _tokens(html, "o")
+    assert len(opens) == 1 and read_track_token(opens[0]) == ("c-track", user.id, "")
+    assert 'href="mailto:hi@x.com"' in html
+
+    unsub = tracked["List-Unsubscribe"].strip("<>")
+    assert unsub in html.replace("&amp;", "&"), "unsubscribe link must not go through /e/c/"
+    token = parse_qs(urlparse(unsub).query)["token"][0]
+    assert (read_unsubscribe_token(token), read_unsubscribe_campaign(token)) == (user.id, "c-track")
+
+    plain = build_campaign_message(LINKED, user, "n@example.com")
+    plain_html = plain.get_body(preferencelist=("html",)).get_content()
+    assert "/e/c/" not in plain_html and "/e/o/" not in plain_html, "test sends and previews are untracked"
+    old = parse_qs(urlparse(plain["List-Unsubscribe"].strip("<>")).query)["token"][0]
+    assert (read_unsubscribe_token(old), read_unsubscribe_campaign(old)) == (user.id, None)
+
+
+def test_tracking_routes_record_events():
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    from routers.marketing import router
+
+    db = _fixture()
+    user = db.query(User).filter_by(email="free@x.com").one()
+    other = db.query(User).filter_by(email="under@x.com").one()
+    html = build_campaign_message(LINKED, user, "n@example.com", track=True).get_body(
+        preferencelist=("html",)).get_content()
+    click, pixel = _tokens(html, "c")[0], _tokens(html, "o")[0]
+
+    original = database.SessionLocal
+    database.SessionLocal = sessionmaker(bind=db.get_bind())
+    try:
+        app = FastAPI()
+        app.include_router(router)
+        client = TestClient(app, follow_redirects=False)
+
+        def events(kind=None):
+            q = db.query(MarketingEvent)
+            return q.filter_by(kind=kind).all() if kind else q.all()
+
+        for _ in range(2):
+            r = client.get(f"/e/o/{pixel}.gif")
+            assert r.status_code == 200 and r.headers["content-type"] == "image/gif"
+        assert len(events("open")) == 1, "repeat opens are counted once"
+
+        r = client.get(f"/e/c/{click}")
+        assert r.status_code == 302
+        assert r.headers["location"] == "https://thetailorcv.com/ats-analysis?utm_source=email&utm_campaign=c-track"
+        assert len(events("click")) == 1 and len(events("open")) == 1
+
+        assert client.get("/e/o/forged.gif").status_code == 200, "a bad pixel token still returns an image"
+        r = client.get("/e/c/forged")
+        assert r.status_code == 302 and r.headers["location"] == "https://thetailorcv.com"
+        assert len(events()) == 2
+
+        unsub = make_unsubscribe_token(user.id, "c-track")
+        assert client.get(f"/unsubscribe?token={unsub}").status_code == 200
+        assert client.post(f"/unsubscribe?token={unsub}").status_code == 200
+        assert len(events("unsubscribe")) == 1
+        db.expire_all()
+        assert user.marketing_opt_out
+
+        assert client.get(f"/unsubscribe?token={make_unsubscribe_token(other.id)}").status_code == 200
+        db.expire_all()
+        assert other.marketing_opt_out and len(events("unsubscribe")) == 1, "old-style links opt out, unattributed"
+    finally:
+        database.SessionLocal = original
+
+
+def test_stats():
+    from routers.marketing_admin import campaign_links, campaign_stats
+
+    db = _fixture()
+    users = db.query(User).order_by(User.id).limit(4).all()
+    for u in users:
+        db.add(MarketingSend(campaign="new", user_id=u.id, sent_at=NOW))
+    db.add(MarketingSend(campaign="old", user_id=users[0].id, sent_at=NOW - timedelta(days=30)))
+    a, b, c = users[0].id, users[1].id, users[2].id
+    db.add_all([
+        MarketingEvent(campaign="new", user_id=a, kind="open"),
+        MarketingEvent(campaign="new", user_id=b, kind="open"),
+        MarketingEvent(campaign="new", user_id=a, kind="click", url="https://x/1"),
+        MarketingEvent(campaign="new", user_id=a, kind="click", url="https://x/2"),
+        MarketingEvent(campaign="new", user_id=c, kind="unsubscribe"),
+    ])
+    db.commit()
+
+    new, old = campaign_stats(db)
+    assert new["campaign"] == "new", "newest campaign first"
+    assert (new["sent"], new["opens"], new["clicks"], new["unsubscribes"]) == (4, 2, 1, 1), \
+        "a recipient clicking two links is one clicker"
+    assert (new["open_rate"], new["ctr"], new["click_to_open"], new["unsub_rate"]) == (0.5, 0.25, 0.5, 0.25)
+    assert new["tracked"] and not old["tracked"] and old["sent"] == 1
+    assert sorted(l["url"] for l in campaign_links(db, "new")) == ["https://x/1", "https://x/2"]
+
+
 if __name__ == "__main__":
     previous = {key: os.environ.get(key) for key in ENV}
     os.environ.update(ENV)
@@ -296,6 +422,9 @@ if __name__ == "__main__":
         test_editor_campaign_roundtrip()
         test_template_sandbox_blocks_python_internals()
         test_admin_router_is_local_only()
+        test_tracking_instrumentation()
+        test_tracking_routes_record_events()
+        test_stats()
     finally:
         for key, value in previous.items():
             if value is None:

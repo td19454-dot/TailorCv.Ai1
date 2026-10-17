@@ -254,6 +254,25 @@ class MarketingSend(Base):
     sent_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
 
 
+class MarketingEvent(Base):
+    """Opens, clicks and unsubscribes from a marketing campaign, recorded by the
+    public tracking routes in routers/marketing.py.
+
+    Only the first event per (campaign, user, kind, url) is kept: one open and
+    one unsubscribe per recipient, one click per recipient per link. `url` is ""
+    for opens and unsubscribes rather than NULL, because Postgres treats NULLs
+    as distinct and the unique constraint would never fire."""
+    __tablename__ = "marketing_events"
+    __table_args__ = (UniqueConstraint("campaign", "user_id", "kind", "url", name="uq_marketing_event"),)
+
+    id = Column(Integer, primary_key=True, index=True)
+    campaign = Column(String(100), nullable=False, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    kind = Column(String(20), nullable=False)  # open | click | unsubscribe
+    url = Column(String(2000), nullable=False, default="", server_default="")
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+
+
 class AtsLockedReport(Base):
     """The full analysis behind a locked ATS scan (see ats_lock.py). The
     browser only ever gets the redacted copy; /api/ats-report/<token> returns
