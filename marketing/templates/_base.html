@@ -8,16 +8,16 @@
 {% if preheader %}<div style="display:none;max-height:0;overflow:hidden;">{{ preheader }}</div>{% endif %}
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f5f7;">
   <tr>
-    <td align="center" style="padding:24px 12px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:8px;">
+    <td align="center" style="padding:16px 6px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:8px;">
         <tr>
-          <td style="padding:28px 28px 8px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#1f2933;">
+          <td style="padding:24px 16px 8px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#1f2933;">
             <p style="margin:0 0 20px;font-size:18px;font-weight:bold;color:#111827;">TailorCV</p>
             {% block body %}{% endblock %}
           </td>
         </tr>
         <tr>
-          <td style="padding:16px 28px 28px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#6b7280;border-top:1px solid #e5e7eb;">
+          <td style="padding:16px 16px 24px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#6b7280;border-top:1px solid #e5e7eb;">
             You're receiving this because you have a TailorCV account ({{ email }}).<br>
             <a href="{{ unsubscribe_url }}" style="color:#6b7280;">Unsubscribe from these emails</a>
             {% if mailing_address %}<br>{{ mailing_address }}{% endif %}
