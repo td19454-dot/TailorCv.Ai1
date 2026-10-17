@@ -47,6 +47,7 @@ from functions import (
     get_resume_response,
     AI_MODEL,
     OPTIMIZER_MODEL,
+    OPTIMIZER_REASONING_EFFORT,
     OPTIMIZER_TEMPERATURE,
     extract_links,
     inject_links,
@@ -8728,7 +8729,7 @@ async def generate_base_cover_letter(request: Request):
     prompt = _build_base_cover_letter_prompt(resume_text[:8000])
     try:
         async with request_semaphore:
-            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+            raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.4)
         parsed = parse_ai_json_response(raw)
         if not isinstance(parsed, dict):
             parsed = {}
@@ -13067,7 +13068,8 @@ async def _optimize_resume_core(
     if forwarded_ats is not None:
         try:
             response_string = await get_resume_response(
-                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE,
+                reasoning_effort=OPTIMIZER_REASONING_EFFORT,
             )
         except Exception as exc:
             logger.exception("AI generation failed")
@@ -13079,7 +13081,8 @@ async def _optimize_resume_core(
         try:
             response_string, ats_result = await asyncio.gather(
                 get_resume_response(
-                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE,
+                    reasoning_effort=OPTIMIZER_REASONING_EFFORT,
                 ),
                 ats_scoring(ats_resume_string, jd_string),
                 return_exceptions=True,

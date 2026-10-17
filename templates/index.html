@@ -1373,12 +1373,29 @@
                             .hero-copy .hero-eyebrow { margin: 0 auto 16px; font-size: 12.5px; }
                             .hero-copy .hero-sub { margin: 16px auto 26px; text-align: center; font-size: 16.5px; }
                             .hero-copy .hero-cta-row { flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
-                            .hero-copy .hero-cta-secondary { width: 92%; max-width: 380px; justify-content: center; }
-                            .hero-copy #hero_optimize_my_resume_free {
-                                width: 92% !important;
-                                max-width: 380px !important;
-                                justify-content: space-between !important;
+                            /* Compact, equal-width pair centred under the copy instead of
+                               two near-full-width slabs. */
+                            .hero-copy .hero-cta-secondary {
+                                /* !important: style3.css forces `.hero-cta a` to width 100%. */
+                                width: 250px !important; max-width: 80% !important;
+                                justify-content: center;
+                                font-size: 15.5px; height: 48px; min-height: 0 !important;
+                                padding: 0 1.2em !important;
                             }
+                            .hero-copy #hero_optimize_my_resume_free {
+                                width: 250px !important;
+                                max-width: 80% !important;
+                                height: 48px;
+                                font-size: 15.5px !important;
+                                justify-content: center !important;
+                                gap: .6em;
+                                padding: 0 6px 0 1.2em !important;
+                                box-shadow: 0 8px 22px rgba(0, 0, 0, .28) !important;
+                            }
+                            .hero-copy #hero_optimize_my_resume_free .cta-arrow { width: 34px; height: 34px; margin-left: auto; }
+                            /* Auto margins on both sides of the label: text centred, arrow pinned right. */
+                            .hero-copy #hero_optimize_my_resume_free .cta-label-full,
+                            .hero-copy #hero_optimize_my_resume_free .cta-label-short { margin-left: auto; }
                             .hero-copy .hero-cta-meta { justify-content: center; font-size: 13px; }
                             .hero-copy .hero-proof { justify-content: center; margin-top: 30px; }
                         }

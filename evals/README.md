@@ -6,8 +6,8 @@ and across changes to the prompt or post-processing.
 ```bash
 python evals/test_graders.py                        # offline, no API key
 python evals/run_eval.py --dry-run                  # shows what would run, no cost
-python evals/run_eval.py                            # gpt-4o-mini vs gpt-4o
-python evals/run_eval.py --models gpt-4o-mini --fixtures junior_data_analyst
+python evals/run_eval.py                            # gpt-6-luna vs gpt-5-mini
+python evals/run_eval.py --models gpt-6-luna --fixtures junior_data_analyst
 ```
 
 Results land in `evals/results/<timestamp>.{json,md}` — the `.md` is the

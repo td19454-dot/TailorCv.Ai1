@@ -556,7 +556,7 @@ support a claim, leave it out."""
 
 
 async def _narrative_fields(snap: dict) -> dict:
-    """One gpt-4o-mini pass for the free-text fields only.
+    """One AI_MODEL pass for the free-text fields only.
 
     The prompt asks for narrative keys and nothing else, and the caller only
     reads those keys back — so there is no path by which the model can set a
