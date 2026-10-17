@@ -44,8 +44,16 @@ logger = logging.getLogger(__name__)
 #    Workday-shaped experience list.
 FACTS_VERSION = 2
 
-_MODEL = "gpt-4o-mini"
 _MAX_RESUME_CHARS = 12000
+
+
+def _model() -> str:
+    # Follows the app-wide AI_MODEL. Imported lazily like get_resume_response:
+    # functions.py is heavy, and the deterministic helpers here (split_location,
+    # infer_state_country) are imported by tests that never touch the LLM.
+    from functions import AI_MODEL
+
+    return AI_MODEL
 
 
 def resume_text_hash(text: str) -> str:
@@ -99,7 +107,7 @@ async def _llm_facts(resume_text: str) -> dict:
     from functions import get_resume_response
 
     prompt = _FACTS_PROMPT.format(resume=resume_text[:_MAX_RESUME_CHARS])
-    raw = await get_resume_response(prompt, model=_MODEL, temperature=0)
+    raw = await get_resume_response(prompt, model=_model(), temperature=0)
     data = json.loads(raw)
     if not isinstance(data, dict):
         raise ValueError("resume facts parse returned a non-object")
@@ -506,7 +514,7 @@ def store_facts(db, user, facts: dict) -> None:
     row.facts_json = json.dumps(facts, ensure_ascii=False)
     row.resume_text_hash = resume_text_hash(text)
     row.source_resume_path = getattr(user, "base_resume_path", "") or ""
-    row.model = _MODEL
+    row.model = _model()
     db.commit()
 
 

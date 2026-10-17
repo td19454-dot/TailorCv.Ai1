@@ -5,7 +5,7 @@ or more models and grades the output deterministically, so "does a bigger model
 actually write better resumes" becomes a number instead of an impression.
 
     python evals/run_eval.py                                  # default models
-    python evals/run_eval.py --models gpt-4o-mini,gpt-4o
+    python evals/run_eval.py --models gpt-6-luna,gpt-5-mini
     python evals/run_eval.py --fixtures junior_data_analyst --runs 2
     python evals/run_eval.py --dry-run                        # no API calls
 
@@ -53,14 +53,16 @@ import graders  # noqa: E402  (same directory)
 FIXTURES_DIR = EVAL_DIR / "fixtures"
 RESULTS_DIR = EVAL_DIR / "results"
 
-DEFAULT_MODELS = ["gpt-4o-mini", "gpt-4o"]
+DEFAULT_MODELS = ["gpt-6-luna", "gpt-5-mini"]
 
 # USD per 1M tokens. Verify against current OpenAI pricing before trusting the
 # cost column - these move, and a stale number here turns into a bad decision
 # about which model to ship. Unknown models simply report no cost.
 PRICES = {
-    "gpt-4o-mini": {"in": 0.15, "out": 0.60},
-    "gpt-4o": {"in": 2.50, "out": 10.00},
+    "gpt-6-luna": {"in": 0.10, "out": 0.50},
+    "gpt-5-mini": {"in": 0.25, "out": 2.00},
+    "gpt-4o-mini": {"in": 0.15, "out": 0.60},  # shut down 2027-01-14
+    "gpt-4o": {"in": 2.50, "out": 10.00},  # shut down 2027-01-14
 }
 
 
@@ -157,19 +159,30 @@ def load_fixtures(only: list[str] | None) -> list[dict]:
 # One run
 # --------------------------------------------------------------------------
 
+def _split_model_spec(spec: str) -> tuple[str, str]:
+    """"gpt-6-luna@low" -> ("gpt-6-luna", "low"). No "@" means the tailoring
+    call's production effort, so a bare model name measures what ships."""
+    model, _, effort = spec.partition("@")
+    return model, (effort or functions.OPTIMIZER_REASONING_EFFORT)
+
+
 async def run_one(fixture: dict, model: str, usage_sink: list[dict]) -> dict:
-    """Tailor one resume with one model and grade the result."""
+    """Tailor one resume with one model and grade the result.
+
+    `model` may carry a reasoning effort as "model@effort"; the full spec stays
+    the result's label, so two efforts of one model report as separate rows."""
     # main.py is a 505KB module that builds a FastAPI app at import time, so it
     # is imported lazily and once, only when a run actually needs it.
     from main import parse_ai_json_response, restore_dropped_bullets
 
     resume_text, jd_text = fixture["resume_text"], fixture["jd_text"]
     prompt = create_prompt(resume_text, jd_text)
+    model_id, effort = _split_model_spec(model)
 
     usage_sink.clear()
     started = time.perf_counter()
     try:
-        response = await get_resume_response(prompt, model=model)
+        response = await get_resume_response(prompt, model=model_id, reasoning_effort=effort)
     except Exception as exc:
         return {
             "fixture": fixture["name"], "model": model, "ok": False,
@@ -212,7 +225,7 @@ async def run_one(fixture: dict, model: str, usage_sink: list[dict]) -> dict:
         "api_calls": len(usage_sink),
         "prompt_tokens": prompt_tokens,
         "completion_tokens": completion_tokens,
-        "cost_usd": _cost(model, prompt_tokens, completion_tokens),
+        "cost_usd": _cost(model_id, prompt_tokens, completion_tokens),
         "composite": scored["composite"],
         "parts": scored["parts"],
         "skill_gaps": final.get("skill_gaps") or [],
@@ -369,7 +382,9 @@ async def main_async(args) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description="A/B the resume tailoring pipeline across models.")
     parser.add_argument("--models", default=",".join(DEFAULT_MODELS),
-                        help=f"comma-separated model ids (default: {','.join(DEFAULT_MODELS)})")
+                        help=f"comma-separated model ids, optionally model@effort to pin the "
+                             f"reasoning effort, e.g. gpt-6-luna@none,gpt-6-luna@low "
+                             f"(default: {','.join(DEFAULT_MODELS)})")
     parser.add_argument("--fixtures", default="", help="comma-separated fixture names (default: all)")
     parser.add_argument("--runs", type=int, default=1,
                         help="runs per fixture/model. temperature=0 and a fixed seed make output "

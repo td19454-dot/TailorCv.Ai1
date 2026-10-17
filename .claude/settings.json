@@ -45,7 +45,10 @@
       "PowerShell(python test_marketing_email.py 2>$null)",
       "Bash(grep -nE \"lru_cache|@cache\\\\b|_cache\\\\s*=|_CACHE\\\\s*=|: dict\\\\s*=\\\\s*\\\\{\\\\}|=\\\\s*\\\\{\\\\}\\\\s*$|=\\\\s*\\\\[\\\\]\\\\s*$|OrderedDict|TTLCache|BackgroundTasks|ThreadPoolExecutor|workers|gc\\\\.collect|malloc\" main.py functions.py blog_system.py)",
       "Bash(venv/Scripts/python.exe -c \"import openai; print\\(openai.__version__\\); from openai import AsyncStream; print\\(hasattr\\(AsyncStream,'close'\\)\\)\")",
-      "PowerShell(python -c \"import openai, inspect; from openai import AsyncStream; print\\(openai.__version__, hasattr\\(AsyncStream,'close'\\)\\)\")"
+      "PowerShell(python -c \"import openai, inspect; from openai import AsyncStream; print\\(openai.__version__, hasattr\\(AsyncStream,'close'\\)\\)\")",
+      "WebFetch(domain:thenewstack.io)",
+      "WebFetch(domain:kingy.ai)",
+      "WebFetch(domain:cellcog.ai)"
     ],
     "additionalDirectories": [
       "\\tmp"

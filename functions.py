@@ -642,18 +642,44 @@ load_dotenv(dotenv_path=BASE_DIR / ".env")
 _openai_client = None
 # The model for every feature EXCEPT the resume tailoring rewrite: cover
 # letters, mock interviews, interview questions, LinkedIn parsing, resume
-# extraction. These are ordinary generation tasks where gpt-4o-mini is both
-# cheaper and faster, and no measurement suggested they need more.
+# extraction. These are ordinary generation tasks where the cheapest model is
+# good enough, and no measurement suggested they need more. This was
+# gpt-4o-mini until OpenAI scheduled it for shutdown on 2027-01-14 and named
+# gpt-6-luna as the replacement (cheaper per token, but a reasoning model — see
+# AI_REASONING_EFFORT below).
 # The tailoring call is the exception — see OPTIMIZER_MODEL below.
-AI_MODEL = os.getenv("AI_MODEL", "gpt-4o-mini")
+AI_MODEL = os.getenv("AI_MODEL", "gpt-6-luna")
 MOCK_INTERVIEW_MODEL = AI_MODEL
 
 
-_REASONING_MODEL_PREFIXES = ("gpt-5", "o1", "o3", "o4")
+_REASONING_MODEL_PREFIXES = ("gpt-5", "gpt-6", "o1", "o3", "o4")
+_REASONING_EFFORTS = {"none", "minimal", "low", "medium", "high", "xhigh", "max"}
 
 
 def _is_reasoning_model(model: str) -> bool:
     return str(model or "").startswith(_REASONING_MODEL_PREFIXES)
+
+
+def _reasoning_effort(requested: str | None = None) -> str | None:
+    """The reasoning_effort to send, or None to leave the API default.
+
+    `requested` is what the caller asked for; only the tailoring rewrite asks,
+    passing OPTIMIZER_REASONING_EFFORT explicitly from its call site. Everything
+    else gets AI_REASONING_EFFORT, default "none": those calls replaced a
+    non-reasoning gpt-4o-mini, so no reasoning tokens means no added latency or
+    cost, and the small output caps on them (220-400 tokens for mock-interview
+    turns) aren't eaten by reasoning before any visible text is written — which
+    would come back as an empty answer, not an error.
+
+    Chosen per call rather than by model name, because AI_MODEL and
+    OPTIMIZER_MODEL can be the same model and still need different efforts.
+
+    Valid values differ by family (gpt-6 takes "none", gpt-5 takes "minimal");
+    a wrong one set in .env is a 400, which is the right way for that to fail.
+    """
+    effort = requested if requested is not None else os.getenv("AI_REASONING_EFFORT", "none")
+    effort = str(effort).strip().lower()
+    return effort if effort in _REASONING_EFFORTS else None
 
 
 def _adapt_call_params(kwargs: dict) -> dict:
@@ -680,12 +706,14 @@ def _adapt_call_params(kwargs: dict) -> dict:
         out["max_completion_tokens"] = out.pop("max_tokens")
     # Only the default temperature is accepted, so drop whatever was asked for
     # rather than 400. Callers use it to trade determinism against variety; on a
-    # reasoning model that dial is `reasoning_effort` instead.
+    # reasoning model that dial is `reasoning_effort` instead. That means the
+    # callers asking for 0.6-0.7 (interview questions, career cards) run at the
+    # model's default variety — expected, not a bug.
     out.pop("temperature", None)
     out.pop("top_p", None)
     if "reasoning_effort" not in out:
-        effort = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
-        if effort in {"minimal", "low", "medium", "high"}:
+        effort = _reasoning_effort()
+        if effort:
             out["reasoning_effort"] = effort
     return out
 
@@ -1302,7 +1330,8 @@ Job Description:
 """
 # The model that does the tailoring rewrite itself. Rewrite quality IS the
 # product here, so this one call is chosen on measurement rather than on price.
-# Every other LLM call in the app stays on gpt-4o-mini.
+# Every other LLM call in the app stays on AI_MODEL (gpt-6-luna; was gpt-4o-mini
+# when the table below was measured).
 #
 # Measured end-to-end on a real resume + JD. "reverts" is how often
 # enforce_bullet_facts had to discard the model's rewrite because it dropped a
@@ -1326,6 +1355,7 @@ Job Description:
 # Both settings are .env-overridable: OPTIMIZER_MODEL=gpt-4o-mini drops the cost
 # back to ~$2/1000, OPTIMIZER_REASONING_EFFORT=medium buys the 5% revert rate.
 OPTIMIZER_MODEL = os.getenv("OPTIMIZER_MODEL", "gpt-5-mini")
+OPTIMIZER_REASONING_EFFORT = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
 try:
     OPTIMIZER_TEMPERATURE = float(os.getenv("OPTIMIZER_TEMPERATURE", "0.35"))
 except ValueError:
@@ -1341,7 +1371,7 @@ except ValueError:
     # the same generic 500, so there was nothing to act on.
     reraise=True,
 )
-def _completion_params(model: str, temperature: float) -> dict:
+def _completion_params(model: str, temperature: float, reasoning_effort: str | None = None) -> dict:
     """Per-model-family call parameters for the tailoring request.
 
     The gpt-5 family are reasoning models and reject the parameters the gpt-4
@@ -1355,13 +1385,13 @@ def _completion_params(model: str, temperature: float) -> dict:
     Sending the wrong set is a hard 400, not a degraded response, so this is
     chosen by family rather than left to the caller.
     """
-    if str(model or "").startswith(("gpt-5", "o1", "o3", "o4")):
+    if _is_reasoning_model(model):
         params = {
             "max_completion_tokens": 16384,
             "seed": _ATS_SEED,
         }
-        effort = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
-        if effort in {"minimal", "low", "medium", "high"}:
+        effort = _reasoning_effort(reasoning_effort)
+        if effort:
             params["reasoning_effort"] = effort
         return params
     return {
@@ -1371,12 +1401,20 @@ def _completion_params(model: str, temperature: float) -> dict:
     }
 
 
-async def get_resume_response(prompt: str, model: str = AI_MODEL, temperature: float = 0) -> str:
+async def get_resume_response(
+    prompt: str,
+    model: str = AI_MODEL,
+    temperature: float = 0,
+    reasoning_effort: str | None = None,
+) -> str:
     """
     Async OpenAI call for resume optimization with retries.
+
+    `reasoning_effort` only matters on reasoning models; None means
+    AI_REASONING_EFFORT. The tailoring call passes OPTIMIZER_REASONING_EFFORT.
     """
     client = await _build_openai_client()
-    call_params = _completion_params(model, temperature)
+    call_params = _completion_params(model, temperature, reasoning_effort)
     try:
         response = await client.chat.completions.create(
             model=model,

@@ -29,7 +29,7 @@ python -m py_compile main.py functions.py
 
 # LLM quality evals (costs API credits — see evals/README.md)
 python evals/run_eval.py --dry-run
-python evals/run_eval.py --models gpt-4o-mini --fixtures junior_data_analyst
+python evals/run_eval.py --models gpt-6-luna --fixtures junior_data_analyst
 ```
 
 There is no pytest, no linter, and no build step. Tests import deterministic functions directly and need no API key; a single "test" is a function inside the file's `tests` list — comment out the others or call it in a `python -c` one-liner.
