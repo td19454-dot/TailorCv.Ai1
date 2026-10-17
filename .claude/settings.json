@@ -39,7 +39,9 @@
       "Bash(.venv/Scripts/python.exe test_ats_lock.py)",
       "Bash(node -e \"require\\('fs'\\).readFileSync\\('static/ats_analysis.js','utf8'\\); new Function\\(require\\('fs'\\).readFileSync\\('static/ats_analysis.js','utf8'\\)\\); console.log\\('js parses'\\)\")",
       "Bash(timeout 300 .venv/Scripts/python.exe \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/4683fe13-ea1c-4331-ab01-173db77d6737/scratchpad/e2e_ats_lock.py\")",
-      "Bash(sed -i 's/^assert SECRET not in r.text and \"Tableau\" not in r.text$/import re; print\\(\"LEAK CONTEXT:\", [r.text[max\\(0,m.start\\(\\)-160\\):m.end\\(\\)+40] for m in re.finditer\\(\"SECRET-DETAIL|Tableau\", r.text\\)][:3]\\); print\\(json.dumps\\(body\\)[:1500]\\)/' \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/4683fe13-ea1c-4331-ab01-173db77d6737/scratchpad/e2e_ats_lock.py\")"
+      "Bash(sed -i 's/^assert SECRET not in r.text and \"Tableau\" not in r.text$/import re; print\\(\"LEAK CONTEXT:\", [r.text[max\\(0,m.start\\(\\)-160\\):m.end\\(\\)+40] for m in re.finditer\\(\"SECRET-DETAIL|Tableau\", r.text\\)][:3]\\); print\\(json.dumps\\(body\\)[:1500]\\)/' \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/4683fe13-ea1c-4331-ab01-173db77d6737/scratchpad/e2e_ats_lock.py\")",
+      "PowerShell(venv/Scripts/python.exe test_marketing_email.py)",
+      "PowerShell(python test_marketing_email.py)"
     ],
     "additionalDirectories": [
       "\\tmp"

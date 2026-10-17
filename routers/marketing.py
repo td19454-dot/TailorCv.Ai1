@@ -6,14 +6,60 @@ from datetime import datetime
 
 import httpx
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.responses import HTMLResponse, PlainTextResponse
+from fastapi.responses import HTMLResponse, PlainTextResponse, RedirectResponse, Response
+from sqlalchemy.exc import IntegrityError
 
-from database import SessionLocal
-from email_suppression import read_unsubscribe_token
-from models import User
+import database
+from email_suppression import base_url, read_track_token, read_unsubscribe_campaign, read_unsubscribe_token
+from models import MarketingEvent, User
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
+
+# 1x1 transparent GIF for the open pixel.
+_PIXEL = bytes.fromhex("47494638396101000100800000000000ffffff21f90401000000002c00000000010001000002024401003b")
+_NO_STORE = {"Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"}
+
+
+def _record(db, campaign: str, user_id: int, kind: str, url: str = "") -> None:
+    """Store a campaign event. A duplicate (already counted) is a no-op."""
+    db.add(MarketingEvent(campaign=campaign, user_id=user_id, kind=kind, url=url))
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+
+
+def _track(token: str, kinds: tuple[str, ...]):
+    """Record events for a tracking token. Returns its payload, or None if forged.
+    Never raises: a DB hiccup must not break the redirect or the pixel."""
+    payload = read_track_token(token)
+    if payload is None:
+        return None
+    campaign, user_id, url = payload
+    db = database.SessionLocal()
+    try:
+        for kind in kinds:
+            _record(db, campaign, user_id, kind, url if kind == "click" else "")
+    except Exception:
+        logger.warning("Could not record %s for campaign %s", kinds, campaign, exc_info=True)
+    finally:
+        db.close()
+    return payload
+
+
+@router.get("/e/o/{token}.gif")
+async def track_open(token: str):
+    _track(token, ("open",))
+    return Response(content=_PIXEL, media_type="image/gif", headers=_NO_STORE)
+
+
+@router.get("/e/c/{token}")
+async def track_click(token: str):
+    # A click also counts as an open: readers with images off never load the pixel.
+    payload = _track(token, ("open", "click"))
+    destination = payload[2] if payload and payload[2] else base_url()
+    return RedirectResponse(destination, status_code=302, headers=_NO_STORE)
 
 
 def _opt_out(token: str) -> None:
@@ -21,12 +67,15 @@ def _opt_out(token: str) -> None:
     if user_id is None:
         raise HTTPException(status_code=400, detail="Invalid or expired unsubscribe link.")
 
-    db = SessionLocal()
+    db = database.SessionLocal()
     try:
         user = db.query(User).filter(User.id == user_id).first()
         if user and not user.marketing_opt_out:
             user.marketing_opt_out = True
             db.commit()
+            campaign = read_unsubscribe_campaign(token)
+            if campaign:
+                _record(db, campaign, user_id, "unsubscribe")
     finally:
         db.close()
 
@@ -112,7 +161,7 @@ async def ses_events(request: Request, secret: str = ""):
     if not recipients or field is None:
         return PlainTextResponse("ok")
 
-    db = SessionLocal()
+    db = database.SessionLocal()
     try:
         now = datetime.utcnow()
         for email in recipients:

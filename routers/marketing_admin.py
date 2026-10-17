@@ -25,6 +25,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from jinja2 import TemplateError
 from pydantic import BaseModel, Field
+from sqlalchemy import distinct, func
 
 from database import DATABASE_URL, SessionLocal, engine
 from email_service import smtp_session
@@ -34,7 +35,7 @@ from marketing.render import (
 )
 from marketing.segments import SEGMENTS, recipients
 from marketing.sender import build_campaign_message, preflight, send_campaign, sender_address
-from models import MarketingSend
+from models import MarketingEvent, MarketingSend
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +47,7 @@ AUDIT_LOG = BASE_DIR / "marketing" / "previews" / "send_history.jsonl"
 _LOOPBACK_IPS = {"127.0.0.1", "::1"}
 _LOCAL_HOSTNAMES = {"127.0.0.1", "localhost", "[::1]"}
 # Who the preview is rendered as. Test sends use a real recipient instead.
-_SAMPLE_USER = SimpleNamespace(id=0, name="Asha Rao", email="asha.rao@example.com")
+_SAMPLE_USER = SimpleNamespace(id=0, name="Shubham Sarkar", email="shubham.sarkar@example.com")
 
 
 def _local_only(request: Request) -> None:
@@ -112,6 +113,7 @@ def _segment_info() -> list[dict]:
 @router.get("", response_class=HTMLResponse)
 def admin_email_page(request: Request):
     MarketingSend.__table__.create(bind=engine, checkfirst=True)
+    MarketingEvent.__table__.create(bind=engine, checkfirst=True)
     context = {
         "segments": _segment_info(),
         "campaigns": list_campaigns(),
@@ -256,6 +258,65 @@ def send(data: SendIn):
     _jobs[job["id"]] = job
     threading.Thread(target=_run_send, args=(job, campaign, data.audience), daemon=True).start()
     return {"job": job["id"]}
+
+
+def _rate(part: int, whole: int) -> float | None:
+    return round(part / whole, 4) if whole else None
+
+
+def campaign_stats(db) -> list[dict]:
+    """Per campaign: sends, unique opens/clicks/unsubscribes and their rates, newest first."""
+    sends = (db.query(MarketingSend.campaign, func.count(MarketingSend.id),
+                      func.min(MarketingSend.sent_at), func.max(MarketingSend.sent_at))
+             .group_by(MarketingSend.campaign).all())
+    events = (db.query(MarketingEvent.campaign, MarketingEvent.kind,
+                       func.count(distinct(MarketingEvent.user_id)))
+              .group_by(MarketingEvent.campaign, MarketingEvent.kind).all())
+    counts: dict[str, dict[str, int]] = {}
+    for campaign, kind, n in events:
+        counts.setdefault(campaign, {})[kind] = n
+
+    rows = []
+    for campaign, sent, first, last in sends:
+        c = counts.get(campaign, {})
+        opens, clicks, unsubs = c.get("open", 0), c.get("click", 0), c.get("unsubscribe", 0)
+        rows.append({
+            "campaign": campaign, "sent": sent,
+            "first_sent": first.isoformat() if first else None,
+            "last_sent": last.isoformat() if last else None,
+            "opens": opens, "clicks": clicks, "unsubscribes": unsubs,
+            "open_rate": _rate(opens, sent), "ctr": _rate(clicks, sent),
+            "click_to_open": _rate(clicks, opens), "unsub_rate": _rate(unsubs, sent),
+            # Sent before tracking shipped: zeros here mean "unknown", not "nobody".
+            "tracked": bool(c),
+        })
+    rows.sort(key=lambda r: r["last_sent"] or "", reverse=True)
+    return rows
+
+
+def campaign_links(db, campaign: str) -> list[dict]:
+    rows = (db.query(MarketingEvent.url, func.count(distinct(MarketingEvent.user_id)))
+            .filter(MarketingEvent.campaign == campaign, MarketingEvent.kind == "click")
+            .group_by(MarketingEvent.url).all())
+    return sorted(({"url": url, "clicks": n} for url, n in rows), key=lambda r: -r["clicks"])
+
+
+@router.get("/api/stats")
+def stats():
+    db = SessionLocal()
+    try:
+        return {"campaigns": campaign_stats(db)}
+    finally:
+        db.close()
+
+
+@router.get("/api/stats/{campaign}")
+def stats_links(campaign: str):
+    db = SessionLocal()
+    try:
+        return {"campaign": campaign, "links": campaign_links(db, campaign)}
+    finally:
+        db.close()
 
 
 @router.get("/api/jobs/{job_id}")
