@@ -41,7 +41,11 @@
       "Bash(timeout 300 .venv/Scripts/python.exe \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/4683fe13-ea1c-4331-ab01-173db77d6737/scratchpad/e2e_ats_lock.py\")",
       "Bash(sed -i 's/^assert SECRET not in r.text and \"Tableau\" not in r.text$/import re; print\\(\"LEAK CONTEXT:\", [r.text[max\\(0,m.start\\(\\)-160\\):m.end\\(\\)+40] for m in re.finditer\\(\"SECRET-DETAIL|Tableau\", r.text\\)][:3]\\); print\\(json.dumps\\(body\\)[:1500]\\)/' \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/4683fe13-ea1c-4331-ab01-173db77d6737/scratchpad/e2e_ats_lock.py\")",
       "PowerShell(venv/Scripts/python.exe test_marketing_email.py)",
-      "PowerShell(python test_marketing_email.py)"
+      "PowerShell(python test_marketing_email.py)",
+      "PowerShell(python test_marketing_email.py 2>$null)",
+      "Bash(grep -nE \"lru_cache|@cache\\\\b|_cache\\\\s*=|_CACHE\\\\s*=|: dict\\\\s*=\\\\s*\\\\{\\\\}|=\\\\s*\\\\{\\\\}\\\\s*$|=\\\\s*\\\\[\\\\]\\\\s*$|OrderedDict|TTLCache|BackgroundTasks|ThreadPoolExecutor|workers|gc\\\\.collect|malloc\" main.py functions.py blog_system.py)",
+      "Bash(venv/Scripts/python.exe -c \"import openai; print\\(openai.__version__\\); from openai import AsyncStream; print\\(hasattr\\(AsyncStream,'close'\\)\\)\")",
+      "PowerShell(python -c \"import openai, inspect; from openai import AsyncStream; print\\(openai.__version__, hasattr\\(AsyncStream,'close'\\)\\)\")"
     ],
     "additionalDirectories": [
       "\\tmp"

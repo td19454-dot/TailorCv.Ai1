@@ -5899,6 +5899,56 @@ _ATS_CACHE_MAX = 300
 # measurement, and this is a scoring product.
 _ATS_SEED = 7
 
+# JSON mode can degenerate mid-report into thousands of blank lines until
+# max_tokens, leaving an unterminated object. Production failures read e.g.
+# "line 6557 column 3 (char 12861)" - ~2 chars per line. A real report never
+# has a whitespace run anywhere near this long, so past it the reply is junk.
+_ATS_WHITESPACE_RUNAWAY = 200
+
+
+async def _stream_ats_completion(client, user_message: str, seed: int) -> str | None:
+    """One streamed ATS call. Returns the raw reply, or None if it degenerated
+    into a whitespace run - aborted as soon as the run starts instead of paying
+    for the rest of max_tokens."""
+    try:
+        stream = await client.chat.completions.create(
+            model=AI_MODEL,
+            response_format={"type": "json_object"},
+            messages=[
+                {"role": "system", "content": _ATS_SYSTEM_PROMPT},
+                {"role": "user", "content": user_message},
+            ],
+            temperature=0,
+            # ~62 of the 100 points come from this call's yes/no answers, so a
+            # user rescanning the same resume could see a different number.
+            # temperature=0 alone does not guarantee identical output; the seed
+            # makes the score reproducible.
+            seed=seed,
+            # 1500 was not enough for the full audit JSON on a long resume - it
+            # truncated and fell back to _repair_truncated_json, silently losing
+            # checks (a missing check scores 0, so truncation cost real points).
+            max_tokens=4000,
+            stream=True,
+        )
+        chunks: list[str] = []
+        trailing_ws = 0
+        async for chunk in stream:
+            delta = chunk.choices[0].delta.content if chunk.choices else None
+            if not delta:
+                continue
+            chunks.append(delta)
+            stripped = delta.rstrip()
+            trailing_ws = trailing_ws + len(delta) if not stripped else len(delta) - len(stripped)
+            if trailing_ws > _ATS_WHITESPACE_RUNAWAY:
+                try:
+                    await stream.close()
+                except Exception:
+                    pass
+                return None
+        return "".join(chunks)
+    except Exception as exc:
+        raise _normalize_openai_error(exc) from exc
+
 
 async def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
@@ -5941,35 +5991,32 @@ async def ats_scoring(resume_string, jd_string):
     )
 
     client = await _build_openai_client()
-    # Change 2: stream=True — collect chunks as they arrive instead of one big buffer
-    try:
-        stream = await client.chat.completions.create(
-            model=AI_MODEL,
-            response_format={"type": "json_object"},
-            messages=[
-                {"role": "system", "content": _ATS_SYSTEM_PROMPT},
-                {"role": "user", "content": user_message},
-            ],
-            temperature=0,
-            # ~62 of the 100 points come from this call's yes/no answers, so a
-            # user rescanning the same resume could see a different number.
-            # temperature=0 alone does not guarantee identical output; the seed
-            # makes the score reproducible.
-            seed=_ATS_SEED,
-            # 1500 was not enough for the full audit JSON on a long resume - it
-            # truncated and fell back to _repair_truncated_json, silently losing
-            # checks (a missing check scores 0, so truncation cost real points).
-            max_tokens=4000,
-            stream=True,
+    # The same input + seed tends to degenerate again, which is why "please scan
+    # again" kept failing for users. Retry once on a neighbouring seed. The
+    # normal path still uses _ATS_SEED, so reproducible scores are unchanged.
+    # Salvaging the partial JSON is not an option: a missing check scores 0.
+    parsed = None
+    for attempt_seed in (_ATS_SEED, _ATS_SEED + 1):
+        content = await _stream_ats_completion(client, user_message, attempt_seed)
+        if content is None:
+            logger.warning("ATS reply degenerated into whitespace (seed=%s)", attempt_seed)
+            continue
+        try:
+            parsed = json.loads(content)
+        except Exception:
+            match = re.search(r"\{[\s\S]*\}\s*$", content)
+            try:
+                parsed = json.loads(match.group(0)) if match else {}
+            except json.JSONDecodeError:
+                logger.warning("ATS reply unparseable (seed=%s, %d chars)", attempt_seed, len(content))
+                continue
+        break
+    if parsed is None:
+        raise AIOutputError(
+            "Our AI scanner returned an incomplete report for this resume. Please scan "
+            "again. If it keeps failing, trim the job description to the key "
+            "requirements, or re-export your resume as a fresh PDF."
         )
-        chunks: list[str] = []
-        async for chunk in stream:
-            delta = chunk.choices[0].delta.content if chunk.choices else None
-            if delta:
-                chunks.append(delta)
-        content = "".join(chunks)
-    except Exception as exc:
-        raise _normalize_openai_error(exc) from exc
 
     if False:
         base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
@@ -6624,20 +6671,6 @@ The JSON must strictly follow the schema provided below.
     }
   ]
 } '''
-    try:
-        parsed = json.loads(content)
-    except Exception:
-        match = re.search(r"\{[\s\S]*\}\s*$", content)
-        try:
-            parsed = json.loads(match.group(0)) if match else {}
-        except json.JSONDecodeError as exc:
-            # JSON mode can degenerate into thousands of blank lines until
-            # max_tokens, leaving an unterminated object.
-            raise AIOutputError(
-                "Our AI scanner returned an incomplete report for this resume. Please scan "
-                "again. If it keeps failing, trim the job description to the key "
-                "requirements, or re-export your resume as a fresh PDF."
-            ) from exc
 
     if not isinstance(parsed, dict):
         parsed = {}
