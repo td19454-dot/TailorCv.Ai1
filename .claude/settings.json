@@ -52,7 +52,11 @@
       "WebFetch(domain:benchlm.ai)",
       "WebFetch(domain:artificialanalysis.ai)",
       "Bash(.venv/Scripts/python.exe \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/7b21ac4d-5642-4ce6-a238-df958ab4078b/scratchpad/gemini_probe.py\")",
-      "Bash(.venv/Scripts/python.exe \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/7b21ac4d-5642-4ce6-a238-df958ab4078b/scratchpad/effort_sweep.py\" gemini-3.8-flash@none,gemini-3.8-flash@low,gemini-3.8-flash@medium,gpt-5-mini@low 3)"
+      "Bash(.venv/Scripts/python.exe \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/7b21ac4d-5642-4ce6-a238-df958ab4078b/scratchpad/effort_sweep.py\" gemini-3.8-flash@none,gemini-3.8-flash@low,gemini-3.8-flash@medium,gpt-5-mini@low 3)",
+      "Bash(python -c \"import playwright,sys; print\\('pw ok', sys.executable\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"import playwright; print\\('pw ok'\\)\")",
+      "Bash(npx --no-install playwright --version)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 8017 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -Confirm:$false }; \"stopped\")"
     ],
     "additionalDirectories": [
       "\\tmp"
