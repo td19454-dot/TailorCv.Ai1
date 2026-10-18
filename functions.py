@@ -652,7 +652,7 @@ AI_MODEL = os.getenv("AI_MODEL", "gpt-6-luna")
 MOCK_INTERVIEW_MODEL = AI_MODEL
 
 
-_REASONING_MODEL_PREFIXES = ("gpt-5", "gpt-6", "o1", "o3", "o4")
+_REASONING_MODEL_PREFIXES = ("gpt-5", "gpt-6", "o1", "o3", "o4", "gemini-")
 _REASONING_EFFORTS = {"none", "minimal", "low", "medium", "high", "xhigh", "max"}
 
 
@@ -715,37 +715,66 @@ def _adapt_call_params(kwargs: dict) -> dict:
         effort = _reasoning_effort()
         if effort:
             out["reasoning_effort"] = effort
+    if _is_gemini_model(out.get("model")):
+        # Gemini's OpenAI-compatible endpoint 400s on `seed` ("Unknown name"),
+        # so Gemini output is not reproducible run to run the way OpenAI's is.
+        out.pop("seed", None)
     return out
 
 
-class _AdaptingCompletions:
-    """chat.completions proxy that runs every create() through _adapt_call_params."""
+# Gemini is reached through Google's OpenAI-compatible endpoint, so every call
+# site keeps using chat.completions.create and only the model name changes.
+# Gemini 3 models think by default (~400 billed thinking tokens on a one-line
+# prompt), take reasoning_effort none/low/medium/high (not "minimal"), and
+# Google recommends leaving temperature at its default — which is why "gemini-"
+# is in _REASONING_MODEL_PREFIXES: they need the same treatment as gpt-5.
+_GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 
-    def __init__(self, inner):
+
+def _is_gemini_model(model: str) -> bool:
+    return str(model or "").startswith("gemini-")
+
+
+class _AdaptingCompletions:
+    """chat.completions proxy that runs every create() through _adapt_call_params,
+    and sends gemini-* models to the Gemini client instead of OpenAI."""
+
+    def __init__(self, inner, gemini=None):
         self._inner = inner
+        self._gemini = gemini
 
     async def create(self, **kwargs):
-        return await self._inner.create(**_adapt_call_params(kwargs))
+        params = _adapt_call_params(kwargs)
+        if _is_gemini_model(params.get("model")):
+            if self._gemini is None:
+                raise RuntimeError(
+                    f"{params.get('model')} needs GEMINI_API_KEY in .env, and it is not set."
+                )
+            return await self._gemini.create(**params)
+        return await self._inner.create(**params)
 
     def __getattr__(self, name):
         return getattr(self._inner, name)
 
 
 class _AdaptingChat:
-    def __init__(self, inner):
+    def __init__(self, inner, gemini=None):
         self._inner = inner
-        self.completions = _AdaptingCompletions(inner.completions)
+        self.completions = _AdaptingCompletions(
+            inner.completions, gemini.completions if gemini is not None else None
+        )
 
     def __getattr__(self, name):
         return getattr(self._inner, name)
 
 
 class _AdaptingClient:
-    """AsyncOpenAI wrapper. Everything except chat.completions passes straight through."""
+    """AsyncOpenAI wrapper. Everything except chat.completions passes straight through
+    to OpenAI; chat.completions is adapted per model family and routed per provider."""
 
-    def __init__(self, inner):
+    def __init__(self, inner, gemini=None):
         self._inner = inner
-        self.chat = _AdaptingChat(inner.chat)
+        self.chat = _AdaptingChat(inner.chat, gemini.chat if gemini is not None else None)
 
     def __getattr__(self, name):
         return getattr(self._inner, name)
@@ -759,11 +788,20 @@ async def _build_openai_client():
             raise RuntimeError(
                 "OPENAI_API_KEY is not set. Add it to your .env file before using ATS analysis or resume optimization."
             )
-        _openai_client = _AdaptingClient(AsyncOpenAI(
-            api_key=api_key,
-            timeout=120.0,
-            max_retries=3
-        ))
+        gemini_key = os.getenv("GEMINI_API_KEY")
+        _openai_client = _AdaptingClient(
+            AsyncOpenAI(
+                api_key=api_key,
+                timeout=120.0,
+                max_retries=3
+            ),
+            gemini=AsyncOpenAI(
+                api_key=gemini_key,
+                base_url=_GEMINI_BASE_URL,
+                timeout=120.0,
+                max_retries=3,
+            ) if gemini_key else None,
+        )
     return _openai_client
 
 
