@@ -48,7 +48,11 @@
       "PowerShell(python -c \"import openai, inspect; from openai import AsyncStream; print\\(openai.__version__, hasattr\\(AsyncStream,'close'\\)\\)\")",
       "WebFetch(domain:thenewstack.io)",
       "WebFetch(domain:kingy.ai)",
-      "WebFetch(domain:cellcog.ai)"
+      "WebFetch(domain:cellcog.ai)",
+      "WebFetch(domain:benchlm.ai)",
+      "WebFetch(domain:artificialanalysis.ai)",
+      "Bash(.venv/Scripts/python.exe \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/7b21ac4d-5642-4ce6-a238-df958ab4078b/scratchpad/gemini_probe.py\")",
+      "Bash(.venv/Scripts/python.exe \"C:/Users/SHUBHA~1/AppData/Local/Temp/claude/c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1/7b21ac4d-5642-4ce6-a238-df958ab4078b/scratchpad/effort_sweep.py\" gemini-3.8-flash@none,gemini-3.8-flash@low,gemini-3.8-flash@medium,gpt-5-mini@low 3)"
     ],
     "additionalDirectories": [
       "\\tmp"

@@ -61,8 +61,13 @@ DEFAULT_MODELS = ["gpt-6-luna", "gpt-5-mini"]
 PRICES = {
     "gpt-6-luna": {"in": 0.10, "out": 0.50},
     "gpt-5-mini": {"in": 0.25, "out": 2.00},
+    "gpt-5.4-mini": {"in": 0.75, "out": 4.50},
+    "gpt-6-sol": {"in": 2.00, "out": 10.00},
+    "gpt-6.1-sol": {"in": 2.00, "out": 10.00},
     "gpt-4o-mini": {"in": 0.15, "out": 0.60},  # shut down 2027-01-14
     "gpt-4o": {"in": 2.50, "out": 10.00},  # shut down 2027-01-14
+    # Introductory rate through 2026-12-31; $1.50 / $7.50 from 2027-01-01.
+    "gemini-3.8-flash": {"in": 0.75, "out": 3.75},
 }
 
 
@@ -84,9 +89,16 @@ class _CompletionsProxy:
         response = await self._real.create(**kwargs)
         usage = getattr(response, "usage", None)
         if usage is not None:
+            prompt = getattr(usage, "prompt_tokens", 0) or 0
+            completion = getattr(usage, "completion_tokens", 0) or 0
+            total = getattr(usage, "total_tokens", 0) or 0
+            # Gemini's OpenAI-compatible endpoint leaves thinking tokens out of
+            # completion_tokens but bills them as output; they only show up in
+            # total_tokens. Without this a thinking Gemini run looks ~10x cheaper
+            # than it is. For OpenAI total == prompt + completion, so no change.
             self._sink.append({
-                "prompt_tokens": getattr(usage, "prompt_tokens", 0) or 0,
-                "completion_tokens": getattr(usage, "completion_tokens", 0) or 0,
+                "prompt_tokens": prompt,
+                "completion_tokens": max(completion, total - prompt),
             })
         return response
 
