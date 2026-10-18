@@ -37,7 +37,18 @@
        STATE
     ───────────────────────────────────────────────────────────────────────── */
     let currentHtml              = "";
-    let currentZoom              = 1.0;
+    /* Style Settings defaults, applied on load: 12 pt, line height 1,
+       0.2in margins all round, on A4. The font family stays the template's
+       own until the reader picks one. The font-size slider is
+       relative to 11 pt and the line-height slider to 1.125, so those are
+       the template's own sizes; the defaults below are scales of them. */
+    const DEFAULT_FONT_PT        = 12;
+    const DEFAULT_LINE_HEIGHT    = 1;
+    const DEFAULT_MARGIN_IN      = 0.2;
+    const DEFAULT_ZOOM           = DEFAULT_FONT_PT / 11;
+    const DEFAULT_LINE_SPACING   = DEFAULT_LINE_HEIGHT / 1.125;
+
+    let currentZoom              = DEFAULT_ZOOM;
     let templateId               = 1;
     let estimatedPages           = 1;
     let lastFillRatio            = 1;
@@ -45,13 +56,13 @@
     let baseFontsCaptured        = false;
     let estimateTimer            = null;
     let estimateRequestId        = 0;
-    let currentLineSpacing       = 1;
+    let currentLineSpacing       = DEFAULT_LINE_SPACING;
     let baseLineSpacingsCaptured = false;
     let currentAccentColor       = null;
-    let fontScaleDirty           = false;
-    let lineSpacingDirty         = false;
+    let fontScaleDirty           = true;
+    let lineSpacingDirty         = true;
     let styleTouched             = {
-        page: false,
+        page: true,
         font: false,
         nameCase: false,
         delimiter: false,
@@ -61,7 +72,10 @@
     };
     let legacyDesign             = {
         paper: "A4",
-        font: "Arial",
+        font: "",                // "" = the template's own font
+
+        marginX: DEFAULT_MARGIN_IN,
+        marginY: DEFAULT_MARGIN_IN,
         nameCase: "capitalize",
         delimiter: "◇",
         listStyle: "disc",
@@ -118,10 +132,23 @@
     }
 
     function designMargin(axis) {
-        const fallback = 0.39;
+        const fallback = DEFAULT_MARGIN_IN;
         const max = axis === "x" ? 1.5 : 2;
         const raw = axis === "x" ? legacyDesign.marginX : legacyDesign.marginY;
         return Math.max(0.2, Math.min(max, Number.isFinite(Number(raw)) ? Number(raw) : fallback));
+    }
+
+    /* Left/right margin actually applied, to the preview padding and to the
+       exported @page rule alike. A template that declares ~0 horizontal @page
+       margin has already inset its own content (7-18, see below) and keeps
+       that while the slider sits at its default; once the reader moves
+       "Left & Right Margins" their value wins on every template. */
+    function effectiveMarginX(doc) {
+        const marginX = designMargin("x");
+        const ownX    = templatePageMarginXIn(doc);
+        const useOwnX = ownX !== null && ownX < 0.02   // ~0.5mm, i.e. "none"
+                        && marginX === DEFAULT_MARGIN_IN;
+        return useOwnX ? 0 : marginX;
     }
 
     /* The horizontal margin a template declares in its OWN @page rule, in
@@ -322,13 +349,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function resetLineSpacing() {
         lineSpacingDirty = true;
-        currentLineSpacing = 1;
+        currentLineSpacing = DEFAULT_LINE_SPACING;
+        syncRangeNumber("line-height-range", "line-height-input", DEFAULT_LINE_HEIGHT, "");
         if (frame && frame.contentDocument) {
-            applyLineSpacing(frame.contentDocument, 1);
+            applyLineSpacing(frame.contentDocument, currentLineSpacing);
         }
         const badge    = document.getElementById("spacing-badge");
         const guidance = document.getElementById("spacing-guidance");
-        if (badge) badge.textContent = "100%";
+        if (badge) badge.textContent = `${Math.round(currentLineSpacing * 100)}%`;
         if (guidance) guidance.textContent = "Default spacing.";
         setStatus("Line spacing reset to default.");
         scheduleServerEstimate();
@@ -363,7 +391,7 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.head.appendChild(style);
         }
         const rules = [];
-        const marginX = designMargin("x");
+        const marginX = effectiveMarginX(doc);
         const marginY = designMargin("y");
         if (styleTouched.page) {
             rules.push(`@page { size: ${paperCssSize()}; margin: ${marginY}in ${marginX}in; }`);
@@ -470,7 +498,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function setFontSizePt(value) {
         fontScaleDirty = true;
-        const v = Math.max(7, Math.min(14, Number(value) || 11));
+        const v = Math.max(7, Math.min(14, Number(value) || DEFAULT_FONT_PT));
         currentZoom = v / 11;
         syncRangeNumber("font-size-range", "font-size-input", v, "pt");
         applyWordStylePreview();
@@ -480,7 +508,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function setLineHeightValue(value) {
         lineSpacingDirty = true;
-        const v = Math.max(0.2, Math.min(2.4, Number(value) || 1.125));
+        const v = Math.max(0.2, Math.min(2.4, Number(value) || DEFAULT_LINE_HEIGHT));
         currentLineSpacing = v / 1.125;
         syncRangeNumber("line-height-range", "line-height-input", v, "");
         if (frame && frame.contentDocument) {
@@ -496,7 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function setMargin(axis, value) {
         const max = axis === "x" ? 1.5 : 2;
-        const v = Math.max(0.2, Math.min(max, Number(value) || 0.39));
+        const v = Math.max(0.2, Math.min(max, Number(value) || DEFAULT_MARGIN_IN));
         if (axis === "x") {
             styleTouched.page = true;
             legacyDesign.marginX = v;
@@ -554,10 +582,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (font) {
             font.value = legacyDesign.font;
             font.addEventListener("change", () => {
-                styleTouched.font = true;
+                // "Template default" drops the override so the template's CSS font returns.
                 legacyDesign.font = font.value;
+                styleTouched.font = !!font.value;
                 applyWordStylePreview();
-                setStatus(`Font: ${legacyDesign.font}.`);
+                setStatus(font.value ? `Font: ${legacyDesign.font}.` : "Font: template default.");
             });
         }
 
@@ -1051,7 +1080,6 @@ hr, .divider, [class*="divider"],
         const pageW          = pageWidthPx();
         const pageH          = pageHeightPx();
         const viewScale      = Math.min(1, availableWidth / pageW);
-        const marginX        = designMargin("x");
         const marginY        = designMargin("y");
         /* Horizontal padding: honour what the template asks for.
 
@@ -1059,14 +1087,8 @@ hr, .divider, [class*="divider"],
            inset its own content and must not be padded again - doing so is
            what put an extra ~37px of white down both sides of templates 7-11
            and 14. The vertical margin is unaffected: nothing else supplies it.
-
-           Only while the slider sits at its default. Once the reader moves
-           "Left & Right Margins" their value wins, on every template. */
-        const ZERO_IN = 0.02;                       // ~0.5mm, i.e. "none"
-        const ownX    = templatePageMarginXIn(doc);
-        const useOwnX = ownX !== null && ownX < ZERO_IN
-                        && marginX === 0.39;        // the slider's default
-        const padX    = useOwnX ? 0 : marginX;
+           effectiveMarginX() holds the rule, shared with the exported @page. */
+        const padX    = effectiveMarginX(doc);
 
         const bodyPaddingCss = styleTouched.page
             ? `  padding: ${marginY}in ${padX}in !important;\n`
@@ -1254,10 +1276,11 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
 
     function resetFontScale() {
         fontScaleDirty = true;
-        currentZoom = 1.0;
+        currentZoom = DEFAULT_ZOOM;
+        syncRangeNumber("font-size-range", "font-size-input", DEFAULT_FONT_PT, "pt");
         applyWordStylePreview();
         updateFontSizeBadge();
-        setStatus("Font size reset to 100%.");
+        setStatus(`Font size reset to ${DEFAULT_FONT_PT} pt.`);
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -2042,14 +2065,16 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
             templateId               = newTemplateId;
             baseFontsCaptured        = false;
             baseLineSpacingsCaptured = false;
-            currentZoom              = 1.0;
-            currentLineSpacing       = 1;
+            currentZoom              = DEFAULT_ZOOM;
+            currentLineSpacing       = DEFAULT_LINE_SPACING;
             currentAccentColor       = null;
+            syncRangeNumber("font-size-range", "font-size-input", DEFAULT_FONT_PT, "pt");
+            syncRangeNumber("line-height-range", "line-height-input", DEFAULT_LINE_HEIGHT, "");
 
             updateFontSizeBadge();
 
             const spacingBadge = document.getElementById("spacing-badge");
-            if (spacingBadge) spacingBadge.textContent = "100%";
+            if (spacingBadge) spacingBadge.textContent = `${Math.round(currentLineSpacing * 100)}%`;
 
             currentHtml  = addEditingOverlay(data.html);
             frame.srcdoc = currentHtml;
@@ -3001,7 +3026,7 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
         templateId               = Number(payload.template_id || 1);
         baseFontsCaptured        = false;
         baseLineSpacingsCaptured = false;
-        currentLineSpacing       = 1;
+        currentLineSpacing       = DEFAULT_LINE_SPACING;
         currentAccentColor       = null;
         currentHtml              = addEditingOverlay(payload.html);
 
