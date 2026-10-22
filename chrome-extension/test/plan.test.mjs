@@ -624,6 +624,37 @@ test('a sensitive row with nothing stored still asks, never guesses', () => {
   notOk(d.value);
 });
 
+// Greenhouse: "Are you Hispanic/Latino?" (Yes / No / Decline) comes first, and
+// the race list only appears after "No". The stored race answers it as Yes/No.
+const HISPANIC_YN = ['Yes', 'No', 'Decline To Self Identify'];
+const hispanicRow = () => field('Are you Hispanic/Latino?', { kind: 'combobox', options: HISPANIC_YN });
+const raceCtx = race => ({ answerBank: Object.assign({}, BANK, { race_ethnicity: race }), hasResume: true });
+
+test('"Are you Hispanic/Latino?" is answered No from a non-Hispanic race', () => {
+  const d = p.decide([hispanicRow()], raceCtx('Asian'), null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'No');
+  eq(d.readFirst.stored, 'No', 'the writer re-picks from the open list with the same answer');
+  eq(p.decide([hispanicRow()], raceCtx('South Asian'), null, null)[0].value, 'No');
+});
+
+test('"Are you Hispanic/Latino?" is answered Yes from a Hispanic race', () => {
+  eq(p.decide([hispanicRow()], raceCtx('Hispanic or Latino'), null, null)[0].value, 'Yes');
+});
+
+test('"Are you Hispanic/Latino?" is never guessed from a race that does not settle it', () => {
+  for (const race of ['Two or More Races', 'Martian']) {
+    const d = p.decide([hispanicRow()], raceCtx(race), null, null)[0];
+    eq(d.action, p.ASK, race);
+    notOk(d.value);
+  }
+});
+
+test('a race list offering "Hispanic or Latino" is still matched as a race list', () => {
+  notOk(p.isHispanicYesNoQuestion('Race / Ethnicity (Hispanic or Latino)'));
+  ok(p.isHispanicYesNoQuestion('Are you Hispanic/Latino?'));
+});
+
 // ── nationality ──────────────────────────────────────────────
 
 test('nationality fills from the stored answer only', () => {

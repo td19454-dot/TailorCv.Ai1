@@ -156,17 +156,30 @@ export function decide(rows, ctx, server, state) {
           ? done(d, PROFILE, '', '', 0, profileHint(category, entry))
           : done(d, ASK, '', '', 0, 'we never guess this — choose your answer');
       }
+      // "Are you Hispanic/Latino?" is the race question asked as a Yes/No
+      // (Greenhouse asks it first, then reveals the race list on "No"). The
+      // stored race answers it, but not as written: "Asian" is no option of
+      // Yes / No, so it went back to the person on every Greenhouse form.
+      let key = entry ? entry.key : '';
+      let answer = stored;
+      if (key === 'race_ethnicity' && isHispanicYesNoQuestion(row.label)) {
+        const yesNo = hispanicYesNo(stored);
+        if (yesNo === null) {
+          return done(d, ASK, '', '', 0, `your stored answer (${stored}) doesn't say — choose your answer`);
+        }
+        if (yesNo) { key = 'hispanic_latino'; answer = yesNo; }
+      }
       // The stored answer, in whatever wording this form offers for it. Still
       // only ever THEIR answer — the shapes widen it ("South Asian" ->
       // "Asian"), never narrow or invent one, and a value belonging to no
       // known group is matched exactly as before.
-      const shapes = candidatesFor(entry ? entry.key : '', stored, bank);
+      const shapes = candidatesFor(key, answer, bank);
       if (shapes.length > 1) d.candidates = shapes;
       // The writer re-picks from the OPEN list with this same coerce(), since
       // most EEO dropdowns only show their options once opened.
-      if (entry && READ_FIRST_KEYS.has(entry.key)) d.readFirst = { key: entry.key, stored };
-      const value = coerce(stored, Object.assign({}, row,
-        { candidates: shapes, candidateKey: entry ? entry.key : '' }));
+      if (READ_FIRST_KEYS.has(key) || key === 'hispanic_latino') d.readFirst = { key, stored: answer };
+      const value = coerce(answer, Object.assign({}, row,
+        { candidates: shapes, candidateKey: key }));
       if (value === null) {
         // We have their answer but this form offers no option matching it.
         return done(d, ASK, '', '', 0, `none of the options match your stored answer (${stored})`);
@@ -529,6 +542,34 @@ function ethnicityGroup(text) {
   // it, "White (Not Hispanic or Latino)" would be filed under Hispanic.
   const t = String(text || '').replace(/\(\s*not hispanic or latino\s*\)/ig, ' ');
   return ETHNICITY_GROUPS.findIndex(g => g.test.test(t));
+}
+
+/**
+ * "Are you Hispanic/Latino?" — the Yes/No form of the ethnicity question, not
+ * a race list that merely offers "Hispanic or Latino" among its options (those
+ * are labelled Race / Ethnicity and stay with the ordinary matching).
+ */
+export function isHispanicYesNoQuestion(label) {
+  const text = String(label || '');
+  return /\b(hispanic|latin[oax])\b/i.test(text) && !/\b(race|racial|ethnicity)\b/i.test(text);
+}
+
+/**
+ * The stored race read as an answer to "Are you Hispanic/Latino?".
+ *
+ * 'Yes' / 'No' when the stored group settles it; '' for a decline, which is
+ * matched as stored (onto the form's own decline option); null when it does
+ * not settle it — "Two or More Races" may or may not include Hispanic, and an
+ * unrecognised value says nothing — so the person answers.
+ */
+export function hispanicYesNo(stored) {
+  if (looksLikeDecline(stored)) return '';
+  const group = ethnicityGroup(stored);
+  if (group < 0) return null;
+  const shapes = ETHNICITY_GROUPS[group].shapes;
+  if (shapes.includes('Hispanic or Latino')) return 'Yes';
+  if (shapes.includes('Two or More Races')) return null;
+  return 'No';
 }
 
 /** Broader phrasings of the ethnicity `text` names, or []. */

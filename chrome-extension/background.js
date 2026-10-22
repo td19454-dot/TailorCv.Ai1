@@ -679,7 +679,15 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           body: JSON.stringify(msg.payload || {}),
         });
         if (!res.ok) {
-          sendResponse({ error: 'Could not save that answer.' });
+          // The status and the server's reason go back to the panel: a bare
+          // "could not save" left a 401, a 422 and an outage looking the same.
+          const data = await res.json().catch(() => ({}));
+          console.warn('[TailorCV] saving answers failed', res.status, data);
+          sendResponse({
+            error: res.status === 401 ? 'You are signed out of TailorCV — sign in and try again.'
+              : `${detailText(data.detail, 'Could not save that answer.')} (HTTP ${res.status})`,
+            code: res.status,
+          });
           return;
         }
         // A saved answer changes what the next form can be filled from.

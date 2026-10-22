@@ -58,7 +58,9 @@
       "Bash(npx --no-install playwright --version)",
       "PowerShell(Get-NetTCPConnection -LocalPort 8017 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -Confirm:$false }; \"stopped\")",
       "PowerShell(Get-NetTCPConnection -LocalPort 8017 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -Confirm:$false }; Remove-Item -Recurse -Force \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\optimized-editor\" -Confirm:$false; \"cleaned\")",
-      "PowerShell(venv/Scripts/python.exe -m py_compile main.py)"
+      "PowerShell(venv/Scripts/python.exe -m py_compile main.py)",
+      "PowerShell(python \"C:\\\\Users\\\\SHUBHA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1\\\\cb20ff0d-e77d-4b32-a66f-d1276557c10d\\\\scratchpad\\\\save_probe.py\" 2>&1)",
+      "PowerShell(curl.exe -s -o - -w \"`nHTTP %{http_code}`n\" -X POST https://thetailorcv.com/api/extension/autofill/answers -H \"Content-Type: application/json\" -d '{\\\\\"answers\\\\\":[{\\\\\"question\\\\\":\\\\\"q\\\\\",\\\\\"answer\\\\\":\\\\\"a\\\\\"}]}')"
     ],
     "additionalDirectories": [
       "\\tmp"

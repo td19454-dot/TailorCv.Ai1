@@ -2690,13 +2690,25 @@ what when where which who will with would you your now future
           const onProfile = PROFILE_CATEGORIES.has(category) && (category !== "demographic" || !!entry2) || !!(entry2 && entry2.sensitive);
           return onProfile ? done(d, PROFILE, "", "", 0, profileHint(category, entry2)) : done(d, ASK, "", "", 0, "we never guess this \u2014 choose your answer");
         }
-        const shapes = candidatesFor(entry2 ? entry2.key : "", stored, bank);
+        let key = entry2 ? entry2.key : "";
+        let answer = stored;
+        if (key === "race_ethnicity" && isHispanicYesNoQuestion(row.label)) {
+          const yesNo = hispanicYesNo(stored);
+          if (yesNo === null) {
+            return done(d, ASK, "", "", 0, `your stored answer (${stored}) doesn't say \u2014 choose your answer`);
+          }
+          if (yesNo) {
+            key = "hispanic_latino";
+            answer = yesNo;
+          }
+        }
+        const shapes = candidatesFor(key, answer, bank);
         if (shapes.length > 1) d.candidates = shapes;
-        if (entry2 && READ_FIRST_KEYS.has(entry2.key)) d.readFirst = { key: entry2.key, stored };
-        const value = coerce(stored, Object.assign(
+        if (READ_FIRST_KEYS.has(key) || key === "hispanic_latino") d.readFirst = { key, stored: answer };
+        const value = coerce(answer, Object.assign(
           {},
           row,
-          { candidates: shapes, candidateKey: entry2 ? entry2.key : "" }
+          { candidates: shapes, candidateKey: key }
         ));
         if (value === null) {
           return done(d, ASK, "", "", 0, `none of the options match your stored answer (${stored})`);
@@ -2995,6 +3007,19 @@ what when where which who will with would you your now future
   function ethnicityGroup(text) {
     const t = String(text || "").replace(/\(\s*not hispanic or latino\s*\)/ig, " ");
     return ETHNICITY_GROUPS.findIndex((g) => g.test.test(t));
+  }
+  function isHispanicYesNoQuestion(label) {
+    const text = String(label || "");
+    return /\b(hispanic|latin[oax])\b/i.test(text) && !/\b(race|racial|ethnicity)\b/i.test(text);
+  }
+  function hispanicYesNo(stored) {
+    if (looksLikeDecline(stored)) return "";
+    const group = ethnicityGroup(stored);
+    if (group < 0) return null;
+    const shapes = ETHNICITY_GROUPS[group].shapes;
+    if (shapes.includes("Hispanic or Latino")) return "Yes";
+    if (shapes.includes("Two or More Races")) return null;
+    return "No";
   }
   function ethnicityShapes(text) {
     const i = ethnicityGroup(text);
@@ -4967,7 +4992,10 @@ what when where which who will with would you your now future
     const answers = (items || []).filter((i) => i && i.question && i.answer).map((i) => ({ question: i.question, answer: i.answer })).slice(0, 25);
     if (!answers.length) return { saved: 0 };
     const res = await send({ type: "AF_SAVE_ANSWERS", payload: { answers } });
-    return res && res.data || { saved: 0 };
+    if (res && res.data) return res.data;
+    const reloaded = "The extension was reloaded \u2014 refresh this page and try again.";
+    const error = res && res.error;
+    return { saved: 0, error: !error || /context invalidated/i.test(error) ? reloaded : error };
   }
 
   // src/autofill/ui.js
@@ -5278,7 +5306,8 @@ what when where which who will with would you your now future
   }
   function offerToRemember(body, result, handlers) {
     const decisions = result.decisions || [];
-    const learnable = result.learnable || (decisions.length && decisions[0].row ? learnableAnswers(decisions) : []);
+    const local = !!(decisions.length && decisions[0].row);
+    const learnable = result.learnable || (local ? learnableAnswers(decisions) : []);
     if (!learnable.length) return;
     const host = body.querySelector("#tcvAfBody");
     if (!host) return;
@@ -5299,8 +5328,17 @@ what when where which who will with would you your now future
     btn.addEventListener("click", async () => {
       btn.disabled = true;
       btn.textContent = "Saving\u2026";
-      const res = handlers && handlers.onRemember ? await handlers.onRemember(learnable) : await rememberAnswers(learnable);
-      btn.textContent = res && res.saved ? `\u2713 Saved ${res.saved}` : "Could not save";
+      const res = !local && handlers && handlers.onRemember ? await handlers.onRemember(learnable) : await rememberAnswers(learnable);
+      if (res && res.saved) {
+        btn.textContent = `\u2713 Saved ${res.saved}`;
+        return;
+      }
+      btn.textContent = "Could not save";
+      const why = res && res.error ? res.error : res && res.rejected ? "We don't store answers to sensitive questions \u2014 set these in your profile." : "Nothing was saved.";
+      const note = globalThis.document.createElement("div");
+      note.className = "tcv-af-row-src";
+      note.textContent = why;
+      btn.after(note);
     });
   }
   function renderRunning(body, phase) {

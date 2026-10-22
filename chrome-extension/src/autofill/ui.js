@@ -371,8 +371,8 @@ function offerToRemember(body, result, handlers) {
   const decisions = result.decisions || [];
   // A local run computes this from live rows; a framed run had the frame compute
   // it and send the list along, since only the frame can read its own fields.
-  const learnable = result.learnable
-    || (decisions.length && decisions[0].row ? learnableAnswers(decisions) : []);
+  const local = !!(decisions.length && decisions[0].row);
+  const learnable = result.learnable || (local ? learnableAnswers(decisions) : []);
   if (!learnable.length) return;
   const host = body.querySelector('#tcvAfBody');
   if (!host) return;
@@ -395,10 +395,26 @@ function offerToRemember(body, result, handlers) {
   btn.addEventListener('click', async () => {
     btn.disabled = true;
     btn.textContent = 'Saving…';
-    const res = handlers && handlers.onRemember
+    // The same split as "Save & fill": a form in this document saves from here.
+    // content.js always passes onRemember, and it can only reach a sub-frame —
+    // on a top-level form (most Greenhouse boards) it failed with "no_frame".
+    const res = !local && handlers && handlers.onRemember
       ? await handlers.onRemember(learnable)
       : await rememberAnswers(learnable);
-    btn.textContent = res && res.saved ? `✓ Saved ${res.saved}` : 'Could not save';
+    if (res && res.saved) {
+      btn.textContent = `✓ Saved ${res.saved}`;
+      return;
+    }
+    btn.textContent = 'Could not save';
+    // Say why: a refusal (sensitive question), a sign-out and a server error
+    // each need something different from the person.
+    const why = res && res.error ? res.error
+      : res && res.rejected ? "We don't store answers to sensitive questions — set these in your profile."
+      : 'Nothing was saved.';
+    const note = globalThis.document.createElement('div');
+    note.className = 'tcv-af-row-src';
+    note.textContent = why;
+    btn.after(note);
   });
 }
 
