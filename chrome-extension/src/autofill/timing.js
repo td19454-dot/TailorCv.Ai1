@@ -44,3 +44,42 @@ export function setTiming(overrides) {
 }
 
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+const now = () => (globalThis.performance && globalThis.performance.now
+  ? globalThis.performance.now() : Date.now());
+
+/**
+ * Where one run's time went: per phase, per field, and per quiet-wait.
+ *
+ * Measurement only — nothing here changes what the run does. It exists so the
+ * next speed-up is chosen from numbers on a real page, not from reading code.
+ */
+export function startClock() {
+  const start = now();
+  const phases = {};
+  const fields = [];
+  const quietWaits = [];
+  const add = (phase, ms) => { phases[phase] = (phases[phase] || 0) + ms; };
+  return {
+    add,
+    async time(phase, fn) {
+      const t = now();
+      try { return await fn(); } finally { add(phase, now() - t); }
+    },
+    field(info) { fields.push(info); },
+    quiet(res) { if (res) quietWaits.push(res); },
+    summary() {
+      const round = ms => Math.round(ms || 0);
+      const out = {};
+      for (const k of Object.keys(phases)) out[k] = round(phases[k]);
+      return {
+        totalMs: round(now() - start),
+        phases: out,
+        quietWaits: quietWaits.map(q => ({ ms: round(q.ms), capped: !!q.capped })),
+        slowFields: fields.slice().sort((a, b) => b.ms - a.ms).slice(0, 5)
+          .map(f => ({ label: f.label || '', kind: f.kind || '', ms: round(f.ms), outcome: f.outcome || '' })),
+      };
+    },
+    now,
+  };
+}

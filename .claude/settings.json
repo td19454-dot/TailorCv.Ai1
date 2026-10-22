@@ -56,7 +56,9 @@
       "Bash(python -c \"import playwright,sys; print\\('pw ok', sys.executable\\)\")",
       "Bash(.venv/Scripts/python.exe -c \"import playwright; print\\('pw ok'\\)\")",
       "Bash(npx --no-install playwright --version)",
-      "PowerShell(Get-NetTCPConnection -LocalPort 8017 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -Confirm:$false }; \"stopped\")"
+      "PowerShell(Get-NetTCPConnection -LocalPort 8017 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -Confirm:$false }; \"stopped\")",
+      "PowerShell(Get-NetTCPConnection -LocalPort 8017 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -Confirm:$false }; Remove-Item -Recurse -Force \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\\\\optimized-editor\" -Confirm:$false; \"cleaned\")",
+      "PowerShell(venv/Scripts/python.exe -m py_compile main.py)"
     ],
     "additionalDirectories": [
       "\\tmp"
