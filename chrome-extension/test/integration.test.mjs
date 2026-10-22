@@ -200,6 +200,55 @@ test('each fixture is attributed to the right ATS by URL', () => {
   eq(d.detectAts('https://jobs.ashbyhq.com/acme/abc-123/application'), 'ashby');
 });
 
+// ── waiting for the page to settle ───────────────────────────
+
+// Our sidebar lives in the page's <body> and its progress ring redraws every
+// 150 ms. Counted as the page changing, it kept every wait running to its cap.
+const SIDEBAR = '<div id="tailorcv-sidebar"><span id="pct">0%</span></div>'
+              + '<div id="page-area"></div>';
+
+function churn(env, selector) {
+  const node = env.document.querySelector(selector);
+  let n = 0;
+  return setInterval(() => {
+    n++;
+    node.textContent = `${n}%`;
+    node.setAttribute('style', `opacity:${n % 2}`);
+  }, 5);
+}
+
+test('waitForQuiet: our own sidebar redrawing does not keep the page "busy"', async () => {
+  await withForm(fixtures.GREENHOUSE + SIDEBAR, {}, async (env) => {
+    const timer = churn(env, '#pct');
+    try {
+      const res = await run_.waitForQuiet(env.document.body);
+      notOk(res.capped, `waited ${res.ms} ms — the sidebar's churn was counted as the page changing`);
+    } finally { clearInterval(timer); }
+  });
+});
+
+test('waitForQuiet: the page itself changing still holds the wait open', async () => {
+  await withForm(fixtures.GREENHOUSE + SIDEBAR, {}, async (env) => {
+    const timer = churn(env, '#page-area');
+    try {
+      const res = await run_.waitForQuiet(env.document.body);
+      ok(res.capped, 'a page still loading fields must be waited for (Oracle\'s address block)');
+    } finally { clearInterval(timer); }
+  });
+});
+
+test('a run reports where its time went', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async () => {
+    const result = await run_.runAutofill(CTX, null);
+    const t = result.timing;
+    ok(t, 'the result must carry timing');
+    ok(t.totalMs >= 0, 'a total');
+    ok('scan' in t.phases && 'local_writes' in t.phases, `phases: ${JSON.stringify(t.phases)}`);
+    ok(Array.isArray(t.slowFields) && t.slowFields.length > 0, 'the slowest fields');
+    ok(t.quietWaits.length >= 1, 'every run waits at least once for revealed fields');
+  });
+});
+
 // ── one label, several meanings, end to end ──────────────────
 
 test('dropdowns: the option list decides what the label meant', async () => {

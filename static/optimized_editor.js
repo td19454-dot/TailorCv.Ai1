@@ -3083,9 +3083,15 @@ ${bodyPaddingCss}  box-sizing: border-box !important;
             }
         });
 
+        // On mobile the soft keyboard firing resize must not disturb an active
+        // edit session. The keyboard only changes the height, so skip just
+        // those: a width change (rotation, phone -> desktop) must re-scale the
+        // preview even while the resume has focus, or it stays at phone scale.
+        let lastResizeWidth = window.innerWidth;
         window.addEventListener("resize", () => {
-            // On mobile the soft keyboard firing resize must not disturb an active edit session.
-            if (frame && frame.contentDocument && frame.contentDocument.hasFocus()) return;
+            const widthChanged = window.innerWidth !== lastResizeWidth;
+            lastResizeWidth = window.innerWidth;
+            if (!widthChanged && frame && frame.contentDocument && frame.contentDocument.hasFocus()) return;
             applyWordStylePreview();
         }, { passive: true });
 

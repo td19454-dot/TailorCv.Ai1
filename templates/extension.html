@@ -1171,7 +1171,7 @@
                     // panel — a template/cover-only autosave changes nothing it
                     // cares about.
                     if (fileOverride) notifyExtensionBaseResumeUpdated();
-                    return;
+                    return res.json().catch(function () { return {}; });
                 }
                 if (res.status === 401) throw new Error('Your session expired. Please log in again.');
                 return res.json().catch(function () { return {}; }).then(function (data) {
@@ -1381,8 +1381,12 @@
             closeConfirm();
 
             saveSettings(file)
-                .then(function () {
-                    showToast('Resume changed successfully');
+                .then(function (data) {
+                    // The server writes the master cover letter during the upload;
+                    // the resume is saved even when that part fails.
+                    showToast(data && data.cover_letter === false
+                        ? 'Resume saved, but the cover letter could not be created'
+                        : 'Resume and cover letter saved');
                 })
                 .catch(function (err) {
                     fileEl.value = '';

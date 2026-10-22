@@ -2719,7 +2719,9 @@
     startProgress();
     track('autofill_started', { host: location.hostname, ats: form.ats });
 
+    const runStartedAt = performance.now();
     const ctx = await ensureApplyContext();
+    const ctxMs = Math.round(performance.now() - runStartedAt);
     if (!ctx || ctx.error) {
       finishProgress(false);
       applyBusy = false;
@@ -2780,6 +2782,9 @@
       ask: counts.ask || 0,
       profile: counts.profile || 0,
       page: result.page || 1,
+      duration_ms: Math.round(performance.now() - runStartedAt),
+      ctx_ms: ctxMs,
+      ...autofillTimingProps(result.timing),
     });
     // Remember what this step looked like, so the watcher can tell the next
     // Workday step (most fields replaced) from the same step gaining a field.
@@ -2795,6 +2800,23 @@
     // step the move to the next one went unnoticed.
     lastStep = stepMarker();
     renderApplyResults(result);
+  }
+
+  // A run's timing as flat analytics properties. Field labels stay in the
+  // console: only the slowest field's kind and duration are sent.
+  function autofillTimingProps(timing) {
+    if (!timing) return {};
+    const props = { fill_ms: timing.totalMs };
+    for (const [phase, ms] of Object.entries(timing.phases || {})) props[`t_${phase}_ms`] = ms;
+    const waits = timing.quietWaits || [];
+    props.quiet_waits = waits.length;
+    props.quiet_capped = waits.filter(w => w.capped).length;
+    const slowest = (timing.slowFields || [])[0];
+    if (slowest) {
+      props.slowest_field_kind = slowest.kind;
+      props.slowest_field_ms = slowest.ms;
+    }
+    return props;
   }
 
   // ATS URLs carry the company as a slug: job-boards.greenhouse.io/anthropic,

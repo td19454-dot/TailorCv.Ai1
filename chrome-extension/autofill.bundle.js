@@ -1345,6 +1345,45 @@ what when where which who will with would you your now future
     tileSaveMs: 4e3
   };
   var sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  var now = () => globalThis.performance && globalThis.performance.now ? globalThis.performance.now() : Date.now();
+  function startClock() {
+    const start = now();
+    const phases = {};
+    const fields = [];
+    const quietWaits = [];
+    const add = (phase, ms) => {
+      phases[phase] = (phases[phase] || 0) + ms;
+    };
+    return {
+      add,
+      async time(phase, fn) {
+        const t = now();
+        try {
+          return await fn();
+        } finally {
+          add(phase, now() - t);
+        }
+      },
+      field(info) {
+        fields.push(info);
+      },
+      quiet(res) {
+        if (res) quietWaits.push(res);
+      },
+      summary() {
+        const round = (ms) => Math.round(ms || 0);
+        const out = {};
+        for (const k of Object.keys(phases)) out[k] = round(phases[k]);
+        return {
+          totalMs: round(now() - start),
+          phases: out,
+          quietWaits: quietWaits.map((q) => ({ ms: round(q.ms), capped: !!q.capped })),
+          slowFields: fields.slice().sort((a, b) => b.ms - a.ms).slice(0, 5).map((f) => ({ label: f.label || "", kind: f.kind || "", ms: round(f.ms), outcome: f.outcome || "" }))
+        };
+      },
+      now
+    };
+  }
 
   // src/autofill/discover.js
   var probe = () => globalThis.__tcvFieldProbe;
@@ -2035,9 +2074,9 @@ what when where which who will with would you your now future
     }
     for (const row of out) {
       if (row.kind === "date-parts") {
-        const now = readDateParts(row);
-        row.filled = now.filled;
-        row.value = now.value;
+        const now2 = readDateParts(row);
+        row.filled = now2.filled;
+        row.value = now2.value;
         continue;
       }
       if (row.kind !== "radio" && row.kind !== "checkbox") continue;
@@ -4363,6 +4402,7 @@ what when where which who will with would you your now future
   var MAX_PAGES = 4;
   var STATE_TTL_MS = 30 * 60 * 1e3;
   var MAX_DROPDOWNS_TO_OPEN = 25;
+  var clock = startClock();
   function send(msg) {
     return new Promise((resolve) => {
       try {
@@ -4493,6 +4533,7 @@ what when where which who will with would you your now future
         }
       }
     };
+    clock = startClock();
     let form = findForm();
     if (!form) {
       const page = isApplicationPage();
@@ -4506,10 +4547,11 @@ what when where which who will with would you your now future
     }
     attachedThisRun.clear();
     progress("scanning");
-    let rows = describeFields(form);
+    let rows = await clock.time("scan", () => describeFields(form));
     if (!rows.length && !hasTiles) return { error: "no_fields", decisions: [], counts: summarize([]) };
     let decisions = [];
     const fileRows = rows.filter((r) => r.kind === "file");
+    const docsStart = clock.now();
     if (fileRows.length) {
       const filledBefore = new Set(rows.filter((r) => r.filled).map((r) => r.key));
       decisions = decide(fileRows, ctx, null, state);
@@ -4528,21 +4570,24 @@ what when where which who will with would you your now future
       if (decisions.some((d) => d.action === DOCUMENT && d.outcome === "ok")) {
         if (decisions.some((d) => d.formRead)) {
           progress("scanning", { detail: "letting the form read your resume" });
-          await waitForQuiet(form.root);
+          clock.quiet(await waitForQuiet(form.root));
         }
         rows = describeFields(findForm() || form);
         for (const r of rows) {
           if (r.kind !== "file" && r.filled && !r.invalid && !filledBefore.has(r.key)) r.filledByForm = true;
         }
       }
+      clock.add("documents", clock.now() - docsStart);
     }
     const jobs = ctx && ctx.facts && ctx.facts.workExperience || [];
     const expSection = jobs.length ? experienceSection() : null;
     const fieldRows = rows.filter((r) => r.kind !== "file" && !inSection(expSection, r));
     decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
     if (expSection) {
-      await waitForQuiet(form.root);
-      decisions = decisions.concat(await fillExperienceSection(ctx, progress));
+      await clock.time("experience", async () => {
+        clock.quiet(await waitForQuiet(form.root));
+        decisions = decisions.concat(await fillExperienceSection(ctx, progress));
+      });
     }
     for (const d of decisions) {
       if (d.row && d.row.filledByForm && d.action === SKIP) {
@@ -4550,6 +4595,7 @@ what when where which who will with would you your now future
         d.reason = "filled by the form from your resume \u2014 check it";
       }
     }
+    const repairStart = clock.now();
     for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
       let broken = decisions.filter((d) => d.outcome && d.outcome !== "ok" && d.value);
       if (!broken.length) break;
@@ -4557,9 +4603,9 @@ what when where which who will with would you your now future
       for (const d of broken) {
         const shapes = [d.value].concat(d.candidates || []);
         if (d.row && d.row.kind !== "file" && await settlesTo(d.row, shapes, 0)) {
-          const now = reprobe(d.row);
+          const now2 = reprobe(d.row);
           d.outcome = "ok";
-          d.shown = now && now.value || d.value;
+          d.shown = now2 && now2.value || d.value;
           if (d.key) state.registry[d.key] = d.value;
         }
       }
@@ -4581,10 +4627,12 @@ what when where which who will with would you your now future
       progress("repairing", { total: broken.length });
       await writeAll(broken, ctx, progress, true);
     }
+    clock.add("repair", clock.now() - repairStart);
+    const revealStart = clock.now();
     let revealed = 0;
     while (revealed < MAX_REVEAL_ROUNDS) {
       const before = new Set(rows.map((r) => r.key));
-      await waitForQuiet(form.root);
+      clock.quiet(await waitForQuiet(form.root));
       const fresh = describeFields(findForm() || form);
       const added = fresh.filter((r) => r.key && !before.has(r.key) && !(r.kind === "file" && isProfileImport(r)) && !inSection(expSection, r));
       if (!added.length) break;
@@ -4594,11 +4642,21 @@ what when where which who will with would you your now future
       decisions = decisions.concat(extra);
       rows = fresh;
     }
-    if (hasTiles) decisions = decisions.concat(await fillProfileTiles(ctx, progress));
-    await refillCleared(decisions, progress);
+    clock.add("reveal", clock.now() - revealStart);
+    if (hasTiles) {
+      const tiled = await clock.time("tiles", () => fillProfileTiles(ctx, progress));
+      decisions = decisions.concat(tiled);
+    }
+    await clock.time("refill", () => refillCleared(decisions, progress));
     await saveState();
     watchUserEdits(form, null);
+    const timing = clock.summary();
+    console.info(`[TailorCV] autofill took ${timing.totalMs} ms`);
+    console.table(timing.phases);
+    if (timing.slowFields.length) console.table(timing.slowFields);
+    if (timing.quietWaits.length) console.table(timing.quietWaits);
     return {
+      timing,
       decisions,
       counts: summarize(decisions),
       serverError: decisions.serverError || "",
@@ -4627,8 +4685,8 @@ what when where which who will with would you your now future
       if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== "ok") return false;
       if (!d.row || d.row.kind === "file" || d.row.kind === "tile") return false;
       if (d.key && state.userEdited.includes(d.key)) return false;
-      const now = reprobe(d.row);
-      return !!now && !now.filled;
+      const now2 = reprobe(d.row);
+      return !!now2 && !now2.filled;
     });
     if (!lost.length) return;
     console.info(
@@ -4646,6 +4704,15 @@ what when where which who will with would you your now future
       }
     }
   }
+  var OWN_UI = "#tailorcv-sidebar, #tailorcv-launcher";
+  function isOwnUi(node) {
+    const el = node && (node.nodeType === 1 ? node : node.parentElement);
+    try {
+      return !!(el && el.closest && el.closest(OWN_UI));
+    } catch (e) {
+      return false;
+    }
+  }
   function waitForQuiet(root) {
     const doc = root && root.ownerDocument || globalThis.document;
     const target = doc && doc.body || root;
@@ -4654,23 +4721,24 @@ what when where which who will with would you your now future
       let last = start;
       let obs = null;
       try {
-        obs = new globalThis.MutationObserver(() => {
-          last = Date.now();
+        obs = new globalThis.MutationObserver((records) => {
+          if (records.some((r) => !isOwnUi(r.target))) last = Date.now();
         });
         obs.observe(target, { childList: true, subtree: true, attributes: true });
       } catch (e) {
         obs = null;
       }
       const tick = () => {
-        const now = Date.now();
-        const waited = now - start;
-        const quiet = now - last;
-        if (waited >= TIMING.revealMaxMs || waited >= TIMING.revealWatchMs && (quiet >= TIMING.revealQuietMs || last === start)) {
+        const now2 = Date.now();
+        const waited = now2 - start;
+        const quiet = now2 - last;
+        const capped = waited >= TIMING.revealMaxMs;
+        if (capped || waited >= TIMING.revealWatchMs && (quiet >= TIMING.revealQuietMs || last === start)) {
           try {
             if (obs) obs.disconnect();
           } catch (e) {
           }
-          resolve();
+          resolve({ ms: waited, capped });
           return;
         }
         setTimeout(tick, 100);
@@ -4698,13 +4766,15 @@ what when where which who will with would you your now future
     const needOptions = decisions.filter((d) => (d.action === ASK || d.action === PROFILE) && (d.kind === "combobox" || d.kind === "select" && !d.options.length) && !d.row.filled).slice(0, MAX_DROPDOWNS_TO_OPEN);
     if (needOptions.length) {
       progress("reading", { total: needOptions.length });
-      for (const d of needOptions) {
-        const labels = await readComboboxOptions(d.row);
-        if (labels.length) {
-          d.row.options = labels.map((l) => ({ value: l, label: l }));
-          d.options = d.row.options;
+      await clock.time("read_options", async () => {
+        for (const d of needOptions) {
+          const labels = await readComboboxOptions(d.row);
+          if (labels.length) {
+            d.row.options = labels.map((l) => ({ value: l, label: l }));
+            d.options = d.row.options;
+          }
         }
-      }
+      });
       decisions = decide(rows, ctx, null, state);
     }
     const toAsk = fieldsForServer(decisions);
@@ -4737,24 +4807,24 @@ what when where which who will with would you your now future
   async function fillInTwoWaves(plan, ctx, progress) {
     const local = plan.decisions;
     progress("filling", { done: 0, total: decisionsToWrite(local).length });
-    await writeAll(local, ctx, progress);
+    await clock.time("local_writes", () => writeAll(local, ctx, progress));
     if (!plan.server) return local;
     progress("thinking");
-    const answered = await plan.server;
+    const answered = await clock.time("server_wait", () => plan.server);
     const wroteLocally = new Set(decisionsToWrite(local));
     const merged = answered.map((d, i) => wroteLocally.has(local[i]) ? local[i] : d);
     merged.serverError = answered.serverError;
     merged.quotaExhausted = answered.quotaExhausted;
     const wave2 = merged.filter((d, i) => d !== local[i] && decisionsToWrite([d]).length);
     for (const d of wave2) {
-      const now = reprobe(d.row);
-      if (now && now.filled && !d.row.filled) {
+      const now2 = reprobe(d.row);
+      if (now2 && now2.filled && !d.row.filled) {
         d.action = SKIP;
         d.reason = "you filled this while we were writing";
         if (d.key && !state.userEdited.includes(d.key)) state.userEdited.push(d.key);
       }
     }
-    await writeAll(wave2, ctx, progress);
+    await clock.time("server_writes", () => writeAll(wave2, ctx, progress));
     return merged;
   }
   async function writeAll(decisions, ctx, progress, isRepair) {
@@ -4766,8 +4836,10 @@ what when where which who will with would you your now future
         { done: done2, total: todo.length, detail: d.label }
       );
       done2++;
+      const fieldStart = clock.now();
       if (d.action === DOCUMENT) {
         const result2 = await attachDocument(d, ctx);
+        clock.field({ label: d.label, kind: "file", ms: clock.now() - fieldStart, outcome: result2.ok ? "ok" : "failed" });
         d.outcome = result2.ok ? "ok" : "failed";
         d.shown = result2.shown || "";
         d.formRead = !!result2.formRead;
@@ -4778,6 +4850,12 @@ what when where which who will with would you your now future
         continue;
       }
       const result = await applyDecision(d);
+      clock.field({
+        label: d.label,
+        kind: d.row && d.row.kind,
+        ms: clock.now() - fieldStart,
+        outcome: result.outcome
+      });
       d.outcome = result.outcome;
       d.shown = result.shown;
       if (result.ok) {
@@ -5412,6 +5490,7 @@ ${lists.join("\n")}` : "");
           ats: result.ats,
           opaqueHosts: result.opaqueHosts,
           serverError: result.serverError,
+          timing: result.timing,
           decisions: lastRunDecisions.map(serializeDecision),
           learnable: learnableAnswers(lastRunDecisions).map((l) => ({
             key: l.key,

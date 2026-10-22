@@ -8146,6 +8146,7 @@ def _build_base_cover_letter_prompt(resume_text: str) -> str:
         "Rules:\n"
         "- 3 to 4 short paragraphs, under 300 words total.\n"
         "- Professional and confident tone.\n"
+        "- Begin with the salutation \"Dear Hiring Manager,\" on its own line.\n"
         "- Open by introducing the candidate's professional focus and what they're looking "
         "for next, in general terms — do not name a specific company or role, and do not "
         "claim to be applying to \"this position\" or similar.\n"
@@ -8613,7 +8614,20 @@ async def set_extension_base_resume(request: Request):
             os.remove(old_path)
     finally:
         db.close()
-    return JSONResponse({"success": True})
+
+    # A new resume gets a new master cover letter, written once here and attached
+    # to every application form from then on — never per application. Written
+    # before responding so the extension's next context fetch already sees it. A
+    # failure leaves the resume saved; the letter can be regenerated later.
+    cover_letter_ok = None
+    if has_upload:
+        try:
+            await _write_base_cover_letter(user_id)
+            cover_letter_ok = True
+        except Exception:
+            logger.exception("Base cover letter generation on resume upload failed")
+            cover_letter_ok = False
+    return JSONResponse({"success": True, "cover_letter": cover_letter_ok})
 
 
 @app.get("/api/extension/base-resume")
@@ -8705,7 +8719,14 @@ async def generate_base_cover_letter(request: Request):
     user_id = request.session.get("user_id")
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
+    filename = await _write_base_cover_letter(user_id)
+    return JSONResponse({"success": True, "filename": filename})
 
+
+async def _write_base_cover_letter(user_id: int) -> str:
+    """Write the master cover letter from the user's base resume and store it as
+    a PDF. Called when the base resume is uploaded, so one letter is reused on
+    every application form, the same way the resume is. Raises HTTPException."""
     db = get_db()
     try:
         user = db.query(User).filter(User.id == user_id).first()
@@ -8773,7 +8794,7 @@ async def generate_base_cover_letter(request: Request):
     if old_path and old_path != new_path and os.path.exists(old_path):
         os.remove(old_path)
 
-    return JSONResponse({"success": True, "filename": "cover_letter.pdf"})
+    return "cover_letter.pdf"
 
 
 @app.delete("/api/dashboard/base-cover-letter")
