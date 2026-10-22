@@ -824,7 +824,12 @@ export async function rememberAnswers(items) {
     .slice(0, 25);
   if (!answers.length) return { saved: 0 };
   const res = await send({ type: 'AF_SAVE_ANSWERS', payload: { answers } });
-  return (res && res.data) || { saved: 0 };
+  if (res && res.data) return res.data;
+  // No response at all means the message never reached the background worker
+  // (an extension reload orphans this page's script) — not a server refusal.
+  const reloaded = 'The extension was reloaded — refresh this page and try again.';
+  const error = res && res.error;
+  return { saved: 0, error: !error || /context invalidated/i.test(error) ? reloaded : error };
 }
 
 export { FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP };

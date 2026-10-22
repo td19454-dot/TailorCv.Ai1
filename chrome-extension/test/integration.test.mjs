@@ -19,6 +19,7 @@ import * as d from '../src/autofill/discover.js';
 import * as p from '../src/autofill/plan.js';
 import * as run_ from '../src/autofill/run.js';
 import * as tiles from '../src/autofill/tiles.js';
+import * as ui from '../src/autofill/ui.js';
 import { setTiming } from '../src/autofill/timing.js';
 
 // The production waits exist to let a framework re-render before a field is read
@@ -2014,6 +2015,34 @@ test('learnable answers exclude the sensitive and the secret', async () => {
     const questions = learnable.map(l => l.question.toLowerCase());
     notOk(questions.some(q => /salary/.test(q)), 'salary must never be learned');
     ok(questions.some(q => /linkedin/.test(q)), 'an ordinary correction is learnable');
+  });
+});
+
+// content.js always passes onRemember, which can only reach a sub-frame. On a
+// top-level Greenhouse form it answered "no_frame" and nothing was ever saved.
+test('"Remember for next time" on a top-level form saves from this page, not via a frame', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    const result = await run_.runAutofill(CTX, null);
+    run_.watchUserEdits(d.findForm(), null);
+    const el = env.document.querySelector('#q_linkedin');
+    el.value = 'https://linkedin.com/in/ada2';
+    el.dispatchEvent(new env.window.Event('change', { bubbles: true }));
+
+    const body = env.document.createElement('div');
+    env.document.body.appendChild(body);
+    let framed = 0;
+    ui.renderResults(body, result, CTX, {
+      onRemember: async () => { framed++; return { error: 'no_frame' }; },
+    });
+    const btn = body.querySelector('#tcvAfRemember');
+    ok(btn, 'the remember offer should render');
+    btn.click();
+    await new Promise(r => setTimeout(r, 0));
+
+    eq(framed, 0, 'a local form must not be routed through the frame handler');
+    const save = sent.find(m => m.type === 'AF_SAVE_ANSWERS');
+    ok(save, 'the answer must be sent to the store');
+    ok(save.payload.answers.some(a => /linkedin/i.test(a.question)));
   });
 });
 
