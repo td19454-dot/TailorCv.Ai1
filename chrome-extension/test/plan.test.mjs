@@ -812,6 +812,14 @@ test('a sponsorship question is answered from the sponsorship answer, whatever e
   eq(d.value, 'No', 'never the authorized-to-work "Yes"');
 });
 
+test('"require <company> to sponsor" is the sponsorship question too (Notion, Oct 2026)', () => {
+  const d = p.decide([yesNoRow('Will you now or in the future require Notion to sponsor an immigration case in order to employ you?')],
+                     eligCtx, null, null)[0];
+  eq(d.action, p.FILL, 'not "add your sponsorship answer to your profile"');
+  eq(d.value, 'No');
+  eq(p.decide([yesNoRow('Will this company need to sponsor your visa?')], eligCtx, null, null)[0].value, 'No');
+});
+
 test('work-authorization questions still take the authorized-to-work answer', () => {
   eq(p.decide([yesNoRow('Are you legally authorized to work in the United States?')], eligCtx, null, null)[0].value, 'Yes');
   eq(p.decide([yesNoRow('Are you authorized to work in the US without sponsorship?')], eligCtx, null, null)[0].value, 'Yes');

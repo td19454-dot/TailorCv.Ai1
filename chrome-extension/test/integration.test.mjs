@@ -2354,6 +2354,137 @@ function wireWorkdayExperience(env) {
   return log;
 }
 
+// Workday's Education block (as on the user's screenshot, Oct 2026): School or
+// University, Degree (a button dropdown, "Select One"), Field of Study, Overall
+// Result (GPA), From / To (Actual or Expected) as year-only spinbuttons. The
+// section starts with no block and an "Add" button.
+function wdYear(id, label) {
+  return `<div data-automation-id="formField-${id.split('--')[1]}"><fieldset><legend><label><span>${label}</span></label></legend>
+    <div id="${id}" role="group" data-automation-id="dateInputWrapper"><div id="${id}-dateSectionYear"><div aria-hidden="true" data-automation-id="dateSectionYear-display">YYYY</div>
+    <input role="spinbutton" aria-label="Year" aria-valuemax="9999" aria-valuemin="1" aria-valuetext="YYYY" id="${id}-dateSectionYear-input" data-automation-id="dateSectionYear-input"></div></div></fieldset></div>`;
+}
+
+function wdEducationBlock(n, k) {
+  const f = `education-${k}--`;
+  const text = (name, label, req) => `<div data-automation-id="formField-${name}"><label for="${f}${name}"><span>${label}${req ? '<abbr aria-hidden="true">*</abbr>' : ''}</span></label>
+    <input type="text" id="${f}${name}" name="${name}" aria-required="${req}"></div>`;
+  return `<div role="group" aria-labelledby="Education-${n}-panel">
+    <div><h5 id="Education-${n}-panel">Education ${n}</h5><button>Delete</button></div>
+    <div data-fkit-id="${f}null">
+      ${text('schoolName', 'School or University', true)}
+      <div data-automation-id="formField-degree"><label id="${f}degree-label" for="${f}degree"><span>Degree<abbr aria-hidden="true">*</abbr></span></label>
+        <button type="button" id="${f}degree" aria-haspopup="listbox" aria-labelledby="${f}degree-label ${f}degree" value="">Select One</button></div>
+      ${text('fieldOfStudy', 'Field of Study', false)}
+      ${text('gradeAverage', 'Overall Result (GPA)', false)}
+      <div class="dates">${wdYear(f + 'firstYearAttended', 'From')}${wdYear(f + 'lastYearAttended', 'To (Actual or Expected)')}</div>
+    </div></div>`;
+}
+
+const WD_EDUCATION_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>My Experience</h3>
+  <div data-automation-id="applyFlowMyExpPage">
+    <div role="group" aria-labelledby="Work-Experience-section"><h4 id="Work-Experience-section">Work Experience</h4>
+      <div><div><button data-automation-id="add-button" id="exp-add">Add</button></div></div></div>
+    <div role="group" aria-labelledby="Education-section"><h4 id="Education-section">Education</h4>
+      <div><div><button data-automation-id="add-button" id="edu-add">Add</button></div></div></div>
+    <div role="group" aria-labelledby="Skills-section"><h4 id="Skills-section">Skills</h4>
+      <label for="skills-input">Type to Add Skills</label><input type="text" id="skills-input" name="skills"></div>
+    <div role="group" aria-labelledby="Resume-section"><h4 id="Resume-section">Resume/CV</h4>
+      <label for="resume-file">Resume/CV</label><input type="file" id="resume-file" name="resume"></div>
+    <div role="group" aria-labelledby="Social-section"><h4 id="Social-section">Social Network URLs</h4>
+      <label for="li">LinkedIn (optional)</label><input type="text" id="li" name="linkedInAccount"></div>
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+
+const WD_DEGREES = ['High School or equivalent', "Associate's Degree", "Bachelor's Degree", "Master's Degree", 'Doctorate (PhD)'];
+
+function wireWorkdayEducation(env) {
+  const doc = env.document;
+  const log = { eduAdds: 0, expAdds: 0, next: 0 };
+  const section = doc.querySelector('[aria-labelledby="Education-section"]');
+  const add = doc.getElementById('edu-add');
+  const portal = doc.getElementById('wd-portal');
+  let k = 40;
+  const wireDegree = (block) => {
+    const btn = block.querySelector('[data-automation-id="formField-degree"] button');
+    btn.addEventListener('mousedown', () => {
+      portal.innerHTML = '<ul role="listbox">' + WD_DEGREES.map(o =>
+        `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">${o}</li>`).join('') + '</ul>';
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        li.addEventListener('mousedown', () => { btn.textContent = li.textContent; btn.value = li.textContent; portal.innerHTML = ''; });
+      }
+    });
+  };
+  add.addEventListener('click', () => {
+    const n = section.querySelectorAll('[aria-labelledby$="-panel"]').length + 1;
+    log.eduAdds++;
+    if (n > 1) add.textContent = 'Add Another';
+    add.parentElement.parentElement.insertAdjacentHTML('beforebegin', wdEducationBlock(n, k++));
+    wireDegree(section.querySelector(`[aria-labelledby="Education-${n}-panel"]`));
+  });
+  doc.getElementById('exp-add').addEventListener('click', () => { log.expAdds++; });
+  doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => { log.next++; });
+  return log;
+}
+
+const WD_SCHOOLS = [
+  { school: 'Indian Institute of Technology Delhi', degree: 'Bachelor of Technology (B.Tech)',
+    field: 'Chemical Engineering', gpa: '', from: '2019', to: '2023' },
+  { school: 'Delhi Public School', degree: 'High School', field: '', gpa: '95%', from: '2017', to: '2019' },
+];
+const eduBlock = (doc, n) => doc.querySelector(`[aria-labelledby="Education-${n}-panel"]`);
+const eduVal = (block, name) => block.querySelector(`[name="${name}"]`).value;
+const eduYear = (block, which) => block.querySelector(`[id$="--${which}-dateSectionYear-input"]`).value;
+
+test('Workday education: "Add" opens a block per school, each filled from the profile', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    const log = wireWorkdayEducation(env);
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, CTX.answerBank, { gpa: '8.7/10' }),
+      facts: { educationEntries: WD_SCHOOLS },
+    });
+    const result = await run_.runAutofill(ctx, null);
+    const doc = env.document;
+
+    const b1 = eduBlock(doc, 1), b2 = eduBlock(doc, 2);
+    ok(b1 && b2, 'two blocks added, one per school');
+    notOk(eduBlock(doc, 3), 'no empty third block');
+    eq(log.eduAdds, 2);
+    eq(eduVal(b1, 'schoolName'), 'Indian Institute of Technology Delhi');
+    eq(b1.querySelector('[data-automation-id="formField-degree"] button').textContent, "Bachelor's Degree",
+       'B.Tech takes the list\'s level, never Master\'s');
+    eq(eduVal(b1, 'fieldOfStudy'), 'Chemical Engineering');
+    eq(eduVal(b1, 'gradeAverage'), '8.7/10', 'the first school falls back to the profile GPA');
+    eq(eduYear(b1, 'firstYearAttended'), '2019');
+    eq(eduYear(b1, 'lastYearAttended'), '2023');
+
+    eq(eduVal(b2, 'schoolName'), 'Delhi Public School', 'block 2 is school 2');
+    eq(b2.querySelector('[data-automation-id="formField-degree"] button').textContent, 'High School or equivalent');
+    eq(eduVal(b2, 'gradeAverage'), '95%', 'its own GPA');
+    eq(eduYear(b2, 'lastYearAttended'), '2019');
+
+    eq(log.expAdds, 0, "Work Experience's Add is never pressed without jobs");
+    eq(log.next, 0, 'never Save and Continue');
+    const rows = result.decisions.filter(x => String(x.key).startsWith('repeater:education'));
+    eq(rows.length, 2);
+    ok(rows.every(x => x.action === p.FILL), rows.map(x => `${x.label}: ${x.reason}`).join(' | '));
+  });
+});
+
+test('Workday education: a block already showing a school takes that school', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    wireWorkdayEducation(env);
+    const doc = env.document;
+    doc.getElementById('edu-add').click();                       // Workday's resume read made block 1…
+    eduBlock(doc, 1).querySelector('[name="schoolName"]').value = 'Delhi Public School';   // …for school 2
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: WD_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    eq(eduYear(eduBlock(doc, 1), 'lastYearAttended'), '2019', 'block 1 completed as Delhi Public School');
+    eq(eduVal(eduBlock(doc, 2), 'schoolName'), 'Indian Institute of Technology Delhi', 'the other school gets a new block');
+  });
+});
+
 const WD_JOBS = [
   { title: 'AI/ML Engineer', company: 'Zorba AI', location: 'Kolkata', from: '04/2024', to: '', current: true,
     description: 'Built RAG pipelines on GCP.' },

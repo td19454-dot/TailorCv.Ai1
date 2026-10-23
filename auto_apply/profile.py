@@ -324,7 +324,8 @@ def parse_saved_experience(raw) -> list[dict]:
 # Workday's Education section: School or University, Degree, Field of Study,
 # From, To (Actual or Expected) — the years only.
 
-EDUCATION_FIELDS = ("school", "degree", "field", "from", "to")
+# "gpa": Workday's per-school "Overall Result (GPA)".
+EDUCATION_FIELDS = ("school", "degree", "field", "from", "to", "gpa")
 YEAR_RE = re.compile(r"^(19|20)\d{2}$")
 
 
@@ -352,6 +353,7 @@ def education_from_facts(education: list) -> list[dict]:
             # A range written only in end_date ("2023 - 2027") still yields both.
             "from": to_year(start) or (to_year(end) if to_year(end) != to_year(end, last=True) else ""),
             "to": to_year(end, last=True),
+            "gpa": str(e.get("gpa") or "").strip(),
         }
         if any(entry.values()):
             out.append(entry)

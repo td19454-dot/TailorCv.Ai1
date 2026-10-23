@@ -193,10 +193,13 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
         # single University / Degree / Major boxes other forms have are read
         # from the first (most recent) entry.
         Spec("educationHistory", "education_history", "Schools", kind="education", wide=True,
-             help="Most recent first. Years only; “To” can be your expected graduation year.",
+             help="Most recent first, as Workday's Education section asks: school, degree, "
+                  "field of study, overall result (GPA), and years — “To” can be your expected "
+                  "graduation year.",
              max_len=20000),
         Spec("gpa", "gpa", "GPA / CGPA / percentage", placeholder="e.g. 8.7/10 or 85%",
-             max_len=20),
+             help="For forms with a single GPA box. Also used for your first school when "
+                  "its own GPA is empty.", max_len=20),
     ]),
     ("eligibility", "Work eligibility", [
         Spec("workAuthorized", "work_authorized", "Authorized to work in the job's country?",
@@ -441,7 +444,7 @@ def _validated_experience(raw) -> list:
     return jobs
 
 
-EDUCATION_LIMITS = {"school": 200, "degree": 120, "field": 120}
+EDUCATION_LIMITS = {"school": 200, "degree": 120, "field": 120, "gpa": 20}
 MAX_SCHOOLS = 10
 
 
