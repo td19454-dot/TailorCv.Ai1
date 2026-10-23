@@ -614,6 +614,7 @@
     looksLikeOpaqueId: () => looksLikeOpaqueId,
     looksSecret: () => looksSecret,
     matchFieldKey: () => matchFieldKey,
+    matchSensitiveKey: () => matchSensitiveKey,
     normalizeOptionText: () => normalizeOptionText,
     parseLooseDate: () => parseLooseDate,
     questionSignature: () => questionSignature,
@@ -835,7 +836,7 @@ what when where which who will with would you your now future
     ["demographic", /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
     ["demographic", /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/]
   ];
-  var STORABLE_SENSITIVE = /* @__PURE__ */ new Set(["clearance", "criminal"]);
+  var STORABLE_SENSITIVE = /* @__PURE__ */ new Set(["clearance", "criminal", "citizenship"]);
   var EEO_FIELD_MARKERS = [
     "gender",
     "race",
@@ -1300,16 +1301,17 @@ what when where which who will with would you your now future
     if (labels.length < 2) return false;
     return labels.filter((l) => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
   }
-  function matchFieldKey(label) {
+  function matchFieldKey(label, entries) {
     const sig = questionSignature(label);
     if (!sig) return null;
-    for (const entry of FIELD_SYNONYMS) {
+    const pool = entries || FIELD_SYNONYMS;
+    for (const entry of pool) {
       for (const syn of entry.labels) {
         if (questionSignature(syn) === sig) return entry;
       }
     }
     let best = null, bestWeight = -1;
-    for (const entry of FIELD_SYNONYMS) {
+    for (const entry of pool) {
       for (const syn of entry.labels) {
         if (!synonymMatches(syn, label, entry)) continue;
         const weight = distinctive(syn).size;
@@ -1321,6 +1323,29 @@ what when where which who will with would you your now future
     }
     return best;
   }
+  var CATEGORY_KEYS = {
+    sponsorship: ["requires_visa_sponsorship", "visa_status"],
+    work_authorization: ["authorized_to_work_in_country"],
+    citizenship: ["citizenship_status", "nationality"],
+    salary: ["expected_salary"],
+    demographic: [
+      "gender",
+      "race_ethnicity",
+      "veteran_status",
+      "disability_status",
+      "gender_pronouns",
+      "lgbtq_identity"
+    ]
+  };
+  function matchSensitiveKey(label, category) {
+    const keys = CATEGORY_KEYS[category];
+    if (keys) {
+      const own = matchFieldKey(label, FIELD_SYNONYMS.filter((e) => keys.includes(e.key)));
+      if (own) return own;
+    }
+    const any = matchFieldKey(label);
+    return any && any.sensitive ? any : null;
+  }
 
   // src/autofill/timing.js
   var TIMING = {
@@ -1328,6 +1353,10 @@ what when where which who will with would you your now future
     settleMs: 60,
     // How long to wait for a custom dropdown's menu to appear after opening it.
     optionWaitMs: 600,
+    // How long a search-as-you-type list may keep showing "Loading..." before
+    // giving up. Ashby's Location searches its server per keystroke; from India
+    // that round trip outlasted every wait above, and the field stayed empty.
+    remoteSearchMs: 5e3,
     // How long to watch for fields that appear in response to an answer.
     revealWatchMs: 900,
     // ...and, while the page is still changing, how much longer. Oracle loads its
@@ -1486,6 +1515,33 @@ what when where which who will with would you your now future
   function choiceText(el) {
     return (el.textContent || "").replace(/\s+/g, " ").trim();
   }
+  function isChoiceMirror(el) {
+    if (!el || (el.tagName || "").toLowerCase() !== "input") return false;
+    const type = (el.getAttribute("type") || "").toLowerCase();
+    if (type !== "checkbox" && type !== "radio") return false;
+    if (el.getAttribute("tabindex") !== "-1") return false;
+    if (el.closest && el.closest("label")) return false;
+    const id = el.getAttribute("id");
+    if (id && el.ownerDocument && Array.from(el.ownerDocument.querySelectorAll("label[for]")).some((l) => l.getAttribute("for") === id)) return false;
+    const parent = el.parentElement;
+    if (!parent) return false;
+    const buttons = Array.from(parent.children).filter((c) => c.matches && c.matches(CHOICE_SEL));
+    return buttons.length >= 2;
+  }
+  function mirrorLabel(group) {
+    const mirror = Array.from(group.querySelectorAll("input")).find(isChoiceMirror);
+    const key = mirror && (mirror.getAttribute("id") || mirror.getAttribute("name"));
+    if (!key) return null;
+    return Array.from(group.ownerDocument.querySelectorAll("label[for]")).find((l) => l.getAttribute("for") === key) || null;
+  }
+  function mirrorQuestion(group) {
+    const label = mirrorLabel(group);
+    const text = label ? choiceText(label) : "";
+    return text && !PROMPT_ONLY_RE.test(text) ? text.slice(0, 600) : "";
+  }
+  function realInputsIn(node) {
+    return Array.from(node.querySelectorAll('input:not([type="hidden"]), select, textarea')).filter((x) => !isChoiceMirror(x));
+  }
   function isChoiceSelected(el) {
     if (!el) return false;
     const a = (n) => el.getAttribute && el.getAttribute(n) || "";
@@ -1520,13 +1576,15 @@ what when where which who will with would you your now future
       }).filter(Boolean).join(" ") || rg.getAttribute("aria-label") || "";
       if (named && !PROMPT_ONLY_RE.test(named)) return named.slice(0, 600);
     }
+    const labelled = mirrorQuestion(group);
+    if (labelled) return labelled;
     let n = group;
     for (let depth = 0; n && depth < 4; depth++, n = n.parentElement) {
       if (isFormLevel(n)) break;
       let groups = 0, fields = 0;
       try {
         groups = n.querySelectorAll(CHOICE_SEL).length;
-        fields = n.querySelectorAll('input:not([type="hidden"]), select, textarea').length;
+        fields = realInputsIn(n).length;
       } catch (e) {
         return "";
       }
@@ -1549,6 +1607,7 @@ what when where which who will with would you your now future
     }
     for (const b of all) {
       if (b.closest('#tailorcv-sidebar, nav, header, footer, [role="navigation"], [role="tablist"], [role="menu"]')) continue;
+      if (notAField(b)) continue;
       if (!isVisible(b)) continue;
       const t = choiceText(b);
       if (!t || t.length > 40 || NAV_TEXT.test(t)) continue;
@@ -1561,7 +1620,7 @@ what when where which who will with would you your now future
     for (const [group, buttons] of byParent) {
       if (buttons.length < 2 || buttons.length > 6) continue;
       try {
-        if (group.querySelector('input:not([type="hidden"]), select, textarea')) continue;
+        if (realInputsIn(group).length) continue;
       } catch (e) {
         continue;
       }
@@ -1726,7 +1785,7 @@ what when where which who will with would you your now future
     }
     if (!scored.length) return null;
     scored.sort((a, b) => b.score - a.score || a.fields.length - b.fields.length);
-    const best = scored[0];
+    const best = ashbyWholeForm(scored[0], d);
     const url = d.defaultView && d.defaultView.location && d.defaultView.location.href || "";
     return {
       root: best.root,
@@ -1737,6 +1796,26 @@ what when where which who will with would you your now future
       url,
       isForm: best.score >= MIN_CONFIDENT_SCORE || APPLY_URL_RE.test(url)
     };
+  }
+  var NOT_A_FIELD_SEL = ".ashby-application-form-autofill-uploader";
+  function notAField(el) {
+    return !!(el && el.closest && el.closest(NOT_A_FIELD_SEL));
+  }
+  function ashbyWholeForm(best, d) {
+    const SEL = ".ashby-application-form-container";
+    let parts = [];
+    try {
+      parts = Array.from(d.querySelectorAll(SEL));
+    } catch (e) {
+      return best;
+    }
+    if (parts.length < 2 || !parts.some((c) => c === best.root || c.contains(best.root))) return best;
+    const root = commonAncestor(parts);
+    if (!root || root === best.root || isFormLevel(root)) return best;
+    const p = probe();
+    const { elements, opaqueHosts } = p.fillableIn(root);
+    const fields = elements.filter((el) => isVisible(el) && !notAField(el));
+    return { root, score: best.score, fields, opaqueHosts };
   }
   function commonAncestor(els) {
     let node = els[0];
@@ -1915,6 +1994,7 @@ what when where which who will with would you your now future
     const fields = (form.fields || []).concat(orphanFileInputs(form));
     for (const el of fields) {
       if (isListboxCompanion(el)) continue;
+      if (isChoiceMirror(el)) continue;
       const dateWrap = dateWrapperOf(el);
       if (dateWrap) {
         const existing = dateGroups.get(dateWrap);
@@ -2020,6 +2100,10 @@ what when where which who will with would you your now future
             row.label = heading;
           }
         }
+        if (!slot && CATCH_ALL_UPLOAD_RE.test(row.label) && /cover ?letter/i.test(fieldDescription(el))) {
+          slot = "cover_letter";
+          row.catchAllUpload = true;
+        }
         row.documentSlot = slot;
         row.filled = hasUploadedFile(el);
       }
@@ -2041,7 +2125,7 @@ what when where which who will with would you your now future
         value: selected ? choiceText(selected) : "",
         filled: !!selected,
         invalid: false,
-        required: /\*\s*$|\*|\(required\)/.test(question),
+        required: /\*\s*$|\*|\(required\)/.test(question) || labelMarkedRequired(mirrorLabel(group)),
         options: buttons.map((b) => ({ value: choiceText(b), label: choiceText(b), el: b })),
         readable: true,
         documentSlot: null,
@@ -2071,6 +2155,12 @@ what when where which who will with would you your now future
         dropOnly: true
       });
     }
+    if (out.some((r) => r.documentSlot === "cover_letter" && !r.catchAllUpload)) {
+      for (const r of out) if (r.catchAllUpload) {
+        r.documentSlot = null;
+        r.catchAllUpload = false;
+      }
+    }
     const phoneCode = out.find((r) => PHONE_CODE_RE.test(r.label || ""));
     if (phoneCode) {
       for (const row of out) {
@@ -2094,9 +2184,32 @@ what when where which who will with would you your now future
         if (/\*|\(required\)/i.test(question)) row.required = true;
         const group = row.members[0].closest && row.members[0].closest('fieldset, [role="radiogroup"]');
         if (group && group.getAttribute("aria-required") === "true") row.required = true;
+        if (group && labelMarkedRequired(fieldsetQuestionLabel(group, row.members))) row.required = true;
       } else if (row.optionLabel) row.label = row.optionLabel;
     }
     return out;
+  }
+  var CATCH_ALL_UPLOAD_RE = /\b(additional|other|supporting|supplementary|optional)\b.*\b(attachments?|documents?|files?|materials?)\b|^\s*(attachments?|documents?)\s*\*?\s*$/i;
+  function fieldDescription(el) {
+    const wrap = el.closest && el.closest(
+      '[data-field-path], .ashby-application-form-field-entry, [class*="fieldEntry" i], [class*="field-entry" i], [class*="form-group" i], fieldset'
+    );
+    if (!wrap || isFormLevel(wrap)) return "";
+    try {
+      const clone = wrap.cloneNode(true);
+      for (const x of clone.querySelectorAll("button, input, select, textarea")) x.remove();
+      const doc = wrap.ownerDocument;
+      const walker = doc.createTreeWalker(
+        clone,
+        4
+        /* NodeFilter.SHOW_TEXT */
+      );
+      const parts = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) parts.push(n.nodeValue);
+      return clean(parts.join(" ")).slice(0, 400);
+    } catch (e) {
+      return "";
+    }
   }
   function unreadable(el, p) {
     return {
@@ -2294,14 +2407,21 @@ what when where which who will with would you your now future
     for (const zone of zones) {
       let hasInput = false;
       try {
-        hasInput = !!zone.querySelector('input[type="file"]');
+        hasInput = !!zone.querySelector('input[type="file"]') || besideFileInput(zone);
       } catch (e) {
         hasInput = true;
       }
       const nested = out.some((other) => zone.contains(other) || other.contains(zone));
-      if (!hasInput && !nested && isVisible(zone)) out.push(zone);
+      if (!hasInput && !nested && isVisible(zone) && !notAField(zone)) out.push(zone);
     }
     return out;
+  }
+  function besideFileInput(zone) {
+    let n = zone.parentElement;
+    for (let i = 0; n && i < 3 && !isFormLevel(n); i++, n = n.parentElement) {
+      if (Array.from(n.children).some((c) => (c.tagName || "").toLowerCase() === "input" && (c.getAttribute("type") || "").toLowerCase() === "file")) return true;
+    }
+    return false;
   }
   function zoneLabel(zone, p) {
     const aria = zone.getAttribute && zone.getAttribute("aria-label");
@@ -2338,6 +2458,8 @@ what when where which who will with would you your now future
       if (legend) return clean(legend.textContent);
       const viaProbe = p.labelFor(group);
       if (viaProbe) return viaProbe;
+      const question = fieldsetQuestionLabel(group, members);
+      if (question) return clean(question.textContent);
     }
     let n = el.parentElement, depth = 0;
     while (n && depth < 6) {
@@ -2349,6 +2471,27 @@ what when where which who will with would you your now future
       depth++;
     }
     return "";
+  }
+  function fieldsetQuestionLabel(group, members) {
+    const ids = new Set(members.map((m) => m.id).filter(Boolean));
+    const doc = group.ownerDocument;
+    let labels = [];
+    try {
+      labels = Array.from(group.querySelectorAll("label"));
+    } catch (e) {
+      return null;
+    }
+    return labels.find((label) => {
+      if (label.querySelector(probe().CONTROL_SEL)) return false;
+      const target = label.getAttribute("for");
+      if (!target || ids.has(target)) return false;
+      if (doc && doc.getElementById(target)) return false;
+      return !!clean(label.textContent);
+    }) || null;
+  }
+  function labelMarkedRequired(label) {
+    const cls = label && label.className && String(label.className) || "";
+    return /(^|[\s_-])required($|[\s_-])/i.test(cls);
   }
   function questionLabelIn(node) {
     let labels = null;
@@ -2692,9 +2835,9 @@ what when where which who will with would you your now future
       const category = classifySensitive(row.label);
       if (category) {
         d.sensitive = category;
-        const entry2 = matchFieldKey(row.label);
-        const stored = entry2 && entry2.sensitive ? bank[entry2.key] : "";
-        if (!stored && STORABLE_SENSITIVE.has(category)) {
+        const entry2 = matchSensitiveKey(row.label, category);
+        const stored = entry2 ? bank[entry2.key] : "";
+        if (STORABLE_SENSITIVE.has(category)) {
           const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
           const value2 = saved ? coerce(saved, row) : null;
           if (value2 !== null) {
@@ -3049,7 +3192,10 @@ what when where which who will with would you your now future
     "Career site"
   ];
   var CITIZENSHIP_GROUPS = [
-    { name: "none", test: /\bnot (a |an )?(u\.? ?s\.?|united states)? ?(citizen|national)\b|\bnon[- ]?(u\.? ?s\.? )?citizen\b|\bforeign national\b|\bother\b|\bnone of (the )?above\b/i },
+    // "…AND I am NOT a U.S. person" (Snowflake's export-control list) mentions
+    // "citizen" earlier in the same option; read as the citizen row it was the
+    // pick for a U.S. citizen. Any "not … person / citizen" is a "none".
+    { name: "none", test: /\bnot (a |an )?(u\.? ?s\.?|united states)? ?(citizen|national|person)\b|\bnon[- ]?(u\.? ?s\.? )?citizen\b|\bforeign national\b|\bother\b|\bnone of (the )?above\b/i },
     { name: "daca", test: /\bdaca\b|\bdeferred action\b/i },
     { name: "asylee", test: /\basyl(ee|um)\b/i },
     { name: "refugee", test: /\brefugee\b/i },
@@ -3257,16 +3403,7 @@ what when where which who will with would you your now future
       if (!options.length) {
         return LOCATION_KEYS.has(row.candidateKey) && row.candidates && row.candidates.length ? row.candidates[0] : text;
       }
-      if (row.candidateKey === "citizenship_status") return citizenshipOption(text, options);
-      if (row.candidateKey === "authorized_to_work_in_country" && !options.some((o) => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
-        return workAuthStatement(text, row.sponsorship, options);
-      }
-      const candidates = row.candidates && row.candidates.length ? row.candidates : [text];
-      const guard = row.candidateKey === "degree" ? degreeGuard : row.candidateKey === "race_ethnicity" ? ethnicityGuardFor(candidates[0]) : EEO_GROUPS[row.candidateKey] ? eeoGuardFor(row.candidateKey, candidates[0]) : null;
-      const bare = READ_FIRST_KEYS.has(row.candidateKey) ? options.map(stripRegionSuffix) : options;
-      const match = bestCandidateMatch(candidates, bare, guard);
-      if (match != null) return options[bare.indexOf(match)];
-      return declineFallback(text, options);
+      return pickFromOptions(text, row, options);
     }
     const hints = row.hints || {};
     if (hints.type === "date" || hints.type === "month" || looksLikeDateField(row)) {
@@ -3294,11 +3431,30 @@ what when where which who will with would you your now future
     const hint = `${row.hints && row.hints.placeholder || ""} ${row.label || ""}`;
     return /\b(date|dd\s*\/\s*mm|mm\s*\/\s*dd|yyyy)\b/i.test(hint);
   }
+  function pickFromOptions(text, row, options) {
+    if (row.candidateKey === "citizenship_status") return citizenshipOption(text, options);
+    if (row.candidateKey === "authorized_to_work_in_country" && !options.some((o) => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
+      return workAuthStatement(text, row.sponsorship, options);
+    }
+    const candidates = row.candidates && row.candidates.length ? row.candidates : [text];
+    const guard = row.candidateKey === "degree" ? degreeGuard : row.candidateKey === "race_ethnicity" ? ethnicityGuardFor(candidates[0]) : EEO_GROUPS[row.candidateKey] ? eeoGuardFor(row.candidateKey, candidates[0]) : null;
+    const bare = READ_FIRST_KEYS.has(row.candidateKey) ? options.map(stripRegionSuffix) : options;
+    const match = bestCandidateMatch(candidates, bare, guard);
+    if (match != null) return options[bare.indexOf(match)];
+    return declineFallback(text, options);
+  }
+  function guardedKey(key) {
+    return key === "race_ethnicity" || key === "citizenship_status" || key === "hispanic_latino" || !!EEO_GROUPS[key];
+  }
   function coerceChoice(text, row) {
     const options = (row.options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean);
     const truthy = /^(yes|true|1|on|checked|i agree|agree|accept)$/i.test(text);
     if (!options.length || options.length === 1 && row.kind === "checkbox") {
       return truthy ? "yes" : null;
+    }
+    if (row.candidateKey) {
+      const picked = pickFromOptions(text, row, options);
+      if (picked != null || guardedKey(row.candidateKey)) return picked;
     }
     const match = bestOptionMatch(text, options);
     if (match) return typeof match === "string" ? match : match.label;
@@ -3605,9 +3761,15 @@ what when where which who will with would you your now future
           setText(input, query, { blur: false });
           focus(input);
           options = await waitForOptions2(el, TIMING.optionWaitMs);
+          options = await waitOutLoading(el, shapes, options);
+          if (!options.length && listStillLoading(el.ownerDocument || globalThis.document, el)) {
+            row.searchTrace.push(Object.assign(searchStep(query, input, el, options), { stillLoading: true }));
+            break;
+          }
           if (!options.length || !listOffersAny(shapes, options)) {
             await typeText(input, query, 8);
             options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
+            options = await waitOutLoading(el, shapes, options);
           }
           if (!options.length) {
             fireKey(input, "keydown", "Enter");
@@ -3803,6 +3965,37 @@ what when where which who will with would you your now future
       }
       const timer = setTimeout(finish, timeout);
     });
+  }
+  async function waitOutLoading(el, shapes, options) {
+    const doc = el.ownerDocument || globalThis.document;
+    const deadline = Date.now() + TIMING.remoteSearchMs;
+    let nodes = options || [];
+    while ((!nodes.length || !listOffersAny(shapes, nodes)) && listStillLoading(doc, el) && Date.now() < deadline) {
+      await sleep(100);
+      nodes = visibleOptionNodes2(doc, el);
+    }
+    return nodes.length ? nodes : visibleOptionNodes2(doc, el);
+  }
+  var LOADING_TEXT_RE = /^\s*(loading|searching)\b[.…\s]*$/i;
+  function listStillLoading(doc, el) {
+    let id = "";
+    for (let n = el, i = 0; n && i < 4 && !id; n = n.parentElement, i++) {
+      id = (n.getAttribute && (n.getAttribute("aria-controls") || n.getAttribute("aria-owns")) || "").split(/\s+/)[0];
+    }
+    if (!id) return false;
+    let list = null;
+    try {
+      list = doc.getElementById(id);
+    } catch (e) {
+      list = null;
+    }
+    if (!list) return false;
+    try {
+      if (list.matches('[aria-busy="true"], [data-loading]') || list.querySelector('[aria-busy="true"], [data-loading], [role="progressbar"]')) return true;
+    } catch (e) {
+      return false;
+    }
+    return LOADING_TEXT_RE.test(list.textContent || "");
   }
   async function waitForMatchingOptions(el, shapes, timeout) {
     const doc = el.ownerDocument || globalThis.document;
@@ -4582,12 +4775,16 @@ what when where which who will with would you your now future
     stopWatchingUserEdits();
     if (!form || !form.root) return;
     const rows = /* @__PURE__ */ new Map();
+    const before = /* @__PURE__ */ new Map();
     for (const row of describeFields(form)) {
       for (const el of row.members || []) rows.set(el, row);
+      if (row.key) before.set(row.key, currentValue(row));
     }
     const handler = (event) => {
       const row = rows.get(event.target);
       if (!row || !row.key) return;
+      const value = currentValue(row);
+      if (!value || value === before.get(row.key)) return;
       if (!state.userEdited.includes(row.key)) state.userEdited.push(row.key);
       if (typeof onEdit === "function") {
         try {
@@ -4600,6 +4797,10 @@ what when where which who will with would you your now future
     for (const type of ["change", "blur"]) {
       form.root.addEventListener(type, handler, { capture: true, passive: true });
     }
+  }
+  function currentValue(row) {
+    const now2 = reprobe(row);
+    return now2 && now2.filled ? String(now2.value || "") : "";
   }
   function stopWatchingUserEdits() {
     if (!editWatcher) return;

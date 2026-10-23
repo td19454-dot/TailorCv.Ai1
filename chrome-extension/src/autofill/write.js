@@ -367,6 +367,16 @@ export async function commitCombobox(row, value, candidates, readFirst) {
         setText(input, query, { blur: false });
         focus(input);
         options = await waitForOptions(el, TIMING.optionWaitMs);
+        // A remote search still answering: wait for it rather than retype,
+        // which would only start the search over.
+        options = await waitOutLoading(el, shapes, options);
+        // Still loading after the whole wait: the search itself is not
+        // answering. Retyping or trying the other words would only wait the
+        // same again, once per word — stop and leave it to the person.
+        if (!options.length && listStillLoading(el.ownerDocument || globalThis.document, el)) {
+          row.searchTrace.push(Object.assign(searchStep(query, input, el, options), { stillLoading: true }));
+          break;
+        }
         if (!options.length || !listOffersAny(shapes, options)) {
           // Widgets that filter only on real keystrokes (Oracle): typed key by
           // key. Also when the list is NOT empty but lacks the answer — Oracle
@@ -377,6 +387,7 @@ export async function commitCombobox(row, value, candidates, readFirst) {
           // returns nothing.
           await typeText(input, query, 8);
           options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
+          options = await waitOutLoading(el, shapes, options);
         }
         if (!options.length) {
           // Workday's multiselect search only shows results on Enter. Here Enter
@@ -613,6 +624,47 @@ function waitForOptions(el, timeout) {
     try { obs.observe(doc.body, { childList: true, subtree: true }); } catch (e) {}
     const timer = setTimeout(finish, timeout);
   });
+}
+
+/**
+ * Keep waiting while this control's own list says it is still loading.
+ *
+ * Search-as-you-type lists that query a server show a placeholder until the
+ * answer arrives — Ashby's Location shows "Loading..." in the listbox its
+ * input aria-controls — and that round trip can outlast every fixed wait
+ * here. Only a list that SAYS it is loading is waited on, so nothing changes
+ * for lists that are simply empty. Capped by TIMING.remoteSearchMs.
+ */
+async function waitOutLoading(el, shapes, options) {
+  const doc = el.ownerDocument || globalThis.document;
+  const deadline = Date.now() + TIMING.remoteSearchMs;
+  let nodes = options || [];
+  while ((!nodes.length || !listOffersAny(shapes, nodes))
+         && listStillLoading(doc, el) && Date.now() < deadline) {
+    await sleep(100);
+    nodes = visibleOptionNodes(doc, el);
+  }
+  return nodes.length ? nodes : visibleOptionNodes(doc, el);
+}
+
+const LOADING_TEXT_RE = /^\s*(loading|searching)\b[.…\s]*$/i;
+
+/** Does the listbox this control owns show a loading state? */
+function listStillLoading(doc, el) {
+  let id = '';
+  for (let n = el, i = 0; n && i < 4 && !id; n = n.parentElement, i++) {
+    id = ((n.getAttribute && (n.getAttribute('aria-controls') || n.getAttribute('aria-owns'))) || '')
+      .split(/\s+/)[0];
+  }
+  if (!id) return false;
+  let list = null;
+  try { list = doc.getElementById(id); } catch (e) { list = null; }
+  if (!list) return false;
+  try {
+    if (list.matches('[aria-busy="true"], [data-loading]')
+        || list.querySelector('[aria-busy="true"], [data-loading], [role="progressbar"]')) return true;
+  } catch (e) { return false; }
+  return LOADING_TEXT_RE.test(list.textContent || '');
 }
 
 /**

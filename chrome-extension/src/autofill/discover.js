@@ -183,6 +183,53 @@ function choiceText(el) {
   return (el.textContent || '').replace(/\s+/g, ' ').trim();
 }
 
+/**
+ * A hidden input that only mirrors a row of choice buttons, for the page's own
+ * form state. Ashby's Yes / No:
+ *   <button aria-pressed data-option="yes">Yes</button><button …>No</button>
+ *   <input type="checkbox" tabindex="-1" name="<question id>">
+ * Taken for a field of its own, it hid the buttons (a group holding an input
+ * was not a choice group) and was offered as a tickbox that can only be ticked.
+ * Narrow on purpose: out of the tab order, labelled by nothing of its own, and
+ * sitting beside at least two choice buttons.
+ */
+export function isChoiceMirror(el) {
+  if (!el || (el.tagName || '').toLowerCase() !== 'input') return false;
+  const type = (el.getAttribute('type') || '').toLowerCase();
+  if (type !== 'checkbox' && type !== 'radio') return false;
+  if (el.getAttribute('tabindex') !== '-1') return false;
+  if (el.closest && el.closest('label')) return false;
+  const id = el.getAttribute('id');
+  if (id && el.ownerDocument && Array.from(el.ownerDocument.querySelectorAll('label[for]'))
+        .some(l => l.getAttribute('for') === id)) return false;
+  const parent = el.parentElement;
+  if (!parent) return false;
+  const buttons = Array.from(parent.children).filter(c => c.matches && c.matches(CHOICE_SEL));
+  return buttons.length >= 2;
+}
+
+/** The <label for=…> naming a choice group's mirror input, or null. */
+function mirrorLabel(group) {
+  const mirror = Array.from(group.querySelectorAll('input')).find(isChoiceMirror);
+  const key = mirror && (mirror.getAttribute('id') || mirror.getAttribute('name'));
+  if (!key) return null;
+  return Array.from(group.ownerDocument.querySelectorAll('label[for]'))
+    .find(l => l.getAttribute('for') === key) || null;
+}
+
+/** The question a mirror input's own <label for=…> names, or ''. */
+function mirrorQuestion(group) {
+  const label = mirrorLabel(group);
+  const text = label ? choiceText(label) : '';
+  return text && !PROMPT_ONLY_RE.test(text) ? text.slice(0, 600) : '';
+}
+
+/** Inputs in `node` that are real fields, not a choice group's mirror. */
+function realInputsIn(node) {
+  return Array.from(node.querySelectorAll('input:not([type="hidden"]), select, textarea'))
+    .filter(x => !isChoiceMirror(x));
+}
+
 /** Is this choice button currently the selected one? */
 export function isChoiceSelected(el) {
   if (!el) return false;
@@ -227,13 +274,17 @@ function choiceQuestion(group) {
     }).filter(Boolean).join(' ') || rg.getAttribute('aria-label') || '';
     if (named && !PROMPT_ONLY_RE.test(named)) return named.slice(0, 600);
   }
+  // So does a mirror input's <label for=…> (Ashby): the question alone, without
+  // the description paragraph the text walk below would sweep in with it.
+  const labelled = mirrorQuestion(group);
+  if (labelled) return labelled;
   let n = group;
   for (let depth = 0; n && depth < 4; depth++, n = n.parentElement) {
     if (isFormLevel(n)) break;
     let groups = 0, fields = 0;
     try {
       groups = n.querySelectorAll(CHOICE_SEL).length;
-      fields = n.querySelectorAll('input:not([type="hidden"]), select, textarea').length;
+      fields = realInputsIn(n).length;
     } catch (e) { return ''; }
     if (fields > 0 || groups > group.querySelectorAll(CHOICE_SEL).length) {
       if (depth > 0) break;          // reached a box holding another question
@@ -252,6 +303,7 @@ export function choiceGroups(root) {
   try { all = Array.from(root.querySelectorAll(CHOICE_SEL)); } catch (e) { return []; }
   for (const b of all) {
     if (b.closest('#tailorcv-sidebar, nav, header, footer, [role="navigation"], [role="tablist"], [role="menu"]')) continue;
+    if (notAField(b)) continue;
     if (!isVisible(b)) continue;
     const t = choiceText(b);
     if (!t || t.length > 40 || NAV_TEXT.test(t)) continue;
@@ -263,7 +315,7 @@ export function choiceGroups(root) {
   const out = [];
   for (const [group, buttons] of byParent) {
     if (buttons.length < 2 || buttons.length > 6) continue;
-    try { if (group.querySelector('input:not([type="hidden"]), select, textarea')) continue; }
+    try { if (realInputsIn(group).length) continue; }
     catch (e) { continue; }
     const question = choiceQuestion(group);
     if (!question) continue;
@@ -467,7 +519,7 @@ export function findForm(doc) {
   // Prefer the highest score; on a tie prefer the TIGHTEST root, so a <form>
   // inside a page wrapper wins over the wrapper.
   scored.sort((a, b) => (b.score - a.score) || (a.fields.length - b.fields.length));
-  const best = scored[0];
+  const best = ashbyWholeForm(scored[0], d);
   const url = (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '';
   return {
     root: best.root,
@@ -478,6 +530,35 @@ export function findForm(doc) {
     url,
     isForm: best.score >= MIN_CONFIDENT_SCORE || APPLY_URL_RE.test(url),
   };
+}
+
+// Ashby's "Autofill from resume" box sits beside the form. It is Ashby's own
+// resume parser, not a question: a resume dropped into it re-parses and
+// overwrites the fields autofill has just filled.
+const NOT_A_FIELD_SEL = '.ashby-application-form-autofill-uploader';
+
+function notAField(el) {
+  return !!(el && el.closest && el.closest(NOT_A_FIELD_SEL));
+}
+
+/**
+ * Ashby renders the application as sibling containers: the questions, then the
+ * voluntary EEO survey (Gender / Race / Veteran Status) in a second
+ * .ashby-application-form-container. Each is scored on its own and only the
+ * best was kept, so the survey was never seen. The root becomes the smallest
+ * node holding all of them, minus the resume-parser box beside them.
+ */
+function ashbyWholeForm(best, d) {
+  const SEL = '.ashby-application-form-container';
+  let parts = [];
+  try { parts = Array.from(d.querySelectorAll(SEL)); } catch (e) { return best; }
+  if (parts.length < 2 || !parts.some(c => c === best.root || c.contains(best.root))) return best;
+  const root = commonAncestor(parts);
+  if (!root || root === best.root || isFormLevel(root)) return best;
+  const p = probe();
+  const { elements, opaqueHosts } = p.fillableIn(root);
+  const fields = elements.filter(el => isVisible(el) && !notAField(el));
+  return { root, score: best.score, fields, opaqueHosts };
 }
 
 function commonAncestor(els) {
@@ -693,6 +774,9 @@ export function describeFields(form) {
   for (const el of fields) {
     // Workday's value store behind a <button> dropdown, not a question of its own.
     if (isListboxCompanion(el)) continue;
+    // Ashby's hidden checkbox behind a Yes / No pair: the buttons are the
+    // question, found as a choice group below.
+    if (isChoiceMirror(el)) continue;
     // Workday dates: three spinbutton inputs (month, day, year) that are one
     // question. Described individually they come out as three fields labelled
     // "Month", "Day" and "Year", none of which matches anything the user has
@@ -806,6 +890,15 @@ export function describeFields(form) {
           row.label = heading;
         }
       }
+      // A catch-all upload whose description asks for the cover letter among
+      // other things — Ashby (Snowflake): "Additional Attachments" / "Cover
+      // Letter, Portfolio, Projects, etc". Settled after the loop: it only
+      // takes the cover letter when the form has no field of its own for one.
+      if (!slot && CATCH_ALL_UPLOAD_RE.test(row.label)
+          && /cover ?letter/i.test(fieldDescription(el))) {
+        slot = 'cover_letter';
+        row.catchAllUpload = true;
+      }
       row.documentSlot = slot;
       row.filled = hasUploadedFile(el);
     }
@@ -830,7 +923,8 @@ export function describeFields(form) {
       key, el: group, members: buttons, kind: 'choice',
       label: question, ident: key,
       value: selected ? choiceText(selected) : '', filled: !!selected,
-      invalid: false, required: /\*\s*$|\*|\(required\)/.test(question),
+      invalid: false,
+      required: /\*\s*$|\*|\(required\)/.test(question) || labelMarkedRequired(mirrorLabel(group)),
       options: buttons.map(b => ({ value: choiceText(b), label: choiceText(b), el: b })),
       readable: true, documentSlot: null, hints: { tag: 'choice' },
     });
@@ -849,6 +943,12 @@ export function describeFields(form) {
       documentSlot: documentSlotFor(label),
       hints: { tag: 'dropzone' }, dropOnly: true,
     });
+  }
+
+  // A form with its own Cover Letter upload gets the letter there; the
+  // catch-all box is then left for the person (portfolio, projects…).
+  if (out.some(r => r.documentSlot === 'cover_letter' && !r.catchAllUpload)) {
+    for (const r of out) if (r.catchAllUpload) { r.documentSlot = null; r.catchAllUpload = false; }
   }
 
   // A form with its own country-code FIELD wants the phone number without the
@@ -891,9 +991,34 @@ export function describeFields(form) {
       if (/\*|\(required\)/i.test(question)) row.required = true;
       const group = row.members[0].closest && row.members[0].closest('fieldset, [role="radiogroup"]');
       if (group && group.getAttribute('aria-required') === 'true') row.required = true;
+      if (group && labelMarkedRequired(fieldsetQuestionLabel(group, row.members))) row.required = true;
     } else if (row.optionLabel) row.label = row.optionLabel;
   }
   return out;
+}
+
+// Uploads that take "anything else": the cover letter may go here when the
+// description names it and no dedicated field exists.
+const CATCH_ALL_UPLOAD_RE = /\b(additional|other|supporting|supplementary|optional)\b.*\b(attachments?|documents?|files?|materials?)\b|^\s*(attachments?|documents?)\s*\*?\s*$/i;
+
+/** The text of the field wrapper around `el` — its question and description. */
+function fieldDescription(el) {
+  const wrap = el.closest && el.closest(
+    '[data-field-path], .ashby-application-form-field-entry, [class*="fieldEntry" i], '
+    + '[class*="field-entry" i], [class*="form-group" i], fieldset');
+  if (!wrap || isFormLevel(wrap)) return '';
+  try {
+    const clone = wrap.cloneNode(true);
+    for (const x of clone.querySelectorAll('button, input, select, textarea')) x.remove();
+    // Text node by text node, joined with spaces: Ashby serves the label and
+    // its description with no whitespace between them, so textContent read
+    // "Additional AttachmentsCover Letter…" and "cover letter" never matched.
+    const doc = wrap.ownerDocument;
+    const walker = doc.createTreeWalker(clone, 4 /* NodeFilter.SHOW_TEXT */);
+    const parts = [];
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) parts.push(n.nodeValue);
+    return clean(parts.join(' ')).slice(0, 400);
+  } catch (e) { return ''; }
 }
 
 function unreadable(el, p) {
@@ -1130,13 +1255,36 @@ function dropOnlyZones(root) {
   const out = [];
   for (const zone of zones) {
     let hasInput = false;
-    try { hasInput = !!zone.querySelector('input[type="file"]'); } catch (e) { hasInput = true; }
+    try {
+      // Its own file input, inside it — or beside it, in the same upload
+      // wrapper (Ashby: .ashby-application-form-input-file holds the input and
+      // the "Upload File / or drag and drop here" zone as siblings). Either way
+      // the input is the field and the zone only its face; counted twice, every
+      // Ashby upload grew a phantom "Upload File or drag and drop here" row.
+      hasInput = !!zone.querySelector('input[type="file"]') || besideFileInput(zone);
+    } catch (e) { hasInput = true; }
     // Nested matches (an Uppy root inside an Uppy dashboard) would otherwise each
     // become a field; keep only the innermost.
     const nested = out.some(other => zone.contains(other) || other.contains(zone));
-    if (!hasInput && !nested && isVisible(zone)) out.push(zone);
+    if (!hasInput && !nested && isVisible(zone) && !notAField(zone)) out.push(zone);
   }
   return out;
+}
+
+/**
+ * Does a file input sit beside this zone, as a direct child of one of its
+ * nearest wrappers? Ashby's zone and its parts (the "Upload File" button, the
+ * "or drag and drop here" line — all with "dropzone" in their class) are a few
+ * levels inside the wrapper that holds the input. Stops at the form level, so
+ * a form-wide input never claims an unrelated zone.
+ */
+function besideFileInput(zone) {
+  let n = zone.parentElement;
+  for (let i = 0; n && i < 3 && !isFormLevel(n); i++, n = n.parentElement) {
+    if (Array.from(n.children).some(c => (c.tagName || '').toLowerCase() === 'input'
+        && (c.getAttribute('type') || '').toLowerCase() === 'file')) return true;
+  }
+  return false;
 }
 
 function zoneLabel(zone, p) {
@@ -1199,6 +1347,8 @@ function groupLabel(members, p) {
     if (legend) return clean(legend.textContent);
     const viaProbe = p.labelFor(group);
     if (viaProbe) return viaProbe;
+    const question = fieldsetQuestionLabel(group, members);
+    if (question) return clean(question.textContent);
   }
 
   // Smallest ancestor that contains all the options.
@@ -1211,6 +1361,33 @@ function groupLabel(members, p) {
     n = n.parentElement; depth++;
   }
   return '';
+}
+
+/**
+ * A fieldset's question written as a <label> rather than a <legend> (Ashby:
+ * <fieldset><label for="_systemfield_eeoc_gender">Gender</label> …radios…).
+ * Its `for` names no control on the page, so it is no option's label — the
+ * options' own labels point at the radios. Without this the group took its
+ * first option ("Male", "Hispanic or Latino") as the question.
+ */
+function fieldsetQuestionLabel(group, members) {
+  const ids = new Set(members.map(m => m.id).filter(Boolean));
+  const doc = group.ownerDocument;
+  let labels = [];
+  try { labels = Array.from(group.querySelectorAll('label')); } catch (e) { return null; }
+  return labels.find(label => {
+    if (label.querySelector(probe().CONTROL_SEL)) return false;
+    const target = label.getAttribute('for');
+    if (!target || ids.has(target)) return false;
+    if (doc && doc.getElementById(target)) return false;   // labels some other control
+    return !!clean(label.textContent);
+  }) || null;
+}
+
+/** Is a question label marked required by its class (Ashby's `_required_…`)? */
+function labelMarkedRequired(label) {
+  const cls = (label && label.className && String(label.className)) || '';
+  return /(^|[\s_-])required($|[\s_-])/i.test(cls);
 }
 
 /** A label inside `node` that describes the group rather than one option. */

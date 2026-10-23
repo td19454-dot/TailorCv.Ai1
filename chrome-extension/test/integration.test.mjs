@@ -1766,6 +1766,90 @@ test('Ashby: the education dropdown is matched to one of its real options', asyn
   });
 });
 
+// OpenAI on Ashby (Oct 2026): Yes / No buttons with a hidden mirror checkbox,
+// and the EEO radios in a second, sibling form container.
+const ashbyCtx = over => Object.assign({}, CTX, {
+  answerBank: Object.assign({}, CTX.answerBank, {
+    authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: 'No',
+    gender: 'Cisgender man', race_ethnicity: 'South Asian',
+    veteran_status: 'I have never served in the military',
+  }, over || {}),
+});
+const pressed = (env, id) => {
+  const box = env.document.querySelector(`input[name="${id}"]`).parentElement;
+  const on = box.querySelector('button[aria-pressed="true"]');
+  return on ? on.textContent.trim() : '';
+};
+const checkedRadio = (env, field) => {
+  const r = env.document.querySelector(`input[name="eeo__${field}"]:checked`);
+  return r ? env.document.querySelector(`label[for="${r.id}"]`).textContent.trim() : '';
+};
+
+test('Ashby (OpenAI): Yes / No buttons are questions, not a hidden tickbox', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    const result = await run_.runAutofill(ashbyCtx(), null);
+    notOk(result.error, result.error);
+    const auth = byLabel(result.decisions, 'authorized to work');
+    eq(auth.kind, 'choice');
+    eq(auth.label, 'Are you authorized to work in the country where the job is located?',
+       'the question from its own label, without the description');
+    const spons = byLabel(result.decisions, 'require sponsorship');
+    eq(spons.label, 'Will you now or in the future require sponsorship for employment visa status in this country?');
+    eq(pressed(env, 'q-authorized'), 'Yes');
+    eq(pressed(env, 'q-sponsorship'), 'No');
+    notOk(result.decisions.some(x => x.kind === 'checkbox' && /authorized|sponsorship|office/i.test(x.label)),
+          'the mirror checkbox is not offered as a field of its own');
+  });
+});
+
+test('Ashby (OpenAI): the EEO survey radios are found and filled from the profile', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    const result = await run_.runAutofill(ashbyCtx(), null);
+    eq(checkedRadio(env, 'gender'), 'Male');
+    eq(checkedRadio(env, 'race'), 'Asian (Not Hispanic or Latino)');
+    eq(checkedRadio(env, 'veteran_status'), 'I am not a protected veteran');
+    // Found by their own question — Ashby writes it as a <label>, not a <legend>.
+    // Before, each group took its first option as the question: Race became
+    // "Hispanic or Latino" and was mistaken for the Hispanic Yes / No question.
+    for (const label of ['Gender', 'Race', 'Veteran Status']) {
+      ok(result.decisions.some(x => x.label === label && x.kind === 'radio'), label);
+    }
+  });
+});
+
+test('Ashby (OpenAI): a required Yes / No with no answer on file is asked, never pressed', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    const result = await run_.runAutofill(ashbyCtx(), null);
+    const office = byLabel(result.decisions, 'US office');
+    ok(office.required, 'Ashby marks required on the label\'s class, not with an asterisk');
+    eq(office.action, p.ASK);
+    eq(pressed(env, 'q-office'), '');
+  });
+});
+
+test('Ashby (OpenAI): a protected veteran is never filed as "not a protected veteran"', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    await run_.runAutofill(ashbyCtx({ veteran_status: 'I identify as a protected veteran' }), null);
+    eq(checkedRadio(env, 'veteran_status'),
+       'I identify as one or more of the classifications of protected veteran listed above');
+  });
+});
+
+test('Ashby (OpenAI): the resume goes to the Resume field, never to Ashby\'s own parser', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    const result = await run_.runAutofill(ashbyCtx(), null);
+    eq(env.document.querySelector('#_systemfield_resume').files.length, 1);
+    eq(env.document.querySelector('#ashby-autofill-file').files.length, 0,
+       'a file there re-parses the resume and overwrites the filled form');
+    notOk(result.decisions.some(x => /autofill from resume|upload file/i.test(x.label || '')));
+  });
+});
+
 // ── Generic ──────────────────────────────────────────────────
 
 test('Generic: a plain careers form is filled including education facts', async () => {
@@ -1864,6 +1948,125 @@ test('a drop zone that DOES have a file input is not double-counted', async () =
     const rows = d.describeFields(d.findForm());
     eq(rows.filter(r => r.dropOnly).length, 0, 'the input is the field');
     eq(rows.filter(r => r.kind === 'file').length, 1);
+  });
+});
+
+// Ashby uploads (Snowflake, Oct 2026): the file input and its "Upload File /
+// or drag and drop here" zone are siblings in one wrapper, and "Additional
+// Attachments" names the cover letter only in its description.
+const ashbyUpload = (id, title, description, required) => `
+  <div class="ashby-application-form-field-entry" data-field-path="${id}">
+    <label class="ashby-application-form-question-title" for="${id}">${title}</label>
+    ${description ? `<div class="ashby-application-form-question-description"><p>${description}</p></div>` : ''}
+    <div role="presentation" class="_container_10xk4_70 ashby-application-form-input-file">
+      <input type="file" tabindex="-1" id="${id}" ${required ? 'required' : ''}>
+      <div class="_instructions_10xk4_33 ashby-application-form-input-file-dropzone">
+        <button class="ashby-application-form-input-file-dropzone-upload"><span>Upload File</span></button>
+        <p class="ashby-application-form-input-file-dropzone-instructions">or drag and drop here</p>
+      </div>
+    </div>
+  </div>`;
+// Served with no whitespace between tags, as the live page is: a label and its
+// description read as one run of text ("Additional AttachmentsCover Letter").
+const ASHBY_UPLOADS = extra => compact(`
+  <div class="ashby-application-form-container">
+    <div class="ashby-application-form-field-entry">
+      <label for="_systemfield_name">Full Name</label><input id="_systemfield_name" required>
+    </div>
+    <div class="ashby-application-form-field-entry">
+      <label for="_systemfield_email">Email</label><input id="_systemfield_email" type="email" required>
+    </div>
+    ${ashbyUpload('_systemfield_resume', 'Resume', '', true)}
+    ${extra || ''}
+    ${ashbyUpload('q-attachments', 'Additional Attachments', 'Cover Letter, Portfolio, Projects, etc', false)}
+  </div>`);
+function compact(html) { return html.replace(/>\s+</g, '><').trim(); }
+const COVER_CTX = Object.assign({}, CTX, { hasCoverLetter: true });
+
+test('Ashby: "Additional Attachments" asking for a cover letter gets the cover letter', async () => {
+  await withForm(ASHBY_UPLOADS(), {}, async (env, sent) => {
+    const result = await run_.runAutofill(COVER_CTX, null);
+    const box = result.decisions.find(x => x.label === 'Additional Attachments');
+    eq(box.slot, 'cover_letter');
+    eq(env.document.getElementById('q-attachments').files.length, 1);
+    eq(env.document.getElementById('_systemfield_resume').files.length, 1, 'and the resume still goes to Resume');
+    ok(sent.some(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'cover_letter'));
+  });
+});
+
+test('Ashby: with no cover letter on file, the attachments box is left for the person', async () => {
+  await withForm(ASHBY_UPLOADS(), {}, async (env) => {
+    const result = await run_.runAutofill(CTX, null);   // hasCoverLetter: false
+    eq(result.decisions.find(x => x.label === 'Additional Attachments').action, p.ASK);
+    eq(env.document.getElementById('q-attachments').files.length, 0);
+  });
+});
+
+test('a form with its own Cover Letter field keeps the catch-all box for the person', async () => {
+  await withForm(ASHBY_UPLOADS(ashbyUpload('q-cover', 'Cover Letter', '', false)), {}, async (env) => {
+    await run_.runAutofill(COVER_CTX, null);
+    eq(env.document.getElementById('q-cover').files.length, 1);
+    eq(env.document.getElementById('q-attachments').files.length, 0,
+       'one cover letter, in the field made for it');
+  });
+});
+
+test('Ashby: an upload\'s own drag-and-drop zone is not a second field', async () => {
+  await withForm(ASHBY_UPLOADS(), {}, () => {
+    const rows = d.describeFields(d.findForm());
+    eq(rows.filter(r => r.dropOnly).length, 0,
+       'no phantom "Upload File or drag and drop here" row');
+    eq(rows.filter(r => r.kind === 'file').length, 2);
+  });
+});
+
+// Ashby's Location (Snowflake): results come from a network search that
+// outlasts the writer's usual option wait, behind a "Loading..." popup.
+const LOCATION_CTX = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+  { location: 'Kolkata, West Bengal, India', address_city: 'Kolkata',
+    address_state: 'West Bengal', address_country: 'India' }) });
+const locationBox = env => env.document.querySelector('.ashby-application-form-input-autocomplete');
+
+test('Ashby: Location waits out the "Loading..." search and picks the place', async () => {
+  await withForm(fixtures.ASHBY_LOCATION, {}, async (env) => {
+    fixtures.wireAshbyLocation(env.document, { delayMs: 800 });
+    const result = await run_.runAutofill(LOCATION_CTX, null);
+    const row = byLabel(result.decisions, 'Location');
+    ok(row, 'the Location field is found');
+    eq(row.outcome, 'ok', `${row.action}: ${row.reason}`);
+    locationBox(env).dispatchEvent(new env.window.Event('blur'));
+    eq(locationBox(env).value, 'Kolkata, West Bengal, India', 'still there after Ashby\'s blur reset');
+  });
+});
+
+test('Ashby: a Location that failed once is tried again on the next run', async () => {
+  await withForm(fixtures.ASHBY_LOCATION, {}, async (env) => {
+    // A search that never answers in time, then Ashby's blur wipes the box.
+    fixtures.wireAshbyLocation(env.document, { never: true });
+    await run_.runAutofill(LOCATION_CTX, null);
+    locationBox(env).dispatchEvent(new env.window.Event('blur'));
+    eq(locationBox(env).value, '');
+    // The next run, with the network back: not "you edited this".
+    fixtures.wireAshbyLocation(env.document, { delayMs: 50 });
+    const again = await run_.runAutofill(LOCATION_CTX, null);
+    const row = byLabel(again.decisions, 'Location');
+    notOk(/you edited/i.test(row.reason || ''), row.reason);
+    eq(row.outcome, 'ok', `${row.action}: ${row.reason}`);
+    locationBox(env).dispatchEvent(new env.window.Event('blur'));
+    eq(locationBox(env).value, 'Kolkata, West Bengal, India');
+  });
+});
+
+test('clicking into a field and out again is not an edit', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env) => {
+    run_.watchUserEdits(d.findForm(), null);
+    const el = env.document.querySelector('#q_linkedin');
+    el.dispatchEvent(new env.window.Event('blur', { bubbles: true }));
+    el.dispatchEvent(new env.window.Event('change', { bubbles: true }));
+    const result = await run_.runAutofill(CTX, null);
+    const row = byLabel(result.decisions, 'linkedin');
+    notOk(/you edited/.test(row.reason || ''), 'nothing was typed, so it is still filled');
+    eq(el.value, 'https://linkedin.com/in/adalovelace');
   });
 });
 
@@ -2000,7 +2203,7 @@ test('an ordinary answer typed into the panel IS offered to the store', async ()
 
 // Clearance and criminal history have no profile field, so "Save & fill" keeps
 // the person's own answer; citizenship status lives in the profile and is not.
-test('Save & fill remembers a clearance / criminal answer, never a citizenship status', async () => {
+test('Save & fill remembers clearance, criminal-history and citizenship answers', async () => {
   await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
     const form = env.document.querySelector('form');
     form.insertAdjacentHTML('beforeend', `
@@ -2023,8 +2226,9 @@ test('Save & fill remembers a clearance / criminal answer, never a citizenship s
     sent.length = 0;
     const citizen = byLabel(result.decisions, 'citizenship status');
     await run_.answerField(citizen, '(f) Other (please explain)', true);
-    notOk(sent.some(m => m.type === 'AF_SAVE_ANSWERS'),
-          'citizenship status belongs in the profile, not the answer store');
+    const kept = sent.find(m => m.type === 'AF_SAVE_ANSWERS');
+    ok(kept, 'a citizenship answer is kept too, for this exact question');
+    eq(kept.payload.answers[0].answer, '(f) Other (please explain)');
   });
 });
 

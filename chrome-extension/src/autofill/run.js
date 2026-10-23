@@ -155,12 +155,23 @@ export function watchUserEdits(form, onEdit) {
   stopWatchingUserEdits();
   if (!form || !form.root) return;
   const rows = new Map();
+  // What each field held when watching began. An edit is a field now holding
+  // a value it did not hold then — not merely a change or blur event. Leaving
+  // a field fires blur with nothing changed, and a widget may empty itself:
+  // Ashby's location box wipes an unpicked search on blur. Both were recorded
+  // as the person's edit, so every later run skipped the field ("you edited
+  // this") and Location was never filled again. An emptied field holds
+  // nothing of theirs that a refill could overwrite, so it is not an edit.
+  const before = new Map();
   for (const row of describeFields(form)) {
     for (const el of row.members || []) rows.set(el, row);
+    if (row.key) before.set(row.key, currentValue(row));
   }
   const handler = (event) => {
     const row = rows.get(event.target);
     if (!row || !row.key) return;
+    const value = currentValue(row);
+    if (!value || value === before.get(row.key)) return;
     if (!state.userEdited.includes(row.key)) state.userEdited.push(row.key);
     if (typeof onEdit === 'function') {
       try { onEdit(row, event); } catch (e) { /* the UI must not break the page */ }
@@ -170,6 +181,12 @@ export function watchUserEdits(form, onEdit) {
   for (const type of ['change', 'blur']) {
     form.root.addEventListener(type, handler, { capture: true, passive: true });
   }
+}
+
+/** The value a field shows right now, '' when it holds none. */
+function currentValue(row) {
+  const now = reprobe(row);
+  return now && now.filled ? String(now.value || '') : '';
 }
 
 export function stopWatchingUserEdits() {

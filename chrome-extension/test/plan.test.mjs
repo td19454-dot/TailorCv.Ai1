@@ -756,6 +756,87 @@ test('"Company website" answers a list that calls it "Careers site"', () => {
   eq(p.decide([row], ctx, null, null)[0].value, 'Careers site');
 });
 
+// Ashby (OpenAI, Oct 2026) asks the EEO questions as radio lists, not dropdowns.
+// The same stored answers must take the same options either way.
+const ASHBY_GENDER = ['Male', 'Female', 'Decline to self-identify'];
+const ASHBY_RACE = ['Hispanic or Latino', 'White (Not Hispanic or Latino)',
+  'Black or African American (Not Hispanic or Latino)',
+  'Native Hawaiian or Other Pacific Islander (Not Hispanic or Latino)',
+  'Asian (Not Hispanic or Latino)', 'American Indian or Alaska Native (Not Hispanic or Latino)',
+  'Two or More Races (Not Hispanic or Latino)', 'Decline to self-identify'];
+const ASHBY_VETERAN = ['I identify as one or more of the classifications of protected veteran listed above',
+  'I am not a protected veteran', 'I decline to self-identify for protected veteran status'];
+const radioRow = (label, opts) => field(label, { kind: 'radio', options: opts.map(o => ({ value: o, label: o })) });
+const eeoCtx = over => ({ answerBank: Object.assign({}, BANK, over), hasResume: true });
+
+test('EEO radio groups take the same options a dropdown would', () => {
+  const ctx = eeoCtx({ gender: 'Cisgender man', race_ethnicity: 'South Asian',
+                       veteran_status: 'I have never served in the military' });
+  const [g, r, v] = p.decide([radioRow('Gender', ASHBY_GENDER), radioRow('Race', ASHBY_RACE),
+                              radioRow('Veteran Status', ASHBY_VETERAN)], ctx, null, null);
+  eq(g.value, 'Male');
+  eq(r.value, 'Asian (Not Hispanic or Latino)');
+  eq(v.value, 'I am not a protected veteran');
+  for (const d of [g, r, v]) eq(d.action, p.FILL, d.label);
+});
+
+test('an EEO radio never takes the opposite answer through a "contains not" fallback', () => {
+  const ctx = eeoCtx({ veteran_status: 'I identify as a protected veteran' });
+  const d = p.decide([radioRow('Veteran Status', ASHBY_VETERAN)], ctx, null, null)[0];
+  eq(d.value, ASHBY_VETERAN[0]);
+});
+
+test('an EEO radio decline maps onto the form\'s own decline', () => {
+  const ctx = eeoCtx({ gender: 'Decline to self-identify' });
+  eq(p.decide([radioRow('Gender', ASHBY_GENDER)], ctx, null, null)[0].value, 'Decline to self-identify');
+});
+
+test('a work-authorization radio worded "Yes, I am…" still fills as before', () => {
+  const opts = ['Yes, I am authorized to work in the US', 'No, I am not authorized'];
+  const ctx = eeoCtx({ authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: '' });
+  eq(p.decide([radioRow('Are you legally authorized to work in the US?', opts)], ctx, null, null)[0].value, opts[0]);
+});
+
+// A sensitive question holding the words of an ordinary field. This one holds
+// "current" + "company" (current_company) AND "work authorization" (the
+// authorized-to-work answer); only the sponsorship answer may answer it.
+const SPONSOR_LONG = 'Will you require company sponsorship now or in the future to maintain or extend your current work authorization status?';
+const yesNoRow = label => field(label, { kind: 'choice', required: true,
+  options: [{ value: 'Yes', label: 'Yes' }, { value: 'No', label: 'No' }] });
+const eligCtx = { answerBank: Object.assign({}, BANK,
+  { authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: 'No' }), hasResume: true };
+
+test('a sponsorship question is answered from the sponsorship answer, whatever else it mentions', () => {
+  const d = p.decide([yesNoRow(SPONSOR_LONG)], eligCtx, null, null)[0];
+  eq(d.action, p.FILL, 'not "add your sponsorship answer to your profile" — it is there');
+  eq(d.value, 'No', 'never the authorized-to-work "Yes"');
+});
+
+test('work-authorization questions still take the authorized-to-work answer', () => {
+  eq(p.decide([yesNoRow('Are you legally authorized to work in the United States?')], eligCtx, null, null)[0].value, 'Yes');
+  eq(p.decide([yesNoRow('Are you authorized to work in the US without sponsorship?')], eligCtx, null, null)[0].value, 'Yes');
+});
+
+// Snowflake (Ashby, Oct 2026): an export-control "U.S. person" question. Too long
+// and too differently worded to read off the profile's citizenship status, so
+// the person answers it once and that answer is reused for the same question.
+const US_PERSON_Q = 'A “U.S. person” is a citizen, legal permanent resident, or legal temporary resident (i.e., a refugee or asylee) of the United States. Which of the following best describes your “U.S. person” status?';
+const US_PERSON_OPTS = ['I am a U.S. person',
+  'I am a citizen of Cuba, Iran, North Korea, or Syria AND I am NOT a U.S. person',
+  'None of the above; I am a citizen of a different country'];
+
+test('a saved "U.S. person" answer fills the same question', () => {
+  const ctx = Object.assign({}, CTX, { savedSensitive: [{ question: US_PERSON_Q, answer: US_PERSON_OPTS[2] }] });
+  const d = p.decide([radioRow(US_PERSON_Q, US_PERSON_OPTS)], ctx, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, US_PERSON_OPTS[2]);
+  eq(d.source, 'saved_answer');
+});
+
+test('"…AND I am NOT a U.S. person" is never read as a citizen\'s option', () => {
+  notOk(p.citizenshipOption('U.S. citizen or national', US_PERSON_OPTS) === US_PERSON_OPTS[1]);
+});
+
 // ── nationality ──────────────────────────────────────────────
 
 test('nationality fills from the stored answer only', () => {

@@ -14,6 +14,10 @@ export const TIMING = {
   settleMs: 60,
   // How long to wait for a custom dropdown's menu to appear after opening it.
   optionWaitMs: 600,
+  // How long a search-as-you-type list may keep showing "Loading..." before
+  // giving up. Ashby's Location searches its server per keystroke; from India
+  // that round trip outlasted every wait above, and the field stayed empty.
+  remoteSearchMs: 5000,
   // How long to watch for fields that appear in response to an answer.
   revealWatchMs: 900,
   // ...and, while the page is still changing, how much longer. Oracle loads its
