@@ -1,5 +1,6 @@
 // Workday "My Experience": Work Experience 1, 2, … filled from the profile's
-// job list, pressing the section's own "Add Another" for each further job.
+// job list, and Education 1, 2, … from its school list, pressing each
+// section's own "Add" / "Add Another" for every further entry.
 //
 // Markup (real PwC capture, Oct 2026):
 //
@@ -12,6 +13,11 @@
 //     </div>
 //     … <button data-automation-id="add-button">Add Another</button>
 //   </div>
+//
+// Education is the same shape: "Education" / "Education N" blocks holding
+// School or University, Degree (a dropdown), Field of Study, Overall Result
+// (GPA), and From / To (Actual or Expected) as year-only spinbuttons. Both
+// sections start with no block and an "Add" button until the first is added.
 //
 // Every section (Education, Websites, Certifications…) has an identical
 // add-button, so the button is only ever taken from inside this section.
@@ -29,6 +35,7 @@ import { TIMING, sleep } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 const MAX_JOBS = 20;   // the profile page's own cap (routers/profile_page.py MAX_JOBS)
+const MAX_SCHOOLS = 10;   // routers/profile_page.py MAX_SCHOOLS
 
 function headingText(group) {
   const id = group.getAttribute('aria-labelledby') || '';
@@ -37,21 +44,32 @@ function headingText(group) {
   return ((h && h.textContent) || '').replace(/\s+/g, ' ').trim();
 }
 
-/** The Work Experience section, or null. */
-export function experienceSection(doc) {
+function sectionByHeading(re, doc) {
   const d = doc || globalThis.document;
   for (const g of d.querySelectorAll('[role="group"][aria-labelledby]')) {
-    if (/^(work )?experience$/i.test(headingText(g))) return g;
+    if (re.test(headingText(g))) return g;
   }
   return null;
 }
 
-/** The section's Work Experience N blocks, in page order. */
-export function experiencePanels(section) {
+/** The Work Experience section, or null. */
+export function experienceSection(doc) {
+  return sectionByHeading(/^(work )?experience$/i, doc);
+}
+
+/** The Education section, or null. */
+export function educationSection(doc) {
+  return sectionByHeading(/^education$/i, doc);
+}
+
+/** A section's numbered blocks ("Work Experience 2", "Education 1"), in page order. */
+export function sectionPanels(section) {
   return Array.from(section.querySelectorAll('[role="group"][aria-labelledby]'))
     .filter(g => /\b\d+$/.test(headingText(g)) && g.parentElement
                  && g.parentElement.closest('[role="group"][aria-labelledby]') === section);
 }
+
+export const experiencePanels = sectionPanels;
 
 /** "Add Another" sits outside every block, so its nearest labelled group is the section. */
 function addButton(section) {
@@ -84,6 +102,12 @@ function isoMonth(v) {
   return '';
 }
 
+/** "2023" → "2023-01-01": the split-date writer fills only the boxes a date has. */
+function isoYear(v) {
+  const y = (String(v || '').match(/\b(19|20)\d{2}\b/) || [])[0];
+  return y ? `${y}-01-01` : '';
+}
+
 /** What one box of a block gets from `entry`, or null to leave it. */
 export function experienceAnswer(row, entry) {
   const label = String(row.label || '').replace(/\*\s*$/, '').trim();
@@ -99,29 +123,80 @@ export function experienceAnswer(row, entry) {
 }
 
 /**
- * Fill one block from `entry`: only empty boxes. The "currently work here" box
- * goes first and the block is re-read after it, because ticking it removes or
- * disables "To" on Workday.
+ * What one box of an Education block gets from `entry`: [value, ...other
+ * shapes], or null to leave it. Degree comes back in every phrasing a list
+ * might use ("Bachelor's Degree" for "B.Tech"); From / To are years only.
  */
-async function fillPanel(panel, entry) {
+export function educationAnswer(row, entry) {
+  const label = String(row.label || '').replace(/\*\s*$/, '').trim();
+  if (row.kind === 'date-parts') {
+    if (/\b(from|start|begin)/i.test(label)) return isoYear(entry.from) ? [isoYear(entry.from)] : null;
+    if (/\b(to|end|graduat|complet)/i.test(label)) return isoYear(entry.to) ? [isoYear(entry.to)] : null;
+    return null;
+  }
+  if (row.kind === 'checkbox') return null;
+  const shapes = tileAnswer('education', label, entry);
+  return shapes && shapes.length ? shapes : null;
+}
+
+// The two sections, as the shared filler below needs them.
+const SECTIONS = {
+  experience: {
+    find: experienceSection,
+    max: MAX_JOBS,
+    noun: 'job',
+    title: 'Experience',
+    shapes: (row, entry) => { const v = experienceAnswer(row, entry); return v ? [v] : null; },
+    // Workday's resume read fills the company first; a block showing one is
+    // matched to that job wherever it is in the list.
+    identityRe: /company|employer|organi[sz]ation/i,
+    identity: e => e.company,
+    describe: e => [e.title, e.company].filter(Boolean).join(' · '),
+    currentBox: true,
+  },
+  education: {
+    find: educationSection,
+    max: MAX_SCHOOLS,
+    noun: 'school',
+    title: 'Education',
+    shapes: educationAnswer,
+    identityRe: /school|university|college|institution/i,
+    identity: e => e.school,
+    describe: e => [e.school, e.degree].filter(Boolean).join(' · '),
+    currentBox: false,
+  },
+};
+
+/**
+ * Fill one block from `entry`: only empty boxes. For Work Experience the
+ * "currently work here" box goes first and the block is re-read after it,
+ * because ticking it removes or disables "To" on Workday.
+ */
+async function fillPanel(panel, entry, spec) {
   const filled = [];
   let rows = panelRows(panel);
-  const current = rows.find(r => r.kind === 'checkbox' && /current/i.test(r.label || ''));
+  const current = spec.currentBox && rows.find(r => r.kind === 'checkbox' && /current/i.test(r.label || ''));
   if (current && entry.current && !current.filled) {
     const res = await applyDecision({ row: current, value: 'Yes', candidates: ['Yes'], label: current.label });
     if (res.ok) filled.push('Currently work here');
-    else log(`"${current.label}" did not take (${res.outcome})`);
+    else log(spec, `"${current.label}" did not take (${res.outcome})`);
     await sleep(TIMING.settleMs + 100);
     rows = panelRows(panel);
   }
   for (const row of rows) {
     if (row.kind === 'checkbox' || row.kind === 'file') continue;
     if (row.filled && !row.invalid) continue;            // what Workday filled stays
-    const value = experienceAnswer(row, entry);
-    if (!value) continue;
-    const res = await applyDecision({ row, value, candidates: [value], label: row.label });
+    const shapes = spec.shapes(row, entry);
+    if (!shapes || !shapes.length) continue;
+    const decision = { row, value: shapes[0], candidates: shapes, label: row.label };
+    // A degree list is chosen from with the planner's own rules (same level
+    // only — never "Master's" for "Bachelor's"), not by resemblance.
+    if (spec === SECTIONS.education && /degree|qualification/i.test(row.label || '')) {
+      decision.readFirst = { key: 'degree', stored: entry.degree };
+    }
+    const res = await applyDecision(decision);
     if (res.ok) filled.push(String(row.label || '').replace(/\s*\*$/, ''));
-    else log(`"${row.label}" did not take (${res.outcome})`);
+    else log(spec, `"${row.label}" did not take (${res.outcome})`);
   }
   return filled;
 }
@@ -146,15 +221,34 @@ async function waitFor(fn, ms) {
  * decision per job for the results panel: FILL when the block holds it, ASK
  * with the reason otherwise. Never presses Save and Continue.
  */
-export async function fillExperienceSection(ctx, progress, doc) {
-  const section = experienceSection(doc);
-  const jobs = ((ctx && ctx.facts && ctx.facts.workExperience) || []).slice(0, MAX_JOBS);
-  if (!section || !jobs.length) return [];
+export function fillExperienceSection(ctx, progress, doc) {
+  const jobs = (ctx && ctx.facts && ctx.facts.workExperience) || [];
+  return fillSection(SECTIONS.experience, jobs, progress, doc);
+}
+
+/**
+ * Fill the Education section from ctx.facts.educationEntries, the same way.
+ * The first school takes the profile's single GPA when it has none of its own
+ * — that GPA is the one every single-box form already gets.
+ */
+export function fillEducationSection(ctx, progress, doc) {
+  const facts = (ctx && ctx.facts) || {};
+  const bankGpa = String(((ctx && ctx.answerBank) || {}).gpa || '').trim();
+  const schools = (facts.educationEntries || [])
+    .map((s, i) => (i === 0 && !s.gpa && bankGpa ? Object.assign({}, s, { gpa: bankGpa }) : s));
+  return fillSection(SECTIONS.education, schools, progress, doc);
+}
+
+async function fillSection(spec, allEntries, progress, doc) {
+  const section = spec.find(doc);
+  const entries = (allEntries || []).slice(0, spec.max);
+  if (!section || !entries.length) return [];
 
   const out = [];
-  const decisionFor = (job, n) => {
-    const d = { key: `repeater:experience:${n}`, kind: 'tile', row: { el: section, kind: 'tile' },
-                label: `Experience: ${[job.title, job.company].filter(Boolean).join(' · ') || `job ${n + 1}`}`,
+  const decisionFor = (entry, n) => {
+    const d = { key: `repeater:${spec === SECTIONS.education ? 'education' : 'experience'}:${n}`,
+                kind: 'tile', row: { el: section, kind: 'tile' },
+                label: `${spec.title}: ${spec.describe(entry) || `${spec.noun} ${n + 1}`}`,
                 action: ASK, value: '', source: '', reason: '', outcome: '' };
     out.push(d);
     return d;
@@ -169,102 +263,108 @@ export async function fillExperienceSection(ctx, progress, doc) {
     d.value = d.shown = filled.length ? filled.join(' · ') : 'already filled';
   };
 
-  // Block N takes job N (profile order, newest first, as the resume lists
+  // Block N takes entry N (profile order, newest first, as the resume lists
   // them). Counted, never skipped: an earlier version skipped a block that
   // already had text it didn't recognise and put that job in a NEW block, so
   // block 1 stayed half-filled and job 1 landed in block 2 (PwC, Oct 2026).
-  const existing = experiencePanels(section);
-  log(`${existing.length} block(s) on the page, ${jobs.length} job(s) in the profile`);
-  const plan = assignJobs(existing.map(panelRows), jobs);
+  const existing = sectionPanels(section);
+  log(spec, `${existing.length} block(s) on the page, ${entries.length} ${spec.noun}(s) in the profile`);
+  const plan = assignEntries(existing.map(panelRows), entries, spec);
   const placed = new Set();
   for (let b = 0; b < existing.length; b++) {
     const a = plan[b];
     if (a.job == null) {
-      if (a.reason) log(`block ${b + 1}: left alone — ${a.reason}`);
+      if (a.reason) log(spec, `block ${b + 1}: left alone — ${a.reason}`);
       continue;
     }
     placed.add(a.job);
-    const job = jobs[a.job];
-    const d = decisionFor(job, a.job);
-    log(`block ${b + 1} ← job ${a.job + 1} (${job.company || job.title})${a.why ? ' — ' + a.why : ''}`);
+    const entry = entries[a.job];
+    const d = decisionFor(entry, a.job);
+    log(spec, `block ${b + 1} ← ${spec.noun} ${a.job + 1} (${spec.describe(entry)})${a.why ? ' — ' + a.why : ''}`);
     if (progress) progress('filling', { detail: d.label });
-    finish(d, existing[b], await fillPanel(existing[b], job));
+    finish(d, existing[b], await fillPanel(existing[b], entry, spec));
   }
 
-  // The jobs without a block: one "Add Another" each. With no block on the
-  // page at all, the first press opens Work Experience 1.
-  const rest = jobs.map((job, i) => i).filter(i => !placed.has(i));
+  // The entries without a block: one "Add Another" each. With no block on the
+  // page at all, the first press ("Add") opens block 1.
+  const rest = entries.map((e, i) => i).filter(i => !placed.has(i));
   for (let r = 0; r < rest.length; r++) {
     const i = rest[r];
-    const d = decisionFor(jobs[i], i);
+    const d = decisionFor(entries[i], i);
     const add = addButton(section);
     if (!add) {
-      d.reason = 'could not find "Add Another" — add this job yourself';
+      d.reason = `could not find "Add Another" — add this ${spec.noun} yourself`;
       continue;
     }
-    const before = experiencePanels(section).length;
+    const before = sectionPanels(section).length;
     press(add);
-    const ok = await waitFor(() => experiencePanels(section).length > before, TIMING.tileOpenMs);
+    const ok = await waitFor(() => sectionPanels(section).length > before, TIMING.tileOpenMs);
     if (!ok) {
       // Not pressed again: a second press that lands late would add an empty block.
-      d.reason = 'pressing "Add Another" did not add a block — add this job yourself';
-      for (const j of rest.slice(r + 1)) decisionFor(jobs[j], j).reason = 'add this job yourself';
-      log(`"Add Another" did not add a block (still ${before}) — stopped`);
+      d.reason = `pressing "Add Another" did not add a block — add this ${spec.noun} yourself`;
+      for (const j of rest.slice(r + 1)) decisionFor(entries[j], j).reason = `add this ${spec.noun} yourself`;
+      log(spec, `"Add Another" did not add a block (still ${before}) — stopped`);
       break;
     }
     await sleep(TIMING.settleMs + 150);
-    const panel = experiencePanels(section)[before];
-    log(`added block ${before + 1} ← job ${i + 1} (${jobs[i].company || jobs[i].title})`);
+    const panel = sectionPanels(section)[before];
+    log(spec, `added block ${before + 1} ← ${spec.noun} ${i + 1} (${spec.describe(entries[i])})`);
     if (progress) progress('filling', { detail: d.label });
-    finish(d, panel, await fillPanel(panel, jobs[i]));
+    finish(d, panel, await fillPanel(panel, entries[i], spec));
   }
   return out;
 }
 
-function log(msg) {
-  try { console.info(`[TailorCV] work experience: ${msg}`); } catch (e) { /* no console */ }
+function log(spec, msg) {
+  const name = spec === SECTIONS.education ? 'education' : 'work experience';
+  try { console.info(`[TailorCV] ${name}: ${msg}`); } catch (e) { /* no console */ }
 }
 
 const normText = s => String(s == null ? '' : s).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
-/** The company a block already shows, or ''. */
-function blockCompany(rows) {
-  const r = rows.find(x => x.kind !== 'checkbox' && /company|employer|organi[sz]ation/i.test(x.label || ''));
+/** The company (or school) a block already shows, or ''. */
+function blockIdentity(rows, spec) {
+  const r = rows.find(x => x.kind !== 'checkbox' && spec.identityRe.test(x.label || ''));
   return (r && r.filled && r.value) || '';
 }
 
-const sameCompany = (a, b) => {
+const sameName = (a, b) => {
   const x = normText(a), y = normText(b);
   return !!x && !!y && (x === y || x.includes(y) || y.includes(x));
 };
 
 /**
- * Which job each block on the page takes: [{ job: index|null, why, reason }].
+ * Which entry each block on the page takes: [{ job: index|null, why, reason }].
  *
- *  - An empty block takes the next unplaced job, in order.
- *  - A block that already shows a company takes the job with that company
- *    (Workday's resume read, or an earlier run), wherever it is in the list.
- *  - A block showing a company no job has is left alone — it's someone's own
- *    entry, and filling its empty boxes from a different job would mix two jobs.
- *  - Text but no company (a half-typed block): positional, like an empty one.
+ *  - An empty block takes the next unplaced entry, in order.
+ *  - A block that already shows a company (school) takes the entry with that
+ *    name (Workday's resume read, or an earlier run), wherever it is in the list.
+ *  - A block showing a name no entry has is left alone — it's someone's own
+ *    entry, and filling its empty boxes from a different one would mix two.
+ *  - Text but no name (a half-typed block): positional, like an empty one.
  */
-export function assignJobs(blocks, jobs) {
+function assignEntries(blocks, entries, spec) {
   const taken = new Set();
   const plan = blocks.map(rows => {
-    const company = blockCompany(rows);
-    if (!company) return { job: null, positional: true };
-    const i = jobs.findIndex((j, k) => !taken.has(k) && sameCompany(company, j.company));
-    if (i < 0) return { job: null, reason: `it already holds "${company}", which is not in your profile` };
+    const name = blockIdentity(rows, spec);
+    if (!name) return { job: null, positional: true };
+    const i = entries.findIndex((e, k) => !taken.has(k) && sameName(name, spec.identity(e)));
+    if (i < 0) return { job: null, reason: `it already holds "${name}", which is not in your profile` };
     taken.add(i);
-    return { job: i, why: `already shows ${company}` };
+    return { job: i, why: `already shows ${name}` };
   });
   let next = 0;
   for (const a of plan) {
     if (!a.positional) continue;
-    while (next < jobs.length && taken.has(next)) next++;
-    if (next >= jobs.length) { a.job = null; continue; }
+    while (next < entries.length && taken.has(next)) next++;
+    if (next >= entries.length) { a.job = null; continue; }
     taken.add(next);
     a.job = next++;
   }
   return plan;
+}
+
+/** Work Experience's block assignment (kept for callers and tests). */
+export function assignJobs(blocks, jobs) {
+  return assignEntries(blocks, jobs, SECTIONS.experience);
 }

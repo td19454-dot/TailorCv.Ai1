@@ -913,5 +913,15 @@ export function matchSensitiveKey(label, category) {
     if (own) return own;
   }
   const any = matchFieldKey(label);
-  return any && any.sensitive ? any : null;
+  if (any && any.sensitive) return any;
+  // A sponsorship question in words no synonym carries: "Will you now or in
+  // the future require Notion to SPONSOR an immigration case in order to employ
+  // you?" — every synonym says "sponsorship", so it matched nothing and was
+  // sent to the profile that already holds the answer. Last, after the open
+  // search, so "authorized to work … without sponsorship" keeps its
+  // authorized-to-work answer.
+  if (category === 'sponsorship' && /\bsponsor/.test(questionSignature(label))) {
+    return FIELD_SYNONYMS.find(e => e.key === 'requires_visa_sponsorship') || null;
+  }
+  return null;
 }

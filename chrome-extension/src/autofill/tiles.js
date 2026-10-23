@@ -90,6 +90,8 @@ export function tileAnswer(kind, label, entry) {
     return y ? [y] : null;
   }
   if (kind === 'education') {
+    // Workday: "Overall Result (GPA)". Before "degree": "grade" is in neither.
+    if (/\bc?gpa\b|overall result|grade point|\bgrade\b|percentage/.test(l)) return entry.gpa ? [entry.gpa] : null;
     if (/degree|qualification/.test(l)) return entry.degree ? candidatesFor('degree', entry.degree) : null;
     if (/area of study|major|field of study|discipline|speciali|subject/.test(l)) return entry.field ? [entry.field] : null;
     if (/school|university|college|institution|establishment/.test(l)) return entry.school ? [entry.school] : null;

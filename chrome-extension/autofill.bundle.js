@@ -1352,7 +1352,11 @@ what when where which who will with would you your now future
       if (own) return own;
     }
     const any = matchFieldKey(label);
-    return any && any.sensitive ? any : null;
+    if (any && any.sensitive) return any;
+    if (category === "sponsorship" && /\bsponsor/.test(questionSignature(label))) {
+      return FIELD_SYNONYMS.find((e) => e.key === "requires_visa_sponsorship") || null;
+    }
+    return null;
   }
 
   // src/autofill/timing.js
@@ -4331,6 +4335,7 @@ what when where which who will with would you your now future
       return y ? [y] : null;
     }
     if (kind === "education") {
+      if (/\bc?gpa\b|overall result|grade point|\bgrade\b|percentage/.test(l)) return entry.gpa ? [entry.gpa] : null;
       if (/degree|qualification/.test(l)) return entry.degree ? candidatesFor("degree", entry.degree) : null;
       if (/area of study|major|field of study|discipline|speciali|subject/.test(l)) return entry.field ? [entry.field] : null;
       if (/school|university|college|institution|establishment/.test(l)) return entry.school ? [entry.school] : null;
@@ -4502,20 +4507,27 @@ what when where which who will with would you your now future
   // src/autofill/repeaters.js
   var probe4 = () => globalThis.__tcvFieldProbe;
   var MAX_JOBS = 20;
+  var MAX_SCHOOLS = 10;
   function headingText(group) {
     const id = group.getAttribute("aria-labelledby") || "";
     const doc = group.ownerDocument || globalThis.document;
     const h = id && doc.getElementById(id);
     return (h && h.textContent || "").replace(/\s+/g, " ").trim();
   }
-  function experienceSection(doc) {
+  function sectionByHeading(re, doc) {
     const d = doc || globalThis.document;
     for (const g of d.querySelectorAll('[role="group"][aria-labelledby]')) {
-      if (/^(work )?experience$/i.test(headingText(g))) return g;
+      if (re.test(headingText(g))) return g;
     }
     return null;
   }
-  function experiencePanels(section) {
+  function experienceSection(doc) {
+    return sectionByHeading(/^(work )?experience$/i, doc);
+  }
+  function educationSection(doc) {
+    return sectionByHeading(/^education$/i, doc);
+  }
+  function sectionPanels(section) {
     return Array.from(section.querySelectorAll('[role="group"][aria-labelledby]')).filter((g) => /\b\d+$/.test(headingText(g)) && g.parentElement && g.parentElement.closest('[role="group"][aria-labelledby]') === section);
   }
   function addButton(section) {
@@ -4540,6 +4552,10 @@ what when where which who will with would you your now future
     if (m) return `${m[1]}-${m[2].padStart(2, "0")}-01`;
     return "";
   }
+  function isoYear(v) {
+    const y = (String(v || "").match(/\b(19|20)\d{2}\b/) || [])[0];
+    return y ? `${y}-01-01` : "";
+  }
   function experienceAnswer(row, entry) {
     const label = String(row.label || "").replace(/\*\s*$/, "").trim();
     if (row.kind === "date-parts") {
@@ -4552,25 +4568,69 @@ what when where which who will with would you your now future
     const shapes = tileAnswer("experience", label, entry);
     return shapes && shapes.length ? shapes[0] : null;
   }
-  async function fillPanel(panel, entry) {
+  function educationAnswer(row, entry) {
+    const label = String(row.label || "").replace(/\*\s*$/, "").trim();
+    if (row.kind === "date-parts") {
+      if (/\b(from|start|begin)/i.test(label)) return isoYear(entry.from) ? [isoYear(entry.from)] : null;
+      if (/\b(to|end|graduat|complet)/i.test(label)) return isoYear(entry.to) ? [isoYear(entry.to)] : null;
+      return null;
+    }
+    if (row.kind === "checkbox") return null;
+    const shapes = tileAnswer("education", label, entry);
+    return shapes && shapes.length ? shapes : null;
+  }
+  var SECTIONS = {
+    experience: {
+      find: experienceSection,
+      max: MAX_JOBS,
+      noun: "job",
+      title: "Experience",
+      shapes: (row, entry) => {
+        const v = experienceAnswer(row, entry);
+        return v ? [v] : null;
+      },
+      // Workday's resume read fills the company first; a block showing one is
+      // matched to that job wherever it is in the list.
+      identityRe: /company|employer|organi[sz]ation/i,
+      identity: (e) => e.company,
+      describe: (e) => [e.title, e.company].filter(Boolean).join(" \xB7 "),
+      currentBox: true
+    },
+    education: {
+      find: educationSection,
+      max: MAX_SCHOOLS,
+      noun: "school",
+      title: "Education",
+      shapes: educationAnswer,
+      identityRe: /school|university|college|institution/i,
+      identity: (e) => e.school,
+      describe: (e) => [e.school, e.degree].filter(Boolean).join(" \xB7 "),
+      currentBox: false
+    }
+  };
+  async function fillPanel(panel, entry, spec) {
     const filled = [];
     let rows = panelRows(panel);
-    const current = rows.find((r) => r.kind === "checkbox" && /current/i.test(r.label || ""));
+    const current = spec.currentBox && rows.find((r) => r.kind === "checkbox" && /current/i.test(r.label || ""));
     if (current && entry.current && !current.filled) {
       const res = await applyDecision({ row: current, value: "Yes", candidates: ["Yes"], label: current.label });
       if (res.ok) filled.push("Currently work here");
-      else log(`"${current.label}" did not take (${res.outcome})`);
+      else log(spec, `"${current.label}" did not take (${res.outcome})`);
       await sleep(TIMING.settleMs + 100);
       rows = panelRows(panel);
     }
     for (const row of rows) {
       if (row.kind === "checkbox" || row.kind === "file") continue;
       if (row.filled && !row.invalid) continue;
-      const value = experienceAnswer(row, entry);
-      if (!value) continue;
-      const res = await applyDecision({ row, value, candidates: [value], label: row.label });
+      const shapes = spec.shapes(row, entry);
+      if (!shapes || !shapes.length) continue;
+      const decision = { row, value: shapes[0], candidates: shapes, label: row.label };
+      if (spec === SECTIONS.education && /degree|qualification/i.test(row.label || "")) {
+        decision.readFirst = { key: "degree", stored: entry.degree };
+      }
+      const res = await applyDecision(decision);
       if (res.ok) filled.push(String(row.label || "").replace(/\s*\*$/, ""));
-      else log(`"${row.label}" did not take (${res.outcome})`);
+      else log(spec, `"${row.label}" did not take (${res.outcome})`);
     }
     return filled;
   }
@@ -4586,17 +4646,27 @@ what when where which who will with would you your now future
       await sleep(100);
     }
   }
-  async function fillExperienceSection(ctx, progress, doc) {
-    const section = experienceSection(doc);
-    const jobs = (ctx && ctx.facts && ctx.facts.workExperience || []).slice(0, MAX_JOBS);
-    if (!section || !jobs.length) return [];
+  function fillExperienceSection(ctx, progress, doc) {
+    const jobs = ctx && ctx.facts && ctx.facts.workExperience || [];
+    return fillSection(SECTIONS.experience, jobs, progress, doc);
+  }
+  function fillEducationSection(ctx, progress, doc) {
+    const facts = ctx && ctx.facts || {};
+    const bankGpa = String((ctx && ctx.answerBank || {}).gpa || "").trim();
+    const schools = (facts.educationEntries || []).map((s, i) => i === 0 && !s.gpa && bankGpa ? Object.assign({}, s, { gpa: bankGpa }) : s);
+    return fillSection(SECTIONS.education, schools, progress, doc);
+  }
+  async function fillSection(spec, allEntries, progress, doc) {
+    const section = spec.find(doc);
+    const entries = (allEntries || []).slice(0, spec.max);
+    if (!section || !entries.length) return [];
     const out = [];
-    const decisionFor = (job, n) => {
+    const decisionFor = (entry, n) => {
       const d = {
-        key: `repeater:experience:${n}`,
+        key: `repeater:${spec === SECTIONS.education ? "education" : "experience"}:${n}`,
         kind: "tile",
         row: { el: section, kind: "tile" },
-        label: `Experience: ${[job.title, job.company].filter(Boolean).join(" \xB7 ") || `job ${n + 1}`}`,
+        label: `${spec.title}: ${spec.describe(entry) || `${spec.noun} ${n + 1}`}`,
         action: ASK,
         value: "",
         source: "",
@@ -4617,79 +4687,80 @@ what when where which who will with would you your now future
       d.outcome = "ok";
       d.value = d.shown = filled.length ? filled.join(" \xB7 ") : "already filled";
     };
-    const existing = experiencePanels(section);
-    log(`${existing.length} block(s) on the page, ${jobs.length} job(s) in the profile`);
-    const plan = assignJobs(existing.map(panelRows), jobs);
+    const existing = sectionPanels(section);
+    log(spec, `${existing.length} block(s) on the page, ${entries.length} ${spec.noun}(s) in the profile`);
+    const plan = assignEntries(existing.map(panelRows), entries, spec);
     const placed = /* @__PURE__ */ new Set();
     for (let b = 0; b < existing.length; b++) {
       const a = plan[b];
       if (a.job == null) {
-        if (a.reason) log(`block ${b + 1}: left alone \u2014 ${a.reason}`);
+        if (a.reason) log(spec, `block ${b + 1}: left alone \u2014 ${a.reason}`);
         continue;
       }
       placed.add(a.job);
-      const job = jobs[a.job];
-      const d = decisionFor(job, a.job);
-      log(`block ${b + 1} \u2190 job ${a.job + 1} (${job.company || job.title})${a.why ? " \u2014 " + a.why : ""}`);
+      const entry = entries[a.job];
+      const d = decisionFor(entry, a.job);
+      log(spec, `block ${b + 1} \u2190 ${spec.noun} ${a.job + 1} (${spec.describe(entry)})${a.why ? " \u2014 " + a.why : ""}`);
       if (progress) progress("filling", { detail: d.label });
-      finish(d, existing[b], await fillPanel(existing[b], job));
+      finish(d, existing[b], await fillPanel(existing[b], entry, spec));
     }
-    const rest = jobs.map((job, i) => i).filter((i) => !placed.has(i));
+    const rest = entries.map((e, i) => i).filter((i) => !placed.has(i));
     for (let r = 0; r < rest.length; r++) {
       const i = rest[r];
-      const d = decisionFor(jobs[i], i);
+      const d = decisionFor(entries[i], i);
       const add = addButton(section);
       if (!add) {
-        d.reason = 'could not find "Add Another" \u2014 add this job yourself';
+        d.reason = `could not find "Add Another" \u2014 add this ${spec.noun} yourself`;
         continue;
       }
-      const before = experiencePanels(section).length;
+      const before = sectionPanels(section).length;
       press(add);
-      const ok = await waitFor2(() => experiencePanels(section).length > before, TIMING.tileOpenMs);
+      const ok = await waitFor2(() => sectionPanels(section).length > before, TIMING.tileOpenMs);
       if (!ok) {
-        d.reason = 'pressing "Add Another" did not add a block \u2014 add this job yourself';
-        for (const j of rest.slice(r + 1)) decisionFor(jobs[j], j).reason = "add this job yourself";
-        log(`"Add Another" did not add a block (still ${before}) \u2014 stopped`);
+        d.reason = `pressing "Add Another" did not add a block \u2014 add this ${spec.noun} yourself`;
+        for (const j of rest.slice(r + 1)) decisionFor(entries[j], j).reason = `add this ${spec.noun} yourself`;
+        log(spec, `"Add Another" did not add a block (still ${before}) \u2014 stopped`);
         break;
       }
       await sleep(TIMING.settleMs + 150);
-      const panel = experiencePanels(section)[before];
-      log(`added block ${before + 1} \u2190 job ${i + 1} (${jobs[i].company || jobs[i].title})`);
+      const panel = sectionPanels(section)[before];
+      log(spec, `added block ${before + 1} \u2190 ${spec.noun} ${i + 1} (${spec.describe(entries[i])})`);
       if (progress) progress("filling", { detail: d.label });
-      finish(d, panel, await fillPanel(panel, jobs[i]));
+      finish(d, panel, await fillPanel(panel, entries[i], spec));
     }
     return out;
   }
-  function log(msg) {
+  function log(spec, msg) {
+    const name = spec === SECTIONS.education ? "education" : "work experience";
     try {
-      console.info(`[TailorCV] work experience: ${msg}`);
+      console.info(`[TailorCV] ${name}: ${msg}`);
     } catch (e) {
     }
   }
   var normText = (s) => String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-  function blockCompany(rows) {
-    const r = rows.find((x) => x.kind !== "checkbox" && /company|employer|organi[sz]ation/i.test(x.label || ""));
+  function blockIdentity(rows, spec) {
+    const r = rows.find((x) => x.kind !== "checkbox" && spec.identityRe.test(x.label || ""));
     return r && r.filled && r.value || "";
   }
-  var sameCompany = (a, b) => {
+  var sameName = (a, b) => {
     const x = normText(a), y = normText(b);
     return !!x && !!y && (x === y || x.includes(y) || y.includes(x));
   };
-  function assignJobs(blocks, jobs) {
+  function assignEntries(blocks, entries, spec) {
     const taken = /* @__PURE__ */ new Set();
     const plan = blocks.map((rows) => {
-      const company = blockCompany(rows);
-      if (!company) return { job: null, positional: true };
-      const i = jobs.findIndex((j, k) => !taken.has(k) && sameCompany(company, j.company));
-      if (i < 0) return { job: null, reason: `it already holds "${company}", which is not in your profile` };
+      const name = blockIdentity(rows, spec);
+      if (!name) return { job: null, positional: true };
+      const i = entries.findIndex((e, k) => !taken.has(k) && sameName(name, spec.identity(e)));
+      if (i < 0) return { job: null, reason: `it already holds "${name}", which is not in your profile` };
       taken.add(i);
-      return { job: i, why: `already shows ${company}` };
+      return { job: i, why: `already shows ${name}` };
     });
     let next = 0;
     for (const a of plan) {
       if (!a.positional) continue;
-      while (next < jobs.length && taken.has(next)) next++;
-      if (next >= jobs.length) {
+      while (next < entries.length && taken.has(next)) next++;
+      if (next >= entries.length) {
         a.job = null;
         continue;
       }
@@ -4896,12 +4967,21 @@ what when where which who will with would you your now future
     }
     const jobs = ctx && ctx.facts && ctx.facts.workExperience || [];
     const expSection = jobs.length ? experienceSection() : null;
-    const fieldRows = rows.filter((r) => r.kind !== "file" && !inSection(expSection, r));
+    const schools = ctx && ctx.facts && ctx.facts.educationEntries || [];
+    const eduSection = schools.length ? educationSection() : null;
+    const inRepeater = (r) => inSection(expSection, r) || inSection(eduSection, r);
+    const fieldRows = rows.filter((r) => r.kind !== "file" && !inRepeater(r));
     decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
     if (expSection) {
       await clock.time("experience", async () => {
         clock.quiet(await waitForQuiet(form.root));
         decisions = decisions.concat(await fillExperienceSection(ctx, progress));
+      });
+    }
+    if (eduSection) {
+      await clock.time("education", async () => {
+        clock.quiet(await waitForQuiet(form.root));
+        decisions = decisions.concat(await fillEducationSection(ctx, progress));
       });
     }
     for (const d of decisions) {
@@ -4949,7 +5029,7 @@ what when where which who will with would you your now future
       const before = new Set(rows.map((r) => r.key));
       clock.quiet(await waitForQuiet(form.root));
       const fresh = describeFields(findForm() || form);
-      const added = fresh.filter((r) => r.key && !before.has(r.key) && !(r.kind === "file" && isProfileImport(r)) && !inSection(expSection, r));
+      const added = fresh.filter((r) => r.key && !before.has(r.key) && !(r.kind === "file" && isProfileImport(r)) && !inRepeater(r));
       if (!added.length) break;
       revealed++;
       progress("scanning", { detail: `${added.length} new field(s) appeared` });

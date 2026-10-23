@@ -106,11 +106,15 @@
     },
     education: {
       noun: "school",
-      fields: ["school", "degree", "field", "from", "to"],
+      fields: ["school", "degree", "field", "gpa", "from", "to"],
+      // In the order and words of Workday's Education block, which autofill
+      // fills from these: School or University, Degree, Field of Study,
+      // Overall Result (GPA), From, To (Actual or Expected).
       render: function (s) {
         return input("school", "School or university", s.school, 'maxlength="200"') +
           input("degree", "Degree", s.degree, 'maxlength="120" list="pf-degrees" placeholder="e.g. Bachelor of Technology (B.Tech)"') +
           input("field", "Field of study", s.field, 'maxlength="120" list="pf-fields" placeholder="e.g. Chemical Engineering"') +
+          input("gpa", "Overall result (GPA)", s.gpa, 'maxlength="20" placeholder="e.g. 8.7/10 or 3.6/4"') +
           '<div class="pf-job-dates">' +
             input("from", "From", s.from, 'maxlength="4" placeholder="YYYY" inputmode="numeric"') +
             input("to", "To (actual or expected)", s.to, 'maxlength="4" placeholder="YYYY" inputmode="numeric"') +

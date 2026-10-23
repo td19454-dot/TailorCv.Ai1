@@ -21,7 +21,8 @@ import { describeFields, findForm, isApplicationPage, readComboboxOptions, repro
          profileTileBlocks }
   from './discover.js';
 import { fillProfileTiles } from './tiles.js';
-import { experienceSection, fillExperienceSection, inSection } from './repeaters.js';
+import { experienceSection, fillExperienceSection, educationSection, fillEducationSection, inSection }
+  from './repeaters.js';
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
 import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo } from './write.js';
@@ -313,7 +314,11 @@ export async function runAutofill(ctx, onProgress) {
   // Title got the current job. Only taken over when there are jobs to put in.
   const jobs = (ctx && ctx.facts && ctx.facts.workExperience) || [];
   const expSection = jobs.length ? experienceSection() : null;
-  const fieldRows = rows.filter(r => r.kind !== 'file' && !inSection(expSection, r));
+  // Education N blocks likewise, from the profile's school list.
+  const schools = (ctx && ctx.facts && ctx.facts.educationEntries) || [];
+  const eduSection = schools.length ? educationSection() : null;
+  const inRepeater = r => inSection(expSection, r) || inSection(eduSection, r);
+  const fieldRows = rows.filter(r => r.kind !== 'file' && !inRepeater(r));
   decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
   if (expSection) {
     // Workday reads the resume uploaded on this step and fills Work Experience
@@ -323,6 +328,12 @@ export async function runAutofill(ctx, onProgress) {
     await clock.time('experience', async () => {
       clock.quiet(await waitForQuiet(form.root));
       decisions = decisions.concat(await fillExperienceSection(ctx, progress));
+    });
+  }
+  if (eduSection) {
+    await clock.time('education', async () => {
+      clock.quiet(await waitForQuiet(form.root));
+      decisions = decisions.concat(await fillEducationSection(ctx, progress));
     });
   }
   for (const d of decisions) {
@@ -391,7 +402,7 @@ export async function runAutofill(ctx, onProgress) {
     // Never the profile import: it was handled (or deliberately skipped) above.
     // Nor the blocks "Add Another" created: fillExperienceSection filled them.
     const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
-                                    && !inSection(expSection, r));
+                                    && !inRepeater(r));
     if (!added.length) break;
     revealed++;
     progress('scanning', { detail: `${added.length} new field(s) appeared` });
