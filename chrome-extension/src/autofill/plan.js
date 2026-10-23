@@ -42,6 +42,8 @@ import {
   stripRegionSuffix,
   isMotivationQuestion,
   isConditionalFollowUp,
+  questionSignature,
+  STORABLE_SENSITIVE,
 } from './match.js';
 
 export const AUTOFILL_MIN = 0.8;
@@ -142,11 +144,22 @@ export function decide(rows, ctx, server, state) {
       d.sensitive = category;
       const entry = matchFieldKey(row.label);
       const stored = entry && entry.sensitive ? bank[entry.key] : '';
+      if (!stored && STORABLE_SENSITIVE.has(category)) {
+        // Clearance / criminal history: the person's own saved answer to THIS
+        // question, if they saved one on an earlier form. Same question only —
+        // a clearance answer to one employer's wording is not reused for
+        // another's — and it must be one of this form's own options.
+        const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
+        const value = saved ? coerce(saved, row) : null;
+        if (value !== null) {
+          return done(d, FILL, value, 'saved_answer', 0.9, 'your saved answer to this question');
+        }
+      }
       if (!stored) {
         // Only point at the profile when the profile has a place for it.
-        // Citizenship, clearance and criminal-history questions don't: they are
-        // worded too differently per employer to hold one stored answer, so the
-        // person answers them here, on this form.
+        // Clearance and criminal-history questions don't: they are worded too
+        // differently per employer to hold one stored answer, so the person
+        // answers them here, on this form (and may save that answer).
         // A specific profile field (nationality) counts as a place for it too.
         // A demographic question the profile has no field for ("Are you a
         // military spouse?") is the person's to answer here, not a profile task.
@@ -178,8 +191,12 @@ export function decide(rows, ctx, server, state) {
       // The writer re-picks from the OPEN list with this same coerce(), since
       // most EEO dropdowns only show their options once opened.
       if (READ_FIRST_KEYS.has(key) || key === 'hispanic_latino') d.readFirst = { key, stored: answer };
+      // Work authorization may be a list of statements, read against both
+      // stored answers; the list is short, so open it and read it whole.
+      const sponsorship = key === 'authorized_to_work_in_country' ? bank.requires_visa_sponsorship : undefined;
+      if (sponsorship !== undefined) d.readFirst = { key, stored: answer, sponsorship };
       const value = coerce(answer, Object.assign({}, row,
-        { candidates: shapes, candidateKey: key }));
+        { candidates: shapes, candidateKey: key, sponsorship }));
       if (value === null) {
         // We have their answer but this form offers no option matching it.
         return done(d, ASK, '', '', 0, `none of the options match your stored answer (${stored})`);
@@ -428,6 +445,7 @@ const PROFILE_CATEGORIES = new Set(['work_authorization', 'sponsorship', 'salary
 
 function profileHint(category, entry) {
   if (entry && entry.key === 'nationality') return 'add your nationality to your profile';
+  if (entry && entry.key === 'citizenship_status') return 'add your citizenship status to your profile';
   switch (category) {
     case 'work_authorization': return 'add your work authorization to your profile';
     case 'sponsorship': return 'add your sponsorship answer to your profile';
@@ -570,6 +588,79 @@ export function hispanicYesNo(stored) {
   if (shapes.includes('Hispanic or Latino')) return 'Yes';
   if (shapes.includes('Two or More Races')) return null;
   return 'No';
+}
+
+const COMPANY_SITE_RE = /\b(company|official|employer'?s?|corporate) (web ?site|careers? (site|page))\b|\bcareers? (site|page|website)\b/i;
+const COMPANY_SITE_SHAPES = ['Careers site', 'Careers page', 'Company careers site',
+                             'Company careers page', 'Company website', 'Career site'];
+
+// US citizenship status, by the category it states. Ordered: "Not a U.S.
+// citizen" must be read as "none" before the citizen row sees "citizen", and
+// DACA's "Authorized to work … under DACA" before anything else reads it.
+//
+// Matching is by group and nothing else. Similarity is the wrong tool here:
+// "Not a U.S. citizen" and "(a) U.S. citizen or national" share most of their
+// words, and confusing them is a false statement on an export-control form.
+const CITIZENSHIP_GROUPS = [
+  { name: 'none', test: /\bnot (a |an )?(u\.? ?s\.?|united states)? ?(citizen|national)\b|\bnon[- ]?(u\.? ?s\.? )?citizen\b|\bforeign national\b|\bother\b|\bnone of (the )?above\b/i },
+  { name: 'daca', test: /\bdaca\b|\bdeferred action\b/i },
+  { name: 'asylee', test: /\basyl(ee|um)\b/i },
+  { name: 'refugee', test: /\brefugee\b/i },
+  { name: 'permanent_resident', test: /\bpermanent resident\b|\bgreen card\b/i },
+  { name: 'citizen', test: /\bcitizen\b|\bnational of the united states\b|\bu\.? ?s\.? national\b/i },
+];
+
+function citizenshipGroup(text) {
+  const g = CITIZENSHIP_GROUPS.find(group => group.test.test(String(text || '')));
+  return g ? g.name : '';
+}
+
+/** The one option stating the same citizenship status, or null. */
+export function citizenshipOption(stored, options) {
+  const want = citizenshipGroup(stored);
+  if (!want) return null;
+  const same = (options || []).filter(o => citizenshipGroup(o) === want);
+  return same.length === 1 ? same[0] : null;
+}
+
+/** The saved answer to exactly this question (same signature), or ''. */
+export function savedSensitiveAnswer(label, saved) {
+  const sig = questionSignature(label);
+  if (!sig) return '';
+  const hit = (saved || []).find(s => s && questionSignature(s.question) === sig);
+  return hit ? String(hit.answer || '').trim() : '';
+}
+
+const YES_RE = /^(yes|y|true)$/i;
+const NO_RE = /^(no|n|false)$/i;
+
+/**
+ * "Are you legally authorized to work in the United States?" answered with
+ * sentences instead of Yes / No (SpaceX: "I am authorized to work in the United
+ * States for any employer", "…for my present employer only", "I require
+ * sponsorship…", "I am not authorized…").
+ *
+ * Read off the person's own two stored answers, never one of them alone:
+ * "authorized: Yes" says nothing about "any employer" vs "present employer
+ * only" until "needs sponsorship: No" settles it. Returns the one option that
+ * states their answer, or null — two candidates, or none, and they choose.
+ */
+export function workAuthStatement(authorized, sponsorship, options) {
+  const auth = String(authorized || '').trim();
+  const spons = String(sponsorship || '').trim();
+  let test;
+  if (YES_RE.test(spons)) {
+    // They need sponsorship: that is the statement, whatever "authorized" says.
+    test = o => /\b(require|need)s?\b.*\bsponsor/i.test(o) && !/\b(not|don'?t|never)\b/i.test(o);
+  } else if (YES_RE.test(auth) && NO_RE.test(spons)) {
+    test = o => /\bauthori[sz]ed\b/i.test(o) && /\bany employer\b/i.test(o) && !/\bnot\b/i.test(o);
+  } else if (NO_RE.test(auth) && NO_RE.test(spons)) {
+    test = o => /\bnot (legally )?authori[sz]ed\b|\bunauthori[sz]ed\b/i.test(o) && !/\bsponsor/i.test(o);
+  } else {
+    return null;
+  }
+  const hits = (options || []).filter(test);
+  return hits.length === 1 ? hits[0] : null;
 }
 
 /** Broader phrasings of the ethnicity `text` names, or []. */
@@ -733,6 +824,11 @@ export function candidatesFor(key, value, bank) {
   // The stored wording first — a form offering "South Asian" should get it —
   // then the broader categories it belongs to.
   if (key === 'race_ethnicity') return uniq([text].concat(ethnicityShapes(text)));
+  // "Company website" is what the profile offers; SpaceX's list says "Careers
+  // site", others "Careers page". Same source, the employer's own site.
+  if (key === 'how_did_you_hear_about_us' && COMPANY_SITE_RE.test(text)) {
+    return uniq([text].concat(COMPANY_SITE_SHAPES));
+  }
   if (EEO_GROUPS[key]) return uniq([text].concat(eeoShapes(key, text)));
   if (!LOCATION_KEYS.has(key)) return text ? [text] : [];
 
@@ -854,6 +950,12 @@ export function coerce(value, row) {
     }
     // Every shape of the answer, not just the one the label suggested: a
     // "Country" list of dial codes matches "+91" and nothing else.
+    if (row.candidateKey === 'citizenship_status') return citizenshipOption(text, options);
+    // A work-authorization list worded as statements rather than Yes / No.
+    if (row.candidateKey === 'authorized_to_work_in_country'
+        && !options.some(o => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
+      return workAuthStatement(text, row.sponsorship, options);
+    }
     const candidates = (row.candidates && row.candidates.length) ? row.candidates : [text];
     const guard = row.candidateKey === 'degree' ? degreeGuard
                 : row.candidateKey === 'race_ethnicity'

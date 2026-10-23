@@ -145,6 +145,17 @@ def test_is_never_store_refuses_secrets_and_sensitive_questions():
         "EEO answers belong in the profile, not captured per-application"
     assert mg.is_never_store("Are you authorized to work in the US?", "Yes")
     assert mg.is_never_store("Expected salary", "2500000")
+    assert mg.is_never_store("Citizenship Status", "(b) U.S. lawful permanent resident"), \
+        "citizenship status is a profile field, not a per-form answer"
+
+
+def test_is_never_store_allows_the_persons_own_clearance_and_criminal_answers():
+    # No profile field holds these; the person's own answer to the exact question
+    # is the only source, so it may be kept (and is reused only for that question).
+    assert not mg.is_never_store("Active Security Clearance(s)*", "Never held a clearance")
+    assert not mg.is_never_store("Have you ever been convicted of a felony?", "No")
+    assert mg.is_never_store("Active Security Clearance(s)*", "123-45-6789"), \
+        "a secret value is still refused"
 
 
 def test_is_never_store_allows_an_ordinary_learned_answer():

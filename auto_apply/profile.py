@@ -88,6 +88,8 @@ class ApplicantProfile:
     # voluntary EEO question, but it is not an answer to "what is your
     # nationality". Unset means unset, and the field goes back to the user.
     nationality: str = ""
+    # Same: unset goes back to the user, never a default.
+    citizenship_status: str = ""
     gender: str = DECLINE
     race_ethnicity: str = DECLINE
     veteran_status: str = DECLINE
@@ -510,6 +512,7 @@ def _profile_to_dict(prof) -> dict:
         "how_did_you_hear": prof.how_did_you_hear or "",
         "why_this_role": prof.why_this_role or "",
         "nationality": prof.nationality or "",
+        "citizenship_status": getattr(prof, "citizenship_status", "") or "",
         "gender": prof.gender or "",
         "race_ethnicity": prof.race_ethnicity or "",
         "veteran_status": prof.veteran_status or "",
@@ -644,6 +647,7 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         available_start_date=str(prof.get("available_start_date") or "").strip(),
         how_did_you_hear=str(prof.get("how_did_you_hear") or "").strip() or "Company website",
         nationality=str(prof.get("nationality") or "").strip(),
+        citizenship_status=str(prof.get("citizenship_status") or "").strip(),
         gender=str(prof.get("gender") or "").strip() or DECLINE,
         race_ethnicity=str(prof.get("race_ethnicity") or "").strip() or DECLINE,
         veteran_status=str(prof.get("veteran_status") or "").strip() or DECLINE,
@@ -826,6 +830,7 @@ def answer_bank(p: ApplicantProfile) -> dict:
         "why_do_you_want_this_role": p.why_this_role,
         "cover_letter": p.cover_note,
         "nationality": p.nationality,
+        "citizenship_status": p.citizenship_status,
         "gender": p.gender or DECLINE,
         "race_ethnicity": p.race_ethnicity or DECLINE,
         "veteran_status": p.veteran_status or DECLINE,

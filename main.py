@@ -760,6 +760,8 @@ def _ensure_apply_profile_columns() -> None:
         to_add.append("ADD COLUMN skills TEXT")
     if "nationality" not in cols:
         to_add.append("ADD COLUMN nationality VARCHAR(80)")
+    if "citizenship_status" not in cols:
+        to_add.append("ADD COLUMN citizenship_status VARCHAR(80)")
     if "name_title" not in cols:
         to_add.append("ADD COLUMN name_title VARCHAR(20)")
     if "work_experience" not in cols:

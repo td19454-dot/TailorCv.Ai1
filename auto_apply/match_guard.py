@@ -110,6 +110,14 @@ def looks_secret(value: str) -> bool:
     return any(p.match(v) for p in SECRET_VALUE_PATTERNS)
 
 
+# Sensitive categories whose answer may be saved from a form the person answered
+# themselves. There is no profile field for these — employers word them too
+# differently for one stored value — so the person's own answer to that exact
+# question is the only source. Reused for the SAME question only (exact
+# signature, in the extension), never semantically recalled or shown to a model.
+STORABLE_SENSITIVE = {"clearance", "criminal"}
+
+
 def is_never_store(question: str, answer: str) -> bool:
     """Whether this question/answer pair must be refused by the answer store.
 
@@ -118,11 +126,13 @@ def is_never_store(question: str, answer: str) -> bool:
     Sensitive-but-answerable questions (work authorization, EEO) are excluded
     too — those belong in the user's profile as a single deliberate answer, not
     captured per-application from whatever they typed into one employer's form.
+    Clearance and criminal history are the exception: see STORABLE_SENSITIVE.
     """
     if is_never_fill(question):
         return True
     if looks_secret(answer):
         return True
-    if classify_sensitive(question):
+    category = classify_sensitive(question)
+    if category and category not in STORABLE_SENSITIVE:
         return True
     return False

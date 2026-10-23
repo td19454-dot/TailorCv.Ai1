@@ -142,21 +142,77 @@ test('Bank of America (Workday): military service answered from veteran status; 
   eq(p.fieldsForServer([spouse]).length, 0, 'and it is never sent to the model');
 });
 
-test('citizenship status and clearance are answered in the sidebar, not sent to the profile', () => {
-  // SpaceX (greenhouse spacex/8569186002): the profile has no field for either,
-  // so "Set once in your profile" would be a dead end.
-  const citizenship = field('Citizenship Status*', { kind: 'combobox', required: true,
-    options: ['(a) U.S. citizen or national of the United States', '(b) U.S. lawful permanent resident'] });
-  const clearance = field('Active Security Clearance(s)*', { kind: 'combobox', required: true,
-    options: ['Secret', 'Never held a clearance', 'Do not wish to disclose'] });
+// SpaceX (greenhouse spacex/8730567002), the lists as the page serves them.
+const SPACEX_CITIZENSHIP = [
+  '(a) U.S. citizen or national of the United States',
+  '(b) U.S. lawful permanent resident',
+  '(c) Refugee under 8 U.S.C. 1157',
+  '(d) Asylee under 8 U.S.C. 1158',
+  '(e) Authorized to work in the United States under the Deferred Action for Childhood Arrivals (DACA) program',
+  '(f) Other (please explain)',
+];
+const SPACEX_CLEARANCE = ['Top Secret SCI with Polygraph', 'Top Secret SCI/SAP', 'Top Secret',
+  'DOE Level Q', 'Secret', 'Expired Clearance', 'Never held a clearance', 'Do not wish to disclose'];
+const citizenshipRow = () => field('Citizenship Status*', { kind: 'combobox', required: true, options: SPACEX_CITIZENSHIP });
+const clearanceRow = () => field('Active Security Clearance(s)*', { kind: 'combobox', required: true, options: SPACEX_CLEARANCE });
+
+test('with nothing stored: citizenship points at the profile; clearance and felony are asked', () => {
   const felony = field('Have you ever been convicted of a felony?', { required: true });
-  const decisions = p.decide([citizenship, clearance, felony], CTX, null, null);
-  for (const d of decisions) {
-    eq(d.action, p.ASK, d.label);
+  const [citizenship, clearance, conviction] = p.decide([citizenshipRow(), clearanceRow(), felony], CTX, null, null);
+  eq(citizenship.action, p.PROFILE, 'citizenship status now has a profile field');
+  eq(clearance.action, p.ASK);
+  eq(conviction.action, p.ASK);
+  for (const d of [citizenship, clearance, conviction]) {
     eq(d.value, '', 'never guessed');
-    ok(d.sensitive, 'still sensitive, so never remembered');
+    ok(d.sensitive);
   }
-  eq(p.fieldsForServer(decisions).length, 0, 'and never sent to the model');
+  eq(p.fieldsForServer([citizenship, clearance, conviction]).length, 0, 'and never sent to the model');
+});
+
+test('citizenship status fills from the profile, within its own group only', () => {
+  const ctx = status => ({ answerBank: Object.assign({}, BANK, { citizenship_status: status }), hasResume: true });
+  const pick = status => p.decide([citizenshipRow()], ctx(status), null, null)[0];
+  eq(pick('U.S. citizen or national').value, SPACEX_CITIZENSHIP[0]);
+  eq(pick('U.S. lawful permanent resident (green card)').value, SPACEX_CITIZENSHIP[1]);
+  eq(pick('Refugee').value, SPACEX_CITIZENSHIP[2]);
+  eq(pick('Asylee').value, SPACEX_CITIZENSHIP[3]);
+  eq(pick('DACA recipient').value, SPACEX_CITIZENSHIP[4]);
+  eq(pick('Not a U.S. citizen or permanent resident').value, SPACEX_CITIZENSHIP[5],
+     '"Not a U.S. citizen" is never read as the citizen option');
+});
+
+test('citizenship status with no option in its group is asked, not approximated', () => {
+  const row = field('Citizenship Status', { kind: 'combobox', options: ['U.S. Citizen', 'Permanent Resident'] });
+  const ctx = { answerBank: Object.assign({}, BANK, { citizenship_status: 'Not a U.S. citizen or permanent resident' }) };
+  const d = p.decide([row], ctx, null, null)[0];
+  eq(d.action, p.ASK);
+  notOk(d.value);
+});
+
+test('a saved clearance answer fills the SAME question, from this form\'s own options', () => {
+  const ctx = Object.assign({}, CTX, { savedSensitive: [
+    { question: 'Active Security Clearance(s)*', answer: 'Never held a clearance' }] });
+  const d = p.decide([clearanceRow()], ctx, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'Never held a clearance');
+  eq(d.source, 'saved_answer');
+  eq(p.fieldsForServer([d]).length, 0, 'still never sent to the model');
+});
+
+test('a saved clearance answer is not reused for a differently worded question', () => {
+  const ctx = Object.assign({}, CTX, { savedSensitive: [
+    { question: 'Active Security Clearance(s)*', answer: 'Never held a clearance' }] });
+  const other = field('Do you currently hold a U.S. security clearance?', { kind: 'combobox', options: ['Yes', 'No'] });
+  eq(p.decide([other], ctx, null, null)[0].action, p.ASK);
+});
+
+test('a saved criminal-history answer fills the same question', () => {
+  const ctx = Object.assign({}, CTX, { savedSensitive: [
+    { question: 'Have you ever been convicted of a felony?', answer: 'No' }] });
+  const row = field('Have you ever been convicted of a felony?', { kind: 'combobox', options: ['Yes', 'No'] });
+  const d = p.decide([row], ctx, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'No');
 });
 
 test('the AI tier cannot answer a sensitive field even if the server returns one', () => {
@@ -653,6 +709,51 @@ test('"Are you Hispanic/Latino?" is never guessed from a race that does not sett
 test('a race list offering "Hispanic or Latino" is still matched as a race list', () => {
   notOk(p.isHispanicYesNoQuestion('Race / Ethnicity (Hispanic or Latino)'));
   ok(p.isHispanicYesNoQuestion('Are you Hispanic/Latino?'));
+});
+
+test('"Please identify your race" is the race question', () => {
+  const row = field('Please identify your race', { kind: 'combobox', options: RACE_LIST });
+  const d = p.decide([row], raceCtx('South Asian'), null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'Asian');
+});
+
+// SpaceX (Greenhouse, Oct 2026): work authorization as statements, not Yes / No.
+const SPACEX_AUTH = [
+  'I am authorized to work in the United States for any employer',
+  'I am authorized to work in the United States for my present employer only',
+  'I require sponsorship to work in the United States',
+  'I am not authorized to work in the United States',
+  'My status to work in the United States is unknown',
+];
+const authRow = () => field('Are you legally authorized to work in the United States?*',
+  { kind: 'combobox', options: SPACEX_AUTH, required: true });
+const authCtx = (auth, spons) => ({ answerBank: Object.assign({}, BANK,
+  { authorized_to_work_in_country: auth, requires_visa_sponsorship: spons }), hasResume: true });
+
+test('work authorization as statements: read from BOTH stored answers', () => {
+  eq(p.decide([authRow()], authCtx('Yes', 'No'), null, null)[0].value, SPACEX_AUTH[0]);
+  eq(p.decide([authRow()], authCtx('Yes', 'Yes'), null, null)[0].value, SPACEX_AUTH[2]);
+  eq(p.decide([authRow()], authCtx('No', 'Yes'), null, null)[0].value, SPACEX_AUTH[2]);
+  eq(p.decide([authRow()], authCtx('No', 'No'), null, null)[0].value, SPACEX_AUTH[3]);
+});
+
+test('work authorization as statements: never guessed from one answer alone', () => {
+  const d = p.decide([authRow()], authCtx('Yes', ''), null, null)[0];
+  eq(d.action, p.ASK, '"any employer" vs "present employer only" is not settled by "Yes"');
+  notOk(d.value);
+});
+
+test('work authorization Yes / No lists are unchanged', () => {
+  const row = field('Are you legally authorized to work in the United States?', { kind: 'combobox', options: ['Yes', 'No'] });
+  eq(p.decide([row], authCtx('Yes', 'No'), null, null)[0].value, 'Yes');
+});
+
+test('"Company website" answers a list that calls it "Careers site"', () => {
+  const opts = ['Glassdoor', 'Careers site', 'Indeed', 'LinkedIn', 'Other (indicate below)'];
+  const row = field('How did you hear about this job?*', { kind: 'combobox', options: opts });
+  const ctx = { answerBank: Object.assign({}, BANK, { how_did_you_hear_about_us: 'Company website' }), hasResume: true };
+  eq(p.decide([row], ctx, null, null)[0].value, 'Careers site');
 });
 
 // ── nationality ──────────────────────────────────────────────

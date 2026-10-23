@@ -11,6 +11,7 @@
 
 import { ASK, DOCUMENT, FILL, PROFILE, SKIP, SUGGEST } from './plan.js';
 import { answerField, learnableAnswers, rememberAnswers } from './run.js';
+import { STORABLE_SENSITIVE } from './match.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 
@@ -289,13 +290,15 @@ function askFormHtml(d, index) {
        </select>`
     : `<input class="tcv-af-ask-input" data-index="${index}" type="text"
               placeholder="Your answer">`;
-  // Remembering defaults ON for an ordinary question. A sensitive one
-  // (citizenship, clearance, criminal history) is never remembered — answerField
-  // refuses it — so it gets no checkbox that would pretend otherwise.
+  // Remembering defaults ON for an ordinary question. Most sensitive ones are
+  // never remembered — answerField refuses them — so they get no checkbox that
+  // would pretend otherwise. Clearance and criminal history have no profile
+  // field, so the person's own answer may be kept, for this exact question.
+  const neverSaved = d.sensitive && !STORABLE_SENSITIVE.has(d.sensitive);
   return `
     <div class="tcv-af-ask-form">
       ${control}
-      ${d.sensitive ? `
+      ${neverSaved ? `
       <div class="tcv-af-remember">Used on this form only — never saved.</div>` : `
       <label class="tcv-af-remember">
         <input type="checkbox" class="tcv-af-remember-box" data-index="${index}" checked>

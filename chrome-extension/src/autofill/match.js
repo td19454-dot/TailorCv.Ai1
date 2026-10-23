@@ -350,6 +350,11 @@ export const SENSITIVE_PATTERNS = [
   ['demographic', /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/],
 ];
 
+// Sensitive categories with no profile field, whose answer the person may save
+// from a form they answered (match_guard.py STORABLE_SENSITIVE). Reused only
+// for the same question — see savedSensitiveAnswer() in plan.js.
+export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal']);
+
 // browser.py _EEO_FIELD_MARKERS — kept separately because EEO fields have a
 // behaviour the other sensitive categories don't: a stored "Decline to
 // self-identify" is itself a legitimate answer, resolved against whatever
@@ -672,7 +677,7 @@ export function isConditionalFollowUp(label) {
 // virtualised list, so for them typing is how the right option appears.
 export const READ_FIRST_KEYS = new Set([
   'gender', 'race_ethnicity', 'veteran_status', 'disability_status',
-  'gender_pronouns', 'lgbtq_identity',
+  'gender_pronouns', 'lgbtq_identity', 'citizenship_status',
 ]);
 
 // ── field synonyms: label -> answer-bank key ─────────────────
@@ -760,10 +765,15 @@ export const FIELD_SYNONYMS = [
   // Sensitive on purpose. Nationality sits beside the right-to-work questions,
   // and a guess from a dial code or an address would be an immigration-adjacent
   // declaration the person never made.
+  // The US status question (citizen / permanent resident / refugee / …), not a
+  // country. Matched before 'nationality' because exact signatures win first.
+  { key: 'citizenship_status', sensitive: true, labels: ['citizenship status', 'citizen status', 'us citizenship status', 'citizenship immigration status'] },
   { key: 'nationality', sensitive: true, labels: ['nationality', 'citizenship', 'country of citizenship', 'nationality or citizenship', 'what is your nationality', 'indicate your nationality'] },
   { key: 'expected_salary', sensitive: true, labels: ['expected salary', 'salary expectation', 'desired salary', 'compensation expectation', 'expected ctc', 'desired compensation'] },
   { key: 'gender', sensitive: true, labels: ['gender', 'gender identity', 'gender do you identify as', 'gender you identify with', 'gender identify'] },
-  { key: 'race_ethnicity', sensitive: true, labels: ['race', 'ethnicity', 'race ethnicity', 'racial identity', 'hispanic or latino'] },
+  // "identify your race": the bare 'race' is one word, and one-word synonyms
+  // absorb only one extra word — Greenhouse's "Please identify your race" has two.
+  { key: 'race_ethnicity', sensitive: true, labels: ['race', 'ethnicity', 'race ethnicity', 'racial identity', 'hispanic or latino', 'identify your race', 'identify your ethnicity'] },
   // "Have you ever served or are you currently serving in the United States
   // military?" — the same fact as veteran status, asked as a Yes/No.
   { key: 'veteran_status', sensitive: true, labels: ['veteran status', 'military status', 'protected veteran', 'military service', 'served in the military', 'serving in the military', 'served military', 'serving military', 'uniformed forces', 'armed forces', 'defence forces', 'defense forces'] },
