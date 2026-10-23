@@ -340,6 +340,14 @@ export const SENSITIVE_PATTERNS = [
   ['citizenship', /\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b|\bpassports?\b/],
   ['clearance', /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
   ['criminal', /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
+  // Employment by a government, the military, a state-owned enterprise
+  // (Snowflake: "Have you ever been directly employed by (1) any government or
+  // military entity, state-owned enterprise…"). An employment-history question,
+  // not military SERVICE — read as the veteran question it had no profile
+  // answer and could not be saved. Needs BOTH an employment word and a
+  // government word, and sits ahead of 'demographic' so "served in the
+  // military" stays a veteran question.
+  ['government_employment', /\b(employ\w*|worked for|working for)\b[\s\S]*\b(government|military|state owned|publicly funded|public sector|civil service)\b|\b(government|military|state owned|public sector)\b[\s\S]*\bemploy\w*/],
   ['salary', /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
   // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
   ['demographic', /\bgender\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
@@ -356,7 +364,7 @@ export const SENSITIVE_PATTERNS = [
 // Citizenship included: its questions ("Which best describes your 'U.S. person'
 // status?") are worded too variously for the profile's one status to answer
 // them all, so the person's own answer to the exact question is kept too.
-export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal', 'citizenship']);
+export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal', 'citizenship', 'government_employment']);
 
 // browser.py _EEO_FIELD_MARKERS — kept separately because EEO fields have a
 // behaviour the other sensitive categories don't: a stored "Decline to

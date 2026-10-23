@@ -58,6 +58,14 @@ MUST_FLAG = [
     ("demographic", "Veteran status"),
     ("demographic", "Protected veteran status"),
     ("demographic", "Are you a protected military veteran?"),
+    ("demographic", "Have you ever served or are you currently serving in the United States military?"),
+    ("demographic", "Are you a current or former military spouse?"),
+    # Employment BY a government — not military service (Snowflake, Oct 2026).
+    ("government_employment", "Have you ever been directly employed by (1) any government or "
+                              "military entity, state-owned enterprise, or publicly-funded institution, "
+                              "or (2) a government contractor in a role that recommended Snowflake as "
+                              "part of Government procurement?"),
+    ("government_employment", "Have you worked for a government agency in the last two years?"),
     ("demographic", "Disability status"),
     ("demographic", "Do you have a disability?"),
     ("demographic", "What are your pronouns?"),
@@ -156,6 +164,8 @@ def test_is_never_store_allows_the_persons_own_clearance_criminal_and_citizenshi
         "Which of the following best describes your “U.S. person” status?",
         "None of the above; I am a citizen of a different country")
     assert not mg.is_never_store("Citizenship Status", "(b) U.S. lawful permanent resident")
+    assert not mg.is_never_store(
+        "Have you ever been directly employed by (1) any government or military entity?", "No")
     assert mg.is_never_store("Active Security Clearance(s)*", "123-45-6789"), \
         "a secret value is still refused"
 

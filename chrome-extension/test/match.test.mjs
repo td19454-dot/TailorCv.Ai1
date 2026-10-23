@@ -258,6 +258,8 @@ const MUST_FLAG = [
   ['demographic', 'Veteran status'],
   ['demographic', 'Protected veteran status'],
   ['demographic', 'Are you a protected military veteran?'],
+  ['demographic', 'Have you ever served or are you currently serving in the United States military?'],
+  ['government_employment', 'Have you ever been directly employed by (1) any government or military entity, state-owned enterprise, or publicly-funded institution?'],
   ['demographic', 'Disability status'],
   ['demographic', 'Do you have a disability?'],
   ['demographic', 'What are your pronouns?'],
