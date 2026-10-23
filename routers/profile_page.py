@@ -31,6 +31,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 
+import document_store
 from database import SessionLocal
 from models import User, UserApplyProfile, UserApplyQA
 
@@ -393,7 +394,7 @@ async def profile_page(request: Request):
             "sections": SECTIONS,
             "model": model,
             "user_name": user.name or "",
-            "has_resume": bool(user.base_resume_path and os.path.exists(user.base_resume_path)),
+            "has_resume": bool(user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path)),
         })
     finally:
         db.close()

@@ -432,6 +432,16 @@ def snapshot_user(db, user_id: int, job_id: int) -> dict:
     # /apply-context endpoint is what populates this.
     facts = _load_facts_quietly(db, user)
 
+    # Put the documents back on disk if a deploy wiped it: the runner uploads
+    # these paths to the employer's form (browser.upload_resume), and
+    # validate_profile checks the resume file exists. Callers run this in a
+    # worker thread (runner._db_call) or restore them first (job_dashboard).
+    import document_store
+
+    for doc_path in (user.base_resume_path, user.base_cover_letter_path):
+        if doc_path:
+            document_store.ensure_file(doc_path)
+
     return {
         "user_id": user.id,
         "name": user.name or "",

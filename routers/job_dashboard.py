@@ -31,6 +31,7 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
 from sqlalchemy import func, text
 
+import document_store
 from database import SessionLocal, IS_POSTGRES, sync_embedding_vectors
 from models import (
     AutoApplyRun,
@@ -209,7 +210,7 @@ async def _fetch_and_append(db, query: str, location: str, query_norm: str, loca
 
 
 async def _user_resume_embedding(db, user: User) -> list[float] | None:
-    if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+    if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
         return None
 
     resume_text = user.base_resume_text
@@ -653,7 +654,7 @@ async def get_apply_profile(request: Request):
         payload = _profile_payload(prof, user.base_resume_text or "", user.name or "")
         payload["name"] = user.name or ""
         payload["email"] = user.email or ""
-        payload["hasResume"] = bool(user.base_resume_path and os.path.exists(user.base_resume_path))
+        payload["hasResume"] = bool(user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path))
         return payload
     finally:
         db.close()
@@ -764,6 +765,12 @@ async def start_auto_apply(request: Request, payload: AutoApplyRequest):
             return JSONResponse(_run_payload(existing, job.apply_url), status_code=409)
         if existing and existing.status == "submitted":
             raise HTTPException(status_code=409, detail="You already applied to this job.")
+
+        # Restored from storage off the event loop, so snapshot_user's own
+        # (blocking) check below finds them on disk after a deploy.
+        for doc_path in (user.base_resume_path, user.base_cover_letter_path):
+            if doc_path:
+                await document_store.ensure_file_async(doc_path)
 
         # Profile check comes before the quota call so an incomplete profile
         # never costs the user one of their monthly runs.

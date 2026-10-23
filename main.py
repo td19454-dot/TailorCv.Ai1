@@ -90,6 +90,7 @@ from functions import (
 from extraction import process_resume
 import alerts
 import analytics
+import document_store
 import health_watch
 import skill_categories as skillcat
 from models import AtsLockedReport, BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, ResumeOptimization, SavedResume, SignupVerificationCode, UsageRecord, User
@@ -6177,7 +6178,7 @@ async def extension_page(request: Request):
         db = get_db()
         try:
             user = db.query(User).filter(User.id == user_id).first()
-            has_base = bool(user and user.base_resume_path and os.path.exists(user.base_resume_path))
+            has_base = bool(user and user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path))
             base_resume = {
                 "has_base_resume": has_base,
                 "filename": user.base_resume_filename if has_base else None,
@@ -7817,7 +7818,7 @@ async def my_resumes_page(request: Request):
             .all()
         )
         user = db.query(User).filter(User.id == user_id).first()
-        has_base_resume = bool(user and user.base_resume_path and os.path.exists(user.base_resume_path))
+        has_base_resume = bool(user and user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path))
         base_resume = {
             "has_base_resume": has_base_resume,
             "filename": user.base_resume_filename if has_base_resume else None,
@@ -8318,7 +8319,7 @@ async def extension_cover_letter(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/extension first.")
         base_resume_path = user.base_resume_path
         cover_template = user.base_cover_template or "classic"
@@ -8572,6 +8573,10 @@ async def set_extension_base_resume(request: Request):
         with open(new_path, "wb") as f:
             content = await upload.read()
             f.write(content)
+        # The durable copy: Render's disk is wiped on every deploy, and without
+        # this every user had to upload their base resume again. A failure is
+        # reported, not raised — the file is still on disk until then.
+        await asyncio.to_thread(document_store.store_file, new_path)
 
     # Extracted once here so the extension's skill-match score never needs to
     # re-parse the PDF on every job the user looks at. Only when a new file was
@@ -8612,8 +8617,12 @@ async def set_extension_base_resume(request: Request):
             from auto_apply.resume_facts import invalidate_facts
 
             invalidate_facts(db, user_id)
-        if has_upload and old_path and old_path != new_path and os.path.exists(old_path):
-            os.remove(old_path)
+        if has_upload and old_path and old_path != new_path:
+            if os.path.exists(old_path):
+                os.remove(old_path)
+            # The replaced resume's stored copy too, even when a deploy already
+            # took the local file.
+            await asyncio.to_thread(document_store.remove_file, old_path)
     finally:
         db.close()
 
@@ -8644,7 +8653,9 @@ async def get_extension_base_resume(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        has_base_resume = bool(user.base_resume_path and os.path.exists(user.base_resume_path))
+        # Restored from storage if a deploy wiped the disk (document_store).
+        has_base_resume = bool(user.base_resume_path
+                               and await document_store.ensure_file_async(user.base_resume_path))
         return JSONResponse({
             "has_base_resume": has_base_resume,
             "filename": user.base_resume_filename if has_base_resume else None,
@@ -8681,6 +8692,8 @@ async def delete_extension_base_resume(request: Request):
         invalidate_facts(db, user_id)
         if old_path and os.path.exists(old_path):
             os.remove(old_path)
+        if old_path:
+            await asyncio.to_thread(document_store.remove_file, old_path)
     finally:
         db.close()
     return JSONResponse({"success": True})
@@ -8698,7 +8711,8 @@ async def get_base_cover_letter(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        has_one = bool(user.base_cover_letter_path and os.path.exists(user.base_cover_letter_path))
+        has_one = bool(user.base_cover_letter_path
+                       and await document_store.ensure_file_async(user.base_cover_letter_path))
         return JSONResponse({
             "has_base_cover_letter": has_one,
             "filename": user.base_cover_letter_filename if has_one else None,
@@ -8734,7 +8748,7 @@ async def _write_base_cover_letter(user_id: int) -> str:
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=400, detail="Upload a base resume first — the cover letter is written from it.")
         base_resume_path = user.base_resume_path
         cover_template = user.base_cover_template or "classic"
@@ -8780,6 +8794,8 @@ async def _write_base_cover_letter(user_id: int) -> str:
         if os.path.exists(new_path):
             os.remove(new_path)
         raise HTTPException(status_code=500, detail="Failed to render the cover letter PDF.")
+    # Durable copy, like the base resume's: it must survive a deploy.
+    await asyncio.to_thread(document_store.store_file, new_path)
 
     db2 = get_db()
     try:
@@ -8793,8 +8809,10 @@ async def _write_base_cover_letter(user_id: int) -> str:
         db2.commit()
     finally:
         db2.close()
-    if old_path and old_path != new_path and os.path.exists(old_path):
-        os.remove(old_path)
+    if old_path and old_path != new_path:
+        if os.path.exists(old_path):
+            os.remove(old_path)
+        await asyncio.to_thread(document_store.remove_file, old_path)
 
     return "cover_letter.pdf"
 
@@ -8817,6 +8835,8 @@ async def delete_base_cover_letter(request: Request):
         db.commit()
         if old_path and os.path.exists(old_path):
             os.remove(old_path)
+        if old_path:
+            await asyncio.to_thread(document_store.remove_file, old_path)
     finally:
         db.close()
     return JSONResponse({"success": True})
@@ -8846,7 +8866,7 @@ async def extension_skill_match(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=404, detail="No base resume set.")
 
         resume_text = user.base_resume_text
@@ -8887,7 +8907,7 @@ async def extension_tailor_resume(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/my-resumes first.")
 
         # Atomically gate + consume the same ai_optimizations quota the website
@@ -9180,7 +9200,7 @@ async def extension_apply_answers(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/extension first.")
         base_resume_path = user.base_resume_path
         resume_text = user.base_resume_text
