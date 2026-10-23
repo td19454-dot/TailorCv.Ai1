@@ -559,6 +559,175 @@ export const ASHBY = `
   <button type="button">Submit Application</button>
 </div>`;
 
+// Ashby as OpenAI serves it (jobs.ashbyhq.com/openai/9d4d2727…/application,
+// captured Oct 2026, trimmed). Two things the hand-written ASHBY above lacks:
+//   * Yes / No questions are two buttons plus a hidden mirror checkbox;
+//   * the EEO survey is a SECOND .ashby-application-form-container, sibling to
+//     the questions, holding radio groups — and Ashby's own "Autofill from
+//     resume" parser box sits beside both.
+const yesNo = (id, question, description) => `
+      <div class="_fieldEntry_1e3gg_28 ashby-application-form-field-entry" data-field-path="${id}">
+        <label class="_heading_f7cvd_52 _required_f7cvd_91 ashby-application-form-question-title" for="${id}">${question}</label>
+        ${description ? `<div class="_description_1e3gg_48 ashby-application-form-question-description"><p>${description}</p></div>` : ''}
+        <div class="_container_1svni_28 _yesno_1e3gg_148 ashby-application-form-input-yesno">
+          <button class="_container_pjyt6_1 _option_1svni_32 ashby-application-form-input-yesno-option" aria-pressed="false" data-option="yes">Yes</button>
+          <button class="_container_pjyt6_1 _option_1svni_32 ashby-application-form-input-yesno-option" aria-pressed="false" data-option="no">No</button>
+          <input type="checkbox" class="_input_1svni_78" tabindex="-1" name="${id}">
+        </div>
+      </div>`;
+const radioGroup = (field, question, options) => `
+      <div data-field-path="_systemfield_eeoc_${field}">
+        <fieldset class="_container_1258i_28 _fieldEntry_1e3gg_28 ashby-application-form-input-radio-group">
+          <label class="_heading_f7cvd_52 ashby-application-form-question-title" for="_systemfield_eeoc_${field}">${question}</label>
+          ${options.map((o, i) => `
+          <div class="_option_1258i_34 false ashby-application-form-input-radio-group-option">
+            <span class="_container_132c8_28"><span class="_circle_132c8_77"></span>
+              <input type="radio" id="eeo__${field}-labeled-radio-${i}" name="eeo__${field}" class="ashby-application-form-input-radio-group-option-radio"></span>
+            <label for="eeo__${field}-labeled-radio-${i}" class="ashby-application-form-input-radio-group-option-label">${o}</label>
+          </div>`).join('')}
+        </fieldset>
+      </div>`;
+
+export const ASHBY_OPENAI = `
+<div class="ashby-job-posting-right-pane">
+  <div tabindex="0" role="tabpanel" aria-labelledby="job-application-form" id="form">
+    <div class="_autofillPane_5yu8i_448 ashby-application-form-autofill-uploader">
+      <div role="presentation" class="ashby-application-form-autofill-input-root">
+        <input accept="application/pdf,.pdf" type="file" tabindex="-1" id="ashby-autofill-file">
+        <h3 class="ashby-application-form-autofill-input-title">Autofill from resume</h3>
+        <p>Upload your resume here to autofill key application fields.</p>
+        <button class="_button_zyh3g_28 _secondary_zyh3g_115">Upload file</button>
+      </div>
+    </div>
+    <div class="_jobPostingForm_5yu8i_402 ashby-application-form-container">
+      <div class="_section_5yu8i_86 ashby-application-form-section-container">
+        <div class="ashby-application-form-field-entry">
+          <label class="ashby-application-form-question-title" for="_systemfield_name">Legal Name</label>
+          <input name="_systemfield_name" required id="_systemfield_name" type="text">
+        </div>
+        <div class="ashby-application-form-field-entry">
+          <label class="ashby-application-form-question-title" for="_systemfield_email">Email</label>
+          <input name="_systemfield_email" required id="_systemfield_email" type="email">
+        </div>
+        <div class="ashby-application-form-field-entry">
+          <label class="ashby-application-form-question-title" for="_systemfield_resume">Resume</label>
+          <div role="presentation" class="ashby-application-form-input-file">
+            <input type="file" tabindex="-1" id="_systemfield_resume" required>
+          </div>
+        </div>
+        ${yesNo('q-authorized', 'Are you authorized to work in the country where the job is located?')}
+        ${yesNo('q-sponsorship', 'Will you now or in the future require sponsorship for employment visa status in this country?',
+                'We may provide immigration and sponsorship support to new employees based on their unique circumstances.')}
+        ${yesNo('q-office', 'Are you able to work from our US office three days per week?')}
+      </div>
+    </div>
+    <div class="ashby-survey-form-container">
+      <div class="_jobPostingForm_5yu8i_402 ashby-application-form-container">
+        <div class="_section_5yu8i_86 ashby-application-form-section-container">
+          ${radioGroup('gender', 'Gender', ['Male', 'Female', 'Decline to self-identify'])}
+          ${radioGroup('race', 'Race', ['Hispanic or Latino', 'White (Not Hispanic or Latino)',
+            'Black or African American (Not Hispanic or Latino)',
+            'Native Hawaiian or Other Pacific Islander (Not Hispanic or Latino)',
+            'Asian (Not Hispanic or Latino)', 'American Indian or Alaska Native (Not Hispanic or Latino)',
+            'Two or More Races (Not Hispanic or Latino)', 'Decline to self-identify'])}
+          ${radioGroup('veteran_status', 'Veteran Status', [
+            'I identify as one or more of the classifications of protected veteran listed above',
+            'I am not a protected veteran', 'I decline to self-identify for protected veteran status'])}
+        </div>
+      </div>
+    </div>
+    <button class="ashby-application-form-submit-button"><span>Submit Application</span></button>
+  </div>
+</div>`;
+
+/** Ashby's Yes / No: pressing one sets aria-pressed and mirrors it to the checkbox. */
+export function wireAshbyYesNo(doc) {
+  for (const box of doc.querySelectorAll('.ashby-application-form-input-yesno')) {
+    const buttons = Array.from(box.querySelectorAll('button'));
+    const mirror = box.querySelector('input[type=checkbox]');
+    for (const b of buttons) {
+      b.addEventListener('click', () => {
+        for (const other of buttons) other.setAttribute('aria-pressed', String(other === b));
+        mirror.checked = b.getAttribute('data-option') === 'yes';
+      });
+    }
+  }
+}
+
+// Ashby's location autocomplete, as its own source has it (component ZR, query
+// ApiAutocompleteGeoLocation): typing opens a body-level listbox that first
+// shows "Loading..." while a network search runs; results then arrive as
+// div[role=option] and are chosen by click; blur puts back the last SELECTED
+// value — so an unpicked typed value is wiped. Results are what Ashby really
+// returns for "Kolkata" (queried Oct 2026).
+export const ASHBY_LOCATION = `
+<div class="ashby-application-form-container">
+  <div class="ashby-application-form-field-entry"><label for="_systemfield_name">Full Name</label><input id="_systemfield_name" required></div>
+  <div class="ashby-application-form-field-entry"><label for="_systemfield_email">Email</label><input id="_systemfield_email" type="email" required></div>
+  <div class="ashby-application-form-field-entry" data-field-path="_systemfield_location">
+    <label class="ashby-application-form-question-title _required_f7cvd_91" for="_systemfield_location">Location</label>
+    <div class="_inputContainer_d7ago_28"><input class="ashby-application-form-input-autocomplete" placeholder="Start typing..." aria-autocomplete="list" aria-expanded="false" aria-haspopup="listbox" role="combobox"><button class="_toggleButton_d7ago_32"></button></div>
+  </div>
+</div>`;
+
+const ASHBY_GEO = {
+  kolkata: ['Kolkata, West Bengal, India', 'Kołata, Poznań County, Greater Poland Voivodeship, Poland',
+            'Kolkaha, Moyen-Chari, Chad', 'Kolata, Nzérékoré, Guinea'],
+};
+
+/** Wire Ashby's location box. `delayMs` is the search's network round trip. */
+// `never`: the search never answers (an outage) — the list stays "Loading...".
+export function wireAshbyLocation(doc, { delayMs = 300, never = false } = {}) {
+  const input = doc.querySelector('.ashby-application-form-input-autocomplete');
+  const win = doc.defaultView;
+  let selected = '';
+  let timer = null;
+  let popup = null;
+  const close = () => {
+    if (popup) popup.remove();
+    popup = null;
+    input.setAttribute('aria-expanded', 'false');
+    input.removeAttribute('aria-controls');
+  };
+  const choose = name => {
+    selected = name;
+    input.value = name;
+    close();
+  };
+  const open = () => {
+    if (!popup) {
+      popup = doc.createElement('div');
+      popup.id = 'ashby-floating-1';
+      popup.setAttribute('role', 'listbox');
+      doc.body.appendChild(popup);
+    }
+    input.setAttribute('aria-expanded', 'true');
+    input.setAttribute('aria-controls', popup.id);
+    popup.innerHTML = '<div class="ashby-application-form-input-autocomplete-popup">'
+      + '<div data-loading=""><div class="ashby-application-form-input-autocomplete-popup-loading">Loading...</div></div></div>';
+  };
+  input.addEventListener('input', () => {
+    const text = input.value.trim();
+    clearTimeout(timer);
+    if (!text) { close(); return; }
+    open();
+    // Every keystroke restarts the search, as a debounced query does.
+    if (never) return;
+    timer = win.setTimeout(() => {
+      if (!popup) return;
+      const key = Object.keys(ASHBY_GEO).find(k => text.toLowerCase().startsWith(k)) || '';
+      const results = ASHBY_GEO[key] || [];
+      popup.innerHTML = '<div class="ashby-application-form-input-autocomplete-popup"><div>'
+        + results.map((r, i) => `<div class="ashby-application-form-input-autocomplete-popup-result"><div role="option" id="geo-${i}" aria-selected="${i === 0}">${r}</div></div>`).join('')
+        + '</div></div>';
+      for (const node of popup.querySelectorAll('[role=option]')) {
+        node.addEventListener('click', () => choose(node.textContent));
+      }
+    }, delayMs);
+  });
+  input.addEventListener('blur', () => { input.value = selected; });
+}
+
 export const GENERIC = `
 <main>
   <h1>Careers at Acme — Apply</h1>
@@ -590,4 +759,4 @@ export const DECOYS = `
     <button type="submit">Sign in</button></form>
 </aside>`;
 
-export const ALL = { GREENHOUSE, GREENHOUSE_REMIX, DROPDOWN_MEANINGS, LEVER, WORKDAY, WORKDAY_MYINFO, ASHBY, GENERIC };
+export const ALL = { GREENHOUSE, GREENHOUSE_REMIX, DROPDOWN_MEANINGS, LEVER, WORKDAY, WORKDAY_MYINFO, ASHBY, ASHBY_OPENAI, GENERIC };

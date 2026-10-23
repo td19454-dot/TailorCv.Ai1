@@ -353,7 +353,10 @@ export const SENSITIVE_PATTERNS = [
 // Sensitive categories with no profile field, whose answer the person may save
 // from a form they answered (match_guard.py STORABLE_SENSITIVE). Reused only
 // for the same question — see savedSensitiveAnswer() in plan.js.
-export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal']);
+// Citizenship included: its questions ("Which best describes your 'U.S. person'
+// status?") are worded too variously for the profile's one status to answer
+// them all, so the person's own answer to the exact question is kept too.
+export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal', 'citizenship']);
 
 // browser.py _EEO_FIELD_MARKERS — kept separately because EEO fields have a
 // behaviour the other sensitive categories don't: a stored "Decline to
@@ -848,11 +851,12 @@ export function hasHonorificOptions(options) {
   return labels.filter(l => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
 }
 
-export function matchFieldKey(label) {
+export function matchFieldKey(label, entries) {
   const sig = questionSignature(label);
   if (!sig) return null;
+  const pool = entries || FIELD_SYNONYMS;
 
-  for (const entry of FIELD_SYNONYMS) {
+  for (const entry of pool) {
     for (const syn of entry.labels) {
       if (questionSignature(syn) === sig) return entry;
     }
@@ -862,7 +866,7 @@ export function matchFieldKey(label) {
   // list order is the tiebreak and the more specific keys are listed first
   // within each group.
   let best = null, bestWeight = -1;
-  for (const entry of FIELD_SYNONYMS) {
+  for (const entry of pool) {
     for (const syn of entry.labels) {
       if (!synonymMatches(syn, label, entry)) continue;
       const weight = distinctive(syn).size;
@@ -870,4 +874,36 @@ export function matchFieldKey(label) {
     }
   }
   return best;
+}
+
+// The stored answers each sensitive category may be answered from.
+const CATEGORY_KEYS = {
+  sponsorship: ['requires_visa_sponsorship', 'visa_status'],
+  work_authorization: ['authorized_to_work_in_country'],
+  citizenship: ['citizenship_status', 'nationality'],
+  salary: ['expected_salary'],
+  demographic: ['gender', 'race_ethnicity', 'veteran_status', 'disability_status',
+                'gender_pronouns', 'lgbtq_identity'],
+};
+
+/**
+ * The stored answer a SENSITIVE question asks for, or null.
+ *
+ * Its own category's answers first. The open synonym search alone matched "Will
+ * you require company sponsorship now or in the future to maintain or extend
+ * your current work authorization status?" to current_company — it holds
+ * "current" and "company" — so the stored "No" was never read. Nor is any
+ * sensitive answer good enough: the same question holds "work authorization",
+ * and the authorized-to-work "Yes" filed as the sponsorship answer would be the
+ * opposite of what the person said. Failing that, the open search as before,
+ * but only ever a sensitive entry.
+ */
+export function matchSensitiveKey(label, category) {
+  const keys = CATEGORY_KEYS[category];
+  if (keys) {
+    const own = matchFieldKey(label, FIELD_SYNONYMS.filter(e => keys.includes(e.key)));
+    if (own) return own;
+  }
+  const any = matchFieldKey(label);
+  return any && any.sensitive ? any : null;
 }

@@ -133,8 +133,28 @@
       .trim();
   }
 
+  // Never throws. Two failures land here otherwise, both reported by Chrome as
+  // uncaught errors against this line:
+  //   * "Extension context invalidated": the extension was reloaded or updated
+  //     while this tab kept the old script, so the call itself throws;
+  //   * "message port closed" / "could not establish connection": the worker
+  //     restarted mid-call, reported through runtime.lastError, which Chrome
+  //     logs whenever the callback does not read it.
+  // Both resolve to { error } like any other failed request.
+  const RELOADED_MSG = 'TailorCV was updated — refresh this page to keep using it.';
   function sendMessage(msg) {
-    return new Promise(resolve => chrome.runtime.sendMessage(msg, res => resolve(res || {})));
+    return new Promise(resolve => {
+      try {
+        chrome.runtime.sendMessage(msg, res => {
+          const err = chrome.runtime.lastError;
+          if (err) { resolve({ error: err.message || 'extension_unavailable' }); return; }
+          resolve(res || {});
+        });
+      } catch (e) {
+        const text = String((e && e.message) || e);
+        resolve({ error: /context invalidated/i.test(text) ? RELOADED_MSG : text });
+      }
+    });
   }
 
   function esc(s) {

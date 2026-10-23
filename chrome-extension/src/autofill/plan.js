@@ -44,6 +44,7 @@ import {
   isConditionalFollowUp,
   questionSignature,
   STORABLE_SENSITIVE,
+  matchSensitiveKey,
 } from './match.js';
 
 export const AUTOFILL_MIN = 0.8;
@@ -142,13 +143,17 @@ export function decide(rows, ctx, server, state) {
     const category = classifySensitive(row.label);
     if (category) {
       d.sensitive = category;
-      const entry = matchFieldKey(row.label);
-      const stored = entry && entry.sensitive ? bank[entry.key] : '';
-      if (!stored && STORABLE_SENSITIVE.has(category)) {
-        // Clearance / criminal history: the person's own saved answer to THIS
-        // question, if they saved one on an earlier form. Same question only —
-        // a clearance answer to one employer's wording is not reused for
-        // another's — and it must be one of this form's own options.
+      // Its own category's answer — see matchSensitiveKey for the sponsorship
+      // question that the open search matched to current_company.
+      const entry = matchSensitiveKey(row.label, category);
+      const stored = entry ? bank[entry.key] : '';
+      if (STORABLE_SENSITIVE.has(category)) {
+        // Clearance / criminal history / citizenship: the person's own saved
+        // answer to THIS question, if they saved one on an earlier form. Same
+        // question only — an answer to one employer's wording is not reused for
+        // another's — and it must be one of this form's own options. Ahead of
+        // the profile: their answer to this exact wording says more than the
+        // profile's one citizenship status translated onto it.
         const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
         const value = saved ? coerce(saved, row) : null;
         if (value !== null) {
@@ -602,7 +607,10 @@ const COMPANY_SITE_SHAPES = ['Careers site', 'Careers page', 'Company careers si
 // "Not a U.S. citizen" and "(a) U.S. citizen or national" share most of their
 // words, and confusing them is a false statement on an export-control form.
 const CITIZENSHIP_GROUPS = [
-  { name: 'none', test: /\bnot (a |an )?(u\.? ?s\.?|united states)? ?(citizen|national)\b|\bnon[- ]?(u\.? ?s\.? )?citizen\b|\bforeign national\b|\bother\b|\bnone of (the )?above\b/i },
+  // "…AND I am NOT a U.S. person" (Snowflake's export-control list) mentions
+  // "citizen" earlier in the same option; read as the citizen row it was the
+  // pick for a U.S. citizen. Any "not … person / citizen" is a "none".
+  { name: 'none', test: /\bnot (a |an )?(u\.? ?s\.?|united states)? ?(citizen|national|person)\b|\bnon[- ]?(u\.? ?s\.? )?citizen\b|\bforeign national\b|\bother\b|\bnone of (the )?above\b/i },
   { name: 'daca', test: /\bdaca\b|\bdeferred action\b/i },
   { name: 'asylee', test: /\basyl(ee|um)\b/i },
   { name: 'refugee', test: /\brefugee\b/i },
@@ -948,27 +956,7 @@ export function coerce(value, row) {
       return LOCATION_KEYS.has(row.candidateKey) && row.candidates && row.candidates.length
         ? row.candidates[0] : text;
     }
-    // Every shape of the answer, not just the one the label suggested: a
-    // "Country" list of dial codes matches "+91" and nothing else.
-    if (row.candidateKey === 'citizenship_status') return citizenshipOption(text, options);
-    // A work-authorization list worded as statements rather than Yes / No.
-    if (row.candidateKey === 'authorized_to_work_in_country'
-        && !options.some(o => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
-      return workAuthStatement(text, row.sponsorship, options);
-    }
-    const candidates = (row.candidates && row.candidates.length) ? row.candidates : [text];
-    const guard = row.candidateKey === 'degree' ? degreeGuard
-                : row.candidateKey === 'race_ethnicity'
-                  ? ethnicityGuardFor(candidates[0])
-                : EEO_GROUPS[row.candidateKey]
-                  ? eeoGuardFor(row.candidateKey, candidates[0])
-                : null;
-    // Self-identification lists are compared without Workday's trailing
-    // "(United States of America)"; the option returned is the real one.
-    const bare = READ_FIRST_KEYS.has(row.candidateKey) ? options.map(stripRegionSuffix) : options;
-    const match = bestCandidateMatch(candidates, bare, guard);
-    if (match != null) return options[bare.indexOf(match)];
-    return declineFallback(text, options);
+    return pickFromOptions(text, row, options);
   }
 
   const hints = row.hints || {};
@@ -1023,12 +1011,57 @@ function looksLikeDateField(row) {
  * options are "Yes"/"No" must be answered by matching the label — not by
  * checking the first one.
  */
+/**
+ * One of `options` for this stored answer, by the field's own rules — the same
+ * whether the options are a dropdown's rows or a radio group's labels.
+ */
+function pickFromOptions(text, row, options) {
+  // Every shape of the answer, not just the one the label suggested: a
+  // "Country" list of dial codes matches "+91" and nothing else.
+  if (row.candidateKey === 'citizenship_status') return citizenshipOption(text, options);
+  // A work-authorization list worded as statements rather than Yes / No.
+  if (row.candidateKey === 'authorized_to_work_in_country'
+      && !options.some(o => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
+    return workAuthStatement(text, row.sponsorship, options);
+  }
+  const candidates = (row.candidates && row.candidates.length) ? row.candidates : [text];
+  const guard = row.candidateKey === 'degree' ? degreeGuard
+              : row.candidateKey === 'race_ethnicity'
+                ? ethnicityGuardFor(candidates[0])
+              : EEO_GROUPS[row.candidateKey]
+                ? eeoGuardFor(row.candidateKey, candidates[0])
+              : null;
+  // Self-identification lists are compared without Workday's trailing
+  // "(United States of America)"; the option returned is the real one.
+  const bare = READ_FIRST_KEYS.has(row.candidateKey) ? options.map(stripRegionSuffix) : options;
+  const match = bestCandidateMatch(candidates, bare, guard);
+  if (match != null) return options[bare.indexOf(match)];
+  return declineFallback(text, options);
+}
+
+// Answers whose options are only ever chosen within their own group: a
+// resemblance or a "contains not" is never enough on these.
+function guardedKey(key) {
+  return key === 'race_ethnicity' || key === 'citizenship_status'
+      || key === 'hispanic_latino' || !!EEO_GROUPS[key];
+}
+
 function coerceChoice(text, row) {
   const options = (row.options || []).map(o => (typeof o === 'string' ? o : o.label))
                                      .filter(Boolean);
   const truthy = /^(yes|true|1|on|checked|i agree|agree|accept)$/i.test(text);
   if (!options.length || (options.length === 1 && row.kind === 'checkbox')) {
     return truthy ? 'yes' : null;
+  }
+  // A profile answer on a radio group or a row of buttons (Ashby's Gender /
+  // Race / Veteran Status) gets the dropdown's rules: "Cisgender man" takes
+  // "Male", "South Asian" takes "Asian (Not Hispanic or Latino)". Before this
+  // a radio group skipped them, so those went back to the person — and the
+  // polarity fallback below could take "I am not a protected veteran" for a
+  // stored "I identify as a protected veteran".
+  if (row.candidateKey) {
+    const picked = pickFromOptions(text, row, options);
+    if (picked != null || guardedKey(row.candidateKey)) return picked;
   }
   const match = bestOptionMatch(text, options);
   if (match) return typeof match === 'string' ? match : match.label;

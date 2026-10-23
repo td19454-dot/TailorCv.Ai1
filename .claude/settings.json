@@ -63,7 +63,8 @@
       "PowerShell(curl.exe -s -o - -w \"`nHTTP %{http_code}`n\" -X POST https://thetailorcv.com/api/extension/autofill/answers -H \"Content-Type: application/json\" -d '{\\\\\"answers\\\\\":[{\\\\\"question\\\\\":\\\\\"q\\\\\",\\\\\"answer\\\\\":\\\\\"a\\\\\"}]}')",
       "Bash(node --input-type=module -e ' *)",
       "PowerShell(python \"C:\\\\Users\\\\SHUBHA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1\\\\cb20ff0d-e77d-4b32-a66f-d1276557c10d\\\\scratchpad\\\\e2e_profile.py\" 2>&1)",
-      "PowerShell(python -c \"from auto_apply.profile import ApplicantProfile, answer_bank; import dataclasses; f={x.name for x in dataclasses.fields\\(ApplicantProfile\\)}; print\\('field:', 'citizenship_status' in f\\); p=ApplicantProfile.__new__\\(ApplicantProfile\\); [setattr\\(p, x.name, x.default if x.default is not dataclasses.MISSING else \\(x.default_factory\\(\\) if x.default_factory is not dataclasses.MISSING else ''\\)\\) for x in dataclasses.fields\\(ApplicantProfile\\)]; p.citizenship_status='Not a U.S. citizen or permanent resident'; print\\('bank:', answer_bank\\(p\\).get\\('citizenship_status'\\)\\)\")"
+      "PowerShell(python -c \"from auto_apply.profile import ApplicantProfile, answer_bank; import dataclasses; f={x.name for x in dataclasses.fields\\(ApplicantProfile\\)}; print\\('field:', 'citizenship_status' in f\\); p=ApplicantProfile.__new__\\(ApplicantProfile\\); [setattr\\(p, x.name, x.default if x.default is not dataclasses.MISSING else \\(x.default_factory\\(\\) if x.default_factory is not dataclasses.MISSING else ''\\)\\) for x in dataclasses.fields\\(ApplicantProfile\\)]; p.citizenship_status='Not a U.S. citizen or permanent resident'; print\\('bank:', answer_bank\\(p\\).get\\('citizenship_status'\\)\\)\")",
+      "PowerShell(python test_match_guard.py 2>&1)"
     ],
     "additionalDirectories": [
       "\\tmp"
