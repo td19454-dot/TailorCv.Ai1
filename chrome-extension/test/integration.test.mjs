@@ -1998,6 +1998,36 @@ test('an ordinary answer typed into the panel IS offered to the store', async ()
   });
 });
 
+// Clearance and criminal history have no profile field, so "Save & fill" keeps
+// the person's own answer; citizenship status lives in the profile and is not.
+test('Save & fill remembers a clearance / criminal answer, never a citizenship status', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    const form = env.document.querySelector('form');
+    form.insertAdjacentHTML('beforeend', `
+      <label for="q_felony">Have you ever been convicted of a felony?</label>
+      <select id="q_felony"><option value="">Select…</option><option>Yes</option><option>No</option></select>
+      <label for="q_citizen">Citizenship Status</label>
+      <select id="q_citizen"><option value="">Select…</option>
+        <option>(a) U.S. citizen or national of the United States</option>
+        <option>(f) Other (please explain)</option></select>`);
+    const result = await run_.runAutofill(CTX, null);
+
+    const felony = byLabel(result.decisions, 'convicted');
+    ok(felony, 'the felony question should be found');
+    eq(felony.action, p.ASK);
+    ok((await run_.answerField(felony, 'No', true)).ok);
+    const save = sent.find(m => m.type === 'AF_SAVE_ANSWERS');
+    ok(save, 'the person\'s own criminal-history answer is kept');
+    eq(save.payload.answers[0].answer, 'No');
+
+    sent.length = 0;
+    const citizen = byLabel(result.decisions, 'citizenship status');
+    await run_.answerField(citizen, '(f) Other (please explain)', true);
+    notOk(sent.some(m => m.type === 'AF_SAVE_ANSWERS'),
+          'citizenship status belongs in the profile, not the answer store');
+  });
+});
+
 test('learnable answers exclude the sensitive and the secret', async () => {
   await withForm(fixtures.GREENHOUSE, {}, async (env) => {
     const result = await run_.runAutofill(CTX, null);

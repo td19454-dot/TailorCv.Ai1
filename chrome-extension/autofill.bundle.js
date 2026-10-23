@@ -592,6 +592,7 @@
     OPTION_MATCH_THRESHOLD: () => OPTION_MATCH_THRESHOLD,
     READ_FIRST_KEYS: () => READ_FIRST_KEYS,
     SENSITIVE_PATTERNS: () => SENSITIVE_PATTERNS,
+    STORABLE_SENSITIVE: () => STORABLE_SENSITIVE,
     bestOptionMatch: () => bestOptionMatch,
     classifySensitive: () => classifySensitive,
     commitMatches: () => commitMatches,
@@ -834,6 +835,7 @@ what when where which who will with would you your now future
     ["demographic", /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
     ["demographic", /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/]
   ];
+  var STORABLE_SENSITIVE = /* @__PURE__ */ new Set(["clearance", "criminal"]);
   var EEO_FIELD_MARKERS = [
     "gender",
     "race",
@@ -1173,7 +1175,8 @@ what when where which who will with would you your now future
     "veteran_status",
     "disability_status",
     "gender_pronouns",
-    "lgbtq_identity"
+    "lgbtq_identity",
+    "citizenship_status"
   ]);
   var FIELD_SYNONYMS = [
     // identity
@@ -1243,10 +1246,15 @@ what when where which who will with would you your now future
     // Sensitive on purpose. Nationality sits beside the right-to-work questions,
     // and a guess from a dial code or an address would be an immigration-adjacent
     // declaration the person never made.
+    // The US status question (citizen / permanent resident / refugee / …), not a
+    // country. Matched before 'nationality' because exact signatures win first.
+    { key: "citizenship_status", sensitive: true, labels: ["citizenship status", "citizen status", "us citizenship status", "citizenship immigration status"] },
     { key: "nationality", sensitive: true, labels: ["nationality", "citizenship", "country of citizenship", "nationality or citizenship", "what is your nationality", "indicate your nationality"] },
     { key: "expected_salary", sensitive: true, labels: ["expected salary", "salary expectation", "desired salary", "compensation expectation", "expected ctc", "desired compensation"] },
     { key: "gender", sensitive: true, labels: ["gender", "gender identity", "gender do you identify as", "gender you identify with", "gender identify"] },
-    { key: "race_ethnicity", sensitive: true, labels: ["race", "ethnicity", "race ethnicity", "racial identity", "hispanic or latino"] },
+    // "identify your race": the bare 'race' is one word, and one-word synonyms
+    // absorb only one extra word — Greenhouse's "Please identify your race" has two.
+    { key: "race_ethnicity", sensitive: true, labels: ["race", "ethnicity", "race ethnicity", "racial identity", "hispanic or latino", "identify your race", "identify your ethnicity"] },
     // "Have you ever served or are you currently serving in the United States
     // military?" — the same fact as veteran status, asked as a Yes/No.
     { key: "veteran_status", sensitive: true, labels: ["veteran status", "military status", "protected veteran", "military service", "served in the military", "serving in the military", "served military", "serving military", "uniformed forces", "armed forces", "defence forces", "defense forces"] },
@@ -2686,6 +2694,13 @@ what when where which who will with would you your now future
         d.sensitive = category;
         const entry2 = matchFieldKey(row.label);
         const stored = entry2 && entry2.sensitive ? bank[entry2.key] : "";
+        if (!stored && STORABLE_SENSITIVE.has(category)) {
+          const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
+          const value2 = saved ? coerce(saved, row) : null;
+          if (value2 !== null) {
+            return done(d, FILL, value2, "saved_answer", 0.9, "your saved answer to this question");
+          }
+        }
         if (!stored) {
           const onProfile = PROFILE_CATEGORIES.has(category) && (category !== "demographic" || !!entry2) || !!(entry2 && entry2.sensitive);
           return onProfile ? done(d, PROFILE, "", "", 0, profileHint(category, entry2)) : done(d, ASK, "", "", 0, "we never guess this \u2014 choose your answer");
@@ -2705,10 +2720,12 @@ what when where which who will with would you your now future
         const shapes = candidatesFor(key, answer, bank);
         if (shapes.length > 1) d.candidates = shapes;
         if (READ_FIRST_KEYS.has(key) || key === "hispanic_latino") d.readFirst = { key, stored: answer };
+        const sponsorship = key === "authorized_to_work_in_country" ? bank.requires_visa_sponsorship : void 0;
+        if (sponsorship !== void 0) d.readFirst = { key, stored: answer, sponsorship };
         const value = coerce(answer, Object.assign(
           {},
           row,
-          { candidates: shapes, candidateKey: key }
+          { candidates: shapes, candidateKey: key, sponsorship }
         ));
         if (value === null) {
           return done(d, ASK, "", "", 0, `none of the options match your stored answer (${stored})`);
@@ -2883,6 +2900,7 @@ what when where which who will with would you your now future
   var PROFILE_CATEGORIES = /* @__PURE__ */ new Set(["work_authorization", "sponsorship", "salary", "demographic"]);
   function profileHint(category, entry) {
     if (entry && entry.key === "nationality") return "add your nationality to your profile";
+    if (entry && entry.key === "citizenship_status") return "add your citizenship status to your profile";
     switch (category) {
       case "work_authorization":
         return "add your work authorization to your profile";
@@ -3021,6 +3039,57 @@ what when where which who will with would you your now future
     if (shapes.includes("Two or More Races")) return null;
     return "No";
   }
+  var COMPANY_SITE_RE = /\b(company|official|employer'?s?|corporate) (web ?site|careers? (site|page))\b|\bcareers? (site|page|website)\b/i;
+  var COMPANY_SITE_SHAPES = [
+    "Careers site",
+    "Careers page",
+    "Company careers site",
+    "Company careers page",
+    "Company website",
+    "Career site"
+  ];
+  var CITIZENSHIP_GROUPS = [
+    { name: "none", test: /\bnot (a |an )?(u\.? ?s\.?|united states)? ?(citizen|national)\b|\bnon[- ]?(u\.? ?s\.? )?citizen\b|\bforeign national\b|\bother\b|\bnone of (the )?above\b/i },
+    { name: "daca", test: /\bdaca\b|\bdeferred action\b/i },
+    { name: "asylee", test: /\basyl(ee|um)\b/i },
+    { name: "refugee", test: /\brefugee\b/i },
+    { name: "permanent_resident", test: /\bpermanent resident\b|\bgreen card\b/i },
+    { name: "citizen", test: /\bcitizen\b|\bnational of the united states\b|\bu\.? ?s\.? national\b/i }
+  ];
+  function citizenshipGroup(text) {
+    const g = CITIZENSHIP_GROUPS.find((group) => group.test.test(String(text || "")));
+    return g ? g.name : "";
+  }
+  function citizenshipOption(stored, options) {
+    const want = citizenshipGroup(stored);
+    if (!want) return null;
+    const same = (options || []).filter((o) => citizenshipGroup(o) === want);
+    return same.length === 1 ? same[0] : null;
+  }
+  function savedSensitiveAnswer(label, saved) {
+    const sig = questionSignature(label);
+    if (!sig) return "";
+    const hit = (saved || []).find((s) => s && questionSignature(s.question) === sig);
+    return hit ? String(hit.answer || "").trim() : "";
+  }
+  var YES_RE = /^(yes|y|true)$/i;
+  var NO_RE = /^(no|n|false)$/i;
+  function workAuthStatement(authorized, sponsorship, options) {
+    const auth = String(authorized || "").trim();
+    const spons = String(sponsorship || "").trim();
+    let test;
+    if (YES_RE.test(spons)) {
+      test = (o) => /\b(require|need)s?\b.*\bsponsor/i.test(o) && !/\b(not|don'?t|never)\b/i.test(o);
+    } else if (YES_RE.test(auth) && NO_RE.test(spons)) {
+      test = (o) => /\bauthori[sz]ed\b/i.test(o) && /\bany employer\b/i.test(o) && !/\bnot\b/i.test(o);
+    } else if (NO_RE.test(auth) && NO_RE.test(spons)) {
+      test = (o) => /\bnot (legally )?authori[sz]ed\b|\bunauthori[sz]ed\b/i.test(o) && !/\bsponsor/i.test(o);
+    } else {
+      return null;
+    }
+    const hits = (options || []).filter(test);
+    return hits.length === 1 ? hits[0] : null;
+  }
   function ethnicityShapes(text) {
     const i = ethnicityGroup(text);
     return i < 0 ? [] : ETHNICITY_GROUPS[i].shapes;
@@ -3103,6 +3172,9 @@ what when where which who will with would you your now future
     }
     if (key === "degree") return uniq(degreeShapes(text).concat([text]));
     if (key === "race_ethnicity") return uniq([text].concat(ethnicityShapes(text)));
+    if (key === "how_did_you_hear_about_us" && COMPANY_SITE_RE.test(text)) {
+      return uniq([text].concat(COMPANY_SITE_SHAPES));
+    }
     if (EEO_GROUPS[key]) return uniq([text].concat(eeoShapes(key, text)));
     if (!LOCATION_KEYS.has(key)) return text ? [text] : [];
     const city = String(b.address_city || "").trim();
@@ -3184,6 +3256,10 @@ what when where which who will with would you your now future
       const options = (row.options || []).map((o) => typeof o === "string" ? o : o.label);
       if (!options.length) {
         return LOCATION_KEYS.has(row.candidateKey) && row.candidates && row.candidates.length ? row.candidates[0] : text;
+      }
+      if (row.candidateKey === "citizenship_status") return citizenshipOption(text, options);
+      if (row.candidateKey === "authorized_to_work_in_country" && !options.some((o) => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
+        return workAuthStatement(text, row.sponsorship, options);
       }
       const candidates = row.candidates && row.candidates.length ? row.candidates : [text];
       const guard = row.candidateKey === "degree" ? degreeGuard : row.candidateKey === "race_ethnicity" ? ethnicityGuardFor(candidates[0]) : EEO_GROUPS[row.candidateKey] ? eeoGuardFor(row.candidateKey, candidates[0]) : null;
@@ -3782,7 +3858,8 @@ what when where which who will with would you your now future
       kind: "combobox",
       options: labels,
       candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
-      candidateKey: readFirst.key
+      candidateKey: readFirst.key,
+      sponsorship: readFirst.sponsorship
     });
     return pick != null && labels.includes(pick) ? pick : null;
   }
@@ -4422,6 +4499,10 @@ what when where which who will with would you your now future
   }
 
   // src/autofill/run.js
+  function storable(label, sensitive) {
+    const category = sensitive || classifySensitive(label);
+    return !category || STORABLE_SENSITIVE.has(category);
+  }
   var MAX_REPAIR_SWEEPS = 1;
   var MAX_REVEAL_ROUNDS = 2;
   var MAX_PAGES = 4;
@@ -4537,7 +4618,7 @@ what when where which who will with would you your now future
       const after = reprobe(d.row);
       const value = after && after.value || "";
       if (!value || !after.filled) continue;
-      if (d.sensitive || classifySensitive(d.label)) continue;
+      if (!storable(d.label, d.sensitive)) continue;
       if (isNeverFill(d.label) || looksSecret(value)) continue;
       if (d.row.kind === "file") continue;
       const type = d.row.hints && d.row.hints.type || "";
@@ -4981,7 +5062,7 @@ what when where which who will with would you your now future
     } else {
       decision.reason = outcomeReason(decision);
     }
-    if (remember && result.ok && !decision.sensitive && !classifySensitive(decision.label) && !isNeverFill(decision.label) && !looksSecret(decision.value)) {
+    if (remember && result.ok && storable(decision.label, decision.sensitive) && !isNeverFill(decision.label) && !looksSecret(decision.value)) {
       await send({ type: "AF_SAVE_ANSWERS", payload: { answers: [
         { question: decision.label, answer: decision.value }
       ] } });
@@ -5244,10 +5325,11 @@ what when where which who will with would you your now future
          ${options.map((o) => `<option value="${esc(o)}">${esc(o)}</option>`).join("")}
        </select>` : `<input class="tcv-af-ask-input" data-index="${index}" type="text"
               placeholder="Your answer">`;
+    const neverSaved = d.sensitive && !STORABLE_SENSITIVE.has(d.sensitive);
     return `
     <div class="tcv-af-ask-form">
       ${control}
-      ${d.sensitive ? `
+      ${neverSaved ? `
       <div class="tcv-af-remember">Used on this form only \u2014 never saved.</div>` : `
       <label class="tcv-af-remember">
         <input type="checkbox" class="tcv-af-remember-box" data-index="${index}" checked>

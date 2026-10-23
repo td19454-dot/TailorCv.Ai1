@@ -679,6 +679,7 @@ function pickReadFirst(readFirst, labels) {
     options: labels,
     candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
     candidateKey: readFirst.key,
+    sponsorship: readFirst.sponsorship,
   });
   return pick != null && labels.includes(pick) ? pick : null;
 }

@@ -639,6 +639,10 @@ class UserApplyProfile(Base):
     # so like those it is answered only from what the user stored here, never
     # inferred from a phone dial code or an address.
     nationality = Column(String(80), nullable=True)
+    # "Citizenship Status" as US forms ask it (citizen / permanent resident /
+    # refugee / asylee / DACA / none of those) — a different claim from the
+    # country in `nationality`. One of profile_page.CITIZENSHIP_OPTIONS.
+    citizenship_status = Column(String(80), nullable=True)
 
     # Voluntary self-identification. Default to declining rather than guessing.
     gender = Column(String(60), nullable=True)

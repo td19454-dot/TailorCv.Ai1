@@ -25,8 +25,14 @@ import { experienceSection, fillExperienceSection, inSection } from './repeaters
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
 import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo } from './write.js';
-import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone }
-  from './match.js';
+import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone,
+  STORABLE_SENSITIVE } from './match.js';
+
+/** May this question's answer go to the answer store? (match_guard.is_never_store) */
+function storable(label, sensitive) {
+  const category = sensitive || classifySensitive(label);
+  return !category || STORABLE_SENSITIVE.has(category);
+}
 import { TIMING, sleep, startClock } from './timing.js';
 
 const MAX_REPAIR_SWEEPS = 1;
@@ -188,7 +194,7 @@ export function learnableAnswers(decisions) {
     const after = reprobe(d.row);
     const value = (after && after.value) || '';
     if (!value || !after.filled) continue;
-    if (d.sensitive || classifySensitive(d.label)) continue;
+    if (!storable(d.label, d.sensitive)) continue;
     if (isNeverFill(d.label) || looksSecret(value)) continue;
     if (d.row.kind === 'file') continue;
     const type = (d.row.hints && d.row.hints.type) || '';
@@ -807,7 +813,7 @@ export async function answerField(decision, value, remember) {
   }
 
   if (remember && result.ok
-      && !decision.sensitive && !classifySensitive(decision.label)
+      && storable(decision.label, decision.sensitive)
       && !isNeverFill(decision.label) && !looksSecret(decision.value)) {
     await send({ type: 'AF_SAVE_ANSWERS', payload: { answers: [
       { question: decision.label, answer: decision.value },

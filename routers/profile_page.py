@@ -79,6 +79,20 @@ PRONOUN_OPTIONS = _eeo("He/him", "She/her", "They/them", "He/they", "She/they",
                        "Ze/zir", "My pronouns are not listed")
 LGBTQ_OPTIONS = _eeo("Yes", "No", "Questioning")
 
+# "Citizenship Status" in the categories US forms ask it in (SpaceX's ITAR list:
+# citizen or national / lawful permanent resident / refugee / asylee / DACA /
+# other). A fixed list, not free text: plan.js CITIZENSHIP_GROUPS maps each onto
+# the form's own wording, and only within the same group.
+CITIZENSHIP_OPTIONS = [
+    ("", "Not set"),
+    ("U.S. citizen or national", "U.S. citizen or national"),
+    ("U.S. lawful permanent resident (green card)", "U.S. lawful permanent resident (green card)"),
+    ("Refugee", "Refugee"),
+    ("Asylee", "Asylee"),
+    ("DACA recipient", "DACA recipient"),
+    ("Not a U.S. citizen or permanent resident", "Not a U.S. citizen or permanent resident"),
+]
+
 # Free-text answers saved before these were dropdowns, mapped onto the option
 # that says the same thing. Only unambiguous ones: "Not a protected veteran" is
 # left alone because a non-protected veteran says that too.
@@ -194,6 +208,10 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
              placeholder="e.g. Indian",
              help="Only ever filled from this answer — never guessed from your "
                   "address or phone number.", max_len=80),
+        Spec("citizenshipStatus", "citizenship_status", "U.S. citizenship status",
+             kind="select", options=CITIZENSHIP_OPTIONS,
+             help="For “Citizenship Status” questions on US forms. Only ever filled "
+                  "from this answer — never guessed.", max_len=80),
         Spec("willingToRelocate", "willing_to_relocate", "Willing to relocate?",
              kind="select", options=YES_NO),
         Spec("remotePreference", "remote_preference", "Work arrangement", kind="select",

@@ -397,4 +397,17 @@
   });
 
   loadAnswers();
+
+  // The extension saves answers while this page sits open in another tab, and
+  // a list read once at load showed the old count until a manual refresh.
+  // Re-read on return and on opening the tab — unless an answer is mid-edit
+  // (its Save is enabled), which a re-render would wipe.
+  function refreshAnswers() {
+    if (answersEl.querySelector(".pf-ans-save:not([disabled])")) return;
+    loadAnswers();
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") refreshAnswers();
+  });
+  document.getElementById("pf-tab-answers").addEventListener("click", refreshAnswers);
 })();

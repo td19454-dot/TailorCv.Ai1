@@ -127,6 +127,11 @@ async def apply_context(request: Request):
                             or bank.get("veteran_status") or bank.get("disability_status")),
             },
             "blockers": blockers,
+            # The person's own answers to clearance / criminal-history questions,
+            # saved from a form they answered. The extension reuses one only for
+            # the SAME question (exact signature) — never a similar one, and
+            # never through the model.
+            "savedSensitive": _saved_sensitive_answers(db, user.id),
             "hasResume": resume_ok,
             "resumeFilename": user.base_resume_filename or "resume.pdf",
             "hasCoverLetter": bool((user.base_cover_letter_path or "").strip()
@@ -139,6 +144,17 @@ async def apply_context(request: Request):
         }
     finally:
         db.close()
+
+
+def _saved_sensitive_answers(db, user_id: int) -> list[dict]:
+    from auto_apply import qa_store
+    from auto_apply.match_guard import STORABLE_SENSITIVE, classify_sensitive
+
+    return [
+        {"question": a["question"], "answer": a["answer"]}
+        for a in qa_store.load_answers(db, user_id)
+        if classify_sensitive(a["question"]) in STORABLE_SENSITIVE
+    ]
 
 
 def _context_snapshot(user, prof, facts: dict) -> dict:
@@ -314,7 +330,12 @@ async def _recall_and_map(db, user, bank: dict, fields, payload, answers: dict) 
     from auto_apply import qa_store
 
     # ── Tier 2: recall a stored answer, exactly or semantically ──
-    stored = qa_store.load_answers(db, user.id)
+    from auto_apply.match_guard import classify_sensitive
+
+    # A saved clearance / criminal-history answer is reused only for that exact
+    # question, by the extension. Never as a "similar" match for anything else.
+    stored = [a for a in qa_store.load_answers(db, user.id)
+              if not classify_sensitive(a["question"])]
     # Motivation questions are never recalled: the stored answer to "Why
     # Robinhood?" is exactly the wrong answer to "Why Anthropic?".
     recall_targets = [f for f in fields
