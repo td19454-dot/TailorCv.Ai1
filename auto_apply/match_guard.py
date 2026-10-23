@@ -45,6 +45,13 @@ SENSITIVE_PATTERNS: list[tuple[str, re.Pattern]] = [
         r"\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b")),
     ("criminal", re.compile(
         r"\b(convict\w*|criminal|felony|misdemeanor|background check)\b")),
+    # Employment BY a government / the military / a state-owned enterprise: an
+    # employment-history question, not military service. Ahead of "demographic"
+    # so "served in the military" stays a veteran question. Same as match.js.
+    ("government_employment", re.compile(
+        r"\b(employ\w*|worked for|working for)\b[\s\S]*"
+        r"\b(government|military|state owned|publicly funded|public sector|civil service)\b"
+        r"|\b(government|military|state owned|public sector)\b[\s\S]*\bemploy\w*")),
     ("salary", re.compile(
         r"\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*"
         r"\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b"
@@ -115,7 +122,7 @@ def looks_secret(value: str) -> bool:
 # differently for one stored value — so the person's own answer to that exact
 # question is the only source. Reused for the SAME question only (exact
 # signature, in the extension), never semantically recalled or shown to a model.
-STORABLE_SENSITIVE = {"clearance", "criminal", "citizenship"}
+STORABLE_SENSITIVE = {"clearance", "criminal", "citizenship", "government_employment"}
 
 
 def is_never_store(question: str, answer: str) -> bool:

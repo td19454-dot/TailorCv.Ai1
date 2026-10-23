@@ -16,6 +16,7 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
+import document_store
 from database import SessionLocal
 from models import JobListing, User
 from extraction import extract_text_from_pdf
@@ -59,7 +60,7 @@ def _user_resume_text(db, user_id: int | None) -> str:
         return ""
     user = db.query(User).filter_by(id=user_id).first()
     path = getattr(user, "base_resume_path", None) if user else None
-    if not path or not os.path.exists(path):
+    if not path or not document_store.ensure_file(path):
         return ""
     try:
         return (extract_text_from_pdf(path) or "").strip()

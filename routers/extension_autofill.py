@@ -31,6 +31,7 @@ import os
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import FileResponse
 
+import document_store
 from database import SessionLocal
 from models import User, UserApplyProfile
 from schemas import ApplyAnswersRequest, AutofillPlanRequest
@@ -81,6 +82,13 @@ async def apply_context(request: Request):
         user = _require_user(request, db)
         prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user.id).first()
 
+        # Restored from storage if a deploy wiped the disk — before the snapshot,
+        # whose validate_profile() checks the resume file exists.
+        resume_ok = bool((user.base_resume_path or "").strip()
+                         and await document_store.ensure_file_async(user.base_resume_path))
+        cover_ok = bool((user.base_cover_letter_path or "").strip()
+                        and await document_store.ensure_file_async(user.base_cover_letter_path))
+
         # Parse the resume into structured facts if we haven't already, or if the
         # resume changed. This is the one place that happens — the upload path
         # deliberately only invalidates, so it never grows an LLM call.
@@ -101,8 +109,6 @@ async def apply_context(request: Request):
         bank = answer_bank(profile)
         blockers = validate_profile(profile, snap)
 
-        resume_ok = bool((user.base_resume_path or "").strip()
-                         and os.path.exists(user.base_resume_path or ""))
         return {
             "profileVersion": _profile_version(user, prof, facts),
             "answerBank": bank,
@@ -134,8 +140,7 @@ async def apply_context(request: Request):
             "savedSensitive": _saved_sensitive_answers(db, user.id),
             "hasResume": resume_ok,
             "resumeFilename": user.base_resume_filename or "resume.pdf",
-            "hasCoverLetter": bool((user.base_cover_letter_path or "").strip()
-                                   and os.path.exists(user.base_cover_letter_path or "")),
+            "hasCoverLetter": cover_ok,
             "coverLetterFilename": user.base_cover_letter_filename or "cover_letter.pdf",
             "quota": {
                 "exhausted": quota_exhausted(db, user, "autofills"),
@@ -648,7 +653,7 @@ async def base_resume_file(request: Request, doc: str = "resume"):
         else:
             path = user.base_resume_path or ""
             filename = user.base_resume_filename or "resume.pdf"
-        if not path or not os.path.exists(path):
+        if not path or not await document_store.ensure_file_async(path):
             raise HTTPException(status_code=404, detail="No file on file.")
         return FileResponse(path, media_type="application/pdf", filename=filename)
     finally:
