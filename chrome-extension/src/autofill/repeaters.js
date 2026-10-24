@@ -89,7 +89,9 @@ function panelRows(panel) {
   const p = probe();
   if (!p) return [];
   const els = p.fillableIn(panel).elements.filter(isVisible);
-  return describeFields({ root: panel, fields: els });
+  // Each row is found again inside this block, never another block's field
+  // of the same name — see reresolve() in discover.js.
+  return describeFields({ root: panel, fields: els }).map(r => Object.assign(r, { scope: panel }));
 }
 
 /** "04/2023" / "2023-04" → "2023-04-01" for the split-date writer; else ''. */

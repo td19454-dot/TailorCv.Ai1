@@ -746,6 +746,103 @@ async function clickMatchingOption(el, value, nodes) {
   return true;
 }
 
+/** The answers a Workday prompt already shows as pills. */
+function promptPills(row) {
+  const p = probe();
+  const box = p && p.workdayMultiselect && p.workdayMultiselect(typableInput(row) || row.el);
+  if (!box) return [];
+  return Array.from(box.querySelectorAll('[data-automation-id="selectedItem"]'))
+    .map(n => (n.textContent || '').replace(/\s+/g, ' ').trim()).filter(Boolean);
+}
+
+/** The result row for `want`: the exact one, else the first holding all its words. Never fuzzy. */
+function promptResultFor(want, labels) {
+  const exact = normalizeOptionText(want);
+  let idx = labels.findIndex(t => normalizeOptionText(t) === exact);
+  if (idx < 0) idx = labels.findIndex(t => commitMatches(want, t));
+  return idx;
+}
+
+/**
+ * Add several answers to a Workday multi-select prompt ("Type to Add Skills").
+ *
+ * Workday's own sequence, per answer: write it, press Enter (typing alone does
+ * not search — the old results stay up), wait for "Search Results", click the
+ * row. The list stays open between answers. A skill already shown as a pill
+ * is left alone: its row is a ticked checkbox, and clicking it again removes
+ * it. A skill with no result containing its words is skipped and reported —
+ * an approximate pick would be a skill the person never claimed.
+ */
+async function commitPromptMulti(row, values) {
+  const el = row.el;
+  const input = typableInput(row) || el;
+  const out = { added: [], already: [], missing: [], pills: [] };
+  const shown = () => promptPills(row);
+  const has = (pills, skill) => pills.some(t => promptResultFor(skill, [t]) === 0);
+  // The search text, with an input event only. setText's extra `change` is
+  // nothing Workday's search box needs while its list is open.
+  const writeSearch = (text) => { focus(input); writeValue(input, text); fire(input, 'input'); };
+
+  // One skill: search with Enter, click its result, and WAIT for its pill.
+  // Workday saves each pick to its server ("pill-REMOTE_SKILL-…") and redraws
+  // the pills from the reply — the selection as it stood at that click, plus
+  // the new skill. Clicking the next skill before the reply came back meant
+  // that reply never held the earlier one: each new skill erased the one
+  // before it, and the 0.1 s check logged every skill "not offered" (NVIDIA,
+  // Oct 2026). A person is slower than the server; this waits for it.
+  const pillWaitMs = Math.max(TIMING.commitWaitMs * 2, 300);
+  const addOne = async (skill) => {
+    writeSearch(skill);
+    fireKey(input, 'keydown', 'Enter');
+    fireKey(input, 'keyup', 'Enter');
+    let options = await waitForMatchingOptions(el, [skill], TIMING.optionWaitMs * 2);
+    options = await waitOutLoading(el, [skill], options);
+    const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+    const idx = promptResultFor(skill, labels);
+    if (idx < 0) return 'missing';
+    if (shown().includes(labels[idx])) return 'already';   // ticked already, under another wording
+    try { options[idx].scrollIntoView({ block: 'nearest' }); } catch (e) {}
+    pressPointer(options[idx]);
+    const deadline = Date.now() + pillWaitMs;
+    while (!has(shown(), skill) && Date.now() < deadline) await sleep(100);
+    return has(shown(), skill) ? 'added' : 'missing';
+  };
+
+  try {
+    scrollIntoView(input);
+    openWidget(row);
+    await sleep(TIMING.settleMs);
+    for (const skill of values) {
+      if (has(shown(), skill)) { out.already.push(skill); continue; }
+      out[await addOne(skill)].push(skill);
+    }
+    // Belt and braces: anything that was on the field and is no longer —
+    // whatever removed it — gets one more search and click.
+    const lost = out.added.concat(out.already).filter(s => !has(shown(), s));
+    for (const skill of lost) {
+      console.info(`[TailorCV] skills: "${skill}" disappeared — adding it again`);
+      if ((await addOne(skill)) !== 'added') {
+        for (const list of [out.added, out.already]) {
+          const i = list.indexOf(skill);
+          if (i >= 0) list.splice(i, 1);
+        }
+        out.missing.push(skill);
+      }
+    }
+  } catch (e) {
+    // Reported through the counts below; the panel lists what did not land.
+  } finally {
+    // Nothing left in the search box for Workday to erase on blur, and no list
+    // left open over the fields below.
+    try { writeSearch(''); } catch (e) {}
+    dismissListbox(el);
+  }
+  out.pills = shown();
+  console.info(`[TailorCV] skills: added ${out.added.length}, already there ${out.already.length}`
+               + (out.missing.length ? `, not offered: ${out.missing.join(', ')}` : ''));
+  return out;
+}
+
 /** The option the planner's own rules choose for this EEO answer, or null. */
 function pickReadFirst(readFirst, labels) {
   const pick = coerce(readFirst.stored, {
@@ -982,6 +1079,14 @@ export async function applyDecision(decision) {
   const row = decision.row;
   const value = decision.value;
   if (!row || !row.el || !value) return { ok: false, outcome: 'failed', shown: '' };
+
+  // Workday's "Type to Add Skills": several answers, each its own search.
+  if (decision.multiValues && decision.multiValues.length && row.multiPrompt) {
+    const res = await commitPromptMulti(row, decision.multiValues);
+    if (res.missing.length) decision.reason = `not in this employer's list: ${res.missing.join(', ')} — add any yourself`;
+    const ok = res.pills.length > 0 && res.added.length + res.already.length > 0;
+    return { ok, outcome: ok ? 'ok' : 'empty', shown: res.pills.join(' | ') };
+  }
 
   let wrote = false;
   switch (row.kind) {

@@ -135,7 +135,10 @@ export function decide(rows, ctx, server, state) {
 
     // Already filled by the page itself (an ATS that parsed the resume, or the
     // browser's own autofill). Left alone unless the form is rejecting it.
-    if (row.filled && !row.invalid) {
+    // Except Workday's skills prompt: it only ADDS — the skills Workday read
+    // from the resume stay, and the profile's other skills join them.
+    const additiveSkills = row.multiPrompt && (matchFieldKey(row.label) || {}).key === 'top_skills';
+    if (row.filled && !row.invalid && !additiveSkills) {
       return done(d, SKIP, row.value, '', 0, 'already filled in');
     }
 
@@ -295,6 +298,16 @@ export function decide(rows, ctx, server, state) {
       // costs a wait per spelling ("BTECH", "B.Tech", "Bachelor's Degree"…).
       if (entry.key === 'degree' && (row.kind === 'combobox' || row.kind === 'select')) {
         d.readFirst = { key: 'degree', stored: raw };
+      }
+      // Workday's "Type to Add Skills": one search-and-tick per skill, so the
+      // profile's comma-joined skills go as a list. Sent whole, the string
+      // matched nothing and the box stayed empty (NVIDIA, Oct 2026).
+      if (entry.key === 'top_skills' && row.multiPrompt) {
+        const skills = splitSkills(raw);
+        if (skills.length) {
+          d.multiValues = skills;
+          return done(d, FILL, skills.join(', '), 'profile', 0.95, '');
+        }
       }
       const value = coerce(raw, Object.assign({}, row,
         { candidates: shapes, candidateKey: entry.key }));
@@ -635,6 +648,24 @@ export function citizenshipOption(stored, options) {
   if (!want) return null;
   const same = (options || []).filter(o => citizenshipGroup(o) === want);
   return same.length === 1 ? same[0] : null;
+}
+
+// A Workday skills prompt takes one search per skill; ten is plenty and keeps
+// the field from costing more than a few seconds.
+const MAX_PROMPT_SKILLS = 10;
+
+/** "Python, SQL; Machine Learning" → ['Python', 'SQL', 'Machine Learning'], unique, capped. */
+export function splitSkills(text) {
+  const seen = new Set();
+  const out = [];
+  for (const part of String(text || '').split(/[,;|\n]+/)) {
+    const s = part.trim();
+    if (!s || seen.has(s.toLowerCase())) continue;
+    seen.add(s.toLowerCase());
+    out.push(s);
+    if (out.length >= MAX_PROMPT_SKILLS) break;
+  }
+  return out;
 }
 
 /** The saved answer to exactly this question (same signature), or ''. */

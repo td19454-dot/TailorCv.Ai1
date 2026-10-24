@@ -2535,6 +2535,98 @@ test('Workday education: a block already showing a school takes that school', as
   });
 });
 
+// Workday's "Type to Add Skills" (NVIDIA, Oct 2026): typing does not search;
+// Enter shows checkbox results for the current text; clicking a row TOGGLES
+// its pill (a second click removes it); the list stays open; blur erases any
+// unpicked text. "Deep Learning" starts selected, as Workday's resume read does.
+const WD_SKILL_CATALOG = ['Machine Learning (ML)', 'Machine Learning Methods', 'AWS Machine Learning',
+  'Deep Learning', 'AWS Deep Learning AMIs', 'Deep Learning Algorithms', 'Python (Programming Language)',
+  'Python', 'Pythonic', 'SQL', 'Neural Networks', 'Natural Language Processing (NLP)'];
+const WD_SKILLS_PAGE = `
+  <div data-automation-id="applyFlowPage"><h2>My Experience</h2>
+  <div data-automation-id="applyFlowMyExpPage">
+    <div data-automation-id="formField-email"><label for="wd-email">Email</label><input id="wd-email" type="email"></div>
+    <div data-automation-id="formField-name"><label for="wd-name">Legal Name</label><input id="wd-name" type="text"></div>
+    <div data-automation-id="formField-skills"><label for="wd-skills">Type to Add Skills</label>
+      <div data-automation-id="multiSelectContainer">
+        <ul role="listbox" data-automation-id="selectedItemList" aria-label="items selected"><li role="presentation" data-automation-id="menuItem"><div role="option" data-automation-id="selectedItem" aria-label="Deep Learning, press delete to clear value.">Deep Learning</div></li></ul>
+        <div data-automation-id="multiselectInputContainer">
+          <input data-automation-id="searchBox" id="wd-skills" type="text" placeholder="Search"></div></div></div>
+  </div><div id="wd-portal"></div></div>`;
+
+function wireWorkdaySkills(env) {
+  const doc = env.document;
+  const input = doc.getElementById('wd-skills');
+  const pills = doc.querySelector('[data-automation-id="selectedItemList"]');
+  const portal = doc.getElementById('wd-portal');
+  const log = { letterKeys: 0, untoggled: [] };
+  const picked = () => Array.from(pills.querySelectorAll('[data-automation-id="selectedItem"]')).map(n => n.textContent);
+  // A clicked skill is saved to Workday's server first ("pill-REMOTE_SKILL-…"
+  // in the real markup), and the reply REDRAWS the pills from the selection as
+  // it stood at that click, plus the new skill. A second click before the
+  // first reply therefore loses the first skill: its reply never included it.
+  // That is "each new skill erases the previous one" (NVIDIA, Oct 2026).
+  const win = doc.defaultView;
+  const draw = (names) => {
+    pills.innerHTML = names.map(n => `<li role="presentation" data-automation-id="menuItem"><div role="option" data-automation-id="selectedItem" aria-label="${n}, press delete to clear value.">${n}</div></li>`).join('');
+  };
+  const toggle = (name) => {
+    const atClick = picked();
+    const next = atClick.includes(name) ? atClick.filter(n => n !== name) : atClick.concat([name]);
+    if (atClick.includes(name)) log.untoggled.push(name);
+    win.setTimeout(() => draw(next), 120);                    // the server round trip
+  };
+  const render = (items) => {
+    portal.innerHTML = '<ul role="listbox">' + items.map(o =>
+      `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">${o}</li>`).join('') + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]')) {
+      li.addEventListener('mousedown', () => toggle(li.textContent));
+    }
+  };
+  input.addEventListener('keydown', (e) => {
+    if (/^[a-z]$/i.test(e.key)) log.letterKeys++;
+    if (e.key === 'Escape') { portal.innerHTML = ''; return; }
+    if (e.key !== 'Enter') return;
+    const words = input.value.toLowerCase().split(/\W+/).filter(Boolean);
+    render(WD_SKILL_CATALOG.filter(o => words.every(w => o.toLowerCase().includes(w))));
+  });
+  input.addEventListener('blur', () => { input.value = ''; });
+  log.picked = picked;
+  return log;
+}
+
+test('Workday skills: each profile skill is searched with Enter and ticked once', async () => {
+  await withForm(WD_SKILLS_PAGE, {}, async (env) => {
+    const log = wireWorkdaySkills(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, Python, Underwater Basket Weaving' }) });
+    const result = await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(), ['Deep Learning', 'Machine Learning (ML)', 'Python'].sort());
+    deepEq(log.untoggled, [], 'the already-selected Deep Learning is never clicked off');
+    eq(log.letterKeys, 0, 'no key-by-key typing');
+    eq(env.document.getElementById('wd-skills').value, '', 'nothing left in the box for Workday to erase');
+    const row = byLabel(result.decisions, 'skills');
+    eq(row.action, p.FILL);
+    ok(/Underwater Basket Weaving/.test(row.reason || ''), `reports the skill Workday lacks: ${row.reason}`);
+  });
+});
+
+test('Workday skills accumulate — adding one never erases the one before', async () => {
+  const empty = WD_SKILLS_PAGE.replace(
+    '<li role="presentation" data-automation-id="menuItem"><div role="option" data-automation-id="selectedItem" aria-label="Deep Learning, press delete to clear value.">Deep Learning</div></li>', '');
+  await withForm(empty, {}, async (env) => {
+    const log = wireWorkdaySkills(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, NLP, Python' }) });
+    await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(),
+           ['Deep Learning', 'Machine Learning (ML)', 'Natural Language Processing (NLP)', 'Python'].sort(),
+           'every skill kept, one after another');
+    deepEq(log.untoggled, [], 'no skill was ticked off along the way');
+    eq(env.document.getElementById('wd-skills').value, '');
+  });
+});
+
 // Greenhouse (Stripe, Oct 2026): Degree is a react-select-style box whose list
 // names only levels. Opening shows the whole list; typing filters it. Every
 // typed search is counted — the degree must be chosen from one open list.
@@ -2616,6 +2708,40 @@ const wdBlock = (doc, n) => doc.querySelector(`[aria-labelledby="Work-Experience
 const wdVal = (block, name) => block.querySelector(`[name="${name}"], [id$="--${name}"]`).value;
 const wdDateVal = (block, which) => ['Month', 'Year'].map(p =>
   block.querySelector(`[id$="--${which}-dateSection${p}-input"]`).value).join('/');
+
+// NVIDIA (Oct 2026): Workday re-renders a text field once it is typed into —
+// a NEW <input> with the SAME name in every block. Looking it up again by name
+// across the page found block 1's field, so block 2's correct values were
+// reported "did not take (mismatch)" while the page showed them right.
+function rerenderOnInput(doc, section) {
+  section.addEventListener('change', (e) => {
+    const old = e.target;
+    if (!(old && old.tagName === 'INPUT' && old.type === 'text' && old.isConnected)) return;
+    const fresh = old.cloneNode(true);
+    fresh.value = old.value;
+    old.replaceWith(fresh);
+  }, true);
+}
+
+test('Workday experience: a re-rendered field is checked in its own block, not block 1', async () => {
+  await withForm(WD_MY_EXPERIENCE, {}, async (env) => {
+    wireWorkdayExperience(env);
+    rerenderOnInput(env.document, env.document.querySelector('[aria-labelledby="Work-Experience-section"]'));
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: WD_JOBS } });
+    const logged = [];
+    const info = console.info;
+    console.info = (...a) => { logged.push(a.join(' ')); };
+    let result;
+    try { result = await run_.runAutofill(ctx, null); } finally { console.info = info; }
+    const falseFails = logged.filter(l => /did not take/.test(l));
+    deepEq(falseFails, [], 'no field reported as failed while the page holds its value');
+    const b2 = wdBlock(env.document, 2);
+    eq(wdVal(b2, 'jobTitle'), 'Data Analyst', 'the page holds the right value');
+    const rows = result.decisions.filter(x => String(x.key).startsWith('repeater:experience'));
+    eq(rows.length, 2);
+    ok(rows.every(x => x.action === p.FILL), rows.map(x => `${x.label}: ${x.reason}`).join(' | '));
+  });
+});
 
 test('Workday experience: each job fills its own block, "Add Another" adds the next', async () => {
   await withForm(WD_MY_EXPERIENCE, {}, async (env) => {

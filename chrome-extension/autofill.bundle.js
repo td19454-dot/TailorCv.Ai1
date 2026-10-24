@@ -1229,7 +1229,9 @@ what when where which who will with would you your now future
     { key: "current_job_title", labels: ["current title", "current job title", "current role", "job title", "most recent title", "occupation"] },
     { key: "current_company", labels: ["current company", "current employer", "most recent company", "most recent employer", "company name", "employer"] },
     { key: "years_of_experience", labels: ["years of experience", "total experience", "years experience", "how many years of experience", "relevant experience years"] },
-    { key: "top_skills", labels: ["skills", "key skills", "technical skills", "core skills"] },
+    // "Type to Add Skills": Workday's skills prompt (NVIDIA). The bare "skills"
+    // is one word and may only absorb one extra; this label has two.
+    { key: "top_skills", labels: ["skills", "key skills", "technical skills", "core skills", "add skills", "type to add skills"] },
     // education
     { key: "university", labels: ["university", "college", "school", "institution", "school name", "university name", "alma mater"] },
     { key: "degree", labels: ["degree", "degree type", "highest degree", "qualification", "level of education"] },
@@ -2085,7 +2087,10 @@ what when where which who will with would you your now future
         // A separate country-code picker beside a phone box means the box wants
         // the national number only; pasting "+91 98765 43210" into it produces a
         // doubled dial code the form then rejects.
-        hasCountryWidget: hasCountryWidget(el)
+        hasCountryWidget: hasCountryWidget(el),
+        // Workday's search-and-tick prompt (Skills, Field of Study): Enter runs
+        // the search and each answer is a clicked result. See commitPromptMulti.
+        multiPrompt: !!(p.workdayMultiselect && p.workdayMultiselect(el))
       };
       if (kind === "radio" || kind === "checkbox") {
         const label = p.labelFor(el) || el.value || "";
@@ -2693,9 +2698,21 @@ what when where which who will with would you your now future
     }
     return el;
   }
+  function liveMember(el, row) {
+    if (!el || el.isConnected) return el;
+    const scope = row.scope && row.scope.isConnected ? row.scope : null;
+    const id = el.getAttribute && el.getAttribute("id");
+    if (!scope || !id) return el;
+    try {
+      return Array.from(scope.querySelectorAll("[id]")).find((n) => n.id === id) || el;
+    } catch (e) {
+      return el;
+    }
+  }
   function readDateParts(row) {
     const parts = {};
-    for (const el of row.members || []) {
+    for (const member of row.members || []) {
+      const el = liveMember(member, row);
       if (!el.isConnected) continue;
       const part = datePartOf(el);
       if (part) parts[part] = String(el.value || "").trim();
@@ -2770,20 +2787,22 @@ what when where which who will with would you your now future
     const p = probe();
     const doc = globalThis.document;
     if (!p || !row.ident) return null;
+    const scope = row.scope && row.scope.isConnected ? row.scope : null;
+    const root = scope || doc;
     const esc2 = (s) => String(s).replace(/["\\]/g, "\\$&");
     for (const sel of [`[name="${esc2(row.ident)}"]`, `#${cssId(row.ident)}`]) {
       if (!sel || sel === "#") continue;
       let el = null;
       try {
-        el = doc.querySelector(sel);
+        el = root.querySelector(sel);
       } catch (e) {
         el = null;
       }
       if (el && isVisible(el)) return el;
     }
-    const form = findForm(doc);
-    if (!form) return null;
-    for (const el of form.fields) {
+    const fields = scope ? p.fillableIn(scope).elements : (findForm(doc) || {}).fields || [];
+    if (!fields.length) return null;
+    for (const el of fields) {
       const d = p.describeEl(el);
       if (d && questionSignature(d.ident) === row.key.split("#")[0]) return el;
     }
@@ -2841,7 +2860,8 @@ what when where which who will with would you your now future
           slot ? "attach this yourself" : "we could not tell which file this wants"
         );
       }
-      if (row.filled && !row.invalid) {
+      const additiveSkills = row.multiPrompt && (matchFieldKey(row.label) || {}).key === "top_skills";
+      if (row.filled && !row.invalid && !additiveSkills) {
         return done(d, SKIP, row.value, "", 0, "already filled in");
       }
       const category = classifySensitive(row.label);
@@ -2936,6 +2956,13 @@ what when where which who will with would you your now future
         d.candidates = shapes.length > 1 ? shapes : [];
         if (entry.key === "degree" && (row.kind === "combobox" || row.kind === "select")) {
           d.readFirst = { key: "degree", stored: raw };
+        }
+        if (entry.key === "top_skills" && row.multiPrompt) {
+          const skills = splitSkills(raw);
+          if (skills.length) {
+            d.multiValues = skills;
+            return done(d, FILL, skills.join(", "), "profile", 0.95, "");
+          }
         }
         const value = coerce(raw, Object.assign(
           {},
@@ -3226,6 +3253,19 @@ what when where which who will with would you your now future
     if (!want) return null;
     const same = (options || []).filter((o) => citizenshipGroup(o) === want);
     return same.length === 1 ? same[0] : null;
+  }
+  var MAX_PROMPT_SKILLS = 10;
+  function splitSkills(text) {
+    const seen = /* @__PURE__ */ new Set();
+    const out = [];
+    for (const part of String(text || "").split(/[,;|\n]+/)) {
+      const s = part.trim();
+      if (!s || seen.has(s.toLowerCase())) continue;
+      seen.add(s.toLowerCase());
+      out.push(s);
+      if (out.length >= MAX_PROMPT_SKILLS) break;
+    }
+    return out;
   }
   function savedSensitiveAnswer(label, saved) {
     const sig = questionSignature(label);
@@ -4208,6 +4248,83 @@ what when where which who will with would you your now future
     pressPointer(node);
     return true;
   }
+  function promptPills(row) {
+    const p = probe2();
+    const box = p && p.workdayMultiselect && p.workdayMultiselect(typableInput(row) || row.el);
+    if (!box) return [];
+    return Array.from(box.querySelectorAll('[data-automation-id="selectedItem"]')).map((n) => (n.textContent || "").replace(/\s+/g, " ").trim()).filter(Boolean);
+  }
+  function promptResultFor(want, labels) {
+    const exact = normalizeOptionText(want);
+    let idx = labels.findIndex((t) => normalizeOptionText(t) === exact);
+    if (idx < 0) idx = labels.findIndex((t) => commitMatches(want, t));
+    return idx;
+  }
+  async function commitPromptMulti(row, values) {
+    const el = row.el;
+    const input = typableInput(row) || el;
+    const out = { added: [], already: [], missing: [], pills: [] };
+    const shown = () => promptPills(row);
+    const has = (pills, skill) => pills.some((t) => promptResultFor(skill, [t]) === 0);
+    const writeSearch = (text) => {
+      focus(input);
+      writeValue(input, text);
+      fire(input, "input");
+    };
+    const pillWaitMs = Math.max(TIMING.commitWaitMs * 2, 300);
+    const addOne = async (skill) => {
+      writeSearch(skill);
+      fireKey(input, "keydown", "Enter");
+      fireKey(input, "keyup", "Enter");
+      let options = await waitForMatchingOptions(el, [skill], TIMING.optionWaitMs * 2);
+      options = await waitOutLoading(el, [skill], options);
+      const labels = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+      const idx = promptResultFor(skill, labels);
+      if (idx < 0) return "missing";
+      if (shown().includes(labels[idx])) return "already";
+      try {
+        options[idx].scrollIntoView({ block: "nearest" });
+      } catch (e) {
+      }
+      pressPointer(options[idx]);
+      const deadline = Date.now() + pillWaitMs;
+      while (!has(shown(), skill) && Date.now() < deadline) await sleep(100);
+      return has(shown(), skill) ? "added" : "missing";
+    };
+    try {
+      scrollIntoView(input);
+      openWidget(row);
+      await sleep(TIMING.settleMs);
+      for (const skill of values) {
+        if (has(shown(), skill)) {
+          out.already.push(skill);
+          continue;
+        }
+        out[await addOne(skill)].push(skill);
+      }
+      const lost = out.added.concat(out.already).filter((s) => !has(shown(), s));
+      for (const skill of lost) {
+        console.info(`[TailorCV] skills: "${skill}" disappeared \u2014 adding it again`);
+        if (await addOne(skill) !== "added") {
+          for (const list of [out.added, out.already]) {
+            const i = list.indexOf(skill);
+            if (i >= 0) list.splice(i, 1);
+          }
+          out.missing.push(skill);
+        }
+      }
+    } catch (e) {
+    } finally {
+      try {
+        writeSearch("");
+      } catch (e) {
+      }
+      dismissListbox(el);
+    }
+    out.pills = shown();
+    console.info(`[TailorCV] skills: added ${out.added.length}, already there ${out.already.length}` + (out.missing.length ? `, not offered: ${out.missing.join(", ")}` : ""));
+    return out;
+  }
   function pickReadFirst(readFirst, labels) {
     const pick = coerce(readFirst.stored, {
       kind: "combobox",
@@ -4351,6 +4468,12 @@ what when where which who will with would you your now future
     const row = decision.row;
     const value = decision.value;
     if (!row || !row.el || !value) return { ok: false, outcome: "failed", shown: "" };
+    if (decision.multiValues && decision.multiValues.length && row.multiPrompt) {
+      const res = await commitPromptMulti(row, decision.multiValues);
+      if (res.missing.length) decision.reason = `not in this employer's list: ${res.missing.join(", ")} \u2014 add any yourself`;
+      const ok = res.pills.length > 0 && res.added.length + res.already.length > 0;
+      return { ok, outcome: ok ? "ok" : "empty", shown: res.pills.join(" | ") };
+    }
     let wrote = false;
     switch (row.kind) {
       case "date-parts":
@@ -4692,7 +4815,7 @@ what when where which who will with would you your now future
     const p = probe4();
     if (!p) return [];
     const els = p.fillableIn(panel).elements.filter(isVisible);
-    return describeFields({ root: panel, fields: els });
+    return describeFields({ root: panel, fields: els }).map((r) => Object.assign(r, { scope: panel }));
   }
   function isoMonth(v) {
     const s = String(v || "").trim();

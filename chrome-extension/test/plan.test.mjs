@@ -897,6 +897,20 @@ test('degree dropdowns are read once, never searched by typing each spelling', (
   eq(d.readFirst && d.readFirst.key, 'degree');
 });
 
+test('skills split into one search each: trimmed, unique, capped at 10', () => {
+  deepEq(p.splitSkills(' Python, SQL;Machine Learning | python\nDocker '),
+         ['Python', 'SQL', 'Machine Learning', 'Docker']);
+  eq(p.splitSkills(Array.from({ length: 14 }, (_, i) => `Skill ${i}`).join(', ')).length, 10);
+});
+
+test('Workday\'s "Type to Add Skills" plans the profile skills as a list', () => {
+  const row = field('Type to Add Skills', { kind: 'combobox', multiPrompt: true });
+  const ctx = { answerBank: Object.assign({}, BANK, { top_skills: 'Python, SQL, Docker' }) };
+  const d = p.decide([row], ctx, null, null)[0];
+  eq(d.action, p.FILL);
+  deepEq(d.multiValues, ['Python', 'SQL', 'Docker']);
+});
+
 // ── nationality ──────────────────────────────────────────────
 
 test('nationality fills from the stored answer only', () => {

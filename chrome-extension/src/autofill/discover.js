@@ -854,6 +854,9 @@ export function describeFields(form) {
       // the national number only; pasting "+91 98765 43210" into it produces a
       // doubled dial code the form then rejects.
       hasCountryWidget: hasCountryWidget(el),
+      // Workday's search-and-tick prompt (Skills, Field of Study): Enter runs
+      // the search and each answer is a clicked result. See commitPromptMulti.
+      multiPrompt: !!(p.workdayMultiselect && p.workdayMultiselect(el)),
     };
 
     if (kind === 'radio' || kind === 'checkbox') {
@@ -1639,9 +1642,20 @@ function pickClickTarget(el, p) {
  * Read a Workday date back as one value. Filled only when EVERY part is: a date
  * with a month and a year but no day is not an answer the form will accept.
  */
+/** A member the framework replaced, found again by id inside the row's own block. */
+function liveMember(el, row) {
+  if (!el || el.isConnected) return el;
+  const scope = row.scope && row.scope.isConnected ? row.scope : null;
+  const id = el.getAttribute && el.getAttribute('id');
+  if (!scope || !id) return el;
+  try { return Array.from(scope.querySelectorAll('[id]')).find(n => n.id === id) || el; }
+  catch (e) { return el; }
+}
+
 function readDateParts(row) {
   const parts = {};
-  for (const el of row.members || []) {
+  for (const member of row.members || []) {
+    const el = liveMember(member, row);
     if (!el.isConnected) continue;
     const part = datePartOf(el);
     if (part) parts[part] = String(el.value || '').trim();
@@ -1712,17 +1726,23 @@ function reresolve(row) {
   const p = probe();
   const doc = globalThis.document;
   if (!p || !row.ident) return null;
+  // A row from a repeated block (Workday's Work Experience 2, Education 2) is
+  // looked for inside THAT block. Every block's field has the same name, and a
+  // page-wide lookup returned block 1's — so block 2's correct value was
+  // compared with block 1's and reported "did not take" (NVIDIA, Oct 2026).
+  const scope = row.scope && row.scope.isConnected ? row.scope : null;
+  const root = scope || doc;
   const esc = s => String(s).replace(/["\\]/g, '\\$&');
   for (const sel of [`[name="${esc(row.ident)}"]`, `#${cssId(row.ident)}`]) {
     if (!sel || sel === '#') continue;
     let el = null;
-    try { el = doc.querySelector(sel); } catch (e) { el = null; }
+    try { el = root.querySelector(sel); } catch (e) { el = null; }
     if (el && isVisible(el)) return el;
   }
   // Last resort: rescan and match on the normalised key.
-  const form = findForm(doc);
-  if (!form) return null;
-  for (const el of form.fields) {
+  const fields = scope ? p.fillableIn(scope).elements : ((findForm(doc) || {}).fields || []);
+  if (!fields.length) return null;
+  for (const el of fields) {
     const d = p.describeEl(el);
     if (d && questionSignature(d.ident) === row.key.split('#')[0]) return el;
   }
