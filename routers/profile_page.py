@@ -100,6 +100,48 @@ DEGREE_GROUPS = [
                "High School", "No degree"]),
 ]
 
+# The profile's Field of Study dropdown: Workday's own list (NVIDIA, Oct 2026),
+# spelled exactly as Workday spells it, so the value autofill puts into
+# Workday's Field of Study box is one of its options verbatim — no fuzzy match.
+# Workday lists "Electronics & Communication" twice (once in capitals); kept once.
+FIELD_OF_STUDY_OPTIONS = [
+    "Accounting", "Advanced Computing", "Advertising", "Aeronautical Engineering", "Aerospace",
+    "Agriculture", "Animation", "Applications Design and Data Analysis", "Applied Computing",
+    "Applied Electronics", "Applied Informatics", "Applied Mathematics", "Applied Science",
+    "Applied Statistics", "Architecture", "Art", "Artificial Intelligence", "Automation",
+    "Automotive Engineering", "Big Data Algorithms", "Biochemistry", "BioComputational Physics",
+    "Bio-Electrical Engineering", "Bioengineering", "Bioinformatics", "Biology",
+    "Biomedical Applications", "Biomedical Engineering", "Business Administration",
+    "Business Analytics", "Business Management", "Catalysis Science", "Chartered Accountant",
+    "Chemical Engineering", "Chemistry", "Civil Engineering", "Cognitive Science", "Communications",
+    "Complexity Science & Engineering", "Computational Fluid Dynamics",
+    "Computational Mathematics", "Computational Science & Engineering", "Computer & Info Science",
+    "Computer Application", "Computer Engineering", "Computer Games",
+    "Computer Information Systems", "Computer Networking", "Computer Science",
+    "Computer Science & Engin.", "Computer System Design", "Computer Vision and Machine Learning",
+    "Control & Instrumentation", "Control Science and Engineering", "Data Science",
+    "Deep Learning", "Design Technology", "Ecommerce", "Economics", "Education",
+    "Electrical & Computer Engineering", "Electrical and Electronics Engineering",
+    "Electrical Engineering", "Electrical Engineering and Computer Science",
+    "Electronic Engineering", "Electronics", "Electronics & Communication",
+    "Embedded System Design", "Energy and Environmental Systems", "Engineering", "English",
+    "Entrepreneurship", "Finance", "Game Design", "Geomatics Engineering", "Graphic Design",
+    "High Performance Computing", "History", "HumanComputer Interaction", "Humanities",
+    "Human Resources", "Images", "Industrial Arts", "Industrial Engineering",
+    "Information systems & Technologies", "Information Technology",
+    "Innovation and Research Results Transfer", "Interactive Telecommunications Program",
+    "Interdisciplinary Studies", "Law", "Logic and Methodology of Science", "Machine Learning",
+    "Management Information Systems", "Management science and Engineering", "Marketing",
+    "Materials Engineering", "Mathematics", "Mechanical and Electrical Engineering",
+    "Mechanical Engineering", "Mechanics", "Mechatronics Engineering", "Media Arts and Animation",
+    "Neuroscience", "No Degree", "Other", "Physical Chemistry", "Physics", "Political Science",
+    "Product Development & Management", "Product Management", "Project Management",
+    "Psychology", "Public Relations", "Radio Physics", "Robotics Engineering", "Robotic Systems",
+    "Science", "Scientific Computing", "Software Engineering", "Speech Recognition", "Statistics",
+    "Technical Management", "Telecommunication", "Thermal Engineering", "Visual Communication",
+    "Visual Psychophysics",
+]
+
 # "Citizenship Status" in the categories US forms ask it in (SpaceX's ITAR list:
 # citizen or national / lawful permanent resident / refugee / asylee / DACA /
 # other). A fixed list, not free text: plan.js CITIZENSHIP_GROUPS maps each onto
@@ -416,6 +458,7 @@ async def profile_page(request: Request):
             "request": request,
             "sections": SECTIONS,
             "degree_groups": DEGREE_GROUPS,
+            "field_options": FIELD_OF_STUDY_OPTIONS,
             "model": model,
             "user_name": user.name or "",
             "has_resume": bool(user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path)),

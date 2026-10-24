@@ -106,6 +106,21 @@
     return '<label>Degree<select data-f="degree">' + html + "</select></label>";
   }
 
+  // Field of study as Workday's own list (routers/profile_page.py
+  // FIELD_OF_STUDY_OPTIONS), spelled as Workday spells it so autofill puts an
+  // option there verbatim. A value saved before this stays as "(saved)".
+  function fieldSelect(value) {
+    var options = window.TAILORCV_FIELD_OPTIONS || [];
+    var current = String(value || "");
+    var opt = function (v, text) {
+      return '<option value="' + escAttr(v) + '"' + (v === current ? " selected" : "") + ">" + escAttr(text) + "</option>";
+    };
+    var html = opt("", "Select your field of study");
+    if (current && options.indexOf(current) === -1) html += opt(current, current + " (saved)");
+    html += options.map(function (f) { return opt(f, f); }).join("");
+    return '<label>Field of study<select data-f="field">' + html + "</select></label>";
+  }
+
   var LISTS = {
     experience: {
       noun: "job",
@@ -133,7 +148,7 @@
       render: function (s) {
         return input("school", "School or university", s.school, 'maxlength="200"') +
           degreeSelect(s.degree) +
-          input("field", "Field of study", s.field, 'maxlength="120" list="pf-fields" placeholder="e.g. Chemical Engineering"') +
+          fieldSelect(s.field) +
           input("gpa", "Overall result (GPA)", s.gpa, 'maxlength="20" placeholder="e.g. 8.7/10 or 3.6/4"') +
           '<div class="pf-job-dates">' +
             input("from", "From", s.from, 'maxlength="4" placeholder="YYYY" inputmode="numeric"') +

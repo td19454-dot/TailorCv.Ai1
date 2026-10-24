@@ -146,23 +146,6 @@
             </section>
         </div>
 
-        <datalist id="pf-fields">
-            <option value="Computer Science"></option>
-            <option value="Computer Science and Engineering"></option>
-            <option value="Information Technology"></option>
-            <option value="Electronics and Communication Engineering"></option>
-            <option value="Electrical Engineering"></option>
-            <option value="Mechanical Engineering"></option>
-            <option value="Chemical Engineering"></option>
-            <option value="Civil Engineering"></option>
-            <option value="Data Science"></option>
-            <option value="Mathematics"></option>
-            <option value="Statistics"></option>
-            <option value="Physics"></option>
-            <option value="Economics"></option>
-            <option value="Business Administration"></option>
-            <option value="Finance"></option>
-        </datalist>
         <datalist id="pf-dial-codes">
             <option value="+91">India</option>
             <option value="+1">United States / Canada</option>
@@ -189,7 +172,8 @@
       window.TAILORCV_EXTENSION_IDS = ['lnkplncemohgcdjlgccgmbcgiokcgmno'
         {%- if dev_extension_id %}, {{ dev_extension_id | tojson }}{% endif -%}];
       window.TAILORCV_DEGREE_GROUPS = {{ degree_groups | tojson }};
+      window.TAILORCV_FIELD_OPTIONS = {{ field_options | tojson }};
     </script>
-    <script src="/static/profile_page.js?v=4" defer></script>
+    <script src="/static/profile_page.js?v=5" defer></script>
 </body>
 </html>
