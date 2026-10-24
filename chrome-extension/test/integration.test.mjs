@@ -2409,10 +2409,16 @@ const WD_FIELDS = ['Accounting', 'Advanced Computing', 'Advertising', 'Aeronauti
   'Electrical Engineering and Computer Science', 'Mechanical Engineering'];
 
 // NVIDIA's real Workday degree list (Oct 2026).
+// "High School" is further down the list than the screenshot reached; an
+// earlier NVIDIA run had it selected in Education 2.
 const WD_DEGREES = ['Post-diploma studies', 'BTECH', 'MTECH', 'MCA', 'University Diploma', 'Associates',
-  'Technical/other training', 'Some college', 'PhD', 'Some post college', 'No Degree'];
+  'Technical/other training', 'Some college', 'PhD', 'Some post college', 'No Degree', 'High School'];
 
-function wireWorkdayEducation(env) {
+// opts.degreeLoadMs: the Degree list opens with only its disabled "Select One"
+//   and loads the real options this long after (NVIDIA's report, Oct 2026).
+// opts.enterSelects: Field of Study's Enter selects the exact match itself —
+//   the pill appears and no result needs clicking (NVIDIA's report).
+function wireWorkdayEducation(env, opts = {}) {
   const doc = env.document;
   const log = { eduAdds: 0, expAdds: 0, next: 0 };
   const section = doc.querySelector('[aria-labelledby="Education-section"]');
@@ -2421,12 +2427,19 @@ function wireWorkdayEducation(env) {
   let k = 40;
   const wireDegree = (block) => {
     const btn = block.querySelector('[data-automation-id="formField-degree"] button');
-    btn.addEventListener('mousedown', () => {
-      portal.innerHTML = '<ul role="listbox">' + WD_DEGREES.map(o =>
+    const placeholder = '<li data-value="" role="option" aria-disabled="true" aria-selected="true" id="select-one"><div>Select One</div></li>';
+    const fill = () => {
+      portal.innerHTML = '<ul role="listbox">' + placeholder + WD_DEGREES.map(o =>
         `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">${o}</li>`).join('') + '</ul>';
-      for (const li of portal.querySelectorAll('[role=option]')) {
+      for (const li of portal.querySelectorAll('[role=option]:not([aria-disabled])')) {
         li.addEventListener('mousedown', () => { btn.textContent = li.textContent; btn.value = li.textContent; portal.innerHTML = ''; });
       }
+    };
+    btn.addEventListener('mousedown', () => {
+      btn.setAttribute('aria-expanded', 'true');
+      if (!opts.degreeLoadMs) { fill(); return; }
+      portal.innerHTML = '<ul role="listbox">' + placeholder + '</ul>';
+      doc.defaultView.setTimeout(fill, opts.degreeLoadMs);
     });
   };
   // Workday's Field of Study prompt, as it behaves (NVIDIA, Oct 2026): opening
@@ -2452,7 +2465,14 @@ function wireWorkdayEducation(env) {
     input.addEventListener('keydown', (e) => {
       if (/^[a-z]$/i.test(e.key)) log.letterKeys++;
       if (e.key !== 'Enter') return;
-      const words = input.value.toLowerCase().split(/\W+/).filter(Boolean).map(w => w.slice(0, 6));
+      const exact = WD_FIELDS.find(o => o.toLowerCase() === input.value.trim().toLowerCase());
+      if (opts.enterSelects && exact) {
+        log.enterSelected = (log.enterSelected || 0) + 1;
+        pills.innerHTML += `<li><div data-automation-id="selectedItem">${exact}</div></li>`;
+        input.value = '';
+        // and the results still render, with the selected one among them
+      }
+      const words = (exact || input.value).toLowerCase().split(/\W+/).filter(Boolean).map(w => w.slice(0, 6));
       render(WD_FIELDS.filter(o => o.toLowerCase().split(/\W+/).some(ow => words.some(w => ow.startsWith(w)))));
     });
     input.addEventListener('blur', () => { input.value = ''; });
@@ -2522,6 +2542,43 @@ test('Workday education: "Add" opens a block per school, each filled from the pr
   });
 });
 
+// The user's own profile, from the NVIDIA reports (Oct 2026).
+const NVIDIA_SCHOOLS = [
+  { school: 'Jadavpur University, Kolkata', degree: 'Bachelor of Technology', field: 'Chemical Engineering',
+    gpa: '7.5', from: '2023', to: '2027' },
+  { school: 'Hariyana Vidya Mandir, Kolkata', degree: 'Higher Secondary', field: '',
+    gpa: '9.0', from: '2020', to: '2022' },
+];
+
+test('Workday education: Degree waits for its options to load past "Select One"', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    wireWorkdayEducation(env, { degreeLoadMs: 300 });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: NVIDIA_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    const doc = env.document;
+    const degree = n => eduBlock(doc, n).querySelector('[data-automation-id="formField-degree"] button').textContent;
+    eq(degree(1), 'BTECH', 'Bachelor of Technology → BTECH, once the real options load');
+    eq(degree(2), 'High School', 'Higher Secondary → High School');
+  });
+});
+
+test('Workday education: a Field of Study that Enter already selected counts as filled', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    const log = wireWorkdayEducation(env, { enterSelects: true });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: NVIDIA_SCHOOLS } });
+    const logged = [];
+    const info = console.info, group = console.groupCollapsed;
+    console.groupCollapsed = (...a) => { logged.push(a.join(' ')); };
+    let result;
+    try { result = await run_.runAutofill(ctx, null); } finally { console.groupCollapsed = group; console.info = info; }
+    eq(eduField(eduBlock(env.document, 1)), 'Chemical Engineering', 'one pill — never clicked off');
+    eq(log.enterSelected, 1);
+    notOk(logged.some(l => /did not commit: Field of Study/.test(l)), 'no false "did not commit"');
+    const row = result.decisions.find(x => String(x.key) === 'repeater:education:0');
+    eq(row.action, p.FILL, row.reason);
+  });
+});
+
 test('Workday education: a block already showing a school takes that school', async () => {
   await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
     wireWorkdayEducation(env);
@@ -2554,7 +2611,11 @@ const WD_SKILLS_PAGE = `
           <input data-automation-id="searchBox" id="wd-skills" type="text" placeholder="Search"></div></div></div>
   </div><div id="wd-portal"></div></div>`;
 
-function wireWorkdaySkills(env) {
+// opts.searchMs: Workday's server search — results appear this long after Enter.
+// opts.redrawMs: results are drawn, then redrawn (rows replaced) this long after.
+// opts.innerOnly: only an element INSIDE each row listens for the click, as a
+// checkbox row may — a click on the row element itself does nothing.
+function wireWorkdaySkills(env, opts = {}) {
   const doc = env.document;
   const input = doc.getElementById('wd-skills');
   const pills = doc.querySelector('[data-automation-id="selectedItemList"]');
@@ -2577,10 +2638,16 @@ function wireWorkdaySkills(env) {
     win.setTimeout(() => draw(next), 120);                    // the server round trip
   };
   const render = (items) => {
+    if (!items.length) { portal.innerHTML = '<ul role="listbox"><li>No Items.</li></ul>'; return; }
     portal.innerHTML = '<ul role="listbox">' + items.map(o =>
-      `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">${o}</li>`).join('') + '</ul>';
+      `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">`
+      + `<div data-automation-id="promptLeafNode"><span class="box"></span><span>${o}</span></div></li>`).join('') + '</ul>';
     for (const li of portal.querySelectorAll('[role=option]')) {
-      li.addEventListener('mousedown', () => toggle(li.textContent));
+      const target = opts.innerOnly ? li.querySelector('span:last-child') : li;
+      target.addEventListener('mousedown', (e) => {
+        if (opts.innerOnly && e.target !== target) return;
+        toggle(li.textContent);
+      });
     }
   };
   input.addEventListener('keydown', (e) => {
@@ -2588,7 +2655,12 @@ function wireWorkdaySkills(env) {
     if (e.key === 'Escape') { portal.innerHTML = ''; return; }
     if (e.key !== 'Enter') return;
     const words = input.value.toLowerCase().split(/\W+/).filter(Boolean);
-    render(WD_SKILL_CATALOG.filter(o => words.every(w => o.toLowerCase().includes(w))));
+    const items = WD_SKILL_CATALOG.filter(o => words.every(w => o.toLowerCase().includes(w)));
+    const show = () => {
+      render(items);
+      if (opts.redrawMs) win.setTimeout(() => render(items), opts.redrawMs);   // rows replaced
+    };
+    if (opts.searchMs) win.setTimeout(show, opts.searchMs); else show();
   });
   input.addEventListener('blur', () => { input.value = ''; });
   log.picked = picked;
@@ -2624,6 +2696,31 @@ test('Workday skills accumulate — adding one never erases the one before', asy
            'every skill kept, one after another');
     deepEq(log.untoggled, [], 'no skill was ticked off along the way');
     eq(env.document.getElementById('wd-skills').value, '');
+  });
+});
+
+test('Workday skills: a slow search is waited for, not skipped', async () => {
+  // NVIDIA: TensorFlow's results arrived just as the extension moved on to
+  // PyTorch. Here results take far longer than the old wait.
+  const empty = WD_SKILLS_PAGE.replace(/<li role="presentation"[\s\S]*?<\/li>/, '');
+  await withForm(empty, {}, async (env) => {
+    const log = wireWorkdaySkills(env, { searchMs: 400 });
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, Python' }) });
+    await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(), ['Deep Learning', 'Machine Learning (ML)', 'Python'].sort());
+  });
+});
+
+test('Workday skills: ticked even when the results are redrawn and only the row\'s inside listens', async () => {
+  const empty = WD_SKILLS_PAGE.replace(/<li role="presentation"[\s\S]*?<\/li>/, '');
+  await withForm(empty, {}, async (env) => {
+    const log = wireWorkdaySkills(env, { redrawMs: 40, innerOnly: true });
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, Python' }) });
+    await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(), ['Deep Learning', 'Machine Learning (ML)', 'Python'].sort());
+    deepEq(log.untoggled, [], 'never clicked twice into an un-tick');
   });
 });
 

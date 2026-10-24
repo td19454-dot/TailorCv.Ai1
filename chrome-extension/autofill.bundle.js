@@ -3938,10 +3938,10 @@ what when where which who will with would you your now future
       openWidget(row);
       await sleep(TIMING.settleMs);
       let options = [];
-      if (readFirst && !isButton) options = await waitForOptions2(el, TIMING.optionWaitMs);
+      if (readFirst && !isButton) options = await waitForOpenedList(el);
       if (options.length) {
       } else if (isButton) {
-        options = await waitForOptions2(el, TIMING.optionWaitMs);
+        options = await waitForOpenedList(el);
       } else {
         const input = typableInput(row) || el;
         const queries = dedupe(shapes.map(searchToken)).slice(0, 4);
@@ -3954,9 +3954,10 @@ what when where which who will with would you your now future
           if (wdPrompt) {
             fireKey(input, "keydown", "Enter");
             fireKey(input, "keyup", "Enter");
-            options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
-            options = await waitOutLoading(el, shapes, options);
+            const isSet = () => shapes.some((s) => committed(row, s));
+            options = await waitForPromptResults(el, shapes, isSet);
             row.searchTrace.push(Object.assign(searchStep(query, input, el, options), { searchedWithEnter: true }));
+            if (isSet()) return true;
             if (options.length && listOffersAny(shapes, options)) break;
             continue;
           }
@@ -4105,7 +4106,7 @@ what when where which who will with would you your now future
   function visibleOptionNodes2(doc, el) {
     const p = probe2();
     const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
-    const shown = nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n) && !isChosenValue(n));
+    const shown = nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n) && !isChosenValue(n) && !(n.getAttribute && n.getAttribute("aria-disabled") === "true"));
     return el ? ownOptions(doc, el, shown) : shown;
   }
   function ownOptions(doc, el, nodes) {
@@ -4136,6 +4137,17 @@ what when where which who will with would you your now future
       }
       return !owner || owner === el || owner.contains(el) || el.contains(owner);
     });
+  }
+  async function waitForOpenedList(el) {
+    const nodes = await waitForOptions2(el, TIMING.optionWaitMs);
+    if (nodes.length || !isExpanded(el)) return nodes;
+    return waitForOptions2(el, TIMING.remoteSearchMs);
+  }
+  function isExpanded(el) {
+    for (let n = el, i = 0; n && i < 3; n = n.parentElement, i++) {
+      if (n.getAttribute && n.getAttribute("aria-expanded") === "true") return true;
+    }
+    return false;
   }
   function waitForOptions2(el, timeout) {
     return new Promise((resolve) => {
@@ -4248,6 +4260,37 @@ what when where which who will with would you your now future
     pressPointer(node);
     return true;
   }
+  async function waitForPromptResults(el, shapes, done2) {
+    const doc = el.ownerDocument || globalThis.document;
+    const start = Date.now();
+    const deadline = start + Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
+    const offers = (nodes) => {
+      const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+      return shapes.some((s) => promptResultFor(s, labels) >= 0);
+    };
+    for (; ; ) {
+      if (done2 && done2()) return [];
+      const nodes = visibleOptionNodes2(doc, el);
+      if (nodes.length && offers(nodes)) return nodes;
+      if (Date.now() - start > 1500 && saysNoItems(doc)) return nodes;
+      if (Date.now() >= deadline) return nodes;
+      await sleep(100);
+    }
+  }
+  function saysNoItems(doc) {
+    const roots = Array.from(doc.querySelectorAll('[data-automation-id="activeListContainer"], [role="listbox"]'));
+    return roots.some((root) => {
+      const walker = doc.createTreeWalker(
+        root,
+        4
+        /* NodeFilter.SHOW_TEXT */
+      );
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+        if (/^\s*no (items|results|matches)( found)?\.?\s*$/i.test(n.nodeValue || "") && isNodeVisible(n.parentElement)) return true;
+      }
+      return false;
+    });
+  }
   function promptPills(row) {
     const p = probe2();
     const box = p && p.workdayMultiselect && p.workdayMultiselect(typableInput(row) || row.el);
@@ -4276,20 +4319,47 @@ what when where which who will with would you your now future
       writeSearch(skill);
       fireKey(input, "keydown", "Enter");
       fireKey(input, "keyup", "Enter");
-      let options = await waitForMatchingOptions(el, [skill], TIMING.optionWaitMs * 2);
-      options = await waitOutLoading(el, [skill], options);
+      const options = await waitForPromptResults(el, [skill]);
       const labels = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
       const idx = promptResultFor(skill, labels);
       if (idx < 0) return "missing";
-      if (shown().includes(labels[idx])) return "already";
+      const label = labels[idx];
+      if (shown().includes(label)) return "already";
+      await sleep(Math.max(TIMING.settleMs, 150));
+      const rowNow = () => visibleOptionNodes2(el.ownerDocument || globalThis.document, el).find((n) => (n.textContent || "").replace(/\s+/g, " ").trim() === label) || null;
+      const press2 = (node2) => {
+        let target = node2;
+        for (const d of node2.querySelectorAll("*")) {
+          if ((d.textContent || "").replace(/\s+/g, " ").trim() === label) target = d;
+        }
+        try {
+          target.scrollIntoView({ block: "nearest" });
+        } catch (e) {
+        }
+        pressPointer(target);
+      };
+      const ticked = (node2) => !!node2 && (node2.getAttribute("aria-selected") === "true" || node2.getAttribute("aria-checked") === "true" || !!node2.querySelector('input:checked, [aria-checked="true"]'));
+      let node = rowNow() || options[idx];
+      press2(node);
+      const deadline = Date.now() + pillWaitMs;
+      let retried = false;
+      while (!has(shown(), skill) && Date.now() < deadline) {
+        await sleep(100);
+        if (!retried && Date.now() > deadline - pillWaitMs / 2) {
+          retried = true;
+          const again = rowNow();
+          if (again && !ticked(again) && !has(shown(), skill)) {
+            node = again;
+            press2(again);
+          }
+        }
+      }
+      if (has(shown(), skill)) return "added";
       try {
-        options[idx].scrollIntoView({ block: "nearest" });
+        console.info(`[TailorCV] skills: clicked "${label}" but no pill appeared \u2014 row was ${node && node.isConnected ? "on the page" : "gone"}: ` + String(node && node.outerHTML || "").slice(0, 400));
       } catch (e) {
       }
-      pressPointer(options[idx]);
-      const deadline = Date.now() + pillWaitMs;
-      while (!has(shown(), skill) && Date.now() < deadline) await sleep(100);
-      return has(shown(), skill) ? "added" : "missing";
+      return "missing";
     };
     try {
       scrollIntoView(input);

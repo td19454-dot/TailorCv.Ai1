@@ -337,14 +337,14 @@ export async function commitCombobox(row, value, candidates, readFirst) {
     // A short EEO list filters by substring, so typing the stored "Male" hides
     // "Cisgender man" before it can be matched. Read the whole list first; type
     // only if opening it showed nothing. See READ_FIRST_KEYS in match.js.
-    if (readFirst && !isButton) options = await waitForOptions(el, TIMING.optionWaitMs);
+    if (readFirst && !isButton) options = await waitForOpenedList(el);
     if (options.length) {
       // already open with the full list
     } else if (isButton) {
       // A <button> dropdown (Workday): there is no input to type into, and
       // writing a "value" onto a button changes nothing — pressing it is the
       // whole interaction, and the options appear in a portal.
-      options = await waitForOptions(el, TIMING.optionWaitMs);
+      options = await waitForOpenedList(el);
     } else {
       // Type to filter. Whole-value write first (react-select reads the
       // input's onChange); per-character with key events if no menu appears,
@@ -377,9 +377,13 @@ export async function commitCombobox(row, value, candidates, readFirst) {
         if (wdPrompt) {
           fireKey(input, 'keydown', 'Enter');
           fireKey(input, 'keyup', 'Enter');
-          options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
-          options = await waitOutLoading(el, shapes, options);
+          // Workday's single-select prompt can commit the exact match on Enter
+          // by itself: Field of Study was filled while this waited for a row
+          // to click, then reported "did not commit" (NVIDIA, Oct 2026).
+          const isSet = () => shapes.some(s => committed(row, s));
+          options = await waitForPromptResults(el, shapes, isSet);
           row.searchTrace.push(Object.assign(searchStep(query, input, el, options), { searchedWithEnter: true }));
+          if (isSet()) return true;
           if (options.length && listOffersAny(shapes, options)) break;
           continue;   // key-by-key typing does nothing here: next query, no retype
         }
@@ -586,7 +590,11 @@ function visibleOptionNodes(doc, el) {
   // waitForOptions returned those immediately, for every dropdown on the page
   // — so "Bachelor's Degree" was matched against a list of countries, matched
   // nothing, and every dropdown reported "we could not get this to stick".
-  const shown = nodes.filter(n => (n.textContent || '').trim() && isNodeVisible(n) && !isChosenValue(n));
+  // Not a disabled option either: it cannot be picked, and Workday opens a
+  // list with only its disabled "Select One" before the real options load —
+  // read at that moment, the Degree list looked like it had nothing to offer.
+  const shown = nodes.filter(n => (n.textContent || '').trim() && isNodeVisible(n) && !isChosenValue(n)
+                                  && !(n.getAttribute && n.getAttribute('aria-disabled') === 'true'));
   return el ? ownOptions(doc, el, shown) : shown;
 }
 
@@ -618,6 +626,26 @@ function ownOptions(doc, el, nodes) {
     try { owner = doc.querySelector(`[aria-controls~="${lb.id}"], [aria-owns~="${lb.id}"]`); } catch (e) { owner = null; }
     return !owner || owner === el || owner.contains(el) || el.contains(owner);
   });
+}
+
+/**
+ * The options of a list just opened. A list that is OPEN (aria-expanded) but
+ * still has nothing pickable is loading — Workday's Degree shows only its
+ * disabled "Select One" first — so it is given up to TIMING.remoteSearchMs,
+ * returning the moment options arrive. Only for opening a list: a typed search
+ * that matches nothing is expanded and empty too, and must not wait.
+ */
+async function waitForOpenedList(el) {
+  const nodes = await waitForOptions(el, TIMING.optionWaitMs);
+  if (nodes.length || !isExpanded(el)) return nodes;
+  return waitForOptions(el, TIMING.remoteSearchMs);
+}
+
+function isExpanded(el) {
+  for (let n = el, i = 0; n && i < 3; n = n.parentElement, i++) {
+    if (n.getAttribute && n.getAttribute('aria-expanded') === 'true') return true;
+  }
+  return false;
 }
 
 function waitForOptions(el, timeout) {
@@ -746,6 +774,53 @@ async function clickMatchingOption(el, value, nodes) {
   return true;
 }
 
+/**
+ * The results of a Workday prompt search, once they offer one of `shapes`.
+ *
+ * Workday searches its server after Enter, and that round trip regularly ran
+ * past the 1.2 s this used to wait: the extension moved on to the next skill
+ * just as the previous skill's results arrived (NVIDIA, Oct 2026). So it waits
+ * up to TIMING.remoteSearchMs for results that offer the answer — returning
+ * the moment they do, so a fast search costs nothing extra — and stops early
+ * once Workday says "No Items" for a search that has had time to run.
+ */
+async function waitForPromptResults(el, shapes, done) {
+  const doc = el.ownerDocument || globalThis.document;
+  const start = Date.now();
+  const deadline = start + Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
+  // The same strict test the pick uses (exact, or every word). The fuzzy
+  // listOffersAny accepted the PREVIOUS search's results still on screen —
+  // "Machine Learning Methods" for "Deep Learning" — so it stopped waiting,
+  // found nothing to click, and moved on as the real results arrived.
+  const offers = nodes => {
+    const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+    return shapes.some(s => promptResultFor(s, labels) >= 0);
+  };
+  for (;;) {
+    // Workday may select the answer itself on Enter (Field of Study, an exact
+    // match): nothing to click then — clicking would only toggle it.
+    if (done && done()) return [];
+    const nodes = visibleOptionNodes(doc, el);
+    if (nodes.length && offers(nodes)) return nodes;
+    if (Date.now() - start > 1500 && saysNoItems(doc)) return nodes;
+    if (Date.now() >= deadline) return nodes;
+    await sleep(100);
+  }
+}
+
+/** Workday's empty-search message ("No Items.") is on screen. */
+function saysNoItems(doc) {
+  const roots = Array.from(doc.querySelectorAll('[data-automation-id="activeListContainer"], [role="listbox"]'));
+  return roots.some(root => {
+    const walker = doc.createTreeWalker(root, 4 /* NodeFilter.SHOW_TEXT */);
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      if (/^\s*no (items|results|matches)( found)?\.?\s*$/i.test(n.nodeValue || '')
+          && isNodeVisible(n.parentElement)) return true;
+    }
+    return false;
+  });
+}
+
 /** The answers a Workday prompt already shows as pills. */
 function promptPills(row) {
   const p = probe();
@@ -795,17 +870,55 @@ async function commitPromptMulti(row, values) {
     writeSearch(skill);
     fireKey(input, 'keydown', 'Enter');
     fireKey(input, 'keyup', 'Enter');
-    let options = await waitForMatchingOptions(el, [skill], TIMING.optionWaitMs * 2);
-    options = await waitOutLoading(el, [skill], options);
+    const options = await waitForPromptResults(el, [skill]);
     const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
     const idx = promptResultFor(skill, labels);
     if (idx < 0) return 'missing';
-    if (shown().includes(labels[idx])) return 'already';   // ticked already, under another wording
-    try { options[idx].scrollIntoView({ block: 'nearest' }); } catch (e) {}
-    pressPointer(options[idx]);
+    const label = labels[idx];
+    if (shown().includes(label)) return 'already';   // ticked already, under another wording
+
+    // Workday draws the results, then redraws them (the highlight on the first
+    // row, the count): a row clicked the instant it appeared could already be
+    // gone. Settle, then take the row as it is NOW.
+    await sleep(Math.max(TIMING.settleMs, 150));
+    const rowNow = () => visibleOptionNodes(el.ownerDocument || globalThis.document, el)
+      .find(n => (n.textContent || '').replace(/\s+/g, ' ').trim() === label) || null;
+    const press = (node) => {
+      // The innermost element holding the text, so the click bubbles up through
+      // whatever inside the row listens (the checkbox, the label, the row).
+      let target = node;
+      for (const d of node.querySelectorAll('*')) {
+        if ((d.textContent || '').replace(/\s+/g, ' ').trim() === label) target = d;
+      }
+      try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+      pressPointer(target);
+    };
+    const ticked = (node) => !!node && (node.getAttribute('aria-selected') === 'true'
+      || node.getAttribute('aria-checked') === 'true'
+      || !!node.querySelector('input:checked, [aria-checked="true"]'));
+
+    let node = rowNow() || options[idx];
+    press(node);
     const deadline = Date.now() + pillWaitMs;
-    while (!has(shown(), skill) && Date.now() < deadline) await sleep(100);
-    return has(shown(), skill) ? 'added' : 'missing';
+    let retried = false;
+    while (!has(shown(), skill) && Date.now() < deadline) {
+      await sleep(100);
+      // Not ticked in the list either after a moment: the click did not land.
+      // One more, on the row as it is now. Never when it shows ticked — a
+      // second click on a ticked row would remove the skill.
+      if (!retried && Date.now() > deadline - pillWaitMs / 2) {
+        retried = true;
+        const again = rowNow();
+        if (again && !ticked(again) && !has(shown(), skill)) { node = again; press(again); }
+      }
+    }
+    if (has(shown(), skill)) return 'added';
+    try {
+      console.info(`[TailorCV] skills: clicked "${label}" but no pill appeared — row was `
+        + `${node && node.isConnected ? 'on the page' : 'gone'}: `
+        + String(node && node.outerHTML || '').slice(0, 400));
+    } catch (e) { /* diagnostics only */ }
+    return 'missing';
   };
 
   try {
