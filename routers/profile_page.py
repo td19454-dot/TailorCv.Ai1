@@ -80,6 +80,26 @@ PRONOUN_OPTIONS = _eeo("He/him", "She/her", "They/them", "He/they", "She/they",
                        "Ze/zir", "My pronouns are not listed")
 LGBTQ_OPTIONS = _eeo("Yes", "No", "Questioning")
 
+# The profile's Degree dropdown, grouped by level. Each is the person's actual
+# degree; the extension's DEGREE_CATALOG (chrome-extension/src/autofill/plan.js)
+# turns it into what each employer's list calls it — "BTECH" on Workday,
+# "Bachelor's Degree" on Greenhouse. test_degree_options.py checks that every
+# label here is recognised there.
+DEGREE_GROUPS = [
+    ("Doctorate", ["PhD (Doctor of Philosophy)", "MD (Doctor of Medicine)", "JD (Juris Doctor)"]),
+    ("Master's", ["M.Tech (Master of Technology)", "M.E. (Master of Engineering)",
+                  "M.S. / M.Sc (Master of Science)", "MCA (Master of Computer Applications)",
+                  "MBA (Master of Business Administration)", "M.A. (Master of Arts)",
+                  "M.Com (Master of Commerce)", "Master's degree (other)"]),
+    ("Bachelor's", ["B.Tech (Bachelor of Technology)", "B.E. (Bachelor of Engineering)",
+                    "B.S. / B.Sc (Bachelor of Science)", "BCA (Bachelor of Computer Applications)",
+                    "BBA (Bachelor of Business Administration)", "B.A. (Bachelor of Arts)",
+                    "B.Com (Bachelor of Commerce)", "Bachelor's degree (other)"]),
+    ("Other", ["Associate's degree", "University Diploma", "Diploma", "Post-diploma studies",
+               "Technical/other training", "Some post college", "Some college",
+               "High School", "No degree"]),
+]
+
 # "Citizenship Status" in the categories US forms ask it in (SpaceX's ITAR list:
 # citizen or national / lawful permanent resident / refugee / asylee / DACA /
 # other). A fixed list, not free text: plan.js CITIZENSHIP_GROUPS maps each onto
@@ -395,6 +415,7 @@ async def profile_page(request: Request):
         return templates.TemplateResponse(request, "profile.html", {
             "request": request,
             "sections": SECTIONS,
+            "degree_groups": DEGREE_GROUPS,
             "model": model,
             "user_name": user.name or "",
             "has_resume": bool(user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path)),

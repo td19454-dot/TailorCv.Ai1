@@ -146,22 +146,6 @@
             </section>
         </div>
 
-        <datalist id="pf-degrees">
-            <option value="High School Diploma"></option>
-            <option value="Diploma"></option>
-            <option value="Associate's Degree"></option>
-            <option value="Bachelor's Degree"></option>
-            <option value="Bachelor of Technology (B.Tech)"></option>
-            <option value="Bachelor of Engineering (B.E.)"></option>
-            <option value="Bachelor of Science (B.Sc)"></option>
-            <option value="Bachelor of Arts (B.A.)"></option>
-            <option value="Bachelor of Commerce (B.Com)"></option>
-            <option value="Master's Degree"></option>
-            <option value="Master of Technology (M.Tech)"></option>
-            <option value="Master of Science (M.Sc / M.S.)"></option>
-            <option value="Master of Business Administration (MBA)"></option>
-            <option value="Doctorate (Ph.D.)"></option>
-        </datalist>
         <datalist id="pf-fields">
             <option value="Computer Science"></option>
             <option value="Computer Science and Engineering"></option>
@@ -204,7 +188,8 @@
     <script>
       window.TAILORCV_EXTENSION_IDS = ['lnkplncemohgcdjlgccgmbcgiokcgmno'
         {%- if dev_extension_id %}, {{ dev_extension_id | tojson }}{% endif -%}];
+      window.TAILORCV_DEGREE_GROUPS = {{ degree_groups | tojson }};
     </script>
-    <script src="/static/profile_page.js?v=3" defer></script>
+    <script src="/static/profile_page.js?v=4" defer></script>
 </body>
 </html>

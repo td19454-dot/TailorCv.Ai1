@@ -2934,6 +2934,9 @@ what when where which who will with would you your now future
         const raw = entry.key === "middle_name" && /\binitial\b/i.test(row.label) ? String(storedValue).trim().charAt(0).toUpperCase() : storedValue;
         const shapes = candidatesFor(entry.key, raw, bank);
         d.candidates = shapes.length > 1 ? shapes : [];
+        if (entry.key === "degree" && (row.kind === "combobox" || row.kind === "select")) {
+          d.readFirst = { key: "degree", stored: raw };
+        }
         const value = coerce(raw, Object.assign(
           {},
           row,
@@ -3300,6 +3303,135 @@ what when where which who will with would you your now future
   function degreeGuard(candidate, option) {
     return degreeLevelAgrees(candidate, option) && degreeReadsTheSame(candidate, option);
   }
+  var DEGREE_CATALOG = [
+    {
+      test: /\bph\.? ?d\b|doctor of philosophy|\bdoctorate\b|\bdoctoral\b/i,
+      spellings: ["PhD", "Doctor of Philosophy (Ph.D.)", "Doctor of Philosophy"],
+      level: "phd"
+    },
+    {
+      test: /\bm\.d\.?(?![a-z])|^md$|doctor of medicine/i,
+      spellings: ["MD", "Doctor of Medicine (M.D.)", "Doctor of Medicine"],
+      level: null
+    },
+    {
+      test: /\bj\.d\.?(?![a-z])|^jd$|juris doctor/i,
+      spellings: ["JD", "Juris Doctor (J.D.)", "Juris Doctor"],
+      level: null
+    },
+    {
+      test: /\bm\.? ?tech\b|master of technology/i,
+      spellings: ["MTech", "Master of Technology"],
+      level: "master"
+    },
+    {
+      test: /\bm\.e\.?(?![a-z])|^me$|master of engineering/i,
+      spellings: ["M.E.", "Master of Engineering"],
+      level: "master"
+    },
+    {
+      test: /\bmca\b|master of computer application/i,
+      spellings: ["MCA", "Master of Computer Applications"],
+      level: "master"
+    },
+    {
+      test: /\bm\.? ?b\.? ?a\b|master of business administration/i,
+      spellings: ["MBA", "Master of Business Administration (M.B.A.)", "Master of Business Administration"],
+      level: "master"
+    },
+    {
+      test: /\bm\.? ?sc\b|\bm\.s\.?(?![a-z])|^ms$|master of science/i,
+      spellings: ["M.Sc", "M.S.", "Master of Science", "Master of Science (M.S.)"],
+      level: "master"
+    },
+    {
+      test: /\bm\.a\.?(?![a-z])|^ma$|master of arts/i,
+      spellings: ["M.A.", "Master of Arts"],
+      level: "master"
+    },
+    {
+      test: /\bm\.? ?com\b|master of commerce/i,
+      spellings: ["M.Com", "Master of Commerce"],
+      level: "master"
+    },
+    {
+      test: /\bb\.? ?tech\b|bachelor of technology/i,
+      spellings: ["BTech", "Bachelor of Technology"],
+      level: "bachelor"
+    },
+    {
+      test: /\bb\.e\.?(?![a-z])|^be$|bachelor of engineering/i,
+      spellings: ["B.E.", "Bachelor of Engineering"],
+      level: "bachelor"
+    },
+    {
+      test: /\bbca\b|bachelor of computer application/i,
+      spellings: ["BCA", "Bachelor of Computer Applications"],
+      level: "bachelor"
+    },
+    {
+      test: /\bbba\b|bachelor of business administration/i,
+      spellings: ["BBA", "Bachelor of Business Administration"],
+      level: "bachelor"
+    },
+    {
+      test: /\bb\.? ?sc\b|\bb\.s\.?(?![a-z])|^bs$|bachelor of science/i,
+      spellings: ["B.Sc", "B.S.", "Bachelor of Science", "Bachelor of Science (B.S.)"],
+      level: "bachelor"
+    },
+    {
+      test: /\bb\.a\.?(?![a-z])|^ba$|bachelor of arts/i,
+      spellings: ["B.A.", "Bachelor of Arts"],
+      level: "bachelor"
+    },
+    {
+      test: /\bb\.? ?com\b|bachelor of commerce/i,
+      spellings: ["B.Com", "Bachelor of Commerce"],
+      level: "bachelor"
+    },
+    {
+      test: /\bassociate'?s?\b/i,
+      spellings: ["Associate's Degree", "Associates", "Associate"],
+      level: "associate"
+    },
+    // Status answers (Workday NVIDIA's list) — exact only. "Some post college"
+    // before "Some college", and post-diploma before diploma.
+    { test: /some post ?college/i, spellings: ["Some post college"], level: null },
+    { test: /some college/i, spellings: ["Some college"], level: null },
+    { test: /technical|other training/i, spellings: ["Technical/other training"], level: null },
+    { test: /post[- ]?diploma/i, spellings: ["Post-diploma studies"], level: null },
+    { test: /\bno degree\b|^none$/i, spellings: ["No Degree", "None"], level: null },
+    {
+      test: /\b(high school|secondary school|higher secondary|12th|hsc)\b/i,
+      spellings: ["High School", "High School or equivalent", "High School Diploma", "Secondary School"],
+      level: "high school"
+    },
+    // A university diploma is not a polytechnic one: each is offered only as itself.
+    { test: /university diploma/i, spellings: ["University Diploma"], level: null },
+    // Not widened: the only "diploma level" phrasing is "Diploma" itself, and
+    // widening would read "University Diploma" as containing it.
+    { test: /\bdiploma\b/i, spellings: ["Diploma"], level: null }
+  ];
+  function degreeEntry(text) {
+    const t = String(text || "").trim();
+    return t ? DEGREE_CATALOG.find((e) => e.test.test(t)) || null : null;
+  }
+  var compactDegree = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  function degreeOption(stored, options) {
+    const labels = (options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean);
+    if (!labels.length) return null;
+    const entry = degreeEntry(stored);
+    if (!entry) {
+      return bestCandidateMatch(uniq(degreeShapes(stored).concat([stored])), labels, degreeGuard);
+    }
+    const byCompact = new Map(labels.map((l) => [compactDegree(l), l]));
+    for (const s of [stored].concat(entry.spellings)) {
+      const hit = byCompact.get(compactDegree(s));
+      if (hit) return hit;
+    }
+    if (!entry.level) return null;
+    return bestCandidateMatch(degreeShapes(entry.level), labels, degreeGuard);
+  }
   function uniq(list) {
     const seen = /* @__PURE__ */ new Set();
     const out = [];
@@ -3328,7 +3460,11 @@ what when where which who will with would you your now future
         country2
       ]);
     }
-    if (key === "degree") return uniq(degreeShapes(text).concat([text]));
+    if (key === "degree") {
+      const entry = degreeEntry(text);
+      if (!entry) return uniq(degreeShapes(text).concat([text]));
+      return uniq([text].concat(entry.spellings, entry.level ? degreeShapes(entry.level) : []));
+    }
     if (key === "race_ethnicity") return uniq([text].concat(ethnicityShapes(text)));
     if (key === "how_did_you_hear_about_us" && COMPANY_SITE_RE.test(text)) {
       return uniq([text].concat(COMPANY_SITE_SHAPES));
@@ -3445,6 +3581,7 @@ what when where which who will with would you your now future
   }
   function pickFromOptions(text, row, options) {
     if (row.candidateKey === "citizenship_status") return citizenshipOption(text, options);
+    if (row.candidateKey === "degree") return degreeOption(text, options);
     if (row.candidateKey === "authorized_to_work_in_country" && !options.some((o) => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
       return workAuthStatement(text, row.sponsorship, options);
     }

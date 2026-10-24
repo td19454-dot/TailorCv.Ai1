@@ -558,10 +558,13 @@ test('a field with nothing on file does not take Other either', () => {
 
 // ── degrees: the profile wording is not the dropdown wording ──
 
-test('candidatesFor offers a degree as its level, then the profile wording', () => {
+// Reversed in Oct 2026: the degree's own wording and spellings come first
+// ("BTECH" where a Workday list offers it), the level ("Bachelor's Degree")
+// after, for lists that only name levels (Greenhouse).
+test('candidatesFor offers a degree as itself first, then its level', () => {
   deepEq(p.candidatesFor('degree', 'Bachelor of Technology', {}),
-         ["Bachelor's Degree", 'Bachelors', 'Bachelor', 'Undergraduate Degree',
-          'Undergraduate', 'Bachelor of Technology']);
+         ['Bachelor of Technology', 'BTech', "Bachelor's Degree", 'Bachelors', 'Bachelor',
+          'Undergraduate Degree', 'Undergraduate']);
 });
 
 const degreeRow = (stored, options) => ({
@@ -843,6 +846,55 @@ test('a saved "U.S. person" answer fills the same question', () => {
 
 test('"…AND I am NOT a U.S. person" is never read as a citizen\'s option', () => {
   notOk(p.citizenshipOption('U.S. citizen or national', US_PERSON_OPTS) === US_PERSON_OPTS[1]);
+});
+
+// Degree lists as employers serve them (Oct 2026). A degree tries its own
+// spellings first, then its level — and never a different degree.
+const NVIDIA_DEGREES = ['Select One', 'Post-diploma studies', 'BTECH', 'MTECH', 'MCA', 'University Diploma',
+  'Associates', 'Technical/other training', 'Some college', 'PhD', 'Some post college', 'No Degree'];
+const STRIPE_DEGREES = ["Associate's Degree", "Bachelor's Degree", 'Doctor of Medicine (M.D.)',
+  'Doctor of Philosophy (Ph.D.)', "Engineer's Degree", 'High School', 'Juris Doctor (J.D.)',
+  'Master of Business Administration (M.B.A.)', "Master's Degree"];
+
+test('degree: its own spelling where offered, its level where not (Workday vs Greenhouse)', () => {
+  const both = (deg, nvidia, stripe) => {
+    eq(p.degreeOption(deg, NVIDIA_DEGREES), nvidia, `${deg} on Workday`);
+    eq(p.degreeOption(deg, STRIPE_DEGREES), stripe, `${deg} on Greenhouse`);
+  };
+  both('B.Tech (Bachelor of Technology)', 'BTECH', "Bachelor's Degree");
+  both('M.Tech (Master of Technology)', 'MTECH', "Master's Degree");
+  both('MCA (Master of Computer Applications)', 'MCA', "Master's Degree");
+  both('PhD (Doctor of Philosophy)', 'PhD', 'Doctor of Philosophy (Ph.D.)');
+  both('MBA (Master of Business Administration)', null, 'Master of Business Administration (M.B.A.)');
+  both("Associate's degree", 'Associates', "Associate's Degree");
+  both('High School', null, 'High School');
+  both('No degree', 'No Degree', null);
+});
+
+test('degree: older free text and resume wording pick the same as the dropdown', () => {
+  eq(p.degreeOption('Bachelor of Technology (B.Tech)', NVIDIA_DEGREES), 'BTECH');
+  eq(p.degreeOption('Bachelor of Technology in Chemical Engineering', STRIPE_DEGREES), "Bachelor's Degree");
+  eq(p.degreeOption('B. Tech', NVIDIA_DEGREES), 'BTECH', 'punctuation and spaces do not matter');
+});
+
+test('degree: never a different degree or a different status', () => {
+  eq(p.degreeOption('Some college', ['Some post college', 'No Degree']), null);
+  notOk(['MTECH', "Master's Degree"].includes(p.degreeOption('B.Tech (Bachelor of Technology)', ['MTECH', "Master's Degree"])));
+  eq(p.degreeOption('MD (Doctor of Medicine)', NVIDIA_DEGREES), null, 'an MD is not a PhD');
+  eq(p.degreeOption('Diploma', NVIDIA_DEGREES), null, 'a diploma is not a University Diploma');
+  eq(p.degreeOption('B.S. / B.Sc (Bachelor of Science)', NVIDIA_DEGREES), null, 'no bachelor\'s on that list: asked');
+});
+
+test('degree: candidates run most specific first', () => {
+  const c = p.candidatesFor('degree', 'B.Tech (Bachelor of Technology)', {});
+  ok(c.indexOf('BTech') < c.indexOf("Bachelor's Degree"), c.join(' | '));
+});
+
+test('degree dropdowns are read once, never searched by typing each spelling', () => {
+  const row = field('Degree', { kind: 'combobox', options: [] });
+  const ctx = { answerBank: Object.assign({}, BANK, { degree: 'B.Tech (Bachelor of Technology)' }) };
+  const d = p.decide([row], ctx, null, null)[0];
+  eq(d.readFirst && d.readFirst.key, 'degree');
 });
 
 // ── nationality ──────────────────────────────────────────────

@@ -290,6 +290,12 @@ export function decide(rows, ctx, server, state) {
       // reach for after shapePhone() has done its work.
       const shapes = candidatesFor(entry.key, raw, bank);
       d.candidates = shapes.length > 1 ? shapes : [];
+      // A degree dropdown is opened once and chosen from in full, by
+      // degreeOption — not searched by typing each candidate in turn, which
+      // costs a wait per spelling ("BTECH", "B.Tech", "Bachelor's Degree"…).
+      if (entry.key === 'degree' && (row.kind === 'combobox' || row.kind === 'select')) {
+        d.readFirst = { key: 'degree', stored: raw };
+      }
       const value = coerce(raw, Object.assign({}, row,
         { candidates: shapes, candidateKey: entry.key }));
       if (value !== null) {
@@ -783,6 +789,106 @@ function degreeGuard(candidate, option) {
   return degreeLevelAgrees(candidate, option) && degreeReadsTheSame(candidate, option);
 }
 
+// Specific degrees, each with the spellings employers' lists use for it, most
+// specific entries first. Workday (NVIDIA) offers "BTECH", "MTECH", "MCA";
+// Greenhouse (Stripe) only "Bachelor's Degree", "Master's Degree", "Doctor of
+// Philosophy (Ph.D.)". So a degree tries its own spellings first and its level
+// after: a B.Tech gets "BTECH" where it is offered and "Bachelor's Degree"
+// where it is not.
+//
+// Spellings match EXACTLY, ignoring only case, punctuation and spaces
+// ("B.Tech" = "BTECH" = "B. Tech"), never by resemblance: "Some college" is not
+// "Some post college". `level` is a word degreeLevel() reads; null means the
+// value has no level to widen to — an MD is not a PhD, and "No degree" is
+// nobody's bachelor's — so those are offered exactly or not at all.
+const DEGREE_CATALOG = [
+  { test: /\bph\.? ?d\b|doctor of philosophy|\bdoctorate\b|\bdoctoral\b/i,
+    spellings: ['PhD', 'Doctor of Philosophy (Ph.D.)', 'Doctor of Philosophy'], level: 'phd' },
+  { test: /\bm\.d\.?(?![a-z])|^md$|doctor of medicine/i,
+    spellings: ['MD', 'Doctor of Medicine (M.D.)', 'Doctor of Medicine'], level: null },
+  { test: /\bj\.d\.?(?![a-z])|^jd$|juris doctor/i,
+    spellings: ['JD', 'Juris Doctor (J.D.)', 'Juris Doctor'], level: null },
+  { test: /\bm\.? ?tech\b|master of technology/i,
+    spellings: ['MTech', 'Master of Technology'], level: 'master' },
+  { test: /\bm\.e\.?(?![a-z])|^me$|master of engineering/i,
+    spellings: ['M.E.', 'Master of Engineering'], level: 'master' },
+  { test: /\bmca\b|master of computer application/i,
+    spellings: ['MCA', 'Master of Computer Applications'], level: 'master' },
+  { test: /\bm\.? ?b\.? ?a\b|master of business administration/i,
+    spellings: ['MBA', 'Master of Business Administration (M.B.A.)', 'Master of Business Administration'], level: 'master' },
+  { test: /\bm\.? ?sc\b|\bm\.s\.?(?![a-z])|^ms$|master of science/i,
+    spellings: ['M.Sc', 'M.S.', 'Master of Science', 'Master of Science (M.S.)'], level: 'master' },
+  { test: /\bm\.a\.?(?![a-z])|^ma$|master of arts/i,
+    spellings: ['M.A.', 'Master of Arts'], level: 'master' },
+  { test: /\bm\.? ?com\b|master of commerce/i,
+    spellings: ['M.Com', 'Master of Commerce'], level: 'master' },
+  { test: /\bb\.? ?tech\b|bachelor of technology/i,
+    spellings: ['BTech', 'Bachelor of Technology'], level: 'bachelor' },
+  { test: /\bb\.e\.?(?![a-z])|^be$|bachelor of engineering/i,
+    spellings: ['B.E.', 'Bachelor of Engineering'], level: 'bachelor' },
+  { test: /\bbca\b|bachelor of computer application/i,
+    spellings: ['BCA', 'Bachelor of Computer Applications'], level: 'bachelor' },
+  { test: /\bbba\b|bachelor of business administration/i,
+    spellings: ['BBA', 'Bachelor of Business Administration'], level: 'bachelor' },
+  { test: /\bb\.? ?sc\b|\bb\.s\.?(?![a-z])|^bs$|bachelor of science/i,
+    spellings: ['B.Sc', 'B.S.', 'Bachelor of Science', 'Bachelor of Science (B.S.)'], level: 'bachelor' },
+  { test: /\bb\.a\.?(?![a-z])|^ba$|bachelor of arts/i,
+    spellings: ['B.A.', 'Bachelor of Arts'], level: 'bachelor' },
+  { test: /\bb\.? ?com\b|bachelor of commerce/i,
+    spellings: ['B.Com', 'Bachelor of Commerce'], level: 'bachelor' },
+  { test: /\bassociate'?s?\b/i,
+    spellings: ["Associate's Degree", 'Associates', 'Associate'], level: 'associate' },
+  // Status answers (Workday NVIDIA's list) — exact only. "Some post college"
+  // before "Some college", and post-diploma before diploma.
+  { test: /some post ?college/i, spellings: ['Some post college'], level: null },
+  { test: /some college/i, spellings: ['Some college'], level: null },
+  { test: /technical|other training/i, spellings: ['Technical/other training'], level: null },
+  { test: /post[- ]?diploma/i, spellings: ['Post-diploma studies'], level: null },
+  { test: /\bno degree\b|^none$/i, spellings: ['No Degree', 'None'], level: null },
+  { test: /\b(high school|secondary school|higher secondary|12th|hsc)\b/i,
+    spellings: ['High School', 'High School or equivalent', 'High School Diploma', 'Secondary School'],
+    level: 'high school' },
+  // A university diploma is not a polytechnic one: each is offered only as itself.
+  { test: /university diploma/i, spellings: ['University Diploma'], level: null },
+  // Not widened: the only "diploma level" phrasing is "Diploma" itself, and
+  // widening would read "University Diploma" as containing it.
+  { test: /\bdiploma\b/i, spellings: ['Diploma'], level: null },
+];
+
+/** The catalog entry `text` names, or null. */
+export function degreeEntry(text) {
+  const t = String(text || '').trim();
+  return t ? DEGREE_CATALOG.find(e => e.test.test(t)) || null : null;
+}
+
+/** Letters and digits only: "B.Tech" and "BTECH" are both "btech". */
+const compactDegree = s => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+/**
+ * The option a list offers for this stored degree, or null.
+ *
+ * In memory, against the one list already read — trying more spellings costs
+ * no extra open, click or wait. The degree's own spellings first (exactly),
+ * then its level (same level only, through degreeGuard), and nothing beyond:
+ * a degree the list does not offer is asked, not approximated.
+ */
+export function degreeOption(stored, options) {
+  const labels = (options || []).map(o => (typeof o === 'string' ? o : o.label)).filter(Boolean);
+  if (!labels.length) return null;
+  const entry = degreeEntry(stored);
+  if (!entry) {
+    // Not in the catalog: the earlier behaviour — level phrasings, then the text.
+    return bestCandidateMatch(uniq(degreeShapes(stored).concat([stored])), labels, degreeGuard);
+  }
+  const byCompact = new Map(labels.map(l => [compactDegree(l), l]));
+  for (const s of [stored].concat(entry.spellings)) {
+    const hit = byCompact.get(compactDegree(s));
+    if (hit) return hit;
+  }
+  if (!entry.level) return null;
+  return bestCandidateMatch(degreeShapes(entry.level), labels, degreeGuard);
+}
+
 /** Unique, non-empty, order preserved. */
 function uniq(list) {
   const seen = new Set();
@@ -828,7 +934,13 @@ export function candidatesFor(key, value, bank) {
   // Level phrasings first: a dropdown offering "Bachelor's Degree" is answered
   // by the level, while the raw "Bachelor of Technology" is only right on the
   // lists that spell it out — so it stays, last.
-  if (key === 'degree') return uniq(degreeShapes(text).concat([text]));
+  if (key === 'degree') {
+    // Its own spellings first ("BTECH" where a list offers it), then its level
+    // ("Bachelor's Degree"), then the text as stored. See DEGREE_CATALOG.
+    const entry = degreeEntry(text);
+    if (!entry) return uniq(degreeShapes(text).concat([text]));
+    return uniq([text].concat(entry.spellings, entry.level ? degreeShapes(entry.level) : []));
+  }
   // The stored wording first — a form offering "South Asian" should get it —
   // then the broader categories it belongs to.
   if (key === 'race_ethnicity') return uniq([text].concat(ethnicityShapes(text)));
@@ -1019,6 +1131,7 @@ function pickFromOptions(text, row, options) {
   // Every shape of the answer, not just the one the label suggested: a
   // "Country" list of dial codes matches "+91" and nothing else.
   if (row.candidateKey === 'citizenship_status') return citizenshipOption(text, options);
+  if (row.candidateKey === 'degree') return degreeOption(text, options);
   // A work-authorization list worded as statements rather than Yes / No.
   if (row.candidateKey === 'authorized_to_work_in_country'
       && !options.some(o => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {

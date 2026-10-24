@@ -2397,7 +2397,9 @@ const WD_EDUCATION_PAGE = `
   <div id="wd-portal"></div>
   <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
 
-const WD_DEGREES = ['High School or equivalent', "Associate's Degree", "Bachelor's Degree", "Master's Degree", 'Doctorate (PhD)'];
+// NVIDIA's real Workday degree list (Oct 2026).
+const WD_DEGREES = ['Post-diploma studies', 'BTECH', 'MTECH', 'MCA', 'University Diploma', 'Associates',
+  'Technical/other training', 'Some college', 'PhD', 'Some post college', 'No Degree'];
 
 function wireWorkdayEducation(env) {
   const doc = env.document;
@@ -2429,9 +2431,10 @@ function wireWorkdayEducation(env) {
 }
 
 const WD_SCHOOLS = [
-  { school: 'Indian Institute of Technology Delhi', degree: 'Bachelor of Technology (B.Tech)',
-    field: 'Chemical Engineering', gpa: '', from: '2019', to: '2023' },
-  { school: 'Delhi Public School', degree: 'High School', field: '', gpa: '95%', from: '2017', to: '2019' },
+  { school: 'Indian Institute of Technology Delhi', degree: 'M.Tech (Master of Technology)',
+    field: 'Chemical Engineering', gpa: '', from: '2023', to: '2025' },
+  { school: 'NIT Durgapur', degree: 'B.Tech (Bachelor of Technology)', field: 'Chemical Engineering',
+    gpa: '8.1/10', from: '2019', to: '2023' },
 ];
 const eduBlock = (doc, n) => doc.querySelector(`[aria-labelledby="Education-${n}-panel"]`);
 const eduVal = (block, name) => block.querySelector(`[name="${name}"]`).value;
@@ -2452,17 +2455,18 @@ test('Workday education: "Add" opens a block per school, each filled from the pr
     notOk(eduBlock(doc, 3), 'no empty third block');
     eq(log.eduAdds, 2);
     eq(eduVal(b1, 'schoolName'), 'Indian Institute of Technology Delhi');
-    eq(b1.querySelector('[data-automation-id="formField-degree"] button').textContent, "Bachelor's Degree",
-       'B.Tech takes the list\'s level, never Master\'s');
+    eq(b1.querySelector('[data-automation-id="formField-degree"] button').textContent, 'MTECH',
+       'M.Tech takes the list\'s own MTECH');
     eq(eduVal(b1, 'fieldOfStudy'), 'Chemical Engineering');
     eq(eduVal(b1, 'gradeAverage'), '8.7/10', 'the first school falls back to the profile GPA');
-    eq(eduYear(b1, 'firstYearAttended'), '2019');
-    eq(eduYear(b1, 'lastYearAttended'), '2023');
+    eq(eduYear(b1, 'firstYearAttended'), '2023');
+    eq(eduYear(b1, 'lastYearAttended'), '2025');
 
-    eq(eduVal(b2, 'schoolName'), 'Delhi Public School', 'block 2 is school 2');
-    eq(b2.querySelector('[data-automation-id="formField-degree"] button').textContent, 'High School or equivalent');
-    eq(eduVal(b2, 'gradeAverage'), '95%', 'its own GPA');
-    eq(eduYear(b2, 'lastYearAttended'), '2019');
+    eq(eduVal(b2, 'schoolName'), 'NIT Durgapur', 'block 2 is school 2');
+    eq(b2.querySelector('[data-automation-id="formField-degree"] button').textContent, 'BTECH',
+       'B.Tech takes BTECH, never MTECH');
+    eq(eduVal(b2, 'gradeAverage'), '8.1/10', 'its own GPA');
+    eq(eduYear(b2, 'lastYearAttended'), '2023');
 
     eq(log.expAdds, 0, "Work Experience's Add is never pressed without jobs");
     eq(log.next, 0, 'never Save and Continue');
@@ -2477,11 +2481,81 @@ test('Workday education: a block already showing a school takes that school', as
     wireWorkdayEducation(env);
     const doc = env.document;
     doc.getElementById('edu-add').click();                       // Workday's resume read made block 1…
-    eduBlock(doc, 1).querySelector('[name="schoolName"]').value = 'Delhi Public School';   // …for school 2
+    eduBlock(doc, 1).querySelector('[name="schoolName"]').value = 'NIT Durgapur';   // …for school 2
     const ctx = Object.assign({}, CTX, { facts: { educationEntries: WD_SCHOOLS } });
     await run_.runAutofill(ctx, null);
-    eq(eduYear(eduBlock(doc, 1), 'lastYearAttended'), '2019', 'block 1 completed as Delhi Public School');
+    eq(eduYear(eduBlock(doc, 1), 'lastYearAttended'), '2023', 'block 1 completed as NIT Durgapur');
     eq(eduVal(eduBlock(doc, 2), 'schoolName'), 'Indian Institute of Technology Delhi', 'the other school gets a new block');
+  });
+});
+
+// Greenhouse (Stripe, Oct 2026): Degree is a react-select-style box whose list
+// names only levels. Opening shows the whole list; typing filters it. Every
+// typed search is counted — the degree must be chosen from one open list.
+const STRIPE_DEGREE_LIST = ["Associate's Degree", "Bachelor's Degree", 'Doctor of Medicine (M.D.)',
+  'Doctor of Philosophy (Ph.D.)', "Engineer's Degree", 'High School', 'Juris Doctor (J.D.)',
+  'Master of Business Administration (M.B.A.)', "Master's Degree"];
+const STRIPE_DEGREE_FORM = `
+<form id="application-form">
+  <div class="field"><label for="first_name">First Name</label><input id="first_name" name="first_name"></div>
+  <div class="field"><label for="email">Email</label><input id="email" type="email" name="email"></div>
+  <div class="field">
+    <label for="q_degree">Degree <abbr title="required">*</abbr></label>
+    <div class="select__container">
+      <div class="select__control"><div class="select__placeholder">Select...</div>
+        <input role="combobox" id="q_degree" aria-haspopup="listbox" aria-autocomplete="list" aria-expanded="false"></div>
+      <input type="hidden" name="question_degree" value="">
+    </div>
+  </div>
+</form>`;
+
+function wireStripeDegree(env) {
+  const doc = env.document;
+  const input = doc.getElementById('q_degree');
+  const control = input.parentElement;
+  const log = { opens: 0, typed: 0 };
+  let menu = null;
+  const close = () => { if (menu) menu.remove(); menu = null; input.setAttribute('aria-expanded', 'false'); };
+  const render = (filter) => {
+    if (!menu) {
+      menu = doc.createElement('div');
+      menu.id = 'q_degree-listbox';
+      menu.setAttribute('role', 'listbox');
+      control.parentElement.appendChild(menu);
+      input.setAttribute('aria-controls', menu.id);
+      input.setAttribute('aria-expanded', 'true');
+    }
+    const shown = STRIPE_DEGREE_LIST.filter(o => !filter || o.toLowerCase().includes(filter.toLowerCase()));
+    menu.innerHTML = shown.map((o, i) => `<div role="option" id="deg-${i}" class="select__option">${o}</div>`).join('');
+    for (const node of menu.querySelectorAll('[role=option]')) {
+      const pick = () => {
+        control.querySelector('.select__placeholder, .select__single-value').outerHTML =
+          `<div class="select__single-value">${node.textContent}</div>`;
+        control.parentElement.querySelector('input[type=hidden]').value = node.textContent;
+        input.value = '';
+        close();
+      };
+      node.addEventListener('mousedown', pick);
+      node.addEventListener('click', pick);
+    }
+  };
+  const open = () => { if (!menu) { log.opens++; render(''); } };
+  input.addEventListener('mousedown', open);
+  input.addEventListener('focus', open);
+  input.addEventListener('input', () => { log.typed++; render(input.value); });
+  return log;
+}
+
+test('Greenhouse degree: B.Tech picks "Bachelor\'s Degree" from one open list, no typed searches', async () => {
+  await withForm(STRIPE_DEGREE_FORM, {}, async (env) => {
+    const log = wireStripeDegree(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { degree: 'B.Tech (Bachelor of Technology)' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const shown = env.document.querySelector('.select__single-value');
+    ok(shown, `degree not committed: ${JSON.stringify(byLabel(result.decisions, 'degree'))}`);
+    eq(shown.textContent, "Bachelor's Degree");
+    eq(log.typed, 0, 'chosen from the open list — no search typed per spelling');
   });
 });
 
