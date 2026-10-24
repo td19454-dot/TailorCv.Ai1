@@ -114,6 +114,18 @@ function isListboxCompanion(el) {
 export function isNodeVisible(node) {
   if (!node) return false;
   if (inAriaHidden(node)) return false;
+  return isNodeDrawn(node);
+}
+
+/**
+ * On screen as drawn, whatever aria-hidden says. Workday marks its page root
+ * aria-hidden="true" while a prompt's popup is open (the "Blocked aria-hidden"
+ * console warning on NVIDIA), and the search results sit inside that root — so
+ * by isNodeVisible every result row was hidden, and Field of Study was typed
+ * and searched but never clicked. Only for lists already known to be open.
+ */
+export function isNodeDrawn(node) {
+  if (!node) return false;
   if (hiddenByStyle(node)) return false;
   if (typeof node.getBoundingClientRect === 'function') {
     const r = node.getBoundingClientRect();
@@ -121,6 +133,14 @@ export function isNodeVisible(node) {
     if (measured && r.width < 2 && r.height < 2) return false;
   }
   return true;
+}
+
+/** Why a node counts as off screen ('' when it is on screen) — for failure reports. */
+export function hiddenReason(node) {
+  if (!node) return 'gone';
+  if (hiddenByStyle(node)) return 'style';
+  if (inAriaHidden(node)) return 'aria-hidden';
+  return isNodeDrawn(node) ? '' : 'size';
 }
 
 /**

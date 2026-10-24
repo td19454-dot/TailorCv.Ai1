@@ -1311,7 +1311,9 @@ what when where which who will with would you your now future
     if (labels.length < 2) return false;
     return labels.filter((l) => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
   }
+  var OPTIONALITY_RE = /\(\s*(optional|required)\s*\)|\s+[-–—]?\s*optional\s*$/ig;
   function matchFieldKey(label, entries) {
+    label = String(label || "").replace(OPTIONALITY_RE, " ").trim();
     const sig = questionSignature(label);
     if (!sig) return null;
     const pool = entries || FIELD_SYNONYMS;
@@ -1485,6 +1487,10 @@ what when where which who will with would you your now future
   function isNodeVisible(node) {
     if (!node) return false;
     if (inAriaHidden(node)) return false;
+    return isNodeDrawn(node);
+  }
+  function isNodeDrawn(node) {
+    if (!node) return false;
     if (hiddenByStyle(node)) return false;
     if (typeof node.getBoundingClientRect === "function") {
       const r = node.getBoundingClientRect();
@@ -1492,6 +1498,12 @@ what when where which who will with would you your now future
       if (measured && r.width < 2 && r.height < 2) return false;
     }
     return true;
+  }
+  function hiddenReason(node) {
+    if (!node) return "gone";
+    if (hiddenByStyle(node)) return "style";
+    if (inAriaHidden(node)) return "aria-hidden";
+    return isNodeDrawn(node) ? "" : "size";
   }
   function hiddenByStyle(node) {
     const win = node.ownerDocument && node.ownerDocument.defaultView;
@@ -4031,6 +4043,7 @@ what when where which who will with would you your now future
       listOpen: el.getAttribute ? el.getAttribute("aria-expanded") : null,
       optionsMatched: (options || []).length,
       rowsOnPage: cells,
+      rowsSkipped: (options || []).length ? void 0 : rowsRejected(doc),
       firstOffered: (options || []).slice(0, 5).map((n) => (n.textContent || "").replace(/\s+/g, " ").trim())
     };
   }
@@ -4106,8 +4119,29 @@ what when where which who will with would you your now future
   function visibleOptionNodes2(doc, el) {
     const p = probe2();
     const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
-    const shown = nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n) && !isChosenValue(n) && !(n.getAttribute && n.getAttribute("aria-disabled") === "true"));
+    const onScreen = isWorkdayPrompt(el) ? isNodeDrawn : isNodeVisible;
+    const shown = nodes.filter((n) => (n.textContent || "").trim() && onScreen(n) && !isChosenValue(n) && !(n.getAttribute && n.getAttribute("aria-disabled") === "true"));
     return el ? ownOptions(doc, el, shown) : shown;
+  }
+  function isWorkdayPrompt(el) {
+    if (!el) return false;
+    const p = probe2();
+    try {
+      if (p && p.workdayMultiselect && p.workdayMultiselect(el)) return true;
+      return !!(el.querySelector && el.querySelector('[data-automation-id="multiselectInputContainer"]'));
+    } catch (e) {
+      return false;
+    }
+  }
+  function rowsRejected(doc) {
+    const p = probe2();
+    const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
+    const counts = {};
+    for (const n of nodes) {
+      const why = !(n.textContent || "").trim() ? "empty" : isChosenValue(n) ? "chosen" : n.getAttribute && n.getAttribute("aria-disabled") === "true" ? "disabled" : hiddenReason(n) || "taken-or-not-own";
+      counts[why] = (counts[why] || 0) + 1;
+    }
+    return counts;
   }
   function ownOptions(doc, el, nodes) {
     const ref = (n) => n && n.getAttribute && (n.getAttribute("aria-controls") || n.getAttribute("aria-owns")) || "";
@@ -4253,11 +4287,24 @@ what when where which who will with would you your now future
     }
     if (idx < 0) return false;
     const node = nodes[idx];
+    let target = node;
+    const WD_ROW = '[data-automation-id="promptOption"], [data-automation-id="promptLeafNode"]';
+    let workdayRow = false;
     try {
-      node.scrollIntoView({ block: "nearest" });
+      workdayRow = node.matches(WD_ROW) || !!node.querySelector(WD_ROW);
+    } catch (e) {
+      workdayRow = false;
+    }
+    if (workdayRow) {
+      for (const d of node.querySelectorAll("*")) {
+        if ((d.textContent || "").replace(/\s+/g, " ").trim() === labels[idx]) target = d;
+      }
+    }
+    try {
+      target.scrollIntoView({ block: "nearest" });
     } catch (e) {
     }
-    pressPointer(node);
+    pressPointer(target);
     return true;
   }
   async function waitForPromptResults(el, shapes, done2) {

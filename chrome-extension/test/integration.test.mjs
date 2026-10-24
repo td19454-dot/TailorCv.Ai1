@@ -2450,14 +2450,21 @@ function wireWorkdayEducation(env, opts = {}) {
   const wireField = (block) => {
     const input = block.querySelector('[data-automation-id="formField-fieldOfStudy"] input');
     const pills = block.querySelector('[data-automation-id="formField-fieldOfStudy"] [data-automation-id="selectedItemList"]');
+    // opts.hideRoot: while the results are open, Workday marks the page's root
+    // aria-hidden="true" (the console warning on NVIDIA) — the results inside it
+    // are on screen all the same.
+    const root = doc.querySelector('[data-automation-id="applyFlowPage"]');
     const render = (items) => {
       portal.innerHTML = '<ul role="listbox">' + items.map((o, i) =>
-        `<li role="option" data-automation-id="promptOption" data-automation-label="${o}"${i === 0 ? ' aria-selected="true"' : ''}>${o}</li>`).join('') + '</ul>';
+        `<li role="option" data-automation-id="promptOption" data-automation-label="${o}"${i === 0 ? ' aria-selected="true"' : ''}>`
+        + `<div data-automation-id="promptLeafNode"><span class="radio"></span><span>${o}</span></div></li>`).join('') + '</ul>';
+      if (opts.hideRoot) root.setAttribute('aria-hidden', 'true');
       for (const li of portal.querySelectorAll('[role=option]')) {
         li.addEventListener('mousedown', () => {
           pills.innerHTML += `<li><div data-automation-id="selectedItem">${li.textContent}</div></li>`;
           input.value = '';
           portal.innerHTML = '';
+          root.removeAttribute('aria-hidden');
         });
       }
     };
@@ -2576,6 +2583,16 @@ test('Workday education: a Field of Study that Enter already selected counts as 
     notOk(logged.some(l => /did not commit: Field of Study/.test(l)), 'no false "did not commit"');
     const row = result.decisions.find(x => String(x.key) === 'repeater:education:0');
     eq(row.action, p.FILL, row.reason);
+  });
+});
+
+test('Workday education: Field of Study is clicked while Workday hides the page root from screen readers', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    wireWorkdayEducation(env, { hideRoot: true });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: WD_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    eq(eduField(eduBlock(env.document, 1)), 'Chemical Engineering');
+    eq(eduField(eduBlock(env.document, 2)), 'Computer Science');
   });
 });
 

@@ -418,6 +418,15 @@ test('matchFieldKey resolves the common identity fields', () => {
   eq(m.matchFieldKey('LinkedIn Profile URL').key, 'linkedin_url');
 });
 
+test('a form\'s "(optional)" marker does not hide the field it labels (Workday Social Network URLs)', () => {
+  eq(m.matchFieldKey('LinkedIn (optional)').key, 'linkedin_url');
+  eq(m.matchFieldKey('LinkedIn (Optional)').key, 'linkedin_url');
+  eq(m.matchFieldKey('LinkedIn - optional').key, 'linkedin_url');
+  eq(m.matchFieldKey('Email Address (required)').key, 'email');
+  // Still nothing for a label that is only the marker.
+  eq(m.matchFieldKey('(optional)'), null);
+});
+
 test('matchFieldKey resolves education fields', () => {
   eq(m.matchFieldKey('University / College').key, 'university');
   eq(m.matchFieldKey('Field of Study').key, 'major');

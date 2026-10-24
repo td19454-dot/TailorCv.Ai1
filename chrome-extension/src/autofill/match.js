@@ -861,7 +861,13 @@ export function hasHonorificOptions(options) {
   return labels.filter(l => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
 }
 
+// A form's own "(optional)" / "(required)" marker: says nothing about what is
+// asked. Workday labels its Social Network URLs "LinkedIn (optional)", and the
+// extra word "optional" put that label past every LinkedIn synonym.
+const OPTIONALITY_RE = /\(\s*(optional|required)\s*\)|\s+[-–—]?\s*optional\s*$/ig;
+
 export function matchFieldKey(label, entries) {
+  label = String(label || '').replace(OPTIONALITY_RE, ' ').trim();
   const sig = questionSignature(label);
   if (!sig) return null;
   const pool = entries || FIELD_SYNONYMS;

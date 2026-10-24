@@ -17,8 +17,8 @@
 
 import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText } from './match.js';
 import { coerce, candidatesFor } from './plan.js';
-import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isChosenValue, isChoiceSelected,
-         controlAncestor, readComboboxOptions }
+import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isNodeDrawn, hiddenReason,
+         isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions }
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
 
@@ -498,6 +498,7 @@ function searchStep(query, input, el, options) {
     listOpen: el.getAttribute ? el.getAttribute('aria-expanded') : null,
     optionsMatched: (options || []).length,
     rowsOnPage: cells,
+    rowsSkipped: (options || []).length ? undefined : rowsRejected(doc),
     firstOffered: (options || []).slice(0, 5).map(n => (n.textContent || '').replace(/\s+/g, ' ').trim()),
   };
 }
@@ -593,9 +594,38 @@ function visibleOptionNodes(doc, el) {
   // Not a disabled option either: it cannot be picked, and Workday opens a
   // list with only its disabled "Select One" before the real options load —
   // read at that moment, the Degree list looked like it had nothing to offer.
-  const shown = nodes.filter(n => (n.textContent || '').trim() && isNodeVisible(n) && !isChosenValue(n)
+  // A Workday prompt's results are judged by what is drawn, not aria-hidden:
+  // Workday hides its whole page root from screen readers while the popup is
+  // open, results included (see isNodeDrawn).
+  const onScreen = isWorkdayPrompt(el) ? isNodeDrawn : isNodeVisible;
+  const shown = nodes.filter(n => (n.textContent || '').trim() && onScreen(n) && !isChosenValue(n)
                                   && !(n.getAttribute && n.getAttribute('aria-disabled') === 'true'));
   return el ? ownOptions(doc, el, shown) : shown;
+}
+
+function isWorkdayPrompt(el) {
+  if (!el) return false;
+  const p = probe();
+  try {
+    if (p && p.workdayMultiselect && p.workdayMultiselect(el)) return true;
+    // Or the field wrapper holding one.
+    return !!(el.querySelector && el.querySelector('[data-automation-id="multiselectInputContainer"]'));
+  } catch (e) { return false; }
+}
+
+/** Why the option rows on the page were not taken, counted ("aria-hidden: 6") — for failure reports. */
+function rowsRejected(doc) {
+  const p = probe();
+  const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
+  const counts = {};
+  for (const n of nodes) {
+    const why = !(n.textContent || '').trim() ? 'empty'
+      : isChosenValue(n) ? 'chosen'
+      : (n.getAttribute && n.getAttribute('aria-disabled') === 'true') ? 'disabled'
+      : (hiddenReason(n) || 'taken-or-not-own');
+    counts[why] = (counts[why] || 0) + 1;
+  }
+  return counts;
 }
 
 /**
@@ -769,8 +799,20 @@ async function clickMatchingOption(el, value, nodes) {
   }
   if (idx < 0) return false;
   const node = nodes[idx];
-  try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
-  pressPointer(node);
+  // On a Workday result row, the innermost element holding the text: the click
+  // then bubbles through whatever inside the row listens (promptLeafNode, the
+  // radio, the row itself), as a person's click on the words does.
+  let target = node;
+  const WD_ROW = '[data-automation-id="promptOption"], [data-automation-id="promptLeafNode"]';
+  let workdayRow = false;
+  try { workdayRow = node.matches(WD_ROW) || !!node.querySelector(WD_ROW); } catch (e) { workdayRow = false; }
+  if (workdayRow) {
+    for (const d of node.querySelectorAll('*')) {
+      if ((d.textContent || '').replace(/\s+/g, ' ').trim() === labels[idx]) target = d;
+    }
+  }
+  try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+  pressPointer(target);
   return true;
 }
 
