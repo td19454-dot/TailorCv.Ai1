@@ -21,7 +21,7 @@ import tempfile
 import traceback
 from pathlib import Path
 
-from routers.profile_page import DEGREE_GROUPS
+from routers.profile_page import DEGREE_GROUPS, FIELD_OF_STUDY_OPTIONS
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PLAN_JS = os.path.join(ROOT, "chrome-extension", "src", "autofill", "plan.js")
@@ -35,6 +35,16 @@ def test_labels_are_unique_and_short():
     labels = _labels()
     assert len(labels) == len(set(labels)), "a degree is listed twice"
     assert all(0 < len(l) <= 120 for l in labels), "the profile stores at most 120 characters"
+
+
+def test_field_of_study_options_are_workdays_list_once_each():
+    fields = FIELD_OF_STUDY_OPTIONS
+    lowered = [f.lower() for f in fields]
+    assert len(lowered) == len(set(lowered)), "a field of study is listed twice"
+    assert all(0 < len(f) <= 120 for f in fields), "the profile stores at most 120 characters"
+    for common in ("Computer Science", "Information Technology", "Electronics & Communication",
+                   "Mechanical Engineering", "Chemical Engineering", "Data Science", "Other"):
+        assert common in fields, f"missing {common!r}"
 
 
 def test_every_profile_degree_is_known_to_the_extension():
