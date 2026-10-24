@@ -2374,7 +2374,10 @@ function wdEducationBlock(n, k) {
       ${text('schoolName', 'School or University', true)}
       <div data-automation-id="formField-degree"><label id="${f}degree-label" for="${f}degree"><span>Degree<abbr aria-hidden="true">*</abbr></span></label>
         <button type="button" id="${f}degree" aria-haspopup="listbox" aria-labelledby="${f}degree-label ${f}degree" value="">Select One</button></div>
-      ${text('fieldOfStudy', 'Field of Study', false)}
+      <div data-automation-id="formField-fieldOfStudy"><label for="${f}fieldOfStudy">Field of Study</label>
+        <div data-automation-id="multiSelectContainer"><ul data-automation-id="selectedItemList"></ul>
+          <div data-automation-id="multiselectInputContainer">
+            <input data-automation-id="searchBox" id="${f}fieldOfStudy" type="text" placeholder="Search"></div></div></div>
       ${text('gradeAverage', 'Overall Result (GPA)', false)}
       <div class="dates">${wdYear(f + 'firstYearAttended', 'From')}${wdYear(f + 'lastYearAttended', 'To (Actual or Expected)')}</div>
     </div></div>`;
@@ -2397,6 +2400,14 @@ const WD_EDUCATION_PAGE = `
   <div id="wd-portal"></div>
   <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
 
+// Part of NVIDIA's Workday Field of Study list, in its order.
+const WD_FIELDS = ['Accounting', 'Advanced Computing', 'Advertising', 'Aeronautical Engineering', 'Aerospace',
+  'Agriculture', 'Animation', 'Applications Design and Data Analysis', 'Applied Computing',
+  'Applied Electronics', 'Applied Informatics', 'Applied Mathematics', 'Applied Science',
+  'Chemical Engineering', 'Chemistry', 'Civil Engineering', 'Computational Science & Engineering',
+  'Computer & Info Science', 'Computer Science', 'Computer Science & Engin.',
+  'Electrical Engineering and Computer Science', 'Mechanical Engineering'];
+
 // NVIDIA's real Workday degree list (Oct 2026).
 const WD_DEGREES = ['Post-diploma studies', 'BTECH', 'MTECH', 'MCA', 'University Diploma', 'Associates',
   'Technical/other training', 'Some college', 'PhD', 'Some post college', 'No Degree'];
@@ -2418,12 +2429,42 @@ function wireWorkdayEducation(env) {
       }
     });
   };
+  // Workday's Field of Study prompt, as it behaves (NVIDIA, Oct 2026): opening
+  // shows the full list's first rows; typing changes nothing; Enter searches and
+  // shows the results with the FIRST highlighted; a click adds a selectedItem
+  // pill; leaving without a click erases what was typed.
+  log.letterKeys = 0;
+  const wireField = (block) => {
+    const input = block.querySelector('[data-automation-id="formField-fieldOfStudy"] input');
+    const pills = block.querySelector('[data-automation-id="formField-fieldOfStudy"] [data-automation-id="selectedItemList"]');
+    const render = (items) => {
+      portal.innerHTML = '<ul role="listbox">' + items.map((o, i) =>
+        `<li role="option" data-automation-id="promptOption" data-automation-label="${o}"${i === 0 ? ' aria-selected="true"' : ''}>${o}</li>`).join('') + '</ul>';
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        li.addEventListener('mousedown', () => {
+          pills.innerHTML += `<li><div data-automation-id="selectedItem">${li.textContent}</div></li>`;
+          input.value = '';
+          portal.innerHTML = '';
+        });
+      }
+    };
+    input.addEventListener('mousedown', () => render(WD_FIELDS.slice(0, 12)));
+    input.addEventListener('keydown', (e) => {
+      if (/^[a-z]$/i.test(e.key)) log.letterKeys++;
+      if (e.key !== 'Enter') return;
+      const words = input.value.toLowerCase().split(/\W+/).filter(Boolean).map(w => w.slice(0, 6));
+      render(WD_FIELDS.filter(o => o.toLowerCase().split(/\W+/).some(ow => words.some(w => ow.startsWith(w)))));
+    });
+    input.addEventListener('blur', () => { input.value = ''; });
+  };
   add.addEventListener('click', () => {
     const n = section.querySelectorAll('[aria-labelledby$="-panel"]').length + 1;
     log.eduAdds++;
     if (n > 1) add.textContent = 'Add Another';
     add.parentElement.parentElement.insertAdjacentHTML('beforebegin', wdEducationBlock(n, k++));
-    wireDegree(section.querySelector(`[aria-labelledby="Education-${n}-panel"]`));
+    const block = section.querySelector(`[aria-labelledby="Education-${n}-panel"]`);
+    wireDegree(block);
+    wireField(block);
   });
   doc.getElementById('exp-add').addEventListener('click', () => { log.expAdds++; });
   doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => { log.next++; });
@@ -2433,11 +2474,13 @@ function wireWorkdayEducation(env) {
 const WD_SCHOOLS = [
   { school: 'Indian Institute of Technology Delhi', degree: 'M.Tech (Master of Technology)',
     field: 'Chemical Engineering', gpa: '', from: '2023', to: '2025' },
-  { school: 'NIT Durgapur', degree: 'B.Tech (Bachelor of Technology)', field: 'Chemical Engineering',
+  { school: 'NIT Durgapur', degree: 'B.Tech (Bachelor of Technology)', field: 'Computer Science',
     gpa: '8.1/10', from: '2019', to: '2023' },
 ];
 const eduBlock = (doc, n) => doc.querySelector(`[aria-labelledby="Education-${n}-panel"]`);
 const eduVal = (block, name) => block.querySelector(`[name="${name}"]`).value;
+const eduField = block => Array.from(block.querySelectorAll(
+  '[data-automation-id="formField-fieldOfStudy"] [data-automation-id="selectedItem"]')).map(n => n.textContent).join(' | ');
 const eduYear = (block, which) => block.querySelector(`[id$="--${which}-dateSectionYear-input"]`).value;
 
 test('Workday education: "Add" opens a block per school, each filled from the profile', async () => {
@@ -2457,7 +2500,10 @@ test('Workday education: "Add" opens a block per school, each filled from the pr
     eq(eduVal(b1, 'schoolName'), 'Indian Institute of Technology Delhi');
     eq(b1.querySelector('[data-automation-id="formField-degree"] button').textContent, 'MTECH',
        'M.Tech takes the list\'s own MTECH');
-    eq(eduVal(b1, 'fieldOfStudy'), 'Chemical Engineering');
+    // Workday's prompt: committed only as a clicked pill — typed text is erased.
+    eq(eduField(b1), 'Chemical Engineering', 'searched with Enter and clicked');
+    eq(eduField(b2), 'Computer Science', 'the exact result, not the highlighted "Computational Science & Engineering"');
+    eq(log.letterKeys, 0, 'no key-by-key typing — Workday ignores it');
     eq(eduVal(b1, 'gradeAverage'), '8.7/10', 'the first school falls back to the profile GPA');
     eq(eduYear(b1, 'firstYearAttended'), '2023');
     eq(eduYear(b1, 'lastYearAttended'), '2025');

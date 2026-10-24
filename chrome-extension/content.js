@@ -2652,7 +2652,11 @@
     // first: after a fill, a mostly-new set of fields is the next step, however
     // it arrived. Before this, the sidebar kept page 1's results and only a tab
     // switch redrew it.
-    if (currentView === 'results' && lastFillKeys && isNewStep(lastFillKeys, keys)) {
+    // Where Workday names the step ("My Experience") and the name has not
+    // changed, it is the same step however many fields it gained — the page
+    // says so, and that outranks a guess from the field list.
+    const sameNamedStep = !!step && step === prevStep;
+    if (currentView === 'results' && lastFillKeys && !sameNamedStep && isNewStep(lastFillKeys, keys)) {
       onNextStep();
       return;
     }
@@ -2810,6 +2814,11 @@
     // Workday step (most fields replaced) from the same step gaining a field.
     // Also resynchronise its signatures: the fill itself mutated the DOM, and that
     // must not read as "the form changed".
+    // Read from the page AS IT IS NOW, not the form found before the run: the
+    // run itself adds blocks (Workday's Work Experience / Education "Add"), and
+    // compared with the pre-run field list those read as a whole new step —
+    // the results were replaced by "Page 2 — ready to autofill" (NVIDIA).
+    refreshApplyMode();
     if (applyForm) {
       lastFillKeys = fieldKeysOf(applyForm);
       formSignature = lastFillKeys.slice().sort().join('|');

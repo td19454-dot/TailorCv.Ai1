@@ -3906,9 +3906,20 @@ what when where which who will with would you your now future
         const input = typableInput(row) || el;
         const queries = dedupe(shapes.map(searchToken)).slice(0, 4);
         row.searchTrace = [];
+        const p = probe2();
+        const wdPrompt = !!(p && p.workdayMultiselect && p.workdayMultiselect(input));
         for (const query of queries) {
           setText(input, query, { blur: false });
           focus(input);
+          if (wdPrompt) {
+            fireKey(input, "keydown", "Enter");
+            fireKey(input, "keyup", "Enter");
+            options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
+            options = await waitOutLoading(el, shapes, options);
+            row.searchTrace.push(Object.assign(searchStep(query, input, el, options), { searchedWithEnter: true }));
+            if (options.length && listOffersAny(shapes, options)) break;
+            continue;
+          }
           options = await waitForOptions2(el, TIMING.optionWaitMs);
           options = await waitOutLoading(el, shapes, options);
           if (!options.length && listStillLoading(el.ownerDocument || globalThis.document, el)) {
@@ -4181,7 +4192,9 @@ what when where which who will with would you your now future
   }
   async function clickMatchingOption(el, value, nodes) {
     const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
-    let idx = labels.findIndex((t) => commitMatches(value, t));
+    const want = normalizeOptionText(value);
+    let idx = want ? labels.findIndex((t) => normalizeOptionText(t) === want) : -1;
+    if (idx < 0) idx = labels.findIndex((t) => commitMatches(value, t));
     if (idx < 0) {
       const best = bestOptionMatch(value, labels);
       idx = best == null ? -1 : labels.indexOf(best);

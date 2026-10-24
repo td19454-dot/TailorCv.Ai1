@@ -15,7 +15,7 @@
 // calls) after a dropdown reported success while the form still showed "This
 // field is required".
 
-import { commitMatches, bestOptionMatch, looksLikeDecline } from './match.js';
+import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText } from './match.js';
 import { coerce, candidatesFor } from './plan.js';
 import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isChosenValue, isChoiceSelected,
          controlAncestor, readComboboxOptions }
@@ -362,10 +362,27 @@ export async function commitCombobox(row, value, candidates, readFirst) {
       // to be matched against (Oracle's City and State both stayed empty).
       const queries = dedupe(shapes.map(searchToken)).slice(0, 4);
       row.searchTrace = [];
+      // Workday's prompt boxes (Field of Study, "How Did You Hear About Us?"):
+      // typing does not filter — the full list stays up — and only Enter runs
+      // the search. The answer must then be clicked, or Workday erases the text
+      // when focus moves on. Enter was pressed only when NO options showed, which
+      // on Workday is never, so the search never ran (NVIDIA, Oct 2026). Only
+      // here: on react-select and most others Enter SELECTS the highlighted row.
+      const p = probe();
+      const wdPrompt = !!(p && p.workdayMultiselect && p.workdayMultiselect(input));
       for (const query of queries) {
         // Keep the focus: this input IS the open menu's search box.
         setText(input, query, { blur: false });
         focus(input);
+        if (wdPrompt) {
+          fireKey(input, 'keydown', 'Enter');
+          fireKey(input, 'keyup', 'Enter');
+          options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
+          options = await waitOutLoading(el, shapes, options);
+          row.searchTrace.push(Object.assign(searchStep(query, input, el, options), { searchedWithEnter: true }));
+          if (options.length && listOffersAny(shapes, options)) break;
+          continue;   // key-by-key typing does nothing here: next query, no retype
+        }
         options = await waitForOptions(el, TIMING.optionWaitMs);
         // A remote search still answering: wait for it rather than retype,
         // which would only start the search over.
@@ -709,7 +726,12 @@ function listOffersAny(shapes, nodes) {
 
 async function clickMatchingOption(el, value, nodes) {
   const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
-  let idx = labels.findIndex(t => commitMatches(value, t));
+  // The exact option first. A whole-word match alone took the FIRST row holding
+  // every word — Workday's results list "Computer & Info Science" above
+  // "Computer Science", and the wrong one was clicked.
+  const want = normalizeOptionText(value);
+  let idx = want ? labels.findIndex(t => normalizeOptionText(t) === want) : -1;
+  if (idx < 0) idx = labels.findIndex(t => commitMatches(value, t));
   if (idx < 0) {
     // No whole-word match among what is on screen. Fall back to the fuzzy
     // matcher, but only against the rows actually offered — so this can pick a

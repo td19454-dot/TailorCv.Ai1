@@ -357,6 +357,35 @@ test('Workday: a next step with nothing to fill yet still offers "Autofill this 
   ok(await waitForText(page, /No fields found on this step yet/, 5000), 'and says what to do');
 });
 
+test('Workday: a step that grows blocks under the same heading keeps its results', async () => {
+  // nvidia.wd5 "My Experience": the run itself pressed Add and created Work
+  // Experience / Education blocks. Compared with the fields from BEFORE the
+  // run, that read as a new step, and the results gave way to "Page 2 — ready
+  // to autofill". The heading had not changed, so it was the same step.
+  const withHeading = fixtures.WORKDAY_MYINFO.replace(
+    '<div data-automation-id="applyFlowMyInfoPage">',
+    '<h2>My Experience</h2><div data-automation-id="applyFlowMyInfoPage">');
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
+  renderLater(page, withHeading, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 20000), 'the fill must finish');
+
+  const step = page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
+  let blocks = '';
+  for (let n = 1; n <= 4; n++) {
+    blocks += `<div role="group" aria-labelledby="Education-${n}-panel"><h5 id="Education-${n}-panel">Education ${n}</h5>
+      <label for="sch${n}">School or University*</label><input id="sch${n}" type="text">
+      <label for="deg${n}">Degree*</label><input id="deg${n}" type="text">
+      <label for="gpa${n}">Overall Result (GPA)</label><input id="gpa${n}" type="text"></div>`;
+  }
+  step.insertAdjacentHTML('beforeend', blocks);
+  await new Promise(r => setTimeout(r, 4000));                       // the watcher runs
+  const text = page.document.getElementById('tailorcv-sidebar').textContent;
+  ok(!/Page 2/.test(text), 'still the same step — no "Page 2"');
+  ok(/filled/i.test(text), 'the results are still shown');
+});
+
 test('Workday: the next step is shown even when the page passes through "no form" on the way', async () => {
   // nvidia.wd5: page 1 is torn down (a moment with no form at all) before page
   // 2 renders. The watcher saw page 2 as a form "appearing", left the results
