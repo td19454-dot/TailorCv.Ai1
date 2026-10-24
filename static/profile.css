@@ -74,11 +74,13 @@
 .pf-job > label, .pf-job-dates label {
   display: flex; flex-direction: column; gap: 7px; font-size: .9rem; font-weight: 600; color: #b9c8e4;
 }
-.pf-job input:not([type="checkbox"]), .pf-job textarea {
+.pf-job input:not([type="checkbox"]), .pf-job textarea, .pf-job select {
   width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 10px;
   background: rgba(255,255,255,.05); border: 1px solid rgba(99,130,200,.28); color: #eaf1ff;
   font: inherit; font-size: 1rem;
 }
+/* The open list is drawn by the OS; without this it was light text on white. */
+.pf-job select option, .pf-job select optgroup { background: #1b1630; color: #eaf1ff; }
 .pf-job > label.pf-check { flex-direction: row; align-items: center; }
 .pf-job textarea { resize: vertical; min-height: 96px; line-height: 1.45; }
 .pf-job input:disabled { opacity: .45; }

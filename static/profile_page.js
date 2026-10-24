@@ -86,6 +86,26 @@
     return '<label>' + label + '<input data-f="' + f + '" value="' + escAttr(value) + '" ' + (attrs || "") + '></label>';
   }
 
+  // Degree as a dropdown of actual degrees (routers/profile_page.py
+  // DEGREE_GROUPS); autofill turns each into what a given employer's list calls
+  // it. A degree saved before this, or read from the resume, that is not in the
+  // list stays selectable as "(saved)" so saving never drops it.
+  function degreeSelect(value) {
+    var groups = window.TAILORCV_DEGREE_GROUPS || [];
+    var current = String(value || "");
+    var known = groups.some(function (g) { return g[1].indexOf(current) !== -1; });
+    var opt = function (v, text) {
+      return '<option value="' + escAttr(v) + '"' + (v === current ? " selected" : "") + ">" + escAttr(text) + "</option>";
+    };
+    var html = opt("", "Select your degree");
+    if (current && !known) html += opt(current, current + " (saved)");
+    groups.forEach(function (g) {
+      html += '<optgroup label="' + escAttr(g[0]) + '">' +
+        g[1].map(function (d) { return opt(d, d); }).join("") + "</optgroup>";
+    });
+    return '<label>Degree<select data-f="degree">' + html + "</select></label>";
+  }
+
   var LISTS = {
     experience: {
       noun: "job",
@@ -112,7 +132,7 @@
       // Overall Result (GPA), From, To (Actual or Expected).
       render: function (s) {
         return input("school", "School or university", s.school, 'maxlength="200"') +
-          input("degree", "Degree", s.degree, 'maxlength="120" list="pf-degrees" placeholder="e.g. Bachelor of Technology (B.Tech)"') +
+          degreeSelect(s.degree) +
           input("field", "Field of study", s.field, 'maxlength="120" list="pf-fields" placeholder="e.g. Chemical Engineering"') +
           input("gpa", "Overall result (GPA)", s.gpa, 'maxlength="20" placeholder="e.g. 8.7/10 or 3.6/4"') +
           '<div class="pf-job-dates">' +
