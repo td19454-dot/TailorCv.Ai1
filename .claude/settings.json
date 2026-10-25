@@ -74,7 +74,13 @@
       "Bash(.venv/Scripts/python.exe -)",
       "PowerShell(New-Item -ItemType Directory -Force \"static\\\\email\" | Out-Null; Copy-Item \"C:\\\\Users\\\\SHUBHA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-SHUBHAM-SARKAR-Desktop-saas-TailorCv-Ai1\\\\2c863442-f0c2-4483-a469-e5007bd0b1c6\\\\images\\\\1.png\" \"static\\\\email\\\\interview-story.png\"; \\(Get-Item \"static\\\\email\\\\interview-story.png\"\\).Length / 1KB)",
       "PowerShell(curl.exe -s -o NUL -w \"%{http_code} %{content_type}`n\" https://thetailorcv.com/static/blog.js)",
-      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='python.exe'\")"
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='python.exe'\")",
+      "Bash(python -c \"import weasyprint, jinja2; print\\(weasyprint.__version__\\)\")",
+      "Bash(python -c \"import fitz; print\\('fitz ok'\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"import weasyprint, fitz; print\\(weasyprint.__version__, 'fitz ok'\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"import weasyprint; print\\(weasyprint.__version__\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"import pymupdf; print\\('pymupdf ok'\\)\")",
+      "Bash(\"/c/Users/SHUBHAM SARKAR/AppData/Local/Programs/Python/Python311/python.exe\" -c \"import weasyprint; print\\('py311', weasyprint.__version__\\)\")"
     ],
     "additionalDirectories": [
       "\\tmp"
