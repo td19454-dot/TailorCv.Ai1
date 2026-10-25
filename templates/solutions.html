@@ -651,7 +651,7 @@
         .tpl-modal {
             position: fixed; inset: 0; z-index: 5000;
             display: flex; align-items: center; justify-content: center;
-            padding: 24px 16px;
+            padding: 0;
         }
         .tpl-modal-backdrop {
             position: absolute; inset: 0;
@@ -661,20 +661,25 @@
         .tpl-modal #template-selection-section.tpl-modal-card {
             position: relative;
             margin: 0 !important;
-            width: min(1100px, 100%);
-            max-height: calc(100dvh - 48px);
+            /* Full screen: the thumbnails are the whole point, so give them room. */
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            max-height: none;
+            border: 0 !important;
+            border-radius: 0 !important;
             display: flex; flex-direction: column;
             padding: 0 !important;
             overflow: hidden;
         }
         .tpl-modal-card .results-header {
-            padding: 18px 22px 0;
+            padding: 22px 40px 0;
             align-items: center;
         }
         .tpl-modal-card .results-content {
             flex: 1 1 auto; min-height: 0;
             overflow-y: auto; overscroll-behavior: contain;
-            padding: 8px 22px 18px !important;
+            padding: 10px 40px 32px !important;
         }
         .tpl-modal #template-selection-section .results-content p.tpl-modal-note {
             text-align: center; margin: 0 0 1.25rem;
@@ -695,9 +700,11 @@
         /* Picker thumbnails: just the page and its name. Scoped to the modal so
            style2.css's boxed .template-card on other pages is untouched. */
         .tpl-modal #template-selection-section .templates-grid {
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
-            gap: 22px 20px !important;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+            gap: 32px 28px !important;
             padding: 4px 0 !important;
+            max-width: 1800px;
+            margin: 0 auto;
         }
         .tpl-modal .template-card,
         .tpl-modal .template-card:hover,
@@ -754,14 +761,19 @@
             padding: 12px 16px;
         }
         .tpl-preview-name { margin: 0; color: #fff; font-size: 1.05rem; font-weight: 600; }
+        /* The whole page fits between the top bar and the button: the image is
+           bounded by both dimensions of the body, never scrolled. */
         .tpl-preview-body {
             flex: 1 1 auto; min-height: 0;
-            display: flex; align-items: flex-start; justify-content: center;
-            overflow-y: auto; overscroll-behavior: contain;
-            padding: 4px 64px;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+            padding: 12px 72px;
         }
         .tpl-preview-img {
-            display: block; max-width: min(100%, 760px); height: auto;
+            display: block;
+            max-width: 100%; max-height: 100%;
+            width: auto; height: auto;
+            object-fit: contain;
             margin: auto; background: #fff; border-radius: 4px;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
         }
