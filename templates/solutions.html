@@ -286,11 +286,18 @@
         /* "Optimize Resume" (primary) and "Get ATS Score" (secondary): full-width
            stacked buttons, icon + label centred, arrow pinned right. main_new.js
            only needs .btn-text (label swaps) and .btn-loader (ATS spinner). */
+        /* Side by side on laptop/desktop (Optimize first), stacked on phones. */
         #ats-start.cv2-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
             margin-top: 1.25rem;
+        }
+        @media (max-width: 768px) {
+            #ats-start.cv2-actions {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
         }
         .sol-cta {
             all: unset;
