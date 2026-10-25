@@ -70,7 +70,8 @@
       "PowerShell(Set-Location \"C:\\\\Users\\\\SHUBHAM SARKAR\\\\Desktop\\\\saas\\\\TailorCv.Ai1\"; & .venv\\\\Scripts\\\\python.exe -m py_compile auto_apply/profile.py routers/profile_page.py; if \\($?\\) { \"compile ok\" }; foreach \\($t in \"test_document_store.py\",\"test_match_guard.py\",\"test_portfolio.py\",\"test_marketing_email.py\"\\) { $out = & .venv\\\\Scripts\\\\python.exe $t 2>&1 | Out-String; $last = \\($out -split \"`n\" | Where-Object { $_ -match \"passed|PASSED|: ok|FAIL|Traceback\" } | Select-Object -Last 1\\); \"{0,-28} {1}\" -f $t, $last.Trim\\(\\) }; & .venv\\\\Scripts\\\\python.exe -c \"from auto_apply.profile import parse_saved_education as p; print\\(p\\('[{\\\\\"school\\\\\":\\\\\"IIT\\\\\",\\\\\"gpa\\\\\":\\\\\"8.7/10\\\\\",\\\\\"from\\\\\":\\\\\"2019\\\\\"}]'\\)\\); print\\(p\\('[{\\\\\"school\\\\\":\\\\\"Old entry without gpa\\\\\"}]'\\)\\)\")",
       "Bash(node --check src/autofill/write.js)",
       "PowerShell(git log -L 1031,1036:static/header-footer.css --format=\"%h %ad %s\" --date=short -s)",
-      "Bash(xargs sed -i 's/header-footer\\\\.css?v=17/header-footer.css?v=18/g')"
+      "Bash(xargs sed -i 's/header-footer\\\\.css?v=17/header-footer.css?v=18/g')",
+      "Bash(.venv/Scripts/python.exe -)"
     ],
     "additionalDirectories": [
       "\\tmp"
