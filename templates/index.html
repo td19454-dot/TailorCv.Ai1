@@ -1370,6 +1370,8 @@
                             .hero-copy .hero-sub { opacity: 0; animation: tcHeroUp .6s cubic-bezier(.22,.61,.36,1) .15s forwards; }
                         }
                         @media (max-width: 768px) {
+                            /* Keep "dream job" off the navbar's bottom edge. */
+                            .hero-copy { padding-top: 18px !important; }
                             .hero-copy .hero-eyebrow { margin: 0 auto 16px; font-size: 12.5px; }
                             .hero-copy .hero-sub { margin: 16px auto 26px; text-align: center; font-size: 16.5px; }
                             .hero-copy .hero-cta-row { flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
