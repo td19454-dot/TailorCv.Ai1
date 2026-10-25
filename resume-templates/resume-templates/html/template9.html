@@ -130,13 +130,13 @@
       margin-bottom: 8px;
     }
 
-    .sidebar-block {
+    .side-block {
       break-inside: avoid;
       page-break-inside: avoid;
     }
 
     .section h2,
-    .sidebar-block h3 {
+    .side-block h3 {
       display: flex;
       align-items: center;
       gap: 8px;
@@ -151,13 +151,13 @@
       font-size: 14px;
     }
 
-    .sidebar-block h3 {
+    .side-block h3 {
       font-size: 13.2px;
       line-height: 1.1;
     }
 
     .section h2::before,
-    .sidebar-block h3::before {
+    .side-block h3::before {
       content: "";
       width: 9px;
       height: 9px;
@@ -229,7 +229,7 @@
       margin-bottom: 3px;
     }
 
-    .sidebar-list {
+    .side-list {
       margin: 0;
       padding: 0 0 0 17px;
       list-style: disc;
@@ -238,15 +238,15 @@
       line-height: 1.28;
     }
 
-    .sidebar-list li {
+    .side-list li {
       margin: 0 0 4px;
     }
 
-    .sidebar-list li::marker {
+    .side-list li::marker {
       color: var(--dot);
     }
 
-    .sidebar-list .muted {
+    .side-list .muted {
       display: block;
       margin-top: 1px;
       font-size: 9.8px;
@@ -477,9 +477,9 @@
 
       <aside>
         {% if skills %}
-        <section class="sidebar-block">
+        <section class="side-block">
           <h3>Skills</h3>
-          <ul class="sidebar-list">
+          <ul class="side-list">
             {% for skill in skills %}
               {% set skill_text = skill|string %}
               {% if skill_text %}
@@ -501,9 +501,9 @@
         {% endif %}
 
         {% if certifications %}
-        <section class="sidebar-block">
+        <section class="side-block">
           <h3>Certifications</h3>
-          <ul class="sidebar-list">
+          <ul class="side-list">
             {% for cert in certifications %}
             <li>
               {{ cert.name }}
@@ -517,9 +517,9 @@
         {% endif %}
 
         {% if extracurriculars %}
-        <section class="sidebar-block">
+        <section class="side-block">
           <h3>Extracurricular</h3>
-          <ul class="sidebar-list">
+          <ul class="side-list">
             {% for item in extracurriculars %}
             <li>
               {{ item.role }}{% if item.organization %} - {{ item.organization }}{% endif %}
@@ -531,9 +531,9 @@
         {% endif %}
 
         {% if awards %}
-        <section class="sidebar-block">
+        <section class="side-block">
           <h3>Awards</h3>
-          <ul class="sidebar-list">
+          <ul class="side-list">
             {% for item in awards %}
             <li>{{ item }}</li>
             {% endfor %}
