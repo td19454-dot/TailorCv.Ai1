@@ -16,7 +16,7 @@
 // field is required".
 
 import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText } from './match.js';
-import { coerce, candidatesFor } from './plan.js';
+import { coerce, candidatesFor, citizenshipOption } from './plan.js';
 import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isNodeDrawn, hiddenReason,
          isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions }
   from './discover.js';
@@ -311,7 +311,7 @@ function searchToken(value) {
   return head.length >= 2 ? head : text;
 }
 
-export async function commitCombobox(row, value, candidates, readFirst) {
+export async function commitCombobox(row, value, candidates, readFirst, drill) {
   const el = row.el;
   if (!el) return false;
   // `value` stays the primary answer; the rest are other shapes of it that
@@ -442,7 +442,14 @@ export async function commitCombobox(row, value, candidates, readFirst) {
     // Every shape, against the list we already have open: no extra open, no
     // extra wait, and the list itself settles what the field meant.
     for (const shape of options.length ? shapes : []) {
+      const before = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
       if (!await clickMatchingOption(el, shape, options)) continue;
+      // Workday's hierarchical prompt: the country row opens its own level
+      // (India › Citizen / Permanent Resident) rather than selecting.
+      if (drill && isWorkdayPrompt(el)) {
+        const drilled = await drillDown(row, el, shapes, drill, before);
+        if (drilled !== null) return drilled;
+      }
       // Any wording we were prepared to use counts: Oracle picks "+91 (India)"
       // and then displays "+91" — the same answer, shown its own way.
       if (await settlesTo(row, shapes)) return true;
@@ -999,6 +1006,55 @@ async function commitPromptMulti(row, values) {
 }
 
 /** The option the planner's own rules choose for this EEO answer, or null. */
+/**
+ * After a click on a Workday prompt row: it either selected (done), or opened
+ * the row's own level — Workday keeps citizenship per country, so "India"
+ * opens "Citizen / Permanent Resident / …". Then the row stating `drill` is
+ * picked, by citizenship group only: "Non-Citizen" is never "Citizen".
+ *
+ * true / false when settled here; null when the list never changed, so the
+ * caller's ordinary commit check decides.
+ */
+async function drillDown(row, el, shapes, drill, before) {
+  const doc = el.ownerDocument || globalThis.document;
+  const isSet = () => shapes.some(s => committed(row, s));
+  const was = new Set(before);
+  const deadline = Date.now() + Math.max(TIMING.commitWaitMs, 300);
+  let level = [];
+  for (;;) {
+    if (isSet()) return true;
+    const nodes = visibleOptionNodes(doc, el);
+    const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+    if (labels.length && labels.some(l => !was.has(l))) {
+      const pick = citizenshipOption(drill, labels);
+      if (pick) {
+        await sleep(Math.max(TIMING.settleMs, 100));
+        const fresh = visibleOptionNodes(doc, el);
+        const node = fresh.find(n => (n.textContent || '').replace(/\s+/g, ' ').trim() === pick)
+          || nodes[labels.indexOf(pick)];
+        let target = node;
+        for (const d of node.querySelectorAll('*')) {
+          if ((d.textContent || '').replace(/\s+/g, ' ').trim() === pick) target = d;
+        }
+        try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+        pressPointer(target);
+        if (await settlesTo(row, shapes.concat([pick]))) return true;
+        console.info('[TailorCV] dropdown did not commit after choosing', JSON.stringify(pick),
+                     'in the level that opened:', labels.slice(0, 10));
+        return false;
+      }
+      level = labels;
+    }
+    if (Date.now() >= deadline) break;
+    await sleep(100);
+  }
+  if (level.length) {
+    console.info('[TailorCV] a level opened with no', JSON.stringify(drill), 'row:', level.slice(0, 10));
+    return false;
+  }
+  return null;
+}
+
 function pickReadFirst(readFirst, labels) {
   const pick = coerce(readFirst.stored, {
     kind: 'combobox',
@@ -1006,6 +1062,7 @@ function pickReadFirst(readFirst, labels) {
     candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
     candidateKey: readFirst.key,
     sponsorship: readFirst.sponsorship,
+    country: readFirst.country,
   });
   return pick != null && labels.includes(pick) ? pick : null;
 }
@@ -1252,10 +1309,10 @@ export async function applyDecision(decision) {
       wrote = setSelect(row.el, value);
       // A "select" that has no real <option> children is a custom widget
       // wearing a select's clothes.
-      if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
+      if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
       break;
     case 'combobox':
-      wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
+      wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
       break;
     case 'radio':
     case 'checkbox':

@@ -2498,6 +2498,91 @@ function wireWorkdayEducation(env, opts = {}) {
   return log;
 }
 
+// Workday's citizenship prompts. "Citizenship Status" is hierarchical: each
+// country row has a › and opens that country's own level (Citizen / Permanent
+// Resident / Non-Citizen); "Primary Nationality" is a flat country list.
+const wdPrompt = (id, label) => `
+    <div data-automation-id="formField-${id}"><label for="${id}">${label}<abbr aria-hidden="true">*</abbr></label>
+      <div data-automation-id="multiSelectContainer"><ul data-automation-id="selectedItemList"></ul>
+        <div data-automation-id="multiselectInputContainer">
+          <input data-automation-id="searchBox" id="${id}" type="text" placeholder="Search" aria-required="true"></div></div></div>`;
+const WD_CITIZENSHIP_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>Voluntary Disclosures</h3>
+  <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    ${wdPrompt('citizenshipStatus', 'Citizenship Status')}
+    ${wdPrompt('primaryNationality', 'Primary Nationality')}
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+const WD_COUNTRIES = ['Afghanistan', 'Åland Islands', 'Albania', 'Algeria', 'Cambodia', 'British Indian Ocean Territory',
+  'India', 'Indonesia', 'Singapore', 'United States of America'];
+const WD_LEVEL = ['Citizen', 'Permanent Resident', 'Non-Citizen'];
+
+function wireWorkdayCitizenship(env) {
+  const doc = env.document;
+  const portal = doc.getElementById('wd-portal');
+  const log = { levelsOpened: 0, picks: [] };
+  const wire = (id, hierarchical) => {
+    const input = doc.getElementById(id);
+    const pills = doc.querySelector(`[data-automation-id="formField-${id}"] [data-automation-id="selectedItemList"]`);
+    const choose = (text) => {
+      log.picks.push(`${id}: ${text}`);
+      pills.innerHTML += `<li><div data-automation-id="selectedItem">${text}</div></li>`;
+      input.value = '';
+      portal.innerHTML = '';
+    };
+    const row = (o, more) => `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">`
+      + `<div data-automation-id="promptLeafNode"><span>${o}</span>${more ? '<span class="chevron"></span>' : ''}</div></li>`;
+    const level = (country) => {
+      log.levelsOpened++;
+      portal.innerHTML = `<div><button aria-label="Back">‹</button><span>${country}</span></div>`
+        + '<ul role="listbox">' + WD_LEVEL.map(o => row(o, false)).join('') + '</ul>';
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        li.addEventListener('mousedown', () => choose(`${country} › ${li.textContent.trim()}`));
+      }
+    };
+    const render = (items) => {
+      portal.innerHTML = '<ul role="listbox">' + items.map(o => row(o, hierarchical)).join('') + '</ul>';
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        const country = li.textContent.trim();
+        li.addEventListener('mousedown', () => (hierarchical ? level(country) : choose(country)));
+      }
+    };
+    input.addEventListener('mousedown', () => render(WD_COUNTRIES));
+    input.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const q = input.value.trim().toLowerCase();
+      render(WD_COUNTRIES.filter(o => o.toLowerCase().includes(q)));
+    });
+  };
+  wire('citizenshipStatus', true);
+  wire('primaryNationality', false);
+  return log;
+}
+
+const pillsOf = (doc, id) => Array.from(doc.querySelectorAll(
+  `[data-automation-id="formField-${id}"] [data-automation-id="selectedItem"]`)).map(n => n.textContent).join(' | ');
+
+test('Workday citizenship: the country of citizenship, then its Citizen level; nationality flat', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { nationality: 'Indian', citizenship_status: 'Not a U.S. citizen or permanent resident' }) });
+    await run_.runAutofill(ctx, null);
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
+    eq(pillsOf(env.document, 'primaryNationality'), 'India');
+    eq(log.levelsOpened, 1, 'one country opened, never a second');
+  });
+});
+
+test('Workday citizenship: with no country of citizenship, nothing is picked', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    await run_.runAutofill(CTX, null);
+    eq(log.picks.length, 0, `picked: ${log.picks.join(', ')}`);
+  });
+});
+
 const WD_SCHOOLS = [
   { school: 'Indian Institute of Technology Delhi', degree: 'M.Tech (Master of Technology)',
     field: 'Chemical Engineering', gpa: '', from: '2023', to: '2025' },

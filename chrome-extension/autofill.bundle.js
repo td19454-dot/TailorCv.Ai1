@@ -2824,6 +2824,276 @@ what when where which who will with would you your now future
     return /^[A-Za-z_][\w-]*$/.test(ident) ? ident : "";
   }
 
+  // src/autofill/countries.js
+  var TABLE = `
+Afghanistan|Afghan
+Albania|Albanian
+Algeria|Algerian
+Andorra|Andorran
+Angola|Angolan
+Antigua and Barbuda|Antiguan
+Argentina|Argentine|Argentinian
+Armenia|Armenian
+Australia|Australian
+Austria|Austrian
+Azerbaijan|Azerbaijani
+Bahamas|The Bahamas|Bahamian
+Bahrain|Bahraini
+Bangladesh|Bangladeshi
+Barbados|Barbadian
+Belarus|Belarusian
+Belgium|Belgian
+Belize|Belizean
+Benin|Beninese
+Bhutan|Bhutanese
+Bolivia|Plurinational State of Bolivia|Bolivia, Plurinational State of|Bolivian
+Bosnia and Herzegovina|Bosnian
+Botswana|Motswana|Botswanan
+Brazil|Brazilian
+Brunei|Brunei Darussalam|Bruneian
+Bulgaria|Bulgarian
+Burkina Faso|Burkinabe
+Burundi|Burundian
+Cabo Verde|Cape Verde|Cape Verdean
+Cambodia|Cambodian
+Cameroon|Cameroonian
+Canada|Canadian
+Central African Republic|Central African
+Chad|Chadian
+Chile|Chilean
+China|People's Republic of China|PRC|Chinese
+Colombia|Colombian
+Comoros|Comoran
+Congo|Republic of the Congo|Congo, Republic of the|Congolese
+Democratic Republic of the Congo|DR Congo|DRC|Congo, Democratic Republic of the|Congo, The Democratic Republic of the
+Costa Rica|Costa Rican
+Cote d'Ivoire|C\xF4te d'Ivoire|Ivory Coast|Ivorian
+Croatia|Croatian
+Cuba|Cuban
+Cyprus|Cypriot
+Czech Republic|Czechia|Czech
+Denmark|Danish|Dane
+Djibouti|Djiboutian
+Dominica|Dominican (Dominica)
+Dominican Republic|Dominican
+Ecuador|Ecuadorian
+Egypt|Egyptian
+El Salvador|Salvadoran
+Equatorial Guinea|Equatoguinean
+Eritrea|Eritrean
+Estonia|Estonian
+Eswatini|Swaziland|Swazi
+Ethiopia|Ethiopian
+Fiji|Fijian
+Finland|Finnish|Finn
+France|French
+Gabon|Gabonese
+Gambia|The Gambia|Gambian
+Georgia|Georgian
+Germany|German
+Ghana|Ghanaian
+Greece|Greek
+Grenada|Grenadian
+Guatemala|Guatemalan
+Guinea|Guinean
+Guinea-Bissau|Bissau-Guinean
+Guyana|Guyanese
+Haiti|Haitian
+Honduras|Honduran
+Hong Kong|Hong Kong SAR|Hong Kong SAR China|Hong Kong SAR, China|Hong Konger
+Hungary|Hungarian
+Iceland|Icelandic|Icelander
+India|Republic of India|Indian
+Indonesia|Indonesian
+Iran|Iran, Islamic Republic of|Islamic Republic of Iran|Iranian
+Iraq|Iraqi
+Ireland|Republic of Ireland|Irish
+Israel|Israeli
+Italy|Italian
+Jamaica|Jamaican
+Japan|Japanese
+Jordan|Jordanian
+Kazakhstan|Kazakhstani|Kazakh
+Kenya|Kenyan
+Kiribati|I-Kiribati
+Kosovo|Kosovar
+Kuwait|Kuwaiti
+Kyrgyzstan|Kyrgyz
+Laos|Lao People's Democratic Republic|Lao|Laotian
+Latvia|Latvian
+Lebanon|Lebanese
+Lesotho|Basotho
+Liberia|Liberian
+Libya|Libyan
+Liechtenstein|Liechtensteiner
+Lithuania|Lithuanian
+Luxembourg|Luxembourgish|Luxembourger
+Macau|Macao|Macao SAR China|Macanese
+Madagascar|Malagasy
+Malawi|Malawian
+Malaysia|Malaysian
+Maldives|Maldivian
+Mali|Malian
+Malta|Maltese
+Marshall Islands|Marshallese
+Mauritania|Mauritanian
+Mauritius|Mauritian
+Mexico|Mexican
+Micronesia|Micronesia, Federated States of|Micronesian
+Moldova|Moldova, Republic of|Republic of Moldova|Moldovan
+Monaco|Monegasque
+Mongolia|Mongolian
+Montenegro|Montenegrin
+Morocco|Moroccan
+Mozambique|Mozambican
+Myanmar|Burma|Burmese
+Namibia|Namibian
+Nauru|Nauruan
+Nepal|Nepalese|Nepali
+Netherlands|The Netherlands|Holland|Dutch
+New Zealand|New Zealander
+Nicaragua|Nicaraguan
+Niger|Nigerien
+Nigeria|Nigerian
+North Korea|Korea, Democratic People's Republic of|Democratic People's Republic of Korea|North Korean
+North Macedonia|Macedonia|Macedonian
+Norway|Norwegian
+Oman|Omani
+Pakistan|Pakistani
+Palau|Palauan
+Palestine|Palestine, State of|State of Palestine|Palestinian Territory|Palestinian
+Panama|Panamanian
+Papua New Guinea|Papua New Guinean
+Paraguay|Paraguayan
+Peru|Peruvian
+Philippines|The Philippines|Filipino|Philippine
+Poland|Polish
+Portugal|Portuguese
+Puerto Rico|Puerto Rican
+Qatar|Qatari
+Romania|Romanian
+Russia|Russian Federation|Russian
+Rwanda|Rwandan
+Saint Kitts and Nevis|Kittitian
+Saint Lucia|Saint Lucian
+Saint Vincent and the Grenadines|Vincentian
+Samoa|Samoan
+San Marino|Sammarinese
+Sao Tome and Principe|S\xE3o Tom\xE9 and Pr\xEDncipe|Santomean
+Saudi Arabia|Saudi|Saudi Arabian
+Senegal|Senegalese
+Serbia|Serbian
+Seychelles|Seychellois
+Sierra Leone|Sierra Leonean
+Singapore|Singaporean
+Slovakia|Slovak Republic|Slovak
+Slovenia|Slovenian|Slovene
+Solomon Islands|Solomon Islander
+Somalia|Somali
+South Africa|South African
+South Korea|Korea, Republic of|Republic of Korea|Korea|Korean|South Korean
+South Sudan|South Sudanese
+Spain|Spanish|Spaniard
+Sri Lanka|Sri Lankan
+Sudan|Sudanese
+Suriname|Surinamese
+Sweden|Swedish|Swede
+Switzerland|Swiss
+Syria|Syrian Arab Republic|Syrian
+Taiwan|Taiwan, Province of China|Taiwanese
+Tajikistan|Tajik
+Tanzania|Tanzania, United Republic of|United Republic of Tanzania|Tanzanian
+Thailand|Thai
+Timor-Leste|East Timor|Timorese
+Togo|Togolese
+Tonga|Tongan
+Trinidad and Tobago|Trinidadian|Tobagonian
+Tunisia|Tunisian
+Turkey|T\xFCrkiye|Turkiye|Turkish
+Turkmenistan|Turkmen
+Tuvalu|Tuvaluan
+Uganda|Ugandan
+Ukraine|Ukrainian
+United Arab Emirates|UAE|Emirati
+United Kingdom|UK|U.K.|Great Britain|Britain|British|England|Scotland|Wales|Northern Ireland|English|Scottish|Welsh
+United States|United States of America|USA|U.S.A.|US|U.S.|America|American
+Uruguay|Uruguayan
+Uzbekistan|Uzbek
+Vanuatu|Ni-Vanuatu
+Vatican City|Holy See|Holy See (Vatican City State)
+Venezuela|Venezuela, Bolivarian Republic of|Venezuelan
+Vietnam|Viet Nam|Vietnamese
+Yemen|Yemeni
+Zambia|Zambian
+Zimbabwe|Zimbabwean
+`;
+  var CASE_SENSITIVE = /* @__PURE__ */ new Set(["US", "U.S.", "UK", "U.K.", "USA", "U.S.A.", "UAE", "PRC", "DRC"]);
+  var ENTRIES = TABLE.trim().split("\n").map((line) => {
+    const names = line.split("|").map((s) => s.trim()).filter(Boolean);
+    return { name: names[0], names };
+  });
+  function norm(text) {
+    return String(text == null ? "" : text).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\./g, "").replace(/[^a-z0-9]+/g, " ").trim().replace(/^the /, "");
+  }
+  var BY_NAME = /* @__PURE__ */ new Map();
+  for (const e of ENTRIES) {
+    for (const n of e.names) {
+      const k = norm(n);
+      if (k && !BY_NAME.has(k)) BY_NAME.set(k, e.name);
+    }
+  }
+  var COUNTRY_NAMES = ENTRIES.map((e) => e.name);
+  function countryOf(text) {
+    const raw = String(text == null ? "" : text).trim();
+    if (!raw) return "";
+    const whole = BY_NAME.get(norm(raw));
+    if (whole) return whole;
+    const outside = BY_NAME.get(norm(raw.replace(/\([^)]*\)/g, " ")));
+    if (outside) return outside;
+    const inside = /\(([^)]+)\)/.exec(raw);
+    if (inside) {
+      const c = BY_NAME.get(norm(inside[1]));
+      if (c) return c;
+    }
+    return BY_NAME.get(norm(raw.split(/\s*[›>]\s*|\s[-–—:]\s/)[0])) || "";
+  }
+  function countryShapes(country) {
+    const e = ENTRIES.find((x) => x.name === country);
+    return e ? e.names.slice() : country ? [country] : [];
+  }
+  var labelOf = (o) => typeof o === "string" ? o : o && o.label || "";
+  function countryOption(country, options) {
+    if (!country) return null;
+    const labels = (options || []).map(labelOf);
+    const same = labels.filter((l) => countryOf(l) === country);
+    if (!same.length) return null;
+    return same.find((l) => norm(l) === norm(country)) || same[0];
+  }
+  function countryShare(options) {
+    const labels = (options || []).map(labelOf).filter(Boolean);
+    if (!labels.length) return 0;
+    return labels.filter((l) => countryOf(l)).length / labels.length;
+  }
+  function countryNamedIn(question) {
+    const raw = String(question || "");
+    const padded = " " + norm(raw) + " ";
+    const hits = [];
+    for (const e of ENTRIES) {
+      for (const n of e.names) {
+        if (CASE_SENSITIVE.has(n)) {
+          const esc2 = n.replace(/\./g, "\\.");
+          if (new RegExp(`(^|[^A-Za-z.])${esc2}(?![A-Za-z])`).test(raw)) hits.push([e.name, norm(n)]);
+          continue;
+        }
+        const k = norm(n);
+        if (k.length > 2 && padded.includes(" " + k + " ")) hits.push([e.name, k]);
+      }
+    }
+    const kept = hits.filter(([c, k]) => !hits.some(([c2, k2]) => c2 !== c && k2 !== k && (" " + k2 + " ").includes(" " + k + " ")));
+    const countries = new Set(kept.map(([c]) => c));
+    return countries.size === 1 ? Array.from(countries)[0] : "";
+  }
+
   // src/autofill/plan.js
   var AUTOFILL_MIN = 0.8;
   var SUGGEST_MIN = 0.5;
@@ -2886,6 +3156,19 @@ what when where which who will with would you your now future
           const value2 = saved ? coerce(saved, row) : null;
           if (value2 !== null) {
             return done(d, FILL, value2, "saved_answer", 0.9, "your saved answer to this question");
+          }
+        }
+        if (category === "citizenship") {
+          const c = citizenshipAnswer(row, bank, entry2);
+          if (c && c.ask) return done(d, ASK, "", "", 0, c.ask);
+          if (c) {
+            if (c.candidates && c.candidates.length > 1) d.candidates = c.candidates;
+            if (c.drill) d.drill = c.drill;
+            if (c.readFirst) d.readFirst = c.readFirst;
+            if (row.value && looksLikeDecline(c.value) && !looksLikeDecline(row.value)) {
+              return done(d, SKIP, row.value, "", 0, "keeping the answer already there");
+            }
+            return done(d, FILL, c.value, "profile", 0.95, "");
           }
         }
         if (!stored) {
@@ -3096,7 +3379,8 @@ what when where which who will with would you your now future
   }
   var PROFILE_CATEGORIES = /* @__PURE__ */ new Set(["work_authorization", "sponsorship", "salary", "demographic"]);
   function profileHint(category, entry) {
-    if (entry && entry.key === "nationality") return "add your nationality to your profile";
+    if (entry && entry.key === "nationality") return "add your country of citizenship to your profile";
+    if (category === "citizenship") return "add your country of citizenship to your profile";
     if (entry && entry.key === "citizenship_status") return "add your citizenship status to your profile";
     switch (category) {
       case "work_authorization":
@@ -3265,6 +3549,65 @@ what when where which who will with would you your now future
     if (!want) return null;
     const same = (options || []).filter((o) => citizenshipGroup(o) === want);
     return same.length === 1 ? same[0] : null;
+  }
+  var US_CITIZEN = "U.S. citizen or national";
+  var NOT_US = "Not a U.S. citizen or permanent resident";
+  function usStatus(bank, country) {
+    const explicit = String(bank && bank.citizenship_status || "").trim();
+    if (explicit) return explicit;
+    if (!country) return "";
+    return country === "United States" ? US_CITIZEN : NOT_US;
+  }
+  var BEYOND_CITIZEN_RE = /\bpermanent resident|\bgreen card\b|\bperson\b|\blawful|\bprotected individual\b|\brefugee\b|\basylee\b/i;
+  var PLACEHOLDER_RE = /^(select|choose|please select|--|—)/i;
+  function isYesNoRow(row, labels) {
+    const real = labels.filter((l) => l && !PLACEHOLDER_RE.test(l.trim()));
+    if (real.length) return real.every((l) => /^(yes|no)\b/i.test(l.trim()) || looksLikeDecline(l));
+    return /^\s*(are|is|do|does|have|has|will|were)\b/i.test(row.label || "");
+  }
+  function citizenshipAnswer(row, bank, entry) {
+    const country = countryOf(bank && bank.nationality || "");
+    const labels = (row.options || []).map((o) => typeof o === "string" ? o : o && o.label || "").filter(Boolean);
+    const named = countryNamedIn(row.label);
+    if (named && isYesNoRow(row, labels)) {
+      const explicitGroup = citizenshipGroup(bank && bank.citizenship_status || "");
+      if (!country && !(named === "United States" && explicitGroup)) return null;
+      let yes;
+      if (!country) {
+        yes = explicitGroup === "citizen" || BEYOND_CITIZEN_RE.test(row.label || "") && explicitGroup === "permanent_resident";
+      } else if (named === country) {
+        yes = true;
+      } else if (BEYOND_CITIZEN_RE.test(row.label || "")) {
+        const explicit = String(bank && bank.citizenship_status || "").trim();
+        if (named !== "United States" || !explicit) {
+          return { ask: `you're a citizen of ${country} \u2014 your profile doesn't say whether you hold residence there` };
+        }
+        const group = citizenshipGroup(explicit);
+        yes = group === "citizen" || group === "permanent_resident" || (group === "refugee" || group === "asylee") && /\bperson\b|\bprotected individual\b/i.test(row.label);
+      } else {
+        yes = false;
+      }
+      const value = coerce(yes ? "Yes" : "No", Object.assign({}, row, { candidateKey: "" }));
+      return value === null ? { ask: "none of the options say Yes or No" } : { value };
+    }
+    if (labels.length) {
+      const own = countryOption(country, labels);
+      if (own) return { value: own, drill: row.kind === "combobox" ? "Citizen" : "" };
+      if (countryShare(labels) >= 0.5) {
+        return country ? { ask: `${country} isn't one of this list's options \u2014 choose your answer` } : null;
+      }
+      if (entry && entry.key === "nationality") return null;
+      const status = usStatus(bank, country);
+      if (!status) return null;
+      const value = citizenshipOption(status, labels);
+      return value ? { value, readFirst: { key: "citizenship_status", stored: status, country } } : { ask: `none of the options match your citizenship (${country || status})` };
+    }
+    if (named && entry && entry.key === "citizenship_status") {
+      const status = usStatus(bank, country);
+      return status ? { value: status, readFirst: { key: "citizenship_status", stored: status, country } } : null;
+    }
+    if (!country) return null;
+    return { value: country, candidates: countryShapes(country), drill: row.kind === "combobox" ? "Citizen" : "" };
   }
   var MAX_PROMPT_SKILLS = 10;
   function splitSkills(text) {
@@ -3632,7 +3975,9 @@ what when where which who will with would you your now future
     return /\b(date|dd\s*\/\s*mm|mm\s*\/\s*dd|yyyy)\b/i.test(hint);
   }
   function pickFromOptions(text, row, options) {
-    if (row.candidateKey === "citizenship_status") return citizenshipOption(text, options);
+    if (row.candidateKey === "citizenship_status") {
+      return row.country && countryOption(row.country, options) || citizenshipOption(text, options);
+    }
     if (row.candidateKey === "degree") return degreeOption(text, options);
     if (row.candidateKey === "authorized_to_work_in_country" && !options.some((o) => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
       return workAuthStatement(text, row.sponsorship, options);
@@ -3937,7 +4282,7 @@ what when where which who will with would you your now future
     const head = text.split(",")[0].trim();
     return head.length >= 2 ? head : text;
   }
-  async function commitCombobox(row, value, candidates, readFirst) {
+  async function commitCombobox(row, value, candidates, readFirst, drill) {
     const el = row.el;
     if (!el) return false;
     const shapes = dedupe([value].concat(candidates || []));
@@ -4009,7 +4354,12 @@ what when where which who will with would you your now future
         return settlesTo(row, [pick].concat(shapes));
       }
       for (const shape of options.length ? shapes : []) {
+        const before = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
         if (!await clickMatchingOption(el, shape, options)) continue;
+        if (drill && isWorkdayPrompt(el)) {
+          const drilled = await drillDown(row, el, shapes, drill, before);
+          if (drilled !== null) return drilled;
+        }
         if (await settlesTo(row, shapes)) return true;
         break;
       }
@@ -4442,13 +4792,59 @@ what when where which who will with would you your now future
     console.info(`[TailorCV] skills: added ${out.added.length}, already there ${out.already.length}` + (out.missing.length ? `, not offered: ${out.missing.join(", ")}` : ""));
     return out;
   }
+  async function drillDown(row, el, shapes, drill, before) {
+    const doc = el.ownerDocument || globalThis.document;
+    const isSet = () => shapes.some((s) => committed(row, s));
+    const was = new Set(before);
+    const deadline = Date.now() + Math.max(TIMING.commitWaitMs, 300);
+    let level = [];
+    for (; ; ) {
+      if (isSet()) return true;
+      const nodes = visibleOptionNodes2(doc, el);
+      const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+      if (labels.length && labels.some((l) => !was.has(l))) {
+        const pick = citizenshipOption(drill, labels);
+        if (pick) {
+          await sleep(Math.max(TIMING.settleMs, 100));
+          const fresh = visibleOptionNodes2(doc, el);
+          const node = fresh.find((n) => (n.textContent || "").replace(/\s+/g, " ").trim() === pick) || nodes[labels.indexOf(pick)];
+          let target = node;
+          for (const d of node.querySelectorAll("*")) {
+            if ((d.textContent || "").replace(/\s+/g, " ").trim() === pick) target = d;
+          }
+          try {
+            target.scrollIntoView({ block: "nearest" });
+          } catch (e) {
+          }
+          pressPointer(target);
+          if (await settlesTo(row, shapes.concat([pick]))) return true;
+          console.info(
+            "[TailorCV] dropdown did not commit after choosing",
+            JSON.stringify(pick),
+            "in the level that opened:",
+            labels.slice(0, 10)
+          );
+          return false;
+        }
+        level = labels;
+      }
+      if (Date.now() >= deadline) break;
+      await sleep(100);
+    }
+    if (level.length) {
+      console.info("[TailorCV] a level opened with no", JSON.stringify(drill), "row:", level.slice(0, 10));
+      return false;
+    }
+    return null;
+  }
   function pickReadFirst(readFirst, labels) {
     const pick = coerce(readFirst.stored, {
       kind: "combobox",
       options: labels,
       candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
       candidateKey: readFirst.key,
-      sponsorship: readFirst.sponsorship
+      sponsorship: readFirst.sponsorship,
+      country: readFirst.country
     });
     return pick != null && labels.includes(pick) ? pick : null;
   }
@@ -4598,10 +4994,10 @@ what when where which who will with would you your now future
         break;
       case "select":
         wrote = setSelect(row.el, value);
-        if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
+        if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
         break;
       case "combobox":
-        wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
+        wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
         break;
       case "radio":
       case "checkbox":
@@ -4659,7 +5055,7 @@ what when where which who will with would you your now future
 
   // src/autofill/tiles.js
   var probe3 = () => globalThis.__tcvFieldProbe;
-  var norm = (s) => String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  var norm2 = (s) => String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   var MONTHS2 = [
     "January",
     "February",
@@ -4687,13 +5083,13 @@ what when where which who will with would you your now future
     return [t && t.textContent, s && s.textContent].map((x) => (x || "").replace(/\s+/g, " ").trim()).filter(Boolean).join(" \xB7 ");
   }
   function matchTileEntry(kind, text, entries) {
-    const t = norm(text);
+    const t = norm2(text);
     const years = new Set(String(text).match(/\b(19|20)\d{2}\b/g) || []);
     const scored = (entries || []).map((e, i) => {
       let score = 0;
-      const name = norm(kind === "education" ? e.school : e.company);
+      const name = norm2(kind === "education" ? e.school : e.company);
       if (name && t.includes(name)) score += 3;
-      if (kind === "experience" && e.title && t.includes(norm(e.title))) score += 3;
+      if (kind === "experience" && e.title && t.includes(norm2(e.title))) score += 3;
       const yearOf2 = (v) => (String(v || "").match(/\b(19|20)\d{2}\b/) || [])[0];
       if (yearOf2(e.to) && years.has(yearOf2(e.to))) score += 2;
       if (yearOf2(e.from) && years.has(yearOf2(e.from))) score += 1;

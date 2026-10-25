@@ -933,6 +933,76 @@ test('nationality is never guessed when the profile has none', () => {
   eq(d.action, p.PROFILE);
 });
 
+// ── citizenship by country ───────────────────────────────────
+
+const citizen = (nationality, extra) => ({
+  answerBank: Object.assign({}, BANK, { nationality }, extra || {}), hasResume: true,
+});
+const decideWith = (ctx, f) => p.decide([f], ctx, null, null)[0];
+const YES_NO = ['Yes', 'No'];
+
+test('a country list for "Citizenship Status" takes the country, not a U.S. sentence', () => {
+  const d = decideWith(citizen('India', { citizenship_status: 'Not a U.S. citizen or permanent resident' }),
+    field('Citizenship Status*', { kind: 'combobox', required: true,
+                                   options: ['Afghanistan', 'Åland Islands', 'Albania', 'India', 'Indonesia'] }));
+  eq(d.action, p.FILL);
+  eq(d.value, 'India');
+});
+
+test('a Workday prompt not read yet is searched for the country, then its Citizen level', () => {
+  const d = decideWith(citizen('India'), field('Citizenship Status*', { kind: 'combobox', required: true }));
+  eq(d.action, p.FILL);
+  eq(d.value, 'India');
+  eq(d.drill, 'Citizen');
+});
+
+test('an older free-text "Indian" is read as India', () => {
+  const d = decideWith(citizen('Indian'), field('Primary Nationality*', { kind: 'select', required: true,
+                                                 options: ['Iceland', 'India', 'Indonesia'] }));
+  eq(d.value, 'India');
+});
+
+test('a list of nationalities takes the nationality', () => {
+  const d = decideWith(citizen('India'), field('Nationality', { kind: 'select',
+                                                options: ['British', 'Indian', 'American'] }));
+  eq(d.value, 'Indian');
+});
+
+test('"Are you a citizen of X?" compares X with the country of citizenship', () => {
+  const ask = (label, nat) => decideWith(citizen(nat), field(label, { kind: 'radio', required: true, options: YES_NO }));
+  eq(ask('Are you a citizen of Singapore?', 'India').value, 'No');
+  eq(ask('Are you a citizen of India?', 'India').value, 'Yes');
+  eq(ask('Are you a U.S. citizen?', 'India').value, 'No');
+  eq(ask('Are you a US citizen?', 'United States').value, 'Yes');
+  eq(ask('Do you hold Singaporean citizenship?', 'Singapore').value, 'Yes');
+});
+
+test('"U.S. citizen or permanent resident?" needs the U.S. status when the country is not the U.S.', () => {
+  const label = 'Are you a U.S. citizen or permanent resident?';
+  const row = () => field(label, { kind: 'radio', required: true, options: YES_NO });
+  eq(decideWith(citizen('India'), row()).action, p.ASK, 'a country alone says nothing about a green card');
+  eq(decideWith(citizen('India', { citizenship_status: 'U.S. lawful permanent resident (green card)' }), row()).value,
+     'Yes');
+  eq(decideWith(citizen('India', { citizenship_status: 'Not a U.S. citizen or permanent resident' }), row()).value,
+     'No');
+  eq(decideWith(citizen('United States'), row()).value, 'Yes');
+});
+
+test('a list of U.S. statuses is answered from the country when no U.S. status is set', () => {
+  const d = decideWith(citizen('India'), citizenshipRow());
+  eq(d.action, p.FILL);
+  eq(d.value, '(f) Other (please explain)', 'an Indian citizen is none of (a)-(e)');
+  eq(decideWith(citizen('United States'), citizenshipRow()).value,
+     '(a) U.S. citizen or national of the United States');
+});
+
+test('a country list without the person\'s country is asked, never approximated', () => {
+  const d = decideWith(citizen('India'), field('Country of citizenship', { kind: 'select',
+                                               options: ['Iceland', 'Indonesia', 'Ireland'] }));
+  eq(d.action, p.ASK);
+  notOk(d.value);
+});
+
 // ── documents ────────────────────────────────────────────────
 
 test('a resume file field is a document action when a resume is on file', () => {

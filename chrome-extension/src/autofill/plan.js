@@ -46,6 +46,7 @@ import {
   STORABLE_SENSITIVE,
   matchSensitiveKey,
 } from './match.js';
+import { countryOf, countryOption, countryShare, countryShapes, countryNamedIn } from './countries.js';
 
 export const AUTOFILL_MIN = 0.8;
 export const SUGGEST_MIN = 0.5;
@@ -161,6 +162,22 @@ export function decide(rows, ctx, server, state) {
         const value = saved ? coerce(saved, row) : null;
         if (value !== null) {
           return done(d, FILL, value, 'saved_answer', 0.9, 'your saved answer to this question');
+        }
+      }
+      // Citizenship from the profile's country of citizenship — see
+      // citizenshipAnswer. Before this, a Workday country list was searched for
+      // "Not a U.S. citizen or permanent resident" and never stuck.
+      if (category === 'citizenship') {
+        const c = citizenshipAnswer(row, bank, entry);
+        if (c && c.ask) return done(d, ASK, '', '', 0, c.ask);
+        if (c) {
+          if (c.candidates && c.candidates.length > 1) d.candidates = c.candidates;
+          if (c.drill) d.drill = c.drill;
+          if (c.readFirst) d.readFirst = c.readFirst;
+          if (row.value && looksLikeDecline(c.value) && !looksLikeDecline(row.value)) {
+            return done(d, SKIP, row.value, '', 0, 'keeping the answer already there');
+          }
+          return done(d, FILL, c.value, 'profile', 0.95, '');
         }
       }
       if (!stored) {
@@ -468,7 +485,8 @@ function truncate(s, n) {
 const PROFILE_CATEGORIES = new Set(['work_authorization', 'sponsorship', 'salary', 'demographic']);
 
 function profileHint(category, entry) {
-  if (entry && entry.key === 'nationality') return 'add your nationality to your profile';
+  if (entry && entry.key === 'nationality') return 'add your country of citizenship to your profile';
+  if (category === 'citizenship') return 'add your country of citizenship to your profile';
   if (entry && entry.key === 'citizenship_status') return 'add your citizenship status to your profile';
   switch (category) {
     case 'work_authorization': return 'add your work authorization to your profile';
@@ -648,6 +666,100 @@ export function citizenshipOption(stored, options) {
   if (!want) return null;
   const same = (options || []).filter(o => citizenshipGroup(o) === want);
   return same.length === 1 ? same[0] : null;
+}
+
+// The U.S. status the profile states, or the one its country of citizenship
+// implies: a citizen of the U.S. is one; anyone else is not — and holds no
+// green card unless the profile says so.
+const US_CITIZEN = 'U.S. citizen or national';
+const NOT_US = 'Not a U.S. citizen or permanent resident';
+
+function usStatus(bank, country) {
+  const explicit = String((bank && bank.citizenship_status) || '').trim();
+  if (explicit) return explicit;
+  if (!country) return '';
+  return country === 'United States' ? US_CITIZEN : NOT_US;
+}
+
+// Asks about more than citizenship: residence, "U.S. person" (export control).
+const BEYOND_CITIZEN_RE = /\bpermanent resident|\bgreen card\b|\bperson\b|\blawful|\bprotected individual\b|\brefugee\b|\basylee\b/i;
+const PLACEHOLDER_RE = /^(select|choose|please select|--|—)/i;
+
+function isYesNoRow(row, labels) {
+  const real = labels.filter(l => l && !PLACEHOLDER_RE.test(l.trim()));
+  if (real.length) return real.every(l => /^(yes|no)\b/i.test(l.trim()) || looksLikeDecline(l));
+  return /^\s*(are|is|do|does|have|has|will|were)\b/i.test(row.label || '');
+}
+
+/**
+ * A citizenship question answered from the profile's country of citizenship
+ * (bank.nationality, "India" — or an older "Indian"), or null to leave it to
+ * the stored-answer path below.
+ *
+ *  - "Are you a citizen of Singapore?" — Yes if that is their country, else No.
+ *    Asked about U.S. residence too, the country alone can't say: their U.S.
+ *    status settles it if they set one, otherwise they choose.
+ *  - A list of countries or nationalities — their country, exactly.
+ *  - A list of U.S. statuses (SpaceX) — their U.S. status, stated or implied.
+ *  - A list not read yet (Workday's prompt) — their country, searched for, with
+ *    Workday's per-country level (India › Citizen) answered "Citizen".
+ *
+ * Returns { value, candidates?, drill?, readFirst? } or { ask, profile? }.
+ */
+export function citizenshipAnswer(row, bank, entry) {
+  const country = countryOf((bank && bank.nationality) || '');
+  const labels = (row.options || []).map(o => (typeof o === 'string' ? o : (o && o.label) || ''))
+    .filter(Boolean);
+  const named = countryNamedIn(row.label);
+
+  if (named && isYesNoRow(row, labels)) {
+    const explicitGroup = citizenshipGroup((bank && bank.citizenship_status) || '');
+    if (!country && !(named === 'United States' && explicitGroup)) return null;
+    let yes;
+    if (!country) {
+      // Only a U.S. status on file: it answers a U.S. question by itself.
+      yes = explicitGroup === 'citizen'
+        || (BEYOND_CITIZEN_RE.test(row.label || '') && explicitGroup === 'permanent_resident');
+    } else if (named === country) {
+      yes = true;
+    } else if (BEYOND_CITIZEN_RE.test(row.label || '')) {
+      const explicit = String((bank && bank.citizenship_status) || '').trim();
+      if (named !== 'United States' || !explicit) {
+        return { ask: `you're a citizen of ${country} — your profile doesn't say whether you hold residence there` };
+      }
+      const group = citizenshipGroup(explicit);
+      yes = group === 'citizen' || group === 'permanent_resident'
+        || ((group === 'refugee' || group === 'asylee') && /\bperson\b|\bprotected individual\b/i.test(row.label));
+    } else {
+      yes = false;
+    }
+    const value = coerce(yes ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
+    return value === null ? { ask: 'none of the options say Yes or No' } : { value };
+  }
+
+  if (labels.length) {
+    const own = countryOption(country, labels);
+    if (own) return { value: own, drill: row.kind === 'combobox' ? 'Citizen' : '' };
+    if (countryShare(labels) >= 0.5) {
+      return country ? { ask: `${country} isn't one of this list's options — choose your answer` } : null;
+    }
+    if (entry && entry.key === 'nationality') return null;
+    const status = usStatus(bank, country);
+    if (!status) return null;
+    const value = citizenshipOption(status, labels);
+    return value
+      ? { value, readFirst: { key: 'citizenship_status', stored: status, country } }
+      : { ask: `none of the options match your citizenship (${country || status})` };
+  }
+
+  // Options not read yet. A question naming a country ("U.S. citizenship
+  // status") is a status list; anything else is answered with the country.
+  if (named && entry && entry.key === 'citizenship_status') {
+    const status = usStatus(bank, country);
+    return status ? { value: status, readFirst: { key: 'citizenship_status', stored: status, country } } : null;
+  }
+  if (!country) return null;
+  return { value: country, candidates: countryShapes(country), drill: row.kind === 'combobox' ? 'Citizen' : '' };
 }
 
 // A Workday skills prompt takes one search per skill; ten is plenty and keeps
@@ -1161,7 +1273,10 @@ function looksLikeDateField(row) {
 function pickFromOptions(text, row, options) {
   // Every shape of the answer, not just the one the label suggested: a
   // "Country" list of dial codes matches "+91" and nothing else.
-  if (row.candidateKey === 'citizenship_status') return citizenshipOption(text, options);
+  if (row.candidateKey === 'citizenship_status') {
+    // A country list (Workday) takes the country; a list of U.S. statuses, the status.
+    return (row.country && countryOption(row.country, options)) || citizenshipOption(text, options);
+  }
   if (row.candidateKey === 'degree') return degreeOption(text, options);
   // A work-authorization list worded as statements rather than Yes / No.
   if (row.candidateKey === 'authorized_to_work_in_country'
