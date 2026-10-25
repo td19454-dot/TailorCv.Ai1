@@ -2374,7 +2374,10 @@ function wdEducationBlock(n, k) {
       ${text('schoolName', 'School or University', true)}
       <div data-automation-id="formField-degree"><label id="${f}degree-label" for="${f}degree"><span>Degree<abbr aria-hidden="true">*</abbr></span></label>
         <button type="button" id="${f}degree" aria-haspopup="listbox" aria-labelledby="${f}degree-label ${f}degree" value="">Select One</button></div>
-      ${text('fieldOfStudy', 'Field of Study', false)}
+      <div data-automation-id="formField-fieldOfStudy"><label for="${f}fieldOfStudy">Field of Study</label>
+        <div data-automation-id="multiSelectContainer"><ul data-automation-id="selectedItemList"></ul>
+          <div data-automation-id="multiselectInputContainer">
+            <input data-automation-id="searchBox" id="${f}fieldOfStudy" type="text" placeholder="Search"></div></div></div>
       ${text('gradeAverage', 'Overall Result (GPA)', false)}
       <div class="dates">${wdYear(f + 'firstYearAttended', 'From')}${wdYear(f + 'lastYearAttended', 'To (Actual or Expected)')}</div>
     </div></div>`;
@@ -2397,11 +2400,25 @@ const WD_EDUCATION_PAGE = `
   <div id="wd-portal"></div>
   <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
 
-// NVIDIA's real Workday degree list (Oct 2026).
-const WD_DEGREES = ['Post-diploma studies', 'BTECH', 'MTECH', 'MCA', 'University Diploma', 'Associates',
-  'Technical/other training', 'Some college', 'PhD', 'Some post college', 'No Degree'];
+// Part of NVIDIA's Workday Field of Study list, in its order.
+const WD_FIELDS = ['Accounting', 'Advanced Computing', 'Advertising', 'Aeronautical Engineering', 'Aerospace',
+  'Agriculture', 'Animation', 'Applications Design and Data Analysis', 'Applied Computing',
+  'Applied Electronics', 'Applied Informatics', 'Applied Mathematics', 'Applied Science',
+  'Chemical Engineering', 'Chemistry', 'Civil Engineering', 'Computational Science & Engineering',
+  'Computer & Info Science', 'Computer Science', 'Computer Science & Engin.',
+  'Electrical Engineering and Computer Science', 'Mechanical Engineering'];
 
-function wireWorkdayEducation(env) {
+// NVIDIA's real Workday degree list (Oct 2026).
+// "High School" is further down the list than the screenshot reached; an
+// earlier NVIDIA run had it selected in Education 2.
+const WD_DEGREES = ['Post-diploma studies', 'BTECH', 'MTECH', 'MCA', 'University Diploma', 'Associates',
+  'Technical/other training', 'Some college', 'PhD', 'Some post college', 'No Degree', 'High School'];
+
+// opts.degreeLoadMs: the Degree list opens with only its disabled "Select One"
+//   and loads the real options this long after (NVIDIA's report, Oct 2026).
+// opts.enterSelects: Field of Study's Enter selects the exact match itself —
+//   the pill appears and no result needs clicking (NVIDIA's report).
+function wireWorkdayEducation(env, opts = {}) {
   const doc = env.document;
   const log = { eduAdds: 0, expAdds: 0, next: 0 };
   const section = doc.querySelector('[aria-labelledby="Education-section"]');
@@ -2410,34 +2427,172 @@ function wireWorkdayEducation(env) {
   let k = 40;
   const wireDegree = (block) => {
     const btn = block.querySelector('[data-automation-id="formField-degree"] button');
-    btn.addEventListener('mousedown', () => {
-      portal.innerHTML = '<ul role="listbox">' + WD_DEGREES.map(o =>
+    const placeholder = '<li data-value="" role="option" aria-disabled="true" aria-selected="true" id="select-one"><div>Select One</div></li>';
+    const fill = () => {
+      portal.innerHTML = '<ul role="listbox">' + placeholder + WD_DEGREES.map(o =>
         `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">${o}</li>`).join('') + '</ul>';
-      for (const li of portal.querySelectorAll('[role=option]')) {
+      for (const li of portal.querySelectorAll('[role=option]:not([aria-disabled])')) {
         li.addEventListener('mousedown', () => { btn.textContent = li.textContent; btn.value = li.textContent; portal.innerHTML = ''; });
       }
+    };
+    btn.addEventListener('mousedown', () => {
+      btn.setAttribute('aria-expanded', 'true');
+      if (!opts.degreeLoadMs) { fill(); return; }
+      portal.innerHTML = '<ul role="listbox">' + placeholder + '</ul>';
+      doc.defaultView.setTimeout(fill, opts.degreeLoadMs);
     });
+  };
+  // Workday's Field of Study prompt, as it behaves (NVIDIA, Oct 2026): opening
+  // shows the full list's first rows; typing changes nothing; Enter searches and
+  // shows the results with the FIRST highlighted; a click adds a selectedItem
+  // pill; leaving without a click erases what was typed.
+  log.letterKeys = 0;
+  const wireField = (block) => {
+    const input = block.querySelector('[data-automation-id="formField-fieldOfStudy"] input');
+    const pills = block.querySelector('[data-automation-id="formField-fieldOfStudy"] [data-automation-id="selectedItemList"]');
+    // opts.hideRoot: while the results are open, Workday marks the page's root
+    // aria-hidden="true" (the console warning on NVIDIA) — the results inside it
+    // are on screen all the same.
+    const root = doc.querySelector('[data-automation-id="applyFlowPage"]');
+    const render = (items) => {
+      portal.innerHTML = '<ul role="listbox">' + items.map((o, i) =>
+        `<li role="option" data-automation-id="promptOption" data-automation-label="${o}"${i === 0 ? ' aria-selected="true"' : ''}>`
+        + `<div data-automation-id="promptLeafNode"><span class="radio"></span><span>${o}</span></div></li>`).join('') + '</ul>';
+      if (opts.hideRoot) root.setAttribute('aria-hidden', 'true');
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        li.addEventListener('mousedown', () => {
+          pills.innerHTML += `<li><div data-automation-id="selectedItem">${li.textContent}</div></li>`;
+          input.value = '';
+          portal.innerHTML = '';
+          root.removeAttribute('aria-hidden');
+        });
+      }
+    };
+    input.addEventListener('mousedown', () => render(WD_FIELDS.slice(0, 12)));
+    input.addEventListener('keydown', (e) => {
+      if (/^[a-z]$/i.test(e.key)) log.letterKeys++;
+      if (e.key !== 'Enter') return;
+      const exact = WD_FIELDS.find(o => o.toLowerCase() === input.value.trim().toLowerCase());
+      if (opts.enterSelects && exact) {
+        log.enterSelected = (log.enterSelected || 0) + 1;
+        pills.innerHTML += `<li><div data-automation-id="selectedItem">${exact}</div></li>`;
+        input.value = '';
+        // and the results still render, with the selected one among them
+      }
+      const words = (exact || input.value).toLowerCase().split(/\W+/).filter(Boolean).map(w => w.slice(0, 6));
+      render(WD_FIELDS.filter(o => o.toLowerCase().split(/\W+/).some(ow => words.some(w => ow.startsWith(w)))));
+    });
+    input.addEventListener('blur', () => { input.value = ''; });
   };
   add.addEventListener('click', () => {
     const n = section.querySelectorAll('[aria-labelledby$="-panel"]').length + 1;
     log.eduAdds++;
     if (n > 1) add.textContent = 'Add Another';
     add.parentElement.parentElement.insertAdjacentHTML('beforebegin', wdEducationBlock(n, k++));
-    wireDegree(section.querySelector(`[aria-labelledby="Education-${n}-panel"]`));
+    const block = section.querySelector(`[aria-labelledby="Education-${n}-panel"]`);
+    wireDegree(block);
+    wireField(block);
   });
   doc.getElementById('exp-add').addEventListener('click', () => { log.expAdds++; });
   doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => { log.next++; });
   return log;
 }
 
+// Workday's citizenship prompts. "Citizenship Status" is hierarchical: each
+// country row has a › and opens that country's own level (Citizen / Permanent
+// Resident / Non-Citizen); "Primary Nationality" is a flat country list.
+const wdPrompt = (id, label) => `
+    <div data-automation-id="formField-${id}"><label for="${id}">${label}<abbr aria-hidden="true">*</abbr></label>
+      <div data-automation-id="multiSelectContainer"><ul data-automation-id="selectedItemList"></ul>
+        <div data-automation-id="multiselectInputContainer">
+          <input data-automation-id="searchBox" id="${id}" type="text" placeholder="Search" aria-required="true"></div></div></div>`;
+const WD_CITIZENSHIP_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>Voluntary Disclosures</h3>
+  <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    ${wdPrompt('citizenshipStatus', 'Citizenship Status')}
+    ${wdPrompt('primaryNationality', 'Primary Nationality')}
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+const WD_COUNTRIES = ['Afghanistan', 'Åland Islands', 'Albania', 'Algeria', 'Cambodia', 'British Indian Ocean Territory',
+  'India', 'Indonesia', 'Singapore', 'United States of America'];
+const WD_LEVEL = ['Citizen', 'Permanent Resident', 'Non-Citizen'];
+
+function wireWorkdayCitizenship(env) {
+  const doc = env.document;
+  const portal = doc.getElementById('wd-portal');
+  const log = { levelsOpened: 0, picks: [] };
+  const wire = (id, hierarchical) => {
+    const input = doc.getElementById(id);
+    const pills = doc.querySelector(`[data-automation-id="formField-${id}"] [data-automation-id="selectedItemList"]`);
+    const choose = (text) => {
+      log.picks.push(`${id}: ${text}`);
+      pills.innerHTML += `<li><div data-automation-id="selectedItem">${text}</div></li>`;
+      input.value = '';
+      portal.innerHTML = '';
+    };
+    const row = (o, more) => `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">`
+      + `<div data-automation-id="promptLeafNode"><span>${o}</span>${more ? '<span class="chevron"></span>' : ''}</div></li>`;
+    const level = (country) => {
+      log.levelsOpened++;
+      portal.innerHTML = `<div><button aria-label="Back">‹</button><span>${country}</span></div>`
+        + '<ul role="listbox">' + WD_LEVEL.map(o => row(o, false)).join('') + '</ul>';
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        li.addEventListener('mousedown', () => choose(`${country} › ${li.textContent.trim()}`));
+      }
+    };
+    const render = (items) => {
+      portal.innerHTML = '<ul role="listbox">' + items.map(o => row(o, hierarchical)).join('') + '</ul>';
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        const country = li.textContent.trim();
+        li.addEventListener('mousedown', () => (hierarchical ? level(country) : choose(country)));
+      }
+    };
+    input.addEventListener('mousedown', () => render(WD_COUNTRIES));
+    input.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const q = input.value.trim().toLowerCase();
+      render(WD_COUNTRIES.filter(o => o.toLowerCase().includes(q)));
+    });
+  };
+  wire('citizenshipStatus', true);
+  wire('primaryNationality', false);
+  return log;
+}
+
+const pillsOf = (doc, id) => Array.from(doc.querySelectorAll(
+  `[data-automation-id="formField-${id}"] [data-automation-id="selectedItem"]`)).map(n => n.textContent).join(' | ');
+
+test('Workday citizenship: the country of citizenship, then its Citizen level; nationality flat', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { nationality: 'Indian', citizenship_status: 'Not a U.S. citizen or permanent resident' }) });
+    await run_.runAutofill(ctx, null);
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
+    eq(pillsOf(env.document, 'primaryNationality'), 'India');
+    eq(log.levelsOpened, 1, 'one country opened, never a second');
+  });
+});
+
+test('Workday citizenship: with no country of citizenship, nothing is picked', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    await run_.runAutofill(CTX, null);
+    eq(log.picks.length, 0, `picked: ${log.picks.join(', ')}`);
+  });
+});
+
 const WD_SCHOOLS = [
   { school: 'Indian Institute of Technology Delhi', degree: 'M.Tech (Master of Technology)',
     field: 'Chemical Engineering', gpa: '', from: '2023', to: '2025' },
-  { school: 'NIT Durgapur', degree: 'B.Tech (Bachelor of Technology)', field: 'Chemical Engineering',
+  { school: 'NIT Durgapur', degree: 'B.Tech (Bachelor of Technology)', field: 'Computer Science',
     gpa: '8.1/10', from: '2019', to: '2023' },
 ];
 const eduBlock = (doc, n) => doc.querySelector(`[aria-labelledby="Education-${n}-panel"]`);
 const eduVal = (block, name) => block.querySelector(`[name="${name}"]`).value;
+const eduField = block => Array.from(block.querySelectorAll(
+  '[data-automation-id="formField-fieldOfStudy"] [data-automation-id="selectedItem"]')).map(n => n.textContent).join(' | ');
 const eduYear = (block, which) => block.querySelector(`[id$="--${which}-dateSectionYear-input"]`).value;
 
 test('Workday education: "Add" opens a block per school, each filled from the profile', async () => {
@@ -2457,7 +2612,10 @@ test('Workday education: "Add" opens a block per school, each filled from the pr
     eq(eduVal(b1, 'schoolName'), 'Indian Institute of Technology Delhi');
     eq(b1.querySelector('[data-automation-id="formField-degree"] button').textContent, 'MTECH',
        'M.Tech takes the list\'s own MTECH');
-    eq(eduVal(b1, 'fieldOfStudy'), 'Chemical Engineering');
+    // Workday's prompt: committed only as a clicked pill — typed text is erased.
+    eq(eduField(b1), 'Chemical Engineering', 'searched with Enter and clicked');
+    eq(eduField(b2), 'Computer Science', 'the exact result, not the highlighted "Computational Science & Engineering"');
+    eq(log.letterKeys, 0, 'no key-by-key typing — Workday ignores it');
     eq(eduVal(b1, 'gradeAverage'), '8.7/10', 'the first school falls back to the profile GPA');
     eq(eduYear(b1, 'firstYearAttended'), '2023');
     eq(eduYear(b1, 'lastYearAttended'), '2025');
@@ -2476,6 +2634,53 @@ test('Workday education: "Add" opens a block per school, each filled from the pr
   });
 });
 
+// The user's own profile, from the NVIDIA reports (Oct 2026).
+const NVIDIA_SCHOOLS = [
+  { school: 'Jadavpur University, Kolkata', degree: 'Bachelor of Technology', field: 'Chemical Engineering',
+    gpa: '7.5', from: '2023', to: '2027' },
+  { school: 'Hariyana Vidya Mandir, Kolkata', degree: 'Higher Secondary', field: '',
+    gpa: '9.0', from: '2020', to: '2022' },
+];
+
+test('Workday education: Degree waits for its options to load past "Select One"', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    wireWorkdayEducation(env, { degreeLoadMs: 300 });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: NVIDIA_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    const doc = env.document;
+    const degree = n => eduBlock(doc, n).querySelector('[data-automation-id="formField-degree"] button').textContent;
+    eq(degree(1), 'BTECH', 'Bachelor of Technology → BTECH, once the real options load');
+    eq(degree(2), 'High School', 'Higher Secondary → High School');
+  });
+});
+
+test('Workday education: a Field of Study that Enter already selected counts as filled', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    const log = wireWorkdayEducation(env, { enterSelects: true });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: NVIDIA_SCHOOLS } });
+    const logged = [];
+    const info = console.info, group = console.groupCollapsed;
+    console.groupCollapsed = (...a) => { logged.push(a.join(' ')); };
+    let result;
+    try { result = await run_.runAutofill(ctx, null); } finally { console.groupCollapsed = group; console.info = info; }
+    eq(eduField(eduBlock(env.document, 1)), 'Chemical Engineering', 'one pill — never clicked off');
+    eq(log.enterSelected, 1);
+    notOk(logged.some(l => /did not commit: Field of Study/.test(l)), 'no false "did not commit"');
+    const row = result.decisions.find(x => String(x.key) === 'repeater:education:0');
+    eq(row.action, p.FILL, row.reason);
+  });
+});
+
+test('Workday education: Field of Study is clicked while Workday hides the page root from screen readers', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    wireWorkdayEducation(env, { hideRoot: true });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: WD_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    eq(eduField(eduBlock(env.document, 1)), 'Chemical Engineering');
+    eq(eduField(eduBlock(env.document, 2)), 'Computer Science');
+  });
+});
+
 test('Workday education: a block already showing a school takes that school', async () => {
   await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
     wireWorkdayEducation(env);
@@ -2486,6 +2691,138 @@ test('Workday education: a block already showing a school takes that school', as
     await run_.runAutofill(ctx, null);
     eq(eduYear(eduBlock(doc, 1), 'lastYearAttended'), '2023', 'block 1 completed as NIT Durgapur');
     eq(eduVal(eduBlock(doc, 2), 'schoolName'), 'Indian Institute of Technology Delhi', 'the other school gets a new block');
+  });
+});
+
+// Workday's "Type to Add Skills" (NVIDIA, Oct 2026): typing does not search;
+// Enter shows checkbox results for the current text; clicking a row TOGGLES
+// its pill (a second click removes it); the list stays open; blur erases any
+// unpicked text. "Deep Learning" starts selected, as Workday's resume read does.
+const WD_SKILL_CATALOG = ['Machine Learning (ML)', 'Machine Learning Methods', 'AWS Machine Learning',
+  'Deep Learning', 'AWS Deep Learning AMIs', 'Deep Learning Algorithms', 'Python (Programming Language)',
+  'Python', 'Pythonic', 'SQL', 'Neural Networks', 'Natural Language Processing (NLP)'];
+const WD_SKILLS_PAGE = `
+  <div data-automation-id="applyFlowPage"><h2>My Experience</h2>
+  <div data-automation-id="applyFlowMyExpPage">
+    <div data-automation-id="formField-email"><label for="wd-email">Email</label><input id="wd-email" type="email"></div>
+    <div data-automation-id="formField-name"><label for="wd-name">Legal Name</label><input id="wd-name" type="text"></div>
+    <div data-automation-id="formField-skills"><label for="wd-skills">Type to Add Skills</label>
+      <div data-automation-id="multiSelectContainer">
+        <ul role="listbox" data-automation-id="selectedItemList" aria-label="items selected"><li role="presentation" data-automation-id="menuItem"><div role="option" data-automation-id="selectedItem" aria-label="Deep Learning, press delete to clear value.">Deep Learning</div></li></ul>
+        <div data-automation-id="multiselectInputContainer">
+          <input data-automation-id="searchBox" id="wd-skills" type="text" placeholder="Search"></div></div></div>
+  </div><div id="wd-portal"></div></div>`;
+
+// opts.searchMs: Workday's server search — results appear this long after Enter.
+// opts.redrawMs: results are drawn, then redrawn (rows replaced) this long after.
+// opts.innerOnly: only an element INSIDE each row listens for the click, as a
+// checkbox row may — a click on the row element itself does nothing.
+function wireWorkdaySkills(env, opts = {}) {
+  const doc = env.document;
+  const input = doc.getElementById('wd-skills');
+  const pills = doc.querySelector('[data-automation-id="selectedItemList"]');
+  const portal = doc.getElementById('wd-portal');
+  const log = { letterKeys: 0, untoggled: [] };
+  const picked = () => Array.from(pills.querySelectorAll('[data-automation-id="selectedItem"]')).map(n => n.textContent);
+  // A clicked skill is saved to Workday's server first ("pill-REMOTE_SKILL-…"
+  // in the real markup), and the reply REDRAWS the pills from the selection as
+  // it stood at that click, plus the new skill. A second click before the
+  // first reply therefore loses the first skill: its reply never included it.
+  // That is "each new skill erases the previous one" (NVIDIA, Oct 2026).
+  const win = doc.defaultView;
+  const draw = (names) => {
+    pills.innerHTML = names.map(n => `<li role="presentation" data-automation-id="menuItem"><div role="option" data-automation-id="selectedItem" aria-label="${n}, press delete to clear value.">${n}</div></li>`).join('');
+  };
+  const toggle = (name) => {
+    const atClick = picked();
+    const next = atClick.includes(name) ? atClick.filter(n => n !== name) : atClick.concat([name]);
+    if (atClick.includes(name)) log.untoggled.push(name);
+    win.setTimeout(() => draw(next), 120);                    // the server round trip
+  };
+  const render = (items) => {
+    if (!items.length) { portal.innerHTML = '<ul role="listbox"><li>No Items.</li></ul>'; return; }
+    portal.innerHTML = '<ul role="listbox">' + items.map(o =>
+      `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">`
+      + `<div data-automation-id="promptLeafNode"><span class="box"></span><span>${o}</span></div></li>`).join('') + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]')) {
+      const target = opts.innerOnly ? li.querySelector('span:last-child') : li;
+      target.addEventListener('mousedown', (e) => {
+        if (opts.innerOnly && e.target !== target) return;
+        toggle(li.textContent);
+      });
+    }
+  };
+  input.addEventListener('keydown', (e) => {
+    if (/^[a-z]$/i.test(e.key)) log.letterKeys++;
+    if (e.key === 'Escape') { portal.innerHTML = ''; return; }
+    if (e.key !== 'Enter') return;
+    const words = input.value.toLowerCase().split(/\W+/).filter(Boolean);
+    const items = WD_SKILL_CATALOG.filter(o => words.every(w => o.toLowerCase().includes(w)));
+    const show = () => {
+      render(items);
+      if (opts.redrawMs) win.setTimeout(() => render(items), opts.redrawMs);   // rows replaced
+    };
+    if (opts.searchMs) win.setTimeout(show, opts.searchMs); else show();
+  });
+  input.addEventListener('blur', () => { input.value = ''; });
+  log.picked = picked;
+  return log;
+}
+
+test('Workday skills: each profile skill is searched with Enter and ticked once', async () => {
+  await withForm(WD_SKILLS_PAGE, {}, async (env) => {
+    const log = wireWorkdaySkills(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, Python, Underwater Basket Weaving' }) });
+    const result = await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(), ['Deep Learning', 'Machine Learning (ML)', 'Python'].sort());
+    deepEq(log.untoggled, [], 'the already-selected Deep Learning is never clicked off');
+    eq(log.letterKeys, 0, 'no key-by-key typing');
+    eq(env.document.getElementById('wd-skills').value, '', 'nothing left in the box for Workday to erase');
+    const row = byLabel(result.decisions, 'skills');
+    eq(row.action, p.FILL);
+    ok(/Underwater Basket Weaving/.test(row.reason || ''), `reports the skill Workday lacks: ${row.reason}`);
+  });
+});
+
+test('Workday skills accumulate — adding one never erases the one before', async () => {
+  const empty = WD_SKILLS_PAGE.replace(
+    '<li role="presentation" data-automation-id="menuItem"><div role="option" data-automation-id="selectedItem" aria-label="Deep Learning, press delete to clear value.">Deep Learning</div></li>', '');
+  await withForm(empty, {}, async (env) => {
+    const log = wireWorkdaySkills(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, NLP, Python' }) });
+    await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(),
+           ['Deep Learning', 'Machine Learning (ML)', 'Natural Language Processing (NLP)', 'Python'].sort(),
+           'every skill kept, one after another');
+    deepEq(log.untoggled, [], 'no skill was ticked off along the way');
+    eq(env.document.getElementById('wd-skills').value, '');
+  });
+});
+
+test('Workday skills: a slow search is waited for, not skipped', async () => {
+  // NVIDIA: TensorFlow's results arrived just as the extension moved on to
+  // PyTorch. Here results take far longer than the old wait.
+  const empty = WD_SKILLS_PAGE.replace(/<li role="presentation"[\s\S]*?<\/li>/, '');
+  await withForm(empty, {}, async (env) => {
+    const log = wireWorkdaySkills(env, { searchMs: 400 });
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, Python' }) });
+    await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(), ['Deep Learning', 'Machine Learning (ML)', 'Python'].sort());
+  });
+});
+
+test('Workday skills: ticked even when the results are redrawn and only the row\'s inside listens', async () => {
+  const empty = WD_SKILLS_PAGE.replace(/<li role="presentation"[\s\S]*?<\/li>/, '');
+  await withForm(empty, {}, async (env) => {
+    const log = wireWorkdaySkills(env, { redrawMs: 40, innerOnly: true });
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, Python' }) });
+    await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(), ['Deep Learning', 'Machine Learning (ML)', 'Python'].sort());
+    deepEq(log.untoggled, [], 'never clicked twice into an un-tick');
   });
 });
 
@@ -2570,6 +2907,40 @@ const wdBlock = (doc, n) => doc.querySelector(`[aria-labelledby="Work-Experience
 const wdVal = (block, name) => block.querySelector(`[name="${name}"], [id$="--${name}"]`).value;
 const wdDateVal = (block, which) => ['Month', 'Year'].map(p =>
   block.querySelector(`[id$="--${which}-dateSection${p}-input"]`).value).join('/');
+
+// NVIDIA (Oct 2026): Workday re-renders a text field once it is typed into —
+// a NEW <input> with the SAME name in every block. Looking it up again by name
+// across the page found block 1's field, so block 2's correct values were
+// reported "did not take (mismatch)" while the page showed them right.
+function rerenderOnInput(doc, section) {
+  section.addEventListener('change', (e) => {
+    const old = e.target;
+    if (!(old && old.tagName === 'INPUT' && old.type === 'text' && old.isConnected)) return;
+    const fresh = old.cloneNode(true);
+    fresh.value = old.value;
+    old.replaceWith(fresh);
+  }, true);
+}
+
+test('Workday experience: a re-rendered field is checked in its own block, not block 1', async () => {
+  await withForm(WD_MY_EXPERIENCE, {}, async (env) => {
+    wireWorkdayExperience(env);
+    rerenderOnInput(env.document, env.document.querySelector('[aria-labelledby="Work-Experience-section"]'));
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: WD_JOBS } });
+    const logged = [];
+    const info = console.info;
+    console.info = (...a) => { logged.push(a.join(' ')); };
+    let result;
+    try { result = await run_.runAutofill(ctx, null); } finally { console.info = info; }
+    const falseFails = logged.filter(l => /did not take/.test(l));
+    deepEq(falseFails, [], 'no field reported as failed while the page holds its value');
+    const b2 = wdBlock(env.document, 2);
+    eq(wdVal(b2, 'jobTitle'), 'Data Analyst', 'the page holds the right value');
+    const rows = result.decisions.filter(x => String(x.key).startsWith('repeater:experience'));
+    eq(rows.length, 2);
+    ok(rows.every(x => x.action === p.FILL), rows.map(x => `${x.label}: ${x.reason}`).join(' | '));
+  });
+});
 
 test('Workday experience: each job fills its own block, "Add Another" adds the next', async () => {
   await withForm(WD_MY_EXPERIENCE, {}, async (env) => {

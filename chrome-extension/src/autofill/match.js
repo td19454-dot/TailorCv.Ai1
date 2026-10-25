@@ -746,7 +746,9 @@ export const FIELD_SYNONYMS = [
   { key: 'current_job_title', labels: ['current title', 'current job title', 'current role', 'job title', 'most recent title', 'occupation'] },
   { key: 'current_company', labels: ['current company', 'current employer', 'most recent company', 'most recent employer', 'company name', 'employer'] },
   { key: 'years_of_experience', labels: ['years of experience', 'total experience', 'years experience', 'how many years of experience', 'relevant experience years'] },
-  { key: 'top_skills', labels: ['skills', 'key skills', 'technical skills', 'core skills'] },
+  // "Type to Add Skills": Workday's skills prompt (NVIDIA). The bare "skills"
+  // is one word and may only absorb one extra; this label has two.
+  { key: 'top_skills', labels: ['skills', 'key skills', 'technical skills', 'core skills', 'add skills', 'type to add skills'] },
 
   // education
   { key: 'university', labels: ['university', 'college', 'school', 'institution', 'school name', 'university name', 'alma mater'] },
@@ -859,7 +861,13 @@ export function hasHonorificOptions(options) {
   return labels.filter(l => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
 }
 
+// A form's own "(optional)" / "(required)" marker: says nothing about what is
+// asked. Workday labels its Social Network URLs "LinkedIn (optional)", and the
+// extra word "optional" put that label past every LinkedIn synonym.
+const OPTIONALITY_RE = /\(\s*(optional|required)\s*\)|\s+[-–—]?\s*optional\s*$/ig;
+
 export function matchFieldKey(label, entries) {
+  label = String(label || '').replace(OPTIONALITY_RE, ' ').trim();
   const sig = questionSignature(label);
   if (!sig) return null;
   const pool = entries || FIELD_SYNONYMS;

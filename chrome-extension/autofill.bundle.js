@@ -1229,7 +1229,9 @@ what when where which who will with would you your now future
     { key: "current_job_title", labels: ["current title", "current job title", "current role", "job title", "most recent title", "occupation"] },
     { key: "current_company", labels: ["current company", "current employer", "most recent company", "most recent employer", "company name", "employer"] },
     { key: "years_of_experience", labels: ["years of experience", "total experience", "years experience", "how many years of experience", "relevant experience years"] },
-    { key: "top_skills", labels: ["skills", "key skills", "technical skills", "core skills"] },
+    // "Type to Add Skills": Workday's skills prompt (NVIDIA). The bare "skills"
+    // is one word and may only absorb one extra; this label has two.
+    { key: "top_skills", labels: ["skills", "key skills", "technical skills", "core skills", "add skills", "type to add skills"] },
     // education
     { key: "university", labels: ["university", "college", "school", "institution", "school name", "university name", "alma mater"] },
     { key: "degree", labels: ["degree", "degree type", "highest degree", "qualification", "level of education"] },
@@ -1309,7 +1311,9 @@ what when where which who will with would you your now future
     if (labels.length < 2) return false;
     return labels.filter((l) => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
   }
+  var OPTIONALITY_RE = /\(\s*(optional|required)\s*\)|\s+[-–—]?\s*optional\s*$/ig;
   function matchFieldKey(label, entries) {
+    label = String(label || "").replace(OPTIONALITY_RE, " ").trim();
     const sig = questionSignature(label);
     if (!sig) return null;
     const pool = entries || FIELD_SYNONYMS;
@@ -1483,6 +1487,10 @@ what when where which who will with would you your now future
   function isNodeVisible(node) {
     if (!node) return false;
     if (inAriaHidden(node)) return false;
+    return isNodeDrawn(node);
+  }
+  function isNodeDrawn(node) {
+    if (!node) return false;
     if (hiddenByStyle(node)) return false;
     if (typeof node.getBoundingClientRect === "function") {
       const r = node.getBoundingClientRect();
@@ -1490,6 +1498,12 @@ what when where which who will with would you your now future
       if (measured && r.width < 2 && r.height < 2) return false;
     }
     return true;
+  }
+  function hiddenReason(node) {
+    if (!node) return "gone";
+    if (hiddenByStyle(node)) return "style";
+    if (inAriaHidden(node)) return "aria-hidden";
+    return isNodeDrawn(node) ? "" : "size";
   }
   function hiddenByStyle(node) {
     const win = node.ownerDocument && node.ownerDocument.defaultView;
@@ -2085,7 +2099,10 @@ what when where which who will with would you your now future
         // A separate country-code picker beside a phone box means the box wants
         // the national number only; pasting "+91 98765 43210" into it produces a
         // doubled dial code the form then rejects.
-        hasCountryWidget: hasCountryWidget(el)
+        hasCountryWidget: hasCountryWidget(el),
+        // Workday's search-and-tick prompt (Skills, Field of Study): Enter runs
+        // the search and each answer is a clicked result. See commitPromptMulti.
+        multiPrompt: !!(p.workdayMultiselect && p.workdayMultiselect(el))
       };
       if (kind === "radio" || kind === "checkbox") {
         const label = p.labelFor(el) || el.value || "";
@@ -2693,9 +2710,21 @@ what when where which who will with would you your now future
     }
     return el;
   }
+  function liveMember(el, row) {
+    if (!el || el.isConnected) return el;
+    const scope = row.scope && row.scope.isConnected ? row.scope : null;
+    const id = el.getAttribute && el.getAttribute("id");
+    if (!scope || !id) return el;
+    try {
+      return Array.from(scope.querySelectorAll("[id]")).find((n) => n.id === id) || el;
+    } catch (e) {
+      return el;
+    }
+  }
   function readDateParts(row) {
     const parts = {};
-    for (const el of row.members || []) {
+    for (const member of row.members || []) {
+      const el = liveMember(member, row);
       if (!el.isConnected) continue;
       const part = datePartOf(el);
       if (part) parts[part] = String(el.value || "").trim();
@@ -2770,20 +2799,22 @@ what when where which who will with would you your now future
     const p = probe();
     const doc = globalThis.document;
     if (!p || !row.ident) return null;
+    const scope = row.scope && row.scope.isConnected ? row.scope : null;
+    const root = scope || doc;
     const esc2 = (s) => String(s).replace(/["\\]/g, "\\$&");
     for (const sel of [`[name="${esc2(row.ident)}"]`, `#${cssId(row.ident)}`]) {
       if (!sel || sel === "#") continue;
       let el = null;
       try {
-        el = doc.querySelector(sel);
+        el = root.querySelector(sel);
       } catch (e) {
         el = null;
       }
       if (el && isVisible(el)) return el;
     }
-    const form = findForm(doc);
-    if (!form) return null;
-    for (const el of form.fields) {
+    const fields = scope ? p.fillableIn(scope).elements : (findForm(doc) || {}).fields || [];
+    if (!fields.length) return null;
+    for (const el of fields) {
       const d = p.describeEl(el);
       if (d && questionSignature(d.ident) === row.key.split("#")[0]) return el;
     }
@@ -2791,6 +2822,276 @@ what when where which who will with would you your now future
   }
   function cssId(ident) {
     return /^[A-Za-z_][\w-]*$/.test(ident) ? ident : "";
+  }
+
+  // src/autofill/countries.js
+  var TABLE = `
+Afghanistan|Afghan
+Albania|Albanian
+Algeria|Algerian
+Andorra|Andorran
+Angola|Angolan
+Antigua and Barbuda|Antiguan
+Argentina|Argentine|Argentinian
+Armenia|Armenian
+Australia|Australian
+Austria|Austrian
+Azerbaijan|Azerbaijani
+Bahamas|The Bahamas|Bahamian
+Bahrain|Bahraini
+Bangladesh|Bangladeshi
+Barbados|Barbadian
+Belarus|Belarusian
+Belgium|Belgian
+Belize|Belizean
+Benin|Beninese
+Bhutan|Bhutanese
+Bolivia|Plurinational State of Bolivia|Bolivia, Plurinational State of|Bolivian
+Bosnia and Herzegovina|Bosnian
+Botswana|Motswana|Botswanan
+Brazil|Brazilian
+Brunei|Brunei Darussalam|Bruneian
+Bulgaria|Bulgarian
+Burkina Faso|Burkinabe
+Burundi|Burundian
+Cabo Verde|Cape Verde|Cape Verdean
+Cambodia|Cambodian
+Cameroon|Cameroonian
+Canada|Canadian
+Central African Republic|Central African
+Chad|Chadian
+Chile|Chilean
+China|People's Republic of China|PRC|Chinese
+Colombia|Colombian
+Comoros|Comoran
+Congo|Republic of the Congo|Congo, Republic of the|Congolese
+Democratic Republic of the Congo|DR Congo|DRC|Congo, Democratic Republic of the|Congo, The Democratic Republic of the
+Costa Rica|Costa Rican
+Cote d'Ivoire|C\xF4te d'Ivoire|Ivory Coast|Ivorian
+Croatia|Croatian
+Cuba|Cuban
+Cyprus|Cypriot
+Czech Republic|Czechia|Czech
+Denmark|Danish|Dane
+Djibouti|Djiboutian
+Dominica|Dominican (Dominica)
+Dominican Republic|Dominican
+Ecuador|Ecuadorian
+Egypt|Egyptian
+El Salvador|Salvadoran
+Equatorial Guinea|Equatoguinean
+Eritrea|Eritrean
+Estonia|Estonian
+Eswatini|Swaziland|Swazi
+Ethiopia|Ethiopian
+Fiji|Fijian
+Finland|Finnish|Finn
+France|French
+Gabon|Gabonese
+Gambia|The Gambia|Gambian
+Georgia|Georgian
+Germany|German
+Ghana|Ghanaian
+Greece|Greek
+Grenada|Grenadian
+Guatemala|Guatemalan
+Guinea|Guinean
+Guinea-Bissau|Bissau-Guinean
+Guyana|Guyanese
+Haiti|Haitian
+Honduras|Honduran
+Hong Kong|Hong Kong SAR|Hong Kong SAR China|Hong Kong SAR, China|Hong Konger
+Hungary|Hungarian
+Iceland|Icelandic|Icelander
+India|Republic of India|Indian
+Indonesia|Indonesian
+Iran|Iran, Islamic Republic of|Islamic Republic of Iran|Iranian
+Iraq|Iraqi
+Ireland|Republic of Ireland|Irish
+Israel|Israeli
+Italy|Italian
+Jamaica|Jamaican
+Japan|Japanese
+Jordan|Jordanian
+Kazakhstan|Kazakhstani|Kazakh
+Kenya|Kenyan
+Kiribati|I-Kiribati
+Kosovo|Kosovar
+Kuwait|Kuwaiti
+Kyrgyzstan|Kyrgyz
+Laos|Lao People's Democratic Republic|Lao|Laotian
+Latvia|Latvian
+Lebanon|Lebanese
+Lesotho|Basotho
+Liberia|Liberian
+Libya|Libyan
+Liechtenstein|Liechtensteiner
+Lithuania|Lithuanian
+Luxembourg|Luxembourgish|Luxembourger
+Macau|Macao|Macao SAR China|Macanese
+Madagascar|Malagasy
+Malawi|Malawian
+Malaysia|Malaysian
+Maldives|Maldivian
+Mali|Malian
+Malta|Maltese
+Marshall Islands|Marshallese
+Mauritania|Mauritanian
+Mauritius|Mauritian
+Mexico|Mexican
+Micronesia|Micronesia, Federated States of|Micronesian
+Moldova|Moldova, Republic of|Republic of Moldova|Moldovan
+Monaco|Monegasque
+Mongolia|Mongolian
+Montenegro|Montenegrin
+Morocco|Moroccan
+Mozambique|Mozambican
+Myanmar|Burma|Burmese
+Namibia|Namibian
+Nauru|Nauruan
+Nepal|Nepalese|Nepali
+Netherlands|The Netherlands|Holland|Dutch
+New Zealand|New Zealander
+Nicaragua|Nicaraguan
+Niger|Nigerien
+Nigeria|Nigerian
+North Korea|Korea, Democratic People's Republic of|Democratic People's Republic of Korea|North Korean
+North Macedonia|Macedonia|Macedonian
+Norway|Norwegian
+Oman|Omani
+Pakistan|Pakistani
+Palau|Palauan
+Palestine|Palestine, State of|State of Palestine|Palestinian Territory|Palestinian
+Panama|Panamanian
+Papua New Guinea|Papua New Guinean
+Paraguay|Paraguayan
+Peru|Peruvian
+Philippines|The Philippines|Filipino|Philippine
+Poland|Polish
+Portugal|Portuguese
+Puerto Rico|Puerto Rican
+Qatar|Qatari
+Romania|Romanian
+Russia|Russian Federation|Russian
+Rwanda|Rwandan
+Saint Kitts and Nevis|Kittitian
+Saint Lucia|Saint Lucian
+Saint Vincent and the Grenadines|Vincentian
+Samoa|Samoan
+San Marino|Sammarinese
+Sao Tome and Principe|S\xE3o Tom\xE9 and Pr\xEDncipe|Santomean
+Saudi Arabia|Saudi|Saudi Arabian
+Senegal|Senegalese
+Serbia|Serbian
+Seychelles|Seychellois
+Sierra Leone|Sierra Leonean
+Singapore|Singaporean
+Slovakia|Slovak Republic|Slovak
+Slovenia|Slovenian|Slovene
+Solomon Islands|Solomon Islander
+Somalia|Somali
+South Africa|South African
+South Korea|Korea, Republic of|Republic of Korea|Korea|Korean|South Korean
+South Sudan|South Sudanese
+Spain|Spanish|Spaniard
+Sri Lanka|Sri Lankan
+Sudan|Sudanese
+Suriname|Surinamese
+Sweden|Swedish|Swede
+Switzerland|Swiss
+Syria|Syrian Arab Republic|Syrian
+Taiwan|Taiwan, Province of China|Taiwanese
+Tajikistan|Tajik
+Tanzania|Tanzania, United Republic of|United Republic of Tanzania|Tanzanian
+Thailand|Thai
+Timor-Leste|East Timor|Timorese
+Togo|Togolese
+Tonga|Tongan
+Trinidad and Tobago|Trinidadian|Tobagonian
+Tunisia|Tunisian
+Turkey|T\xFCrkiye|Turkiye|Turkish
+Turkmenistan|Turkmen
+Tuvalu|Tuvaluan
+Uganda|Ugandan
+Ukraine|Ukrainian
+United Arab Emirates|UAE|Emirati
+United Kingdom|UK|U.K.|Great Britain|Britain|British|England|Scotland|Wales|Northern Ireland|English|Scottish|Welsh
+United States|United States of America|USA|U.S.A.|US|U.S.|America|American
+Uruguay|Uruguayan
+Uzbekistan|Uzbek
+Vanuatu|Ni-Vanuatu
+Vatican City|Holy See|Holy See (Vatican City State)
+Venezuela|Venezuela, Bolivarian Republic of|Venezuelan
+Vietnam|Viet Nam|Vietnamese
+Yemen|Yemeni
+Zambia|Zambian
+Zimbabwe|Zimbabwean
+`;
+  var CASE_SENSITIVE = /* @__PURE__ */ new Set(["US", "U.S.", "UK", "U.K.", "USA", "U.S.A.", "UAE", "PRC", "DRC"]);
+  var ENTRIES = TABLE.trim().split("\n").map((line) => {
+    const names = line.split("|").map((s) => s.trim()).filter(Boolean);
+    return { name: names[0], names };
+  });
+  function norm(text) {
+    return String(text == null ? "" : text).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\./g, "").replace(/[^a-z0-9]+/g, " ").trim().replace(/^the /, "");
+  }
+  var BY_NAME = /* @__PURE__ */ new Map();
+  for (const e of ENTRIES) {
+    for (const n of e.names) {
+      const k = norm(n);
+      if (k && !BY_NAME.has(k)) BY_NAME.set(k, e.name);
+    }
+  }
+  var COUNTRY_NAMES = ENTRIES.map((e) => e.name);
+  function countryOf(text) {
+    const raw = String(text == null ? "" : text).trim();
+    if (!raw) return "";
+    const whole = BY_NAME.get(norm(raw));
+    if (whole) return whole;
+    const outside = BY_NAME.get(norm(raw.replace(/\([^)]*\)/g, " ")));
+    if (outside) return outside;
+    const inside = /\(([^)]+)\)/.exec(raw);
+    if (inside) {
+      const c = BY_NAME.get(norm(inside[1]));
+      if (c) return c;
+    }
+    return BY_NAME.get(norm(raw.split(/\s*[›>]\s*|\s[-–—:]\s/)[0])) || "";
+  }
+  function countryShapes(country) {
+    const e = ENTRIES.find((x) => x.name === country);
+    return e ? e.names.slice() : country ? [country] : [];
+  }
+  var labelOf = (o) => typeof o === "string" ? o : o && o.label || "";
+  function countryOption(country, options) {
+    if (!country) return null;
+    const labels = (options || []).map(labelOf);
+    const same = labels.filter((l) => countryOf(l) === country);
+    if (!same.length) return null;
+    return same.find((l) => norm(l) === norm(country)) || same[0];
+  }
+  function countryShare(options) {
+    const labels = (options || []).map(labelOf).filter(Boolean);
+    if (!labels.length) return 0;
+    return labels.filter((l) => countryOf(l)).length / labels.length;
+  }
+  function countryNamedIn(question) {
+    const raw = String(question || "");
+    const padded = " " + norm(raw) + " ";
+    const hits = [];
+    for (const e of ENTRIES) {
+      for (const n of e.names) {
+        if (CASE_SENSITIVE.has(n)) {
+          const esc2 = n.replace(/\./g, "\\.");
+          if (new RegExp(`(^|[^A-Za-z.])${esc2}(?![A-Za-z])`).test(raw)) hits.push([e.name, norm(n)]);
+          continue;
+        }
+        const k = norm(n);
+        if (k.length > 2 && padded.includes(" " + k + " ")) hits.push([e.name, k]);
+      }
+    }
+    const kept = hits.filter(([c, k]) => !hits.some(([c2, k2]) => c2 !== c && k2 !== k && (" " + k2 + " ").includes(" " + k + " ")));
+    const countries = new Set(kept.map(([c]) => c));
+    return countries.size === 1 ? Array.from(countries)[0] : "";
   }
 
   // src/autofill/plan.js
@@ -2841,7 +3142,8 @@ what when where which who will with would you your now future
           slot ? "attach this yourself" : "we could not tell which file this wants"
         );
       }
-      if (row.filled && !row.invalid) {
+      const additiveSkills = row.multiPrompt && (matchFieldKey(row.label) || {}).key === "top_skills";
+      if (row.filled && !row.invalid && !additiveSkills) {
         return done(d, SKIP, row.value, "", 0, "already filled in");
       }
       const category = classifySensitive(row.label);
@@ -2854,6 +3156,19 @@ what when where which who will with would you your now future
           const value2 = saved ? coerce(saved, row) : null;
           if (value2 !== null) {
             return done(d, FILL, value2, "saved_answer", 0.9, "your saved answer to this question");
+          }
+        }
+        if (category === "citizenship") {
+          const c = citizenshipAnswer(row, bank, entry2);
+          if (c && c.ask) return done(d, ASK, "", "", 0, c.ask);
+          if (c) {
+            if (c.candidates && c.candidates.length > 1) d.candidates = c.candidates;
+            if (c.drill) d.drill = c.drill;
+            if (c.readFirst) d.readFirst = c.readFirst;
+            if (row.value && looksLikeDecline(c.value) && !looksLikeDecline(row.value)) {
+              return done(d, SKIP, row.value, "", 0, "keeping the answer already there");
+            }
+            return done(d, FILL, c.value, "profile", 0.95, "");
           }
         }
         if (!stored) {
@@ -2936,6 +3251,13 @@ what when where which who will with would you your now future
         d.candidates = shapes.length > 1 ? shapes : [];
         if (entry.key === "degree" && (row.kind === "combobox" || row.kind === "select")) {
           d.readFirst = { key: "degree", stored: raw };
+        }
+        if (entry.key === "top_skills" && row.multiPrompt) {
+          const skills = splitSkills(raw);
+          if (skills.length) {
+            d.multiValues = skills;
+            return done(d, FILL, skills.join(", "), "profile", 0.95, "");
+          }
         }
         const value = coerce(raw, Object.assign(
           {},
@@ -3057,7 +3379,8 @@ what when where which who will with would you your now future
   }
   var PROFILE_CATEGORIES = /* @__PURE__ */ new Set(["work_authorization", "sponsorship", "salary", "demographic"]);
   function profileHint(category, entry) {
-    if (entry && entry.key === "nationality") return "add your nationality to your profile";
+    if (entry && entry.key === "nationality") return "add your country of citizenship to your profile";
+    if (category === "citizenship") return "add your country of citizenship to your profile";
     if (entry && entry.key === "citizenship_status") return "add your citizenship status to your profile";
     switch (category) {
       case "work_authorization":
@@ -3226,6 +3549,78 @@ what when where which who will with would you your now future
     if (!want) return null;
     const same = (options || []).filter((o) => citizenshipGroup(o) === want);
     return same.length === 1 ? same[0] : null;
+  }
+  var US_CITIZEN = "U.S. citizen or national";
+  var NOT_US = "Not a U.S. citizen or permanent resident";
+  function usStatus(bank, country) {
+    const explicit = String(bank && bank.citizenship_status || "").trim();
+    if (explicit) return explicit;
+    if (!country) return "";
+    return country === "United States" ? US_CITIZEN : NOT_US;
+  }
+  var BEYOND_CITIZEN_RE = /\bpermanent resident|\bgreen card\b|\bperson\b|\blawful|\bprotected individual\b|\brefugee\b|\basylee\b/i;
+  var PLACEHOLDER_RE = /^(select|choose|please select|--|—)/i;
+  function isYesNoRow(row, labels) {
+    const real = labels.filter((l) => l && !PLACEHOLDER_RE.test(l.trim()));
+    if (real.length) return real.every((l) => /^(yes|no)\b/i.test(l.trim()) || looksLikeDecline(l));
+    return /^\s*(are|is|do|does|have|has|will|were)\b/i.test(row.label || "");
+  }
+  function citizenshipAnswer(row, bank, entry) {
+    const country = countryOf(bank && bank.nationality || "");
+    const labels = (row.options || []).map((o) => typeof o === "string" ? o : o && o.label || "").filter(Boolean);
+    const named = countryNamedIn(row.label);
+    if (named && isYesNoRow(row, labels)) {
+      const explicitGroup = citizenshipGroup(bank && bank.citizenship_status || "");
+      if (!country && !(named === "United States" && explicitGroup)) return null;
+      let yes;
+      if (!country) {
+        yes = explicitGroup === "citizen" || BEYOND_CITIZEN_RE.test(row.label || "") && explicitGroup === "permanent_resident";
+      } else if (named === country) {
+        yes = true;
+      } else if (BEYOND_CITIZEN_RE.test(row.label || "")) {
+        const explicit = String(bank && bank.citizenship_status || "").trim();
+        if (named !== "United States" || !explicit) {
+          return { ask: `you're a citizen of ${country} \u2014 your profile doesn't say whether you hold residence there` };
+        }
+        const group = citizenshipGroup(explicit);
+        yes = group === "citizen" || group === "permanent_resident" || (group === "refugee" || group === "asylee") && /\bperson\b|\bprotected individual\b/i.test(row.label);
+      } else {
+        yes = false;
+      }
+      const value = coerce(yes ? "Yes" : "No", Object.assign({}, row, { candidateKey: "" }));
+      return value === null ? { ask: "none of the options say Yes or No" } : { value };
+    }
+    if (labels.length) {
+      const own = countryOption(country, labels);
+      if (own) return { value: own, drill: row.kind === "combobox" ? "Citizen" : "" };
+      if (countryShare(labels) >= 0.5) {
+        return country ? { ask: `${country} isn't one of this list's options \u2014 choose your answer` } : null;
+      }
+      if (entry && entry.key === "nationality") return null;
+      const status = usStatus(bank, country);
+      if (!status) return null;
+      const value = citizenshipOption(status, labels);
+      return value ? { value, readFirst: { key: "citizenship_status", stored: status, country } } : { ask: `none of the options match your citizenship (${country || status})` };
+    }
+    if (named && entry && entry.key === "citizenship_status") {
+      const status = usStatus(bank, country);
+      return status ? { value: status, readFirst: { key: "citizenship_status", stored: status, country } } : null;
+    }
+    if (!country) return null;
+    return { value: country, candidates: countryShapes(country), drill: row.kind === "combobox" ? "Citizen" : "" };
+  }
+  var MAX_PROMPT_SKILLS = 10;
+  function splitSkills(text) {
+    const seen = /* @__PURE__ */ new Set();
+    const out = [];
+    for (const part of String(text || "").split(/[,;|\n]+/)) {
+      const s = part.trim();
+      if (!s || seen.has(s.toLowerCase())) continue;
+      seen.add(s.toLowerCase());
+      out.push(s);
+      if (out.length >= MAX_PROMPT_SKILLS) break;
+    }
+    return out;
   }
   function savedSensitiveAnswer(label, saved) {
     const sig = questionSignature(label);
@@ -3580,7 +3975,9 @@ what when where which who will with would you your now future
     return /\b(date|dd\s*\/\s*mm|mm\s*\/\s*dd|yyyy)\b/i.test(hint);
   }
   function pickFromOptions(text, row, options) {
-    if (row.candidateKey === "citizenship_status") return citizenshipOption(text, options);
+    if (row.candidateKey === "citizenship_status") {
+      return row.country && countryOption(row.country, options) || citizenshipOption(text, options);
+    }
     if (row.candidateKey === "degree") return degreeOption(text, options);
     if (row.candidateKey === "authorized_to_work_in_country" && !options.some((o) => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
       return workAuthStatement(text, row.sponsorship, options);
@@ -3885,7 +4282,7 @@ what when where which who will with would you your now future
     const head = text.split(",")[0].trim();
     return head.length >= 2 ? head : text;
   }
-  async function commitCombobox(row, value, candidates, readFirst) {
+  async function commitCombobox(row, value, candidates, readFirst, drill) {
     const el = row.el;
     if (!el) return false;
     const shapes = dedupe([value].concat(candidates || []));
@@ -3898,17 +4295,29 @@ what when where which who will with would you your now future
       openWidget(row);
       await sleep(TIMING.settleMs);
       let options = [];
-      if (readFirst && !isButton) options = await waitForOptions2(el, TIMING.optionWaitMs);
+      if (readFirst && !isButton) options = await waitForOpenedList(el);
       if (options.length) {
       } else if (isButton) {
-        options = await waitForOptions2(el, TIMING.optionWaitMs);
+        options = await waitForOpenedList(el);
       } else {
         const input = typableInput(row) || el;
         const queries = dedupe(shapes.map(searchToken)).slice(0, 4);
         row.searchTrace = [];
+        const p = probe2();
+        const wdPrompt = !!(p && p.workdayMultiselect && p.workdayMultiselect(input));
         for (const query of queries) {
           setText(input, query, { blur: false });
           focus(input);
+          if (wdPrompt) {
+            fireKey(input, "keydown", "Enter");
+            fireKey(input, "keyup", "Enter");
+            const isSet = () => shapes.some((s) => committed(row, s));
+            options = await waitForPromptResults(el, shapes, isSet);
+            row.searchTrace.push(Object.assign(searchStep(query, input, el, options), { searchedWithEnter: true }));
+            if (isSet()) return true;
+            if (options.length && listOffersAny(shapes, options)) break;
+            continue;
+          }
           options = await waitForOptions2(el, TIMING.optionWaitMs);
           options = await waitOutLoading(el, shapes, options);
           if (!options.length && listStillLoading(el.ownerDocument || globalThis.document, el)) {
@@ -3945,7 +4354,12 @@ what when where which who will with would you your now future
         return settlesTo(row, [pick].concat(shapes));
       }
       for (const shape of options.length ? shapes : []) {
+        const before = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
         if (!await clickMatchingOption(el, shape, options)) continue;
+        if (drill && isWorkdayPrompt(el)) {
+          const drilled = await drillDown(row, el, shapes, drill, before);
+          if (drilled !== null) return drilled;
+        }
         if (await settlesTo(row, shapes)) return true;
         break;
       }
@@ -3979,6 +4393,7 @@ what when where which who will with would you your now future
       listOpen: el.getAttribute ? el.getAttribute("aria-expanded") : null,
       optionsMatched: (options || []).length,
       rowsOnPage: cells,
+      rowsSkipped: (options || []).length ? void 0 : rowsRejected(doc),
       firstOffered: (options || []).slice(0, 5).map((n) => (n.textContent || "").replace(/\s+/g, " ").trim())
     };
   }
@@ -4054,8 +4469,29 @@ what when where which who will with would you your now future
   function visibleOptionNodes2(doc, el) {
     const p = probe2();
     const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
-    const shown = nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n) && !isChosenValue(n));
+    const onScreen = isWorkdayPrompt(el) ? isNodeDrawn : isNodeVisible;
+    const shown = nodes.filter((n) => (n.textContent || "").trim() && onScreen(n) && !isChosenValue(n) && !(n.getAttribute && n.getAttribute("aria-disabled") === "true"));
     return el ? ownOptions(doc, el, shown) : shown;
+  }
+  function isWorkdayPrompt(el) {
+    if (!el) return false;
+    const p = probe2();
+    try {
+      if (p && p.workdayMultiselect && p.workdayMultiselect(el)) return true;
+      return !!(el.querySelector && el.querySelector('[data-automation-id="multiselectInputContainer"]'));
+    } catch (e) {
+      return false;
+    }
+  }
+  function rowsRejected(doc) {
+    const p = probe2();
+    const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
+    const counts = {};
+    for (const n of nodes) {
+      const why = !(n.textContent || "").trim() ? "empty" : isChosenValue(n) ? "chosen" : n.getAttribute && n.getAttribute("aria-disabled") === "true" ? "disabled" : hiddenReason(n) || "taken-or-not-own";
+      counts[why] = (counts[why] || 0) + 1;
+    }
+    return counts;
   }
   function ownOptions(doc, el, nodes) {
     const ref = (n) => n && n.getAttribute && (n.getAttribute("aria-controls") || n.getAttribute("aria-owns")) || "";
@@ -4085,6 +4521,17 @@ what when where which who will with would you your now future
       }
       return !owner || owner === el || owner.contains(el) || el.contains(owner);
     });
+  }
+  async function waitForOpenedList(el) {
+    const nodes = await waitForOptions2(el, TIMING.optionWaitMs);
+    if (nodes.length || !isExpanded(el)) return nodes;
+    return waitForOptions2(el, TIMING.remoteSearchMs);
+  }
+  function isExpanded(el) {
+    for (let n = el, i = 0; n && i < 3; n = n.parentElement, i++) {
+      if (n.getAttribute && n.getAttribute("aria-expanded") === "true") return true;
+    }
+    return false;
   }
   function waitForOptions2(el, timeout) {
     return new Promise((resolve) => {
@@ -4181,19 +4628,214 @@ what when where which who will with would you your now future
   }
   async function clickMatchingOption(el, value, nodes) {
     const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
-    let idx = labels.findIndex((t) => commitMatches(value, t));
+    const want = normalizeOptionText(value);
+    let idx = want ? labels.findIndex((t) => normalizeOptionText(t) === want) : -1;
+    if (idx < 0) idx = labels.findIndex((t) => commitMatches(value, t));
     if (idx < 0) {
       const best = bestOptionMatch(value, labels);
       idx = best == null ? -1 : labels.indexOf(best);
     }
     if (idx < 0) return false;
     const node = nodes[idx];
+    let target = node;
+    const WD_ROW = '[data-automation-id="promptOption"], [data-automation-id="promptLeafNode"]';
+    let workdayRow = false;
     try {
-      node.scrollIntoView({ block: "nearest" });
+      workdayRow = node.matches(WD_ROW) || !!node.querySelector(WD_ROW);
+    } catch (e) {
+      workdayRow = false;
+    }
+    if (workdayRow) {
+      for (const d of node.querySelectorAll("*")) {
+        if ((d.textContent || "").replace(/\s+/g, " ").trim() === labels[idx]) target = d;
+      }
+    }
+    try {
+      target.scrollIntoView({ block: "nearest" });
     } catch (e) {
     }
-    pressPointer(node);
+    pressPointer(target);
     return true;
+  }
+  async function waitForPromptResults(el, shapes, done2) {
+    const doc = el.ownerDocument || globalThis.document;
+    const start = Date.now();
+    const deadline = start + Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
+    const offers = (nodes) => {
+      const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+      return shapes.some((s) => promptResultFor(s, labels) >= 0);
+    };
+    for (; ; ) {
+      if (done2 && done2()) return [];
+      const nodes = visibleOptionNodes2(doc, el);
+      if (nodes.length && offers(nodes)) return nodes;
+      if (Date.now() - start > 1500 && saysNoItems(doc)) return nodes;
+      if (Date.now() >= deadline) return nodes;
+      await sleep(100);
+    }
+  }
+  function saysNoItems(doc) {
+    const roots = Array.from(doc.querySelectorAll('[data-automation-id="activeListContainer"], [role="listbox"]'));
+    return roots.some((root) => {
+      const walker = doc.createTreeWalker(
+        root,
+        4
+        /* NodeFilter.SHOW_TEXT */
+      );
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+        if (/^\s*no (items|results|matches)( found)?\.?\s*$/i.test(n.nodeValue || "") && isNodeVisible(n.parentElement)) return true;
+      }
+      return false;
+    });
+  }
+  function promptPills(row) {
+    const p = probe2();
+    const box = p && p.workdayMultiselect && p.workdayMultiselect(typableInput(row) || row.el);
+    if (!box) return [];
+    return Array.from(box.querySelectorAll('[data-automation-id="selectedItem"]')).map((n) => (n.textContent || "").replace(/\s+/g, " ").trim()).filter(Boolean);
+  }
+  function promptResultFor(want, labels) {
+    const exact = normalizeOptionText(want);
+    let idx = labels.findIndex((t) => normalizeOptionText(t) === exact);
+    if (idx < 0) idx = labels.findIndex((t) => commitMatches(want, t));
+    return idx;
+  }
+  async function commitPromptMulti(row, values) {
+    const el = row.el;
+    const input = typableInput(row) || el;
+    const out = { added: [], already: [], missing: [], pills: [] };
+    const shown = () => promptPills(row);
+    const has = (pills, skill) => pills.some((t) => promptResultFor(skill, [t]) === 0);
+    const writeSearch = (text) => {
+      focus(input);
+      writeValue(input, text);
+      fire(input, "input");
+    };
+    const pillWaitMs = Math.max(TIMING.commitWaitMs * 2, 300);
+    const addOne = async (skill) => {
+      writeSearch(skill);
+      fireKey(input, "keydown", "Enter");
+      fireKey(input, "keyup", "Enter");
+      const options = await waitForPromptResults(el, [skill]);
+      const labels = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+      const idx = promptResultFor(skill, labels);
+      if (idx < 0) return "missing";
+      const label = labels[idx];
+      if (shown().includes(label)) return "already";
+      await sleep(Math.max(TIMING.settleMs, 150));
+      const rowNow = () => visibleOptionNodes2(el.ownerDocument || globalThis.document, el).find((n) => (n.textContent || "").replace(/\s+/g, " ").trim() === label) || null;
+      const press2 = (node2) => {
+        let target = node2;
+        for (const d of node2.querySelectorAll("*")) {
+          if ((d.textContent || "").replace(/\s+/g, " ").trim() === label) target = d;
+        }
+        try {
+          target.scrollIntoView({ block: "nearest" });
+        } catch (e) {
+        }
+        pressPointer(target);
+      };
+      const ticked = (node2) => !!node2 && (node2.getAttribute("aria-selected") === "true" || node2.getAttribute("aria-checked") === "true" || !!node2.querySelector('input:checked, [aria-checked="true"]'));
+      let node = rowNow() || options[idx];
+      press2(node);
+      const deadline = Date.now() + pillWaitMs;
+      let retried = false;
+      while (!has(shown(), skill) && Date.now() < deadline) {
+        await sleep(100);
+        if (!retried && Date.now() > deadline - pillWaitMs / 2) {
+          retried = true;
+          const again = rowNow();
+          if (again && !ticked(again) && !has(shown(), skill)) {
+            node = again;
+            press2(again);
+          }
+        }
+      }
+      if (has(shown(), skill)) return "added";
+      try {
+        console.info(`[TailorCV] skills: clicked "${label}" but no pill appeared \u2014 row was ${node && node.isConnected ? "on the page" : "gone"}: ` + String(node && node.outerHTML || "").slice(0, 400));
+      } catch (e) {
+      }
+      return "missing";
+    };
+    try {
+      scrollIntoView(input);
+      openWidget(row);
+      await sleep(TIMING.settleMs);
+      for (const skill of values) {
+        if (has(shown(), skill)) {
+          out.already.push(skill);
+          continue;
+        }
+        out[await addOne(skill)].push(skill);
+      }
+      const lost = out.added.concat(out.already).filter((s) => !has(shown(), s));
+      for (const skill of lost) {
+        console.info(`[TailorCV] skills: "${skill}" disappeared \u2014 adding it again`);
+        if (await addOne(skill) !== "added") {
+          for (const list of [out.added, out.already]) {
+            const i = list.indexOf(skill);
+            if (i >= 0) list.splice(i, 1);
+          }
+          out.missing.push(skill);
+        }
+      }
+    } catch (e) {
+    } finally {
+      try {
+        writeSearch("");
+      } catch (e) {
+      }
+      dismissListbox(el);
+    }
+    out.pills = shown();
+    console.info(`[TailorCV] skills: added ${out.added.length}, already there ${out.already.length}` + (out.missing.length ? `, not offered: ${out.missing.join(", ")}` : ""));
+    return out;
+  }
+  async function drillDown(row, el, shapes, drill, before) {
+    const doc = el.ownerDocument || globalThis.document;
+    const isSet = () => shapes.some((s) => committed(row, s));
+    const was = new Set(before);
+    const deadline = Date.now() + Math.max(TIMING.commitWaitMs, 300);
+    let level = [];
+    for (; ; ) {
+      if (isSet()) return true;
+      const nodes = visibleOptionNodes2(doc, el);
+      const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+      if (labels.length && labels.some((l) => !was.has(l))) {
+        const pick = citizenshipOption(drill, labels);
+        if (pick) {
+          await sleep(Math.max(TIMING.settleMs, 100));
+          const fresh = visibleOptionNodes2(doc, el);
+          const node = fresh.find((n) => (n.textContent || "").replace(/\s+/g, " ").trim() === pick) || nodes[labels.indexOf(pick)];
+          let target = node;
+          for (const d of node.querySelectorAll("*")) {
+            if ((d.textContent || "").replace(/\s+/g, " ").trim() === pick) target = d;
+          }
+          try {
+            target.scrollIntoView({ block: "nearest" });
+          } catch (e) {
+          }
+          pressPointer(target);
+          if (await settlesTo(row, shapes.concat([pick]))) return true;
+          console.info(
+            "[TailorCV] dropdown did not commit after choosing",
+            JSON.stringify(pick),
+            "in the level that opened:",
+            labels.slice(0, 10)
+          );
+          return false;
+        }
+        level = labels;
+      }
+      if (Date.now() >= deadline) break;
+      await sleep(100);
+    }
+    if (level.length) {
+      console.info("[TailorCV] a level opened with no", JSON.stringify(drill), "row:", level.slice(0, 10));
+      return false;
+    }
+    return null;
   }
   function pickReadFirst(readFirst, labels) {
     const pick = coerce(readFirst.stored, {
@@ -4201,7 +4843,8 @@ what when where which who will with would you your now future
       options: labels,
       candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
       candidateKey: readFirst.key,
-      sponsorship: readFirst.sponsorship
+      sponsorship: readFirst.sponsorship,
+      country: readFirst.country
     });
     return pick != null && labels.includes(pick) ? pick : null;
   }
@@ -4338,6 +4981,12 @@ what when where which who will with would you your now future
     const row = decision.row;
     const value = decision.value;
     if (!row || !row.el || !value) return { ok: false, outcome: "failed", shown: "" };
+    if (decision.multiValues && decision.multiValues.length && row.multiPrompt) {
+      const res = await commitPromptMulti(row, decision.multiValues);
+      if (res.missing.length) decision.reason = `not in this employer's list: ${res.missing.join(", ")} \u2014 add any yourself`;
+      const ok = res.pills.length > 0 && res.added.length + res.already.length > 0;
+      return { ok, outcome: ok ? "ok" : "empty", shown: res.pills.join(" | ") };
+    }
     let wrote = false;
     switch (row.kind) {
       case "date-parts":
@@ -4345,10 +4994,10 @@ what when where which who will with would you your now future
         break;
       case "select":
         wrote = setSelect(row.el, value);
-        if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
+        if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
         break;
       case "combobox":
-        wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
+        wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
         break;
       case "radio":
       case "checkbox":
@@ -4406,7 +5055,7 @@ what when where which who will with would you your now future
 
   // src/autofill/tiles.js
   var probe3 = () => globalThis.__tcvFieldProbe;
-  var norm = (s) => String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  var norm2 = (s) => String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   var MONTHS2 = [
     "January",
     "February",
@@ -4434,13 +5083,13 @@ what when where which who will with would you your now future
     return [t && t.textContent, s && s.textContent].map((x) => (x || "").replace(/\s+/g, " ").trim()).filter(Boolean).join(" \xB7 ");
   }
   function matchTileEntry(kind, text, entries) {
-    const t = norm(text);
+    const t = norm2(text);
     const years = new Set(String(text).match(/\b(19|20)\d{2}\b/g) || []);
     const scored = (entries || []).map((e, i) => {
       let score = 0;
-      const name = norm(kind === "education" ? e.school : e.company);
+      const name = norm2(kind === "education" ? e.school : e.company);
       if (name && t.includes(name)) score += 3;
-      if (kind === "experience" && e.title && t.includes(norm(e.title))) score += 3;
+      if (kind === "experience" && e.title && t.includes(norm2(e.title))) score += 3;
       const yearOf2 = (v) => (String(v || "").match(/\b(19|20)\d{2}\b/) || [])[0];
       if (yearOf2(e.to) && years.has(yearOf2(e.to))) score += 2;
       if (yearOf2(e.from) && years.has(yearOf2(e.from))) score += 1;
@@ -4679,7 +5328,7 @@ what when where which who will with would you your now future
     const p = probe4();
     if (!p) return [];
     const els = p.fillableIn(panel).elements.filter(isVisible);
-    return describeFields({ root: panel, fields: els });
+    return describeFields({ root: panel, fields: els }).map((r) => Object.assign(r, { scope: panel }));
   }
   function isoMonth(v) {
     const s = String(v || "").trim();

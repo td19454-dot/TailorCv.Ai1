@@ -10,6 +10,7 @@
 import { readFileSync } from 'node:fs';
 import { test, run, ok, notOk, eq, deepEq } from './harness.mjs';
 import * as m from '../src/autofill/match.js';
+import * as c from '../src/autofill/countries.js';
 
 // ── normalisation ────────────────────────────────────────────
 
@@ -418,6 +419,15 @@ test('matchFieldKey resolves the common identity fields', () => {
   eq(m.matchFieldKey('LinkedIn Profile URL').key, 'linkedin_url');
 });
 
+test('a form\'s "(optional)" marker does not hide the field it labels (Workday Social Network URLs)', () => {
+  eq(m.matchFieldKey('LinkedIn (optional)').key, 'linkedin_url');
+  eq(m.matchFieldKey('LinkedIn (Optional)').key, 'linkedin_url');
+  eq(m.matchFieldKey('LinkedIn - optional').key, 'linkedin_url');
+  eq(m.matchFieldKey('Email Address (required)').key, 'email');
+  // Still nothing for a label that is only the marker.
+  eq(m.matchFieldKey('(optional)'), null);
+});
+
 test('matchFieldKey resolves education fields', () => {
   eq(m.matchFieldKey('University / College').key, 'university');
   eq(m.matchFieldKey('Field of Study').key, 'major');
@@ -575,6 +585,33 @@ test('a nationality question maps to its own stored answer', () => {
     ok(entry && entry.key === 'nationality', `${label} -> ${entry && entry.key}`);
     ok(entry.sensitive, 'nationality must stay in the sensitive tier');
   }
+});
+
+test('countries: every spelling and demonym reads as its country, never a near-miss', () => {
+  eq(c.countryOf('Indian'), 'India');
+  eq(c.countryOf('Viet Nam'), 'Vietnam');
+  eq(c.countryOf('Korea, Republic of'), 'South Korea');
+  eq(c.countryOf('United States of America'), 'United States');
+  eq(c.countryOf('U.S.A.'), 'United States');
+  eq(c.countryOf('India (+91)'), 'India');
+  eq(c.countryOf('Citizen (India)'), 'India');
+  eq(c.countryOf('India › Citizen'), 'India');
+  eq(c.countryOf('British Indian Ocean Territory'), '');
+  eq(c.countryOption('India', ['Iceland', 'British Indian Ocean Territory', 'India', 'Indonesia']), 'India');
+  eq(c.countryOption('India', ['Iceland', 'Indonesia']), null);
+});
+
+test('countries: the one country a question asks about', () => {
+  eq(c.countryNamedIn('Are you a citizen of Singapore?'), 'Singapore');
+  eq(c.countryNamedIn('Are you a U.S. citizen?'), 'United States');
+  eq(c.countryNamedIn('Are you a US citizen or permanent resident?'), 'United States');
+  eq(c.countryNamedIn('Do you hold Canadian citizenship?'), 'Canada');
+  eq(c.countryNamedIn('Are you a citizen of Northern Ireland?'), 'United Kingdom');
+  eq(c.countryNamedIn('Are you a citizen of South Sudan?'), 'South Sudan');
+  // "us" the word is not the United States; no country, or two, is none.
+  eq(c.countryNamedIn('Please tell us your citizenship status'), '');
+  eq(c.countryNamedIn('Citizenship Status'), '');
+  eq(c.countryNamedIn('Are you a citizen of India or Pakistan?'), '');
 });
 
 test('a yes/no citizenship question is NOT a nationality field', () => {
