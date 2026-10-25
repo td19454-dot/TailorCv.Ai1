@@ -7169,6 +7169,59 @@ async def landing_page(request: Request):
     )
 
 
+def _is_valid_template_id(template_id) -> bool:
+    """True when resume-templates/html/template<id>.html exists."""
+    if not isinstance(template_id, int) or isinstance(template_id, bool) or template_id < 1:
+        return False
+    return os.path.isfile(os.path.join(
+        BASE_DIR, "resume-templates", "resume-templates", "html", f"template{template_id}.html"))
+
+
+def _preferred_template_id(request: Request):
+    """The signed-in user's default resume template, or None. Shared with the
+    extension (User.base_template_id) so web and extension tailor into the same
+    layout; /solutions skips the template picker when this is set."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return None
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        tid = user.base_template_id if user else None
+        return tid if _is_valid_template_id(tid) else None
+    finally:
+        db.close()
+
+
+@app.post("/api/preferences/template")
+async def set_preferred_template(request: Request):
+    """Save the default template the optimize flow uses. Called from the web app,
+    so it keeps normal CSRF protection — not in EXEMPT_PATHS. Touches only the
+    template; /api/extension/base-resume would 400 without a base resume on file."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    template_id = payload.get("template_id") if isinstance(payload, dict) else None
+    if not _is_valid_template_id(template_id):
+        raise HTTPException(status_code=400, detail="Unknown template")
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        user.base_template_id = template_id
+        db.commit()
+    finally:
+        db.close()
+    return JSONResponse({"success": True})
+
+
 @app.get("/solutions", response_class=HTMLResponse)
 async def solutions_page(request: Request):
     """Solutions page where users upload resume & JD."""
@@ -7179,6 +7232,7 @@ async def solutions_page(request: Request):
         {
             "request": request,
             "is_logged_in": bool(request.session.get("user_id")),
+            "preferred_template_id": _preferred_template_id(request),
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
             "canonical_url": build_absolute_url("/solutions"),
             "software_schema_json": build_software_app_schema(),
@@ -7199,6 +7253,7 @@ async def optimize_page(request: Request):
             # Without this the template sees is_logged_in as undefined (falsy) and
             # serves the logged-out landing to signed-in users.
             "is_logged_in": bool(request.session.get("user_id")),
+            "preferred_template_id": _preferred_template_id(request),
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
             # Alias of /solutions — canonical points to the primary URL to avoid
             # duplicate-content indexing.

@@ -161,7 +161,17 @@ function hideStoredFileUI() {
     if (info) info.style.display = 'none';
 }
 
+// Folds the ATS/Optimize buttons and the template chip away while a resume is
+// optimizing (CSS: #resume-form.is-optimizing in solutions.html).
+function setOptimizingUI(on) {
+    const form = document.getElementById('resume-form');
+    if (form) form.classList.toggle('is-optimizing', on);
+}
+
 function resetATSProgressUI() {
+    // Also runs on pageshow: Back from the editor restores this page from
+    // bfcache with the buttons still folded.
+    setOptimizingUI(false);
     const atsProgressSection = document.getElementById('ats-progress-section');
     const atsContent = document.getElementById('ats-progress-content');
     const analyzeBtn = document.getElementById('analyze-btn');
@@ -199,42 +209,142 @@ function restoreSavedInputs() {
     }
 }
 
-function getTemplateIdFromNavigation() {
-    const params = new URLSearchParams(window.location.search);
-    const fromQuery = Number(params.get('template'));
-    if (Number.isInteger(fromQuery) && templates.some(t => Number(t.id) === fromQuery)) {
-        return fromQuery;
-    }
+// ── Default template ────────────────────────────────────────────────────────
+// The template is a preference, not a per-job choice: picked once (first
+// optimization, or "Change"), then every Optimize click uses it without asking.
+// Logged-in users keep it on the account (User.base_template_id, shared with the
+// extension); localStorage covers guests and is the fallback.
+function findTemplate(id) {
+    return templates.find(t => Number(t.id) === Number(id)) || null;
+}
 
-    if (window.location.pathname !== '/optimize') {
+function storedTemplateId() {
+    try {
+        const id = Number(localStorage.getItem(LS_KEYS.selectedTemplate));
+        return findTemplate(id) ? id : null;
+    } catch (e) {
         return null;
     }
+}
 
-    const fromStorage = Number(localStorage.getItem(LS_KEYS.selectedTemplate));
-    if (Number.isInteger(fromStorage) && templates.some(t => Number(t.id) === fromStorage)) {
-        return fromStorage;
+function csrfToken() {
+    return (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || '';
+}
+
+function pushPreferredTemplate(id) {
+    if (!window.TCV_IS_LOGGED_IN) return;
+    fetch('/api/preferences/template', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken() },
+        body: JSON.stringify({ template_id: Number(id) })
+    }).catch(err => console.warn('Saving template preference failed', err));
+}
+
+function savePreferredTemplate(id) {
+    const tpl = findTemplate(id);
+    if (!tpl) return;
+    selectedTemplate = tpl;
+    try { localStorage.setItem(LS_KEYS.selectedTemplate, String(tpl.id)); } catch (e) {}
+    pushPreferredTemplate(tpl.id);
+    renderTemplateChip();
+}
+
+function renderTemplateChip() {
+    const chip = document.getElementById('tpl-pref-chip');
+    if (!chip) return;
+    if (!selectedTemplate) { chip.hidden = true; return; }
+    document.getElementById('tpl-pref-name').textContent = selectedTemplate.name;
+    const thumb = document.getElementById('tpl-pref-thumb');
+    thumb.src = `/static/${selectedTemplate.image}?v=9`;
+    thumb.alt = selectedTemplate.name;
+    chip.hidden = false;
+}
+
+// Priority: ?template= (an explicit pick on /templates) > the account's saved
+// template > this browser's last pick. A browser-only pick from before this
+// existed is promoted to the account so it follows the user.
+function initPreferredTemplate() {
+    const fromQuery = Number(new URLSearchParams(window.location.search).get('template'));
+    if (findTemplate(fromQuery)) {
+        savePreferredTemplate(fromQuery);
+        return;
     }
-    return null;
+    const fromServer = Number(window.TCV_PREFERRED_TEMPLATE);
+    if (findTemplate(fromServer)) {
+        selectedTemplate = findTemplate(fromServer);
+        try { localStorage.setItem(LS_KEYS.selectedTemplate, String(fromServer)); } catch (e) {}
+        renderTemplateChip();
+        return;
+    }
+    const fromStorage = storedTemplateId();
+    if (fromStorage) {
+        selectedTemplate = findTemplate(fromStorage);
+        pushPreferredTemplate(fromStorage);
+        renderTemplateChip();
+    }
 }
 
-function showTemplateSelectionSection() {
-    const templateSection = document.getElementById('template-selection-section');
-    if (!templateSection) return;
-    templateSection.style.display = 'block';
-}
+// mode 'optimize': first run, confirming saves the template and optimizes.
+// mode 'change': confirming only saves the new default.
+let templateModalMode = 'optimize';
+let pendingTemplateId = null;
 
-function applyTemplateFromNavigation() {
-    const templateId = getTemplateIdFromNavigation();
-    if (!templateId) return;
-
-    selectedTemplate = templates.find(t => Number(t.id) === Number(templateId)) || null;
-    showTemplateSelectionSection();
+function openTemplateModal(mode) {
+    const modal = document.getElementById('tpl-modal');
+    if (!modal) return;
+    templateModalMode = mode;
+    pendingTemplateId = null;
     generateTemplateGrid();
+    // Lifted to <body>: inside the page section an ancestor's stacking context
+    // capped its z-index, so the site header drew over the preview's ✕.
+    if (modal.parentElement !== document.body) document.body.appendChild(modal);
+    modal.hidden = false;
+    document.body.classList.add('tpl-modal-open');
+    const current = document.querySelector('#templates-grid .template-card.is-current');
+    if (current) current.scrollIntoView({ block: 'nearest' });
+}
 
-    const card = document.querySelector(`.template-card[data-template-id="${templateId}"]`);
-    if (card && selectedTemplate) {
-        card.classList.add('selected');
+function closeTemplateModal() {
+    const modal = document.getElementById('tpl-modal');
+    if (!modal) return;
+    closeTemplatePreview();
+    modal.hidden = true;
+    document.body.classList.remove('tpl-modal-open');
+}
+
+// Tapping a thumbnail opens it full-screen; the choice is made from here.
+function openTemplatePreview(id) {
+    const preview = document.getElementById('tpl-preview');
+    const tpl = findTemplate(id);
+    if (!preview || !tpl) return;
+    pendingTemplateId = tpl.id;
+    document.getElementById('tpl-preview-name').textContent = tpl.name;
+    const img = document.getElementById('tpl-preview-img');
+    img.src = `/static/${tpl.image}?v=9`;
+    img.alt = `${tpl.name} resume template`;
+    const confirmBtn = document.getElementById('confirm-optimize-btn');
+    if (confirmBtn) {
+        confirmBtn.textContent = templateModalMode === 'change' ? 'Use this template' : 'Use this template & optimize';
     }
+    const body = preview.querySelector('.tpl-preview-body');
+    if (body) body.scrollTop = 0;
+    preview.hidden = false;
+}
+
+function closeTemplatePreview() {
+    const preview = document.getElementById('tpl-preview');
+    if (preview) preview.hidden = true;
+}
+
+function isTemplatePreviewOpen() {
+    const preview = document.getElementById('tpl-preview');
+    return !!(preview && !preview.hidden);
+}
+
+function stepTemplatePreview(delta) {
+    const idx = templates.findIndex(t => Number(t.id) === Number(pendingTemplateId));
+    const next = templates[(idx + delta + templates.length) % templates.length];
+    openTemplatePreview(next.id);
 }
 
 // Initialize when DOM is ready
@@ -309,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Restore previously saved inputs on load
     restoreSavedInputs();
-    applyTemplateFromNavigation();
+    initPreferredTemplate();
 
     // Analyze button handler
     const analyzeBtn = document.getElementById('analyze-btn');
@@ -320,49 +430,74 @@ document.addEventListener('DOMContentLoaded', function() {
     // If the user was sent to login mid-analysis, finish it now that they're back.
     maybeResumePendingATS();
 
-    // Optimize button handler - SHOW TEMPLATES FIRST
+    // Optimize: straight to generation with the saved template. Only the very
+    // first optimization (no template saved yet) stops to ask for one.
     const optimizeBtn = document.getElementById('optimize-btn');
     if (optimizeBtn) {
         optimizeBtn.addEventListener('click', function() {
-            // Validate inputs first
-            const fileInput = document.getElementById('resume-file');
             const jdInput = document.getElementById('job-description');
-            
+
             if (!getResumeFileForUpload()) {
                 showToast('Please upload a resume PDF file first.', 'warn');
                 return;
             }
-            
+
             if (!jdInput.value.trim()) {
                 showToast('Please paste a job description before continuing.', 'warn');
                 return;
             }
-            
-            optimizeBtn.classList.add('loading', 'animate-shimmer');
-            optimizeBtn.querySelector('.btn-text').textContent = 'Loading templates...';
-            // Show template selection
-            const templateSection = document.getElementById('template-selection-section');
-            if (templateSection) {
-                templateSection.style.display = 'block';
-                generateTemplateGrid();
-                templateSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            if (selectedTemplate) {
+                handleResumeOptimization();
+            } else {
+                openTemplateModal('optimize');
             }
-            setTimeout(() => {
-                optimizeBtn.classList.remove('loading', 'animate-shimmer');
-                optimizeBtn.querySelector('.btn-text').textContent = 'Select Template & Optimize';
-            }, 1200);
         });
     }
 
-    // Confirm button handler - ACTUALLY OPTIMIZE
+    const changeTplBtn = document.getElementById('tpl-pref-change');
+    if (changeTplBtn) {
+        changeTplBtn.addEventListener('click', () => openTemplateModal('change'));
+    }
+
+    document.querySelectorAll('[data-tpl-close]').forEach(el => {
+        el.addEventListener('click', closeTemplateModal);
+    });
+    // Only a tap on the element itself closes: the preview body wraps the
+    // image, and tapping the page should not dismiss it.
+    document.querySelectorAll('[data-tpl-preview-close]').forEach(el => {
+        el.addEventListener('click', e => { if (e.target === el) closeTemplatePreview(); });
+    });
+    const prevTplBtn = document.getElementById('tpl-preview-prev');
+    const nextTplBtn = document.getElementById('tpl-preview-next');
+    if (prevTplBtn) prevTplBtn.addEventListener('click', () => stepTemplatePreview(-1));
+    if (nextTplBtn) nextTplBtn.addEventListener('click', () => stepTemplatePreview(1));
+    document.addEventListener('keydown', function(e) {
+        if (isTemplatePreviewOpen()) {
+            if (e.key === 'Escape') closeTemplatePreview();
+            else if (e.key === 'ArrowLeft') stepTemplatePreview(-1);
+            else if (e.key === 'ArrowRight') stepTemplatePreview(1);
+        } else if (e.key === 'Escape') {
+            closeTemplateModal();
+        } else if (e.key === 'Enter' && e.target.closest && e.target.closest('#templates-grid .template-card')) {
+            openTemplatePreview(Number(e.target.closest('.template-card').dataset.templateId));
+        }
+    });
+
     const confirmBtn = document.getElementById('confirm-optimize-btn');
     if (confirmBtn) {
         confirmBtn.addEventListener('click', function() {
-            if (!selectedTemplate) {
-                showToast('Please select a template from the list above.', 'warn');
+            if (!pendingTemplateId) {
+                showToast('Please pick a template first.', 'warn');
                 return;
             }
-            handleResumeOptimization();
+            savePreferredTemplate(pendingTemplateId);
+            closeTemplateModal(); // also closes the preview
+            if (templateModalMode === 'change') {
+                showToast(`${selectedTemplate.name} will be used for your resumes.`, 'success', 'Template updated');
+            } else {
+                handleResumeOptimization();
+            }
         });
     }
 });
@@ -374,43 +509,19 @@ function generateTemplateGrid() {
     const grid = document.getElementById('templates-grid');
     if (!grid) return;
 
-    grid.innerHTML = templates.map(temp => `
-        <div class="template-card ${selectedTemplate && Number(selectedTemplate.id) === Number(temp.id) ? 'selected' : ''}" data-template-id="${temp.id}" onclick="selectTemplate(${temp.id}, this)">
+    const currentId = selectedTemplate ? Number(selectedTemplate.id) : null;
+    grid.innerHTML = templates.map(temp => {
+        const isCurrent = currentId === Number(temp.id);
+        return `
+        <div class="template-card ${isCurrent ? 'is-current' : ''}" data-template-id="${temp.id}" onclick="openTemplatePreview(${temp.id})" role="button" tabindex="0" aria-label="Preview ${temp.name}">
             <div class="template-image-container">
-                <img src="/static/${temp.image}?v=9" alt="${temp.name}" class="template-img">
-                <div class="template-overlay">
-                    <span>Click to Select</span>
-                </div>
+                <img src="/static/${temp.image}?v=9" alt="${temp.name}" class="template-img" loading="lazy">
             </div>
             <div class="template-info">
-                <p>${temp.name}</p>
+                <p>${temp.name}</p>${isCurrent ? '<span class="tpl-current-tag">Current</span>' : ''}
             </div>
-        </div>
-    `).join('');
-}
-
-// Handle template selection visuals
-function selectTemplate(id, element) {
-    selectedTemplate = templates.find(t => t.id === id);
-    localStorage.setItem(LS_KEYS.selectedTemplate, String(id));
-    
-    // Remove 'selected' class from all cards
-    document.querySelectorAll('.template-card').forEach(card => {
-        card.classList.remove('selected');
-    });
-    
-    // Add 'selected' class to the clicked one
-    element.classList.add('selected');
-    console.log('Template Selected:', selectedTemplate.name);
-
-    // Match templates page behavior: bring the confirm CTA into view
-    // right after a template is selected.
-    const confirmBtn = document.getElementById('confirm-optimize-btn');
-    if (confirmBtn) {
-        requestAnimationFrame(() => {
-            confirmBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-    }
+        </div>`;
+    }).join('');
 }
 
 // Close results or template selection
@@ -995,19 +1106,18 @@ function isUserLoggedIn() {
 async function handleResumeOptimization() {
     const fileInput = document.getElementById('resume-file');
     const jdInput = document.getElementById('job-description');
-    const confirmBtn = document.getElementById('confirm-optimize-btn');
+    const optimizeBtn = document.getElementById('optimize-btn');
     const optimizeResults = document.getElementById('optimize-results');
     const optimizeContent = document.getElementById('optimize-content');
-    const templateSection = document.getElementById('template-selection-section');
     const resultsSection = document.getElementById('results-section');
     const analyzeBtn = document.getElementById('analyze-btn');
-    analyzeBtn.querySelector('.btn-text').textContent = 'Please wait till process completes...';
+    // The progress card below is the status; the buttons fold away rather than
+    // relabel (a long label wrapped and inflated them on phones). Still disabled
+    // so a tap during the fade can't start a second run.
     analyzeBtn.disabled = true;
-    confirmBtn.disabled = true;
-    confirmBtn.classList.add('loading', 'animate-shimmer');
-    confirmBtn.textContent = 'Generating PDF...';
+    optimizeBtn.disabled = true;
+    setOptimizingUI(true);
 
-    templateSection.style.display = 'none';
     resultsSection.style.display = 'block';
     optimizeResults.style.display = 'block';
     displayOptimizeLoading();
@@ -1094,7 +1204,9 @@ async function handleResumeOptimization() {
         optimizeContent.innerHTML = '';
         optimizeResults.style.display = 'none';
         resultsSection.style.display = 'none';
-        templateSection.style.display = 'block';
+        // Only on failure: on success the page redirects to the editor, so the
+        // buttons stay folded instead of flashing back for the countdown.
+        setOptimizingUI(false);
         const message = (error.message || '').toLowerCase();
         if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
             redirectToLogin();
@@ -1102,11 +1214,11 @@ async function handleResumeOptimization() {
             showToast(error.message || 'Optimization failed. Please try again.', 'error', 'Optimization Failed');
         }
     } finally {
-        confirmBtn.classList.remove('loading', 'animate-shimmer');
-        confirmBtn.disabled = false;
+        optimizeBtn.classList.remove('loading', 'animate-shimmer');
+        optimizeBtn.disabled = false;
         analyzeBtn.disabled = false;
         analyzeBtn.querySelector('.btn-text').innerHTML = analyzeBtnOrigHtml != null ? analyzeBtnOrigHtml : 'Get ATS Score';
-        confirmBtn.textContent = 'Confirm & Generate PDF';
+        optimizeBtn.querySelector('.btn-text').innerHTML = optimizeBtnOrigHtml != null ? optimizeBtnOrigHtml : 'Optimize Resume';
     }
 }
 

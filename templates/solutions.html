@@ -644,6 +644,207 @@
         #results-section {
             margin-top: 1rem !important;
         }
+
+        /* Template picker modal (first optimization + "Change"). The card keeps
+           #template-selection-section so style2.css's grid/card styles apply. */
+        .tpl-modal[hidden] { display: none; }
+        .tpl-modal {
+            position: fixed; inset: 0; z-index: 5000;
+            display: flex; align-items: center; justify-content: center;
+            padding: 24px 16px;
+        }
+        .tpl-modal-backdrop {
+            position: absolute; inset: 0;
+            background: rgba(2, 6, 23, 0.72);
+            backdrop-filter: blur(4px);
+        }
+        .tpl-modal #template-selection-section.tpl-modal-card {
+            position: relative;
+            margin: 0 !important;
+            width: min(1100px, 100%);
+            max-height: calc(100dvh - 48px);
+            display: flex; flex-direction: column;
+            padding: 0 !important;
+            overflow: hidden;
+        }
+        .tpl-modal-card .results-header {
+            padding: 18px 22px 0;
+            align-items: center;
+        }
+        .tpl-modal-card .results-content {
+            flex: 1 1 auto; min-height: 0;
+            overflow-y: auto; overscroll-behavior: contain;
+            padding: 8px 22px 18px !important;
+        }
+        .tpl-modal #template-selection-section .results-content p.tpl-modal-note {
+            text-align: center; margin: 0 0 1.25rem;
+            color: #b9c7e6; font-size: 0.95rem;
+        }
+        .tpl-modal-close {
+            background: none; border: none; cursor: pointer;
+            color: #c7d2ec; font-size: 20px; line-height: 1;
+            width: 36px; height: 36px; border-radius: 8px;
+        }
+        .tpl-modal-close:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+        body.tpl-modal-open { overflow: hidden; }
+        /* The assistant orb sits at max z-index and covered the preview's button. */
+        body.tpl-modal-open .tcv-agent { display: none !important; }
+        /* Above the site header and app top bar (z 4200). */
+        .tpl-preview-top { z-index: 2; }
+
+        /* Picker thumbnails: just the page and its name. Scoped to the modal so
+           style2.css's boxed .template-card on other pages is untouched. */
+        .tpl-modal #template-selection-section .templates-grid {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+            gap: 22px 20px !important;
+            padding: 4px 0 !important;
+        }
+        .tpl-modal .template-card,
+        .tpl-modal .template-card:hover,
+        .tpl-modal .template-card.selected {
+            background: none !important;
+            border: 0 !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            transform: none !important;
+            overflow: visible !important;
+        }
+        .tpl-modal .template-image-container {
+            border-radius: 6px !important;
+            background: #fff !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+            transition: box-shadow .2s ease;
+        }
+        .tpl-modal .template-card:hover .template-image-container {
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(147, 197, 253, 0.5);
+        }
+        .tpl-modal .template-card .template-img,
+        .tpl-modal .template-card:hover .template-img { transform: none !important; }
+        .tpl-modal .template-overlay { display: none !important; }
+        .tpl-modal .template-info {
+            padding: 9px 2px 0 !important;
+            display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap;
+        }
+        .tpl-modal .template-info p {
+            margin: 0 !important;
+            font-size: 0.85rem !important; font-weight: 500;
+            color: #c7d2ec !important; line-height: 1.3;
+        }
+        .tpl-modal .template-card.is-current .template-image-container {
+            outline: 2px solid #60a5fa; outline-offset: 3px;
+        }
+        .tpl-current-tag {
+            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.02em;
+            padding: 1px 7px; border-radius: 999px;
+            background: rgba(96, 165, 250, 0.18); color: #93c5fd;
+        }
+
+        /* Full-screen preview, above the picker. */
+        .tpl-preview[hidden] { display: none; }
+        .tpl-preview {
+            position: fixed; inset: 0; z-index: 5100;
+            display: flex; flex-direction: column;
+        }
+        .tpl-preview-backdrop { position: absolute; inset: 0; background: rgba(2, 6, 23, 0.94); }
+        .tpl-preview-top,
+        .tpl-preview-body,
+        .tpl-preview-footer { position: relative; }
+        .tpl-preview-top {
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            padding: 12px 16px;
+        }
+        .tpl-preview-name { margin: 0; color: #fff; font-size: 1.05rem; font-weight: 600; }
+        .tpl-preview-body {
+            flex: 1 1 auto; min-height: 0;
+            display: flex; align-items: flex-start; justify-content: center;
+            overflow-y: auto; overscroll-behavior: contain;
+            padding: 4px 64px;
+        }
+        .tpl-preview-img {
+            display: block; max-width: min(100%, 760px); height: auto;
+            margin: auto; background: #fff; border-radius: 4px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        }
+        .tpl-preview-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 44px; height: 44px; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(15, 23, 42, 0.75); color: #fff;
+            font-size: 28px; line-height: 1; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; padding-bottom: 3px;
+        }
+        .tpl-preview-nav:hover { background: rgba(37, 99, 235, 0.6); }
+        .tpl-preview-nav--prev { left: 12px; }
+        .tpl-preview-nav--next { right: 12px; }
+        .tpl-preview-footer {
+            display: flex; justify-content: center;
+            padding: 14px 16px calc(16px + env(safe-area-inset-bottom));
+        }
+        .tpl-preview-footer #confirm-optimize-btn { max-width: 340px; width: 100%; }
+
+        @media (max-width: 768px) {
+            /* Two previews per row so the 22 templates aren't a long scroll. */
+            .tpl-modal #template-selection-section .templates-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 18px 14px !important;
+            }
+            .tpl-modal-card .results-header { padding: 14px 14px 0; }
+            .tpl-modal-card .results-content { padding: 6px 14px 16px !important; }
+            /* Page uses the full width; arrows sit over its edges. */
+            .tpl-preview-body { padding: 4px 12px; }
+            .tpl-preview-nav { width: 38px; height: 38px; font-size: 24px; }
+            .tpl-preview-nav--prev { left: 6px; }
+            .tpl-preview-nav--next { right: 6px; }
+        }
+
+        /* Saved-template chip under the Optimize / ATS buttons. */
+        .tpl-pref-chip[hidden] { display: none; }
+        .tpl-pref-chip {
+            display: flex; align-items: center; gap: 10px;
+            margin: 14px auto 0; width: fit-content; max-width: 100%;
+            padding: 6px 8px 6px 6px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(173, 216, 255, 0.16);
+            color: #c8d7fb; font-size: 0.88rem;
+        }
+        .tpl-pref-thumb {
+            width: 30px; height: 39px; object-fit: cover; object-position: top;
+            border-radius: 4px; background: #fff; flex: none;
+        }
+        .tpl-pref-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .tpl-pref-label strong { color: #fff; font-weight: 600; }
+        .tpl-pref-change {
+            flex: none; background: none; border: none; cursor: pointer;
+            color: #93c5fd; font-size: 0.88rem; font-weight: 600;
+            padding: 6px 8px; border-radius: 8px; text-decoration: underline;
+        }
+        .tpl-pref-change:hover { background: rgba(147, 197, 253, 0.1); color: #bfdbfe; }
+
+        /* While optimizing, the progress card is the status: fold the buttons
+           and template chip away (main_new.js setOptimizingUI). */
+        #resume-form #ats-start,
+        #resume-form #tpl-pref-chip {
+            max-height: 400px;
+            transition: opacity .25s ease, max-height .3s ease, margin .3s ease;
+        }
+        #resume-form.is-optimizing #ats-start,
+        #resume-form.is-optimizing #tpl-pref-chip {
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #resume-form #ats-start,
+            #resume-form #tpl-pref-chip { transition: none; }
+        }
+        /* Loading labels must never wrap and inflate the button. */
+        .cv2-actions .sol-ats-launch .btn-text { white-space: nowrap; }
         @media (max-width: 980px) {
             .cv2-shell {
                 max-width: 100%;
@@ -883,6 +1084,13 @@
                                     <span class="btn-loader" style="display: none;">?</span>
                                 </button>
                             </div>
+                            <!-- The saved default template. Optimize uses it without asking;
+                                 "Change" reopens the picker. Hidden until one is chosen. -->
+                            <div id="tpl-pref-chip" class="tpl-pref-chip" hidden>
+                                <img id="tpl-pref-thumb" class="tpl-pref-thumb" src="" alt="">
+                                <span class="tpl-pref-label">Template: <strong id="tpl-pref-name"></strong></span>
+                                <button type="button" id="tpl-pref-change" class="tpl-pref-change">Change</button>
+                            </div>
                         </form>
                     </div>
 
@@ -890,23 +1098,40 @@
                     </div>
                 </div>
 
-                <div id="template-selection-section" class="results-card" style="display: none; margin-top: 2rem;">
-                    <div class="results-header">
-                        <h2 class="results-title">Select a Resume Template</h2>
+                <!-- Template picker modal: shown on the first optimization (no saved
+                     template yet) and from the "Change" link. main_new.js owns it. -->
+                <div id="tpl-modal" class="tpl-modal" hidden>
+                    <div class="tpl-modal-backdrop" data-tpl-close></div>
+                    <div id="template-selection-section" class="results-card tpl-modal-card" role="dialog" aria-modal="true" aria-labelledby="tpl-modal-title">
+                        <div class="results-header">
+                            <h2 class="results-title" id="tpl-modal-title">Choose your resume template</h2>
+                            <button type="button" class="tpl-modal-close" aria-label="Close" data-tpl-close>&#10005;</button>
+                        </div>
+                        <div class="results-content">
+                            <p class="tpl-modal-note">We'll use this template for every resume you optimize. You can change it anytime.</p>
+
+                            <div class="templates-grid" id="templates-grid"></div>
+                        </div>
                     </div>
-                    <div class="results-content">
-                        <p style="text-align: center; margin-bottom: 1.5rem; color: #64748b;">
-                            Click on a preview to select your preferred layout.
-                        </p>
 
-                        <div class="templates-grid" id="templates-grid"></div>
-
-                        <div style="text-align: center; margin-top: 30px;">
-                            <button id="confirm-optimize-btn" class="btn btn-primary confirm-pdf-btn" style="max-width: 300px;">
-                                Confirm &amp; Generate PDF
+                    <!-- Full-screen preview of one template; tapping a thumbnail opens
+                         it, and choosing happens here. -->
+                    <div id="tpl-preview" class="tpl-preview" hidden role="dialog" aria-modal="true" aria-labelledby="tpl-preview-name">
+                        <div class="tpl-preview-backdrop" data-tpl-preview-close></div>
+                        <div class="tpl-preview-top">
+                            <h3 id="tpl-preview-name" class="tpl-preview-name"></h3>
+                            <button type="button" class="tpl-modal-close" aria-label="Close preview" data-tpl-preview-close>&#10005;</button>
+                        </div>
+                        <div class="tpl-preview-body" data-tpl-preview-close>
+                            <img id="tpl-preview-img" class="tpl-preview-img" src="" alt="">
+                        </div>
+                        <button type="button" id="tpl-preview-prev" class="tpl-preview-nav tpl-preview-nav--prev" aria-label="Previous template">&#8249;</button>
+                        <button type="button" id="tpl-preview-next" class="tpl-preview-nav tpl-preview-nav--next" aria-label="Next template">&#8250;</button>
+                        <div class="tpl-preview-footer">
+                            <button id="confirm-optimize-btn" class="btn btn-primary confirm-pdf-btn">
+                                Use this template &amp; optimize
                             </button>
                         </div>
-
                     </div>
                 </div>
 
@@ -934,7 +1159,11 @@
     <script src="/static/auth_nav.js?v=21"></script>
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/toast.js"></script>
-    <script src="/static/main_new.js?v=45"></script>
+    <script>
+        window.TCV_IS_LOGGED_IN = {{ (is_logged_in or false) | tojson }};
+        window.TCV_PREFERRED_TEMPLATE = {{ preferred_template_id | tojson }};
+    </script>
+    <script src="/static/main_new.js?v=49"></script>
 <script>
 (function () {
     const DEFAULT_JDS = {
