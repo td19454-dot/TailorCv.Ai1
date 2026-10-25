@@ -1014,7 +1014,6 @@ header.navbar .logo .logo-word {
     }
     .navbar .nav-mega-promo:hover .nav-mega-promo-arrow,
     .navbar .nav-mega-promo:focus-visible .nav-mega-promo-arrow { transform: translate(2px, -2px); }
-    }
 
     /* Company menu shares the item styles; give it room for the tiles. */
     .navbar .nav-dropdown .nav-dropdown-menu.nav-company-menu {
@@ -1040,6 +1039,16 @@ header.navbar .logo .logo-word {
    white popup. They collapse by default and expand INLINE when their toggle is
    tapped (.open, set by mobile_nav.js). Labels are sentence-case, rows ≥44px. */
 @media (max-width: 768px) {
+    /* The drawer hangs off a fixed navbar, so page scroll never moves it; with
+       Features expanded it ran past the screen and the last items were
+       unreachable. Cap it to the viewport and let it scroll on its own. */
+    .navbar .nav-links {
+        max-height: calc(100vh - 90px);
+        max-height: calc(100dvh - 90px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
     .navbar .nav-dropdown { display: block; width: 100%; }
     .navbar .nav-caret { display: inline-block; }
 
