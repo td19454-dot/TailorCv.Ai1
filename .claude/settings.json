@@ -80,7 +80,8 @@
       "Bash(.venv/Scripts/python.exe -c \"import weasyprint, fitz; print\\(weasyprint.__version__, 'fitz ok'\\)\")",
       "Bash(.venv/Scripts/python.exe -c \"import weasyprint; print\\(weasyprint.__version__\\)\")",
       "Bash(.venv/Scripts/python.exe -c \"import pymupdf; print\\('pymupdf ok'\\)\")",
-      "Bash(\"/c/Users/SHUBHAM SARKAR/AppData/Local/Programs/Python/Python311/python.exe\" -c \"import weasyprint; print\\('py311', weasyprint.__version__\\)\")"
+      "Bash(\"/c/Users/SHUBHAM SARKAR/AppData/Local/Programs/Python/Python311/python.exe\" -c \"import weasyprint; print\\('py311', weasyprint.__version__\\)\")",
+      "Bash(venv/Scripts/python.exe -)"
     ],
     "additionalDirectories": [
       "\\tmp"
