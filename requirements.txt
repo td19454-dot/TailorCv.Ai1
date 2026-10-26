@@ -25,7 +25,9 @@ tenacity>=8.5.0
 
 # PDF processing
 pdfplumber>=0.10.0
-weasyprint>=60.0
+# Pinned: page-break behaviour in two-column (grid) templates differs between
+# releases, so prod must run the version the templates were verified on.
+weasyprint==68.1
 pymupdf
 spacy
 pypdf>=4.0.0

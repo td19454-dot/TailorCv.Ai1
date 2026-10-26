@@ -89,7 +89,12 @@
       "Bash(\"C:/Users/SHUBHAM SARKAR/Desktop/saas/TailorCv.Ai1/.venv/Scripts/python.exe\" t8.py b.pdf \".contact-card{width:calc\\(100% + 26px\\)}\")",
       "Bash(pdftoppm -r 50 -f 1 -l 1 -png b.pdf b)",
       "Bash(\"C:/Users/SHUBHAM SARKAR/Desktop/saas/TailorCv.Ai1/.venv/Scripts/python.exe\" t8.py e.pdf)",
-      "Bash(pdftoppm -r 60 -f 1 -l 1 -png e.pdf e)"
+      "Bash(pdftoppm -r 60 -f 1 -l 1 -png e.pdf e)",
+      "Bash(\"C:/Users/SHUBHAM SARKAR/Desktop/saas/TailorCv.Ai1/.venv/Scripts/python.exe\" t9.py 9 r9.pdf)",
+      "Bash(pdftoppm -r 45 -l 2 -png r9.pdf r9)",
+      "Bash(pdftotext -layout r9.pdf -)",
+      "Bash(\"C:/Users/SHUBHAM SARKAR/Desktop/saas/TailorCv.Ai1/.venv/Scripts/python.exe\" t9.py 9 e9.pdf --edv2)",
+      "Bash(pdftoppm -r 45 -l 2 -png e9.pdf e9)"
     ],
     "additionalDirectories": [
       "\\tmp"
