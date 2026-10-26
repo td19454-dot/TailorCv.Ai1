@@ -620,6 +620,12 @@
             section.education, section.certifications {
                 break-inside: avoid; page-break-inside: avoid;
             }
+            /* Skills flows across pages instead of jumping whole (mirrors
+               _RESUME_NORMALIZE_CSS in main.py). */
+            .skills-section, .section, .resume-section, .timeline-row {
+                break-inside: auto !important; page-break-inside: auto !important;
+            }
+            .skill-label { break-after: avoid; page-break-after: avoid; }
         `;
     }
 

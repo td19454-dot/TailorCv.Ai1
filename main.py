@@ -1562,9 +1562,14 @@ ul.contact-list > li::marker, ul.contact > li::marker, .contact ul > li::marker,
    jumps to the next page whole. Measured: page 1 at 96% full with page 2
    holding a single bullet. Entries flow instead; only the pieces that must
    stay together are pinned. Mirrors buildDesignCss() in editor_v2.js so the
-   preview and the PDF paginate identically. */
+   preview and the PDF paginate identically.
+   Whole SECTIONS flow too: templates 7, 10, 11 and style4.css pin `.section`
+   with break-inside: avoid, so a Projects section that overran page 1 jumped
+   to page 2 whole even though each entry inside it was free to split.
+   `.timeline-row` is template 14's entry. */
 .entry, .experience-item, .project-item, .education-item,
-.exp-entry, .edu-entry, .proj-entry, .item {
+.exp-entry, .edu-entry, .proj-entry, .item, .timeline-row,
+.section, .resume-section {
   break-inside: auto !important; page-break-inside: auto !important;
   orphans: 2; widows: 2;
 }
@@ -1578,10 +1583,18 @@ h2, h3, .section-title, .section-heading, .sec-title,
 /* One bullet never splits across the seam. */
 li { break-inside: avoid; page-break-inside: avoid; orphans: 2; widows: 2; }
 p  { orphans: 2; widows: 2; }
-/* Short trailing sections stay whole when they fit. */
+/* Short trailing sections stay whole when they fit. !important so the
+   `.section` release above cannot override them on a shared element. */
 .certifications, .awards, .achievements, section.certifications {
-  break-inside: avoid; page-break-inside: avoid;
+  break-inside: avoid !important; page-break-inside: avoid !important;
 }
+/* Skills is the one long section that must flow across the seam. Templates
+   pin their sections whole (`.sidebar-section`, `.section`, `.side-block`
+   { break-inside: avoid }), so a skills list that overran page 1 jumped to
+   page 2 entirely and left a tall empty gap. Single items still never split
+   (the li rule above), and a group label stays with its first skill. */
+.skills-section { break-inside: auto !important; page-break-inside: auto !important; }
+.skill-label { break-after: avoid; page-break-after: avoid; }
 
 /* --- BUG D: only real links are coloured and underlined ----------------- */
 a { text-decoration: none; }
