@@ -1,18 +1,18 @@
 === PROJECT NAMES FROM AI ===
-  'TailorCV.ai'
+  'TailorCV'
   'Youtube Sentiment Analysis'
-  'Smart Product Pricing'
+  'Marketing Analytics'
 
 === ANNOTATION MAP (pdf) ===
 {
- "TailorCV.ai": [
+ "TailorCV": [
   [
    "GitHub",
-   "https://github.com/SSarkar-1/TailorCV.ai"
+   "https://github.com/td19454-dot/TailorCv.Ai1"
   ],
   [
    "Link",
-   "https://tailorcv-ai.onrender.com"
+   "https://www.thetailorcv.com"
   ]
  ],
  "Youtube Sentiment Analysis": [
@@ -22,43 +22,43 @@
   ],
   [
    "Link",
-   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view?usp=sharing"
+   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"
   ]
  ],
- "Smart Product Pricing": [
+ "Marketing Analytics": [
   [
-   "Link",
-   "https://www.kaggle.com/code/shubhamsarkarss/multimodal-working"
+   "GitHub",
+   "https://github.com/SSarkar-1/saas_Chatbot"
   ]
  ]
 }
 
 === TITLE POSITIONS FOUND IN PDF ===
-  page0 top=355.5  'TailorCV.ai'
-  page0 top=434.2  'Youtube Sentiment Analysis'
-  page0 top=524.9  'Smart Product Pricing'
+  page0 top=232.7  'TailorCV'
+  page0 top=353.5  'Youtube Sentiment Analysis'
+  page0 top=417.5  'Marketing Analytics'
   NOT LOCATED: []
 
 === LINK POSITIONS AND DECISIONS ===
-  page0 top=  353.8 x0= 356.0 -> 'TailorCV.ai' (dist 0.7)  https://github.com/SSarkar-1/TailorCV.ai
-  page0 top=  380.0 x0= 194.4 -> 'TailorCV.ai' (dist 24.9)  https://tailorcv-ai.onrender.com
-  page0 top=  432.5 x0= 365.3 -> 'Youtube Sentiment Analysis' (dist 0.7)  https://github.com/SSarkar-1/Youtube_Sentiment_Insights
-  page0 top=  458.7 x0= 505.3 -> 'Youtube Sentiment Analysis' (dist 12.5)  https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view?usp=sharing
-  page0 top=  523.1 x0= 404.1 -> 'Smart Product Pricing' (dist 0.7)  https://www.kaggle.com/code/shubhamsarkarss/multimodal-working
+  page0 top=  241.9 x0= 205.4 -> 'TailorCV' (dist 0.1)  https://github.com/td19454-dot/TailorCv.Ai1
+  page0 top=  241.9 x0= 237.5 -> 'TailorCV' (dist 0.1)  https://www.thetailorcv.com
+  page0 top=  362.6 x0= 279.7 -> 'Youtube Sentiment Analysis' (dist 0.1)  https://github.com/SSarkar-1/Youtube_Sentiment_Insights
+  page0 top=  362.6 x0= 311.7 -> 'Youtube Sentiment Analysis' (dist 0.1)  https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view
+  page0 top=  426.6 x0= 262.8 -> 'Marketing Analytics' (dist 0.1)  https://github.com/SSarkar-1/saas_Chatbot
 
 === TEXT MAP ===
 {}
 
 === EFFECTIVE MAP ===
 {
- "TailorCV.ai": [
+ "TailorCV": [
   [
    "GitHub",
-   "https://github.com/SSarkar-1/TailorCV.ai"
+   "https://github.com/td19454-dot/TailorCv.Ai1"
   ],
   [
    "Link",
-   "https://tailorcv-ai.onrender.com"
+   "https://www.thetailorcv.com"
   ]
  ],
  "Youtube Sentiment Analysis": [
@@ -68,24 +68,24 @@
   ],
   [
    "Link",
-   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view?usp=sharing"
+   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"
   ]
  ],
- "Smart Product Pricing": [
+ "Marketing Analytics": [
   [
-   "Link",
-   "https://www.kaggle.com/code/shubhamsarkarss/multimodal-working"
+   "GitHub",
+   "https://github.com/SSarkar-1/saas_Chatbot"
   ]
  ]
 }
 
 === AFTER inject_links ===
-  'TailorCV.ai'
-     links=[{"label": "GitHub", "url": "https://github.com/SSarkar-1/TailorCV.ai"}, {"label": "Link", "url": "https://tailorcv-ai.onrender.com"}]
+  'TailorCV'
+     links=[{"label": "GitHub", "url": "https://github.com/td19454-dot/TailorCv.Ai1"}, {"label": "Link", "url": "https://www.thetailorcv.com"}]
      github_link='' url=''
   'Youtube Sentiment Analysis'
-     links=[{"label": "GitHub", "url": "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"}, {"label": "Link", "url": "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view?usp=sharing"}]
+     links=[{"label": "GitHub", "url": "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"}, {"label": "Link", "url": "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"}]
      github_link='' url=''
-  'Smart Product Pricing'
-     links=[{"label": "Link", "url": "https://www.kaggle.com/code/shubhamsarkarss/multimodal-working"}]
+  'Marketing Analytics'
+     links=[{"label": "GitHub", "url": "https://github.com/SSarkar-1/saas_Chatbot"}]
      github_link='' url=''

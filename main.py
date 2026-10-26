@@ -1805,24 +1805,20 @@ def _sidebar_page_css(html_content: str) -> str:
 
     # Panel colour.
     #
-    # `.sidebar`'s own background is NOT always the colour a reader sees. In
-    # template 8 the column is `--side: #f7f7f7` (near-white) and the colour
-    # lives in four `var(--accent)` blocks INSIDE it (.contact-card,
-    # .chip-list li). Painting that near-white across page 2 produced a blank
-    # stripe where a maroon panel belonged. So: take the column's own colour
-    # only when it is actually tinted, and otherwise fall back to the accent
-    # the panel's blocks are filled with.
+    # Whatever colour the column itself declares is the one the reader sees,
+    # light or dark. Template 8's column is `--side: #f7f7f7` with maroon
+    # blocks (.contact-card, .chip-list li) sitting INSIDE it; substituting
+    # the accent for that near-white painted the whole column maroon and put
+    # the maroon headings and chips on maroon, unreadable. Fall back to the
+    # accent only when the column declares no colour at all.
     colour = ""
     m = re.search(
         r"\.sidebar\s*\{[^}]*?background(?:-color)?:\s*([^;]+);",
         html_content, re.S)
     if m:
-        candidate = _literal(m.group(1))
-        # A near-white column is the paper showing through, not a panel.
-        if candidate and _lum(candidate) < 0.92:
-            colour = candidate
+        colour = _literal(m.group(1))
 
-    if not colour:
+    if not colour and not m:
         accent = re.search(r"--accent\s*:\s*([^;]+);", html_content)
         if accent:
             candidate = _literal(accent.group(1))
