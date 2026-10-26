@@ -81,7 +81,15 @@
       "Bash(.venv/Scripts/python.exe -c \"import weasyprint; print\\(weasyprint.__version__\\)\")",
       "Bash(.venv/Scripts/python.exe -c \"import pymupdf; print\\('pymupdf ok'\\)\")",
       "Bash(\"/c/Users/SHUBHAM SARKAR/AppData/Local/Programs/Python/Python311/python.exe\" -c \"import weasyprint; print\\('py311', weasyprint.__version__\\)\")",
-      "Bash(venv/Scripts/python.exe -)"
+      "Bash(venv/Scripts/python.exe -)",
+      "Bash(.venv/Scripts/python.exe -c \"import pypdfium2\")",
+      "Bash(.venv/Scripts/python.exe -c \"import fitz;print\\('fitz'\\)\")",
+      "Bash(\"C:/Users/SHUBHAM SARKAR/Desktop/saas/TailorCv.Ai1/.venv/Scripts/python.exe\" t8.py a.pdf)",
+      "Bash(pdftoppm -r 50 -f 1 -l 1 -png a.pdf a)",
+      "Bash(\"C:/Users/SHUBHAM SARKAR/Desktop/saas/TailorCv.Ai1/.venv/Scripts/python.exe\" t8.py b.pdf \".contact-card{width:calc\\(100% + 26px\\)}\")",
+      "Bash(pdftoppm -r 50 -f 1 -l 1 -png b.pdf b)",
+      "Bash(\"C:/Users/SHUBHAM SARKAR/Desktop/saas/TailorCv.Ai1/.venv/Scripts/python.exe\" t8.py e.pdf)",
+      "Bash(pdftoppm -r 60 -f 1 -l 1 -png e.pdf e)"
     ],
     "additionalDirectories": [
       "\\tmp"

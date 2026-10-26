@@ -116,7 +116,7 @@
   {% endif %}
 
   {% if skills %}
-  <section class="section">
+  <section class="section skills-section">
     <h2>Skills</h2>
     {% for skill in skills %}{% if skill %}
       {% if ':' in skill %}{% set parts = skill.split(':', 1) %}<div class="skill-row"><span class="skill-key">{{ parts[0] }}</span><span class="skill-val">{{ parts[1].strip() }}</span></div>
