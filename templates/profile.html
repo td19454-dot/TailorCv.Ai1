@@ -112,6 +112,9 @@
                                 </div>
                             {% elif spec.kind == "readonly" %}
                                 <input id="pf-{{ spec.key }}" value="{{ f.value }}" readonly class="pf-readonly">
+                            {% elif spec.kind == "date" %}
+                                <input type="date" id="pf-{{ spec.key }}" name="{{ spec.key }}" value="{{ f.value }}"
+                                       max="{{ today_iso }}">
                             {% else %}
                                 <input id="pf-{{ spec.key }}" name="{{ spec.key }}" maxlength="{{ spec.max_len }}"
                                        value="{{ f.value }}" placeholder="{{ spec.placeholder }}">

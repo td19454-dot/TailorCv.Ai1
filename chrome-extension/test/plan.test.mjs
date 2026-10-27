@@ -227,7 +227,7 @@ test('the AI tier cannot answer a sensitive field even if the server returns one
 });
 
 test('never-fill identifiers are skipped outright, not even asked', () => {
-  for (const label of ['Social Security Number', 'Bank account number', 'Date of birth']) {
+  for (const label of ['Social Security Number', 'Bank account number', 'Aadhaar number']) {
     const d = one(field(label, { required: true }));
     eq(d.action, p.SKIP, label);
     eq(d.value, '', label);
@@ -931,6 +931,52 @@ test('nationality is never guessed when the profile has none', () => {
                       { kind: 'select', required: true, options: ['Indian', 'American'] }));
   notOk(d.value, `nothing may be written here (got ${d.value})`);
   eq(d.action, p.PROFILE);
+});
+
+test('"legally authorised to work" (British spelling) fills from the stored answer, not "add it to your profile"', () => {
+  const ctx = { answerBank: Object.assign({}, BANK, { authorized_to_work_in_country: 'Yes' }), hasResume: true };
+  const d = p.decide([field('Are you legally authorised to work in the country / territory in which this position is located?*',
+                            { kind: 'select', required: true, options: ['Select One', 'Yes', 'No'] })], ctx, null, null)[0];
+  eq(d.action, p.FILL, d.reason);
+  eq(d.value, 'Yes');
+});
+
+// ── date and place of birth ──────────────────────────────────
+
+const PWC_COUNTRIES = ['Bhutan', 'British Indian Ocean Territory', 'Brunei Darussalam', 'Iceland', 'India', 'Indonesia'];
+const birthCtx = extra => ({ answerBank: Object.assign({}, BANK, extra), hasResume: true });
+
+test('Country of Birth: the profile\'s, exactly; else the country of citizenship', () => {
+  const row = () => field('Country / Territory of Birth*', { kind: 'combobox', required: true, options: PWC_COUNTRIES });
+  eq(p.decide([row()], birthCtx({ country_of_birth: 'India' }), null, null)[0].value, 'India');
+  // The older nationality wording: never "British Indian Ocean Territory".
+  const d = p.decide([row()], birthCtx({ nationality: 'Indian' }), null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'India');
+  eq(d.sensitive, 'birth');
+});
+
+test('a demonym against a country list never takes a country that merely holds the word', () => {
+  eq(p.coerce('Indian', { kind: 'combobox', label: 'Country', options: PWC_COUNTRIES }), 'India');
+  eq(p.coerce('Indian', { kind: 'combobox', label: 'Country', options: ['British Indian Ocean Territory', 'Iceland'] }), null);
+});
+
+test('Date of Birth fills from the profile only, and is never sent to the server', () => {
+  const dob = () => field('Date of Birth*', { kind: 'date-parts', required: true });
+  const d = p.decide([dob()], birthCtx({ date_of_birth: '1999-04-07' }), null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, '1999-04-07');
+  const none = p.decide([dob()], CTX, null, null);
+  eq(none[0].action, p.PROFILE);
+  eq(p.fieldsForServer(none).length, 0, 'never offered to the model');
+});
+
+test('City of Birth with nothing stored points at the profile; Region of Birth is asked', () => {
+  const [city, region] = p.decide([field('City of Birth*', { required: true }),
+                                   field('Region of Birth', { kind: 'combobox' })], CTX, null, null);
+  eq(city.action, p.PROFILE);
+  eq(region.action, p.ASK);
+  eq(p.fieldsForServer([city, region]).length, 0);
 });
 
 // ── citizenship by country ───────────────────────────────────

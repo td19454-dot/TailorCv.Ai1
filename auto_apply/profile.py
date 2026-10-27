@@ -90,6 +90,11 @@ class ApplicantProfile:
     nationality: str = ""
     # Same: unset goes back to the user, never a default.
     citizenship_status: str = ""
+    # Date (ISO) and place of birth. Same: unset goes back to the user; only
+    # ever filled from these, never sent to the model (match_guard "birth").
+    date_of_birth: str = ""
+    country_of_birth: str = ""
+    city_of_birth: str = ""
     gender: str = DECLINE
     race_ethnicity: str = DECLINE
     veteran_status: str = DECLINE
@@ -142,8 +147,14 @@ class ApplicantProfile:
     cover_note: str = ""
 
     def to_agent_json(self) -> str:
-        """Compact CANDIDATE_DATA blob handed to the browser agent."""
-        return json.dumps(answer_bank(self), ensure_ascii=False, indent=1)
+        """Compact CANDIDATE_DATA blob handed to the browser agent.
+
+        Without date and place of birth: those are filled only by the
+        extension, from the profile, and are never shown to a model.
+        """
+        bank = {k: v for k, v in answer_bank(self).items()
+                if k not in ("date_of_birth", "country_of_birth", "city_of_birth")}
+        return json.dumps(bank, ensure_ascii=False, indent=1)
 
 
 def split_full_name(full: str) -> tuple[str, str, str]:
@@ -525,6 +536,9 @@ def _profile_to_dict(prof) -> dict:
         "why_this_role": prof.why_this_role or "",
         "nationality": prof.nationality or "",
         "citizenship_status": getattr(prof, "citizenship_status", "") or "",
+        "date_of_birth": getattr(prof, "date_of_birth", "") or "",
+        "country_of_birth": getattr(prof, "country_of_birth", "") or "",
+        "city_of_birth": getattr(prof, "city_of_birth", "") or "",
         "gender": prof.gender or "",
         "race_ethnicity": prof.race_ethnicity or "",
         "veteran_status": prof.veteran_status or "",
@@ -660,6 +674,9 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         how_did_you_hear=str(prof.get("how_did_you_hear") or "").strip() or "Company website",
         nationality=str(prof.get("nationality") or "").strip(),
         citizenship_status=str(prof.get("citizenship_status") or "").strip(),
+        date_of_birth=str(prof.get("date_of_birth") or "").strip(),
+        country_of_birth=str(prof.get("country_of_birth") or "").strip(),
+        city_of_birth=str(prof.get("city_of_birth") or "").strip(),
         gender=str(prof.get("gender") or "").strip() or DECLINE,
         race_ethnicity=str(prof.get("race_ethnicity") or "").strip() or DECLINE,
         veteran_status=str(prof.get("veteran_status") or "").strip() or DECLINE,
@@ -843,6 +860,9 @@ def answer_bank(p: ApplicantProfile) -> dict:
         "cover_letter": p.cover_note,
         "nationality": p.nationality,
         "citizenship_status": p.citizenship_status,
+        "date_of_birth": p.date_of_birth,
+        "country_of_birth": p.country_of_birth,
+        "city_of_birth": p.city_of_birth,
         "gender": p.gender or DECLINE,
         "race_ethnicity": p.race_ethnicity or DECLINE,
         "veteran_status": p.veteran_status or DECLINE,

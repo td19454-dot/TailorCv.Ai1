@@ -150,7 +150,15 @@ export function decide(rows, ctx, server, state) {
       // Its own category's answer — see matchSensitiveKey for the sponsorship
       // question that the open search matched to current_company.
       const entry = matchSensitiveKey(row.label, category);
-      const stored = entry ? bank[entry.key] : '';
+      let stored = entry ? bank[entry.key] : '';
+      // Country of birth: the profile's own, else its country of citizenship
+      // (the person's choice, Oct 2026) — as the country, never a demonym:
+      // "Indian" was how PwC's list ended on "British Indian Ocean Territory".
+      if (entry && entry.key === 'country_of_birth') {
+        const raw = String(stored || bank.nationality || '').trim();
+        stored = countryOf(raw) || raw;
+        if (countryOf(raw)) d.candidates = countryShapes(countryOf(raw));
+      }
       if (STORABLE_SENSITIVE.has(category)) {
         // Clearance / criminal history / citizenship: the person's own saved
         // answer to THIS question, if they saved one on an earlier form. Same
@@ -188,7 +196,9 @@ export function decide(rows, ctx, server, state) {
         // A specific profile field (nationality) counts as a place for it too.
         // A demographic question the profile has no field for ("Are you a
         // military spouse?") is the person's to answer here, not a profile task.
-        const onProfile = (PROFILE_CATEGORIES.has(category) && (category !== 'demographic' || !!entry))
+        // Likewise a birth question with no profile field ("Region of Birth").
+        const onProfile = (PROFILE_CATEGORIES.has(category)
+                           && ((category !== 'demographic' && category !== 'birth') || !!entry))
                           || !!(entry && entry.sensitive);
         return onProfile
           ? done(d, PROFILE, '', '', 0, profileHint(category, entry))
@@ -482,7 +492,7 @@ function truncate(s, n) {
 }
 
 // Sensitive categories the profile page has a field for (routers/profile_page.py).
-const PROFILE_CATEGORIES = new Set(['work_authorization', 'sponsorship', 'salary', 'demographic']);
+const PROFILE_CATEGORIES = new Set(['work_authorization', 'sponsorship', 'salary', 'demographic', 'birth']);
 
 function profileHint(category, entry) {
   if (entry && entry.key === 'nationality') return 'add your country of citizenship to your profile';
@@ -493,6 +503,7 @@ function profileHint(category, entry) {
     case 'sponsorship': return 'add your sponsorship answer to your profile';
     case 'salary': return 'add your salary expectation to your profile';
     case 'demographic': return 'set your voluntary disclosures in your profile';
+    case 'birth': return 'add your date / place of birth to your profile';
     default: return '';
   }
 }
@@ -1278,6 +1289,10 @@ function pickFromOptions(text, row, options) {
     return (row.country && countryOption(row.country, options)) || citizenshipOption(text, options);
   }
   if (row.candidateKey === 'degree') return degreeOption(text, options);
+  // A country, against a list of countries: exactly that country or none —
+  // never "British Indian Ocean Territory" for "Indian".
+  const country = countryOf(text);
+  if (country && countryShare(options) >= 0.5) return countryOption(country, options);
   // A work-authorization list worded as statements rather than Yes / No.
   if (row.candidateKey === 'authorized_to_work_in_country'
       && !options.some(o => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {

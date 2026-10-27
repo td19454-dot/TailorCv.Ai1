@@ -764,6 +764,9 @@ def _ensure_apply_profile_columns() -> None:
         to_add.append("ADD COLUMN nationality VARCHAR(80)")
     if "citizenship_status" not in cols:
         to_add.append("ADD COLUMN citizenship_status VARCHAR(80)")
+    for birth_col, width in (("date_of_birth", 10), ("country_of_birth", 80), ("city_of_birth", 100)):
+        if birth_col not in cols:
+            to_add.append(f"ADD COLUMN {birth_col} VARCHAR({width})")
     if "name_title" not in cols:
         to_add.append("ADD COLUMN name_title VARCHAR(20)")
     if "work_experience" not in cols:

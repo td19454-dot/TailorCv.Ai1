@@ -21,6 +21,7 @@ import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isN
          isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions }
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
+import { countryOf, countryOption, countryShare } from './countries.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 
@@ -796,6 +797,15 @@ async function clickMatchingOption(el, value, nodes) {
   // "Computer Science", and the wrong one was clicked.
   const want = normalizeOptionText(value);
   let idx = want ? labels.findIndex(t => normalizeOptionText(t) === want) : -1;
+  // A country in a list of countries: that country or nothing. "Indian" is a
+  // whole word of "British Indian Ocean Territory", and PwC's Country of Birth
+  // was filled with it (Oct 2026).
+  const country = countryOf(value);
+  if (idx < 0 && country && countryShare(labels) >= 0.5) {
+    const pick = countryOption(country, labels);
+    idx = pick == null ? -1 : labels.indexOf(pick);
+    if (idx < 0) return false;
+  }
   if (idx < 0) idx = labels.findIndex(t => commitMatches(value, t));
   if (idx < 0) {
     // No whole-word match among what is on screen. Fall back to the fuzzy
@@ -1072,7 +1082,14 @@ function committed(row, value) {
   if (!after) return false;
   if (after.invalid) return false;
   if (!after.filled) return false;          // typed but never committed
+  if (differentCountries(value, after.value)) return false;
   return commitMatches(value, after.value);
+}
+
+/** Both name a country, and not the same one: never "the same answer", whatever words they share. */
+function differentCountries(value, shown) {
+  const a = countryOf(value), b = countryOf(shown);
+  return !!(a && b && a !== b);
 }
 
 /**
@@ -1261,6 +1278,7 @@ export async function setDateParts(row, iso) {
  *    claimed we could not fill — when the first write had been correct.
  */
 function accepts(decision, value, shown) {
+  if (differentCountries(value, shown)) return false;
   if (commitMatches(value, shown)) return true;
   for (const candidate of (decision && decision.candidates) || []) {
     if (commitMatches(candidate, shown)) return true;

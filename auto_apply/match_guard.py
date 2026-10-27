@@ -41,6 +41,11 @@ SENSITIVE_PATTERNS: list[tuple[str, re.Pattern]] = [
         r"|\b(authori[sz]\w*|eligib\w*|legal\w*)\b[\s\S]*\b(work|employ\w*)\b")),
     ("citizenship", re.compile(
         r"\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b|\bpassports?\b")),
+    # Date and place of birth: the profile's own answer or nothing, never the
+    # model. After citizenship, so "citizen by birth" stays citizenship. Same as match.js.
+    ("birth", re.compile(
+        r"\b(date|country|territory|city|town|place|region|state|province) of birth\b"
+        r"|\bbirth ?(date|day|place|country|city)\b|\bdob\b|\bborn\b")),
     ("clearance", re.compile(
         r"\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b")),
     ("criminal", re.compile(
@@ -77,7 +82,7 @@ NEVER_FILL_PATTERNS: list[re.Pattern] = [
     re.compile(r"\biban\b|\bswift\b|\bsort code\b|\bcvv\b|\bcredit card\b|\bcard number\b"),
     re.compile(r"\b(bank|routing|account) (number|no|details)\b"),
     re.compile(r"\bpassword\b|\bpasscode\b|\bone time (code|password)\b|\botp\b"),
-    re.compile(r"\bdate of birth\b|\bbirth date\b|\bbirthdate\b|\bdob\b"),
+    # Date of birth is the "birth" sensitive category now: profile answer only.
 ]
 
 SECRET_VALUE_PATTERNS: list[re.Pattern] = [

@@ -643,6 +643,13 @@ class UserApplyProfile(Base):
     # refugee / asylee / DACA / none of those) — a different claim from the
     # country in `nationality`. One of profile_page.CITIZENSHIP_OPTIONS.
     citizenship_status = Column(String(80), nullable=True)
+    # Date and place of birth, for forms that ask (Workday's Voluntary
+    # Disclosures). Filled only from these, never sent to the model.
+    # date_of_birth is ISO YYYY-MM-DD; country_of_birth is one of
+    # profile_page.COUNTRY_OPTIONS (empty: forms get `nationality`).
+    date_of_birth = Column(String(10), nullable=True)
+    country_of_birth = Column(String(80), nullable=True)
+    city_of_birth = Column(String(100), nullable=True)
 
     # Voluntary self-identification. Default to declining rather than guessing.
     gender = Column(String(60), nullable=True)
