@@ -3,6 +3,7 @@ import asyncio
 import base64
 import copy
 import hashlib
+import itertools
 import json
 import logging
 import os
@@ -1475,6 +1476,35 @@ def _cleanup_files(file_paths: list[str]) -> None:
 
 MAX_CONCURRENT_REQUESTS = int(os.getenv("MAX_CONCURRENT_REQUESTS", "4"))
 request_semaphore = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
+
+# WeasyPrint layouts for the editors' live preview and page count. Each layout
+# holds tens of MB, and the editors send one per edit (120-400 ms debounce),
+# so a user dragging a slider stacked a dozen in parallel threads - the spikes
+# that OOM-killed the 512 MB instance. On half a CPU, running them one at a
+# time costs no throughput.
+EDITOR_RENDER_CONCURRENCY = max(1, int(os.getenv("EDITOR_RENDER_CONCURRENCY", "1")))
+_editor_render_sem = asyncio.Semaphore(EDITOR_RENDER_CONCURRENCY)
+# Newest request per (user, endpoint). Every editor request carries the whole
+# document, so one still queued after a newer one arrived is answered without
+# rendering; both editors already ignore a response with no html/pages.
+_editor_render_latest: dict[tuple, int] = {}
+_editor_render_seq = itertools.count(1)
+
+
+async def _run_editor_render(request: Request, kind: str, fn):
+    """Run blocking WeasyPrint work `fn` in a thread under the editor render
+    gate. Returns None, without running it, when superseded."""
+    key = (request.session.get("user_id"), kind)
+    seq = next(_editor_render_seq)
+    _editor_render_latest[key] = seq
+    try:
+        async with _editor_render_sem:
+            if _editor_render_latest.get(key) != seq:
+                return None
+            return await asyncio.to_thread(fn)
+    finally:
+        if _editor_render_latest.get(key) == seq:
+            _editor_render_latest.pop(key, None)
 
 # OPTIMIZATION: Cache for templates and CSS to avoid repeated file I/O
 _template_cache = {}
@@ -14022,7 +14052,8 @@ async def estimate_html_pages(request: Request):
         def _count_pages() -> int:
             doc = HTML(string=html, base_url=BASE_DIR).render(zoom=pdf_scale)
             return max(1, len(getattr(doc, "pages", []) or []))
-        pages = await asyncio.to_thread(_count_pages)
+        # None when a newer estimate from this user superseded it.
+        pages = await _run_editor_render(request, "estimate", _count_pages)
         return {"success": True, "pages": pages}
     except Exception as exc:
         logger.exception("Page estimate failed")
@@ -14813,18 +14844,6 @@ async def editor_render(request: Request):
             if isinstance(entry, dict) and isinstance(entry.get("bullets"), list):
                 entry["bullets"] = [b for b in entry["bullets"] if b]
 
-    try:
-        html_content, _ = _render_resume_html(
-            parsed,
-            str(body.get("jd_string") or ""),
-            int(body.get("template_id") or 1),
-            int(body.get("style_id") or 1),
-        )
-    except Exception as exc:
-        logger.exception("Editor render failed")
-        raise HTTPException(status_code=500,
-                            detail=user_error_detail(exc, "Could not render the preview."))
-
     # Page count from WeasyPrint, the same engine that produces the PDF. A
     # CSS-based guess in the browser drifts from the real file, and the whole
     # point of the page markers is that they match what gets downloaded.
@@ -14836,23 +14855,44 @@ async def editor_render(request: Request):
     # `</` cannot appear inside a style element; dropping it keeps a stray
     # delimiter or font name from closing the tag.
     design_css = str(body.get("design_css") or "").replace("</", "<\\/")[:20000]
-    count_html = html_content
-    if design_css:
-        style_tag = f"<style id=\"edv2-design\">{design_css}</style>"
-        if "</head>" in count_html:
-            count_html = count_html.replace("</head>", style_tag + "</head>", 1)
-        else:
-            count_html = style_tag + count_html
 
-    pages = 1
-    try:
-        from weasyprint import HTML as _WeasyHTML
-        def _count() -> int:
+    # Both steps run WeasyPrint (_render_resume_html lays the page out once in
+    # _apply_multipage_fixes), so both go through the editor render gate, off
+    # the event loop.
+    def _render_and_count() -> tuple[str, int]:
+        html_content, _ = _render_resume_html(
+            parsed,
+            str(body.get("jd_string") or ""),
+            int(body.get("template_id") or 1),
+            int(body.get("style_id") or 1),
+        )
+        count_html = html_content
+        if design_css:
+            style_tag = f"<style id=\"edv2-design\">{design_css}</style>"
+            if "</head>" in count_html:
+                count_html = count_html.replace("</head>", style_tag + "</head>", 1)
+            else:
+                count_html = style_tag + count_html
+
+        pages = 1
+        try:
+            from weasyprint import HTML as _WeasyHTML
             doc = _WeasyHTML(string=count_html, base_url=BASE_DIR).render()
-            return max(1, len(getattr(doc, "pages", []) or []))
-        pages = await asyncio.to_thread(_count)
-    except Exception:
-        logger.exception("Editor page count failed")
+            pages = max(1, len(getattr(doc, "pages", []) or []))
+        except Exception:
+            logger.exception("Editor page count failed")
+        return html_content, pages
+
+    try:
+        result = await _run_editor_render(request, "render", _render_and_count)
+    except Exception as exc:
+        logger.exception("Editor render failed")
+        raise HTTPException(status_code=500,
+                            detail=user_error_detail(exc, "Could not render the preview."))
+    if result is None:
+        # A newer edit is queued behind this one and will repaint the preview.
+        return JSONResponse({"success": True, "html": None, "design": design, "pages": None})
+    html_content, pages = result
 
     return JSONResponse({
         "success": True,
