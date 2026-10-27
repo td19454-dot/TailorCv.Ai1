@@ -18,6 +18,8 @@ import hmac
 import json
 import logging
 import os
+import subprocess
+import sys
 import time
 import uuid
 from datetime import datetime, timedelta
@@ -27,15 +29,24 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-# Payment SDKs are imported here, at module load, on purpose — not inside the
-# handlers. A missing or renamed package (polar-sdk 1.0 renamed polar_sdk ->
-# polar) then crashes startup, so Render fails the deploy and keeps the old
-# version live, instead of booting fine and 500ing the first buyer.
+# Payment SDKs must be importable before the app serves a request. A missing
+# or renamed package (polar-sdk 1.0 renamed polar_sdk -> polar) has to crash
+# startup, so Render fails the deploy and keeps the old version live, instead
+# of booting fine and 500ing the first buyer.
 import razorpay
+
+# polar_sdk alone is 56 MB resident (measured; the largest import in the app)
+# on a 512 MB instance, and only Polar checkout/cancel/webhook use it. So it is
+# imported inside those handlers, and the startup guarantee above is kept by
+# importing every name they use in a child process instead: same crash on a
+# broken package, but the memory goes away when the child exits.
+# Keep this list in sync with the local imports in _require_polar,
+# polar_checkout, polar_cancel and polar_webhook.
+_POLAR_IMPORT_CHECK = """
 from polar_sdk import Polar
 from polar_sdk.models import (
     CheckoutCreate,
-    ResourceNotFound as PolarResourceNotFound,
+    ResourceNotFound,
     WebhookCheckoutExpiredPayload,
     WebhookCheckoutUpdatedPayload,
     WebhookOrderPaidPayload,
@@ -49,6 +60,21 @@ from polar_sdk.webhooks import (
     WebhookVerificationError,
     validate_event,
 )
+"""
+
+
+def _verify_polar_sdk(check: str = _POLAR_IMPORT_CHECK) -> None:
+    result = subprocess.run(
+        [sys.executable, "-c", check], capture_output=True, text=True, timeout=120,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            "polar_sdk is missing or incompatible; refusing to start.\n"
+            + result.stderr.strip()[-2000:]
+        )
+
+
+_verify_polar_sdk()
 
 import alerts
 import analytics
@@ -349,6 +375,7 @@ def _require_polar():
     access_token = os.getenv("POLAR_ACCESS_TOKEN")
     if not access_token:
         raise HTTPException(status_code=503, detail={"error": "payment_not_configured"})
+    from polar_sdk import Polar
     return Polar(access_token=access_token)
 
 
@@ -763,6 +790,7 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
         # throws the upgrade paywall in their face seconds after they paid.
         success_url = f"{app_base}/billing/polar/return"
 
+        from polar_sdk.models import CheckoutCreate
         try:
             checkout = polar.checkouts.create(
                 request=CheckoutCreate(
@@ -843,6 +871,8 @@ async def polar_return(request: Request):
 @router.post("/api/billing/polar/cancel")
 async def polar_cancel(request: Request):
     """Cancel the user's active Polar subscription (revokes at period end)."""
+    from polar_sdk.models import ResourceNotFound as PolarResourceNotFound
+
     polar = _require_polar()
     db, user = _get_db_and_user(request)
     try:
@@ -873,6 +903,23 @@ async def polar_webhook(request: Request):
     webhook_secret = os.getenv("POLAR_WEBHOOK_SECRET")
     if not webhook_secret:
         raise HTTPException(status_code=503, detail={"error": "payment_not_configured"})
+
+    # Imported before the try below, whose catch-all would otherwise report an
+    # ImportError as an unparseable payload.
+    from polar_sdk.models import (
+        WebhookCheckoutExpiredPayload,
+        WebhookCheckoutUpdatedPayload,
+        WebhookOrderPaidPayload,
+        WebhookSubscriptionActivePayload,
+        WebhookSubscriptionCreatedPayload,
+        WebhookSubscriptionRevokedPayload,
+        WebhookSubscriptionUpdatedPayload,
+    )
+    from polar_sdk.webhooks import (
+        WebhookUnknownTypeError,
+        WebhookVerificationError,
+        validate_event,
+    )
 
     payload = await request.body()
     headers = dict(request.headers)
