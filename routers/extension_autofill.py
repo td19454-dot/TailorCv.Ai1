@@ -43,6 +43,9 @@ router = APIRouter()
 # model is — the v1 promise is that the user reviews before submitting, and a
 # paragraph they did not read is the one thing they cannot review at a glance.
 PROSE_KEYS = {"cover_letter", "why_do_you_want_this_role"}
+# Never shown to the model, even as context: the extension fills these from the
+# profile itself, and the profile page promises they are never sent to the AI.
+PRIVATE_KEYS = {"date_of_birth", "country_of_birth", "city_of_birth"}
 
 MAX_FIELDS_PER_PLAN = 120
 MAX_OPTIONS_PER_FIELD = 60
@@ -512,7 +515,7 @@ async def _llm_answers(bank: dict, fields, payload) -> dict:
     # sentence into any free-text box it could not otherwise answer ("If you
     # answered Yes, please explain" got "I want to build."). Motivation
     # questions are written separately, per job, by _compose_answers.
-    candidate = {k: v for k, v in bank.items() if k not in PROSE_KEYS}
+    candidate = {k: v for k, v in bank.items() if k not in PROSE_KEYS and k not in PRIVATE_KEYS}
     if payload.jobTitle:
         candidate["_applying_for"] = payload.jobTitle
     if payload.jobCompany:

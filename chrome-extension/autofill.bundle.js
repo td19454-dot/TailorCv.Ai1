@@ -825,6 +825,10 @@ what when where which who will with would you your now future
       /\b(authori[sz]\w*|eligib\w*|legal\w*)\b[\s\S]*\b(work|employ\w*)\b/.source
     ].join("|"))],
     ["citizenship", /\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b|\bpassports?\b/],
+    // Date and place of birth: the profile's own answer or nothing — never the
+    // model, which answered PwC's "Country / Territory of Birth" from a
+    // nationality. After citizenship, so "citizen by birth" stays citizenship.
+    ["birth", /\b(date|country|territory|city|town|place|region|state|province) of birth\b|\bbirth ?(date|day|place|country|city)\b|\bdob\b|\bborn\b/],
     ["clearance", /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
     ["criminal", /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
     // Employment by a government, the military, a state-owned enterprise
@@ -872,8 +876,9 @@ what when where which who will with would you your now future
     /\bssn\b|\bsocial security\b|\bnational insurance\b|\btax id\b|\bpan (card|number)\b|\baadhaar\b/,
     /\biban\b|\bswift\b|\bsort code\b|\bcvv\b|\bcredit card\b|\bcard number\b/,
     /\b(bank|routing|account) (number|no|details)\b/,
-    /\bpassword\b|\bpasscode\b|\bone time (code|password)\b|\botp\b/,
-    /\bdate of birth\b|\bbirth date\b|\bbirthdate\b|\bdob\b/
+    /\bpassword\b|\bpasscode\b|\bone time (code|password)\b|\botp\b/
+    // Date of birth is no longer here: it is the 'birth' sensitive category,
+    // filled from the profile's own answer only.
   ];
   function looksLikeOpaqueId(label) {
     if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(String(label || ""))) return true;
@@ -1187,6 +1192,22 @@ what when where which who will with would you your now future
     "lgbtq_identity",
     "citizenship_status"
   ]);
+  var NAME_FIELD_WORDS = [
+    "name",
+    "current",
+    "currently",
+    "most",
+    "recent",
+    "present",
+    "latest",
+    "last",
+    "previous",
+    "enter",
+    "if",
+    "any",
+    "applicable",
+    "who"
+  ];
   var FIELD_SYNONYMS = [
     // identity
     { key: "first_name", labels: ["first name", "given name", "forename", "legal first name"] },
@@ -1226,8 +1247,22 @@ what when where which who will with would you your now future
     { key: "github_url", labels: ["github", "github profile", "github url"] },
     { key: "portfolio_or_website", labels: ["portfolio", "website", "personal website", "portfolio url", "personal site", "web site"] },
     // experience
-    { key: "current_job_title", labels: ["current title", "current job title", "current role", "job title", "most recent title", "occupation"] },
-    { key: "current_company", labels: ["current company", "current employer", "most recent company", "most recent employer", "company name", "employer"] },
+    // Name fields: matched only when the label asks for the name itself — its
+    // other words must be in `only`. "How much notice must you provide your
+    // current employer before leaving?" holds "current employer", and the
+    // employer's name was written into a notice-period box; "Why are you leaving
+    // your current employer?" and "How long have you been in your current role?"
+    // were the same mistake waiting to happen.
+    {
+      key: "current_job_title",
+      labels: ["current title", "current job title", "current role", "job title", "most recent title", "occupation"],
+      only: NAME_FIELD_WORDS.concat(["job", "title", "role", "position", "designation", "occupation", "company", "employer"])
+    },
+    {
+      key: "current_company",
+      labels: ["current company", "current employer", "most recent company", "most recent employer", "company name", "employer"],
+      only: NAME_FIELD_WORDS.concat(["company", "employer", "organization", "organisation", "business"])
+    },
     { key: "years_of_experience", labels: ["years of experience", "total experience", "years experience", "how many years of experience", "relevant experience years"] },
     // "Type to Add Skills": Workday's skills prompt (NVIDIA). The bare "skills"
     // is one word and may only absorb one extra; this label has two.
@@ -1261,6 +1296,10 @@ what when where which who will with would you your now future
     // country. Matched before 'nationality' because exact signatures win first.
     { key: "citizenship_status", sensitive: true, labels: ["citizenship status", "citizen status", "us citizenship status", "citizenship immigration status"] },
     { key: "nationality", sensitive: true, labels: ["nationality", "citizenship", "country of citizenship", "nationality or citizenship", "what is your nationality", "indicate your nationality"] },
+    // Birth details: the profile's own answers, never the model's.
+    { key: "date_of_birth", sensitive: true, labels: ["date of birth", "birth date", "birthdate", "dob", "birthday"] },
+    { key: "country_of_birth", sensitive: true, labels: ["country of birth", "country territory of birth", "birth country", "country where you were born"] },
+    { key: "city_of_birth", sensitive: true, labels: ["city of birth", "place of birth", "birth city", "town of birth", "birthplace"] },
     { key: "expected_salary", sensitive: true, labels: ["expected salary", "salary expectation", "desired salary", "compensation expectation", "expected ctc", "desired compensation"] },
     { key: "gender", sensitive: true, labels: ["gender", "gender identity", "gender do you identify as", "gender you identify with", "gender identify"] },
     // "identify your race": the bare 'race' is one word, and one-word synonyms
@@ -1277,6 +1316,7 @@ what when where which who will with would you your now future
     const ds = distinctive(syn), dl = distinctive(label);
     if (!ds.size || !dl.size) return false;
     if (!isSubset(ds, dl)) return false;
+    if (entry && entry.only && [...dl].some((w) => !ds.has(w) && !entry.only.includes(w))) return false;
     if (ds.size === 1) {
       if (dl.size > 2) return false;
       if (dl.size === 2) {
@@ -1312,8 +1352,19 @@ what when where which who will with would you your now future
     return labels.filter((l) => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
   }
   var OPTIONALITY_RE = /\(\s*(optional|required)\s*\)|\s+[-–—]?\s*optional\s*$/ig;
+  var BRITISH_SPELLINGS = [
+    [/\bauthoris(e|ed|es|ing|ation|ations)\b/gi, "authoriz$1"],
+    [/\borganis(e|ed|es|ing|ation|ations)\b/gi, "organiz$1"],
+    [/\brecognis(e|ed|es|ing)\b/gi, "recogniz$1"],
+    [/\bspecialis(e|ed|es|ing|ation|ations)\b/gi, "specializ$1"],
+    [/\blabour\b/gi, "labor"],
+    [/\bprogramme(s)?\b/gi, "program$1"],
+    [/\bcentre(s)?\b/gi, "center$1"],
+    [/\blicence(s)?\b/gi, "license$1"]
+  ];
   function matchFieldKey(label, entries) {
     label = String(label || "").replace(OPTIONALITY_RE, " ").trim();
+    for (const [re, us] of BRITISH_SPELLINGS) label = label.replace(re, us);
     const sig = questionSignature(label);
     if (!sig) return null;
     const pool = entries || FIELD_SYNONYMS;
@@ -1339,6 +1390,7 @@ what when where which who will with would you your now future
     sponsorship: ["requires_visa_sponsorship", "visa_status"],
     work_authorization: ["authorized_to_work_in_country"],
     citizenship: ["citizenship_status", "nationality"],
+    birth: ["date_of_birth", "country_of_birth", "city_of_birth"],
     salary: ["expected_salary"],
     demographic: [
       "gender",
@@ -3150,7 +3202,12 @@ Zimbabwe|Zimbabwean
       if (category) {
         d.sensitive = category;
         const entry2 = matchSensitiveKey(row.label, category);
-        const stored = entry2 ? bank[entry2.key] : "";
+        let stored = entry2 ? bank[entry2.key] : "";
+        if (entry2 && entry2.key === "country_of_birth") {
+          const raw = String(stored || bank.nationality || "").trim();
+          stored = countryOf(raw) || raw;
+          if (countryOf(raw)) d.candidates = countryShapes(countryOf(raw));
+        }
         if (STORABLE_SENSITIVE.has(category)) {
           const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
           const value2 = saved ? coerce(saved, row) : null;
@@ -3172,7 +3229,7 @@ Zimbabwe|Zimbabwean
           }
         }
         if (!stored) {
-          const onProfile = PROFILE_CATEGORIES.has(category) && (category !== "demographic" || !!entry2) || !!(entry2 && entry2.sensitive);
+          const onProfile = PROFILE_CATEGORIES.has(category) && (category !== "demographic" && category !== "birth" || !!entry2) || !!(entry2 && entry2.sensitive);
           return onProfile ? done(d, PROFILE, "", "", 0, profileHint(category, entry2)) : done(d, ASK, "", "", 0, "we never guess this \u2014 choose your answer");
         }
         let key = entry2 ? entry2.key : "";
@@ -3377,7 +3434,7 @@ Zimbabwe|Zimbabwean
     const t = String(s || "");
     return t.length <= n ? t : `${t.slice(0, n - 1)}\u2026`;
   }
-  var PROFILE_CATEGORIES = /* @__PURE__ */ new Set(["work_authorization", "sponsorship", "salary", "demographic"]);
+  var PROFILE_CATEGORIES = /* @__PURE__ */ new Set(["work_authorization", "sponsorship", "salary", "demographic", "birth"]);
   function profileHint(category, entry) {
     if (entry && entry.key === "nationality") return "add your country of citizenship to your profile";
     if (category === "citizenship") return "add your country of citizenship to your profile";
@@ -3391,6 +3448,8 @@ Zimbabwe|Zimbabwean
         return "add your salary expectation to your profile";
       case "demographic":
         return "set your voluntary disclosures in your profile";
+      case "birth":
+        return "add your date / place of birth to your profile";
       default:
         return "";
     }
@@ -3979,6 +4038,8 @@ Zimbabwe|Zimbabwean
       return row.country && countryOption(row.country, options) || citizenshipOption(text, options);
     }
     if (row.candidateKey === "degree") return degreeOption(text, options);
+    const country = countryOf(text);
+    if (country && countryShare(options) >= 0.5) return countryOption(country, options);
     if (row.candidateKey === "authorized_to_work_in_country" && !options.some((o) => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
       return workAuthStatement(text, row.sponsorship, options);
     }
@@ -4630,6 +4691,12 @@ Zimbabwe|Zimbabwean
     const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
     const want = normalizeOptionText(value);
     let idx = want ? labels.findIndex((t) => normalizeOptionText(t) === want) : -1;
+    const country = countryOf(value);
+    if (idx < 0 && country && countryShare(labels) >= 0.5) {
+      const pick = countryOption(country, labels);
+      idx = pick == null ? -1 : labels.indexOf(pick);
+      if (idx < 0) return false;
+    }
     if (idx < 0) idx = labels.findIndex((t) => commitMatches(value, t));
     if (idx < 0) {
       const best = bestOptionMatch(value, labels);
@@ -4853,7 +4920,12 @@ Zimbabwe|Zimbabwean
     if (!after) return false;
     if (after.invalid) return false;
     if (!after.filled) return false;
+    if (differentCountries(value, after.value)) return false;
     return commitMatches(value, after.value);
+  }
+  function differentCountries(value, shown) {
+    const a = countryOf(value), b = countryOf(shown);
+    return !!(a && b && a !== b);
   }
   async function settlesTo(row, shapes, ms) {
     const deadline = Date.now() + (ms == null ? TIMING.commitWaitMs : ms);
@@ -4958,6 +5030,7 @@ Zimbabwe|Zimbabwean
     return wrote > 0;
   }
   function accepts(decision, value, shown) {
+    if (differentCountries(value, shown)) return false;
     if (commitMatches(value, shown)) return true;
     for (const candidate of decision && decision.candidates || []) {
       if (commitMatches(candidate, shown)) return true;

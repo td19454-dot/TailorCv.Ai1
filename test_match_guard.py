@@ -74,6 +74,15 @@ MUST_FLAG = [
     ("demographic", "Have you served in the armed forces?"),
     ("demographic", "Do you identify as LGBTQ+?"),
     ("demographic", "Sexual orientation"),
+    # Date and place of birth: profile only, never the model (PwC Workday, Oct 2026).
+    ("birth", "Date of birth"),
+    ("birth", "DOB"),
+    ("birth", "Birth date"),
+    ("birth", "Country / Territory of Birth"),
+    ("birth", "City of Birth"),
+    ("birth", "Place of birth"),
+    ("birth", "Where were you born?"),
+    ("citizenship", "Are you a citizen by birth?"),
 ]
 
 MUST_NOT_FLAG = [
@@ -92,7 +101,7 @@ MUST_NOT_FLAG = [
 NEVER_FILL = [
     "Social Security Number", "SSN", "National Insurance number",
     "Bank account number", "Routing number", "IBAN", "Credit card number", "CVV",
-    "Password", "One time password", "Date of birth", "DOB", "Birth date",
+    "Password", "One time password",
     "PAN card number", "Aadhaar number",
 ]
 

@@ -321,9 +321,23 @@ test('isNeverFill covers identifiers we must not touch at all', () => {
   for (const label of [
     'Social Security Number', 'SSN', 'National Insurance number',
     'Bank account number', 'Routing number', 'IBAN', 'Credit card number', 'CVV',
-    'Password', 'One time password', 'Date of birth', 'DOB', 'Birth date',
+    'Password', 'One time password',
     'PAN card number', 'Aadhaar number',
   ]) ok(m.isNeverFill(label), `should be never-fill: ${label}`);
+});
+
+test('date and place of birth are profile-only sensitive questions, not never-fill', () => {
+  const keys = {
+    'Date of Birth*': 'date_of_birth', 'DOB': 'date_of_birth', 'Birth date': 'date_of_birth',
+    'Country / Territory of Birth*': 'country_of_birth', 'City of Birth*': 'city_of_birth',
+    'Place of birth': 'city_of_birth',
+  };
+  for (const [label, key] of Object.entries(keys)) {
+    notOk(m.isNeverFill(label), `${label} is answerable from the profile`);
+    eq(m.classifySensitive(label), 'birth', label);
+    eq(m.matchSensitiveKey(label, 'birth').key, key, label);
+  }
+  eq(m.classifySensitive('Are you a citizen by birth?'), 'citizenship');
 });
 
 test('isNeverFill does not catch ordinary fields', () => {
@@ -585,6 +599,31 @@ test('a nationality question maps to its own stored answer', () => {
     ok(entry && entry.key === 'nationality', `${label} -> ${entry && entry.key}`);
     ok(entry.sensitive, 'nationality must stay in the sensitive tier');
   }
+});
+
+test('a question that only mentions the employer is not asking for its name', () => {
+  // The employer's name was written into this notice-period box.
+  eq(m.matchFieldKey('How much notice must you provide your current employer before leaving?*').key, 'notice_period');
+  eq(m.matchFieldKey('What is your notice period with your current employer?').key, 'notice_period');
+  eq(m.matchFieldKey('Why are you leaving your current employer?'), null);
+  eq(m.matchFieldKey('How long have you been in your current role?'), null);
+  // Still the name wherever the name is what is asked.
+  for (const l of ['Current employer', 'What is the name of your current employer?', 'Employer name',
+                   'Name of current/most recent employer', 'Please enter your current employer']) {
+    eq(m.matchFieldKey(l).key, 'current_company', l);
+  }
+  for (const l of ['Job Title', 'What is your current job title?', 'Job title at your current employer']) {
+    eq(m.matchFieldKey(l).key, 'current_job_title', l);
+  }
+});
+
+test('British spellings find the same stored answer ("authorised to work")', () => {
+  const label = 'Are you legally authorised to work in the country / territory in which this position is located?*';
+  const cat = m.classifySensitive(label);
+  eq(cat, 'work_authorization');
+  eq(m.matchSensitiveKey(label, cat).key, 'authorized_to_work_in_country');
+  eq(m.matchFieldKey('Right to work / work authorisation').key,
+     m.matchFieldKey('Right to work / work authorization').key);
 });
 
 test('countries: every spelling and demonym reads as its country, never a near-miss', () => {

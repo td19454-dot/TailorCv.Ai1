@@ -338,6 +338,10 @@ export const SENSITIVE_PATTERNS = [
     /\b(authori[sz]\w*|eligib\w*|legal\w*)\b[\s\S]*\b(work|employ\w*)\b/.source,
   ].join('|'))],
   ['citizenship', /\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b|\bpassports?\b/],
+  // Date and place of birth: the profile's own answer or nothing — never the
+  // model, which answered PwC's "Country / Territory of Birth" from a
+  // nationality. After citizenship, so "citizen by birth" stays citizenship.
+  ['birth', /\b(date|country|territory|city|town|place|region|state|province) of birth\b|\bbirth ?(date|day|place|country|city)\b|\bdob\b|\bborn\b/],
   ['clearance', /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
   ['criminal', /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
   // Employment by a government, the military, a state-owned enterprise
@@ -404,7 +408,8 @@ const NEVER_FILL_PATTERNS = [
   /\biban\b|\bswift\b|\bsort code\b|\bcvv\b|\bcredit card\b|\bcard number\b/,
   /\b(bank|routing|account) (number|no|details)\b/,
   /\bpassword\b|\bpasscode\b|\bone time (code|password)\b|\botp\b/,
-  /\bdate of birth\b|\bbirth date\b|\bbirthdate\b|\bdob\b/,
+  // Date of birth is no longer here: it is the 'birth' sensitive category,
+  // filled from the profile's own answer only.
 ];
 
 /**
@@ -701,6 +706,11 @@ export const READ_FIRST_KEYS = new Set([
 //
 // `sensitive` entries are still listed: that is HOW a sensitive field gets
 // answered at all, from a stored value and nothing else.
+// The words a label asking for a name may hold besides the name's own words:
+// "Name of current/most recent employer", "Please enter your current employer".
+const NAME_FIELD_WORDS = ['name', 'current', 'currently', 'most', 'recent', 'present', 'latest', 'last',
+  'previous', 'enter', 'if', 'any', 'applicable', 'who'];
+
 export const FIELD_SYNONYMS = [
   // identity
   { key: 'first_name', labels: ['first name', 'given name', 'forename', 'legal first name'] },
@@ -743,8 +753,16 @@ export const FIELD_SYNONYMS = [
   { key: 'portfolio_or_website', labels: ['portfolio', 'website', 'personal website', 'portfolio url', 'personal site', 'web site'] },
 
   // experience
-  { key: 'current_job_title', labels: ['current title', 'current job title', 'current role', 'job title', 'most recent title', 'occupation'] },
-  { key: 'current_company', labels: ['current company', 'current employer', 'most recent company', 'most recent employer', 'company name', 'employer'] },
+  // Name fields: matched only when the label asks for the name itself — its
+  // other words must be in `only`. "How much notice must you provide your
+  // current employer before leaving?" holds "current employer", and the
+  // employer's name was written into a notice-period box; "Why are you leaving
+  // your current employer?" and "How long have you been in your current role?"
+  // were the same mistake waiting to happen.
+  { key: 'current_job_title', labels: ['current title', 'current job title', 'current role', 'job title', 'most recent title', 'occupation'],
+    only: NAME_FIELD_WORDS.concat(['job', 'title', 'role', 'position', 'designation', 'occupation', 'company', 'employer']) },
+  { key: 'current_company', labels: ['current company', 'current employer', 'most recent company', 'most recent employer', 'company name', 'employer'],
+    only: NAME_FIELD_WORDS.concat(['company', 'employer', 'organization', 'organisation', 'business']) },
   { key: 'years_of_experience', labels: ['years of experience', 'total experience', 'years experience', 'how many years of experience', 'relevant experience years'] },
   // "Type to Add Skills": Workday's skills prompt (NVIDIA). The bare "skills"
   // is one word and may only absorb one extra; this label has two.
@@ -782,6 +800,10 @@ export const FIELD_SYNONYMS = [
   // country. Matched before 'nationality' because exact signatures win first.
   { key: 'citizenship_status', sensitive: true, labels: ['citizenship status', 'citizen status', 'us citizenship status', 'citizenship immigration status'] },
   { key: 'nationality', sensitive: true, labels: ['nationality', 'citizenship', 'country of citizenship', 'nationality or citizenship', 'what is your nationality', 'indicate your nationality'] },
+  // Birth details: the profile's own answers, never the model's.
+  { key: 'date_of_birth', sensitive: true, labels: ['date of birth', 'birth date', 'birthdate', 'dob', 'birthday'] },
+  { key: 'country_of_birth', sensitive: true, labels: ['country of birth', 'country territory of birth', 'birth country', 'country where you were born'] },
+  { key: 'city_of_birth', sensitive: true, labels: ['city of birth', 'place of birth', 'birth city', 'town of birth', 'birthplace'] },
   { key: 'expected_salary', sensitive: true, labels: ['expected salary', 'salary expectation', 'desired salary', 'compensation expectation', 'expected ctc', 'desired compensation'] },
   { key: 'gender', sensitive: true, labels: ['gender', 'gender identity', 'gender do you identify as', 'gender you identify with', 'gender identify'] },
   // "identify your race": the bare 'race' is one word, and one-word synonyms
@@ -815,6 +837,8 @@ function synonymMatches(syn, label, entry) {
   const ds = distinctive(syn), dl = distinctive(label);
   if (!ds.size || !dl.size) return false;
   if (!isSubset(ds, dl)) return false;
+  // A name field takes only a label asking for the name (see FIELD_SYNONYMS).
+  if (entry && entry.only && [...dl].some(w => !ds.has(w) && !entry.only.includes(w))) return false;
   if (ds.size === 1) {
     // A one-word synonym may only absorb ONE extra word, and only a word that
     // does not change what is being asked for: a harmless qualifier ("Current
@@ -866,8 +890,25 @@ export function hasHonorificOptions(options) {
 // extra word "optional" put that label past every LinkedIn synonym.
 const OPTIONALITY_RE = /\(\s*(optional|required)\s*\)|\s+[-–—]?\s*optional\s*$/ig;
 
+// British spellings, read as the American ones every synonym is written in.
+// "Are you legally authorised to work in the country…" (UK/EU/APAC forms)
+// matched no synonym, so the stored work-authorization answer was never read
+// and the person was told to add to their profile what was already there.
+// Word stems only, never a blanket -ise → -ize ("promise", "exercise").
+const BRITISH_SPELLINGS = [
+  [/\bauthoris(e|ed|es|ing|ation|ations)\b/gi, 'authoriz$1'],
+  [/\borganis(e|ed|es|ing|ation|ations)\b/gi, 'organiz$1'],
+  [/\brecognis(e|ed|es|ing)\b/gi, 'recogniz$1'],
+  [/\bspecialis(e|ed|es|ing|ation|ations)\b/gi, 'specializ$1'],
+  [/\blabour\b/gi, 'labor'],
+  [/\bprogramme(s)?\b/gi, 'program$1'],
+  [/\bcentre(s)?\b/gi, 'center$1'],
+  [/\blicence(s)?\b/gi, 'license$1'],
+];
+
 export function matchFieldKey(label, entries) {
   label = String(label || '').replace(OPTIONALITY_RE, ' ').trim();
+  for (const [re, us] of BRITISH_SPELLINGS) label = label.replace(re, us);
   const sig = questionSignature(label);
   if (!sig) return null;
   const pool = entries || FIELD_SYNONYMS;
@@ -897,6 +938,7 @@ const CATEGORY_KEYS = {
   sponsorship: ['requires_visa_sponsorship', 'visa_status'],
   work_authorization: ['authorized_to_work_in_country'],
   citizenship: ['citizenship_status', 'nationality'],
+  birth: ['date_of_birth', 'country_of_birth', 'city_of_birth'],
   salary: ['expected_salary'],
   demographic: ['gender', 'race_ethnicity', 'veteran_status', 'disability_status',
                 'gender_pronouns', 'lgbtq_identity'],

@@ -2498,6 +2498,70 @@ function wireWorkdayEducation(env, opts = {}) {
   return log;
 }
 
+// PwC's Workday Voluntary Disclosures (Oct 2026): Date of Birth as three
+// spinbuttons, Country / Territory of Birth as a button list in which
+// "British Indian Ocean Territory" comes before "India".
+const wdDatePart = (id, part, label, max) => `<div id="${id}-dateSection${part}"><div aria-hidden="true" data-automation-id="dateSection${part}-display">${label}</div>
+  <input role="spinbutton" aria-label="${part}" aria-valuemax="${max}" aria-valuemin="1" aria-valuetext="${label}" aria-required="true"
+         id="${id}-dateSection${part}-input" data-automation-id="dateSection${part}-input"></div>`;
+const PWC_BIRTH_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>Voluntary Disclosures</h3>
+  <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    <div role="group" aria-labelledby="Personal-Information-section"><h4 id="Personal-Information-section">Personal Information</h4>
+      <div data-automation-id="formField-dateOfBirth"><fieldset><legend><label id="label342"><span>Date of Birth<abbr aria-hidden="true">*</abbr></span></label></legend>
+        <div id="personalInfoPerson--dateOfBirth" role="group" data-automation-id="dateInputWrapper">
+          ${wdDatePart('personalInfoPerson--dateOfBirth', 'Month', 'MM', 12)}
+          ${wdDatePart('personalInfoPerson--dateOfBirth', 'Day', 'DD', 31)}
+          ${wdDatePart('personalInfoPerson--dateOfBirth', 'Year', 'YYYY', 9999)}
+        </div></fieldset></div>
+      <div data-automation-id="formField-countryOfBirth"><label for="personalInfoPerson--countryOfBirth"><span>Country / Territory of Birth<abbr aria-hidden="true">*</abbr></span></label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Country / Territory of Birth Select One Required"
+                name="countryOfBirth" id="personalInfoPerson--countryOfBirth">Select One</button></div>
+      <div data-automation-id="formField-cityOfBirth"><label for="personalInfoPerson--cityOfBirth"><span>City of Birth<abbr aria-hidden="true">*</abbr></span></label>
+        <input type="text" id="personalInfoPerson--cityOfBirth" name="cityOfBirth" aria-required="true"></div>
+    </div>
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+const PWC_COUNTRIES = ['Afghanistan', 'Bhutan', 'British Indian Ocean Territory', 'Brunei Darussalam', 'Iceland',
+  'India', 'Indonesia', 'Singapore'];
+
+function wirePwcBirth(env) {
+  const doc = env.document;
+  const portal = doc.getElementById('wd-portal');
+  const btn = doc.getElementById('personalInfoPerson--countryOfBirth');
+  btn.addEventListener('mousedown', () => {
+    btn.setAttribute('aria-expanded', 'true');
+    portal.innerHTML = '<ul role="listbox">'
+      + '<li data-value="" role="option" aria-disabled="true" aria-selected="true"><div>Select One</div></li>'
+      + PWC_COUNTRIES.map(o => `<li role="option" data-automation-id="promptOption" data-automation-label="${o}"><div>${o}</div></li>`).join('')
+      + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]:not([aria-disabled])')) {
+      li.addEventListener('mousedown', () => { btn.textContent = li.textContent; btn.value = li.textContent; portal.innerHTML = ''; });
+    }
+  });
+}
+
+test('PwC Workday: Date of Birth and Country of Birth from the profile; never "British Indian Ocean Territory"', async () => {
+  await withForm(PWC_BIRTH_PAGE, {}, async (env, sent) => {
+    wirePwcBirth(env);
+    // No country of birth stored: the country of citizenship, written the old way.
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { nationality: 'Indian', date_of_birth: '1999-04-07', city_of_birth: 'Kolkata' }) });
+    await run_.runAutofill(ctx, null);
+    const doc = env.document;
+    eq(doc.getElementById('personalInfoPerson--countryOfBirth').textContent, 'India');
+    eq(valueOf(env, '[data-automation-id=dateSectionMonth-input]'), '04');
+    eq(valueOf(env, '[data-automation-id=dateSectionDay-input]'), '07');
+    eq(valueOf(env, '[data-automation-id=dateSectionYear-input]'), '1999');
+    eq(doc.getElementById('personalInfoPerson--cityOfBirth').value, 'Kolkata');
+    // None of the birth fields went to the server's model.
+    const planned = sent.filter(m => m.type === 'AF_PLAN')
+      .flatMap(m => ((m.payload && m.payload.fields) || []).map(f => f.label || ''));
+    ok(!planned.some(l => /birth/i.test(l)), `sent to the model: ${planned.join(' | ')}`);
+  });
+});
+
 // Workday's citizenship prompts. "Citizenship Status" is hierarchical: each
 // country row has a › and opens that country's own level (Citizen / Permanent
 // Resident / Non-Citizen); "Primary Nationality" is a flat country list.

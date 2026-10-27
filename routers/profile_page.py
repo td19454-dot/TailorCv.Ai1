@@ -25,6 +25,7 @@ from __future__ import annotations
 import json
 import os
 from dataclasses import dataclass, field
+from datetime import date
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -620,6 +621,17 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
         Spec("remotePreference", "remote_preference", "Work arrangement", kind="select",
              options=REMOTE),
     ]),
+    # Workday's Voluntary Disclosures ask these. Filled only from here by the
+    # extension; never part of what any model is shown (PRIVATE_KEYS).
+    ("birth", "Date & place of birth", [
+        Spec("dateOfBirth", "date_of_birth", "Date of birth", kind="date",
+             help="Only for forms that ask. Filled from here, never sent to the AI.", max_len=10),
+        Spec("countryOfBirth", "country_of_birth", "Country of birth", kind="select",
+             options=COUNTRY_OPTIONS,
+             help="Left empty, forms get your country of citizenship.", max_len=80),
+        Spec("cityOfBirth", "city_of_birth", "City of birth", max_len=100,
+             help="Only for forms that ask. Never sent to the AI."),
+    ]),
     ("availability", "Availability & compensation", [
         Spec("noticePeriod", "notice_period", "Notice period", placeholder="e.g. 30 days",
              max_len=60),
@@ -802,6 +814,7 @@ async def profile_page(request: Request):
             "sections": SECTIONS,
             "degree_groups": DEGREE_GROUPS,
             "field_options": FIELD_OF_STUDY_OPTIONS,
+            "today_iso": date.today().isoformat(),
             "model": model,
             "user_name": user.name or "",
             "has_resume": bool(user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path)),
@@ -944,6 +957,14 @@ async def save_profile(request: Request, payload: ProfileSave):
                     raise HTTPException(status_code=422, detail=f"Invalid choice for {spec.label}.")
                 setattr(prof, spec.column, text)
                 continue
+            if spec.kind == "date" and text:
+                # ISO, as <input type="date"> sends it: a real day, in the past.
+                try:
+                    when = date.fromisoformat(text)
+                except ValueError:
+                    raise HTTPException(status_code=422, detail=f"{spec.label} must be a date.")
+                if len(text) != 10 or when >= date.today() or when.year < 1900:
+                    raise HTTPException(status_code=422, detail=f"{spec.label} must be a past date.")
             if spec.column == "nationality":
                 text = nationality_canonical(text)
                 # An older answer naming no listed country may be sent back unchanged.
