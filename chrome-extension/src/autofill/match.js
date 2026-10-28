@@ -368,7 +368,8 @@ export const SENSITIVE_PATTERNS = [
 // Citizenship included: its questions ("Which best describes your 'U.S. person'
 // status?") are worded too variously for the profile's one status to answer
 // them all, so the person's own answer to the exact question is kept too.
-export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal', 'citizenship', 'government_employment']);
+// Birth too: Region of Birth has no profile field (match_guard.py, same set).
+export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal', 'citizenship', 'government_employment', 'birth']);
 
 // browser.py _EEO_FIELD_MARKERS — kept separately because EEO fields have a
 // behaviour the other sensitive categories don't: a stored "Decline to

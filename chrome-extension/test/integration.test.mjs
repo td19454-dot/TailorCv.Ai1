@@ -2517,6 +2517,9 @@ const PWC_BIRTH_PAGE = `
       <div data-automation-id="formField-countryOfBirth"><label for="personalInfoPerson--countryOfBirth"><span>Country / Territory of Birth<abbr aria-hidden="true">*</abbr></span></label>
         <button aria-haspopup="listbox" type="button" value="" aria-label="Country / Territory of Birth Select One Required"
                 name="countryOfBirth" id="personalInfoPerson--countryOfBirth">Select One</button></div>
+      <div data-automation-id="formField-regionOfBirth"><label for="personalInfoPerson--regionOfBirth">Region of Birth</label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Region of Birth Select One"
+                name="regionOfBirth" id="personalInfoPerson--regionOfBirth">Select One</button></div>
       <div data-automation-id="formField-cityOfBirth"><label for="personalInfoPerson--cityOfBirth"><span>City of Birth<abbr aria-hidden="true">*</abbr></span></label>
         <input type="text" id="personalInfoPerson--cityOfBirth" name="cityOfBirth" aria-required="true"></div>
     </div>
@@ -2540,7 +2543,32 @@ function wirePwcBirth(env) {
       li.addEventListener('mousedown', () => { btn.textContent = li.textContent; btn.value = li.textContent; portal.innerHTML = ''; });
     }
   });
+  // Region of Birth, as PwC's behaves: opens with only the disabled "Select
+  // One", then loads the regions OF THE CHOSEN COUNTRY — none before one is chosen.
+  const region = doc.getElementById('personalInfoPerson--regionOfBirth');
+  const placeholder = '<li data-value="" role="option" aria-disabled="true" aria-selected="true"><div>Select One</div></li>';
+  region.addEventListener('mousedown', () => {
+    region.setAttribute('aria-expanded', 'true');
+    portal.innerHTML = '<ul role="listbox">' + placeholder + '</ul>';
+    doc.defaultView.setTimeout(() => {
+      const regions = btn.value === 'India' ? ['Karnataka', 'Maharashtra', 'West Bengal'] : [];
+      portal.innerHTML = '<ul role="listbox">' + placeholder + regions.map(o =>
+        `<li role="option" data-automation-id="promptOption"><div>${o}</div></li>`).join('') + '</ul>';
+    }, 150);
+  });
 }
+
+test('PwC Workday: Region of Birth offers the regions of the country just filled, not "Select One"', async () => {
+  await withForm(PWC_BIRTH_PAGE, {}, async (env) => {
+    wirePwcBirth(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { country_of_birth: 'India', date_of_birth: '2003-12-01', city_of_birth: 'Kolkata' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const region = byLabel(result.decisions, 'region of birth');
+    eq(region.action, p.ASK);
+    deepEq((region.options || []).map(o => o.label), ['Karnataka', 'Maharashtra', 'West Bengal']);
+  });
+});
 
 test('PwC Workday: Date of Birth and Country of Birth from the profile; never "British Indian Ocean Territory"', async () => {
   await withForm(PWC_BIRTH_PAGE, {}, async (env, sent) => {
@@ -2560,6 +2588,31 @@ test('PwC Workday: Date of Birth and Country of Birth from the profile; never "B
       .flatMap(m => ((m.payload && m.payload.fields) || []).map(f => f.label || ''));
     ok(!planned.some(l => /birth/i.test(l)), `sent to the model: ${planned.join(' | ')}`);
   });
+});
+
+test('Workday Date of Birth: a spinbutton that drops the leading zero is still the same date, not a mismatch', async () => {
+  await withForm(PWC_BIRTH_PAGE, {}, async (env) => {
+    wirePwcBirth(env);
+    // Workday keeps "1" for the first of the month, not "01".
+    for (const el of env.document.querySelectorAll('[role=spinbutton]')) {
+      el.addEventListener('change', () => { if (/^0\d$/.test(el.value)) el.value = el.value.slice(1); });
+    }
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { country_of_birth: 'India', date_of_birth: '2003-12-01', city_of_birth: 'Kolkata' }) });
+    const result = await run_.runAutofill(ctx, null);
+    eq(valueOf(env, '[data-automation-id=dateSectionDay-input]'), '1', 'the fixture drops the zero');
+    const dob = byLabel(result.decisions, 'date of birth');
+    eq(dob.outcome, 'ok', dob.reason);
+    eq(ui.displayDate(dob.shown || dob.value), '12-01-2003');
+  });
+});
+
+test('displayDate: MM-DD-YYYY, zero-padded', () => {
+  eq(ui.displayDate('2003-12-01'), '12-01-2003');
+  eq(ui.displayDate('12/1/2003'), '12-01-2003');
+  eq(ui.displayDate('9/2023'), '09-2023');
+  eq(ui.displayDate('2023-09'), '09-2023');
+  eq(ui.displayDate('Kolkata'), 'Kolkata');
 });
 
 // Workday's citizenship prompts. "Citizenship Status" is hierarchical: each

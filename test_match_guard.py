@@ -133,6 +133,14 @@ def test_relocation_is_a_preference_not_a_sensitive_question():
     assert mg.classify_sensitive("Are you willing to relocate to New York?") is None
 
 
+def test_birth_answers_may_be_saved_from_a_form():
+    # Region of Birth has no profile field: the person's own answer is kept.
+    assert "birth" in mg.STORABLE_SENSITIVE
+    assert not mg.is_never_store("Region of Birth", "West Bengal")
+    # Still never saved: work authorization belongs in the profile.
+    assert mg.is_never_store("Are you legally authorized to work in the United States?", "Yes")
+
+
 def test_a_dual_category_question_is_still_locked():
     assert mg.classify_sensitive("Do you hold a valid work permit?")
     assert mg.classify_sensitive("Do you have the right to work here without sponsorship?")

@@ -1279,6 +1279,11 @@ export async function setDateParts(row, iso) {
  */
 function accepts(decision, value, shown) {
   if (differentCountries(value, shown)) return false;
+  // A split date is compared as a date: the profile's "2003-12-01" is the
+  // form's "12/1/2003". As words they differ, and a correct Date of Birth (and
+  // Workday's work-experience From / To) was reported as "the form shows … instead".
+  if (decision && decision.row && decision.row.kind === 'date-parts') return sameDate(value, shown);
+  if (commitMatches(value, shown)) return true;
   if (commitMatches(value, shown)) return true;
   for (const candidate of (decision && decision.candidates) || []) {
     if (commitMatches(candidate, shown)) return true;
@@ -1288,6 +1293,22 @@ function accepts(decision, value, shown) {
   if (decision && decision.readFirst && shown
       && pickReadFirst(decision.readFirst, [shown]) === shown) return true;
   return isPhoneField(decision && decision.row) && samePhone(value, shown);
+}
+
+/**
+ * ISO "YYYY-MM-DD" / "YYYY-MM" / "YYYY" against a split date read back in the
+ * form's order — month/day/year, month/year, or year (readDateParts) — by number.
+ */
+function sameDate(iso, shown) {
+  const want = /^(\d{4})(?:-(\d{1,2}))?(?:-(\d{1,2}))?$/.exec(String(iso || '').trim());
+  const got = String(shown || '').split('/').map(s => s.trim());
+  if (!want || !got.every(s => /^\d+$/.test(s))) return false;
+  const [, y, m, d] = want;
+  const read = got.length === 3 ? { m: got[0], d: got[1], y: got[2] }
+             : got.length === 2 ? { m: got[0], y: got[1] }
+             : { y: got[0] };
+  const same = (a, b) => a === undefined || b === undefined || Number(a) === Number(b);
+  return same(y, read.y) && same(m, read.m) && same(d, read.d);
 }
 
 function isPhoneField(row) {

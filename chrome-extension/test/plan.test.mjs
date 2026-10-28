@@ -9,6 +9,7 @@
 
 import { test, run, ok, notOk, eq, deepEq } from './harness.mjs';
 import * as p from '../src/autofill/plan.js';
+import * as m_ from '../src/autofill/match.js';
 
 const BANK = {
   full_name: 'Ada Lovelace',
@@ -197,6 +198,18 @@ test('a saved clearance answer fills the SAME question, from this form\'s own op
   eq(d.value, 'Never held a clearance');
   eq(d.source, 'saved_answer');
   eq(p.fieldsForServer([d]).length, 0, 'still never sent to the model');
+});
+
+test('Region of Birth can be saved, and the saved answer fills it next time — never via the model', () => {
+  const { STORABLE_SENSITIVE } = m_;
+  ok(STORABLE_SENSITIVE.has('birth'), 'birth answers may be saved from a form');
+  const ctx = Object.assign({}, CTX, { savedSensitive: [{ question: 'Region of Birth', answer: 'West Bengal' }] });
+  const d = p.decide([field('Region of Birth', { kind: 'combobox',
+                                                 options: ['Karnataka', 'Maharashtra', 'West Bengal'] })], ctx, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'West Bengal');
+  eq(d.source, 'saved_answer');
+  eq(p.fieldsForServer([d]).length, 0);
 });
 
 test('a saved clearance answer is not reused for a differently worded question', () => {
