@@ -3113,17 +3113,19 @@ Zimbabwe|Zimbabwean
     }
   }
   var COUNTRY_NAMES = ENTRIES.map((e) => e.name);
-  function countryOf(text) {
+  function countryOf(text, inParens = false) {
     const raw = String(text == null ? "" : text).trim();
     if (!raw) return "";
     const whole = BY_NAME.get(norm(raw));
     if (whole) return whole;
     const outside = BY_NAME.get(norm(raw.replace(/\([^)]*\)/g, " ")));
     if (outside) return outside;
-    const inside = /\(([^)]+)\)/.exec(raw);
-    if (inside) {
-      const c = BY_NAME.get(norm(inside[1]));
-      if (c) return c;
+    if (inParens) {
+      const inside = /\(([^)]+)\)/.exec(raw);
+      if (inside) {
+        const c = BY_NAME.get(norm(inside[1]));
+        if (c) return c;
+      }
     }
     return BY_NAME.get(norm(raw.split(/\s*[›>]\s*|\s[-–—:]\s/)[0])) || "";
   }
@@ -3670,6 +3672,9 @@ Zimbabwe|Zimbabwean
     if (labels.length) {
       const own = countryOption(country, labels);
       if (own) return { value: own, drill: row.kind === "combobox" ? "Citizen" : "" };
+      const theirs = country ? labels.filter((l) => countryOf(l, true) === country) : [];
+      const pick = theirs.length ? citizenshipOption("Citizen", theirs) : null;
+      if (pick) return { value: pick };
       if (countryShare(labels) >= 0.5) {
         return country ? { ask: `${country} isn't one of this list's options \u2014 choose your answer` } : null;
       }

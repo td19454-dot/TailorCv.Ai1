@@ -974,6 +974,24 @@ test('a demonym against a country list never takes a country that merely holds t
   eq(p.coerce('Indian', { kind: 'combobox', label: 'Country', options: ['British Indian Ocean Territory', 'Iceland'] }), null);
 });
 
+test('options suffixed with their country are not a country list: "Single (India)" stays Single', () => {
+  // PwC's Workday Marital Status: a saved "Single (India)" was filled as "Divorced (India)".
+  const opts = ['Divorced (India)', 'Married (India)', 'Separated (India)', 'Single (India)', 'Widowed (India)'];
+  eq(p.coerce('Single (India)', { kind: 'combobox', label: 'Marital Status*', options: opts }), 'Single (India)');
+  eq(p.coerce('Married (India)', { kind: 'combobox', label: 'Marital Status*', options: opts }), 'Married (India)');
+});
+
+test('Workday\'s flat citizenship list "Status (Country)" takes the Citizen row of their country', () => {
+  const opts = ['Citizen (Cambodia)', 'Permanent Resident (India)', 'Citizen (India)', 'Citizen (Singapore)'];
+  const d = p.decide([field('Citizenship Status*', { kind: 'combobox', required: true, options: opts })],
+                     { answerBank: Object.assign({}, BANK, { nationality: 'India' }), hasResume: true }, null, null)[0];
+  eq(d.value, 'Citizen (India)');
+  const onlyPr = p.decide([field('Citizenship Status*', { kind: 'combobox', required: true,
+                                                          options: ['Permanent Resident (India)', 'Citizen (Cambodia)'] })],
+                          { answerBank: Object.assign({}, BANK, { nationality: 'India' }), hasResume: true }, null, null)[0];
+  notOk(onlyPr.value === 'Permanent Resident (India)', 'never a lone non-Citizen row');
+});
+
 test('Date of Birth fills from the profile only, and is never sent to the server', () => {
   const dob = () => field('Date of Birth*', { kind: 'date-parts', required: true });
   const d = p.decide([dob()], birthCtx({ date_of_birth: '1999-04-07' }), null, null)[0];
