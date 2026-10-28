@@ -1065,6 +1065,126 @@ async function drillDown(row, el, shapes, drill, before) {
   return null;
 }
 
+/**
+ * One answer inside a Workday two-level prompt: "How Did You Hear About Us?"
+ * lists categories (Job Posting Sites ›, Social Platform ›, Referral ›…) and
+ * LinkedIn sits inside one of them (PwC, Oct 2026). Searching the answer was
+ * all the old writer did, and on these lists it found nothing to click.
+ *
+ * Search first — Workday's search can return the leaf itself. Otherwise open
+ * the categories in `parents` order (only those: never a referral) and take
+ * the leaf in the first one that has it. Capped, so this one field can never
+ * hold up the rest of the page.
+ */
+async function commitHierarchyPick(row, leaf, parents, fallback) {
+  // One budget for the whole field, LinkedIn and fallback together.
+  const deadline = Date.now() + TIMING.remoteSearchMs + Math.max(TIMING.commitWaitMs * 2, 1000);
+  const first = await pickInHierarchy(row, leaf, parents, deadline);
+  if (first.ok) return true;
+  // Not offered anywhere: the fallback answer ("External Agency"), searched or
+  // on the top level, never inside a category. Not when the list never showed
+  // a row at all: it is not answering, and asking again only waits again.
+  if (!fallback || !first.sawRows || Date.now() >= deadline) return false;
+  return (await pickInHierarchy(row, fallback, [], deadline)).ok;
+}
+
+async function pickInHierarchy(row, leaf, parents, deadline) {
+  const el = row.el;
+  const doc = el.ownerDocument || globalThis.document;
+  const input = typableInput(row) || el;
+  const listWaitMs = Math.max(TIMING.optionWaitMs * 2, 1000);
+  const text = n => (n.textContent || '').replace(/\s+/g, ' ').trim();
+  const want = normalizeOptionText(leaf);
+  const rowsNow = () => visibleOptionNodes(doc, el);
+  const leafRow = () => rowsNow().find(n => normalizeOptionText(text(n)) === want) || null;
+  const isSet = () => committed(row, leaf);
+  const press = (node) => {
+    let target = node;
+    for (const d of node.querySelectorAll('*')) if (text(d) === text(node)) target = d;
+    try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+    pressPointer(target);
+  };
+  const takeLeaf = async () => {
+    if (!leafRow()) return false;
+    await sleep(Math.max(TIMING.settleMs, 100));
+    const node = leafRow();
+    if (!node) return false;
+    press(node);
+    return settlesTo(row, [leaf]);
+  };
+  let sawRows = false;
+  // A list either shows its rows within about a second or is not going to.
+  const waitRows = async (test) => {
+    const until = Math.min(deadline, Date.now() + listWaitMs);
+    for (;;) {
+      const nodes = rowsNow();
+      if (nodes.length) sawRows = true;
+      if (nodes.length && test(nodes)) return nodes;
+      if (Date.now() >= until) return nodes;
+      await sleep(100);
+    }
+  };
+  const isParent = (label, parent) => {
+    const a = normalizeOptionText(label), b = normalizeOptionText(parent);
+    return !!a && !!b && (a === b || a.includes(b) || b.includes(a));
+  };
+  // A row that OPENS a list: Workday draws a › on it. Pressing a plain row
+  // selects it — on a flat list "Social Media" was chosen while looking for
+  // the category LinkedIn might be in.
+  const NAV_SEL = '[class*="chevron" i], [class*="caret-right" i], [class*="arrow-right" i], '
+    + '[aria-haspopup="true"], [aria-expanded]';
+  const opensList = (node) => {
+    try { return node.matches(NAV_SEL) || !!node.querySelector(NAV_SEL); } catch (e) { return false; }
+  };
+  const reopen = async () => {
+    dismissListbox(el);
+    await sleep(TIMING.settleMs);
+    openWidget(row);
+    return waitRows(nodes => parents.some(p => nodes.some(n => isParent(text(n), p))));
+  };
+
+  let seen = [];
+  try {
+    scrollIntoView(el);
+    dismissListbox(el);
+    openWidget(row);
+    await sleep(TIMING.settleMs);
+
+    // 1. Search: write it, Enter, take the leaf if the results hold it.
+    focus(input); writeValue(input, leaf); fire(input, 'input');
+    fireKey(input, 'keydown', 'Enter'); fireKey(input, 'keyup', 'Enter');
+    await waitForPromptResults(el, [leaf], isSet);
+    if (rowsNow().length) sawRows = true;
+    if (isSet()) return { ok: true, sawRows: true };
+    if (await takeLeaf()) return { ok: true, sawRows: true };
+
+    // 2. Browse: the top level itself, then each category that would hold it.
+    focus(input); writeValue(input, ''); fire(input, 'input');
+    let top = await reopen();
+    if (await takeLeaf()) return { ok: true, sawRows: true };
+    for (const parent of parents) {
+      if (Date.now() >= deadline) break;
+      seen = top.map(text);
+      const cat = top.find(n => isParent(text(n), parent) && opensList(n));
+      if (!cat) continue;
+      const before = new Set(seen);
+      press(cat);
+      await waitRows(nodes => nodes.some(n => !before.has(text(n))));
+      if (isSet()) return { ok: true, sawRows: true };
+      if (await takeLeaf()) return { ok: true, sawRows: true };
+      top = await reopen();                 // back to the top level
+    }
+    console.info('[TailorCV] no', JSON.stringify(leaf), 'in this list — rows seen:', seen.slice(0, 15),
+                 '| first row:', (top[0] && top[0].outerHTML || '').slice(0, 300));
+    reportDropdownFailure(row, leaf, rowsNow());
+    return { ok: false, sawRows };
+  } catch (e) {
+    return { ok: false, sawRows };
+  } finally {
+    dismissListbox(row.el);
+  }
+}
+
 function pickReadFirst(readFirst, labels) {
   const pick = coerce(readFirst.stored, {
     kind: 'combobox',
@@ -1351,7 +1471,10 @@ export async function applyDecision(decision) {
       if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
       break;
     case 'combobox':
-      wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
+      wrote = decision.hierarchy && isWorkdayPrompt(row.el)
+        ? await commitHierarchyPick(row, decision.hierarchy.leaf, decision.hierarchy.parents,
+                                    decision.hierarchy.fallback)
+        : await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
       break;
     case 'radio':
     case 'checkbox':

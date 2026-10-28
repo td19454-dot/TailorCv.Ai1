@@ -3282,6 +3282,11 @@ Zimbabwe|Zimbabwean
         }
         return done(d, FILL, value, "profile", 0.95, "");
       }
+      const prior = previousEmployerAnswer(row, ctx, bank);
+      if (prior) {
+        if (prior.ask) return done(d, ASK, "", "", 0, prior.ask);
+        return done(d, FILL, prior.value, "profile", 0.9, prior.reason);
+      }
       if (isConditionalFollowUp(row.label)) {
         d.noServer = true;
         return row.required ? done(d, ASK, "", "", 0, "only needed for some answers to the question above") : done(d, SKIP, "", "", 0, "only needed if you answered Yes above");
@@ -3336,6 +3341,9 @@ Zimbabwe|Zimbabwean
             return done(d, FILL, skills.join(", "), "profile", 0.95, "");
           }
         }
+        if (entry.key === "how_did_you_hear_about_us" && row.kind === "combobox") {
+          d.hierarchy = { leaf: HEARD_VIA, parents: HEARD_VIA_PARENTS, fallback: HEARD_VIA_FALLBACK };
+        }
         const value = coerce(raw, Object.assign(
           {},
           row,
@@ -3344,6 +3352,9 @@ Zimbabwe|Zimbabwean
         if (value !== null) {
           const action = isProse(entry.key, value) ? SUGGEST : FILL;
           return done(d, action, value, "profile", 0.95, "");
+        }
+        if (entry.key === "how_did_you_hear_about_us") {
+          return done(d, ASK, "", "", 0, "no LinkedIn or External Agency option here \u2014 choose your answer");
         }
         const other = row.options && row.options.length ? findOtherOption(row.options) : null;
         if (other) {
@@ -3599,14 +3610,18 @@ Zimbabwe|Zimbabwean
     if (shapes.includes("Two or More Races")) return null;
     return "No";
   }
-  var COMPANY_SITE_RE = /\b(company|official|employer'?s?|corporate) (web ?site|careers? (site|page))\b|\bcareers? (site|page|website)\b/i;
-  var COMPANY_SITE_SHAPES = [
-    "Careers site",
-    "Careers page",
-    "Company careers site",
-    "Company careers page",
-    "Company website",
-    "Career site"
+  var HEARD_VIA = "LinkedIn";
+  var HEARD_VIA_FALLBACK = "External Agency";
+  var HEARD_VIA_PARENTS = [
+    "Social Platform",
+    "Social Media",
+    "Professional Network",
+    "Job Posting Sites",
+    "Job Posting",
+    "Job Portal",
+    "Job Board",
+    "Online Job Board",
+    "Internet"
   ];
   var CITIZENSHIP_GROUPS = [
     // "…AND I am NOT a U.S. person" (Snowflake's export-control list) mentions
@@ -3690,6 +3705,41 @@ Zimbabwe|Zimbabwean
     }
     if (!country) return null;
     return { value: country, candidates: countryShapes(country), drill: row.kind === "combobox" ? "Citizen" : "" };
+  }
+  var PRIOR_EMPLOYER_RE = new RegExp(
+    "^\\s*(?:(?:have|had)\\s+you\\s+(?:ever\\s+)?(?:been\\s+)?(?:previously\\s+)?(?:employed|worked|work)|(?:are|were)\\s+you\\s+(?:ever\\s+)?(?:a\\s+)?(?:former|previous|past)\\s+(?:employee|worker|intern|contractor))\\s+(?:directly\\s+)?(?:by|for|at|of)\\s+(.+?)(?=\\s+(?:previously|before|in the past|ever|or\\b|and\\b|as\\b|in any|whether)|\\s*[?(,:*]|$)",
+    "i"
+  );
+  var COMPANY_SUFFIX_RE = /\b(inc|incorporated|ltd|limited|llc|llp|plc|pvt|private|corp|corporation|co|company|gmbh|ag|sa|group|holdings|technologies|technology|solutions|services|analytics|india|global)\b/g;
+  var OUR_COMPANY_RE = /^(us|our (company|firm|organi[sz]ation)|this (company|firm|organi[sz]ation)|the company)$/i;
+  function companyKey(name) {
+    return String(name || "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9 ]+/g, " ").replace(COMPANY_SUFFIX_RE, " ").replace(/\s+/g, " ").trim();
+  }
+  function sameCompany(a, b) {
+    const x = companyKey(a), y = companyKey(b);
+    if (!x || !y) return false;
+    if (x === y) return true;
+    const [short, long] = x.length <= y.length ? [x, y] : [y, x];
+    if (short.length < 3) return false;
+    return (" " + long + " ").includes(" " + short + " ") || short.length >= 4 && long.startsWith(short);
+  }
+  function previousEmployerAnswer(row, ctx, bank) {
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") return null;
+    const opts = (row.options || []).map((o) => String(typeof o === "string" ? o : o && o.label || "").trim()).filter((o) => o && !PLACEHOLDER_RE.test(o));
+    if (opts.length && !(opts.some((o) => /^yes\b/i.test(o)) && opts.some((o) => /^no\b/i.test(o)))) return null;
+    const m = PRIOR_EMPLOYER_RE.exec(String(row.label || "").replace(/\*+\s*$/, ""));
+    if (!m) return null;
+    let company = m[1].trim().replace(/^(the|a|an)\s+/i, "");
+    if (OUR_COMPANY_RE.test(company)) company = String(ctx && ctx.jobCompany || "").trim();
+    if (!company || /^(your|my|any)\b/i.test(company) || /\b(government|military|agency|state.owned|public sector)\b/i.test(company)) return null;
+    const jobs = (ctx && ctx.facts && ctx.facts.workExperience || []).map((j) => j && j.company).filter(Boolean);
+    const named = [bank.current_company, bank.previous_company].filter(Boolean);
+    const employers = jobs.concat(named);
+    const was = employers.find((e) => sameCompany(e, company));
+    const value = coerce(was ? "Yes" : "No", Object.assign({}, row, { candidateKey: "" }));
+    if (value === null) return null;
+    return { value, reason: was ? `you worked at ${was}` : `${company} isn't in your work history` };
   }
   var MAX_PROMPT_SKILLS = 10;
   function splitSkills(text) {
@@ -3923,6 +3973,7 @@ Zimbabwe|Zimbabwean
   function bankValue(key, bank) {
     const b = bank || {};
     if (key === "phone_country_code") return splitPhone(String(b.phone || "")).dialCode || "";
+    if (key === "how_did_you_hear_about_us") return HEARD_VIA;
     return b[key];
   }
   function candidatesFor(key, value, bank) {
@@ -3943,9 +3994,7 @@ Zimbabwe|Zimbabwean
       return uniq([text].concat(entry.spellings, entry.level ? degreeShapes(entry.level) : []));
     }
     if (key === "race_ethnicity") return uniq([text].concat(ethnicityShapes(text)));
-    if (key === "how_did_you_hear_about_us" && COMPANY_SITE_RE.test(text)) {
-      return uniq([text].concat(COMPANY_SITE_SHAPES));
-    }
+    if (key === "how_did_you_hear_about_us") return [HEARD_VIA, HEARD_VIA_FALLBACK];
     if (EEO_GROUPS[key]) return uniq([text].concat(eeoShapes(key, text)));
     if (!LOCATION_KEYS.has(key)) return text ? [text] : [];
     const city = String(b.address_city || "").trim();
@@ -4927,6 +4976,117 @@ Zimbabwe|Zimbabwean
     }
     return null;
   }
+  async function commitHierarchyPick(row, leaf, parents, fallback) {
+    const deadline = Date.now() + TIMING.remoteSearchMs + Math.max(TIMING.commitWaitMs * 2, 1e3);
+    const first = await pickInHierarchy(row, leaf, parents, deadline);
+    if (first.ok) return true;
+    if (!fallback || !first.sawRows || Date.now() >= deadline) return false;
+    return (await pickInHierarchy(row, fallback, [], deadline)).ok;
+  }
+  async function pickInHierarchy(row, leaf, parents, deadline) {
+    const el = row.el;
+    const doc = el.ownerDocument || globalThis.document;
+    const input = typableInput(row) || el;
+    const listWaitMs = Math.max(TIMING.optionWaitMs * 2, 1e3);
+    const text = (n) => (n.textContent || "").replace(/\s+/g, " ").trim();
+    const want = normalizeOptionText(leaf);
+    const rowsNow = () => visibleOptionNodes2(doc, el);
+    const leafRow = () => rowsNow().find((n) => normalizeOptionText(text(n)) === want) || null;
+    const isSet = () => committed(row, leaf);
+    const press2 = (node) => {
+      let target = node;
+      for (const d of node.querySelectorAll("*")) if (text(d) === text(node)) target = d;
+      try {
+        target.scrollIntoView({ block: "nearest" });
+      } catch (e) {
+      }
+      pressPointer(target);
+    };
+    const takeLeaf = async () => {
+      if (!leafRow()) return false;
+      await sleep(Math.max(TIMING.settleMs, 100));
+      const node = leafRow();
+      if (!node) return false;
+      press2(node);
+      return settlesTo(row, [leaf]);
+    };
+    let sawRows = false;
+    const waitRows = async (test) => {
+      const until = Math.min(deadline, Date.now() + listWaitMs);
+      for (; ; ) {
+        const nodes = rowsNow();
+        if (nodes.length) sawRows = true;
+        if (nodes.length && test(nodes)) return nodes;
+        if (Date.now() >= until) return nodes;
+        await sleep(100);
+      }
+    };
+    const isParent = (label, parent) => {
+      const a = normalizeOptionText(label), b = normalizeOptionText(parent);
+      return !!a && !!b && (a === b || a.includes(b) || b.includes(a));
+    };
+    const NAV_SEL = '[class*="chevron" i], [class*="caret-right" i], [class*="arrow-right" i], [aria-haspopup="true"], [aria-expanded]';
+    const opensList = (node) => {
+      try {
+        return node.matches(NAV_SEL) || !!node.querySelector(NAV_SEL);
+      } catch (e) {
+        return false;
+      }
+    };
+    const reopen = async () => {
+      dismissListbox(el);
+      await sleep(TIMING.settleMs);
+      openWidget(row);
+      return waitRows((nodes) => parents.some((p) => nodes.some((n) => isParent(text(n), p))));
+    };
+    let seen = [];
+    try {
+      scrollIntoView(el);
+      dismissListbox(el);
+      openWidget(row);
+      await sleep(TIMING.settleMs);
+      focus(input);
+      writeValue(input, leaf);
+      fire(input, "input");
+      fireKey(input, "keydown", "Enter");
+      fireKey(input, "keyup", "Enter");
+      await waitForPromptResults(el, [leaf], isSet);
+      if (rowsNow().length) sawRows = true;
+      if (isSet()) return { ok: true, sawRows: true };
+      if (await takeLeaf()) return { ok: true, sawRows: true };
+      focus(input);
+      writeValue(input, "");
+      fire(input, "input");
+      let top = await reopen();
+      if (await takeLeaf()) return { ok: true, sawRows: true };
+      for (const parent of parents) {
+        if (Date.now() >= deadline) break;
+        seen = top.map(text);
+        const cat = top.find((n) => isParent(text(n), parent) && opensList(n));
+        if (!cat) continue;
+        const before = new Set(seen);
+        press2(cat);
+        await waitRows((nodes) => nodes.some((n) => !before.has(text(n))));
+        if (isSet()) return { ok: true, sawRows: true };
+        if (await takeLeaf()) return { ok: true, sawRows: true };
+        top = await reopen();
+      }
+      console.info(
+        "[TailorCV] no",
+        JSON.stringify(leaf),
+        "in this list \u2014 rows seen:",
+        seen.slice(0, 15),
+        "| first row:",
+        (top[0] && top[0].outerHTML || "").slice(0, 300)
+      );
+      reportDropdownFailure(row, leaf, rowsNow());
+      return { ok: false, sawRows };
+    } catch (e) {
+      return { ok: false, sawRows };
+    } finally {
+      dismissListbox(row.el);
+    }
+  }
   function pickReadFirst(readFirst, labels) {
     const pick = coerce(readFirst.stored, {
       kind: "combobox",
@@ -5104,7 +5264,12 @@ Zimbabwe|Zimbabwean
         if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
         break;
       case "combobox":
-        wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
+        wrote = decision.hierarchy && isWorkdayPrompt(row.el) ? await commitHierarchyPick(
+          row,
+          decision.hierarchy.leaf,
+          decision.hierarchy.parents,
+          decision.hierarchy.fallback
+        ) : await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
         break;
       case "radio":
       case "checkbox":
@@ -5803,6 +5968,91 @@ Zimbabwe|Zimbabwean
     }
     return out;
   }
+  function pageBlockers(decisions) {
+    const out = [];
+    const seen = /* @__PURE__ */ new Set();
+    for (const d of decisions || []) {
+      const row = d && d.row;
+      if (!row || !row.required || seen.has(d.key)) continue;
+      let reason = "";
+      if (row.kind === "file") {
+        if (!hasUploadedFile(row.el)) reason = "needs a file";
+      } else {
+        const now2 = reprobe(row);
+        if (!now2) continue;
+        if (now2.invalid) reason = "the form rejected this";
+        else if (!now2.filled) reason = "needs an answer";
+      }
+      if (reason) {
+        seen.add(d.key);
+        out.push({ key: d.key, label: d.label || "(unlabelled field)", reason, decision: d });
+      }
+    }
+    return out;
+  }
+  var MAX_FORCED = 15;
+  async function forceAnswers(ctx, decisions, onProgress) {
+    const progress = typeof onProgress === "function" ? onProgress : () => {
+    };
+    const targets = pageBlockers(decisions).map((b) => b.decision).filter((d) => d.row && d.row.kind !== "file" && !d.slot && !d.knownEmpty && !d.sensitive && !classifySensitive(d.label) && !isNeverFill(d.label)).slice(0, MAX_FORCED);
+    if (!targets.length) return { forced: 0 };
+    for (const d of targets) {
+      if (d.kind === "combobox" && !(d.options && d.options.length)) {
+        const labels = await readComboboxOptions(d.row);
+        if (labels.length) {
+          d.row.options = labels.map((l) => ({ value: l, label: l }));
+          d.options = d.row.options;
+        }
+      }
+    }
+    const fields = targets.map((d) => ({
+      i: decisions.indexOf(d),
+      label: d.label,
+      kind: d.kind,
+      required: true,
+      sensitive: false,
+      recallOnly: false,
+      compose: false,
+      documentSlot: null,
+      options: (d.options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean).slice(0, 300)
+    }));
+    const res = await send({
+      type: "AF_PLAN",
+      payload: {
+        url: globalThis.location.href,
+        host: globalThis.location.hostname,
+        ats: (findForm() || {}).ats || "generic",
+        jobTitle: ctx && ctx.jobTitle || "",
+        jobCompany: ctx && ctx.jobCompany || "",
+        jdExcerpt: String(ctx && ctx.jdExcerpt || "").slice(0, 2e3),
+        force: true,
+        fields
+      }
+    });
+    if (res.error) return { error: res.error };
+    const answers = res.data && res.data.answers || {};
+    const answered = [];
+    for (const d of targets) {
+      const a = answers[String(decisions.indexOf(d))];
+      if (!a || !String(a.value || "").trim()) continue;
+      d.value = String(a.value);
+      d.action = FILL;
+      d.source = "ai_forced";
+      d.confidence = Number(a.confidence) || 0.6;
+      d.candidates = [];
+      d.reason = "best answer from your resume, so auto-apply could continue \u2014 check it";
+      answered.push(d);
+    }
+    if (answered.length) {
+      stopWatchingUserEdits();
+      try {
+        await writeAll(answered, ctx, progress, true);
+      } finally {
+        watchUserEdits(findForm(), null);
+      }
+    }
+    return { forced: answered.length };
+  }
   async function runAutofill(ctx, onProgress) {
     const progress = (phase, extra) => {
       if (typeof onProgress === "function") {
@@ -6386,6 +6636,7 @@ Zimbabwe|Zimbabwean
     saved_answer: "a saved answer",
     ai: "AI",
     ai_written: "AI, written for this job",
+    ai_forced: "AI, from your resume",
     standard: "a standard answer",
     you: "you"
   };
@@ -6426,7 +6677,11 @@ Zimbabwe|Zimbabwean
         <div class="tcv-af-note">
           You've used your free autofills. <a href="#" id="tcvAfUpgrade">Upgrade to Pro \u2192</a>
         </div>` : `
-        <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">${page > 1 ? "Autofill this page" : "Autofill this application"} <span aria-hidden="true">\u25B8</span></button>`}
+        <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">${page > 1 ? "Autofill this page" : "Autofill this application"} <span aria-hidden="true">\u25B8</span></button>
+        ${form && form.ats === "workday" && handlers.onAutoApply ? `
+        <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoBtn">\u23E9 Auto-apply all pages</button>
+        <div class="tcv-af-note tcv-af-note-quiet">Fills each page and clicks Save and Continue,
+          pausing only for what it can't fill. It stops at Review \u2014 you click Submit.</div>` : ""}`}
       <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn">\u2726 Tailor my resume for this job</button>
       <div class="tcv-af-note tcv-af-note-quiet">
         TailorCV never submits an application. You review everything and send it yourself.
@@ -6434,6 +6689,8 @@ Zimbabwe|Zimbabwean
     </div>`;
     const fill = body.querySelector("#tcvAfFillBtn");
     if (fill) fill.addEventListener("click", () => handlers.onFill());
+    const auto = body.querySelector("#tcvAfAutoBtn");
+    if (auto) auto.addEventListener("click", () => handlers.onAutoApply());
     const tailor = body.querySelector("#tcvAfTailorBtn");
     if (tailor) tailor.addEventListener("click", (e) => {
       e.preventDefault();
@@ -6466,6 +6723,7 @@ Zimbabwe|Zimbabwean
         ${counts[PROFILE] ? pill("ask", `${counts[PROFILE]} for your profile`) : ""}
       </div>
       ${result.page > 1 ? `<div class="tcv-source">Page ${esc(result.page)} of this application</div>` : ""}
+      ${autoBannerHtml(handlers.auto, decisions)}
       <button class="tcv-btn tcv-btn-start" id="tcvAfRerun">\u21BB Autofill this page</button>
       ${result.serverError ? `<div class="tcv-af-note">${esc(result.serverError)}</div>` : ""}
       ${result.opaqueHosts ? `<div class="tcv-af-note tcv-af-note-quiet">
@@ -6482,11 +6740,39 @@ Zimbabwe|Zimbabwean
       </div>
     </div>`;
     wireRows(body, decisions, ctx, handlers);
+    wireAutoBanner(body, handlers.auto);
     const rerun = body.querySelector("#tcvAfRerun");
     if (rerun) rerun.addEventListener("click", () => handlers.onFill());
     bindLink(body, "#tcvAfEditProfile", handlers.onOpenProfile);
     if (decisions.length && decisions[0].row) highlight(decisions);
     offerToRemember(body, result, handlers);
+  }
+  function autoBannerHtml(auto, decisions) {
+    if (!auto) return "";
+    const blockers = auto.blockers || [];
+    const list = blockers.length ? `<ul class="tcv-af-auto-list">${blockers.map((b) => {
+      const i = decisions.indexOf(b.decision);
+      return `<li>${esc(b.label)} \u2014 ${esc(b.reason)}${i >= 0 ? ` <a href="#" class="tcv-af-jump" data-index="${i}">show</a>` : ""}</li>`;
+    }).join("")}</ul>` : "";
+    const title = auto.state === "done" ? "\u2713 Ready to submit" : auto.state === "paused" ? `\u23F8 Auto-apply paused${blockers.length ? ` \u2014 ${blockers.length} field${blockers.length === 1 ? "" : "s"} need${blockers.length === 1 ? "s" : ""} you` : ""}` : "Auto-apply stopped";
+    return `
+    <div class="tcv-af-auto tcv-af-auto-${esc(auto.state || "paused")}" id="tcvAfAuto">
+      <div class="tcv-af-auto-title">${esc(title)}</div>
+      ${auto.message ? `<div class="tcv-af-auto-msg">${esc(auto.message)}</div>` : ""}
+      ${list}
+      ${auto.state === "paused" ? `
+        <div class="tcv-af-auto-actions">
+          <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfAutoContinue">Continue auto-apply \u25B8</button>
+          <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoStop">Stop</button>
+        </div>` : ""}
+    </div>`;
+  }
+  function wireAutoBanner(body, auto) {
+    if (!auto) return;
+    const go = body.querySelector("#tcvAfAutoContinue");
+    if (go && auto.onContinue) go.addEventListener("click", () => auto.onContinue());
+    const stop = body.querySelector("#tcvAfAutoStop");
+    if (stop && auto.onStop) stop.addEventListener("click", () => auto.onStop());
   }
   function pill(kind, text) {
     return `<span class="tcv-af-summary-pill tcv-af-${esc(kind)}">${esc(text)}</span>`;
@@ -6631,11 +6917,24 @@ Zimbabwe|Zimbabwean
       btn.after(note);
     });
   }
-  function renderRunning(body, phase) {
+  function renderRunning(body, phase, auto) {
     body.innerHTML = `
     <div class="tcv-af-panel">
+      ${auto ? `<div class="tcv-af-auto tcv-af-auto-running">
+        <div class="tcv-af-auto-title">\u23E9 Auto-apply \xB7 page ${esc(auto.page || 1)}</div>
+        <div class="tcv-af-auto-msg">Filling each page and moving on. It stops at Review.</div>
+      </div>` : ""}
       <div class="tcv-status-text" id="tcvAfPhase">${esc(phase || "Reading the form\u2026")}</div>
+      ${auto && auto.onStop ? `<button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoStop">Stop after this page</button>` : ""}
     </div>`;
+    const stop = body.querySelector("#tcvAfAutoStop");
+    if (stop) {
+      stop.addEventListener("click", () => {
+        stop.disabled = true;
+        stop.textContent = "Stopping after this page\u2026";
+        auto.onStop();
+      });
+    }
   }
   function setPhase(body, text) {
     const el = body.querySelector("#tcvAfPhase");
@@ -6874,6 +7173,9 @@ ${lists.join("\n")}` : "");
       learnableAnswers,
       watchUserEdits,
       stopWatchingUserEdits,
+      pageBlockers,
+      waitForQuiet,
+      forceAnswers,
       // Inspection, for the panel and for debugging a page by hand.
       capturePageStructure,
       describeFields,

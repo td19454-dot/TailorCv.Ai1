@@ -247,6 +247,12 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
             f.sensitive = bool(f.sensitive) or bool(classify_sensitive(f.label))
             f.neverFill = bool(is_never_fill(f.label))
 
+        # Auto-apply's second pass on a page already planned (and charged): the
+        # required fields still empty, answered rather than skipped. Not charged
+        # again; bounded by _force_targets.
+        if payload.force:
+            return await _forced_plan(db, user, prof, fields, payload)
+
         # Charged before the work, refunded if the work fails — the same shape
         # every other metered feature here uses. 402 carries the code the
         # extension's existing upgrade-prompt path already handles.
@@ -317,6 +323,98 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
         raise HTTPException(status_code=500, detail="Could not build an autofill plan.")
     finally:
         db.close()
+
+
+FORCE_MAX_FIELDS = 15
+
+
+def _force_targets(fields) -> list:
+    """The fields a forced pass may answer: never sensitive, never-fill, an
+    upload, a field the profile names but holds nothing for (recallOnly: Middle
+    Name for someone with none), or a motivation answer. At most 15."""
+    return [f for f in fields
+            if not f.sensitive and not getattr(f, "neverFill", False)
+            and not f.documentSlot and not f.recallOnly and not f.compose][:FORCE_MAX_FIELDS]
+
+
+async def _forced_plan(db, user, prof, fields, payload) -> dict:
+    from auto_apply import resume_facts as rf
+    from auto_apply.profile import answer_bank, build_applicant_profile
+
+    targets = _force_targets(fields)
+    answers: dict[str, dict] = {}
+    if targets:
+        facts = rf.load_cached_facts(db, user) or rf.empty_facts()
+        profile = await build_applicant_profile(_context_snapshot(user, prof, facts), narrative=False)
+        bank = answer_bank(profile)
+        try:
+            forced = await _forced_answers(bank, user.base_resume_text or "", targets, payload)
+        except Exception:
+            logger.exception("autofill plan: forced-answer LLM call failed")
+            forced = {}
+        for f in targets:
+            raw = forced.get(str(f.i))
+            if raw is None or not str(raw).strip():
+                continue
+            value = _resolve_against_options(str(raw), f)
+            if value is None:
+                continue
+            answers[str(f.i)] = {"value": value, "source": "ai_forced", "confidence": 0.6}
+    return {
+        "answers": answers,
+        "ask": [f.i for f in fields if str(f.i) not in answers],
+        "sensitiveSkipped": [f.i for f in fields if f.sensitive],
+        "neverFill": [f.i for f in fields if getattr(f, "neverFill", False)],
+    }
+
+
+_FORCED_ANSWER_PROMPT = """You are completing the REQUIRED questions left on one page of a job application, on
+behalf of the candidate. The form will not move on until each has an answer, so answer every
+index below — do not skip any.
+
+THE JOB: {job}
+
+CANDIDATE_DATA (the candidate's own profile answers):
+{candidate_json}
+
+THE CANDIDATE'S RESUME:
+{resume}
+
+REQUIRED FIELDS (index: question):
+{fields_block}
+
+Rules:
+- A field with [OPTIONS ...] must get exactly one listed option, copied verbatim.
+- Experience or skill questions ("Do you have experience with SQL?", "Years of experience with
+  Python?") follow the resume: Yes / an estimate from the resume's dates when it shows it, No / 0
+  when it does not.
+- Preference or willingness questions — working onsite or hybrid, travel, shifts, weekends,
+  overtime, background or reference checks, drug screening, notice or start-date flexibility,
+  following company policies — answer Yes / the agreeable option.
+- A licence, certification, clearance, degree, membership or employer the resume does not show
+  is No. Never claim one the resume does not show.
+- Free text: one short, factual line drawn from the resume or CANDIDATE_DATA.
+
+Return ONLY a JSON object: {{"answers": {{"<index>": "<value>"}}}}
+"""
+
+
+async def _forced_answers(bank: dict, resume_text: str, fields, payload) -> dict:
+    """One call that answers every given field (auto-apply's second pass)."""
+    from functions import get_resume_response
+
+    candidate = {k: v for k, v in bank.items() if k not in PROSE_KEYS and k not in PRIVATE_KEYS}
+    job = " at ".join(x for x in (payload.jobTitle, payload.jobCompany) if x) or "(not given)"
+    prompt = _FORCED_ANSWER_PROMPT.format(
+        job=job,
+        candidate_json=json.dumps(candidate, ensure_ascii=False, indent=1),
+        resume=(resume_text or "(none on file)")[:6000],
+        fields_block=_fields_block(fields),
+    )
+    raw = await get_resume_response(prompt)
+    parsed = json.loads(raw)
+    answers = parsed.get("answers") if isinstance(parsed, dict) else None
+    return answers if isinstance(answers, dict) else {}
 
 
 async def _settle(task) -> dict:

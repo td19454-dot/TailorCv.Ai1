@@ -482,7 +482,7 @@ export const WORKDAY_MYINFO = `
 export function wireWorkday(doc) {
   const portal = doc.getElementById('wd-portal');
   const COUNTRIES = ['India', 'United States of America', 'United Kingdom', 'Canada'];
-  const SOURCES = ['Company Website', 'Job Board', 'Employee Referral', 'Social Media'];
+  const SOURCES = ['Company Website', 'Job Board', 'Employee Referral', 'LinkedIn', 'Social Media'];
 
   const clearPortal = () => { portal.innerHTML = ''; };
   const renderOptions = (options, onPick) => {

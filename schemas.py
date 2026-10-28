@@ -157,3 +157,6 @@ class AutofillPlanRequest(BaseModel):
     jobCompany: str = Field(default="", max_length=300)
     jdExcerpt: str = Field(default="", max_length=2000)
     fields: list[AutofillField] = Field(default_factory=list, max_length=200)
+    # Auto-apply's second pass on one page: the required fields still empty,
+    # which the model must answer (best reading of the resume) rather than skip.
+    force: bool = False

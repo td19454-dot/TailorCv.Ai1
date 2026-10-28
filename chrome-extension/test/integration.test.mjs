@@ -548,10 +548,10 @@ test('Lever: a radio group for work authorization is answered from the profile',
   });
 });
 
-test('Lever: "How did you hear" is filled from the profile', async () => {
+test('Lever: "How did you hear" is filled with LinkedIn', async () => {
   await withForm(fixtures.LEVER, {}, async (env) => {
     await run_.runAutofill(CTX, null);
-    eq(valueOf(env, '[name="cards[source][field0]"]'), 'Company website');
+    eq(valueOf(env, '[name="cards[source][field0]"]'), 'LinkedIn');
   });
 });
 
@@ -1505,7 +1505,7 @@ test('Workday (real markup): How Did You Hear commits a selectedItem, not typed 
     const result = await run_.runAutofill(CTX, null);
     const items = [...env.document.querySelectorAll('[data-automation-id=selectedItem]')]
       .map(n => n.textContent.trim());
-    eq(items.join(','), 'Company Website');
+    eq(items.join(','), 'LinkedIn');
     const row = byLabel(result.decisions, 'hear about');
     eq(row.outcome, 'ok', `${row.action} / ${row.reason}`);
   });
@@ -1534,15 +1534,15 @@ test('Workday (real markup): the date parts are written', async () => {
   });
 });
 
-test('Workday (real markup): the Citi-employment question is asked, never guessed', async () => {
+test('Workday (real markup): the Citi-employment question is answered from the work history', async () => {
   await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
     fixtures.wireWorkday(env.document);
     const result = await run_.runAutofill(CTX, null);
     const row = byLabel(result.decisions, 'employed by citi');
     ok(row, 'the radio group must be found, labelled by its legend');
-    eq(row.action, p.ASK);
+    eq(row.action, p.FILL, 'Citi is not in the work history (Acme Corp): No, without asking');
     notOk(env.document.querySelector('#radio-yes').checked);
-    notOk(env.document.querySelector('#radio-no').checked);
+    ok(env.document.querySelector('#radio-no').checked);
   });
 });
 
@@ -2623,6 +2623,91 @@ const wdPrompt = (id, label) => `
       <div data-automation-id="multiSelectContainer"><ul data-automation-id="selectedItemList"></ul>
         <div data-automation-id="multiselectInputContainer">
           <input data-automation-id="searchBox" id="${id}" type="text" placeholder="Search" aria-required="true"></div></div></div>`;
+// Workday's two-level "How Did You Hear About Us?" (PwC, Oct 2026): categories
+// with ›, each opening its own list under a ← header. opts.searchFinds: Enter
+// on a search returns matching leaf rows (else "No Items"). opts.noLinkedIn:
+// no category holds LinkedIn, but the top level has "External Agency".
+const HEAR_TREE = {
+  'Alumni': ['Former Employee'],
+  'Job Posting Sites': ['Karriere.at', 'Lagou', 'LinkedIn', 'Monster'],
+  'Referral': ['Employee Referral'],
+  'Social Platform': ['Facebook', 'Glassdoor', 'LinkedIn', 'Twitter'],
+  'Website': ['PwC Careers'],
+};
+const WD_HEAR_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>My Information</h3>
+  <div data-automation-id="applyFlowMyInfoPage">
+    ${wdPrompt('source', 'How Did You Hear About Us?')}
+    <div data-automation-id="formField-legalNameSection_firstName"><label for="fn">Given Name(s)<abbr>*</abbr></label>
+      <input id="fn" type="text" aria-required="true" name="legalName--firstName"></div>
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+
+function wireWorkdayHear(env, opts = {}) {
+  const doc = env.document;
+  const portal = doc.getElementById('wd-portal');
+  const input = doc.getElementById('source');
+  const pills = doc.querySelector('[data-automation-id="formField-source"] [data-automation-id="selectedItemList"]');
+  const log = { pressed: [] };
+  let tree = Object.assign({}, HEAR_TREE);
+  if (opts.flatNoLinkedIn) tree = { 'Company Website': null, 'Social Media': null, 'Employee Referral': null };
+  if (opts.noLinkedIn) {
+    for (const k of Object.keys(tree)) tree[k] = tree[k].filter(x => x !== 'LinkedIn');
+    tree['External Agency'] = null;                 // a top-level leaf
+  }
+  const row = (o, more) => `<li role="option" data-automation-id="promptOption"><div data-automation-id="promptLeafNode"><span>${o}</span>${more ? '<span class="chevron"></span>' : ''}</div></li>`;
+  const choose = (text) => { pills.innerHTML += `<li><div data-automation-id="selectedItem">${text}</div></li>`; input.value = ''; portal.innerHTML = ''; };
+  const wireRows = () => {
+    for (const li of portal.querySelectorAll('[role=option]')) {
+      const label = li.textContent.trim();
+      li.addEventListener('mousedown', () => {
+        log.pressed.push(label);
+        if (Array.isArray(tree[label])) level(label); else choose(label);
+      });
+    }
+  };
+  const top = () => { portal.innerHTML = '<ul role="listbox">' + Object.keys(tree).map(k => row(k, Array.isArray(tree[k]))).join('') + '</ul>'; wireRows(); };
+  const level = (cat) => {
+    portal.innerHTML = `<div><button aria-label="Back">←</button><span>${cat}</span></div><ul role="listbox">`
+      + tree[cat].map(o => row(o, false)).join('') + '</ul>';
+    wireRows();
+  };
+  input.addEventListener('mousedown', top);
+  input.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const q = input.value.trim().toLowerCase();
+    if (!q) { top(); return; }
+    const hits = opts.searchFinds
+      ? [].concat(...Object.entries(tree).map(([k, v]) => (v || [k]).filter(x => x.toLowerCase().includes(q))))
+      : [];
+    portal.innerHTML = '<ul role="listbox">' + (hits.length ? hits.map(o => row(o, false)).join('')
+      : '<li><div>No Items.</div></li>') + '</ul>';
+    wireRows();
+  });
+  return log;
+}
+const hearPill = doc => Array.from(doc.querySelectorAll('[data-automation-id="formField-source"] [data-automation-id="selectedItem"]'))
+  .map(n => n.textContent).join(' | ');
+
+for (const [name, opts, want] of [
+  ['the search finds LinkedIn', { searchFinds: true }, 'LinkedIn'],
+  ['LinkedIn is inside a category', {}, 'LinkedIn'],
+  ['no LinkedIn anywhere: External Agency', { noLinkedIn: true }, 'External Agency'],
+  // A plain row is never pressed as if it were a category.
+  ['a flat list with neither: nothing picked', { flatNoLinkedIn: true }, ''],
+]) {
+  test(`Workday "How Did You Hear About Us?" two-level list — ${name}`, async () => {
+    await withForm(WD_HEAR_PAGE, {}, async (env) => {
+      const log = wireWorkdayHear(env, opts);
+      await run_.runAutofill(CTX, null);
+      eq(hearPill(env.document), want);
+      ok(!log.pressed.some(l => /referral|alumni/i.test(l)), `never a referral: ${log.pressed.join(', ')}`);
+      eq(valueOf(env, '#fn'), 'Ada', 'the rest of the page still fills');
+    });
+  });
+}
+
 const WD_CITIZENSHIP_PAGE = `
   <div data-automation-id="applyFlowPage"><h3>Voluntary Disclosures</h3>
   <div data-automation-id="applyFlowVoluntaryDisclosuresPage">

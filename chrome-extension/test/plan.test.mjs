@@ -212,6 +212,30 @@ test('Region of Birth can be saved, and the saved answer fills it next time — 
   eq(p.fieldsForServer([d]).length, 0);
 });
 
+test('"Have you been employed by X previously?" is answered from the work history', () => {
+  const jobs = ws => ({ answerBank: BANK, hasResume: true, facts: { workExperience: ws.map(c => ({ company: c })) } });
+  const q = l => field(l, { kind: 'radio', required: true, options: ['Yes', 'No'] });
+  // Quantiphi's Workday question stopped auto-apply (Oct 2026).
+  const no = p.decide([q('Have you been employed by Quantiphi previously?*')], jobs(['Alignerr']), null, null)[0];
+  eq(no.action, p.FILL);
+  eq(no.value, 'No');
+  eq(p.fieldsForServer([no]).length, 0, 'never asked of the model');
+  eq(p.decide([q('Have you been employed by Quantiphi previously?*')],
+              jobs(['Quantiphi Analytics Solutions Pvt Ltd']), null, null)[0].value, 'Yes');
+  // Not these: a skills question, a tenure question, the government question.
+  for (const l of ['Have you worked with Python before?', 'How long have you worked at your current company?',
+                   'Have you ever been directly employed by any government or military entity?']) {
+    notOk(p.previousEmployerAnswer(q(l), jobs(['Alignerr']), {}), l);
+  }
+  // However broad the wording, not in the work history is No — never a pause.
+  eq(p.decide([q('Have you ever been employed by Citi or any of its predecessor companies, whether as an '
+                 + 'employee or via an agency or as a contractor?*')], jobs(['Alignerr']), null, null)[0].value, 'No');
+  eq(p.decide([q('Have you ever been employed by Citi, whether as an employee or via an agency?*')],
+              jobs(['Citibank N.A.']), null, null)[0].value, 'Yes', 'a match is Yes');
+  const empty = { answerBank: Object.assign({}, BANK, { current_company: '', previous_company: '' }), hasResume: true };
+  eq(p.decide([q('Have you worked for Globex before?')], empty, null, null)[0].value, 'No', 'no work history: No');
+});
+
 test('a saved clearance answer is not reused for a differently worded question', () => {
   const ctx = Object.assign({}, CTX, { savedSensitive: [
     { question: 'Active Security Clearance(s)*', answer: 'Never held a clearance' }] });
@@ -765,11 +789,32 @@ test('work authorization Yes / No lists are unchanged', () => {
   eq(p.decide([row], authCtx('Yes', 'No'), null, null)[0].value, 'Yes');
 });
 
-test('"Company website" answers a list that calls it "Careers site"', () => {
+test('"How did you hear about us?" is always LinkedIn, whatever the profile holds', () => {
   const opts = ['Glassdoor', 'Careers site', 'Indeed', 'LinkedIn', 'Other (indicate below)'];
   const row = field('How did you hear about this job?*', { kind: 'combobox', options: opts });
   const ctx = { answerBank: Object.assign({}, BANK, { how_did_you_hear_about_us: 'Company website' }), hasResume: true };
-  eq(p.decide([row], ctx, null, null)[0].value, 'Careers site');
+  eq(p.decide([row], ctx, null, null)[0].value, 'LinkedIn');
+});
+
+test('no LinkedIn on the list: "External Agency"; neither: asked, never a referral or event', () => {
+  const ask = opts => p.decide([field('How Did You Hear About Us?*', { kind: 'combobox', required: true, options: opts })],
+                               CTX, null, null)[0];
+  // Capital One's list (Oct 2026).
+  const capOne = ask(['Capital One Event', 'College / University Recruiting', 'Contacted by Recruiter',
+                      'Disability Event', 'External Agency', 'Employee Referral']);
+  eq(capOne.value, 'External Agency');
+  const none = ask(['Employee Referral', 'Career Fair', 'Other']);
+  eq(none.action, p.ASK);
+  notOk(none.value);
+});
+
+test('a Workday two-level prompt carries the LinkedIn hierarchy for the writer', () => {
+  const d = p.decide([field('How Did You Hear About Us?*', { kind: 'combobox', required: true })], CTX, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'LinkedIn');
+  eq(d.hierarchy.leaf, 'LinkedIn');
+  eq(d.hierarchy.fallback, 'External Agency');
+  ok(d.hierarchy.parents.includes('Job Posting Sites') && d.hierarchy.parents.includes('Social Platform'));
 });
 
 // Ashby (OpenAI, Oct 2026) asks the EEO questions as radio lists, not dropdowns.

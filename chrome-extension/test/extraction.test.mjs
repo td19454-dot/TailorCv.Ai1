@@ -68,6 +68,8 @@ function loadPage(html, url, withAutofill, opts) {
       case 'JOB_REMEMBER': return { data: { ok: true } };
       case 'JOB_RECALL': return { data: options.recall || {} };
       case 'JOB_FETCH': return { data: options.fetched || {} };
+      // The autofill plan endpoint, when a test supplies one.
+      case 'AF_PLAN': return { data: options.plan ? options.plan(msg.payload) : null };
       default: return { data: null };
     }
   };
@@ -355,6 +357,218 @@ test('Workday: a next step with nothing to fill yet still offers "Autofill this 
   ok(await waitForText(page, /Page 2/, 15000), 'the new step is shown');
   ok(await waitForText(page, /Autofill this page/, 5000), 'with a button to fill it');
   ok(await waitForText(page, /No fields found on this step yet/, 5000), 'and says what to do');
+});
+
+// Real Workday markup (PwC, Oct 2026): the <h2> is the JOB TITLE, the same on
+// every step; the step is named by the progress bar and an <h3>.
+const progressBar = (active) => {
+  const steps = ['My Information', 'My Experience', 'Application Questions', 'Voluntary Disclosures', 'Review'];
+  return '<ol data-automation-id="progressBar">' + steps.map((s, i) => s === active
+    ? `<li data-automation-id="progressBarActiveStep"><label>current step ${i + 1} of 5</label><label>${s}</label></li>`
+    : `<li data-automation-id="progressBarInactiveStep"><label>step ${i + 1} of 5</label><label>${s}</label></li>`).join('') + '</ol>';
+};
+const realWorkday = (step) => fixtures.WORKDAY_MYINFO.replace(
+  '<div data-automation-id="applyFlowMyInfoPage">',
+  `<h2 data-automation-id="jobTitleHeading">Senior Associate</h2><div id="pb">${progressBar(step)}</div>`
+  + `<h3 id="step-h3">${step}</h3><div data-automation-id="applyFlowMyInfoPage">`);
+
+test('Workday (real markup): Save and Continue to the next step is offered as the next page', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', PWC_URL, true);
+  renderLater(page, realWorkday('Application Questions'), 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+
+  // The job title stays; the progress bar, the step heading and the fields change.
+  page.document.getElementById('pb').innerHTML = progressBar('Voluntary Disclosures');
+  page.document.getElementById('step-h3').textContent = 'Voluntary Disclosures';
+  page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]').innerHTML = `
+    <div data-automation-id="formField-maritalStatus"><label for="ms">Marital Status*</label>
+      <input id="ms" type="text" aria-required="true"></div>
+    <div data-automation-id="formField-cityOfBirth"><label for="cb">City of Birth*</label>
+      <input id="cb" type="text" aria-required="true"></div>`;
+  ok(await waitForText(page, /Page \d/, 15000), 'the next step must be offered as a new page');
+  ok(await waitForText(page, /Autofill this page/, 5000), 'with the autofill button');
+});
+
+test('Workday (real markup): a step that grows blocks keeps its results', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', PWC_URL, true);
+  renderLater(page, realWorkday('My Experience'), 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 20000), 'the fill must finish');
+  let blocks = '';
+  for (let n = 1; n <= 4; n++) {
+    blocks += `<div role="group" aria-labelledby="Education-${n}-panel"><h5 id="Education-${n}-panel">Education ${n}</h5>
+      <label for="sch${n}">School or University*</label><input id="sch${n}" type="text">
+      <label for="deg${n}">Degree*</label><input id="deg${n}" type="text"></div>`;
+  }
+  page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]').insertAdjacentHTML('beforeend', blocks);
+  await new Promise(r => setTimeout(r, 4000));
+  const text = page.document.getElementById('tailorcv-sidebar').textContent;
+  ok(!/Page 2/.test(text), 'still the same step — no "Page 2"');
+  ok(/filled/i.test(text), 'the results are still shown');
+});
+
+// ── Auto-apply ──────────────────────────────────────────────
+// A three-step Workday application in real markup. Save and Continue moves to
+// the next step; the last step is Review, whose button SUBMITS. opts.blocker:
+// step 2 holds a required question no profile answers. opts.errorOnFirst: the
+// first Save and Continue shows Workday's error banner and stays put.
+function wireAutoApplyPage(page, opts = {}) {
+  const doc = page.document;
+  const log = { next: 0, submit: 0, filled: {} };
+  const steps = [
+    { name: 'My Information', html: `<div data-automation-id="formField-email"><label for="e1">Email Address<abbr>*</abbr></label>
+        <input id="e1" type="text" aria-required="true"></div>` },
+    { name: 'Application Questions', html: `<div data-automation-id="formField-email2"><label for="e2">Email Address<abbr>*</abbr></label>
+        <input id="e2" type="text" aria-required="true"></div>${opts.blocker ? `
+      <div data-automation-id="formField-colour"><label for="q1">What is your favourite colour?<abbr>*</abbr></label>
+        <input id="q1" type="text" aria-required="true"></div>` : ''}` },
+    { name: 'Review', html: '<p>Review your application.</p>', submit: true },
+  ];
+  let at = 0;
+  let errored = false;
+  const render = () => {
+    const s = steps[at];
+    doc.body.innerHTML = `<div data-automation-id="applyFlowPage">
+      <h2 data-automation-id="jobTitleHeading">Senior Associate</h2>
+      <ol data-automation-id="progressBar">${steps.map((x, i) => i === at
+        ? `<li data-automation-id="progressBarActiveStep"><label>current step ${i + 1} of 3</label><label>${x.name}</label></li>`
+        : `<li data-automation-id="progressBarInactiveStep"><label>step ${i + 1} of 3</label><label>${x.name}</label></li>`).join('')}</ol>
+      <h3>${s.name}</h3>
+      <div data-automation-id="applyFlowStepPage">${s.html}</div>
+      <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">${s.submit ? 'Submit' : 'Save and Continue'}</button></div>
+    </div>`;
+    doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => {
+      for (const el of doc.querySelectorAll("input")) if (el.value) log.filled[el.id] = el.value;
+      if (steps[at].submit) { log.submit++; return; }
+      log.next++;
+      if (opts.errorOnFirst && !errored) {
+        errored = true;
+        doc.querySelector('[data-automation-id="applyFlowPage"]').insertAdjacentHTML('afterbegin',
+          '<div data-automation-id="errorBanner">Errors Found: Phone Number is required</div>');
+        return;
+      }
+      at++;
+      render();
+      if (opts.lagMs) {
+        // Workday: the progress bar moves at once; the page and its footer are
+        // drawn a moment later.
+        doc.querySelector('[data-automation-id="applyFlowStepPage"]').innerHTML = '';
+        doc.querySelector('[data-automation-id="pageFooter"]').remove();
+        setTimeout(render, opts.lagMs);
+      }
+    });
+  };
+  return { log, filled: log.filled, render, goTo: (i) => { at = i; render(); } };
+}
+
+// The sidebar lives in <body>: render the steps into a container instead of
+// replacing the body, so the panel survives each "page".
+function autoApplyPage(opts) {
+  return loadPage('<!doctype html><html><body><div id="wd-root"></div></body></html>', PWC_URL, true, opts);
+}
+
+function mountSteps(page, opts) {
+  const root = page.document.getElementById('wd-root');
+  const shim = { document: { body: root, getElementById: id => page.document.getElementById(id),
+                             querySelector: s => root.querySelector(s),
+                             querySelectorAll: s => root.querySelectorAll(s) } };
+  const app = wireAutoApplyPage(shim, opts);
+  app.render();
+  return app;
+}
+
+async function startAuto(page) {
+  ok(await waitForText(page, /Auto-apply all pages/, 15000), 'the auto-apply button is offered on Workday');
+  page.document.getElementById('tcvAfAutoBtn').click();
+}
+
+test('Auto-apply: fills every step, clicks Save and Continue, stops at Review without submitting', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page);
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it stops on the Review page');
+  eq(app.log.next, 2, 'Save and Continue pressed once per step before Review');
+  eq(app.log.submit, 0, 'Submit is NEVER pressed');
+});
+
+test('Auto-apply: pauses on a required field it cannot fill, and Continue resumes', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page, { blocker: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Auto-apply paused/, 60000), 'it pauses on step 2');
+  ok(/favourite colour/i.test(page.document.getElementById('tailorcv-sidebar').textContent), 'listing the field');
+  eq(app.log.next, 1, 'it did not press Save and Continue past the blocker');
+
+  const q = page.document.getElementById('q1');
+  q.value = 'Blue';
+  q.dispatchEvent(new page.window.Event('input', { bubbles: true }));
+  q.dispatchEvent(new page.window.Event('change', { bubbles: true }));
+  page.document.getElementById('tcvAfAutoContinue').click();
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it carries on to Review');
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+  // What they answered on the page is remembered, without being asked.
+  const saved = page.sent.filter(m => m.type === 'AF_SAVE_ANSWERS')
+    .flatMap(m => (m.payload && m.payload.answers) || []);
+  ok(saved.some(a => /favourite colour/i.test(a.question) && a.answer === 'Blue'),
+     `saved on Continue: ${JSON.stringify(saved)}`);
+});
+
+test('Auto-apply: a required question the AI skipped is asked again with force, and the run goes on', async () => {
+  const forced = [];
+  const page = autoApplyPage({
+    plan: (payload) => {
+      if (!payload.force) return { answers: {} };           // the first pass skips it
+      forced.push(...payload.fields.map(f => f.label));
+      const f = payload.fields.find(x => /colour/i.test(x.label));
+      return { answers: f ? { [f.i]: { value: 'Blue', source: 'ai_forced', confidence: 0.6 } } : {} };
+    },
+  });
+  const app = mountSteps(page, { blocker: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it reaches Review without pausing');
+  ok(forced.some(l => /colour/i.test(l)), `the question was sent with force: ${forced.join(', ')}`);
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: a sensitive required question is never forced — it still pauses', async () => {
+  const forced = [];
+  const page = autoApplyPage({
+    plan: (payload) => { if (payload.force) forced.push(...payload.fields.map(f => f.label)); return { answers: {} }; },
+  });
+  const root = page.document.getElementById('wd-root');
+  mountSteps(page);
+  root.querySelector('[data-automation-id="applyFlowStepPage"]').insertAdjacentHTML('beforeend',
+    `<div data-automation-id="formField-auth"><label for="wa">Are you legally authorized to work in the United States?<abbr>*</abbr></label>
+      <input id="wa" type="text" aria-required="true"></div>`);
+  await startAuto(page);
+  ok(await waitForText(page, /Auto-apply paused/, 60000), 'it pauses for the work-authorization question');
+  ok(!forced.some(l => /authori[sz]ed/i.test(l)), `never sent with force: ${forced.join(', ')}`);
+});
+
+test('Auto-apply: a page drawn after its step changes is still filled before moving on', async () => {
+  // NVIDIA: the progress bar moved, the page came a moment later — the fill
+  // found nothing ("0 filled") and Save and Continue was not there yet.
+  const page = autoApplyPage();
+  const app = mountSteps(page, { lagMs: 1500 });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it reaches Review');
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+  ok(app.filled.e2, 'step 2 was filled after it was drawn');
+});
+
+test('Auto-apply: Workday\'s error banner after Save and Continue pauses it, without clicking again', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page, { errorOnFirst: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Phone Number is required/, 60000), 'the error is shown in the sidebar');
+  ok(/Auto-apply paused/.test(page.document.getElementById('tailorcv-sidebar').textContent));
+  eq(app.log.next, 1, 'pressed once, not again');
 });
 
 test('Workday: a step that grows blocks under the same heading keeps its results', async () => {
