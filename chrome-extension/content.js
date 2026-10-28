@@ -2504,6 +2504,7 @@
     if (!hasForm() && !page) { renderManual(); return; }
     AF.ui.renderReady(body, applyForm || refreshApplyMode() || { fields: [], ats: 'generic' }, applyCtx, {
       onFill: () => runAutofill(),
+      onAutoApply: () => startAutoApply(),
       onTailor: () => renderTailorForApplication(),
       onOpenProfile: () => window.open(PROFILE_URL, '_blank'),
       onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
@@ -2580,12 +2581,24 @@
   // "My Experience"). Workday swaps steps without changing the URL, and a step
   // can hold no fields at all until "Add" is pressed — so the field list alone
   // cannot tell the watcher it moved on. '' where there is no such heading.
+  //
+  // The progress bar's active step first ("current step 4 of 5 Voluntary
+  // Disclosures"), then a step heading. Never the <h2> Workday gives the JOB
+  // TITLE (data-automation-id="jobTitleHeading"): read as the step, every page
+  // had the same "step" ("Senior Associate", PwC Oct 2026), so a real new page
+  // was taken for the same one and the sidebar stayed on the last page's results.
   function stepMarker() {
-    let h = null;
+    const text = el => (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
     try {
-      h = document.querySelector('[data-automation-id="applyFlowPage"] h2, [data-automation-id*="applyFlow" i] h2');
-    } catch (e) { h = null; }
-    return h ? (h.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80) : '';
+      const active = document.querySelector('[data-automation-id="progressBarActiveStep"]');
+      if (active && text(active)) return text(active);
+      const scope = '[data-automation-id="applyFlowPage"], [data-automation-id*="applyFlow" i]';
+      for (const sel of ['h2:not([data-automation-id="jobTitleHeading"])', 'h3']) {
+        const h = document.querySelector(scope.split(', ').map(s => `${s} ${sel}`).join(', '));
+        if (h && text(h)) return text(h);
+      }
+    } catch (e) { /* no marker */ }
+    return '';
   }
   let lastStep = '';
 
@@ -2614,7 +2627,9 @@
     if (!document.getElementById('tailorcv-sidebar')) return;
     // Nothing is repainted while a fill runs, or while the user is typing an
     // answer into the panel — a redraw would throw away what they typed.
+    // Nor while auto-apply is moving through the steps: it shows each page itself.
     if (applyBusy) return;
+    if (auto && auto.active && !auto.paused) return;
     const active = document.activeElement;
     if (active && active.closest && active.closest('#tailorcv-sidebar')
         && /^(input|textarea|select)$/i.test(active.tagName)) return;
@@ -2726,18 +2741,22 @@
     }, DIAGNOSE_AFTER_MS);
   }
 
-  async function runAutofill() {
-    if (!AF || applyBusy) return;
+  // `opts.auto`: a page of auto-apply. The result is returned instead of drawn —
+  // the auto-apply loop decides whether to move on or pause — and every way out
+  // returns { error } so the loop can stop with the reason.
+  async function runAutofill(opts) {
+    const isAuto = !!(opts && opts.auto);
+    if (!AF || applyBusy) return { error: 'busy', decisions: [], counts: {} };
     const form = refreshApplyMode();
     if (!form) {
       globalStatus.className = 'tcv-status-text tcv-error';
       globalStatus.textContent = '✗ No application form found on this page.';
-      return;
+      return { error: 'no_form', decisions: [], counts: {} };
     }
 
     applyBusy = true;
     currentView = 'running';
-    AF.ui.renderRunning(body, AF.ui.PHASE_TEXT.scanning);
+    AF.ui.renderRunning(body, AF.ui.PHASE_TEXT.scanning, isAuto ? autoRunningInfo() : null);
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = '';
     startProgress();
@@ -2749,11 +2768,12 @@
     if (!ctx || ctx.error) {
       finishProgress(false);
       applyBusy = false;
-      if (ctx && ctx.code === 'not_logged_in') { refreshFull(); return; }
+      const error = (ctx && ctx.error) || 'Could not load your profile.';
+      if (ctx && ctx.code === 'not_logged_in') { refreshFull(); return { error, decisions: [], counts: {} }; }
       globalStatus.className = 'tcv-status-text tcv-error';
-      globalStatus.textContent = `✗ ${(ctx && ctx.error) || 'Could not load your profile.'}`;
-      renderApplyReady();
-      return;
+      globalStatus.textContent = `✗ ${error}`;
+      if (!isAuto) renderApplyReady();
+      return { error, decisions: [], counts: {} };
     }
 
     // The job this form is for, so motivation questions ("Why Anthropic?") are
@@ -2789,8 +2809,8 @@
       globalStatus.className = 'tcv-status-text tcv-error';
       globalStatus.textContent = `✗ ${humanFillError(result.error)}`;
       track('autofill_failed', { error: result.error, host: location.hostname });
-      renderApplyReady();
-      return;
+      if (!isAuto) renderApplyReady();
+      return result;
     }
 
     const counts = result.counts || {};
@@ -2828,7 +2848,270 @@
     // arrived by another path never passed through it, and without a previous
     // step the move to the next one went unnoticed.
     lastStep = stepMarker();
-    renderApplyResults(result);
+    if (!isAuto) renderApplyResults(result);
+    return result;
+  }
+
+  // ── Auto-apply ──────────────────────────────────────────────
+  //
+  // Workday only: fill the page, check nothing required is left, press Save and
+  // Continue, wait for the next step, repeat — until the Review page, where it
+  // STOPS. It never presses Submit: that is the one step that can't be undone,
+  // and the person sends the application themselves. It pauses, listing what is
+  // blocking, when a required field is left, Workday shows an error, or the
+  // page doesn't move on; "Continue auto-apply" picks up from there.
+
+  const AUTO_MAX_PAGES = 12;
+  const AUTO_STEP_WAIT_MS = 20000;
+  const AUTO_FORM_WAIT_MS = 6000;
+  let auto = null;   // { active, paused, stop, pages, result, pausedStep }
+
+  function autoRunningInfo() {
+    return auto ? { page: auto.pages, onStop: () => stopAutoApply() } : null;
+  }
+
+  function autoBanner(state, message, blockers) {
+    return {
+      state, message, blockers: blockers || [],
+      onContinue: () => continueAutoApply(),
+      onStop: () => stopAutoApply(),
+    };
+  }
+
+  async function startAutoApply() {
+    if (!AF || applyBusy || (auto && auto.active && !auto.paused)) return;
+    auto = { active: true, paused: false, stop: false, pages: 1, result: null, pausedStep: '', stepFills: 0 };
+    track('auto_apply_started', { host: location.hostname, ats: (applyForm || {}).ats });
+    await autoLoop(true);
+  }
+
+  async function continueAutoApply() {
+    if (!AF || applyBusy || !auto) return;
+    auto.active = true;
+    auto.stop = false;
+    // What the person answered on the page during the pause is remembered, so
+    // the same question fills itself next time instead of pausing again.
+    // Never blocks the resume: a failed save is only logged.
+    try {
+      const learnable = AF.learnableAnswers((auto.result && auto.result.decisions) || []);
+      if (learnable.length) {
+        AF.rememberAnswers(learnable).catch(err =>
+          console.warn('[TailorCV] auto-apply: could not save answers —', err && err.message));
+      }
+    } catch (err) {
+      console.warn('[TailorCV] auto-apply: could not save answers —', err && err.message);
+    }
+    // Moved on by hand while paused: this is a new page — fill it first.
+    const moved = stepMarker() !== auto.pausedStep;
+    if (moved) auto.stepFills = 0;
+    await autoLoop(moved);
+  }
+
+  function stopAutoApply() {
+    if (!auto) return;
+    auto.stop = true;
+    if (auto.paused) finishAuto('stopped', 'Stopped. Carry on by hand, or start auto-apply again.');
+  }
+
+  async function autoLoop(fillFirst) {
+    auto.paused = false;
+    try {
+      for (;;) {
+        if (auto.stop) return finishAuto('stopped', 'Stopped. Carry on by hand, or start auto-apply again.');
+        // Also when the page holds fields the last fill never saw: Workday moves
+        // the progress bar first and draws the page a moment later, so a fill
+        // can land on a page still empty (NVIDIA: "0 filled", then the gender
+        // question appeared). Twice per page at most.
+        if (fillFirst || (unfilledFieldsShown() && auto.stepFills < 2)) {
+          // A step with nothing to fill (only Add buttons, or the Review page)
+          // is checked and moved past as it is.
+          const result = hasForm() ? await runAutofill({ auto: true }) : { decisions: [], counts: {} };
+          auto.result = result;
+          auto.stepFills++;
+          if (result.error) return pauseAuto(humanFillError(result.error), []);
+          if (unfilledFieldsShown() && auto.stepFills < 2) {
+            await waitForStepForm();
+            fillFirst = true;
+            continue;
+          }
+        }
+        fillFirst = false;
+
+        const decisions = (auto.result && auto.result.decisions) || [];
+        let blockers = AF.pageBlockers(decisions);
+        // Required questions the AI skipped: asked once more per page, with
+        // the instruction to answer them, before anything pauses.
+        if (blockers.length && auto.forcedStep !== stepKey()) {
+          auto.forcedStep = stepKey();
+          currentView = 'running';
+          applyBusy = true;
+          AF.ui.renderRunning(body, 'Answering the required questions left…', autoRunningInfo());
+          try {
+            const ctx = await ensureApplyContext();
+            const forced = await AF.forceAnswers(Object.assign({}, ctx, jobContext()), decisions);
+            if (forced.error) console.warn('[TailorCV] auto-apply: forced answers failed —', forced.error);
+          } finally {
+            applyBusy = false;
+          }
+          blockers = AF.pageBlockers(decisions);
+        }
+        if (blockers.length) {
+          return pauseAuto('Fill these in — here or on the page — then continue.', blockers);
+        }
+        if (isFinalStep()) {
+          return finishAuto('done', 'Everything is filled. Review the application on this page, then click Submit yourself.');
+        }
+        if (auto.stop) return finishAuto('stopped', 'Stopped. Carry on by hand, or start auto-apply again.');
+        if (auto.pages >= AUTO_MAX_PAGES) {
+          return pauseAuto(`Stopped after ${AUTO_MAX_PAGES} pages — check where the application is.`, []);
+        }
+
+        const next = await waitForNextButton();
+        if (!next) return pauseAuto("Couldn't find Save and Continue on this page.", []);
+        // The page drew its fields while we waited for the button: fill them first.
+        if (unfilledFieldsShown() && auto.stepFills < 2) { fillFirst = true; continue; }
+        currentView = 'running';
+        applyBusy = true;          // the watcher must not repaint mid-move
+        AF.ui.renderRunning(body, 'Saving and moving to the next page…', autoRunningInfo());
+        const before = stepKey();
+        pressButton(next);
+        const moved = await waitForNextStep(before);
+        applyBusy = false;
+        if (moved.errors) {
+          return pauseAuto('Workday did not accept this page:', moved.errors.map(t => ({ label: t, reason: 'fix on the page' })));
+        }
+        if (!moved.ok) {
+          return pauseAuto("The page didn't move on after Save and Continue — check it, then continue.", []);
+        }
+        auto.pages++;
+        auto.stepFills = 0;
+        fillFirst = true;
+        await waitForStepForm();
+        lastStep = stepMarker();
+        cheapSignature = fillableFingerprint();
+      }
+    } catch (err) {
+      applyBusy = false;
+      console.error('[TailorCV] auto-apply failed', err);
+      return pauseAuto(`Something went wrong: ${(err && err.message) || err}`, []);
+    }
+  }
+
+  function pauseAuto(message, blockers) {
+    auto.paused = true;
+    auto.pausedStep = stepMarker();
+    track('auto_apply_paused', { host: location.hostname, page: auto.pages, blockers: (blockers || []).length });
+    renderApplyResults(auto.result || { decisions: [], counts: {} }, autoBanner('paused', message, blockers));
+  }
+
+  function finishAuto(state, message) {
+    auto.active = false;
+    auto.paused = false;
+    track(state === 'done' ? 'auto_apply_done' : 'auto_apply_stopped', { host: location.hostname, page: auto.pages });
+    const result = auto.result || { decisions: [], counts: {} };
+    renderApplyResults(result, autoBanner(state, message, []));
+    globalStatus.className = 'tcv-status-text tcv-ok';
+    globalStatus.textContent = state === 'done' ? '✓ Ready to submit — review and click Submit' : '';
+  }
+
+  // Both of Workday's names for the footer's forward button.
+  const NEXT_SEL = '[data-automation-id="pageFooterNextButton"], [data-automation-id="bottom-navigation-next-button"]';
+
+  /** Workday's "Save and Continue" — never a button that would submit. */
+  function nextButton() {
+    const b = document.querySelector(NEXT_SEL);
+    if (!b || b.closest('#tailorcv-sidebar') || b.disabled) return null;
+    return /submit/i.test(b.textContent || '') ? null : b;
+  }
+
+  /** The Review page: the footer button submits, or the progress bar says Review. */
+  function isFinalStep() {
+    const b = document.querySelector(NEXT_SEL);
+    if (b && /submit/i.test(b.textContent || '')) return true;
+    if (document.querySelector('[data-automation-id="pageFooterSubmitButton"]')) return true;
+    const active = document.querySelector('[data-automation-id="progressBarActiveStep"]');
+    return !!(active && /\breview\b/i.test(active.textContent || ''));
+  }
+
+  function pressButton(el) {
+    for (const type of ['pointerdown', 'mousedown', 'pointerup', 'mouseup']) {
+      try { el.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window })); } catch (e) {}
+    }
+    el.click();
+  }
+
+  /** What identifies the current step: its marker, or the fields where there is none. */
+  function stepKey() {
+    return stepMarker() || fillableFingerprint();
+  }
+
+  /** Workday's error banner / field errors after Save and Continue, as text. */
+  function pageErrors() {
+    const sel = '[data-automation-id="errorBanner"], [data-automation-id="errorMessage"], '
+      + '[data-automation-id="inputAlert"], [data-automation-id="applyFlowPage"] [role="alert"]';
+    const out = [];
+    for (const n of document.querySelectorAll(sel)) {
+      if (n.closest('#tailorcv-sidebar')) continue;
+      const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
+      if (t && !out.includes(t)) out.push(t.slice(0, 160));
+      if (out.length >= 6) break;
+    }
+    return out;
+  }
+
+  function waitForNextStep(before) {
+    return new Promise((resolve) => {
+      const start = Date.now();
+      const tick = () => {
+        const now = stepKey();
+        if (now && now !== before) { resolve({ ok: true }); return; }
+        const errors = Date.now() - start > 800 ? pageErrors() : [];
+        if (errors.length) { resolve({ errors }); return; }
+        if (Date.now() - start > AUTO_STEP_WAIT_MS) { resolve({ ok: false }); return; }
+        setTimeout(tick, 250);
+      };
+      setTimeout(tick, 300);
+    });
+  }
+
+  /**
+   * The new step, drawn: its footer button and its fields (or the Review page).
+   * The progress bar moves before the rest is drawn, so the step change alone
+   * is not "ready" — a step may hold no fields, so the footer is what counts.
+   */
+  async function waitForStepForm() {
+    const until = Date.now() + AUTO_FORM_WAIT_MS;
+    const footer = () => document.querySelector(NEXT_SEL);
+    while (Date.now() < until && !(footer() && (hasForm() || isFinalStep()))) {
+      await new Promise(r => setTimeout(r, 250));
+    }
+    // A step with no fields at all: the footer alone, once it is there.
+    while (Date.now() < until && !footer()) await new Promise(r => setTimeout(r, 250));
+    try { await AF.waitForQuiet(document.body); } catch (e) { /* best effort */ }
+    refreshApplyMode();
+  }
+
+  /** Save and Continue, given a few seconds to be drawn. */
+  async function waitForNextButton() {
+    const until = Date.now() + 8000;
+    for (;;) {
+      const b = nextButton();
+      if (b || isFinalStep() || Date.now() >= until) return b;
+      await new Promise(r => setTimeout(r, 250));
+    }
+  }
+
+  /**
+   * The last fill found nothing, and the page has fields now: it was drawn
+   * after the fill ran. Only that case — comparing field by field would refill
+   * (and pay for another plan) every Workday Experience page, whose blocks are
+   * filled as whole jobs rather than field by field.
+   */
+  function unfilledFieldsShown() {
+    const decisions = (auto && auto.result && auto.result.decisions) || [];
+    if (decisions.length || !hasForm()) return false;
+    refreshApplyMode();
+    return !!(applyForm && fieldKeysOf(applyForm).length);
   }
 
   // A run's timing as flat analytics properties. Field labels stay in the
@@ -2876,13 +3159,17 @@
     };
   }
 
-  function renderApplyResults(result) {
+  function renderApplyResults(result, autoInfo) {
     currentView = 'results';
     AF.ui.renderResults(body, result, applyCtx, {
       onFill: () => runAutofill(),
       // Re-render in place after the user answers a field, so the row moves out
       // of "needs your answer" and into "filled" without re-running anything.
-      onRefresh: () => renderApplyResults(result),
+      // A paused auto-apply re-reads what is still blocking.
+      onRefresh: () => renderApplyResults(result, autoInfo && autoInfo.state === 'paused'
+        ? autoBanner('paused', autoInfo.message, AF.pageBlockers(result.decisions || []))
+        : autoInfo),
+      auto: autoInfo || null,
       onOpenProfile: () => window.open(PROFILE_URL, '_blank'),
       onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
       // These three only fire for a framed form; a local run acts on the live

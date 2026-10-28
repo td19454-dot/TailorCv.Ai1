@@ -245,6 +245,16 @@ export function decide(rows, ctx, server, state) {
       return done(d, FILL, value, 'profile', 0.95, '');
     }
 
+    // "Have you been employed by Quantiphi previously?" — a fact the work
+    // history settles: Yes if any job in the profile was there, else No. Sent
+    // to the model it came back unanswered, and that one required radio
+    // stopped auto-apply (Quantiphi Workday, Oct 2026).
+    const prior = previousEmployerAnswer(row, ctx, bank);
+    if (prior) {
+      if (prior.ask) return done(d, ASK, '', '', 0, prior.ask);
+      return done(d, FILL, prior.value, 'profile', 0.9, prior.reason);
+    }
+
     // "If you answered Yes above, please explain": autofill answered the
     // question above itself, and has nothing true to add here. Never sent to the
     // model, which would otherwise invent an explanation.
@@ -336,11 +346,19 @@ export function decide(rows, ctx, server, state) {
           return done(d, FILL, skills.join(', '), 'profile', 0.95, '');
         }
       }
+      // Workday's two-level list: LinkedIn sits inside a category. The
+      // writer searches for it, then opens the categories (commitHierarchyPick).
+      if (entry.key === 'how_did_you_hear_about_us' && row.kind === 'combobox') {
+        d.hierarchy = { leaf: HEARD_VIA, parents: HEARD_VIA_PARENTS, fallback: HEARD_VIA_FALLBACK };
+      }
       const value = coerce(raw, Object.assign({}, row,
         { candidates: shapes, candidateKey: entry.key }));
       if (value !== null) {
         const action = isProse(entry.key, value) ? SUGGEST : FILL;
         return done(d, action, value, 'profile', 0.95, '');
+      }
+      if (entry.key === 'how_did_you_hear_about_us') {
+        return done(d, ASK, '', '', 0, 'no LinkedIn or External Agency option here — choose your answer');
       }
       // We hold an answer and this list does not offer it. A catch-all is the
       // honest choice for "somewhere else" — but only here, in the ordinary
@@ -643,9 +661,13 @@ export function hispanicYesNo(stored) {
   return 'No';
 }
 
-const COMPANY_SITE_RE = /\b(company|official|employer'?s?|corporate) (web ?site|careers? (site|page))\b|\bcareers? (site|page|website)\b/i;
-const COMPANY_SITE_SHAPES = ['Careers site', 'Careers page', 'Company careers site',
-                             'Company careers page', 'Company website', 'Career site'];
+// "How did you hear about us?" — always LinkedIn. Workday files it under a
+// category (PwC: Job Posting Sites › LinkedIn, Social Platform › LinkedIn);
+// these are those categories, in the order to try them.
+export const HEARD_VIA = 'LinkedIn';
+export const HEARD_VIA_FALLBACK = 'External Agency';
+export const HEARD_VIA_PARENTS = ['Social Platform', 'Social Media', 'Professional Network',
+  'Job Posting Sites', 'Job Posting', 'Job Portal', 'Job Board', 'Online Job Board', 'Internet'];
 
 // US citizenship status, by the category it states. Ordered: "Not a U.S.
 // citizen" must be read as "none" before the citizen row sees "citizen", and
@@ -777,6 +799,64 @@ export function citizenshipAnswer(row, bank, entry) {
   }
   if (!country) return null;
   return { value: country, candidates: countryShapes(country), drill: row.kind === 'combobox' ? 'Citizen' : '' };
+}
+
+// "Have you (ever) been employed by X (previously)?", "Have you worked for X
+// before?", "Are you a former employee of X?". The company is what follows
+// by/for/at/with/of, up to "previously", "before", "or", a bracket or the end.
+// Only as the whole question (anchored), and never "worked WITH X" — that is
+// a skills question ("Have you worked with Python before?").
+const PRIOR_EMPLOYER_RE = new RegExp(
+  '^\\s*(?:(?:have|had)\\s+you\\s+(?:ever\\s+)?(?:been\\s+)?(?:previously\\s+)?(?:employed|worked|work)'
+  + '|(?:are|were)\\s+you\\s+(?:ever\\s+)?(?:a\\s+)?(?:former|previous|past)\\s+(?:employee|worker|intern|contractor))'
+  + '\\s+(?:directly\\s+)?(?:by|for|at|of)\\s+(.+?)'
+  + '(?=\\s+(?:previously|before|in the past|ever|or\\b|and\\b|as\\b|in any|whether)|\\s*[?(,:*]|$)', 'i');
+const COMPANY_SUFFIX_RE = /\b(inc|incorporated|ltd|limited|llc|llp|plc|pvt|private|corp|corporation|co|company|gmbh|ag|sa|group|holdings|technologies|technology|solutions|services|analytics|india|global)\b/g;
+const OUR_COMPANY_RE = /^(us|our (company|firm|organi[sz]ation)|this (company|firm|organi[sz]ation)|the company)$/i;
+
+function companyKey(name) {
+  return String(name || '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9 ]+/g, ' ')
+    .replace(COMPANY_SUFFIX_RE, ' ').replace(/\s+/g, ' ').trim();
+}
+
+/** Same employer: one name's words contain the other's ("Quantiphi" / "Quantiphi Analytics Pvt Ltd"). */
+function sameCompany(a, b) {
+  const x = companyKey(a), y = companyKey(b);
+  if (!x || !y) return false;
+  if (x === y) return true;
+  const [short, long] = x.length <= y.length ? [x, y] : [y, x];
+  if (short.length < 3) return false;
+  return (' ' + long + ' ').includes(' ' + short + ' ')
+    || (short.length >= 4 && long.startsWith(short));      // "Citi" / "Citibank"
+}
+
+/**
+ * Yes / No for "have you worked for <company> before", from the profile's
+ * work history — or null when the label is not that question. Asks instead of
+ * answering when there is no work history to read, or no company to read it for.
+ */
+export function previousEmployerAnswer(row, ctx, bank) {
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') return null;
+  // A Yes / No question; options unread (a Workday button) are left to coerce.
+  const opts = (row.options || []).map(o => String(typeof o === 'string' ? o : (o && o.label) || '').trim())
+    .filter(o => o && !PLACEHOLDER_RE.test(o));
+  if (opts.length && !(opts.some(o => /^yes\b/i.test(o)) && opts.some(o => /^no\b/i.test(o)))) return null;
+  const m = PRIOR_EMPLOYER_RE.exec(String(row.label || '').replace(/\*+\s*$/, ''));
+  if (!m) return null;
+  let company = m[1].trim().replace(/^(the|a|an)\s+/i, '');
+  if (OUR_COMPANY_RE.test(company)) company = String((ctx && ctx.jobCompany) || '').trim();
+  if (!company || /^(your|my|any)\b/i.test(company)
+      || /\b(government|military|agency|state.owned|public sector)\b/i.test(company)) return null;
+  const jobs = ((ctx && ctx.facts && ctx.facts.workExperience) || []).map(j => j && j.company).filter(Boolean);
+  const named = [bank.current_company, bank.previous_company].filter(Boolean);
+  const employers = jobs.concat(named);
+  // Not in the work history is No, however broadly the question is worded
+  // (the person's call: auto-apply must not stop for this).
+  const was = employers.find(e => sameCompany(e, company));
+  const value = coerce(was ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
+  if (value === null) return null;
+  return { value, reason: was ? `you worked at ${was}` : `${company} isn't in your work history` };
 }
 
 // A Workday skills prompt takes one search per skill; ten is plenty and keeps
@@ -1074,6 +1154,8 @@ function uniq(list) {
 function bankValue(key, bank) {
   const b = bank || {};
   if (key === 'phone_country_code') return splitPhone(String(b.phone || '')).dialCode || '';
+  // Always LinkedIn (the person's call, Oct 2026): no profile answer to keep.
+  if (key === 'how_did_you_hear_about_us') return HEARD_VIA;
   return b[key];
 }
 
@@ -1104,11 +1186,9 @@ export function candidatesFor(key, value, bank) {
   // The stored wording first — a form offering "South Asian" should get it —
   // then the broader categories it belongs to.
   if (key === 'race_ethnicity') return uniq([text].concat(ethnicityShapes(text)));
-  // "Company website" is what the profile offers; SpaceX's list says "Careers
-  // site", others "Careers page". Same source, the employer's own site.
-  if (key === 'how_did_you_hear_about_us' && COMPANY_SITE_RE.test(text)) {
-    return uniq([text].concat(COMPANY_SITE_SHAPES));
-  }
+  // LinkedIn, else "External Agency" (the person's call: Capital One's flat
+  // list has no LinkedIn). Never a referral, an event or "Other".
+  if (key === 'how_did_you_hear_about_us') return [HEARD_VIA, HEARD_VIA_FALLBACK];
   if (EEO_GROUPS[key]) return uniq([text].concat(eeoShapes(key, text)));
   if (!LOCATION_KEYS.has(key)) return text ? [text] : [];
 

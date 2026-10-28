@@ -21,6 +21,7 @@ import { decide, summarize, fieldsForServer, ASK, FILL, SUGGEST, PROFILE, DOCUME
 import {
   runAutofill, resumeIfContinuing, nextPage, clearState, getState,
   watchUserEdits, stopWatchingUserEdits, answerField, learnableAnswers, rememberAnswers,
+  pageBlockers, waitForQuiet, forceAnswers,
 } from './autofill/run.js';
 import * as ui from './autofill/ui.js';
 import { capturePageStructure } from './autofill/capture.js';
@@ -142,6 +143,9 @@ if (!globalThis.__tcvAutofill) {
     learnableAnswers,
     watchUserEdits,
     stopWatchingUserEdits,
+    pageBlockers,
+    waitForQuiet,
+    forceAnswers,
 
     // Inspection, for the panel and for debugging a page by hand.
     capturePageStructure,

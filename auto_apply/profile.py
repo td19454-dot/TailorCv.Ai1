@@ -83,7 +83,8 @@ class ApplicantProfile:
     notice_period: str = ""
     expected_salary: str = ""
     available_start_date: str = ""
-    how_did_you_hear: str = "Company website"
+    # Always LinkedIn (no profile answer); the extension does the same.
+    how_did_you_hear: str = "LinkedIn"
     # No DECLINE default: "Decline to self-identify" is a real answer to a
     # voluntary EEO question, but it is not an answer to "what is your
     # nationality". Unset means unset, and the field goes back to the user.
@@ -671,7 +672,7 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         notice_period=str(prof.get("notice_period") or "").strip(),
         expected_salary=str(prof.get("expected_salary") or "").strip(),
         available_start_date=str(prof.get("available_start_date") or "").strip(),
-        how_did_you_hear=str(prof.get("how_did_you_hear") or "").strip() or "Company website",
+        how_did_you_hear="LinkedIn",
         nationality=str(prof.get("nationality") or "").strip(),
         citizenship_status=str(prof.get("citizenship_status") or "").strip(),
         date_of_birth=str(prof.get("date_of_birth") or "").strip(),

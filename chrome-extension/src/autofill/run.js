@@ -225,6 +225,115 @@ export function learnableAnswers(decisions) {
   return out;
 }
 
+/**
+ * What stops this page from being sent on, read from the page as it is NOW
+ * (the person may have fixed things by hand since the run).
+ *
+ * Only REQUIRED fields that are empty, rejected, or a required upload with no
+ * file. An optional field left blank, or an AI-written answer awaiting review,
+ * is not a blocker: auto-apply moves on past those (the person's choice).
+ */
+export function pageBlockers(decisions) {
+  const out = [];
+  const seen = new Set();
+  for (const d of decisions || []) {
+    const row = d && d.row;
+    if (!row || !row.required || seen.has(d.key)) continue;
+    let reason = '';
+    if (row.kind === 'file') {
+      if (!hasUploadedFile(row.el)) reason = 'needs a file';
+    } else {
+      const now = reprobe(row);
+      if (!now) continue;                       // gone from the page
+      if (now.invalid) reason = 'the form rejected this';
+      else if (!now.filled) reason = 'needs an answer';
+    }
+    if (reason) {
+      seen.add(d.key);
+      out.push({ key: d.key, label: d.label || '(unlabelled field)', reason, decision: d });
+    }
+  }
+  return out;
+}
+
+const MAX_FORCED = 15;
+
+/**
+ * Auto-apply's second pass on a page: the required fields still empty, sent
+ * back with `force` so the model answers them (from the resume) instead of
+ * skipping — a skipped required question stopped the whole run. Never a
+ * sensitive question, a never-fill one, an upload, or a field the profile names
+ * but holds nothing for (an invented middle name is worse than a pause).
+ * Answers are written and marked to be checked. Returns { forced } or { error }.
+ */
+export async function forceAnswers(ctx, decisions, onProgress) {
+  const progress = typeof onProgress === 'function' ? onProgress : () => {};
+  const targets = pageBlockers(decisions).map(b => b.decision).filter(d =>
+    d.row && d.row.kind !== 'file' && !d.slot && !d.knownEmpty && !d.sensitive
+    && !classifySensitive(d.label) && !isNeverFill(d.label)).slice(0, MAX_FORCED);
+  if (!targets.length) return { forced: 0 };
+
+  for (const d of targets) {
+    if (d.kind === 'combobox' && !(d.options && d.options.length)) {
+      const labels = await readComboboxOptions(d.row);
+      if (labels.length) {
+        d.row.options = labels.map(l => ({ value: l, label: l }));
+        d.options = d.row.options;
+      }
+    }
+  }
+  const fields = targets.map(d => ({
+    i: decisions.indexOf(d),
+    label: d.label,
+    kind: d.kind,
+    required: true,
+    sensitive: false,
+    recallOnly: false,
+    compose: false,
+    documentSlot: null,
+    options: (d.options || []).map(o => (typeof o === 'string' ? o : o.label)).filter(Boolean).slice(0, 300),
+  }));
+  const res = await send({
+    type: 'AF_PLAN',
+    payload: {
+      url: globalThis.location.href,
+      host: globalThis.location.hostname,
+      ats: (findForm() || {}).ats || 'generic',
+      jobTitle: (ctx && ctx.jobTitle) || '',
+      jobCompany: (ctx && ctx.jobCompany) || '',
+      jdExcerpt: String((ctx && ctx.jdExcerpt) || '').slice(0, 2000),
+      force: true,
+      fields,
+    },
+  });
+  if (res.error) return { error: res.error };
+  const answers = (res.data && res.data.answers) || {};
+  const answered = [];
+  for (const d of targets) {
+    const a = answers[String(decisions.indexOf(d))];
+    if (!a || !String(a.value || '').trim()) continue;
+    d.value = String(a.value);
+    d.action = FILL;
+    d.source = 'ai_forced';
+    d.confidence = Number(a.confidence) || 0.6;
+    d.candidates = [];
+    d.reason = 'best answer from your resume, so auto-apply could continue — check it';
+    answered.push(d);
+  }
+  if (answered.length) {
+    // The edit watcher would take our own writes for the person's (they fire
+    // change events) and "Continue" would then save these guesses as their
+    // answers. Off while writing; back on with these as the starting values.
+    stopWatchingUserEdits();
+    try {
+      await writeAll(answered, ctx, progress, true);
+    } finally {
+      watchUserEdits(findForm(), null);
+    }
+  }
+  return { forced: answered.length };
+}
+
 // ── the run ──────────────────────────────────────────────────
 
 /**

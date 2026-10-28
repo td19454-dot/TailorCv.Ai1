@@ -641,8 +641,6 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
              help="Only ever filled from this answer — never guessed.", max_len=60),
     ]),
     ("answers", "Common questions", [
-        Spec("howDidYouHear", "how_did_you_hear", "How did you hear about the job?",
-             placeholder="Company website", max_len=120),
         Spec("whyThisRole", "why_this_role", "Why do you want this role?", kind="textarea",
              wide=True, help="Offered for review on each form, never submitted unread.",
              max_len=2000),
@@ -724,7 +722,7 @@ async def _effective(db, user, prof) -> dict:
         "skills": ", ".join(p.top_skills),
         "noticePeriod": p.notice_period, "availableStartDate": p.available_start_date,
         "expectedSalary": p.expected_salary,
-        "howDidYouHear": p.how_did_you_hear, "whyThisRole": p.why_this_role,
+        "whyThisRole": p.why_this_role,
     }
 
 

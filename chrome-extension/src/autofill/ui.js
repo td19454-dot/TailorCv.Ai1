@@ -126,6 +126,7 @@ const SOURCE_LABEL = {
   saved_answer: 'a saved answer',
   ai: 'AI',
   ai_written: 'AI, written for this job',
+  ai_forced: 'AI, from your resume',
   standard: 'a standard answer',
   you: 'you',
 };
@@ -176,7 +177,11 @@ export function renderReady(body, form, ctx, handlers, extra) {
           You've used your free autofills. <a href="#" id="tcvAfUpgrade">Upgrade to Pro →</a>
         </div>` : `
         <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">${page > 1
-          ? 'Autofill this page' : 'Autofill this application'} <span aria-hidden="true">▸</span></button>`}
+          ? 'Autofill this page' : 'Autofill this application'} <span aria-hidden="true">▸</span></button>
+        ${form && form.ats === 'workday' && handlers.onAutoApply ? `
+        <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoBtn">⏩ Auto-apply all pages</button>
+        <div class="tcv-af-note tcv-af-note-quiet">Fills each page and clicks Save and Continue,
+          pausing only for what it can't fill. It stops at Review — you click Submit.</div>` : ''}`}
       <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn">✦ Tailor my resume for this job</button>
       <div class="tcv-af-note tcv-af-note-quiet">
         TailorCV never submits an application. You review everything and send it yourself.
@@ -185,6 +190,8 @@ export function renderReady(body, form, ctx, handlers, extra) {
 
   const fill = body.querySelector('#tcvAfFillBtn');
   if (fill) fill.addEventListener('click', () => handlers.onFill());
+  const auto = body.querySelector('#tcvAfAutoBtn');
+  if (auto) auto.addEventListener('click', () => handlers.onAutoApply());
   const tailor = body.querySelector('#tcvAfTailorBtn');
   if (tailor) tailor.addEventListener('click', (e) => { e.preventDefault(); handlers.onTailor(); });
   bindLink(body, '#tcvAfProfileLink', handlers.onOpenProfile);
@@ -223,6 +230,7 @@ export function renderResults(body, result, ctx, handlers) {
         ${counts[PROFILE] ? pill('ask', `${counts[PROFILE]} for your profile`) : ''}
       </div>
       ${result.page > 1 ? `<div class="tcv-source">Page ${esc(result.page)} of this application</div>` : ''}
+      ${autoBannerHtml(handlers.auto, decisions)}
       <button class="tcv-btn tcv-btn-start" id="tcvAfRerun">↻ Autofill this page</button>
       ${result.serverError ? `<div class="tcv-af-note">${esc(result.serverError)}</div>` : ''}
       ${result.opaqueHosts ? `<div class="tcv-af-note tcv-af-note-quiet">
@@ -240,6 +248,7 @@ export function renderResults(body, result, ctx, handlers) {
     </div>`;
 
   wireRows(body, decisions, ctx, handlers);
+  wireAutoBanner(body, handlers.auto);
   const rerun = body.querySelector('#tcvAfRerun');
   if (rerun) rerun.addEventListener('click', () => handlers.onFill());
   bindLink(body, '#tcvAfEditProfile', handlers.onOpenProfile);
@@ -247,6 +256,43 @@ export function renderResults(body, result, ctx, handlers) {
   // this document, so the frame highlights its own when it fills them.
   if (decisions.length && decisions[0].row) highlight(decisions);
   offerToRemember(body, result, handlers);
+}
+
+/**
+ * Auto-apply's state above the results: paused (what is blocking, with Continue
+ * and Stop), stopped (why), or done (the Review page — the person submits).
+ */
+function autoBannerHtml(auto, decisions) {
+  if (!auto) return '';
+  const blockers = auto.blockers || [];
+  const list = blockers.length ? `<ul class="tcv-af-auto-list">${blockers.map(b => {
+    const i = decisions.indexOf(b.decision);
+    return `<li>${esc(b.label)} — ${esc(b.reason)}${i >= 0
+      ? ` <a href="#" class="tcv-af-jump" data-index="${i}">show</a>` : ''}</li>`;
+  }).join('')}</ul>` : '';
+  const title = auto.state === 'done' ? '✓ Ready to submit'
+    : auto.state === 'paused' ? `⏸ Auto-apply paused${blockers.length
+      ? ` — ${blockers.length} field${blockers.length === 1 ? '' : 's'} need${blockers.length === 1 ? 's' : ''} you` : ''}`
+      : 'Auto-apply stopped';
+  return `
+    <div class="tcv-af-auto tcv-af-auto-${esc(auto.state || 'paused')}" id="tcvAfAuto">
+      <div class="tcv-af-auto-title">${esc(title)}</div>
+      ${auto.message ? `<div class="tcv-af-auto-msg">${esc(auto.message)}</div>` : ''}
+      ${list}
+      ${auto.state === 'paused' ? `
+        <div class="tcv-af-auto-actions">
+          <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfAutoContinue">Continue auto-apply ▸</button>
+          <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoStop">Stop</button>
+        </div>` : ''}
+    </div>`;
+}
+
+function wireAutoBanner(body, auto) {
+  if (!auto) return;
+  const go = body.querySelector('#tcvAfAutoContinue');
+  if (go && auto.onContinue) go.addEventListener('click', () => auto.onContinue());
+  const stop = body.querySelector('#tcvAfAutoStop');
+  if (stop && auto.onStop) stop.addEventListener('click', () => auto.onStop());
 }
 
 function pill(kind, text) {
@@ -437,11 +483,24 @@ function offerToRemember(body, result, handlers) {
 export { jumpTo };
 
 /** The "we're working" view, for the duration of a run. */
-export function renderRunning(body, phase) {
+export function renderRunning(body, phase, auto) {
   body.innerHTML = `
     <div class="tcv-af-panel">
+      ${auto ? `<div class="tcv-af-auto tcv-af-auto-running">
+        <div class="tcv-af-auto-title">⏩ Auto-apply · page ${esc(auto.page || 1)}</div>
+        <div class="tcv-af-auto-msg">Filling each page and moving on. It stops at Review.</div>
+      </div>` : ''}
       <div class="tcv-status-text" id="tcvAfPhase">${esc(phase || 'Reading the form…')}</div>
+      ${auto && auto.onStop ? `<button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoStop">Stop after this page</button>` : ''}
     </div>`;
+  const stop = body.querySelector('#tcvAfAutoStop');
+  if (stop) {
+    stop.addEventListener('click', () => {
+      stop.disabled = true;
+      stop.textContent = 'Stopping after this page…';
+      auto.onStop();
+    });
+  }
 }
 
 export function setPhase(body, text) {
