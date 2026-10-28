@@ -751,6 +751,12 @@ export function citizenshipAnswer(row, bank, entry) {
   if (labels.length) {
     const own = countryOption(country, labels);
     if (own) return { value: own, drill: row.kind === 'combobox' ? 'Citizen' : '' };
+    // Workday's flat status list: "Citizen (India)", "Permanent Resident (India)".
+    // Their country's rows, then the Citizen one among them — never just the
+    // first, and never a lone "Permanent Resident (India)".
+    const theirs = country ? labels.filter(l => countryOf(l, true) === country) : [];
+    const pick = theirs.length ? citizenshipOption('Citizen', theirs) : null;
+    if (pick) return { value: pick };
     if (countryShare(labels) >= 0.5) {
       return country ? { ask: `${country} isn't one of this list's options — choose your answer` } : null;
     }

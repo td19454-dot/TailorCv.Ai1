@@ -633,7 +633,10 @@ test('countries: every spelling and demonym reads as its country, never a near-m
   eq(c.countryOf('United States of America'), 'United States');
   eq(c.countryOf('U.S.A.'), 'United States');
   eq(c.countryOf('India (+91)'), 'India');
-  eq(c.countryOf('Citizen (India)'), 'India');
+  eq(c.countryOf('Citizen (India)'), '', 'a country only in parentheses is not the subject');
+  eq(c.countryOf('Citizen (India)', true), 'India');
+  eq(c.countryOf('Single (India)'), '');
+  eq(c.countryShare(['Divorced (India)', 'Married (India)', 'Single (India)']), 0);
   eq(c.countryOf('India › Citizen'), 'India');
   eq(c.countryOf('British Indian Ocean Territory'), '');
   eq(c.countryOption('India', ['Iceland', 'British Indian Ocean Territory', 'India', 'Indonesia']), 'India');
