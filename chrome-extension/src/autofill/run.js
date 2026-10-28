@@ -420,6 +420,7 @@ export async function runAutofill(ctx, onProgress) {
   }
 
   await clock.time('refill', () => refillCleared(decisions, progress));
+  await clock.time('reread_options', () => rereadEmptyLists(decisions));
 
   await saveState();
   watchUserEdits(form, null);
@@ -563,6 +564,32 @@ function alternatePhone(value, ctx) {
 
 function decisionsToWrite(decisions) {
   return decisions.filter(d => (d.action === FILL || d.action === SUGGEST || d.action === DOCUMENT));
+}
+
+// Dropdowns left for the person whose list read empty before the fill.
+const MAX_REREADS = 8;
+
+/**
+ * Read again, once everything is filled, the lists of the dropdowns left for
+ * the person that had no options when they were first read. A list that hangs
+ * off another answer is empty until that answer is in: PwC's Region of Birth
+ * lists the regions of the Country of Birth, which this run fills — so read
+ * before the fill it held only "Select One", and the sidebar offered nothing
+ * to choose from.
+ */
+async function rereadEmptyLists(decisions) {
+  const empty = decisions.filter(d => (d.action === ASK || d.action === PROFILE)
+    && d.kind === 'combobox' && d.row && d.row.el && d.row.el.isConnected
+    && !(d.options && d.options.length)).slice(0, MAX_REREADS);
+  for (const d of empty) {
+    const now = reprobe(d.row);
+    if (now && now.filled) continue;
+    const labels = await readComboboxOptions(d.row);
+    if (labels.length) {
+      d.row.options = labels.map(l => ({ value: l, label: l }));
+      d.options = d.row.options;
+    }
+  }
 }
 
 /** Decide a batch of rows, reading dropdown options and calling the server once. */

@@ -263,9 +263,22 @@ function groupHtml(group, decisions) {
     </div>`;
 }
 
+/** A split date as people read it: "2003-12-01" or "12/1/2003" -> "12-01-2003" (MM-DD-YYYY). */
+export function displayDate(text) {
+  const s = String(text || '').trim();
+  const pad = n => String(n).padStart(2, '0');
+  let m = /^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?$/.exec(s);
+  if (m) return m[3] ? `${pad(m[2])}-${pad(m[3])}-${m[1]}` : `${pad(m[2])}-${m[1]}`;
+  m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(s);
+  if (m) return `${pad(m[1])}-${pad(m[2])}-${m[3]}`;
+  m = /^(\d{1,2})\/(\d{4})$/.exec(s);
+  if (m) return `${pad(m[1])}-${m[2]}`;
+  return s;
+}
+
 function rowHtml(group, d, index) {
   const needsInput = d.action === ASK && d.kind !== 'file' && !d.slot;
-  const value = d.shown || d.value;
+  const value = d.kind === 'date-parts' ? displayDate(d.shown || d.value) : (d.shown || d.value);
   return `
     <div class="tcv-af-row" data-index="${index}">
       <div class="tcv-af-row-head">

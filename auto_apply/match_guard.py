@@ -127,7 +127,9 @@ def looks_secret(value: str) -> bool:
 # differently for one stored value — so the person's own answer to that exact
 # question is the only source. Reused for the SAME question only (exact
 # signature, in the extension), never semantically recalled or shown to a model.
-STORABLE_SENSITIVE = {"clearance", "criminal", "citizenship", "government_employment"}
+# Birth too: Region of Birth has no profile field, and its options are the
+# regions of one country, so the person's answer to that exact question is kept.
+STORABLE_SENSITIVE = {"clearance", "criminal", "citizenship", "government_employment", "birth"}
 
 
 def is_never_store(question: str, answer: str) -> bool:

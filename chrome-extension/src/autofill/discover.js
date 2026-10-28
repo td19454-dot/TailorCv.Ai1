@@ -1514,7 +1514,15 @@ export async function readComboboxOptions(row) {
   try {
     scrollIntoView(el);
     clickOpen(el);
-    const labels = await waitForOptions(stale);
+    let labels = await waitForOptions(stale, TIMING.optionWaitMs);
+    // Open but nothing pickable yet: Workday opens with only its disabled
+    // "Select One" and loads the rest (PwC's Region of Birth reached the
+    // sidebar as a list of just "Select One"). Waited on only while the list
+    // says it is open, returning the moment options arrive.
+    // Only while that placeholder shows: a list that is simply empty costs nothing more.
+    if (!labels.length && isOpen(el) && showsPlaceholder(p, stale)) {
+      labels = await waitForOptions(stale, TIMING.remoteSearchMs);
+    }
     return labels;
   } catch (e) {
     return [];
@@ -1523,12 +1531,28 @@ export async function readComboboxOptions(row) {
   }
 }
 
+function isOpen(el) {
+  for (let n = el, i = 0; n && i < 3; n = n.parentElement, i++) {
+    if (n.getAttribute && n.getAttribute('aria-expanded') === 'true') return true;
+  }
+  return false;
+}
+
+function showsPlaceholder(p, stale) {
+  return visibleOptionNodes(p).some(n => !stale.has(n) && isDisabledOption(n));
+}
+
+/** A placeholder or group header: listed, but nothing anyone can pick ("Select One"). */
+function isDisabledOption(n) {
+  return !!(n.getAttribute && n.getAttribute('aria-disabled') === 'true');
+}
+
 function optionLabelsIn(node) {
   const p = probe();
   const nodes = p && p.optionNodes ? p.optionNodes(node) : [];
   const out = [];
   for (const n of nodes) {
-    if (isChosenValue(n)) continue;
+    if (isChosenValue(n) || isDisabledOption(n)) continue;
     const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
     if (t && out.length < MAX_OPTIONS_READ) out.push(t);
   }
@@ -1541,7 +1565,7 @@ function visibleOptionNodes(p) {
   catch (e) { return []; }
 }
 
-function waitForOptions(stale) {
+function waitForOptions(stale, timeout) {
   const skip = stale || new Set();
   return new Promise(resolve => {
     const doc = globalThis.document;
@@ -1561,7 +1585,7 @@ function waitForOptions(stale) {
       if (!p || !p.optionNodes) return [];
       const out = [];
       for (const n of p.optionNodes(doc)) {
-        if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n)) continue;
+        if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n) || isDisabledOption(n)) continue;
         const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
         if (t && out.length < MAX_OPTIONS_READ) out.push(t);
       }
@@ -1584,7 +1608,7 @@ function waitForOptions(stale) {
       if (labels.length) finish(labels);
     });
     try { obs.observe(doc.body, { childList: true, subtree: true }); } catch (e) {}
-    const timer = setTimeout(() => finish(read()), TIMING.optionWaitMs);
+    const timer = setTimeout(() => finish(read()), timeout == null ? TIMING.optionWaitMs : timeout);
   });
 }
 
@@ -1679,6 +1703,11 @@ function readDateParts(row) {
     if (!el.isConnected) continue;
     const part = datePartOf(el);
     if (part) parts[part] = String(el.value || '').trim();
+  }
+  // Workday's spinbuttons hold "1" for the first of the month; read as the
+  // form displays it, "01".
+  for (const k of ['month', 'day']) {
+    if (/^\d$/.test(parts[k] || '')) parts[k] = '0' + parts[k];
   }
   const order = ['month', 'day', 'year'].filter(k => k in parts);
   const values = order.map(k => parts[k]);

@@ -848,7 +848,7 @@ what when where which who will with would you your now future
     ["demographic", /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
     ["demographic", /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/]
   ];
-  var STORABLE_SENSITIVE = /* @__PURE__ */ new Set(["clearance", "criminal", "citizenship", "government_employment"]);
+  var STORABLE_SENSITIVE = /* @__PURE__ */ new Set(["clearance", "criminal", "citizenship", "government_employment", "birth"]);
   var EEO_FIELD_MARKERS = [
     "gender",
     "race",
@@ -2638,7 +2638,10 @@ what when where which who will with would you your now future
     try {
       scrollIntoView(el);
       clickOpen(el);
-      const labels = await waitForOptions(stale);
+      let labels = await waitForOptions(stale, TIMING.optionWaitMs);
+      if (!labels.length && isOpen(el) && showsPlaceholder(p, stale)) {
+        labels = await waitForOptions(stale, TIMING.remoteSearchMs);
+      }
       return labels;
     } catch (e) {
       return [];
@@ -2646,12 +2649,24 @@ what when where which who will with would you your now future
       dismissListbox(el);
     }
   }
+  function isOpen(el) {
+    for (let n = el, i = 0; n && i < 3; n = n.parentElement, i++) {
+      if (n.getAttribute && n.getAttribute("aria-expanded") === "true") return true;
+    }
+    return false;
+  }
+  function showsPlaceholder(p, stale) {
+    return visibleOptionNodes(p).some((n) => !stale.has(n) && isDisabledOption(n));
+  }
+  function isDisabledOption(n) {
+    return !!(n.getAttribute && n.getAttribute("aria-disabled") === "true");
+  }
   function optionLabelsIn(node) {
     const p = probe();
     const nodes = p && p.optionNodes ? p.optionNodes(node) : [];
     const out = [];
     for (const n of nodes) {
-      if (isChosenValue(n)) continue;
+      if (isChosenValue(n) || isDisabledOption(n)) continue;
       const t = (n.textContent || "").replace(/\s+/g, " ").trim();
       if (t && out.length < MAX_OPTIONS_READ) out.push(t);
     }
@@ -2665,7 +2680,7 @@ what when where which who will with would you your now future
       return [];
     }
   }
-  function waitForOptions(stale) {
+  function waitForOptions(stale, timeout) {
     const skip = stale || /* @__PURE__ */ new Set();
     return new Promise((resolve) => {
       const doc = globalThis.document;
@@ -2674,7 +2689,7 @@ what when where which who will with would you your now future
         if (!p || !p.optionNodes) return [];
         const out = [];
         for (const n of p.optionNodes(doc)) {
-          if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n)) continue;
+          if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n) || isDisabledOption(n)) continue;
           const t = (n.textContent || "").replace(/\s+/g, " ").trim();
           if (t && out.length < MAX_OPTIONS_READ) out.push(t);
         }
@@ -2704,7 +2719,7 @@ what when where which who will with would you your now future
         obs.observe(doc.body, { childList: true, subtree: true });
       } catch (e) {
       }
-      const timer = setTimeout(() => finish(read()), TIMING.optionWaitMs);
+      const timer = setTimeout(() => finish(read()), timeout == null ? TIMING.optionWaitMs : timeout);
     });
   }
   function scrollIntoView(el) {
@@ -2780,6 +2795,9 @@ what when where which who will with would you your now future
       if (!el.isConnected) continue;
       const part = datePartOf(el);
       if (part) parts[part] = String(el.value || "").trim();
+    }
+    for (const k of ["month", "day"]) {
+      if (/^\d$/.test(parts[k] || "")) parts[k] = "0" + parts[k];
     }
     const order = ["month", "day", "year"].filter((k) => k in parts);
     const values = order.map((k) => parts[k]);
@@ -5031,12 +5049,23 @@ Zimbabwe|Zimbabwean
   }
   function accepts(decision, value, shown) {
     if (differentCountries(value, shown)) return false;
+    if (decision && decision.row && decision.row.kind === "date-parts") return sameDate(value, shown);
+    if (commitMatches(value, shown)) return true;
     if (commitMatches(value, shown)) return true;
     for (const candidate of decision && decision.candidates || []) {
       if (commitMatches(candidate, shown)) return true;
     }
     if (decision && decision.readFirst && shown && pickReadFirst(decision.readFirst, [shown]) === shown) return true;
     return isPhoneField(decision && decision.row) && samePhone(value, shown);
+  }
+  function sameDate(iso, shown) {
+    const want = /^(\d{4})(?:-(\d{1,2}))?(?:-(\d{1,2}))?$/.exec(String(iso || "").trim());
+    const got = String(shown || "").split("/").map((s) => s.trim());
+    if (!want || !got.every((s) => /^\d+$/.test(s))) return false;
+    const [, y, m, d] = want;
+    const read = got.length === 3 ? { m: got[0], d: got[1], y: got[2] } : got.length === 2 ? { m: got[0], y: got[1] } : { y: got[0] };
+    const same = (a, b) => a === void 0 || b === void 0 || Number(a) === Number(b);
+    return same(y, read.y) && same(m, read.m) && same(d, read.d);
   }
   function isPhoneField(row) {
     if (!row) return false;
@@ -5902,6 +5931,7 @@ Zimbabwe|Zimbabwean
       decisions = decisions.concat(tiled);
     }
     await clock.time("refill", () => refillCleared(decisions, progress));
+    await clock.time("reread_options", () => rereadEmptyLists(decisions));
     await saveState();
     watchUserEdits(form, null);
     const timing = clock.summary();
@@ -6014,6 +6044,19 @@ Zimbabwe|Zimbabwean
   }
   function decisionsToWrite(decisions) {
     return decisions.filter((d) => d.action === FILL || d.action === SUGGEST || d.action === DOCUMENT);
+  }
+  var MAX_REREADS = 8;
+  async function rereadEmptyLists(decisions) {
+    const empty = decisions.filter((d) => (d.action === ASK || d.action === PROFILE) && d.kind === "combobox" && d.row && d.row.el && d.row.el.isConnected && !(d.options && d.options.length)).slice(0, MAX_REREADS);
+    for (const d of empty) {
+      const now2 = reprobe(d.row);
+      if (now2 && now2.filled) continue;
+      const labels = await readComboboxOptions(d.row);
+      if (labels.length) {
+        d.row.options = labels.map((l) => ({ value: l, label: l }));
+        d.options = d.row.options;
+      }
+    }
   }
   async function planFor(rows, ctx, progress) {
     let decisions = decide(rows, ctx, null, state);
@@ -6232,6 +6275,7 @@ Zimbabwe|Zimbabwean
   __export(ui_exports, {
     PHASE_TEXT: () => PHASE_TEXT,
     clearHighlights: () => clearHighlights,
+    displayDate: () => displayDate,
     highlight: () => highlight,
     jumpTo: () => jumpTo,
     renderReady: () => renderReady,
@@ -6451,9 +6495,20 @@ Zimbabwe|Zimbabwean
       ${rows.map((d) => rowHtml(group, d, decisions.indexOf(d))).join("")}
     </div>`;
   }
+  function displayDate(text) {
+    const s = String(text || "").trim();
+    const pad2 = (n) => String(n).padStart(2, "0");
+    let m = /^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?$/.exec(s);
+    if (m) return m[3] ? `${pad2(m[2])}-${pad2(m[3])}-${m[1]}` : `${pad2(m[2])}-${m[1]}`;
+    m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(s);
+    if (m) return `${pad2(m[1])}-${pad2(m[2])}-${m[3]}`;
+    m = /^(\d{1,2})\/(\d{4})$/.exec(s);
+    if (m) return `${pad2(m[1])}-${m[2]}`;
+    return s;
+  }
   function rowHtml(group, d, index) {
     const needsInput = d.action === ASK && d.kind !== "file" && !d.slot;
-    const value = d.shown || d.value;
+    const value = d.kind === "date-parts" ? displayDate(d.shown || d.value) : d.shown || d.value;
     return `
     <div class="tcv-af-row" data-index="${index}">
       <div class="tcv-af-row-head">
