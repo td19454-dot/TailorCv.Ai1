@@ -385,15 +385,42 @@ export function looksLikeEeoField(label) {
   return EEO_FIELD_MARKERS.some(m => lowered.includes(m));
 }
 
+// An employer whose NAME is a sensitive word. On Visa's application every
+// question naming the company — "I agree that Visa may reach out to me via
+// SMS", "Have you ever worked for Visa Inc.?" — read as a visa question and was
+// sent to the profile's sponsorship answer (Oct 2026). The name is set aside
+// before classifying, except where it sits in visa wording ("work Visa",
+// "Visa sponsorship", "Visa status"). Mirrored in match_guard.without_employer.
+const EMPLOYER_SUFFIX_RE = /[\s,]+(inc|incorporated|corp|corporation|co|company|ltd|limited|llc|plc)\.?$/i;
+const VISA_WORDING_BEFORE_RE = /\b(work|h-?1b|student|employment|immigration|immigrant|nonimmigrant|tourist|business|dependent|valid|current|sponsored|a|an|your|any|which|what|l-?1|o-?1|tn|e-?3|f-?1|j-?1|opt)\s*$/i;
+const VISA_WORDING_AFTER_RE = /^\s*(sponsor\w*|status|type|holder|category|categories|transfer|requirement|support|application|petition|stamp|expir\w*)/i;
+
+/** `label` with the employer's name — when that name is itself sensitive — replaced by "the company". */
+export function withoutEmployer(label, employer) {
+  const text = String(label == null ? '' : label);
+  let name = String(employer || '').trim();
+  while (EMPLOYER_SUFFIX_RE.test(name)) name = name.replace(EMPLOYER_SUFFIX_RE, '').trim();
+  if (!name || !classifySensitive(name)) return text;
+  const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+  return text.replace(re, (m, at) => {
+    // A name is written capitalised; "visa" in lower case is the document.
+    if (!/^[A-Z]/.test(m)) return m;
+    if (VISA_WORDING_BEFORE_RE.test(text.slice(0, at))) return m;
+    if (VISA_WORDING_AFTER_RE.test(text.slice(at + m.length))) return m;
+    return 'the company';
+  });
+}
+
 /**
- * The sensitive category this label falls into, or null.
+ * The sensitive category this label falls into, or null. `employer`, when
+ * given, is the company the form belongs to — see withoutEmployer.
  *
  * Errs toward flagging: a false positive costs the user one question they
  * answer once and we remember forever, while a false negative is a fabricated
  * legal declaration. That asymmetry decides every borderline case here.
  */
-export function classifySensitive(label) {
-  const sig = questionSignature(label);
+export function classifySensitive(label, employer) {
+  const sig = questionSignature(employer ? withoutEmployer(label, employer) : label);
   if (!sig) return null;
   for (const [category, re] of SENSITIVE_PATTERNS) {
     if (re.test(sig)) return category;
@@ -934,6 +961,8 @@ export function matchFieldKey(label, entries) {
   return best;
 }
 
+const SELF_ID_RE = /\b(voluntary\s+)?self[\s-]*identification(\s+of)?\b|\bvoluntary\s+disclosures?(\s+of)?\b/gi;
+
 // The stored answers each sensitive category may be answered from.
 const CATEGORY_KEYS = {
   sponsorship: ['requires_visa_sponsorship', 'visa_status'],
@@ -958,6 +987,11 @@ const CATEGORY_KEYS = {
  * but only ever a sensitive entry.
  */
 export function matchSensitiveKey(label, category) {
+  // Workday's section names: "Self-Identification of Gender", "Voluntary
+  // Self-Identification of Disability". The wrapper words left "gender" two
+  // extra words to absorb, so the stored gender was never read and auto-apply
+  // paused on it (NVIDIA, Oct 2026).
+  label = String(label || '').replace(SELF_ID_RE, ' ').trim() || label;
   const keys = CATEGORY_KEYS[category];
   if (keys) {
     const own = matchFieldKey(label, FIELD_SYNONYMS.filter(e => keys.includes(e.key)));

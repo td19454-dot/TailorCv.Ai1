@@ -77,12 +77,16 @@ export const SKIP = 'skip';         // deliberately left alone
  */
 export function decide(rows, ctx, server, state) {
   const bank = (ctx && ctx.answerBank) || {};
+  // The company this form belongs to: its own name is no sensitive word on its
+  // own form (Visa) — see withoutEmployer.
+  const employer = String((ctx && ctx.jobCompany) || '');
   const answered = (server && server.answers) || {};
   const registry = (state && state.registry) || {};
   const userEdited = new Set((state && state.userEdited) || []);
 
   return (rows || []).map((row, position) => {
     const d = base(row);
+    d.employer = employer;
 
     // A field the person has touched themselves is never overwritten, whatever
     // we think we know. This has no equivalent in the server engine (nobody is
@@ -143,8 +147,20 @@ export function decide(rows, ctx, server, state) {
       return done(d, SKIP, row.value, '', 0, 'already filled in');
     }
 
+    // "Have you been employed by Quantiphi previously?" — a fact the work
+    // history settles: Yes if any job in the profile was there, else No. Sent
+    // to the model it came back unanswered, and that one required radio
+    // stopped auto-apply (Quantiphi Workday, Oct 2026). Ahead of the sensitive
+    // tier: "Have you ever worked for Visa Inc.?" is about the employer named
+    // Visa, not a visa, and was sent to the profile as a sponsorship question.
+    const prior = previousEmployerAnswer(row, ctx, bank);
+    if (prior) {
+      if (prior.ask) return done(d, ASK, '', '', 0, prior.ask);
+      return done(d, FILL, prior.value, 'profile', 0.9, prior.reason);
+    }
+
     // Tier 0b — sensitive. Stored value or nothing.
-    const category = classifySensitive(row.label);
+    const category = classifySensitive(row.label, employer);
     if (category) {
       d.sensitive = category;
       // Its own category's answer — see matchSensitiveKey for the sponsorship
@@ -243,16 +259,6 @@ export function decide(rows, ctx, server, state) {
         return done(d, SKIP, row.value, '', 0, 'keeping the answer already there');
       }
       return done(d, FILL, value, 'profile', 0.95, '');
-    }
-
-    // "Have you been employed by Quantiphi previously?" — a fact the work
-    // history settles: Yes if any job in the profile was there, else No. Sent
-    // to the model it came back unanswered, and that one required radio
-    // stopped auto-apply (Quantiphi Workday, Oct 2026).
-    const prior = previousEmployerAnswer(row, ctx, bank);
-    if (prior) {
-      if (prior.ask) return done(d, ASK, '', '', 0, prior.ask);
-      return done(d, FILL, prior.value, 'profile', 0.9, prior.reason);
     }
 
     // "If you answered Yes above, please explain": autofill answered the
@@ -1118,7 +1124,8 @@ export function degreeOption(stored, options) {
   const entry = degreeEntry(stored);
   if (!entry) {
     // Not in the catalog: the earlier behaviour — level phrasings, then the text.
-    return bestCandidateMatch(uniq(degreeShapes(stored).concat([stored])), labels, degreeGuard);
+    return bestCandidateMatch(uniq(degreeShapes(stored).concat([stored])), labels, degreeGuard)
+      || iscedOption(stored, null, labels);
   }
   const byCompact = new Map(labels.map(l => [compactDegree(l), l]));
   for (const s of [stored].concat(entry.spellings)) {
@@ -1126,7 +1133,51 @@ export function degreeOption(stored, options) {
     if (hit) return hit;
   }
   if (!entry.level) return null;
-  return bestCandidateMatch(degreeShapes(entry.level), labels, degreeGuard);
+  return bestCandidateMatch(degreeShapes(entry.level), labels, degreeGuard)
+    || iscedOption(stored, entry, labels);
+}
+
+// UNESCO's ISCED levels, which some lists name instead of the degree (Visa:
+// "Bachelor's or Equivalent First-Degree (ISCED 6: BA, BSc, BEng, LLB, etc.)").
+// None of the level phrasings is inside that text, so a B.E. matched nothing
+// and the Degree stayed "Select One". Indexed like DEGREE_LEVELS; a diploma has
+// no single level (ISCED 4 or 5 by country) and is left to the model.
+const ISCED_BY_LEVEL = [8, 7, 6, 5, 3, null];
+const ISCED_RE = /\bISCED\s*(\d)(?:\s*[–-]\s*(\d))?/i;
+
+/** The ISCED level a stored degree is at, or null. */
+function iscedLevelOf(stored, entry) {
+  const i = degreeLevel(entry && entry.level ? entry.level : stored);
+  return i < 0 ? null : ISCED_BY_LEVEL[i];
+}
+
+/** Does this option's "ISCED n" (or "ISCED 0–2") cover level `n`? */
+function iscedCovers(option, n) {
+  const m = ISCED_RE.exec(option);
+  if (!m) return false;
+  const lo = Number(m[1]), hi = m[2] ? Number(m[2]) : lo;
+  return n >= lo && n <= hi;
+}
+
+/**
+ * The option a list worded by ISCED level offers for this degree, or null.
+ * One option at the level: that one. Several (Visa's ISCED 7 is both "Master
+ * of Business Administration - MBA" and "Master's or Equivalent"): the one whose
+ * name — the text before its bracket — names this degree, else the only one
+ * naming no OTHER specific degree. Never a guess between two.
+ */
+function iscedOption(stored, entry, labels) {
+  const n = iscedLevelOf(stored, entry);
+  if (n == null) return null;
+  const same = labels.filter(l => iscedCovers(l, n));
+  if (same.length <= 1) return same[0] || null;
+  const lead = l => l.split('(')[0];
+  if (entry) {
+    const own = same.filter(l => entry.test.test(lead(l)));
+    if (own.length === 1) return own[0];
+  }
+  const generic = same.filter(l => { const e = degreeEntry(lead(l)); return !e || e === entry; });
+  return generic.length === 1 ? generic[0] : null;
 }
 
 /** Unique, non-empty, order preserved. */
@@ -1456,7 +1507,7 @@ export function fieldsForServer(decisions) {
     if (d.action !== ASK && !d.askable && !d.knownEmpty) return;
     if (d.sensitive || d.slot || d.noServer) return;
     if (isNeverFill(d.label)) return;
-    if (classifySensitive(d.label)) return;     // belt and braces
+    if (classifySensitive(d.label, d.employer)) return;     // belt and braces
     out.push({
       i,
       label: d.label,

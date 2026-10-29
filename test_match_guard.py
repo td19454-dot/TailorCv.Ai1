@@ -200,6 +200,33 @@ def test_empty_input_is_not_flagged():
     assert not mg.looks_secret(None)
 
 
+# (label, employer, expected category or None). On the employer's own form its
+# name is no visa question; visa wording around it still is (Visa, Oct 2026).
+EMPLOYER_CASES = [
+    ("I agree that Visa may reach out to me via SMS regarding my application. I can opt-out at any time.*",
+     "Visa", None),
+    ("Visa may use automated tools such as AI to support review of your application for this role.*",
+     "Visa", None),
+    ("Have you ever worked for Visa Inc. or any wholly/majority-owned subsidiaries of Visa Inc.?",
+     "Visa Inc.", None),
+    ("Why do you want to work at Visa?", "Visa", None),
+    ("Will you now or in the future require Visa sponsorship?", "Visa", "sponsorship"),
+    ("Do you hold a valid work Visa?", "Visa", "sponsorship"),
+    ("What is your current Visa status?", "Visa", "sponsorship"),
+    ("Do you need a Visa to work in India?", "Visa", "sponsorship"),
+    ("Do you require a visa?", "Visa", "sponsorship"),
+    # Another employer changes nothing.
+    ("Do you require visa sponsorship?", "Citi", "sponsorship"),
+    ("Why Citi?", "Citi", None),
+]
+
+
+def test_the_employers_own_name_is_not_a_visa_question():
+    wrong = [f"{label!r} @ {emp} -> {mg.classify_sensitive(label, emp)!r}, want {want!r}"
+             for label, emp, want in EMPLOYER_CASES if mg.classify_sensitive(label, emp) != want]
+    assert not wrong, "\n    ".join(wrong)
+
+
 def test_js_and_python_classifiers_agree():
     """The structural test: both halves of the lock must classify identically.
 
@@ -232,21 +259,26 @@ def test_js_and_python_classifiers_agree():
         # Via the environment, not argv: the label corpus is a few KB of text
         # with quotes and slashes in it, and Windows argument quoting mangles it.
         "const labels = JSON.parse(process.env.TCV_LABELS);\n"
-        "console.log(JSON.stringify(labels.map(l => "
-        "[m.classifySensitive(l), m.isNeverFill(l)])));\n"
+        "const withEmployer = JSON.parse(process.env.TCV_EMPLOYER_CASES);\n"
+        "console.log(JSON.stringify([labels.map(l => "
+        "[m.classifySensitive(l), m.isNeverFill(l)]), "
+        "withEmployer.map(([l, e]) => m.classifySensitive(l, e))]));\n"
     )
     with tempfile.NamedTemporaryFile("w", suffix=".mjs", delete=False, encoding="utf-8") as fh:
         fh.write(script)
         path = fh.name
     try:
-        env = dict(os.environ, TCV_LABELS=json.dumps(labels))
+        env = dict(os.environ, TCV_LABELS=json.dumps(labels),
+                   TCV_EMPLOYER_CASES=json.dumps([[l, e] for l, e, _ in EMPLOYER_CASES]))
         proc = subprocess.run([node, path], capture_output=True, text=True, env=env)
         assert proc.returncode == 0, proc.stderr[:2000]
-        js_results = json.loads(proc.stdout.strip().splitlines()[-1])
+        js_results, js_employer = json.loads(proc.stdout.strip().splitlines()[-1])
     finally:
         os.unlink(path)
 
-    disagreements = []
+    disagreements = [f"employer:  {label!r} @ {emp} -> js={js!r} py={mg.classify_sensitive(label, emp)!r}"
+                     for (label, emp, _), js in zip(EMPLOYER_CASES, js_employer)
+                     if js != mg.classify_sensitive(label, emp)]
     for label, (js_cat, js_never) in zip(labels, js_results):
         py_cat = mg.classify_sensitive(label)
         py_never = mg.is_never_fill(label)

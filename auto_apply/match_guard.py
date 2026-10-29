@@ -32,7 +32,8 @@ from auto_apply.profile import question_signature
 SENSITIVE_PATTERNS: list[tuple[str, re.Pattern]] = [
     ("sponsorship", re.compile(
         r"\bsponsor\w*|\bvisa\b|\bh1b\b|\bh 1b\b|\bwork permit\b|\bimmigration status\b"
-        r"|\bopt\b|\bcpt\b")),
+        # OPT the work permit, not "opt in" / "opt out" (as match.js has it).
+        r"|\bopt\b(?!\s+(?:in|out)\b)|\bcpt\b")),
     ("work_authorization", re.compile(
         r"\bright to work\b"
         r"|\bwork (authori\w*|eligib\w*|status)\b"
@@ -92,14 +93,54 @@ SECRET_VALUE_PATTERNS: list[re.Pattern] = [
 ]
 
 
-def classify_sensitive(label: str) -> str | None:
-    """The sensitive category this question falls into, or None.
+# An employer whose NAME is a sensitive word: on Visa's application "I agree
+# that Visa may reach out to me via SMS" read as a visa question. The name is
+# set aside before classifying, except in visa wording ("work Visa", "Visa
+# sponsorship"). Mirrors match.js withoutEmployer — same rules, same result.
+_EMPLOYER_SUFFIX_RE = re.compile(
+    r"[\s,]+(inc|incorporated|corp|corporation|co|company|ltd|limited|llc|plc)\.?$", re.I)
+_VISA_WORDING_BEFORE_RE = re.compile(
+    r"\b(work|h-?1b|student|employment|immigration|immigrant|nonimmigrant|tourist|business|"
+    r"dependent|valid|current|sponsored|a|an|your|any|which|what|l-?1|o-?1|tn|e-?3|f-?1|j-?1|opt)\s*$",
+    re.I)
+_VISA_WORDING_AFTER_RE = re.compile(
+    r"^\s*(sponsor\w*|status|type|holder|category|categories|transfer|requirement|support|"
+    r"application|petition|stamp|expir\w*)", re.I)
+
+
+def without_employer(label: str, employer: str | None) -> str:
+    """`label` with the employer's name — when that name is itself sensitive —
+    replaced by "the company"."""
+    text = str(label or "")
+    name = str(employer or "").strip()
+    while _EMPLOYER_SUFFIX_RE.search(name):
+        name = _EMPLOYER_SUFFIX_RE.sub("", name).strip()
+    if not name or not classify_sensitive(name):
+        return text
+
+    def keep_or_mask(m: re.Match) -> str:
+        word = m.group(0)
+        # A name is written capitalised; "visa" in lower case is the document.
+        if not word[:1].isupper():
+            return word
+        if _VISA_WORDING_BEFORE_RE.search(text[:m.start()]):
+            return word
+        if _VISA_WORDING_AFTER_RE.search(text[m.end():]):
+            return word
+        return "the company"
+
+    return re.sub(r"\b" + re.escape(name) + r"\b", keep_or_mask, text, flags=re.I)
+
+
+def classify_sensitive(label: str, employer: str | None = None) -> str | None:
+    """The sensitive category this question falls into, or None. `employer`,
+    when given, is the company the form belongs to — see without_employer.
 
     Errs toward flagging. A false positive costs the user one question they
     answer once and we remember forever; a false negative is a fabricated legal
     declaration. That asymmetry settles every borderline case.
     """
-    sig = question_signature(label)
+    sig = question_signature(without_employer(label, employer) if employer else label)
     if not sig:
         return None
     for category, pattern in SENSITIVE_PATTERNS:

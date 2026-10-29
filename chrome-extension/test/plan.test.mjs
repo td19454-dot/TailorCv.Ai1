@@ -234,6 +234,17 @@ test('"Have you been employed by X previously?" is answered from the work histor
               jobs(['Citibank N.A.']), null, null)[0].value, 'Yes', 'a match is Yes');
   const empty = { answerBank: Object.assign({}, BANK, { current_company: '', previous_company: '' }), hasResume: true };
   eq(p.decide([q('Have you worked for Globex before?')], empty, null, null)[0].value, 'No', 'no work history: No');
+  // An employer called Visa is not a visa question (Visa Workday, Oct 2026):
+  // it was sent to the profile as "add your sponsorship answer".
+  const visa = 'Have you ever worked for Visa Inc. or any wholly/majority-owned subsidiaries of Visa Inc. '
+    + '(e.g., CyberSource, Fundamo, etc.) in any capacity (e.g., Contractor, Full-time Employee, Consultant, '
+    + 'Intern, etc.)? If Yes, please answer the questions below. If No, please continue.*';
+  const v = p.decide([q(visa)], jobs(['Alignerr']), null, null)[0];
+  eq(v.action, p.FILL, `${v.action}: ${v.reason}`);
+  eq(v.value, 'No');
+  eq(p.decide([q(visa)], jobs(['Visa Inc']), null, null)[0].value, 'Yes');
+  // A real visa question is still sensitive.
+  ok(p.decide([q('Will you require visa sponsorship?')], jobs(['Alignerr']), null, null)[0].sensitive);
 });
 
 test('a saved clearance answer is not reused for a differently worded question', () => {
@@ -1436,6 +1447,52 @@ test('decide tolerates empty and missing input', () => {
   deepEq(p.decide([], CTX, null, null), []);
   deepEq(p.decide(null, CTX, null, null), []);
   eq(p.decide([field('First Name')], {}, null, null)[0].action, p.SKIP);
+});
+
+test("on Visa's own form, questions naming Visa are not visa-sponsorship questions", () => {
+  // Every Visa question naming the company asked for "your sponsorship answer".
+  const ctx = Object.assign({}, CTX, { jobCompany: 'Visa' });
+  for (const label of [
+    'I agree that Visa may reach out to me via SMS regarding my application and candidate experience. '
+      + 'Message and data rates may apply. I can opt-out at any time.*',
+    'Visa may use automated tools such as AI to support review of your application for this role, and if '
+      + 'applicable, match you with relevant existing and future open roles.*']) {
+    const d = p.decide([field(label, { kind: 'checkbox', required: true })], ctx, null, null)[0];
+    notOk(d.sensitive, `${label.slice(0, 40)}… -> ${d.sensitive}`);
+    notOk(/sponsorship/.test(d.reason || ''), d.reason);
+  }
+  ok(p.decide([field('Will you now or in the future require Visa sponsorship?', { kind: 'combobox', options: ['Yes', 'No'] })],
+              ctx, null, null)[0].sensitive, 'a real sponsorship question still is one');
+  // Without the employer it stays locked, as before.
+  ok(p.decide([field('Visa may use automated tools such as AI to review your application.*', { kind: 'checkbox' })],
+              CTX, null, null)[0].sensitive);
+});
+
+test('a degree list worded by ISCED level takes the option at the same level', () => {
+  // Visa's Workday list (Oct 2026): no option holds "Bachelor's Degree", so a
+  // B.E. matched nothing and the Degree stayed "Select One".
+  const VISA = ['Select One',
+    'Below Upper-Secondary Education (ISCED 0–2: primary, lower-secondary; e.g., less than Grade 12, Year 13, Senior 6)',
+    'High School or Upper-Secondary Completion (ISCED 3: High-School Diploma, A-Levels, IB Diploma, Abitur, Baccalauréat, Matura, GED)',
+    'Post-Secondary Vocational Certificate or Diploma (ISCED 4: trade/technical school, apprenticeship, craftsman diploma)',
+    'Other/Not Listed',
+    'Associate or Equivalent Short-Cycle Tertiary Qualification (ISCED 5: Associate Degree, Higher National Diploma, DUT, Diploma of Higher Education)',
+    'Bachelor’s or Equivalent First-Degree (ISCED 6: BA, BSc, BEng, LLB, etc.)',
+    'Master of Business Administration - MBA ( (ISCED 7)',
+    'Master’s or Equivalent Second-Degree (ISCED 7: MA, MSc, MEng, MPhil, professional licentiate)',
+    'Juris Doctoral or Equivalent (JD)',
+    'Doctoral or Equivalent Research Degree (ISCED 8: PhD, DPhil, EdD, MD-Res, professional doctorates)'];
+  const pick = stored => p.coerce(stored, { kind: 'combobox', options: VISA.map(o => ({ value: o, label: o })),
+    candidates: p.candidatesFor('degree', stored, {}), candidateKey: 'degree' });
+  for (const s of ['Bachelor of Engineering', 'B.E.', 'B.Tech', "Bachelor's Degree"]) eq(pick(s), VISA[6], s);
+  for (const s of ['M.Tech', 'M.Sc']) eq(pick(s), VISA[8], `${s}: the general master's, not the MBA`);
+  eq(pick('MBA'), VISA[7], 'an MBA takes the MBA option');
+  eq(pick('PhD'), VISA[10], 'a PhD takes ISCED 8, never the JD');
+  eq(pick('High School'), VISA[2]);
+  eq(pick('Associate Degree'), VISA[5]);
+  // No single level: left for the model to choose, never a guess here.
+  eq(pick('Diploma in Mechanical Engineering'), null);
+  eq(pick('JD'), null);
 });
 
 await run('plan.js');

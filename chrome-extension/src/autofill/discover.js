@@ -879,6 +879,15 @@ export function describeFields(form) {
       multiPrompt: !!(p.workdayMultiselect && p.workdayMultiselect(el)),
     };
 
+    // A label that only says "Please Select One": the question is the section
+    // heading. NVIDIA's gender dropdown is that, under "Self-Identification of
+    // Gender" — read as "Please Select One" it was no gender question at all,
+    // and the forced pass would have had the model pick one.
+    if (PLACEHOLDER_LABEL_RE.test(row.label)) {
+      const named = sectionNameOf(el) || (PLACEHOLDER_LABEL_RE.test(d.ident) ? '' : d.ident);
+      if (named) row.label = named;
+    }
+
     if (kind === 'radio' || kind === 'checkbox') {
       const label = p.labelFor(el) || el.value || '';
       row.options = label ? [{ value: el.value || label, label, el }] : [];
@@ -1142,6 +1151,32 @@ export function hasUploadedFile(el) {
     n = n.parentElement; depth++;
   }
   return false;
+}
+
+const PLACEHOLDER_LABEL_RE = /^\s*(please\s+)?(select|choose)(\s+(one|an?\s+option))?\s*[:.*]?\s*$/i;
+
+/**
+ * The name of the section a field sits in: the wrapping group's
+ * aria-labelledby, a <fieldset>'s legend, or the heading above it. ''.
+ */
+function sectionNameOf(el) {
+  const clean = s => (s || '').replace(/\s+/g, ' ').trim();
+  try {
+    const group = el.closest('[role="group"][aria-labelledby], fieldset');
+    if (group && !group.closest('#tailorcv-sidebar')) {
+      let text = '';
+      if (group.tagName === 'FIELDSET') {
+        const legend = group.querySelector('legend');
+        text = clean(legend && legend.textContent);
+      } else {
+        const doc = el.ownerDocument;
+        text = clean(group.getAttribute('aria-labelledby').split(/\s+/)
+          .map(id => { const n = doc.getElementById(id); return n ? n.textContent : ''; }).join(' '));
+      }
+      if (text && text.length <= 80 && !PLACEHOLDER_LABEL_RE.test(text)) return text;
+    }
+  } catch (e) { /* fall through */ }
+  return sectionHeadingBefore(el);
 }
 
 /**

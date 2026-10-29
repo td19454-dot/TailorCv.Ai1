@@ -2974,16 +2974,40 @@
         applyBusy = true;          // the watcher must not repaint mid-move
         AF.ui.renderRunning(body, 'Saving and moving to the next page…', autoRunningInfo());
         const before = stepKey();
+        const shownBefore = pageErrors();   // the click handler may add errors synchronously
         pressButton(next);
-        const moved = await waitForNextStep(before);
+        const moved = await waitForNextStep(before, shownBefore);
         applyBusy = false;
-        if (moved.errors) {
-          return pauseAuto('Workday did not accept this page:', moved.errors.map(t => ({ label: t, reason: 'fix on the page' })));
-        }
         if (!moved.ok) {
-          return pauseAuto("The page didn't move on after Save and Continue — check it, then continue.", []);
+          // Refused — with Workday's errors or without a word. Usually a field
+          // the fill could not settle in time: the page drawn after the fill,
+          // or a pick committed after the press (Visa: "School or University is
+          // required" beside a box showing the school). Fill the page again and
+          // press once more, once per page; Save and Continue never submits.
+          if (auto.retriedStep !== before) {
+            auto.retriedStep = before;
+            auto.retryErrors = moved.errors || [];
+            auto.stepFills = 0;
+            auto.forcedStep = null;
+            await waitForStepForm();
+            fillFirst = true;
+            continue;
+          }
+          // The same banner again is no NEW error to the second press: the
+          // first one's, still on the page, is what Workday is saying.
+          const shown = pageErrors();
+          const errors = moved.errors || (auto.retryErrors || []).filter(t => shown.includes(t));
+          if (errors.length) {
+            return pauseAuto('Workday did not accept this page:', errors.map(t => ({ label: t, reason: 'fix on the page' })));
+          }
+          const invalid = invalidFields();
+          return invalid.length
+            ? pauseAuto('Workday did not move on — these fields need attention:',
+                        invalid.map(t => ({ label: t, reason: 'Workday marked this' })))
+            : pauseAuto("The page didn't move on after Save and Continue — check it, then continue.", []);
         }
         auto.pages++;
+        auto.retriedStep = null;
         auto.stepFills = 0;
         fillFirst = true;
         await waitForStepForm();
@@ -3045,27 +3069,53 @@
     return stepMarker() || fillableFingerprint();
   }
 
-  /** Workday's error banner / field errors after Save and Continue, as text. */
-  function pageErrors() {
+  // Workday's role="alert" regions also carry good news ("resume.pdf
+  // successfully uploaded"), and it stays on the page.
+  const NOT_AN_ERROR_RE = /\b(success(fully)?|uploaded|saved|added|removed|deleted)\b/i;
+  const ERROR_WORD_RE = /\b(error|required|invalid|fail(ed|s)?)\b/i;
+
+  /**
+   * Workday's error banner / field errors after Save and Continue, as text.
+   * `baseline`: what was already on the page before the press — not its errors.
+   */
+  function pageErrors(baseline) {
     const sel = '[data-automation-id="errorBanner"], [data-automation-id="errorMessage"], '
       + '[data-automation-id="inputAlert"], [data-automation-id="applyFlowPage"] [role="alert"]';
     const out = [];
     for (const n of document.querySelectorAll(sel)) {
       if (n.closest('#tailorcv-sidebar')) continue;
-      const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
-      if (t && !out.includes(t)) out.push(t.slice(0, 160));
+      const t = (n.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 160);
+      if (!t || out.includes(t) || (baseline && baseline.includes(t))) continue;
+      if (NOT_AN_ERROR_RE.test(t) && !ERROR_WORD_RE.test(t)) continue;
+      out.push(t);
       if (out.length >= 6) break;
     }
     return out;
   }
 
-  function waitForNextStep(before) {
+  /** The fields Workday outlined as invalid, by label — when it says nothing else. */
+  function invalidFields() {
+    const out = [];
+    for (const el of document.querySelectorAll('[aria-invalid="true"]')) {
+      if (el.closest('#tailorcv-sidebar') || !AF.isNodeVisible(el)) continue;
+      const field = el.closest('[data-automation-id^="formField"]');
+      let label = field && field.querySelector('label, legend');
+      if (!label && el.id) label = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
+      const t = ((label && label.textContent) || el.getAttribute('aria-label') || '')
+        .replace(/\*/g, '').replace(/\s+/g, ' ').trim().slice(0, 120);
+      if (t && !out.includes(t)) out.push(t);
+      if (out.length >= 6) break;
+    }
+    return out;
+  }
+
+  function waitForNextStep(before, baseline) {
     return new Promise((resolve) => {
       const start = Date.now();
       const tick = () => {
         const now = stepKey();
         if (now && now !== before) { resolve({ ok: true }); return; }
-        const errors = Date.now() - start > 800 ? pageErrors() : [];
+        const errors = Date.now() - start > 800 ? pageErrors(baseline) : [];
         if (errors.length) { resolve({ errors }); return; }
         if (Date.now() - start > AUTO_STEP_WAIT_MS) { resolve({ ok: false }); return; }
         setTimeout(tick, 250);
@@ -3082,7 +3132,11 @@
   async function waitForStepForm() {
     const until = Date.now() + AUTO_FORM_WAIT_MS;
     const footer = () => document.querySelector(NEXT_SEL);
-    while (Date.now() < until && !(footer() && (hasForm() || isFinalStep()))) {
+    // The live page, not the form cached from the last step: Workday keeps the
+    // footer across steps, so with the cache this ended at once on NVIDIA and
+    // the Voluntary Disclosures fill ran on a page not drawn yet.
+    const ready = () => { refreshApplyMode(); return footer() && (hasForm() || isFinalStep()); };
+    while (Date.now() < until && !ready()) {
       await new Promise(r => setTimeout(r, 250));
     }
     // A step with no fields at all: the footer alone, once it is there.
@@ -3109,7 +3163,7 @@
    */
   function unfilledFieldsShown() {
     const decisions = (auto && auto.result && auto.result.decisions) || [];
-    if (decisions.length || !hasForm()) return false;
+    if (decisions.length) return false;
     refreshApplyMode();
     return !!(applyForm && fieldKeysOf(applyForm).length);
   }

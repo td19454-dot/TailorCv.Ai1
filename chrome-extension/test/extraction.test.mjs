@@ -440,27 +440,68 @@ function wireAutoApplyPage(page, opts = {}) {
       <div data-automation-id="applyFlowStepPage">${s.html}</div>
       <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">${s.submit ? 'Submit' : 'Save and Continue'}</button></div>
     </div>`;
+    if (opts.uploadNotice && at === 0) {
+      // Its own section among several fields, as on Workday's My Experience —
+      // beside a lone field the probe would read it as that field's error.
+      doc.querySelector('[data-automation-id="applyFlowStepPage"]').insertAdjacentHTML('beforeend',
+        `<div data-automation-id="formField-website"><label for="w1">Website</label><input id="w1" type="text"></div>
+         <section><div role="alert">SHUBHAM_SARKAR_JU.pdf successfully uploaded</div></section>`);
+    }
     doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => {
       for (const el of doc.querySelectorAll("input")) if (el.value) log.filled[el.id] = el.value;
       if (steps[at].submit) { log.submit++; return; }
       log.next++;
-      if (opts.errorOnFirst && !errored) {
+      if ((opts.errorOnFirst && !errored) || opts.errorAlways) {
         errored = true;
         doc.querySelector('[data-automation-id="applyFlowPage"]').insertAdjacentHTML('afterbegin',
           '<div data-automation-id="errorBanner">Errors Found: Phone Number is required</div>');
         return;
       }
-      at++;
-      render();
-      if (opts.lagMs) {
-        // Workday: the progress bar moves at once; the page and its footer are
-        // drawn a moment later.
-        doc.querySelector('[data-automation-id="applyFlowStepPage"]').innerHTML = '';
-        doc.querySelector('[data-automation-id="pageFooter"]').remove();
-        setTimeout(render, opts.lagMs);
+      // Workday's quiet refusal: an empty required field is outlined, no banner.
+      if (opts.validate) {
+        const empty = Array.from(doc.querySelectorAll('input[aria-required="true"]')).filter(el => !el.value);
+        for (const el of empty) el.setAttribute('aria-invalid', 'true');
+        if (empty.length) { log.refused = (log.refused || 0) + 1; return; }
       }
+      // Refused once on step 2 even though it was filled — the form cleared it.
+      if (opts.refuseOnceAt === at && !errored) {
+        errored = true;
+        const el = doc.querySelector('input[aria-required="true"]');
+        el.value = '';
+        el.setAttribute('aria-invalid', 'true');
+        log.refused = (log.refused || 0) + 1;
+        return;
+      }
+      const advance = () => {
+        at++;
+        render();
+        if (opts.footerStays) {
+          // NVIDIA: the footer stays from the last step; the step's fields are
+          // drawn a moment after the progress bar moves.
+          const stepPage = doc.querySelector('[data-automation-id="applyFlowStepPage"]');
+          const html = stepPage.innerHTML;
+          stepPage.innerHTML = '';
+          setTimeout(() => { stepPage.innerHTML = html; }, opts.footerStays);
+        }
+        if (opts.lagMs) {
+          // Workday: the progress bar moves at once; the page and its footer are
+          // drawn a moment later.
+          doc.querySelector('[data-automation-id="applyFlowStepPage"]').innerHTML = '';
+          doc.querySelector('[data-automation-id="pageFooter"]').remove();
+          setTimeout(render, opts.lagMs);
+        }
+      };
+      // Workday saves the step before it moves on — a second or more.
+      if (opts.saveMs) setTimeout(advance, opts.saveMs);
+      else advance();
     });
   };
+  // Workday drops a field's error outline as soon as it gets a value.
+  for (const type of ['input', 'change']) {
+    doc.body.addEventListener(type, (e) => {
+      if (e.target && e.target.value) e.target.setAttribute('aria-invalid', 'false');
+    });
+  }
   return { log, filled: log.filled, render, goTo: (i) => { at = i; render(); } };
 }
 
@@ -562,13 +603,59 @@ test('Auto-apply: a page drawn after its step changes is still filled before mov
   ok(app.filled.e2, 'step 2 was filled after it was drawn');
 });
 
-test('Auto-apply: Workday\'s error banner after Save and Continue pauses it, without clicking again', async () => {
+test('Auto-apply: a "successfully uploaded" notice is not an error', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page, { uploadNotice: true, saveMs: 1500 });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000),
+     `it reaches Review: ${page.document.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 600)}`);
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: the footer stays while the next step is drawn — the step is still filled', async () => {
+  // NVIDIA Voluntary Disclosures: Save and Continue never left the screen, the
+  // fields came 2 s later, the fill ran on the empty step ("0 filled") and
+  // Workday refused the press.
+  const page = autoApplyPage();
+  const app = mountSteps(page, { footerStays: 2000, validate: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it reaches Review');
+  ok(app.filled.e2, 'step 2 was filled once drawn');
+  eq(app.log.refused || 0, 0, 'Workday never had to refuse a press');
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: a press Workday quietly refuses is filled again and pressed once more', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page, { refuseOnceAt: 1 });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000),
+     `it reaches Review after the retry: ${page.document.getElementById('tailorcv-sidebar').textContent
+       .replace(/\s+/g, ' ').slice(280, 900)} log=${JSON.stringify(app.log)}`);
+  eq(app.log.refused, 1);
+  eq(app.log.next, 3, 'step 1, step 2 refused, step 2 again');
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: Workday\'s error banner gets one refill and one more press', async () => {
+  // Visa: "School or University is required" beside a box showing the school —
+  // committed after the press. The second press goes through.
   const page = autoApplyPage();
   const app = mountSteps(page, { errorOnFirst: true });
   await startAuto(page);
-  ok(await waitForText(page, /Phone Number is required/, 60000), 'the error is shown in the sidebar');
+  ok(await waitForText(page, /Ready to submit/, 90000), 'it reaches Review after the retry');
+  eq(app.log.next, 3, 'step 1 refused, step 1 again, step 2');
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: Workday refusing twice with an error pauses, showing the error', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page, { errorAlways: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Phone Number is required/, 90000), 'the error is shown in the sidebar');
   ok(/Auto-apply paused/.test(page.document.getElementById('tailorcv-sidebar').textContent));
-  eq(app.log.next, 1, 'pressed once, not again');
+  eq(app.log.next, 2, 'pressed twice, not more');
 });
 
 test('Workday: a step that grows blocks under the same heading keeps its results', async () => {

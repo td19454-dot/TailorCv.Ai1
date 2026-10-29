@@ -244,7 +244,7 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
         # work in the United States?" must not get an answer for it; the flags
         # are OR'd, so the request can only ever add caution, never remove it.
         for f in fields:
-            f.sensitive = bool(f.sensitive) or bool(classify_sensitive(f.label))
+            f.sensitive = bool(f.sensitive) or bool(classify_sensitive(f.label, payload.jobCompany))
             f.neverFill = bool(is_never_fill(f.label))
 
         # Auto-apply's second pass on a page already planned (and charged): the

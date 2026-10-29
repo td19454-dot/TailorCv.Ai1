@@ -142,6 +142,15 @@ function handleMessage(msg, options) {
     case 'AF_PLAN': {
       if (options.serverError) return { error: options.serverError, code: options.serverCode };
       const answers = {};
+      // The forced pass (auto-apply's required leftovers, a block's list the
+      // rules could not answer): options.forceAnswer(field) -> value or null.
+      if (msg.payload.force && options.forceAnswer) {
+        for (const field of msg.payload.fields || []) {
+          const value = options.forceAnswer(field);
+          if (value) answers[String(field.i)] = { value, source: 'ai_forced', confidence: 0.6 };
+        }
+        return { data: { answers, ask: [], sensitiveSkipped: [], neverFill: [] } };
+      }
       for (const field of msg.payload.fields || []) {
         // A motivation question the server writes for this job (_compose_answers).
         if (field.compose && options.composeAnswer) {
@@ -2853,6 +2862,33 @@ test('Workday education: Degree waits for its options to load past "Select One"'
     const degree = n => eduBlock(doc, n).querySelector('[data-automation-id="formField-degree"] button').textContent;
     eq(degree(1), 'BTECH', 'Bachelor of Technology → BTECH, once the real options load');
     eq(degree(2), 'High School', 'Higher Secondary → High School');
+  });
+});
+
+test('Workday education: a Degree the rules cannot match is chosen by the model from the list', async () => {
+  // Visa (Oct 2026): no rule matched its degree list, the Degree stayed
+  // "Select One" and auto-apply stopped. Here: a B.E. against NVIDIA's list,
+  // which has BTECH but no B.E. and no "Bachelor's Degree".
+  const asked = [];
+  const forceAnswer = (f) => {
+    asked.push(f);
+    return /^Degree/.test(f.label) && f.options.includes('BTECH') ? 'BTECH' : null;
+  };
+  await withForm(WD_EDUCATION_PAGE, { forceAnswer }, async (env) => {
+    wireWorkdayEducation(env);
+    const schools = [Object.assign({}, NVIDIA_SCHOOLS[0], { degree: 'Bachelor of Engineering' }), NVIDIA_SCHOOLS[1]];
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: schools } });
+    const result = await run_.runAutofill(ctx, null);
+    const degree = n => eduBlock(env.document, n).querySelector('[data-automation-id="formField-degree"] button').textContent;
+    eq(degree(1), 'BTECH', "the model's pick, from the list");
+    eq(degree(2), 'High School', 'the rules still answer what they can — no model call for it');
+    eq(asked.length, 1, `one call: ${asked.map(f => f.label).join(' | ')}`);
+    ok(/Jadavpur/.test(asked[0].label) && /Bachelor of Engineering/.test(asked[0].label),
+       `asked for THIS school's degree: ${asked[0].label}`);
+    ok(asked[0].options.includes('BTECH'), 'with the options read from the list');
+    const row = result.decisions.find(x => String(x.key) === 'repeater:education:0');
+    eq(row.source, 'ai_forced');
+    ok(/Degree picked by AI/.test(row.reason), row.reason);
   });
 });
 

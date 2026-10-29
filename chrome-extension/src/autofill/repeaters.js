@@ -27,10 +27,11 @@
 // merges the blocks' "I currently work here" boxes into one field because
 // they share name="currentlyWorkHere" — so each block is read on its own here.
 
-import { describeFields, isVisible } from './discover.js';
+import { describeFields, isVisible, readComboboxOptions } from './discover.js';
 import { applyDecision } from './write.js';
 import { tileAnswer, press } from './tiles.js';
 import { FILL, ASK } from './plan.js';
+import { classifySensitive } from './match.js';
 import { TIMING, sleep } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
@@ -154,6 +155,8 @@ const SECTIONS = {
     identityRe: /company|employer|organi[sz]ation/i,
     identity: e => e.company,
     describe: e => [e.title, e.company].filter(Boolean).join(' · '),
+    describeFull: e => [e.title, e.company, e.location, e.current ? `${e.from || ''} – present` : [e.from, e.to].filter(Boolean).join(' – ')]
+      .filter(Boolean).join(' · '),
     currentBox: true,
   },
   education: {
@@ -165,6 +168,8 @@ const SECTIONS = {
     identityRe: /school|university|college|institution/i,
     identity: e => e.school,
     describe: e => [e.school, e.degree].filter(Boolean).join(' · '),
+    describeFull: e => [e.school, e.degree, e.field, [e.from, e.to].filter(Boolean).join(' – ')]
+      .filter(Boolean).join(' · '),
     currentBox: false,
   },
 };
@@ -174,8 +179,9 @@ const SECTIONS = {
  * "currently work here" box goes first and the block is re-read after it,
  * because ticking it removes or disables "To" on Workday.
  */
-async function fillPanel(panel, entry, spec) {
+async function fillPanel(panel, entry, spec, ask) {
   const filled = [];
+  const byAi = [];
   let rows = panelRows(panel);
   const current = spec.currentBox && rows.find(r => r.kind === 'checkbox' && /current/i.test(r.label || ''));
   if (current && entry.current && !current.filled) {
@@ -188,19 +194,47 @@ async function fillPanel(panel, entry, spec) {
   for (const row of rows) {
     if (row.kind === 'checkbox' || row.kind === 'file') continue;
     if (row.filled && !row.invalid) continue;            // what Workday filled stays
+    const name = String(row.label || '').replace(/\s*\*$/, '');
     const shapes = spec.shapes(row, entry);
-    if (!shapes || !shapes.length) continue;
-    const decision = { row, value: shapes[0], candidates: shapes, label: row.label };
-    // A degree list is chosen from with the planner's own rules (same level
-    // only — never "Master's" for "Bachelor's"), not by resemblance.
-    if (spec === SECTIONS.education && /degree|qualification/i.test(row.label || '')) {
-      decision.readFirst = { key: 'degree', stored: entry.degree };
+    let res = null;
+    if (shapes && shapes.length) {
+      const decision = { row, value: shapes[0], candidates: shapes, label: row.label };
+      // A degree list is chosen from with the planner's own rules (same level
+      // only — never "Master's" for "Bachelor's"), not by resemblance.
+      if (spec === SECTIONS.education && /degree|qualification/i.test(row.label || '')) {
+        decision.readFirst = { key: 'degree', stored: entry.degree };
+      }
+      res = await applyDecision(decision);
+      if (res.ok) { filled.push(name); continue; }
+      log(spec, `"${row.label}" did not take (${res.outcome})`);
     }
-    const res = await applyDecision(decision);
-    if (res.ok) filled.push(String(row.label || '').replace(/\s*\*$/, ''));
-    else log(spec, `"${row.label}" did not take (${res.outcome})`);
+    // A required list the rules could not answer: the model chooses one of its
+    // options for this entry. Visa's degree list is worded by ISCED level and
+    // stayed "Select One" — and stopped auto-apply — with nothing else to try.
+    const picked = await askModel(row, entry, spec, ask);
+    if (picked) { filled.push(name); byAi.push(name); }
   }
+  filled.byAi = byAi;
   return filled;
+}
+
+const LIST_KINDS = new Set(['combobox', 'select', 'radio', 'choice']);
+
+/** One required list answered by the model from this entry; true when it took. */
+async function askModel(row, entry, spec, ask) {
+  if (typeof ask !== 'function' || !row.required || !LIST_KINDS.has(row.kind)) return false;
+  if (classifySensitive(row.label)) return false;
+  let options = (row.options || []).map(o => (typeof o === 'string' ? o : o && o.label)).filter(Boolean);
+  if (!options.length && row.kind === 'combobox') {
+    try { options = await readComboboxOptions(row); } catch (e) { options = []; }
+  }
+  if (!options.length) return false;
+  let value = null;
+  try { value = await ask(row, spec.describeFull(entry), options); } catch (e) { value = null; }
+  if (!value) return false;
+  const res = await applyDecision({ row, value, candidates: [value], label: row.label });
+  if (!res.ok) log(spec, `"${row.label}": the model's "${value}" did not take (${res.outcome})`);
+  return !!res.ok;
 }
 
 function stillMissing(panel) {
@@ -223,9 +257,9 @@ async function waitFor(fn, ms) {
  * decision per job for the results panel: FILL when the block holds it, ASK
  * with the reason otherwise. Never presses Save and Continue.
  */
-export function fillExperienceSection(ctx, progress, doc) {
+export function fillExperienceSection(ctx, progress, doc, ask) {
   const jobs = (ctx && ctx.facts && ctx.facts.workExperience) || [];
-  return fillSection(SECTIONS.experience, jobs, progress, doc);
+  return fillSection(SECTIONS.experience, jobs, progress, doc, ask);
 }
 
 /**
@@ -233,15 +267,15 @@ export function fillExperienceSection(ctx, progress, doc) {
  * The first school takes the profile's single GPA when it has none of its own
  * — that GPA is the one every single-box form already gets.
  */
-export function fillEducationSection(ctx, progress, doc) {
+export function fillEducationSection(ctx, progress, doc, ask) {
   const facts = (ctx && ctx.facts) || {};
   const bankGpa = String(((ctx && ctx.answerBank) || {}).gpa || '').trim();
   const schools = (facts.educationEntries || [])
     .map((s, i) => (i === 0 && !s.gpa && bankGpa ? Object.assign({}, s, { gpa: bankGpa }) : s));
-  return fillSection(SECTIONS.education, schools, progress, doc);
+  return fillSection(SECTIONS.education, schools, progress, doc, ask);
 }
 
-async function fillSection(spec, allEntries, progress, doc) {
+async function fillSection(spec, allEntries, progress, doc, ask) {
   const section = spec.find(doc);
   const entries = (allEntries || []).slice(0, spec.max);
   if (!section || !entries.length) return [];
@@ -263,6 +297,10 @@ async function fillSection(spec, allEntries, progress, doc) {
     }
     d.action = FILL; d.source = 'profile'; d.outcome = 'ok';
     d.value = d.shown = filled.length ? filled.join(' · ') : 'already filled';
+    if (filled.byAi && filled.byAi.length) {
+      d.source = 'ai_forced';
+      d.reason = `${filled.byAi.join(', ')} picked by AI from your resume — check ${filled.byAi.length === 1 ? 'it' : 'them'}`;
+    }
   };
 
   // Block N takes entry N (profile order, newest first, as the resume lists
@@ -284,7 +322,7 @@ async function fillSection(spec, allEntries, progress, doc) {
     const d = decisionFor(entry, a.job);
     log(spec, `block ${b + 1} ← ${spec.noun} ${a.job + 1} (${spec.describe(entry)})${a.why ? ' — ' + a.why : ''}`);
     if (progress) progress('filling', { detail: d.label });
-    finish(d, existing[b], await fillPanel(existing[b], entry, spec));
+    finish(d, existing[b], await fillPanel(existing[b], entry, spec, ask));
   }
 
   // The entries without a block: one "Add Another" each. With no block on the
@@ -312,7 +350,7 @@ async function fillSection(spec, allEntries, progress, doc) {
     const panel = sectionPanels(section)[before];
     log(spec, `added block ${before + 1} ← ${spec.noun} ${i + 1} (${spec.describe(entries[i])})`);
     if (progress) progress('filling', { detail: d.label });
-    finish(d, panel, await fillPanel(panel, entries[i], spec));
+    finish(d, panel, await fillPanel(panel, entries[i], spec, ask));
   }
   return out;
 }
