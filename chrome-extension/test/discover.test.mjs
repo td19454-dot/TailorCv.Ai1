@@ -167,6 +167,33 @@ test('describeFields finds both Greenhouse question sections', async () => {
   });
 });
 
+test('Workday "Please Select One" is named by its section, and is the sensitive gender question', async () => {
+  // NVIDIA Voluntary Disclosures. Read as "Please Select One" it was no gender
+  // question, and auto-apply's forced pass would have had the model pick one.
+  await withDoc(`<main><div data-automation-id="applyFlowPage">
+    <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    <div role="group" aria-labelledby="Self-Identification-of-Gender-section">
+      <h4 id="Self-Identification-of-Gender-section">Self-Identification of Gender</h4>
+      <div data-automation-id="formField-gender"><label for="personalInfoPerson--gender"><span>Please Select One<abbr aria-hidden="true">*</abbr></span></label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Please Select One Select One Required"
+          name="gender" id="personalInfoPerson--gender">Select One</button></div>
+    </div>
+    <div data-automation-id="formField-acceptTermsAndAgreements"><label for="tc">By selecting the checkbox, you agree to our Terms and Conditions.<abbr>*</abbr></label>
+      <input id="tc" type="checkbox" name="acceptTermsAndAgreements" aria-required="true"></div>
+    </div></div></main>`, () => {
+    const rows = d.describeFields(d.findForm());
+    const gender = rows.find(r => r.el && r.el.id === 'personalInfoPerson--gender');
+    ok(gender, `labels: ${rows.map(r => r.label).join(' | ')}`);
+    eq(gender.label, 'Self-Identification of Gender');
+    const [dec] = p.decide([gender], { answerBank: {} });
+    eq(dec.sensitive, 'demographic', 'sensitive: never sent to the AI, forced or not');
+    // And answered from the profile's gender — it paused auto-apply as "needs you".
+    const [filled] = p.decide([gender], { answerBank: { gender: 'Male' } });
+    eq(filled.action, p.FILL, `action ${filled.action}: ${filled.reason}`);
+    eq(filled.value, 'Male');
+  });
+});
+
 test('a Greenhouse upload takes its name from its group, not the Attach button', async () => {
   await withDoc(fixtures.GREENHOUSE_REMIX, () => {
     const rows = d.describeFields(d.findForm());

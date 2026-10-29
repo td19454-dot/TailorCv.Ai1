@@ -708,4 +708,18 @@ test('an unrelated work-permit question does not claim the sponsorship answer', 
   eq(m.matchFieldKey('Do you have a valid work permit?'), null);
 });
 
+test('Workday "Self-Identification of …" sections read the stored answer they name', () => {
+  // NVIDIA: "Self-Identification of Gender" matched no stored answer, so the
+  // gender dropdown was left to the person and auto-apply paused on it.
+  for (const [label, key] of [['Self-Identification of Gender', 'gender'],
+                              ['Voluntary Self-Identification of Disability', 'disability_status'],
+                              ['Self-Identification of Race/Ethnicity', 'race_ethnicity'],
+                              ['Self Identification: Veteran Status', 'veteran_status']]) {
+    const category = m.classifySensitive(label);
+    eq(category, 'demographic', label);
+    const entry = m.matchSensitiveKey(label, category);
+    eq(entry && entry.key, key, label);
+  }
+});
+
 await run('match.js');

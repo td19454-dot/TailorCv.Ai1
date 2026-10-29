@@ -30,8 +30,8 @@ import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPh
   STORABLE_SENSITIVE } from './match.js';
 
 /** May this question's answer go to the answer store? (match_guard.is_never_store) */
-function storable(label, sensitive) {
-  const category = sensitive || classifySensitive(label);
+function storable(label, sensitive, employer) {
+  const category = sensitive || classifySensitive(label, employer);
   return !category || STORABLE_SENSITIVE.has(category);
 }
 import { TIMING, sleep, startClock } from './timing.js';
@@ -212,7 +212,7 @@ export function learnableAnswers(decisions) {
     const after = reprobe(d.row);
     const value = (after && after.value) || '';
     if (!value || !after.filled) continue;
-    if (!storable(d.label, d.sensitive)) continue;
+    if (!storable(d.label, d.sensitive, d.employer)) continue;
     if (isNeverFill(d.label) || looksSecret(value)) continue;
     if (d.row.kind === 'file') continue;
     const type = (d.row.hints && d.row.hints.type) || '';
@@ -270,7 +270,7 @@ export async function forceAnswers(ctx, decisions, onProgress) {
   const progress = typeof onProgress === 'function' ? onProgress : () => {};
   const targets = pageBlockers(decisions).map(b => b.decision).filter(d =>
     d.row && d.row.kind !== 'file' && !d.slot && !d.knownEmpty && !d.sensitive
-    && !classifySensitive(d.label) && !isNeverFill(d.label)).slice(0, MAX_FORCED);
+    && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label)).slice(0, MAX_FORCED);
   if (!targets.length) return { forced: 0 };
 
   for (const d of targets) {
@@ -332,6 +332,38 @@ export async function forceAnswers(ctx, decisions, onProgress) {
     }
   }
   return { forced: answered.length };
+}
+
+/**
+ * The model's choice for one list in an Education / Experience block the rules
+ * could not answer (Visa's ISCED-worded Degree): one option, verbatim, chosen
+ * for that block's entry. The forced path — never charged, never a sensitive
+ * question (the server re-checks). Null when it gives none.
+ */
+function askBlockField(ctx) {
+  return async (row, entryText, options) => {
+    const label = String(row.label || '').replace(/\s*\*+\s*$/, '');
+    const res = await send({
+      type: 'AF_PLAN',
+      payload: {
+        url: globalThis.location.href,
+        host: globalThis.location.hostname,
+        ats: (findForm() || {}).ats || 'generic',
+        jobTitle: (ctx && ctx.jobTitle) || '',
+        jobCompany: (ctx && ctx.jobCompany) || '',
+        jdExcerpt: '',
+        force: true,
+        fields: [{
+          i: 0, label: entryText ? `${label} — for: ${entryText}` : label, kind: row.kind,
+          required: true, sensitive: false, recallOnly: false, compose: false, documentSlot: null,
+          options: options.slice(0, 300),
+        }],
+      },
+    });
+    const a = !res.error && res.data && res.data.answers && res.data.answers['0'];
+    const value = a && String(a.value || '').trim();
+    return value && options.includes(value) ? value : null;
+  };
 }
 
 // ── the run ──────────────────────────────────────────────────
@@ -436,13 +468,13 @@ export async function runAutofill(ctx, onProgress) {
     // against a block 1 that then filled in underneath us.
     await clock.time('experience', async () => {
       clock.quiet(await waitForQuiet(form.root));
-      decisions = decisions.concat(await fillExperienceSection(ctx, progress));
+      decisions = decisions.concat(await fillExperienceSection(ctx, progress, undefined, askBlockField(ctx)));
     });
   }
   if (eduSection) {
     await clock.time('education', async () => {
       clock.quiet(await waitForQuiet(form.root));
-      decisions = decisions.concat(await fillEducationSection(ctx, progress));
+      decisions = decisions.concat(await fillEducationSection(ctx, progress, undefined, askBlockField(ctx)));
     });
   }
   for (const d of decisions) {
@@ -977,7 +1009,7 @@ export async function answerField(decision, value, remember) {
   }
 
   if (remember && result.ok
-      && storable(decision.label, decision.sensitive)
+      && storable(decision.label, decision.sensitive, decision.employer)
       && !isNeverFill(decision.label) && !looksSecret(decision.value)) {
     await send({ type: 'AF_SAVE_ANSWERS', payload: { answers: [
       { question: decision.label, answer: decision.value },

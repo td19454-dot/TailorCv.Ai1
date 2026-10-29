@@ -15,6 +15,7 @@ import '../../auto_apply/field_probe.js';
 
 import {
   findForm, isApplicationPage, describeFields, detectAts, reprobe, diagnose, looksLikeApplyUrl,
+  isNodeVisible,
 } from './autofill/discover.js';
 import { decide, summarize, fieldsForServer, ASK, FILL, SUGGEST, PROFILE, DOCUMENT, SKIP }
   from './autofill/plan.js';
@@ -127,6 +128,7 @@ if (!globalThis.__tcvAutofill) {
     isApplicationPage,
     findForm,
     detectAts,
+    isNodeVisible,
     looksLikeApplyUrl,
     diagnose,
     isTopFrame,
