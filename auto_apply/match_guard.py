@@ -71,10 +71,11 @@ SENSITIVE_PATTERNS: list[tuple[str, re.Pattern]] = [
         r"|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*"
         r"\b(salary|compensation|pay|wage|rate|ctc)\b")),
     ("demographic", re.compile(
-        r"\bgender\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*"
+        r"\bgender\b|\bsex\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*"
         r"|\bpronoun\w*")),
     ("demographic", re.compile(
-        r"\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b")),
+        r"\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b"
+        r"|\bneuro\s?diver\w*")),
     # Military service asked without the word "military" (Oracle's India form:
     # "Have you served in any of the below India Uniformed forces?").
     ("demographic", re.compile(
@@ -177,8 +178,11 @@ def looks_secret(value: str) -> bool:
 # signature, in the extension), never semantically recalled or shown to a model.
 # Birth too: Region of Birth has no profile field, and its options are the
 # regions of one country, so the person's answer to that exact question is kept.
+# Demographic too: the profile answers these, but a wording the extension cannot
+# place went back to the person on every form; their answer to that exact
+# wording is kept, and used only after the profile. Same as match.js.
 STORABLE_SENSITIVE = {"clearance", "criminal", "citizenship", "government_employment", "birth",
-                      "government_official"}
+                      "government_official", "demographic"}
 
 
 def is_never_store(question: str, answer: str) -> bool:

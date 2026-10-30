@@ -514,4 +514,5 @@ export const PHASE_TEXT = {
   thinking: 'Working out the answers…',
   filling: 'Filling the form…',
   repairing: 'Fixing what didn’t take…',
+  resume: 'Answering the required questions left, from your resume…',
 };

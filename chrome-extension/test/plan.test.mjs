@@ -1542,9 +1542,9 @@ test('government-official questions are answered from the profile, and only wher
   // Each answer only for its own question: the self Yes never answers family.
   expect(WALMART_FAMILY, 'Yes', 'No', p.FILL, 'No');
   expect(WALMART_SELF, 'No', 'Yes', p.FILL, 'No');
-  // Unset -> the profile, never a guess.
-  expect(WALMART_SELF, undefined, undefined, p.PROFILE);
-  expect(WALMART_FAMILY, 'No', undefined, p.PROFILE);
+  // Unset -> asked here (pointing at the profile), never a guess.
+  expect(WALMART_SELF, undefined, undefined, p.ASK);
+  expect(WALMART_FAMILY, 'No', undefined, p.ASK);
 
   // Yes only where the form asks the same open-ended question.
   expect('Have you ever been a government official?', 'Yes', 'No', p.FILL, 'Yes');
@@ -1569,6 +1569,67 @@ test('government-official questions are answered from the profile, and only wher
   eq(follow.action, p.SKIP, `${follow.action}: ${follow.reason}`);
   // Never to the model, any of them.
   eq(p.fieldsForServer([run('Are you a government official?', undefined, undefined)]).length, 0);
+});
+
+test('"Have you worked at DoorDash?" answered in its own sentences', () => {
+  const OPTS = ['I have not worked at DoorDash', 'I am a previous employee', 'I am a previous DoorDash Dasher'];
+  const row = options => field('Have you worked at DoorDash?*', { kind: 'combobox', options, required: true });
+  const never = p.decide([row(OPTS)], Object.assign({}, CTX, { jobCompany: 'DoorDash' }), null, null)[0];
+  eq(never.action, p.FILL, `${never.action}: ${never.reason}`);
+  eq(never.value, 'I have not worked at DoorDash');
+  // Options not read yet: "No", and the writer re-picks it from the open list.
+  const unread = p.decide([row([])], Object.assign({}, CTX, { jobCompany: 'DoorDash' }), null, null)[0];
+  eq(unread.value, 'No');
+  eq(unread.readFirst && unread.readFirst.key, 'previous_employer');
+  // A previous employee — never "a previous Dasher", a courier.
+  eq(p.previousEmployerOption('Yes', OPTS), 'I am a previous employee');
+  eq(p.previousEmployerOption('No', ['Yes', 'No']), 'No');
+  eq(p.previousEmployerOption('Yes', ['I am a previous Dasher', 'I have never worked here']), null);
+});
+
+test('EEO questions in any wording are answered from the profile, and remembered when it cannot', () => {
+  // Oct 2026, one form: "What is your sex?" went to the model; "What is your
+  // sexual orientation?" got the LGBTQ+ answer "No"; "Would you say you have a
+  // disability?" matched no profile answer. None could be remembered.
+  const pick = (label, options) => field(label, { kind: 'select', options, required: true });
+  const decideWith = (row, bank, extra) => p.decide([row],
+    Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, bank) }, extra || {}), null, null)[0];
+
+  const sex = decideWith(pick('What is your sex?', ['Male', 'Female', 'Prefer not to say']), { gender: 'Cisgender man' });
+  eq(sex.sensitive, 'demographic', 'never to the model');
+  eq(sex.action, p.FILL, `${sex.action}: ${sex.reason}`);
+  eq(sex.value, 'Male');
+
+  const ORIENTATION = ['Heterosexual/Straight', 'Gay', 'Lesbian', 'Bisexual', 'Prefer not to say'];
+  const straight = decideWith(pick('What is your sexual orientation?', ORIENTATION), { lgbtq_identity: 'No' });
+  eq(straight.action, p.FILL, `${straight.action}: ${straight.reason}`);
+  eq(straight.value, 'Heterosexual/Straight');
+  // "Yes" does not say which: theirs to answer — or their saved answer.
+  eq(decideWith(pick('What is your sexual orientation?', ORIENTATION), { lgbtq_identity: 'Yes' }).action, p.ASK);
+  const savedOrientation = decideWith(pick('What is your sexual orientation?', ORIENTATION), { lgbtq_identity: 'Yes' },
+    { savedSensitive: [{ question: 'What is your sexual orientation?', answer: 'Bisexual' }] });
+  eq(savedOrientation.value, 'Bisexual');
+  // Transgender: LGBTQ+ "No" is No; "Yes" does not say.
+  eq(decideWith(pick('Are you transgender?', ['Yes', 'No']), { lgbtq_identity: 'No' }).value, 'No');
+  eq(decideWith(pick('Are you transgender?', ['Yes', 'No']), { lgbtq_identity: 'Yes' }).action, p.ASK);
+
+  const DISABILITY = ['Yes, I have a disability (or previously had a disability)', "No, I don't have a disability", 'I do not want to answer'];
+  for (const label of ['Would you say you have a disability?', 'Do you consider yourself to be disabled?']) {
+    const dis = decideWith(pick(label, DISABILITY), { disability_status: "No, I don't have a disability" });
+    eq(dis.action, p.FILL, `${label} -> ${dis.action}: ${dis.reason}`);
+    eq(dis.value, "No, I don't have a disability");
+  }
+  // A spouse's service is not theirs to read off their veteran status.
+  eq(decideWith(pick('Are you a military spouse?', ['Yes', 'No']), { veteran_status: 'I am not a protected veteran' }).action, p.ASK);
+
+  // Remembered now — and used after the profile, never before it.
+  ok(m_.STORABLE_SENSITIVE.has('demographic'));
+  const unplaced = decideWith(pick('Which best describes you?  (EEO: veteran or not)', ['A', 'B']), {},
+    { savedSensitive: [{ question: 'Which best describes you?  (EEO: veteran or not)', answer: 'B' }] });
+  eq(unplaced.value, 'B', `${unplaced.action}: ${unplaced.reason}`);
+  const profileWins = decideWith(pick('What is your sex?', ['Male', 'Female']), { gender: 'Cisgender man' },
+    { savedSensitive: [{ question: 'What is your sex?', answer: 'Female' }] });
+  eq(profileWins.value, 'Male', 'the profile, which they may have changed since, comes first');
 });
 
 test('criminal-history questions take the profile\'s No in any wording, and never touch consent', () => {
@@ -1597,8 +1658,8 @@ test('criminal-history questions take the profile\'s No in any wording, and neve
     'Have you ever pleaded guilty to a criminal offence?',
   ]) expect(label, 'No', p.FILL, 'No');
 
-  // Unset -> the profile; Yes -> the person, every time.
-  expect('Have you ever been convicted of a crime?', undefined, p.PROFILE);
+  // Unset -> asked here; Yes -> the person, every time.
+  expect('Have you ever been convicted of a crime?', undefined, p.ASK);
   expect('Have you ever been convicted of a crime?', 'Yes', p.ASK);
 
   // Not the person's record, or more than "convicted or charged".

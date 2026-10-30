@@ -86,6 +86,10 @@ MUST_FLAG = [
     ("demographic", "Have you served in the armed forces?"),
     ("demographic", "Do you identify as LGBTQ+?"),
     ("demographic", "Sexual orientation"),
+    # "sex" is the gender question (Oct 2026: it went to the model without it).
+    ("demographic", "What is your sex?"),
+    ("demographic", "Sex*"),
+    ("demographic", "Would you describe yourself as neurodivergent?"),
     # Date and place of birth: profile only, never the model (PwC Workday, Oct 2026).
     ("birth", "Date of birth"),
     ("birth", "DOB"),
@@ -178,8 +182,6 @@ def test_looks_secret():
 def test_is_never_store_refuses_secrets_and_sensitive_questions():
     assert mg.is_never_store("Social Security Number", "123-45-6789")
     assert mg.is_never_store("Employee reference", "123-45-6789"), "a secret VALUE is enough"
-    assert mg.is_never_store("What is your gender?", "Female"), \
-        "EEO answers belong in the profile, not captured per-application"
     assert mg.is_never_store("Are you authorized to work in the US?", "Yes")
     assert mg.is_never_store("Expected salary", "2500000")
 
@@ -193,6 +195,10 @@ def test_is_never_store_allows_the_persons_own_clearance_criminal_and_citizenshi
         "Which of the following best describes your “U.S. person” status?",
         "None of the above; I am a citizen of a different country")
     assert not mg.is_never_store("Citizenship Status", "(b) U.S. lawful permanent resident")
+    # EEO answers too, for that exact wording, once the person chose them (Oct
+    # 2026: "Would you say you have a disability?" was asked on every form).
+    assert not mg.is_never_store("Would you say you have a disability?", "No, I don't have a disability")
+    assert mg.is_never_store("What is your gender?", "123-45-6789"), "a secret value still never is"
     assert not mg.is_never_store(
         "Have you ever been directly employed by (1) any government or military entity?", "No")
     assert mg.is_never_store("Active Security Clearance(s)*", "123-45-6789"), \

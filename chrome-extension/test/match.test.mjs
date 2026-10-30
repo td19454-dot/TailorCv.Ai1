@@ -273,6 +273,9 @@ const MUST_FLAG = [
   ['demographic', 'What are your pronouns?'],
   ['demographic', 'Do you identify as LGBTQ+?'],
   ['demographic', 'Sexual orientation'],
+  ['demographic', 'What is your sex?'],
+  ['demographic', 'Sex*'],
+  ['demographic', 'Would you describe yourself as neurodivergent?'],
 ];
 
 test('classifySensitive flags every real-world sensitive wording', () => {

@@ -438,6 +438,44 @@ test("auto-apply's forced answer ticks a lone checkbox when it is the box's own 
   });
 });
 
+test('a manual fill answers the required questions left from the resume, for review', async () => {
+  // DoorDash (Oct 2026): "What best describes your experience designing
+  // analytical data models?" — the first AI call is never shown the resume and
+  // left it empty; only auto-apply (Workday) made the resume pass.
+  const form = `<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      <label for="dm">What best describes your experience designing analytical data models? *</label>
+      <select id="dm" required><option value="">Select…</option><option>None</option>
+        <option>Some — I have contributed to them</option><option>Extensive — I have led them</option></select>
+      <label for="fel">Have you ever been convicted of a felony? *</label>
+      <select id="fel" required><option value="">Select…</option><option>Yes</option><option>No</option></select>
+    </form>`;
+  const asked = [];
+  const forceAnswer = f => { asked.push(f.label); return /analytical data models/.test(f.label) ? 'Some — I have contributed to them' : null; };
+
+  await withForm(form, { forceAnswer }, async (env, sent) => {
+    const result = await run_.runAutofill(Object.assign({}, CTX, { resumePass: true }), null);
+    const d = byLabel(result.decisions, 'analytical data models');
+    eq(d.action, p.FILL, `${d.action}: ${d.reason}`);
+    eq(d.source, 'ai_forced');
+    eq(d.reason, 'best answer from your resume — check it');
+    eq(env.document.getElementById('dm').value, 'Some — I have contributed to them');
+    // Sensitive: never in the resume pass.
+    notOk(asked.some(l => /felony/i.test(l)), `asked: ${asked.join(' | ')}`);
+    eq(byLabel(result.decisions, 'felony').action, p.ASK);
+    ok(sent.some(m => m.type === 'AF_PLAN' && m.payload.force), 'one forced request');
+  });
+
+  // Auto-apply's own fill: its loop makes the pass itself, so none here.
+  asked.length = 0;
+  await withForm(form, { forceAnswer }, async (env, sent) => {
+    await run_.runAutofill(CTX, null);
+    notOk(sent.some(m => m.type === 'AF_PLAN' && m.payload.force), 'no forced request without resumePass');
+    eq(env.document.getElementById('dm').value, '');
+  });
+});
+
 test('Greenhouse: an unknown product question is answered by the server tier', async () => {
   await withForm(fixtures.GREENHOUSE, {
     serverAnswers: { 'Have you used our developer platform? *': 'Yes' },
@@ -3220,6 +3258,101 @@ test('Greenhouse degree: B.Tech picks "Bachelor\'s Degree" from one open list, n
     ok(shown, `degree not committed: ${JSON.stringify(byLabel(result.decisions, 'degree'))}`);
     eq(shown.textContent, "Bachelor's Degree");
     eq(log.typed, 0, 'chosen from the open list — no search typed per spelling');
+  });
+});
+
+// DoorDash's Greenhouse form (Oct 2026): react-selects whose options exist only
+// while open, filtered by what is typed. Each `[id, label, options]`.
+const DOORDASH_SELECTS = [
+  ['q_worked', 'Have you worked at DoorDash?*',
+    ['I have not worked at DoorDash', 'I am a previous employee', 'I am a previous DoorDash Dasher']],
+  ['74710', 'What is your sex?', ['Woman', 'Man', 'Intersex', 'Prefer not to say']],
+  ['74712', 'What is your sexual orientation?', ['Heterosexual/Straight', 'Gay or Lesbian', 'Bisexual', 'Prefer not to say']],
+  ['74714', 'Would you describe yourself as neurodivergent?', ['Yes', 'No', 'Prefer not to say']],
+];
+const DOORDASH_FORM = `<form id="application-form">
+  <div class="field"><label for="first_name">First Name</label><input id="first_name" name="first_name"></div>
+  <div class="field"><label for="email">Email</label><input id="email" type="email" name="email"></div>
+  ${DOORDASH_SELECTS.map(([id, label]) => `<div class="field">
+    <label for="${id}">${label}</label>
+    <div class="select__container"><div class="select__control"><div class="select__placeholder">Select...</div>
+      <input role="combobox" id="${id}" aria-haspopup="listbox" aria-autocomplete="list" aria-expanded="false"></div>
+    </div></div>`).join('')}
+</form>`;
+
+function wireDoorDashSelects(env) {
+  const doc = env.document;
+  for (const [id, , list] of DOORDASH_SELECTS) {
+    const input = doc.getElementById(id);
+    const control = input.parentElement;
+    let menu = null;
+    const close = () => { if (menu) menu.remove(); menu = null; input.setAttribute('aria-expanded', 'false'); };
+    const render = (filter) => {
+      if (!menu) {
+        menu = doc.createElement('div');
+        menu.id = `react-select-${id}-listbox`;
+        menu.setAttribute('role', 'listbox');
+        control.parentElement.appendChild(menu);
+        input.setAttribute('aria-controls', menu.id);
+        input.setAttribute('aria-expanded', 'true');
+      }
+      const shown = list.filter(o => !filter || o.toLowerCase().includes(filter.toLowerCase()));
+      menu.innerHTML = shown.map((o, i) => `<div role="option" id="react-select-${id}-option-${i}" class="select__option">${o}</div>`).join('');
+      for (const node of menu.querySelectorAll('[role=option]')) {
+        const pick = () => {
+          control.querySelector('.select__placeholder, .select__single-value').outerHTML =
+            `<div class="select__single-value">${node.textContent}</div>`;
+          input.value = '';
+          close();
+        };
+        node.addEventListener('mousedown', pick);
+        node.addEventListener('click', pick);
+      }
+    };
+    const open = () => { if (!menu) render(''); };
+    input.addEventListener('mousedown', open);
+    input.addEventListener('focus', open);
+    input.addEventListener('input', () => render(input.value));
+  }
+}
+const ddShown = (env, id) => {
+  const v = env.document.getElementById(id).closest('.select__container').querySelector('.select__single-value');
+  return v ? v.textContent : '';
+};
+
+test('DoorDash: sex, orientation and "worked at DoorDash?" are picked from their open lists', async () => {
+  await withForm(DOORDASH_FORM, {}, async (env, sent) => {
+    wireDoorDashSelects(env);
+    const ctx = Object.assign({}, CTX, { jobCompany: 'DoorDash', answerBank: Object.assign({}, CTX.answerBank,
+      { gender: 'Cisgender man', lgbtq_identity: 'No' }) });
+    const result = await run_.runAutofill(ctx, null);
+    eq(ddShown(env, 'q_worked'), 'I have not worked at DoorDash',
+       JSON.stringify(byLabel(result.decisions, 'worked at doordash')));
+    // Typed "Male" matched nothing in "Woman / Man / …"; read whole, it is "Man".
+    eq(ddShown(env, '74710'), 'Man', JSON.stringify(byLabel(result.decisions, 'your sex')));
+    // The LGBTQ+ "No" was typed into the orientation list as "No".
+    eq(ddShown(env, '74712'), 'Heterosexual/Straight');
+    // Neurodivergence: sensitive, never to the model, the person's to answer.
+    const neuro = byLabel(result.decisions, 'neurodivergent');
+    eq(neuro.sensitive, 'demographic');
+    notOk(sent.some(m => m.type === 'AF_PLAN' && (m.payload.fields || []).some(f => /neurodivergent/i.test(f.label))),
+          'never sent to the model');
+  });
+});
+
+test('Save & fill writes the person\'s own pick, not the profile\'s answer again', async () => {
+  // DoorDash (Oct 2026): "Heterosexual/Straight" chosen in the sidebar never
+  // went in — the writer re-picked from the open list by the profile's "No".
+  await withForm(DOORDASH_FORM, {}, async (env) => {
+    wireDoorDashSelects(env);
+    const ctx = Object.assign({}, CTX, { jobCompany: 'DoorDash', answerBank: Object.assign({}, CTX.answerBank,
+      { gender: 'Cisgender man', lgbtq_identity: 'No' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const orientation = byLabel(result.decisions, 'sexual orientation');
+    ok(orientation.readFirst, 'filled by reading the open list');
+    const res = await run_.answerField(orientation, 'Bisexual', false);
+    ok(res.ok, `${orientation.outcome}: ${orientation.reason}`);
+    eq(ddShown(env, '74712'), 'Bisexual');
   });
 });
 

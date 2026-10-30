@@ -2778,7 +2778,9 @@
 
     // The job this form is for, so motivation questions ("Why Anthropic?") are
     // written for it. A copy: the cached context is shared across pages.
-    const runCtx = Object.assign({}, ctx, jobContext());
+    // A manual fill answers the required questions left from the resume, for
+    // review; auto-apply's loop makes that same pass itself, once per step.
+    const runCtx = Object.assign({}, ctx, jobContext(), { resumePass: !isAuto });
 
     let result;
     try {
