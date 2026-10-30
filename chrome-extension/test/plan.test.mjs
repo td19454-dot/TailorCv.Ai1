@@ -1571,6 +1571,93 @@ test('government-official questions are answered from the profile, and only wher
   eq(p.fieldsForServer([run('Are you a government official?', undefined, undefined)]).length, 0);
 });
 
+test('ExxonMobil: board seat, drug treatment, bankruptcy, dismissal are always No; years from the date of birth', () => {
+  const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
+  const bank = Object.assign({}, BANK, { date_of_birth: '1999-04-12', nationality: 'India', country_of_birth: '',
+                                         full_name: 'Ada Lovelace' });
+  const ctx = Object.assign({}, CTX, { answerBank: bank });
+  const one_ = row => p.decide([row], ctx, null, null)[0];
+  for (const label of [
+    'Are you currently a member of the Board of Directors of any for-profit or non-profit organization?*',
+    'Have you ever been treated for drug and/or alcohol abuse?*',
+    'Has any bankruptcy action ever been taken against you?*',
+    'Have you ever been dismissed from the services of any previous employer(s)?*',
+  ]) {
+    const d = one_(yn(label));
+    eq(d.action, p.FILL, `${label} -> ${d.action}: ${d.reason}`);
+    eq(d.value, 'No', label);
+  }
+  // Not chosen: the person's, or the resume's.
+  for (const label of [
+    'Do you have a relative and/or a personal relationship with someone who works at this company, an affiliate of this company, one of our vendors, or another oil company?',
+    'Have you previously been interviewed for a position with ExxonMobil, Imperial or its affiliates?',
+    'Are you bound by any bond to serve the Government, any Statutory Body or Organization?',
+  ]) eq(p.standingNoAnswer(yn(label)), null, label);
+  // A drug question no rule reads is never the model's.
+  eq(m_.classifySensitive('Please describe any drug or alcohol treatment'), 'health');
+
+  const yob = one_(field('What is your year of birth?*', { required: true }));
+  eq(yob.sensitive, 'birth', 'never to the model');
+  eq(yob.value, '1999', `${yob.action}: ${yob.reason}`);
+  const since = one_(field('Year permanent residency or citizenship in that country/region began*', { required: true }));
+  eq(since.value, '1999', `${since.action}: ${since.reason}`);
+  // Born elsewhere: theirs to type.
+  const abroad = p.decide([field('Year permanent residency or citizenship in that country/region began*', { required: true })],
+    Object.assign({}, ctx, { answerBank: Object.assign({}, bank, { country_of_birth: 'Nepal' }) }), null, null)[0];
+  eq(abroad.action, p.ASK);
+  // A second citizenship's year is not the birth year.
+  notOk(one_(field('Year you obtained this citizenship', { required: false })).value === '1999');
+
+  const sig = one_(field('Typed Signature*', { required: true }));
+  eq(sig.action, p.FILL, `${sig.action}: ${sig.reason}`);
+  eq(sig.value, 'Ada Lovelace');
+});
+
+test('open to relocating or working on-site: always Yes, over the profile', () => {
+  // Oct 2026: "…in-person in one of our offices 25% of the time?" got No.
+  const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
+  const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+    { willing_to_relocate: 'No', remote_work_preference: 'remote' }) });
+  for (const label of [
+    'Are you open to working in-person in one of our offices 25% of the time?*',
+    'Are you open to relocation for this role? *',
+    'Are you willing to relocate to Hyderabad?',
+    'Are you comfortable working from the office 3 days a week?',
+    'Would you be willing to work on-site in Bangalore?',
+    'Are you able to work in a hybrid model?',
+    'Are you willing to commute to our office?',
+  ]) {
+    const d = p.decide([yn(label)], ctx, null, null)[0];
+    eq(d.action, p.FILL, `${label} -> ${d.action}: ${d.reason}`);
+    eq(d.value, 'Yes', label);
+  }
+  // Facts and other questions are not willingness.
+  for (const label of ['Will you require relocation assistance?', 'Are you currently located in Hyderabad?',
+                       'Are you willing to travel 50% of the time?', 'Are you unable to work on-site?',
+                       'Which office location do you prefer?']) {
+    eq(p.willingToWorkThereAnswer(yn(label)), null, label);
+  }
+  eq(p.willingToWorkThereAnswer(field('Are you open to relocation?', { kind: 'combobox', options: ['Hyderabad', 'Bangalore'] })), null,
+     'only a Yes / No question');
+});
+
+test('work eligibility and expected compensation in any wording read the profile\'s one answer', () => {
+  // DoorDash (Oct 2026): both said "add … to your profile" — the profile held both.
+  const bank = Object.assign({}, BANK, { expected_salary: '2500000', authorized_to_work_in_country: 'Yes',
+                                         requires_visa_sponsorship: 'No' });
+  const ctx = Object.assign({}, CTX, { answerBank: bank });
+  const pay = p.decide([field('What is your expected total annual compensation?*', { required: true })], ctx, null, null)[0];
+  eq(pay.action, p.FILL, `${pay.action}: ${pay.reason}`);
+  eq(pay.value, '2500000');
+  const eligible = p.decide([field('Please select from the options below, your current status regarding eligibility to work in India.*',
+    { kind: 'select', required: true, options: ['Yes', 'No'] })], ctx, null, null)[0];
+  eq(eligible.action, p.FILL, `${eligible.action}: ${eligible.reason}`);
+  eq(eligible.value, 'Yes');
+  // Never the expected salary for the current one.
+  const current = p.decide([field('What is your current annual compensation?*', { required: true })], ctx, null, null)[0];
+  notOk(current.action === p.FILL && current.value === '2500000', `${current.action} ${current.value}`);
+});
+
 test('"Have you worked at DoorDash?" answered in its own sentences', () => {
   const OPTS = ['I have not worked at DoorDash', 'I am a previous employee', 'I am a previous DoorDash Dasher'];
   const row = options => field('Have you worked at DoorDash?*', { kind: 'combobox', options, required: true });

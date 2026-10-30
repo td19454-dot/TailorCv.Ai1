@@ -166,6 +166,23 @@ export function decide(rows, ctx, server, state) {
     if (outside !== null) {
       return done(d, FILL, outside, 'profile', 0.9, 'no outside employment — always No');
     }
+    // "Are you open to relocation for this role?", "…working in-person in one
+    // of our offices 25% of the time?": always Yes — the person's standing
+    // answer (Oct 2026), over the profile's relocation / remote preference.
+    const willing = willingToWorkThereAnswer(row);
+    if (willing !== null) {
+      return done(d, FILL, willing, 'profile', 0.9, 'open to relocating / working on-site — always Yes');
+    }
+    // A board seat, drug / alcohol treatment, bankruptcy, a dismissal: always
+    // No — the person's standing answers (ExxonMobil, Oct 2026).
+    const standing = standingNoAnswer(row);
+    if (standing) return done(d, FILL, standing.value, 'profile', 0.9, standing.reason);
+    // "Typed Signature" under a statement of agreement: their full name,
+    // always (the person's choice, Oct 2026).
+    if ((row.kind === 'text' || row.kind === 'textarea') && SIGNATURE_RE.test(String(row.label || ''))) {
+      const name = String(bank.full_name || [bank.first_name, bank.last_name].filter(Boolean).join(' ')).trim();
+      if (name) return done(d, FILL, name, 'profile', 0.95, 'your typed signature — your full name');
+    }
 
     // Tier 0b — sensitive. Stored value or nothing.
     const category = classifySensitive(row.label, employer);
@@ -182,6 +199,14 @@ export function decide(rows, ctx, server, state) {
         const raw = String(stored || bank.nationality || '').trim();
         stored = countryOf(raw) || raw;
         if (countryOf(raw)) d.candidates = countryShapes(countryOf(raw));
+      }
+      // A year, not a date: "What is your year of birth?", and the year a
+      // citizenship began — see birthYearAnswer.
+      const year = birthYearAnswer(row, category, bank);
+      if (year && year.ask) return done(d, ASK, '', '', 0, year.ask);
+      if (year) {
+        const value = coerce(year.value, Object.assign({}, row, { candidateKey: '' }));
+        if (value !== null) return done(d, FILL, value, 'profile', 0.95, year.reason);
       }
       // A demographic question's saved answer comes AFTER the profile, which is
       // where these live: a later change there must win over an old form.
@@ -973,6 +998,82 @@ export function outsideEmploymentAnswer(row) {
   const head = String(row.label || '').split(/[[(]/)[0];
   if (!ASKS_IF_RE.test(head) || !OUTSIDE_WORK_RE.test(head)) return null;
   return coerce('No', Object.assign({}, row, { candidateKey: '' }));
+}
+
+// The person's standing No answers (ExxonMobil, Oct 2026). Read from the
+// question itself, before its "?": its explanation may name anything.
+const STANDING_NO = [
+  { re: /\bboard of directors\b|\bboard members?\b|\bdirectorships?\b/i,
+    reason: 'not on any board — always No' },
+  { re: /\b(drug|alcohol|substance)\w*\b[^?]*\b(abuse|misuse|treat\w*|rehab\w*|dependen\w*|addict\w*)\b/i,
+    reason: 'no drug / alcohol treatment — always No' },
+  { re: /\bbankrupt\w*|\binsolven\w*/i,
+    reason: 'no bankruptcy — always No' },
+  { re: /\b(dismissed|terminated|fired|discharged)\b[^?]*\b(employer|employment|job|services?|position|company)\b|\basked to resign\b/i,
+    reason: 'never dismissed — always No' },
+];
+const STANDING_ASKS_RE = /^\s*(are|do|have|has|were|was|is|did)\s+(you|any)\b/i;
+
+/** { value, reason } — "No" in this field's own wording — for a standing-No question, or null. */
+export function standingNoAnswer(row) {
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') return null;
+  const opts = (row.options || []).map(o => String(typeof o === 'string' ? o : (o && o.label) || '').trim())
+    .filter(o => o && !PLACEHOLDER_RE.test(o));
+  if (opts.length && !(opts.some(o => /^yes\b/i.test(o)) && opts.some(o => /^no\b/i.test(o)))) return null;
+  const head = String(row.label || '').split('?')[0];
+  if (!STANDING_ASKS_RE.test(head)) return null;
+  const hit = STANDING_NO.find(s => s.re.test(head));
+  if (!hit) return null;
+  const value = coerce('No', Object.assign({}, row, { candidateKey: '' }));
+  return value === null ? null : { value, reason: hit.reason };
+}
+
+// "Typed Signature", "Electronic signature", "Please type your full name to sign".
+const SIGNATURE_RE = /^\s*(typed |electronic |e-?|digital )?signature\b|\bsign (with )?your (full |legal )?name\b|\btype your (full |legal )?name to (sign|agree|acknowledge)\b/i;
+
+/**
+ * A year asked of the profile's date of birth: "What is your year of birth?",
+ * and "Year permanent residency or citizenship in that country began" — the
+ * birth year for a citizen of the country they were born in (the person's
+ * choice, Oct 2026); anyone else types it. { value, reason }, { ask } or null.
+ */
+export function birthYearAnswer(row, category, bank) {
+  const sig = questionSignature(row.label);
+  const dob = String((bank && bank.date_of_birth) || '').trim();
+  const year = /^\d{4}/.test(dob) ? dob.slice(0, 4) : '';
+  if (category === 'birth' && /\byear of birth\b|\bbirth year\b/.test(sig)) {
+    return year ? { value: year, reason: 'the year of your date of birth' }
+      : { ask: 'add your date of birth to your profile, or type the year here' };
+  }
+  if (category === 'citizenship' && /\byear\b/.test(sig) && /\b(citizenship|permanent residen\w*)\b/.test(sig)
+      && /\b(began|begin|begun|start\w*)\b/.test(sig)) {
+    const citizen = countryOf(String((bank && bank.nationality) || ''));
+    const born = countryOf(String((bank && (bank.country_of_birth || bank.nationality)) || ''));
+    if (year && citizen && born === citizen) return { value: year, reason: `citizen of ${citizen} since birth — your birth year` };
+    return { ask: 'filled only for a citizen of the country they were born in — type the year' };
+  }
+  return null;
+}
+
+// Willing to relocate, or to work in the office / in person / on-site / hybrid.
+// A willingness question only: "Will you require relocation assistance?" and
+// "Are you currently located in Hyderabad?" are facts, not this.
+const WILLING_RE = /\b(open to|willing to|able to|comfortable( with)?|prepared to|happy to|okay with|ok with|amenable to|interested in)\b/i;
+const WORK_THERE_RE = /\brelocat\w*|\bin[\s-]?person\b|\bin (the |an |our |one of our )?offices?\b|\bfrom (the|our|an) office\b|\bon[\s-]?site\b|\bonsite\b|\bhybrid\b|\bcommut\w*|\breturn to (the )?office\b/i;
+const WILLING_ASKS_RE = /^\s*(are|would|will|do|can|is)\s+you\b/i;
+
+/** "Yes" in this field's own wording for a relocation / on-site willingness question, or null. */
+export function willingToWorkThereAnswer(row) {
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') return null;
+  const opts = (row.options || []).map(o => String(typeof o === 'string' ? o : (o && o.label) || '').trim())
+    .filter(o => o && !PLACEHOLDER_RE.test(o));
+  if (opts.length && !(opts.some(o => /^yes\b/i.test(o)) && opts.some(o => /^no\b/i.test(o)))) return null;
+  const head = String(row.label || '').split('?')[0];
+  if (!WILLING_ASKS_RE.test(head) || !WILLING_RE.test(head) || !WORK_THERE_RE.test(head)) return null;
+  if (/\b(not|unable|unwilling)\b/i.test(head)) return null;
+  return coerce('Yes', Object.assign({}, row, { candidateKey: '' }));
 }
 
 // Government-official declarations, from the profile's two answers. The profile

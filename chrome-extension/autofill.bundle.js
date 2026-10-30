@@ -257,6 +257,10 @@
             value = txt(single);
           } else if (hidden && hidden.value) {
             value = String(hidden.value).trim();
+          } else if (/\brcmpaginatedselectinput\b/.test(String(el.className || ""))) {
+            const title = String(attr(el, "title") || "").trim();
+            const asked = [label, attr(el, "aria-label"), attr(el, "placeholder"), "No Selection"].map((s) => String(s || "").trim().toLowerCase());
+            value = title && asked.indexOf(title.toLowerCase()) < 0 && !/…$/.test(title) ? title : "";
           } else if (String(el.value || "").trim() && attr(el, "aria-expanded") === "false" && attr(el, "role") === "combobox") {
             value = String(el.value).trim();
           } else if (ph) {
@@ -450,7 +454,7 @@
       }
       return null;
     }
-    const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"]';
+    const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"], [id$="_listSelect"] li';
     function comboGridCells(scope) {
       let cells = [];
       try {
@@ -829,9 +833,15 @@ what when where which who will with would you your now future
     // Date and place of birth: the profile's own answer or nothing — never the
     // model, which answered PwC's "Country / Territory of Birth" from a
     // nationality. After citizenship, so "citizen by birth" stays citizenship.
-    ["birth", /\b(date|country|territory|city|town|place|region|state|province) of birth\b|\bbirth ?(date|day|place|country|city)\b|\bdob\b|\bborn\b/],
+    // "year of birth" too (ExxonMobil, Oct 2026): unflagged, it went to the
+    // model, which is never shown the date of birth.
+    ["birth", /\b(date|country|territory|city|town|place|region|state|province|year) of birth\b|\bbirth ?(date|day|place|country|city|year)\b|\bdob\b|\bborn\b/],
     ["clearance", /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
     ["criminal", /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
+    // Medical history — "Have you ever been treated for drug and/or alcohol
+    // abuse?" (ExxonMobil). Answered by the standing-No rule; a wording it
+    // misses is the person's, never the model's.
+    ["health", /\b(drug|alcohol|substance)\w*\b[\s\S]*\b(abuse|misuse|treat\w*|rehab\w*|dependen\w*|addict\w*)\b/],
     // Anti-bribery declarations: "Are you (or have you been within the last 12
     // months) a Government Official?", "Are any of your immediate family members
     // Government Officials?" (Walmart, Oct 2026). Answered from the profile's two
@@ -1329,7 +1339,17 @@ what when where which who will with would you your now future
     { key: "gpa", labels: ["gpa", "cgpa", "grade point average", "percentage marks", "academic score"] },
     // logistics
     { key: "notice_period", labels: ["notice period", "how much notice", "notice"] },
-    { key: "available_start_date", labels: ["start date", "available start date", "when can you start", "earliest start date", "availability date"] },
+    { key: "available_start_date", labels: [
+      "start date",
+      "available start date",
+      "when can you start",
+      "earliest start date",
+      "availability date",
+      // ExxonMobil (Oct 2026): "When are you available to start working?",
+      // "…when is the earliest you will be able to start employment?"
+      "available to start",
+      "earliest start"
+    ] },
     { key: "willing_to_relocate", labels: ["relocate", "willing to relocate", "open to relocation"] },
     { key: "remote_work_preference", labels: ["remote preference", "work preference", "work arrangement", "onsite or remote", "hybrid preference"] },
     { key: "how_did_you_hear_about_us", labels: ["how did you hear", "how did you find", "referral source", "where did you hear about us", "source"] },
@@ -1467,6 +1487,12 @@ what when where which who will with would you your now future
     if (any && any.sensitive) return any;
     if (category === "sponsorship" && /\bsponsor/.test(questionSignature(label))) {
       return FIELD_SYNONYMS.find((e) => e.key === "requires_visa_sponsorship") || null;
+    }
+    if (category === "work_authorization") {
+      return FIELD_SYNONYMS.find((e) => e.key === "authorized_to_work_in_country") || null;
+    }
+    if (category === "salary" && !/\b(current|present|last|previous|existing)\b/.test(questionSignature(label))) {
+      return FIELD_SYNONYMS.find((e) => e.key === "expected_salary") || null;
     }
     if (category === "demographic") {
       const sig = questionSignature(label);
@@ -1643,7 +1669,7 @@ what when where which who will with would you your now future
         if (cs.visibility === "hidden" || cs.visibility === "collapse") return true;
         if (cs.opacity !== "" && cs.opacity != null && parseFloat(cs.opacity) === 0) return true;
       }
-      n = n.parentElement;
+      n = parentAcross(n);
       depth++;
     }
     return false;
@@ -1653,10 +1679,15 @@ what when where which who will with would you your now future
     while (n && n.nodeType === 1 && depth < 25) {
       if (n.getAttribute && n.getAttribute("aria-hidden") === "true") return true;
       if (n.hidden === true) return true;
-      n = n.parentElement;
+      n = parentAcross(n);
       depth++;
     }
     return false;
+  }
+  function parentAcross(n) {
+    if (n.parentElement) return n.parentElement;
+    const root = n.parentNode;
+    return root && root.nodeType === 11 && root.host ? root.host : null;
   }
   var CHOICE_SEL = 'button:not([type="submit"]), [role="radio"]:not(input), [role="button"][aria-pressed]';
   var NAV_TEXT = /^(back|next|previous|prev|continue|submit|save|cancel|close|add|remove|delete|edit|upload|browse|attach|apply|search|sign in|log in|\d+|[<>‹›«»←→]+)$/i;
@@ -2847,6 +2878,15 @@ what when where which who will with would you your now future
       }
     }
   }
+  function picklistButton(el) {
+    if (!el || !/\brcmpaginatedselectinput\b/.test(String(el.className || ""))) return null;
+    const box = el.parentElement;
+    try {
+      return box && box.querySelector("button.rcmpaginatedselectbutton") || null;
+    } catch (e) {
+      return null;
+    }
+  }
   function controlAncestor(el) {
     for (let n = el && el.parentElement, i = 0; n && i < 6; n = n.parentElement, i++) {
       if (Array.from(n.classList || []).some((c) => /(^|[-_])control$/i.test(c))) return n;
@@ -2856,6 +2896,8 @@ what when where which who will with would you your now future
   function pickClickTarget(el, p) {
     const role = el.getAttribute && el.getAttribute("role");
     if (role === "combobox") {
+      const sf = picklistButton(el);
+      if (sf) return sf;
       const ctl = controlAncestor(el);
       if (ctl && ctl !== el) return ctl;
       return el;
@@ -3327,6 +3369,16 @@ Zimbabwe|Zimbabwean
       if (outside !== null) {
         return done(d, FILL, outside, "profile", 0.9, "no outside employment \u2014 always No");
       }
+      const willing = willingToWorkThereAnswer(row);
+      if (willing !== null) {
+        return done(d, FILL, willing, "profile", 0.9, "open to relocating / working on-site \u2014 always Yes");
+      }
+      const standing = standingNoAnswer(row);
+      if (standing) return done(d, FILL, standing.value, "profile", 0.9, standing.reason);
+      if ((row.kind === "text" || row.kind === "textarea") && SIGNATURE_RE.test(String(row.label || ""))) {
+        const name = String(bank.full_name || [bank.first_name, bank.last_name].filter(Boolean).join(" ")).trim();
+        if (name) return done(d, FILL, name, "profile", 0.95, "your typed signature \u2014 your full name");
+      }
       const category = classifySensitive(row.label, employer);
       if (category) {
         d.sensitive = category;
@@ -3336,6 +3388,12 @@ Zimbabwe|Zimbabwean
           const raw = String(stored || bank.nationality || "").trim();
           stored = countryOf(raw) || raw;
           if (countryOf(raw)) d.candidates = countryShapes(countryOf(raw));
+        }
+        const year = birthYearAnswer(row, category, bank);
+        if (year && year.ask) return done(d, ASK, "", "", 0, year.ask);
+        if (year) {
+          const value2 = coerce(year.value, Object.assign({}, row, { candidateKey: "" }));
+          if (value2 !== null) return done(d, FILL, value2, "profile", 0.95, year.reason);
         }
         const savedDemographic = () => {
           if (category !== "demographic") return null;
@@ -3912,6 +3970,66 @@ Zimbabwe|Zimbabwean
     if (!ASKS_IF_RE.test(head) || !OUTSIDE_WORK_RE.test(head)) return null;
     return coerce("No", Object.assign({}, row, { candidateKey: "" }));
   }
+  var STANDING_NO = [
+    {
+      re: /\bboard of directors\b|\bboard members?\b|\bdirectorships?\b/i,
+      reason: "not on any board \u2014 always No"
+    },
+    {
+      re: /\b(drug|alcohol|substance)\w*\b[^?]*\b(abuse|misuse|treat\w*|rehab\w*|dependen\w*|addict\w*)\b/i,
+      reason: "no drug / alcohol treatment \u2014 always No"
+    },
+    {
+      re: /\bbankrupt\w*|\binsolven\w*/i,
+      reason: "no bankruptcy \u2014 always No"
+    },
+    {
+      re: /\b(dismissed|terminated|fired|discharged)\b[^?]*\b(employer|employment|job|services?|position|company)\b|\basked to resign\b/i,
+      reason: "never dismissed \u2014 always No"
+    }
+  ];
+  var STANDING_ASKS_RE = /^\s*(are|do|have|has|were|was|is|did)\s+(you|any)\b/i;
+  function standingNoAnswer(row) {
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") return null;
+    const opts = (row.options || []).map((o) => String(typeof o === "string" ? o : o && o.label || "").trim()).filter((o) => o && !PLACEHOLDER_RE.test(o));
+    if (opts.length && !(opts.some((o) => /^yes\b/i.test(o)) && opts.some((o) => /^no\b/i.test(o)))) return null;
+    const head = String(row.label || "").split("?")[0];
+    if (!STANDING_ASKS_RE.test(head)) return null;
+    const hit = STANDING_NO.find((s) => s.re.test(head));
+    if (!hit) return null;
+    const value = coerce("No", Object.assign({}, row, { candidateKey: "" }));
+    return value === null ? null : { value, reason: hit.reason };
+  }
+  var SIGNATURE_RE = /^\s*(typed |electronic |e-?|digital )?signature\b|\bsign (with )?your (full |legal )?name\b|\btype your (full |legal )?name to (sign|agree|acknowledge)\b/i;
+  function birthYearAnswer(row, category, bank) {
+    const sig = questionSignature(row.label);
+    const dob = String(bank && bank.date_of_birth || "").trim();
+    const year = /^\d{4}/.test(dob) ? dob.slice(0, 4) : "";
+    if (category === "birth" && /\byear of birth\b|\bbirth year\b/.test(sig)) {
+      return year ? { value: year, reason: "the year of your date of birth" } : { ask: "add your date of birth to your profile, or type the year here" };
+    }
+    if (category === "citizenship" && /\byear\b/.test(sig) && /\b(citizenship|permanent residen\w*)\b/.test(sig) && /\b(began|begin|begun|start\w*)\b/.test(sig)) {
+      const citizen = countryOf(String(bank && bank.nationality || ""));
+      const born = countryOf(String(bank && (bank.country_of_birth || bank.nationality) || ""));
+      if (year && citizen && born === citizen) return { value: year, reason: `citizen of ${citizen} since birth \u2014 your birth year` };
+      return { ask: "filled only for a citizen of the country they were born in \u2014 type the year" };
+    }
+    return null;
+  }
+  var WILLING_RE = /\b(open to|willing to|able to|comfortable( with)?|prepared to|happy to|okay with|ok with|amenable to|interested in)\b/i;
+  var WORK_THERE_RE = /\brelocat\w*|\bin[\s-]?person\b|\bin (the |an |our |one of our )?offices?\b|\bfrom (the|our|an) office\b|\bon[\s-]?site\b|\bonsite\b|\bhybrid\b|\bcommut\w*|\breturn to (the )?office\b/i;
+  var WILLING_ASKS_RE = /^\s*(are|would|will|do|can|is)\s+you\b/i;
+  function willingToWorkThereAnswer(row) {
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") return null;
+    const opts = (row.options || []).map((o) => String(typeof o === "string" ? o : o && o.label || "").trim()).filter((o) => o && !PLACEHOLDER_RE.test(o));
+    if (opts.length && !(opts.some((o) => /^yes\b/i.test(o)) && opts.some((o) => /^no\b/i.test(o)))) return null;
+    const head = String(row.label || "").split("?")[0];
+    if (!WILLING_ASKS_RE.test(head) || !WILLING_RE.test(head) || !WORK_THERE_RE.test(head)) return null;
+    if (/\b(not|unable|unwilling)\b/i.test(head)) return null;
+    return coerce("Yes", Object.assign({}, row, { candidateKey: "" }));
+  }
   var GOV_NEGATED_RE = /\b(not|neither|nor|none)\b/i;
   var GOV_OTHERS_RE = /\bassociates?\b|\bbusiness (partners?|relationships?)\b|\bfriends?\b|\bclose (personal|business)\b|\bpolitically exposed\b/i;
   var GOV_FAMILY_RE = /\bfamily\b|\brelatives?\b|\bspouses?\b|\bpartners?\b|\bparents?\b|\bsiblings?\b|\bbrothers?\b|\bsisters?\b|\bchild(ren)?\b|\bsons?\b|\bdaughters?\b|\bin-?laws?\b|\bhousehold\b|\brelated to\b/i;
@@ -4440,7 +4558,7 @@ Zimbabwe|Zimbabwean
   var probe2 = () => globalThis.__tcvFieldProbe;
   function fire(el, type, init) {
     try {
-      el.dispatchEvent(new globalThis.Event(type, Object.assign({ bubbles: true }, init || {})));
+      el.dispatchEvent(new globalThis.Event(type, Object.assign({ bubbles: true, composed: true }, init || {})));
     } catch (e) {
     }
   }
@@ -4451,6 +4569,7 @@ Zimbabwe|Zimbabwean
         code: key,
         bubbles: true,
         cancelable: true,
+        composed: true,
         keyCode: KEY_CODES[key] || 0,
         which: KEY_CODES[key] || 0
       }));
@@ -4845,10 +4964,17 @@ Zimbabwe|Zimbabwean
     } else if (role === "combobox" && wrap) {
       const ctl = controlAncestor(el);
       if (ctl && ctl.contains(el) && (!wrap || wrap.contains(ctl) || ctl.contains(wrap))) target = ctl;
+      const sf = picklistButton(el);
+      if (sf) target = sf;
     }
     focus(target);
     pressPointer(target);
     if (target !== el) focus(el);
+  }
+  function inUi5DatePicker(el) {
+    const root = el && el.getRootNode && el.getRootNode();
+    const host = root && root.nodeType === 11 ? root.host : null;
+    return !!(host && /date-picker/i.test(host.tagName || ""));
   }
   function typableInput(row) {
     const el = row.el;
@@ -5547,6 +5673,11 @@ Zimbabwe|Zimbabwean
         break;
       default:
         wrote = setText(row.el, value);
+        if (wrote && inUi5DatePicker(row.el)) {
+          fireKey(row.el, "keydown", "Enter");
+          fireKey(row.el, "keyup", "Enter");
+          fire(row.el, "change");
+        }
         if (wrote) {
           await sleep(TIMING.settleMs);
           const check = reprobe(row);
@@ -5824,6 +5955,28 @@ Zimbabwe|Zimbabwean
       }
     }
     return out;
+  }
+
+  // src/autofill/successfactors.js
+  var CLOSED_SECTION_SEL = 'button.rcmFormSectionTopBar[aria-expanded="false"]';
+  var ROW_SEL = '[id$="_bgElementContainer"]';
+  function expandSections(doc) {
+    const d = doc || globalThis.document;
+    let closed = [];
+    try {
+      closed = Array.from(d.querySelectorAll(CLOSED_SECTION_SEL));
+    } catch (e) {
+      closed = [];
+    }
+    for (const button of closed) press(button);
+    return closed.length;
+  }
+  function inRepeatingRow(row) {
+    for (let n = row && row.el, i = 0; n && i < 40; i++) {
+      if (n.matches && n.matches(ROW_SEL)) return true;
+      n = n.parentElement || (n.parentNode && n.parentNode.nodeType === 11 ? n.parentNode.host : null);
+    }
+    return false;
   }
 
   // src/autofill/repeaters.js
@@ -6401,6 +6554,10 @@ Zimbabwe|Zimbabwean
       }
     };
     clock = startClock();
+    if (detectAts(globalThis.location.href) === "successfactors" && expandSections()) {
+      progress("scanning", { detail: "opening the form\u2019s sections" });
+      clock.quiet(await waitForQuiet(globalThis.document.body));
+    }
     let form = findForm();
     if (!form) {
       const page = isApplicationPage();
@@ -6450,9 +6607,25 @@ Zimbabwe|Zimbabwean
     const expSection = jobs.length ? experienceSection() : null;
     const schools = ctx && ctx.facts && ctx.facts.educationEntries || [];
     const eduSection = schools.length ? educationSection() : null;
-    const inRepeater = (r) => inSection(expSection, r) || inSection(eduSection, r);
+    const inRepeater = (r) => inSection(expSection, r) || inSection(eduSection, r) || inRepeatingRow(r);
     const fieldRows = rows.filter((r) => r.kind !== "file" && !inRepeater(r));
     decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
+    const sfRows = rows.filter((r) => r.kind !== "file" && inRepeatingRow(r));
+    if (sfRows.length) {
+      decisions = decisions.concat(decide(sfRows, ctx, null, state).map((d) => {
+        d.noServer = true;
+        if (d.row.filled) {
+          d.action = SKIP;
+          d.value = d.row.value;
+          d.reason = "as SuccessFactors filled it from your profile";
+        } else {
+          d.action = d.row.required ? ASK : SKIP;
+          d.value = "";
+          d.reason = "a SuccessFactors row \u2014 fill it in on the page";
+        }
+        return d;
+      }));
+    }
     if (expSection) {
       await clock.time("experience", async () => {
         clock.quiet(await waitForQuiet(form.root));

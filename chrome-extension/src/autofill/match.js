@@ -341,9 +341,15 @@ export const SENSITIVE_PATTERNS = [
   // Date and place of birth: the profile's own answer or nothing — never the
   // model, which answered PwC's "Country / Territory of Birth" from a
   // nationality. After citizenship, so "citizen by birth" stays citizenship.
-  ['birth', /\b(date|country|territory|city|town|place|region|state|province) of birth\b|\bbirth ?(date|day|place|country|city)\b|\bdob\b|\bborn\b/],
+  // "year of birth" too (ExxonMobil, Oct 2026): unflagged, it went to the
+  // model, which is never shown the date of birth.
+  ['birth', /\b(date|country|territory|city|town|place|region|state|province|year) of birth\b|\bbirth ?(date|day|place|country|city|year)\b|\bdob\b|\bborn\b/],
   ['clearance', /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
   ['criminal', /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
+  // Medical history — "Have you ever been treated for drug and/or alcohol
+  // abuse?" (ExxonMobil). Answered by the standing-No rule; a wording it
+  // misses is the person's, never the model's.
+  ['health', /\b(drug|alcohol|substance)\w*\b[\s\S]*\b(abuse|misuse|treat\w*|rehab\w*|dependen\w*|addict\w*)\b/],
   // Anti-bribery declarations: "Are you (or have you been within the last 12
   // months) a Government Official?", "Are any of your immediate family members
   // Government Officials?" (Walmart, Oct 2026). Answered from the profile's two
@@ -831,7 +837,10 @@ export const FIELD_SYNONYMS = [
 
   // logistics
   { key: 'notice_period', labels: ['notice period', 'how much notice', 'notice'] },
-  { key: 'available_start_date', labels: ['start date', 'available start date', 'when can you start', 'earliest start date', 'availability date'] },
+  { key: 'available_start_date', labels: ['start date', 'available start date', 'when can you start', 'earliest start date', 'availability date',
+    // ExxonMobil (Oct 2026): "When are you available to start working?",
+    // "…when is the earliest you will be able to start employment?"
+    'available to start', 'earliest start'] },
   { key: 'willing_to_relocate', labels: ['relocate', 'willing to relocate', 'open to relocation'] },
   { key: 'remote_work_preference', labels: ['remote preference', 'work preference', 'work arrangement', 'onsite or remote', 'hybrid preference'] },
   { key: 'how_did_you_hear_about_us', labels: ['how did you hear', 'how did you find', 'referral source', 'where did you hear about us', 'source'] },
@@ -1033,6 +1042,17 @@ export function matchSensitiveKey(label, category) {
   // authorized-to-work answer.
   if (category === 'sponsorship' && /\bsponsor/.test(questionSignature(label))) {
     return FIELD_SYNONYMS.find(e => e.key === 'requires_visa_sponsorship') || null;
+  }
+  // A category with one profile answer names it, whatever the wording: "your
+  // current status regarding eligibility to work in India" and "your expected
+  // total annual compensation" matched no synonym, and the sidebar said to add
+  // to the profile answers it already held (DoorDash, Oct 2026). Never the
+  // EXPECTED salary for a current / last one.
+  if (category === 'work_authorization') {
+    return FIELD_SYNONYMS.find(e => e.key === 'authorized_to_work_in_country') || null;
+  }
+  if (category === 'salary' && !/\b(current|present|last|previous|existing)\b/.test(questionSignature(label))) {
+    return FIELD_SYNONYMS.find(e => e.key === 'expected_salary') || null;
   }
   // An EEO question in words no synonym carries — "Would you say you have a
   // disability?" took four extra words, and went back to the person on every

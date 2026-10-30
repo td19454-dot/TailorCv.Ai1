@@ -3340,6 +3340,92 @@ test('DoorDash: sex, orientation and "worked at DoorDash?" are picked from their
   });
 });
 
+// SuccessFactors (ExxonMobil, Oct 2026): closed sections, picklists that keep
+// their choice in the input's title and open from their own button, a UI5
+// date picker with its input in a shadow root, and pre-filled repeating rows.
+const SF_FORM = `<form id="careerform">
+  <div class="rcmFormSection">
+    <h2><button type="button" class="topBar rcmFormSectionTopBar" aria-expanded="false" id="694:topBar">Job-Specific Information</button></h2>
+    <div class="sectionContent sectionContentClosed" id="694:sectionContent" style="display:none">
+      <label for="60:_txtFld">First Name</label><input id="60:_txtFld" name="firstName" type="text" aria-required="true">
+      <label for="392:_input">Are you currently a member of the Board of Directors of any for-profit or non-profit organization?</label>
+      <span class="sfCascadingPicklist"><div class="paginatedPicklistContainer fd-input-group fd-input-group--control">
+        <input role="combobox" aria-owns="393:_listSelect" placeholder="No Selection" aria-expanded="false" aria-required="true"
+          aria-label="Are you currently a member of the Board of Directors of any for-profit or non-profit organization?"
+          title="Are you currently a member of the Board of Directors of any for-profit or non-profit organization?"
+          class="rcmpaginatedselectinput fd-input" id="392:_input" type="text">
+        <button type="button" class="rcmpaginatedselectbutton" id="392:_selectButton"></button></div></span>
+      <label for="619:_datepicker">Available start date</label>
+      <div id="619:_datepicker" class="datePicker"><div>
+        <ui5-date-picker-xweb-calendar-widget accessible-name="Available start date" format-pattern="MM/dd/yyyy"></ui5-date-picker-xweb-calendar-widget>
+      </div></div>
+    </div>
+  </div>
+  <div id="137:_bgElementContainer"><div class="rcmSectionComponent">
+    <label for="141:_txtFld">Company Name</label><input id="141:_txtFld" name="VFLD6" type="text" aria-required="true">
+  </div></div>
+</form>`;
+
+function wireSuccessFactors(env) {
+  const doc = env.document;
+  const bar = doc.getElementById('694:topBar');
+  bar.addEventListener('click', () => {
+    const content = doc.getElementById('694:sectionContent');
+    content.className = 'sectionContent sectionContentOpen';
+    content.style.display = '';
+    bar.setAttribute('aria-expanded', 'true');
+  });
+  const input = doc.getElementById('392:_input');
+  doc.getElementById('392:_selectButton').addEventListener('click', () => {
+    if (doc.getElementById('393:_listSelect')) return;
+    const list = doc.createElement('ul');
+    list.id = '393:_listSelect';
+    list.innerHTML = '<li>Yes</li><li>No</li>';
+    doc.body.appendChild(list);
+    input.setAttribute('aria-expanded', 'true');
+    for (const li of list.querySelectorAll('li')) {
+      li.addEventListener('click', () => {
+        input.setAttribute('title', li.textContent);
+        input.value = li.textContent;
+        list.remove();
+        input.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+  // The UI5 date picker: its value is its own, set from the inner input's change.
+  env.window.eval(`customElements.define('ui5-date-picker-xweb-calendar-widget', class extends HTMLElement {
+    connectedCallback() {
+      if (this.shadowRoot) return;
+      const root = this.attachShadow({ mode: 'open' });
+      root.innerHTML = '<input type="text" placeholder="MM/DD/YYYY" aria-label="' + this.getAttribute('accessible-name') + '">';
+      this.value = '';
+      this.addEventListener('change', () => { this.value = root.querySelector('input').value; });
+    }
+  });`);
+  env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
+}
+
+test('SuccessFactors: closed sections are opened, picklists and UI5 dates filled, rows left as they are', async () => {
+  await withForm(SF_FORM, {}, async (env) => {
+    wireSuccessFactors(env);
+    const result = await run_.runAutofill(CTX, null);
+    eq(env.document.getElementById('694:topBar').getAttribute('aria-expanded'), 'true', 'the section was opened');
+    eq(env.document.getElementById('60:_txtFld').value, 'Ada', 'a field inside it was read and filled');
+    // Picked from the list its own button opens, and read back from the title.
+    const board = byLabel(result.decisions, 'board of directors');
+    eq(env.document.getElementById('392:_input').getAttribute('title'), 'No',
+       `${board && board.action} ${board && board.outcome}: ${board && board.reason}`);
+    eq(board.outcome, 'ok');
+    // The UI5 component heard the date.
+    const host = env.document.querySelector('ui5-date-picker-xweb-calendar-widget');
+    eq(host.value, '01/09/2026', JSON.stringify(byLabel(result.decisions, 'available start')));
+    // A SuccessFactors row: never planned as a single question.
+    const company = byLabel(result.decisions, 'company name');
+    eq(env.document.getElementById('141:_txtFld').value, '', 'row 1 is not given the current company');
+    eq(company.action, p.ASK);
+  });
+});
+
 test('Save & fill writes the person\'s own pick, not the profile\'s answer again', async () => {
   // DoorDash (Oct 2026): "Heterosexual/Straight" chosen in the sidebar never
   // went in — the writer re-picked from the open list by the profile's "No".

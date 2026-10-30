@@ -171,7 +171,7 @@ function hiddenByStyle(node) {
       if (cs.visibility === 'hidden' || cs.visibility === 'collapse') return true;
       if (cs.opacity !== '' && cs.opacity != null && parseFloat(cs.opacity) === 0) return true;
     }
-    n = n.parentElement;
+    n = parentAcross(n);
     depth++;
   }
   return false;
@@ -182,9 +182,19 @@ function inAriaHidden(node) {
   while (n && n.nodeType === 1 && depth < 25) {
     if (n.getAttribute && n.getAttribute('aria-hidden') === 'true') return true;
     if (n.hidden === true) return true;
-    n = n.parentElement; depth++;
+    n = parentAcross(n); depth++;
   }
   return false;
+}
+
+// The parent, stepping out of a shadow root to its host. A SuccessFactors date
+// picker's input lives in a UI5 component's shadow DOM; walking parentElement
+// stopped at the shadow root, so a date inside a collapsed section read as
+// visible while every other field there was hidden (ExxonMobil, Oct 2026).
+function parentAcross(n) {
+  if (n.parentElement) return n.parentElement;
+  const root = n.parentNode;
+  return root && root.nodeType === 11 && root.host ? root.host : null;
 }
 
 // ── choice buttons ───────────────────────────────────────────
@@ -1684,6 +1694,13 @@ export function clickOpen(el) {
  * "input-row__control-container", and clicking that wrapper instead of the
  * input left Oracle's dropdowns closed, so their options were never read.
  */
+/** A SuccessFactors picklist's own open button (`button.rcmpaginatedselectbutton`), or null. */
+export function picklistButton(el) {
+  if (!el || !/\brcmpaginatedselectinput\b/.test(String(el.className || ''))) return null;
+  const box = el.parentElement;
+  try { return (box && box.querySelector('button.rcmpaginatedselectbutton')) || null; } catch (e) { return null; }
+}
+
 export function controlAncestor(el) {
   for (let n = el && el.parentElement, i = 0; n && i < 6; n = n.parentElement, i++) {
     if (Array.from(n.classList || []).some(c => /(^|[-_])control$/i.test(c))) return n;
@@ -1699,6 +1716,10 @@ function pickClickTarget(el, p) {
   // returned nothing: the menu never opened, the sidebar got no choices, and
   // it offered a free-text box for a question that has eight fixed answers.
   if (role === 'combobox') {
+    // SuccessFactors' picklist opens from its own button; its wrapper's class
+    // ("fd-input-group--control") reads as a react-select control.
+    const sf = picklistButton(el);
+    if (sf) return sf;
     const ctl = controlAncestor(el);
     if (ctl && ctl !== el) return ctl;
     return el;

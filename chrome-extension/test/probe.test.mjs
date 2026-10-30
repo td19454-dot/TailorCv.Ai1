@@ -505,6 +505,21 @@ test('the Workday formField wrapper is the field wrapper', () => {
   eq(probe.fieldWrapper(document.getElementById('i')).getAttribute('data-automation-id'), 'formField-x');
 });
 
+test('a SuccessFactors picklist reads its choice from the title, and the question as empty', () => {
+  const box = (title) => `<label for="p">Type of Industry</label>
+    <span class="sfCascadingPicklist"><div class="paginatedPicklistContainer fd-input-group fd-input-group--control">
+      <input role="combobox" aria-owns="l" placeholder="No Selection" aria-expanded="false" aria-label="Type of Industry"
+             title="${title}" class="rcmpaginatedselectinput" id="p" type="text">
+      <button type="button" class="rcmpaginatedselectbutton"></button></div></span>`;
+  const chosen = describe1(box('Engineering'), '#p');
+  eq(chosen.kind, 'combobox');
+  eq(chosen.value, 'Engineering');
+  ok(chosen.filled);
+  const empty = describe1(box('Type of Industry'), '#p');
+  eq(empty.value, '');
+  notOk(empty.filled, 'the title holding the question is no answer');
+});
+
 test('the probe installs only once per frame', () => {
   const { window, probe } = mount('<input name="a">');
   const marker = {};
