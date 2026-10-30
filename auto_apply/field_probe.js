@@ -343,6 +343,15 @@
         // CLEARS the inner input, so the input is not the place to look.
         if (single) { value = txt(single); }
         else if (hidden && hidden.value) { value = String(hidden.value).trim(); }
+        // SuccessFactors' picklist keeps the choice in the input's title — and,
+        // when nothing is chosen, the question itself (ExxonMobil, Oct 2026).
+        // Never the box's text: that is also whatever was typed to filter.
+        else if (/\brcmpaginatedselectinput\b/.test(String(el.className || ''))) {
+          const title = String(attr(el, 'title') || '').trim();
+          const asked = [label, attr(el, 'aria-label'), attr(el, 'placeholder'), 'No Selection']
+            .map(s => String(s || '').trim().toLowerCase());
+          value = title && asked.indexOf(title.toLowerCase()) < 0 && !/…$/.test(title) ? title : '';
+        }
         // A combobox whose own input shows the choice and is CLOSED: Oracle
         // Candidate Experience keeps its listbox (and an in-field label) in the
         // wrapper after a pick, so the two rules below read every filled Oracle
@@ -568,7 +577,9 @@
   // role="option", so both are read. Where one row carries both (a role=option
   // wrapping a promptOption), only the outermost is kept, or every option would
   // be listed twice and the option-count guards would be off by double.
-  const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"]';
+  // SuccessFactors' picklist list ("76:_listSelect", named by the input's
+  // aria-owns) is read by its rows too, in case they carry no role.
+  const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"], [id$="_listSelect"] li';
 
   // Oracle Candidate Experience draws its dropdown lists as a grid, not a
   // listbox: <input role="combobox" aria-haspopup="grid" aria-controls="city-17-listbox">

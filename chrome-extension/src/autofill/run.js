@@ -18,9 +18,10 @@
 //   * Fields that appear in response to an answer get one extra round, capped.
 
 import { describeFields, findForm, isApplicationPage, readComboboxOptions, reprobe, hasUploadedFile,
-         profileTileBlocks }
+         profileTileBlocks, detectAts }
   from './discover.js';
 import { fillProfileTiles } from './tiles.js';
+import { expandSections, inRepeatingRow } from './successfactors.js';
 import { experienceSection, fillExperienceSection, educationSection, fillEducationSection, inSection }
   from './repeaters.js';
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
@@ -386,6 +387,13 @@ export async function runAutofill(ctx, onProgress) {
 
   clock = startClock();
 
+  // SuccessFactors keeps most of its form in closed sections: open them first,
+  // or their fields are hidden and never read.
+  if (detectAts(globalThis.location.href) === 'successfactors' && expandSections()) {
+    progress('scanning', { detail: 'opening the form’s sections' });
+    clock.quiet(await waitForQuiet(globalThis.document.body));
+  }
+
   // A page of only Education / Experience tiles (Oracle) has no fillable box
   // until an entry is opened; it is still an application page with work to do.
   let form = findForm();
@@ -460,9 +468,24 @@ export async function runAutofill(ctx, onProgress) {
   // Education N blocks likewise, from the profile's school list.
   const schools = (ctx && ctx.facts && ctx.facts.educationEntries) || [];
   const eduSection = schools.length ? educationSection() : null;
-  const inRepeater = r => inSection(expSection, r) || inSection(eduSection, r);
+  const inRepeater = r => inSection(expSection, r) || inSection(eduSection, r) || inRepeatingRow(r);
   const fieldRows = rows.filter(r => r.kind !== 'file' && !inRepeater(r));
   decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
+  // SuccessFactors' Previous Employment / Formal Education rows: as it filled
+  // them from the candidate profile. An empty required one is the person's.
+  const sfRows = rows.filter(r => r.kind !== 'file' && inRepeatingRow(r));
+  if (sfRows.length) {
+    decisions = decisions.concat(decide(sfRows, ctx, null, state).map(d => {
+      d.noServer = true;
+      if (d.row.filled) { d.action = SKIP; d.value = d.row.value; d.reason = 'as SuccessFactors filled it from your profile'; }
+      else {
+        d.action = d.row.required ? ASK : SKIP;
+        d.value = '';
+        d.reason = 'a SuccessFactors row — fill it in on the page';
+      }
+      return d;
+    }));
+  }
   if (expSection) {
     // Workday reads the resume uploaded on this step and fills Work Experience
     // itself — title, company, location, usually not dates. That lands a few

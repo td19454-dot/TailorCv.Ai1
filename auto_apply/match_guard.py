@@ -45,12 +45,16 @@ SENSITIVE_PATTERNS: list[tuple[str, re.Pattern]] = [
     # Date and place of birth: the profile's own answer or nothing, never the
     # model. After citizenship, so "citizen by birth" stays citizenship. Same as match.js.
     ("birth", re.compile(
-        r"\b(date|country|territory|city|town|place|region|state|province) of birth\b"
-        r"|\bbirth ?(date|day|place|country|city)\b|\bdob\b|\bborn\b")),
+        r"\b(date|country|territory|city|town|place|region|state|province|year) of birth\b"
+        r"|\bbirth ?(date|day|place|country|city|year)\b|\bdob\b|\bborn\b")),
     ("clearance", re.compile(
         r"\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b")),
     ("criminal", re.compile(
         r"\b(convict\w*|criminal|felony|misdemeanor|background check)\b")),
+    # Medical history (drug / alcohol treatment). Same as match.js.
+    ("health", re.compile(
+        r"\b(drug|alcohol|substance)\w*\b[\s\S]*"
+        r"\b(abuse|misuse|treat\w*|rehab\w*|dependen\w*|addict\w*)\b")),
     # Anti-bribery declarations: "Are you (or any of your family members) a
     # Government Official?". Answered from the profile only. Ahead of
     # "government_employment", whose words their definitions share. Same as match.js.

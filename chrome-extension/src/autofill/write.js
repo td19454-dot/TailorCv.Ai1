@@ -18,7 +18,7 @@
 import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText } from './match.js';
 import { coerce, candidatesFor, citizenshipOption } from './plan.js';
 import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isNodeDrawn, hiddenReason,
-         isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions }
+         isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions, picklistButton }
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
 import { countryOf, countryOption, countryShare } from './countries.js';
@@ -28,16 +28,19 @@ const probe = () => globalThis.__tcvFieldProbe;
 
 // ── event plumbing ───────────────────────────────────────────
 
+// Composed: an input inside a web component's shadow DOM (SuccessFactors' UI5
+// date picker) must be heard by the component around it, and a non-composed
+// event stops at the shadow root.
 function fire(el, type, init) {
   try {
-    el.dispatchEvent(new globalThis.Event(type, Object.assign({ bubbles: true }, init || {})));
+    el.dispatchEvent(new globalThis.Event(type, Object.assign({ bubbles: true, composed: true }, init || {})));
   } catch (e) { /* a detached node: the caller's verify will catch it */ }
 }
 
 function fireKey(el, type, key) {
   try {
     el.dispatchEvent(new globalThis.KeyboardEvent(type, {
-      key, code: key, bubbles: true, cancelable: true,
+      key, code: key, bubbles: true, cancelable: true, composed: true,
       keyCode: KEY_CODES[key] || 0, which: KEY_CODES[key] || 0,
     }));
   } catch (e) { /* ignore */ }
@@ -573,11 +576,21 @@ function openWidget(row) {
     // wraps every field, and pressing it instead of the input opens nothing.
     const ctl = controlAncestor(el);
     if (ctl && ctl.contains(el) && (!wrap || wrap.contains(ctl) || ctl.contains(wrap))) target = ctl;
+    // SuccessFactors' picklist opens from its own button (see picklistButton).
+    const sf = picklistButton(el);
+    if (sf) target = sf;
   }
   focus(target);
   pressPointer(target);
   // Typing goes to the input, whatever we pressed to open the menu.
   if (target !== el) focus(el);
+}
+
+/** Whether `el` is the input inside a UI5 date picker's shadow DOM. */
+function inUi5DatePicker(el) {
+  const root = el && el.getRootNode && el.getRootNode();
+  const host = root && root.nodeType === 11 ? root.host : null;
+  return !!(host && /date-picker/i.test(host.tagName || ''));
 }
 
 /** The text input inside a widget, which is not always the element we hold. */
@@ -1494,6 +1507,13 @@ export async function applyDecision(decision) {
       break;
     default:
       wrote = setText(row.el, value);
+      // A UI5 date picker (SuccessFactors) takes a typed date on Enter: the
+      // input event alone leaves its own value — the one the form reads — empty.
+      if (wrote && inUi5DatePicker(row.el)) {
+        fireKey(row.el, 'keydown', 'Enter');
+        fireKey(row.el, 'keyup', 'Enter');
+        fire(row.el, 'change');
+      }
       if (wrote) {
         await sleep(TIMING.settleMs);
         const check = reprobe(row);

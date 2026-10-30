@@ -223,6 +223,21 @@ test('Walmart "Please select your gender." keeps its label and is answered from 
   });
 });
 
+test('an input in a shadow root inside a hidden section is hidden', async () => {
+  // SuccessFactors' UI5 date pickers in a closed section read as visible while
+  // every other field there was hidden (ExxonMobil, Oct 2026).
+  await withDoc(`<form><div id="closed" style="display:none"><span id="host"></span></div>
+    <span id="shown"></span></form>`, () => {
+    const make = id => {
+      const root = document.getElementById(id).attachShadow({ mode: 'open' });
+      root.innerHTML = '<input type="text" aria-label="From Date">';
+      return root.querySelector('input');
+    };
+    notOk(d.isVisible(make('host')), 'hidden with its section');
+    ok(d.isVisible(make('shown')), 'a shown one still counts');
+  });
+});
+
 test('a Greenhouse upload takes its name from its group, not the Attach button', async () => {
   await withDoc(fixtures.GREENHOUSE_REMIX, () => {
     const rows = d.describeFields(d.findForm());
