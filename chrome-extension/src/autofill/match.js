@@ -448,7 +448,9 @@ const NEVER_FILL_PATTERNS = [
  */
 export function looksLikeOpaqueId(label) {
   // A validation prompt standing in for the question is just as unreadable.
-  if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i
+  // Subject-less only: Walmart's real question "Please select your gender."
+  // was read as a prompt by an open "please select …" tail (Oct 2026).
+  if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i
       .test(String(label || ''))) return true;
   const t = String(label || '').replace(/\*+\s*$/, '').trim();
   if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;

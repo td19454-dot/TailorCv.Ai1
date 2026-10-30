@@ -158,6 +158,13 @@ export function decide(rows, ctx, server, state) {
       if (prior.ask) return done(d, ASK, '', '', 0, prior.ask);
       return done(d, FILL, prior.value, 'profile', 0.9, prior.reason);
     }
+    // "Are you engaged in any outside employment you would like to continue?"
+    // (Mastercard), "Do you have a second job, outside business…?" (Capital
+    // One): always No — the person's standing answer (Oct 2026).
+    const outside = outsideEmploymentAnswer(row);
+    if (outside !== null) {
+      return done(d, FILL, outside, 'profile', 0.9, 'no outside employment — always No');
+    }
 
     // Tier 0b — sensitive. Stored value or nothing.
     const category = classifySensitive(row.label, employer);
@@ -462,7 +469,9 @@ export function looksLikeConsent(label) {
 // permission speaks for: agreeing to terms, a privacy policy, or acknowledging
 // / certifying the application. NOT marketing or talent-pool opt-ins — the
 // person never said yes to being contacted, only to the employer's terms.
-const TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b/i;
+// "I have read and consent to the above" is Citi's Terms checkbox (Oct 2026):
+// none of the other phrasings, so the profile's permission never reached it.
+const TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b|\bi have read\b|\bread and (understood|understand|agree|accept|consent)\b|\bconsent to the (above|terms|foregoing|following)\b/i;
 const OPT_IN_RE = /\bmarketing\b|\bpromotional\b|\bnewsletter\b|\bsubscribe\b|\btext messages?\b|\bsms\b|\bwhatsapp\b|\bupdates about\b|\btalent (pool|community|network)\b|\bfuture (roles|openings|opportunities)\b|\bjob alerts?\b|\bcontact me\b|\bkeep me\b|\bnotify me\b/i;
 
 const ADULT_RE = /\b(at least|over|above|older than|minimum age of|aged?)\s*(the age of\s*)?(18|eighteen|16|sixteen)\b|\b(18|eighteen|16|sixteen)\s*(years?\s*(of age|old)?|\+)?\s*(or|and)\s*(older|over|above)\b|\b(18|eighteen)\s*\+|\blegal (working )?age\b|\bage of majority\b/i;
@@ -863,6 +872,31 @@ export function previousEmployerAnswer(row, ctx, bank) {
   const value = coerce(was ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
   if (value === null) return null;
   return { value, reason: was ? `you worked at ${was}` : `${company} isn't in your work history` };
+}
+
+// Outside employment, a second job, a side business or other work the person
+// would keep alongside the job. Read from the question itself — the text before
+// its bracketed examples, which list government service, boards and the like.
+// Not "other work" alone: "any other work experience", "other work
+// authorization" are different questions.
+const OUTSIDE_WORK_RE = new RegExp([
+  /\boutside\s+(employment|jobs?|business(es)?|work|activit(y|ies)|engagements?|interests?)\b/.source,
+  /\bsecond(ary)?\s+(employment|jobs?|business(es)?)\b/.source,
+  /\b(other|additional)\s+(employment|jobs?)\b(?!\s+(offers?|experience|history))/.source,
+  /\bmoonlight\w*|\bside\s+(business|jobs?|gigs?|hustle)\b/.source,
+].join('|'), 'i');
+const ASKS_IF_RE = /^\s*(are|do|will|would|have|is)\s+you\b/i;
+
+/** "No" in this field's own wording for an outside-employment question, or null. */
+export function outsideEmploymentAnswer(row) {
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') return null;
+  const opts = (row.options || []).map(o => String(typeof o === 'string' ? o : (o && o.label) || '').trim())
+    .filter(o => o && !PLACEHOLDER_RE.test(o));
+  if (opts.length && !(opts.some(o => /^yes\b/i.test(o)) && opts.some(o => /^no\b/i.test(o)))) return null;
+  const head = String(row.label || '').split(/[[(]/)[0];
+  if (!ASKS_IF_RE.test(head) || !OUTSIDE_WORK_RE.test(head)) return null;
+  return coerce('No', Object.assign({}, row, { candidateKey: '' }));
 }
 
 // A Workday skills prompt takes one search per skill; ten is plenty and keeps

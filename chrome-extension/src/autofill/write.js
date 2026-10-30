@@ -236,7 +236,13 @@ export function setCheckable(row, value) {
 
   let target = null;
   if (members.length === 1 && row.kind === 'checkbox') {
-    const truthy = /^(yes|true|1|on|checked|i agree|agree|accept)$/i.test(String(value));
+    // Its own label is a "tick it" too: a lone box's one option IS its label,
+    // and the model, told to copy an option, sent "Yes, I have read and consent
+    // to the above." — which failed here and stopped auto-apply (Citi).
+    const plain = s => String(s || '').replace(/\*+\s*$/, '').replace(/\s+/g, ' ').trim().toLowerCase();
+    const own = [row.optionLabel, row.label, p && p.labelFor(members[0])].map(plain).filter(Boolean);
+    const truthy = /^(yes|true|1|on|checked|i agree|agree|accept)$/i.test(String(value))
+      || own.includes(plain(value));
     if (!truthy) return false;
     target = members[0];
   } else {

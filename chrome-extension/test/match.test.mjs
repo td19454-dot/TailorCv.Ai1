@@ -549,6 +549,19 @@ test('no non-sensitive synonym is flagged sensitive', () => {
   eq(gaps.length, 0, `unanswerable synonyms:\n    ${gaps.join('\n    ')}`);
 });
 
+test('a validation prompt is unreadable, but "Please select your gender." is a question', () => {
+  // Walmart's Voluntary Disclosures (Oct 2026): an open "please select …" tail
+  // read both real questions as prompts, and auto-apply paused on them.
+  for (const prompt of ['Please select', 'Please Select One', 'Please select an option.', 'Please make a selection',
+    'Please select a value from the list', 'Please answer this question.', 'This information is required.', 'Select One*']) {
+    ok(m.looksLikeOpaqueId(prompt), `${prompt} is only a prompt`);
+  }
+  for (const question of ['Please select your gender.*', 'Please select your Nationality.*',
+    'Please choose your preferred location']) {
+    notOk(m.looksLikeOpaqueId(question), `${question} is a question`);
+  }
+});
+
 test('isPlaceholderOption spots the non-answers', () => {
   ok(m.isPlaceholderOption('Select…'));
   ok(m.isPlaceholderOption('Select an option'));

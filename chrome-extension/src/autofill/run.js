@@ -560,7 +560,7 @@ export async function runAutofill(ctx, onProgress) {
     decisions = decisions.concat(tiled);
   }
 
-  await clock.time('refill', () => refillCleared(decisions, progress));
+  await clock.time('refill', () => refillCleared(decisions, progress, form.root));
   await clock.time('reread_options', () => rereadEmptyLists(decisions));
 
   await saveState();
@@ -612,26 +612,46 @@ function isProfileImport(row) {
  * spaced phone number) still holds the answer and is left alone, and a field
  * the person changed is theirs.
  */
-async function refillCleared(decisions, progress) {
-  const lost = decisions.filter(d => {
+//
+// Each rewrite is given time for the page's reaction before the next. Capital
+// One's Workday redraws the Code of Conduct question, empty, whenever the
+// "second job" answer above it changes: rewritten back to back, the Code of
+// Conduct read back "Yes", was then emptied by second-job's redraw, and the
+// panel showed it filled while the page said "Select One" (Oct 2026). Two
+// rounds; what still will not stay is the person's, never a ✓.
+const REFILL_ROUNDS = 2;
+
+async function refillCleared(decisions, progress, root) {
+  const emptied = () => decisions.filter(d => {
     if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== 'ok') return false;
     if (!d.row || d.row.kind === 'file' || d.row.kind === 'tile') return false;
     if (d.key && state.userEdited.includes(d.key)) return false;
     const now = reprobe(d.row);
     return !!now && !now.filled;
   });
-  if (!lost.length) return;
-  console.info(`[TailorCV] the form emptied ${lost.length} answer(s) after they were filled — filling again:`,
-               lost.map(d => d.label).join(' | '));
-  progress('repairing', { total: lost.length, detail: 'the form cleared some answers — filling them again' });
-  for (const d of lost) {
-    const result = await applyDecision(d);
-    d.outcome = result.outcome;
-    d.shown = result.shown;
-    if (!result.ok) {
-      d.action = ASK;
-      d.reason = 'the form cleared this after we filled it';
+  for (let round = 0; round < REFILL_ROUNDS; round++) {
+    const lost = emptied();
+    if (!lost.length) return;
+    console.info(`[TailorCV] the form emptied ${lost.length} answer(s) after they were filled — filling again:`,
+                 lost.map(d => d.label).join(' | '));
+    progress('repairing', { total: lost.length, detail: 'the form cleared some answers — filling them again' });
+    for (const d of lost) {
+      const result = await applyDecision(d);
+      d.outcome = result.outcome;
+      d.shown = result.shown;
+      if (!result.ok) {
+        d.action = ASK;
+        d.reason = 'the form cleared this after we filled it';
+      }
+      // The page's reaction to this answer (a question below redrawn) lands
+      // before the next one is written.
+      clock.quiet(await waitForQuiet(root));
     }
+  }
+  for (const d of emptied()) {
+    d.action = ASK;
+    d.outcome = 'cleared';
+    d.reason = 'the form cleared this after it was filled — choose it again';
   }
 }
 

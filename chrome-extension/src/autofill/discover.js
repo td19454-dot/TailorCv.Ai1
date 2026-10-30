@@ -270,7 +270,7 @@ export const NOT_QUESTION_SEL = '[role="alert"], [aria-live], [class*="error" i]
 
 /** A label that is only a validation prompt, never a question. */
 export const PROMPT_ONLY_RE =
-  /^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i;
+  /^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i;
 
 /** Text of `node` without the parts that are never the question. */
 function questionTextOf(node, dropSel) {

@@ -1468,6 +1468,44 @@ test("on Visa's own form, questions naming Visa are not visa-sponsorship questio
               CTX, null, null)[0].sensitive);
 });
 
+test('"I have read and consent to the above" is a terms agreement the profile permission ticks', () => {
+  // Citi's Terms checkbox (Oct 2026) matched none of the terms phrasings.
+  const label = 'Yes, I have read and consent to the above.*';
+  ok(p.looksLikeTermsAgreement(label));
+  const ctx = Object.assign({}, CTX, {
+    answerBank: Object.assign({}, CTX.answerBank, { accepts_employer_terms_and_privacy_policy: 'Yes' }) });
+  const d = p.decide([field(label, { kind: 'checkbox', options: [label], required: true })], ctx, null, null)[0];
+  eq(d.action, p.FILL, `${d.action}: ${d.reason}`);
+  eq(d.source, 'profile');
+  // An opt-in is still not a terms agreement.
+  notOk(p.looksLikeTermsAgreement('I have read and consent to receive SMS updates about future roles'));
+});
+
+test('an outside-employment question is always answered No', () => {
+  const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
+  for (const label of [
+    // Mastercard (Oct 2026) — its examples name government service.
+    'Are you currently engaged in any outside employment or activity that you would like to continue if you are '
+      + 'hired by Mastercard? [Examples of outside employment/activities include paid employment; service in any '
+      + 'national, state or local government, including any government department, agency, or state-owned enterprise.]*',
+    // Capital One.
+    'Do you have a second job, outside business, or other employment that you will continue or that you plan to '
+      + 'engage in while employed by Capital One? (This includes part-time jobs, contract work, consulting.)*',
+    'Do you have any side business or moonlighting activity?']) {
+    const d = p.decide([yn(label)], CTX, null, null)[0];
+    eq(d.action, p.FILL, `${label.slice(0, 50)}… -> ${d.action}: ${d.reason}`);
+    eq(d.value, 'No');
+    notOk(d.sensitive);
+  }
+  // Not these.
+  for (const label of ['Do you have any other work experience?', 'Do you have other employment offers?',
+                       'Are you willing to travel for work?', 'Do you have experience in outside sales?']) {
+    eq(p.outsideEmploymentAnswer(yn(label)), null, label);
+  }
+  // Only a Yes / No question.
+  eq(p.outsideEmploymentAnswer(field('Do you have a second job?', { kind: 'combobox', options: ['Full-time', 'Part-time'] })), null);
+});
+
 test('a degree list worded by ISCED level takes the option at the same level', () => {
   // Visa's Workday list (Oct 2026): no option holds "Bachelor's Degree", so a
   // B.E. matched nothing and the Degree stayed "Select One".
