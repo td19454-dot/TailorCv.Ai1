@@ -415,12 +415,101 @@ test('Greenhouse: a cover letter we do not have is reported, not faked', async (
   });
 });
 
+test("auto-apply's forced answer ticks a lone checkbox when it is the box's own label", async () => {
+  // Citi (Oct 2026): the forced pass — which writes the model's text as given —
+  // sent the box's only option, its label, and the write refused it: "we could
+  // not get this to stick", and auto-apply stopped.
+  const label = 'Yes, I have read and consent to the above.';
+  await withForm(`<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      <label for="tc">${label}</label><input id="tc" type="checkbox" name="acceptTermsAndAgreements" required>
+    </form>`, { forceAnswer: f => (/consent to the above/.test(f.label) ? f.label : null) }, async (env) => {
+    // Permission off, so the profile does not tick it and the forced pass does.
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, BANK, { accepts_employer_terms_and_privacy_policy: 'No' }) });
+    const result = await run_.runAutofill(ctx, null);
+    notOk(env.document.getElementById('tc').checked, 'left for the forced pass');
+    const forced = await run_.forceAnswers(ctx, result.decisions);
+    const d = byLabel(result.decisions, 'consent to the above');
+    eq(forced.forced, 1);
+    ok(env.document.getElementById('tc').checked, `ticked: ${d.action} ${d.outcome} ${d.reason}`);
+    eq(d.outcome, 'ok');
+  });
+});
+
 test('Greenhouse: an unknown product question is answered by the server tier', async () => {
   await withForm(fixtures.GREENHOUSE, {
     serverAnswers: { 'Have you used our developer platform? *': 'Yes' },
   }, async (env) => {
     await run_.runAutofill(CTX, null);
     eq(valueOf(env, '#q_product'), '1');
+  });
+});
+
+// Capital One's Workday (Oct 2026): the "second job" answer's first update was
+// lost (Workday's own blur handler crashed), and every change to it redraws the
+// Code of Conduct question below — empty — a moment later. Rewritten back to
+// back, the Code of Conduct read back "Yes", was emptied, and the panel kept ✓.
+const CAPONE_QUESTIONS = `<form>
+  <label for="fn">First Name</label><input id="fn" name="first_name">
+  <label for="em">Email</label><input id="em" name="email" type="email">
+  <label for="job2">Do you have a second job or outside business?</label>
+  <select id="job2" name="job2" required><option value="">Select One</option><option>Yes</option><option>No</option></select>
+  <label for="coc">Please acknowledge the Code of Conduct by responding Yes</label>
+  <select id="coc" name="coc" required><option value="">Select One</option><option>Yes</option><option>No</option></select>
+</form>`;
+const CAPONE_ANSWERS = {
+  'Do you have a second job or outside business?': 'No',
+  'Please acknowledge the Code of Conduct by responding Yes': 'Yes',
+};
+
+// Workday works on an answer for a moment (the page changes: a busy state),
+// then redraws — here, empties — what depends on it. Busy-then-redraw is what
+// waitForQuiet sees, as on the real page.
+function redrawLater(w, el, ms) {
+  el.setAttribute('data-busy', 'true');
+  w.setTimeout(() => { el.value = ''; el.removeAttribute('data-busy'); }, ms);
+}
+
+function wireCapitalOne(env, opts = {}) {
+  const w = env.window;
+  const job = env.document.getElementById('job2'), coc = env.document.getElementById('coc');
+  let jobChanges = 0;
+  job.addEventListener('change', () => {
+    if (++jobChanges === 1) redrawLater(w, job, 40);    // the lost update
+    redrawLater(w, coc, 60);                            // the follow-up redrawn, empty
+  });
+  if (opts.cocNeverStays) coc.addEventListener('change', () => redrawLater(w, coc, 60));
+}
+
+// The real quiet wait is at least 0.9 s — well past Workday's redraw. This
+// suite's 10 ms one would end before the redraw lands, which no real page sees.
+async function withRealisticWaits(fn) {
+  setTiming({ revealWatchMs: 300, revealQuietMs: 100 });
+  try { return await fn(); } finally { setTiming({ revealWatchMs: 10, revealQuietMs: 30 }); }
+}
+
+test('Capital One: a follow-up question its parent empties is filled again after the parent settles', async () => {
+  await withForm(CAPONE_QUESTIONS, { serverAnswers: CAPONE_ANSWERS }, async (env) => {
+    wireCapitalOne(env);
+    const result = await withRealisticWaits(() => run_.runAutofill(CTX, null));
+    await new Promise(r => setTimeout(r, 600));          // anything still pending lands
+    eq(valueOf(env, '#job2'), 'No');
+    eq(valueOf(env, '#coc'), 'Yes', 'the Code of Conduct holds its answer');
+    for (const d of result.decisions.filter(x => x.action === p.FILL && x.row && x.row.el)) {
+      ok(d.row.el.value, `${d.label} is shown filled and must be: page holds "${d.row.el.value}"`);
+    }
+  });
+});
+
+test('Capital One: an answer the page keeps emptying is handed over, never shown filled', async () => {
+  await withForm(CAPONE_QUESTIONS, { serverAnswers: CAPONE_ANSWERS }, async (env) => {
+    wireCapitalOne(env, { cocNeverStays: true });
+    const result = await withRealisticWaits(() => run_.runAutofill(CTX, null));
+    const coc = byLabel(result.decisions, 'code of conduct');
+    eq(coc.action, p.ASK, `not ✓: ${coc.action} ${coc.reason}`);
+    ok(/cleared/.test(coc.reason), coc.reason);
   });
 });
 

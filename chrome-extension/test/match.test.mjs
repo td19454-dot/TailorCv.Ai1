@@ -260,6 +260,13 @@ const MUST_FLAG = [
   ['demographic', 'Protected veteran status'],
   ['demographic', 'Are you a protected military veteran?'],
   ['demographic', 'Have you ever served or are you currently serving in the United States military?'],
+  // Anti-bribery declarations (Walmart, Oct 2026) — ahead of government_employment.
+  ['government_official', 'Are you (or have you been within the last 12 months) a Government Official? Government Official (GO) means any official or employee of any government agency, ministry or department of a government'],
+  ['government_official', 'Are any of your immediate family members Government Officials (Any Official or Employee of any government department/agency)?'],
+  ['government_official', 'Are you a government official?'],
+  ['government_official', 'Do you currently hold or have you held, within the last 5 years, a position as a government official?'],
+  ['government_official', 'Is any member of your immediate family a public official?'],
+  ['government_official', 'Are you a politically exposed person?'],
   ['government_employment', 'Have you ever been directly employed by (1) any government or military entity, state-owned enterprise, or publicly-funded institution?'],
   ['demographic', 'Disability status'],
   ['demographic', 'Do you have a disability?'],
@@ -547,6 +554,19 @@ test('no non-sensitive synonym is flagged sensitive', () => {
     }
   }
   eq(gaps.length, 0, `unanswerable synonyms:\n    ${gaps.join('\n    ')}`);
+});
+
+test('a validation prompt is unreadable, but "Please select your gender." is a question', () => {
+  // Walmart's Voluntary Disclosures (Oct 2026): an open "please select …" tail
+  // read both real questions as prompts, and auto-apply paused on them.
+  for (const prompt of ['Please select', 'Please Select One', 'Please select an option.', 'Please make a selection',
+    'Please select a value from the list', 'Please answer this question.', 'This information is required.', 'Select One*']) {
+    ok(m.looksLikeOpaqueId(prompt), `${prompt} is only a prompt`);
+  }
+  for (const question of ['Please select your gender.*', 'Please select your Nationality.*',
+    'Please choose your preferred location']) {
+    notOk(m.looksLikeOpaqueId(question), `${question} is a question`);
+  }
 });
 
 test('isPlaceholderOption spots the non-answers', () => {

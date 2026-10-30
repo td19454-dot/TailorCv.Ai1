@@ -194,6 +194,35 @@ test('Workday "Please Select One" is named by its section, and is the sensitive 
   });
 });
 
+test('Walmart "Please select your gender." keeps its label and is answered from the profile', async () => {
+  // Read as a validation prompt, both questions became "we couldn't read this
+  // question" — options never read, profile never asked — and auto-apply paused.
+  await withDoc(`<main><div data-automation-id="applyFlowPage">
+    <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    <div role="group" aria-labelledby="Personal-Information-section">
+      <h4 id="Personal-Information-section">Personal Information</h4>
+      <div data-automation-id="formField-gender"><label for="personalInfoPerson--gender"><span>Please select your gender.<abbr aria-hidden="true">*</abbr></span></label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Please select your gender. Select One Required"
+          name="gender" id="personalInfoPerson--gender">Select One</button><input type="text"></div>
+      <div data-automation-id="formField-nationality"><label for="personalInfoPerson--nationality"><span>Please select your Nationality.<abbr aria-hidden="true">*</abbr></span></label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Please select your Nationality. Select One Required"
+          name="nationality" id="personalInfoPerson--nationality">Select One</button><input type="text"></div>
+    </div>
+    </div></div></main>`, () => {
+    const rows = d.describeFields(d.findForm());
+    const gender = rows.find(r => r.el && r.el.id === 'personalInfoPerson--gender');
+    const nationality = rows.find(r => r.el && r.el.id === 'personalInfoPerson--nationality');
+    ok(gender && nationality, `labels: ${rows.map(r => r.label).join(' | ')}`);
+    eq(gender.label, 'Please select your gender.*');
+    eq(nationality.label, 'Please select your Nationality.*');
+    const [g, n] = p.decide([gender, nationality], { answerBank: { gender: 'Male', nationality: 'India' } });
+    eq(g.action, p.FILL, `gender ${g.action}: ${g.reason}`);
+    eq(g.value, 'Male');
+    eq(n.action, p.FILL, `nationality ${n.action}: ${n.reason}`);
+    ok(/india/i.test(n.value), `nationality value ${n.value}`);
+  });
+});
+
 test('a Greenhouse upload takes its name from its group, not the Attach button', async () => {
   await withDoc(fixtures.GREENHOUSE_REMIX, () => {
     const rows = d.describeFields(d.findForm());

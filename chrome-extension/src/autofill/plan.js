@@ -158,6 +158,13 @@ export function decide(rows, ctx, server, state) {
       if (prior.ask) return done(d, ASK, '', '', 0, prior.ask);
       return done(d, FILL, prior.value, 'profile', 0.9, prior.reason);
     }
+    // "Are you engaged in any outside employment you would like to continue?"
+    // (Mastercard), "Do you have a second job, outside business…?" (Capital
+    // One): always No — the person's standing answer (Oct 2026).
+    const outside = outsideEmploymentAnswer(row);
+    if (outside !== null) {
+      return done(d, FILL, outside, 'profile', 0.9, 'no outside employment — always No');
+    }
 
     // Tier 0b — sensitive. Stored value or nothing.
     const category = classifySensitive(row.label, employer);
@@ -187,6 +194,20 @@ export function decide(rows, ctx, server, state) {
         if (value !== null) {
           return done(d, FILL, value, 'saved_answer', 0.9, 'your saved answer to this question');
         }
+      }
+      // "Are you / is anyone in your family a Government Official?" — from the
+      // profile's two answers; see governmentOfficialAnswer.
+      // Criminal history likewise, from its one answer; criminalHistoryAnswer.
+      if (category === 'government_official' || category === 'criminal') {
+        const g = category === 'criminal' ? criminalHistoryAnswer(row, bank) : governmentOfficialAnswer(row, bank);
+        if (g.followUp) {
+          return row.required
+            ? done(d, ASK, '', '', 0, 'only needed for some answers to the question above')
+            : done(d, SKIP, '', '', 0, 'only needed if you answered Yes above');
+        }
+        if (g.profile) return done(d, PROFILE, '', '', 0, g.profile);
+        if (g.ask) return done(d, ASK, '', '', 0, g.ask);
+        return done(d, FILL, g.value, 'profile', 0.95, g.reason);
       }
       // Citizenship from the profile's country of citizenship — see
       // citizenshipAnswer. Before this, a Workday country list was searched for
@@ -462,7 +483,9 @@ export function looksLikeConsent(label) {
 // permission speaks for: agreeing to terms, a privacy policy, or acknowledging
 // / certifying the application. NOT marketing or talent-pool opt-ins — the
 // person never said yes to being contacted, only to the employer's terms.
-const TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b/i;
+// "I have read and consent to the above" is Citi's Terms checkbox (Oct 2026):
+// none of the other phrasings, so the profile's permission never reached it.
+const TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b|\bi have read\b|\bread and (understood|understand|agree|accept|consent)\b|\bconsent to the (above|terms|foregoing|following)\b/i;
 const OPT_IN_RE = /\bmarketing\b|\bpromotional\b|\bnewsletter\b|\bsubscribe\b|\btext messages?\b|\bsms\b|\bwhatsapp\b|\bupdates about\b|\btalent (pool|community|network)\b|\bfuture (roles|openings|opportunities)\b|\bjob alerts?\b|\bcontact me\b|\bkeep me\b|\bnotify me\b/i;
 
 const ADULT_RE = /\b(at least|over|above|older than|minimum age of|aged?)\s*(the age of\s*)?(18|eighteen|16|sixteen)\b|\b(18|eighteen|16|sixteen)\s*(years?\s*(of age|old)?|\+)?\s*(or|and)\s*(older|over|above)\b|\b(18|eighteen)\s*\+|\blegal (working )?age\b|\bage of majority\b/i;
@@ -516,7 +539,8 @@ function truncate(s, n) {
 }
 
 // Sensitive categories the profile page has a field for (routers/profile_page.py).
-const PROFILE_CATEGORIES = new Set(['work_authorization', 'sponsorship', 'salary', 'demographic', 'birth']);
+const PROFILE_CATEGORIES = new Set(['work_authorization', 'sponsorship', 'salary', 'demographic', 'birth',
+  'government_official', 'criminal']);
 
 function profileHint(category, entry) {
   if (entry && entry.key === 'nationality') return 'add your country of citizenship to your profile';
@@ -528,6 +552,8 @@ function profileHint(category, entry) {
     case 'salary': return 'add your salary expectation to your profile';
     case 'demographic': return 'set your voluntary disclosures in your profile';
     case 'birth': return 'add your date / place of birth to your profile';
+    case 'government_official': return 'add your government-official answers to your profile';
+    case 'criminal': return 'add your criminal-history answer to your profile';
     default: return '';
   }
 }
@@ -863,6 +889,130 @@ export function previousEmployerAnswer(row, ctx, bank) {
   const value = coerce(was ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
   if (value === null) return null;
   return { value, reason: was ? `you worked at ${was}` : `${company} isn't in your work history` };
+}
+
+// Outside employment, a second job, a side business or other work the person
+// would keep alongside the job. Read from the question itself — the text before
+// its bracketed examples, which list government service, boards and the like.
+// Not "other work" alone: "any other work experience", "other work
+// authorization" are different questions.
+const OUTSIDE_WORK_RE = new RegExp([
+  /\boutside\s+(employment|jobs?|business(es)?|work|activit(y|ies)|engagements?|interests?)\b/.source,
+  /\bsecond(ary)?\s+(employment|jobs?|business(es)?)\b/.source,
+  /\b(other|additional)\s+(employment|jobs?)\b(?!\s+(offers?|experience|history))/.source,
+  /\bmoonlight\w*|\bside\s+(business|jobs?|gigs?|hustle)\b/.source,
+].join('|'), 'i');
+const ASKS_IF_RE = /^\s*(are|do|will|would|have|is)\s+you\b/i;
+
+/** "No" in this field's own wording for an outside-employment question, or null. */
+export function outsideEmploymentAnswer(row) {
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') return null;
+  const opts = (row.options || []).map(o => String(typeof o === 'string' ? o : (o && o.label) || '').trim())
+    .filter(o => o && !PLACEHOLDER_RE.test(o));
+  if (opts.length && !(opts.some(o => /^yes\b/i.test(o)) && opts.some(o => /^no\b/i.test(o)))) return null;
+  const head = String(row.label || '').split(/[[(]/)[0];
+  if (!ASKS_IF_RE.test(head) || !OUTSIDE_WORK_RE.test(head)) return null;
+  return coerce('No', Object.assign({}, row, { candidateKey: '' }));
+}
+
+// Government-official declarations, from the profile's two answers. The profile
+// asks the broadest version — ever, any relative, any government body or
+// state-owned company — so its "No" is true of every narrower wording and is
+// filled anywhere. Its "Yes" only where the form asks that same open-ended
+// question: a past role may fall outside "the last 12 months". Whose official,
+// a negated statement, business associates: the person answers those.
+const GOV_NEGATED_RE = /\b(not|neither|nor|none)\b/i;
+const GOV_OTHERS_RE = /\bassociates?\b|\bbusiness (partners?|relationships?)\b|\bfriends?\b|\bclose (personal|business)\b|\bpolitically exposed\b/i;
+const GOV_FAMILY_RE = /\bfamily\b|\brelatives?\b|\bspouses?\b|\bpartners?\b|\bparents?\b|\bsiblings?\b|\bbrothers?\b|\bsisters?\b|\bchild(ren)?\b|\bsons?\b|\bdaughters?\b|\bin-?laws?\b|\bhousehold\b|\brelated to\b/i;
+const GOV_SELF_RE = /\b(are|were) you\b|\bhave you (ever )?(been|held|served|occupied)\b|\bdo you (currently )?(hold|occupy|serve)\b|\bi (am|was|have been)\b/i;
+const GOV_OPEN_ENDED_RE = /\bever\b|\bat any time\b|\bnow or in the past\b|\b(past|current) or (present|former)\b|\bformer(ly)?\b|\bha(ve|s) (you |\w+ )?been\b/i;
+const GOV_TIME_LIMIT_RE = /\b(within|during|in) the (last|past|previous|preceding)\b|\b(last|past|previous|preceding) (\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve)\b/i;
+
+/**
+ * A government-official question answered from bank.is_government_official /
+ * bank.family_government_official: { value, reason }, { ask }, { profile } or
+ * { followUp }. Read from the question alone — the text before its "?", never
+ * the definition after it, which lists "any official or employee of…".
+ */
+export function governmentOfficialAnswer(row, bank) {
+  const label = String(row.label || '');
+  if (isConditionalFollowUp(label)) return { followUp: true };
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') {
+    return { ask: 'we fill this question as a Yes / No only — choose your answer' };
+  }
+  const head = (label.includes('?') ? label.split('?')[0] : label.split(/\.\s/)[0]).slice(0, 400);
+  if (GOV_NEGATED_RE.test(head)) return { ask: 'worded as a "not" statement — choose your answer' };
+  if (GOV_OTHERS_RE.test(head)) return { ask: 'asks about people your profile answers don\'t cover — choose your answer' };
+  // "Are you related to …" is about family, not the person.
+  const family = GOV_FAMILY_RE.test(head);
+  const self = GOV_SELF_RE.test(head.replace(/\b(are|were) you (related|connected) to\b/ig, ''));
+  if (!family && !self) return { ask: 'we could not tell whose government role this asks about — choose your answer' };
+
+  const answers = [];
+  if (self) answers.push(String((bank && bank.is_government_official) || ''));
+  if (family) answers.push(String((bank && bank.family_government_official) || ''));
+  if (answers.some(a => a !== 'Yes' && a !== 'No')) {
+    return { profile: 'add your government-official answers to your profile' };
+  }
+  let answer = null;
+  if (answers.every(a => a === 'No')) answer = 'No';
+  else if (answers.length === 1 && GOV_OPEN_ENDED_RE.test(head) && !GOV_TIME_LIMIT_RE.test(head)) answer = 'Yes';
+  if (!answer) return { ask: 'your profile says Yes — check it applies to what this question asks' };
+
+  const value = coerce(answer, Object.assign({}, row, { candidateKey: '' }));
+  if (value === null) return { ask: `none of the options match your profile answer (${answer})` };
+  const whose = self && family ? 'you or your family' : (self ? 'you' : 'your family');
+  return { value, reason: `your profile: ${answer === 'No' ? 'no government official' : 'a government official'} (${whose})` };
+}
+
+// Criminal history, from the profile's one answer: "Have you ever been convicted
+// of any crime, or do you have criminal charges pending?" Its "No" is true of
+// every narrower wording (a felony, the last 7 years, excluding traffic) and is
+// filled anywhere; its "Yes" never is — whether it applies depends on exactly
+// what this form asks. Only a question about the person's own record: consent
+// to a background check is the same category and a different question, where
+// "No" would refuse the check.
+const CRIME_HISTORY_RE = /\bconvict\w*|\bcriminal (record|history|charges?|offen[cs]es?|convictions?|proceedings?|cases?)\b|\bfelon(y|ies)\b|\bmisdemean\w*|\bpending (criminal )?charges?\b|\bcharged with\b|\bpleaded? (guilty|no contest)\b/i;
+// A narrowing clause only makes the question narrower, so "No" still holds:
+// "…a crime, other than minor traffic violations", "…that has not been sealed".
+const CRIME_EXCLUSION_RE = /\b(other than|excluding|except( for)?|not including|apart from)\b[^,;)?]*|\b(that|which) (has|have) not been [^,;)?]*/gi;
+const CRIME_CONSENT_RE = /\bconsent\w*|\bauthori[sz]\w*|\bagree\w*|\bwilling\b|\bsubmit to\b|\bundergo\b|\bpass\b/i;
+// Statements to certify, not questions: "I confirm I have no criminal record".
+const CRIME_STATEMENT_RE = /\b(confirm|certify|declare|attest)\b|\bi (have|had|am) (no|not|never)\b|\b(not|never|neither|nor|none)\b/i;
+// Beyond "convicted or charged": arrests, cautions, investigations, traffic
+// tickets, workplace discipline — or someone else's record.
+const CRIME_UNCOVERED_RE = /\barrest\w*|\bdetain\w*|\bcaution\w*|\binvestigat\w*|\btraffic\b|\bdriving\b|\bmoving violations?\b|\bdisciplin\w*|\bdismiss\w*|\bterminat\w*|\bfamily\b|\brelatives?\b|\bspouse\b/i;
+const CRIME_SELF_RE = /\b(have|are|were|do|did) you\b|\byou (have|are|were)\b|\bi (have|am|was)\b/i;
+
+/**
+ * A criminal-history question answered from bank.has_criminal_history:
+ * { value, reason }, { ask }, { profile } or { followUp }. Read from the
+ * question alone — the text before its "?".
+ */
+export function criminalHistoryAnswer(row, bank) {
+  const label = String(row.label || '');
+  if (isConditionalFollowUp(label)) return { followUp: true };
+  const head = (label.includes('?') ? label.split('?')[0] : label.split(/\.\s/)[0]).slice(0, 400);
+  const core = head.replace(CRIME_EXCLUSION_RE, ' ');
+  if (!CRIME_HISTORY_RE.test(core) || CRIME_CONSENT_RE.test(core)) {
+    return { ask: 'we never guess this — choose your answer' };
+  }
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') {
+    return { ask: 'we fill this question as a Yes / No only — choose your answer' };
+  }
+  if (CRIME_STATEMENT_RE.test(core)) return { ask: 'worded as a statement — choose your answer' };
+  if (CRIME_UNCOVERED_RE.test(core)) return { ask: 'asks more than your profile answer covers — choose your answer' };
+  if (!CRIME_SELF_RE.test(core)) return { ask: 'we never guess this — choose your answer' };
+
+  const stored = String((bank && bank.has_criminal_history) || '');
+  if (stored !== 'Yes' && stored !== 'No') return { profile: 'add your criminal-history answer to your profile' };
+  if (stored === 'Yes') return { ask: 'your profile says Yes — check it applies to what this question asks' };
+  const value = coerce('No', Object.assign({}, row, { candidateKey: '' }));
+  if (value === null) return { ask: 'none of the options match your profile answer (No)' };
+  return { value, reason: 'your profile: no criminal convictions or pending charges' };
 }
 
 // A Workday skills prompt takes one search per skill; ten is plenty and keeps

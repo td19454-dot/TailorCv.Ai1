@@ -650,6 +650,16 @@ class UserApplyProfile(Base):
     date_of_birth = Column(String(10), nullable=True)
     country_of_birth = Column(String(80), nullable=True)
     city_of_birth = Column(String(100), nullable=True)
+    # Anti-bribery declarations: "Are you (or have you been) a Government
+    # Official?" and the same about family. Asked in their broadest form, so a
+    # "no" answers every narrower wording. Filled only from these, never sent to
+    # the model.
+    government_official = Column(String(10), nullable=True)          # "yes" | "no"
+    family_government_official = Column(String(10), nullable=True)   # "yes" | "no"
+    # "Have you ever been convicted of any crime, or do you have pending
+    # criminal charges?" Broadest form again: "no" answers every narrower
+    # wording, "yes" goes back to the person. Never sent to the model.
+    criminal_history = Column(String(10), nullable=True)             # "yes" | "no"
 
     # Voluntary self-identification. Default to declining rather than guessing.
     gender = Column(String(60), nullable=True)

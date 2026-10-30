@@ -344,6 +344,14 @@ export const SENSITIVE_PATTERNS = [
   ['birth', /\b(date|country|territory|city|town|place|region|state|province) of birth\b|\bbirth ?(date|day|place|country|city)\b|\bdob\b|\bborn\b/],
   ['clearance', /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
   ['criminal', /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
+  // Anti-bribery declarations: "Are you (or have you been within the last 12
+  // months) a Government Official?", "Are any of your immediate family members
+  // Government Officials?" (Walmart, Oct 2026). Answered from the profile's two
+  // answers only (governmentOfficialAnswer in plan.js). Ahead of
+  // 'government_employment': their definitions say "employee of any government
+  // agency", and "Are you a government official?" has no employment word at all —
+  // it was not sensitive, and went to the model.
+  ['government_official', /\b(government|public|foreign) officials?\b|\bofficials? (or employees? )?of (a|an|any|the) (government|public|foreign)\b|\bpolitically exposed\b/],
   // Employment by a government, the military, a state-owned enterprise
   // (Snowflake: "Have you ever been directly employed by (1) any government or
   // military entity, state-owned enterprise…"). An employment-history question,
@@ -369,7 +377,8 @@ export const SENSITIVE_PATTERNS = [
 // status?") are worded too variously for the profile's one status to answer
 // them all, so the person's own answer to the exact question is kept too.
 // Birth too: Region of Birth has no profile field (match_guard.py, same set).
-export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal', 'citizenship', 'government_employment', 'birth']);
+export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal', 'citizenship', 'government_employment', 'birth',
+  'government_official']);
 
 // browser.py _EEO_FIELD_MARKERS — kept separately because EEO fields have a
 // behaviour the other sensitive categories don't: a stored "Decline to
@@ -448,7 +457,9 @@ const NEVER_FILL_PATTERNS = [
  */
 export function looksLikeOpaqueId(label) {
   // A validation prompt standing in for the question is just as unreadable.
-  if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i
+  // Subject-less only: Walmart's real question "Please select your gender."
+  // was read as a prompt by an open "please select …" tail (Oct 2026).
+  if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i
       .test(String(label || ''))) return true;
   const t = String(label || '').replace(/\*+\s*$/, '').trim();
   if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;

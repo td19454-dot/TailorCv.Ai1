@@ -426,7 +426,7 @@
           return "";
         }
         const t = txt(clone);
-        if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(t)) continue;
+        if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(t)) continue;
         if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
       }
       return "";
@@ -832,6 +832,14 @@ what when where which who will with would you your now future
     ["birth", /\b(date|country|territory|city|town|place|region|state|province) of birth\b|\bbirth ?(date|day|place|country|city)\b|\bdob\b|\bborn\b/],
     ["clearance", /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
     ["criminal", /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
+    // Anti-bribery declarations: "Are you (or have you been within the last 12
+    // months) a Government Official?", "Are any of your immediate family members
+    // Government Officials?" (Walmart, Oct 2026). Answered from the profile's two
+    // answers only (governmentOfficialAnswer in plan.js). Ahead of
+    // 'government_employment': their definitions say "employee of any government
+    // agency", and "Are you a government official?" has no employment word at all —
+    // it was not sensitive, and went to the model.
+    ["government_official", /\b(government|public|foreign) officials?\b|\bofficials? (or employees? )?of (a|an|any|the) (government|public|foreign)\b|\bpolitically exposed\b/],
     // Employment by a government, the military, a state-owned enterprise
     // (Snowflake: "Have you ever been directly employed by (1) any government or
     // military entity, state-owned enterprise…"). An employment-history question,
@@ -849,7 +857,14 @@ what when where which who will with would you your now future
     ["demographic", /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
     ["demographic", /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/]
   ];
-  var STORABLE_SENSITIVE = /* @__PURE__ */ new Set(["clearance", "criminal", "citizenship", "government_employment", "birth"]);
+  var STORABLE_SENSITIVE = /* @__PURE__ */ new Set([
+    "clearance",
+    "criminal",
+    "citizenship",
+    "government_employment",
+    "birth",
+    "government_official"
+  ]);
   var EEO_FIELD_MARKERS = [
     "gender",
     "race",
@@ -898,7 +913,7 @@ what when where which who will with would you your now future
     // filled from the profile's own answer only.
   ];
   function looksLikeOpaqueId(label) {
-    if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(String(label || ""))) return true;
+    if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(String(label || ""))) return true;
     const t = String(label || "").replace(/\*+\s*$/, "").trim();
     if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;
     const hex = t.match(/[0-9a-f]{10,}/ig) || [];
@@ -1647,7 +1662,7 @@ what when where which who will with would you your now future
     return /(^|[\s_-])(selected|active|is-selected|checked|pressed)($|[\s_-])/i.test(cls);
   }
   var NOT_QUESTION_SEL = '[role="alert"], [aria-live], [class*="error" i], [class*="validation" i], [class*="invalid" i], [class*="helper" i], [class*="hint" i], [class*="message" i], [id*="error" i]';
-  var PROMPT_ONLY_RE = /^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i;
+  var PROMPT_ONLY_RE = /^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i;
   function questionTextOf(node, dropSel) {
     let clone = null;
     try {
@@ -3271,6 +3286,10 @@ Zimbabwe|Zimbabwean
         if (prior.ask) return done(d, ASK, "", "", 0, prior.ask);
         return done(d, FILL, prior.value, "profile", 0.9, prior.reason);
       }
+      const outside = outsideEmploymentAnswer(row);
+      if (outside !== null) {
+        return done(d, FILL, outside, "profile", 0.9, "no outside employment \u2014 always No");
+      }
       const category = classifySensitive(row.label, employer);
       if (category) {
         d.sensitive = category;
@@ -3287,6 +3306,15 @@ Zimbabwe|Zimbabwean
           if (value2 !== null) {
             return done(d, FILL, value2, "saved_answer", 0.9, "your saved answer to this question");
           }
+        }
+        if (category === "government_official" || category === "criminal") {
+          const g = category === "criminal" ? criminalHistoryAnswer(row, bank) : governmentOfficialAnswer(row, bank);
+          if (g.followUp) {
+            return row.required ? done(d, ASK, "", "", 0, "only needed for some answers to the question above") : done(d, SKIP, "", "", 0, "only needed if you answered Yes above");
+          }
+          if (g.profile) return done(d, PROFILE, "", "", 0, g.profile);
+          if (g.ask) return done(d, ASK, "", "", 0, g.ask);
+          return done(d, FILL, g.value, "profile", 0.95, g.reason);
         }
         if (category === "citizenship") {
           const c = citizenshipAnswer(row, bank, entry2);
@@ -3469,7 +3497,7 @@ Zimbabwe|Zimbabwean
   function looksLikeConsent(label) {
     return CONSENT_RE.test(String(label == null ? "" : label));
   }
-  var TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b/i;
+  var TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b|\bi have read\b|\bread and (understood|understand|agree|accept|consent)\b|\bconsent to the (above|terms|foregoing|following)\b/i;
   var OPT_IN_RE = /\bmarketing\b|\bpromotional\b|\bnewsletter\b|\bsubscribe\b|\btext messages?\b|\bsms\b|\bwhatsapp\b|\bupdates about\b|\btalent (pool|community|network)\b|\bfuture (roles|openings|opportunities)\b|\bjob alerts?\b|\bcontact me\b|\bkeep me\b|\bnotify me\b/i;
   var ADULT_RE = /\b(at least|over|above|older than|minimum age of|aged?)\s*(the age of\s*)?(18|eighteen|16|sixteen)\b|\b(18|eighteen|16|sixteen)\s*(years?\s*(of age|old)?|\+)?\s*(or|and)\s*(older|over|above)\b|\b(18|eighteen)\s*\+|\blegal (working )?age\b|\bage of majority\b/i;
   var MINOR_RE = /\b(under|younger than|below)\s*(the age of\s*)?(18|eighteen|16|sixteen)\b/i;
@@ -3513,7 +3541,15 @@ Zimbabwe|Zimbabwean
     const t = String(s || "");
     return t.length <= n ? t : `${t.slice(0, n - 1)}\u2026`;
   }
-  var PROFILE_CATEGORIES = /* @__PURE__ */ new Set(["work_authorization", "sponsorship", "salary", "demographic", "birth"]);
+  var PROFILE_CATEGORIES = /* @__PURE__ */ new Set([
+    "work_authorization",
+    "sponsorship",
+    "salary",
+    "demographic",
+    "birth",
+    "government_official",
+    "criminal"
+  ]);
   function profileHint(category, entry) {
     if (entry && entry.key === "nationality") return "add your country of citizenship to your profile";
     if (category === "citizenship") return "add your country of citizenship to your profile";
@@ -3529,6 +3565,10 @@ Zimbabwe|Zimbabwean
         return "set your voluntary disclosures in your profile";
       case "birth":
         return "add your date / place of birth to your profile";
+      case "government_official":
+        return "add your government-official answers to your profile";
+      case "criminal":
+        return "add your criminal-history answer to your profile";
       default:
         return "";
     }
@@ -3788,6 +3828,84 @@ Zimbabwe|Zimbabwean
     const value = coerce(was ? "Yes" : "No", Object.assign({}, row, { candidateKey: "" }));
     if (value === null) return null;
     return { value, reason: was ? `you worked at ${was}` : `${company} isn't in your work history` };
+  }
+  var OUTSIDE_WORK_RE = new RegExp([
+    /\boutside\s+(employment|jobs?|business(es)?|work|activit(y|ies)|engagements?|interests?)\b/.source,
+    /\bsecond(ary)?\s+(employment|jobs?|business(es)?)\b/.source,
+    /\b(other|additional)\s+(employment|jobs?)\b(?!\s+(offers?|experience|history))/.source,
+    /\bmoonlight\w*|\bside\s+(business|jobs?|gigs?|hustle)\b/.source
+  ].join("|"), "i");
+  var ASKS_IF_RE = /^\s*(are|do|will|would|have|is)\s+you\b/i;
+  function outsideEmploymentAnswer(row) {
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") return null;
+    const opts = (row.options || []).map((o) => String(typeof o === "string" ? o : o && o.label || "").trim()).filter((o) => o && !PLACEHOLDER_RE.test(o));
+    if (opts.length && !(opts.some((o) => /^yes\b/i.test(o)) && opts.some((o) => /^no\b/i.test(o)))) return null;
+    const head = String(row.label || "").split(/[[(]/)[0];
+    if (!ASKS_IF_RE.test(head) || !OUTSIDE_WORK_RE.test(head)) return null;
+    return coerce("No", Object.assign({}, row, { candidateKey: "" }));
+  }
+  var GOV_NEGATED_RE = /\b(not|neither|nor|none)\b/i;
+  var GOV_OTHERS_RE = /\bassociates?\b|\bbusiness (partners?|relationships?)\b|\bfriends?\b|\bclose (personal|business)\b|\bpolitically exposed\b/i;
+  var GOV_FAMILY_RE = /\bfamily\b|\brelatives?\b|\bspouses?\b|\bpartners?\b|\bparents?\b|\bsiblings?\b|\bbrothers?\b|\bsisters?\b|\bchild(ren)?\b|\bsons?\b|\bdaughters?\b|\bin-?laws?\b|\bhousehold\b|\brelated to\b/i;
+  var GOV_SELF_RE = /\b(are|were) you\b|\bhave you (ever )?(been|held|served|occupied)\b|\bdo you (currently )?(hold|occupy|serve)\b|\bi (am|was|have been)\b/i;
+  var GOV_OPEN_ENDED_RE = /\bever\b|\bat any time\b|\bnow or in the past\b|\b(past|current) or (present|former)\b|\bformer(ly)?\b|\bha(ve|s) (you |\w+ )?been\b/i;
+  var GOV_TIME_LIMIT_RE = /\b(within|during|in) the (last|past|previous|preceding)\b|\b(last|past|previous|preceding) (\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve)\b/i;
+  function governmentOfficialAnswer(row, bank) {
+    const label = String(row.label || "");
+    if (isConditionalFollowUp(label)) return { followUp: true };
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") {
+      return { ask: "we fill this question as a Yes / No only \u2014 choose your answer" };
+    }
+    const head = (label.includes("?") ? label.split("?")[0] : label.split(/\.\s/)[0]).slice(0, 400);
+    if (GOV_NEGATED_RE.test(head)) return { ask: 'worded as a "not" statement \u2014 choose your answer' };
+    if (GOV_OTHERS_RE.test(head)) return { ask: "asks about people your profile answers don't cover \u2014 choose your answer" };
+    const family = GOV_FAMILY_RE.test(head);
+    const self = GOV_SELF_RE.test(head.replace(/\b(are|were) you (related|connected) to\b/ig, ""));
+    if (!family && !self) return { ask: "we could not tell whose government role this asks about \u2014 choose your answer" };
+    const answers = [];
+    if (self) answers.push(String(bank && bank.is_government_official || ""));
+    if (family) answers.push(String(bank && bank.family_government_official || ""));
+    if (answers.some((a) => a !== "Yes" && a !== "No")) {
+      return { profile: "add your government-official answers to your profile" };
+    }
+    let answer = null;
+    if (answers.every((a) => a === "No")) answer = "No";
+    else if (answers.length === 1 && GOV_OPEN_ENDED_RE.test(head) && !GOV_TIME_LIMIT_RE.test(head)) answer = "Yes";
+    if (!answer) return { ask: "your profile says Yes \u2014 check it applies to what this question asks" };
+    const value = coerce(answer, Object.assign({}, row, { candidateKey: "" }));
+    if (value === null) return { ask: `none of the options match your profile answer (${answer})` };
+    const whose = self && family ? "you or your family" : self ? "you" : "your family";
+    return { value, reason: `your profile: ${answer === "No" ? "no government official" : "a government official"} (${whose})` };
+  }
+  var CRIME_HISTORY_RE = /\bconvict\w*|\bcriminal (record|history|charges?|offen[cs]es?|convictions?|proceedings?|cases?)\b|\bfelon(y|ies)\b|\bmisdemean\w*|\bpending (criminal )?charges?\b|\bcharged with\b|\bpleaded? (guilty|no contest)\b/i;
+  var CRIME_EXCLUSION_RE = /\b(other than|excluding|except( for)?|not including|apart from)\b[^,;)?]*|\b(that|which) (has|have) not been [^,;)?]*/gi;
+  var CRIME_CONSENT_RE = /\bconsent\w*|\bauthori[sz]\w*|\bagree\w*|\bwilling\b|\bsubmit to\b|\bundergo\b|\bpass\b/i;
+  var CRIME_STATEMENT_RE = /\b(confirm|certify|declare|attest)\b|\bi (have|had|am) (no|not|never)\b|\b(not|never|neither|nor|none)\b/i;
+  var CRIME_UNCOVERED_RE = /\barrest\w*|\bdetain\w*|\bcaution\w*|\binvestigat\w*|\btraffic\b|\bdriving\b|\bmoving violations?\b|\bdisciplin\w*|\bdismiss\w*|\bterminat\w*|\bfamily\b|\brelatives?\b|\bspouse\b/i;
+  var CRIME_SELF_RE = /\b(have|are|were|do|did) you\b|\byou (have|are|were)\b|\bi (have|am|was)\b/i;
+  function criminalHistoryAnswer(row, bank) {
+    const label = String(row.label || "");
+    if (isConditionalFollowUp(label)) return { followUp: true };
+    const head = (label.includes("?") ? label.split("?")[0] : label.split(/\.\s/)[0]).slice(0, 400);
+    const core = head.replace(CRIME_EXCLUSION_RE, " ");
+    if (!CRIME_HISTORY_RE.test(core) || CRIME_CONSENT_RE.test(core)) {
+      return { ask: "we never guess this \u2014 choose your answer" };
+    }
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") {
+      return { ask: "we fill this question as a Yes / No only \u2014 choose your answer" };
+    }
+    if (CRIME_STATEMENT_RE.test(core)) return { ask: "worded as a statement \u2014 choose your answer" };
+    if (CRIME_UNCOVERED_RE.test(core)) return { ask: "asks more than your profile answer covers \u2014 choose your answer" };
+    if (!CRIME_SELF_RE.test(core)) return { ask: "we never guess this \u2014 choose your answer" };
+    const stored = String(bank && bank.has_criminal_history || "");
+    if (stored !== "Yes" && stored !== "No") return { profile: "add your criminal-history answer to your profile" };
+    if (stored === "Yes") return { ask: "your profile says Yes \u2014 check it applies to what this question asks" };
+    const value = coerce("No", Object.assign({}, row, { candidateKey: "" }));
+    if (value === null) return { ask: "none of the options match your profile answer (No)" };
+    return { value, reason: "your profile: no criminal convictions or pending charges" };
   }
   var MAX_PROMPT_SKILLS = 10;
   function splitSkills(text) {
@@ -4441,7 +4559,9 @@ Zimbabwe|Zimbabwean
     const p = probe2();
     let target = null;
     if (members.length === 1 && row.kind === "checkbox") {
-      const truthy = /^(yes|true|1|on|checked|i agree|agree|accept)$/i.test(String(value));
+      const plain = (s) => String(s || "").replace(/\*+\s*$/, "").replace(/\s+/g, " ").trim().toLowerCase();
+      const own = [row.optionLabel, row.label, p && p.labelFor(members[0])].map(plain).filter(Boolean);
+      const truthy = /^(yes|true|1|on|checked|i agree|agree|accept)$/i.test(String(value)) || own.includes(plain(value));
       if (!truthy) return false;
       target = members[0];
     } else {
@@ -6335,7 +6455,7 @@ Zimbabwe|Zimbabwean
       const tiled = await clock.time("tiles", () => fillProfileTiles(ctx, progress));
       decisions = decisions.concat(tiled);
     }
-    await clock.time("refill", () => refillCleared(decisions, progress));
+    await clock.time("refill", () => refillCleared(decisions, progress, form.root));
     await clock.time("reread_options", () => rereadEmptyLists(decisions));
     await saveState();
     watchUserEdits(form, null);
@@ -6369,28 +6489,38 @@ Zimbabwe|Zimbabwean
     const cls = row.el && row.el.className || "";
     return /profile-import/i.test(String(cls));
   }
-  async function refillCleared(decisions, progress) {
-    const lost = decisions.filter((d) => {
+  var REFILL_ROUNDS = 2;
+  async function refillCleared(decisions, progress, root) {
+    const emptied = () => decisions.filter((d) => {
       if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== "ok") return false;
       if (!d.row || d.row.kind === "file" || d.row.kind === "tile") return false;
       if (d.key && state.userEdited.includes(d.key)) return false;
       const now2 = reprobe(d.row);
       return !!now2 && !now2.filled;
     });
-    if (!lost.length) return;
-    console.info(
-      `[TailorCV] the form emptied ${lost.length} answer(s) after they were filled \u2014 filling again:`,
-      lost.map((d) => d.label).join(" | ")
-    );
-    progress("repairing", { total: lost.length, detail: "the form cleared some answers \u2014 filling them again" });
-    for (const d of lost) {
-      const result = await applyDecision(d);
-      d.outcome = result.outcome;
-      d.shown = result.shown;
-      if (!result.ok) {
-        d.action = ASK;
-        d.reason = "the form cleared this after we filled it";
+    for (let round = 0; round < REFILL_ROUNDS; round++) {
+      const lost = emptied();
+      if (!lost.length) return;
+      console.info(
+        `[TailorCV] the form emptied ${lost.length} answer(s) after they were filled \u2014 filling again:`,
+        lost.map((d) => d.label).join(" | ")
+      );
+      progress("repairing", { total: lost.length, detail: "the form cleared some answers \u2014 filling them again" });
+      for (const d of lost) {
+        const result = await applyDecision(d);
+        d.outcome = result.outcome;
+        d.shown = result.shown;
+        if (!result.ok) {
+          d.action = ASK;
+          d.reason = "the form cleared this after we filled it";
+        }
+        clock.quiet(await waitForQuiet(root));
       }
+    }
+    for (const d of emptied()) {
+      d.action = ASK;
+      d.outcome = "cleared";
+      d.reason = "the form cleared this after it was filled \u2014 choose it again";
     }
   }
   var OWN_UI = "#tailorcv-sidebar, #tailorcv-launcher";

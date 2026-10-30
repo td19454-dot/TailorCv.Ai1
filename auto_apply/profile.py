@@ -91,6 +91,12 @@ class ApplicantProfile:
     nationality: str = ""
     # Same: unset goes back to the user, never a default.
     citizenship_status: str = ""
+    # "yes" | "no": are you / is anyone in your family a government official.
+    # Same: unset goes back to the user, never a default.
+    government_official: str = ""
+    family_government_official: str = ""
+    # "yes" | "no": ever convicted of any crime, or criminal charges pending.
+    criminal_history: str = ""
     # Date (ISO) and place of birth. Same: unset goes back to the user; only
     # ever filled from these, never sent to the model (match_guard "birth").
     date_of_birth: str = ""
@@ -537,6 +543,9 @@ def _profile_to_dict(prof) -> dict:
         "why_this_role": prof.why_this_role or "",
         "nationality": prof.nationality or "",
         "citizenship_status": getattr(prof, "citizenship_status", "") or "",
+        "government_official": getattr(prof, "government_official", "") or "",
+        "family_government_official": getattr(prof, "family_government_official", "") or "",
+        "criminal_history": getattr(prof, "criminal_history", "") or "",
         "date_of_birth": getattr(prof, "date_of_birth", "") or "",
         "country_of_birth": getattr(prof, "country_of_birth", "") or "",
         "city_of_birth": getattr(prof, "city_of_birth", "") or "",
@@ -675,6 +684,9 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         how_did_you_hear="LinkedIn",
         nationality=str(prof.get("nationality") or "").strip(),
         citizenship_status=str(prof.get("citizenship_status") or "").strip(),
+        government_official=str(prof.get("government_official") or "").strip(),
+        family_government_official=str(prof.get("family_government_official") or "").strip(),
+        criminal_history=str(prof.get("criminal_history") or "").strip(),
         date_of_birth=str(prof.get("date_of_birth") or "").strip(),
         country_of_birth=str(prof.get("country_of_birth") or "").strip(),
         city_of_birth=str(prof.get("city_of_birth") or "").strip(),
@@ -861,6 +873,9 @@ def answer_bank(p: ApplicantProfile) -> dict:
         "cover_letter": p.cover_note,
         "nationality": p.nationality,
         "citizenship_status": p.citizenship_status,
+        "is_government_official": _yn(p.government_official),
+        "family_government_official": _yn(p.family_government_official),
+        "has_criminal_history": _yn(p.criminal_history),
         "date_of_birth": p.date_of_birth,
         "country_of_birth": p.country_of_birth,
         "city_of_birth": p.city_of_birth,

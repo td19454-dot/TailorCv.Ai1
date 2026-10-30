@@ -538,7 +538,7 @@
         for (let i = 0; i < drop.length; i++) drop[i].remove();
       } catch (e) { return ''; }
       const t = txt(clone);
-      if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(t)) continue;
+      if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(t)) continue;
       if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
     }
     return '';
