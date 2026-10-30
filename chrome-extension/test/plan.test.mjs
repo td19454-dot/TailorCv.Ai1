@@ -1506,6 +1506,119 @@ test('an outside-employment question is always answered No', () => {
   eq(p.outsideEmploymentAnswer(field('Do you have a second job?', { kind: 'combobox', options: ['Full-time', 'Part-time'] })), null);
 });
 
+test('government-official questions are answered from the profile, and only where it is sure', () => {
+  // Walmart (Oct 2026): both paused auto-apply as "we never guess this".
+  const WALMART_SELF = 'Are you (or have you been within the last 12 months) a Government Official? Government '
+    + 'Official (GO) means any official or employee of any government agency, ministry or department of a '
+    + 'government, including any person acting in official capacity for a government, regardless of rank or '
+    + 'position; any official or employee of a company wholly or partially controlled by a government (e.g., a '
+    + 'state-owned oil company), but excluding employees seconded to such companies; a political party or any '
+    + 'official of one; any candidate for political office*';
+  const WALMART_FAMILY = 'Are any of your immediate family members Government Officials (Any Official or Employee '
+    + 'of any government department/agency; Company or Organization owned fully or partially by government or '
+    + 'public institution)?*';
+  const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
+  const run = (label, self, family) => {
+    const bank = Object.assign({}, BANK);
+    if (self) bank.is_government_official = self;
+    if (family) bank.family_government_official = family;
+    return p.decide([yn(label)], Object.assign({}, CTX, { answerBank: bank }), null, null)[0];
+  };
+  const expect = (label, self, family, action, value) => {
+    const d = run(label, self, family);
+    eq(d.sensitive, 'government_official', `${label.slice(0, 50)}… category`);
+    eq(d.action, action, `${label.slice(0, 60)}… [${self}/${family}] -> ${d.action} ${d.value}: ${d.reason}`);
+    if (value !== undefined) eq(d.value, value, label.slice(0, 60));
+  };
+
+  // No is true of every wording: the profile asks the broadest one.
+  expect(WALMART_SELF, 'No', 'No', p.FILL, 'No');
+  expect(WALMART_FAMILY, 'No', 'No', p.FILL, 'No');
+  expect('Are you a government official?', 'No', undefined, p.FILL, 'No');
+  expect('Do you currently hold or have you held, within the last 5 years, a position as a government official?', 'No', 'Yes', p.FILL, 'No');
+  expect('Is your spouse a public official?', 'Yes', 'No', p.FILL, 'No');
+  expect('Are you related to a government official?', 'Yes', 'No', p.FILL, 'No');
+  expect('Do you have any relatives who are foreign officials?', 'Yes', 'No', p.FILL, 'No');
+  // Each answer only for its own question: the self Yes never answers family.
+  expect(WALMART_FAMILY, 'Yes', 'No', p.FILL, 'No');
+  expect(WALMART_SELF, 'No', 'Yes', p.FILL, 'No');
+  // Unset -> the profile, never a guess.
+  expect(WALMART_SELF, undefined, undefined, p.PROFILE);
+  expect(WALMART_FAMILY, 'No', undefined, p.PROFILE);
+
+  // Yes only where the form asks the same open-ended question.
+  expect('Have you ever been a government official?', 'Yes', 'No', p.FILL, 'Yes');
+  expect('Has any member of your family ever been a government official?', 'No', 'Yes', p.FILL, 'Yes');
+  expect('Are you currently a government official?', 'Yes', 'No', p.ASK);
+  expect(WALMART_SELF, 'Yes', 'No', p.ASK);
+  expect(WALMART_FAMILY, 'No', 'Yes', p.ASK);
+
+  // Both people in one question: No only when both are No.
+  expect('Are you or any of your relatives government officials?', 'No', 'No', p.FILL, 'No');
+  expect('Are you or any of your relatives government officials?', 'Yes', 'No', p.ASK);
+  expect('Are you or any of your relatives government officials?', 'No', 'Yes', p.ASK);
+
+  // What the profile does not cover, or reads the other way round.
+  expect('Do you have a close relative or business associate who is a government official?', 'No', 'No', p.ASK);
+  expect('Are you a politically exposed person?', 'No', 'No', p.ASK);
+  expect('I confirm that I am not a government official', 'No', 'No', p.ASK);
+  expect('Government Official means any official or employee of a government agency.', 'No', 'No', p.ASK);
+  // A follow-up box is never filled.
+  const follow = p.decide([field('If yes, please provide the name of the government official', { required: false })],
+    Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { is_government_official: 'No', family_government_official: 'No' }) }), null, null)[0];
+  eq(follow.action, p.SKIP, `${follow.action}: ${follow.reason}`);
+  // Never to the model, any of them.
+  eq(p.fieldsForServer([run('Are you a government official?', undefined, undefined)]).length, 0);
+});
+
+test('criminal-history questions take the profile\'s No in any wording, and never touch consent', () => {
+  const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
+  const run = (label, stored, f) => {
+    const bank = Object.assign({}, BANK);
+    if (stored) bank.has_criminal_history = stored;
+    return p.decide([(f || yn)(label)], Object.assign({}, CTX, { answerBank: bank }), null, null)[0];
+  };
+  const expect = (label, stored, action, value, f) => {
+    const d = run(label, stored, f);
+    eq(d.sensitive, 'criminal', `${label.slice(0, 50)}… category`);
+    eq(d.action, action, `${label.slice(0, 60)}… [${stored}] -> ${d.action} ${d.value}: ${d.reason}`);
+    if (value !== undefined) eq(d.value, value, label.slice(0, 60));
+  };
+
+  // No answers every narrower wording.
+  for (const label of [
+    'Have you ever been convicted of a crime?*',
+    'Have you been convicted of a felony in the last 7 years?',
+    'Do you have any pending criminal charges?',
+    'Have you ever been convicted of a felony or misdemeanor (not including minor traffic violations)?',
+    'Have you ever been convicted of a criminal offense, other than a minor traffic violation?',
+    'Have you been convicted of a crime that has not been sealed or expunged?',
+    'Do you have a criminal record?',
+    'Have you ever pleaded guilty to a criminal offence?',
+  ]) expect(label, 'No', p.FILL, 'No');
+
+  // Unset -> the profile; Yes -> the person, every time.
+  expect('Have you ever been convicted of a crime?', undefined, p.PROFILE);
+  expect('Have you ever been convicted of a crime?', 'Yes', p.ASK);
+
+  // Not the person's record, or more than "convicted or charged".
+  expect('Do you consent to a background check?', 'No', p.ASK);
+  expect('Are you willing to undergo a criminal background check?', 'No', p.ASK);
+  expect('Do you authorize us to obtain your criminal history record?', 'No', p.ASK);
+  expect('Have you ever been arrested or convicted of a crime?', 'No', p.ASK);
+  expect('Have you been convicted of a traffic offence?', 'No', p.ASK);
+  expect('Has any member of your family been convicted of a crime?', 'No', p.ASK);
+  expect('I certify that I have no criminal convictions', 'No', p.ASK);
+  // A lone checkbox is a statement, never a Yes / No.
+  expect('I have never been convicted of a crime', 'No', p.ASK, undefined,
+    label => field(label, { kind: 'checkbox', options: [label], required: true }));
+  // Its follow-up box is never filled.
+  const follow = run('If yes, please explain the nature of the conviction', 'No',
+    label => field(label, { required: false }));
+  eq(follow.action, p.SKIP, `${follow.action}: ${follow.reason}`);
+  eq(p.fieldsForServer([run('Have you ever been convicted of a crime?', undefined)]).length, 0);
+});
+
 test('a degree list worded by ISCED level takes the option at the same level', () => {
   // Visa's Workday list (Oct 2026): no option holds "Bachelor's Degree", so a
   // B.E. matched nothing and the Degree stayed "Select One".

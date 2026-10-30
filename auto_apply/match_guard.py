@@ -51,6 +51,13 @@ SENSITIVE_PATTERNS: list[tuple[str, re.Pattern]] = [
         r"\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b")),
     ("criminal", re.compile(
         r"\b(convict\w*|criminal|felony|misdemeanor|background check)\b")),
+    # Anti-bribery declarations: "Are you (or any of your family members) a
+    # Government Official?". Answered from the profile only. Ahead of
+    # "government_employment", whose words their definitions share. Same as match.js.
+    ("government_official", re.compile(
+        r"\b(government|public|foreign) officials?\b"
+        r"|\bofficials? (or employees? )?of (a|an|any|the) (government|public|foreign)\b"
+        r"|\bpolitically exposed\b")),
     # Employment BY a government / the military / a state-owned enterprise: an
     # employment-history question, not military service. Ahead of "demographic"
     # so "served in the military" stays a veteran question. Same as match.js.
@@ -170,7 +177,8 @@ def looks_secret(value: str) -> bool:
 # signature, in the extension), never semantically recalled or shown to a model.
 # Birth too: Region of Birth has no profile field, and its options are the
 # regions of one country, so the person's answer to that exact question is kept.
-STORABLE_SENSITIVE = {"clearance", "criminal", "citizenship", "government_employment", "birth"}
+STORABLE_SENSITIVE = {"clearance", "criminal", "citizenship", "government_employment", "birth",
+                      "government_official"}
 
 
 def is_never_store(question: str, answer: str) -> bool:

@@ -616,6 +616,24 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
              help="Leave empty unless you hold U.S. citizenship, a green card, refugee or "
                   "asylee status, or DACA. Left empty, US forms are answered from your "
                   "country of citizenship.", max_len=80),
+        Spec("governmentOfficial", "government_official",
+             "Are you, or have you ever been, a government official?",
+             kind="select", options=YES_NO,
+             help="Includes any employee of a government department or agency, a "
+                  "state-owned or government-controlled company, a public international "
+                  "organisation, a political party or its officials, and candidates for "
+                  "political office. Filled only from this answer — never guessed."),
+        Spec("familyGovernmentOfficial", "family_government_official",
+             "Is anyone in your family a government official, now or in the past?",
+             kind="select", options=YES_NO,
+             help="Immediate family or other relatives — same definition as above."),
+        Spec("criminalHistory", "criminal_history",
+             "Have you ever been convicted of any crime, or do you have criminal charges pending?",
+             kind="select", options=YES_NO,
+             help="Felonies and misdemeanours, in any country. “No” is filled on every "
+                  "criminal-history question; with “Yes” you answer each one yourself. "
+                  "Questions asking you to consent to a background check are never "
+                  "answered from this."),
         Spec("willingToRelocate", "willing_to_relocate", "Willing to relocate?",
              kind="select", options=YES_NO),
         Spec("remotePreference", "remote_preference", "Work arrangement", kind="select",

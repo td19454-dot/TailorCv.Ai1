@@ -832,6 +832,14 @@ what when where which who will with would you your now future
     ["birth", /\b(date|country|territory|city|town|place|region|state|province) of birth\b|\bbirth ?(date|day|place|country|city)\b|\bdob\b|\bborn\b/],
     ["clearance", /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
     ["criminal", /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
+    // Anti-bribery declarations: "Are you (or have you been within the last 12
+    // months) a Government Official?", "Are any of your immediate family members
+    // Government Officials?" (Walmart, Oct 2026). Answered from the profile's two
+    // answers only (governmentOfficialAnswer in plan.js). Ahead of
+    // 'government_employment': their definitions say "employee of any government
+    // agency", and "Are you a government official?" has no employment word at all —
+    // it was not sensitive, and went to the model.
+    ["government_official", /\b(government|public|foreign) officials?\b|\bofficials? (or employees? )?of (a|an|any|the) (government|public|foreign)\b|\bpolitically exposed\b/],
     // Employment by a government, the military, a state-owned enterprise
     // (Snowflake: "Have you ever been directly employed by (1) any government or
     // military entity, state-owned enterprise…"). An employment-history question,
@@ -849,7 +857,14 @@ what when where which who will with would you your now future
     ["demographic", /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
     ["demographic", /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/]
   ];
-  var STORABLE_SENSITIVE = /* @__PURE__ */ new Set(["clearance", "criminal", "citizenship", "government_employment", "birth"]);
+  var STORABLE_SENSITIVE = /* @__PURE__ */ new Set([
+    "clearance",
+    "criminal",
+    "citizenship",
+    "government_employment",
+    "birth",
+    "government_official"
+  ]);
   var EEO_FIELD_MARKERS = [
     "gender",
     "race",
@@ -3292,6 +3307,15 @@ Zimbabwe|Zimbabwean
             return done(d, FILL, value2, "saved_answer", 0.9, "your saved answer to this question");
           }
         }
+        if (category === "government_official" || category === "criminal") {
+          const g = category === "criminal" ? criminalHistoryAnswer(row, bank) : governmentOfficialAnswer(row, bank);
+          if (g.followUp) {
+            return row.required ? done(d, ASK, "", "", 0, "only needed for some answers to the question above") : done(d, SKIP, "", "", 0, "only needed if you answered Yes above");
+          }
+          if (g.profile) return done(d, PROFILE, "", "", 0, g.profile);
+          if (g.ask) return done(d, ASK, "", "", 0, g.ask);
+          return done(d, FILL, g.value, "profile", 0.95, g.reason);
+        }
         if (category === "citizenship") {
           const c = citizenshipAnswer(row, bank, entry2);
           if (c && c.ask) return done(d, ASK, "", "", 0, c.ask);
@@ -3517,7 +3541,15 @@ Zimbabwe|Zimbabwean
     const t = String(s || "");
     return t.length <= n ? t : `${t.slice(0, n - 1)}\u2026`;
   }
-  var PROFILE_CATEGORIES = /* @__PURE__ */ new Set(["work_authorization", "sponsorship", "salary", "demographic", "birth"]);
+  var PROFILE_CATEGORIES = /* @__PURE__ */ new Set([
+    "work_authorization",
+    "sponsorship",
+    "salary",
+    "demographic",
+    "birth",
+    "government_official",
+    "criminal"
+  ]);
   function profileHint(category, entry) {
     if (entry && entry.key === "nationality") return "add your country of citizenship to your profile";
     if (category === "citizenship") return "add your country of citizenship to your profile";
@@ -3533,6 +3565,10 @@ Zimbabwe|Zimbabwean
         return "set your voluntary disclosures in your profile";
       case "birth":
         return "add your date / place of birth to your profile";
+      case "government_official":
+        return "add your government-official answers to your profile";
+      case "criminal":
+        return "add your criminal-history answer to your profile";
       default:
         return "";
     }
@@ -3808,6 +3844,68 @@ Zimbabwe|Zimbabwean
     const head = String(row.label || "").split(/[[(]/)[0];
     if (!ASKS_IF_RE.test(head) || !OUTSIDE_WORK_RE.test(head)) return null;
     return coerce("No", Object.assign({}, row, { candidateKey: "" }));
+  }
+  var GOV_NEGATED_RE = /\b(not|neither|nor|none)\b/i;
+  var GOV_OTHERS_RE = /\bassociates?\b|\bbusiness (partners?|relationships?)\b|\bfriends?\b|\bclose (personal|business)\b|\bpolitically exposed\b/i;
+  var GOV_FAMILY_RE = /\bfamily\b|\brelatives?\b|\bspouses?\b|\bpartners?\b|\bparents?\b|\bsiblings?\b|\bbrothers?\b|\bsisters?\b|\bchild(ren)?\b|\bsons?\b|\bdaughters?\b|\bin-?laws?\b|\bhousehold\b|\brelated to\b/i;
+  var GOV_SELF_RE = /\b(are|were) you\b|\bhave you (ever )?(been|held|served|occupied)\b|\bdo you (currently )?(hold|occupy|serve)\b|\bi (am|was|have been)\b/i;
+  var GOV_OPEN_ENDED_RE = /\bever\b|\bat any time\b|\bnow or in the past\b|\b(past|current) or (present|former)\b|\bformer(ly)?\b|\bha(ve|s) (you |\w+ )?been\b/i;
+  var GOV_TIME_LIMIT_RE = /\b(within|during|in) the (last|past|previous|preceding)\b|\b(last|past|previous|preceding) (\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve)\b/i;
+  function governmentOfficialAnswer(row, bank) {
+    const label = String(row.label || "");
+    if (isConditionalFollowUp(label)) return { followUp: true };
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") {
+      return { ask: "we fill this question as a Yes / No only \u2014 choose your answer" };
+    }
+    const head = (label.includes("?") ? label.split("?")[0] : label.split(/\.\s/)[0]).slice(0, 400);
+    if (GOV_NEGATED_RE.test(head)) return { ask: 'worded as a "not" statement \u2014 choose your answer' };
+    if (GOV_OTHERS_RE.test(head)) return { ask: "asks about people your profile answers don't cover \u2014 choose your answer" };
+    const family = GOV_FAMILY_RE.test(head);
+    const self = GOV_SELF_RE.test(head.replace(/\b(are|were) you (related|connected) to\b/ig, ""));
+    if (!family && !self) return { ask: "we could not tell whose government role this asks about \u2014 choose your answer" };
+    const answers = [];
+    if (self) answers.push(String(bank && bank.is_government_official || ""));
+    if (family) answers.push(String(bank && bank.family_government_official || ""));
+    if (answers.some((a) => a !== "Yes" && a !== "No")) {
+      return { profile: "add your government-official answers to your profile" };
+    }
+    let answer = null;
+    if (answers.every((a) => a === "No")) answer = "No";
+    else if (answers.length === 1 && GOV_OPEN_ENDED_RE.test(head) && !GOV_TIME_LIMIT_RE.test(head)) answer = "Yes";
+    if (!answer) return { ask: "your profile says Yes \u2014 check it applies to what this question asks" };
+    const value = coerce(answer, Object.assign({}, row, { candidateKey: "" }));
+    if (value === null) return { ask: `none of the options match your profile answer (${answer})` };
+    const whose = self && family ? "you or your family" : self ? "you" : "your family";
+    return { value, reason: `your profile: ${answer === "No" ? "no government official" : "a government official"} (${whose})` };
+  }
+  var CRIME_HISTORY_RE = /\bconvict\w*|\bcriminal (record|history|charges?|offen[cs]es?|convictions?|proceedings?|cases?)\b|\bfelon(y|ies)\b|\bmisdemean\w*|\bpending (criminal )?charges?\b|\bcharged with\b|\bpleaded? (guilty|no contest)\b/i;
+  var CRIME_EXCLUSION_RE = /\b(other than|excluding|except( for)?|not including|apart from)\b[^,;)?]*|\b(that|which) (has|have) not been [^,;)?]*/gi;
+  var CRIME_CONSENT_RE = /\bconsent\w*|\bauthori[sz]\w*|\bagree\w*|\bwilling\b|\bsubmit to\b|\bundergo\b|\bpass\b/i;
+  var CRIME_STATEMENT_RE = /\b(confirm|certify|declare|attest)\b|\bi (have|had|am) (no|not|never)\b|\b(not|never|neither|nor|none)\b/i;
+  var CRIME_UNCOVERED_RE = /\barrest\w*|\bdetain\w*|\bcaution\w*|\binvestigat\w*|\btraffic\b|\bdriving\b|\bmoving violations?\b|\bdisciplin\w*|\bdismiss\w*|\bterminat\w*|\bfamily\b|\brelatives?\b|\bspouse\b/i;
+  var CRIME_SELF_RE = /\b(have|are|were|do|did) you\b|\byou (have|are|were)\b|\bi (have|am|was)\b/i;
+  function criminalHistoryAnswer(row, bank) {
+    const label = String(row.label || "");
+    if (isConditionalFollowUp(label)) return { followUp: true };
+    const head = (label.includes("?") ? label.split("?")[0] : label.split(/\.\s/)[0]).slice(0, 400);
+    const core = head.replace(CRIME_EXCLUSION_RE, " ");
+    if (!CRIME_HISTORY_RE.test(core) || CRIME_CONSENT_RE.test(core)) {
+      return { ask: "we never guess this \u2014 choose your answer" };
+    }
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") {
+      return { ask: "we fill this question as a Yes / No only \u2014 choose your answer" };
+    }
+    if (CRIME_STATEMENT_RE.test(core)) return { ask: "worded as a statement \u2014 choose your answer" };
+    if (CRIME_UNCOVERED_RE.test(core)) return { ask: "asks more than your profile answer covers \u2014 choose your answer" };
+    if (!CRIME_SELF_RE.test(core)) return { ask: "we never guess this \u2014 choose your answer" };
+    const stored = String(bank && bank.has_criminal_history || "");
+    if (stored !== "Yes" && stored !== "No") return { profile: "add your criminal-history answer to your profile" };
+    if (stored === "Yes") return { ask: "your profile says Yes \u2014 check it applies to what this question asks" };
+    const value = coerce("No", Object.assign({}, row, { candidateKey: "" }));
+    if (value === null) return { ask: "none of the options match your profile answer (No)" };
+    return { value, reason: "your profile: no criminal convictions or pending charges" };
   }
   var MAX_PROMPT_SKILLS = 10;
   function splitSkills(text) {

@@ -60,6 +60,18 @@ MUST_FLAG = [
     ("demographic", "Are you a protected military veteran?"),
     ("demographic", "Have you ever served or are you currently serving in the United States military?"),
     ("demographic", "Are you a current or former military spouse?"),
+    # Anti-bribery declarations (Walmart, Oct 2026): their own category, ahead
+    # of government_employment, whose words their definitions share.
+    ("government_official", "Are you (or have you been within the last 12 months) a Government "
+                            "Official? Government Official (GO) means any official or employee of "
+                            "any government agency, ministry or department of a government"),
+    ("government_official", "Are any of your immediate family members Government Officials (Any "
+                            "Official or Employee of any government department/agency)?"),
+    ("government_official", "Are you a government official?"),
+    ("government_official", "Do you currently hold or have you held, within the last 5 years, a "
+                            "position as a government official?"),
+    ("government_official", "Is any member of your immediate family a public official?"),
+    ("government_official", "Are you a politically exposed person?"),
     # Employment BY a government — not military service (Snowflake, Oct 2026).
     ("government_employment", "Have you ever been directly employed by (1) any government or "
                               "military entity, state-owned enterprise, or publicly-funded institution, "

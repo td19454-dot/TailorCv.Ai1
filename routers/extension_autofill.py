@@ -45,7 +45,9 @@ router = APIRouter()
 PROSE_KEYS = {"cover_letter", "why_do_you_want_this_role"}
 # Never shown to the model, even as context: the extension fills these from the
 # profile itself, and the profile page promises they are never sent to the AI.
-PRIVATE_KEYS = {"date_of_birth", "country_of_birth", "city_of_birth"}
+PRIVATE_KEYS = {"date_of_birth", "country_of_birth", "city_of_birth",
+                "is_government_official", "family_government_official",
+                "has_criminal_history"}
 
 MAX_FIELDS_PER_PLAN = 120
 MAX_OPTIONS_PER_FIELD = 60
