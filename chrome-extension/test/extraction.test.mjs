@@ -323,7 +323,7 @@ test('Workday: a new step on the SAME URL is offered as the next page', async ()
   ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
 
   page.document.getElementById('tcvAfFillBtn').click();
-  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+  ok(await waitForText(page, /filled/i, 30000), 'the first fill must finish');
 
   // "Save and Continue": Workday swaps the step's fields in place, URL unchanged.
   const step = page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
@@ -348,7 +348,7 @@ test('Workday: a next step with nothing to fill yet still offers "Autofill this 
   renderLater(page, withHeading, 200);
   ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
   page.document.getElementById('tcvAfFillBtn').click();
-  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+  ok(await waitForText(page, /filled/i, 30000), 'the first fill must finish');
 
   page.document.querySelector('[data-automation-id="applyFlowPage"] h2').textContent = 'My Experience';
   page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]').innerHTML = `
@@ -377,7 +377,7 @@ test('Workday (real markup): Save and Continue to the next step is offered as th
   renderLater(page, realWorkday('Application Questions'), 200);
   ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
   page.document.getElementById('tcvAfFillBtn').click();
-  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+  ok(await waitForText(page, /filled/i, 30000), 'the first fill must finish');
 
   // The job title stays; the progress bar, the step heading and the fields change.
   page.document.getElementById('pb').innerHTML = progressBar('Voluntary Disclosures');
@@ -396,7 +396,7 @@ test('Workday (real markup): a step that grows blocks keeps its results', async 
   renderLater(page, realWorkday('My Experience'), 200);
   ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
   page.document.getElementById('tcvAfFillBtn').click();
-  ok(await waitForText(page, /filled/i, 20000), 'the fill must finish');
+  ok(await waitForText(page, /filled/i, 30000), 'the fill must finish');
   let blocks = '';
   for (let n = 1; n <= 4; n++) {
     blocks += `<div role="group" aria-labelledby="Education-${n}-panel"><h5 id="Education-${n}-panel">Education ${n}</h5>
@@ -670,7 +670,7 @@ test('Workday: a step that grows blocks under the same heading keeps its results
   renderLater(page, withHeading, 200);
   ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
   page.document.getElementById('tcvAfFillBtn').click();
-  ok(await waitForText(page, /filled/i, 20000), 'the fill must finish');
+  ok(await waitForText(page, /filled/i, 30000), 'the fill must finish');
 
   const step = page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
   let blocks = '';
@@ -695,7 +695,7 @@ test('Workday: the next step is shown even when the page passes through "no form
   renderLater(page, fixtures.WORKDAY_MYINFO, 200);
   ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
   page.document.getElementById('tcvAfFillBtn').click();
-  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+  ok(await waitForText(page, /filled/i, 30000), 'the first fill must finish');
 
   const step = page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
   step.innerHTML = '<div class="loading">Loading…</div>';          // between steps

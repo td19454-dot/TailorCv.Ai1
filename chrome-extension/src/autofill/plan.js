@@ -156,6 +156,7 @@ export function decide(rows, ctx, server, state) {
     const prior = previousEmployerAnswer(row, ctx, bank);
     if (prior) {
       if (prior.ask) return done(d, ASK, '', '', 0, prior.ask);
+      if (prior.readFirst) d.readFirst = prior.readFirst;
       return done(d, FILL, prior.value, 'profile', 0.9, prior.reason);
     }
     // "Are you engaged in any outside employment you would like to continue?"
@@ -182,7 +183,16 @@ export function decide(rows, ctx, server, state) {
         stored = countryOf(raw) || raw;
         if (countryOf(raw)) d.candidates = countryShapes(countryOf(raw));
       }
-      if (STORABLE_SENSITIVE.has(category)) {
+      // A demographic question's saved answer comes AFTER the profile, which is
+      // where these live: a later change there must win over an old form.
+      const savedDemographic = () => {
+        if (category !== 'demographic') return null;
+        const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
+        const value = saved ? coerce(saved, row) : null;
+        return value === null ? null
+          : done(d, FILL, value, 'saved_answer', 0.9, 'your saved answer to this question');
+      };
+      if (STORABLE_SENSITIVE.has(category) && category !== 'demographic') {
         // Clearance / criminal history / citizenship: the person's own saved
         // answer to THIS question, if they saved one on an earlier form. Same
         // question only — an answer to one employer's wording is not reused for
@@ -205,7 +215,9 @@ export function decide(rows, ctx, server, state) {
             ? done(d, ASK, '', '', 0, 'only needed for some answers to the question above')
             : done(d, SKIP, '', '', 0, 'only needed if you answered Yes above');
         }
-        if (g.profile) return done(d, PROFILE, '', '', 0, g.profile);
+        // Unset in the profile: still the person's to answer HERE (an ASK, not
+        // a PROFILE row, which has no answer box), and to remember if they like.
+        if (g.profile) return done(d, ASK, '', '', 0, `${g.profile}, or choose your answer here`);
         if (g.ask) return done(d, ASK, '', '', 0, g.ask);
         return done(d, FILL, g.value, 'profile', 0.95, g.reason);
       }
@@ -226,6 +238,8 @@ export function decide(rows, ctx, server, state) {
         }
       }
       if (!stored) {
+        const fromSaved = savedDemographic();
+        if (fromSaved) return fromSaved;
         // Only point at the profile when the profile has a place for it.
         // Clearance and criminal-history questions don't: they are worded too
         // differently per employer to hold one stored answer, so the person
@@ -254,6 +268,23 @@ export function decide(rows, ctx, server, state) {
         }
         if (yesNo) { key = 'hispanic_latino'; answer = yesNo; }
       }
+      // "What is your sexual orientation?", "Are you transgender?": the
+      // profile's LGBTQ+ answer only implies these. Its "No" is heterosexual /
+      // straight, and not transgender; its "Yes" or "Questioning" doesn't say
+      // which — and was put into an orientation list as "No" (Oct 2026). A
+      // decline stays a decline.
+      if (key === 'lgbtq_identity' && !looksLikeDecline(stored)) {
+        const sig = questionSignature(row.label);
+        const orientation = /\borientation\b/.test(sig);
+        if (orientation || /\btransgender\b/.test(sig)) {
+          if (!/^no\b/i.test(String(stored).trim())) {
+            const fromSaved = savedDemographic();
+            if (fromSaved) return fromSaved;
+            return done(d, ASK, '', '', 0, `your LGBTQ+ answer (${stored}) doesn't say — choose your answer`);
+          }
+          if (orientation) { key = 'sexual_orientation'; answer = 'Heterosexual'; }
+        }
+      }
       // The stored answer, in whatever wording this form offers for it. Still
       // only ever THEIR answer — the shapes widen it ("South Asian" ->
       // "Asian"), never narrow or invent one, and a value belonging to no
@@ -271,6 +302,8 @@ export function decide(rows, ctx, server, state) {
         { candidates: shapes, candidateKey: key, sponsorship }));
       if (value === null) {
         // We have their answer but this form offers no option matching it.
+        const fromSaved = savedDemographic();
+        if (fromSaved) return fromSaved;
         return done(d, ASK, '', '', 0, `none of the options match your stored answer (${stored})`);
       }
       // An EEO field already showing a real answer must not be downgraded to a
@@ -539,8 +572,7 @@ function truncate(s, n) {
 }
 
 // Sensitive categories the profile page has a field for (routers/profile_page.py).
-const PROFILE_CATEGORIES = new Set(['work_authorization', 'sponsorship', 'salary', 'demographic', 'birth',
-  'government_official', 'criminal']);
+const PROFILE_CATEGORIES = new Set(['work_authorization', 'sponsorship', 'salary', 'demographic', 'birth']);
 
 function profileHint(category, entry) {
   if (entry && entry.key === 'nationality') return 'add your country of citizenship to your profile';
@@ -552,8 +584,6 @@ function profileHint(category, entry) {
     case 'salary': return 'add your salary expectation to your profile';
     case 'demographic': return 'set your voluntary disclosures in your profile';
     case 'birth': return 'add your date / place of birth to your profile';
-    case 'government_official': return 'add your government-official answers to your profile';
-    case 'criminal': return 'add your criminal-history answer to your profile';
     default: return '';
   }
 }
@@ -873,7 +903,10 @@ export function previousEmployerAnswer(row, ctx, bank) {
   // A Yes / No question; options unread (a Workday button) are left to coerce.
   const opts = (row.options || []).map(o => String(typeof o === 'string' ? o : (o && o.label) || '').trim())
     .filter(o => o && !PLACEHOLDER_RE.test(o));
-  if (opts.length && !(opts.some(o => /^yes\b/i.test(o)) && opts.some(o => /^no\b/i.test(o)))) return null;
+  const yesNo = opts.some(o => /^yes\b/i.test(o)) && opts.some(o => /^no\b/i.test(o));
+  // Or sentences: DoorDash's "I have not worked at DoorDash" / "I am a previous
+  // employee" / "I am a previous DoorDash Dasher" (Oct 2026).
+  if (opts.length && !yesNo && !opts.some(o => EMPLOYER_NEVER_RE.test(o))) return null;
   const m = PRIOR_EMPLOYER_RE.exec(String(row.label || '').replace(/\*+\s*$/, ''));
   if (!m) return null;
   let company = m[1].trim().replace(/^(the|a|an)\s+/i, '');
@@ -886,9 +919,35 @@ export function previousEmployerAnswer(row, ctx, bank) {
   // Not in the work history is No, however broadly the question is worded
   // (the person's call: auto-apply must not stop for this).
   const was = employers.find(e => sameCompany(e, company));
-  const value = coerce(was ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
-  if (value === null) return null;
-  return { value, reason: was ? `you worked at ${was}` : `${company} isn't in your work history` };
+  const value = coerce(was ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: 'previous_employer' }));
+  if (value === null) {
+    return opts.length && !yesNo
+      ? { ask: `none of the options plainly says ${was ? `you worked at ${company}` : `you never worked at ${company}`}` }
+      : null;
+  }
+  // A list read only once open (Greenhouse): open it and pick by the same rule.
+  return { value, readFirst: { key: 'previous_employer', stored: was ? 'Yes' : 'No' },
+           reason: was ? `you worked at ${was}` : `${company} isn't in your work history` };
+}
+
+const EMPLOYER_NEVER_RE = /\b(not|never)\b[^.]*\b(work\w*|employ\w*)\b|\bhaven'?t\b[^.]*\bwork\w*/i;
+const EMPLOYER_BEFORE_RE = /\b(previous|former|past|currently|current)\b[^.]*\b(employee|employed|staff)\b|\bi (have|used to) work(ed)? (at|for)\b/i;
+
+/**
+ * The option stating "Yes" / "No" to "have you worked here before": a Yes /
+ * No list by its own words, else the one sentence that says it — "I have not
+ * worked at DoorDash"; "I am a previous employee", never "a previous Dasher"
+ * (a courier is no employee). Null unless exactly one says it.
+ */
+export function previousEmployerOption(answer, options) {
+  const labels = (options || []).map(o => String(typeof o === 'string' ? o : (o && o.label) || '').trim()).filter(Boolean);
+  const no = /^no$/i.test(String(answer || '').trim());
+  const plain = labels.filter(o => (no ? /^no\b/i : /^yes\b/i).test(o));
+  if (plain.length === 1) return plain[0];
+  const said = labels.filter(o => (no
+    ? EMPLOYER_NEVER_RE.test(o)
+    : EMPLOYER_BEFORE_RE.test(o) && !EMPLOYER_NEVER_RE.test(o)));
+  return said.length === 1 ? said[0] : null;
 }
 
 // Outside employment, a second job, a side business or other work the person
@@ -1576,6 +1635,7 @@ function pickFromOptions(text, row, options) {
     return (row.country && countryOption(row.country, options)) || citizenshipOption(text, options);
   }
   if (row.candidateKey === 'degree') return degreeOption(text, options);
+  if (row.candidateKey === 'previous_employer') return previousEmployerOption(text, options);
   // A country, against a list of countries: exactly that country or none —
   // never "British Indian Ocean Territory" for "Indian".
   const country = countryOf(text);

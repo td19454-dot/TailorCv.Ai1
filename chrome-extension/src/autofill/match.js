@@ -362,12 +362,16 @@ export const SENSITIVE_PATTERNS = [
   ['government_employment', /\b(employ\w*|worked for|working for)\b[\s\S]*\b(government|military|state owned|publicly funded|public sector|civil service)\b|\b(government|military|state owned|public sector)\b[\s\S]*\bemploy\w*/],
   ['salary', /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
   // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
-  ['demographic', /\bgender\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
+  // "sex" too: "What is your sex?" was no EEO question without it, and went to
+  // the model (Oct 2026). \bsex\b, so "sexual" is not it.
+  ['demographic', /\bgender\b|\bsex\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
   // Military service asked without the word "military": Oracle's India form
   // asks "Have you served in any of the below India Uniformed forces?" and the
   // model answered it.
   ['demographic', /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
-  ['demographic', /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/],
+  // Neurodivergence is disability data (DoorDash's survey, Oct 2026) — it went
+  // to the model without this.
+  ['demographic', /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b|\bneuro\s?diver\w*/],
 ];
 
 // Sensitive categories with no profile field, whose answer the person may save
@@ -377,8 +381,12 @@ export const SENSITIVE_PATTERNS = [
 // status?") are worded too variously for the profile's one status to answer
 // them all, so the person's own answer to the exact question is kept too.
 // Birth too: Region of Birth has no profile field (match_guard.py, same set).
+// Demographic too (Oct 2026): the profile answers these, but a wording the
+// rules cannot place ("Would you say you have a disability?") went back to the
+// person on every form. Their own answer to that exact wording is kept, and
+// used only after the profile (plan.js), which they may change later.
 export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal', 'citizenship', 'government_employment', 'birth',
-  'government_official']);
+  'government_official', 'demographic']);
 
 // browser.py _EEO_FIELD_MARKERS — kept separately because EEO fields have a
 // behaviour the other sensitive categories don't: a stored "Decline to
@@ -660,6 +668,13 @@ export const EEO_GROUPS = {
       shapes: ['Yes, I have a disability (or previously had a disability)',
                'Yes, I have a disability', 'Yes'] },
   ],
+  // No profile field: read off the LGBTQ+ answer "No" (plan.js), so the only
+  // group ever asked for is heterosexual / straight.
+  sexual_orientation: [
+    { test: /\b(hetero\w*|straight)\b/i, not: /\bnot\b/i,
+      shapes: ['Heterosexual/Straight', 'Heterosexual / Straight', 'Heterosexual or Straight',
+               'Straight/Heterosexual', 'Heterosexual', 'Straight'] },
+  ],
 };
 
 /**
@@ -732,7 +747,7 @@ export function isConditionalFollowUp(label) {
 // virtualised list, so for them typing is how the right option appears.
 export const READ_FIRST_KEYS = new Set([
   'gender', 'race_ethnicity', 'veteran_status', 'disability_status',
-  'gender_pronouns', 'lgbtq_identity', 'citizenship_status',
+  'gender_pronouns', 'lgbtq_identity', 'citizenship_status', 'sexual_orientation',
 ]);
 
 // ── field synonyms: label -> answer-bank key ─────────────────
@@ -844,7 +859,7 @@ export const FIELD_SYNONYMS = [
   { key: 'country_of_birth', sensitive: true, labels: ['country of birth', 'country territory of birth', 'birth country', 'country where you were born'] },
   { key: 'city_of_birth', sensitive: true, labels: ['city of birth', 'place of birth', 'birth city', 'town of birth', 'birthplace'] },
   { key: 'expected_salary', sensitive: true, labels: ['expected salary', 'salary expectation', 'desired salary', 'compensation expectation', 'expected ctc', 'desired compensation'] },
-  { key: 'gender', sensitive: true, labels: ['gender', 'gender identity', 'gender do you identify as', 'gender you identify with', 'gender identify'] },
+  { key: 'gender', sensitive: true, labels: ['gender', 'gender identity', 'gender do you identify as', 'gender you identify with', 'gender identify', 'sex'] },
   // "identify your race": the bare 'race' is one word, and one-word synonyms
   // absorb only one extra word — Greenhouse's "Please identify your race" has two.
   { key: 'race_ethnicity', sensitive: true, labels: ['race', 'ethnicity', 'race ethnicity', 'racial identity', 'hispanic or latino', 'identify your race', 'identify your ethnicity'] },
@@ -1019,5 +1034,25 @@ export function matchSensitiveKey(label, category) {
   if (category === 'sponsorship' && /\bsponsor/.test(questionSignature(label))) {
     return FIELD_SYNONYMS.find(e => e.key === 'requires_visa_sponsorship') || null;
   }
+  // An EEO question in words no synonym carries — "Would you say you have a
+  // disability?" took four extra words, and went back to the person on every
+  // form (Oct 2026). By the one EEO subject it names: exactly one, or nothing.
+  // A spouse's service is no answer of theirs ("military spouse").
+  if (category === 'demographic') {
+    const sig = questionSignature(label);
+    if (/\bspouses?\b|\bpartners?\b/.test(sig)) return null;
+    const keys = EEO_SUBJECTS.filter(([, re]) => re.test(sig)).map(([key]) => key);
+    if (keys.length === 1) return FIELD_SYNONYMS.find(e => e.key === keys[0]) || null;
+  }
   return null;
 }
+
+// The EEO subject a question names, for matchSensitiveKey's last resort.
+const EEO_SUBJECTS = [
+  ['disability_status', /\bdisab\w*/],
+  ['veteran_status', /\bveteran\w*|\bmilitary\b|\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
+  ['gender_pronouns', /\bpronoun\w*/],
+  ['lgbtq_identity', /\blgbtq?\w*|\bsexual orientation\b|\btransgender\b/],
+  ['race_ethnicity', /\brac(e|ial)\b|\bethnic\w*|\bhispanic\b|\blatin[oax]\b/],
+  ['gender', /\bgender\b|\bsex\b/],
+];

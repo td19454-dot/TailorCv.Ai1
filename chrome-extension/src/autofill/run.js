@@ -317,7 +317,9 @@ export async function forceAnswers(ctx, decisions, onProgress) {
     d.source = 'ai_forced';
     d.confidence = Number(a.confidence) || 0.6;
     d.candidates = [];
-    d.reason = 'best answer from your resume, so auto-apply could continue — check it';
+    d.reason = ctx && ctx.resumePass
+      ? 'best answer from your resume — check it'
+      : 'best answer from your resume, so auto-apply could continue — check it';
     answered.push(d);
   }
   if (answered.length) {
@@ -562,6 +564,16 @@ export async function runAutofill(ctx, onProgress) {
 
   await clock.time('refill', () => refillCleared(decisions, progress, form.root));
   await clock.time('reread_options', () => rereadEmptyLists(decisions));
+
+  // Required questions nothing answered: "What best describes your experience
+  // designing analytical data models?" — the profile cannot say, and the first
+  // AI call is never shown the resume. Answered from the resume by the pass
+  // auto-apply makes, for review (DoorDash, Oct 2026). Not on auto-apply's own
+  // fill: its loop makes this pass itself, once per step.
+  if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
+    progress('resume', {});
+    await clock.time('resume_pass', () => forceAnswers(ctx, decisions, progress));
+  }
 
   await saveState();
   watchUserEdits(form, null);
@@ -1010,6 +1022,15 @@ async function waitWhileReadingResume(input) {
  */
 export async function answerField(decision, value, remember) {
   decision.value = String(value == null ? '' : value);
+  // The person's own choice, as chosen. The planner's shapes of the PROFILE's
+  // answer must not re-pick it: the writer re-chose from the open list by the
+  // stored LGBTQ+ "No", found nothing, and "Heterosexual/Straight" — picked
+  // in the sidebar — never went in (DoorDash, Oct 2026). Still read the whole
+  // list first where the planner did: EEO lists filter by substring as you type.
+  if (decision.readFirst) decision.readFirst = { key: '', stored: decision.value };
+  decision.candidates = [];
+  decision.drill = null;
+  decision.hierarchy = null;
   const result = await applyDecision(decision);
   decision.outcome = result.outcome;
   decision.shown = result.shown;

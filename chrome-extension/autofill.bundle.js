@@ -850,12 +850,16 @@ what when where which who will with would you your now future
     ["government_employment", /\b(employ\w*|worked for|working for)\b[\s\S]*\b(government|military|state owned|publicly funded|public sector|civil service)\b|\b(government|military|state owned|public sector)\b[\s\S]*\bemploy\w*/],
     ["salary", /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
     // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
-    ["demographic", /\bgender\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
+    // "sex" too: "What is your sex?" was no EEO question without it, and went to
+    // the model (Oct 2026). \bsex\b, so "sexual" is not it.
+    ["demographic", /\bgender\b|\bsex\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
     // Military service asked without the word "military": Oracle's India form
     // asks "Have you served in any of the below India Uniformed forces?" and the
     // model answered it.
     ["demographic", /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
-    ["demographic", /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/]
+    // Neurodivergence is disability data (DoorDash's survey, Oct 2026) — it went
+    // to the model without this.
+    ["demographic", /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b|\bneuro\s?diver\w*/]
   ];
   var STORABLE_SENSITIVE = /* @__PURE__ */ new Set([
     "clearance",
@@ -863,7 +867,8 @@ what when where which who will with would you your now future
     "citizenship",
     "government_employment",
     "birth",
-    "government_official"
+    "government_official",
+    "demographic"
   ]);
   var EEO_FIELD_MARKERS = [
     "gender",
@@ -1178,6 +1183,22 @@ what when where which who will with would you your now future
           "Yes"
         ]
       }
+    ],
+    // No profile field: read off the LGBTQ+ answer "No" (plan.js), so the only
+    // group ever asked for is heterosexual / straight.
+    sexual_orientation: [
+      {
+        test: /\b(hetero\w*|straight)\b/i,
+        not: /\bnot\b/i,
+        shapes: [
+          "Heterosexual/Straight",
+          "Heterosexual / Straight",
+          "Heterosexual or Straight",
+          "Straight/Heterosexual",
+          "Heterosexual",
+          "Straight"
+        ]
+      }
     ]
   };
   function eeoOptionAllowed(key, want, option) {
@@ -1222,7 +1243,8 @@ what when where which who will with would you your now future
     "disability_status",
     "gender_pronouns",
     "lgbtq_identity",
-    "citizenship_status"
+    "citizenship_status",
+    "sexual_orientation"
   ]);
   var NAME_FIELD_WORDS = [
     "name",
@@ -1333,7 +1355,7 @@ what when where which who will with would you your now future
     { key: "country_of_birth", sensitive: true, labels: ["country of birth", "country territory of birth", "birth country", "country where you were born"] },
     { key: "city_of_birth", sensitive: true, labels: ["city of birth", "place of birth", "birth city", "town of birth", "birthplace"] },
     { key: "expected_salary", sensitive: true, labels: ["expected salary", "salary expectation", "desired salary", "compensation expectation", "expected ctc", "desired compensation"] },
-    { key: "gender", sensitive: true, labels: ["gender", "gender identity", "gender do you identify as", "gender you identify with", "gender identify"] },
+    { key: "gender", sensitive: true, labels: ["gender", "gender identity", "gender do you identify as", "gender you identify with", "gender identify", "sex"] },
     // "identify your race": the bare 'race' is one word, and one-word synonyms
     // absorb only one extra word — Greenhouse's "Please identify your race" has two.
     { key: "race_ethnicity", sensitive: true, labels: ["race", "ethnicity", "race ethnicity", "racial identity", "hispanic or latino", "identify your race", "identify your ethnicity"] },
@@ -1446,8 +1468,22 @@ what when where which who will with would you your now future
     if (category === "sponsorship" && /\bsponsor/.test(questionSignature(label))) {
       return FIELD_SYNONYMS.find((e) => e.key === "requires_visa_sponsorship") || null;
     }
+    if (category === "demographic") {
+      const sig = questionSignature(label);
+      if (/\bspouses?\b|\bpartners?\b/.test(sig)) return null;
+      const keys2 = EEO_SUBJECTS.filter(([, re]) => re.test(sig)).map(([key]) => key);
+      if (keys2.length === 1) return FIELD_SYNONYMS.find((e) => e.key === keys2[0]) || null;
+    }
     return null;
   }
+  var EEO_SUBJECTS = [
+    ["disability_status", /\bdisab\w*/],
+    ["veteran_status", /\bveteran\w*|\bmilitary\b|\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
+    ["gender_pronouns", /\bpronoun\w*/],
+    ["lgbtq_identity", /\blgbtq?\w*|\bsexual orientation\b|\btransgender\b/],
+    ["race_ethnicity", /\brac(e|ial)\b|\bethnic\w*|\bhispanic\b|\blatin[oax]\b/],
+    ["gender", /\bgender\b|\bsex\b/]
+  ];
 
   // src/autofill/timing.js
   var TIMING = {
@@ -3284,6 +3320,7 @@ Zimbabwe|Zimbabwean
       const prior = previousEmployerAnswer(row, ctx, bank);
       if (prior) {
         if (prior.ask) return done(d, ASK, "", "", 0, prior.ask);
+        if (prior.readFirst) d.readFirst = prior.readFirst;
         return done(d, FILL, prior.value, "profile", 0.9, prior.reason);
       }
       const outside = outsideEmploymentAnswer(row);
@@ -3300,7 +3337,13 @@ Zimbabwe|Zimbabwean
           stored = countryOf(raw) || raw;
           if (countryOf(raw)) d.candidates = countryShapes(countryOf(raw));
         }
-        if (STORABLE_SENSITIVE.has(category)) {
+        const savedDemographic = () => {
+          if (category !== "demographic") return null;
+          const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
+          const value2 = saved ? coerce(saved, row) : null;
+          return value2 === null ? null : done(d, FILL, value2, "saved_answer", 0.9, "your saved answer to this question");
+        };
+        if (STORABLE_SENSITIVE.has(category) && category !== "demographic") {
           const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
           const value2 = saved ? coerce(saved, row) : null;
           if (value2 !== null) {
@@ -3312,7 +3355,7 @@ Zimbabwe|Zimbabwean
           if (g.followUp) {
             return row.required ? done(d, ASK, "", "", 0, "only needed for some answers to the question above") : done(d, SKIP, "", "", 0, "only needed if you answered Yes above");
           }
-          if (g.profile) return done(d, PROFILE, "", "", 0, g.profile);
+          if (g.profile) return done(d, ASK, "", "", 0, `${g.profile}, or choose your answer here`);
           if (g.ask) return done(d, ASK, "", "", 0, g.ask);
           return done(d, FILL, g.value, "profile", 0.95, g.reason);
         }
@@ -3330,6 +3373,8 @@ Zimbabwe|Zimbabwean
           }
         }
         if (!stored) {
+          const fromSaved = savedDemographic();
+          if (fromSaved) return fromSaved;
           const onProfile = PROFILE_CATEGORIES.has(category) && (category !== "demographic" && category !== "birth" || !!entry2) || !!(entry2 && entry2.sensitive);
           return onProfile ? done(d, PROFILE, "", "", 0, profileHint(category, entry2)) : done(d, ASK, "", "", 0, "we never guess this \u2014 choose your answer");
         }
@@ -3345,6 +3390,21 @@ Zimbabwe|Zimbabwean
             answer = yesNo;
           }
         }
+        if (key === "lgbtq_identity" && !looksLikeDecline(stored)) {
+          const sig = questionSignature(row.label);
+          const orientation = /\borientation\b/.test(sig);
+          if (orientation || /\btransgender\b/.test(sig)) {
+            if (!/^no\b/i.test(String(stored).trim())) {
+              const fromSaved = savedDemographic();
+              if (fromSaved) return fromSaved;
+              return done(d, ASK, "", "", 0, `your LGBTQ+ answer (${stored}) doesn't say \u2014 choose your answer`);
+            }
+            if (orientation) {
+              key = "sexual_orientation";
+              answer = "Heterosexual";
+            }
+          }
+        }
         const shapes = candidatesFor(key, answer, bank);
         if (shapes.length > 1) d.candidates = shapes;
         if (READ_FIRST_KEYS.has(key) || key === "hispanic_latino") d.readFirst = { key, stored: answer };
@@ -3356,6 +3416,8 @@ Zimbabwe|Zimbabwean
           { candidates: shapes, candidateKey: key, sponsorship }
         ));
         if (value === null) {
+          const fromSaved = savedDemographic();
+          if (fromSaved) return fromSaved;
           return done(d, ASK, "", "", 0, `none of the options match your stored answer (${stored})`);
         }
         if (row.value && looksLikeDecline(value) && !looksLikeDecline(row.value)) {
@@ -3541,15 +3603,7 @@ Zimbabwe|Zimbabwean
     const t = String(s || "");
     return t.length <= n ? t : `${t.slice(0, n - 1)}\u2026`;
   }
-  var PROFILE_CATEGORIES = /* @__PURE__ */ new Set([
-    "work_authorization",
-    "sponsorship",
-    "salary",
-    "demographic",
-    "birth",
-    "government_official",
-    "criminal"
-  ]);
+  var PROFILE_CATEGORIES = /* @__PURE__ */ new Set(["work_authorization", "sponsorship", "salary", "demographic", "birth"]);
   function profileHint(category, entry) {
     if (entry && entry.key === "nationality") return "add your country of citizenship to your profile";
     if (category === "citizenship") return "add your country of citizenship to your profile";
@@ -3565,10 +3619,6 @@ Zimbabwe|Zimbabwean
         return "set your voluntary disclosures in your profile";
       case "birth":
         return "add your date / place of birth to your profile";
-      case "government_official":
-        return "add your government-official answers to your profile";
-      case "criminal":
-        return "add your criminal-history answer to your profile";
       default:
         return "";
     }
@@ -3815,7 +3865,8 @@ Zimbabwe|Zimbabwean
     const kind = row.kind;
     if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") return null;
     const opts = (row.options || []).map((o) => String(typeof o === "string" ? o : o && o.label || "").trim()).filter((o) => o && !PLACEHOLDER_RE.test(o));
-    if (opts.length && !(opts.some((o) => /^yes\b/i.test(o)) && opts.some((o) => /^no\b/i.test(o)))) return null;
+    const yesNo = opts.some((o) => /^yes\b/i.test(o)) && opts.some((o) => /^no\b/i.test(o));
+    if (opts.length && !yesNo && !opts.some((o) => EMPLOYER_NEVER_RE.test(o))) return null;
     const m = PRIOR_EMPLOYER_RE.exec(String(row.label || "").replace(/\*+\s*$/, ""));
     if (!m) return null;
     let company = m[1].trim().replace(/^(the|a|an)\s+/i, "");
@@ -3825,9 +3876,25 @@ Zimbabwe|Zimbabwean
     const named = [bank.current_company, bank.previous_company].filter(Boolean);
     const employers = jobs.concat(named);
     const was = employers.find((e) => sameCompany(e, company));
-    const value = coerce(was ? "Yes" : "No", Object.assign({}, row, { candidateKey: "" }));
-    if (value === null) return null;
-    return { value, reason: was ? `you worked at ${was}` : `${company} isn't in your work history` };
+    const value = coerce(was ? "Yes" : "No", Object.assign({}, row, { candidateKey: "previous_employer" }));
+    if (value === null) {
+      return opts.length && !yesNo ? { ask: `none of the options plainly says ${was ? `you worked at ${company}` : `you never worked at ${company}`}` } : null;
+    }
+    return {
+      value,
+      readFirst: { key: "previous_employer", stored: was ? "Yes" : "No" },
+      reason: was ? `you worked at ${was}` : `${company} isn't in your work history`
+    };
+  }
+  var EMPLOYER_NEVER_RE = /\b(not|never)\b[^.]*\b(work\w*|employ\w*)\b|\bhaven'?t\b[^.]*\bwork\w*/i;
+  var EMPLOYER_BEFORE_RE = /\b(previous|former|past|currently|current)\b[^.]*\b(employee|employed|staff)\b|\bi (have|used to) work(ed)? (at|for)\b/i;
+  function previousEmployerOption(answer, options) {
+    const labels = (options || []).map((o) => String(typeof o === "string" ? o : o && o.label || "").trim()).filter(Boolean);
+    const no = /^no$/i.test(String(answer || "").trim());
+    const plain = labels.filter((o) => (no ? /^no\b/i : /^yes\b/i).test(o));
+    if (plain.length === 1) return plain[0];
+    const said = labels.filter((o) => no ? EMPLOYER_NEVER_RE.test(o) : EMPLOYER_BEFORE_RE.test(o) && !EMPLOYER_NEVER_RE.test(o));
+    return said.length === 1 ? said[0] : null;
   }
   var OUTSIDE_WORK_RE = new RegExp([
     /\boutside\s+(employment|jobs?|business(es)?|work|activit(y|ies)|engagements?|interests?)\b/.source,
@@ -4304,6 +4371,7 @@ Zimbabwe|Zimbabwean
       return row.country && countryOption(row.country, options) || citizenshipOption(text, options);
     }
     if (row.candidateKey === "degree") return degreeOption(text, options);
+    if (row.candidateKey === "previous_employer") return previousEmployerOption(text, options);
     const country = countryOf(text);
     if (country && countryShare(options) >= 0.5) return countryOption(country, options);
     if (row.candidateKey === "authorized_to_work_in_country" && !options.some((o) => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
@@ -6279,7 +6347,7 @@ Zimbabwe|Zimbabwean
       d.source = "ai_forced";
       d.confidence = Number(a.confidence) || 0.6;
       d.candidates = [];
-      d.reason = "best answer from your resume, so auto-apply could continue \u2014 check it";
+      d.reason = ctx && ctx.resumePass ? "best answer from your resume \u2014 check it" : "best answer from your resume, so auto-apply could continue \u2014 check it";
       answered.push(d);
     }
     if (answered.length) {
@@ -6457,6 +6525,10 @@ Zimbabwe|Zimbabwean
     }
     await clock.time("refill", () => refillCleared(decisions, progress, form.root));
     await clock.time("reread_options", () => rereadEmptyLists(decisions));
+    if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
+      progress("resume", {});
+      await clock.time("resume_pass", () => forceAnswers(ctx, decisions, progress));
+    }
     await saveState();
     watchUserEdits(form, null);
     const timing = clock.summary();
@@ -6771,6 +6843,10 @@ Zimbabwe|Zimbabwean
   }
   async function answerField(decision, value, remember) {
     decision.value = String(value == null ? "" : value);
+    if (decision.readFirst) decision.readFirst = { key: "", stored: decision.value };
+    decision.candidates = [];
+    decision.drill = null;
+    decision.hierarchy = null;
     const result = await applyDecision(decision);
     decision.outcome = result.outcome;
     decision.shown = result.shown;
@@ -7225,7 +7301,8 @@ Zimbabwe|Zimbabwean
     reading: "Checking what the dropdowns offer\u2026",
     thinking: "Working out the answers\u2026",
     filling: "Filling the form\u2026",
-    repairing: "Fixing what didn\u2019t take\u2026"
+    repairing: "Fixing what didn\u2019t take\u2026",
+    resume: "Answering the required questions left, from your resume\u2026"
   };
 
   // src/autofill/capture.js
