@@ -1468,6 +1468,12 @@ what when where which who will with would you your now future
     if (category === "sponsorship" && /\bsponsor/.test(questionSignature(label))) {
       return FIELD_SYNONYMS.find((e) => e.key === "requires_visa_sponsorship") || null;
     }
+    if (category === "work_authorization") {
+      return FIELD_SYNONYMS.find((e) => e.key === "authorized_to_work_in_country") || null;
+    }
+    if (category === "salary" && !/\b(current|present|last|previous|existing)\b/.test(questionSignature(label))) {
+      return FIELD_SYNONYMS.find((e) => e.key === "expected_salary") || null;
+    }
     if (category === "demographic") {
       const sig = questionSignature(label);
       if (/\bspouses?\b|\bpartners?\b/.test(sig)) return null;

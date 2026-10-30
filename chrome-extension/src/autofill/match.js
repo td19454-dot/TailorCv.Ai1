@@ -1034,6 +1034,17 @@ export function matchSensitiveKey(label, category) {
   if (category === 'sponsorship' && /\bsponsor/.test(questionSignature(label))) {
     return FIELD_SYNONYMS.find(e => e.key === 'requires_visa_sponsorship') || null;
   }
+  // A category with one profile answer names it, whatever the wording: "your
+  // current status regarding eligibility to work in India" and "your expected
+  // total annual compensation" matched no synonym, and the sidebar said to add
+  // to the profile answers it already held (DoorDash, Oct 2026). Never the
+  // EXPECTED salary for a current / last one.
+  if (category === 'work_authorization') {
+    return FIELD_SYNONYMS.find(e => e.key === 'authorized_to_work_in_country') || null;
+  }
+  if (category === 'salary' && !/\b(current|present|last|previous|existing)\b/.test(questionSignature(label))) {
+    return FIELD_SYNONYMS.find(e => e.key === 'expected_salary') || null;
+  }
   // An EEO question in words no synonym carries — "Would you say you have a
   // disability?" took four extra words, and went back to the person on every
   // form (Oct 2026). By the one EEO subject it names: exactly one, or nothing.

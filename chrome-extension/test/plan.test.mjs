@@ -1571,6 +1571,23 @@ test('government-official questions are answered from the profile, and only wher
   eq(p.fieldsForServer([run('Are you a government official?', undefined, undefined)]).length, 0);
 });
 
+test('work eligibility and expected compensation in any wording read the profile\'s one answer', () => {
+  // DoorDash (Oct 2026): both said "add … to your profile" — the profile held both.
+  const bank = Object.assign({}, BANK, { expected_salary: '2500000', authorized_to_work_in_country: 'Yes',
+                                         requires_visa_sponsorship: 'No' });
+  const ctx = Object.assign({}, CTX, { answerBank: bank });
+  const pay = p.decide([field('What is your expected total annual compensation?*', { required: true })], ctx, null, null)[0];
+  eq(pay.action, p.FILL, `${pay.action}: ${pay.reason}`);
+  eq(pay.value, '2500000');
+  const eligible = p.decide([field('Please select from the options below, your current status regarding eligibility to work in India.*',
+    { kind: 'select', required: true, options: ['Yes', 'No'] })], ctx, null, null)[0];
+  eq(eligible.action, p.FILL, `${eligible.action}: ${eligible.reason}`);
+  eq(eligible.value, 'Yes');
+  // Never the expected salary for the current one.
+  const current = p.decide([field('What is your current annual compensation?*', { required: true })], ctx, null, null)[0];
+  notOk(current.action === p.FILL && current.value === '2500000', `${current.action} ${current.value}`);
+});
+
 test('"Have you worked at DoorDash?" answered in its own sentences', () => {
   const OPTS = ['I have not worked at DoorDash', 'I am a previous employee', 'I am a previous DoorDash Dasher'];
   const row = options => field('Have you worked at DoorDash?*', { kind: 'combobox', options, required: true });
