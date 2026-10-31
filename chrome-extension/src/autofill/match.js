@@ -47,7 +47,7 @@ export function stripRegionSuffix(label) {
   return s;
 }
 
-const PLACEHOLDER_OPTION_RE = /^(select|choose|please select)\b.*\.{0,3}$|^--+$/i;
+const PLACEHOLDER_OPTION_RE = /^(select|choose|please select)\b.*\.{0,3}$|^--+$|^no selection$/i;
 
 /** Whether an option label is a placeholder rather than a real answer. */
 export function isPlaceholderOption(label) {

@@ -2659,7 +2659,14 @@
     const sig = keys.slice().sort().join('|');
     const changed = sig !== formSignature;
     formSignature = sig;
-    if (!applyForm || !changed) return;
+    if (!applyForm) return;
+    // A form with no visible field (SuccessFactors, every section closed) reads
+    // the same empty signature before and after it appears: not "changed", and
+    // the panel stayed on the paste-a-description box.
+    if (!changed) {
+      if (!had) onFormAppeared();
+      return;
+    }
 
     // Workday passes through a moment with no form between steps (the old one
     // is torn down before the next renders), so the next step arrives as a form
@@ -3253,6 +3260,14 @@
     // Checked before extraction so renderReady() knows whether to offer the
     // autofill button. Deterministic and synchronous — no network, no LLM.
     refreshApplyMode();
+
+    // A SuccessFactors application is the form itself, with no posting on it:
+    // the extractor read its "Job-Specific Information" section title as a job,
+    // and offered "Start Application" on the application (ExxonMobil, Oct 2026).
+    if (applyForm && applyForm.ats === 'successfactors') {
+      renderApplyReady();
+      return;
+    }
 
     const job = extractJob();
     if (job) {

@@ -21,7 +21,7 @@ import { describeFields, findForm, isApplicationPage, readComboboxOptions, repro
          profileTileBlocks, detectAts }
   from './discover.js';
 import { fillProfileTiles } from './tiles.js';
-import { expandSections, inRepeatingRow } from './successfactors.js';
+import { expandSections, inRepeatingRow, markFollowUps, educationFromRows } from './successfactors.js';
 import { experienceSection, fillExperienceSection, educationSection, fillEducationSection, inSection }
   from './repeaters.js';
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
@@ -257,7 +257,8 @@ export function pageBlockers(decisions) {
   return out;
 }
 
-const MAX_FORCED = 15;
+// The person's choice (Oct 2026). routers/extension_autofill.py FORCE_MAX_FIELDS holds the same.
+const MAX_FORCED = 20;
 
 /**
  * Auto-apply's second pass on a page: the required fields still empty, sent
@@ -269,9 +270,14 @@ const MAX_FORCED = 15;
  */
 export async function forceAnswers(ctx, decisions, onProgress) {
   const progress = typeof onProgress === 'function' ? onProgress : () => {};
+  // Still EMPTY, and not one kept from the model (noServer). A filled field the
+  // form flags is no question for it: SuccessFactors flags every picklist opened
+  // while empty and clears that later, and those filled ones took the places
+  // ahead of the questions really left (ExxonMobil, Oct 2026).
+  const isEmpty = (d) => { const now = reprobe(d.row); return !!now && !now.filled; };
   const targets = pageBlockers(decisions).map(b => b.decision).filter(d =>
-    d.row && d.row.kind !== 'file' && !d.slot && !d.knownEmpty && !d.sensitive
-    && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label)).slice(0, MAX_FORCED);
+    d.row && d.row.kind !== 'file' && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer
+    && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d)).slice(0, MAX_FORCED);
   if (!targets.length) return { forced: 0 };
 
   for (const d of targets) {
@@ -469,6 +475,10 @@ export async function runAutofill(ctx, onProgress) {
   const schools = (ctx && ctx.facts && ctx.facts.educationEntries) || [];
   const eduSection = schools.length ? educationSection() : null;
   const inRepeater = r => inSection(expSection, r) || inSection(eduSection, r) || inRepeatingRow(r);
+  if (form.ats === 'successfactors' || detectAts(globalThis.location.href) === 'successfactors') {
+    markFollowUps(rows.filter(r => !inRepeatingRow(r)));
+    ctx = Object.assign({}, ctx, { sfEducation: educationFromRows(rows) });
+  }
   const fieldRows = rows.filter(r => r.kind !== 'file' && !inRepeater(r));
   decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
   // SuccessFactors' Previous Employment / Formal Education rows: as it filled
@@ -565,6 +575,7 @@ export async function runAutofill(ctx, onProgress) {
     const before = new Set(rows.map(r => r.key));
     clock.quiet(await waitForQuiet(form.root));
     const fresh = describeFields(findForm() || form);
+    if (ctx && ctx.sfEducation !== undefined) markFollowUps(fresh.filter(r => !inRepeatingRow(r)));
     // Never the profile import: it was handled (or deliberately skipped) above.
     // Nor the blocks "Add Another" created: fillExperienceSection filled them.
     const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
@@ -595,7 +606,8 @@ export async function runAutofill(ctx, onProgress) {
   // fill: its loop makes this pass itself, once per step.
   if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
     progress('resume', {});
-    await clock.time('resume_pass', () => forceAnswers(ctx, decisions, progress));
+    const forced = await clock.time('resume_pass', () => forceAnswers(ctx, decisions, progress));
+    if (forced && forced.error) console.warn('[TailorCV] resume pass failed —', forced.error);
   }
 
   await saveState();

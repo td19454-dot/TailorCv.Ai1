@@ -152,7 +152,9 @@ export function renderReady(body, form, ctx, handlers, extra) {
             <div class="tcv-job-title">${page > 1
               ? `Page ${esc(page)} of this application`
               : 'Application form detected'}</div>
-            <div class="tcv-job-meta">${esc(count)} field${count === 1 ? '' : 's'} on this page${
+            <div class="tcv-job-meta">${form && form.sectionsClosed
+              ? 'Questions in closed sections'
+              : `${esc(count)} field${count === 1 ? '' : 's'} on this page`}${
               form && form.ats && form.ats !== 'generic' ? ` · ${esc(form.ats)}` : ''}</div>
           </div>
         </div>
@@ -162,6 +164,10 @@ export function renderReady(body, form, ctx, handlers, extra) {
           This step lists your Education and Experience entries. Autofill opens
           each one the form marks as needing a fix, fills it from your profile,
           and saves it.
+        </div>` : form && form.sectionsClosed ? `
+        <div class="tcv-af-note">
+          This form keeps its questions in closed sections. Autofill opens them,
+          then fills what it can.
         </div>` : !count ? `
         <div class="tcv-af-note">
           No fields found on this step yet. If a section opens with <b>Add</b>
