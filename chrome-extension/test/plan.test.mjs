@@ -306,6 +306,30 @@ test('a saved answer from the server for a list not read yet carries its variant
   notOk(listed.readFirst);
 });
 
+test('a row filled from a saved answer knows where it came from, for Change and Forget', () => {
+  const row = field('Citizenship Status*', { kind: 'select', options: US_STATUS });
+  const d = p.decide([row], savedDaca(), null, null)[0];
+  eq(d.source, 'saved_answer');
+  eq(d.savedFrom.question, 'Citizenship Status');
+  deepEq(d.savedFrom.options, US_STATUS);
+  // Set aside on a country list: the answer it was, and its own list.
+  const aside = p.decide([field('Citizenship Status', { kind: 'select', options: ['India', 'Canada', 'United States'] })],
+                         savedDaca(), null, null)[0];
+  eq(aside.setAside.answer, DACA);
+  deepEq(aside.setAside.options, US_STATUS);
+  notOk(aside.savedFrom);
+});
+
+test('a saved answer from the server keeps the question it was saved under', () => {
+  const opts = ['Platform', 'Payments', 'Growth'];
+  const server = { answers: { 0: { value: 'Payments', source: 'saved_answer', confidence: 0.85,
+                                   matchedQuestion: 'Which team interests you most?' } } };
+  const d = p.decide([field('Which team are you most interested in?', { kind: 'combobox', options: opts })],
+                     CTX, server, null)[0];
+  eq(d.savedFrom.question, 'Which team interests you most?');
+  deepEq(d.savedFrom.options, opts);
+});
+
 test('a saved criminal-history answer fills the same question', () => {
   const ctx = Object.assign({}, CTX, { savedSensitive: [
     { question: 'Have you ever been convicted of a felony?', answer: 'No' }] });

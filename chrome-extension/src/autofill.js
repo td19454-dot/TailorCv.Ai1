@@ -21,7 +21,7 @@ import { decide, summarize, fieldsForServer, ASK, FILL, SUGGEST, PROFILE, DOCUME
   from './autofill/plan.js';
 import {
   runAutofill, resumeIfContinuing, nextPage, clearState, getState,
-  watchUserEdits, stopWatchingUserEdits, answerField, learnableAnswers, rememberAnswers,
+  watchUserEdits, stopWatchingUserEdits, answerField, learnableAnswers, rememberAnswers, forgetSaved,
   pageBlockers, waitForQuiet, forceAnswers,
 } from './autofill/run.js';
 import * as ui from './autofill/ui.js';
@@ -56,6 +56,9 @@ function serializeDecision(d, index) {
     outcome: d.outcome,
     shown: d.shown,
     options: (d.options || []).map(o => (typeof o === 'string' ? o : o.label)).filter(Boolean),
+    savedFrom: d.savedFrom || null,
+    setAside: d.setAside || null,
+    forgotten: !!d.forgotten,
   };
 }
 
@@ -106,6 +109,12 @@ async function handleFrameMessage(msg) {
       return { ok: res.ok, outcome: res.outcome, shown: res.shown,
                decision: serializeDecision(d, msg.index) };
     }
+    case 'AF_FRAME_FORGET': {
+      const d = lastRunDecisions[msg.index];
+      if (!d) return { error: 'stale_index' };
+      const res = await forgetSaved(d);
+      return Object.assign({}, res, { decision: serializeDecision(d, msg.index) });
+    }
     case 'AF_FRAME_JUMP': {
       const d = lastRunDecisions[msg.index];
       if (!d) return { error: 'stale_index' };
@@ -142,6 +151,7 @@ if (!globalThis.__tcvAutofill) {
     getState,
     answerField,
     rememberAnswers,
+    forgetSaved,
     learnableAnswers,
     watchUserEdits,
     stopWatchingUserEdits,
@@ -203,6 +213,7 @@ async function selfTest() {
       AF_GET_RESUME_FILE: { data: { base64: bytes, filename: 'fixture.pdf',
                                     mime: 'application/pdf' } },
       AF_SAVE_ANSWERS: { data: { saved: 0 } },
+      AF_FORGET_ANSWER: { data: { ok: true, forgotten: false } },
     }[msg.type] || { data: null };
     cb(reply);
   };

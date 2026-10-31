@@ -367,17 +367,37 @@
         'extension\'s autofill panel with “Remember this answer” ticked, it appears here.</p>';
       return;
     }
+    // One card per kind of option list the question was answered over: a
+    // form reads the answer kept for its own kind of list, so that is what
+    // each card edits (see UserApplyQA.variants).
     answersEl.innerHTML = list.map(function (a) {
-      return '<div class="pf-answer" data-id="' + a.id + '">' +
-        '<div class="pf-answer-q">' + esc(a.question) + '</div>' +
-        '<div class="pf-answer-row">' +
-          '<textarea maxlength="2000" aria-label="Answer">' + esc(a.answer) + '</textarea>' +
-          '<div class="pf-answer-actions">' +
-            '<button type="button" class="pf-mini pf-ans-save" disabled>Save</button>' +
-            '<button type="button" class="pf-mini pf-mini-danger pf-ans-del">Forget</button>' +
-          '</div>' +
-        '</div></div>';
+      var variants = a.variants || [];
+      if (!variants.length) return answerCard(a, a.answer, null);
+      return variants.slice().reverse().map(function (v) { return answerCard(a, v.answer, v); }).join("");
     }).join("");
+  }
+
+  function listHint(options) {
+    var shown = (options || []).map(function (o) {
+      return String(o).replace(/^\(?[a-z0-9]{1,2}\)\s+/i, "");
+    }).filter(function (o) { return o && !/^(select|choose|please select)/i.test(o); });
+    if (!shown.length) return "";
+    var more = shown.length > 3 ? ", +" + (shown.length - 3) : "";
+    return '<div class="pf-answer-lists">On lists like: ' + esc(shown.slice(0, 3).join(", ")) + esc(more) + '</div>';
+  }
+
+  function answerCard(a, answer, v) {
+    return '<div class="pf-answer" data-id="' + a.id + '"' +
+        (v ? ' data-variant="' + v.index + '" data-was="' + esc(answer) + '"' : '') + '>' +
+      '<div class="pf-answer-q">' + esc(a.question) + '</div>' +
+      (v ? listHint(v.options) : '') +
+      '<div class="pf-answer-row">' +
+        '<textarea maxlength="2000" aria-label="Answer">' + esc(answer) + '</textarea>' +
+        '<div class="pf-answer-actions">' +
+          '<button type="button" class="pf-mini pf-ans-save" disabled>Save</button>' +
+          '<button type="button" class="pf-mini pf-mini-danger pf-ans-del">Forget</button>' +
+        '</div>' +
+      '</div></div>';
   }
 
   function loadAnswers() {
@@ -402,21 +422,32 @@
     var card = e.target.closest(".pf-answer");
     if (!card) return;
     var id = card.getAttribute("data-id");
+    var variant = card.getAttribute("data-variant");
     if (e.target.classList.contains("pf-ans-save")) {
       var btn = e.target;
+      var answer = card.querySelector("textarea").value.trim();
+      var body = { answer: answer };
+      if (variant !== null) {
+        body.variant = Number(variant);
+        body.was = card.getAttribute("data-was");
+      }
       btn.disabled = true;
       btn.textContent = "Saving…";
       fetch("/api/profile/answers/" + id, {
         method: "PUT",
         headers: jsonHeaders(),
-        body: JSON.stringify({ answer: card.querySelector("textarea").value.trim() }),
+        body: JSON.stringify(body),
       })
         .then(function (r) {
           return r.json().then(function (b) { return { ok: r.ok, body: b }; });
         })
         .then(function (res) {
           btn.textContent = res.ok ? "✓ Saved" : "Save";
-          if (res.ok) { setAnswersStatus(""); notifyExtension(); }
+          if (res.ok) {
+            if (variant !== null) card.setAttribute("data-was", answer);
+            setAnswersStatus("");
+            notifyExtension();
+          }
           else {
             btn.disabled = false;
             setAnswersStatus((res.body && res.body.detail) || "Couldn't save that answer.", "err");
@@ -425,8 +456,12 @@
         .catch(function () { btn.disabled = false; btn.textContent = "Save"; });
     } else if (e.target.classList.contains("pf-ans-del")) {
       if (!window.confirm("Forget this answer? Autofill will ask you again next time.")) return;
-      fetch("/api/profile/answers/" + id, { method: "DELETE", headers: jsonHeaders() })
+      var query = variant === null ? "" : "?variant=" + encodeURIComponent(variant) +
+        "&was=" + encodeURIComponent(card.getAttribute("data-was"));
+      fetch("/api/profile/answers/" + id + query, { method: "DELETE", headers: jsonHeaders() })
         .then(function (r) {
+          // The question's other cards are numbered after this one: re-read them.
+          if (r.ok && variant !== null) { notifyExtension(); loadAnswers(); return; }
           if (r.ok) { card.remove(); notifyExtension(); }
           else setAnswersStatus("Couldn't forget that answer. Try again.", "err");
           if (!answersEl.querySelector(".pf-answer")) renderAnswers([]);

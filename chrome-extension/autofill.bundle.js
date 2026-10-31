@@ -3430,19 +3430,23 @@ Zimbabwe|Zimbabwean
     const hit = rows.find(([, n]) => n === want);
     return hit ? hit[0] : null;
   }
-  function pickSaved(entry, labels) {
-    const rows = real(labels);
-    if (!rows.length || !entry) return null;
-    const variants = (entry.variants || []).filter((v) => v && v.options && v.options.length);
-    if (!variants.length) return exact(entry.answer, rows);
+  function pickSavedVariant(entry, labels) {
     let best = null, bestScore = 0;
-    for (const v of variants) {
+    for (const v of entry && entry.variants || []) {
+      if (!v || !v.options || !v.options.length) continue;
       const score = kindScore(v.options, labels);
       if (score >= SAME_KIND && score >= bestScore) {
         best = v;
         bestScore = score;
       }
     }
+    return best;
+  }
+  function pickSaved(entry, labels) {
+    const rows = real(labels);
+    if (!rows.length || !entry) return null;
+    if (!(entry.variants || []).some((v) => v && v.options && v.options.length)) return exact(entry.answer, rows);
+    const best = pickSavedVariant(entry, labels);
     if (!best) return null;
     const answer = String(best.answer || "");
     const hit = exact(answer, rows);
@@ -3580,13 +3584,20 @@ Zimbabwe|Zimbabwean
           if (category !== "demographic") return null;
           const saved = savedValue(savedEntry(row.label, ctx && ctx.savedSensitive), row);
           if (!saved) return null;
+          if (saved.aside) {
+            d.setAside = saved.aside;
+            return null;
+          }
           if (saved.readFirst) d.readFirst = saved.readFirst;
+          d.savedFrom = saved.savedFrom;
           return done(d, FILL, saved.value, "saved_answer", 0.9, "your saved answer to this question");
         };
         if (STORABLE_SENSITIVE.has(category) && category !== "demographic") {
           const saved = savedValue(savedEntry(row.label, ctx && ctx.savedSensitive), row);
-          if (saved) {
+          if (saved && saved.aside) d.setAside = saved.aside;
+          else if (saved) {
             if (saved.readFirst) d.readFirst = saved.readFirst;
+            d.savedFrom = saved.savedFrom;
             return done(d, FILL, saved.value, "saved_answer", 0.9, "your saved answer to this question");
           }
         }
@@ -4368,7 +4379,11 @@ Zimbabwe|Zimbabwean
     if (!sig) return null;
     const hit = (saved || []).find((s) => s && questionSignature(s.question) === sig);
     const answer = hit ? String(hit.answer || "").trim() : "";
-    return answer ? { answer, variants: hit.variants || [] } : null;
+    return answer ? { question: hit.question, answer, variants: hit.variants || [] } : null;
+  }
+  function savedSource(entry, variant) {
+    const v = variant || [...entry.variants || []].reverse().find((x) => x && x.answer === entry.answer);
+    return { question: entry.question || "", answer: entry.answer, options: v && v.options || [] };
   }
   var SAVED_LIST_KINDS = /* @__PURE__ */ new Set(["select", "combobox", "radio", "choice", "checkbox"]);
   function savedValue(entry, row) {
@@ -4376,21 +4391,30 @@ Zimbabwe|Zimbabwean
     const labels = (row.options || []).map((o) => typeof o === "string" ? o : o && o.label || "").filter(Boolean);
     if (SAVED_LIST_KINDS.has(row.kind)) {
       if (!labels.length && (row.kind === "select" || row.kind === "combobox")) {
-        return { value: entry.answer, readFirst: { key: "saved", stored: entry.answer, entry } };
+        return {
+          value: entry.answer,
+          savedFrom: savedSource(entry),
+          readFirst: { key: "saved", stored: entry.answer, entry }
+        };
       }
       if (entry.variants && entry.variants.length) {
         const pick = pickSaved(entry, labels);
-        return pick ? { value: pick } : null;
+        return pick ? { value: pick, savedFrom: savedSource(entry, pickSavedVariant(entry, labels)) } : { aside: savedSource(entry) };
       }
     }
     const value = coerce(entry.answer, row);
-    return value === null ? null : { value };
+    return value === null ? { aside: savedSource(entry) } : { value, savedFrom: savedSource(entry) };
   }
   function savedFromServer(d, row, answer) {
-    if (!answer || answer.source !== "saved_answer" || !(answer.variants && answer.variants.length)) return;
-    if (row.kind !== "select" && row.kind !== "combobox") return;
-    if ((row.options || []).length) return;
-    const entry = { answer: String(answer.value || ""), variants: answer.variants };
+    if (!answer || answer.source !== "saved_answer") return;
+    const labels = (row.options || []).map((o) => typeof o === "string" ? o : o && o.label || "").filter(Boolean);
+    const entry = {
+      question: answer.matchedQuestion || row.label,
+      answer: String(answer.value || ""),
+      variants: answer.variants || []
+    };
+    d.savedFrom = labels.length ? { question: entry.question, answer: entry.answer, options: labels } : savedSource(entry);
+    if (!entry.variants.length || row.kind !== "select" && row.kind !== "combobox" || labels.length) return;
     d.readFirst = { key: "saved", stored: entry.answer, entry };
   }
   var YES_RE = /^(yes|y|true)$/i;
@@ -5185,10 +5209,13 @@ Zimbabwe|Zimbabwean
           }
         }
         if (!pick) {
+          if (labels.length) readFirst.labels = labels;
           reportDropdownFailure(row, value, options);
           return false;
         }
         readFirst.picked = pick;
+        readFirst.labels = labels;
+        if (readFirst.key === "saved") readFirst.variant = pickSavedVariant(readFirst.entry, labels);
         const node = options[labels.indexOf(pick)];
         try {
           node.scrollIntoView({ block: "nearest" });
@@ -7504,6 +7531,7 @@ Zimbabwe|Zimbabwean
       });
       d.outcome = result.outcome;
       d.shown = result.shown;
+      keepListRead(d);
       if (result.ok) {
         if (d.key) state.registry[d.key] = d.value;
       } else if (!isRepair) {
@@ -7544,6 +7572,8 @@ Zimbabwe|Zimbabwean
       const others = (ctx && ctx.savedSensitive || []).filter((s) => questionSignature(s.question) !== sig);
       const [fresh] = decide([d.row], Object.assign({}, ctx, { savedSensitive: others }), null, state);
       fresh.redecided = true;
+      if (d.savedFrom) fresh.setAside = d.savedFrom;
+      if (!(fresh.options && fresh.options.length) && d.options && d.options.length) fresh.options = d.options;
       decisions[decisions.indexOf(d)] = fresh;
       if (fresh.action === FILL || fresh.action === SUGGEST) {
         toWrite.push(fresh);
@@ -7552,6 +7582,31 @@ Zimbabwe|Zimbabwean
       }
     }
     if (toWrite.length) await writeAll(toWrite, ctx, progress, true);
+  }
+  function keepListRead(d) {
+    const rf = d.readFirst;
+    if (!rf) return;
+    if (rf.labels && rf.labels.length && !(d.options && d.options.length)) {
+      d.options = rf.labels.map((l) => ({ value: l, label: l }));
+    }
+    if (rf.variant && d.savedFrom) d.savedFrom = Object.assign({}, d.savedFrom, { options: rf.variant.options });
+  }
+  async function forgetSaved(decision) {
+    const from = decision && (decision.savedFrom || decision.setAside);
+    if (!from || !from.question) return { ok: false, error: "There is no saved answer to forget here." };
+    const res = await send({ type: "AF_FORGET_ANSWER", payload: {
+      question: from.question,
+      options: (from.options || []).slice(0, 300)
+    } });
+    if (!res || !res.data) {
+      const error = res && res.error;
+      return { ok: false, error: !error || /context invalidated/i.test(error) ? "The extension was reloaded \u2014 refresh this page and try again." : error };
+    }
+    decision.savedFrom = null;
+    decision.setAside = null;
+    decision.forgotten = true;
+    decision.reason = "forgotten \u2014 this answer won't be used again";
+    return { ok: true };
   }
   function outcomeReason(d) {
     switch (d.outcome) {
@@ -7989,8 +8044,24 @@ Zimbabwe|Zimbabwean
       </div>
       ${value ? `<div class="tcv-af-row-value">${esc(truncate2(value, 120))}</div>` : ""}
       ${d.source ? `<div class="tcv-af-row-src">from ${esc(SOURCE_LABEL[d.source] || d.source)}${d.reason ? ` \xB7 ${esc(d.reason)}` : ""}</div>` : d.reason ? `<div class="tcv-af-row-src">${esc(d.reason)}</div>` : ""}
+      ${savedControlsHtml(d, index)}
       ${needsInput ? askFormHtml(d, index) : ""}
     </div>`;
+  }
+  function savedControlsHtml(d, index) {
+    if (d.forgotten) return "";
+    const fromSaved = d.source === "saved_answer" && (d.action === FILL || d.action === SUGGEST) && d.savedFrom;
+    return `${fromSaved ? `
+      <div class="tcv-af-row-src tcv-af-saved">
+        <a href="#" class="tcv-af-change" data-index="${index}">Change</a> \xB7
+        <a href="#" class="tcv-af-forget" data-index="${index}">Forget</a>
+      </div>
+      <div class="tcv-af-change-form" data-index="${index}" hidden>${askFormHtml(d, index)}</div>` : ""}${d.setAside && !fromSaved ? `
+      <div class="tcv-af-row-src tcv-af-aside">
+        Your saved answer "${esc(truncate2(d.setAside.answer, 60))}" isn't on this list \u2014 kept for
+        forms with the list you saved it on. \xB7
+        <a href="#" class="tcv-af-forget" data-index="${index}">Forget it</a>
+      </div>` : ""}`;
   }
   function askFormHtml(d, index) {
     const options = (d.options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean);
@@ -8019,6 +8090,34 @@ Zimbabwe|Zimbabwean
     return t.length <= n ? t : `${t.slice(0, n - 1)}\u2026`;
   }
   function wireRows(body, decisions, ctx, handlers) {
+    for (const link of body.querySelectorAll(".tcv-af-change")) {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const form = body.querySelector(`.tcv-af-change-form[data-index="${link.dataset.index}"]`);
+        if (form) form.hidden = !form.hidden;
+      });
+    }
+    for (const link of body.querySelectorAll(".tcv-af-forget")) {
+      link.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const index = Number(link.dataset.index);
+        const d = decisions[index];
+        if (!d || link.dataset.busy) return;
+        link.dataset.busy = "1";
+        link.textContent = "Forgetting\u2026";
+        const res = d.row ? await forgetSaved(d) : await handlers.onForget(index);
+        if (res && res.ok) {
+          handlers.onRefresh();
+          return;
+        }
+        delete link.dataset.busy;
+        link.textContent = "Forget";
+        const note = globalThis.document.createElement("div");
+        note.className = "tcv-af-row-src";
+        note.textContent = res && res.error || "Could not forget that answer.";
+        link.parentNode.appendChild(note);
+      });
+    }
     for (const link of body.querySelectorAll(".tcv-af-jump")) {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -8271,7 +8370,10 @@ ${lists.join("\n")}` : "");
       byForm: !!d.byForm,
       outcome: d.outcome,
       shown: d.shown,
-      options: (d.options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean)
+      options: (d.options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean),
+      savedFrom: d.savedFrom || null,
+      setAside: d.setAside || null,
+      forgotten: !!d.forgotten
     };
   }
   var lastRunDecisions = [];
@@ -8318,6 +8420,12 @@ ${lists.join("\n")}` : "");
           decision: serializeDecision(d, msg.index)
         };
       }
+      case "AF_FRAME_FORGET": {
+        const d = lastRunDecisions[msg.index];
+        if (!d) return { error: "stale_index" };
+        const res = await forgetSaved(d);
+        return Object.assign({}, res, { decision: serializeDecision(d, msg.index) });
+      }
       case "AF_FRAME_JUMP": {
         const d = lastRunDecisions[msg.index];
         if (!d) return { error: "stale_index" };
@@ -8352,6 +8460,7 @@ ${lists.join("\n")}` : "");
       getState,
       answerField,
       rememberAnswers,
+      forgetSaved,
       learnableAnswers,
       watchUserEdits,
       stopWatchingUserEdits,
@@ -8393,7 +8502,8 @@ ${lists.join("\n")}` : "");
           filename: "fixture.pdf",
           mime: "application/pdf"
         } },
-        AF_SAVE_ANSWERS: { data: { saved: 0 } }
+        AF_SAVE_ANSWERS: { data: { saved: 0 } },
+        AF_FORGET_ANSWER: { data: { ok: true, forgotten: false } }
       }[msg.type] || { data: null };
       cb(reply);
     };

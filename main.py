@@ -194,6 +194,7 @@ async def csrf_middleware(request: Request, call_next):
         # cross-site POST at all.
         "/api/extension/autofill/plan",
         "/api/extension/autofill/answers",
+        "/api/extension/autofill/answers/forget",
         "/api/extension/apply-profile",
         "/api/extension/apply-answers",
         "/api/billing/razorpay/webhook",

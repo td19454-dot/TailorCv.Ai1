@@ -47,7 +47,7 @@ import {
   matchSensitiveKey,
 } from './match.js';
 import { countryOf, countryOption, countryShare, countryShapes, countryNamedIn } from './countries.js';
-import { pickSaved } from './saved.js';
+import { pickSaved, pickSavedVariant } from './saved.js';
 
 export const AUTOFILL_MIN = 0.8;
 export const SUGGEST_MIN = 0.5;
@@ -255,7 +255,9 @@ export function decide(rows, ctx, server, state) {
         if (category !== 'demographic') return null;
         const saved = savedValue(savedEntry(row.label, ctx && ctx.savedSensitive), row);
         if (!saved) return null;
+        if (saved.aside) { d.setAside = saved.aside; return null; }
         if (saved.readFirst) d.readFirst = saved.readFirst;
+        d.savedFrom = saved.savedFrom;
         return done(d, FILL, saved.value, 'saved_answer', 0.9, 'your saved answer to this question');
       };
       if (STORABLE_SENSITIVE.has(category) && category !== 'demographic') {
@@ -268,8 +270,10 @@ export function decide(rows, ctx, server, state) {
         // Saved over a different kind of list (a U.S.-status answer, and this
         // is a country list) it is no answer here: on to the profile below.
         const saved = savedValue(savedEntry(row.label, ctx && ctx.savedSensitive), row);
-        if (saved) {
+        if (saved && saved.aside) d.setAside = saved.aside;
+        else if (saved) {
           if (saved.readFirst) d.readFirst = saved.readFirst;
+          d.savedFrom = saved.savedFrom;
           return done(d, FILL, saved.value, 'saved_answer', 0.9, 'your saved answer to this question');
         }
       }
@@ -1356,13 +1360,25 @@ export function savedEntry(label, saved) {
   if (!sig) return null;
   const hit = (saved || []).find(s => s && questionSignature(s.question) === sig);
   const answer = hit ? String(hit.answer || '').trim() : '';
-  return answer ? { answer, variants: hit.variants || [] } : null;
+  return answer ? { question: hit.question, answer, variants: hit.variants || [] } : null;
+}
+
+/**
+ * Where a saved answer came from, for the panel's Change / Forget: the stored
+ * question, and the options of the kind of list it was saved for — Forget
+ * takes that kind's answer only. [] for an answer saved without options.
+ */
+function savedSource(entry, variant) {
+  const v = variant || [...(entry.variants || [])].reverse().find(x => x && x.answer === entry.answer);
+  return { question: entry.question || '', answer: entry.answer, options: (v && v.options) || [] };
 }
 
 const SAVED_LIST_KINDS = new Set(['select', 'combobox', 'radio', 'choice', 'checkbox']);
 
 /**
- * A saved answer as this field takes it: { value, readFirst? } or null.
+ * A saved answer as this field takes it: { value, savedFrom, readFirst? },
+ * { aside } when it is no answer for this list (the panel says so), or null
+ * when nothing is saved.
  *
  * Kept per kind of option list (see saved.js): on a choice it is the option
  * saved for this kind of list, or nothing. A list not read yet (Workday's
@@ -1377,24 +1393,30 @@ export function savedValue(entry, row) {
     .filter(Boolean);
   if (SAVED_LIST_KINDS.has(row.kind)) {
     if (!labels.length && (row.kind === 'select' || row.kind === 'combobox')) {
-      return { value: entry.answer, readFirst: { key: 'saved', stored: entry.answer, entry } };
+      return { value: entry.answer, savedFrom: savedSource(entry),
+               readFirst: { key: 'saved', stored: entry.answer, entry } };
     }
     if (entry.variants && entry.variants.length) {
       const pick = pickSaved(entry, labels);
-      return pick ? { value: pick } : null;
+      return pick ? { value: pick, savedFrom: savedSource(entry, pickSavedVariant(entry, labels)) }
+        : { aside: savedSource(entry) };
     }
   }
   const value = coerce(entry.answer, row);
-  return value === null ? null : { value };
+  return value === null ? { aside: savedSource(entry) } : { value, savedFrom: savedSource(entry) };
 }
 
 /** A saved answer from the server for a list not read yet: picked from it once
  *  open, as savedValue does. */
 function savedFromServer(d, row, answer) {
-  if (!answer || answer.source !== 'saved_answer' || !(answer.variants && answer.variants.length)) return;
-  if (row.kind !== 'select' && row.kind !== 'combobox') return;
-  if ((row.options || []).length) return;
-  const entry = { answer: String(answer.value || ''), variants: answer.variants };
+  if (!answer || answer.source !== 'saved_answer') return;
+  const labels = (row.options || []).map(o => (typeof o === 'string' ? o : (o && o.label) || '')).filter(Boolean);
+  const entry = { question: answer.matchedQuestion || row.label, answer: String(answer.value || ''),
+                  variants: answer.variants || [] };
+  // With the list in hand the server picked from it: this list is the kind.
+  d.savedFrom = labels.length ? { question: entry.question, answer: entry.answer, options: labels }
+    : savedSource(entry);
+  if (!entry.variants.length || (row.kind !== 'select' && row.kind !== 'combobox') || labels.length) return;
   d.readFirst = { key: 'saved', stored: entry.answer, entry };
 }
 

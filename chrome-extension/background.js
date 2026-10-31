@@ -694,6 +694,27 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         await clearAutofillContext();
         sendResponse({ data: await res.json() });
 
+      } else if (msg.type === 'AF_FORGET_ANSWER') {
+        // The panel's Forget on a row filled from a saved answer: that kind of
+        // list's answer only (see qa_store.forget_answer).
+        const res = await fetch(`${BASE_URL}/api/extension/autofill/answers/forget`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(msg.payload || {}),
+        });
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          sendResponse({
+            error: res.status === 401 ? 'You are signed out of TailorCV — sign in and try again.'
+              : `${detailText(data.detail, 'Could not forget that answer.')} (HTTP ${res.status})`,
+            code: res.status,
+          });
+          return;
+        }
+        await clearAutofillContext();
+        sendResponse({ data: await res.json() });
+
       } else if (msg.type === 'AF_GET_RESUME_FILE') {
         // Fetched here and passed as base64 rather than as a blob URL: MV3
         // service workers have no URL.createObjectURL (the same constraint the

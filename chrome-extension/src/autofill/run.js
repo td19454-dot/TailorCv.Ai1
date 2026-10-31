@@ -958,6 +958,7 @@ async function writeAll(decisions, ctx, progress, isRepair) {
                   outcome: result.outcome });
     d.outcome = result.outcome;
     d.shown = result.shown;
+    keepListRead(d);
     if (result.ok) {
       if (d.key) state.registry[d.key] = d.value;
     } else if (!isRepair) {
@@ -1013,6 +1014,10 @@ async function redecideFailedSaved(decisions, ctx, progress) {
     const others = ((ctx && ctx.savedSensitive) || []).filter(s => questionSignature(s.question) !== sig);
     const [fresh] = decide([d.row], Object.assign({}, ctx, { savedSensitive: others }), null, state);
     fresh.redecided = true;
+    // Told in the panel, with Forget: the saved answer is kept for the kind of
+    // list it was saved on, and was no answer for this one.
+    if (d.savedFrom) fresh.setAside = d.savedFrom;
+    if (!(fresh.options && fresh.options.length) && d.options && d.options.length) fresh.options = d.options;
     decisions[decisions.indexOf(d)] = fresh;
     if (fresh.action === FILL || fresh.action === SUGGEST) {
       toWrite.push(fresh);
@@ -1022,6 +1027,43 @@ async function redecideFailedSaved(decisions, ctx, progress) {
     }
   }
   if (toWrite.length) await writeAll(toWrite, ctx, progress, true);
+}
+
+/**
+ * A list the writer opened and read (Workday's prompt, unread when planned):
+ * its options become the decision's, for the panel's dropdown and for saving
+ * an answer with the list it was chosen from. A saved answer the writer picked
+ * from it is the one Forget takes.
+ */
+function keepListRead(d) {
+  const rf = d.readFirst;
+  if (!rf) return;
+  if (rf.labels && rf.labels.length && !(d.options && d.options.length)) {
+    d.options = rf.labels.map(l => ({ value: l, label: l }));
+  }
+  if (rf.variant && d.savedFrom) d.savedFrom = Object.assign({}, d.savedFrom, { options: rf.variant.options });
+}
+
+/**
+ * Forget the saved answer a panel row was filled from (or that was set aside
+ * as no answer for this list) — for that kind of list only. The field keeps
+ * what it shows; the next form asks, or the profile answers.
+ */
+export async function forgetSaved(decision) {
+  const from = decision && (decision.savedFrom || decision.setAside);
+  if (!from || !from.question) return { ok: false, error: 'There is no saved answer to forget here.' };
+  const res = await send({ type: 'AF_FORGET_ANSWER', payload: {
+    question: from.question, options: (from.options || []).slice(0, 300) } });
+  if (!res || !res.data) {
+    const error = res && res.error;
+    return { ok: false, error: !error || /context invalidated/i.test(error)
+      ? 'The extension was reloaded — refresh this page and try again.' : error };
+  }
+  decision.savedFrom = null;
+  decision.setAside = null;
+  decision.forgotten = true;
+  decision.reason = "forgotten — this answer won't be used again";
+  return { ok: true };
 }
 
 function outcomeReason(d) {

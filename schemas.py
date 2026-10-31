@@ -126,6 +126,14 @@ class ApplyAnswersRequest(BaseModel):
     answers: list[QAAnswerItem] = Field(min_length=1, max_length=25)
 
 
+class ForgetAnswerRequest(BaseModel):
+    """Forget a saved answer from the extension's panel: the stored question,
+    and the options of the kind of list it was used on — only that kind's
+    answer goes (see qa_store.forget_answer)."""
+    question: str = Field(min_length=1, max_length=2000)
+    options: list[str] = Field(default_factory=list, max_length=300)
+
+
 class AutofillField(BaseModel):
     """One form field the extension found and could not answer for itself.
 

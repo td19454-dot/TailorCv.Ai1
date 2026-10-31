@@ -34,6 +34,14 @@ test('normalizeOption drops lettering, case and punctuation', () => {
   eq(s.normalizeOption('No. I am not'), 'no i am not');
 });
 
+test('pickSavedVariant names the answer that decides', () => {
+  const us = fixture.lists.us_status, countries = fixture.lists.countries_a;
+  const entry = { answer: 'India', variants: [{ options: countries, answer: 'India' }, { options: us, answer: us[2] }] };
+  eq(s.pickSavedVariant(entry, fixture.lists.countries_b).answer, 'India');
+  eq(s.pickSavedVariant(entry, fixture.lists.us_status_unlettered).answer, us[2]);
+  eq(s.pickSavedVariant(entry, fixture.lists.degree), null);
+});
+
 test('a placeholder is no option', () => {
   eq(s.pickSaved({ answer: 'Select...', variants: [] }, ['Select...', 'Yes', 'No']), null);
 });

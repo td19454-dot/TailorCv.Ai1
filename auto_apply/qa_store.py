@@ -113,6 +113,19 @@ def _exact(answer, real) -> str | None:
     return next((raw for raw, n in real if n == want), None)
 
 
+def pick_saved_variant(entry: dict, labels) -> dict | None:
+    """The variant saved over the same kind of list as `labels` — the one that
+    decides this field — or None. Oldest first, so a tie goes to the newest."""
+    best, best_score = None, 0.0
+    for v in entry.get("variants") or []:
+        if not v.get("options"):
+            continue
+        score = kind_score(v["options"], labels)
+        if score >= SAME_KIND and score >= best_score:
+            best, best_score = v, score
+    return best
+
+
 def pick_saved(entry: dict, labels) -> str | None:
     """The option on THIS list that states the saved answer, or None.
 
@@ -124,14 +137,9 @@ def pick_saved(entry: dict, labels) -> str | None:
     real = _real(labels)
     if not real:
         return None
-    variants = [v for v in (entry.get("variants") or []) if v.get("options")]
-    if not variants:
+    if not [v for v in (entry.get("variants") or []) if v.get("options")]:
         return _exact(entry.get("answer"), real)
-    best, best_score = None, 0.0
-    for v in variants:                       # oldest first: a tie goes to the newest
-        score = kind_score(v["options"], labels)
-        if score >= SAME_KIND and score >= best_score:
-            best, best_score = v, score
+    best = pick_saved_variant(entry, labels)
     if best is None:
         return None
     answer = best.get("answer") or ""
@@ -160,6 +168,70 @@ def decode_variants(raw) -> list[dict]:
         if isinstance(v, dict) and isinstance(v.get("options"), list) and v.get("answer"):
             out.append({"options": [str(o) for o in v["options"]], "answer": str(v["answer"])})
     return out
+
+
+def _newest_answer(row, variants: list[dict]) -> None:
+    row.variants = json.dumps(variants)
+    row.answer = variants[-1]["answer"]
+
+
+def forget_answer(db, user_id: int, question: str, options) -> bool:
+    """Forget the saved answer to `question` for this kind of option list.
+
+    Only that kind's answer goes: "Citizenship Status" forgotten on a U.S.
+    status list keeps its country-list answer. An answer saved without options,
+    or forgotten without them, takes the whole row. Returns whether anything
+    was forgotten. Commits.
+    """
+    from models import UserApplyQA
+
+    sig = question_signature(question or "")
+    if not sig:
+        return False
+    row = (db.query(UserApplyQA)
+           .filter(UserApplyQA.user_id == user_id, UserApplyQA.question_signature == sig)
+           .first())
+    if not row:
+        return False
+    variants = decode_variants(row.variants)
+    labels = [str(o) for o in (options or []) if str(o or "").strip()]
+    if labels and variants:
+        kept = [v for v in variants if kind_score(v["options"], labels) < SAME_KIND]
+        if len(kept) == len(variants):
+            return False
+        if kept:
+            _newest_answer(row, kept)
+            db.commit()
+            return True
+    db.delete(row)
+    db.commit()
+    return True
+
+
+def _variant_at(row, index: int, was: str) -> list[dict]:
+    variants = decode_variants(row.variants)
+    if not 0 <= index < len(variants) or variants[index]["answer"] != was:
+        raise ValueError("that answer changed since it was shown")
+    return variants
+
+
+def edit_variant(row, index: int, was: str, answer: str) -> None:
+    """The profile page's edit of one kind of list's answer. `was` is the
+    answer it showed: a list changed in another tab is never edited blind."""
+    variants = _variant_at(row, index, was)
+    variants[index]["answer"] = answer
+    _newest_answer(row, variants)
+
+
+def delete_variant(row, index: int, was: str) -> bool:
+    """Forget one kind of list's answer. Returns True when it was the last one,
+    and the row itself should go."""
+    variants = _variant_at(row, index, was)
+    del variants[index]
+    if not variants:
+        return True
+    _newest_answer(row, variants)
+    return False
 
 
 def merge_variant(variants: list[dict], options, answer: str) -> list[dict]:

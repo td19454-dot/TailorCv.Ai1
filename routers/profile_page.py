@@ -1006,6 +1006,18 @@ async def save_profile(request: Request, payload: ProfileSave):
 
 class AnswerEdit(BaseModel):
     answer: str = Field(min_length=1, max_length=2000)
+    # One kind of list's answer (UserApplyQA.variants): its index, and the
+    # answer this page showed for it, so a list changed elsewhere since is
+    # never edited blind.
+    variant: int | None = None
+    was: str | None = None
+
+
+def _variants_out(row) -> list[dict]:
+    from auto_apply.qa_store import decode_variants
+
+    return [{"index": i, "answer": v["answer"], "options": v["options"][:12]}
+            for i, v in enumerate(decode_variants(row.variants))]
 
 
 @router.get("/api/profile/answers")
@@ -1016,6 +1028,7 @@ async def list_answers(request: Request):
         rows = (db.query(UserApplyQA).filter(UserApplyQA.user_id == user.id)
                 .order_by(UserApplyQA.updated_at.desc()).all())
         return {"answers": [{"id": r.id, "question": r.question_text, "answer": r.answer,
+                             "variants": _variants_out(r),
                              "updatedAt": r.updated_at.isoformat() if r.updated_at else None}
                             for r in rows]}
     finally:
@@ -1044,7 +1057,18 @@ async def edit_answer(request: Request, answer_id: int, payload: AnswerEdit):
         if is_never_store(row.question_text, answer):
             raise HTTPException(status_code=422,
                                 detail="That answer can't be stored as a reusable answer.")
-        row.answer = answer   # the question is unchanged, so its embedding still holds
+        if payload.variant is not None:
+            # A form reads the answer kept for its kind of list, not `answer`:
+            # editing only that showed here and never reached a form.
+            from auto_apply.qa_store import edit_variant
+
+            try:
+                edit_variant(row, payload.variant, payload.was or "", answer)
+            except ValueError:
+                raise HTTPException(status_code=409,
+                                    detail="This answer changed since the page loaded — refresh and try again.")
+        else:
+            row.answer = answer   # the question is unchanged, so its embedding still holds
         db.commit()
         return {"ok": True}
     finally:
@@ -1052,11 +1076,24 @@ async def edit_answer(request: Request, answer_id: int, payload: AnswerEdit):
 
 
 @router.delete("/api/profile/answers/{answer_id}")
-async def delete_answer(request: Request, answer_id: int):
+async def delete_answer(request: Request, answer_id: int, variant: int | None = None, was: str | None = None):
+    """Forget one saved answer — or, with `variant`, only its answer for that
+    kind of list (the row goes with its last one)."""
     db = SessionLocal()
     try:
         user = _require_user(request, db)
-        db.delete(_own_answer(db, user, answer_id))
+        row = _own_answer(db, user, answer_id)
+        last = True
+        if variant is not None:
+            from auto_apply.qa_store import delete_variant
+
+            try:
+                last = delete_variant(row, variant, was or "")
+            except ValueError:
+                raise HTTPException(status_code=409,
+                                    detail="This answer changed since the page loaded — refresh and try again.")
+        if last:
+            db.delete(row)
         db.commit()
         return {"ok": True}
     finally:
