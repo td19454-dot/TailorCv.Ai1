@@ -11,7 +11,7 @@
 // returns the same set every time, which makes one pass sufficient and makes
 // "we saw N fields" an honest number.
 
-import { questionSignature, documentSlotFor } from './match.js';
+import { questionSignature, documentSlotFor, isPlaceholderOption } from './match.js';
 import { TIMING } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
@@ -867,8 +867,8 @@ export function describeFields(form) {
       const existing = out[groupKeys.get(logical)];
       existing.members.push(el);
       const label = p.labelFor(el) || el.value || '';
-      if (label) existing.options.push({ value: el.value || label, label, el });
-      if (el.checked) { existing.filled = true; existing.value = label; }
+      if (label && !isPlaceholderOption(label)) existing.options.push({ value: el.value || label, label, el });
+      if (el.checked && !isPlaceholderOption(label)) { existing.filled = true; existing.value = label; }
       if (p.requiredFor(el)) existing.required = true;
       continue;
     }
@@ -923,8 +923,13 @@ export function describeFields(form) {
 
     if (kind === 'radio' || kind === 'checkbox') {
       const label = p.labelFor(el) || el.value || '';
-      row.options = label ? [{ value: el.value || label, label, el }] : [];
+      // SuccessFactors' radio groups start on a selected "No Selection": no
+      // answer, and no option. Read as one, Gender was "already filled in" and
+      // left on it (ExxonMobil, Oct 2026).
+      const blank = kind === 'radio' && isPlaceholderOption(label);
+      row.options = label && !blank ? [{ value: el.value || label, label, el }] : [];
       row.optionLabel = label;
+      if (blank && el.checked) { row.filled = false; row.value = ''; }
       if (logical) groupKeys.set(logical, out.length);
     }
 
@@ -1587,14 +1592,15 @@ export async function readComboboxOptions(row) {
   try {
     scrollIntoView(el);
     clickOpen(el);
-    let labels = await waitForOptions(stale, TIMING.optionWaitMs);
+    let labels = await waitForOptions(stale, TIMING.optionWaitMs, el);
     // Open but nothing pickable yet: Workday opens with only its disabled
     // "Select One" and loads the rest (PwC's Region of Birth reached the
     // sidebar as a list of just "Select One"). Waited on only while the list
     // says it is open, returning the moment options arrive.
     // Only while that placeholder shows: a list that is simply empty costs nothing more.
-    if (!labels.length && isOpen(el) && showsPlaceholder(p, stale)) {
-      labels = await waitForOptions(stale, TIMING.remoteSearchMs);
+    // A SuccessFactors picklist always: each list comes from its server.
+    if (!labels.length && (picklistButton(el) || (isOpen(el) && showsPlaceholder(p, stale)))) {
+      labels = await waitForOptions(stale, TIMING.remoteSearchMs, el);
     }
     return labels;
   } catch (e) {
@@ -1658,7 +1664,45 @@ function visibleOptionNodes(p) {
   catch (e) { return []; }
 }
 
-function waitForOptions(stale, timeout) {
+/**
+ * Of the options on screen, the ones that belong to THIS control.
+ *
+ * The sweep is document-wide, so a list another dropdown left open was read as
+ * this one's. On Oracle Candidate Experience the phone "Country code" list
+ * ("+91 (India)") was still up when the address "Country" opened, and "India"
+ * matched "+91 (India)" in the wrong list — Country stayed empty. On
+ * SuccessFactors each list comes from its server, and one arriving late was read
+ * as the next field's: GPA was offered Yes / No, and the next question the GPAs.
+ * A control that names its listbox (aria-controls / aria-owns) gets exactly that
+ * list; otherwise a list some OTHER control claims is left out.
+ */
+export function ownOptions(doc, el, nodes) {
+  const ref = n => (n && n.getAttribute && (n.getAttribute('aria-controls') || n.getAttribute('aria-owns'))) || '';
+  let mine = null;
+  let named = '';
+  for (let n = el, i = 0; n && i < 4 && !named; n = n.parentElement, i++) {
+    named = ref(n).split(/\s+/)[0];
+    if (named) { try { mine = doc.getElementById(named); } catch (e) { mine = null; } }
+  }
+  if (mine) {
+    const inMine = nodes.filter(n => mine.contains(n));
+    if (inMine.length) return inMine;
+  }
+  // A picklist's rows carry its number too: aria-owns "646:_listSelect", row "646:item0".
+  if (picklistButton(el)) {
+    const prefix = named.split(':')[0] + ':';
+    return prefix.length > 1 ? nodes.filter(n => String(n.id || '').startsWith(prefix)) : [];
+  }
+  return nodes.filter(n => {
+    const lb = n.closest && n.closest('[role="listbox"]');
+    if (!lb || !lb.id) return true;
+    let owner = null;
+    try { owner = doc.querySelector(`[aria-controls~="${lb.id}"], [aria-owns~="${lb.id}"]`); } catch (e) { owner = null; }
+    return !owner || owner === el || owner.contains(el) || el.contains(owner);
+  });
+}
+
+function waitForOptions(stale, timeout, el) {
   const skip = stale || new Set();
   return new Promise(resolve => {
     const doc = globalThis.document;
@@ -1677,7 +1721,8 @@ function waitForOptions(stale, timeout) {
     const read = () => {
       if (!p || !p.optionNodes) return [];
       const out = [];
-      for (const n of p.optionNodes(doc)) {
+      const nodes = p.optionNodes(doc);
+      for (const n of el ? ownOptions(doc, el, nodes) : nodes) {
         if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n) || isDisabledOption(n)) continue;
         const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
         if (t && out.length < MAX_OPTIONS_READ) out.push(t);
@@ -1855,7 +1900,8 @@ export function reprobe(row) {
   if (!d) return null;
   if (row.kind === 'radio' || row.kind === 'checkbox') {
     // Read the group, not the one member we happen to hold.
-    const checked = row.members.filter(x => x.isConnected && x.checked);
+    const checked = row.members.filter(x => x.isConnected && x.checked
+      && !isPlaceholderOption(p.labelFor(x) || x.value || ''));
     return {
       value: checked.map(x => p.labelFor(x) || x.value || '').filter(Boolean).join(' | '),
       filled: checked.length > 0,

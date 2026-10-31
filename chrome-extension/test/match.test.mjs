@@ -276,6 +276,7 @@ const MUST_FLAG = [
   ['demographic', 'What is your sex?'],
   ['demographic', 'Sex*'],
   ['demographic', 'Would you describe yourself as neurodivergent?'],
+  ['demographic', 'How do you identify?'],
   ['birth', 'What is your year of birth?'],
   ['health', 'Have you ever been treated for drug and/or alcohol abuse?'],
 ];

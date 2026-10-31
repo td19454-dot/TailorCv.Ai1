@@ -183,6 +183,16 @@ export function decide(rows, ctx, server, state) {
     // No — the person's standing answers (ExxonMobil, Oct 2026).
     const standing = standingNoAnswer(row);
     if (standing) return done(d, FILL, standing.value, 'profile', 0.9, standing.reason);
+    // "I give my explicit consent for … to collect and process information about
+    // my gender": a consent, not the gender question it mentions. Always Yes —
+    // the person's standing answer (Capgemini, Oct 2026).
+    const consent = dataConsentAnswer(row);
+    if (consent) {
+      d.noServer = true;
+      return consent.ask
+        ? done(d, ASK, '', '', 0, consent.ask)
+        : done(d, FILL, consent.value, 'profile', 0.9, 'you consent to these questions — always Yes');
+    }
     // "Typed Signature" under a statement of agreement: their full name,
     // always (the person's choice, Oct 2026).
     if ((row.kind === 'text' || row.kind === 'textarea') && SIGNATURE_RE.test(String(row.label || ''))) {
@@ -1047,6 +1057,27 @@ export function standingNoAnswer(row) {
   if (!hit) return null;
   const value = coerce('No', Object.assign({}, row, { candidateKey: '' }));
   return value === null ? null : { value, reason: hit.reason };
+}
+
+const DATA_CONSENT_RE = /\bconsent\b/i;
+const DATA_USE_RE = /\b(collect\w*|process\w*)\b/i;
+const DATA_WORD_RE = /\b(information|data)\b/i;
+const DATA_SUBJECT_RE = /\b(disabilit\w*|gender|sex|race|racial|ethnic\w*|sexual orientation|health|veteran|military|religio\w*|demographic)\b/i;
+
+/**
+ * Consent to collect or process sensitive data: { value } in this field's own
+ * wording, { ask } if nothing it offers says Yes, or null if it is no such
+ * question. Read from the first sentence. A marketing consent or a privacy
+ * notice names no sensitive subject, so neither is this.
+ */
+export function dataConsentAnswer(row) {
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox' && kind !== 'checkbox') return null;
+  const head = String(row.label || '').split(/[.?]\s/)[0];
+  if (!DATA_CONSENT_RE.test(head) || !DATA_USE_RE.test(head) || !DATA_WORD_RE.test(head)
+      || !DATA_SUBJECT_RE.test(head)) return null;
+  const value = coerce('Yes', Object.assign({}, row, { candidateKey: '' }));
+  return value === null ? { ask: 'no option here says Yes — choose your answer' } : { value };
 }
 
 /** The Formal Education row's answer to a question asking it again, or ''. */

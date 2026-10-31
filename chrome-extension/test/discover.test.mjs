@@ -699,6 +699,39 @@ test('readComboboxOptions ignores a previous dropdown still on screen', async ()
   });
 });
 
+test('a SuccessFactors list arriving late is not read as the next field\'s', async () => {
+  // ExxonMobil (Oct 2026): each list comes from the server. The last field's
+  // arrived while the next was being read, and every answer sat one field off:
+  // GPA was offered Yes / No, and the question after it the GPAs.
+  const pick = (id, label) => `<label for="${id}:_input">${label}</label>
+    <span class="sfCascadingPicklist"><div class="paginatedPicklistContainer fd-input-group--control">
+      <input role="combobox" aria-owns="${id}:_listSelect" aria-label="${label}" aria-required="true" title="${label}"
+             placeholder="No Selection" aria-expanded="false" class="rcmpaginatedselectinput" id="${id}:_input" type="text">
+      <button type="button" class="rcmpaginatedselectbutton" id="${id}:_selectButton"></button></div></span>`;
+  await withDoc(`<form>${pick('100', 'Have you been interviewed?')}${pick('200', 'GPA (US &amp; Canada)')}
+    <label for="a">Email</label><input id="a" type="text"></form>`, async (env) => {
+    const doc = env.document;
+    const list = (id, rows, named) => {
+      const ul = doc.createElement('ul');
+      if (named) ul.id = `${id}:_listSelect`;
+      ul.innerHTML = rows.map((r, i) => `<li role="option" id="${id}:item${i}" class="sf-list-item">${r}</li>`).join('');
+      doc.body.appendChild(ul);
+    };
+    doc.getElementById('200:_selectButton').addEventListener('click', () => {
+      setTimeout(() => list('100', ['No Selection', 'No', 'Yes'], true), 5);   // the last field's, late
+      setTimeout(() => list('200', ['No Selection', '3.6', '3.7'], true), 750);  // past the first wait
+    });
+    deepEq(await d.readComboboxOptions({ el: doc.getElementById('200:_input') }), ['3.6', '3.7']);
+
+    // Known by the row's number even if the list itself carries no such id.
+    doc.querySelectorAll('ul').forEach(u => u.remove());
+    doc.getElementById('100:_selectButton').addEventListener('click', () => {
+      setTimeout(() => list('100', ['No Selection', 'No', 'Yes'], false), 5);
+    });
+    deepEq(await d.readComboboxOptions({ el: doc.getElementById('100:_input') }), ['No', 'Yes']);
+  });
+});
+
 test('readComboboxOptions gives up quietly when no menu appears', async () => {
   await withDoc(`<form><input name="x"><input name="y">
       <div class="select__container"><input role="combobox" name="based"></div></form>`,

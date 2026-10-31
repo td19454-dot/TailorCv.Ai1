@@ -3484,6 +3484,94 @@ function wireSuccessFactors(env) {
   env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
 }
 
+test('Capgemini: a slow country search commits; consent unlocks its question; an empty optional list is left', async () => {
+  const pick = (id, label, opts) => sfPicklist(id, label, !!(opts && opts.required));
+  await withForm(`<form id="careerform">
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      ${pick('9', 'Country of Residence', { required: true })}
+      ${pick('21', 'I give my explicit consent for Capgemini Group to collect and process information about my gender for the purpose of observing our recruitment practices.')}
+      ${pick('33', 'How do you identify?')}
+      ${pick('25', 'I have a disability which I will need Capgemini to make reasonable adjustments for')}
+    </form>`, {}, async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://career5.successfactors.eu/careers' });
+    const COUNTRIES_ = ['Afghanistan', 'British Indian Ocean Territory', 'Canada', 'India'];
+    const draw = (id, rows) => {
+      const input = doc.getElementById(`${id}:_input`);
+      const old = doc.getElementById(`${id}:_listSelect`);
+      if (old) old.remove();
+      const list = doc.createElement('ul');
+      list.id = `${id}:_listSelect`;
+      list.innerHTML = rows.map((o, i) => `<li role="option" id="${id}:item${i}">${o}</li>`).join('');
+      doc.body.appendChild(list);
+      input.setAttribute('aria-expanded', 'true');
+      for (const li of list.querySelectorAll('li')) {
+        li.addEventListener('click', () => {
+          input.setAttribute('title', li.textContent);
+          input.value = li.textContent;
+          list.remove();
+          input.setAttribute('aria-expanded', 'false');
+          input.dispatchEvent(new env.window.Event('picked'));
+        });
+      }
+    };
+    // Country: the first page on opening; a search answers only after 1.5 s.
+    const country = doc.getElementById('9:_input');
+    doc.getElementById('9:_selectButton').addEventListener('click', () => draw('9', COUNTRIES_.slice(0, 3)));
+    country.addEventListener('input', () => {
+      const q = country.value.toLowerCase();
+      if (q) setTimeout(() => draw('9', COUNTRIES_.filter(c => c.toLowerCase().includes(q))), 1500);
+    });
+    // Consent unlocks "How do you identify?", disabled until then.
+    const identify = doc.getElementById('33:_input');
+    const identifyBtn = doc.getElementById('33:_selectButton');
+    identify.disabled = true;
+    identifyBtn.disabled = true;
+    const consent = doc.getElementById('21:_input');
+    doc.getElementById('21:_selectButton').addEventListener('click', () => draw('21', ['Yes', 'No']));
+    consent.addEventListener('picked', () => {
+      if (consent.getAttribute('title') === 'Yes') { identify.disabled = false; identifyBtn.disabled = false; }
+    });
+    identifyBtn.addEventListener('click', () => draw('33', ['Woman', 'Man', 'Prefer not to say']));
+    // The disability list has no rows.
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+      { gender: 'Cisgender man', disability_status: "No, I don't have a disability" }) });
+    const result = await run_.runAutofill(ctx, null);
+
+    const title = id => doc.getElementById(`${id}:_input`).getAttribute('title');
+    eq(title('9'), 'India', JSON.stringify(byLabel(result.decisions, 'country of residence')));
+    eq(title('21'), 'Yes');
+    eq(title('33'), 'Man', JSON.stringify(byLabel(result.decisions, 'how do you identify')));
+    const disability = byLabel(result.decisions, 'i have a disability');
+    eq(disability.action, p.SKIP, `${disability.action}: ${disability.reason}`);
+    eq(doc.getElementById('25:_input').value, '', 'nothing typed left behind');
+  });
+});
+
+test('a radio group resting on "No Selection" is unanswered, and takes the profile\'s answer', async () => {
+  // ExxonMobil's Voluntary Disclosures (Oct 2026): Gender starts on a selected
+  // "No Selection", read as already filled in, and it stayed there.
+  await withForm(`<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      <fieldset><legend>Gender</legend>
+        <input type="radio" name="gender" id="g0" checked><label for="g0">No Selection</label>
+        <input type="radio" name="gender" id="g1"><label for="g1">Female</label>
+        <input type="radio" name="gender" id="g2"><label for="g2">Male</label>
+      </fieldset>
+    </form>`, {}, async (env) => {
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { gender: 'Cisgender man' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const gender = byLabel(result.decisions, 'gender');
+    deepEq(gender.options.map(o => o.label), ['Female', 'Male'], 'No Selection is no option');
+    eq(gender.action, p.FILL, `${gender.action}: ${gender.reason}`);
+    eq(gender.outcome, 'ok');
+    ok(env.document.getElementById('g2').checked, 'Male is selected');
+    notOk(env.document.getElementById('g0').checked);
+  });
+});
+
 test('the resume pass asks only what is still empty, however many filled fields are flagged', async () => {
   // ExxonMobil (Oct 2026): filled picklists the form still flagged took all the
   // places, and the questions really left never reached the model.
