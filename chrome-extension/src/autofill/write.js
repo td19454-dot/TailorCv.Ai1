@@ -16,13 +16,14 @@
 // field is required".
 
 import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText } from './match.js';
-import { coerce, candidatesFor, citizenshipOption } from './plan.js';
+import { coerce, candidatesFor, citizenshipOption, degreeEntry } from './plan.js';
 import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isNodeDrawn, hiddenReason,
          isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions, picklistButton,
          isBlankOption, datePickerHost, ownOptions }
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
 import { countryOf, countryOption, countryShare } from './countries.js';
+import { pickSaved } from './saved.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 
@@ -442,12 +443,30 @@ export async function commitCombobox(row, value, candidates, readFirst, drill) {
     // same shapes, same guards, same decline fallback — never the bare fuzzy
     // matcher, which rates "Male" close to "Female".
     if (readFirst) {
-      const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
-      const pick = pickReadFirst(readFirst, labels);
+      let labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+      let pick = pickReadFirst(readFirst, labels);
+      // A SuccessFactors list opens on one page of hundreds: the answer is
+      // searched for, then chosen by the same rules. Deloitte's Qualification
+      // stayed empty with B.Tech off the first page (Oct 2026).
+      if (!pick && !isButton && picklistButton(el)) {
+        const input = typableInput(row) || el;
+        // A degree by its own spellings first: "Class XII" for Higher Secondary.
+        const entry = readFirst.key === 'degree' ? degreeEntry(readFirst.stored) : null;
+        const words = [readFirst.stored].concat(entry ? entry.spellings : shapes);
+        for (const query of dedupe(words.map(searchToken)).slice(0, 12)) {
+          const before = visibleOptionNodes(el.ownerDocument || globalThis.document, el);
+          await typeText(input, query, 8);
+          const found = await waitForReadFirstPick(el, readFirst, before);
+          if (found) { ({ options, labels, pick } = found); break; }
+        }
+      }
       if (!pick) {
         reportDropdownFailure(row, value, options);
         return false;
       }
+      // What was chosen, for the check afterwards: a saved "(e) … DACA" shows
+      // as this list's own wording of it.
+      readFirst.picked = pick;
       const node = options[labels.indexOf(pick)];
       try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
       pressPointer(node);
@@ -745,6 +764,29 @@ function listStillLoading(doc, el) {
  * comes back from its server — so reading it at once returns the stale list
  * from before the keystrokes. Resolves with whatever is showing at the end.
  */
+/**
+ * Search results holding readFirst's pick: { options, labels, pick }, or null —
+ * once results other than `before` have stood without one for a moment, or by
+ * TIMING.remoteSearchMs.
+ */
+async function waitForReadFirstPick(el, readFirst, before) {
+  const doc = el.ownerDocument || globalThis.document;
+  const deadline = Date.now() + TIMING.remoteSearchMs;
+  const stale = new Set(before || []);
+  let answeredAt = 0;
+  for (;;) {
+    const options = visibleOptionNodes(doc, el);
+    const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+    const pick = options.length ? pickReadFirst(readFirst, labels) : null;
+    if (pick) return { options, labels, pick };
+    // Answered: new rows, or the old ones gone (a search that found nothing).
+    if (!answeredAt && (options.some(n => !stale.has(n))
+                        || (stale.size && [...stale].every(n => !n.isConnected)))) answeredAt = Date.now();
+    if (Date.now() >= deadline || (answeredAt && Date.now() - answeredAt > TIMING.settleMs + 300)) return null;
+    await sleep(100);
+  }
+}
+
 async function waitForMatchingOptions(el, shapes, timeout) {
   const doc = el.ownerDocument || globalThis.document;
   const deadline = Date.now() + timeout;
@@ -1204,6 +1246,11 @@ async function pickInHierarchy(row, leaf, parents, deadline) {
 }
 
 function pickReadFirst(readFirst, labels) {
+  // A saved answer: the one saved for this kind of list (saved.js).
+  if (readFirst.key === 'saved') {
+    const saved = pickSaved(readFirst.entry, labels);
+    return saved != null && labels.includes(saved) ? saved : null;
+  }
   const pick = coerce(readFirst.stored, {
     kind: 'combobox',
     options: labels,
@@ -1433,6 +1480,8 @@ function accepts(decision, value, shown) {
   // same answer if the planner's rules would have picked what is shown.
   if (decision && decision.readFirst && shown
       && pickReadFirst(decision.readFirst, [shown]) === shown) return true;
+  if (decision && decision.readFirst && decision.readFirst.picked
+      && commitMatches(decision.readFirst.picked, shown)) return true;
   return isPhoneField(decision && decision.row) && samePhone(value, shown);
 }
 

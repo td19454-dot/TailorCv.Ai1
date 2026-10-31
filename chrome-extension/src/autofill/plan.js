@@ -47,6 +47,7 @@ import {
   matchSensitiveKey,
 } from './match.js';
 import { countryOf, countryOption, countryShare, countryShapes, countryNamedIn } from './countries.js';
+import { pickSaved } from './saved.js';
 
 export const AUTOFILL_MIN = 0.8;
 export const SUGGEST_MIN = 0.5;
@@ -76,7 +77,7 @@ export const SKIP = 'skip';         // deliberately left alone
  * @param state   { registry: {key: value}, userEdited: [keys] }
  */
 export function decide(rows, ctx, server, state) {
-  const bank = (ctx && ctx.answerBank) || {};
+  const baseBank = (ctx && ctx.answerBank) || {};
   // The company this form belongs to: its own name is no sensitive word on its
   // own form (Visa) — see withoutEmployer.
   const employer = String((ctx && ctx.jobCompany) || '');
@@ -87,6 +88,10 @@ export function decide(rows, ctx, server, state) {
   return (rows || []).map((row, position) => {
     const d = base(row);
     d.employer = employer;
+    // Under a heading naming one school or job (see noteBlocks): that entry's
+    // answers, not the profile's highest degree or current job.
+    const bank = row.block ? Object.assign({}, baseBank, blockBank(row.block)) : baseBank;
+    if (row.block) d.block = row.block.heading;
 
     // A field the person has touched themselves is never overwritten, whatever
     // we think we know. This has no equivalent in the server engine (nobody is
@@ -151,6 +156,18 @@ export function decide(rows, ctx, server, state) {
     const additiveSkills = row.multiPrompt && (matchFieldKey(row.label) || {}).key === 'top_skills';
     if (row.filled && !row.invalid && !additiveSkills) {
       return done(d, SKIP, row.value, '', 0, 'already filled in');
+    }
+
+    // A date under such a heading is that entry's: "Start Date" under "Highest
+    // Education Details" is when the degree began, not when the person can
+    // start work — it was filled with today (Deloitte, Oct 2026).
+    if (row.block) {
+      const b = blockFieldAnswer(row, row.block);
+      if (b && b.value) return done(d, FILL, b.value, 'profile', 0.95, b.reason);
+      if (b) {
+        d.noServer = true;
+        return row.required ? done(d, ASK, '', '', 0, b.reason) : done(d, SKIP, '', '', 0, b.reason);
+      }
     }
 
     // "Have you been employed by Quantiphi previously?" — a fact the work
@@ -236,10 +253,10 @@ export function decide(rows, ctx, server, state) {
       // where these live: a later change there must win over an old form.
       const savedDemographic = () => {
         if (category !== 'demographic') return null;
-        const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
-        const value = saved ? coerce(saved, row) : null;
-        return value === null ? null
-          : done(d, FILL, value, 'saved_answer', 0.9, 'your saved answer to this question');
+        const saved = savedValue(savedEntry(row.label, ctx && ctx.savedSensitive), row);
+        if (!saved) return null;
+        if (saved.readFirst) d.readFirst = saved.readFirst;
+        return done(d, FILL, saved.value, 'saved_answer', 0.9, 'your saved answer to this question');
       };
       if (STORABLE_SENSITIVE.has(category) && category !== 'demographic') {
         // Clearance / criminal history / citizenship: the person's own saved
@@ -248,10 +265,12 @@ export function decide(rows, ctx, server, state) {
         // another's — and it must be one of this form's own options. Ahead of
         // the profile: their answer to this exact wording says more than the
         // profile's one citizenship status translated onto it.
-        const saved = savedSensitiveAnswer(row.label, ctx && ctx.savedSensitive);
-        const value = saved ? coerce(saved, row) : null;
-        if (value !== null) {
-          return done(d, FILL, value, 'saved_answer', 0.9, 'your saved answer to this question');
+        // Saved over a different kind of list (a U.S.-status answer, and this
+        // is a country list) it is no answer here: on to the profile below.
+        const saved = savedValue(savedEntry(row.label, ctx && ctx.savedSensitive), row);
+        if (saved) {
+          if (saved.readFirst) d.readFirst = saved.readFirst;
+          return done(d, FILL, saved.value, 'saved_answer', 0.9, 'your saved answer to this question');
         }
       }
       // "Are you / is anyone in your family a Government Official?" — from the
@@ -496,6 +515,7 @@ export function decide(rows, ctx, server, state) {
       if (recalled && recalled.source === 'saved_answer' && String(recalled.value || '').trim()) {
         const value = coerce(recalled.value, row);
         if (value !== null) {
+          savedFromServer(d, row, recalled);
           return done(d, Number(recalled.confidence) >= AUTOFILL_MIN ? FILL : SUGGEST,
                       value, 'saved_answer', Number(recalled.confidence) || 0,
                       recalled.matchedQuestion
@@ -516,6 +536,7 @@ export function decide(rows, ctx, server, state) {
         const prose = isProse('', value);
         const action = (confidence >= AUTOFILL_MIN && !prose) ? FILL
                      : (confidence >= SUGGEST_MIN ? SUGGEST : ASK);
+        savedFromServer(d, row, fromServer);
         return done(d, action, value, fromServer.source || 'ai', confidence,
                     fromServer.matchedQuestion
                       ? `from your answer to "${truncate(fromServer.matchedQuestion, 60)}"`
@@ -1080,6 +1101,76 @@ export function dataConsentAnswer(row) {
   return value === null ? { ask: 'no option here says Yes — choose your answer' } : { value };
 }
 
+// ── one school or job under its own heading ──────────────────
+//
+// Deloitte's SuccessFactors form lists "Highest Education Details" and "2nd
+// Highest Education Details" as headings over the same labels, and "Current" /
+// "Previous Work Experience Details" likewise (Oct 2026). Each such block is
+// answered from its own profile entry: `row.block` = { kind, entry, heading },
+// set by noteBlocks() in successfactors.js.
+
+/** The profile answers a block's entry stands in for. Missing ones are '' — never the highest degree's. */
+export function blockBank(block) {
+  const e = block.entry || {};
+  if (block.kind === 'education') {
+    return { degree: e.degree || '', major: e.field || '', university: e.school || '',
+             gpa: e.gpa || '', graduation_date: e.to || '' };
+  }
+  return { current_company: e.company || '', current_job_title: e.title || '', location: e.location || '' };
+}
+
+const BLOCK_START_RE = /^(start|from|joining) date$/i;
+const BLOCK_END_RE = /^(end|to|leaving|relieving) date$/i;
+const BLOCK_PASSING_RE = /^((qualification|passing|graduation|completion) year|year of (passing|graduation|completion))$/i;
+
+/** "2023" → "2023-01-01"; "04/2023" → "2023-04-01"; else ''. */
+function entryIso(v, yearOnly) {
+  const s = String(v || '').trim();
+  const y = (s.match(/\b(19|20)\d{2}\b/) || [])[0];
+  if (!y) return '';
+  const m = yearOnly ? null : s.match(/^(\d{1,2})\/\d{4}$/) || s.match(/^\d{4}-(\d{1,2})/);
+  return `${y}-${m ? m[1].padStart(2, '0') : '01'}-01`;
+}
+
+/**
+ * A block's dates and job title from its entry: { value, reason }, { reason }
+ * when the entry has no answer (left for the person), or null for any other
+ * field, which the profile rules answer through blockBank.
+ */
+export function blockFieldAnswer(row, block) {
+  const label = String(row.label || '').replace(/^\*\s*|\s*\*$/g, '').trim();
+  const e = block.entry || {};
+  const school = block.kind === 'education';
+  const date = (v, what) => {
+    const iso = entryIso(v, school);
+    const value = iso ? formatDateForField(iso, row.hints || {}) : '';
+    if (!value) return { reason: `no ${what} for this entry in your profile` };
+    return { value, reason: school ? `${what} from your profile — only the year is known, check the day and month`
+                                   : `${what} from your profile` };
+  };
+  if (BLOCK_START_RE.test(label)) return date(e.from, 'start date');
+  if (BLOCK_END_RE.test(label)) {
+    return e.current ? { reason: 'you still work here' } : date(e.to, 'end date');
+  }
+  if (school && BLOCK_PASSING_RE.test(label)) return date(e.to, 'year of passing');
+  // "College/Institute Name": the school's own name — Deloitte's list holds
+  // "Jadavpur University" beside "Jadavpur Sammilita Balika Vidyalaya" (Oct 2026).
+  if (school && /^(college|institute|institution|school)(\/(college|institute|institution|school))?( name)?$/i.test(label)) {
+    return e.school ? { value: e.school, reason: 'from your profile' } : { reason: 'no school name for this entry in your profile' };
+  }
+  if (!school && /^(designation|(job )?title|position)$/i.test(label)) {
+    return e.title ? { value: e.title, reason: 'from your profile' } : { reason: 'no job title for this entry in your profile' };
+  }
+  return null;
+}
+
+/** How high a degree is: 0 for a doctorate, larger below; unknown last. */
+export function degreeRank(text) {
+  const entry = degreeEntry(text);
+  const i = degreeLevel(entry && entry.level ? entry.level : text);
+  return i < 0 ? DEGREE_LEVELS.length : i;
+}
+
 /** The Formal Education row's answer to a question asking it again, or ''. */
 export function sfEducationAnswer(row, education) {
   if (!education) return '';
@@ -1258,12 +1349,53 @@ export function splitSkills(text) {
   return out;
 }
 
-/** The saved answer to exactly this question (same signature), or ''. */
-export function savedSensitiveAnswer(label, saved) {
+/** The saved answer to exactly this question (same signature) — { answer,
+ *  variants } — or null. */
+export function savedEntry(label, saved) {
   const sig = questionSignature(label);
-  if (!sig) return '';
+  if (!sig) return null;
   const hit = (saved || []).find(s => s && questionSignature(s.question) === sig);
-  return hit ? String(hit.answer || '').trim() : '';
+  const answer = hit ? String(hit.answer || '').trim() : '';
+  return answer ? { answer, variants: hit.variants || [] } : null;
+}
+
+const SAVED_LIST_KINDS = new Set(['select', 'combobox', 'radio', 'choice', 'checkbox']);
+
+/**
+ * A saved answer as this field takes it: { value, readFirst? } or null.
+ *
+ * Kept per kind of option list (see saved.js): on a choice it is the option
+ * saved for this kind of list, or nothing. A list not read yet (Workday's
+ * prompt, a SuccessFactors page) is picked from once the writer has it open,
+ * by the same rule — never typed in as it was saved: "(e) Authorized … DACA"
+ * typed into Workday's country list found nothing (Oct 2026). An answer saved
+ * without options is taken as before.
+ */
+export function savedValue(entry, row) {
+  if (!entry) return null;
+  const labels = (row.options || []).map(o => (typeof o === 'string' ? o : (o && o.label) || ''))
+    .filter(Boolean);
+  if (SAVED_LIST_KINDS.has(row.kind)) {
+    if (!labels.length && (row.kind === 'select' || row.kind === 'combobox')) {
+      return { value: entry.answer, readFirst: { key: 'saved', stored: entry.answer, entry } };
+    }
+    if (entry.variants && entry.variants.length) {
+      const pick = pickSaved(entry, labels);
+      return pick ? { value: pick } : null;
+    }
+  }
+  const value = coerce(entry.answer, row);
+  return value === null ? null : { value };
+}
+
+/** A saved answer from the server for a list not read yet: picked from it once
+ *  open, as savedValue does. */
+function savedFromServer(d, row, answer) {
+  if (!answer || answer.source !== 'saved_answer' || !(answer.variants && answer.variants.length)) return;
+  if (row.kind !== 'select' && row.kind !== 'combobox') return;
+  if ((row.options || []).length) return;
+  const entry = { answer: String(answer.value || ''), variants: answer.variants };
+  d.readFirst = { key: 'saved', stored: entry.answer, entry };
 }
 
 const YES_RE = /^(yes|y|true)$/i;
@@ -1466,6 +1598,11 @@ const DEGREE_CATALOG = [
   { test: /technical|other training/i, spellings: ['Technical/other training'], level: null },
   { test: /post[- ]?diploma/i, spellings: ['Post-diploma studies'], level: null },
   { test: /\bno degree\b|^none$/i, spellings: ['No Degree', 'None'], level: null },
+  // India's Class XII under its other names: Deloitte lists it "Class XII" (Oct 2026).
+  // Its own entry: "Secondary School" is Class X there, and never "Class XII".
+  { test: /\b(higher secondary|senior secondary|12th|hsc|class (xii|12))\b/i,
+    spellings: ['Higher Secondary', 'Senior Secondary', 'Class XII', 'Class 12', '12th', 'XII', 'HSC'],
+    level: 'high school' },
   { test: /\b(high school|secondary school|higher secondary|12th|hsc)\b/i,
     spellings: ['High School', 'High School or equivalent', 'High School Diploma', 'Secondary School'],
     level: 'high school' },
@@ -1507,6 +1644,14 @@ export function degreeOption(stored, options) {
     const hit = byCompact.get(compactDegree(s));
     if (hit) return hit;
   }
+  // One option for two degrees, either of them the person's: "B.E./B.Tech",
+  // "BE / BTech" (Indian lists).
+  const spelled = new Set([stored].concat(entry.spellings).map(compactDegree));
+  const paired = labels.find(l => {
+    const parts = l.split(/\s*\/\s*|\s+or\s+/i).filter(Boolean);
+    return parts.length > 1 && parts.some(part => spelled.has(compactDegree(part)));
+  });
+  if (paired) return paired;
   if (!entry.level) return null;
   return bestCandidateMatch(degreeShapes(entry.level), labels, degreeGuard)
     || iscedOption(stored, entry, labels);
@@ -1814,8 +1959,14 @@ function pickFromOptions(text, row, options) {
   if (row.candidateKey === 'previous_employer') return previousEmployerOption(text, options);
   // A country, against a list of countries: exactly that country or none —
   // never "British Indian Ocean Territory" for "Indian".
+  // On a paged list (SuccessFactors) the options read are its first page only:
+  // the country itself goes to the writer, which searches the list for it and
+  // takes that country's row or none. Sent to the server instead, "India" came
+  // back as "Dominica", the nearest name on a page that stopped there (EY, Oct 2026).
   const country = countryOf(text);
-  if (country && countryShare(options) >= 0.5) return countryOption(country, options);
+  if (country && countryShare(options) >= 0.5) {
+    return countryOption(country, options) || ((row.hints && row.hints.paged) ? country : null);
+  }
   // A work-authorization list worded as statements rather than Yes / No.
   if (row.candidateKey === 'authorized_to_work_in_country'
       && !options.some(o => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
@@ -1896,7 +2047,9 @@ export function fieldsForServer(decisions) {
     if (classifySensitive(d.label, d.employer)) return;     // belt and braces
     out.push({
       i,
-      label: d.label,
+      // Under a block heading the label alone is ambiguous: "Course/Degree
+      // Name" twice, for the highest and the second-highest degree.
+      label: d.block ? `${d.label} (${d.block})` : d.label,
       kind: d.kind,
       required: !!d.required,
       sensitive: false,

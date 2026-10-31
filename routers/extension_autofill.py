@@ -163,7 +163,7 @@ def _saved_sensitive_answers(db, user_id: int) -> list[dict]:
     from auto_apply.match_guard import STORABLE_SENSITIVE, classify_sensitive
 
     return [
-        {"question": a["question"], "answer": a["answer"]}
+        {"question": a["question"], "answer": a["answer"], "variants": a["variants"]}
         for a in qa_store.load_answers(db, user_id)
         if classify_sensitive(a["question"]) in STORABLE_SENSITIVE
     ]
@@ -460,15 +460,25 @@ async def _recall_and_map(db, user, bank: dict, fields, payload, answers: dict) 
         hit = qa_store.recall(f.label, vector, stored)
         if not hit:
             continue
-        value = _resolve_against_options(hit["answer"], f)
-        if value is None:
-            continue
+        options = list(f.options or [])[:MAX_OPTIONS_PER_FIELD]
+        if options:
+            # The answer saved over this KIND of list, as one of its options —
+            # or none, and the mapping call below answers it instead.
+            value = qa_store.pick_saved(hit, options)
+            if value is None:
+                continue
+        else:
+            value = hit["answer"]
         answers[str(f.i)] = {
             "value": value,
             "source": "saved_answer",
             "confidence": 0.85 if hit["confident"] else 0.6,
             "matchedQuestion": hit["question"],
         }
+        # A list not read yet (Workday's prompt): the extension picks from it
+        # once it is open, by the same rule.
+        if not options and hit.get("variants"):
+            answers[str(f.i)]["variants"] = hit["variants"]
 
     # ── Tier 3b: one LLM call for whatever is left ──
     # What the model is allowed to see. Everything sensitive, every
@@ -716,7 +726,7 @@ async def save_apply_answers(request: Request, payload: ApplyAnswersRequest):
     try:
         user = _require_user(request, db)
         items = [
-            {"question": a.question.strip(), "answer": a.answer.strip()}
+            {"question": a.question.strip(), "answer": a.answer.strip(), "options": a.options}
             for a in (payload.answers or [])
             if a.question.strip() and a.answer.strip()
         ]

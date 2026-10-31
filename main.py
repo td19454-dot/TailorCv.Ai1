@@ -735,6 +735,9 @@ def _ensure_apply_profile_columns() -> None:
             qa_add.append("ADD COLUMN embedding TEXT")
         if "embedding_model" not in qa_cols:
             qa_add.append("ADD COLUMN embedding_model VARCHAR(60)")
+        # One answer per kind of option list — see UserApplyQA.variants.
+        if "variants" not in qa_cols:
+            qa_add.append("ADD COLUMN variants TEXT")
         if qa_add:
             with engine.begin() as conn:
                 for clause in qa_add:

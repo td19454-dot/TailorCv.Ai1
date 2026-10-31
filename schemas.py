@@ -106,6 +106,10 @@ class QAAnswerItem(BaseModel):
     was 538 characters — so this is bounded generously, not tightly."""
     question: str = Field(min_length=1, max_length=2000)
     answer: str = Field(min_length=1, max_length=2000)
+    # The options the form offered when this answer was chosen, if it was a
+    # choice: the answer is kept for that KIND of list (UserApplyQA.variants).
+    # Bounded like AutofillField.options — a country list is ~250 rows.
+    options: list[str] = Field(default_factory=list, max_length=300)
 
 
 class RunAnswersRequest(BaseModel):
