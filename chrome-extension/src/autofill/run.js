@@ -18,7 +18,7 @@
 //   * Fields that appear in response to an answer get one extra round, capped.
 
 import { describeFields, findForm, isApplicationPage, readComboboxOptions, reprobe, hasUploadedFile,
-         profileTileBlocks, detectAts }
+         profileTileBlocks, detectAts, picklistButton }
   from './discover.js';
 import { fillProfileTiles } from './tiles.js';
 import { expandSections, inRepeatingRow, markFollowUps, educationFromRows } from './successfactors.js';
@@ -26,7 +26,7 @@ import { experienceSection, fillExperienceSection, educationSection, fillEducati
   from './repeaters.js';
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
-import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo } from './write.js';
+import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText } from './write.js';
 import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone,
   STORABLE_SENSITIVE } from './match.js';
 
@@ -941,6 +941,18 @@ async function writeAll(decisions, ctx, progress, isRepair) {
       if (d.outcome !== 'ok') {
         d.action = ASK;
         d.reason = outcomeReason(d);
+        const picklist = d.row && picklistButton(d.row.el);
+        if (picklist) {
+          // What was typed to search is no answer, though it looks like one:
+          // Country of Residence showed "India" while the form said required.
+          setText(d.row.el, '');
+          // Optional, and nothing on the list fits: nobody's problem.
+          if (!d.row.required) {
+            d.action = SKIP;
+            d.value = '';
+            d.reason = 'optional — nothing to choose from on this form';
+          }
+        }
       }
     }
   }

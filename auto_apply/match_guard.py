@@ -75,7 +75,7 @@ SENSITIVE_PATTERNS: list[tuple[str, re.Pattern]] = [
         r"|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*"
         r"\b(salary|compensation|pay|wage|rate|ctc)\b")),
     ("demographic", re.compile(
-        r"\bgender\b|\bsex\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*"
+        r"\bgender\b|\bsex\b|\bhow do you identify\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*"
         r"|\bpronoun\w*")),
     ("demographic", re.compile(
         r"\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b"

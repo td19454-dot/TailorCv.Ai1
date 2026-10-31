@@ -90,6 +90,7 @@ MUST_FLAG = [
     ("demographic", "What is your sex?"),
     ("demographic", "Sex*"),
     ("demographic", "Would you describe yourself as neurodivergent?"),
+    ("demographic", "How do you identify?"),
     # ExxonMobil (Oct 2026): a year of birth, and medical history.
     ("birth", "What is your year of birth?"),
     ("health", "Have you ever been treated for drug and/or alcohol abuse?"),

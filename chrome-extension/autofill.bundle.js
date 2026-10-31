@@ -862,7 +862,8 @@ what when where which who will with would you your now future
     // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
     // "sex" too: "What is your sex?" was no EEO question without it, and went to
     // the model (Oct 2026). \bsex\b, so "sexual" is not it.
-    ["demographic", /\bgender\b|\bsex\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
+    // "How do you identify?": Capgemini's gender question, with no gender word.
+    ["demographic", /\bgender\b|\bsex\b|\bhow do you identify\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
     // Military service asked without the word "military": Oracle's India form
     // asks "Have you served in any of the below India Uniformed forces?" and the
     // model answered it.
@@ -1304,7 +1305,8 @@ what when where which who will with would you your now future
     // number — before this it matched nothing, went to the model, and Oracle's
     // picker was left empty, so the form rejected the number beside it.
     { key: "phone_country_code", labels: ["country code", "phone country code", "country phone code", "dial code", "dialing code", "calling code", "country calling code", "phone code"] },
-    { key: "address_country", labels: ["country", "country of residence"] },
+    // "Country of Application": the country of residence (the person's choice, Oct 2026).
+    { key: "address_country", labels: ["country", "country of residence", "country of application"] },
     { key: "postal_code", labels: ["zip", "zip code", "postal code", "postcode", "pin code"] },
     // links
     { key: "linkedin_url", labels: ["linkedin", "linkedin profile", "linkedin url"] },
@@ -1508,7 +1510,7 @@ what when where which who will with would you your now future
     ["gender_pronouns", /\bpronoun\w*/],
     ["lgbtq_identity", /\blgbtq?\w*|\bsexual orientation\b|\btransgender\b/],
     ["race_ethnicity", /\brac(e|ial)\b|\bethnic\w*|\bhispanic\b|\blatin[oax]\b/],
-    ["gender", /\bgender\b|\bsex\b/]
+    ["gender", /\bgender\b|\bsex\b|\bhow do you identify\b/]
   ];
 
   // src/autofill/timing.js
@@ -2234,8 +2236,8 @@ what when where which who will with would you your now future
         const existing = out[groupKeys.get(logical)];
         existing.members.push(el);
         const label = p.labelFor(el) || el.value || "";
-        if (label) existing.options.push({ value: el.value || label, label, el });
-        if (el.checked) {
+        if (label && !isPlaceholderOption(label)) existing.options.push({ value: el.value || label, label, el });
+        if (el.checked && !isPlaceholderOption(label)) {
           existing.filled = true;
           existing.value = label;
         }
@@ -2286,8 +2288,13 @@ what when where which who will with would you your now future
       }
       if (kind === "radio" || kind === "checkbox") {
         const label = p.labelFor(el) || el.value || "";
-        row.options = label ? [{ value: el.value || label, label, el }] : [];
+        const blank = kind === "radio" && isPlaceholderOption(label);
+        row.options = label && !blank ? [{ value: el.value || label, label, el }] : [];
         row.optionLabel = label;
+        if (blank && el.checked) {
+          row.filled = false;
+          row.value = "";
+        }
         if (logical) groupKeys.set(logical, out.length);
       }
       if (isFileField(el)) {
@@ -2791,9 +2798,9 @@ what when where which who will with would you your now future
     try {
       scrollIntoView(el);
       clickOpen(el);
-      let labels = await waitForOptions(stale, TIMING.optionWaitMs);
-      if (!labels.length && isOpen(el) && showsPlaceholder(p, stale)) {
-        labels = await waitForOptions(stale, TIMING.remoteSearchMs);
+      let labels = await waitForOptions(stale, TIMING.optionWaitMs, el);
+      if (!labels.length && (picklistButton(el) || isOpen(el) && showsPlaceholder(p, stale))) {
+        labels = await waitForOptions(stale, TIMING.remoteSearchMs, el);
       }
       return labels;
     } catch (e) {
@@ -2845,7 +2852,41 @@ what when where which who will with would you your now future
       return [];
     }
   }
-  function waitForOptions(stale, timeout) {
+  function ownOptions(doc, el, nodes) {
+    const ref = (n) => n && n.getAttribute && (n.getAttribute("aria-controls") || n.getAttribute("aria-owns")) || "";
+    let mine = null;
+    let named = "";
+    for (let n = el, i = 0; n && i < 4 && !named; n = n.parentElement, i++) {
+      named = ref(n).split(/\s+/)[0];
+      if (named) {
+        try {
+          mine = doc.getElementById(named);
+        } catch (e) {
+          mine = null;
+        }
+      }
+    }
+    if (mine) {
+      const inMine = nodes.filter((n) => mine.contains(n));
+      if (inMine.length) return inMine;
+    }
+    if (picklistButton(el)) {
+      const prefix = named.split(":")[0] + ":";
+      return prefix.length > 1 ? nodes.filter((n) => String(n.id || "").startsWith(prefix)) : [];
+    }
+    return nodes.filter((n) => {
+      const lb = n.closest && n.closest('[role="listbox"]');
+      if (!lb || !lb.id) return true;
+      let owner = null;
+      try {
+        owner = doc.querySelector(`[aria-controls~="${lb.id}"], [aria-owns~="${lb.id}"]`);
+      } catch (e) {
+        owner = null;
+      }
+      return !owner || owner === el || owner.contains(el) || el.contains(owner);
+    });
+  }
+  function waitForOptions(stale, timeout, el) {
     const skip = stale || /* @__PURE__ */ new Set();
     return new Promise((resolve) => {
       const doc = globalThis.document;
@@ -2853,7 +2894,8 @@ what when where which who will with would you your now future
       const read = () => {
         if (!p || !p.optionNodes) return [];
         const out = [];
-        for (const n of p.optionNodes(doc)) {
+        const nodes = p.optionNodes(doc);
+        for (const n of el ? ownOptions(doc, el, nodes) : nodes) {
           if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n) || isDisabledOption(n)) continue;
           const t = (n.textContent || "").replace(/\s+/g, " ").trim();
           if (t && out.length < MAX_OPTIONS_READ) out.push(t);
@@ -3026,7 +3068,7 @@ what when where which who will with would you your now future
     const d = p.describeEl(el);
     if (!d) return null;
     if (row.kind === "radio" || row.kind === "checkbox") {
-      const checked = row.members.filter((x) => x.isConnected && x.checked);
+      const checked = row.members.filter((x) => x.isConnected && x.checked && !isPlaceholderOption(p.labelFor(x) || x.value || ""));
       return {
         value: checked.map((x) => p.labelFor(x) || x.value || "").filter(Boolean).join(" | "),
         filled: checked.length > 0,
@@ -3416,6 +3458,11 @@ Zimbabwe|Zimbabwean
       }
       const standing = standingNoAnswer(row);
       if (standing) return done(d, FILL, standing.value, "profile", 0.9, standing.reason);
+      const consent = dataConsentAnswer(row);
+      if (consent) {
+        d.noServer = true;
+        return consent.ask ? done(d, ASK, "", "", 0, consent.ask) : done(d, FILL, consent.value, "profile", 0.9, "you consent to these questions \u2014 always Yes");
+      }
       if ((row.kind === "text" || row.kind === "textarea") && SIGNATURE_RE.test(String(row.label || ""))) {
         const name = String(bank.full_name || [bank.first_name, bank.last_name].filter(Boolean).join(" ")).trim();
         if (name) return done(d, FILL, name, "profile", 0.95, "your typed signature \u2014 your full name");
@@ -4047,6 +4094,18 @@ Zimbabwe|Zimbabwean
     if (!hit) return null;
     const value = coerce("No", Object.assign({}, row, { candidateKey: "" }));
     return value === null ? null : { value, reason: hit.reason };
+  }
+  var DATA_CONSENT_RE = /\bconsent\b/i;
+  var DATA_USE_RE = /\b(collect\w*|process\w*)\b/i;
+  var DATA_WORD_RE = /\b(information|data)\b/i;
+  var DATA_SUBJECT_RE = /\b(disabilit\w*|gender|sex|race|racial|ethnic\w*|sexual orientation|health|veteran|military|religio\w*|demographic)\b/i;
+  function dataConsentAnswer(row) {
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox" && kind !== "checkbox") return null;
+    const head = String(row.label || "").split(/[.?]\s/)[0];
+    if (!DATA_CONSENT_RE.test(head) || !DATA_USE_RE.test(head) || !DATA_WORD_RE.test(head) || !DATA_SUBJECT_RE.test(head)) return null;
+    const value = coerce("Yes", Object.assign({}, row, { candidateKey: "" }));
+    return value === null ? { ask: "no option here says Yes \u2014 choose your answer" } : { value };
   }
   function sfEducationAnswer(row, education) {
     if (!education) return "";
@@ -4909,7 +4968,11 @@ Zimbabwe|Zimbabwean
           }
           if (!options.length || !listOffersAny(shapes, options)) {
             await typeText(input, query, 8);
-            options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
+            options = await waitForMatchingOptions(
+              el,
+              shapes,
+              picklistButton(el) ? TIMING.remoteSearchMs : TIMING.optionWaitMs * 2
+            );
             options = await waitOutLoading(el, shapes, options);
           }
           if (!options.length) {
@@ -5078,35 +5141,6 @@ Zimbabwe|Zimbabwean
     }
     return counts;
   }
-  function ownOptions(doc, el, nodes) {
-    const ref = (n) => n && n.getAttribute && (n.getAttribute("aria-controls") || n.getAttribute("aria-owns")) || "";
-    let mine = null;
-    for (let n = el, i = 0; n && i < 4 && !mine; n = n.parentElement, i++) {
-      const id = ref(n).split(/\s+/)[0];
-      if (id) {
-        try {
-          mine = doc.getElementById(id);
-        } catch (e) {
-          mine = null;
-        }
-      }
-    }
-    if (mine) {
-      const inMine = nodes.filter((n) => mine.contains(n));
-      if (inMine.length) return inMine;
-    }
-    return nodes.filter((n) => {
-      const lb = n.closest && n.closest('[role="listbox"]');
-      if (!lb || !lb.id) return true;
-      let owner = null;
-      try {
-        owner = doc.querySelector(`[aria-controls~="${lb.id}"], [aria-owns~="${lb.id}"]`);
-      } catch (e) {
-        owner = null;
-      }
-      return !owner || owner === el || owner.contains(el) || el.contains(owner);
-    });
-  }
   async function waitForOpenedList(el) {
     const nodes = await waitForOptions2(el, TIMING.optionWaitMs);
     if (nodes.length || !isExpanded(el)) return nodes;
@@ -5215,7 +5249,7 @@ Zimbabwe|Zimbabwean
     });
   }
   function inPagedList(nodes) {
-    return nodes.some((n) => n.closest && n.closest('[id$="_listSelect"]'));
+    return nodes.some((n) => n.closest && n.closest('[id$="_listSelect"]') || /\bsf-list-item\b/.test(String(n.className || "")));
   }
   function isStrictCountry(value, labels) {
     const country = countryOf(value);
@@ -7072,6 +7106,15 @@ Zimbabwe|Zimbabwean
         if (d.outcome !== "ok") {
           d.action = ASK;
           d.reason = outcomeReason(d);
+          const picklist = d.row && picklistButton(d.row.el);
+          if (picklist) {
+            setText(d.row.el, "");
+            if (!d.row.required) {
+              d.action = SKIP;
+              d.value = "";
+              d.reason = "optional \u2014 nothing to choose from on this form";
+            }
+          }
         }
       }
     }

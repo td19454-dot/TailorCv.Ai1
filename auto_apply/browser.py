@@ -500,7 +500,9 @@ def _best_option_match(value: str, options: list[dict[str, str]]) -> dict[str, s
         if not norm_label:
             continue
         score = difflib.SequenceMatcher(None, norm_value, norm_label).ratio()
-        if norm_value in norm_label or norm_label in norm_value:
+        # Whole words: "india" is in "british indian ocean territory", which was
+        # chosen for India from a list that did not show it (Capgemini, Oct 2026).
+        if f" {norm_value} " in f" {norm_label} " or f" {norm_label} " in f" {norm_value} ":
             score = max(score, 0.75)
         if score > best_score:
             best_opt, best_score = opt, score

@@ -1658,6 +1658,38 @@ test('work eligibility and expected compensation in any wording read the profile
   notOk(current.action === p.FILL && current.value === '2500000', `${current.action} ${current.value}`);
 });
 
+test('Capgemini: data consents are Yes, never the data itself; How do you identify is gender', () => {
+  const yn = (label, options) => field(label, { kind: 'combobox', options: options || ['Yes', 'No'] });
+  const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+    { gender: 'Cisgender man', disability_status: "No, I don't have a disability", address_country: 'India' }) });
+  const GENDER = 'I give my explicit consent for Capgemini Group to collect and process information about my gender for the purpose of observing and ensuring our recruitment practices align with our Inclusion Policy and Recruitment Data Protection Notice. This information will be used in aggregated form.';
+  const DISABILITY = 'I give my explicit consent for Capgemini Group to collect and process information about my disability to make appropriate adjustments I may require during the recruitment process. I understand that providing this information is voluntary.';
+  for (const label of [GENDER, DISABILITY, 'I consent to the collection of my demographic data']) {
+    for (const options of [['Yes', 'No'], []]) {
+      const d = p.decide([yn(label, options)], ctx, null, null)[0];
+      eq(d.action, p.FILL, `${label.slice(0, 50)} -> ${d.action}: ${d.reason}`);
+      eq(d.value, 'Yes');
+    }
+  }
+  // Nothing says Yes: the person's, never "Cisgender man".
+  const noYes = p.decide([yn(GENDER, ['Prefer not to say', 'Decline'])], ctx, null, null)[0];
+  eq(noYes.action, p.ASK);
+  // Not these: a marketing consent, and the questions the consents unlock.
+  eq(p.dataConsentAnswer(field('I consent to Capgemini Group sharing communications about recruitment events and webinars with me by email.', { kind: 'checkbox' })), null);
+  eq(p.dataConsentAnswer(yn('I have a disability which I will need Capgemini to make reasonable adjustments for')), null);
+  eq(p.decide([yn('I have a disability which I will need Capgemini to make reasonable adjustments for')], ctx, null, null)[0].value, 'No');
+
+  const identify = p.decide([yn('How do you identify?', ['Woman', 'Man', 'Prefer not to say'])], ctx, null, null)[0];
+  eq(identify.sensitive, 'demographic', 'never to the model');
+  eq(identify.value, 'Man');
+  eq(p.fieldsForServer([identify]).length, 0);
+
+  const COUNTRIES = ['Bhutan', 'British Indian Ocean Territory', 'Canada', 'India', 'Indonesia'];
+  const country = p.decide([field('Country of Application', { kind: 'select', options: COUNTRIES, required: true })], ctx, null, null)[0];
+  eq(country.action, p.FILL, `${country.action}: ${country.reason}`);
+  eq(country.value, 'India');
+});
+
 test('a previous-employer question reads every company it names', () => {
   const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
   const worked = company => Object.assign({}, CTX, { facts: { workExperience: [{ company }] } });

@@ -370,7 +370,8 @@ export const SENSITIVE_PATTERNS = [
   // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
   // "sex" too: "What is your sex?" was no EEO question without it, and went to
   // the model (Oct 2026). \bsex\b, so "sexual" is not it.
-  ['demographic', /\bgender\b|\bsex\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
+  // "How do you identify?": Capgemini's gender question, with no gender word.
+  ['demographic', /\bgender\b|\bsex\b|\bhow do you identify\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
   // Military service asked without the word "military": Oracle's India form
   // asks "Have you served in any of the below India Uniformed forces?" and the
   // model answered it.
@@ -804,7 +805,8 @@ export const FIELD_SYNONYMS = [
   // number — before this it matched nothing, went to the model, and Oracle's
   // picker was left empty, so the form rejected the number beside it.
   { key: 'phone_country_code', labels: ['country code', 'phone country code', 'country phone code', 'dial code', 'dialing code', 'calling code', 'country calling code', 'phone code'] },
-  { key: 'address_country', labels: ['country', 'country of residence'] },
+  // "Country of Application": the country of residence (the person's choice, Oct 2026).
+  { key: 'address_country', labels: ['country', 'country of residence', 'country of application'] },
   { key: 'postal_code', labels: ['zip', 'zip code', 'postal code', 'postcode', 'pin code'] },
 
   // links
@@ -1074,5 +1076,5 @@ const EEO_SUBJECTS = [
   ['gender_pronouns', /\bpronoun\w*/],
   ['lgbtq_identity', /\blgbtq?\w*|\bsexual orientation\b|\btransgender\b/],
   ['race_ethnicity', /\brac(e|ial)\b|\bethnic\w*|\bhispanic\b|\blatin[oax]\b/],
-  ['gender', /\bgender\b|\bsex\b/],
+  ['gender', /\bgender\b|\bsex\b|\bhow do you identify\b/],
 ];

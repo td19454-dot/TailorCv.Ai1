@@ -50,7 +50,9 @@ PRIVATE_KEYS = {"date_of_birth", "country_of_birth", "city_of_birth",
                 "has_criminal_history"}
 
 MAX_FIELDS_PER_PLAN = 120
-MAX_OPTIONS_PER_FIELD = 60
+# A country list is about 250 rows, alphabetical: at 60 the model never saw India,
+# and its answer was checked against the first 60 alone (Capgemini, Oct 2026).
+MAX_OPTIONS_PER_FIELD = 300
 
 
 def _require_user(request: Request, db):

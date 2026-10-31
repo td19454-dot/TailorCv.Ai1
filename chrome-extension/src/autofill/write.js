@@ -19,7 +19,7 @@ import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText }
 import { coerce, candidatesFor, citizenshipOption } from './plan.js';
 import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isNodeDrawn, hiddenReason,
          isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions, picklistButton,
-         isBlankOption, datePickerHost }
+         isBlankOption, datePickerHost, ownOptions }
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
 import { countryOf, countryOption, countryShare } from './countries.js';
@@ -419,7 +419,10 @@ export async function commitCombobox(row, value, candidates, readFirst, drill) {
           // typing the full "Kolkata, West Bengal, India" into a remote search
           // returns nothing.
           await typeText(input, query, 8);
-          options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
+          // A SuccessFactors search goes to its server: "India" stayed typed in
+          // Country of Residence, with the results on their way (Capgemini).
+          options = await waitForMatchingOptions(el, shapes,
+            picklistButton(el) ? TIMING.remoteSearchMs : TIMING.optionWaitMs * 2);
           options = await waitOutLoading(el, shapes, options);
         }
         if (!options.length) {
@@ -652,36 +655,6 @@ function rowsRejected(doc) {
 }
 
 /**
- * Of the options on screen, the ones that belong to THIS control.
- *
- * The sweep above is document-wide, so a list another dropdown left open was
- * read as this one's. On Oracle Candidate Experience the phone "Country code"
- * list ("+91 (India)") was still up when the address "Country" opened, and
- * "India" matched "+91 (India)" in the wrong list — Country stayed empty.
- * A control that names its listbox (aria-controls / aria-owns) gets exactly
- * that list; otherwise a list some OTHER control claims is left out.
- */
-function ownOptions(doc, el, nodes) {
-  const ref = n => (n && n.getAttribute && (n.getAttribute('aria-controls') || n.getAttribute('aria-owns'))) || '';
-  let mine = null;
-  for (let n = el, i = 0; n && i < 4 && !mine; n = n.parentElement, i++) {
-    const id = ref(n).split(/\s+/)[0];
-    if (id) { try { mine = doc.getElementById(id); } catch (e) { mine = null; } }
-  }
-  if (mine) {
-    const inMine = nodes.filter(n => mine.contains(n));
-    if (inMine.length) return inMine;
-  }
-  return nodes.filter(n => {
-    const lb = n.closest && n.closest('[role="listbox"]');
-    if (!lb || !lb.id) return true;
-    let owner = null;
-    try { owner = doc.querySelector(`[aria-controls~="${lb.id}"], [aria-owns~="${lb.id}"]`); } catch (e) { owner = null; }
-    return !owner || owner === el || owner.contains(el) || el.contains(owner);
-  });
-}
-
-/**
  * The options of a list just opened. A list that is OPEN (aria-expanded) but
  * still has nothing pickable is loading — Workday's Degree shows only its
  * disabled "Select One" first — so it is given up to TIMING.remoteSearchMs,
@@ -819,7 +792,8 @@ function listOffersAny(shapes, nodes) {
  * Exact or whole-word, or nothing — an empty field the person sees beats a wrong one.
  */
 function inPagedList(nodes) {
-  return nodes.some(n => n.closest && n.closest('[id$="_listSelect"]'));
+  return nodes.some(n => (n.closest && n.closest('[id$="_listSelect"]'))
+                         || /\bsf-list-item\b/.test(String(n.className || '')));
 }
 
 /**
