@@ -10,7 +10,7 @@
 // needs them — so the four groups are the deliverable, not decoration.
 
 import { ASK, DOCUMENT, FILL, PROFILE, SKIP, SUGGEST } from './plan.js';
-import { answerField, learnableAnswers, rememberAnswers } from './run.js';
+import { answerField, learnableAnswers, rememberAnswers, forgetSaved } from './run.js';
 import { STORABLE_SENSITIVE } from './match.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
@@ -342,8 +342,30 @@ function rowHtml(group, d, index) {
       ${d.source ? `<div class="tcv-af-row-src">from ${esc(SOURCE_LABEL[d.source] || d.source)}${
         d.reason ? ` · ${esc(d.reason)}` : ''}</div>`
         : (d.reason ? `<div class="tcv-af-row-src">${esc(d.reason)}</div>` : '')}
+      ${savedControlsHtml(d, index)}
       ${needsInput ? askFormHtml(d, index) : ''}
     </div>`;
+}
+
+// A row filled from a saved answer can be put right where it is seen: Change
+// picks this list's right option (it fills, and becomes the answer saved for
+// this kind of list), Forget drops the saved one. A saved answer that was no
+// answer for this list is said so, with Forget — it may be wrong for every list.
+function savedControlsHtml(d, index) {
+  if (d.forgotten) return '';
+  const fromSaved = d.source === 'saved_answer' && (d.action === FILL || d.action === SUGGEST) && d.savedFrom;
+  return `${fromSaved ? `
+      <div class="tcv-af-row-src tcv-af-saved">
+        <a href="#" class="tcv-af-change" data-index="${index}">Change</a> ·
+        <a href="#" class="tcv-af-forget" data-index="${index}">Forget</a>
+      </div>
+      <div class="tcv-af-change-form" data-index="${index}" hidden>${askFormHtml(d, index)}</div>` : ''}${
+    d.setAside && !fromSaved ? `
+      <div class="tcv-af-row-src tcv-af-aside">
+        Your saved answer "${esc(truncate(d.setAside.answer, 60))}" isn't on this list — kept for
+        forms with the list you saved it on. ·
+        <a href="#" class="tcv-af-forget" data-index="${index}">Forget it</a>
+      </div>` : ''}`;
 }
 
 function askFormHtml(d, index) {
@@ -381,6 +403,34 @@ function truncate(s, n) {
 }
 
 function wireRows(body, decisions, ctx, handlers) {
+  for (const link of body.querySelectorAll('.tcv-af-change')) {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const form = body.querySelector(`.tcv-af-change-form[data-index="${link.dataset.index}"]`);
+      if (form) form.hidden = !form.hidden;
+    });
+  }
+  for (const link of body.querySelectorAll('.tcv-af-forget')) {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const index = Number(link.dataset.index);
+      const d = decisions[index];
+      if (!d || link.dataset.busy) return;
+      link.dataset.busy = '1';
+      link.textContent = 'Forgetting…';
+      const res = d.row ? await forgetSaved(d) : await handlers.onForget(index);
+      if (res && res.ok) {
+        handlers.onRefresh();
+        return;
+      }
+      delete link.dataset.busy;
+      link.textContent = 'Forget';
+      const note = globalThis.document.createElement('div');
+      note.className = 'tcv-af-row-src';
+      note.textContent = (res && res.error) || 'Could not forget that answer.';
+      link.parentNode.appendChild(note);
+    });
+  }
   for (const link of body.querySelectorAll('.tcv-af-jump')) {
     link.addEventListener('click', (e) => {
       e.preventDefault();

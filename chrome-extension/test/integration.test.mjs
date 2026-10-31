@@ -134,6 +134,7 @@ function handleMessage(msg, options) {
     case 'AF_STATE_SET': return { data: { ok: true } };
     case 'AF_STATE_CLEAR': return { data: { ok: true } };
     case 'AF_SAVE_ANSWERS': return { data: { saved: (msg.payload.answers || []).length } };
+    case 'AF_FORGET_ANSWER': return { data: { ok: true, forgotten: true } };
     case 'AF_GET_RESUME_FILE':
       return options.noResumeBytes
         ? { error: 'no_file' }
@@ -2964,6 +2965,91 @@ test('Workday citizenship: an OLD saved DACA answer (no options kept) also gives
     eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
     ok(!log.picks.some(p => /daca/i.test(p)), `picked: ${log.picks.join(', ')}`);
     eq(byLabel(result.decisions, 'citizenship status').source, 'profile');
+  });
+});
+
+// The panel: a row filled from a saved answer can be changed or forgotten
+// where it is seen; one set aside as no answer for this list says so.
+// SpaceX's Greenhouse Citizenship Status: the U.S. federal list.
+const addSpacexCitizen = env => env.document.querySelector('form').insertAdjacentHTML('beforeend', `
+  <label for="q_citizen">Citizenship Status</label>
+  <select id="q_citizen"><option value="">Select…</option>
+    ${SAVED_US_LIST.map(o => `<option>${o}</option>`).join('')}</select>`);
+const savedDacaCtx = () => Object.assign({}, CTX, {
+  answerBank: Object.assign({}, CTX.answerBank, { nationality: 'India' }),
+  savedSensitive: [{ question: 'Citizenship Status', answer: SAVED_DACA,
+                     variants: [{ options: SAVED_US_LIST, answer: SAVED_DACA }] }],
+});
+const panelFor = (env, result) => {
+  const body = env.document.createElement('div');
+  env.document.body.appendChild(body);
+  let refreshed = 0;
+  const handlers = { onRefresh: () => { refreshed++; ui.renderResults(body, result, CTX, handlers); } };
+  ui.renderResults(body, result, CTX, handlers);
+  return { body, refreshes: () => refreshed };
+};
+const tick = () => new Promise(r => setTimeout(r, 0));
+
+test('Panel: Forget on a row filled from a saved answer forgets the answer for that kind of list', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    addSpacexCitizen(env);
+    const result = await run_.runAutofill(savedDacaCtx(), null);
+    const d = byLabel(result.decisions, 'citizenship status');
+    eq(d.source, 'saved_answer');
+    eq(valueOf(env, '#q_citizen'), SAVED_DACA);
+    const panel = panelFor(env, result);
+    ok(panel.body.querySelector('.tcv-af-change'), 'Change is offered');
+    const forget = panel.body.querySelector('.tcv-af-forget');
+    ok(forget, 'Forget is offered');
+    forget.click();
+    for (let i = 0; i < 5 && !panel.refreshes(); i++) await tick();
+    const msg = sent.find(m => m.type === 'AF_FORGET_ANSWER');
+    ok(msg, 'the forget goes to the store');
+    eq(msg.payload.question, 'Citizenship Status');
+    deepEq(msg.payload.options, SAVED_US_LIST);
+    ok(d.forgotten);
+    notOk(panel.body.querySelector('.tcv-af-forget'), 'nothing left to forget');
+    eq(valueOf(env, '#q_citizen'), SAVED_DACA, 'the field keeps what it shows');
+  });
+});
+
+test('Panel: Change fills an option of this list and saves it for this kind of list', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    addSpacexCitizen(env);
+    const result = await run_.runAutofill(savedDacaCtx(), null);
+    const panel = panelFor(env, result);
+    panel.body.querySelector('.tcv-af-change').click();
+    const form = panel.body.querySelector('.tcv-af-change-form');
+    notOk(form.hidden, 'Change opens the answer box');
+    const select = form.querySelector('.tcv-af-ask-select');
+    ok(select, 'with the options of this list');
+    select.value = SAVED_US_LIST[1];
+    form.querySelector('.tcv-af-ask-save').click();
+    for (let i = 0; i < 50 && !sent.some(m => m.type === 'AF_SAVE_ANSWERS'); i++) await tick();
+    eq(valueOf(env, '#q_citizen'), SAVED_US_LIST[1]);
+    const save = sent.find(m => m.type === 'AF_SAVE_ANSWERS');
+    ok(save, 'the new answer is saved');
+    eq(save.payload.answers[0].answer, SAVED_US_LIST[1]);
+    deepEq(save.payload.answers[0].options, SAVED_US_LIST);
+  });
+});
+
+test('Panel: a saved answer set aside on the Workday country list is said so, with Forget it', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env, sent) => {
+    wireWorkdayCitizenship(env);
+    const result = await run_.runAutofill(savedDacaCtx(), null);
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
+    const d = byLabel(result.decisions, 'citizenship status');
+    ok(d.setAside, 'the set-aside answer is kept on the decision');
+    deepEq(d.setAside.options, SAVED_US_LIST);
+    const panel = panelFor(env, result);
+    const aside = panel.body.querySelector('.tcv-af-aside');
+    ok(aside && /isn't on this list/.test(aside.textContent), 'the panel says so');
+    aside.querySelector('.tcv-af-forget').click();
+    for (let i = 0; i < 5 && !panel.refreshes(); i++) await tick();
+    const msg = sent.find(m => m.type === 'AF_FORGET_ANSWER');
+    ok(msg, 'Forget it goes to the store');
+    deepEq(msg.payload.options, SAVED_US_LIST, 'the answer for the U.S. list, which was set aside');
   });
 });
 

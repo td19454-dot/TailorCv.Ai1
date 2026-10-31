@@ -14,6 +14,7 @@ Endpoints:
   GET  /api/extension/apply-context      what we know about the user (cacheable)
   POST /api/extension/autofill/plan      field labels in, answers out (1 LLM call)
   POST /api/extension/autofill/answers   save an answer the user typed
+  POST /api/extension/autofill/answers/forget   forget one saved answer
   GET  /api/extension/base-resume/file   the resume bytes, for the file input
 
 One plan call per form page is the performance contract. The context is cached
@@ -34,7 +35,7 @@ from fastapi.responses import FileResponse
 import document_store
 from database import SessionLocal
 from models import User, UserApplyProfile
-from schemas import ApplyAnswersRequest, AutofillPlanRequest
+from schemas import ApplyAnswersRequest, AutofillPlanRequest, ForgetAnswerRequest
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -743,6 +744,21 @@ async def save_apply_answers(request: Request, payload: ApplyAnswersRequest):
         }
         saved = qa_store.upsert_answers(db, user.id, kept, embeddings)
         return {"ok": True, "saved": saved, "rejected": rejected}
+    finally:
+        db.close()
+
+
+@router.post("/api/extension/autofill/answers/forget")
+async def forget_apply_answer(request: Request, payload: ForgetAnswerRequest):
+    """Forget a saved answer the panel showed as wrong — for the kind of list it
+    was used on only; the question's answers for other lists stay."""
+    from auto_apply import qa_store
+
+    db = SessionLocal()
+    try:
+        user = _require_user(request, db)
+        forgotten = qa_store.forget_answer(db, user.id, payload.question.strip(), payload.options)
+        return {"ok": True, "forgotten": forgotten}
     finally:
         db.close()
 

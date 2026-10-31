@@ -118,6 +118,7 @@
   background: rgba(255,255,255,.02);
 }
 .pf-answer-q { color: #b9c8e4; font-size: .82rem; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
+.pf-answer-lists { color: #8a9bbd; font-size: .74rem; margin: -2px 0 6px; line-height: 1.4; }
 .pf-answer-row { display: flex; gap: 8px; align-items: flex-start; }
 .pf-answer-row textarea {
   flex: 1; min-height: 38px; padding: 8px 10px; border-radius: 8px; resize: vertical;

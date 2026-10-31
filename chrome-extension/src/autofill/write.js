@@ -23,7 +23,7 @@ import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isN
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
 import { countryOf, countryOption, countryShare } from './countries.js';
-import { pickSaved } from './saved.js';
+import { pickSaved, pickSavedVariant } from './saved.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 
@@ -461,12 +461,16 @@ export async function commitCombobox(row, value, candidates, readFirst, drill) {
         }
       }
       if (!pick) {
+        if (labels.length) readFirst.labels = labels;
         reportDropdownFailure(row, value, options);
         return false;
       }
       // What was chosen, for the check afterwards: a saved "(e) … DACA" shows
-      // as this list's own wording of it.
+      // as this list's own wording of it. The list itself, for the panel: its
+      // options to change the answer to, and which saved answer took it.
       readFirst.picked = pick;
+      readFirst.labels = labels;
+      if (readFirst.key === 'saved') readFirst.variant = pickSavedVariant(readFirst.entry, labels);
       const node = options[labels.indexOf(pick)];
       try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
       pressPointer(node);

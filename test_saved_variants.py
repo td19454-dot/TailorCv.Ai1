@@ -161,6 +161,77 @@ def test_server_recall_picks_the_variant_or_leaves_it_to_the_model():
     assert answers["2"]["value"] == "Payments" and answers["2"]["variants"], answers
 
 
+def _two_kinds(db, uid):
+    qa_store.upsert_answers(db, uid, [{"question": "Citizenship Status", "answer": DACA, "options": US}])
+    qa_store.upsert_answers(db, uid, [{"question": "Citizenship Status", "answer": "India", "options": COUNTRIES}])
+
+
+def test_forget_takes_only_that_kind_of_list():
+    db, uid = _db()
+    _two_kinds(db, uid)
+    # Forgotten from a U.S.-status list worded without lettering: same kind.
+    assert qa_store.forget_answer(db, uid, "Citizenship Status*", LISTS["us_status_unlettered"])
+    row = _row(db, uid)
+    assert [v["answer"] for v in qa_store.decode_variants(row.variants)] == ["India"]
+    assert row.answer == "India"
+    # The country list's answer, last of all: the row goes.
+    assert qa_store.forget_answer(db, uid, "Citizenship Status", LISTS["countries_b"])
+    assert db.query(UserApplyQA).count() == 0
+
+
+def test_forget_of_another_kind_forgets_nothing():
+    db, uid = _db()
+    _two_kinds(db, uid)
+    assert not qa_store.forget_answer(db, uid, "Citizenship Status", LISTS["degree"])
+    assert len(qa_store.decode_variants(_row(db, uid).variants)) == 2
+    assert not qa_store.forget_answer(db, uid, "Some other question", US)
+
+
+def test_forget_without_options_takes_the_row():
+    db, uid = _db()
+    qa_store.upsert_answers(db, uid, [{"question": "LinkedIn profile", "answer": "x"}])
+    assert qa_store.forget_answer(db, uid, "LinkedIn profile", ["a", "b"])
+    assert db.query(UserApplyQA).count() == 0
+    _two_kinds(db, uid)
+    assert qa_store.forget_answer(db, uid, "Citizenship Status", [])
+    assert db.query(UserApplyQA).count() == 0
+
+
+def test_profile_edit_reaches_the_kind_of_list_forms_read():
+    db, uid = _db()
+    _two_kinds(db, uid)
+    row = _row(db, uid)
+    qa_store.edit_variant(row, 0, DACA, US[2])
+    db.commit()
+    variants = qa_store.decode_variants(_row(db, uid).variants)
+    assert variants[0]["answer"] == US[2] and variants[1]["answer"] == "India"
+    assert qa_store.pick_saved({"answer": row.answer, "variants": variants}, US) == US[2]
+    assert row.answer == "India", "answer stays the newest variant's"
+    qa_store.edit_variant(row, 1, "India", "Canada")
+    assert row.answer == "Canada"
+
+
+def test_profile_edit_of_a_stale_answer_is_refused():
+    db, uid = _db()
+    _two_kinds(db, uid)
+    row = _row(db, uid)
+    for index, was in ((0, "India"), (5, DACA)):
+        try:
+            qa_store.edit_variant(row, index, was, "x")
+        except ValueError:
+            continue
+        raise AssertionError(f"edited a stale variant {index}")
+
+
+def test_profile_delete_of_one_kind():
+    db, uid = _db()
+    _two_kinds(db, uid)
+    row = _row(db, uid)
+    assert qa_store.delete_variant(row, 1, "India") is False
+    assert row.answer == DACA
+    assert qa_store.delete_variant(row, 0, DACA) is True, "the last one: the row should go"
+
+
 def test_bad_json_is_no_variants():
     assert qa_store.decode_variants("not json") == []
     assert qa_store.decode_variants(json.dumps([{"options": "x", "answer": "y"}])) == []
@@ -175,6 +246,12 @@ tests = [
     test_old_rows_load_with_no_variants,
     test_bad_json_is_no_variants,
     test_server_recall_picks_the_variant_or_leaves_it_to_the_model,
+    test_forget_takes_only_that_kind_of_list,
+    test_forget_of_another_kind_forgets_nothing,
+    test_forget_without_options_takes_the_row,
+    test_profile_edit_reaches_the_kind_of_list_forms_read,
+    test_profile_edit_of_a_stale_answer_is_refused,
+    test_profile_delete_of_one_kind,
 ]
 
 

@@ -70,6 +70,18 @@ function exact(answer, rows) {
   return hit ? hit[0] : null;
 }
 
+/** The variant saved over the same kind of list as `labels` — the one that
+ *  decides this field — or null. Oldest first: a tie goes to the newest. */
+export function pickSavedVariant(entry, labels) {
+  let best = null, bestScore = 0;
+  for (const v of (entry && entry.variants) || []) {
+    if (!v || !v.options || !v.options.length) continue;
+    const score = kindScore(v.options, labels);
+    if (score >= SAME_KIND && score >= bestScore) { best = v; bestScore = score; }
+  }
+  return best;
+}
+
 /**
  * The option on THIS list that states the saved answer, or null.
  *
@@ -82,13 +94,8 @@ function exact(answer, rows) {
 export function pickSaved(entry, labels) {
   const rows = real(labels);
   if (!rows.length || !entry) return null;
-  const variants = (entry.variants || []).filter(v => v && v.options && v.options.length);
-  if (!variants.length) return exact(entry.answer, rows);
-  let best = null, bestScore = 0;
-  for (const v of variants) {               // oldest first: a tie goes to the newest
-    const score = kindScore(v.options, labels);
-    if (score >= SAME_KIND && score >= bestScore) { best = v; bestScore = score; }
-  }
+  if (!(entry.variants || []).some(v => v && v.options && v.options.length)) return exact(entry.answer, rows);
+  const best = pickSavedVariant(entry, labels);
   if (!best) return null;
   const answer = String(best.answer || '');
   const hit = exact(answer, rows);

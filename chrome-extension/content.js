@@ -3235,10 +3235,15 @@
       auto: autoInfo || null,
       onOpenProfile: () => window.open(PROFILE_URL, '_blank'),
       onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
-      // These three only fire for a framed form; a local run acts on the live
+      // These only fire for a framed form; a local run acts on the live
       // decision objects directly and never calls them.
       onAnswer: async (index, value, remember) => {
         const res = await toFrame({ type: 'AF_FRAME_ANSWER', index, value, remember });
+        if (res && res.decision) result.decisions[index] = res.decision;
+        return res;
+      },
+      onForget: async (index) => {
+        const res = await toFrame({ type: 'AF_FRAME_FORGET', index });
         if (res && res.decision) result.decisions[index] = res.decision;
         return res;
       },
