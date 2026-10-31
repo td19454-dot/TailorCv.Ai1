@@ -383,7 +383,7 @@ export const SENSITIVE_PATTERNS = [
 
 // Sensitive categories with no profile field, whose answer the person may save
 // from a form they answered (match_guard.py STORABLE_SENSITIVE). Reused only
-// for the same question — see savedSensitiveAnswer() in plan.js.
+// for the same question — see savedEntry() in plan.js.
 // Citizenship included: its questions ("Which best describes your 'U.S. person'
 // status?") are worded too variously for the profile's one status to answer
 // them all, so the person's own answer to the exact question is kept too.

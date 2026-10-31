@@ -254,6 +254,58 @@ test('a saved clearance answer is not reused for a differently worded question',
   eq(p.decide([other], ctx, null, null)[0].action, p.ASK);
 });
 
+// ── saved answers, one per kind of option list ───────────────
+// Workday's Citizenship Status (a country list) got "(e) … DACA", saved from a
+// U.S.-status list, and stayed empty while the profile said India (Oct 2026).
+
+const US_STATUS = ['(a) U.S. citizen or national of the United States', '(b) U.S. lawful permanent resident',
+  '(e) Authorized to work in the United States under the Deferred Action for Childhood Arrivals (DACA) program',
+  '(f) Other (please explain)'];
+const DACA = US_STATUS[2];
+const savedDaca = extra => Object.assign({}, CTX, {
+  answerBank: Object.assign({}, BANK, { nationality: 'India' }),
+  savedSensitive: [{ question: 'Citizenship Status', answer: DACA, variants: [{ options: US_STATUS, answer: DACA }] }],
+}, extra);
+
+test('a saved answer from a U.S.-status list is no answer for a country list: the profile answers it', () => {
+  const row = field('Citizenship Status', { kind: 'select', options: ['Australia', 'Canada', 'India', 'United States'] });
+  const d = p.decide([row], savedDaca(), null, null)[0];
+  eq(d.action, p.FILL, `${d.action}: ${d.reason}`);
+  eq(d.value, 'India');
+  notOk(d.source === 'saved_answer');
+});
+
+test('a saved answer fills the same kind of list, in this list\'s own wording', () => {
+  const row = field('Citizenship Status', { kind: 'select', options: US_STATUS.map(o => o.replace(/^\(\w\) /, '')) });
+  const d = p.decide([row], savedDaca(), null, null)[0];
+  eq(d.source, 'saved_answer');
+  eq(d.value, DACA.replace(/^\(\w\) /, ''));
+});
+
+test('a saved answer for a list not read yet is picked once the list is open, never typed', () => {
+  const row = field('Citizenship Status', { kind: 'combobox', options: [] });
+  const d = p.decide([row], savedDaca(), null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.source, 'saved_answer');
+  eq(d.readFirst && d.readFirst.key, 'saved');
+  eq(d.readFirst.entry.variants.length, 1);
+});
+
+test('a saved answer from the server for a list not read yet carries its variants to the writer', () => {
+  const opts = ['Platform', 'Payments', 'Growth'];
+  const row = field('Which team are you most interested in?', { kind: 'combobox', options: [] });
+  const server = { answers: { 0: { value: 'Payments', source: 'saved_answer', confidence: 0.85,
+                                   variants: [{ options: opts, answer: 'Payments' }] } } };
+  const d = p.decide([row], CTX, server, null)[0];
+  eq(d.value, 'Payments');
+  eq(d.readFirst && d.readFirst.key, 'saved');
+  // With the list in hand there is nothing to carry: the server picked from it.
+  const listed = p.decide([field('Which team are you most interested in?', { kind: 'combobox', options: opts })],
+                          CTX, { answers: { 0: { value: 'Payments', source: 'saved_answer', confidence: 0.85 } } }, null)[0];
+  eq(listed.value, 'Payments');
+  notOk(listed.readFirst);
+});
+
 test('a saved criminal-history answer fills the same question', () => {
   const ctx = Object.assign({}, CTX, { savedSensitive: [
     { question: 'Have you ever been convicted of a felony?', answer: 'No' }] });
@@ -1028,6 +1080,90 @@ test('Country of Birth: the profile\'s, exactly; else the country of citizenship
 test('a demonym against a country list never takes a country that merely holds the word', () => {
   eq(p.coerce('Indian', { kind: 'combobox', label: 'Country', options: PWC_COUNTRIES }), 'India');
   eq(p.coerce('Indian', { kind: 'combobox', label: 'Country', options: ['British Indian Ocean Territory', 'Iceland'] }), null);
+});
+
+// The first page of a SuccessFactors country list: it stops at Dominica (EY, Oct 2026).
+const SF_FIRST_PAGE = ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina',
+  'Australia', 'Austria', 'Bangladesh', 'Belgium', 'Brazil', 'Canada', 'China', 'Denmark', 'Dominica'];
+
+test('a paged country list without the profile country: the country itself, for the writer to search', () => {
+  const row = paged => field('Country of Residence:', { kind: 'combobox', required: true,
+    options: SF_FIRST_PAGE, hints: { paged } });
+  const d = one(row(true));
+  eq(d.action, p.FILL);
+  eq(d.value, 'India', 'never Dominica');
+  // A list read whole that lacks India: not filled from the profile.
+  notOk(one(row(false)).value === 'India' || one(row(false)).value === 'Dominica');
+});
+
+test('a paged country list naming the country another way: that row', () => {
+  const opts = SF_FIRST_PAGE.concat(['United Kingdom', 'United States of America']);
+  eq(p.coerce('USA', { kind: 'combobox', label: 'Country', options: opts, hints: { paged: true } }),
+     'United States of America');
+  eq(p.coerce('United States', { kind: 'combobox', label: 'Country', options: opts }), 'United States of America');
+});
+
+// ── blocks under a heading (Deloitte, Oct 2026) ──────────────
+
+const JU = { school: 'Jadavpur University', degree: 'B.Tech', field: 'Chemical', from: '2018', to: '2022', gpa: '7.5' };
+const SCHOOL = { school: 'South Point', degree: 'Higher Secondary', field: 'Science', from: '2016', to: '2018' };
+const DATE = { hints: { format: 'MM/dd/yyyy' } };
+const blockCtx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { available_start_date: 'Immediately' }) });
+const inBlock = (label, kind, entry, extra) => field(label, Object.assign({ kind, required: true,
+  block: { kind, entry, heading: kind === 'education' ? 'Highest Education Details' : 'Previous Work Experience Details' } },
+  extra || {}));
+
+test('a block\'s dates are its entry\'s, never the availability date', () => {
+  const at = (label, entry) => p.decide([inBlock(label, 'education', entry, Object.assign({}, DATE, { kind: 'text' }))], blockCtx, null, null)[0];
+  eq(at('Start Date', JU).value, '01/01/2018');
+  eq(at('End Date', JU).value, '01/01/2022');
+  eq(at('Qualification Year', JU).value, '01/01/2022');
+  eq(at('Start Date', SCHOOL).value, '01/01/2016');
+  // No entry for this rank: the person's, not today and not the highest degree's.
+  const none = at('Start Date', {});
+  eq(none.action, p.ASK);
+  eq(none.value, '');
+  // Outside a block, "Start Date" is still the availability date.
+  notOk(p.decide([field('Start Date', DATE)], blockCtx, null, null)[0].value === '01/01/2018');
+});
+
+test('a block\'s degree and university are its entry\'s; a missing one is not the highest', () => {
+  const opts = ['B.E./B.Tech', 'Class XII', 'M.E./M.Tech'];
+  const q = entry => p.decide([Object.assign(inBlock('Qualification', 'education', entry), { kind: 'combobox', options: opts })],
+                              blockCtx, null, null)[0];
+  eq(q(JU).value, 'B.E./B.Tech');
+  eq(q(SCHOOL).value, 'Class XII');
+  notOk(q({}).value === 'B.E./B.Tech' || q({}).action === p.FILL);
+  const uni = p.decide([Object.assign(inBlock('University Name', 'education', SCHOOL), { kind: 'text' })], blockCtx, null, null)[0];
+  eq(uni.value, 'South Point');
+  const college = label => p.decide([Object.assign(inBlock(label, 'education', JU), { kind: 'combobox' })], blockCtx, null, null)[0];
+  eq(college('College/Institute Name').value, 'Jadavpur University');
+  eq(college('Institution Name').value, 'Jadavpur University');
+  notOk(college('Type of Establishment').value === 'Jadavpur University');
+});
+
+test('a previous-job block: its own company, title and dates; a current job has no end date', () => {
+  const prev = { title: 'Data Analyst', company: 'Prospus', from: '06/2022', to: '03/2024', current: false };
+  const now = { title: 'AI/ML Engineer', company: 'Zorba AI', from: '04/2024', to: '', current: true };
+  const at = (label, entry, extra) => p.decide([inBlock(label, 'experience', entry, Object.assign({ kind: 'text' }, extra || {}))],
+                                               blockCtx, null, null)[0];
+  eq(at('Previous Company Name', prev).value, 'Prospus');
+  eq(at('Designation', prev).value, 'Data Analyst');
+  eq(at('Start Date', prev, DATE).value, '06/01/2022');
+  eq(at('End Date', prev, DATE).value, '03/01/2024');
+  const end = at('End Date', now, DATE);
+  eq(end.value, '');
+  notOk(end.action === p.FILL);
+});
+
+test('"B.E./B.Tech" answers a B.Tech; "Class XII" a Higher Secondary', () => {
+  eq(p.degreeOption('B.Tech', ['B.A.', 'B.E./B.Tech', 'M.E./M.Tech']), 'B.E./B.Tech');
+  eq(p.degreeOption('B.Tech', ['BE / BTech', 'MBA']), 'BE / BTech');
+  eq(p.degreeOption('M.Tech', ['B.E./B.Tech', 'M.E./M.Tech']), 'M.E./M.Tech');
+  eq(p.degreeOption('Higher Secondary', ['Class X', 'Class XII', 'B.Com']), 'Class XII');
+  eq(p.degreeOption('HSC', ['High School', 'Bachelor']), 'High School', 'still the level elsewhere');
+  // "Secondary School" is India's Class X: never Class XII.
+  notOk(p.degreeOption('Secondary School', ['Class X', 'Class XII']) === 'Class XII');
 });
 
 test('options suffixed with their country are not a country list: "Single (India)" stays Single', () => {

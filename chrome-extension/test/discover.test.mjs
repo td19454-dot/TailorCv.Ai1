@@ -237,6 +237,15 @@ test('a SuccessFactors page with every section closed is an application page', a
     eq(form.ats, 'successfactors');
     eq(env.document.querySelector('button').getAttribute('aria-expanded'), 'false', 'and nothing was opened');
   });
+  // SAP's other address for the same form (Wipro).
+  await withDoc(CLOSED, (env) => {
+    env.dom.reconfigure({ url: 'https://career55.sapsf.eu/portalcareer' });
+    const form = d.isApplicationPage(env.document);
+    ok(form && form.sectionsClosed, 'known at sapsf.eu too');
+    eq(form.ats, 'successfactors');
+    eq(d.detectAts('https://career10.sapsf.com/portalcareer'), 'successfactors');
+    eq(d.detectAts('https://notsapsf.com/careers'), 'generic', 'not a name that merely ends the same');
+  });
   await withDoc(CLOSED, (env) => {
     env.dom.reconfigure({ url: 'https://example.test/apply' });
     eq(d.isApplicationPage(env.document), null, 'not on another site');

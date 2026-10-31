@@ -711,6 +711,15 @@ class UserApplyQA(Base):
     embedding = Column(Text)
     embedding_model = Column(String(60))
 
+    # The same question asked over different KINDS of option list keeps one
+    # answer per kind: "Citizenship Status" over U.S. statuses ("(e) … DACA")
+    # and over a country list ("India") are two answers, not one overwriting
+    # the other. JSON list of {"options": [labels], "answer": str}, oldest
+    # first; see qa_store.pick_saved. `answer` above stays the latest answer,
+    # for readers that know nothing of variants. Nullable: a row saved without
+    # options (the dashboard modal, older clients) has none.
+    variants = Column(Text)
+
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 

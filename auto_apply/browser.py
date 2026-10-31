@@ -38,6 +38,7 @@ from pathlib import Path
 from typing import Any, Coroutine
 
 from auto_apply import config
+from auto_apply.countries import country_of, country_option, country_share
 from auto_apply.profile import question_signature
 from functions import get_resume_response
 
@@ -494,6 +495,14 @@ def _best_option_match(value: str, options: list[dict[str, str]]) -> dict[str, s
     for opt in options:
         if _normalize_option_text(opt.get("label", "")) == norm_value:
             return opt
+    # A country, against a list of countries: that country under any of its
+    # names, or nothing. difflib put "Dominica" for India (0.615) on a list whose
+    # first page stopped there (EY, Oct 2026).
+    country = country_of(value)
+    labels = [opt.get("label", "") for opt in options]
+    if country and country_share(labels) >= 0.5:
+        pick = country_option(country, labels)
+        return options[labels.index(pick)] if pick is not None else None
     best_opt, best_score = None, 0.0
     for opt in options:
         norm_label = _normalize_option_text(opt.get("label", ""))

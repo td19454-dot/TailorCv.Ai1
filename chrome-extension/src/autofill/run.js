@@ -21,10 +21,12 @@ import { describeFields, findForm, isApplicationPage, readComboboxOptions, repro
          profileTileBlocks, detectAts, picklistButton }
   from './discover.js';
 import { fillProfileTiles } from './tiles.js';
-import { expandSections, inRepeatingRow, markFollowUps, educationFromRows } from './successfactors.js';
-import { experienceSection, fillExperienceSection, educationSection, fillEducationSection, inSection }
+import { expandSections, inRepeatingRow, markFollowUps, educationFromRows, noteBlocks,
+         attachmentBoxes, boxHasFile, openUploadInput, waitForUpload } from './successfactors.js';
+import { experienceSection, fillExperienceSection, educationSection, fillEducationSection, inSection,
+         sfExperienceSection, sfEducationSection }
   from './repeaters.js';
-import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
+import { decide, coerce, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
 import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText } from './write.js';
 import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone,
@@ -221,7 +223,7 @@ export function learnableAnswers(decisions) {
     const autocomplete = (d.row.hints && d.row.hints.autocomplete) || '';
     if (/^cc-|one-time-code/.test(autocomplete)) continue;
     if (!questionSignature(d.label)) continue;
-    out.push({ key: d.key, question: d.label, answer: value });
+    out.push({ key: d.key, question: d.label, answer: value, options: optionLabels(d) });
   }
   return out;
 }
@@ -291,7 +293,7 @@ export async function forceAnswers(ctx, decisions, onProgress) {
   }
   const fields = targets.map(d => ({
     i: decisions.indexOf(d),
-    label: d.label,
+    label: d.block ? `${d.label} (${d.block})` : d.label,
     kind: d.kind,
     required: true,
     sensitive: false,
@@ -319,7 +321,14 @@ export async function forceAnswers(ctx, decisions, onProgress) {
   for (const d of targets) {
     const a = answers[String(decisions.indexOf(d))];
     if (!a || !String(a.value || '').trim()) continue;
-    d.value = String(a.value);
+    // A typed field takes its own shape, as every other answer does: "2022" in
+    // a MM/dd/yyyy date picker was "Invalid date" (Deloitte, Oct 2026). A
+    // choice goes as given: the writer matches the model's text to the options
+    // (a lone checkbox's own label ticks it).
+    const typed = d.kind === 'text' || d.kind === 'textarea';
+    const value = typed ? coerce(String(a.value), d.row) : String(a.value);
+    if (value === null) continue;
+    d.value = value;
     d.action = FILL;
     d.source = 'ai_forced';
     d.confidence = Number(a.confidence) || 0.6;
@@ -371,7 +380,8 @@ function askBlockField(ctx) {
     });
     const a = !res.error && res.data && res.data.answers && res.data.answers['0'];
     const value = a && String(a.value || '').trim();
-    return value && options.includes(value) ? value : null;
+    // No options: a country or state on a paged list, named by the model.
+    return value && (!options.length || options.includes(value)) ? value : null;
   };
 }
 
@@ -416,8 +426,15 @@ export async function runAutofill(ctx, onProgress) {
   }
 
   attachedThisRun.clear();
+  const isSf = form.ats === 'successfactors' || detectAts(globalThis.location.href) === 'successfactors';
+  // Before the form is read: there is no file input until a box is opened, and
+  // a form that reads the resume does so as soon as it lands.
+  const sfDocuments = isSf ? await clock.time('documents', () => attachSfDocuments(ctx, progress)) : [];
+  if (sfDocuments.length) clock.quiet(await waitForQuiet(globalThis.document.body));
   progress('scanning');
   let rows = await clock.time('scan', () => describeFields(form));
+  // A menu left open by an upload that failed: its input is not a field.
+  if (isSf) rows = rows.filter(r => !(r.el && r.el.classList && r.el.classList.contains('fileUpload')));
   if (!rows.length && !hasTiles) return { error: 'no_fields', decisions: [], counts: summarize([]) };
 
   // Documents first, then the form as it stands AFTER them. Oracle's "Import
@@ -466,24 +483,29 @@ export async function runAutofill(ctx, onProgress) {
     }
     clock.add('documents', clock.now() - docsStart);
   }
+  decisions = sfDocuments.concat(decisions);
   // Workday's Work Experience blocks belong to fillExperienceSection, which
   // fills block N from job N. Planned as ordinary questions, every block's Job
   // Title got the current job. Only taken over when there are jobs to put in.
   const jobs = (ctx && ctx.facts && ctx.facts.workExperience) || [];
-  const expSection = jobs.length ? experienceSection() : null;
+  // SuccessFactors' rows are their own shape: its "Education" is also a labelled
+  // group, which the Workday filler took for its own and then found nothing in.
+  const expSection = jobs.length ? (isSf ? sfExperienceSection() : experienceSection()) : null;
   // Education N blocks likewise, from the profile's school list.
   const schools = (ctx && ctx.facts && ctx.facts.educationEntries) || [];
-  const eduSection = schools.length ? educationSection() : null;
+  const eduSection = schools.length ? (isSf ? sfEducationSection() : educationSection()) : null;
   const inRepeater = r => inSection(expSection, r) || inSection(eduSection, r) || inRepeatingRow(r);
-  if (form.ats === 'successfactors' || detectAts(globalThis.location.href) === 'successfactors') {
+  if (isSf) {
     markFollowUps(rows.filter(r => !inRepeatingRow(r)));
+    noteBlocks(rows, schools, jobs);
     ctx = Object.assign({}, ctx, { sfEducation: educationFromRows(rows) });
   }
   const fieldRows = rows.filter(r => r.kind !== 'file' && !inRepeater(r));
   decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
   // SuccessFactors' Previous Employment / Formal Education rows: as it filled
   // them from the candidate profile. An empty required one is the person's.
-  const sfRows = rows.filter(r => r.kind !== 'file' && inRepeatingRow(r));
+  const sfRows = rows.filter(r => r.kind !== 'file' && inRepeatingRow(r)
+                                  && !inSection(expSection, r) && !inSection(eduSection, r));
   if (sfRows.length) {
     decisions = decisions.concat(decide(sfRows, ctx, null, state).map(d => {
       d.noServer = true;
@@ -503,13 +525,13 @@ export async function runAutofill(ctx, onProgress) {
     // against a block 1 that then filled in underneath us.
     await clock.time('experience', async () => {
       clock.quiet(await waitForQuiet(form.root));
-      decisions = decisions.concat(await fillExperienceSection(ctx, progress, undefined, askBlockField(ctx)));
+      decisions = decisions.concat(await fillExperienceSection(ctx, progress, undefined, askBlockField(ctx), isSf));
     });
   }
   if (eduSection) {
     await clock.time('education', async () => {
       clock.quiet(await waitForQuiet(form.root));
-      decisions = decisions.concat(await fillEducationSection(ctx, progress, undefined, askBlockField(ctx)));
+      decisions = decisions.concat(await fillEducationSection(ctx, progress, undefined, askBlockField(ctx), isSf));
     });
   }
   for (const d of decisions) {
@@ -519,10 +541,12 @@ export async function runAutofill(ctx, onProgress) {
     }
   }
 
+  await redecideFailedSaved(decisions, ctx, progress);
+
   // One repair sweep, no LLM: retry only what the page disagreed about.
   const repairStart = clock.now();
   for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
-    let broken = decisions.filter(d => d.outcome && d.outcome !== 'ok' && d.value);
+    let broken = decisions.filter(d => d.outcome && d.outcome !== 'ok' && d.value && !d.redecided);
     if (!broken.length) break;
     // Re-read before retrying. A pick can land after its check gave up — on
     // Oracle, Country took, the address block redrew, and the "repair" then typed
@@ -575,7 +599,10 @@ export async function runAutofill(ctx, onProgress) {
     const before = new Set(rows.map(r => r.key));
     clock.quiet(await waitForQuiet(form.root));
     const fresh = describeFields(findForm() || form);
-    if (ctx && ctx.sfEducation !== undefined) markFollowUps(fresh.filter(r => !inRepeatingRow(r)));
+    if (ctx && ctx.sfEducation !== undefined) {
+      markFollowUps(fresh.filter(r => !inRepeatingRow(r)));
+      noteBlocks(fresh, (ctx.facts && ctx.facts.educationEntries) || [], (ctx.facts && ctx.facts.workExperience) || []);
+    }
     // Never the profile import: it was handled (or deliberately skipped) above.
     // Nor the blocks "Add Another" created: fillExperienceSection filled them.
     const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
@@ -788,6 +815,8 @@ const MAX_REREADS = 8;
 async function rereadEmptyLists(decisions) {
   const empty = decisions.filter(d => (d.action === ASK || d.action === PROFILE)
     && d.kind === 'combobox' && d.row && d.row.el && d.row.el.isConnected
+    // Opening a SuccessFactors row's empty picklist flags it "is required" in red.
+    && !inRepeatingRow(d.row)
     && !(d.options && d.options.length)).slice(0, MAX_REREADS);
   for (const d of empty) {
     const now = reprobe(d.row);
@@ -959,6 +988,42 @@ async function writeAll(decisions, ctx, progress, isRepair) {
   return decisions;
 }
 
+/**
+ * A saved answer the form did not take is no answer here: each such field is
+ * decided again as if nothing were saved — the profile, else the person; a
+ * required one left empty still gets the resume pass. The repair sweep retried
+ * the same saved text instead: Workday's Citizenship Status, a country list,
+ * got "(e) … DACA" from a U.S. form twice and stayed empty, while the profile
+ * said India (Oct 2026). Replaces the decisions in place.
+ */
+async function redecideFailedSaved(decisions, ctx, progress) {
+  const failed = decisions.filter(d => d.source === 'saved_answer' && d.outcome && d.outcome !== 'ok' && d.row);
+  if (!failed.length) return;
+  const toWrite = [];
+  await sleep(TIMING.settleMs);
+  for (const d of failed) {
+    // A pick that landed after its check gave up is the saved answer, taken.
+    const shapes = [d.value].concat(d.readFirst && d.readFirst.picked ? [d.readFirst.picked] : []);
+    if (await settlesTo(d.row, shapes, 0)) {
+      d.outcome = 'ok';
+      if (d.key) state.registry[d.key] = d.value;
+      continue;
+    }
+    const sig = questionSignature(d.row.label);
+    const others = ((ctx && ctx.savedSensitive) || []).filter(s => questionSignature(s.question) !== sig);
+    const [fresh] = decide([d.row], Object.assign({}, ctx, { savedSensitive: others }), null, state);
+    fresh.redecided = true;
+    decisions[decisions.indexOf(d)] = fresh;
+    if (fresh.action === FILL || fresh.action === SUGGEST) {
+      toWrite.push(fresh);
+    } else if (picklistButton(d.row.el)) {
+      // What was typed to search is no answer, though it looks like one.
+      setText(d.row.el, '');
+    }
+  }
+  if (toWrite.length) await writeAll(toWrite, ctx, progress, true);
+}
+
 function outcomeReason(d) {
   switch (d.outcome) {
     case 'rejected': return `the form rejected "${d.value}"`;
@@ -1039,6 +1104,45 @@ async function attachDocument(decision, ctx) {
 }
 
 /**
+ * SuccessFactors' Resume and Cover Letter boxes: opened, given the file, and
+ * checked on the page itself. A box already holding a file is left alone — it may
+ * be tailored for this job. Decided by the same rules as any other upload, so a
+ * cover letter the person has none of is theirs to attach.
+ */
+async function attachSfDocuments(ctx, progress) {
+  const out = [];
+  for (const box of attachmentBoxes()) {
+    if (boxHasFile(box.field)) continue;
+    const row = {
+      key: `sf-document-${box.slot}`, el: box.field, members: [], kind: 'file', label: box.label, ident: box.label,
+      value: '', filled: false, invalid: false, required: box.required, options: [], readable: true,
+      documentSlot: box.slot, hints: {},
+    };
+    const [d] = decide([row], ctx, null, state);
+    out.push(d);
+    if (d.action !== DOCUMENT) continue;
+    progress('filling', { detail: box.label });
+    const input = await openUploadInput(box.field);
+    let ok = false;
+    if (input) {
+      row.el = input;
+      await writeAll([d], ctx, progress);
+      // The input takes any file; only the page says the upload worked. Longer
+      // than an input's check: this waits on the upload to its server.
+      ok = d.outcome === 'ok' && await waitForUpload(box.field, TIMING.uploadConfirmMs * 5);
+    }
+    // The box stays the field: the input goes with the menu.
+    row.el = box.field;
+    if (!ok) {
+      d.action = ASK;
+      d.outcome = 'failed';
+      d.reason = 'attach this one yourself';
+    }
+  }
+  return out;
+}
+
+/**
  * Some ATSs read an uploaded resume and pre-fill the form from it. Oracle's
  * "Import your profile" upload does, and disables itself while it reads
  * (`disable: isResumeParsingInProgress` in its markup). Confirmed on JPMC:
@@ -1100,17 +1204,24 @@ export async function answerField(decision, value, remember) {
       && storable(decision.label, decision.sensitive, decision.employer)
       && !isNeverFill(decision.label) && !looksSecret(decision.value)) {
     await send({ type: 'AF_SAVE_ANSWERS', payload: { answers: [
-      { question: decision.label, answer: decision.value },
+      { question: decision.label, answer: decision.value, options: optionLabels(decision) },
     ] } });
   }
   return result;
+}
+
+// The options an answer was chosen from: it is kept as that kind of list's
+// answer (UserApplyQA.variants), and reused only on the same kind.
+function optionLabels(d) {
+  const options = (d.options && d.options.length) ? d.options : ((d.row && d.row.options) || []);
+  return options.map(o => (typeof o === 'string' ? o : (o && o.label) || '')).filter(Boolean).slice(0, 300);
 }
 
 /** Save answers the user has already typed into the page themselves. */
 export async function rememberAnswers(items) {
   const answers = (items || [])
     .filter(i => i && i.question && i.answer)
-    .map(i => ({ question: i.question, answer: i.answer }))
+    .map(i => ({ question: i.question, answer: i.answer, options: i.options || [] }))
     .slice(0, 25);
   if (!answers.length) return { saved: 0 };
   const res = await send({ type: 'AF_SAVE_ANSWERS', payload: { answers } });

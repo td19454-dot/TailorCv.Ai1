@@ -497,7 +497,8 @@ export function detectAts(url) {
   if (/jobvite\.com/.test(u)) return 'jobvite';
   if (/bamboohr\.com/.test(u)) return 'bamboohr';
   if (/taleo\.net/.test(u)) return 'taleo';
-  if (/successfactors\.(com|eu)/.test(u)) return 'successfactors';
+  // sapsf.* is SAP's other address for it: career55.sapsf.eu (Wipro, Oct 2026).
+  if (/successfactors\.(com|eu)|\bsapsf\.(com|eu)/.test(u)) return 'successfactors';
   if (/oraclecloud\.com\/hcmui\/candidateexperience/.test(u)) return 'oracle';
   return 'generic';
 }
@@ -1547,6 +1548,9 @@ function fieldHints(el) {
     inputmode: g('inputmode').toLowerCase(),
     multiple: el.multiple === true,
     tag: (el.tagName || '').toLowerCase(),
+    // A SuccessFactors picklist: its options read are one page of the list,
+    // and the rest are found by searching its server.
+    paged: !!picklistButton(el),
   };
 }
 

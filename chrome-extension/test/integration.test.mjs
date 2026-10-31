@@ -19,6 +19,7 @@ import * as d from '../src/autofill/discover.js';
 import * as p from '../src/autofill/plan.js';
 import * as run_ from '../src/autofill/run.js';
 import * as tiles from '../src/autofill/tiles.js';
+import * as rep_ from '../src/autofill/repeaters.js';
 import * as ui from '../src/autofill/ui.js';
 import { setTiming } from '../src/autofill/timing.js';
 
@@ -2365,6 +2366,9 @@ test('Save & fill remembers clearance, criminal-history and citizenship answers'
     const kept = sent.find(m => m.type === 'AF_SAVE_ANSWERS');
     ok(kept, 'a citizenship answer is kept too, for this exact question');
     eq(kept.payload.answers[0].answer, '(f) Other (please explain)');
+    // With the list it was chosen from: kept as that kind of list's answer.
+    ok((kept.payload.answers[0].options || []).includes('(a) U.S. citizen or national of the United States'),
+       `options: ${JSON.stringify(kept.payload.answers[0].options)}`);
   });
 });
 
@@ -2918,6 +2922,62 @@ test('Workday citizenship: with no country of citizenship, nothing is picked', a
     const log = wireWorkdayCitizenship(env);
     await run_.runAutofill(CTX, null);
     eq(log.picks.length, 0, `picked: ${log.picks.join(', ')}`);
+  });
+});
+
+// A saved answer is kept per kind of option list. "(e) … DACA", saved from a
+// U.S.-status list, was typed into Workday's country list, found nothing, and
+// Citizenship Status stayed empty while the profile said India (Oct 2026).
+const SAVED_DACA = '(e) Authorized to work in the United States under the Deferred Action for Childhood Arrivals (DACA) program';
+const SAVED_US_LIST = ['(a) U.S. citizen or national of the United States', '(b) U.S. lawful permanent resident',
+  SAVED_DACA, '(f) Other (please explain)'];
+
+test('Workday citizenship: an answer saved from a U.S.-status list gives way to the profile', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    const typed = [];
+    env.document.getElementById('citizenshipStatus')
+      .addEventListener('keydown', () => typed.push(env.document.getElementById('citizenshipStatus').value));
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, CTX.answerBank, { nationality: 'India' }),
+      savedSensitive: [{ question: 'Citizenship Status', answer: SAVED_DACA,
+                         variants: [{ options: SAVED_US_LIST, answer: SAVED_DACA }] }],
+    });
+    const result = await run_.runAutofill(ctx, null);
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
+    ok(!typed.some(t => /daca|authorized/i.test(t)), `the saved text is never typed: ${typed.join(' / ')}`);
+    const d = byLabel(result.decisions, 'citizenship status');
+    eq(d.source, 'profile', `${d.source}: ${d.reason}`);
+    ok(d.redecided, 'the saved answer was tried, then the field decided again without it');
+    void log;
+  });
+});
+
+test('Workday citizenship: an OLD saved DACA answer (no options kept) also gives way to the profile', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, CTX.answerBank, { nationality: 'India' }),
+      savedSensitive: [{ question: 'Citizenship Status', answer: SAVED_DACA }],
+    });
+    const result = await run_.runAutofill(ctx, null);
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
+    ok(!log.picks.some(p => /daca/i.test(p)), `picked: ${log.picks.join(', ')}`);
+    eq(byLabel(result.decisions, 'citizenship status').source, 'profile');
+  });
+});
+
+test('Workday nationality: an answer saved from a country list is picked from the opened list', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    const ctx = Object.assign({}, CTX, {
+      savedSensitive: [{ question: 'Primary Nationality', answer: 'Singapore',
+                         variants: [{ options: ['India', 'Singapore', 'United States'], answer: 'Singapore' }] }],
+    });
+    const result = await run_.runAutofill(ctx, null);
+    eq(pillsOf(env.document, 'primaryNationality'), 'Singapore');
+    eq(byLabel(result.decisions, 'primary nationality').source, 'saved_answer');
+    void log;
   });
 });
 
@@ -3549,6 +3609,342 @@ test('Capgemini: a slow country search commits; consent unlocks its question; an
   });
 });
 
+test('EY: a country list whose first page stops at Dominica gets India by search, never Dominica', async () => {
+  // The server matched "India" to the nearest name on that page (EY, Oct 2026).
+  const FIRST_PAGE = ['No Selection', 'Afghanistan', 'Albania', 'Canada', 'Denmark', 'Dominica'];
+  const ALL = FIRST_PAGE.concat(['India', 'Indonesia', 'Nepal']);
+  await withForm(`<form id="careerform">
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      ${sfPicklist('71', 'Country of Residence:', true)}
+      ${sfPicklist('72', 'Country of Residence - Permanent', true)}
+    </form>`, { serverAnswers: { 'Country of Residence:': 'Dominica', 'Country of Residence - Permanent': 'Dominica' } },
+  async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://eyglobal.successfactors.eu/careers' });
+    wireSfList(doc, '71', ALL, FIRST_PAGE.length);
+    wireSfList(doc, '72', ['No Selection', 'Afghanistan', 'Dominica', 'Indonesia'], 3);
+    const result = await run_.runAutofill(CTX, null);
+    const title = id => doc.getElementById(`${id}:_input`).getAttribute('title');
+    eq(title('71'), 'India', JSON.stringify(byLabel(result.decisions, 'country of residence')));
+    // No India in the list at all: left empty, not the nearest name.
+    notOk(['Dominica', 'Indonesia'].includes(title('72')), title('72'));
+  });
+});
+
+// SuccessFactors' rows (Wipro, Oct 2026): empty, with an Add button, and State
+// locked until Country is set.
+const sfDate = (id, label, required) => `<label for="${id}:_datepicker">${label}</label>
+  <div id="${id}:_datepicker" class="datePicker"><div>
+    <ui5-date-picker-xweb-calendar-widget accessible-name="${label}" format-pattern="MM/dd/yyyy"${required ? ' required=""' : ''}></ui5-date-picker-xweb-calendar-widget></div></div>`;
+const sfText = (id, label, required) => `<label for="${id}:_txtFld">${required ? '<span class="requiredField">*</span> ' : ''}${label}</label>
+  <input id="${id}:_txtFld" type="text" aria-required="${!!required}">`;
+const sfExperienceRow = n => `<div><div id="${n}:_sectionComponent" class="layoutWrapper row rcmSectionComponent">
+    ${sfText(`${n}1`, 'Title', true)}${sfText(`${n}2`, 'Current Employer', true)}
+    ${sfDate(`${n}3`, 'Start Date', true)}${sfDate(`${n}4`, 'End Date')}
+    ${sfPicklist(`${n}5`, 'Country/Region', true)}${sfPicklist(`${n}6`, 'State', true)}${sfText(`${n}7`, 'City', true)}
+  </div></div>`;
+const SF_ROW_FORM = (experienceRows, educationRow) => `<form id="careerform">
+  <label for="fn">First Name</label><input id="fn" name="first_name">
+  <label for="em">Email</label><input id="em" name="email" type="email">
+  <div class="rcmFormSection"><h2><button type="button" class="rcmFormSectionTopBar" aria-expanded="true"><span>Professional Experience</span></button></h2>
+    <div class="sectionContent"><div id="150:_bgElementContainer">${experienceRows}</div>
+    <div role="button" id="151:_addRowBtn" class="addRowButton">Add</div></div></div>
+  <div class="rcmFormSection" ><h2 id="201:headerLabel"><button type="button" class="rcmFormSectionTopBar" aria-expanded="true"><span>Education</span></button></h2>
+    <div class="sectionContent" role="group" aria-labelledby="201:headerLabel"><div id="200:_bgElementContainer">${educationRow}</div></div></div>
+  <div class="rcmFormSection"><h2><button type="button" class="rcmFormSectionTopBar" aria-expanded="true"><span>Language Proficiency</span></button></h2>
+    <div class="sectionContent"><div id="300:_bgElementContainer"><div><div class="rcmSectionComponent">${sfPicklist('301', 'Language', true)}</div></div></div></div></div>
+</form>`;
+const SF_EDUCATION_ROW = `<div><div class="rcmSectionComponent">
+    ${sfPicklist('205', 'Education Type', true)}${sfPicklist('212', 'Degree', true)}${sfText('218', 'College/University', true)}
+    ${sfPicklist('223', 'Major', true)}${sfDate('236', 'Start Date', true)}${sfDate('241', 'End Date', true)}
+    ${sfText('250', 'Final Score (CGPA/Percentage)')}${sfPicklist('255', 'Country', true)}${sfDate('272', 'Year Of Passing', true)}
+  </div></div>`;
+
+function defineSfDatePicker(env) {
+  env.window.eval(`customElements.define('ui5-date-picker-xweb-calendar-widget', class extends HTMLElement {
+    connectedCallback() {
+      if (this.shadowRoot) return;
+      const root = this.attachShadow({ mode: 'open' });
+      root.innerHTML = '<input type="text" aria-label="' + this.getAttribute('accessible-name') + '"'
+        + (this.hasAttribute('required') ? ' aria-required="true"' : '') + '>';
+      this.value = '';
+      root.querySelector('input').addEventListener('change', (e) => { this.value = e.target.value; });
+    }
+  });`);
+}
+const sfDateValue = (doc, id) => doc.getElementById(`${id}:_datepicker`).querySelector('ui5-date-picker-xweb-calendar-widget').value;
+const SF_JOBS = [
+  { title: 'AI/ML Engineer', company: 'Zorba AI', location: 'Kolkata, West Bengal, India', from: '04/2024', to: '', current: true },
+  { title: 'Data Analyst', company: 'Prospus', location: 'Pune, India', from: '06/2022', to: '03/2024', current: false },
+];
+const SF_SCHOOLS = [{ school: 'Jadavpur University', degree: 'B.Tech', field: 'Chemical Engineering', from: '2018', to: '2022', gpa: '7.5' }];
+
+test('SuccessFactors: empty rows fill from the profile, one entry per row, adding a row for the next', async () => {
+  const opens = [];
+  const asked = [];
+  const forceAnswer = (f) => { asked.push(f.label); return /^Education Type/.test(f.label) ? 'Graduate' : /^Country/.test(f.label) ? 'India' : null; };
+  await withForm(SF_ROW_FORM(sfExperienceRow('16'), SF_EDUCATION_ROW), { forceAnswer }, async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://career55.sapsf.eu/portalcareer' });
+    defineSfDatePicker(env);
+    const wire = (id, list) => {
+      wireSfList(doc, id, list, 5);
+      doc.getElementById(`${id}:_selectButton`).addEventListener('click', () => opens.push(id));
+    };
+    const wireRow = (n) => {
+      wire(`${n}5`, ['No Selection', 'Canada', 'India']);
+      const state = doc.getElementById(`${n}6:_input`);
+      const stateBtn = doc.getElementById(`${n}6:_selectButton`);
+      state.disabled = true; stateBtn.disabled = true;
+      wire(`${n}6`, ['No Selection', 'Maharashtra', 'West Bengal']);
+      // State unlocks once Country is picked.
+      new env.window.MutationObserver(() => { state.disabled = false; stateBtn.disabled = false; })
+        .observe(doc.getElementById(`${n}5:_input`), { attributes: true, attributeFilter: ['title'] });
+    };
+    wireRow('16');
+    doc.getElementById('151:_addRowBtn').addEventListener('click', () => {
+      const box = doc.createElement('div');
+      box.innerHTML = sfExperienceRow('17');
+      doc.getElementById('150:_bgElementContainer').appendChild(box.firstElementChild);
+      wireRow('17');
+    });
+    wire('205', ['No Selection', 'Graduate', 'Post Graduate']);
+    wire('212', ['No Selection', "Bachelor's Degree", "Master's Degree"]);
+    wire('223', ['No Selection', 'Engineer-Chemical', 'Engineer-Mining']);
+    wire('255', ['No Selection', 'Canada', 'India']);
+    wire('301', ['No Selection', 'English']);
+
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: SF_JOBS, educationEntries: SF_SCHOOLS } });
+    const result = await run_.runAutofill(ctx, null);
+    const val = id => doc.getElementById(`${id}:_txtFld`).value;
+    const title = id => doc.getElementById(`${id}:_input`).getAttribute('title');
+    // Row 1 is job 1, with its location; a current job has no End Date.
+    eq(val('161'), 'AI/ML Engineer');
+    eq(val('162'), 'Zorba AI');
+    eq(sfDateValue(doc, '163'), '04/01/2024');
+    eq(sfDateValue(doc, '164'), '');
+    eq(title('165'), 'India');
+    eq(title('166'), 'West Bengal', 'unlocked by Country, and read again');
+    eq(val('167'), 'Kolkata');
+    // Add made row 2 for job 2. "Pune, India" has no state: left for the person.
+    eq(val('171'), 'Data Analyst');
+    eq(val('172'), 'Prospus');
+    eq(sfDateValue(doc, '174'), '03/01/2024');
+    eq(title('175'), 'India');
+    eq(val('177'), 'Pune');
+    // Education: the year is all the profile has.
+    eq(val('218'), 'Jadavpur University');
+    eq(title('212'), "Bachelor's Degree");
+    eq(sfDateValue(doc, '236'), '01/01/2018');
+    eq(sfDateValue(doc, '272'), '01/01/2022');
+    eq(val('250'), '7.5');
+    eq(title('205'), 'Graduate', 'a short list: the model chooses');
+    eq(title('255'), 'India', 'named by the model, and on the list');
+    // "Chemical Engineering" is not whole words of "Engineer-Chemical": empty, not Mining.
+    eq(title('223'), 'Major');
+    ok(!asked.some(l => /^City/.test(l)), `a text field is never asked: ${asked.join(' | ')}`);
+    // A row kept to the old rule is untouched and never opened to read it.
+    notOk(opens.includes('301'), `opened: ${opens.join(',')}`);
+    eq(byLabel(result.decisions, 'language').action, p.ASK);
+    eq(result.decisions.filter(d => /title$/i.test(d.label || '')).length, 0, 'row fields are not planned as questions');
+  });
+});
+
+test('SuccessFactors: a pre-filled row is matched by its company and keeps what it holds', async () => {
+  await withForm(SF_ROW_FORM(`<div><div class="rcmSectionComponent">
+      ${sfText('161', 'Company Name', true)}${sfText('162', 'Title', true)}${sfPicklist('163', 'Present Employer', true, 'No')}
+      ${sfDate('164', 'From Date', true)}</div></div>`, ''), {}, async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
+    defineSfDatePicker(env);
+    doc.getElementById('161:_txtFld').value = 'Prospus';
+    doc.getElementById('162:_txtFld').value = 'Analyst (their words)';
+    const added = [];
+    doc.getElementById('151:_addRowBtn').addEventListener('click', () => added.push(1));
+    wireSfList(doc, '301', ['No Selection', 'English'], 5);
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: [SF_JOBS[1]], educationEntries: [] } });
+    await run_.runAutofill(ctx, null);
+    eq(doc.getElementById('162:_txtFld').value, 'Analyst (their words)', 'what it holds stays');
+    eq(doc.getElementById('163:_input').getAttribute('title'), 'No');
+    eq(sfDateValue(doc, '164'), '06/01/2022', 'its empty date is filled from that job, not read off "No"');
+    eq(added.length, 0, 'one job, one row');
+  });
+});
+
+test('SuccessFactors row answers: location, dates and what is left alone', () => {
+  const row = label => ({ label, hints: { format: 'MM/dd/yyyy' } });
+  deepEq(rep_.parseLocation('Kolkata, West Bengal, India'), { city: 'Kolkata', state: 'West Bengal', country: 'India' });
+  deepEq(rep_.parseLocation('Pune, India'), { city: 'Pune', state: '', country: 'India' });
+  deepEq(rep_.parseLocation('Kolkata, West Bengal'), { city: 'Kolkata', state: 'West Bengal', country: '' });
+  deepEq(rep_.parseLocation('Remote'), {});
+  const job = SF_JOBS[0];
+  eq(rep_.sfRowAnswer(row('Present Employer'), job, 'experience')[0], 'Yes');
+  eq(rep_.sfRowAnswer(row('End Date'), job, 'experience'), null, 'a current job has no end');
+  const school = SF_SCHOOLS[0];
+  eq(rep_.sfRowAnswer(row('Year Of Passing'), school, 'education')[0], '01/01/2022');
+  eq(rep_.sfRowAnswer(row('Expected Graduation Date'), school, 'education'), null);
+  eq(rep_.sfRowAnswer(row('Institution/University Country/Region'), school, 'education'), null, 'not the school');
+  eq(rep_.sfRowAnswer(row('If "Other", please type in the Institution/University Name'), school, 'education'), null);
+  eq(rep_.sfRowAnswer(row('Highest Degree'), school, 'education'), null, 'a Yes / No, not the degree');
+  eq(rep_.sfRowAnswer(row('City'), school, 'education'), null);
+  eq(rep_.sfRowAnswer(row('Institution/University'), school, 'education')[0], 'Jadavpur University');
+});
+
+// Deloitte (Oct 2026): one long section, its blocks only bold notes over the same labels.
+const sfNote = text => `<div class="RCMFormField rcmFormElement instructionField" role="note"><label for=""></label>
+  <div class="fieldComponentInput"><table><tbody><tr><td><b>${text}</b></td></tr></tbody></table></div></div>`;
+const sfEduBlock = (n, heading) => `${sfNote(heading)}
+  ${sfPicklist(`${n}1`, 'Qualification', true)}${sfPicklist(`${n}2`, 'Specialization', true)}
+  ${sfPicklist(`${n}3`, 'University Name', true)}${sfPicklist(`${n}8`, 'College/Institute Name', true)}
+  ${sfDate(`${n}4`, 'Start Date', true)}${sfDate(`${n}5`, 'End Date', true)}${sfDate(`${n}6`, 'Qualification Year', true)}`;
+const DELOITTE_FORM = `<form id="careerform"><div class="rcmFormSection"><div class="sectionContent">
+  <div id="50:_sectionComponent" class="layoutWrapper row rcmSectionComponent">
+    <label for="fn">First Name</label><input id="fn" name="first_name">
+    ${sfNote('Current Work Experience Details')}
+    ${sfNote('Note: If you are a fresher, Put NA in all fields')}
+    ${sfText('81', 'Current Company Name', true)}${sfText('82', 'Designation', true)}
+    ${sfDate('83', 'Start Date', true)}${sfDate('84', 'End Date')}
+    ${sfNote('Previous Work Experience Details')}
+    ${sfText('91', 'Previous Company Name', true)}${sfText('92', 'Designation', true)}
+    ${sfDate('93', 'Start Date')}${sfDate('94', 'End Date')}
+    ${sfEduBlock('6', 'Highest Education Details')}
+    ${sfEduBlock('7', '2nd Highest Education Details')}
+  </div></div></div></form>`;
+
+test('Deloitte: each block under its heading fills from its own school or job; Start Date is never the availability date', async () => {
+  const schools = [
+    { school: 'South Point High School', degree: 'Higher Secondary', field: 'Science', from: '2016', to: '2018', gpa: '' },
+    { school: 'Jadavpur University', degree: 'B.Tech', field: 'Chemical', from: '2018', to: '2022', gpa: '7.5' },
+  ];
+  await withForm(DELOITTE_FORM, {}, async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://career44.sapsf.com/portalcareer' });
+    defineSfDatePicker(env);
+    // Qualification: B.Tech is off the first page and only a search finds it, paired with B.E.
+    const QUALS = ['No Selection', 'B.A.', 'B.Com', 'B.Sc', 'Diploma'].concat(['B.E./B.Tech', 'Class XII', 'M.E./M.Tech']);
+    for (const n of ['6', '7']) {
+      wireSfList(doc, `${n}1`, QUALS, 5);
+      wireSfList(doc, `${n}2`, ['No Selection', 'Chemical', 'Science', 'Mining'], 4);
+      wireSfList(doc, `${n}3`, ['No Selection', 'Jadavpur University', 'South Point High School'], 3);
+      wireSfList(doc, `${n}8`, ['No Selection', 'A.C. College', 'B.P. Poddar Institute',
+        'Jadavpur Sammilita Balika Vidyalaya', 'Jadavpur University', 'South Point High School'], 3);
+    }
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, BANK, { available_start_date: 'Immediately', degree: 'B.Tech', major: 'Chemical',
+                                            university: 'Jadavpur University' }),
+      facts: { educationEntries: schools, workExperience: SF_JOBS },
+    });
+    const result = await run_.runAutofill(ctx, null);
+    const title = id => doc.getElementById(`${id}:_input`).getAttribute('title');
+    const why = needle => JSON.stringify(result.decisions.filter(d => (d.label || '').includes(needle))
+      .map(d => [d.action, d.value, d.reason]));
+
+    eq(title('61'), 'B.E./B.Tech', why('Qualification'));
+    eq(title('62'), 'Chemical');
+    eq(title('63'), 'Jadavpur University');
+    eq(title('68'), 'Jadavpur University', why('College'));
+    eq(sfDateValue(doc, '64'), '01/01/2018', why('Start Date'));
+    eq(sfDateValue(doc, '65'), '01/01/2022');
+    eq(sfDateValue(doc, '66'), '01/01/2022');
+    // The second-highest is the school, not the B.Tech again.
+    eq(title('71'), 'Class XII', why('Qualification'));
+    eq(title('72'), 'Science');
+    eq(title('73'), 'South Point High School');
+    eq(title('78'), 'South Point High School');
+    eq(sfDateValue(doc, '74'), '01/01/2016');
+    eq(sfDateValue(doc, '76'), '01/01/2018');
+
+    eq(doc.getElementById('81:_txtFld').value, 'Zorba AI');
+    eq(doc.getElementById('82:_txtFld').value, 'AI/ML Engineer');
+    eq(sfDateValue(doc, '83'), '04/01/2024');
+    eq(sfDateValue(doc, '84'), '', 'a current job has no end date');
+    eq(doc.getElementById('91:_txtFld').value, 'Prospus', 'the previous job, not the current one');
+    eq(doc.getElementById('92:_txtFld').value, 'Data Analyst');
+    eq(sfDateValue(doc, '93'), '06/01/2022');
+    eq(sfDateValue(doc, '94'), '03/01/2024');
+  });
+});
+
+// SuccessFactors' upload box: no file input until "+" opens its menu.
+const sfBox = (id, label, required, hasFile) => `<div class="RCMFormField rcmFormElement attachmentField">
+    <label id="${id}l" for="" class="rcmFormFieldLabel">${required ? '<span class="requiredField" aria-hidden="true">*</span> ' : ''}${label}</label>
+    <div id="${id}:_attach" class="${hasFile ? 'successBtn' : 'attachmentBtn'}">
+      <div role="button" id="${id}:_attachDownloadLabel" class="attachmentLabel attachmentText${hasFile ? '' : ' displayNone'}"><span>${hasFile ? 'mine.pdf' : ''}</span></div>
+      <span tabindex="0" role="button" id="${id}:_attachIcon" class="glyphicon addAttachments"></span>
+    </div></div>`;
+
+function wireSfUpload(env, id, opts) {
+  const doc = env.document;
+  const options = opts || {};
+  const log = { opened: 0, uploaded: [] };
+  doc.getElementById(`${id}:_attachIcon`).addEventListener('click', () => {
+    log.opened++;
+    const menu = doc.createElement('div');
+    menu.innerHTML = `<div class="attachmentUploadOptions"><span>Upload from Device</span><br>
+      <input type="file" class="fileUpload" name="fileData1"></div>`;
+    doc.body.appendChild(menu);
+    menu.querySelector('input').addEventListener('change', (e) => {
+      log.uploaded.push(e.target.files[0] && e.target.files[0].name);
+      if (options.rejects) return;
+      setTimeout(() => {
+        doc.getElementById(`${id}:_attachDownloadLabel`).classList.remove('displayNone');
+        menu.remove();
+      }, 50);
+    });
+  });
+  return log;
+}
+
+test('SuccessFactors: the resume goes in through the "+" menu, and a box with a file is left alone', async () => {
+  await withForm(`<form id="careerform">
+      ${sfBox('72', 'Resume', true)}${sfBox('74', 'Cover letter', false)}
+      ${sfBox('76', 'Supporting Documentation (References, Transcript, etc.)', false)}
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+    </form>`, {}, async (env, sent) => {
+    env.dom.reconfigure({ url: 'https://career5.successfactors.eu/careers' });
+    const resume = wireSfUpload(env, '72');
+    const other = wireSfUpload(env, '76');
+    const cover = wireSfUpload(env, '74');
+    const result = await run_.runAutofill(CTX, null);   // no cover letter on file
+    deepEq(resume.uploaded.length, 1, 'one upload');
+    ok(sent.some(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'resume'));
+    const d = byLabel(result.decisions, 'resume');
+    eq(d.action, p.DOCUMENT, `${d.action}: ${d.reason}`);
+    eq(d.outcome, 'ok');
+    eq(env.document.querySelectorAll('input.fileUpload').length, 0, 'the menu closed with the upload');
+    eq(other.opened, 0, 'supporting documents are not ours');
+    eq(cover.opened, 0, 'no cover letter on file: not opened');
+    eq(byLabel(result.decisions, 'cover letter').action, p.ASK);
+    eq(env.document.getElementById('fn').value, 'Ada', 'and the form is filled after');
+  });
+
+  await withForm(`<form id="careerform">${sfBox('72', 'Resume', true, true)}
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+    </form>`, {}, async (env) => {
+    env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
+    const log = wireSfUpload(env, '72');
+    await run_.runAutofill(CTX, null);
+    eq(log.opened, 0, 'a file already there may be tailored for this job');
+  });
+});
+
+test('SuccessFactors: an upload the page never confirms is the person\'s to attach', async () => {
+  await withForm(`<form id="careerform">${sfBox('72', 'Resume', true)}
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+    </form>`, {}, async (env) => {
+    env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
+    wireSfUpload(env, '72', { rejects: true });
+    const result = await run_.runAutofill(CTX, null);
+    const d = byLabel(result.decisions, 'resume');
+    eq(d.action, p.ASK, `${d.action}: ${d.reason}`);
+    eq(d.reason, 'attach this one yourself');
+    ok(result.decisions.every(x => !/upload from device/i.test(x.label || '')), 'the open menu is not a field');
+  });
+});
+
 test('a radio group resting on "No Selection" is unanswered, and takes the profile\'s answer', async () => {
   // ExxonMobil's Voluntary Disclosures (Oct 2026): Gender starts on a selected
   // "No Selection", read as already filled in, and it stayed there.
@@ -3595,6 +3991,18 @@ test('the resume pass asks only what is still empty, however many filled fields 
     // Its asterisk comes first here, and the rule still knows it.
     eq(byLabel(result.decisions, 'typed signature').label, 'Typed Signature');
     eq(env.document.getElementById('sig').value, 'Ada Lovelace');
+  });
+});
+
+test('the resume pass writes its answer in the field\'s own shape: a date picker gets MM/dd/yyyy, never "2022"', async () => {
+  // Deloitte's Qualification Year (Oct 2026): "2022" typed raw was "Invalid date".
+  await withForm(`<form id="careerform">
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      ${sfDate('51', 'Year of Award of Fellowship', true)}
+    </form>`, { forceAnswer: (f) => (/Fellowship/.test(f.label) ? '2022' : null) }, async (env) => {
+    defineSfDatePicker(env);
+    await run_.runAutofill(Object.assign({}, CTX, { resumePass: true }), null);
+    eq(sfDateValue(env.document, '51'), '01/01/2022');
   });
 });
 
