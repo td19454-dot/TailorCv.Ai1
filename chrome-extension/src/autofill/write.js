@@ -18,7 +18,8 @@
 import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText } from './match.js';
 import { coerce, candidatesFor, citizenshipOption } from './plan.js';
 import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isNodeDrawn, hiddenReason,
-         isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions, picklistButton }
+         isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions, picklistButton,
+         isBlankOption, datePickerHost }
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
 import { countryOf, countryOption, countryShare } from './countries.js';
@@ -28,12 +29,13 @@ const probe = () => globalThis.__tcvFieldProbe;
 
 // ── event plumbing ───────────────────────────────────────────
 
-// Composed: an input inside a web component's shadow DOM (SuccessFactors' UI5
-// date picker) must be heard by the component around it, and a non-composed
-// event stops at the shadow root.
+// Composed like the real event: input crosses a shadow root, change does not.
+// A composed change reached SuccessFactors' own listener on its UI5 date picker,
+// which reads the component's change event's detail.value, and threw (Oct 2026).
 function fire(el, type, init) {
   try {
-    el.dispatchEvent(new globalThis.Event(type, Object.assign({ bubbles: true, composed: true }, init || {})));
+    el.dispatchEvent(new globalThis.Event(type,
+      Object.assign({ bubbles: true, composed: type !== 'change' }, init || {})));
   } catch (e) { /* a detached node: the caller's verify will catch it */ }
 }
 
@@ -586,13 +588,6 @@ function openWidget(row) {
   if (target !== el) focus(el);
 }
 
-/** Whether `el` is the input inside a UI5 date picker's shadow DOM. */
-function inUi5DatePicker(el) {
-  const root = el && el.getRootNode && el.getRootNode();
-  const host = root && root.nodeType === 11 ? root.host : null;
-  return !!(host && /date-picker/i.test(host.tagName || ''));
-}
-
 /** The text input inside a widget, which is not always the element we hold. */
 function typableInput(row) {
   const el = row.el;
@@ -626,6 +621,7 @@ function visibleOptionNodes(doc, el) {
   // open, results included (see isNodeDrawn).
   const onScreen = isWorkdayPrompt(el) ? isNodeDrawn : isNodeVisible;
   const shown = nodes.filter(n => (n.textContent || '').trim() && onScreen(n) && !isChosenValue(n)
+                                  && !isBlankOption(n)
                                   && !(n.getAttribute && n.getAttribute('aria-disabled') === 'true'));
   return el ? ownOptions(doc, el, shown) : shown;
 }
@@ -806,7 +802,36 @@ function highlightedMatches(el, shapes) {
 /** Does this open list hold an option for any of the answer's shapes? */
 function listOffersAny(shapes, nodes) {
   const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
-  return shapes.some(sh => labels.some(t => commitMatches(sh, t)) || bestOptionMatch(sh, labels) != null);
+  return shapes.some((sh) => {
+    // A country is offered only by naming it. SuccessFactors lists one page at
+    // a time and searches its server: "British Indian Ocean Territory" on the
+    // first page counted as offering "Indian", so the search was never waited for.
+    if (isStrictCountry(sh, labels)) return !!countryOption(countryOf(sh), labels);
+    return labels.some(t => commitMatches(sh, t))
+      || (!inPagedList(nodes) && bestOptionMatch(sh, labels) != null);
+  });
+}
+
+/**
+ * Rows of a SuccessFactors picklist: one page of a long list, or search results
+ * still on their way. A near match there is only the nearest row on this page:
+ * "Engineer-Mining" for a Chemical Engineering degree (ExxonMobil, Oct 2026).
+ * Exact or whole-word, or nothing — an empty field the person sees beats a wrong one.
+ */
+function inPagedList(nodes) {
+  return nodes.some(n => n.closest && n.closest('[id$="_listSelect"]'));
+}
+
+/**
+ * `value` names a country that only that country's row may answer: in a list of
+ * countries, or when it is another name for one ("Indian" is a whole word of
+ * "British Indian Ocean Territory", which is no country we know, so that list
+ * reads as no list of countries at all).
+ */
+function isStrictCountry(value, labels) {
+  const country = countryOf(value);
+  if (!country) return false;
+  return countryShare(labels) >= 0.5 || normalizeOptionText(value) !== normalizeOptionText(country);
 }
 
 async function clickMatchingOption(el, value, nodes) {
@@ -819,13 +844,13 @@ async function clickMatchingOption(el, value, nodes) {
   // A country in a list of countries: that country or nothing. "Indian" is a
   // whole word of "British Indian Ocean Territory", and PwC's Country of Birth
   // was filled with it (Oct 2026).
-  const country = countryOf(value);
-  if (idx < 0 && country && countryShare(labels) >= 0.5) {
-    const pick = countryOption(country, labels);
+  if (idx < 0 && isStrictCountry(value, labels)) {
+    const pick = countryOption(countryOf(value), labels);
     idx = pick == null ? -1 : labels.indexOf(pick);
     if (idx < 0) return false;
   }
   if (idx < 0) idx = labels.findIndex(t => commitMatches(value, t));
+  if (idx < 0 && inPagedList(nodes)) return false;
   if (idx < 0) {
     // No whole-word match among what is on screen. Fall back to the fuzzy
     // matcher, but only against the rows actually offered — so this can pick a
@@ -1219,7 +1244,10 @@ function pickReadFirst(readFirst, labels) {
 function committed(row, value) {
   const after = reprobe(row);
   if (!after) return false;
-  if (after.invalid) return false;
+  // Not for a SuccessFactors picklist: it flags itself "required" when opened
+  // empty and clears that later, while its title already holds the choice. A
+  // correct "No" was reported as not sticking (ExxonMobil, Oct 2026).
+  if (after.invalid && !picklistButton(row.el)) return false;
   if (!after.filled) return false;          // typed but never committed
   if (differentCountries(value, after.value)) return false;
   return commitMatches(value, after.value);
@@ -1509,7 +1537,7 @@ export async function applyDecision(decision) {
       wrote = setText(row.el, value);
       // A UI5 date picker (SuccessFactors) takes a typed date on Enter: the
       // input event alone leaves its own value — the one the form reads — empty.
-      if (wrote && inUi5DatePicker(row.el)) {
+      if (wrote && datePickerHost(row.el)) {
         fireKey(row.el, 'keydown', 'Enter');
         fireKey(row.el, 'keyup', 'Enter');
         fire(row.el, 'change');

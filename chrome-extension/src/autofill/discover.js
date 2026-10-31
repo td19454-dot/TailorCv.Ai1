@@ -733,7 +733,27 @@ function describeNode(el) {
 export function isApplicationPage(doc) {
   const form = findForm(doc);
   if (form && form.isForm) return form;
-  return tilesOnlyForm(doc);
+  return tilesOnlyForm(doc) || closedSectionsForm(doc);
+}
+
+/**
+ * A SuccessFactors page whose questions are all in closed sections: no visible
+ * field, so no form by any count — the panel offered the paste-a-description
+ * box, and Autofill, which is what opens the sections, could not be reached.
+ * Known by its section bars instead. Nothing here opens them: the page stays
+ * as it is until Autofill is pressed (runAutofill → expandSections).
+ */
+function closedSectionsForm(doc) {
+  const d = doc || globalThis.document;
+  const url = (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '';
+  if (detectAts(url) !== 'successfactors') return null;
+  let bar = null;
+  try { bar = d.querySelector('button.rcmFormSectionTopBar'); } catch (e) { bar = null; }
+  if (!bar) return null;
+  return {
+    root: bar.closest('form') || d.body,
+    score: 0, fields: [], opaqueHosts: 0, ats: 'successfactors', url, isForm: true, sectionsClosed: true,
+  };
 }
 
 // ── profile-item tiles (Oracle Candidate Experience) ─────────
@@ -888,6 +908,9 @@ export function describeFields(form) {
       // the search and each answer is a clicked result. See commitPromptMulti.
       multiPrompt: !!(p.workdayMultiselect && p.workdayMultiselect(el)),
     };
+
+    // SuccessFactors marks a required field before its label: "* Typed Signature".
+    row.label = String(row.label || '').replace(/^\s*\*+\s*/, '');
 
     // A label that only says "Please Select One": the question is the section
     // heading. NVIDIA's gender dropdown is that, under "Self-Identification of
@@ -1505,9 +1528,14 @@ function hasCountryWidget(el) {
 /** Everything a writer needs to shape a value for this specific control. */
 function fieldHints(el) {
   const g = a => (el.getAttribute && el.getAttribute(a)) || '';
+  // A UI5 date picker states its shape on the component, not on the input
+  // inside: "When are you available to start working?" read as plain text, and
+  // got "Immediately" — "Invalid date" (ExxonMobil, Oct 2026).
+  const picker = datePickerHost(el);
   return {
     type: g('type').toLowerCase(),
-    placeholder: g('placeholder'),
+    placeholder: g('placeholder') || (picker && picker.getAttribute('placeholder')) || '',
+    format: (picker && picker.getAttribute('format-pattern')) || '',
     pattern: g('pattern'),
     maxLength: el.maxLength > 0 ? el.maxLength : null,
     autocomplete: g('autocomplete').toLowerCase(),
@@ -1589,7 +1617,27 @@ function showsPlaceholder(p, stale) {
 
 /** A placeholder or group header: listed, but nothing anyone can pick ("Select One"). */
 function isDisabledOption(n) {
-  return !!(n.getAttribute && n.getAttribute('aria-disabled') === 'true');
+  return !!(n.getAttribute && n.getAttribute('aria-disabled') === 'true') || isBlankOption(n);
+}
+
+/**
+ * SuccessFactors' first row, "No Selection": a real, clickable row that means
+ * no answer. Read as an option it starts with "No", so the Yes / No rules saw
+ * two Nos and gave up, and the model picked it as its answer (ExxonMobil, Oct 2026).
+ */
+export function isBlankOption(n) {
+  return /^\s*no selection\s*$/i.test((n && n.textContent) || '');
+}
+
+/** The UI5 date picker around an input in its shadow DOM (nested shadow roots included), or null. */
+export function datePickerHost(el) {
+  let root = el && el.getRootNode && el.getRootNode();
+  for (let i = 0; root && root.nodeType === 11 && i < 6; i++) {
+    const host = root.host;
+    if (host && /date-picker/i.test(host.tagName || '')) return host;
+    root = host && host.getRootNode && host.getRootNode();
+  }
+  return null;
 }
 
 function optionLabelsIn(node) {

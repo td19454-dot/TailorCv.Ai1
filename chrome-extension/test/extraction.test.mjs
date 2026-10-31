@@ -317,6 +317,39 @@ test('Workday: a late form on a page with no description shows the apply panel (
      'the apply panel must appear once the form renders');
 });
 
+test('SuccessFactors: every section closed still offers Autofill, which opens them and fills', async () => {
+  // Candidate Profile (Oct 2026): closed sections hide every field, so there was
+  // no form, no Autofill to press — and pressing it is what opens them. Rendered
+  // after the panel has given up reading a posting (about 9s), so only the
+  // watcher can notice a form with no visible field.
+  const page = loadPage('<!doctype html><html><body></body></html>',
+    'https://career4.successfactors.com/portalcareer', true);
+  page.document.addEventListener('click', (e) => {
+    const bar = e.target.closest && e.target.closest('button.rcmFormSectionTopBar');
+    if (!bar) return;
+    bar.setAttribute('aria-expanded', 'true');
+    bar.closest('.rcmFormSection').querySelector('.sectionContent').style.display = '';
+  });
+  renderLater(page, `<form id="careerform">
+    ${['Profile Information', 'Job-Specific Information'].map((title, i) => `<div class="rcmFormSection">
+      <h2><button type="button" class="topBar rcmFormSectionTopBar" aria-expanded="false">${title}</button></h2>
+      <div class="sectionContent sectionContentClosed" style="display:none">
+        ${i === 0 ? '<label for="mail">Email</label><input id="mail" name="contactEmail" type="text">'
+                  : '<label for="note">Notes</label><input id="note" name="notes" type="text">'}
+      </div></div>`).join('')}
+  </form>`, 12000);
+
+  ok(await waitForText(page, /Autofill this application/, 25000), 'Autofill is offered');
+  ok(await waitForText(page, /closed sections/, 2000), 'and says what it will do');
+  const bars = () => Array.from(page.document.querySelectorAll('button.rcmFormSectionTopBar'));
+  ok(bars().every(b => b.getAttribute('aria-expanded') === 'false'), 'nothing opens until it is pressed');
+
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 30000), 'the fill finishes');
+  ok(bars().every(b => b.getAttribute('aria-expanded') === 'true'), 'the sections were opened');
+  eq(page.document.getElementById('mail').value, 'ada@example.com');
+});
+
 test('Workday: a new step on the SAME URL is offered as the next page', async () => {
   const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
   renderLater(page, fixtures.WORKDAY_MYINFO, 200);

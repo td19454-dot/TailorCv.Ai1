@@ -327,13 +327,13 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
         db.close()
 
 
-FORCE_MAX_FIELDS = 15
+FORCE_MAX_FIELDS = 20   # chrome-extension/src/autofill/run.js MAX_FORCED holds the same
 
 
 def _force_targets(fields) -> list:
     """The fields a forced pass may answer: never sensitive, never-fill, an
     upload, a field the profile names but holds nothing for (recallOnly: Middle
-    Name for someone with none), or a motivation answer. At most 15."""
+    Name for someone with none), or a motivation answer. At most FORCE_MAX_FIELDS."""
     return [f for f in fields
             if not f.sensitive and not getattr(f, "neverFill", False)
             and not f.documentSlot and not f.recallOnly and not f.compose][:FORCE_MAX_FIELDS]

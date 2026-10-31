@@ -1658,6 +1658,17 @@ test('work eligibility and expected compensation in any wording read the profile
   notOk(current.action === p.FILL && current.value === '2500000', `${current.action} ${current.value}`);
 });
 
+test('a previous-employer question reads every company it names', () => {
+  const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
+  const worked = company => Object.assign({}, CTX, { facts: { workExperience: [{ company }] } });
+  const EXXON = 'Have you previously worked for ExxonMobil, Imperial, Pioneer, Denbury or any its affiliates as an employee?';
+  const PWC = 'Have you ever been employed (including internships) by PriceWaterhouseCoopers (our independent auditor) or any PwC affiliated company?';
+  eq(p.decide([yn(EXXON)], worked('Acme'), null, null)[0].value, 'No');
+  eq(p.decide([yn(EXXON)], worked('Imperial'), null, null)[0].value, 'Yes', 'the second company named');
+  eq(p.decide([yn(PWC)], worked('Acme'), null, null)[0].value, 'No');
+  eq(p.decide([yn(PWC)], worked('PwC'), null, null)[0].value, 'Yes', 'by its other name in the question');
+});
+
 test('"Have you worked at DoorDash?" answered in its own sentences', () => {
   const OPTS = ['I have not worked at DoorDash', 'I am a previous employee', 'I am a previous DoorDash Dasher'];
   const row = options => field('Have you worked at DoorDash?*', { kind: 'combobox', options, required: true });

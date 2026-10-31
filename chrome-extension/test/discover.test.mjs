@@ -223,6 +223,30 @@ test('Walmart "Please select your gender." keeps its label and is answered from 
   });
 });
 
+test('a SuccessFactors page with every section closed is an application page', async () => {
+  const CLOSED = `<form id="careerform"><div class="rcmFormSection">
+    <h2><button type="button" class="topBar rcmFormSectionTopBar" aria-expanded="false">Profile Information</button></h2>
+    <div class="sectionContent sectionContentClosed" style="display:none">
+      <label for="e">Email</label><input id="e" type="text"></div></div></form>`;
+  const SF = 'https://career4.successfactors.com/portalcareer';
+  await withDoc(CLOSED, (env) => {
+    env.dom.reconfigure({ url: SF });
+    const form = d.isApplicationPage(env.document);
+    ok(form && form.sectionsClosed, 'known by its section bars');
+    eq(form.fields.length, 0);
+    eq(form.ats, 'successfactors');
+    eq(env.document.querySelector('button').getAttribute('aria-expanded'), 'false', 'and nothing was opened');
+  });
+  await withDoc(CLOSED, (env) => {
+    env.dom.reconfigure({ url: 'https://example.test/apply' });
+    eq(d.isApplicationPage(env.document), null, 'not on another site');
+  });
+  await withDoc('<div id="searchResults"><a href="/job/1">Network Engineer</a></div>', (env) => {
+    env.dom.reconfigure({ url: SF });
+    eq(d.isApplicationPage(env.document), null, 'not a SuccessFactors page with no sections');
+  });
+});
+
 test('an input in a shadow root inside a hidden section is hidden', async () => {
   // SuccessFactors' UI5 date pickers in a closed section read as visible while
   // every other field there was hidden (ExxonMobil, Oct 2026).

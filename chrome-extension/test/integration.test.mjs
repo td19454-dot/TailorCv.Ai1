@@ -3355,16 +3355,77 @@ const SF_FORM = `<form id="careerform">
           title="Are you currently a member of the Board of Directors of any for-profit or non-profit organization?"
           class="rcmpaginatedselectinput fd-input" id="392:_input" type="text">
         <button type="button" class="rcmpaginatedselectbutton" id="392:_selectButton"></button></div></span>
-      <label for="619:_datepicker">Available start date</label>
+      <label for="619:_datepicker">When are you available to start working?</label>
       <div id="619:_datepicker" class="datePicker"><div>
-        <ui5-date-picker-xweb-calendar-widget accessible-name="Available start date" format-pattern="MM/dd/yyyy"></ui5-date-picker-xweb-calendar-widget>
+        <ui5-date-picker-xweb-calendar-widget accessible-name="When are you available to start working?" format-pattern="MM/dd/yyyy" required=""></ui5-date-picker-xweb-calendar-widget>
       </div></div>
+      ${sfPicklist('381', 'What is your country/region of birth?', true)}
+      ${sfPicklist('463', 'Have you previously worked for ExxonMobil, Imperial, Pioneer, Denbury or any its affiliates as an employee?', true)}
+      ${sfPicklist('601', 'Country/Region where you obtained the highest education', true)}
+      ${sfPicklist('594', 'Major/Field of study of highest education completed or in progress', true)}
+      <label for="pwc">Have you ever been employed by PwC?</label><input id="pwc" type="text" aria-required="true">
+      <label for="iy">If yes, please provide type of employment</label><input id="iy" type="text">
+      <div id="440:_datepicker" class="datePicker"><div>
+        <ui5-date-picker-xweb-calendar-widget id="pwcStart" accessible-name="Start Date" format-pattern="MM/dd/yyyy"></ui5-date-picker-xweb-calendar-widget>
+      </div></div>
+      <label for="454:_txtFld">Job Title</label><input id="454:_txtFld" name="titlePWC" type="text">
+      <label for="yc">Year you obtained this citizenship</label><input id="yc" type="text">
     </div>
   </div>
   <div id="137:_bgElementContainer"><div class="rcmSectionComponent">
     <label for="141:_txtFld">Company Name</label><input id="141:_txtFld" name="VFLD6" type="text" aria-required="true">
   </div></div>
+  <div id="207:_bgElementContainer"><div class="rcmSectionComponent">
+    ${sfPicklist('212', 'Institution/University Country/Region', true, 'India')}
+    ${sfPicklist('230', 'Degree', true, 'Bachelor')}
+    ${sfPicklist('244', 'Major/Field of Study', true, 'Engineer-Chemical')}
+  </div></div>
 </form>`;
+
+function sfPicklist(id, label, required, chosen) {
+  return `<label for="${id}:_input">${label}</label>
+    <span class="sfCascadingPicklist"><div class="paginatedPicklistContainer fd-input-group fd-input-group--control">
+      <input role="combobox" aria-owns="${id}:_listSelect" placeholder="No Selection" aria-expanded="false"
+        aria-required="${required}" aria-label="${label}" title="${chosen || label}"
+        class="rcmpaginatedselectinput fd-input" id="${id}:_input" type="text">
+      <button type="button" class="rcmpaginatedselectbutton" id="${id}:_selectButton"></button></div></span>`;
+}
+
+// One page of a long list on opening; typing searches the whole list, and the
+// answer arrives later, like SuccessFactors' round trip to its server.
+const SF_COUNTRIES = ['No Selection', 'Afghanistan', 'Albania', 'British Indian Ocean Territory', 'Canada', 'India', 'Nepal'];
+const SF_MAJORS = ['No Selection', 'Engineer-Aerospace', 'Engineer-Chemical', 'Engineer-Mining'];
+
+function wireSfList(doc, id, options, pageSize) {
+  const input = doc.getElementById(`${id}:_input`);
+  const listId = `${id}:_listSelect`;
+  const draw = (rows) => {
+    let list = doc.getElementById(listId);
+    if (!list) {
+      list = doc.createElement('ul');
+      list.id = listId;
+      list.setAttribute('role', 'listbox');
+      doc.body.appendChild(list);
+    }
+    input.setAttribute('aria-expanded', 'true');
+    list.innerHTML = rows.map((o, i) => `<li role="option" id="${id}:item${i}">${o}</li>`).join('');
+    for (const li of list.querySelectorAll('li')) {
+      li.addEventListener('click', () => {
+        input.setAttribute('title', li.textContent === 'No Selection' ? input.getAttribute('aria-label') : li.textContent);
+        input.value = li.textContent;
+        list.remove();
+        input.setAttribute('aria-expanded', 'false');
+      });
+    }
+  };
+  doc.getElementById(`${id}:_selectButton`).addEventListener('click', () => draw(options.slice(0, pageSize)));
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase();
+    setTimeout(() => {
+      if (input.getAttribute('aria-expanded') === 'true') draw(options.filter(o => o.toLowerCase().includes(q)));
+    }, 40);
+  });
+}
 
 function wireSuccessFactors(env) {
   const doc = env.document;
@@ -3380,7 +3441,7 @@ function wireSuccessFactors(env) {
     if (doc.getElementById('393:_listSelect')) return;
     const list = doc.createElement('ul');
     list.id = '393:_listSelect';
-    list.innerHTML = '<li>Yes</li><li>No</li>';
+    list.innerHTML = '<li>No Selection</li><li>Yes</li><li>No</li>';
     doc.body.appendChild(list);
     input.setAttribute('aria-expanded', 'true');
     for (const li of list.querySelectorAll('li')) {
@@ -3392,23 +3453,99 @@ function wireSuccessFactors(env) {
       });
     }
   });
-  // The UI5 date picker: its value is its own, set from the inner input's change.
-  env.window.eval(`customElements.define('ui5-date-picker-xweb-calendar-widget', class extends HTMLElement {
+  wireSfList(doc, '381', SF_COUNTRIES, 5);
+  wireSfList(doc, '463', ['No Selection', 'No', 'Yes'], 3);
+  wireSfList(doc, '601', SF_COUNTRIES, 5);
+  wireSfList(doc, '594', SF_MAJORS, 2);
+  // The UI5 date picker: nested shadow roots, no placeholder on the real input,
+  // its value set from that input's change, and its own change event carrying
+  // detail.value — which SuccessFactors' listener on the component reads.
+  env.window.__dateErrors = [];
+  env.window.eval(`
+  customElements.define('ui5-date-picker-xweb-calendar-widget', class extends HTMLElement {
     connectedCallback() {
       if (this.shadowRoot) return;
       const root = this.attachShadow({ mode: 'open' });
-      root.innerHTML = '<input type="text" placeholder="MM/DD/YYYY" aria-label="' + this.getAttribute('accessible-name') + '">';
+      const inner = document.createElement('div');
+      root.appendChild(inner);
+      const innerRoot = inner.attachShadow({ mode: 'open' });
+      innerRoot.innerHTML = '<input type="text" aria-label="' + this.getAttribute('accessible-name') + '"'
+        + (this.hasAttribute('required') ? ' aria-required="true"' : '') + '>';
       this.value = '';
-      this.addEventListener('change', () => { this.value = root.querySelector('input').value; });
+      innerRoot.querySelector('input').addEventListener('change', (e) => {
+        this.value = e.target.value;
+        this.dispatchEvent(new CustomEvent('change', { detail: { value: e.target.value } }));
+      });
+      this.addEventListener('change', (e) => {
+        if (!e.detail) window.__dateErrors.push('a change event with no detail reached the component');
+      });
     }
   });`);
   env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
 }
 
+test('the resume pass asks only what is still empty, however many filled fields are flagged', async () => {
+  // ExxonMobil (Oct 2026): filled picklists the form still flagged took all the
+  // places, and the questions really left never reached the model.
+  const flagged = Array.from({ length: 22 }, (_, i) =>
+    `<label for="q${i}">Internal question ${i}?</label>
+     <input id="q${i}" name="q${i}" type="text" required aria-invalid="true" value="kept ${i}">`).join('');
+  const asked = [];
+  await withForm(`<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      ${flagged}
+      <label for="bond">Are you bound by any bond to serve the Government?</label>
+      <select id="bond" required><option value="">Select…</option><option>Yes</option><option>No</option></select>
+      <label for="sig"><span class="requiredField" aria-hidden="true">*</span> Typed Signature</label>
+      <input id="sig" name="disclaimerAcknowledge" type="text" aria-required="true">
+    </form>`, { forceAnswer: (f) => { asked.push(f.label); return /bound by/.test(f.label) ? 'No' : null; } }, async (env) => {
+    const result = await run_.runAutofill(Object.assign({}, CTX, { resumePass: true }), null);
+    deepEq(asked, ['Are you bound by any bond to serve the Government?']);
+    eq(env.document.getElementById('bond').value, 'No');
+    eq(env.document.getElementById('q0').value, 'kept 0', 'a filled answer is not rewritten');
+    // Its asterisk comes first here, and the rule still knows it.
+    eq(byLabel(result.decisions, 'typed signature').label, 'Typed Signature');
+    eq(env.document.getElementById('sig').value, 'Ada Lovelace');
+  });
+});
+
+test('the resume pass sends up to 20 empty questions', async () => {
+  const empties = Array.from({ length: 23 }, (_, i) =>
+    `<label for="e${i}">Which tool number ${i} do you use?</label>
+     <select id="e${i}" required><option value="">Select…</option><option>Alpha</option><option>Beta</option></select>`).join('');
+  const asked = [];
+  await withForm(`<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      ${empties}
+    </form>`, { forceAnswer: (f) => { asked.push(f.label); return null; } }, async () => {
+    await run_.runAutofill(Object.assign({}, CTX, { resumePass: true }), null);
+    eq(asked.length, 20);
+  });
+});
+
 test('SuccessFactors: closed sections are opened, picklists and UI5 dates filled, rows left as they are', async () => {
   await withForm(SF_FORM, {}, async (env) => {
     wireSuccessFactors(env);
-    const result = await run_.runAutofill(CTX, null);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+      { available_start_date: 'Immediately', nationality: 'India', major: 'Chemical Engineering' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const title = id => env.document.getElementById(`${id}:_input`).getAttribute('title');
+    // The list shows one page; India is found by waiting for the search, and
+    // "Indian" never lands on "British Indian Ocean Territory".
+    eq(title('381'), 'India', JSON.stringify(byLabel(result.decisions, 'country/region of birth')));
+    // "No Selection" is no "No": Yes / No still reads as Yes / No.
+    eq(title('463'), 'No', JSON.stringify(byLabel(result.decisions, 'as an employee')));
+    // Asked again: the Formal Education row's own wording, not a guess from one page.
+    eq(title('601'), 'India');
+    eq(title('594'), 'Engineer-Chemical');
+    // Under an "If yes": left empty, the current job not written into Job Title.
+    eq(env.document.getElementById('iy').value, '');
+    eq(env.document.getElementById('454:_txtFld').value, '');
+    eq(env.document.getElementById('pwcStart').value, '', 'nor the start date into its Start Date');
+    eq(env.document.getElementById('yc').value, '', 'a year of citizenship is never a country');
+    deepEq(env.window.__dateErrors, [], 'only the component\'s own change event reaches its listener');
     eq(env.document.getElementById('694:topBar').getAttribute('aria-expanded'), 'true', 'the section was opened');
     eq(env.document.getElementById('60:_txtFld').value, 'Ada', 'a field inside it was read and filled');
     // Picked from the list its own button opens, and read back from the title.
@@ -3418,7 +3555,11 @@ test('SuccessFactors: closed sections are opened, picklists and UI5 dates filled
     eq(board.outcome, 'ok');
     // The UI5 component heard the date.
     const host = env.document.querySelector('ui5-date-picker-xweb-calendar-widget');
-    eq(host.value, '01/09/2026', JSON.stringify(byLabel(result.decisions, 'available start')));
+    // "Immediately" in a date picker: today, in its own format.
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    eq(host.value, `${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${now.getFullYear()}`,
+       JSON.stringify(byLabel(result.decisions, 'available to start')));
     // A SuccessFactors row: never planned as a single question.
     const company = byLabel(result.decisions, 'company name');
     eq(env.document.getElementById('141:_txtFld').value, '', 'row 1 is not given the current company');

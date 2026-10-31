@@ -108,6 +108,12 @@ export function decide(rows, ctx, server, state) {
       return done(d, SKIP, '', '', 0, 'could not read this field');
     }
 
+    // Under an "If yes…" (see markFollowUps): left empty, never the model's.
+    if (row.afterFollowUp) {
+      d.noServer = true;
+      return done(d, SKIP, '', '', 0, 'only needed if you answered Yes above');
+    }
+
     // We could not read the question — only its internal id. Never sent to the
     // model (it would be guessing) and never filled: the person answers it.
     if (looksLikeOpaqueId(row.label)) {
@@ -184,6 +190,14 @@ export function decide(rows, ctx, server, state) {
       if (name) return done(d, FILL, name, 'profile', 0.95, 'your typed signature — your full name');
     }
 
+    // SuccessFactors asks the highest degree again: the form's own wording,
+    // from its Formal Education row (see educationFromRows).
+    const asFormed = sfEducationAnswer(row, ctx && ctx.sfEducation);
+    if (asFormed) {
+      const value = coerce(asFormed, Object.assign({}, row, { candidateKey: '' }));
+      if (value !== null) return done(d, FILL, value, 'profile', 0.95, 'as in your Formal Education section');
+    }
+
     // Tier 0b — sensitive. Stored value or nothing.
     const category = classifySensitive(row.label, employer);
     if (category) {
@@ -203,7 +217,7 @@ export function decide(rows, ctx, server, state) {
       // A year, not a date: "What is your year of birth?", and the year a
       // citizenship began — see birthYearAnswer.
       const year = birthYearAnswer(row, category, bank);
-      if (year && year.ask) return done(d, ASK, '', '', 0, year.ask);
+      if (year && year.ask) return done(d, row.required ? ASK : SKIP, '', '', 0, year.ask);
       if (year) {
         const value = coerce(year.value, Object.assign({}, row, { candidateKey: '' }));
         if (value !== null) return done(d, FILL, value, 'profile', 0.95, year.reason);
@@ -803,7 +817,7 @@ function usStatus(bank, country) {
 
 // Asks about more than citizenship: residence, "U.S. person" (export control).
 const BEYOND_CITIZEN_RE = /\bpermanent resident|\bgreen card\b|\bperson\b|\blawful|\bprotected individual\b|\brefugee\b|\basylee\b/i;
-const PLACEHOLDER_RE = /^(select|choose|please select|--|—)/i;
+const PLACEHOLDER_RE = /^(select|choose|please select|--|—|no selection$)/i;
 
 function isYesNoRow(row, labels) {
   const real = labels.filter(l => l && !PLACEHOLDER_RE.test(l.trim()));
@@ -896,6 +910,8 @@ export function citizenshipAnswer(row, bank, entry) {
 const PRIOR_EMPLOYER_RE = new RegExp(
   '^\\s*(?:(?:have|had)\\s+you\\s+(?:ever\\s+)?(?:been\\s+)?(?:previously\\s+)?(?:employed|worked|work)'
   + '|(?:are|were)\\s+you\\s+(?:ever\\s+)?(?:a\\s+)?(?:former|previous|past)\\s+(?:employee|worker|intern|contractor))'
+  // "employed (including internships) by PriceWaterhouseCoopers" (ExxonMobil).
+  + '(?:\\s*\\([^)]*\\))?'
   + '\\s+(?:directly\\s+)?(?:by|for|at|of)\\s+(.+?)'
   + '(?=\\s+(?:previously|before|in the past|ever|or\\b|and\\b|as\\b|in any|whether)|\\s*[?(,:*]|$)', 'i');
 const COMPANY_SUFFIX_RE = /\b(inc|incorporated|ltd|limited|llc|llp|plc|pvt|private|corp|corporation|co|company|gmbh|ag|sa|group|holdings|technologies|technology|solutions|services|analytics|india|global)\b/g;
@@ -943,7 +959,11 @@ export function previousEmployerAnswer(row, ctx, bank) {
   const employers = jobs.concat(named);
   // Not in the work history is No, however broadly the question is worded
   // (the person's call: auto-apply must not stop for this).
-  const was = employers.find(e => sameCompany(e, company));
+  // Or named anywhere in the question: "ExxonMobil, Imperial, Pioneer, Denbury
+  // or any its affiliates" lists four, and the pattern above only holds the first.
+  const question = ` ${companyKey(String(row.label || '').split('?')[0])} `;
+  const was = employers.find(e => sameCompany(e, company)
+    || (companyKey(e).length >= 3 && question.includes(` ${companyKey(e)} `)));
   const value = coerce(was ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: 'previous_employer' }));
   if (value === null) {
     return opts.length && !yesNo
@@ -1029,6 +1049,17 @@ export function standingNoAnswer(row) {
   return value === null ? null : { value, reason: hit.reason };
 }
 
+/** The Formal Education row's answer to a question asking it again, or ''. */
+export function sfEducationAnswer(row, education) {
+  if (!education) return '';
+  const label = String(row.label || '').replace(/\*+\s*$/, '').trim();
+  if (/^highest level of education\b/i.test(label)) return education.degree || '';
+  if (/^major\b.*\bhighest education\b/i.test(label)) return education.major || '';
+  if (/^country\/region where you obtained the highest education$/i.test(label)) return education.country || '';
+  if (/^institution\/university$/i.test(label)) return education.institution || '';
+  return '';
+}
+
 // "Typed Signature", "Electronic signature", "Please type your full name to sign".
 const SIGNATURE_RE = /^\s*(typed |electronic |e-?|digital )?signature\b|\bsign (with )?your (full |legal )?name\b|\btype your (full |legal )?name to (sign|agree|acknowledge)\b/i;
 
@@ -1053,6 +1084,9 @@ export function birthYearAnswer(row, category, bank) {
     if (year && citizen && born === citizen) return { value: year, reason: `citizen of ${citizen} since birth — your birth year` };
     return { ask: 'filled only for a citizen of the country they were born in — type the year' };
   }
+  // Any other year of a citizenship: never the country the citizenship rule
+  // would give it ("Year you obtained this citizenship": India).
+  if (category === 'citizenship' && /\byear\b/.test(sig)) return { ask: 'type the year here' };
   return null;
 }
 
@@ -1674,7 +1708,8 @@ export function coerce(value, row) {
 
   const hints = row.hints || {};
   if (hints.type === 'date' || hints.type === 'month' || looksLikeDateField(row)) {
-    const shaped = formatDateForField(text, hints);
+    // "Immediately" in a field that only takes a date: today.
+    const shaped = formatDateForField(IMMEDIATELY_RE.test(text) ? todayIso() : text, hints);
     return shaped || null;   // unparseable: ask rather than write nonsense
   }
   if (hints.type === 'tel' || /phone|mobile|contact number/i.test(row.label || '')) {
@@ -1712,8 +1747,17 @@ function declineFallback(text, options) {
 }
 
 function looksLikeDateField(row) {
-  const hint = `${(row.hints && row.hints.placeholder) || ''} ${row.label || ''}`;
+  const hints = row.hints || {};
+  const hint = `${hints.placeholder || ''} ${hints.format || ''} ${row.label || ''}`;
   return /\b(date|dd\s*\/\s*mm|mm\s*\/\s*dd|yyyy)\b/i.test(hint);
+}
+
+const IMMEDIATELY_RE = /^\s*(immediate(ly)?|asap|as soon as possible|right away|now)\s*\.?\s*$/i;
+
+function todayIso() {
+  const d = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
 /**
