@@ -628,6 +628,92 @@ body.blog-detail-page .blog-tpl {
   color: var(--dark-text);
 }
 
+/* End of post: a full-width band of light cards, in the Key Takeaways colours */
+body.blog-detail-page .continue-reading {
+  padding: clamp(48px, 6vw, 88px) 24px;
+  border-top: 1px solid #1d1b33;
+  background: #0d0b1e;
+}
+
+body.blog-detail-page .continue-reading-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+body.blog-detail-page .continue-reading h2 {
+  margin: 0 0 12px;
+  color: #ffffff;
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  text-align: center;
+}
+
+body.blog-detail-page .continue-reading-sub {
+  margin: 0 0 clamp(32px, 4vw, 52px);
+  color: #c3c6d6;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+body.blog-detail-page .continue-reading-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+body.blog-detail-page .continue-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 220px;
+  padding: 20px 24px 28px;
+  border: 1px solid #d8ccff;
+  border-top: 4px solid #7c3aed;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #f5f0ff 0%, #eef8ff 100%);
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+body.blog-detail-page .continue-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(124, 58, 237, 0.35);
+  text-decoration: none;
+}
+
+body.blog-detail-page .continue-card:focus-visible {
+  outline: 3px solid #b49cff;
+  outline-offset: 3px;
+}
+
+body.blog-detail-page .continue-card-cat {
+  align-self: flex-end;
+  color: #5b21b6;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+body.blog-detail-page .continue-card-title {
+  margin: 0;
+  color: #0f2133;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.32;
+}
+
+@media (max-width: 900px) {
+  body.blog-detail-page .continue-reading-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  body.blog-detail-page .continue-card {
+    min-height: 0;
+  }
+}
+
 /* Post header: a smaller title and cover so the article isn't pushed below the fold */
 body.blog-detail-page .post-hero {
   margin-top: clamp(28px, 4vw, 56px);

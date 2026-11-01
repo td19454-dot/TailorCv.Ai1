@@ -18,10 +18,8 @@
         background: #ffffff;
         border-bottom: 1px solid #e6e9f2;
         width: 100%;
-        /* 72px desktop nav minus the constant 26px whitespace line-box before the
-           bar (measured identical on all 3 landing pages) = 46px so the bar's top
-           meets the nav's bottom flush. */
-        margin-top: 46px;
+        /* The fixed nav's height, so the bar's top meets the nav's bottom flush. */
+        margin-top: 72px;
         margin-bottom: 0;
     }
     .epbar-landing .ext-promo-inner {
@@ -44,7 +42,7 @@
     }
     .epbar-landing .ext-promo-btn:hover { background: #3a56e0; transform: translateY(-1px); }
     .epbar-landing .ext-promo-btn:focus-visible { outline: 3px solid #b9c4ff; outline-offset: 2px; }
-    @media (max-width: 768px) { .ext-promo-bar.epbar-landing { margin-top: 74px; } }
+    @media (max-width: 768px) { .ext-promo-bar.epbar-landing { margin-top: 100px; } }
     @media (max-width: 640px) {
         .epbar-landing .ext-promo-inner { padding: 10px 16px; gap: 10px; }
         .epbar-landing .ext-promo-text { font-size: 13.5px; }

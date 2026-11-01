@@ -83,9 +83,9 @@ No. Tailoring your resume to a posting is exactly what recruiters *want* you to 
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
+The optimized resume renders live beside the controls, so you see each change as you adjust.
 
 
 It is worth knowing the difference between an [ATS score and a resume score](/blog/ats-score-vs-resume-score) here too — a general "resume grade" tells you if the document is well written, but only a match score against the specific posting tells you if it will get past *this* job's filter.

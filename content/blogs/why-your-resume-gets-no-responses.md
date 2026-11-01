@@ -76,9 +76,9 @@ The top section of your resume is processed first and weighted most heavily. If 
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+Paper size, font, font size, line height and margins are all adjustable.
 
 
 A generic summary - "Experienced professional seeking a challenging role" - contributes almost nothing to your [ATS score](https://thetailorcv.com/blog/ats-score-guide) and tells a recruiter nothing in the 6-second first pass.

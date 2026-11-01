@@ -92,7 +92,7 @@ Where the co-op posting itself is thin on detail — common for a first work ter
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 Matching your letter's font and header to your resume is easier when both come out of the same editor.
 

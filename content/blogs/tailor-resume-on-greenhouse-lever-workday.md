@@ -100,9 +100,9 @@ Because Workday and, to a lesser extent, the others are literal parsers, formatt
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
+The optimized resume renders live beside the controls, so you see each change as you adjust.
 
 
 The safe rules are boring and they work: a single column, standard section headings ("Experience", "Education", "Skills"), no tables, no text boxes, no images or icons carrying information, and contact details in the body rather than the header. Dates in a consistent format. A common, embeddable font. This is the groundwork covered in [making your resume ATS-friendly](/blog/how-to-make-resume-ats-friendly) and the [parser-friendly format](/blog/ats-resume-parser-friendly-format) guide, and it matters doubly here because there is no human to notice that the machine mangled you.

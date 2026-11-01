@@ -29,9 +29,9 @@ Include skills such as:
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+Paper size, font, font size, line height and margins are all adjustable.
 
 
 - Prompt design

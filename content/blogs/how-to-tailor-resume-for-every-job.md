@@ -332,6 +332,12 @@ The after version:
 
 That is how you [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job).
 
+### See exactly what changed
+
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Every edit is marked on your own resume: removed words in red, new words in green. Read through them before you accept, so nothing goes out that you can't back up in an interview.
+
 ---
 
 
@@ -346,9 +352,9 @@ That is how you [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-This is the resume after tailoring. The content is already matched to the posting; these controls are how you fit it onto one page - font size, line spacing, accent colour and template, with a live page counter.
+This is the resume after tailoring. The content is already matched to the posting; these controls are how you fit it onto the page - paper size, font, font size, line height and margins.
 
 
 ---
@@ -367,6 +373,8 @@ It also checks [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-d
 It highlights the exact [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) keywords you must include.
 That removes the guesswork.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
 If you want to skip the busy work, try [Optimize My Resume Free](/solutions).
 You still stay in control.
 You still own the final version.
@@ -381,6 +389,8 @@ This is especially useful when:
 
 TailorCV is not just a shortcut.
 It is a way to make sure your resume is built around the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
+
+![The TailorCV dashboard after login: a Resume, Apply, Interview and Stand Out action plan, a progress tracker, and links to the resume builder, ATS score, cover letter and mock interview tools](public/blog-images/tailorcv-dashboard-action-plan.webp)
 
 For more prep, try [AI Mock Interview](/mock-interview) and browse smart [Resume Templates](/templates).
 

@@ -127,9 +127,9 @@ Paste any front desk, guest services, or hotel management job posting into [Tail
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+Paper size, font, font size, line height and margins are all adjustable.
 
 
 2. **Ignoring Keywords**: Failing to incorporate relevant keywords can lead your resume to be overlooked by Applicant Tracking Systems (ATS). Always align your resume with the job description keywords.

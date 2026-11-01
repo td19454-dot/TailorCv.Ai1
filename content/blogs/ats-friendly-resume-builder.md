@@ -81,6 +81,10 @@ Templates are the fastest shortcut to an [ATS](https://thetailorcv.com/blog/what
 
 The classic Jake's Resume template remains a favorite among software engineers and students because it is minimal, single-column, and parses perfectly. You can [browse free ATS friendly resume templates here](https://thetailorcv.com/templates) and convert your existing resume into an ATS format in about 30 seconds.
 
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
+
+Once your content is in, you can adjust the paper size, font, font size, line height and margins, then download the resume or save it to your account.
+
 ## How to Test Your ATS Friendly Resume
 
 Building is only half the job - verification is the other half. After you build, always test:

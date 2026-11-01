@@ -54,7 +54,7 @@
         }
     </style>
     {% if codehilite_css %}<style>{{ codehilite_css }}</style>{% endif %}
-    <link rel="stylesheet" href="/static/blog-dark.css?v=37">
+    <link rel="stylesheet" href="/static/blog-dark.css?v=38">
     <script type="application/ld+json">{{ blog_schema_json | safe }}</script>
     <script type="application/ld+json">{{ breadcrumb_schema_json | safe }}</script>
     {% if faq_schema_json %}<script type="application/ld+json">{{ faq_schema_json | safe }}</script>{% endif %}
@@ -196,42 +196,22 @@
     </template>
     {% endif %}
 
-    {% if related_relevant %}
-    <section class="related">
-        <h2>Keep reading</h2>
-        <div class="blog-grid">
-            {% for rel in related_relevant %}
-            <article class="blog-card">
-                <a href="/blog/{{ rel.slug }}">{% if rel.image %}<img src="{{ rel.image }}" alt="{{ rel.title }}" loading="lazy" decoding="async" class="blog-cover">{% endif %}</a>
-                <div class="blog-card-body">
-                    <p class="meta">{{ rel.date_display }} - {{ rel.read_time }} min read</p>
-                    <h3><a href="/blog/{{ rel.slug }}">{{ rel.title }}</a></h3>
-                    {% if rel.description %}<p class="blog-card-desc">{{ rel.description }}</p>{% endif %}
-                </div>
-            </article>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
-
-    {# Coverage tail: keeps every post linked (no orphans) without spending the
-       reader's attention on cards that do not match what they just read. #}
-    {% if related_more %}
-    <section class="related related-more">
-        <h2>More from the blog</h2>
-        <ul class="related-more-list">
-            {% for rel in related_more %}
-            <li>
-                <a class="related-more-item" href="/blog/{{ rel.slug }}">
-                    {% if rel.image %}<img src="{{ rel.image }}" alt="" loading="lazy" decoding="async" class="related-more-thumb">{% endif %}
-                    <span class="related-more-text">
-                        <span class="related-more-title">{{ rel.title }}</span>
-                        <span class="related-more-meta">{{ rel.read_time }} min read</span>
-                    </span>
+    {# The first cards are the relevant posts; the rest are the coverage tail, which
+       keeps every post linked (no orphans). #}
+    {% if related_relevant or related_more %}
+    <section class="continue-reading">
+        <div class="continue-reading-inner">
+            <h2>Continue Reading</h2>
+            <p class="continue-reading-sub">More guides to help you land your next role.</p>
+            <div class="continue-reading-grid">
+                {% for rel in related_relevant + related_more %}
+                <a class="continue-card" href="/blog/{{ rel.slug }}">
+                    {% if rel.category %}<span class="continue-card-cat">{{ rel.category }}</span>{% endif %}
+                    <h3 class="continue-card-title">{{ rel.title }}</h3>
                 </a>
-            </li>
-            {% endfor %}
-        </ul>
+                {% endfor %}
+            </div>
+        </div>
     </section>
     {% endif %}
 

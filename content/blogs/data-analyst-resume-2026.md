@@ -35,7 +35,7 @@ Use a simple one-page resume if you are a fresher, entry-level candidate, or ana
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
@@ -185,6 +185,10 @@ Analyzed + dataset/process + tool/method + business result
 - Presented customer segmentation insights to marketing stakeholders, helping launch a retention campaign that improved repeat orders by 9%.
 
 Every strong bullet has three ingredients: tool, analysis, and impact.
+
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+If you use TailorCV to rewrite your bullets, removed words show in red and new words in green. Check that every tool and number still matches what you actually did.
 
 ---
 

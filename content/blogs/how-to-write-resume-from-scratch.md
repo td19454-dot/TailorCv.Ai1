@@ -178,6 +178,10 @@ Now clean up the formatting:
 
 Read [resume margins, spacing and layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting) and [best resume fonts](https://thetailorcv.com/blog/resume-fonts-guide).
 
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
+
+In TailorCV, the font, line height and margins are controls beside your resume, so you can see each change as you make it.
+
 ---
 
 ## Step 10: Proofread

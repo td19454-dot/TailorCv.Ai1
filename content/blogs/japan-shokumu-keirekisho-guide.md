@@ -101,7 +101,7 @@ Update the master version as you gain new relevant experience, rather than recon
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 The work history document is where you have real formatting latitude, unlike the rirekisho — spacing and length are yours to control.
 

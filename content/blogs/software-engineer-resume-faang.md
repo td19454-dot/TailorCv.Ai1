@@ -194,6 +194,10 @@ These bullets do not show ownership, complexity, or impact.
 
 Notice the difference: each bullet gives technical detail and business outcome.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+If you use TailorCV to rewrite your bullets, removed words show in red and new words in green. Check each one, because a FAANG interviewer can ask about any number on your resume.
+
 ---
 
 ## FAANG Resume Example for Software Engineer
@@ -260,9 +264,9 @@ Keep [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) s
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+Paper size, font, font size, line height and margins are all adjustable.
 
 
 B.Tech in Computer Science
