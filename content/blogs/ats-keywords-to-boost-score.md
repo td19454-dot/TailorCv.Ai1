@@ -75,6 +75,10 @@ Make sure every must-have keyword you genuinely possess appears on your resume.
 
 The fastest method: upload your resume to the [ATS score checker](/solutions) with the job description. It lists exactly which keywords you are missing.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Each skill is marked matched or missing, so you can see the gaps without comparing the two documents by hand.
+
 ---
 
 ## How to Add Keywords Naturally

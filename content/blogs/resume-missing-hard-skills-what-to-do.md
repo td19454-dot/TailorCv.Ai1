@@ -112,4 +112,8 @@ The plan above only works once you can see exactly what a specific posting says 
 
 [Scan your resume against the posting](/ats-analysis) and go through the missing list item by item, honestly. Most people find the majority sits in Pile 1 — which means most of the fix is a wording change, not a skills gap.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Go through the rows marked Missing one at a time and put each item in a pile.
+
 Free, about a minute. See also [which missing skills actually matter](/blog/which-missing-skills-actually-matter) and [how to match resume keywords to a job description](/blog/how-to-match-resume-keywords-to-job-description).

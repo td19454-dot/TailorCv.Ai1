@@ -45,6 +45,10 @@ Here is how to interpret where you land against a posting:
 
 Then read the missing keywords. Some you genuinely have and simply did not phrase the way the posting does — those are quick, honest fixes, and they are the core of [matching your resume's keywords to the job](/blog/how-to-match-resume-keywords-to-job-description). Others you do not have at all — those tell you, truthfully, whether you are a fit for the role. Both are useful. The [best keywords to beat the ATS](/blog/best-resume-keywords-to-beat-ats) and the common [keyword mistakes](/blog/ats-keyword-mistakes) are worth knowing before you start editing.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The match rate is on the left. The list of matched and missing skills on the right is what you act on.
+
 ## The Slow Way to Check
 
 You can check a match by hand, roughly. Copy the job description. Copy your resume text. Read them side by side and highlight the skills and phrases the posting repeats. Check which appear in your resume and which do not. Note the gaps.

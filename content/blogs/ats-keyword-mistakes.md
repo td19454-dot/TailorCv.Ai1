@@ -122,6 +122,10 @@ Generic resumes fail [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and
 
 Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to see exactly which keywords each job description uses that your resume is missing.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The report marks each skill as matched or missing for that one job description, so run it again for the next job.
+
 For a complete tailoring workflow, see [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job).
 
 ---

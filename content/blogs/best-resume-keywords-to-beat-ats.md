@@ -156,6 +156,10 @@ The general lists above are starting points. The keywords that matter most are t
 
 The fastest method: use [TailorCV's free ATS checker](/solutions). Paste your resume and the job description, and it automatically surfaces the keywords you are missing - in under 60 seconds.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Each skill from the job description is marked matched or missing.
+
 Also see [how to match resume keywords to job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) and [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 ---

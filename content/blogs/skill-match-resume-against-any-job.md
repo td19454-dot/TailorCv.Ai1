@@ -51,6 +51,10 @@ The number is a signal; the two lists are the substance. Here is how to act on t
 
 Reading the gaps this way turns a score into a plan: close the phrasing gaps now, bridge the adjacent ones carefully, and note the real gaps as learning targets. It is the difference between an [ATS score and a general resume score](/blog/ats-score-vs-resume-score) made concrete and actionable.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Each row shows whether the skill was found on your resume, which gives you the list to sort.
+
 ## Skill-Match, Then Tailor
 
 Skill-matching is the diagnosis; tailoring is the treatment. Once you see which skills the resume fails to show, you [work them in from your real experience](/blog/how-to-tailor-resume-for-every-job) — and then re-check to confirm the match improved. That loop — match, tailor, re-match — is the whole point, and doing it on the page makes it fast enough to run on every job.

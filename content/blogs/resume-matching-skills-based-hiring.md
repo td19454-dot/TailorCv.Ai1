@@ -75,6 +75,10 @@ If your strongest evidence for a required skill comes from a personal project, f
 
 Use the [TailorCV ATS score checker](/solutions) to confirm your resume demonstrates the specific skills the posting lists, not just an adjacent job title.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The skills comparison shows which of the posting's skills were found on your resume and which were not.
+
 ---
 
 ## Common Mistakes When Matching Skills-Based Job Descriptions

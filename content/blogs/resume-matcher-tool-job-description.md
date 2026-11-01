@@ -36,6 +36,10 @@ At a basic level, a resume matcher takes two documents - your resume and a job d
 
 The output is usually a score plus a breakdown: what matched, what is missing, and what is present but weakly stated. Run yours through the [free ATS score checker](https://www.thetailorcv.com/solutions) to see this in practice before you keep reading.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Here is what that looks like in TailorCV: a match rate, scores by category, and each skill marked matched or missing.
+
 ## What the Match Score Is Actually Measuring
 
 It helps to understand, at a conceptual level, what is happening behind that single number. You do not need to know the exact scoring formula to use the tool well - but you should know roughly what inputs feed it, so you stop treating the score like a black box.

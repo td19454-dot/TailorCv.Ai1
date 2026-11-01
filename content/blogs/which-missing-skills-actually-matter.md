@@ -20,6 +20,10 @@ image: public/blog-images/which-missing-skills-actually-matter.png
 
 You ran a scan, and it returned a list of missing skills longer than you expected. The instinct is either to add all of them or to conclude you are unqualified. Both are wrong. Here is how to triage.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+A report like this one is where the list comes from. The next step is deciding which rows matter.
+
 ## The Two-Axis Sort
 
 Every missing item falls into one of four boxes. Take your list and place each one.

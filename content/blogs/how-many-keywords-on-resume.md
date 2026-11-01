@@ -164,6 +164,10 @@ The sorting matters because the three categories need completely different respo
 
 Most people find the first category is the largest by some distance. A typical missing list of nine terms sorts into roughly five renames, three depth statements, and one real gap. That is why the list looks alarming and turns out to be an hour of work rather than a reason not to apply.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Each row marked Missing is one item to sort: a rename, a depth statement or a real gap.
+
 ## Edge Cases
 
 ### The posting lists twenty requirements and means it

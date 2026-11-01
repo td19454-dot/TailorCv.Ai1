@@ -241,19 +241,26 @@ body.blog-detail-page .post-content .dd-col .table-wrap:has(> ul, > ol) b {
   color: var(--dark-heading) !important;
 }
 
-/* Code */
+/* Code takes its colour from the surrounding text, and its tint from that
+   colour, so it stays readable in both the dark and the light boxes. */
 body.blog-detail-page .post-content pre,
 body.blog-detail-page .post-content code,
 body.blog-detail-page .post-content .codehilite {
-  background: var(--dark-surface-2) !important;
-  border-color: var(--dark-border) !important;
-  color: var(--dark-text) !important;
+  background: color-mix(in srgb, currentColor 12%, transparent) !important;
+  border-color: color-mix(in srgb, currentColor 22%, transparent) !important;
+  color: inherit !important;
+}
+
+body.blog-detail-page .post-content pre code,
+body.blog-detail-page .post-content .codehilite pre,
+body.blog-detail-page .post-content .codehilite code {
+  background: transparent !important;
 }
 
 body.blog-detail-page .post-content .codehilite span,
 body.blog-detail-page .post-content pre span {
   background: transparent !important;
-  color: var(--dark-text) !important;
+  color: inherit !important;
 }
 
 /* Mobile sticky CTA */

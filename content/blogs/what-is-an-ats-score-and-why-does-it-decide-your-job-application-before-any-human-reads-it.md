@@ -187,6 +187,10 @@ If formatting is the problem, choose one of the [ATS-friendly resume templates](
 
 [TailorCV.ai](https://www.thetailorcv.com) helps you check your resume against a job description, identify missing keywords, improve wording, and understand where your ATS match can improve. This saves time and removes guesswork, especially when applying to multiple roles.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The report shows your match rate and marks each skill as matched or missing, so you know what to work on before you apply.
+
 You can also use the [ATS score checker](https://www.thetailorcv.com/solutions) before applying to see how closely your resume matches the job description.
 
 If you are starting with little experience, the guide on [writing a resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) explains how to show projects, certifications, and transferable skills in an ATS-friendly way.

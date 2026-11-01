@@ -38,6 +38,10 @@ One thing worth ruling out first: if a whole section of your resume failed to pa
 
 The score is a single number summarising overall overlap. The list is specific and actionable. Almost always, the list is the more useful output — a point covered further in [why two ATS checkers disagree](/blog/why-ats-checkers-disagree), since the number varies by tool while the missing terms largely do not.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The 72% is the summary. The rows marked Missing are the part you can act on.
+
 If you want to know what range is worth reaching before you stop editing, [what counts as a good ATS score](/blog/good-ats-score-when-to-stop) covers where the returns flatten out.
 
 ## The Four Buckets

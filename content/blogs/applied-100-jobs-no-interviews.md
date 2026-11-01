@@ -58,6 +58,10 @@ One resume sent to 100 postings matches all of them partially and none of them w
 
 If the same three or four requirements keep appearing as missing across different postings, you have found a real skills gap and you know exactly what to address. If the missing items are *different* every time, your problem is that you are not tailoring — and that is a much easier fix.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Check the items marked Missing on each scan. The ones that keep coming back across postings are the gaps worth your time.
+
 ## Check 3: Are You Applying to the Right Roles? (5 minutes)
 
 Be honest here, because this one is uncomfortable.

@@ -30,6 +30,10 @@ If the extraction looks clean, move on immediately.
 
 Run the scan against this specific posting and read what comes back as missing. Do not skim — this list is your entire priority order for the next ten minutes.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The rows marked Missing are your priority list for tonight.
+
 Mentally sort it fast:
 
 - **Things you have but did not say** — these are your edits tonight.

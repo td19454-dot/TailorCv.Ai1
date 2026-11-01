@@ -113,6 +113,10 @@ Learn how in [how to tailor your resume for every job](https://thetailorcv.com/b
 
 The most reliable way to confirm is to run the [ATS score checker](/solutions), which scores your resume against a real job description and shows exactly what to fix.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The report shows your match rate, the number of issues in each category and the skills still missing.
+
 ---
 
 ## What to Do If You Fail Items

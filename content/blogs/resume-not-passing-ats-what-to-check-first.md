@@ -111,6 +111,10 @@ Several of the [common ATS myths](/blog/ats-myths-debunked) live in this list.
 
 This is the discipline that makes the difference. After you edit, run the resume against the same posting again and check whether the score moved and whether the specific missing item cleared.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Check the row for the skill you edited as well as the match rate.
+
 If it did not move, your edit did not address what the posting asked for — which is useful information, not a failure. Guessing at fixes without measuring is how people spend weeks on a resume that never improves.
 
 ## The Order, Summarised

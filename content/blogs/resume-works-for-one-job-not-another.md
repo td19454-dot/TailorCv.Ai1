@@ -38,6 +38,10 @@ A resume built around fast-moving startup experience matches A well and B poorly
 
 Before concluding anything about the gap, pull up both scan results and compare what each posting listed as missing.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Each scan gives you its own list like this one, so you can put the two side by side.
+
 If the missing items on the low-scoring posting are things you **genuinely do not have** — a specific enterprise tool, a scale of team you have not managed, years of experience you have not accumulated — the score is doing its job correctly. This is useful information: it is telling you which of the two roles is the better use of your time.
 
 If the missing items are things you **do have but described differently**, then you have found a real tailoring gap, not a role mismatch — and it is fixable in the same twenty minutes as any other. See [which missing skills actually matter](/blog/which-missing-skills-actually-matter).

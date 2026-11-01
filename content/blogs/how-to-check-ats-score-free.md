@@ -85,6 +85,10 @@ In under a minute you will get:
 
 Make the recommended changes, then re-scan. Repeat until your score is strong. Most people can move from a failing score to a competitive one in a single editing session.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Each re-scan updates the match rate, the category scores and the list of missing skills.
+
 [Check your ATS score for free](/solutions)
 
 ---

@@ -36,6 +36,10 @@ This is the step that is tedious by hand. Reading a long JD carefully, spotting 
 
 Next it compares those extracted requirements against your resume and produces a [match score](/ats-analysis) — how many the resume already carries, and which are missing. This is the diagnosis, and the [missing-keywords list](/blog/best-resume-keywords-to-beat-ats) underneath the number is the real information.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The match rate sits on the left, and each skill is marked matched or missing on the right.
+
 Read the number as a signal, not a verdict. Against a specific posting, [80%+](/blog/ats-score-vs-resume-score) is well matched, 55–75% is the losing middle, and below 55% you are likely [filtered out](/blog/how-to-pass-ats-in-2026). And remember the honest limit: no tool perfectly replicates a specific employer's ATS, so treat the score as a strong relative signal — this version versus that one — rather than a precise prediction. Our [ATS score guide](/blog/ats-score-guide) is clear about this.
 
 ## Step 3: The Automatic Rewrite
