@@ -106,7 +106,6 @@ body.blog-detail-page .post-content button[class*="btn"] * {
 }
 
 /* Cards */
-body.blog-detail-page .key-takeaways-box,
 body.blog-detail-page .faq-box,
 body.blog-detail-page .callout-box:not(.callout-mistake),
 body.blog-detail-page .ba-panel,
@@ -219,6 +218,27 @@ body.blog-detail-page .post-content .table-wrap table th strong,
 body.blog-detail-page .post-content .table-wrap table th p,
 body.blog-detail-page .post-content .table-wrap table th a:not([class*="btn"]):not([class*="button"]) {
   color: #ffffff !important;
+}
+
+/* blog.js turns a table inside a Do/Don't column into a list but leaves its
+   white .table-wrap around it. That wrapper shouldn't show in a dark column. */
+body.blog-detail-page .post-content .dd-col .table-wrap:has(> ul, > ol) {
+  --ink: var(--dark-heading);
+  --ink-soft: var(--dark-text);
+  margin: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+body.blog-detail-page .post-content .dd-col .table-wrap:has(> ul, > ol) li {
+  color: var(--dark-text) !important;
+}
+
+body.blog-detail-page .post-content .dd-col .table-wrap:has(> ul, > ol) strong,
+body.blog-detail-page .post-content .dd-col .table-wrap:has(> ul, > ol) b {
+  color: var(--dark-heading) !important;
 }
 
 /* Code */
@@ -394,13 +414,11 @@ body.blog-detail-page .post-content .blog-ats-privacy {
 
 /* Purple */
 body.blog-detail-page .key-takeaways-box {
-  /* Very light sky blue, so its text and links flip back to dark. */
+  /* Keeps the light theme's lavender-to-sky card from blog.css, with its dark text. */
   --dark-text: #1f2a37;
-  --dark-heading: #0d2a5c;
+  --dark-heading: #0f2133;
   --dark-link: #6405fc;
-  --dark-accent: #2f7fd6;
-  background: #e8f6ff !important;
-  border-color: #bfe3fb !important;
+  --dark-accent: #5b42f3;
   color: var(--dark-text);
 }
 
