@@ -20,14 +20,15 @@
 import { describeFields, findForm, isApplicationPage, readComboboxOptions, reprobe, hasUploadedFile,
          profileTileBlocks, detectAts, picklistButton }
   from './discover.js';
-import { fillProfileTiles } from './tiles.js';
+import { fillProfileTiles, tileFlagged } from './tiles.js';
 import { expandSections, inRepeatingRow, markFollowUps, educationFromRows, noteBlocks,
          attachmentBoxes, boxHasFile, openUploadInput, waitForUpload } from './successfactors.js';
 import { experienceSection, fillExperienceSection, educationSection, fillEducationSection, inSection,
          sfExperienceSection, sfEducationSection }
   from './repeaters.js';
-import { decide, coerce, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
+import { decide, coerce, fieldsForServer, summarize, jobCountryFromUrl, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
+import { countryOf } from './countries.js';
 import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText, heldNow } from './write.js';
 import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone,
   STORABLE_SENSITIVE } from './match.js';
@@ -241,6 +242,16 @@ export function pageBlockers(decisions) {
   const seen = new Set();
   for (const d of decisions || []) {
     const row = d && d.row;
+    // An Education / Experience tile still flagged: Oracle's Next refuses the
+    // page over it. Read live, so fixing it by hand during a pause clears it
+    // (saving redraws the tile, and the old element leaves the page).
+    if (row && row.kind === 'tile') {
+      if (d.action === ASK && row.el.isConnected && tileFlagged(row.el) && !seen.has(d.key)) {
+        seen.add(d.key);
+        out.push({ key: d.key, label: d.label, reason: d.reason || 'fix this entry', decision: d });
+      }
+      continue;
+    }
     if (!row || !row.required || seen.has(d.key)) continue;
     let reason = '';
     if (row.kind === 'file') {
@@ -278,7 +289,7 @@ export async function forceAnswers(ctx, decisions, onProgress) {
   // ahead of the questions really left (ExxonMobil, Oct 2026).
   const isEmpty = (d) => { const now = reprobe(d.row); return !!now && !now.filled; };
   const targets = pageBlockers(decisions).map(b => b.decision).filter(d =>
-    d.row && d.row.kind !== 'file' && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer
+    d.row && d.row.kind !== 'file' && d.row.kind !== 'tile' && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer
     && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d)).slice(0, MAX_FORCED);
   if (!targets.length) return { forced: 0 };
 
@@ -402,6 +413,7 @@ export async function runAutofill(ctx, onProgress) {
   };
 
   clock = startClock();
+  ctx = Object.assign({}, ctx, { jobCountry: await jobCountry(globalThis.location.href) });
 
   // SuccessFactors keeps most of its form in closed sections: open them first,
   // or their fields are hidden and never read.
@@ -543,8 +555,102 @@ export async function runAutofill(ctx, onProgress) {
 
   await redecideFailedSaved(decisions, ctx, progress);
 
-  // One repair sweep, no LLM: retry only what the page disagreed about.
   const repairStart = clock.now();
+  await repairSweeps(decisions, ctx, progress);
+  clock.add('repair', clock.now() - repairStart);
+
+  // Fields revealed by an answer we just gave (a "Yes" that opens a follow-up).
+  const revealStart = clock.now();
+  let revealed = 0;
+  while (revealed < MAX_REVEAL_ROUNDS) {
+    const before = new Set(rows.map(r => r.key));
+    clock.quiet(await waitForQuiet(form.root));
+    const fresh = describeFields(findForm() || form);
+    if (ctx && ctx.sfEducation !== undefined) {
+      markFollowUps(fresh.filter(r => !inRepeatingRow(r)));
+      noteBlocks(fresh, (ctx.facts && ctx.facts.educationEntries) || [], (ctx.facts && ctx.facts.workExperience) || []);
+    }
+    // Never the profile import: it was handled (or deliberately skipped) above.
+    // Nor the blocks "Add Another" created: fillExperienceSection filled them.
+    const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
+                                    && !inRepeater(r));
+    if (!added.length) break;
+    revealed++;
+    progress('scanning', { detail: `${added.length} new field(s) appeared` });
+    const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
+    // As for the fields seen first: these were written once and never checked
+    // again, so a dropdown that refused stayed ✓ (Nike, Nov 2026).
+    await redecideFailedSaved(extra, ctx, progress);
+    await repairSweeps(extra, ctx, progress);
+    decisions = decisions.concat(extra);
+    rows = fresh;
+  }
+  clock.add('reveal', clock.now() - revealStart);
+
+  // Education / Experience entries the form flags (Oracle's tiles): opened,
+  // filled from the matching profile entry, saved, and checked.
+  if (hasTiles) {
+    const tiled = await clock.time('tiles', () => fillProfileTiles(ctx, progress));
+    decisions = decisions.concat(tiled);
+  }
+
+  await clock.time('refill', () => refillCleared(decisions, progress, form.root));
+  handBackFailed(decisions);
+  await clock.time('reread_options', () => rereadEmptyLists(decisions));
+
+  // Required questions nothing answered: "What best describes your experience
+  // designing analytical data models?" — the profile cannot say, and the first
+  // AI call is never shown the resume. Answered from the resume by the pass
+  // auto-apply makes, for review (DoorDash, Oct 2026). Not on auto-apply's own
+  // fill: its loop makes this pass itself, once per step.
+  if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
+    progress('resume', {});
+    const forced = await clock.time('resume_pass', () => forceAnswers(ctx, decisions, progress));
+    if (forced && forced.error) console.warn('[TailorCV] resume pass failed —', forced.error);
+  }
+
+  await saveState();
+  watchUserEdits(form, null);
+
+  const timing = clock.summary();
+  console.info(`[TailorCV] autofill took ${timing.totalMs} ms`);
+  console.table(timing.phases);
+  if (timing.slowFields.length) console.table(timing.slowFields);
+  if (timing.quietWaits.length) console.table(timing.quietWaits);
+
+  return {
+    timing,
+    decisions,
+    counts: summarize(decisions),
+    serverError: decisions.serverError || '',
+    page: state.page,
+    opaqueHosts: form.opaqueHosts || 0,
+    ats: form.ats,
+  };
+}
+
+// A slow posting must not hold the form back: past this, the URL decides.
+const JOB_COUNTRY_WAIT_MS = 3000;
+
+/**
+ * The country this Workday job is in, or '': its posting's own data, which also
+ * knows /job/Bangalore/… is in India. Only if that can't be read, its URL. A
+ * posting read that doesn't settle it (several locations) stays unsettled.
+ */
+async function jobCountry(url) {
+  if (detectAts(url) !== 'workday') return '';
+  let timer = null;
+  const res = await Promise.race([
+    send({ type: 'JOB_COUNTRY', url }),
+    new Promise(resolve => { timer = setTimeout(() => resolve({}), JOB_COUNTRY_WAIT_MS); }),
+  ]);
+  clearTimeout(timer);
+  const posted = res && res.data;
+  return posted && typeof posted.country === 'string' ? countryOf(posted.country) : jobCountryFromUrl(url);
+}
+
+/** One repair sweep, no LLM: retry only what the page disagreed about. */
+async function repairSweeps(decisions, ctx, progress) {
   for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
     let broken = decisions.filter(d => d.outcome && d.outcome !== 'ok' && d.value && !d.redecided);
     if (!broken.length) break;
@@ -590,71 +696,16 @@ export async function runAutofill(ctx, onProgress) {
     progress('repairing', { total: broken.length });
     await writeAll(broken, ctx, progress, true);
   }
-  clock.add('repair', clock.now() - repairStart);
+}
 
-  // Fields revealed by an answer we just gave (a "Yes" that opens a follow-up).
-  const revealStart = clock.now();
-  let revealed = 0;
-  while (revealed < MAX_REVEAL_ROUNDS) {
-    const before = new Set(rows.map(r => r.key));
-    clock.quiet(await waitForQuiet(form.root));
-    const fresh = describeFields(findForm() || form);
-    if (ctx && ctx.sfEducation !== undefined) {
-      markFollowUps(fresh.filter(r => !inRepeatingRow(r)));
-      noteBlocks(fresh, (ctx.facts && ctx.facts.educationEntries) || [], (ctx.facts && ctx.facts.workExperience) || []);
+/** The last word before the panel: a write that failed is the person's, whichever path made it. */
+function handBackFailed(decisions) {
+  for (const d of decisions) {
+    if ((d.action === FILL || d.action === SUGGEST) && d.outcome && d.outcome !== 'ok') {
+      d.action = ASK;
+      d.reason = outcomeReason(d);
     }
-    // Never the profile import: it was handled (or deliberately skipped) above.
-    // Nor the blocks "Add Another" created: fillExperienceSection filled them.
-    const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
-                                    && !inRepeater(r));
-    if (!added.length) break;
-    revealed++;
-    progress('scanning', { detail: `${added.length} new field(s) appeared` });
-    const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
-    decisions = decisions.concat(extra);
-    rows = fresh;
   }
-  clock.add('reveal', clock.now() - revealStart);
-
-  // Education / Experience entries the form flags (Oracle's tiles): opened,
-  // filled from the matching profile entry, saved, and checked.
-  if (hasTiles) {
-    const tiled = await clock.time('tiles', () => fillProfileTiles(ctx, progress));
-    decisions = decisions.concat(tiled);
-  }
-
-  await clock.time('refill', () => refillCleared(decisions, progress, form.root));
-  await clock.time('reread_options', () => rereadEmptyLists(decisions));
-
-  // Required questions nothing answered: "What best describes your experience
-  // designing analytical data models?" — the profile cannot say, and the first
-  // AI call is never shown the resume. Answered from the resume by the pass
-  // auto-apply makes, for review (DoorDash, Oct 2026). Not on auto-apply's own
-  // fill: its loop makes this pass itself, once per step.
-  if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
-    progress('resume', {});
-    const forced = await clock.time('resume_pass', () => forceAnswers(ctx, decisions, progress));
-    if (forced && forced.error) console.warn('[TailorCV] resume pass failed —', forced.error);
-  }
-
-  await saveState();
-  watchUserEdits(form, null);
-
-  const timing = clock.summary();
-  console.info(`[TailorCV] autofill took ${timing.totalMs} ms`);
-  console.table(timing.phases);
-  if (timing.slowFields.length) console.table(timing.slowFields);
-  if (timing.quietWaits.length) console.table(timing.quietWaits);
-
-  return {
-    timing,
-    decisions,
-    counts: summarize(decisions),
-    serverError: decisions.serverError || '',
-    page: state.page,
-    opaqueHosts: form.opaqueHosts || 0,
-    ats: form.ats,
-  };
 }
 
 function isPhoneRow(row) {
@@ -1279,6 +1330,11 @@ const BUSY_SELECTOR = '[aria-busy="true"], [role="progressbar"], [class*="spinne
 function readingSigns(input, block) {
   const out = [];
   if (input && input.isConnected && input.disabled) out.push(input);
+  // Oracle binds each section's aria-hidden to isProfileImportLoading: it says
+  // outright that the import is running, wherever the upload itself sits.
+  const doc = (input && input.ownerDocument) || globalThis.document;
+  const reading = doc.querySelector('apply-flow-section[aria-hidden="true"]');
+  if (reading) out.push(reading);
   if (!block || !block.isConnected) return out;
   for (const el of block.querySelectorAll(BUSY_SELECTOR)) {
     if (el !== input && drawn(el)) out.push(el);

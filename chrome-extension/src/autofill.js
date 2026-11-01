@@ -24,6 +24,7 @@ import {
   watchUserEdits, stopWatchingUserEdits, answerField, learnableAnswers, rememberAnswers, forgetSaved,
   pageBlockers, waitForQuiet, forceAnswers,
 } from './autofill/run.js';
+import { press } from './autofill/tiles.js';
 import * as ui from './autofill/ui.js';
 import { capturePageStructure } from './autofill/capture.js';
 import * as match from './autofill/match.js';
@@ -158,6 +159,7 @@ if (!globalThis.__tcvAutofill) {
     pageBlockers,
     waitForQuiet,
     forceAnswers,
+    press,
 
     // Inspection, for the panel and for debugging a page by hand.
     capturePageStructure,

@@ -500,6 +500,9 @@ export function detectAts(url) {
   // sapsf.* is SAP's other address for it: career55.sapsf.eu (Wipro, Oct 2026).
   if (/successfactors\.(com|eu)|\bsapsf\.(com|eu)/.test(u)) return 'successfactors';
   if (/oraclecloud\.com\/hcmui\/candidateexperience/.test(u)) return 'oracle';
+  // The same product on a company's own domain has no oraclecloud.com to go by,
+  // only its route: careers.oracle.com/en/sites/jobsearch/jobs/preview/337914/apply/section/1/
+  if (/\/sites\/[^/?#]+\/jobs?\/(preview\/)?\d+/.test(u)) return 'oracle';
   return 'generic';
 }
 

@@ -9,7 +9,7 @@
 // the person can see what went in, what needs a second look, and what still
 // needs them — so the four groups are the deliverable, not decoration.
 
-import { ASK, DOCUMENT, FILL, PROFILE, SKIP, SUGGEST } from './plan.js';
+import { ASK, DOCUMENT, FILL, PROFILE, SKIP, SUGGEST, summarize } from './plan.js';
 import { answerField, learnableAnswers, rememberAnswers, forgetSaved } from './run.js';
 import { STORABLE_SENSITIVE } from './match.js';
 
@@ -184,10 +184,10 @@ export function renderReady(body, form, ctx, handlers, extra) {
         </div>` : `
         <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">${page > 1
           ? 'Autofill this page' : 'Autofill this application'} <span aria-hidden="true">▸</span></button>
-        ${form && form.ats === 'workday' && handlers.onAutoApply ? `
+        ${form && (form.ats === 'workday' || form.ats === 'oracle') && handlers.onAutoApply ? `
         <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoBtn">⏩ Auto-apply all pages</button>
-        <div class="tcv-af-note tcv-af-note-quiet">Fills each page and clicks Save and Continue,
-          pausing only for what it can't fill. It stops at Review — you click Submit.</div>` : ''}`}
+        <div class="tcv-af-note tcv-af-note-quiet">Fills each page and clicks ${form.ats === 'oracle' ? 'Next' : 'Save and Continue'},
+          pausing only for what it can't fill. It stops at ${form.ats === 'oracle' ? 'the last page' : 'Review'} — you click Submit.</div>` : ''}`}
       <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn">✦ Tailor my resume for this job</button>
       <div class="tcv-af-note tcv-af-note-quiet">
         TailorCV never submits an application. You review everything and send it yourself.
@@ -222,7 +222,9 @@ function bindLink(body, selector, fn) {
  */
 export function renderResults(body, result, ctx, handlers) {
   const decisions = result.decisions || [];
-  const counts = result.counts || {};
+  // From the decisions as they stand: auto-apply's second pass changes them
+  // after the run counted them, and the top said 5 filled over a list of 9.
+  const counts = decisions.length ? summarize(decisions) : (result.counts || {});
   const filled = (counts[FILL] || 0) + (counts[DOCUMENT] || 0);
   const byForm = decisions.filter(d => d.byForm).length;
 

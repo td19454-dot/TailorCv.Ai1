@@ -136,6 +136,8 @@ function handleMessage(msg, options) {
     case 'AF_STATE_CLEAR': return { data: { ok: true } };
     case 'AF_SAVE_ANSWERS': return { data: { saved: (msg.payload.answers || []).length } };
     case 'AF_FORGET_ANSWER': return { data: { ok: true, forgotten: true } };
+    case 'JOB_COUNTRY':
+      return { data: options.postedCountry === undefined ? null : { country: options.postedCountry } };
     case 'AF_GET_RESUME_FILE':
       return options.noResumeBytes
         ? { error: 'no_file' }
@@ -337,7 +339,7 @@ test('Greenhouse (current markup): the resume reaches the upload behind "Attach"
   });
 });
 
-test('Greenhouse: work authorization comes from the profile, not the model', async () => {
+test('Greenhouse: work authorization and sponsorship never go to the model', async () => {
   await withForm(fixtures.GREENHOUSE, {
     // The stub would happily answer these if they were ever sent.
     serverAnswers: {
@@ -346,7 +348,7 @@ test('Greenhouse: work authorization comes from the profile, not the model', asy
     },
   }, async (env, sent) => {
     const result = await run_.runAutofill(CTX, null);
-    eq(valueOf(env, '#q_auth'), '0', 'the stored answer is No, so option value 0');
+    eq(valueOf(env, '#q_auth'), '1', 'always Yes, over the stored No, so option value 1');
     eq(valueOf(env, '#q_sponsor'), '1', 'the stored answer is Yes, so option value 1');
 
     // And the proof of the structural rule: they never left the browser.
@@ -677,13 +679,13 @@ test('Lever: bracketed field names and span-wrapped labels resolve', async () =>
   });
 });
 
-test('Lever: a radio group for work authorization is answered from the profile', async () => {
+test('Lever: a radio group for work authorization is always Yes', async () => {
   await withForm(fixtures.LEVER, {}, async (env) => {
     await run_.runAutofill(CTX, null);
     const yes = env.document.querySelector('[value=Yes]');
     const no = env.document.querySelector('[value=No]');
-    ok(no.checked, 'the stored answer is No');
-    notOk(yes.checked);
+    ok(yes.checked, 'always Yes, over the stored No');
+    notOk(no.checked);
   });
 });
 
@@ -943,6 +945,210 @@ test('Workday questionnaire: questions are read from their text, never the hash'
     const plan = sent.find(m => m.type === 'AF_PLAN');
     const labels = plan ? plan.payload.fields.map(f => f.label) : [];
     notOk(labels.some(l => /^[0-9a-f]{20,}/i.test(l)), `a hash reached the model: ${labels.join(' | ')}`);
+  });
+});
+
+test('Workday: Nike\'s conflict-of-interest dropdown is No, and never reaches the model', async () => {
+  const para = `<p>Under NIKE Policy, certain situations may create a Conflict of Interest. If hired for this role, will you be engaged in either of the below activities at the same time as your NIKE employment?</p>
+    <p>(1) Additional work outside of Nike</p><p>(2) Owning your own business</p>`;
+  const button = name => `<div><button type="button" aria-haspopup="listbox" name="${name}"
+    aria-label="Select One Required">Select One</button><input type="text" tabindex="-1" value=""></div>`;
+  const html = fixtures.WORKDAY_MYINFO.replace('<div data-automation-id="formField-email">', `
+    <div data-automation-id="primaryQuestionnairePage">
+      <fieldset data-fkit-id="primaryQuestionnaire--aaaa"><legend><div class="rich-text">${para}</div><abbr>*</abbr></legend>${button('aaaa')}</fieldset>
+      <div data-fkit-id="primaryQuestionnaire--bbbb"><div class="rich-text">${para}<abbr>*</abbr></div>${button('bbbb')}</div>
+    </div>
+    <div data-automation-id="formField-email">`);
+  await withForm(html, {}, async (env, sent) => {
+    const result = await run_.runAutofill(CTX, null);
+    for (const name of ['aaaa', 'bbbb']) {
+      const x = result.decisions.find(y => y.row && y.row.el && y.row.el.getAttribute('name') === name);
+      ok(/Owning your own business/.test(x.row.label), `${name} label: "${x.row.label}"`);
+      eq(x.value, 'No', `${name}: ${x.action} ${x.reason}`);
+    }
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    notOk(plan && plan.payload.fields.some(f => /Conflict of Interest/.test(f.label)), 'never asked of the model');
+  });
+});
+
+// Nike's Application Questions, as captured (Nov 2026).
+const NIKE_URL = 'https://nike.wd1.myworkdayjobs.com/en-US/nke/job/Karnataka-India/Lead-Cyber-Defense-Data-Analyst--ITC_R-92380/apply';
+const NIKE_AUTH = ['Yes, without restriction', 'Yes, I have a visa / sponsorship', 'No, I would require visa / sponsorship'];
+const NIKE_CTX = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+  { authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: 'No', nationality: 'India' }) });
+const nikeQuestion = (id, label) => `
+  <div data-automation-id="formField-${id}" data-fkit-id="primaryQuestionnaire--${id}"><fieldset>
+    <legend><div data-automation-id="richText"><p><b>${label}<abbr title="required">*</abbr></b></p></div></legend>
+    <div><button aria-haspopup="listbox" type="button" value="" aria-label="Select One Required" name="${id}"
+                 id="primaryQuestionnaire--${id}">Select One</button><input type="text" tabindex="-1" value=""></div>
+  </fieldset></div>`;
+const nikeButton = (doc, id) => doc.getElementById(`primaryQuestionnaire--${id}`);
+function wireNikeList(doc, id, options) {
+  const portal = doc.getElementById('wd-portal');
+  const button = nikeButton(doc, id);
+  button.addEventListener('mousedown', () => {
+    button.dataset.opened = String(Number(button.dataset.opened || 0) + 1);
+    portal.innerHTML = '<ul role="listbox"><li role="option" aria-disabled="true"><div>Select One</div></li>'
+      + options.map(o => `<li role="option"><div>${o}</div></li>`).join('') + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]:not([aria-disabled])')) {
+      li.addEventListener('mousedown', () => { button.textContent = li.textContent; portal.innerHTML = ''; });
+    }
+  });
+}
+const nikePage = inner => fixtures.WORKDAY_MYINFO.replace('<div data-automation-id="formField-email">',
+  `<div id="nike-questions">${inner}</div><div data-automation-id="formField-email">`);
+const atNikeUrl = () => Object.defineProperty(globalThis, 'location',
+  { value: new URL(NIKE_URL), writable: true, configurable: true, enumerable: true });
+
+test('Nike: Authorized takes "Yes, without restriction" and Citizen takes Yes, from the job\'s country', async () => {
+  const html = nikePage(nikeQuestion('auth', 'Are you authorized to work in the country you are applying to?')
+    + nikeQuestion('cit', 'Are you a Citizen of the country you are applying to?'));
+  await withForm(html, {}, async (env) => {
+    atNikeUrl();
+    fixtures.wireWorkday(env.document);
+    wireNikeList(env.document, 'auth', NIKE_AUTH);
+    wireNikeList(env.document, 'cit', ['Yes', 'No']);
+    const result = await run_.runAutofill(NIKE_CTX, null);
+    eq(nikeButton(env.document, 'auth').textContent, 'Yes, without restriction');
+    eq(nikeButton(env.document, 'cit').textContent, 'Yes');
+    for (const needle of ['authorized to work', 'a citizen of']) {
+      const d = byLabel(result.decisions, needle);
+      eq(d.action, p.FILL, `${needle}: ${d.action} ${d.outcome} ${d.reason}`);
+      eq(d.outcome, 'ok');
+    }
+  });
+});
+
+test('Workday: a right-to-work list worded by citizenship takes the citizenship option for a job in their country', async () => {
+  const LIST = ['Yes - I hold citizenship', 'Yes – I hold a valid work permit / VISA', 'No - I require VISA sponsorship'];
+  const html = nikePage(nikeQuestion('right', 'Do you have the right to work in the location to which you are applying?'));
+  await withForm(html, {}, async (env) => {
+    atNikeUrl();
+    fixtures.wireWorkday(env.document);
+    wireNikeList(env.document, 'right', LIST);
+    const result = await run_.runAutofill(NIKE_CTX, null);
+    const d = byLabel(result.decisions, 'right to work');
+    eq(nikeButton(env.document, 'right').textContent, LIST[0], `${d.action} ${d.outcome} ${d.reason}`);
+    eq(d.action, p.FILL);
+    eq(d.outcome, 'ok');
+  });
+});
+
+const AMADEUS_URL = 'https://amadeus.wd502.myworkdayjobs.com/en-US/jobs/job/Bangalore/Software-Development-Engineer-2_R37949-2/apply?source=LinkedIn';
+const rightToWork = async (posted, ctx, url) => {
+  const LIST = ['Yes - I hold citizenship', 'Yes – I hold a valid work permit / VISA', 'No - I require VISA sponsorship'];
+  const html = nikePage(nikeQuestion('right', 'Do you have the right to work in the location to which you are applying?'));
+  return withForm(html, { postedCountry: posted }, async (env, sent) => {
+    Object.defineProperty(globalThis, 'location', { value: new URL(url || AMADEUS_URL), writable: true, configurable: true, enumerable: true });
+    fixtures.wireWorkday(env.document);
+    wireNikeList(env.document, 'right', LIST);
+    const result = await run_.runAutofill(ctx || NIKE_CTX, null);
+    const d = byLabel(result.decisions, 'right to work');
+    return { d, shown: nikeButton(env.document, 'right').textContent, asked: sent.filter(m => m.type === 'JOB_COUNTRY') };
+  });
+};
+
+test('Amadeus: /job/Bangalore/ is in India by the posting\'s own data, and takes the citizenship option', async () => {
+  const { d, shown, asked } = await rightToWork('India');
+  eq(shown, 'Yes - I hold citizenship', `${d.action} ${d.outcome} ${d.reason}`);
+  eq(d.action, p.FILL);
+  eq(d.outcome, 'ok');
+  eq(asked.length, 1);
+  eq(asked[0].url, AMADEUS_URL);
+});
+
+test('The right to work is Yes for a job abroad too: the permit option, marked to check, never a pause', async () => {
+  const { d, shown } = await rightToWork('United States of America');
+  eq(shown, 'Yes – I hold a valid work permit / VISA', `${d.action} ${d.outcome} ${d.reason}`);
+  eq(d.action, p.SUGGEST);
+  eq(d.outcome, 'ok');
+  ok(/United States/.test(d.reason), d.reason);
+});
+
+test('The right to work is Yes when the country is unknown, and when the profile says otherwise', async () => {
+  // Several locations; the posting unreadable with a URL naming only a city.
+  for (const posted of ['', undefined]) {
+    const { d, shown } = await rightToWork(posted);
+    eq(shown, 'Yes - I hold citizenship', `posted ${posted}: ${d.action} ${d.outcome} ${d.reason}`);
+    eq(d.action, p.FILL);
+  }
+  // Unreadable posting: the URL still answers.
+  const fromUrl = await rightToWork(undefined, NIKE_CTX, NIKE_URL);
+  eq(fromUrl.shown, 'Yes - I hold citizenship');
+  // The person's choice: even a profile saying not authorized, needing sponsorship.
+  const no = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+    { authorized_to_work_in_country: 'No', requires_visa_sponsorship: 'Yes', nationality: 'India' }) });
+  const { d, shown } = await rightToWork('India', no);
+  eq(shown, 'Yes - I hold citizenship', `${d.action} ${d.outcome} ${d.reason}`);
+});
+
+test('Barclays: criminal history, screening and the right to work land on the page, with nothing sent to the model', async () => {
+  const html = nikePage(
+    nikeQuestion('right', 'Do you have the legal right to work in the country or jurisdiction where the position you are applying for is located?')
+    + nikeQuestion('crime', 'Do you have any criminal convictions, cautions, reprimands or final warnings (including traffic offences) in any country?')
+    + nikeQuestion('screen', 'If your application is successful Barclays undertakes people screening as part of its recruitment process, these include; criminal records, address verification — are you happy to continue with your application?'));
+  await withForm(html, {}, async (env, sent) => {
+    fixtures.wireWorkday(env.document);
+    for (const id of ['right', 'crime', 'screen']) wireNikeList(env.document, id, ['Yes', 'No']);
+    await run_.runAutofill(NIKE_CTX, null);
+    eq(nikeButton(env.document, 'right').textContent, 'Yes');
+    eq(nikeButton(env.document, 'crime').textContent, 'No');
+    eq(nikeButton(env.document, 'screen').textContent, 'Yes');
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    const labels = plan ? plan.payload.fields.map(f => f.label) : [];
+    notOk(labels.some(l => /right to work|criminal|screening/i.test(l)), `sent to the model: ${labels.join(' | ')}`);
+  });
+});
+
+test('Nike: a dropdown that appears mid-fill and refuses is retried, and never shows as filled', async () => {
+  const html = nikePage('');
+  await withForm(html, {}, async (env) => {
+    const doc = env.document;
+    fixtures.wireWorkday(doc);
+    let drawn = false;
+    doc.addEventListener('mousedown', e => {
+      if (drawn || !(e.target.closest && e.target.closest('[role=option]'))) return;
+      drawn = true;
+      setTimeout(() => {
+        doc.getElementById('nike-questions').innerHTML =
+          nikeQuestion('auth', 'Are you authorized to work in the country you are applying to?');
+        // Nothing here says their answer: the write can only fail.
+        wireNikeList(doc, 'auth', ['Option A', 'Option B']);
+      }, 0);
+    }, true);
+    const result = await run_.runAutofill(NIKE_CTX, null);
+    ok(drawn, 'the question appeared');
+    const d = byLabel(result.decisions, 'authorized to work');
+    ok(d, 'the late question has a decision');
+    eq(d.action, p.ASK, `${d.action} ${d.outcome}`);
+    eq(d.reason, 'we could not get this to stick');
+    const opened = Number(nikeButton(doc, 'auth').dataset.opened);
+    ok(opened >= 2, `written, then retried: opened ${opened} time(s)`);
+
+    const { body } = panelFor(env, result);
+    const filled = Array.from(body.querySelectorAll('.tcv-af-group'))
+      .find(g => /^Filled ·/.test(g.querySelector('.tcv-af-group-title').textContent));
+    notOk(filled && /authorized to work/.test(filled.textContent),
+          `not listed under Filled: ${filled ? filled.textContent.replace(/\s+/g, ' ').slice(0, 700) : ''}`);
+  });
+});
+
+test('The panel\'s counts match its sections after auto-apply\'s second pass', async () => {
+  const html = nikePage(nikeQuestion('shift', 'Do you have a preferred shift pattern?'));
+  const forceAnswer = field => (/shift pattern/.test(field.label) ? 'No' : null);
+  await withForm(html, { forceAnswer }, async (env) => {
+    fixtures.wireWorkday(env.document);
+    wireNikeList(env.document, 'shift', ['Yes', 'No']);
+    const result = await run_.runAutofill(NIKE_CTX, null);
+    const before = result.counts[p.FILL];
+    const forced = await run_.forceAnswers(NIKE_CTX, result.decisions);
+    ok(forced.forced >= 1, `forced: ${JSON.stringify(forced)}`);
+    eq(byLabel(result.decisions, 'shift pattern').action, p.FILL);
+    const now = result.decisions.filter(d => d.action === p.FILL || d.action === p.DOCUMENT).length;
+    ok(now > before, `${now} filled now, ${before} when counted`);
+    const { body } = panelFor(env, result);
+    ok(body.querySelector('#tcvAfSummary').textContent.includes(`${now} filled`),
+       body.querySelector('#tcvAfSummary').textContent.replace(/\s+/g, ' '));
   });
 });
 
@@ -1314,7 +1520,10 @@ function wireLateImport(env, { startMs = 100, readMs = 120, sign = 'disable', fi
     setTimeout(() => {
       if (sign === 'disable') input.disabled = true;
       if (sign === 'spinner') block.insertAdjacentHTML('beforeend', '<div class="oj-progress-circle">Reading…</div>');
+      if (sign === 'section hidden') doc.body.insertAdjacentHTML('beforeend', '<apply-flow-section id="section-1" aria-hidden="true"></apply-flow-section>');
       setTimeout(() => {
+        const section = doc.getElementById('section-1');
+        if (section) section.setAttribute('aria-hidden', 'false');
         for (const b of doc.querySelectorAll('ul[aria-label="Title"] [role=radio]')) b.setAttribute('aria-checked', 'false');
         for (const [id, v] of Object.entries(fills)) doc.getElementById(id).value = v;
         input.disabled = false;
@@ -1325,7 +1534,7 @@ function wireLateImport(env, { startMs = 100, readMs = 120, sign = 'disable', fi
   });
 }
 
-for (const sign of ['disable', 'spinner', 'none']) {
+for (const sign of ['disable', 'spinner', 'section hidden', 'none']) {
   test(`Oracle: a resume import that starts reading late is waited for (${sign})`, async () => {
     await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
       wireRadioPills(env.document);

@@ -29,7 +29,7 @@ function tileText(tile) {
   return ((summary && summary.getAttribute('aria-label')) || tile.textContent || '').replace(/\s+/g, ' ').trim();
 }
 
-function tileFlagged(tile) {
+export function tileFlagged(tile) {
   return tile.classList.contains('apply-flow-profile-item-tile--invalid')
     || /fields to fix/i.test(tile.textContent || '');
 }

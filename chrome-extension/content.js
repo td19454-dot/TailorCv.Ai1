@@ -2587,9 +2587,18 @@
   // TITLE (data-automation-id="jobTitleHeading"): read as the step, every page
   // had the same "step" ("Senior Associate", PwC Oct 2026), so a real new page
   // was taken for the same one and the sidebar stayed on the last page's results.
+  //
+  // Oracle names no step in a heading. Its page menu marks the current page, and
+  // the URL ends in /apply/section/N; a flow with neither has no marker.
   function stepMarker() {
     const text = el => (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
     try {
+      if (isOracleFlow()) {
+        const pages = oraclePages();
+        const section = location.pathname.match(/\/apply\/section\/(\d+)/);
+        const at = pages ? pages.at : section && section[1];
+        return at ? `page ${at}` : '';
+      }
       const active = document.querySelector('[data-automation-id="progressBarActiveStep"]');
       if (active && text(active)) return text(active);
       const scope = '[data-automation-id="applyFlowPage"], [data-automation-id*="applyFlow" i]';
@@ -2863,16 +2872,18 @@
 
   // ── Auto-apply ──────────────────────────────────────────────
   //
-  // Workday only: fill the page, check nothing required is left, press Save and
-  // Continue, wait for the next step, repeat — until the Review page, where it
-  // STOPS. It never presses Submit: that is the one step that can't be undone,
-  // and the person sends the application themselves. It pauses, listing what is
-  // blocking, when a required field is left, Workday shows an error, or the
-  // page doesn't move on; "Continue auto-apply" picks up from there.
+  // Workday and Oracle: fill the page, check nothing required is left, press
+  // Save and Continue (Oracle: Next), wait for the next step, repeat — until the
+  // page that submits, where it STOPS. It never presses Submit: that is the one
+  // step that can't be undone, and the person sends the application themselves.
+  // It pauses, listing what is blocking, when a required field is left, the form
+  // shows an error, or the page doesn't move on; "Continue auto-apply" picks up
+  // from there.
 
   const AUTO_MAX_PAGES = 12;
   const AUTO_STEP_WAIT_MS = 20000;
   const AUTO_FORM_WAIT_MS = 6000;
+  const AUTO_NO_FORM_RETRIES = 2;
   let auto = null;   // { active, paused, stop, pages, result, pausedStep }
 
   function autoRunningInfo() {
@@ -2934,7 +2945,15 @@
         if (fillFirst || (unfilledFieldsShown() && auto.stepFills < 2)) {
           // A step with nothing to fill (only Add buttons, or the Review page)
           // is checked and moved past as it is.
-          const result = hasForm() ? await runAutofill({ auto: true }) : { decisions: [], counts: {} };
+          let result = hasForm() ? await runAutofill({ auto: true }) : { decisions: [], counts: {} };
+          // A page just changed can read as no form for a moment: Barclays
+          // paused here on Application Questions, and "Autofill this page" then
+          // filled it (Nov 2026). Looked for again before anything pauses.
+          for (let again = 0; result.error === 'no_form' && again < AUTO_NO_FORM_RETRIES && !auto.stop; again++) {
+            globalStatus.textContent = '';
+            await waitForStepForm();
+            result = await runAutofill({ auto: true });
+          }
           auto.result = result;
           auto.stepFills++;
           if (result.error) return pauseAuto(humanFillError(result.error), []);
@@ -2976,7 +2995,7 @@
         }
 
         const next = await waitForNextButton();
-        if (!next) return pauseAuto("Couldn't find Save and Continue on this page.", []);
+        if (!next) return pauseAuto(`Couldn't find ${nextName()} on this page.`, []);
         // The page drew its fields while we waited for the button: fill them first.
         if (unfilledFieldsShown() && auto.stepFills < 2) { fillFirst = true; continue; }
         currentView = 'running';
@@ -3007,13 +3026,13 @@
           const shown = pageErrors();
           const errors = moved.errors || (auto.retryErrors || []).filter(t => shown.includes(t));
           if (errors.length) {
-            return pauseAuto('Workday did not accept this page:', errors.map(t => ({ label: t, reason: 'fix on the page' })));
+            return pauseAuto(`${atsName()} did not accept this page:`, errors.map(t => ({ label: t, reason: 'fix on the page' })));
           }
           const invalid = invalidFields();
           return invalid.length
-            ? pauseAuto('Workday did not move on — these fields need attention:',
-                        invalid.map(t => ({ label: t, reason: 'Workday marked this' })))
-            : pauseAuto("The page didn't move on after Save and Continue — check it, then continue.", []);
+            ? pauseAuto(`${atsName()} did not move on — these fields need attention:`,
+                        invalid.map(t => ({ label: t, reason: `${atsName()} marked this` })))
+            : pauseAuto(`The page didn't move on after ${nextName()} — check it, then continue.`, []);
         }
         auto.pages++;
         auto.retriedStep = null;
@@ -3050,8 +3069,53 @@
   // Both of Workday's names for the footer's forward button.
   const NEXT_SEL = '[data-automation-id="pageFooterNextButton"], [data-automation-id="bottom-navigation-next-button"]';
 
-  /** Workday's "Save and Continue" — never a button that would submit. */
+  // Oracle Candidate Experience's footer, from a JPMC capture. Back and Next share
+  // a class and only Submit has its own, so Next is known by its name: a button
+  // called anything else is never pressed, and that page pauses instead.
+  const ORACLE_FOOTER_BUTTON_SEL = '.apply-flow-pagination__button';
+  const ORACLE_SUBMIT_SEL = '.apply-flow-pagination__submit-button';
+  const ORACLE_NEXT_RE = /^(next|continue|save and continue)\b/i;
+
+  function isOracleFlow() {
+    return !!AF && AF.detectAts(location.href) === 'oracle';
+  }
+
+  function atsName() { return isOracleFlow() ? 'Oracle' : 'Workday'; }
+  function nextName() { return isOracleFlow() ? 'Next' : 'Save and Continue'; }
+
+  /** The page menu ("Application flow: page 4 of 4") as { at, of }, or null. */
+  function oraclePages() {
+    const links = [...document.querySelectorAll('.apply-flow-navigation-pages__link')];
+    const at = links.findIndex(a => a.classList.contains('apply-flow-navigation-pages__link--current'));
+    return at < 0 ? null : { at: at + 1, of: links.length };
+  }
+
+  /** Oracle's Next, enabled or not. Never Submit, whatever it is called. */
+  function oracleNext() {
+    for (const b of document.querySelectorAll(ORACLE_FOOTER_BUTTON_SEL)) {
+      if (b.matches(ORACLE_SUBMIT_SEL) || !AF.isNodeVisible(b)) continue;
+      const name = (b.getAttribute('aria-label') || b.textContent || '').replace(/\s+/g, ' ').trim();
+      if (ORACLE_NEXT_RE.test(name) && !/submit/i.test(name)) return b;
+    }
+    return null;
+  }
+
+  /** The last page, by either sign. Checked before any press, so it outranks Next. */
+  function oracleIsFinal() {
+    const submit = document.querySelector(ORACLE_SUBMIT_SEL);
+    if (submit && AF.isNodeVisible(submit)) return true;
+    const pages = oraclePages();
+    return !!pages && pages.at === pages.of;
+  }
+
+  /** The button that moves on ("Save and Continue") — never one that would submit. */
   function nextButton() {
+    if (isOracleFlow()) {
+      if (oracleIsFinal()) return null;
+      const next = oracleNext();
+      const off = !next || next.disabled || next.classList.contains('apply-flow-pagination__button--disabled');
+      return off ? null : next;
+    }
     const b = document.querySelector(NEXT_SEL);
     if (!b || b.closest('#tailorcv-sidebar') || b.disabled) return null;
     return /submit/i.test(b.textContent || '') ? null : b;
@@ -3059,6 +3123,7 @@
 
   /** The Review page: the footer button submits, or the progress bar says Review. */
   function isFinalStep() {
+    if (isOracleFlow()) return oracleIsFinal();
     const b = document.querySelector(NEXT_SEL);
     if (b && /submit/i.test(b.textContent || '')) return true;
     if (document.querySelector('[data-automation-id="pageFooterSubmitButton"]')) return true;
@@ -3067,6 +3132,9 @@
   }
 
   function pressButton(el) {
+    // Oracle's buttons sit inside the application <form>: a press that can't
+    // also submit it.
+    if (isOracleFlow()) { AF.press(el); return; }
     for (const type of ['pointerdown', 'mousedown', 'pointerup', 'mouseup']) {
       try { el.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window })); } catch (e) {}
     }
@@ -3088,6 +3156,9 @@
    * `baseline`: what was already on the page before the press — not its errors.
    */
   function pageErrors(baseline) {
+    // Oracle has no banner: Next outlines the fields, each with the same "This
+    // information is required." So its errors are the fields it outlined.
+    if (isOracleFlow()) return invalidFields().filter(t => !(baseline && baseline.includes(t)));
     const sel = '[data-automation-id="errorBanner"], [data-automation-id="errorMessage"], '
       + '[data-automation-id="inputAlert"], [data-automation-id="applyFlowPage"] [role="alert"]';
     const out = [];
@@ -3105,9 +3176,10 @@
   /** The fields Workday outlined as invalid, by label — when it says nothing else. */
   function invalidFields() {
     const out = [];
-    for (const el of document.querySelectorAll('[aria-invalid="true"]')) {
+    // Oracle's pill questions outline the row and have no aria-invalid of their own.
+    for (const el of document.querySelectorAll('[aria-invalid="true"], .input-row--invalid')) {
       if (el.closest('#tailorcv-sidebar') || !AF.isNodeVisible(el)) continue;
-      const field = el.closest('[data-automation-id^="formField"]');
+      const field = el.closest('[data-automation-id^="formField"], .input-row');
       let label = field && field.querySelector('label, legend');
       if (!label && el.id) label = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
       const t = ((label && label.textContent) || el.getAttribute('aria-label') || '')
@@ -3124,7 +3196,9 @@
       const tick = () => {
         const now = stepKey();
         if (now && now !== before) { resolve({ ok: true }); return; }
-        const errors = Date.now() - start > 800 ? pageErrors(baseline) : [];
+        // Oracle marks the page while Next validates it: no verdict yet.
+        const validating = !!document.querySelector('.apply-flow-page--blocked');
+        const errors = Date.now() - start > 800 && !validating ? pageErrors(baseline) : [];
         if (errors.length) { resolve({ errors }); return; }
         if (Date.now() - start > AUTO_STEP_WAIT_MS) { resolve({ ok: false }); return; }
         setTimeout(tick, 250);
@@ -3140,7 +3214,7 @@
    */
   async function waitForStepForm() {
     const until = Date.now() + AUTO_FORM_WAIT_MS;
-    const footer = () => document.querySelector(NEXT_SEL);
+    const footer = () => document.querySelector(`${NEXT_SEL}, .apply-flow-pagination`);
     // The live page, not the form cached from the last step: Workday keeps the
     // footer across steps, so with the cache this ended at once on NVIDIA and
     // the Voluntary Disclosures fill ran on a page not drawn yet.

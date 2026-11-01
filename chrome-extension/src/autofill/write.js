@@ -1261,6 +1261,7 @@ function pickReadFirst(readFirst, labels) {
     candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
     candidateKey: readFirst.key,
     sponsorship: readFirst.sponsorship,
+    citizenHere: readFirst.citizenHere,
     country: readFirst.country,
   });
   return pick != null && labels.includes(pick) ? pick : null;

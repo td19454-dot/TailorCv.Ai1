@@ -62,6 +62,23 @@ const SEARCH_FORM = `
 
 // ── form root selection ──────────────────────────────────────
 
+test('detectAts: Oracle on oraclecloud.com and on a company\'s own domain, nothing else', () => {
+  const oracle = [
+    'https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210768873/apply/section/1',
+    'https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/jobs/preview/210767444/apply/section/4/',
+    'https://careers.oracle.com/en/sites/jobsearch/jobs/preview/337914/apply/section/1/?location=India&mode=location',
+    'https://careers.oracle.com/en/sites/jobsearch/job/337914',
+  ];
+  for (const url of oracle) eq(d.detectAts(url), 'oracle', url);
+  const other = [
+    'https://example.com/jobs/337914/apply',
+    'https://example.com/sites/default/files/job.pdf',
+    'https://boards.greenhouse.io/acme/jobs/123',
+    'https://acme.wd5.myworkdayjobs.com/en-US/External/job/Pune/Engineer_R1',
+  ];
+  for (const url of other) ok(d.detectAts(url) !== 'oracle', url);
+});
+
 test('findForm picks a Greenhouse-shaped application form', async () => {
   await withDoc(GREENHOUSE, () => {
     const f = d.findForm();

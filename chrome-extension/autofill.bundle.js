@@ -1941,6 +1941,7 @@ what when where which who will with would you your now future
     if (/taleo\.net/.test(u)) return "taleo";
     if (/successfactors\.(com|eu)|\bsapsf\.(com|eu)/.test(u)) return "successfactors";
     if (/oraclecloud\.com\/hcmui\/candidateexperience/.test(u)) return "oracle";
+    if (/\/sites\/[^/?#]+\/jobs?\/(preview\/)?\d+/.test(u)) return "oracle";
     return "generic";
   }
   var MIN_CONFIDENT_SCORE = 6;
@@ -3551,7 +3552,7 @@ Zimbabwe|Zimbabwean
       if (level) return done(d, FILL, level.value, "profile", 0.9, level.reason);
       const outside = outsideEmploymentAnswer(row);
       if (outside !== null) {
-        return done(d, FILL, outside, "profile", 0.9, "no outside employment \u2014 always No");
+        return done(d, FILL, outside, "profile", 0.9, "no outside work or conflict of interest \u2014 always No");
       }
       const willing = willingToWorkThereAnswer(row);
       if (willing !== null) {
@@ -3563,6 +3564,11 @@ Zimbabwe|Zimbabwean
       if (consent) {
         d.noServer = true;
         return consent.ask ? done(d, ASK, "", "", 0, consent.ask) : done(d, FILL, consent.value, "profile", 0.9, "you consent to these questions \u2014 always Yes");
+      }
+      const screening = backgroundScreeningAnswer(row);
+      if (screening) {
+        d.noServer = true;
+        return done(d, FILL, screening, "profile", 0.9, "you agree to background checks \u2014 always Yes");
       }
       if ((row.kind === "text" || row.kind === "textarea") && SIGNATURE_RE.test(String(row.label || ""))) {
         const name = String(bank.full_name || [bank.first_name, bank.last_name].filter(Boolean).join(" ")).trim();
@@ -3578,6 +3584,7 @@ Zimbabwe|Zimbabwean
         d.sensitive = category;
         const entry2 = matchSensitiveKey(row.label, category);
         let stored = entry2 ? bank[entry2.key] : "";
+        if (entry2 && entry2.key === "authorized_to_work_in_country") stored = "Yes";
         if (entry2 && entry2.key === "country_of_birth") {
           const raw = String(stored || bank.nationality || "").trim();
           stored = countryOf(raw) || raw;
@@ -3601,6 +3608,10 @@ Zimbabwe|Zimbabwean
           d.savedFrom = saved.savedFrom;
           return done(d, FILL, saved.value, "saved_answer", 0.9, "your saved answer to this question");
         };
+        if (category === "criminal") {
+          const crime = criminalHistoryAnswer(row);
+          if (crime.value) return done(d, FILL, crime.value, "profile", 0.95, crime.reason);
+        }
         if (STORABLE_SENSITIVE.has(category) && category !== "demographic") {
           const saved = savedValue(savedEntry(row.label, ctx && ctx.savedSensitive), row);
           if (saved && saved.aside) d.setAside = saved.aside;
@@ -3611,7 +3622,7 @@ Zimbabwe|Zimbabwean
           }
         }
         if (category === "government_official" || category === "criminal") {
-          const g = category === "criminal" ? criminalHistoryAnswer(row, bank) : governmentOfficialAnswer(row, bank);
+          const g = category === "criminal" ? criminalHistoryAnswer(row) : governmentOfficialAnswer(row, bank);
           if (g.followUp) {
             return row.required ? done(d, ASK, "", "", 0, "only needed for some answers to the question above") : done(d, SKIP, "", "", 0, "only needed if you answered Yes above");
           }
@@ -3620,7 +3631,7 @@ Zimbabwe|Zimbabwean
           return done(d, FILL, g.value, "profile", 0.95, g.reason);
         }
         if (category === "citizenship") {
-          const c = citizenshipAnswer(row, bank, entry2);
+          const c = citizenshipAnswer(row, bank, entry2, ctx && ctx.jobCountry);
           if (c && c.ask) return done(d, ASK, "", "", 0, c.ask);
           if (c) {
             if (c.candidates && c.candidates.length > 1) d.candidates = c.candidates;
@@ -3668,12 +3679,14 @@ Zimbabwe|Zimbabwean
         const shapes = candidatesFor(key, answer, bank);
         if (shapes.length > 1) d.candidates = shapes;
         if (READ_FIRST_KEYS.has(key) || key === "hispanic_latino") d.readFirst = { key, stored: answer };
-        const sponsorship = key === "authorized_to_work_in_country" ? bank.requires_visa_sponsorship : void 0;
-        if (sponsorship !== void 0) d.readFirst = { key, stored: answer, sponsorship };
+        const sponsorship = key === "authorized_to_work_in_country" ? "No" : void 0;
+        const own = countryOf(bank.nationality || "");
+        const citizenHere = key === "authorized_to_work_in_country" && own && ctx && ctx.jobCountry ? own === ctx.jobCountry : void 0;
+        if (sponsorship !== void 0) d.readFirst = { key, stored: answer, sponsorship, citizenHere };
         const value = coerce(answer, Object.assign(
           {},
           row,
-          { candidates: shapes, candidateKey: key, sponsorship }
+          { candidates: shapes, candidateKey: key, sponsorship, citizenHere }
         ));
         if (value === null) {
           const fromSaved = savedDemographic();
@@ -3682,6 +3695,16 @@ Zimbabwe|Zimbabwean
         }
         if (row.value && looksLikeDecline(value) && !looksLikeDecline(row.value)) {
           return done(d, SKIP, row.value, "", 0, "keeping the answer already there");
+        }
+        if (citizenHere === false) {
+          return done(
+            d,
+            SUGGEST,
+            value,
+            "profile",
+            0.95,
+            `always Yes \u2014 this job is in ${ctx.jobCountry}, so check this before you submit`
+          );
         }
         return done(d, FILL, value, "profile", 0.95, "");
       }
@@ -4060,10 +4083,39 @@ Zimbabwe|Zimbabwean
     if (real2.length) return real2.every((l) => /^(yes|no)\b/i.test(l.trim()) || looksLikeDecline(l));
     return /^\s*(are|is|do|does|have|has|will|were)\b/i.test(row.label || "");
   }
-  function citizenshipAnswer(row, bank, entry) {
+  var JOB_COUNTRY_RE = /\bcountry\b[^?]*\b(apply|applying|this (role|job|position))\b/i;
+  function jobCountryFromUrl(url) {
+    let parsed = null;
+    try {
+      parsed = new URL(String(url || ""));
+    } catch (e) {
+      return "";
+    }
+    if (!/(^|\.)myworkday(jobs|site)\.com$/i.test(parsed.hostname)) return "";
+    const parts = parsed.pathname.split("/").filter(Boolean);
+    const at = parts.indexOf("job");
+    if (at < 0 || !parts[at + 1] || !parts[at + 2] || /^apply$/i.test(parts[at + 2])) return "";
+    let slug = parts[at + 1];
+    try {
+      slug = decodeURIComponent(slug);
+    } catch (e) {
+    }
+    const words = slug.split("-").filter(Boolean);
+    if (!words.length || words[words.length - 1].length < 3) return "";
+    for (let n = Math.min(4, words.length); n >= 1; n--) {
+      const country = countryOf(words.slice(-n).join(" "));
+      if (!country) continue;
+      if (country === "Georgia" || /^new$/i.test(words[words.length - n - 1] || "")) return "";
+      return country;
+    }
+    return "";
+  }
+  function citizenshipAnswer(row, bank, entry, jobCountry2) {
     const country = countryOf(bank && bank.nationality || "");
     const labels = (row.options || []).map((o) => typeof o === "string" ? o : o && o.label || "").filter(Boolean);
-    const named = countryNamedIn(row.label);
+    const asksJobCountry = JOB_COUNTRY_RE.test(row.label || "");
+    const namedInQuestion = countryNamedIn(row.label);
+    const named = namedInQuestion || asksJobCountry && jobCountry2 || "";
     if (named && isYesNoRow(row, labels)) {
       if (OTHER_THAN_RE.test(row.label || "")) {
         if (!country) return null;
@@ -4089,7 +4141,11 @@ Zimbabwe|Zimbabwean
         yes = false;
       }
       const value = coerce(yes ? "Yes" : "No", Object.assign({}, row, { candidateKey: "" }));
-      return value === null ? { ask: "none of the options say Yes or No" } : { value };
+      if (value === null) return { ask: "none of the options say Yes or No" };
+      return namedInQuestion || !country ? { value } : { value, reason: `this job is in ${named}; your citizenship is ${country}` };
+    }
+    if (!named && country && isYesNoRow(row, labels)) {
+      return { ask: asksJobCountry ? `you're a citizen of ${country}, and this page doesn't say which country the job is in \u2014 choose your answer` : `you're a citizen of ${country}, and this asks Yes or No \u2014 choose your answer` };
     }
     if (labels.length) {
       const own = countryOption(country, labels);
@@ -4114,7 +4170,7 @@ Zimbabwe|Zimbabwean
     return { value: country, candidates: countryShapes(country), drill: row.kind === "combobox" ? "Citizen" : "" };
   }
   var PRIOR_EMPLOYER_RE = new RegExp(
-    "^\\s*(?:(?:have|had)\\s+you\\s+(?:ever\\s+)?(?:been\\s+)?(?:previously\\s+)?(?:employed|worked|work)|(?:are|were)\\s+you\\s+(?:ever\\s+)?(?:a\\s+)?(?:former|previous|past)\\s+(?:employee|worker|intern|contractor))(?:\\s*\\([^)]*\\))?\\s+(?:directly\\s+)?(?:by|for|at|of)\\s+(.+?)(?=\\s+(?:previously|before|in the past|ever|or\\b|and\\b|as\\b|in any|whether)|\\s*[?(,:*]|$)",
+    "^\\s*(?:(?:have|had)\\s+you\\s+(?:ever\\s+)?(?:been\\s+)?(?:previously\\s+)?(?:employed|worked|work)|(?:are|were)\\s+you\\s+(?:ever\\s+)?(?:a\\s+)?(?:current\\s*(?:or|\\/)\\s*)?(?:former|previous|past)(?:\\s*(?:or|\\/)\\s*current)?\\s+(?:employee|worker|intern|contractor))(?:\\s*\\([^)]*\\))?\\s+(?:directly\\s+)?(?:by|for|at|of)\\s+(.+?)(?=\\s+(?:previously|before|in the past|ever|or\\b|and\\b|as\\b|in any|whether)|\\s*[?(,:*]|$)",
     "i"
   );
   var COMPANY_SUFFIX_RE = /\b(inc|incorporated|ltd|limited|llc|llp|plc|pvt|private|corp|corporation|co|company|gmbh|ag|sa|group|holdings|technologies|technology|solutions|services|analytics|india|global)\b/g;
@@ -4192,16 +4248,26 @@ Zimbabwe|Zimbabwean
     /\boutside\s+(employment|jobs?|business(es)?|work|activit(y|ies)|engagements?|interests?)\b/.source,
     /\bsecond(ary)?\s+(employment|jobs?|business(es)?)\b/.source,
     /\b(other|additional)\s+(employment|jobs?)\b(?!\s+(offers?|experience|history))/.source,
-    /\bmoonlight\w*|\bside\s+(business|jobs?|gigs?|hustle)\b/.source
+    /\bmoonlight\w*|\bside\s+(business|jobs?|gigs?|hustle)\b/.source,
+    /\b(other|additional)\s+work\s+outside\b/.source,
+    /\bown(ing)?\s+(your\s+own|a)\s+business\b/.source
   ].join("|"), "i");
-  var ASKS_IF_RE = /^\s*(are|do|will|would|have|is)\s+you\b/i;
+  var CONFLICT_OF_INTEREST_RE = /\bconflicts?\s+of\s+interests?\b/i;
+  var ASKS_IF_RE = /\b(are|do|does|did|will|would|could|can|have|has|is)\s+(you|your|any|there)\b/i;
+  var NOT_DECLARING_RE = /\b(agree\w*|acknowledge\w*|understand\w*|read|review\w*|abide|comply|confirm\w*|certify|attest|willing|able to|give up|resolve)\b|\baware of (?!any\b)|\bno\s+(conflicts?|outside)\b|\b(not|n't)\s+(have|engaged?)\b/i;
+  var LIST_MARK_RE = /\(\s*(\d{1,2}|[a-z]|i{1,3})\s*\)/gi;
   function outsideEmploymentAnswer(row) {
     const kind = row.kind;
     if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") return null;
     const opts = (row.options || []).map((o) => String(typeof o === "string" ? o : o && o.label || "").trim()).filter((o) => o && !PLACEHOLDER_RE2.test(o));
     if (opts.length && !(opts.some((o) => /^yes\b/i.test(o)) && opts.some((o) => /^no\b/i.test(o)))) return null;
-    const head = String(row.label || "").split(/[[(]/)[0];
-    if (!ASKS_IF_RE.test(head) || !OUTSIDE_WORK_RE.test(head)) return null;
+    const head = String(row.label || "").replace(LIST_MARK_RE, " ").split(/[[(]/)[0];
+    const at = head.search(ASKS_IF_RE);
+    if (at < 0) return null;
+    const question = head.slice(at);
+    if (NOT_DECLARING_RE.test(question)) return null;
+    const asked = OUTSIDE_WORK_RE.test(question) || CONFLICT_OF_INTEREST_RE.test(question) || CONFLICT_OF_INTEREST_RE.test(head) && !classifySensitive(question);
+    if (!asked) return null;
     return coerce("No", Object.assign({}, row, { candidateKey: "" }));
   }
   var STANDING_NO = [
@@ -4246,6 +4312,21 @@ Zimbabwe|Zimbabwean
     if (!DATA_CONSENT_RE.test(head) || !DATA_USE_RE.test(head) || !DATA_WORD_RE.test(head) || !DATA_SUBJECT_RE.test(head)) return null;
     const value = coerce("Yes", Object.assign({}, row, { candidateKey: "" }));
     return value === null ? { ask: "no option here says Yes \u2014 choose your answer" } : { value };
+  }
+  var SCREENING_RE = /\bscreening\b|\bbackground (checks?|screens?|verifications?|investigations?)\b|\breference checks?\b/i;
+  var AGREES_RE = /\b(happy|willing|agree\w*|consent\w*|authori[sz]\w*|accept\w*|ok(ay)? with|comfortable|continue|proceed|submit to|undergo)\b/i;
+  var ABOUT_PAST_RE = /\b(ever|failed|refused|previously)\b/i;
+  function backgroundScreeningAnswer(row) {
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") return null;
+    const opts = (row.options || []).map((o) => String(typeof o === "string" ? o : o && o.label || "").trim()).filter((o) => o && !PLACEHOLDER_RE2.test(o));
+    if (opts.length && !(opts.some((o) => /^yes\b/i.test(o)) && opts.some((o) => /^no\b/i.test(o)))) return null;
+    const label = String(row.label || "");
+    const end = label.lastIndexOf("?");
+    if (end < 0) return null;
+    const question = label.slice(0, end);
+    if (!SCREENING_RE.test(question) || !AGREES_RE.test(question) || ABOUT_PAST_RE.test(question)) return null;
+    return coerce("Yes", Object.assign({}, row, { candidateKey: "" }));
   }
   function blockBank(block) {
     const e = block.entry || {};
@@ -4375,9 +4456,9 @@ Zimbabwe|Zimbabwean
   var CRIME_EXCLUSION_RE = /\b(other than|excluding|except( for)?|not including|apart from)\b[^,;)?]*|\b(that|which) (has|have) not been [^,;)?]*/gi;
   var CRIME_CONSENT_RE = /\bconsent\w*|\bauthori[sz]\w*|\bagree\w*|\bwilling\b|\bsubmit to\b|\bundergo\b|\bpass\b/i;
   var CRIME_STATEMENT_RE = /\b(confirm|certify|declare|attest)\b|\bi (have|had|am) (no|not|never)\b|\b(not|never|neither|nor|none)\b/i;
-  var CRIME_UNCOVERED_RE = /\barrest\w*|\bdetain\w*|\bcaution\w*|\binvestigat\w*|\btraffic\b|\bdriving\b|\bmoving violations?\b|\bdisciplin\w*|\bdismiss\w*|\bterminat\w*|\bfamily\b|\brelatives?\b|\bspouse\b/i;
+  var CRIME_UNCOVERED_RE = /\bfamily\b|\brelatives?\b|\bspouse\b/i;
   var CRIME_SELF_RE = /\b(have|are|were|do|did) you\b|\byou (have|are|were)\b|\bi (have|am|was)\b/i;
-  function criminalHistoryAnswer(row, bank) {
+  function criminalHistoryAnswer(row) {
     const label = String(row.label || "");
     if (isConditionalFollowUp(label)) return { followUp: true };
     const head = (label.includes("?") ? label.split("?")[0] : label.split(/\.\s/)[0]).slice(0, 400);
@@ -4390,14 +4471,11 @@ Zimbabwe|Zimbabwean
       return { ask: "we fill this question as a Yes / No only \u2014 choose your answer" };
     }
     if (CRIME_STATEMENT_RE.test(core)) return { ask: "worded as a statement \u2014 choose your answer" };
-    if (CRIME_UNCOVERED_RE.test(core)) return { ask: "asks more than your profile answer covers \u2014 choose your answer" };
+    if (CRIME_UNCOVERED_RE.test(core)) return { ask: "asks about someone else's record \u2014 choose your answer" };
     if (!CRIME_SELF_RE.test(core)) return { ask: "we never guess this \u2014 choose your answer" };
-    const stored = String(bank && bank.has_criminal_history || "");
-    if (stored !== "Yes" && stored !== "No") return { profile: "add your criminal-history answer to your profile" };
-    if (stored === "Yes") return { ask: "your profile says Yes \u2014 check it applies to what this question asks" };
     const value = coerce("No", Object.assign({}, row, { candidateKey: "" }));
-    if (value === null) return { ask: "none of the options match your profile answer (No)" };
-    return { value, reason: "your profile: no criminal convictions or pending charges" };
+    if (value === null) return { ask: "none of the options say No \u2014 choose your answer" };
+    return { value, reason: "no criminal record \u2014 always No" };
   }
   var MAX_PROMPT_SKILLS = 10;
   function splitSkills(text) {
@@ -4457,21 +4535,26 @@ Zimbabwe|Zimbabwean
   }
   var YES_RE = /^(yes|y|true)$/i;
   var NO_RE = /^(no|n|false)$/i;
-  function workAuthStatement(authorized, sponsorship, options) {
+  function workAuthStatement(authorized, sponsorship, options, citizenHere) {
     const auth = String(authorized || "").trim();
     const spons = String(sponsorship || "").trim();
     let test;
     if (YES_RE.test(spons)) {
       test = (o) => /\b(require|need)s?\b.*\bsponsor/i.test(o) && !/\b(not|don'?t|never)\b/i.test(o);
     } else if (YES_RE.test(auth) && NO_RE.test(spons)) {
-      test = (o) => /\bauthori[sz]ed\b/i.test(o) && /\bany employer\b/i.test(o) && !/\bnot\b/i.test(o);
+      test = (o) => /\bauthori[sz]ed\b/i.test(o) && /\bany employer\b/i.test(o) && !/\bnot\b/i.test(o) || /^\s*yes\b.*\bwithout\s+(any\s+)?(restrictions?|limitations?|sponsorship)\b/i.test(o);
     } else if (NO_RE.test(auth) && NO_RE.test(spons)) {
       test = (o) => /\bnot (legally )?authori[sz]ed\b|\bunauthori[sz]ed\b/i.test(o) && !/\bsponsor/i.test(o);
     } else {
       return null;
     }
     const hits = (options || []).filter(test);
-    return hits.length === 1 ? hits[0] : null;
+    if (hits.length === 1) return hits[0];
+    if (hits.length || !YES_RE.test(auth) || !NO_RE.test(spons)) return null;
+    const yes = (options || []).filter((o) => /^\s*yes\b/i.test(o));
+    const stated = yes.filter((o) => citizenHere === false ? /\b(permit|visa)\b/i.test(o) && !/\bcitizen/i.test(o) : /\bcitizen/i.test(o));
+    if (stated.length === 1) return stated[0];
+    return yes.length === 1 ? yes[0] : null;
   }
   function ethnicityShapes(text) {
     const i = ethnicityGroup(text);
@@ -4859,7 +4942,7 @@ Zimbabwe|Zimbabwean
       return countryOption(country, options) || (row.hints && row.hints.paged ? country : null);
     }
     if (row.candidateKey === "authorized_to_work_in_country" && !options.some((o) => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
-      return workAuthStatement(text, row.sponsorship, options);
+      return workAuthStatement(text, row.sponsorship, options, row.citizenHere);
     }
     const candidates = row.candidates && row.candidates.length ? row.candidates : [text];
     const guard = row.candidateKey === "degree" ? degreeGuard : row.candidateKey === "race_ethnicity" ? ethnicityGuardFor(candidates[0]) : EEO_GROUPS[row.candidateKey] ? eeoGuardFor(row.candidateKey, candidates[0]) : null;
@@ -4884,7 +4967,7 @@ Zimbabwe|Zimbabwean
     const match = bestOptionMatch(text, options);
     if (match) return typeof match === "string" ? match : match.label;
     const polarity = truthy ? /\b(yes|i am|i do|i have)\b/i : /\b(no|not|n['’]t)\b/i;
-    const found = options.find((o) => polarity.test(o));
+    const found = options.find((o) => polarity.test(o) && !(truthy && /\b(not|n['’]t)\b/i.test(o)));
     return found || null;
   }
   function shapePhone(text, row) {
@@ -5873,6 +5956,7 @@ Zimbabwe|Zimbabwean
       candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
       candidateKey: readFirst.key,
       sponsorship: readFirst.sponsorship,
+      citizenHere: readFirst.citizenHere,
       country: readFirst.country
     });
     return pick != null && labels.includes(pick) ? pick : null;
@@ -7053,6 +7137,13 @@ Zimbabwe|Zimbabwean
     const seen = /* @__PURE__ */ new Set();
     for (const d of decisions || []) {
       const row = d && d.row;
+      if (row && row.kind === "tile") {
+        if (d.action === ASK && row.el.isConnected && tileFlagged(row.el) && !seen.has(d.key)) {
+          seen.add(d.key);
+          out.push({ key: d.key, label: d.label, reason: d.reason || "fix this entry", decision: d });
+        }
+        continue;
+      }
       if (!row || !row.required || seen.has(d.key)) continue;
       let reason = "";
       if (row.kind === "file") {
@@ -7078,7 +7169,7 @@ Zimbabwe|Zimbabwean
       const now2 = reprobe(d.row);
       return !!now2 && !now2.filled;
     };
-    const targets = pageBlockers(decisions).map((b) => b.decision).filter((d) => d.row && d.row.kind !== "file" && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d)).slice(0, MAX_FORCED);
+    const targets = pageBlockers(decisions).map((b) => b.decision).filter((d) => d.row && d.row.kind !== "file" && d.row.kind !== "tile" && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d)).slice(0, MAX_FORCED);
     if (!targets.length) return { forced: 0 };
     for (const d of targets) {
       if (d.kind === "combobox" && !(d.options && d.options.length)) {
@@ -7181,6 +7272,7 @@ Zimbabwe|Zimbabwean
       }
     };
     clock = startClock();
+    ctx = Object.assign({}, ctx, { jobCountry: await jobCountry(globalThis.location.href) });
     if (detectAts(globalThis.location.href) === "successfactors" && expandSections()) {
       progress("scanning", { detail: "opening the form\u2019s sections" });
       clock.quiet(await waitForQuiet(globalThis.document.body));
@@ -7283,6 +7375,73 @@ Zimbabwe|Zimbabwean
     }
     await redecideFailedSaved(decisions, ctx, progress);
     const repairStart = clock.now();
+    await repairSweeps(decisions, ctx, progress);
+    clock.add("repair", clock.now() - repairStart);
+    const revealStart = clock.now();
+    let revealed = 0;
+    while (revealed < MAX_REVEAL_ROUNDS) {
+      const before = new Set(rows.map((r) => r.key));
+      clock.quiet(await waitForQuiet(form.root));
+      const fresh = describeFields(findForm() || form);
+      if (ctx && ctx.sfEducation !== void 0) {
+        markFollowUps(fresh.filter((r) => !inRepeatingRow(r)));
+        noteBlocks(fresh, ctx.facts && ctx.facts.educationEntries || [], ctx.facts && ctx.facts.workExperience || []);
+      }
+      const added = fresh.filter((r) => r.key && !before.has(r.key) && !(r.kind === "file" && isProfileImport(r)) && !inRepeater(r));
+      if (!added.length) break;
+      revealed++;
+      progress("scanning", { detail: `${added.length} new field(s) appeared` });
+      const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
+      await redecideFailedSaved(extra, ctx, progress);
+      await repairSweeps(extra, ctx, progress);
+      decisions = decisions.concat(extra);
+      rows = fresh;
+    }
+    clock.add("reveal", clock.now() - revealStart);
+    if (hasTiles) {
+      const tiled = await clock.time("tiles", () => fillProfileTiles(ctx, progress));
+      decisions = decisions.concat(tiled);
+    }
+    await clock.time("refill", () => refillCleared(decisions, progress, form.root));
+    handBackFailed(decisions);
+    await clock.time("reread_options", () => rereadEmptyLists(decisions));
+    if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
+      progress("resume", {});
+      const forced = await clock.time("resume_pass", () => forceAnswers(ctx, decisions, progress));
+      if (forced && forced.error) console.warn("[TailorCV] resume pass failed \u2014", forced.error);
+    }
+    await saveState();
+    watchUserEdits(form, null);
+    const timing = clock.summary();
+    console.info(`[TailorCV] autofill took ${timing.totalMs} ms`);
+    console.table(timing.phases);
+    if (timing.slowFields.length) console.table(timing.slowFields);
+    if (timing.quietWaits.length) console.table(timing.quietWaits);
+    return {
+      timing,
+      decisions,
+      counts: summarize(decisions),
+      serverError: decisions.serverError || "",
+      page: state.page,
+      opaqueHosts: form.opaqueHosts || 0,
+      ats: form.ats
+    };
+  }
+  var JOB_COUNTRY_WAIT_MS = 3e3;
+  async function jobCountry(url) {
+    if (detectAts(url) !== "workday") return "";
+    let timer = null;
+    const res = await Promise.race([
+      send({ type: "JOB_COUNTRY", url }),
+      new Promise((resolve) => {
+        timer = setTimeout(() => resolve({}), JOB_COUNTRY_WAIT_MS);
+      })
+    ]);
+    clearTimeout(timer);
+    const posted = res && res.data;
+    return posted && typeof posted.country === "string" ? countryOf(posted.country) : jobCountryFromUrl(url);
+  }
+  async function repairSweeps(decisions, ctx, progress) {
     for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
       let broken = decisions.filter((d) => d.outcome && d.outcome !== "ok" && d.value && !d.redecided);
       if (!broken.length) break;
@@ -7314,53 +7473,14 @@ Zimbabwe|Zimbabwean
       progress("repairing", { total: broken.length });
       await writeAll(broken, ctx, progress, true);
     }
-    clock.add("repair", clock.now() - repairStart);
-    const revealStart = clock.now();
-    let revealed = 0;
-    while (revealed < MAX_REVEAL_ROUNDS) {
-      const before = new Set(rows.map((r) => r.key));
-      clock.quiet(await waitForQuiet(form.root));
-      const fresh = describeFields(findForm() || form);
-      if (ctx && ctx.sfEducation !== void 0) {
-        markFollowUps(fresh.filter((r) => !inRepeatingRow(r)));
-        noteBlocks(fresh, ctx.facts && ctx.facts.educationEntries || [], ctx.facts && ctx.facts.workExperience || []);
+  }
+  function handBackFailed(decisions) {
+    for (const d of decisions) {
+      if ((d.action === FILL || d.action === SUGGEST) && d.outcome && d.outcome !== "ok") {
+        d.action = ASK;
+        d.reason = outcomeReason(d);
       }
-      const added = fresh.filter((r) => r.key && !before.has(r.key) && !(r.kind === "file" && isProfileImport(r)) && !inRepeater(r));
-      if (!added.length) break;
-      revealed++;
-      progress("scanning", { detail: `${added.length} new field(s) appeared` });
-      const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
-      decisions = decisions.concat(extra);
-      rows = fresh;
     }
-    clock.add("reveal", clock.now() - revealStart);
-    if (hasTiles) {
-      const tiled = await clock.time("tiles", () => fillProfileTiles(ctx, progress));
-      decisions = decisions.concat(tiled);
-    }
-    await clock.time("refill", () => refillCleared(decisions, progress, form.root));
-    await clock.time("reread_options", () => rereadEmptyLists(decisions));
-    if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
-      progress("resume", {});
-      const forced = await clock.time("resume_pass", () => forceAnswers(ctx, decisions, progress));
-      if (forced && forced.error) console.warn("[TailorCV] resume pass failed \u2014", forced.error);
-    }
-    await saveState();
-    watchUserEdits(form, null);
-    const timing = clock.summary();
-    console.info(`[TailorCV] autofill took ${timing.totalMs} ms`);
-    console.table(timing.phases);
-    if (timing.slowFields.length) console.table(timing.slowFields);
-    if (timing.quietWaits.length) console.table(timing.quietWaits);
-    return {
-      timing,
-      decisions,
-      counts: summarize(decisions),
-      serverError: decisions.serverError || "",
-      page: state.page,
-      opaqueHosts: form.opaqueHosts || 0,
-      ats: form.ats
-    };
   }
   function isPhoneRow(row) {
     const label = row.label || "";
@@ -7813,6 +7933,9 @@ Zimbabwe|Zimbabwean
   function readingSigns(input, block) {
     const out = [];
     if (input && input.isConnected && input.disabled) out.push(input);
+    const doc = input && input.ownerDocument || globalThis.document;
+    const reading = doc.querySelector('apply-flow-section[aria-hidden="true"]');
+    if (reading) out.push(reading);
     if (!block || !block.isConnected) return out;
     for (const el of block.querySelectorAll(BUSY_SELECTOR)) {
       if (el !== input && drawn(el)) out.push(el);
@@ -8043,10 +8166,10 @@ Zimbabwe|Zimbabwean
           You've used your free autofills. <a href="#" id="tcvAfUpgrade">Upgrade to Pro \u2192</a>
         </div>` : `
         <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">${page > 1 ? "Autofill this page" : "Autofill this application"} <span aria-hidden="true">\u25B8</span></button>
-        ${form && form.ats === "workday" && handlers.onAutoApply ? `
+        ${form && (form.ats === "workday" || form.ats === "oracle") && handlers.onAutoApply ? `
         <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoBtn">\u23E9 Auto-apply all pages</button>
-        <div class="tcv-af-note tcv-af-note-quiet">Fills each page and clicks Save and Continue,
-          pausing only for what it can't fill. It stops at Review \u2014 you click Submit.</div>` : ""}`}
+        <div class="tcv-af-note tcv-af-note-quiet">Fills each page and clicks ${form.ats === "oracle" ? "Next" : "Save and Continue"},
+          pausing only for what it can't fill. It stops at ${form.ats === "oracle" ? "the last page" : "Review"} \u2014 you click Submit.</div>` : ""}`}
       <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn">\u2726 Tailor my resume for this job</button>
       <div class="tcv-af-note tcv-af-note-quiet">
         TailorCV never submits an application. You review everything and send it yourself.
@@ -8075,7 +8198,7 @@ Zimbabwe|Zimbabwean
   }
   function renderResults(body, result, ctx, handlers) {
     const decisions = result.decisions || [];
-    const counts = result.counts || {};
+    const counts = decisions.length ? summarize(decisions) : result.counts || {};
     const filled = (counts[FILL] || 0) + (counts[DOCUMENT] || 0);
     const byForm = decisions.filter((d) => d.byForm).length;
     body.innerHTML = `
@@ -8597,6 +8720,7 @@ ${lists.join("\n")}` : "");
       pageBlockers,
       waitForQuiet,
       forceAnswers,
+      press,
       // Inspection, for the panel and for debugging a page by hand.
       capturePageStructure,
       describeFields,
