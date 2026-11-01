@@ -1542,6 +1542,13 @@ what when where which who will with would you your now future
     resumeParseMaxMs: 3e4,
     // How long after an upload to look for the form starting to read it.
     resumeParseStartMs: 300,
+    // Oracle's "Import your profile": how long to watch for the reading to START.
+    // Its server takes the file first, and only then reads it — about 10 s in all
+    // on one Oracle form, where a single look at 300 ms never saw it begin.
+    resumeParseDetectMs: 12e3,
+    // ...and, once it has read, how long its fields must stand still before the
+    // form counts as written.
+    resumeParseQuietMs: 1500,
     // Oracle's Education / Experience tiles: how long an entry's form may take
     // to open after Edit, and to close after Save.
     tileOpenMs: 3e3,
@@ -3540,6 +3547,8 @@ Zimbabwe|Zimbabwean
         if (prior.readFirst) d.readFirst = prior.readFirst;
         return done(d, FILL, prior.value, "profile", 0.9, prior.reason);
       }
+      const level = educationLevelAnswer(row, ctx, bank);
+      if (level) return done(d, FILL, level.value, "profile", 0.9, level.reason);
       const outside = outsideEmploymentAnswer(row);
       if (outside !== null) {
         return done(d, FILL, outside, "profile", 0.9, "no outside employment \u2014 always No");
@@ -3620,7 +3629,7 @@ Zimbabwe|Zimbabwean
             if (row.value && looksLikeDecline(c.value) && !looksLikeDecline(row.value)) {
               return done(d, SKIP, row.value, "", 0, "keeping the answer already there");
             }
-            return done(d, FILL, c.value, "profile", 0.95, "");
+            return done(d, FILL, c.value, "profile", 0.95, c.reason || "");
           }
         }
         if (!stored) {
@@ -4043,6 +4052,7 @@ Zimbabwe|Zimbabwean
     if (!country) return "";
     return country === "United States" ? US_CITIZEN : NOT_US;
   }
+  var OTHER_THAN_RE = /\b(other than|besides|apart from|except(ing)?|excluding)\b/i;
   var BEYOND_CITIZEN_RE = /\bpermanent resident|\bgreen card\b|\bperson\b|\blawful|\bprotected individual\b|\brefugee\b|\basylee\b/i;
   var PLACEHOLDER_RE2 = /^(select|choose|please select|--|—|no selection$)/i;
   function isYesNoRow(row, labels) {
@@ -4055,6 +4065,12 @@ Zimbabwe|Zimbabwean
     const labels = (row.options || []).map((o) => typeof o === "string" ? o : o && o.label || "").filter(Boolean);
     const named = countryNamedIn(row.label);
     if (named && isYesNoRow(row, labels)) {
+      if (OTHER_THAN_RE.test(row.label || "")) {
+        if (!country) return null;
+        const other = country !== named;
+        const value2 = coerce(other ? "Yes" : "No", Object.assign({}, row, { candidateKey: "" }));
+        return value2 === null ? { ask: "none of the options say Yes or No" } : { value: value2, reason: other ? `your citizenship is ${country}` : `your profile lists one citizenship: ${country}` };
+      }
       const explicitGroup = citizenshipGroup(bank && bank.citizenship_status || "");
       if (!country && !(named === "United States" && explicitGroup)) return null;
       let yes;
@@ -4113,6 +4129,28 @@ Zimbabwe|Zimbabwean
     const [short, long] = x.length <= y.length ? [x, y] : [y, x];
     if (short.length < 3) return false;
     return (" " + long + " ").includes(" " + short + " ") || short.length >= 4 && long.startsWith(short);
+  }
+  var HAVE_QUALIFICATION_RE = /^\s*(do|did|have|has)\s+you\b.*?\b(have|hold|possess|complete[ds]?|earn(ed)?|obtain(ed)?|receive[ds]?|attain(ed)?|graduated?)\b/i;
+  var NOT_JUST_LEVEL_RE = /\b(degree|diploma|qualification)s? in\b|\b(related|relevant|similar|technical) (field|discipline|area)\b|\bfield of\b|\bequivalent\b|\bexperience\b|\bpursu|\benrolled\b|\bcurrently\b/i;
+  var QUALIFICATION_WORD_RE = /\b(degree|diploma|ged|hsc|10\s*\+\s*2|12th|high school|secondary school|bachelor'?s?|master'?s?|doctorate|ph\.? ?d)\b/i;
+  var LADDER = 5;
+  function educationLevelAnswer(row, ctx, bank) {
+    const kind = row.kind;
+    if (kind !== "radio" && kind !== "choice" && kind !== "select" && kind !== "combobox") return null;
+    const label = String(row.label || "");
+    if (!HAVE_QUALIFICATION_RE.test(label) || NOT_JUST_LEVEL_RE.test(label)) return null;
+    if (!QUALIFICATION_WORD_RE.test(label)) return null;
+    const asked = degreeLevel(label);
+    if (asked < 0 || asked >= LADDER) return null;
+    const degrees = [bank && bank.degree || ""].concat((ctx && ctx.facts && ctx.facts.educationEntries || []).map((e) => e && e.degree || "")).filter(Boolean);
+    const ranks = degrees.map(degreeRank).filter((r) => r < LADDER);
+    if (!ranks.length) return null;
+    const best = Math.min(...ranks);
+    const has = best <= asked;
+    const value = coerce(has ? "Yes" : "No", Object.assign({}, row, { candidateKey: "" }));
+    if (value === null || !/^(yes|no)\b/i.test(value)) return null;
+    const highest = degrees[degrees.map(degreeRank).indexOf(best)];
+    return { value, reason: `your education shows ${highest}` };
   }
   function previousEmployerAnswer(row, ctx, bank) {
     const kind = row.kind;
@@ -6059,6 +6097,15 @@ Zimbabwe|Zimbabwean
     }
     return result;
   }
+  function heldNow(decision) {
+    const row = decision && decision.row;
+    const after = row && reprobe(row);
+    if (!after) return "gone";
+    if (!after.filled) return "empty";
+    if (after.value === decision.shown) return "ok";
+    const loneCheckboxTicked = row.kind === "checkbox" && (row.options || []).length <= 1 && /^(yes|true|on|checked)$/i.test(String(decision.value));
+    return loneCheckboxTicked || accepts(decision, decision.value, after.value) ? "ok" : "changed";
+  }
   async function verdict(decision, row, value, wrote) {
     await sleep(TIMING.settleMs);
     const after = reprobe(row);
@@ -7336,14 +7383,14 @@ Zimbabwe|Zimbabwean
       if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== "ok") return false;
       if (!d.row || d.row.kind === "file" || d.row.kind === "tile") return false;
       if (d.key && state.userEdited.includes(d.key)) return false;
-      const now2 = reprobe(d.row);
-      return !!now2 && !now2.filled;
+      const held = heldNow(d);
+      return held === "empty" || held === "changed";
     });
     for (let round = 0; round < REFILL_ROUNDS; round++) {
       const lost = emptied();
       if (!lost.length) return;
       console.info(
-        `[TailorCV] the form emptied ${lost.length} answer(s) after they were filled \u2014 filling again:`,
+        `[TailorCV] the form emptied or changed ${lost.length} answer(s) after they were filled \u2014 filling again:`,
         lost.map((d) => d.label).join(" | ")
       );
       progress("repairing", { total: lost.length, detail: "the form cleared some answers \u2014 filling them again" });
@@ -7640,6 +7687,7 @@ Zimbabwe|Zimbabwean
       return { ok: false, shown: "" };
     }
     const target = decision.row.el;
+    const reading = isProfileImport(decision.row) ? watchResumeReading(target) : null;
     if (decision.row.dropOnly) {
       const dropped = dropFile(target, file);
       if (slot && dropped) attachedThisRun.add(slot);
@@ -7660,7 +7708,7 @@ Zimbabwe|Zimbabwean
       if (attached || Date.now() >= deadline) break;
       await sleep(150);
     }
-    const formRead = await waitWhileReadingResume(target);
+    const formRead = reading ? await reading.wait() : await waitWhileReadingResume(target);
     return { ok: attached, shown: attached ? file.name : "", formRead };
   }
   async function attachSfDocuments(ctx, progress) {
@@ -7711,6 +7759,88 @@ Zimbabwe|Zimbabwean
     while (input.isConnected && input.disabled && Date.now() < deadline) await sleep(250);
     await sleep(TIMING.settleMs + 300);
     return true;
+  }
+  function watchResumeReading(input) {
+    const doc = input && input.ownerDocument || globalThis.document;
+    const block = input && input.closest && input.closest(".apply-flow-profile-import") || ancestor(input, 3);
+    const root = input && input.closest && input.closest("form") || doc.body;
+    const before = new Set(readingSigns(input, block));
+    const values = fieldSnapshot(root);
+    const signNow = () => readingSigns(input, block).some((el) => !before.has(el));
+    return {
+      async wait() {
+        const start = Date.now();
+        let seen = "";
+        while (Date.now() - start < TIMING.resumeParseDetectMs) {
+          if (signNow()) {
+            seen = "it shows it is busy";
+            break;
+          }
+          if (fieldSnapshot(root) !== values) {
+            seen = "its fields are changing";
+            break;
+          }
+          await sleep(150);
+        }
+        if (!seen) {
+          console.info(`[TailorCV] no sign of the form reading the resume in ${Date.now() - start} ms \u2014 filling on`);
+          return false;
+        }
+        console.info(`[TailorCV] the form is reading the resume (${seen}, after ${Date.now() - start} ms) \u2014 waiting for it to finish before filling on`);
+        const deadline = start + TIMING.resumeParseMaxMs;
+        while (signNow() && Date.now() < deadline) await sleep(250);
+        let last = fieldSnapshot(root);
+        let stillSince = Date.now();
+        while (Date.now() < deadline && Date.now() - stillSince < TIMING.resumeParseQuietMs) {
+          await sleep(150);
+          const now2 = fieldSnapshot(root);
+          if (now2 !== last) {
+            last = now2;
+            stillSince = Date.now();
+          }
+        }
+        console.info(`[TailorCV] the form finished reading the resume after ${Date.now() - start} ms`);
+        return true;
+      }
+    };
+  }
+  function ancestor(el, levels) {
+    let node = el;
+    for (let i = 0; i < levels && node && node.parentElement; i++) node = node.parentElement;
+    return node || null;
+  }
+  var BUSY_SELECTOR = '[aria-busy="true"], [role="progressbar"], [class*="spinner" i], [class*="loading" i], [class*="progress" i], button[disabled], input[disabled]';
+  function readingSigns(input, block) {
+    const out = [];
+    if (input && input.isConnected && input.disabled) out.push(input);
+    if (!block || !block.isConnected) return out;
+    for (const el of block.querySelectorAll(BUSY_SELECTOR)) {
+      if (el !== input && drawn(el)) out.push(el);
+    }
+    if (block.getAttribute && block.getAttribute("aria-busy") === "true") out.push(block);
+    return out;
+  }
+  function drawn(el) {
+    if (el.closest("[hidden]")) return false;
+    try {
+      const style = (el.ownerDocument.defaultView || globalThis).getComputedStyle(el);
+      return style.display !== "none" && style.visibility !== "hidden";
+    } catch (e) {
+      return true;
+    }
+  }
+  function fieldSnapshot(root) {
+    if (!root) return "";
+    const parts = [];
+    for (const el of root.querySelectorAll("input, select, textarea")) {
+      const type = (el.type || "").toLowerCase();
+      if (type === "file" || type === "hidden" || isOwnUi(el)) continue;
+      parts.push(type === "checkbox" || type === "radio" ? el.checked ? "1" : "0" : String(el.value || ""));
+    }
+    for (const el of root.querySelectorAll('[aria-checked="true"], [aria-selected="true"]')) {
+      if (!isOwnUi(el)) parts.push((el.textContent || "").trim());
+    }
+    return parts.join("");
   }
   async function answerField(decision, value, remember) {
     decision.value = String(value == null ? "" : value);

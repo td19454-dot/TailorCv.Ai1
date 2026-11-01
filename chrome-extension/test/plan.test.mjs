@@ -1056,6 +1056,47 @@ test('Workday\'s "Type to Add Skills" plans the profile skills as a list', () =>
   deepEq(d.multiValues, ['Python', 'SQL', 'Docker']);
 });
 
+// ── Oracle's Yes/No eligibility page (Oct 2026) ──────────────
+
+const yesNo = label => field(label, { kind: 'choice', required: true,
+  options: [{ value: 'Yes', label: 'Yes' }, { value: 'No', label: 'No' }] });
+const indian = (extra) => Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { nationality: 'India' }, extra) });
+
+test('"citizenship or a passport of any country OTHER THAN India" is No for a citizen of India', () => {
+  const d = p.decide([yesNo('Do you hold citizenship or a passport of any country other than India?*')], indian(), null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'No', d.reason);
+  // Their own country named: still Yes. Another country named: Yes, theirs is other than it.
+  eq(p.decide([yesNo('Do you hold an Indian Passport?*')], indian(), null, null)[0].value, 'Yes');
+  eq(p.decide([yesNo('Are you a citizen of any country other than the United States?')], indian(), null, null)[0].value, 'Yes');
+  // No country of citizenship in the profile: never a guess.
+  notOk(p.decide([yesNo('Do you hold citizenship of any country other than India?')],
+                 Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { nationality: '' }) }), null, null)[0].value === 'No');
+});
+
+test('"Do you have a High School diploma (10+2), HSC or GED?" is answered from the education level', () => {
+  const d = p.decide([yesNo('Do you have a High School diploma (10+2), HSC or GED?*')], CTX, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'Yes', 'a B.Tech is a 10+2 and more');
+  eq(p.fieldsForServer([d]).length, 0, 'never asked of the model');
+  eq(p.decide([yesNo("Do you hold a Bachelor's degree?")], CTX, null, null)[0].value, 'Yes');
+  eq(p.decide([yesNo("Do you have a Master's degree?")], CTX, null, null)[0].value, 'No');
+  const master = Object.assign({}, CTX, { facts: { educationEntries: [{ degree: 'M.Tech', school: 'IIT' }] } });
+  eq(p.decide([yesNo("Do you have a Master's degree?")], master, null, null)[0].value, 'Yes', 'from the education list too');
+});
+
+test('a degree question the level alone cannot answer is left to the usual tiers', () => {
+  for (const label of ["Do you have a Bachelor's degree in Computer Science?",
+                       "Do you have a Master's degree or equivalent experience?",
+                       'Are you currently pursuing a degree?',
+                       'Do you have MS Office certification?',
+                       'Do you have a Diploma?']) {
+    eq(p.educationLevelAnswer(yesNo(label), CTX, BANK), null, label);
+  }
+  // No education on file: nothing to read a level from.
+  eq(p.educationLevelAnswer(yesNo("Do you hold a Bachelor's degree?"), { answerBank: {} }, {}), null);
+});
+
 // ── nationality ──────────────────────────────────────────────
 
 test('nationality fills from the stored answer only', () => {

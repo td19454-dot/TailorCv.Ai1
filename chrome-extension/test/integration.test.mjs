@@ -31,6 +31,7 @@ import { setTiming } from '../src/autofill/timing.js';
 // against real React.
 setTiming({ settleMs: 0, optionWaitMs: 20, revealWatchMs: 10, revealQuietMs: 30, revealMaxMs: 400,
             commitWaitMs: 150, uploadConfirmMs: 400, resumeParseMaxMs: 2000, resumeParseStartMs: 20,
+            resumeParseDetectMs: 300, resumeParseQuietMs: 60,
             tileOpenMs: 500, tileSaveMs: 500 });
 
 const BANK = {
@@ -1297,6 +1298,63 @@ test('Oracle: the resume import runs first; what it filled is left alone, only t
     const chosen = [...doc.querySelectorAll('[role="radio"][aria-checked="true"]')].map(b => b.textContent.trim());
     deepEq(chosen, ['Mr.'], 'Title, cleared by the import, is filled after it');
     eq(byLabel(result.decisions, 'Title').action, p.FILL);
+  });
+});
+
+// The Oracle form behind the Oct 2026 log: the import only starts reading once
+// its server has the file — after the run's one look at 300 ms — so the page
+// was filled while it read, and the import then wrote over Country code and
+// more. However the reading shows itself (or does not), the page is filled
+// only after it.
+function wireLateImport(env, { startMs = 100, readMs = 120, sign = 'disable', fills = {} } = {}) {
+  const doc = env.document;
+  const input = doc.querySelector('.apply-flow-profile-import-awli__file-upload');
+  const block = doc.querySelector('.apply-flow-profile-import');
+  input.addEventListener('change', () => {
+    setTimeout(() => {
+      if (sign === 'disable') input.disabled = true;
+      if (sign === 'spinner') block.insertAdjacentHTML('beforeend', '<div class="oj-progress-circle">Reading…</div>');
+      setTimeout(() => {
+        for (const b of doc.querySelectorAll('ul[aria-label="Title"] [role=radio]')) b.setAttribute('aria-checked', 'false');
+        for (const [id, v] of Object.entries(fills)) doc.getElementById(id).value = v;
+        input.disabled = false;
+        const spin = block.querySelector('.oj-progress-circle');
+        if (spin) spin.remove();
+      }, readMs);
+    }, startMs);
+  });
+}
+
+for (const sign of ['disable', 'spinner', 'none']) {
+  test(`Oracle: a resume import that starts reading late is waited for (${sign})`, async () => {
+    await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
+      wireRadioPills(env.document);
+      wireLateImport(env, { sign, fills: { 'firstName-20': 'FromResume', 'lastName-22': '' } });
+      const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { name_title: 'Mr.' }) });
+      const result = await run_.runAutofill(ctx, null);
+      const doc = env.document;
+      eq(doc.getElementById('firstName-20').value, 'FromResume', 'what the import filled is left as it filled it');
+      eq(doc.getElementById('lastName-22').value, BANK.last_name);
+      const chosen = [...doc.querySelectorAll('[role="radio"][aria-checked="true"]')].map(b => b.textContent.trim());
+      deepEq(chosen, ['Mr.'], 'Title is filled after the import, not cleared by it');
+      eq(byLabel(result.decisions, 'Title').action, p.FILL);
+    });
+  });
+}
+
+test('an answer the page writes OVER after it was filled is filled again', async () => {
+  await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
+    wireRadioPills(env.document);
+    const last = env.document.getElementById('lastName-22');
+    let overwritten = false;
+    last.addEventListener('input', () => {
+      if (overwritten) return;
+      overwritten = true;
+      setTimeout(() => { last.value = 'FromSomewhereElse'; }, 20);
+    });
+    const result = await withRealisticWaits(() => run_.runAutofill(CTX, null));
+    eq(last.value, BANK.last_name);
+    eq(byLabel(result.decisions, 'Last Name').action, p.FILL);
   });
 });
 

@@ -28,7 +28,7 @@ import { experienceSection, fillExperienceSection, educationSection, fillEducati
   from './repeaters.js';
 import { decide, coerce, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
-import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText } from './write.js';
+import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText, heldNow } from './write.js';
 import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone,
   STORABLE_SENSITIVE } from './match.js';
 
@@ -695,18 +695,22 @@ function isProfileImport(row) {
 // rounds; what still will not stay is the person's, never a ✓.
 const REFILL_ROUNDS = 2;
 
+// Not only EMPTIED: Oracle's resume import, finishing after a field was filled,
+// writes its own reading over it, and a field showing something else is as
+// lost as an empty one (Oct 2026). "Something else" is judged as the write was
+// (heldNow), so a reformatted answer is left alone.
 async function refillCleared(decisions, progress, root) {
   const emptied = () => decisions.filter(d => {
     if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== 'ok') return false;
     if (!d.row || d.row.kind === 'file' || d.row.kind === 'tile') return false;
     if (d.key && state.userEdited.includes(d.key)) return false;
-    const now = reprobe(d.row);
-    return !!now && !now.filled;
+    const held = heldNow(d);
+    return held === 'empty' || held === 'changed';
   });
   for (let round = 0; round < REFILL_ROUNDS; round++) {
     const lost = emptied();
     if (!lost.length) return;
-    console.info(`[TailorCV] the form emptied ${lost.length} answer(s) after they were filled — filling again:`,
+    console.info(`[TailorCV] the form emptied or changed ${lost.length} answer(s) after they were filled — filling again:`,
                  lost.map(d => d.label).join(' | '));
     progress('repairing', { total: lost.length, detail: 'the form cleared some answers — filling them again' });
     for (const d of lost) {
@@ -1104,6 +1108,9 @@ async function attachDocument(decision, ctx) {
 
   const target = decision.row.el;
   void ctx;
+  // Oracle's import: watched from before the file goes in, so what was already
+  // on the page is not taken for the form reading it.
+  const reading = isProfileImport(decision.row) ? watchResumeReading(target) : null;
 
   // A drop-target with no file input of its own. There is nothing to write to,
   // so the drop event IS the mechanism — and there is also nothing to read back,
@@ -1140,7 +1147,7 @@ async function attachDocument(decision, ctx) {
     if (attached || Date.now() >= deadline) break;
     await sleep(150);
   }
-  const formRead = await waitWhileReadingResume(target);
+  const formRead = reading ? await reading.wait() : await waitWhileReadingResume(target);
   // What the page shows is the verdict, however the file got there.
   return { ok: attached, shown: attached ? file.name : '', formRead };
 }
@@ -1202,6 +1209,107 @@ async function waitWhileReadingResume(input) {
   while (input.isConnected && input.disabled && Date.now() < deadline) await sleep(250);
   await sleep(TIMING.settleMs + 300);    // let it write what it read
   return true;
+}
+
+/**
+ * Oracle's "Import your profile" reads the resume only once its server has the
+ * file — seconds after the attach. One look at 300 ms never saw it begin: the
+ * page was filled while it read, and the import then wrote over Country code
+ * and more as the run ended (Oct 2026). So, from before the file goes in, watch
+ * for up to resumeParseDetectMs for any sign of the reading:
+ *  - the upload, or a button beside it, disabled;
+ *  - a busy marker, spinner or progress bar beside it;
+ *  - the form's fields changing — nothing else is filling them yet, since
+ *    documents go first.
+ * Once seen, wait for those signs to clear and the fields to stand still for
+ * resumeParseQuietMs (all within resumeParseMaxMs). `wait()` resolves with
+ * whether the form read the resume.
+ */
+function watchResumeReading(input) {
+  const doc = (input && input.ownerDocument) || globalThis.document;
+  const block = (input && input.closest && input.closest('.apply-flow-profile-import'))
+    || ancestor(input, 3);
+  const root = (input && input.closest && input.closest('form')) || doc.body;
+  // What already shows before the file goes in is no sign of reading.
+  const before = new Set(readingSigns(input, block));
+  const values = fieldSnapshot(root);
+  const signNow = () => readingSigns(input, block).some(el => !before.has(el));
+  return {
+    async wait() {
+      const start = Date.now();
+      let seen = '';
+      while (Date.now() - start < TIMING.resumeParseDetectMs) {
+        if (signNow()) { seen = 'it shows it is busy'; break; }
+        if (fieldSnapshot(root) !== values) { seen = 'its fields are changing'; break; }
+        await sleep(150);
+      }
+      if (!seen) {
+        console.info(`[TailorCV] no sign of the form reading the resume in ${Date.now() - start} ms — filling on`);
+        return false;
+      }
+      console.info(`[TailorCV] the form is reading the resume (${seen}, after ${Date.now() - start} ms) — `
+        + 'waiting for it to finish before filling on');
+      const deadline = start + TIMING.resumeParseMaxMs;
+      while (signNow() && Date.now() < deadline) await sleep(250);
+      // Then until what it writes stands still.
+      let last = fieldSnapshot(root);
+      let stillSince = Date.now();
+      while (Date.now() < deadline && Date.now() - stillSince < TIMING.resumeParseQuietMs) {
+        await sleep(150);
+        const now = fieldSnapshot(root);
+        if (now !== last) { last = now; stillSince = Date.now(); }
+      }
+      console.info(`[TailorCV] the form finished reading the resume after ${Date.now() - start} ms`);
+      return true;
+    },
+  };
+}
+
+function ancestor(el, levels) {
+  let node = el;
+  for (let i = 0; i < levels && node && node.parentElement; i++) node = node.parentElement;
+  return node || null;
+}
+
+const BUSY_SELECTOR = '[aria-busy="true"], [role="progressbar"], [class*="spinner" i], [class*="loading" i], '
+  + '[class*="progress" i], button[disabled], input[disabled]';
+
+/** Elements that say the upload is being read: the upload disabled, or a busy
+ *  marker / spinner / disabled button beside it, as drawn now. */
+function readingSigns(input, block) {
+  const out = [];
+  if (input && input.isConnected && input.disabled) out.push(input);
+  if (!block || !block.isConnected) return out;
+  for (const el of block.querySelectorAll(BUSY_SELECTOR)) {
+    if (el !== input && drawn(el)) out.push(el);
+  }
+  if (block.getAttribute && block.getAttribute('aria-busy') === 'true') out.push(block);
+  return out;
+}
+
+function drawn(el) {
+  if (el.closest('[hidden]')) return false;
+  try {
+    const style = (el.ownerDocument.defaultView || globalThis).getComputedStyle(el);
+    return style.display !== 'none' && style.visibility !== 'hidden';
+  } catch (e) {
+    return true;
+  }
+}
+
+/** Every field's value on the form (and which pills are chosen), as one string. */
+function fieldSnapshot(root) {
+  if (!root) return '';
+  const parts = [];
+  for (const el of root.querySelectorAll('input, select, textarea')) {
+    const type = (el.type || '').toLowerCase();
+    if (type === 'file' || type === 'hidden' || isOwnUi(el)) continue;
+    parts.push(type === 'checkbox' || type === 'radio' ? (el.checked ? '1' : '0') : String(el.value || ''));
+  }
+  for (const el of root.querySelectorAll('[aria-checked="true"], [aria-selected="true"]')) {
+    if (!isOwnUi(el)) parts.push((el.textContent || '').trim());
+  }
+  return parts.join('\u0001');
 }
 
 // ── answering a field from the sidebar ───────────────────────

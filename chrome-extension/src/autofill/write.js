@@ -1607,6 +1607,22 @@ export async function applyDecision(decision) {
   return result;
 }
 
+/**
+ * Does a field we filled still hold our answer? 'ok', 'empty', 'changed', or
+ * 'gone' (no longer on the page). Judged as the write itself was (accepts): a
+ * form that reformatted the answer ("+91" for "+91 (India)") still holds it.
+ */
+export function heldNow(decision) {
+  const row = decision && decision.row;
+  const after = row && reprobe(row);
+  if (!after) return 'gone';
+  if (!after.filled) return 'empty';
+  if (after.value === decision.shown) return 'ok';
+  const loneCheckboxTicked = row.kind === 'checkbox' && (row.options || []).length <= 1
+    && /^(yes|true|on|checked)$/i.test(String(decision.value));
+  return loneCheckboxTicked || accepts(decision, decision.value, after.value) ? 'ok' : 'changed';
+}
+
 async function verdict(decision, row, value, wrote) {
   await sleep(TIMING.settleMs);
   const after = reprobe(row);

@@ -438,6 +438,21 @@ async def billing_client_error(body: CheckoutErrorReport, request: Request):
     return JSONResponse({"ok": True})
 
 
+def _checkout_started(user, plan: str, provider: str, region: str, request: Request) -> None:
+    """A checkout session was just created: record it and message the owner.
+    Not an error, so message only, no call; keyed per user and plan so a
+    double-click is one message but switching plans is another.
+    """
+    analytics.track(user.id, "checkout_started",
+                    {"plan": plan, "provider": provider, "region": region}, request=request)
+    alerts.notify(
+        f"checkout started ({provider})",
+        f"user {user.id} ({user.email}), plan {plan}, region {region}",
+        key=f"checkout_started:{provider}:{user.id}:{plan}",
+        urgent=False,
+    )
+
+
 # ── Razorpay routes ───────────────────────────────────────────────────────────
 
 class RazorpaySubscriptionRequest(BaseModel):
@@ -480,8 +495,7 @@ async def razorpay_subscription(body: RazorpaySubscriptionRequest, request: Requ
             "total_count": total_count,
             "notes": {"user_id": str(user.id), "plan": body.plan, "region": region},
         })
-        analytics.track(user.id, "checkout_started",
-                        {"plan": body.plan, "provider": "razorpay", "region": region}, request=request)
+        _checkout_started(user, body.plan, "razorpay", region, request)
         return {
             "subscription_id": subscription["id"],
             "key_id": os.getenv("RAZORPAY_KEY_ID"),
@@ -511,8 +525,7 @@ async def razorpay_order(body: RazorpayOrderRequest, request: Request):
             "receipt": str(uuid.uuid4())[:20],
             "notes": {"user_id": str(user.id), "plan": "weekly", "region": region},
         })
-        analytics.track(user.id, "checkout_started",
-                        {"plan": "weekly", "provider": "razorpay", "region": region}, request=request)
+        _checkout_started(user, "weekly", "razorpay", region, request)
         return {
             "order_id": order["id"],
             "key_id": os.getenv("RAZORPAY_KEY_ID"),
@@ -813,8 +826,7 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
                 region, body.plan, price_id, success_url, exc,
             )
             raise HTTPException(status_code=502, detail="Could not start checkout. Please try again.")
-        analytics.track(user.id, "checkout_started",
-                        {"plan": body.plan, "provider": "polar", "region": region}, request=request)
+        _checkout_started(user, body.plan, "polar", region, request)
         return {"checkout_url": checkout.url}
     finally:
         db.close()

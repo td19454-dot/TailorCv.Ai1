@@ -182,6 +182,10 @@ export function decide(rows, ctx, server, state) {
       if (prior.readFirst) d.readFirst = prior.readFirst;
       return done(d, FILL, prior.value, 'profile', 0.9, prior.reason);
     }
+    // "Do you have a High School diploma (10+2), HSC or GED?" — from the
+    // education, by level; see educationLevelAnswer.
+    const level = educationLevelAnswer(row, ctx, bank);
+    if (level) return done(d, FILL, level.value, 'profile', 0.9, level.reason);
     // "Are you engaged in any outside employment you would like to continue?"
     // (Mastercard), "Do you have a second job, outside business…?" (Capital
     // One): always No — the person's standing answer (Oct 2026).
@@ -306,7 +310,7 @@ export function decide(rows, ctx, server, state) {
           if (row.value && looksLikeDecline(c.value) && !looksLikeDecline(row.value)) {
             return done(d, SKIP, row.value, '', 0, 'keeping the answer already there');
           }
-          return done(d, FILL, c.value, 'profile', 0.95, '');
+          return done(d, FILL, c.value, 'profile', 0.95, c.reason || '');
         }
       }
       if (!stored) {
@@ -850,6 +854,9 @@ function usStatus(bank, country) {
   return country === 'United States' ? US_CITIZEN : NOT_US;
 }
 
+// "…of any country other than India", "besides", "apart from", "except".
+const OTHER_THAN_RE = /\b(other than|besides|apart from|except(ing)?|excluding)\b/i;
+
 // Asks about more than citizenship: residence, "U.S. person" (export control).
 const BEYOND_CITIZEN_RE = /\bpermanent resident|\bgreen card\b|\bperson\b|\blawful|\bprotected individual\b|\brefugee\b|\basylee\b/i;
 const PLACEHOLDER_RE = /^(select|choose|please select|--|—|no selection$)/i;
@@ -882,6 +889,18 @@ export function citizenshipAnswer(row, bank, entry) {
   const named = countryNamedIn(row.label);
 
   if (named && isYesNoRow(row, labels)) {
+    // "Do you hold citizenship or a passport of any country OTHER THAN India?"
+    // asks about every country but the one named: it was answered Yes for a
+    // citizen of India, from "India" alone (Oracle, Oct 2026). The profile holds
+    // one citizenship, so: Yes only if that one is not the country named (the
+    // person's choice — a second citizenship has no place in the profile yet).
+    if (OTHER_THAN_RE.test(row.label || '')) {
+      if (!country) return null;
+      const other = country !== named;
+      const value = coerce(other ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
+      return value === null ? { ask: 'none of the options say Yes or No' }
+        : { value, reason: other ? `your citizenship is ${country}` : `your profile lists one citizenship: ${country}` };
+    }
     const explicitGroup = citizenshipGroup((bank && bank.citizenship_status) || '');
     if (!country && !(named === 'United States' && explicitGroup)) return null;
     let yes;
@@ -966,6 +985,47 @@ function sameCompany(a, b) {
   if (short.length < 3) return false;
   return (' ' + long + ' ').includes(' ' + short + ' ')
     || (short.length >= 4 && long.startsWith(short));      // "Citi" / "Citibank"
+}
+
+// "Do you have / hold / possess…", "Have you completed / earned…".
+const HAVE_QUALIFICATION_RE = /^\s*(do|did|have|has)\s+you\b.*?\b(have|hold|possess|complete[ds]?|earn(ed)?|obtain(ed)?|receive[ds]?|attain(ed)?|graduated?)\b/i;
+// A subject, a field, "or equivalent experience", "currently pursuing": the
+// level alone cannot answer it.
+const NOT_JUST_LEVEL_RE = /\b(degree|diploma|qualification)s? in\b|\b(related|relevant|similar|technical) (field|discipline|area)\b|\bfield of\b|\bequivalent\b|\bexperience\b|\bpursu|\benrolled\b|\bcurrently\b/i;
+const QUALIFICATION_WORD_RE = /\b(degree|diploma|ged|hsc|10\s*\+\s*2|12th|high school|secondary school|bachelor'?s?|master'?s?|doctorate|ph\.? ?d)\b/i;
+// Phd, master, bachelor, associate, high school — DEGREE_LEVELS' first five,
+// one above the other. A diploma is not on that ladder: an Indian polytechnic
+// diploma follows Class X, not 10+2.
+const LADDER = 5;
+
+/**
+ * Yes / No for "Do you have a High School diploma (10+2), HSC or GED?", "Do you
+ * hold a Bachelor's degree?", from the profile's education, by level: a B.Tech
+ * is a 10+2 and more. Sent to the model it came back unanswered — the resume
+ * shows a B.Tech, not a "High School diploma" — and the required question
+ * stayed empty (Oracle, Oct 2026). Null when the question is not that, names a
+ * subject or "equivalent experience", or the education gives no level.
+ */
+export function educationLevelAnswer(row, ctx, bank) {
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') return null;
+  const label = String(row.label || '');
+  if (!HAVE_QUALIFICATION_RE.test(label) || NOT_JUST_LEVEL_RE.test(label)) return null;
+  // A qualification named outright: "MS" alone is as likely MS Office.
+  if (!QUALIFICATION_WORD_RE.test(label)) return null;
+  const asked = degreeLevel(label);
+  if (asked < 0 || asked >= LADDER) return null;
+  const degrees = [(bank && bank.degree) || '']
+    .concat(((ctx && ctx.facts && ctx.facts.educationEntries) || []).map(e => (e && e.degree) || ''))
+    .filter(Boolean);
+  const ranks = degrees.map(degreeRank).filter(r => r < LADDER);
+  if (!ranks.length) return null;
+  const best = Math.min(...ranks);
+  const has = best <= asked;
+  const value = coerce(has ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
+  if (value === null || !/^(yes|no)\b/i.test(value)) return null;
+  const highest = degrees[degrees.map(degreeRank).indexOf(best)];
+  return { value, reason: `your education shows ${highest}` };
 }
 
 /**
