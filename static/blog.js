@@ -764,7 +764,7 @@
       // sibling once wrapped), nesting one card inside another.
       const nodes = collectUntilNextHeading(h2, ["H2"]).filter((n, i, all) => {
         const stopAt = all.findIndex((x) =>
-          x.matches && x.matches(".faq-box, .key-takeaways-box, .step-card, .article-cta-strip, .end-cta"));
+          x.matches && x.matches(".faq-box, .key-takeaways-box, .step-card, .article-cta-strip, .end-cta, .post-author-card, .blog-ats, .blog-tpl"));
         return stopAt === -1 || i < stopAt;
       });
       const box = document.createElement("section");
@@ -779,7 +779,13 @@
     document.querySelectorAll(".post-content h2").forEach((h2) => {
       if (!/^(frequently asked questions|faqs?|common questions)$/.test(normalizeText(h2))) return;
       if (h2.closest(".faq-box")) return;
-      const nodes = collectUntilNextHeading(h2, ["H2"]);
+      // A trailing FAQ has no next heading, so stop at the blocks the template
+      // appends after the article or it swallows the author card and widgets.
+      const nodes = collectUntilNextHeading(h2, ["H2"]).filter((n, i, all) => {
+        const stopAt = all.findIndex((x) =>
+          x.matches && x.matches(".post-author-card, .blog-ats, .blog-tpl, .article-cta-strip, .end-cta"));
+        return stopAt === -1 || i < stopAt;
+      });
       if (!nodes.length) return;
 
       const box = document.createElement("section");
@@ -1236,6 +1242,8 @@ const tcxRunPairs = () => {
       // FAQ, the template gallery or a screenshot ends up inside a Don't column.
       if (n.matches && n.matches(BOXED)) break;
       if (n.tagName === "P" && n.querySelector("img")) break;
+      // A tip or note closes the section; it applies to both columns, not one.
+      if (n.matches && n.matches("blockquote.callout-tip, blockquote.callout-note")) break;
       // Prose AFTER the list is the section's sign-off, not another item -
       // it was being pulled into the column and unbalancing the pair.
       if (seenList && n.tagName === "P") break;

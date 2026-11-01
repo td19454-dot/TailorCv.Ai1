@@ -1,0 +1,718 @@
+/* Black theme for individual blog posts. Loaded after blog.css and only by
+   blog_post.html, so the blog list and the rest of the site are untouched.
+   !important is needed because blog.css and blog.js-injected components set
+   these colours through long selector chains, several already !important. */
+
+body.blog-detail-page {
+  --bg: #000000;
+  --bg-soft: #000000;
+  --paper: #000000;
+  --card: #0c0c10;
+  --border: #26262e;
+  --ink: #ffffff;
+  --ink-soft: #d9dce3;
+  --dark-surface: #0c0c10;
+  --dark-surface-2: #15151b;
+  --dark-border: #2a2a33;
+  --dark-text: #d9dce3;
+  --dark-muted: #a1a6b3;
+  --dark-heading: #ffffff;
+  --dark-link: #b49cff;
+  --dark-accent: #8b6cff;
+  background: #000000 !important;
+  color: var(--dark-text);
+}
+
+/* One typeface for everything in the post, sidebar included: the article's serif.
+   Code keeps its monospace. */
+body.blog-detail-page main,
+body.blog-detail-page main *:not(pre, pre *, code, code *, kbd),
+body.blog-detail-page .tcx-mcta,
+body.blog-detail-page .tcx-mcta * {
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
+}
+
+/* These two set their font through longer !important selectors in blog.css */
+html body.blog-detail-page main a.hero-cta-btn .tcx-btn-label,
+html body.blog-detail-page main a.toc-cta-btn .tcx-btn-label,
+html body.blog-detail-page main .post-content a.end-cta-btn .tcx-btn-label,
+html body.blog-detail-page main .post-content a.article-cta-button .tcx-btn-label,
+html body.blog-detail-page main button .tcx-btn-label,
+html body.blog-detail-page .tcx-mcta a .tcx-btn-label,
+html body.blog-detail-page main .post-content .step-card .step-card-num {
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
+}
+
+/* Page sections */
+body.blog-detail-page .blog-post-wrap,
+body.blog-detail-page .blog-post,
+body.blog-detail-page .post-header,
+body.blog-detail-page .post-hero,
+body.blog-detail-page .post-layout,
+body.blog-detail-page .toc-col,
+body.blog-detail-page .toc,
+body.blog-detail-page .post-content,
+body.blog-detail-page .related {
+  background: #000000 !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* Text */
+body.blog-detail-page .post-content,
+body.blog-detail-page .post-content p,
+body.blog-detail-page .post-content li,
+body.blog-detail-page .post-content figcaption,
+body.blog-detail-page .post-content .intro-mark,
+body.blog-detail-page .post-content label,
+body.blog-detail-page .post-content summary {
+  color: var(--dark-text) !important;
+}
+
+body.blog-detail-page .post-content h1,
+body.blog-detail-page .post-content h2,
+body.blog-detail-page .post-content h3,
+body.blog-detail-page .post-content h4,
+body.blog-detail-page .post-content h5,
+body.blog-detail-page .post-content h6,
+body.blog-detail-page .post-content strong,
+body.blog-detail-page .post-content b {
+  color: var(--dark-heading) !important;
+}
+
+body.blog-detail-page .crumb-sep,
+body.blog-detail-page .hero-dot {
+  color: var(--dark-muted) !important;
+}
+
+/* Links, leaving the gradient CTA buttons their white label */
+body.blog-detail-page .post-content a:not([class*="btn"]):not([class*="button"]),
+body.blog-detail-page .post-content a:not([class*="btn"]):not([class*="button"]) *,
+body.blog-detail-page .related-more-title,
+body.blog-detail-page .related a:not([class*="btn"]) {
+  color: var(--dark-link) !important;
+}
+
+body.blog-detail-page .post-content li::marker {
+  color: var(--dark-accent) !important;
+}
+
+body.blog-detail-page .post-content a[class*="btn"],
+body.blog-detail-page .post-content a[class*="button"],
+body.blog-detail-page .post-content a[class*="btn"] *,
+body.blog-detail-page .post-content a[class*="button"] *,
+body.blog-detail-page .post-content button[class*="btn"],
+body.blog-detail-page .post-content button[class*="btn"] * {
+  color: #ffffff !important;
+}
+
+/* Cards */
+body.blog-detail-page .key-takeaways-box,
+body.blog-detail-page .faq-box,
+body.blog-detail-page .callout-box:not(.callout-mistake),
+body.blog-detail-page .ba-panel,
+body.blog-detail-page .post-author-card,
+body.blog-detail-page .blog-ats,
+body.blog-detail-page .blog-card,
+body.blog-detail-page .blog-rate,
+body.blog-detail-page .post-content .dd-col,
+body.blog-detail-page .post-content .callout-example,
+body.blog-detail-page .post-content .callout-note,
+body.blog-detail-page .post-content .callout-note-inline,
+body.blog-detail-page .post-content .callout-tip,
+body.blog-detail-page .post-content .callout-weak,
+body.blog-detail-page .post-content .callout-strong,
+body.blog-detail-page .post-content .ba-block,
+body.blog-detail-page .post-content .tpl-block {
+  background: var(--dark-surface) !important;
+  background-image: none !important;
+  border-color: var(--dark-border) !important;
+  box-shadow: none !important;
+}
+
+/* Nested panels sit one step lighter so they still read as separate */
+body.blog-detail-page .post-content blockquote,
+body.blog-detail-page .post-content blockquote.callout-note,
+body.blog-detail-page .post-content blockquote.callout-tip,
+body.blog-detail-page .answer-box,
+body.blog-detail-page .post-content .answer-box,
+body.blog-detail-page .blog-ats-drop,
+body.blog-detail-page .blog-ats-jd,
+body.blog-detail-page .post-content p:has(> img),
+body.blog-detail-page .toc-toggle,
+body.blog-detail-page .tcx-mcta-x {
+  background: var(--dark-surface-2) !important;
+  background-image: none !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.blog-detail-page .post-content blockquote,
+body.blog-detail-page .post-content .answer-box {
+  border-left-color: var(--dark-accent) !important;
+}
+
+body.blog-detail-page .toc-toggle-count,
+body.blog-detail-page .blog-ats-chip {
+  background: var(--dark-surface-2) !important;
+  border-color: var(--dark-accent) !important;
+  color: var(--dark-link) !important;
+}
+
+/* Sidebar and small labels */
+body.blog-detail-page .toc-cta-title,
+body.blog-detail-page .toc-toggle-label,
+body.blog-detail-page .post-author-name,
+body.blog-detail-page .blog-rate-title,
+body.blog-detail-page .blog-ats-label,
+body.blog-detail-page .blog-ats-drop-title,
+body.blog-detail-page .blog-tpl-name,
+body.blog-detail-page .blog-card h3 a {
+  color: var(--dark-heading) !important;
+}
+
+body.blog-detail-page .toc-cta-text,
+body.blog-detail-page .post-author-bio,
+body.blog-detail-page .blog-rate-sub,
+body.blog-detail-page .blog-ats-drop-sub,
+body.blog-detail-page .blog-ats-privacy,
+body.blog-detail-page .tcx-mcta-x,
+body.blog-detail-page .related-more-meta {
+  color: var(--dark-muted) !important;
+}
+
+body.blog-detail-page .post-author-role,
+body.blog-detail-page .blog-ats-jdlabel,
+body.blog-detail-page .post-author-link {
+  color: var(--dark-link) !important;
+}
+
+body.blog-detail-page .blog-ats-jd {
+  color: var(--dark-heading) !important;
+}
+
+body.blog-detail-page .blog-ats-jd::placeholder {
+  color: var(--dark-muted) !important;
+}
+
+/* Tables keep their light-theme look: blue header, white rows, dark text.
+   The page-wide text rules above are undone inside them. */
+body.blog-detail-page .table-wrap {
+  --ink: #0d1420;
+  --ink-soft: #2c3748;
+}
+
+body.blog-detail-page .post-content .table-wrap p,
+body.blog-detail-page .post-content .table-wrap li {
+  color: #2c3748 !important;
+}
+
+body.blog-detail-page .post-content .table-wrap strong,
+body.blog-detail-page .post-content .table-wrap b {
+  color: #10203c !important;
+}
+
+body.blog-detail-page .post-content .table-wrap table a:not([class*="btn"]):not([class*="button"]) {
+  color: #6405fc !important;
+}
+
+body.blog-detail-page .post-content .table-wrap table th,
+body.blog-detail-page .post-content .table-wrap table th strong,
+body.blog-detail-page .post-content .table-wrap table th p,
+body.blog-detail-page .post-content .table-wrap table th a:not([class*="btn"]):not([class*="button"]) {
+  color: #ffffff !important;
+}
+
+/* Code */
+body.blog-detail-page .post-content pre,
+body.blog-detail-page .post-content code,
+body.blog-detail-page .post-content .codehilite {
+  background: var(--dark-surface-2) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text) !important;
+}
+
+body.blog-detail-page .post-content .codehilite span,
+body.blog-detail-page .post-content pre span {
+  background: transparent !important;
+  color: var(--dark-text) !important;
+}
+
+/* Mobile sticky CTA */
+body.blog-detail-page .tcx-mcta {
+  background: rgba(12, 12, 16, 0.96) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.blog-detail-page .tcx-btn-label {
+  color: #ffffff !important;
+}
+
+/* Good/bad headings, brightened so they stay readable on black */
+body.blog-detail-page .post-content .dd-dont .dd-head h3 {
+  color: #fb7185 !important;
+}
+
+body.blog-detail-page .post-content .callout-mistake .callout-head h2,
+body.blog-detail-page .post-content .callout-mistake .callout-head h3,
+body.blog-detail-page .post-content .mistake-grid-item .callout-head h3 {
+  color: #b42318 !important;
+}
+
+body.blog-detail-page .post-content .callout-example .callout-head h2,
+body.blog-detail-page .post-content .callout-example .callout-head h3,
+body.blog-detail-page .post-content .callout-strong .callout-head h2,
+body.blog-detail-page .post-content .callout-strong .callout-head h3,
+body.blog-detail-page .post-content .dd-do .dd-head h3,
+body.blog-detail-page .post-content .dd-strong .dd-head h3,
+body.blog-detail-page .post-content .ba-after .ba-panel-label {
+  color: #4ade80 !important;
+}
+
+body.blog-detail-page .post-content .callout-weak .callout-head h2,
+body.blog-detail-page .post-content .callout-weak .callout-head h3,
+body.blog-detail-page .post-content .dd-weak .dd-head h3,
+body.blog-detail-page .post-content .ba-before .ba-panel-label {
+  color: #fb923c !important;
+}
+
+body.blog-detail-page .toc a.active {
+  color: var(--dark-link) !important;
+}
+
+/* Article starts level with the first sidebar link; the old top padding only
+   made sense when the article was a white sheet. */
+body.blog-detail-page .post-content {
+  padding-top: 24px !important;
+}
+
+body.blog-detail-page .post-content > :first-child {
+  margin-top: 0 !important;
+}
+
+/* ATS scanner: one card, one input style, columns that end on the same line */
+body.blog-detail-page .blog-ats {
+  /* A darker navy than the FAQ and step cards, with its own palette for the rules here. */
+  --dark-surface-2: rgba(255, 255, 255, 0.03);
+  --dark-border: #16273f;
+  --dark-text: #d5dceb;
+  --dark-muted: #94a3bb;
+  --dark-heading: #ffffff;
+  --dark-link: #93c5fd;
+  --dark-accent: #60a5fa;
+  padding: clamp(24px, 3vw, 38px) clamp(20px, 3vw, 38px);
+  background: #070f1c !important;
+}
+
+body.blog-detail-page .blog-ats-head {
+  margin-bottom: 24px;
+}
+
+body.blog-detail-page .post-content .blog-ats-chip {
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 0 !important;
+  color: #c9d3e4 !important;
+}
+
+body.blog-detail-page .post-content .blog-tpl a.blog-tpl-cta,
+body.blog-detail-page .post-content .blog-tpl a.blog-tpl-cta *,
+body.blog-detail-page .post-content .blog-ats a.blog-ats-signup {
+  color: #ffffff !important;
+}
+
+body.blog-detail-page .blog-ats-grid {
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+body.blog-detail-page .blog-ats-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+body.blog-detail-page .blog-ats-drop {
+  flex: 1;
+  border: 1px dashed #2a4263 !important;
+}
+
+body.blog-detail-page .blog-ats-drop:hover,
+body.blog-detail-page .blog-ats-drop:focus-visible,
+body.blog-detail-page .blog-ats-drop.is-over,
+body.blog-detail-page .blog-ats-drop.has-file {
+  background: rgba(8, 6, 32, 0.25) !important;
+  border-color: var(--dark-accent) !important;
+}
+
+body.blog-detail-page .blog-ats-drop-ico path {
+  stroke: var(--dark-link);
+}
+
+body.blog-detail-page .blog-ats-drop-ico path:first-child {
+  fill: transparent;
+}
+
+body.blog-detail-page .post-content .blog-ats-drop-title span,
+body.blog-detail-page .post-content .blog-ats-file {
+  color: var(--dark-link) !important;
+}
+
+body.blog-detail-page .post-content .blog-ats-jdlabel {
+  color: var(--dark-muted) !important;
+  font-weight: 500;
+}
+
+body.blog-detail-page .blog-ats-jd {
+  min-height: 140px;
+  height: 140px;
+}
+
+body.blog-detail-page .blog-ats-jd:focus {
+  border-color: var(--dark-accent) !important;
+  box-shadow: 0 0 0 3px rgba(139, 108, 255, 0.2);
+}
+
+/* jd_picker.js sets these colours inline, hence !important */
+body.blog-detail-page .blog-ats-jdrow [data-jd-picker] > button {
+  background: var(--dark-surface-2) !important;
+  border-color: var(--dark-border) !important;
+  box-shadow: none !important;
+  color: var(--dark-muted) !important;
+}
+
+body.blog-detail-page .blog-ats-jdrow [data-jd-picker] > div {
+  background: var(--dark-surface-2) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.blog-detail-page .post-content .blog-ats-privacy {
+  margin-top: 12px;
+  color: var(--dark-muted) !important;
+}
+
+/* Colour: each component keeps the hue it has in the light theme, deepened to
+   sit on black. Must stay below the neutral card rules above, which it overrides. */
+
+/* Purple */
+body.blog-detail-page .key-takeaways-box {
+  /* Very light sky blue, so its text and links flip back to dark. */
+  --dark-text: #1f2a37;
+  --dark-heading: #0d2a5c;
+  --dark-link: #6405fc;
+  --dark-accent: #2f7fd6;
+  background: #e8f6ff !important;
+  border-color: #bfe3fb !important;
+  color: var(--dark-text);
+}
+
+/* The sidebar promo keeps the light theme's gradient from blog.css, with its dark text */
+body.blog-detail-page .toc-cta {
+  --dark-heading: #0c1b33;
+  --dark-muted: #334155;
+}
+
+/* Indigo answer boxes, light list and point cards, neutral author card */
+body.blog-detail-page .post-content .answer-box {
+  background: #161c4a !important;
+  border-color: #313c8f !important;
+}
+
+body.blog-detail-page .post-content .lead-list > li {
+  /* Keeps the light theme's card from blog.css, with its dark text. */
+  --dark-text: #1f2a37;
+  --dark-heading: #10203c;
+  --dark-link: #6405fc;
+  color: var(--dark-text) !important;
+}
+
+body.blog-detail-page .post-content .point-run > .point-card {
+  /* Keeps the light theme's card from blog.css, so its text stays dark too. */
+  --dark-text: #1f2a37;
+  --dark-heading: #4c34e0;
+  --dark-link: #6405fc;
+}
+
+body.blog-detail-page .post-content .point-run > .point-card strong,
+body.blog-detail-page .post-content .point-run > .point-card b {
+  color: #10203c !important;
+}
+
+body.blog-detail-page .post-author-card {
+  background: #16181f !important;
+  border-color: #2e323d !important;
+}
+
+/* Steps keep the light theme's blues from blog.css: pale tones with dark text,
+   the two deepest tones with white text, and cream quotes inside either. */
+body.blog-detail-page .step-card {
+  --dark-text: #1f2a37;
+  --dark-heading: #0f2133;
+  --dark-link: #6405fc;
+  --dark-accent: #5b42f3;
+  color: var(--dark-text) !important;
+}
+
+body.blog-detail-page .step-card.step-tone-4,
+body.blog-detail-page .step-card.step-tone-5 {
+  --dark-text: #ffffff;
+  --dark-heading: #ffffff;
+  --dark-link: #ffffff;
+  --dark-accent: #ffffff;
+}
+
+body.blog-detail-page .post-content .step-card blockquote,
+body.blog-detail-page .post-content .step-card .answer-box {
+  --dark-text: #1e293b;
+  --dark-heading: #10203c;
+  --dark-link: #6405fc;
+  --dark-accent: #5b42f3;
+  background: #fff8ea !important;
+  border-color: #f3b846 !important;
+  border-left-color: #f59e0b !important;
+  color: var(--dark-text) !important;
+}
+
+/* Sky blue FAQ, light related card */
+body.blog-detail-page .faq-box {
+  /* Light sky blue, so its text and links flip back to dark. */
+  --dark-text: #1f2a37;
+  --dark-heading: #0d2a5c;
+  --dark-link: #6405fc;
+  background: linear-gradient(180deg, #d9edff 0%, #c6e4ff 100%) !important;
+  border-color: #a9cdf0 !important;
+}
+
+body.blog-detail-page .faq-item {
+  border-top-color: #a9cdf0;
+}
+
+/* Conclusion keeps the light theme's card from blog.css, with its dark text */
+body.blog-detail-page .post-content .article-bottomline {
+  --dark-text: #1f2a37;
+  --dark-heading: #0f2133;
+  --dark-link: #6405fc;
+}
+
+body.blog-detail-page .post-content .lead-run > .lead-item {
+  /* Keeps the light theme's pale blue gradients from blog.css, so its text and
+     links stay the light theme's dark colours. */
+  --dark-text: #1f2a37;
+  --dark-heading: #0f3d82;
+  --dark-link: #6405fc;
+}
+
+body.blog-detail-page .post-content .read-next {
+  /* Keeps the light theme's card from blog.css, with its label and link colours. */
+  --dark-text: #6b7a90;
+  --dark-link: #1a73e8;
+}
+
+/* Amber quotes, with blue notes and green tips */
+body.blog-detail-page .post-content blockquote {
+  background: #2e2108 !important;
+  border-color: #5e4614 !important;
+  border-left-color: #f59e0b !important;
+}
+
+body.blog-detail-page .post-content blockquote.callout-note,
+body.blog-detail-page .post-content .callout-note,
+body.blog-detail-page .post-content .callout-note-inline {
+  background: #0c1d36 !important;
+  border-color: #1e3c68 !important;
+  border-left-color: #60a5fa !important;
+}
+
+body.blog-detail-page .post-content blockquote.callout-tip,
+body.blog-detail-page .post-content .callout-tip {
+  /* Tips keep the light theme's mint card, with its dark text. */
+  --dark-text: #1e293b;
+  --dark-heading: #0f172a;
+  --dark-link: #6405fc;
+  background: #ecfdf5 !important;
+  border-color: rgba(22, 163, 74, 0.26) !important;
+  border-left-color: #16a34a !important;
+}
+
+/* Red = mistake, green = good, orange = weak */
+body.blog-detail-page .post-content .dd-dont {
+  background: #2a0f14 !important;
+  border-color: #5e2029 !important;
+}
+
+/* Mistake boxes keep the light theme's cards from blog.css, with their dark text */
+body.blog-detail-page .callout-box.callout-mistake {
+  --dark-text: #172033;
+  --dark-heading: #10203c;
+  --dark-link: #6405fc;
+  color: var(--dark-text) !important;
+}
+
+body.blog-detail-page .post-content .callout-example,
+body.blog-detail-page .post-content .callout-strong,
+body.blog-detail-page .post-content .dd-do,
+body.blog-detail-page .post-content .dd-strong,
+body.blog-detail-page .ba-panel.ba-after {
+  background: #0b2318 !important;
+  border-color: #1b5238 !important;
+}
+
+body.blog-detail-page .post-content .callout-weak,
+body.blog-detail-page .post-content .dd-weak,
+body.blog-detail-page .ba-panel.ba-before {
+  background: #2a1a0a !important;
+  border-color: #5e3b14 !important;
+}
+
+/* ATS scanner inputs: barely lifted off the card, with thin quiet borders. */
+body.blog-detail-page .blog-ats-drop,
+body.blog-detail-page .blog-ats-jd,
+body.blog-detail-page .blog-ats-jdrow [data-jd-picker] > button {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: #22354f !important;
+}
+
+body.blog-detail-page .blog-ats-drop:hover,
+body.blog-detail-page .blog-ats-drop:focus-visible,
+body.blog-detail-page .blog-ats-drop.is-over,
+body.blog-detail-page .blog-ats-drop.has-file {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: var(--dark-accent) !important;
+}
+
+body.blog-detail-page .blog-ats-jd:focus {
+  border-color: var(--dark-accent) !important;
+}
+
+body.blog-detail-page .blog-ats-jdrow [data-jd-picker] > div {
+  background: #0c0c14 !important;
+  border-color: #3a3458 !important;
+}
+
+/* Marker-pen intro lines: pure yellow, full height with black text, because the
+   half-height stroke leaves the top of black text unreadable on a black page. */
+body.blog-detail-page .post-content p.intro-line > span.intro-mark {
+  padding: 1px 6px;
+  background-image: none;
+  background-color: #ffff00;
+  color: #000000 !important;
+}
+
+body.blog-detail-page .post-content p.intro-line > span.intro-mark * {
+  color: #000000 !important;
+}
+
+/* Resume and portfolio showcases keep the light theme's whole card from blog.css,
+   heading included, so their text stays dark. */
+body.blog-detail-page .blog-tpl {
+  --dark-text: #334155;
+  --dark-muted: #52607a;
+  --dark-heading: #10203c;
+  --dark-link: #4c34e0;
+  color: var(--dark-text);
+}
+
+/* Post header: a smaller title and cover so the article isn't pushed below the fold */
+body.blog-detail-page .post-hero {
+  margin-top: clamp(28px, 4vw, 56px);
+}
+
+body.blog-detail-page h1.post-hero-title {
+  max-width: 24ch;
+  margin-bottom: 22px;
+  font-size: clamp(1.7rem, 2.3vw, 2.5rem);
+  line-height: 1.18;
+}
+
+body.blog-detail-page .post-hero-media {
+  justify-self: center;
+  width: 100%;
+  max-width: 440px;
+  padding: 12px;
+}
+
+/* Carded lists: more room between and inside the cards. Marker offsets follow
+   the padding so each marker stays centred on the first line. */
+body.blog-detail-page .post-content .lead-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 28px 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.blog-detail-page .post-content .lead-list > li {
+  padding: 20px 24px 20px 50px;
+}
+
+body.blog-detail-page .post-content ol.lead-list > li {
+  padding-left: 64px;
+}
+
+body.blog-detail-page .post-content .lead-list > li::before {
+  top: 30px;
+}
+
+body.blog-detail-page .post-content ol.lead-list > li::before {
+  left: 18px;
+  top: 22px;
+}
+
+body.blog-detail-page .post-content .lead-list > li.task-item > .task-box {
+  top: 26px;
+}
+
+@media (max-width: 640px) {
+  body.blog-detail-page .post-content .lead-list {
+    gap: 12px;
+  }
+
+  body.blog-detail-page .post-content .lead-list > li {
+    padding: 15px 16px 15px 40px;
+  }
+
+  body.blog-detail-page .post-content ol.lead-list > li {
+    padding-left: 54px;
+  }
+
+  body.blog-detail-page .post-content .lead-list > li::before {
+    top: 25px;
+  }
+
+  body.blog-detail-page .post-content ol.lead-list > li::before {
+    left: 14px;
+    top: 17px;
+  }
+
+  body.blog-detail-page .post-content .lead-list > li.task-item > .task-box {
+    top: 21px;
+  }
+}
+
+/* Callouts holding plain "**Label.** body" paragraphs instead of grid cards:
+   each paragraph is its own white card in blog.css. */
+body.blog-detail-page .post-content .callout-box:not(.callout-mistake) > p:has(> strong:first-child) {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+  border-right-color: rgba(255, 255, 255, 0.08) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.blog-detail-page .post-content .callout-mistake > p > strong:first-child {
+  color: #b42318 !important;
+}
+
+body.blog-detail-page .post-content .callout-example > p > strong:first-child,
+body.blog-detail-page .post-content .callout-strong > p > strong:first-child {
+  color: #4ade80 !important;
+}
+
+body.blog-detail-page .post-content .callout-weak > p > strong:first-child {
+  color: #fb923c !important;
+}
+
+/* The two CTA banners keep their light-theme blue gradient, so their copy stays
+   white as it is there. */
+body.blog-detail-page .post-content .article-cta-strip p,
+body.blog-detail-page .post-content .end-cta p {
+  color: #ffffff !important;
+}

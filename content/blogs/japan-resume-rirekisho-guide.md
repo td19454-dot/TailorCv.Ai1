@@ -127,7 +127,7 @@ Keep a copy of exactly what you submitted for each specific application, useful 
 
 ### Your resume after optimization
 
-![Choosing a resume template in TailorCV, with several ATS-safe layouts shown side by side](public/blog-images/choose-resume-template.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
 Templates here are for the Western-style resume used by foreign-affiliated employers — the rirekisho itself follows its own standardised form.
 
