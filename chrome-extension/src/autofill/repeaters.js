@@ -31,7 +31,7 @@ import { describeFields, isVisible, readComboboxOptions } from './discover.js';
 import { applyDecision } from './write.js';
 import { tileAnswer, press } from './tiles.js';
 import { FILL, ASK } from './plan.js';
-import { classifySensitive, formatDateForField } from './match.js';
+import { classifySensitive, formatDateForField, isoMonth, isoYear } from './match.js';
 import { countryOf, countryShapes } from './countries.js';
 import { TIMING, sleep } from './timing.js';
 
@@ -101,22 +101,6 @@ function panelRows(panel) {
   // Each row is found again inside this block, never another block's field
   // of the same name — see reresolve() in discover.js.
   return describeFields({ root: panel, fields: els }).map(r => Object.assign(r, { scope: panel }));
-}
-
-/** "04/2023" / "2023-04" → "2023-04-01" for the split-date writer; else ''. */
-function isoMonth(v) {
-  const s = String(v || '').trim();
-  let m = s.match(/^(\d{1,2})\/(\d{4})$/);
-  if (m) return `${m[2]}-${m[1].padStart(2, '0')}-01`;
-  m = s.match(/^(\d{4})-(\d{1,2})/);
-  if (m) return `${m[1]}-${m[2].padStart(2, '0')}-01`;
-  return '';
-}
-
-/** "2023" → "2023-01-01": the split-date writer fills only the boxes a date has. */
-function isoYear(v) {
-  const y = (String(v || '').match(/\b(19|20)\d{2}\b/) || [])[0];
-  return y ? `${y}-01-01` : '';
 }
 
 /** What one box of a block gets from `entry`, or null to leave it. */

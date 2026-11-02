@@ -562,6 +562,13 @@ test('no non-sensitive synonym is flagged sensitive', () => {
   eq(gaps.length, 0, `unanswerable synonyms:\n    ${gaps.join('\n    ')}`);
 });
 
+test('an internal field name in brackets is unreadable; a plain name in brackets is not', () => {
+  ok(m.looksLikeOpaqueId('cards[3da58b41-acf5-40a1-945e-c7f047ef8050][field0]'), 'a Lever card');
+  ok(m.looksLikeOpaqueId('cards[d54adf7b-3148-4095-93bb-72bef32a61f8][field1]*'), 'with its required mark');
+  notOk(m.looksLikeOpaqueId('urls[GitHub]'), 'says what it is');
+  notOk(m.looksLikeOpaqueId('ExperienceDetails[0].companyName'), 'says what it is');
+});
+
 test('a validation prompt is unreadable, but "Please select your gender." is a question', () => {
   // Walmart's Voluntary Disclosures (Oct 2026): an open "please select …" tail
   // read both real questions as prompts, and auto-apply paused on them.

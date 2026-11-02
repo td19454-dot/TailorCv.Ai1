@@ -20,15 +20,16 @@
 import { describeFields, findForm, isApplicationPage, readComboboxOptions, reprobe, hasUploadedFile,
          profileTileBlocks, detectAts, picklistButton }
   from './discover.js';
-import { fillProfileTiles } from './tiles.js';
+import { fillProfileTiles, tileFlagged } from './tiles.js';
 import { expandSections, inRepeatingRow, markFollowUps, educationFromRows, noteBlocks,
          attachmentBoxes, boxHasFile, openUploadInput, waitForUpload } from './successfactors.js';
 import { experienceSection, fillExperienceSection, educationSection, fillEducationSection, inSection,
          sfExperienceSection, sfEducationSection }
   from './repeaters.js';
-import { decide, coerce, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
+import { decide, coerce, fieldsForServer, summarize, jobCountryFromUrl, visaEmployer, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
-import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText } from './write.js';
+import { countryOf } from './countries.js';
+import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText, heldNow, multiselectWidget } from './write.js';
 import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone,
   STORABLE_SENSITIVE } from './match.js';
 
@@ -38,6 +39,7 @@ function storable(label, sensitive, employer) {
   return !category || STORABLE_SENSITIVE.has(category);
 }
 import { TIMING, sleep, startClock } from './timing.js';
+import { clearTimelines, printTimelines } from './timeline.js';
 
 const MAX_REPAIR_SWEEPS = 1;
 const MAX_REVEAL_ROUNDS = 2;
@@ -52,13 +54,18 @@ const MAX_DROPDOWNS_TO_OPEN = 25;
 let clock = startClock();
 
 
+// This run lost the extension: it was reloaded, and this tab kept the old script.
+let extensionReloaded = false;
+
 /** Messages to the background worker. */
 function send(msg) {
   return new Promise(resolve => {
     try {
       globalThis.chrome.runtime.sendMessage(msg, res => resolve(res || {}));
     } catch (e) {
-      resolve({ error: String((e && e.message) || e) });
+      const error = String((e && e.message) || e);
+      if (/context invalidated/i.test(error)) extensionReloaded = true;
+      resolve({ error });
     }
   });
 }
@@ -241,6 +248,16 @@ export function pageBlockers(decisions) {
   const seen = new Set();
   for (const d of decisions || []) {
     const row = d && d.row;
+    // An Education / Experience tile still flagged: Oracle's Next refuses the
+    // page over it. Read live, so fixing it by hand during a pause clears it
+    // (saving redraws the tile, and the old element leaves the page).
+    if (row && row.kind === 'tile') {
+      if (d.action === ASK && row.el.isConnected && tileFlagged(row.el) && !seen.has(d.key)) {
+        seen.add(d.key);
+        out.push({ key: d.key, label: d.label, reason: d.reason || 'fix this entry', decision: d });
+      }
+      continue;
+    }
     if (!row || !row.required || seen.has(d.key)) continue;
     let reason = '';
     if (row.kind === 'file') {
@@ -277,9 +294,12 @@ export async function forceAnswers(ctx, decisions, onProgress) {
   // while empty and clears that later, and those filled ones took the places
   // ahead of the questions really left (ExxonMobil, Oct 2026).
   const isEmpty = (d) => { const now = reprobe(d.row); return !!now && !now.filled; };
+  // Nor a profile answer a search-box widget has no row for: the model filled
+  // Employer Name with the company being applied to (HDFC, Nov 2026).
+  const knownAnswer = d => !!(d.value && d.source === 'profile' && multiselectWidget(d.row.el));
   const targets = pageBlockers(decisions).map(b => b.decision).filter(d =>
-    d.row && d.row.kind !== 'file' && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer
-    && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d)).slice(0, MAX_FORCED);
+    d.row && d.row.kind !== 'file' && d.row.kind !== 'tile' && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer
+    && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d) && !knownAnswer(d)).slice(0, MAX_FORCED);
   if (!targets.length) return { forced: 0 };
 
   for (const d of targets) {
@@ -402,6 +422,12 @@ export async function runAutofill(ctx, onProgress) {
   };
 
   clock = startClock();
+  clearTimelines();
+  extensionReloaded = false;
+  ctx = Object.assign({}, ctx, {
+    jobCountry: await jobCountry(globalThis.location.href),
+    jobCompany: visaEmployer(globalThis.location.href, ctx && ctx.jobCompany),
+  });
 
   // SuccessFactors keeps most of its form in closed sections: open them first,
   // or their fields are hidden and never read.
@@ -543,8 +569,104 @@ export async function runAutofill(ctx, onProgress) {
 
   await redecideFailedSaved(decisions, ctx, progress);
 
-  // One repair sweep, no LLM: retry only what the page disagreed about.
   const repairStart = clock.now();
+  await repairSweeps(decisions, ctx, progress);
+  clock.add('repair', clock.now() - repairStart);
+
+  // Fields revealed by an answer we just gave (a "Yes" that opens a follow-up).
+  const revealStart = clock.now();
+  let revealed = 0;
+  while (revealed < MAX_REVEAL_ROUNDS) {
+    const before = new Set(rows.map(r => r.key));
+    clock.quiet(await waitForQuiet(form.root));
+    const fresh = describeFields(findForm() || form);
+    if (ctx && ctx.sfEducation !== undefined) {
+      markFollowUps(fresh.filter(r => !inRepeatingRow(r)));
+      noteBlocks(fresh, (ctx.facts && ctx.facts.educationEntries) || [], (ctx.facts && ctx.facts.workExperience) || []);
+    }
+    // Never the profile import: it was handled (or deliberately skipped) above.
+    // Nor the blocks "Add Another" created: fillExperienceSection filled them.
+    const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
+                                    && !inRepeater(r));
+    if (!added.length) break;
+    revealed++;
+    progress('scanning', { detail: `${added.length} new field(s) appeared` });
+    const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
+    // As for the fields seen first: these were written once and never checked
+    // again, so a dropdown that refused stayed ✓ (Nike, Nov 2026).
+    await redecideFailedSaved(extra, ctx, progress);
+    await repairSweeps(extra, ctx, progress);
+    decisions = decisions.concat(extra);
+    rows = fresh;
+  }
+  clock.add('reveal', clock.now() - revealStart);
+
+  // Education / Experience entries the form flags (Oracle's tiles): opened,
+  // filled from the matching profile entry, saved, and checked.
+  if (hasTiles) {
+    const tiled = await clock.time('tiles', () => fillProfileTiles(ctx, progress));
+    decisions = decisions.concat(tiled);
+  }
+
+  await clock.time('refill', () => refillCleared(decisions, progress, form.root));
+  handBackFailed(decisions);
+  await clock.time('reread_options', () => rereadEmptyLists(decisions));
+
+  // Required questions nothing answered: "What best describes your experience
+  // designing analytical data models?" — the profile cannot say, and the first
+  // AI call is never shown the resume. Answered from the resume by the pass
+  // auto-apply makes, for review (DoorDash, Oct 2026). Not on auto-apply's own
+  // fill: its loop makes this pass itself, once per step.
+  if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
+    progress('resume', {});
+    const forced = await clock.time('resume_pass', () => forceAnswers(ctx, decisions, progress));
+    if (forced && forced.error) console.warn('[TailorCV] resume pass failed —', forced.error);
+  }
+
+  await saveState();
+  watchUserEdits(form, null);
+
+  const timing = clock.summary();
+  console.info(`[TailorCV] autofill took ${timing.totalMs} ms`);
+  console.table(timing.phases);
+  if (timing.slowFields.length) console.table(timing.slowFields);
+  if (timing.quietWaits.length) console.table(timing.quietWaits);
+  printTimelines();
+
+  return {
+    timing,
+    decisions,
+    counts: summarize(decisions),
+    serverError: decisions.serverError || '',
+    extensionReloaded,
+    page: state.page,
+    opaqueHosts: form.opaqueHosts || 0,
+    ats: form.ats,
+  };
+}
+
+// A slow posting must not hold the form back: past this, the URL decides.
+const JOB_COUNTRY_WAIT_MS = 3000;
+
+/**
+ * The country this Workday job is in, or '': its posting's own data, which also
+ * knows /job/Bangalore/… is in India. Only if that can't be read, its URL. A
+ * posting read that doesn't settle it (several locations) stays unsettled.
+ */
+async function jobCountry(url) {
+  if (detectAts(url) !== 'workday') return '';
+  let timer = null;
+  const res = await Promise.race([
+    send({ type: 'JOB_COUNTRY', url }),
+    new Promise(resolve => { timer = setTimeout(() => resolve({}), JOB_COUNTRY_WAIT_MS); }),
+  ]);
+  clearTimeout(timer);
+  const posted = res && res.data;
+  return posted && typeof posted.country === 'string' ? countryOf(posted.country) : jobCountryFromUrl(url);
+}
+
+/** One repair sweep, no LLM: retry only what the page disagreed about. */
+async function repairSweeps(decisions, ctx, progress) {
   for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
     let broken = decisions.filter(d => d.outcome && d.outcome !== 'ok' && d.value && !d.redecided);
     if (!broken.length) break;
@@ -590,71 +712,16 @@ export async function runAutofill(ctx, onProgress) {
     progress('repairing', { total: broken.length });
     await writeAll(broken, ctx, progress, true);
   }
-  clock.add('repair', clock.now() - repairStart);
+}
 
-  // Fields revealed by an answer we just gave (a "Yes" that opens a follow-up).
-  const revealStart = clock.now();
-  let revealed = 0;
-  while (revealed < MAX_REVEAL_ROUNDS) {
-    const before = new Set(rows.map(r => r.key));
-    clock.quiet(await waitForQuiet(form.root));
-    const fresh = describeFields(findForm() || form);
-    if (ctx && ctx.sfEducation !== undefined) {
-      markFollowUps(fresh.filter(r => !inRepeatingRow(r)));
-      noteBlocks(fresh, (ctx.facts && ctx.facts.educationEntries) || [], (ctx.facts && ctx.facts.workExperience) || []);
+/** The last word before the panel: a write that failed is the person's, whichever path made it. */
+function handBackFailed(decisions) {
+  for (const d of decisions) {
+    if ((d.action === FILL || d.action === SUGGEST) && d.outcome && d.outcome !== 'ok') {
+      d.action = ASK;
+      d.reason = outcomeReason(d);
     }
-    // Never the profile import: it was handled (or deliberately skipped) above.
-    // Nor the blocks "Add Another" created: fillExperienceSection filled them.
-    const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
-                                    && !inRepeater(r));
-    if (!added.length) break;
-    revealed++;
-    progress('scanning', { detail: `${added.length} new field(s) appeared` });
-    const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
-    decisions = decisions.concat(extra);
-    rows = fresh;
   }
-  clock.add('reveal', clock.now() - revealStart);
-
-  // Education / Experience entries the form flags (Oracle's tiles): opened,
-  // filled from the matching profile entry, saved, and checked.
-  if (hasTiles) {
-    const tiled = await clock.time('tiles', () => fillProfileTiles(ctx, progress));
-    decisions = decisions.concat(tiled);
-  }
-
-  await clock.time('refill', () => refillCleared(decisions, progress, form.root));
-  await clock.time('reread_options', () => rereadEmptyLists(decisions));
-
-  // Required questions nothing answered: "What best describes your experience
-  // designing analytical data models?" — the profile cannot say, and the first
-  // AI call is never shown the resume. Answered from the resume by the pass
-  // auto-apply makes, for review (DoorDash, Oct 2026). Not on auto-apply's own
-  // fill: its loop makes this pass itself, once per step.
-  if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
-    progress('resume', {});
-    const forced = await clock.time('resume_pass', () => forceAnswers(ctx, decisions, progress));
-    if (forced && forced.error) console.warn('[TailorCV] resume pass failed —', forced.error);
-  }
-
-  await saveState();
-  watchUserEdits(form, null);
-
-  const timing = clock.summary();
-  console.info(`[TailorCV] autofill took ${timing.totalMs} ms`);
-  console.table(timing.phases);
-  if (timing.slowFields.length) console.table(timing.slowFields);
-  if (timing.quietWaits.length) console.table(timing.quietWaits);
-
-  return {
-    timing,
-    decisions,
-    counts: summarize(decisions),
-    serverError: decisions.serverError || '',
-    page: state.page,
-    opaqueHosts: form.opaqueHosts || 0,
-    ats: form.ats,
-  };
 }
 
 function isPhoneRow(row) {
@@ -695,18 +762,22 @@ function isProfileImport(row) {
 // rounds; what still will not stay is the person's, never a ✓.
 const REFILL_ROUNDS = 2;
 
+// Not only EMPTIED: Oracle's resume import, finishing after a field was filled,
+// writes its own reading over it, and a field showing something else is as
+// lost as an empty one (Oct 2026). "Something else" is judged as the write was
+// (heldNow), so a reformatted answer is left alone.
 async function refillCleared(decisions, progress, root) {
   const emptied = () => decisions.filter(d => {
     if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== 'ok') return false;
     if (!d.row || d.row.kind === 'file' || d.row.kind === 'tile') return false;
     if (d.key && state.userEdited.includes(d.key)) return false;
-    const now = reprobe(d.row);
-    return !!now && !now.filled;
+    const held = heldNow(d);
+    return held === 'empty' || held === 'changed';
   });
   for (let round = 0; round < REFILL_ROUNDS; round++) {
     const lost = emptied();
     if (!lost.length) return;
-    console.info(`[TailorCV] the form emptied ${lost.length} answer(s) after they were filled — filling again:`,
+    console.info(`[TailorCV] the form emptied or changed ${lost.length} answer(s) after they were filled — filling again:`,
                  lost.map(d => d.label).join(' | '));
     progress('repairing', { total: lost.length, detail: 'the form cleared some answers — filling them again' });
     for (const d of lost) {
@@ -1104,6 +1175,9 @@ async function attachDocument(decision, ctx) {
 
   const target = decision.row.el;
   void ctx;
+  // Oracle's import: watched from before the file goes in, so what was already
+  // on the page is not taken for the form reading it.
+  const reading = isProfileImport(decision.row) ? watchResumeReading(target) : null;
 
   // A drop-target with no file input of its own. There is nothing to write to,
   // so the drop event IS the mechanism — and there is also nothing to read back,
@@ -1140,7 +1214,7 @@ async function attachDocument(decision, ctx) {
     if (attached || Date.now() >= deadline) break;
     await sleep(150);
   }
-  const formRead = await waitWhileReadingResume(target);
+  const formRead = reading ? await reading.wait() : await waitWhileReadingResume(target);
   // What the page shows is the verdict, however the file got there.
   return { ok: attached, shown: attached ? file.name : '', formRead };
 }
@@ -1202,6 +1276,112 @@ async function waitWhileReadingResume(input) {
   while (input.isConnected && input.disabled && Date.now() < deadline) await sleep(250);
   await sleep(TIMING.settleMs + 300);    // let it write what it read
   return true;
+}
+
+/**
+ * Oracle's "Import your profile" reads the resume only once its server has the
+ * file — seconds after the attach. One look at 300 ms never saw it begin: the
+ * page was filled while it read, and the import then wrote over Country code
+ * and more as the run ended (Oct 2026). So, from before the file goes in, watch
+ * for up to resumeParseDetectMs for any sign of the reading:
+ *  - the upload, or a button beside it, disabled;
+ *  - a busy marker, spinner or progress bar beside it;
+ *  - the form's fields changing — nothing else is filling them yet, since
+ *    documents go first.
+ * Once seen, wait for those signs to clear and the fields to stand still for
+ * resumeParseQuietMs (all within resumeParseMaxMs). `wait()` resolves with
+ * whether the form read the resume.
+ */
+function watchResumeReading(input) {
+  const doc = (input && input.ownerDocument) || globalThis.document;
+  const block = (input && input.closest && input.closest('.apply-flow-profile-import'))
+    || ancestor(input, 3);
+  const root = (input && input.closest && input.closest('form')) || doc.body;
+  // What already shows before the file goes in is no sign of reading.
+  const before = new Set(readingSigns(input, block));
+  const values = fieldSnapshot(root);
+  const signNow = () => readingSigns(input, block).some(el => !before.has(el));
+  return {
+    async wait() {
+      const start = Date.now();
+      let seen = '';
+      while (Date.now() - start < TIMING.resumeParseDetectMs) {
+        if (signNow()) { seen = 'it shows it is busy'; break; }
+        if (fieldSnapshot(root) !== values) { seen = 'its fields are changing'; break; }
+        await sleep(150);
+      }
+      if (!seen) {
+        console.info(`[TailorCV] no sign of the form reading the resume in ${Date.now() - start} ms — filling on`);
+        return false;
+      }
+      console.info(`[TailorCV] the form is reading the resume (${seen}, after ${Date.now() - start} ms) — `
+        + 'waiting for it to finish before filling on');
+      const deadline = start + TIMING.resumeParseMaxMs;
+      while (signNow() && Date.now() < deadline) await sleep(250);
+      // Then until what it writes stands still.
+      let last = fieldSnapshot(root);
+      let stillSince = Date.now();
+      while (Date.now() < deadline && Date.now() - stillSince < TIMING.resumeParseQuietMs) {
+        await sleep(150);
+        const now = fieldSnapshot(root);
+        if (now !== last) { last = now; stillSince = Date.now(); }
+      }
+      console.info(`[TailorCV] the form finished reading the resume after ${Date.now() - start} ms`);
+      return true;
+    },
+  };
+}
+
+function ancestor(el, levels) {
+  let node = el;
+  for (let i = 0; i < levels && node && node.parentElement; i++) node = node.parentElement;
+  return node || null;
+}
+
+const BUSY_SELECTOR = '[aria-busy="true"], [role="progressbar"], [class*="spinner" i], [class*="loading" i], '
+  + '[class*="progress" i], button[disabled], input[disabled]';
+
+/** Elements that say the upload is being read: the upload disabled, or a busy
+ *  marker / spinner / disabled button beside it, as drawn now. */
+function readingSigns(input, block) {
+  const out = [];
+  if (input && input.isConnected && input.disabled) out.push(input);
+  // Oracle binds each section's aria-hidden to isProfileImportLoading: it says
+  // outright that the import is running, wherever the upload itself sits.
+  const doc = (input && input.ownerDocument) || globalThis.document;
+  const reading = doc.querySelector('apply-flow-section[aria-hidden="true"]');
+  if (reading) out.push(reading);
+  if (!block || !block.isConnected) return out;
+  for (const el of block.querySelectorAll(BUSY_SELECTOR)) {
+    if (el !== input && drawn(el)) out.push(el);
+  }
+  if (block.getAttribute && block.getAttribute('aria-busy') === 'true') out.push(block);
+  return out;
+}
+
+function drawn(el) {
+  if (el.closest('[hidden]')) return false;
+  try {
+    const style = (el.ownerDocument.defaultView || globalThis).getComputedStyle(el);
+    return style.display !== 'none' && style.visibility !== 'hidden';
+  } catch (e) {
+    return true;
+  }
+}
+
+/** Every field's value on the form (and which pills are chosen), as one string. */
+function fieldSnapshot(root) {
+  if (!root) return '';
+  const parts = [];
+  for (const el of root.querySelectorAll('input, select, textarea')) {
+    const type = (el.type || '').toLowerCase();
+    if (type === 'file' || type === 'hidden' || isOwnUi(el)) continue;
+    parts.push(type === 'checkbox' || type === 'radio' ? (el.checked ? '1' : '0') : String(el.value || ''));
+  }
+  for (const el of root.querySelectorAll('[aria-checked="true"], [aria-selected="true"]')) {
+    if (!isOwnUi(el)) parts.push((el.textContent || '').trim());
+  }
+  return parts.join('\u0001');
 }
 
 // ── answering a field from the sidebar ───────────────────────

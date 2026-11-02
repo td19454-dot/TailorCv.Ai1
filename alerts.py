@@ -32,8 +32,8 @@ logger = logging.getLogger(__name__)
 MSG_DEDUPE_SECONDS = 10 * 60   # same error key messages at most this often
 CALL_GAP_SECONDS = 10 * 60     # at most one call per this window, any error
 MAX_MSG_PER_HOUR = 20          # hard cap across all keys
-# Non-urgent info (abandoned checkouts) has its own hourly budget so a busy
-# hour of abandons can never use up the budget real errors need.
+# Non-urgent info (checkouts started or abandoned) has its own hourly budget so
+# a busy hour of those can never use up the budget real errors need.
 MAX_INFO_PER_HOUR = 20
 
 _lock = threading.Lock()
@@ -118,7 +118,7 @@ def notify(title: str, details: str = "", key: str | None = None,
     """Message (and, if none in the last 10 min, call) the owner. Safe anywhere.
 
     urgent=False: message only, never a call, and its own hourly budget — for
-    events worth knowing about that aren't errors (abandoned checkouts).
+    events worth knowing about that aren't errors (checkouts started or abandoned).
     """
     cfg = _config()
     if cfg is None:

@@ -62,6 +62,16 @@ test('postingUrl turns an application step back into the posting a person would 
      'an unknown site is left as it is');
 });
 
+test('postingCountry reads a Workday posting\'s one country', () => {
+  // As Amadeus's posting sends it: /job/Bangalore/… names only the city.
+  eq(J.postingCountry('workday', { jobPostingInfo: { location: 'Bangalore', country: { descriptor: 'India' } } }), 'India');
+  eq(J.postingCountry('workday', { jobPostingInfo: { country: { descriptor: 'India' }, additionalLocations: ['London'] } }), '',
+     'several locations may be anywhere');
+  eq(J.postingCountry('workday', { jobPostingInfo: {} }), '');
+  eq(J.postingCountry('workday', null), '');
+  eq(J.postingCountry('greenhouse', { jobPostingInfo: { country: { descriptor: 'India' } } }), '');
+});
+
 // ── parsePosting: each ATS's data shape ──────────────────────
 
 test('parsePosting reads Workday, Greenhouse, Lever and Oracle data', () => {

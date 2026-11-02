@@ -45,6 +45,8 @@ import {
   questionSignature,
   STORABLE_SENSITIVE,
   matchSensitiveKey,
+  isoMonth,
+  isoYear,
 } from './match.js';
 import { countryOf, countryOption, countryShare, countryShapes, countryNamedIn } from './countries.js';
 import { pickSaved, pickSavedVariant } from './saved.js';
@@ -128,6 +130,16 @@ export function decide(rows, ctx, server, state) {
         : done(d, SKIP, '', '', 0, "we couldn't read this question");
     }
 
+    // A group of answers whose "question" is one of those answers: "Yes", on a
+    // question we never found. The sensitive check reads the label too, so a
+    // sponsorship question read as "Yes" went to the model (Palantir, Nov 2026).
+    if (labelIsOwnOption(row)) {
+      d.noServer = true;
+      return row.required
+        ? done(d, ASK, '', '', 0, "we couldn't read this question — please answer it")
+        : done(d, SKIP, '', '', 0, "we couldn't read this question");
+    }
+
     // Tier 0 — never touched.
     if (isNeverFill(row.label)) {
       return done(d, SKIP, '', '', 0, 'we never fill this kind of field');
@@ -158,6 +170,16 @@ export function decide(rows, ctx, server, state) {
       return done(d, SKIP, row.value, '', 0, 'already filled in');
     }
 
+    // Fields known by name: Keka's Experience and Education rows, from that
+    // row's own entry, and the date on Lever's disability signature.
+    const namedField = kekaEntryAnswer(row, ctx) || leverSignatureDate(row, rows, bank) || highSchoolAnswer(row, ctx);
+    if (namedField) {
+      d.noServer = true;
+      if (namedField.ask) return done(d, row.required ? ASK : SKIP, '', '', 0, namedField.ask);
+      return namedField.skip ? done(d, SKIP, '', '', 0, namedField.skip)
+        : done(d, FILL, namedField.value, 'profile', 0.95, '');
+    }
+
     // A date under such a heading is that entry's: "Start Date" under "Highest
     // Education Details" is when the degree began, not when the person can
     // start work — it was filled with today (Deloitte, Oct 2026).
@@ -182,12 +204,17 @@ export function decide(rows, ctx, server, state) {
       if (prior.readFirst) d.readFirst = prior.readFirst;
       return done(d, FILL, prior.value, 'profile', 0.9, prior.reason);
     }
+    // "Do you have a High School diploma (10+2), HSC or GED?" — from the
+    // education, by level; see educationLevelAnswer.
+    const level = educationLevelAnswer(row, ctx, bank);
+    if (level) return done(d, FILL, level.value, 'profile', 0.9, level.reason);
     // "Are you engaged in any outside employment you would like to continue?"
     // (Mastercard), "Do you have a second job, outside business…?" (Capital
-    // One): always No — the person's standing answer (Oct 2026).
+    // One), a conflict of interest (Nike): always No — the person's standing
+    // answer (Oct 2026).
     const outside = outsideEmploymentAnswer(row);
     if (outside !== null) {
-      return done(d, FILL, outside, 'profile', 0.9, 'no outside employment — always No');
+      return done(d, FILL, outside, 'profile', 0.9, 'no outside work or conflict of interest — always No');
     }
     // "Are you open to relocation for this role?", "…working in-person in one
     // of our offices 25% of the time?": always Yes — the person's standing
@@ -209,6 +236,14 @@ export function decide(rows, ctx, server, state) {
       return consent.ask
         ? done(d, ASK, '', '', 0, consent.ask)
         : done(d, FILL, consent.value, 'profile', 0.9, 'you consent to these questions — always Yes');
+    }
+    // "…undertakes people screening, these include criminal records… are you
+    // happy to continue?": agreeing to the checks, not the record they look at.
+    // Always Yes — the person's standing answer (Barclays, Nov 2026).
+    const screening = backgroundScreeningAnswer(row);
+    if (screening) {
+      d.noServer = true;
+      return done(d, FILL, screening, 'profile', 0.9, 'you agree to background checks — always Yes');
     }
     // "Typed Signature" under a statement of agreement: their full name,
     // always (the person's choice, Oct 2026).
@@ -233,6 +268,10 @@ export function decide(rows, ctx, server, state) {
       // question that the open search matched to current_company.
       const entry = matchSensitiveKey(row.label, category);
       let stored = entry ? bank[entry.key] : '';
+      // "Do you have the right to work in the location…": always Yes, whatever
+      // the profile says — applicants know the job they are applying to (the
+      // person's choice, Nov 2026). Sponsorship questions keep their own answer.
+      if (entry && entry.key === 'authorized_to_work_in_country') stored = 'Yes';
       // Country of birth: the profile's own, else its country of citizenship
       // (the person's choice, Oct 2026) — as the country, never a demonym:
       // "Indian" was how PwC's list ended on "British Indian Ocean Territory".
@@ -260,6 +299,11 @@ export function decide(rows, ctx, server, state) {
         d.savedFrom = saved.savedFrom;
         return done(d, FILL, saved.value, 'saved_answer', 0.9, 'your saved answer to this question');
       };
+      // A standing answer goes first: "always No" holds over an old saved answer.
+      if (category === 'criminal') {
+        const crime = criminalHistoryAnswer(row);
+        if (crime.value) return done(d, FILL, crime.value, 'profile', 0.95, crime.reason);
+      }
       if (STORABLE_SENSITIVE.has(category) && category !== 'demographic') {
         // Clearance / criminal history / citizenship: the person's own saved
         // answer to THIS question, if they saved one on an earlier form. Same
@@ -281,7 +325,7 @@ export function decide(rows, ctx, server, state) {
       // profile's two answers; see governmentOfficialAnswer.
       // Criminal history likewise, from its one answer; criminalHistoryAnswer.
       if (category === 'government_official' || category === 'criminal') {
-        const g = category === 'criminal' ? criminalHistoryAnswer(row, bank) : governmentOfficialAnswer(row, bank);
+        const g = category === 'criminal' ? criminalHistoryAnswer(row) : governmentOfficialAnswer(row, bank);
         if (g.followUp) {
           return row.required
             ? done(d, ASK, '', '', 0, 'only needed for some answers to the question above')
@@ -297,7 +341,7 @@ export function decide(rows, ctx, server, state) {
       // citizenshipAnswer. Before this, a Workday country list was searched for
       // "Not a U.S. citizen or permanent resident" and never stuck.
       if (category === 'citizenship') {
-        const c = citizenshipAnswer(row, bank, entry);
+        const c = citizenshipAnswer(row, bank, entry, ctx && ctx.jobCountry);
         if (c && c.ask) return done(d, ASK, '', '', 0, c.ask);
         if (c) {
           if (c.candidates && c.candidates.length > 1) d.candidates = c.candidates;
@@ -306,7 +350,7 @@ export function decide(rows, ctx, server, state) {
           if (row.value && looksLikeDecline(c.value) && !looksLikeDecline(row.value)) {
             return done(d, SKIP, row.value, '', 0, 'keeping the answer already there');
           }
-          return done(d, FILL, c.value, 'profile', 0.95, '');
+          return done(d, FILL, c.value, 'profile', 0.95, c.reason || '');
         }
       }
       if (!stored) {
@@ -320,12 +364,15 @@ export function decide(rows, ctx, server, state) {
         // A demographic question the profile has no field for ("Are you a
         // military spouse?") is the person's to answer here, not a profile task.
         // Likewise a birth question with no profile field ("Region of Birth").
+        // Likewise a current salary: the profile holds only the expected one, and
+        // was pointed at as if adding that would answer it (CBRE, Nov 2026).
         const onProfile = (PROFILE_CATEGORIES.has(category)
-                           && ((category !== 'demographic' && category !== 'birth') || !!entry))
+                           && ((category !== 'demographic' && category !== 'birth' && category !== 'salary') || !!entry))
                           || !!(entry && entry.sensitive);
-        return onProfile
-          ? done(d, PROFILE, '', '', 0, profileHint(category, entry))
-          : done(d, ASK, '', '', 0, 'we never guess this — choose your answer');
+        if (onProfile) return done(d, PROFILE, '', '', 0, profileHint(category, entry));
+        return done(d, ASK, '', '', 0, category === 'salary'
+          ? "we don't store your current salary — type it here"
+          : 'we never guess this — choose your answer');
       }
       // "Are you Hispanic/Latino?" is the race question asked as a Yes/No
       // (Greenhouse asks it first, then reveals the race list on "No"). The
@@ -368,10 +415,15 @@ export function decide(rows, ctx, server, state) {
       if (READ_FIRST_KEYS.has(key) || key === 'hispanic_latino') d.readFirst = { key, stored: answer };
       // Work authorization may be a list of statements, read against both
       // stored answers; the list is short, so open it and read it whole.
-      const sponsorship = key === 'authorized_to_work_in_country' ? bank.requires_visa_sponsorship : undefined;
-      if (sponsorship !== undefined) d.readFirst = { key, stored: answer, sponsorship };
+      const sponsorship = key === 'authorized_to_work_in_country' ? 'No' : undefined;
+      // "Yes - I hold citizenship" or "Yes – I hold a valid work permit": the
+      // job's country says which; see workAuthStatement.
+      const own = countryOf(bank.nationality || '');
+      const citizenHere = key === 'authorized_to_work_in_country' && own && ctx && ctx.jobCountry
+        ? own === ctx.jobCountry : undefined;
+      if (sponsorship !== undefined) d.readFirst = { key, stored: answer, sponsorship, citizenHere };
       const value = coerce(answer, Object.assign({}, row,
-        { candidates: shapes, candidateKey: key, sponsorship }));
+        { candidates: shapes, candidateKey: key, sponsorship, citizenHere }));
       if (value === null) {
         // We have their answer but this form offers no option matching it.
         const fromSaved = savedDemographic();
@@ -383,6 +435,11 @@ export function decide(rows, ctx, server, state) {
       // before the write rather than inside it.
       if (row.value && looksLikeDecline(value) && !looksLikeDecline(row.value)) {
         return done(d, SKIP, row.value, '', 0, 'keeping the answer already there');
+      }
+      // Yes for a job abroad is the one a person may want to look at. Never a pause.
+      if (citizenHere === false) {
+        return done(d, SUGGEST, value, 'profile', 0.95,
+                    `always Yes — this job is in ${ctx.jobCountry}, so check this before you submit`);
       }
       return done(d, FILL, value, 'profile', 0.95, '');
     }
@@ -627,6 +684,85 @@ function base(row) {
   };
 }
 
+const fieldName = row => (row && row.el && row.el.getAttribute && row.el.getAttribute('name')) || '';
+
+/** Radios or checkboxes labelled with one of their own answers. A lone box is its own question. */
+function labelIsOwnOption(row) {
+  if ((row.kind !== 'radio' && row.kind !== 'checkbox') || (row.options || []).length < 2) return false;
+  const same = s => String(s || '').replace(/\s+/g, ' ').trim().toLowerCase();
+  const label = same(row.label);
+  return !!label && row.options.some(o => same(typeof o === 'string' ? o : o && o.label) === label);
+}
+
+/**
+ * Today, on the signature under Lever's disability form. The form asks for it
+ * only once Disability status has an answer, so only then; { value }, { skip },
+ * or null for any other field.
+ */
+function leverSignatureDate(row, rows, bank) {
+  if (fieldName(row) !== 'eeo[disabilitySignatureDate]') return null;
+  const status = (rows || []).find(r => fieldName(r) === 'eeo[disability]');
+  const answered = (status && status.filled) || String((bank && bank.disability_status) || '').trim();
+  if (!answered) return { skip: 'only needed once Disability status is answered' };
+  const value = formatDateForField(todayIso(), row.hints);
+  return value ? { value } : { skip: 'we could not shape the date for this form' };
+}
+
+const HIGH_SCHOOL_RE = /\b(high|secondary|senior secondary|higher secondary)\s+school\b|\bhigher secondary\b|\bsenior secondary\b/i;
+
+/**
+ * A high school's name or graduation year, from the saved school that is one.
+ * "School" and "graduation" read as the university's, and "High School Name" was
+ * filled with it (Palantir, Nov 2026). With no such school saved, it is the
+ * person's. { value }, { ask }, or null for any other question.
+ */
+function highSchoolAnswer(row, ctx) {
+  if (row.kind === 'radio' || row.kind === 'checkbox' || !HIGH_SCHOOL_RE.test(row.label || '')) return null;
+  const key = (matchFieldKey(row.label) || {}).key;
+  if (key !== 'university' && key !== 'graduation_date') return null;
+  const schools = (ctx && ctx.facts && ctx.facts.educationEntries) || [];
+  const school = schools.find(s => (degreeEntry(s && s.degree) || {}).level === 'high school');
+  const wanted = school && (key === 'university' ? school.school : isoYear(school.to).slice(0, 4));
+  if (!wanted) return { ask: 'your profile has no high school for this — add it, or answer here' };
+  const value = coerce(wanted, Object.assign({}, row, { candidateKey: '', candidates: [] }));
+  return value === null ? { ask: `this list doesn't offer your answer (${wanted})` } : { value };
+}
+
+const KEKA_FIELD_RE = /^(Experience|Education)Details\[(\d+)\]\.(\w+)$/;
+const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+                     'August', 'September', 'October', 'November', 'December'];
+
+/** "2026-01-01" → "1 January 2026", the shape Keka's placeholders show. */
+function spokenDate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+  return m ? `${Number(m[3])} ${MONTH_NAMES[Number(m[2]) - 1]} ${m[1]}` : '';
+}
+
+/**
+ * One box of a Keka Experience or Education row, from the profile entry its name
+ * points to: ExperienceDetails[0].dateOfJoining is job 1's start. A job's dates
+ * are months and a school's only years, so the 1st, and 1 January. { value },
+ * { skip }, or null for a box this does not answer.
+ */
+function kekaEntryAnswer(row, ctx) {
+  const m = KEKA_FIELD_RE.exec(fieldName(row));
+  if (!m) return null;
+  const facts = (ctx && ctx.facts) || {};
+  const entry = ((m[1] === 'Experience' ? facts.workExperience : facts.educationEntries) || [])[Number(m[2])];
+  if (!entry) return null;
+  const date = iso => (iso ? { value: spokenDate(iso) } : null);
+  if (m[1] === 'Experience') {
+    if (m[3] === 'isCurrentlyWorking') return entry.current ? { value: 'Yes' } : { skip: 'not your current job' };
+    if (m[3] === 'dateOfJoining') return date(isoMonth(entry.from));
+    if (m[3] === 'dateOfRelieving') return entry.current ? { skip: 'your current job' } : date(isoMonth(entry.to));
+    return null;
+  }
+  if (m[3] === 'degree') return entry.degree ? { value: entry.degree } : null;
+  if (m[3] === 'dateOfJoining') return date(isoYear(entry.from));
+  if (m[3] === 'dateOfCompletion') return date(isoYear(entry.to));
+  return null;
+}
+
 function done(d, action, value, source, confidence, reason) {
   d.action = action;
   d.value = value == null ? '' : String(value);
@@ -850,6 +986,9 @@ function usStatus(bank, country) {
   return country === 'United States' ? US_CITIZEN : NOT_US;
 }
 
+// "…of any country other than India", "besides", "apart from", "except".
+const OTHER_THAN_RE = /\b(other than|besides|apart from|except(ing)?|excluding)\b/i;
+
 // Asks about more than citizenship: residence, "U.S. person" (export control).
 const BEYOND_CITIZEN_RE = /\bpermanent resident|\bgreen card\b|\bperson\b|\blawful|\bprotected individual\b|\brefugee\b|\basylee\b/i;
 const PLACEHOLDER_RE = /^(select|choose|please select|--|—|no selection$)/i;
@@ -861,6 +1000,52 @@ function isYesNoRow(row, labels) {
 }
 
 /**
+ * "Visa" when this is Visa's own form, else the company as given. Its questions
+ * name the company ("I agree that Visa may reach out to me via SMS"), and with
+ * the company unread, or read as "Visa Careers", each was taken for a sponsorship
+ * question (Nov 2026). Known by its address (visa.wd5.myworkdayjobs.com,
+ * …/recruiting/visa/…) or by the word in the company's name. Only Visa.
+ */
+export function visaEmployer(url, company) {
+  const given = String(company || '');
+  let host = '', path = '';
+  try { const u = new URL(String(url || '')); host = u.hostname; path = u.pathname; } catch (e) { /* no address to read */ }
+  const onVisa = /^visa\./i.test(host) || /\/recruiting\/visa(\/|$)/i.test(path) || /\bvisa\b/i.test(given);
+  return onVisa ? 'Visa' : given;
+}
+
+// "Are you a Citizen of the country you are applying to?" (Nike, Nov 2026): the
+// country is the job's, which the question doesn't name.
+const JOB_COUNTRY_RE = /\bcountry\b[^?]*\b(apply|applying|this (role|job|position))\b/i;
+
+/**
+ * The country a Workday job is in, from its URL's location: …/job/Karnataka-India/Title/apply.
+ * Only when the location clearly ends in one: "San-Jose-CA" is not Canada,
+ * "Atlanta-Georgia" may not be the country, and "New-Mexico" is not Mexico.
+ * '' otherwise, and the person answers.
+ */
+export function jobCountryFromUrl(url) {
+  let parsed = null;
+  try { parsed = new URL(String(url || '')); } catch (e) { return ''; }
+  if (!/(^|\.)myworkday(jobs|site)\.com$/i.test(parsed.hostname)) return '';
+  const parts = parsed.pathname.split('/').filter(Boolean);
+  const at = parts.indexOf('job');
+  // /job/Title_R-1/apply has no location: its one segment is the title.
+  if (at < 0 || !parts[at + 1] || !parts[at + 2] || /^apply$/i.test(parts[at + 2])) return '';
+  let slug = parts[at + 1];
+  try { slug = decodeURIComponent(slug); } catch (e) { /* as written */ }
+  const words = slug.split('-').filter(Boolean);
+  if (!words.length || words[words.length - 1].length < 3) return '';
+  for (let n = Math.min(4, words.length); n >= 1; n--) {
+    const country = countryOf(words.slice(-n).join(' '));
+    if (!country) continue;
+    if (country === 'Georgia' || /^new$/i.test(words[words.length - n - 1] || '')) return '';
+    return country;
+  }
+  return '';
+}
+
+/**
  * A citizenship question answered from the profile's country of citizenship
  * (bank.nationality, "India" — or an older "Indian"), or null to leave it to
  * the stored-answer path below.
@@ -868,6 +1053,9 @@ function isYesNoRow(row, labels) {
  *  - "Are you a citizen of Singapore?" — Yes if that is their country, else No.
  *    Asked about U.S. residence too, the country alone can't say: their U.S.
  *    status settles it if they set one, otherwise they choose.
+ *    "…of the country you are applying to?" asks the same of the job's country.
+ *  - A Yes / No question with no country to compare: they choose. Never the
+ *    country itself, which is no answer to Yes / No (Nike, Nov 2026).
  *  - A list of countries or nationalities — their country, exactly.
  *  - A list of U.S. statuses (SpaceX) — their U.S. status, stated or implied.
  *  - A list not read yet (Workday's prompt) — their country, searched for, with
@@ -875,13 +1063,27 @@ function isYesNoRow(row, labels) {
  *
  * Returns { value, candidates?, drill?, readFirst? } or { ask, profile? }.
  */
-export function citizenshipAnswer(row, bank, entry) {
+export function citizenshipAnswer(row, bank, entry, jobCountry) {
   const country = countryOf((bank && bank.nationality) || '');
   const labels = (row.options || []).map(o => (typeof o === 'string' ? o : (o && o.label) || ''))
     .filter(Boolean);
-  const named = countryNamedIn(row.label);
+  const asksJobCountry = JOB_COUNTRY_RE.test(row.label || '');
+  const namedInQuestion = countryNamedIn(row.label);
+  const named = namedInQuestion || (asksJobCountry && jobCountry) || '';
 
   if (named && isYesNoRow(row, labels)) {
+    // "Do you hold citizenship or a passport of any country OTHER THAN India?"
+    // asks about every country but the one named: it was answered Yes for a
+    // citizen of India, from "India" alone (Oracle, Oct 2026). The profile holds
+    // one citizenship, so: Yes only if that one is not the country named (the
+    // person's choice — a second citizenship has no place in the profile yet).
+    if (OTHER_THAN_RE.test(row.label || '')) {
+      if (!country) return null;
+      const other = country !== named;
+      const value = coerce(other ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
+      return value === null ? { ask: 'none of the options say Yes or No' }
+        : { value, reason: other ? `your citizenship is ${country}` : `your profile lists one citizenship: ${country}` };
+    }
     const explicitGroup = citizenshipGroup((bank && bank.citizenship_status) || '');
     if (!country && !(named === 'United States' && explicitGroup)) return null;
     let yes;
@@ -903,7 +1105,15 @@ export function citizenshipAnswer(row, bank, entry) {
       yes = false;
     }
     const value = coerce(yes ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
-    return value === null ? { ask: 'none of the options say Yes or No' } : { value };
+    if (value === null) return { ask: 'none of the options say Yes or No' };
+    return namedInQuestion || !country ? { value }
+      : { value, reason: `this job is in ${named}; your citizenship is ${country}` };
+  }
+
+  if (!named && country && isYesNoRow(row, labels)) {
+    return { ask: asksJobCountry
+      ? `you're a citizen of ${country}, and this page doesn't say which country the job is in — choose your answer`
+      : `you're a citizen of ${country}, and this asks Yes or No — choose your answer` };
   }
 
   if (labels.length) {
@@ -944,7 +1154,8 @@ export function citizenshipAnswer(row, bank, entry) {
 // a skills question ("Have you worked with Python before?").
 const PRIOR_EMPLOYER_RE = new RegExp(
   '^\\s*(?:(?:have|had)\\s+you\\s+(?:ever\\s+)?(?:been\\s+)?(?:previously\\s+)?(?:employed|worked|work)'
-  + '|(?:are|were)\\s+you\\s+(?:ever\\s+)?(?:a\\s+)?(?:former|previous|past)\\s+(?:employee|worker|intern|contractor))'
+  // "a current or former employee of FactSet, Portware…" (Workday, Nov 2026).
+  + '|(?:are|were)\\s+you\\s+(?:ever\\s+)?(?:a\\s+)?(?:current\\s*(?:or|\\/)\\s*)?(?:former|previous|past)(?:\\s*(?:or|\\/)\\s*current)?\\s+(?:employee|worker|intern|contractor))'
   // "employed (including internships) by PriceWaterhouseCoopers" (ExxonMobil).
   + '(?:\\s*\\([^)]*\\))?'
   + '\\s+(?:directly\\s+)?(?:by|for|at|of)\\s+(.+?)'
@@ -966,6 +1177,47 @@ function sameCompany(a, b) {
   if (short.length < 3) return false;
   return (' ' + long + ' ').includes(' ' + short + ' ')
     || (short.length >= 4 && long.startsWith(short));      // "Citi" / "Citibank"
+}
+
+// "Do you have / hold / possess…", "Have you completed / earned…".
+const HAVE_QUALIFICATION_RE = /^\s*(do|did|have|has)\s+you\b.*?\b(have|hold|possess|complete[ds]?|earn(ed)?|obtain(ed)?|receive[ds]?|attain(ed)?|graduated?)\b/i;
+// A subject, a field, "or equivalent experience", "currently pursuing": the
+// level alone cannot answer it.
+const NOT_JUST_LEVEL_RE = /\b(degree|diploma|qualification)s? in\b|\b(related|relevant|similar|technical) (field|discipline|area)\b|\bfield of\b|\bequivalent\b|\bexperience\b|\bpursu|\benrolled\b|\bcurrently\b/i;
+const QUALIFICATION_WORD_RE = /\b(degree|diploma|ged|hsc|10\s*\+\s*2|12th|high school|secondary school|bachelor'?s?|master'?s?|doctorate|ph\.? ?d)\b/i;
+// Phd, master, bachelor, associate, high school — DEGREE_LEVELS' first five,
+// one above the other. A diploma is not on that ladder: an Indian polytechnic
+// diploma follows Class X, not 10+2.
+const LADDER = 5;
+
+/**
+ * Yes / No for "Do you have a High School diploma (10+2), HSC or GED?", "Do you
+ * hold a Bachelor's degree?", from the profile's education, by level: a B.Tech
+ * is a 10+2 and more. Sent to the model it came back unanswered — the resume
+ * shows a B.Tech, not a "High School diploma" — and the required question
+ * stayed empty (Oracle, Oct 2026). Null when the question is not that, names a
+ * subject or "equivalent experience", or the education gives no level.
+ */
+export function educationLevelAnswer(row, ctx, bank) {
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') return null;
+  const label = String(row.label || '');
+  if (!HAVE_QUALIFICATION_RE.test(label) || NOT_JUST_LEVEL_RE.test(label)) return null;
+  // A qualification named outright: "MS" alone is as likely MS Office.
+  if (!QUALIFICATION_WORD_RE.test(label)) return null;
+  const asked = degreeLevel(label);
+  if (asked < 0 || asked >= LADDER) return null;
+  const degrees = [(bank && bank.degree) || '']
+    .concat(((ctx && ctx.facts && ctx.facts.educationEntries) || []).map(e => (e && e.degree) || ''))
+    .filter(Boolean);
+  const ranks = degrees.map(degreeRank).filter(r => r < LADDER);
+  if (!ranks.length) return null;
+  const best = Math.min(...ranks);
+  const has = best <= asked;
+  const value = coerce(has ? 'Yes' : 'No', Object.assign({}, row, { candidateKey: '' }));
+  if (value === null || !/^(yes|no)\b/i.test(value)) return null;
+  const highest = degrees[degrees.map(degreeRank).indexOf(best)];
+  return { value, reason: `your education shows ${highest}` };
 }
 
 /**
@@ -1040,18 +1292,39 @@ const OUTSIDE_WORK_RE = new RegExp([
   /\bsecond(ary)?\s+(employment|jobs?|business(es)?)\b/.source,
   /\b(other|additional)\s+(employment|jobs?)\b(?!\s+(offers?|experience|history))/.source,
   /\bmoonlight\w*|\bside\s+(business|jobs?|gigs?|hustle)\b/.source,
+  /\b(other|additional)\s+work\s+outside\b/.source,
+  /\bown(ing)?\s+(your\s+own|a)\s+business\b/.source,
 ].join('|'), 'i');
-const ASKS_IF_RE = /^\s*(are|do|will|would|have|is)\s+you\b/i;
+const CONFLICT_OF_INTEREST_RE = /\bconflicts?\s+of\s+interests?\b/i;
+// Where the question starts: Nike's comes after a sentence about its policy and
+// after "If hired for this role,". What's before it is not the question, so
+// "Outside work is covered by our policy. Will you relocate?" doesn't count.
+const ASKS_IF_RE = /\b(are|do|does|did|will|would|could|can|have|has|is)\s+(you|your|any|there)\b/i;
+// The question is about something else, or a Yes is the clean answer: "Do you
+// agree to follow our Conflict of Interest policy?", "Do you confirm you have
+// no conflicts?". Left to the steps below.
+const NOT_DECLARING_RE = /\b(agree\w*|acknowledge\w*|understand\w*|read|review\w*|abide|comply|confirm\w*|certify|attest|willing|able to|give up|resolve)\b|\baware of (?!any\b)|\bno\s+(conflicts?|outside)\b|\b(not|n't)\s+(have|engaged?)\b/i;
+// "(1) Additional work outside of Nike (2) Owning your own business" is the
+// question's own list, not bracketed examples.
+const LIST_MARK_RE = /\(\s*(\d{1,2}|[a-z]|i{1,3})\s*\)/gi;
 
-/** "No" in this field's own wording for an outside-employment question, or null. */
+/** "No" in this field's own wording for an outside-work or conflict-of-interest question, or null. */
 export function outsideEmploymentAnswer(row) {
   const kind = row.kind;
   if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') return null;
   const opts = (row.options || []).map(o => String(typeof o === 'string' ? o : (o && o.label) || '').trim())
     .filter(o => o && !PLACEHOLDER_RE.test(o));
   if (opts.length && !(opts.some(o => /^yes\b/i.test(o)) && opts.some(o => /^no\b/i.test(o)))) return null;
-  const head = String(row.label || '').split(/[[(]/)[0];
-  if (!ASKS_IF_RE.test(head) || !OUTSIDE_WORK_RE.test(head)) return null;
+  const head = String(row.label || '').replace(LIST_MARK_RE, ' ').split(/[[(]/)[0];
+  const at = head.search(ASKS_IF_RE);
+  if (at < 0) return null;
+  const question = head.slice(at);
+  if (NOT_DECLARING_RE.test(question)) return null;
+  const asked = OUTSIDE_WORK_RE.test(question) || CONFLICT_OF_INTEREST_RE.test(question)
+    // Named only in the sentence before it, as Nike does. Not when the question
+    // itself is a sensitive one: that stays with the person's stored answer.
+    || (CONFLICT_OF_INTEREST_RE.test(head) && !classifySensitive(question));
+  if (!asked) return null;
   return coerce('No', Object.assign({}, row, { candidateKey: '' }));
 }
 
@@ -1103,6 +1376,26 @@ export function dataConsentAnswer(row) {
       || !DATA_SUBJECT_RE.test(head)) return null;
   const value = coerce('Yes', Object.assign({}, row, { candidateKey: '' }));
   return value === null ? { ask: 'no option here says Yes — choose your answer' } : { value };
+}
+
+const SCREENING_RE = /\bscreening\b|\bbackground (checks?|screens?|verifications?|investigations?)\b|\breference checks?\b/i;
+const AGREES_RE = /\b(happy|willing|agree\w*|consent\w*|authori[sz]\w*|accept\w*|ok(ay)? with|comfortable|continue|proceed|submit to|undergo)\b/i;
+// "Have you ever failed a background check?" is about the past, not agreement.
+const ABOUT_PAST_RE = /\b(ever|failed|refused|previously)\b/i;
+
+/** "Yes" in this field's own wording, for a question agreeing to background checks, or null. */
+export function backgroundScreeningAnswer(row) {
+  const kind = row.kind;
+  if (kind !== 'radio' && kind !== 'choice' && kind !== 'select' && kind !== 'combobox') return null;
+  const opts = (row.options || []).map(o => String(typeof o === 'string' ? o : (o && o.label) || '').trim())
+    .filter(o => o && !PLACEHOLDER_RE.test(o));
+  if (opts.length && !(opts.some(o => /^yes\b/i.test(o)) && opts.some(o => /^no\b/i.test(o)))) return null;
+  const label = String(row.label || '');
+  const end = label.lastIndexOf('?');
+  if (end < 0) return null;
+  const question = label.slice(0, end);
+  if (!SCREENING_RE.test(question) || !AGREES_RE.test(question) || ABOUT_PAST_RE.test(question)) return null;
+  return coerce('Yes', Object.assign({}, row, { candidateKey: '' }));
 }
 
 // ── one school or job under its own heading ──────────────────
@@ -1287,13 +1580,10 @@ export function governmentOfficialAnswer(row, bank) {
   return { value, reason: `your profile: ${answer === 'No' ? 'no government official' : 'a government official'} (${whose})` };
 }
 
-// Criminal history, from the profile's one answer: "Have you ever been convicted
-// of any crime, or do you have criminal charges pending?" Its "No" is true of
-// every narrower wording (a felony, the last 7 years, excluding traffic) and is
-// filled anywhere; its "Yes" never is — whether it applies depends on exactly
-// what this form asks. Only a question about the person's own record: consent
-// to a background check is the same category and a different question, where
-// "No" would refuse the check.
+// Criminal history: always No — the person's standing answer (Barclays, Nov 2026),
+// whatever the profile says. Only a question about the person's own record:
+// consent to a background check is the same category and a different question,
+// where "No" would refuse the check.
 const CRIME_HISTORY_RE = /\bconvict\w*|\bcriminal (record|history|charges?|offen[cs]es?|convictions?|proceedings?|cases?)\b|\bfelon(y|ies)\b|\bmisdemean\w*|\bpending (criminal )?charges?\b|\bcharged with\b|\bpleaded? (guilty|no contest)\b/i;
 // A narrowing clause only makes the question narrower, so "No" still holds:
 // "…a crime, other than minor traffic violations", "…that has not been sealed".
@@ -1301,17 +1591,15 @@ const CRIME_EXCLUSION_RE = /\b(other than|excluding|except( for)?|not including|
 const CRIME_CONSENT_RE = /\bconsent\w*|\bauthori[sz]\w*|\bagree\w*|\bwilling\b|\bsubmit to\b|\bundergo\b|\bpass\b/i;
 // Statements to certify, not questions: "I confirm I have no criminal record".
 const CRIME_STATEMENT_RE = /\b(confirm|certify|declare|attest)\b|\bi (have|had|am) (no|not|never)\b|\b(not|never|neither|nor|none)\b/i;
-// Beyond "convicted or charged": arrests, cautions, investigations, traffic
-// tickets, workplace discipline — or someone else's record.
-const CRIME_UNCOVERED_RE = /\barrest\w*|\bdetain\w*|\bcaution\w*|\binvestigat\w*|\btraffic\b|\bdriving\b|\bmoving violations?\b|\bdisciplin\w*|\bdismiss\w*|\bterminat\w*|\bfamily\b|\brelatives?\b|\bspouse\b/i;
+// Someone else's record: not the person's to answer No for.
+const CRIME_UNCOVERED_RE = /\bfamily\b|\brelatives?\b|\bspouse\b/i;
 const CRIME_SELF_RE = /\b(have|are|were|do|did) you\b|\byou (have|are|were)\b|\bi (have|am|was)\b/i;
 
 /**
- * A criminal-history question answered from bank.has_criminal_history:
- * { value, reason }, { ask }, { profile } or { followUp }. Read from the
- * question alone — the text before its "?".
+ * A question about the person's own criminal record: { value, reason }, { ask }
+ * or { followUp }. Read from the question alone — the text before its "?".
  */
-export function criminalHistoryAnswer(row, bank) {
+export function criminalHistoryAnswer(row) {
   const label = String(row.label || '');
   if (isConditionalFollowUp(label)) return { followUp: true };
   const head = (label.includes('?') ? label.split('?')[0] : label.split(/\.\s/)[0]).slice(0, 400);
@@ -1324,15 +1612,11 @@ export function criminalHistoryAnswer(row, bank) {
     return { ask: 'we fill this question as a Yes / No only — choose your answer' };
   }
   if (CRIME_STATEMENT_RE.test(core)) return { ask: 'worded as a statement — choose your answer' };
-  if (CRIME_UNCOVERED_RE.test(core)) return { ask: 'asks more than your profile answer covers — choose your answer' };
+  if (CRIME_UNCOVERED_RE.test(core)) return { ask: 'asks about someone else\'s record — choose your answer' };
   if (!CRIME_SELF_RE.test(core)) return { ask: 'we never guess this — choose your answer' };
-
-  const stored = String((bank && bank.has_criminal_history) || '');
-  if (stored !== 'Yes' && stored !== 'No') return { profile: 'add your criminal-history answer to your profile' };
-  if (stored === 'Yes') return { ask: 'your profile says Yes — check it applies to what this question asks' };
   const value = coerce('No', Object.assign({}, row, { candidateKey: '' }));
-  if (value === null) return { ask: 'none of the options match your profile answer (No)' };
-  return { value, reason: 'your profile: no criminal convictions or pending charges' };
+  if (value === null) return { ask: 'none of the options say No — choose your answer' };
+  return { value, reason: 'no criminal record — always No' };
 }
 
 // A Workday skills prompt takes one search per skill; ten is plenty and keeps
@@ -1433,8 +1717,12 @@ const NO_RE = /^(no|n|false)$/i;
  * "authorized: Yes" says nothing about "any employer" vs "present employer
  * only" until "needs sponsorship: No" settles it. Returns the one option that
  * states their answer, or null — two candidates, or none, and they choose.
+ *
+ * `citizenHere` (is the job in their country of citizenship; undefined when
+ * unknown) separates "Yes - I hold citizenship" from "Yes – I hold a valid work
+ * permit / VISA": the permit only for a job known to be abroad.
  */
-export function workAuthStatement(authorized, sponsorship, options) {
+export function workAuthStatement(authorized, sponsorship, options, citizenHere) {
   const auth = String(authorized || '').trim();
   const spons = String(sponsorship || '').trim();
   let test;
@@ -1442,14 +1730,23 @@ export function workAuthStatement(authorized, sponsorship, options) {
     // They need sponsorship: that is the statement, whatever "authorized" says.
     test = o => /\b(require|need)s?\b.*\bsponsor/i.test(o) && !/\b(not|don'?t|never)\b/i.test(o);
   } else if (YES_RE.test(auth) && NO_RE.test(spons)) {
-    test = o => /\bauthori[sz]ed\b/i.test(o) && /\bany employer\b/i.test(o) && !/\bnot\b/i.test(o);
+    // Or Nike's: "Yes, without restriction" beside "Yes, I have a visa / sponsorship".
+    test = o => (/\bauthori[sz]ed\b/i.test(o) && /\bany employer\b/i.test(o) && !/\bnot\b/i.test(o))
+      || /^\s*yes\b.*\bwithout\s+(any\s+)?(restrictions?|limitations?|sponsorship)\b/i.test(o);
   } else if (NO_RE.test(auth) && NO_RE.test(spons)) {
     test = o => /\bnot (legally )?authori[sz]ed\b|\bunauthori[sz]ed\b/i.test(o) && !/\bsponsor/i.test(o);
   } else {
     return null;
   }
   const hits = (options || []).filter(test);
-  return hits.length === 1 ? hits[0] : null;
+  if (hits.length === 1) return hits[0];
+  if (hits.length || !YES_RE.test(auth) || !NO_RE.test(spons)) return null;
+  const yes = (options || []).filter(o => /^\s*yes\b/i.test(o));
+  const stated = yes.filter(o => (citizenHere === false
+    ? /\b(permit|visa)\b/i.test(o) && !/\bcitizen/i.test(o)
+    : /\bcitizen/i.test(o)));
+  if (stated.length === 1) return stated[0];
+  return yes.length === 1 ? yes[0] : null;
 }
 
 /** Broader phrasings of the ethnicity `text` names, or []. */
@@ -1679,6 +1976,23 @@ export function degreeOption(stored, options) {
     || iscedOption(stored, entry, labels);
 }
 
+// A school-leaving qualification on a list, whatever its wording.
+const SCHOOL_LEAVING_RE = /\bhigh school\b|(?<!post[- ])\bsecondary\b|\bsenior school\b|\b1[02]th\b|\bclass\s*(x|xii|10|12)\b|\bxii\b|\bhsc\b|\bssc\b|\b10\s*\+\s*2\b|\bged\b|\bintermediate\b|\bmatric\w*|\bpre-?university\b|\bpuc\b|\ba[- ]levels?\b/i;
+
+/**
+ * "Diploma" for a high-school degree, as the last resort: only on a list with
+ * nothing like high school (the person's rule, Nov 2026). Exactly that option,
+ * never "University Diploma". Only for a list read whole: on a search box's
+ * first rows, the high-school row may just not be drawn yet.
+ */
+export function highSchoolDiploma(stored, options) {
+  const entry = degreeEntry(stored);
+  if (!entry || entry.level !== 'high school') return null;
+  const labels = (options || []).map(o => (typeof o === 'string' ? o : o.label)).filter(Boolean);
+  if (labels.some(l => SCHOOL_LEAVING_RE.test(l))) return null;
+  return labels.find(l => /^diploma$/i.test(l.trim())) || null;
+}
+
 // UNESCO's ISCED levels, which some lists name instead of the degree (Visa:
 // "Bachelor's or Equivalent First-Degree (ISCED 6: BA, BSc, BEng, LLB, etc.)").
 // None of the level phrasings is inside that text, so a B.E. matched nothing
@@ -1873,7 +2187,7 @@ export function bestCandidateMatch(candidates, options, guard) {
  * always share words anyway; tightening it globally is a separate change with
  * its own risks.
  */
-function sharesWord(a, b) {
+export function sharesWord(a, b) {
   const wordsOf = t => new Set(String(t || '').toLowerCase()
     .replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean));
   const left = wordsOf(a);
@@ -1977,7 +2291,10 @@ function pickFromOptions(text, row, options) {
     // A country list (Workday) takes the country; a list of U.S. statuses, the status.
     return (row.country && countryOption(row.country, options)) || citizenshipOption(text, options);
   }
-  if (row.candidateKey === 'degree') return degreeOption(text, options);
+  if (row.candidateKey === 'degree') {
+    return degreeOption(text, options)
+      || (row.kind === 'select' || row.wholeList ? highSchoolDiploma(text, options) : null);
+  }
   if (row.candidateKey === 'previous_employer') return previousEmployerOption(text, options);
   // A country, against a list of countries: exactly that country or none —
   // never "British Indian Ocean Territory" for "Indian".
@@ -1992,7 +2309,7 @@ function pickFromOptions(text, row, options) {
   // A work-authorization list worded as statements rather than Yes / No.
   if (row.candidateKey === 'authorized_to_work_in_country'
       && !options.some(o => YES_RE.test(o.trim()) || NO_RE.test(o.trim()))) {
-    return workAuthStatement(text, row.sponsorship, options);
+    return workAuthStatement(text, row.sponsorship, options, row.citizenHere);
   }
   const candidates = (row.candidates && row.candidates.length) ? row.candidates : [text];
   const guard = row.candidateKey === 'degree' ? degreeGuard
@@ -2037,7 +2354,8 @@ function coerceChoice(text, row) {
   if (match) return typeof match === 'string' ? match : match.label;
   // "yes"/"no" against options worded differently ("I am authorized", "I am not").
   const polarity = truthy ? /\b(yes|i am|i do|i have)\b/i : /\b(no|not|n['’]t)\b/i;
-  const found = options.find(o => polarity.test(o));
+  // "I am not authorized" begins "I am" too, and could be the first one listed.
+  const found = options.find(o => polarity.test(o) && !(truthy && /\b(not|n['’]t)\b/i.test(o)));
   return found || null;
 }
 

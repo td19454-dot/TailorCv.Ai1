@@ -15,15 +15,16 @@
 // calls) after a dropdown reported success while the form still showed "This
 // field is required".
 
-import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText } from './match.js';
-import { coerce, candidatesFor, citizenshipOption, degreeEntry } from './plan.js';
+import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText, parseLooseDate } from './match.js';
+import { coerce, candidatesFor, citizenshipOption, degreeEntry, sharesWord } from './plan.js';
 import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isNodeDrawn, hiddenReason,
          isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions, picklistButton,
-         isBlankOption, datePickerHost, ownOptions }
+         isBlankOption, datePickerHost, ownOptions, isCalendarInput }
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
 import { countryOf, countryOption, countryShare } from './countries.js';
 import { pickSaved, pickSavedVariant } from './saved.js';
+import { beginTimeline, endTimeline, note, noteClick, noteWait } from './timeline.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 
@@ -60,6 +61,7 @@ const KEY_CODES = { Enter: 13, Escape: 27, ArrowDown: 40, ArrowUp: 38, Tab: 9, B
  * work across them; each dispatch is independently harmless.
  */
 function pressPointer(el) {
+  noteRowPress(el);
   const opts = { bubbles: true, cancelable: true, composed: true, button: 0 };
   for (const type of ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click']) {
     try {
@@ -71,6 +73,15 @@ function pressPointer(el) {
       if (type === 'click') { try { el.click(); } catch (_) { /* ignore */ } }
     }
   }
+}
+
+/** For the dropdown's timeline: a press on one of a list's rows, not on the field. */
+function noteRowPress(el) {
+  try {
+    const p = probe();
+    const row = el.closest && el.closest(`${(p && p.OPTION_SEL) || '[role="option"]'}, .multiselect-container li`);
+    if (row && !isChosenValue(row)) noteClick(row, row.textContent);
+  } catch (e) { /* measurement only */ }
 }
 
 function focus(el) {
@@ -345,6 +356,7 @@ export async function commitCombobox(row, value, candidates, readFirst, drill) {
     dismissListbox(el);
     openWidget(row);
     await sleep(TIMING.settleMs);
+    note('opened');
 
     let options = [];
     // A short EEO list filters by substring, so typing the stored "Male" hides
@@ -384,6 +396,7 @@ export async function commitCombobox(row, value, candidates, readFirst, drill) {
       const p = probe();
       const wdPrompt = !!(p && p.workdayMultiselect && p.workdayMultiselect(input));
       for (const query of queries) {
+        note('search', `"${query}"`);
         // Keep the focus: this input IS the open menu's search box.
         setText(input, query, { blur: false });
         focus(input);
@@ -444,7 +457,15 @@ export async function commitCombobox(row, value, candidates, readFirst, drill) {
     // matcher, which rates "Male" close to "Female".
     if (readFirst) {
       let labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
-      let pick = pickReadFirst(readFirst, labels);
+      // A button's list opens with all its rows; a search box's may not.
+      let pick = pickReadFirst(readFirst, labels, isButton);
+      // A Workday search-box list opens with a few of its rows drawn: 2 of Gender
+      // Identity's 5, without "Male", so nothing was clicked (Barclays, Nov 2026).
+      // The answer's row is given a moment to appear.
+      if (!pick && !isButton && isWorkdayPrompt(el)) {
+        const found = await waitForReadFirstPick(el, readFirst, options, TIMING.optionWaitMs * 3);
+        if (found) ({ options, labels, pick } = found);
+      }
       // A SuccessFactors list opens on one page of hundreds: the answer is
       // searched for, then chosen by the same rules. Deloitte's Qualification
       // stayed empty with B.Tech off the first page (Oct 2026).
@@ -472,8 +493,11 @@ export async function commitCombobox(row, value, candidates, readFirst, drill) {
       readFirst.labels = labels;
       if (readFirst.key === 'saved') readFirst.variant = pickSavedVariant(readFirst.entry, labels);
       const node = options[labels.indexOf(pick)];
-      try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
-      pressPointer(node);
+      // A Workday checkbox row already ticked: another click would untick it.
+      if (!(node.getAttribute && node.getAttribute('data-automation-selected') === 'true')) {
+        try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+        pressPointer(rowClickTarget(node, pick));
+      }
       return settlesTo(row, [pick].concat(shapes));
     }
 
@@ -519,6 +543,147 @@ export async function commitCombobox(row, value, candidates, readFirst, drill) {
 }
 
 /**
+ * The bootstrap-multiselect drawn for a hidden <select>, or null (RippleHire,
+ * Nov 2026): a button, its menu, and in the menu a search box and rows of
+ * <li><a><label><input type="radio" value="Akola"> Akola</label></a></li>.
+ */
+export function multiselectWidget(el) {
+  if (!el || (el.tagName || '').toLowerCase() !== 'select') return null;
+  const wrap = (el.closest && el.closest('.multiselect, .multi-select')) || el.parentElement;
+  const menu = wrap && wrap.querySelector('.multiselect-container');
+  if (!menu) return null;
+  const button = wrap.querySelector('button.multiselect') || wrap.querySelector('button.dropdown-toggle')
+    || wrap.querySelector('button');
+  return { button, menu, search: menu.querySelector('.singleselect-search, .multiselect-search') };
+}
+
+function multiselectOpen({ button, menu }) {
+  const parent = menu.parentElement;
+  return menu.offsetHeight > 0 || menu.classList.contains('show') || (parent && parent.classList.contains('open'))
+    || (button && button.getAttribute('aria-expanded') === 'true');
+}
+
+/** A widget's answerable rows, as they stand: labels with a real value, on screen. */
+function multiselectRows(menu) {
+  return Array.from(menu.querySelectorAll('li a label')).filter((label) => {
+    const radio = label.querySelector('input');
+    return !!(radio && String(radio.value || '').trim()) && isNodeDrawn(label);
+  });
+}
+
+// How long a widget's rows must stand unchanged to count as the search's answer.
+const MULTISELECT_SETTLED_MS = 800;
+
+/**
+ * Open the widget, search if it has a search box, and click the answer's row:
+ * the label chosen, or null. Its city list comes from a server as the search is
+ * typed, so the rows are waited on. Until they settle, only the exact row or one
+ * holding every word of the answer will do: the list up before the results
+ * arrive has "Akola" where "Kolkata" belongs. Once settled, the matcher every
+ * other form uses decides, among rows sharing a whole word with the answer: by
+ * itself it took "Kolat" for Kolkata and "Calicut" for Calcutta.
+ */
+async function commitMultiselect(row, value, candidates, readFirst, fromProfile) {
+  const widget = multiselectWidget(row.el);
+  const { button, menu, search } = widget;
+  const shapes = dedupe([value].concat(candidates || []).concat(searchToken(value)));
+  const pickIn = (labels) => {
+    if (readFirst) return pickReadFirst(readFirst, labels);
+    for (const shape of shapes) {
+      const i = promptResultFor(shape, labels);
+      if (i >= 0) return labels[i];
+    }
+    return null;
+  };
+  const labelsOf = rows => rows.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+  let rows = [];
+  try {
+    scrollIntoView(button || row.el);
+    if (button && !multiselectOpen(widget)) pressPointer(button);
+    await sleep(TIMING.settleMs);
+    // The whole answer, then its first word if that finds nothing: a search for
+    // "Alignerr Inc" has no results where the list says "Alignerr".
+    const whole = searchToken(value);
+    const first = whole.split(/\s+/)[0];
+    const queries = search ? dedupe([whole].concat(first.length >= 3 ? [first] : [])) : [''];
+    for (const query of queries) {
+      const typedOver = labelsOf(multiselectRows(menu)).join('|');
+      if (search) note('search', `"${query}"`);
+      if (search) await typeText(search, query, 8);
+      const deadline = Date.now() + TIMING.remoteSearchMs;
+      // No search box: the list is what it is, and nothing is on its way.
+      let answered = !search;
+      let seen = typedOver;
+      let changedAt = Date.now();
+      for (;;) {
+        rows = multiselectRows(menu);
+        const labels = labelsOf(rows);
+        const pick = rows.length ? pickIn(labels) : null;
+        if (pick) {
+          note('results', `${rows.length} rows, answer among them`);
+          if (readFirst) { readFirst.picked = pick; readFirst.labels = labels; }
+          const node = rows[labels.indexOf(pick)];
+          try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+          pressPointer(node);
+          return await settlesTo(row, [pick].concat(shapes)) ? pick : null;
+        }
+        const now = labels.join('|');
+        if (now !== seen) { seen = now; changedAt = Date.now(); answered = true; }
+        if (Date.now() >= deadline || (answered && Date.now() - changedAt >= MULTISELECT_SETTLED_MS)) {
+          note('results', `${rows.length} rows${Date.now() >= deadline ? ', wait RAN OUT' : ''}`);
+          break;
+        }
+        await sleep(100);
+      }
+      if (rows.length) break;
+    }
+    if (!readFirst) {
+      for (const shape of shapes) {
+        const near = rows.filter(n => sharesWord(shape, n.textContent));
+        if (!near.length || !await clickMatchingOption(row.el, shape, near)) continue;
+        if (await settlesTo(row, labelsOf(near))) {
+          const now = reprobe(row);
+          return (now && now.value) || labelsOf(near)[0];
+        }
+        return null;
+      }
+      // Their answer, and this list doesn't have it: its one "Others" row says
+      // so, and the form asks for the name in its own box (HDFC's "Employer Name
+      // - Others"). Never for an answer of the model's, and never a choice of two.
+      if (fromProfile) {
+        const before = labelsOf(multiselectRows(menu)).join('|');
+        if (search) await typeText(search, 'Other', 8);
+        const deadline = Date.now() + TIMING.remoteSearchMs;
+        let answered = !search;
+        let seen = before;
+        let changedAt = Date.now();
+        for (;;) {
+          rows = multiselectRows(menu);
+          const now = labelsOf(rows).join('|');
+          if (now !== seen) { seen = now; changedAt = Date.now(); answered = true; }
+          if (Date.now() >= deadline || (answered && Date.now() - changedAt >= MULTISELECT_SETTLED_MS)) break;
+          await sleep(100);
+        }
+        const others = rows.filter(n => /^others?$/i.test((n.textContent || '').trim()));
+        if (others.length === 1) {
+          const label = labelsOf(others)[0];
+          try { others[0].scrollIntoView({ block: 'nearest' }); } catch (e) {}
+          pressPointer(others[0]);
+          return await settlesTo(row, [label]) ? label : null;
+        }
+      }
+    }
+    if (search) setText(search, '', { blur: false });
+    reportDropdownFailure(row, value, rows);
+    return null;
+  } catch (e) {
+    return null;
+  } finally {
+    if (button && multiselectOpen(widget)) pressPointer(button);
+  }
+}
+
+/**
  * Say, in the page console, exactly how a dropdown commit failed.
  *
  * A dropdown that "didn't take" has half a dozen possible causes — no options
@@ -533,6 +698,8 @@ export async function commitCombobox(row, value, candidates, readFirst, drill) {
  * block mid-fill), whether its list was open, and what was offered.
  */
 function searchStep(query, input, el, options) {
+  note('results', `${(options || []).length} rows: ${(options || []).slice(0, 4)
+    .map(n => (n.textContent || '').replace(/\s+/g, ' ').trim()).join(' | ')}`);
   const doc = el.ownerDocument || globalThis.document;
   let cells = 0;
   try { cells = doc.querySelectorAll('[role="gridcell"], [role="option"]').length; } catch (e) { cells = -1; }
@@ -700,15 +867,18 @@ function isExpanded(el) {
 function waitForOptions(el, timeout) {
   return new Promise(resolve => {
     const doc = (el.ownerDocument) || globalThis.document;
+    const startedAt = Date.now();
     const immediate = visibleOptionNodes(doc, el);
-    if (immediate.length) { resolve(immediate); return; }
+    if (immediate.length) { noteWait('list', timeout, startedAt, false); resolve(immediate); return; }
     let settled = false;
     const finish = () => {
       if (settled) return;
       settled = true;
       try { obs.disconnect(); } catch (e) {}
       clearTimeout(timer);
-      resolve(visibleOptionNodes(doc, el));
+      const nodes = visibleOptionNodes(doc, el);
+      noteWait('list', timeout, startedAt, !nodes.length);
+      resolve(nodes);
     };
     // Observing the whole document, because react-select renders its menu into
     // a <body>-level portal rather than inside the field.
@@ -771,34 +941,40 @@ function listStillLoading(doc, el) {
 /**
  * Search results holding readFirst's pick: { options, labels, pick }, or null —
  * once results other than `before` have stood without one for a moment, or by
- * TIMING.remoteSearchMs.
+ * `ms` (TIMING.remoteSearchMs unless given).
  */
-async function waitForReadFirstPick(el, readFirst, before) {
+async function waitForReadFirstPick(el, readFirst, before, ms) {
   const doc = el.ownerDocument || globalThis.document;
-  const deadline = Date.now() + TIMING.remoteSearchMs;
+  const limit = ms == null ? TIMING.remoteSearchMs : ms;
+  const startedAt = Date.now();
+  const deadline = startedAt + limit;
   const stale = new Set(before || []);
   let answeredAt = 0;
   for (;;) {
     const options = visibleOptionNodes(doc, el);
     const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
     const pick = options.length ? pickReadFirst(readFirst, labels) : null;
-    if (pick) return { options, labels, pick };
+    if (pick) { noteWait('answer in the list', limit, startedAt, false); return { options, labels, pick }; }
     // Answered: new rows, or the old ones gone (a search that found nothing).
     if (!answeredAt && (options.some(n => !stale.has(n))
                         || (stale.size && [...stale].every(n => !n.isConnected)))) answeredAt = Date.now();
-    if (Date.now() >= deadline || (answeredAt && Date.now() - answeredAt > TIMING.settleMs + 300)) return null;
+    if (Date.now() >= deadline || (answeredAt && Date.now() - answeredAt > TIMING.settleMs + 300)) {
+      noteWait('answer in the list', limit, startedAt, Date.now() >= deadline);
+      return null;
+    }
     await sleep(100);
   }
 }
 
 async function waitForMatchingOptions(el, shapes, timeout) {
   const doc = el.ownerDocument || globalThis.document;
-  const deadline = Date.now() + timeout;
+  const startedAt = Date.now();
+  const deadline = startedAt + timeout;
   let nodes = [];
   for (;;) {
     nodes = visibleOptionNodes(doc, el);
-    if (nodes.length && listOffersAny(shapes, nodes)) return nodes;
-    if (Date.now() >= deadline) return nodes;
+    if (nodes.length && listOffersAny(shapes, nodes)) { noteWait('matching rows', timeout, startedAt, false); return nodes; }
+    if (Date.now() >= deadline) { noteWait('matching rows', timeout, startedAt, true); return nodes; }
     await sleep(100);
   }
 }
@@ -879,22 +1055,29 @@ async function clickMatchingOption(el, value, nodes) {
     idx = best == null ? -1 : labels.indexOf(best);
   }
   if (idx < 0) return false;
-  const node = nodes[idx];
-  // On a Workday result row, the innermost element holding the text: the click
-  // then bubbles through whatever inside the row listens (promptLeafNode, the
-  // radio, the row itself), as a person's click on the words does.
+  const target = rowClickTarget(nodes[idx], labels[idx]);
+  try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+  pressPointer(target);
+  return true;
+}
+
+/**
+ * Where to press an option row. On a Workday result row, the innermost element
+ * holding the text: the click then bubbles through whatever inside the row
+ * listens (promptLeafNode, the radio, the row itself), as a person's click on
+ * the words does. Any other row, itself.
+ */
+function rowClickTarget(node, label) {
   let target = node;
   const WD_ROW = '[data-automation-id="promptOption"], [data-automation-id="promptLeafNode"]';
   let workdayRow = false;
   try { workdayRow = node.matches(WD_ROW) || !!node.querySelector(WD_ROW); } catch (e) { workdayRow = false; }
   if (workdayRow) {
     for (const d of node.querySelectorAll('*')) {
-      if ((d.textContent || '').replace(/\s+/g, ' ').trim() === labels[idx]) target = d;
+      if ((d.textContent || '').replace(/\s+/g, ' ').trim() === label) target = d;
     }
   }
-  try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
-  pressPointer(target);
-  return true;
+  return target;
 }
 
 /**
@@ -910,7 +1093,8 @@ async function clickMatchingOption(el, value, nodes) {
 async function waitForPromptResults(el, shapes, done) {
   const doc = el.ownerDocument || globalThis.document;
   const start = Date.now();
-  const deadline = start + Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
+  const limit = Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
+  const deadline = start + limit;
   // The same strict test the pick uses (exact, or every word). The fuzzy
   // listOffersAny accepted the PREVIOUS search's results still on screen —
   // "Machine Learning Methods" for "Deep Learning" — so it stopped waiting,
@@ -922,11 +1106,11 @@ async function waitForPromptResults(el, shapes, done) {
   for (;;) {
     // Workday may select the answer itself on Enter (Field of Study, an exact
     // match): nothing to click then — clicking would only toggle it.
-    if (done && done()) return [];
+    if (done && done()) { noteWait('search results', limit, start, false); return []; }
     const nodes = visibleOptionNodes(doc, el);
-    if (nodes.length && offers(nodes)) return nodes;
-    if (Date.now() - start > 1500 && saysNoItems(doc)) return nodes;
-    if (Date.now() >= deadline) return nodes;
+    if (nodes.length && offers(nodes)) { noteWait('search results', limit, start, false); return nodes; }
+    if (Date.now() - start > 1500 && saysNoItems(doc)) { note('no items'); noteWait('search results', limit, start, false); return nodes; }
+    if (Date.now() >= deadline) { noteWait('search results', limit, start, true); return nodes; }
     await sleep(100);
   }
 }
@@ -990,11 +1174,13 @@ async function commitPromptMulti(row, values) {
   // Oct 2026). A person is slower than the server; this waits for it.
   const pillWaitMs = Math.max(TIMING.commitWaitMs * 2, 300);
   const addOne = async (skill) => {
+    note('search', `"${skill}"`);
     writeSearch(skill);
     fireKey(input, 'keydown', 'Enter');
     fireKey(input, 'keyup', 'Enter');
     const options = await waitForPromptResults(el, [skill]);
     const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+    note('results', `${labels.length} rows`);
     const idx = promptResultFor(skill, labels);
     if (idx < 0) return 'missing';
     const label = labels[idx];
@@ -1093,10 +1279,12 @@ async function drillDown(row, el, shapes, drill, before) {
   const doc = el.ownerDocument || globalThis.document;
   const isSet = () => shapes.some(s => committed(row, s));
   const was = new Set(before);
-  const deadline = Date.now() + Math.max(TIMING.commitWaitMs, 300);
+  const limit = Math.max(TIMING.commitWaitMs, 300);
+  const startedAt = Date.now();
+  const deadline = startedAt + limit;
   let level = [];
   for (;;) {
-    if (isSet()) return true;
+    if (isSet()) { note('held'); noteWait('answer after the click', limit, startedAt, false); return true; }
     const nodes = visibleOptionNodes(doc, el);
     const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
     if (labels.length && labels.some(l => !was.has(l))) {
@@ -1117,11 +1305,13 @@ async function drillDown(row, el, shapes, drill, before) {
                      'in the level that opened:', labels.slice(0, 10));
         return false;
       }
+      if (labels.join('|') !== level.join('|')) note('level opened', labels.slice(0, 10).join(' | '));
       level = labels;
     }
     if (Date.now() >= deadline) break;
     await sleep(100);
   }
+  noteWait('answer after the click', limit, startedAt, true);
   if (level.length) {
     console.info('[TailorCV] a level opened with no', JSON.stringify(drill), 'row:', level.slice(0, 10));
     return false;
@@ -1249,7 +1439,7 @@ async function pickInHierarchy(row, leaf, parents, deadline) {
   }
 }
 
-function pickReadFirst(readFirst, labels) {
+function pickReadFirst(readFirst, labels, wholeList) {
   // A saved answer: the one saved for this kind of list (saved.js).
   if (readFirst.key === 'saved') {
     const saved = pickSaved(readFirst.entry, labels);
@@ -1260,7 +1450,9 @@ function pickReadFirst(readFirst, labels) {
     options: labels,
     candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
     candidateKey: readFirst.key,
+    wholeList,
     sponsorship: readFirst.sponsorship,
+    citizenHere: readFirst.citizenHere,
     country: readFirst.country,
   });
   return pick != null && labels.includes(pick) ? pick : null;
@@ -1294,10 +1486,16 @@ function differentCountries(value, shown) {
  * Returns as soon as it holds, so a quick widget costs no extra time.
  */
 export async function settlesTo(row, shapes, ms) {
-  const deadline = Date.now() + (ms == null ? TIMING.commitWaitMs : ms);
+  const limit = ms == null ? TIMING.commitWaitMs : ms;
+  const startedAt = Date.now();
+  const deadline = startedAt + limit;
   for (;;) {
-    if ((shapes || []).some(sh => committed(row, sh))) return true;
-    if (Date.now() >= deadline) return false;
+    if ((shapes || []).some(sh => committed(row, sh))) {
+      note('held');
+      noteWait('field to hold it', limit, startedAt, false);
+      return true;
+    }
+    if (Date.now() >= deadline) { noteWait('field to hold it', limit, startedAt, true); return false; }
     await sleep(Math.max(TIMING.settleMs, 100));
   }
 }
@@ -1475,6 +1673,11 @@ function accepts(decision, value, shown) {
   // form's "12/1/2003". As words they differ, and a correct Date of Birth (and
   // Workday's work-experience From / To) was reported as "the form shows … instead".
   if (decision && decision.row && decision.row.kind === 'date-parts') return sameDate(value, shown);
+  // A calendar shows the date its own way: "2004-05-08" is its "8 May 2004".
+  if (decision && decision.row && isCalendarInput(decision.row.el)) {
+    const a = parseLooseDate(value), b = parseLooseDate(shown);
+    if (a && b) return a.y === b.y && a.m === b.m && a.d === b.d;
+  }
   if (commitMatches(value, shown)) return true;
   if (commitMatches(value, shown)) return true;
   for (const candidate of (decision && decision.candidates) || []) {
@@ -1520,16 +1723,89 @@ function samePhone(wanted, shown) {
   return a === b || a.endsWith(b) || b.endsWith(a);
 }
 
+/**
+ * A date through its jQuery UI calendar: year, then month, then the day. Written
+ * straight into the input, the calendar's own handler never runs, so the form
+ * would not react (Keka enables End of Course from it). False, with nothing typed,
+ * if the calendar will not open or does not offer that date: a blocked future day,
+ * a year off its list, or a calendar with no month and year lists.
+ */
+async function setCalendarDate(row, value) {
+  const date = parseLooseDate(value);
+  const el = row.el;
+  if (!date || !el) return false;
+  const doc = el.ownerDocument || globalThis.document;
+  const open = () => {
+    const box = doc.getElementById('ui-datepicker-div');
+    return box && isNodeDrawn(box) ? box : null;
+  };
+  const opened = async () => {
+    const deadline = Date.now() + TIMING.optionWaitMs;
+    for (;;) {
+      if (open()) return true;
+      if (Date.now() >= deadline) return false;
+      await sleep(50);
+    }
+  };
+  const choose = async (selector, wanted) => {
+    const box = open();
+    const list = box && box.querySelector(selector);
+    if (!list || !Array.from(list.options).some(o => o.value === String(wanted))) return false;
+    if (list.value !== String(wanted)) {
+      list.value = String(wanted);
+      fire(list, 'change');
+      await sleep(Math.max(TIMING.settleMs, 50));
+    }
+    return true;
+  };
+  try {
+    scrollIntoView(el);
+    blur(el);
+    focus(el);
+    pressPointer(el);
+    // A tab that is not in front gets no focus event of its own.
+    if (!open()) fire(el, 'focus');
+    if (!await opened()) { note('calendar did not open'); return false; }
+    note('opened');
+    if (!await choose('.ui-datepicker-year', date.y) || !await choose('.ui-datepicker-month', date.m - 1)) {
+      note('calendar does not offer', `${date.m}/${date.y}`);
+      return false;
+    }
+    const box = open();
+    const day = box && Array.from(box.querySelectorAll('td[data-handler="selectDay"] a')).find((a) => {
+      const cell = a.closest('td');
+      return (a.textContent || '').trim() === String(date.d)
+        && cell.getAttribute('data-month') === String(date.m - 1)
+        && cell.getAttribute('data-year') === String(date.y);
+    });
+    if (!day) { note('calendar does not offer', `day ${date.d}`); return false; }
+    note('click', `day ${date.d}`);
+    pressPointer(day);
+    const deadline = Date.now() + TIMING.commitWaitMs;
+    for (;;) {
+      const shown = parseLooseDate(el.value);
+      if (shown && shown.y === date.y && shown.m === date.m && shown.d === date.d) { note('held'); return true; }
+      if (Date.now() >= deadline) return false;
+      await sleep(50);
+    }
+  } finally {
+    if (open()) dismissListbox(el);
+  }
+}
+
 export async function applyDecision(decision) {
   const row = decision.row;
   const value = decision.value;
   if (!row || !row.el || !value) return { ok: false, outcome: 'failed', shown: '' };
+  const isList = row.kind === 'combobox' || row.kind === 'select' || isCalendarInput(row.el);
+  if (isList) beginTimeline(row);
 
   // Workday's "Type to Add Skills": several answers, each its own search.
   if (decision.multiValues && decision.multiValues.length && row.multiPrompt) {
     const res = await commitPromptMulti(row, decision.multiValues);
     if (res.missing.length) decision.reason = `not in this employer's list: ${res.missing.join(', ')} — add any yourself`;
     const ok = res.pills.length > 0 && res.added.length + res.already.length > 0;
+    endTimeline(ok ? 'ok' : 'empty');
     return { ok, outcome: ok ? 'ok' : 'empty', shown: res.pills.join(' | ') };
   }
 
@@ -1539,6 +1815,17 @@ export async function applyDecision(decision) {
       wrote = await setDateParts(row, value);
       break;
     case 'select':
+      // A hidden select behind a bootstrap-multiselect: written alone, the box
+      // the person sees would stay empty.
+      if (multiselectWidget(row.el)) {
+        const picked = await commitMultiselect(row, value, decision.candidates, decision.readFirst,
+                                               decision.source === 'profile');
+        wrote = !!picked;
+        // The row chosen is this answer as this list words it ("Alignerr" for
+        // "Alignerr Inc"), not a form showing something else.
+        if (picked) decision.candidates = (decision.candidates || []).concat(picked);
+        break;
+      }
       wrote = setSelect(row.el, value);
       // A "select" that has no real <option> children is a custom widget
       // wearing a select's clothes.
@@ -1561,6 +1848,10 @@ export async function applyDecision(decision) {
       wrote = setContentEditable(row.el, value);
       break;
     default:
+      if (isCalendarInput(row.el)) {
+        wrote = await setCalendarDate(row, value);
+        if (wrote || row.el.readOnly) break;
+      }
       wrote = setText(row.el, value);
       // A UI5 date picker (SuccessFactors) takes a typed date on Enter: the
       // input event alone leaves its own value — the one the form reads — empty.
@@ -1583,6 +1874,7 @@ export async function applyDecision(decision) {
   }
 
   const result = await verdict(decision, row, value, wrote);
+  if (isList) endTimeline(result.outcome);
 
   // A dropdown that did not end up filled goes to the sidebar — with its real
   // options, so the person picks from the list instead of typing into a text
@@ -1605,6 +1897,22 @@ export async function applyDecision(decision) {
     if (labels.length) decision.options = labels.map(label => ({ value: label, label }));
   }
   return result;
+}
+
+/**
+ * Does a field we filled still hold our answer? 'ok', 'empty', 'changed', or
+ * 'gone' (no longer on the page). Judged as the write itself was (accepts): a
+ * form that reformatted the answer ("+91" for "+91 (India)") still holds it.
+ */
+export function heldNow(decision) {
+  const row = decision && decision.row;
+  const after = row && reprobe(row);
+  if (!after) return 'gone';
+  if (!after.filled) return 'empty';
+  if (after.value === decision.shown) return 'ok';
+  const loneCheckboxTicked = row.kind === 'checkbox' && (row.options || []).length <= 1
+    && /^(yes|true|on|checked)$/i.test(String(decision.value));
+  return loneCheckboxTicked || accepts(decision, decision.value, after.value) ? 'ok' : 'changed';
 }
 
 async function verdict(decision, row, value, wrote) {

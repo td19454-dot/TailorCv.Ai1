@@ -759,4 +759,91 @@ export const DECOYS = `
     <button type="submit">Sign in</button></form>
 </aside>`;
 
+// Workday's "Autofill with Resume" step, trimmed from a real capture (LSEG, Nov
+// 2026). The upload has no id, name or label; the header's language menu is a
+// listbox button, and the only other thing on the page that reads as a field.
+// Nesting kept as captured: closer, the upload's name search reaches the heading.
+export const WORKDAY_RESUME_STEP = `
+<div id="root"><div data-automation-id="header"><header>
+  <div data-automation-id="utilityButtonBar">
+    <div data-automation-id="utilityButtonBarSettingsMenu"><button aria-expanded="false" aria-haspopup="listbox" data-automation-id="utilityMenuButton" id="settingsSelectorButton">English</button></div>
+    <div data-automation-id="utilityButtonAccountTasksMenu"><button aria-expanded="false" aria-haspopup="true" data-automation-id="utilityMenuButton" id="accountSettingsButton"><span>Account</span></button></div>
+  </div>
+</header></div>
+<div id="mainContent" data-mfe-id="applyFlow"><main><div data-automation-id="applyFlowPage">
+  <div><button type="button" data-automation-id="backToJobPosting" role="link"><span>Back to Job Posting</span></button>
+    <h2 data-automation-id="jobTitleHeading">Software Engineer</h2></div>
+  <div aria-label="Application Progress"><ol data-automation-id="progressBar">
+    <li data-automation-id="progressBarActiveStep"><label aria-live="polite">current step 1 of 6</label><label>Autofill with Resume</label></li>
+    <li data-automation-id="progressBarInactiveStep"><label aria-live="polite">step 2 of 6</label><label>My Information</label></li>
+    <li data-automation-id="progressBarInactiveStep"><label aria-live="polite">step 6 of 6</label><label>Review</label></li>
+  </ol></div>
+  <div><h3 tabindex="-1">Autofill with Resume</h3>
+    <div data-automation-id="applyFlowAutoFillPage">
+      <div data-automation-id="instructionalText"><p><span>CV parsing is available, to make your job application easier please upload your CV/Resume here.</span></p></div>
+      <div><div data-automation-id="formField-"><div><div><div>Upload either DOC, DOCX, HTML, PDF, or TXT file types (5MB max)</div>
+        <div data-automation-id="resumeUpload"><div>
+          <div data-automation-id="file-upload-drop-zone"><div>Drop file here</div><div><div>or</div>
+            <button type="button" data-automation-id="select-files" id="input-26"><span>Select file</span></button></div></div>
+          <input data-automation-id="file-upload-input-ref" type="file"></div><div class="upload-list"></div></div></div></div></div></div>
+    </div></div>
+  <div data-automation-id="pageFooter"><div><button data-automation-id="pageFooterNextButton">Continue</button></div></div>
+</div></main></div></div>`;
+
+// Keka's application form, trimmed from a real capture (Fynd, Nov 2026). Dates are
+// read-only with a jQuery UI calendar; Date of Relieving and End of Course stay
+// disabled, with no calendar yet, until the start date beside them is picked.
+const kekaBox = (label, html) => `<div class="col-sm-6"><div class="form-group clear-margin"><div class="validation"><label>${label}</label>${html}</div></div></div>`;
+const kekaDate = (id, name, placeholder, disabled) => `<div class="input-calendar validation bg-white"><input type="text" class="form-control form-control-lg${disabled ? '' : ' hasDatepicker'}"${disabled ? ' disabled=""' : ' readonly=""'} autocomplete="off" id="${id}" name="${name}" placeholder="${placeholder}"></div>`;
+export const KEKA_DATES = `
+<form name="jobApplicationForm" id="jobApplicationForm" novalidate="novalidate"><div class="row">
+  <div class="form-group"><div class="validation"><label for="firstName">First Name <span>*</span></label><input type="text" id="firstName" name="firstName" required="required"></div></div>
+  <div class="form-group"><div class="validation"><label for="lastName">Last Name <span>*</span></label><input type="text" id="lastName" name="lastName" required="required"></div></div>
+  <div class="form-group"><div class="validation"><label for="email">Email <span>*</span></label><input type="email" id="email" name="email" required="required"></div></div>
+  <div class="form-group"><div class="validation"><label for="dateOfBirth">Date of Birth <span>*</span></label><div class="input-calendar"><input type="text" readonly="" class="form-control date-of-birth hasDatepicker" id="dateOfBirth" name="standardFields.dateOfBirth.answer" required="required"></div></div></div>
+  <div id="experienceDetails"><div class="row" id="experienceDetails_0">
+    ${kekaBox('<label for="companyName_0">Company Name</label>', '<input type="text" name="ExperienceDetails[0].companyName" id="companyName_0">')}
+    <div class="col-sm-12"><input type="checkbox" name="ExperienceDetails[0].isCurrentlyWorking" id="isCurrentlyWorking_0"><label for="isCurrentlyWorking_0">Currently working here</label></div>
+    ${kekaBox('<label for="experienceDateOfJoining_0">Date of Joining</label>', kekaDate('experienceDateOfJoining_0', 'ExperienceDetails[0].dateOfJoining', '16 June 2014'))}
+    ${kekaBox('<label for="dateOfRelieving_0">Date of Relieving</label>', kekaDate('dateOfRelieving_0', 'ExperienceDetails[0].dateOfRelieving', '16 July 2018', true))}
+  </div></div>
+  <div id="educationDetails"><div class="row" id="educationDetails_0">
+    ${kekaBox('<label for="degree_0">Course</label>', '<input type="text" name="EducationDetails[0].degree" placeholder="B.Tech" id="degree_0">')}
+    ${kekaBox('<label for="educationDateOfJoining_0">Start of Course</label>', kekaDate('educationDateOfJoining_0', 'EducationDetails[0].dateOfJoining', '16 June 2014'))}
+    ${kekaBox('<label for="dateOfCompletion_0">End of Course</label>', kekaDate('dateOfCompletion_0', 'EducationDetails[0].dateOfCompletion', '16 July 2018', true))}
+  </div></div>
+  <button id="jobApplicationSubmitButton" class="btn">Apply Now</button>
+</div></form>
+<div id="ui-datepicker-div" class="ui-datepicker" style="display: none"></div>`;
+
+// Lever's real markup, trimmed from a capture (Palantir, Nov 2026). Standard fields
+// sit in a <label> with the question and the field; custom questions have a plain
+// <div class="application-label">, and a <label> only on each answer.
+const leverCard = (cls, question, required, field) => `<li class="application-question custom-question"><div><div class="application-label full-width ${cls}"><div class="text">${question}${required ? '<span class="required">✱</span>' : ''}</div></div><div class="application-field full-width${required ? ' required-field' : ''}">${field}</div></div></li>`;
+const leverChoice = (type, name, answers, required) => `<ul data-qa="${type === 'radio' ? 'multiple-choice' : 'checkboxes'}">${answers.map(a => `<li><label><input type="${type}" name="${name}" value="${a}"${required ? ' required="required"' : ''}><span class="application-answer-alternative">${a}</span></label></li>`).join('')}</ul>`;
+const leverSelect = (name, answers) => `<div class="application-dropdown"><select name="${name}" required=""><option value="">Select...</option>${answers.map(a => `<option value="${a}">${a}</option>`).join('')}</select></div>`;
+export const LEVER_REAL = `
+<div class="content"><form id="application-form" enctype="multipart/form-data" method="POST"><div class="section page-centered application-form"><ul>
+  <li class="application-question resume"><label><div class="application-label">Resume/CV <span class="required">✱</span></div><div class="application-field"><a class="postings-btn visible-resume-upload"><span class="filename"></span><span class="default-label">ATTACH RESUME/CV</span><input class="application-file-input invisible-resume-upload" data-qa="input-resume" id="resume-upload-input" name="resume" tabindex="-1" type="file"></a><span class="resume-upload-failure"><div class="resume-upload-label">Couldn't auto-read resume.</div></span><span class="resume-upload-working"><div class="resume-upload-label">Analyzing resume...</div></span><span class="resume-upload-success"><div class="resume-upload-label">Success!</div></span></div></label></li>
+  <li class="application-question"><label><div class="application-label">Full name<span class="required">✱</span></div><div class="application-field"><input type="text" data-qa="name-input" name="name" required=""></div></label></li>
+  <li class="application-question"><label><div class="application-label">Email<span class="required">✱</span></div><div class="application-field"><input name="email" data-qa="email-input" type="email" required=""></div></label></li>
+  <li class="application-question"><label><div class="application-label">Current company </div><div class="application-field"><input type="text" data-qa="org-input" name="org"></div></label></li>
+</ul></div>
+<div class="section page-centered application-form" data-qa="additional-cards"><ul>
+  ${leverCard('multiple-select', 'Language Skill(s) (Check all that apply)', true, leverChoice('checkbox', 'cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]', ['English (ENG)', 'Hindi (HIN)', 'Other'], false))}
+  ${leverCard('text', 'Preferred Name | What would you like us to call you?', false, '<input class="card-field-input" type="text" placeholder="Type your response" name="cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field1]">')}
+  ${leverCard('multiple-choice', 'Are you legally authorized to work in the country for which you are applying?', true, leverChoice('radio', 'cards[1c719ca0-1234-4afe-9e82-39ca420e0edb][field0]', ['Yes', 'No'], true))}
+  ${leverCard('multiple-choice', 'Will you now or in the future require sponsorship for employment visa status (e.g., H-1B, etc.)?', true, leverChoice('radio', 'cards[1c719ca0-1234-4afe-9e82-39ca420e0edb][field1]', ['Yes', 'No'], true))}
+  ${leverCard('textarea', 'High School Name', true, '<textarea class="card-field-input" name="cards[d54adf7b-3148-4095-93bb-72bef32a61f8][field0]" required="required"></textarea>')}
+  ${leverCard('dropdown', 'Year of High School Graduation', true, leverSelect('cards[d54adf7b-3148-4095-93bb-72bef32a61f8][field1]', ['2020', '2021', '2022', '2023', '2027', 'Other']))}
+  ${leverCard('dropdown', 'Which university are you currently attending or did you last attend?', true, leverSelect('cards[3da58b41-acf5-40a1-945e-c7f047ef8050][field0]', ['Ataturk University', 'Jadavpur University', 'Other - School Not Listed']))}
+  ${leverCard('multiple-choice', 'Are you a resident of California?', true, leverChoice('radio', 'cards[3fd0c7ef-7ec1-4475-a325-d9941e7ca87c][field1]', ['Yes', 'No'], true))}
+</ul></div>
+<div class="section eeo-section page-centered application-form" data-qa="eeo-section">
+  <div class="application-question"><label><div class="application-label">Disability status</div><div class="application-field"><div class="application-dropdown"><select id="disabilitySelectElement" name="eeo[disability]"><option value="">Select ...</option><option value="Yes, I have a disability, or have had one in the past">Yes, I have a disability, or have had one in the past</option><option value="No, I do not have a disability and have not had one in the past">No, I do not have a disability and have not had one in the past</option><option value="I do not want to answer">I do not want to answer</option></select></div></div></label></div>
+  <div id="disabilitySignatureSection"><div class="application-question"><label><div class="application-label">Name</div><div class="application-field"><input type="text" name="eeo[disabilitySignature]" placeholder="Enter your full name" required=""></div></label></div><div class="application-question"><label><div class="application-label">Date</div><div class="application-field"><input type="text" name="eeo[disabilitySignatureDate]" placeholder="MM/DD/YYYY" required=""></div></label></div></div>
+</div>
+<div class="section page-centered application-form last-section-apply"><button id="btn-submit" type="button" data-qa="btn-submit">Submit application</button></div>
+</form></div>`;
+
 export const ALL = { GREENHOUSE, GREENHOUSE_REMIX, DROPDOWN_MEANINGS, LEVER, WORKDAY, WORKDAY_MYINFO, ASHBY, ASHBY_OPENAI, GENERIC };

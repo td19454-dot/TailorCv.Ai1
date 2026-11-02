@@ -89,12 +89,12 @@ test('an optional unknown question is skipped, not asked', () => {
 
 // ── Tier 0b: the sensitive lock ──────────────────────────────
 
-test('work authorization fills from the stored answer only', () => {
+test('work authorization is always Yes, over a profile saying No', () => {
   const d = one(field('Are you legally authorized to work in the United States?', {
     kind: 'select', required: true, options: [{ value: 'Yes', label: 'Yes' }, { value: 'No', label: 'No' }],
   }));
   eq(d.action, p.FILL);
-  eq(d.value, 'No', 'the stored profile answer, verbatim');
+  eq(d.value, 'Yes', 'the person\'s standing answer');
   eq(d.source, 'profile');
   eq(d.sensitive, 'work_authorization');
 });
@@ -102,7 +102,7 @@ test('work authorization fills from the stored answer only', () => {
 test('a sensitive field with no stored answer is handed back, never filled', () => {
   const ctx = { answerBank: { full_name: 'Ada Lovelace' } };
   const d = p.decide(
-    [field('Are you legally authorized to work in the United States?', { required: true })],
+    [field('Will you now or in the future require visa sponsorship?', { required: true })],
     ctx, null, null)[0];
   eq(d.action, p.PROFILE);
   eq(d.value, '');
@@ -342,7 +342,7 @@ test('a saved criminal-history answer fills the same question', () => {
 test('the AI tier cannot answer a sensitive field even if the server returns one', () => {
   // Defence in depth: the server already refuses these, and the client never
   // sends them — but if a response carried one anyway it must still be ignored.
-  const rows = [field('Are you legally authorized to work in the United States?',
+  const rows = [field('Will you now or in the future require visa sponsorship?',
                       { required: true })];
   const server = { answers: { 0: { value: 'Yes', source: 'ai', confidence: 0.95 } } };
   const d = p.decide(rows, { answerBank: {} }, server, null)[0];
@@ -407,20 +407,21 @@ test('a select with unreadable options still gets the raw value to try', () => {
 test('a yes/no radio group is answered by matching the option label', () => {
   const d = one(field('Are you legally authorized to work in the United States?', {
     kind: 'radio', required: true,
-    options: [{ value: 'y', label: 'Yes' }, { value: 'n', label: 'No' }],
+    options: [{ value: 'n', label: 'No' }, { value: 'y', label: 'Yes' }],
   }));
-  eq(d.value, 'No');
+  eq(d.value, 'Yes');
 });
 
 test('a radio group worded as statements is answered by polarity', () => {
   const ctx = { answerBank: { authorized_to_work_in_country: 'No' } };
   const d = p.decide([field('Work authorization', {
     kind: 'radio', required: true,
-    options: [{ value: 'a', label: 'I am authorized to work in the US' },
-              { value: 'b', label: 'I am not authorized to work in the US' }],
+    // The "not" first: it begins "I am" too, and is not the Yes.
+    options: [{ value: 'b', label: 'I am not authorized to work in the US' },
+              { value: 'a', label: 'I am authorized to work in the US' }],
   })], ctx, null, null)[0];
   eq(d.action, p.FILL);
-  eq(d.value, 'I am not authorized to work in the US', d.value);
+  eq(d.value, 'I am authorized to work in the US', d.value);
 });
 
 test('a lone consent checkbox is answered yes from the server tier', () => {
@@ -712,6 +713,43 @@ test('a degree level list takes the level', () => {
      'High School Diploma');
 });
 
+const NO_SCHOOL = ['Bachelors of Management and Engineering', 'Diploma', 'Certificate/Technical degree',
+                   'Associates', 'Bachelors', 'Post-Graduate', 'Masters', 'Doctorate'];
+
+test('high school: "Diploma" is the last resort, on a list with nothing like it', () => {
+  for (const stored of ['Higher Secondary', 'High School', 'HSC']) {
+    eq(p.highSchoolDiploma(stored, NO_SCHOOL), 'Diploma', stored);
+  }
+  eq(p.coerce('Higher Secondary', degreeRow('Higher Secondary', NO_SCHOOL)),
+     'Diploma', 'a native select is always read whole');
+  eq(p.coerce('Higher Secondary', Object.assign(degreeRow('Higher Secondary', NO_SCHOOL), { kind: 'combobox', wholeList: true })),
+     'Diploma', 'a list read whole');
+  eq(p.coerce('Higher Secondary', Object.assign(degreeRow('Higher Secondary', NO_SCHOOL), { kind: 'combobox' })),
+     null, 'a list that may be partial: its high-school row may not be drawn yet');
+});
+
+test('high school: anything like it on the list stops "Diploma"', () => {
+  for (const like of ['High School', 'Secondary', 'Senior Secondary Certificate', 'Class XII', '12th Standard',
+                      '10+2', 'GED', 'Intermediate', 'Pre-University', 'A Levels', 'Class X']) {
+    eq(p.highSchoolDiploma('Higher Secondary', NO_SCHOOL.concat(like)), null, like);
+  }
+  eq(p.highSchoolDiploma('Higher Secondary', NO_SCHOOL.concat('Post-Secondary Certificate')), 'Diploma',
+     'after school is not high school');
+  eq(p.coerce('Higher Secondary', degreeRow('Higher Secondary', NO_SCHOOL.concat('High School Diploma'))), 'High School Diploma');
+  eq(p.coerce('Higher Secondary', degreeRow('Higher Secondary', NO_SCHOOL.concat('Higher Secondary'))), 'Higher Secondary');
+});
+
+test('high school: only an option that is exactly "Diploma", and only for high school', () => {
+  eq(p.highSchoolDiploma('Higher Secondary', ['University Diploma', 'Bachelors']), null);
+  eq(p.highSchoolDiploma('Higher Secondary', ['Diploma in Engineering', 'Bachelors']), null);
+  eq(p.highSchoolDiploma('Higher Secondary', ['Bachelors', 'Masters']), null, 'no Diploma on the list');
+  eq(p.highSchoolDiploma('Bachelor of Technology', ['Diploma', 'Masters']), null, 'not a B.Tech');
+  eq(p.highSchoolDiploma('Master of Technology', ['Diploma', 'Bachelors']), null, 'not a master\'s');
+  eq(p.highSchoolDiploma('', NO_SCHOOL), null, 'no degree stored');
+  eq(p.coerce('Bachelor of Technology', degreeRow('Bachelor of Technology', ['Diploma', 'Masters'])),
+     null, 'a B.Tech is never given a diploma');
+});
+
 test('a list that spells degrees out keeps the exact one', () => {
   const full = ['Bachelor of Technology', 'Master of Technology', 'Bachelor of Science'];
   eq(p.coerce('Bachelor of Technology', degreeRow('Bachelor of Technology', full)),
@@ -858,17 +896,18 @@ const authRow = () => field('Are you legally authorized to work in the United St
 const authCtx = (auth, spons) => ({ answerBank: Object.assign({}, BANK,
   { authorized_to_work_in_country: auth, requires_visa_sponsorship: spons }), hasResume: true });
 
-test('work authorization as statements: read from BOTH stored answers', () => {
-  eq(p.decide([authRow()], authCtx('Yes', 'No'), null, null)[0].value, SPACEX_AUTH[0]);
-  eq(p.decide([authRow()], authCtx('Yes', 'Yes'), null, null)[0].value, SPACEX_AUTH[2]);
-  eq(p.decide([authRow()], authCtx('No', 'Yes'), null, null)[0].value, SPACEX_AUTH[2]);
-  eq(p.decide([authRow()], authCtx('No', 'No'), null, null)[0].value, SPACEX_AUTH[3]);
+test('work authorization as statements: always the Yes one, whatever the profile says', () => {
+  for (const [authorized, sponsorship] of [['Yes', 'No'], ['Yes', 'Yes'], ['No', 'Yes'], ['No', 'No'], ['Yes', ''], ['', '']]) {
+    eq(p.decide([authRow()], authCtx(authorized, sponsorship), null, null)[0].value, SPACEX_AUTH[0],
+       `authorized ${authorized}, sponsorship ${sponsorship}`);
+  }
+  // The statements themselves are still read off both answers.
+  eq(p.workAuthStatement('Yes', 'Yes', SPACEX_AUTH), SPACEX_AUTH[2]);
+  eq(p.workAuthStatement('No', 'No', SPACEX_AUTH), SPACEX_AUTH[3]);
 });
 
-test('work authorization as statements: never guessed from one answer alone', () => {
-  const d = p.decide([authRow()], authCtx('Yes', ''), null, null)[0];
-  eq(d.action, p.ASK, '"any employer" vs "present employer only" is not settled by "Yes"');
-  notOk(d.value);
+test('work authorization statements: never guessed from one answer alone, when read directly', () => {
+  eq(p.workAuthStatement('Yes', '', SPACEX_AUTH), null, '"any employer" vs "present employer only" is not settled by "Yes"');
 });
 
 test('work authorization Yes / No lists are unchanged', () => {
@@ -1054,6 +1093,47 @@ test('Workday\'s "Type to Add Skills" plans the profile skills as a list', () =>
   const d = p.decide([row], ctx, null, null)[0];
   eq(d.action, p.FILL);
   deepEq(d.multiValues, ['Python', 'SQL', 'Docker']);
+});
+
+// ── Oracle's Yes/No eligibility page (Oct 2026) ──────────────
+
+const yesNo = label => field(label, { kind: 'choice', required: true,
+  options: [{ value: 'Yes', label: 'Yes' }, { value: 'No', label: 'No' }] });
+const indian = (extra) => Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { nationality: 'India' }, extra) });
+
+test('"citizenship or a passport of any country OTHER THAN India" is No for a citizen of India', () => {
+  const d = p.decide([yesNo('Do you hold citizenship or a passport of any country other than India?*')], indian(), null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'No', d.reason);
+  // Their own country named: still Yes. Another country named: Yes, theirs is other than it.
+  eq(p.decide([yesNo('Do you hold an Indian Passport?*')], indian(), null, null)[0].value, 'Yes');
+  eq(p.decide([yesNo('Are you a citizen of any country other than the United States?')], indian(), null, null)[0].value, 'Yes');
+  // No country of citizenship in the profile: never a guess.
+  notOk(p.decide([yesNo('Do you hold citizenship of any country other than India?')],
+                 Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { nationality: '' }) }), null, null)[0].value === 'No');
+});
+
+test('"Do you have a High School diploma (10+2), HSC or GED?" is answered from the education level', () => {
+  const d = p.decide([yesNo('Do you have a High School diploma (10+2), HSC or GED?*')], CTX, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'Yes', 'a B.Tech is a 10+2 and more');
+  eq(p.fieldsForServer([d]).length, 0, 'never asked of the model');
+  eq(p.decide([yesNo("Do you hold a Bachelor's degree?")], CTX, null, null)[0].value, 'Yes');
+  eq(p.decide([yesNo("Do you have a Master's degree?")], CTX, null, null)[0].value, 'No');
+  const master = Object.assign({}, CTX, { facts: { educationEntries: [{ degree: 'M.Tech', school: 'IIT' }] } });
+  eq(p.decide([yesNo("Do you have a Master's degree?")], master, null, null)[0].value, 'Yes', 'from the education list too');
+});
+
+test('a degree question the level alone cannot answer is left to the usual tiers', () => {
+  for (const label of ["Do you have a Bachelor's degree in Computer Science?",
+                       "Do you have a Master's degree or equivalent experience?",
+                       'Are you currently pursuing a degree?',
+                       'Do you have MS Office certification?',
+                       'Do you have a Diploma?']) {
+    eq(p.educationLevelAnswer(yesNo(label), CTX, BANK), null, label);
+  }
+  // No education on file: nothing to read a level from.
+  eq(p.educationLevelAnswer(yesNo("Do you hold a Bachelor's degree?"), { answerBank: {} }, {}), null);
 });
 
 // ── nationality ──────────────────────────────────────────────
@@ -1628,6 +1708,19 @@ test("on Visa's own form, questions naming Visa are not visa-sponsorship questio
               CTX, null, null)[0].sensitive);
 });
 
+test('Visa\'s own form is known by its address or its name, and only Visa\'s', () => {
+  const VISA_URL = 'https://visa.wd5.myworkdayjobs.com/en-US/Visa/job/IN---Bengaluru-India/Sr-SW-Engineer--Python--GenAI--4--years--experience-_REF084891W/apply/applyManually?share_id=LinkedIn_corporate_page';
+  eq(p.visaEmployer(VISA_URL, ''), 'Visa');
+  eq(p.visaEmployer(VISA_URL, 'Careers'), 'Visa', 'its address settles it, whatever the page was read as');
+  eq(p.visaEmployer('https://wd5.myworkdaysite.com/recruiting/visa/Visa/job/X/Y', ''), 'Visa');
+  eq(p.visaEmployer('https://example.com/apply', 'Visa Careers'), 'Visa');
+  // Anyone else's form, even one about visas.
+  eq(p.visaEmployer('https://nike.wd1.myworkdayjobs.com/nke/job/India/Visa-Specialist_R1/apply', 'Nike'), 'Nike');
+  eq(p.visaEmployer('https://visaservices.example.com/apply', 'Acme'), 'Acme');
+  eq(p.visaEmployer('https://acme.wd1.myworkdayjobs.com/x', ''), '');
+  eq(p.visaEmployer('not a url', 'Acme'), 'Acme');
+});
+
 test('"I have read and consent to the above" is a terms agreement the profile permission ticks', () => {
   // Citi's Terms checkbox (Oct 2026) matched none of the terms phrasings.
   const label = 'Yes, I have read and consent to the above.*';
@@ -1664,6 +1757,205 @@ test('an outside-employment question is always answered No', () => {
   }
   // Only a Yes / No question.
   eq(p.outsideEmploymentAnswer(field('Do you have a second job?', { kind: 'combobox', options: ['Full-time', 'Part-time'] })), null);
+});
+
+test('"a current or former employee of" reads every company it names, from the work history', () => {
+  const FACTSET = 'Are you a current or former employee of FactSet, FactSet Digital Solutions, Portware, Vermilion or BISAM?*';
+  const radio = label => field(label, { kind: 'radio', required: true, options: [{ value: 'Yes', label: 'Yes' }, { value: 'No', label: 'No' }] });
+  const worked = company => Object.assign({}, CTX, { facts: { workExperience: [{ company }] } });
+  // None of them in the history: No, and auto-apply doesn't stop.
+  let d = p.decide([radio(FACTSET)], worked('Quantiphi'), null, null)[0];
+  eq(d.action, p.FILL, `${d.action}: ${d.reason}`);
+  eq(d.value, 'No');
+  eq(d.source, 'profile');
+  // Any company it names, not only the first.
+  for (const company of ['FactSet', 'Portware', 'BISAM']) {
+    eq(p.decide([radio(FACTSET)], worked(company), null, null)[0].value, 'Yes', company);
+  }
+  for (const label of ['Are you a former or current employee of FactSet?*', 'Are you a current or previous employee of FactSet?*',
+                       'Are you a current/former employee of FactSet?*', 'Are you a former employee of FactSet?*']) {
+    eq(p.decide([radio(label)], worked('Quantiphi'), null, null)[0].value, 'No', label);
+    eq(p.decide([radio(label)], worked('FactSet'), null, null)[0].value, 'Yes', label);
+  }
+  // A current employee alone is another question, left as it was.
+  eq(p.previousEmployerAnswer(radio('Are you a current employee of FactSet?*'), worked('Quantiphi'), BANK), null);
+});
+
+test('a current salary has no profile field: asked here, never sent to the model, never told to add an expectation', () => {
+  const ask = label => {
+    const d = p.decide([field(label, { required: true })], { answerBank: { full_name: 'A B', expected_salary: '12 LPA' }, hasResume: true }, null, null)[0];
+    return d;
+  };
+  for (const label of ['What is your current annual base salary? (INR) *', 'Current CTC *', 'What is your present salary?*',
+                       'What was your last drawn salary?*', 'Previous compensation*', 'Existing CTC*']) {
+    const d = ask(label);
+    eq(d.sensitive, 'salary', label);
+    eq(d.action, p.ASK, `${label} -> ${d.action}: ${d.reason}`);
+    notOk(d.value, 'not the expected salary');
+    ok(/current salary/.test(d.reason), d.reason);
+    eq(p.fieldsForServer([d]).length, 0, `${label}: not sent to the model`);
+  }
+  // An expected salary has its profile field: filled from it, or pointed at it.
+  const expected = 'Please confirm your expected annual base salary? (INR) *';
+  eq(ask(expected).value, '12 LPA');
+  const empty = p.decide([field(expected, { required: true })], { answerBank: { full_name: 'A B' }, hasResume: true }, null, null)[0];
+  eq(empty.action, p.PROFILE, empty.reason);
+  ok(/salary expectation/.test(empty.reason), empty.reason);
+  // "last" or "previous" beside "rate" or "pay" is not a salary.
+  for (const label of ['Please rate your last project', 'How would you rate your previous manager?', 'What was your last pay grade level?']) {
+    notOk(ask(label).sensitive === 'salary', label);
+  }
+});
+
+test('Nike: a work-authorization list worded "Yes, without restriction" takes that option', () => {
+  const NIKE = ['Yes, without restriction', 'Yes, I have a visa / sponsorship', 'No, I would require visa / sponsorship'];
+  eq(p.workAuthStatement('Yes', 'No', NIKE), 'Yes, without restriction');
+  // Their stored answers don't say which of the others: they choose.
+  eq(p.workAuthStatement('No', 'No', NIKE), null);
+  eq(p.workAuthStatement('Yes', '', NIKE), null);
+  // Two that could be it is none.
+  eq(p.workAuthStatement('Yes', 'No', ['Yes, without restriction', 'Yes, without sponsorship', 'No']), null);
+  // A No is never read as free to work.
+  eq(p.workAuthStatement('Yes', 'No', ['No, without sponsorship I cannot work', 'Other']), null);
+  // SpaceX's wording still reads as before.
+  const SPACEX = ['I am authorized to work in the United States for any employer', 'I require sponsorship'];
+  eq(p.workAuthStatement('Yes', 'No', SPACEX), SPACEX[0]);
+});
+
+test('"Yes - I hold citizenship" or "Yes – I hold a valid work permit": the job\'s country says which', () => {
+  const LIST = ['Yes - I hold citizenship', 'Yes – I hold a valid work permit / VISA', 'No - I require VISA sponsorship'];
+  eq(p.workAuthStatement('Yes', 'No', LIST, true), LIST[0]);
+  eq(p.workAuthStatement('Yes', 'No', LIST, false), LIST[1]);
+  // Not known: citizenship. The permit is only for a job known to be abroad.
+  eq(p.workAuthStatement('Yes', 'No', LIST), LIST[0]);
+  // One Yes on the list is the Yes, whatever it says.
+  eq(p.workAuthStatement('Yes', 'No', ['Yes - some other wording', 'No - I need help'], true), 'Yes - some other wording');
+  // Needs sponsorship: that option, wherever the job is.
+  eq(p.workAuthStatement('Yes', 'Yes', LIST, true), LIST[2]);
+  eq(p.workAuthStatement('No', 'Yes', LIST), LIST[2]);
+  // Not authorized, no sponsorship: no option says so.
+  eq(p.workAuthStatement('No', 'No', LIST, true), null);
+  // Two that could be it is none.
+  eq(p.workAuthStatement('Yes', 'No', ['Yes - citizen', 'Yes - citizen by birth', 'No'], true), null);
+  // Nike's says it outright, and needs no country.
+  const NIKE = ['Yes, without restriction', 'Yes, I have a visa / sponsorship', 'No, I would require visa / sponsorship'];
+  eq(p.workAuthStatement('Yes', 'No', NIKE, false), NIKE[0]);
+  // Through the decision, in India and elsewhere.
+  const LABEL = 'Do you have the right to work in the location to which you are applying?*';
+  const row = field(LABEL, { kind: 'combobox', required: true, options: LIST });
+  const ctx = jobCountry => Object.assign(indian({ authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: 'No' }), { jobCountry });
+  const inIndia = p.decide([row], ctx('India'), null, null)[0];
+  eq(inIndia.value, LIST[0], `${inIndia.action}: ${inIndia.reason}`);
+  eq(inIndia.readFirst.citizenHere, true);
+  const abroad = p.decide([row], ctx('United States'), null, null)[0];
+  eq(abroad.value, LIST[1]);
+  eq(abroad.action, p.SUGGEST);
+  const unknown = p.decide([row], ctx(''), null, null)[0];
+  eq(unknown.value, LIST[0]);
+  eq(unknown.action, p.FILL);
+});
+
+test('the right to work is always Yes, whatever the profile says; sponsorship keeps its own answer', () => {
+  const yn = label => field(label, { kind: 'combobox', required: true, options: ['Yes', 'No'] });
+  const bank = extra => ({ answerBank: Object.assign({}, BANK, { nationality: 'India' }, extra), hasResume: true, hasCoverLetter: false });
+  const AUTH = 'Are you legally authorized to work in the United States?*';
+  for (const profile of [{ authorized_to_work_in_country: 'No', requires_visa_sponsorship: 'Yes' },
+                         { authorized_to_work_in_country: '', requires_visa_sponsorship: '' }]) {
+    const d = p.decide([yn(AUTH)], bank(profile), null, null)[0];
+    eq(d.value, 'Yes', `${d.action}: ${d.reason}`);
+    notOk(d.action === p.ASK || d.action === p.PROFILE, d.action);
+    eq(d.sensitive, 'work_authorization');
+  }
+  const s = p.decide([yn('Will you now or in the future require visa sponsorship?*')],
+                     bank({ authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: 'Yes' }), null, null)[0];
+  eq(s.value, 'Yes', 'their own sponsorship answer');
+  const s2 = p.decide([yn('Will you now or in the future require visa sponsorship?*')],
+                      bank({ authorized_to_work_in_country: 'No', requires_visa_sponsorship: 'No' }), null, null)[0];
+  eq(s2.value, 'No', 'their own sponsorship answer');
+});
+
+test('the country a Workday job is in comes from its URL, only when the URL is clear', () => {
+  const at = location => `https://nike.wd1.myworkdayjobs.com/en-US/nke/job/${location}/Lead-Analyst_R-92380/apply`;
+  eq(p.jobCountryFromUrl(at('Karnataka-India')), 'India');
+  eq(p.jobCountryFromUrl(at('India')), 'India');
+  eq(p.jobCountryFromUrl(at('Oregon-United-States-of-America')), 'United States');
+  eq(p.jobCountryFromUrl('https://acme.wd5.myworkdaysite.com/recruiting/acme/jobs/job/Bengaluru-India/Analyst_R-1'), 'India');
+  for (const location of ['San-Jose-CA', 'New-Mexico', 'New-Jersey', 'Atlanta-Georgia', '2-Locations', 'Bengaluru']) {
+    eq(p.jobCountryFromUrl(at(location)), '', location);
+  }
+  // The one segment after /job/ is the title.
+  eq(p.jobCountryFromUrl('https://nike.wd1.myworkdayjobs.com/nke/job/Analyst-India/apply'), '');
+  // Only Workday's URLs read this way.
+  eq(p.jobCountryFromUrl('https://boards.greenhouse.io/job/Karnataka-India/123'), '');
+  eq(p.jobCountryFromUrl('not a url'), '');
+});
+
+test('"a Citizen of the country you are applying to" compares the job\'s country, and is never the country itself', () => {
+  const NIKE = 'Are you a Citizen of the country you are applying to?*';
+  const unread = field(NIKE, { kind: 'combobox', required: true });
+  const decideWith = (row, jobCountry) => p.decide([row], Object.assign(indian(), { jobCountry }), null, null)[0];
+  // In India, for a citizen of India: Yes, whether or not the list has been read.
+  let d = decideWith(unread, 'India');
+  eq(d.action, p.FILL, d.reason);
+  eq(d.value, 'Yes');
+  ok(/India/.test(d.reason), d.reason);
+  eq(decideWith(field(NIKE, { kind: 'combobox', required: true, options: ['Yes', 'No'] }), 'India').value, 'Yes');
+  // Elsewhere: No.
+  d = decideWith(unread, 'United States');
+  eq(d.action, p.FILL, d.reason);
+  eq(d.value, 'No');
+  // The job's country unknown: theirs to answer, not "India" in a Yes / No list.
+  for (const row of [unread, field(NIKE, { kind: 'combobox', required: true, options: ['Yes', 'No'] })]) {
+    d = decideWith(row, '');
+    eq(d.action, p.ASK, `${d.action}: ${d.value}`);
+    notOk(d.value);
+    ok(/doesn't say which country/.test(d.reason), d.reason);
+  }
+  // A question naming its own country isn't overruled by the job's.
+  d = decideWith(field('Are you a citizen of Singapore?*', { kind: 'combobox', required: true }), 'India');
+  eq(d.value, 'No');
+  // A real list of countries still takes the country.
+  d = decideWith(field('Country of citizenship*', { kind: 'combobox', required: true, options: ['Canada', 'India'] }), '');
+  eq(d.value, 'India');
+});
+
+test('a conflict-of-interest question is always answered No', () => {
+  const yn = label => field(label, { kind: 'combobox', options: ['Select One', 'Yes', 'No'], required: true });
+  for (const label of [
+    // Nike Workday (Nov 2026): it came back Yes.
+    'Under NIKE Policy, certain situations may create a Conflict of Interest. If hired for this role, will you be '
+      + 'engaged in either of the below activities at the same time as your NIKE employment? (1) Additional work '
+      + 'outside of Nike (2) Owning your own business*',
+    // The same question without the words "conflict of interest".
+    'If hired for this role, will you be engaged in either of the below at the same time as your employment? '
+      + '(1) Additional work outside of Nike (2) Owning your own business*',
+    'Do you have any conflict of interest with this role?*',
+    'Do you have any conflicts of interest we should know about?*',
+    'Is there any potential conflict of interest if you join Acme?*',
+    'Are you aware of any conflict of interest?*']) {
+    const d = p.decide([yn(label)], CTX, null, null)[0];
+    eq(d.action, p.FILL, `${label.slice(0, 50)}… -> ${d.action}: ${d.reason}`);
+    eq(d.value, 'No', label);
+    notOk(d.sensitive);
+  }
+  // A No would be the wrong answer to these.
+  for (const label of [
+    'Do you agree to follow our Conflict of Interest policy?',
+    'Have you read the Conflict of Interest policy?',
+    'Are you aware of our conflict of interest policy?',
+    'Do you confirm that you have no conflicts of interest?',
+    'I have no conflict of interest.',
+    'Are you willing to give up any outside employment?',
+    'Do you acknowledge that outside employment needs approval?']) {
+    eq(p.outsideEmploymentAnswer(yn(label)), null, label);
+  }
+  // Mentioned only on the way to a different question.
+  for (const label of [
+    'Outside employment is covered by our policy. Will you relocate?',
+    'To avoid any conflict of interest, are you authorized to work in the United States?',
+    'To avoid any conflict of interest, will you require visa sponsorship?']) {
+    eq(p.outsideEmploymentAnswer(yn(label)), null, label);
+  }
 });
 
 test('government-official questions are answered from the profile, and only where it is sure', () => {
@@ -1922,7 +2214,47 @@ test('EEO questions in any wording are answered from the profile, and remembered
   eq(profileWins.value, 'Male', 'the profile, which they may have changed since, comes first');
 });
 
-test('criminal-history questions take the profile\'s No in any wording, and never touch consent', () => {
+const BARCLAYS_CRIMINAL = 'Do you have any criminal convictions, cautions, reprimands or final warnings (including traffic offences) in any country? '
+  + 'Please note, you do not need to disclose such criminal convictions, cautions, reprimands or final warnings if they do not require to be '
+  + 'disclosed under the local law of the country in which you reside. If you do disclose any criminal convictions we will assume this is not protected by any local laws.*';
+const BARCLAYS_SCREENING = 'If your application is successful Barclays undertakes people screening as part of its recruitment process, these include; '
+  + 'criminal records, address verification, academic qualifications, employment dates and employer references — are you happy to continue with your application?*';
+const BARCLAYS_RIGHT = 'Do you have the legal right to work in the country or jurisdiction where the position you are applying for is located?*';
+
+test('Barclays: criminal history is No, screening is Yes, the right to work is Yes, with nothing sent to the model', () => {
+  const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
+  const unread = label => field(label, { kind: 'combobox', required: true });
+  for (const row of [yn, unread]) {
+    const rows = [row(BARCLAYS_CRIMINAL), row(BARCLAYS_SCREENING), row(BARCLAYS_RIGHT)];
+    const [crime, screen, right] = p.decide(rows, CTX, null, null);
+    eq(crime.value, 'No', `${crime.action}: ${crime.reason}`);
+    eq(crime.action, p.FILL);
+    eq(screen.value, 'Yes', `${screen.action}: ${screen.reason}`);
+    eq(screen.action, p.FILL);
+    eq(right.value, 'Yes', `${right.action}: ${right.reason}`);
+    eq(right.action, p.FILL);
+    eq(p.fieldsForServer([crime, screen, right]).length, 0, 'none of them sent to the model');
+  }
+});
+
+test('a background check is agreed to; a question about a past one is not', () => {
+  const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
+  for (const label of ['Do you consent to a background check?', 'Are you willing to undergo a criminal background check?',
+                       'Are you happy to proceed with pre-employment screening?', 'Do you agree to reference checks?']) {
+    eq(p.decide([yn(label)], CTX, null, null)[0].value, 'Yes', label);
+  }
+  for (const label of ['Have you ever failed a background check?', 'Have you ever refused to undergo a background check?',
+                       'Have you previously been through background screening?', 'Do you work in security screening?']) {
+    eq(p.backgroundScreeningAnswer(yn(label)), null, label);
+  }
+  // A statement with no question, as Nike's "I acknowledge…", and a list without Yes / No.
+  const NIKE = 'I acknowledge that I may be asked to consent to a background and reference check for the position.*';
+  eq(p.backgroundScreeningAnswer(yn(NIKE)), null);
+  eq(p.backgroundScreeningAnswer(field('Do you consent to a background check?',
+     { kind: 'combobox', options: ['I acknowledge', 'I decline'] })), null);
+});
+
+test('criminal history is always No in any wording, over the profile and a saved answer, and never touches consent', () => {
   const yn = label => field(label, { kind: 'combobox', options: ['Yes', 'No'], required: true });
   const run = (label, stored, f) => {
     const bank = Object.assign({}, BANK);
@@ -1948,16 +2280,19 @@ test('criminal-history questions take the profile\'s No in any wording, and neve
     'Have you ever pleaded guilty to a criminal offence?',
   ]) expect(label, 'No', p.FILL, 'No');
 
-  // Unset -> asked here; Yes -> the person, every time.
-  expect('Have you ever been convicted of a crime?', undefined, p.ASK);
-  expect('Have you ever been convicted of a crime?', 'Yes', p.ASK);
+  // Whatever the profile says, or doesn't.
+  expect('Have you ever been convicted of a crime?', undefined, p.FILL, 'No');
+  expect('Have you ever been convicted of a crime?', 'Yes', p.FILL, 'No');
+  // The person's own record, however far it reaches.
+  expect('Have you ever been arrested or convicted of a crime?', 'No', p.FILL, 'No');
+  expect('Have you been convicted of a traffic offence?', 'No', p.FILL, 'No');
+  // An old saved answer doesn't override it.
+  const saved = p.decide([yn('Have you ever been convicted of a crime?')], Object.assign({}, CTX, {
+    savedSensitive: [{ question: 'Have you ever been convicted of a crime?', answer: 'Yes' }] }), null, null)[0];
+  eq(saved.value, 'No', `${saved.action} ${saved.source}`);
 
-  // Not the person's record, or more than "convicted or charged".
-  expect('Do you consent to a background check?', 'No', p.ASK);
-  expect('Are you willing to undergo a criminal background check?', 'No', p.ASK);
+  // Not the person's record, or consent to look at it.
   expect('Do you authorize us to obtain your criminal history record?', 'No', p.ASK);
-  expect('Have you ever been arrested or convicted of a crime?', 'No', p.ASK);
-  expect('Have you been convicted of a traffic offence?', 'No', p.ASK);
   expect('Has any member of your family been convicted of a crime?', 'No', p.ASK);
   expect('I certify that I have no criminal convictions', 'No', p.ASK);
   // A lone checkbox is a statement, never a Yes / No.

@@ -37,6 +37,13 @@ export const TIMING = {
   resumeParseMaxMs: 30000,
   // How long after an upload to look for the form starting to read it.
   resumeParseStartMs: 300,
+  // Oracle's "Import your profile": how long to watch for the reading to START.
+  // Its server takes the file first, and only then reads it — about 10 s in all
+  // on one Oracle form, where a single look at 300 ms never saw it begin.
+  resumeParseDetectMs: 12000,
+  // ...and, once it has read, how long its fields must stand still before the
+  // form counts as written.
+  resumeParseQuietMs: 1500,
   // Oracle's Education / Experience tiles: how long an entry's form may take
   // to open after Edit, and to close after Save.
   tileOpenMs: 3000,

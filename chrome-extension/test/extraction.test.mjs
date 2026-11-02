@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { JSDOM } from 'jsdom';
 import { test, run, ok, notOk, eq } from './harness.mjs';
+import { polyfillFileApis } from './dom.mjs';
 import * as fixtures from './fixtures.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -64,6 +65,11 @@ function loadPage(html, url, withAutofill, opts) {
       // A form inside an iframe (Greenhouse embedded on careers.airbnb.com),
       // as background.js reports it once the frame announces itself.
       case 'AF_FRAME_DISCOVER': return { data: options.frames || [] };
+      case 'AF_FRAME_SEND': return options.frameSend ? options.frameSend(msg.payload) : { data: null };
+      case 'AF_GET_RESUME_FILE':
+        return options.resumeFile
+          ? { data: { base64: 'JVBERi0xLjQK', filename: 'ada_lovelace.pdf', mime: 'application/pdf' } }
+          : { data: null };
       // The job-description sources for a form-only page (background.js).
       case 'JOB_REMEMBER': return { data: { ok: true } };
       case 'JOB_RECALL': return { data: options.recall || {} };
@@ -568,6 +574,65 @@ test('Auto-apply: fills every step, clicks Save and Continue, stops at Review wi
   eq(app.log.submit, 0, 'Submit is NEVER pressed');
 });
 
+// The next `misses` looks for a form find none: a page just changed (Barclays, Nov 2026).
+function missForm(page, misses) {
+  const AF = page.window.__tcvAutofill;
+  const real = AF.isApplicationPage;
+  const state = { left: misses, calls: 0 };
+  AF.isApplicationPage = (...args) => {
+    state.calls++;
+    if (state.left > 0) { state.left--; return null; }
+    return real(...args);
+  };
+  return state;
+}
+
+test('Auto-apply: Workday\'s "Autofill with Resume" step uploads the resume and presses Continue', async () => {
+  const page = loadPage(`<!doctype html><html><body>${fixtures.WORKDAY_RESUME_STEP}</body></html>`,
+                        'https://lseg.wd3.myworkdayjobs.com/en-US/Careers/job/IND-BLR/Software-Engineer_R0121252/apply/autofillWithResume',
+                        true, { resumeFile: true });
+  polyfillFileApis(page.window);
+  const doc = page.document;
+  let continued = 0;
+  doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => {
+    continued++;
+    doc.querySelector('[data-automation-id="progressBarActiveStep"]').innerHTML = '<label>Review</label>';
+    doc.querySelector('[data-automation-id="applyFlowAutoFillPage"]').innerHTML = '';
+  });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000),
+     `it reaches Review: ${doc.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 300)}`);
+  ok(page.sent.some(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'resume'), 'the resume was fetched');
+  eq(continued, 1, 'Continue pressed once');
+});
+
+test('Auto-apply: a form missed for a moment is looked for again, and the page is filled without a pause', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page);
+  ok(await waitForText(page, /Auto-apply all pages/, 15000), 'the auto-apply button is offered');
+  const missed = missForm(page, 1);
+  page.document.getElementById('tcvAfAutoBtn').click();
+  ok(await waitForText(page, /Ready to submit/, 60000),
+     `it reaches Review: ${page.document.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 400)}`);
+  eq(missed.left, 0, 'the form really was missed');
+  ok(app.filled.e2, 'the page after it was filled too');
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: a page that truly has no form still pauses, after looking again', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page);
+  ok(await waitForText(page, /Auto-apply all pages/, 15000), 'the auto-apply button is offered');
+  const missed = missForm(page, Infinity);
+  page.document.getElementById('tcvAfAutoBtn').click();
+  ok(await waitForText(page, /Auto-apply paused/, 60000), 'it pauses');
+  ok(/No application form found/.test(page.document.getElementById('tailorcv-sidebar').textContent), 'and says why');
+  ok(missed.calls > 3, `it looked more than once: ${missed.calls}`);
+  eq(app.log.next, 0, 'nothing was pressed');
+  eq(app.log.submit, 0);
+});
+
 test('Auto-apply: pauses on a required field it cannot fill, and Continue resumes', async () => {
   const page = autoApplyPage();
   const app = mountSteps(page, { blocker: true });
@@ -617,11 +682,11 @@ test('Auto-apply: a sensitive required question is never forced — it still pau
   const root = page.document.getElementById('wd-root');
   mountSteps(page);
   root.querySelector('[data-automation-id="applyFlowStepPage"]').insertAdjacentHTML('beforeend',
-    `<div data-automation-id="formField-auth"><label for="wa">Are you legally authorized to work in the United States?<abbr>*</abbr></label>
+    `<div data-automation-id="formField-auth"><label for="wa">Will you now or in the future require visa sponsorship?<abbr>*</abbr></label>
       <input id="wa" type="text" aria-required="true"></div>`);
   await startAuto(page);
-  ok(await waitForText(page, /Auto-apply paused/, 60000), 'it pauses for the work-authorization question');
-  ok(!forced.some(l => /authori[sz]ed/i.test(l)), `never sent with force: ${forced.join(', ')}`);
+  ok(await waitForText(page, /Auto-apply paused/, 60000), 'it pauses for the sponsorship question');
+  ok(!forced.some(l => /sponsorship/i.test(l)), `never sent with force: ${forced.join(', ')}`);
 });
 
 test('Auto-apply: a page drawn after its step changes is still filled before moving on', async () => {
@@ -689,6 +754,149 @@ test('Auto-apply: Workday refusing twice with an error pauses, showing the error
   ok(await waitForText(page, /Phone Number is required/, 90000), 'the error is shown in the sidebar');
   ok(/Auto-apply paused/.test(page.document.getElementById('tailorcv-sidebar').textContent));
   eq(app.log.next, 2, 'pressed twice, not more');
+});
+
+// ── Auto-apply on Oracle ────────────────────────────────────
+// A four-page Oracle Candidate Experience application in the markup of a JPMC
+// capture: the sections are all on the page and only the active one is shown,
+// the page menu marks the current page, and the last page has Submit, no Next.
+const ORACLE_URL = 'https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/jobs/preview/1/apply/section/1/';
+
+function oracleRow(id, label, extra = '') {
+  return `<div class="input-row input-row--text">
+    <label class="input-row__label input-row__label--required" for="${id}"><span class="input-row__linebreak">${label}</span></label>
+    <div class="input-row__control-container"><input class="input-row__control" id="${id}" name="${id}" type="text" aria-required="true" aria-invalid="false" ${extra}></div>
+  </div>`;
+}
+
+function oraclePage(opts = {}) {
+  const page = loadPage(`<!doctype html><html><body><main><section class="apply-flow__content-container">
+    <form class="apply-flow__content apply-flow__content-form" novalidate method="post">
+      <div class="apply-flow-page">
+        ${[1, 2, 3, 4].map(n => `<apply-flow-section id="section-${n}" aria-hidden="false">
+          <div class="apply-flow-section" data-section-number="${n}"${n === 1 ? '' : ' style="display:none"'}>
+            ${(opts.sections || {})[n] || oracleRow(`email-${n}`, 'Email Address') + oracleRow(`name-${n}`, 'Full Name')}
+          </div></apply-flow-section>`).join('')}
+        <apply-flow-pagination><div class="apply-flow-pagination"><div class="apply-flow-pagination__buttons"></div></div></apply-flow-pagination>
+      </div>
+    </form></section></main></body></html>`, opts.url || ORACLE_URL, true, opts);
+  const doc = page.document;
+  const log = { next: 0, back: 0, submit: 0, formSubmits: 0, refused: 0 };
+  let at = 1;
+  doc.addEventListener('submit', () => { log.formSubmits++; });
+  const renderFooter = () => {
+    const links = [1, 2, 3, 4].map(n => `<li><a href="#" class="apply-flow-navigation-pages__link${n === at
+      ? ' apply-flow-navigation-pages__link--current' : ''}" aria-label="${n}">${n}</a></li>`).join('');
+    doc.querySelector('.apply-flow-pagination__buttons').innerHTML = `
+      <button type="button" class="button apply-flow-pagination__button" id="back" title="Back" aria-label="Back"><span class="button__label">Back</span></button>
+      <div class="apply-flow-navigation-pages" role="navigation"><ul>${links}</ul></div>
+      ${at === 4
+    ? '<button type="button" class="button apply-flow-pagination__button apply-flow-pagination__submit-button" id="submit"><span class="button__label">Submit</span></button>'
+    : `<button${opts.nextHasNoType ? '' : ' type="button"'} class="button apply-flow-pagination__button" id="next"${
+      opts.nextName ? '' : ' title="Next" aria-label="Next"'}><span class="button__label">${opts.nextName || 'Next'}</span></button>`}`;
+    doc.getElementById('back').addEventListener('click', () => { log.back++; });
+    const next = doc.getElementById('next');
+    if (next) next.addEventListener('click', () => {
+      log.next++;
+      const shown = doc.querySelector(`[data-section-number="${at}"]`);
+      const empty = [...shown.querySelectorAll('input[aria-required="true"]')].filter(i => !i.value);
+      if (opts.refuseAlways || (opts.refuseOnceAt === at && !log.refused)) {
+        log.refused++;
+        const row = shown.querySelector('.input-row');
+        row.classList.add('input-row--invalid');
+        row.querySelector('input').setAttribute('aria-invalid', 'true');
+        return;
+      }
+      if (empty.length) { log.refused++; for (const i of empty) i.closest('.input-row').classList.add('input-row--invalid'); return; }
+      shown.style.display = 'none';
+      at++;
+      page.window.history.pushState({}, '', (opts.url || ORACLE_URL).replace(/section\/1\//, `section/${at}/`));
+      doc.querySelector(`[data-section-number="${at}"]`).style.display = '';
+      renderFooter();
+    });
+    const submit = doc.getElementById('submit');
+    if (submit) submit.addEventListener('click', () => { log.submit++; });
+  };
+  renderFooter();
+  // Oracle drops a field's outline as soon as it gets a value.
+  for (const type of ['input', 'change']) {
+    doc.body.addEventListener(type, (e) => {
+      const row = e.target && e.target.closest && e.target.closest('.input-row');
+      if (row && e.target.value) {
+        row.classList.remove('input-row--invalid');
+        e.target.setAttribute('aria-invalid', 'false');
+      }
+    });
+  }
+  return { page, doc, log, at: () => at };
+}
+
+test('Auto-apply on Oracle: fills every page, clicks Next, stops at the Submit page without pressing it', async () => {
+  const { page, doc, log, at } = oraclePage();
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000),
+     `it stops on the last page: ${doc.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 500)}`);
+  eq(at(), 4, 'it reached page 4');
+  eq(log.next, 3, 'Next pressed once per page before the last');
+  eq(log.submit, 0, 'Submit is NEVER pressed');
+  eq(log.back, 0, 'Back is never pressed');
+  for (const n of [1, 2, 3, 4]) ok(doc.getElementById(`name-${n}`).value, `page ${n} was filled`);
+});
+
+test('Auto-apply on Oracle: works on a company\'s own domain (careers.oracle.com)', async () => {
+  const { page, log, at } = oraclePage({ url: 'https://careers.oracle.com/en/sites/jobsearch/jobs/preview/337914/apply/section/1/?location=India&locationId=300000000106947&locationLevel=country&mode=location' });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000), 'it stops on the last page');
+  eq(at(), 4);
+  eq(log.next, 3);
+  eq(log.submit, 0, 'Submit is NEVER pressed');
+});
+
+test('Auto-apply on Oracle: a Next with no type inside the form can never submit the form', async () => {
+  const { page, log } = oraclePage({ nextHasNoType: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000), 'it reaches the last page');
+  eq(log.next, 3);
+  eq(log.formSubmits, 0, 'the press never submits the form');
+  eq(log.submit, 0);
+});
+
+test('Auto-apply on Oracle: a page Oracle refuses once is filled again and pressed once more', async () => {
+  const { page, log } = oraclePage({ refuseOnceAt: 2 });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000), 'it reaches the last page after the retry');
+  eq(log.refused, 1);
+  eq(log.next, 4, 'page 1, page 2 refused, page 2 again, page 3');
+  eq(log.submit, 0);
+});
+
+test('Auto-apply on Oracle: refused twice, it pauses and names the outlined field', async () => {
+  const { page, doc, log } = oraclePage({ refuseAlways: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Auto-apply paused/, 90000), 'it pauses');
+  ok(/Oracle did not (accept|move on)/.test(doc.getElementById('tailorcv-sidebar').textContent), 'says what happened');
+  ok(/Email Address/.test(doc.getElementById('tailorcv-sidebar').textContent), 'names the field');
+  eq(log.next, 2, 'pressed twice, not more');
+  eq(log.submit, 0);
+});
+
+test('Auto-apply on Oracle: a footer button that is not called Next is never pressed', async () => {
+  const { page, doc, log } = oraclePage({ nextName: 'Proceed' });
+  await startAuto(page);
+  ok(await waitForText(page, /Couldn.t find Next/, 90000),
+     `it pauses: ${doc.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 500)}`);
+  eq(log.next, 0);
+  eq(log.back, 0);
+  eq(log.submit, 0);
+});
+
+test('Auto-apply on Oracle: a required question it cannot fill pauses before Next', async () => {
+  const { page, doc, log } = oraclePage({ sections: { 2: oracleRow('email-2', 'Email Address') + oracleRow('colour', 'What is your favourite colour?') } });
+  await startAuto(page);
+  ok(await waitForText(page, /Auto-apply paused/, 90000), 'it pauses on page 2');
+  ok(/favourite colour/i.test(doc.getElementById('tailorcv-sidebar').textContent), 'listing the question');
+  eq(log.next, 1, 'Next was not pressed past it');
+  eq(log.submit, 0);
 });
 
 test('Workday: a step that grows blocks under the same heading keeps its results', async () => {
@@ -771,6 +979,53 @@ test('a frame form that appears after the panel drew is picked up', async () => 
   options.frames.push(GREENHOUSE_FRAME);        // the Greenhouse iframe finishes rendering
   page.push({ type: 'AF_FRAME_FOUND' });
   ok(await waitForText(page, /Autofill this application/, 5000), 'redrawn with Autofill');
+});
+
+// A fill inside a frame whose reply came back as this error (background.js).
+async function frameFillStatus(error) {
+  const page = loadPage(JSON_LD_PAGE, 'https://careers.airbnb.com/positions/8123037/', true, {
+    frames: [GREENHOUSE_FRAME],
+    frameSend: payload => (payload.type === 'AF_FRAME_APPLY' ? { error } : { data: null }),
+  });
+  ok(await waitForText(page, /Autofill this application/, 10000), 'Autofill must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  // Looked up each time: a redraw of the panel detaches it for a moment.
+  const status = () => page.document.getElementById('tcvGlobalStatus');
+  const deadline = Date.now() + 5000;
+  while (!(status() && status().textContent) && Date.now() < deadline) {
+    await new Promise(r => setTimeout(r, 20));
+  }
+  return status();
+}
+
+const CHANNEL_CLOSED = 'A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received';
+
+test('a form that reloads mid-fill says so, in place of Chrome\'s error (iCIMS)', async () => {
+  const status = await frameFillStatus(CHANNEL_CLOSED);
+  ok(/The form reloaded/.test(status.textContent), `says what happened: ${status.textContent}`);
+  notOk(/listener|message channel/i.test(status.textContent), 'Chrome\'s text is gone');
+  notOk(/✗/.test(status.textContent), 'no failure mark');
+  notOk(status.classList.contains('tcv-error'), 'not shown in red');
+});
+
+test('a fill whose extension was reloaded says to refresh, in place of the count', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
+  renderLater(page, fixtures.WORKDAY_MYINFO, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  const AF = page.window.__tcvAutofill;
+  const real = AF.runAutofill;
+  AF.runAutofill = async (...args) => Object.assign(await real(...args), { extensionReloaded: true });
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /refresh this page/i, 30000), 'it says so');
+  const status = page.document.getElementById('tcvGlobalStatus');
+  notOk(/Filled \d+/.test(status.textContent), status.textContent);
+  ok(status.classList.contains('tcv-error'), 'as an error');
+});
+
+test('any other frame error still shows as a failure', async () => {
+  const status = await frameFillStatus('Could not establish connection');
+  ok(/✗ Could not establish connection/.test(status.textContent), `passed through: ${status.textContent}`);
+  ok(status.classList.contains('tcv-error'), 'shown in red');
 });
 
 // Watches the panel body from the first moment it exists.

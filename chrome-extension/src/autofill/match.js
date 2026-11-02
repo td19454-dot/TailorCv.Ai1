@@ -366,7 +366,8 @@ export const SENSITIVE_PATTERNS = [
   // government word, and sits ahead of 'demographic' so "served in the
   // military" stays a veteran question.
   ['government_employment', /\b(employ\w*|worked for|working for)\b[\s\S]*\b(government|military|state owned|publicly funded|public sector|civil service)\b|\b(government|military|state owned|public sector)\b[\s\S]*\bemploy\w*/],
-  ['salary', /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
+  // Not "rate" or "pay" with present / last / previous: "Please rate your last project".
+  ['salary', /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b|\b(present|last|previous|existing)\b[\s\S]*\b(salary|compensation|wages?|ctc)\b|\b(salary|compensation|wages?|ctc)\b[\s\S]*\b(present|last|previous|existing)\b/],
   // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
   // "sex" too: "What is your sex?" was no EEO question without it, and went to
   // the model (Oct 2026). \bsex\b, so "sexual" is not it.
@@ -477,7 +478,9 @@ export function looksLikeOpaqueId(label) {
   if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i
       .test(String(label || ''))) return true;
   const t = String(label || '').replace(/\*+\s*$/, '').trim();
-  if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;
+  // Brackets too: Lever's cards[3da58b41-acf5-…][field0] went to the model as a
+  // question, and came back "Ataturk University" (Palantir, Nov 2026).
+  if (t.length < 12 || /\s/.test(t) || !/^[\w.:[\]-]+$/.test(t)) return false;
   // A hash or UUID: a long hex run with real digits in it — not a field name
   // like "address_line_2", which the synonym table can still make sense of.
   const hex = t.match(/[0-9a-f]{10,}/ig) || [];
@@ -542,6 +545,22 @@ const MONTHS = {
   may: 5, jun: 6, june: 6, jul: 7, july: 7, aug: 8, august: 8, sep: 9, sept: 9,
   september: 9, oct: 10, october: 10, nov: 11, november: 11, dec: 12, december: 12,
 };
+
+/** "04/2023" / "2023-04" → "2023-04-01" for the split-date writer; else ''. */
+export function isoMonth(v) {
+  const s = String(v || '').trim();
+  let m = s.match(/^(\d{1,2})\/(\d{4})$/);
+  if (m) return `${m[2]}-${m[1].padStart(2, '0')}-01`;
+  m = s.match(/^(\d{4})-(\d{1,2})/);
+  if (m) return `${m[1]}-${m[2].padStart(2, '0')}-01`;
+  return '';
+}
+
+/** "2023" → "2023-01-01": the split-date writer fills only the boxes a date has. */
+export function isoYear(v) {
+  const y = (String(v || '').match(/\b(19|20)\d{2}\b/) || [])[0];
+  return y ? `${y}-01-01` : '';
+}
 
 /** Parse the date shapes resumes and profiles actually contain. Null if unsure. */
 export function parseLooseDate(value) {
