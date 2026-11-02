@@ -26,10 +26,10 @@ import { expandSections, inRepeatingRow, markFollowUps, educationFromRows, noteB
 import { experienceSection, fillExperienceSection, educationSection, fillEducationSection, inSection,
          sfExperienceSection, sfEducationSection }
   from './repeaters.js';
-import { decide, coerce, fieldsForServer, summarize, jobCountryFromUrl, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
+import { decide, coerce, fieldsForServer, summarize, jobCountryFromUrl, visaEmployer, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
 import { countryOf } from './countries.js';
-import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText, heldNow } from './write.js';
+import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText, heldNow, multiselectWidget } from './write.js';
 import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone,
   STORABLE_SENSITIVE } from './match.js';
 
@@ -39,6 +39,7 @@ function storable(label, sensitive, employer) {
   return !category || STORABLE_SENSITIVE.has(category);
 }
 import { TIMING, sleep, startClock } from './timing.js';
+import { clearTimelines, printTimelines } from './timeline.js';
 
 const MAX_REPAIR_SWEEPS = 1;
 const MAX_REVEAL_ROUNDS = 2;
@@ -53,13 +54,18 @@ const MAX_DROPDOWNS_TO_OPEN = 25;
 let clock = startClock();
 
 
+// This run lost the extension: it was reloaded, and this tab kept the old script.
+let extensionReloaded = false;
+
 /** Messages to the background worker. */
 function send(msg) {
   return new Promise(resolve => {
     try {
       globalThis.chrome.runtime.sendMessage(msg, res => resolve(res || {}));
     } catch (e) {
-      resolve({ error: String((e && e.message) || e) });
+      const error = String((e && e.message) || e);
+      if (/context invalidated/i.test(error)) extensionReloaded = true;
+      resolve({ error });
     }
   });
 }
@@ -288,9 +294,12 @@ export async function forceAnswers(ctx, decisions, onProgress) {
   // while empty and clears that later, and those filled ones took the places
   // ahead of the questions really left (ExxonMobil, Oct 2026).
   const isEmpty = (d) => { const now = reprobe(d.row); return !!now && !now.filled; };
+  // Nor a profile answer a search-box widget has no row for: the model filled
+  // Employer Name with the company being applied to (HDFC, Nov 2026).
+  const knownAnswer = d => !!(d.value && d.source === 'profile' && multiselectWidget(d.row.el));
   const targets = pageBlockers(decisions).map(b => b.decision).filter(d =>
     d.row && d.row.kind !== 'file' && d.row.kind !== 'tile' && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer
-    && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d)).slice(0, MAX_FORCED);
+    && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d) && !knownAnswer(d)).slice(0, MAX_FORCED);
   if (!targets.length) return { forced: 0 };
 
   for (const d of targets) {
@@ -413,7 +422,12 @@ export async function runAutofill(ctx, onProgress) {
   };
 
   clock = startClock();
-  ctx = Object.assign({}, ctx, { jobCountry: await jobCountry(globalThis.location.href) });
+  clearTimelines();
+  extensionReloaded = false;
+  ctx = Object.assign({}, ctx, {
+    jobCountry: await jobCountry(globalThis.location.href),
+    jobCompany: visaEmployer(globalThis.location.href, ctx && ctx.jobCompany),
+  });
 
   // SuccessFactors keeps most of its form in closed sections: open them first,
   // or their fields are hidden and never read.
@@ -617,12 +631,14 @@ export async function runAutofill(ctx, onProgress) {
   console.table(timing.phases);
   if (timing.slowFields.length) console.table(timing.slowFields);
   if (timing.quietWaits.length) console.table(timing.quietWaits);
+  printTimelines();
 
   return {
     timing,
     decisions,
     counts: summarize(decisions),
     serverError: decisions.serverError || '',
+    extensionReloaded,
     page: state.page,
     opaqueHosts: form.opaqueHosts || 0,
     ats: form.ats,

@@ -45,6 +45,8 @@ import {
   questionSignature,
   STORABLE_SENSITIVE,
   matchSensitiveKey,
+  isoMonth,
+  isoYear,
 } from './match.js';
 import { countryOf, countryOption, countryShare, countryShapes, countryNamedIn } from './countries.js';
 import { pickSaved, pickSavedVariant } from './saved.js';
@@ -128,6 +130,16 @@ export function decide(rows, ctx, server, state) {
         : done(d, SKIP, '', '', 0, "we couldn't read this question");
     }
 
+    // A group of answers whose "question" is one of those answers: "Yes", on a
+    // question we never found. The sensitive check reads the label too, so a
+    // sponsorship question read as "Yes" went to the model (Palantir, Nov 2026).
+    if (labelIsOwnOption(row)) {
+      d.noServer = true;
+      return row.required
+        ? done(d, ASK, '', '', 0, "we couldn't read this question — please answer it")
+        : done(d, SKIP, '', '', 0, "we couldn't read this question");
+    }
+
     // Tier 0 — never touched.
     if (isNeverFill(row.label)) {
       return done(d, SKIP, '', '', 0, 'we never fill this kind of field');
@@ -156,6 +168,16 @@ export function decide(rows, ctx, server, state) {
     const additiveSkills = row.multiPrompt && (matchFieldKey(row.label) || {}).key === 'top_skills';
     if (row.filled && !row.invalid && !additiveSkills) {
       return done(d, SKIP, row.value, '', 0, 'already filled in');
+    }
+
+    // Fields known by name: Keka's Experience and Education rows, from that
+    // row's own entry, and the date on Lever's disability signature.
+    const namedField = kekaEntryAnswer(row, ctx) || leverSignatureDate(row, rows, bank) || highSchoolAnswer(row, ctx);
+    if (namedField) {
+      d.noServer = true;
+      if (namedField.ask) return done(d, row.required ? ASK : SKIP, '', '', 0, namedField.ask);
+      return namedField.skip ? done(d, SKIP, '', '', 0, namedField.skip)
+        : done(d, FILL, namedField.value, 'profile', 0.95, '');
     }
 
     // A date under such a heading is that entry's: "Start Date" under "Highest
@@ -342,12 +364,15 @@ export function decide(rows, ctx, server, state) {
         // A demographic question the profile has no field for ("Are you a
         // military spouse?") is the person's to answer here, not a profile task.
         // Likewise a birth question with no profile field ("Region of Birth").
+        // Likewise a current salary: the profile holds only the expected one, and
+        // was pointed at as if adding that would answer it (CBRE, Nov 2026).
         const onProfile = (PROFILE_CATEGORIES.has(category)
-                           && ((category !== 'demographic' && category !== 'birth') || !!entry))
+                           && ((category !== 'demographic' && category !== 'birth' && category !== 'salary') || !!entry))
                           || !!(entry && entry.sensitive);
-        return onProfile
-          ? done(d, PROFILE, '', '', 0, profileHint(category, entry))
-          : done(d, ASK, '', '', 0, 'we never guess this — choose your answer');
+        if (onProfile) return done(d, PROFILE, '', '', 0, profileHint(category, entry));
+        return done(d, ASK, '', '', 0, category === 'salary'
+          ? "we don't store your current salary — type it here"
+          : 'we never guess this — choose your answer');
       }
       // "Are you Hispanic/Latino?" is the race question asked as a Yes/No
       // (Greenhouse asks it first, then reveals the race list on "No"). The
@@ -659,6 +684,85 @@ function base(row) {
   };
 }
 
+const fieldName = row => (row && row.el && row.el.getAttribute && row.el.getAttribute('name')) || '';
+
+/** Radios or checkboxes labelled with one of their own answers. A lone box is its own question. */
+function labelIsOwnOption(row) {
+  if ((row.kind !== 'radio' && row.kind !== 'checkbox') || (row.options || []).length < 2) return false;
+  const same = s => String(s || '').replace(/\s+/g, ' ').trim().toLowerCase();
+  const label = same(row.label);
+  return !!label && row.options.some(o => same(typeof o === 'string' ? o : o && o.label) === label);
+}
+
+/**
+ * Today, on the signature under Lever's disability form. The form asks for it
+ * only once Disability status has an answer, so only then; { value }, { skip },
+ * or null for any other field.
+ */
+function leverSignatureDate(row, rows, bank) {
+  if (fieldName(row) !== 'eeo[disabilitySignatureDate]') return null;
+  const status = (rows || []).find(r => fieldName(r) === 'eeo[disability]');
+  const answered = (status && status.filled) || String((bank && bank.disability_status) || '').trim();
+  if (!answered) return { skip: 'only needed once Disability status is answered' };
+  const value = formatDateForField(todayIso(), row.hints);
+  return value ? { value } : { skip: 'we could not shape the date for this form' };
+}
+
+const HIGH_SCHOOL_RE = /\b(high|secondary|senior secondary|higher secondary)\s+school\b|\bhigher secondary\b|\bsenior secondary\b/i;
+
+/**
+ * A high school's name or graduation year, from the saved school that is one.
+ * "School" and "graduation" read as the university's, and "High School Name" was
+ * filled with it (Palantir, Nov 2026). With no such school saved, it is the
+ * person's. { value }, { ask }, or null for any other question.
+ */
+function highSchoolAnswer(row, ctx) {
+  if (row.kind === 'radio' || row.kind === 'checkbox' || !HIGH_SCHOOL_RE.test(row.label || '')) return null;
+  const key = (matchFieldKey(row.label) || {}).key;
+  if (key !== 'university' && key !== 'graduation_date') return null;
+  const schools = (ctx && ctx.facts && ctx.facts.educationEntries) || [];
+  const school = schools.find(s => (degreeEntry(s && s.degree) || {}).level === 'high school');
+  const wanted = school && (key === 'university' ? school.school : isoYear(school.to).slice(0, 4));
+  if (!wanted) return { ask: 'your profile has no high school for this — add it, or answer here' };
+  const value = coerce(wanted, Object.assign({}, row, { candidateKey: '', candidates: [] }));
+  return value === null ? { ask: `this list doesn't offer your answer (${wanted})` } : { value };
+}
+
+const KEKA_FIELD_RE = /^(Experience|Education)Details\[(\d+)\]\.(\w+)$/;
+const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+                     'August', 'September', 'October', 'November', 'December'];
+
+/** "2026-01-01" → "1 January 2026", the shape Keka's placeholders show. */
+function spokenDate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+  return m ? `${Number(m[3])} ${MONTH_NAMES[Number(m[2]) - 1]} ${m[1]}` : '';
+}
+
+/**
+ * One box of a Keka Experience or Education row, from the profile entry its name
+ * points to: ExperienceDetails[0].dateOfJoining is job 1's start. A job's dates
+ * are months and a school's only years, so the 1st, and 1 January. { value },
+ * { skip }, or null for a box this does not answer.
+ */
+function kekaEntryAnswer(row, ctx) {
+  const m = KEKA_FIELD_RE.exec(fieldName(row));
+  if (!m) return null;
+  const facts = (ctx && ctx.facts) || {};
+  const entry = ((m[1] === 'Experience' ? facts.workExperience : facts.educationEntries) || [])[Number(m[2])];
+  if (!entry) return null;
+  const date = iso => (iso ? { value: spokenDate(iso) } : null);
+  if (m[1] === 'Experience') {
+    if (m[3] === 'isCurrentlyWorking') return entry.current ? { value: 'Yes' } : { skip: 'not your current job' };
+    if (m[3] === 'dateOfJoining') return date(isoMonth(entry.from));
+    if (m[3] === 'dateOfRelieving') return entry.current ? { skip: 'your current job' } : date(isoMonth(entry.to));
+    return null;
+  }
+  if (m[3] === 'degree') return entry.degree ? { value: entry.degree } : null;
+  if (m[3] === 'dateOfJoining') return date(isoYear(entry.from));
+  if (m[3] === 'dateOfCompletion') return date(isoYear(entry.to));
+  return null;
+}
+
 function done(d, action, value, source, confidence, reason) {
   d.action = action;
   d.value = value == null ? '' : String(value);
@@ -893,6 +997,21 @@ function isYesNoRow(row, labels) {
   const real = labels.filter(l => l && !PLACEHOLDER_RE.test(l.trim()));
   if (real.length) return real.every(l => /^(yes|no)\b/i.test(l.trim()) || looksLikeDecline(l));
   return /^\s*(are|is|do|does|have|has|will|were)\b/i.test(row.label || '');
+}
+
+/**
+ * "Visa" when this is Visa's own form, else the company as given. Its questions
+ * name the company ("I agree that Visa may reach out to me via SMS"), and with
+ * the company unread, or read as "Visa Careers", each was taken for a sponsorship
+ * question (Nov 2026). Known by its address (visa.wd5.myworkdayjobs.com,
+ * …/recruiting/visa/…) or by the word in the company's name. Only Visa.
+ */
+export function visaEmployer(url, company) {
+  const given = String(company || '');
+  let host = '', path = '';
+  try { const u = new URL(String(url || '')); host = u.hostname; path = u.pathname; } catch (e) { /* no address to read */ }
+  const onVisa = /^visa\./i.test(host) || /\/recruiting\/visa(\/|$)/i.test(path) || /\bvisa\b/i.test(given);
+  return onVisa ? 'Visa' : given;
 }
 
 // "Are you a Citizen of the country you are applying to?" (Nike, Nov 2026): the
@@ -1857,6 +1976,23 @@ export function degreeOption(stored, options) {
     || iscedOption(stored, entry, labels);
 }
 
+// A school-leaving qualification on a list, whatever its wording.
+const SCHOOL_LEAVING_RE = /\bhigh school\b|(?<!post[- ])\bsecondary\b|\bsenior school\b|\b1[02]th\b|\bclass\s*(x|xii|10|12)\b|\bxii\b|\bhsc\b|\bssc\b|\b10\s*\+\s*2\b|\bged\b|\bintermediate\b|\bmatric\w*|\bpre-?university\b|\bpuc\b|\ba[- ]levels?\b/i;
+
+/**
+ * "Diploma" for a high-school degree, as the last resort: only on a list with
+ * nothing like high school (the person's rule, Nov 2026). Exactly that option,
+ * never "University Diploma". Only for a list read whole: on a search box's
+ * first rows, the high-school row may just not be drawn yet.
+ */
+export function highSchoolDiploma(stored, options) {
+  const entry = degreeEntry(stored);
+  if (!entry || entry.level !== 'high school') return null;
+  const labels = (options || []).map(o => (typeof o === 'string' ? o : o.label)).filter(Boolean);
+  if (labels.some(l => SCHOOL_LEAVING_RE.test(l))) return null;
+  return labels.find(l => /^diploma$/i.test(l.trim())) || null;
+}
+
 // UNESCO's ISCED levels, which some lists name instead of the degree (Visa:
 // "Bachelor's or Equivalent First-Degree (ISCED 6: BA, BSc, BEng, LLB, etc.)").
 // None of the level phrasings is inside that text, so a B.E. matched nothing
@@ -2051,7 +2187,7 @@ export function bestCandidateMatch(candidates, options, guard) {
  * always share words anyway; tightening it globally is a separate change with
  * its own risks.
  */
-function sharesWord(a, b) {
+export function sharesWord(a, b) {
   const wordsOf = t => new Set(String(t || '').toLowerCase()
     .replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean));
   const left = wordsOf(a);
@@ -2155,7 +2291,10 @@ function pickFromOptions(text, row, options) {
     // A country list (Workday) takes the country; a list of U.S. statuses, the status.
     return (row.country && countryOption(row.country, options)) || citizenshipOption(text, options);
   }
-  if (row.candidateKey === 'degree') return degreeOption(text, options);
+  if (row.candidateKey === 'degree') {
+    return degreeOption(text, options)
+      || (row.kind === 'select' || row.wholeList ? highSchoolDiploma(text, options) : null);
+  }
   if (row.candidateKey === 'previous_employer') return previousEmployerOption(text, options);
   // A country, against a list of countries: exactly that country or none —
   // never "British Indian Ocean Territory" for "Indian".

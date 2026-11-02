@@ -67,10 +67,39 @@
       }
       return found && found.length === 1 ? found[0] : null;
     }
+    const LABEL_HELP_SEL = '.extra-information, [role="tooltip"], [class*="tooltip" i]';
+    function labelText(node) {
+      let clone = null;
+      try {
+        if (!node.querySelector(LABEL_HELP_SEL)) return txt(node);
+        clone = node.cloneNode(true);
+        const help = clone.querySelectorAll(LABEL_HELP_SEL);
+        for (let i = 0; i < help.length; i++) help[i].remove();
+      } catch (e) {
+        return txt(node);
+      }
+      return txt(clone) || txt(node);
+    }
+    function leverQuestion(el) {
+      const block = el && el.closest && el.closest(".application-question");
+      const label = block && block.querySelector(".application-label");
+      return label ? labelText(label) : "";
+    }
+    function labelBehindPrompt(el, aria) {
+      const prompt = aria === attr(el, "data-placeholder") || aria === attr(el, "placeholder") || PLACEHOLDER_OPTION_RE2.test(aria);
+      const id = attr(el, "id");
+      if (!prompt || !id) return "";
+      let lab = null;
+      try {
+        lab = document.querySelector('label[for="' + id.replace(/["\\]/g, "\\$&") + '"]');
+      } catch (e) {
+      }
+      return lab ? labelText(lab) : "";
+    }
     function labelFor(el) {
       if (!el) return "";
       const aria = attr(el, "aria-label");
-      if (aria) return aria;
+      if (aria) return labelBehindPrompt(el, aria) || aria;
       const by = attr(el, "aria-labelledby");
       if (by) {
         const t = by.split(/\s+/).map((id2) => {
@@ -79,7 +108,7 @@
             e = document.getElementById(id2);
           } catch (x) {
           }
-          return e ? txt(e) : "";
+          return e ? labelText(e) : "";
         }).filter(Boolean).join(" ");
         if (t) return t;
       }
@@ -90,10 +119,10 @@
           lab = document.querySelector('label[for="' + id.replace(/["\\]/g, "\\$&") + '"]');
         } catch (e) {
         }
-        if (lab) return txt(lab);
+        if (lab) return labelText(lab);
       }
       const anc = el.closest && el.closest("label");
-      if (anc) return txt(anc);
+      if (anc) return labelText(anc);
       const sibling = siblingLabel(el);
       if (sibling) return sibling;
       const fs = el.closest && el.closest("fieldset");
@@ -187,7 +216,7 @@
       const type = attr(el, "type").toLowerCase();
       const name = attr(el, "name");
       const id = attr(el, "id");
-      const label = labelFor(el);
+      const label = leverQuestion(el) || labelFor(el);
       let kind = tag, ident = "", value = "", filled = false;
       if (tag === "input" && (type === "radio" || type === "checkbox")) {
         kind = type;
@@ -208,7 +237,7 @@
       } else if (tag === "select") {
         kind = "select";
         const opt = el.selectedIndex >= 0 && el.options ? el.options[el.selectedIndex] : null;
-        value = opt ? txt(opt) : "";
+        value = opt ? optionText(opt) : "";
         filled = !!(el.value && String(el.value).trim()) && !!value;
         ident = name || label || id;
       } else if (isEditable(el)) {
@@ -300,6 +329,7 @@
       if (!el) return false;
       if (el.required === true) return true;
       if (attr(el, "aria-required") === "true") return true;
+      if (/^(y|yes|true)$/i.test(attr(el, "data-required"))) return true;
       const lab = labelFor(el);
       if (/\*/.test(lab) || /\(required\)/i.test(lab)) return true;
       let n = el.parentElement, depth = 0;
@@ -316,13 +346,19 @@
       return false;
     }
     const PLACEHOLDER_OPTION_RE2 = /^(select|choose|please select)\b.*\.{0,3}$|^--+$/i;
+    function optionText(opt) {
+      return txt(opt) || attr(opt, "label");
+    }
     function optionsFor(el) {
       if (!el || (el.tagName || "").toLowerCase() !== "select") return null;
+      const widget = el.closest && el.closest(".multiselect, .multi-select");
+      if (widget && widget.querySelector(".singleselect-search, .multiselect-search")) return [];
       const out = [], opts = el.options || [];
       for (let i = 0; i < opts.length; i++) {
-        const label = txt(opts[i]);
+        const label = optionText(opts[i]);
         if (!label || PLACEHOLDER_OPTION_RE2.test(label)) continue;
         const raw = opts[i].value;
+        if (!txt(opts[i]) && !(raw != null && String(raw).trim())) continue;
         const value = raw != null && String(raw).trim() ? String(raw) : label;
         if (!value) continue;
         out.push({ value, label });
@@ -454,7 +490,7 @@
       }
       return null;
     }
-    const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"], [id$="_listSelect"] li';
+    const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"], [id$="_listSelect"] li, .VirtualizedSelectOption';
     function comboGridCells(scope) {
       let cells = [];
       try {
@@ -568,6 +604,7 @@
       control,
       only,
       labelFor,
+      leverQuestion,
       rsContainer,
       isInvalid,
       requiredFor,
@@ -612,6 +649,8 @@
     isMotivationQuestion: () => isMotivationQuestion,
     isNeverFill: () => isNeverFill,
     isPlaceholderOption: () => isPlaceholderOption,
+    isoMonth: () => isoMonth,
+    isoYear: () => isoYear,
     labelsMatch: () => labelsMatch,
     looksLikeDecline: () => looksLikeDecline,
     looksLikeEeoField: () => looksLikeEeoField,
@@ -858,7 +897,8 @@ what when where which who will with would you your now future
     // government word, and sits ahead of 'demographic' so "served in the
     // military" stays a veteran question.
     ["government_employment", /\b(employ\w*|worked for|working for)\b[\s\S]*\b(government|military|state owned|publicly funded|public sector|civil service)\b|\b(government|military|state owned|public sector)\b[\s\S]*\bemploy\w*/],
-    ["salary", /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
+    // Not "rate" or "pay" with present / last / previous: "Please rate your last project".
+    ["salary", /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b|\b(present|last|previous|existing)\b[\s\S]*\b(salary|compensation|wages?|ctc)\b|\b(salary|compensation|wages?|ctc)\b[\s\S]*\b(present|last|previous|existing)\b/],
     // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
     // "sex" too: "What is your sex?" was no EEO question without it, and went to
     // the model (Oct 2026). \bsex\b, so "sexual" is not it.
@@ -931,7 +971,7 @@ what when where which who will with would you your now future
   function looksLikeOpaqueId(label) {
     if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(String(label || ""))) return true;
     const t = String(label || "").replace(/\*+\s*$/, "").trim();
-    if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;
+    if (t.length < 12 || /\s/.test(t) || !/^[\w.:[\]-]+$/.test(t)) return false;
     const hex = t.match(/[0-9a-f]{10,}/ig) || [];
     return hex.some((run) => (run.match(/\d/g) || []).length >= 3) || /\d{8,}/.test(t);
   }
@@ -1066,6 +1106,18 @@ what when where which who will with would you your now future
     dec: 12,
     december: 12
   };
+  function isoMonth(v) {
+    const s = String(v || "").trim();
+    let m = s.match(/^(\d{1,2})\/(\d{4})$/);
+    if (m) return `${m[2]}-${m[1].padStart(2, "0")}-01`;
+    m = s.match(/^(\d{4})-(\d{1,2})/);
+    if (m) return `${m[1]}-${m[2].padStart(2, "0")}-01`;
+    return "";
+  }
+  function isoYear(v) {
+    const y = (String(v || "").match(/\b(19|20)\d{2}\b/) || [])[0];
+    return y ? `${y}-01-01` : "";
+  }
   function parseLooseDate(value) {
     const raw = String(value == null ? "" : value).trim();
     if (!raw) return null;
@@ -1597,12 +1649,15 @@ what when where which who will with would you your now future
 
   // src/autofill/discover.js
   var probe = () => globalThis.__tcvFieldProbe;
+  function isCalendarInput(el) {
+    return !!(el && el.classList && el.classList.contains("hasDatepicker"));
+  }
   function isVisible(el) {
     if (!el) return false;
     const p = probe();
     const node = p && p.fieldWrapper(el) || el;
     if (el.disabled === true) return false;
-    if (el.readOnly === true && (el.tagName || "").toLowerCase() !== "select") return false;
+    if (el.readOnly === true && (el.tagName || "").toLowerCase() !== "select" && !isCalendarInput(el)) return false;
     const type = el.getAttribute && (el.getAttribute("type") || "").toLowerCase() || "";
     if (type === "hidden") return false;
     if (type === "file") return !inAriaHidden(node);
@@ -1617,7 +1672,7 @@ what when where which who will with would you your now future
   }
   function isChosenValue(node) {
     try {
-      return !!(node && node.closest && node.closest('[data-automation-id="selectedItem"], [data-automation-id="selectedItemList"]'));
+      return !!(node && node.closest && node.closest('[data-automation-id="selectedItem"], [data-automation-id="selectedItemList"], .Select-value'));
     } catch (e) {
       return false;
     }
@@ -1948,6 +2003,8 @@ what when where which who will with would you your now future
   function findForm(doc) {
     const d = doc || globalThis.document;
     if (!d || !probe()) return null;
+    const resumeStep = workdayResumeStep(d);
+    if (resumeStep) return resumeStep;
     const seen = /* @__PURE__ */ new Set();
     const scored = [];
     for (const sel of APP_ROOT_SELECTORS) {
@@ -1984,6 +2041,28 @@ what when where which who will with would you your now future
       ats: detectAts(url),
       url,
       isForm: best.score >= MIN_CONFIDENT_SCORE || APPLY_URL_RE.test(url)
+    };
+  }
+  function workdayResumeStep(d) {
+    const url = d.defaultView && d.defaultView.location && d.defaultView.location.href || "";
+    if (detectAts(url) !== "workday") return null;
+    let root = null, input = null;
+    try {
+      root = d.querySelector('[data-automation-id="applyFlowAutoFillPage"]');
+      input = root && root.querySelector('input[type="file"]');
+    } catch (e) {
+      return null;
+    }
+    if (!input || !isVisible(input)) return null;
+    return {
+      root,
+      score: MIN_CONFIDENT_SCORE,
+      fields: [input],
+      opaqueHosts: 0,
+      ats: "workday",
+      url,
+      isForm: true,
+      resumeStep: true
     };
   }
   var NOT_A_FIELD_SEL = ".ashby-application-form-autofill-uploader";
@@ -2220,7 +2299,7 @@ what when where which who will with would you your now future
       }
       let d = p.describeEl(el);
       if (!d && isFileField(el)) {
-        const named = uploadGroupLabel(el);
+        const named = form.resumeStep ? "Resume" : uploadGroupLabel(el);
         if (named) {
           d = {
             ident: named,
@@ -2307,7 +2386,7 @@ what when where which who will with would you your now future
       }
       if (isFileField(el)) {
         row.kind = "file";
-        let slot = documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
+        let slot = form.resumeStep && "resume" || documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
         if (!slot || UPLOAD_ACTION_RE.test(row.label)) {
           const group = uploadGroupLabel(el);
           const groupSlot = documentSlotFor(group);
@@ -2405,7 +2484,7 @@ what when where which who will with would you your now future
       const question = groupLabel(row.members, p);
       if (question && (row.members.length > 1 || row.kind === "radio")) {
         row.label = question;
-        if (/\*|\(required\)/i.test(question)) row.required = true;
+        if (/\*|✱|\(required\)/i.test(question)) row.required = true;
         const group = row.members[0].closest && row.members[0].closest('fieldset, [role="radiogroup"]');
         if (group && group.getAttribute("aria-required") === "true") row.required = true;
         if (group && labelMarkedRequired(fieldsetQuestionLabel(group, row.members))) row.required = true;
@@ -2529,17 +2608,17 @@ what when where which who will with would you your now future
   }
   var PLACEHOLDER_LABEL_RE = /^\s*(please\s+)?(select|choose)(\s+(one|an?\s+option))?\s*[:.*]?\s*$/i;
   function sectionNameOf(el) {
-    const clean2 = (s) => (s || "").replace(/\s+/g, " ").trim();
+    const clean3 = (s) => (s || "").replace(/\s+/g, " ").trim();
     try {
       const group = el.closest('[role="group"][aria-labelledby], fieldset');
       if (group && !group.closest("#tailorcv-sidebar")) {
         let text = "";
         if (group.tagName === "FIELDSET") {
           const legend = group.querySelector("legend");
-          text = clean2(legend && legend.textContent);
+          text = clean3(legend && legend.textContent);
         } else {
           const doc = el.ownerDocument;
-          text = clean2(group.getAttribute("aria-labelledby").split(/\s+/).map((id) => {
+          text = clean3(group.getAttribute("aria-labelledby").split(/\s+/).map((id) => {
             const n = doc.getElementById(id);
             return n ? n.textContent : "";
           }).join(" "));
@@ -2697,6 +2776,8 @@ what when where which who will with would you your now future
   }
   function groupLabel(members, p) {
     const el = members[0];
+    const lever = p.leverQuestion && p.leverQuestion(el);
+    if (lever) return lever;
     const group = el.closest && el.closest('[role="radiogroup"], fieldset');
     if (group) {
       const aria = group.getAttribute && group.getAttribute("aria-label");
@@ -3513,6 +3594,10 @@ Zimbabwe|Zimbabwean
         d.noServer = true;
         return row.required ? done(d, ASK, "", "", 0, "we couldn't read this question \u2014 please answer it") : done(d, SKIP, "", "", 0, "we couldn't read this question");
       }
+      if (labelIsOwnOption(row)) {
+        d.noServer = true;
+        return row.required ? done(d, ASK, "", "", 0, "we couldn't read this question \u2014 please answer it") : done(d, SKIP, "", "", 0, "we couldn't read this question");
+      }
       if (isNeverFill(row.label)) {
         return done(d, SKIP, "", "", 0, "we never fill this kind of field");
       }
@@ -3533,6 +3618,12 @@ Zimbabwe|Zimbabwean
       const additiveSkills = row.multiPrompt && (matchFieldKey(row.label) || {}).key === "top_skills";
       if (row.filled && !row.invalid && !additiveSkills) {
         return done(d, SKIP, row.value, "", 0, "already filled in");
+      }
+      const namedField = kekaEntryAnswer(row, ctx) || leverSignatureDate(row, rows, bank) || highSchoolAnswer(row, ctx);
+      if (namedField) {
+        d.noServer = true;
+        if (namedField.ask) return done(d, row.required ? ASK : SKIP, "", "", 0, namedField.ask);
+        return namedField.skip ? done(d, SKIP, "", "", 0, namedField.skip) : done(d, FILL, namedField.value, "profile", 0.95, "");
       }
       if (row.block) {
         const b = blockFieldAnswer(row, row.block);
@@ -3646,8 +3737,9 @@ Zimbabwe|Zimbabwean
         if (!stored) {
           const fromSaved = savedDemographic();
           if (fromSaved) return fromSaved;
-          const onProfile = PROFILE_CATEGORIES.has(category) && (category !== "demographic" && category !== "birth" || !!entry2) || !!(entry2 && entry2.sensitive);
-          return onProfile ? done(d, PROFILE, "", "", 0, profileHint(category, entry2)) : done(d, ASK, "", "", 0, "we never guess this \u2014 choose your answer");
+          const onProfile = PROFILE_CATEGORIES.has(category) && (category !== "demographic" && category !== "birth" && category !== "salary" || !!entry2) || !!(entry2 && entry2.sensitive);
+          if (onProfile) return done(d, PROFILE, "", "", 0, profileHint(category, entry2));
+          return done(d, ASK, "", "", 0, category === "salary" ? "we don't store your current salary \u2014 type it here" : "we never guess this \u2014 choose your answer");
         }
         let key = entry2 ? entry2.key : "";
         let answer = stored;
@@ -3873,6 +3965,70 @@ Zimbabwe|Zimbabwean
       candidates: []
     };
   }
+  var fieldName = (row) => row && row.el && row.el.getAttribute && row.el.getAttribute("name") || "";
+  function labelIsOwnOption(row) {
+    if (row.kind !== "radio" && row.kind !== "checkbox" || (row.options || []).length < 2) return false;
+    const same = (s) => String(s || "").replace(/\s+/g, " ").trim().toLowerCase();
+    const label = same(row.label);
+    return !!label && row.options.some((o) => same(typeof o === "string" ? o : o && o.label) === label);
+  }
+  function leverSignatureDate(row, rows, bank) {
+    if (fieldName(row) !== "eeo[disabilitySignatureDate]") return null;
+    const status = (rows || []).find((r) => fieldName(r) === "eeo[disability]");
+    const answered = status && status.filled || String(bank && bank.disability_status || "").trim();
+    if (!answered) return { skip: "only needed once Disability status is answered" };
+    const value = formatDateForField(todayIso(), row.hints);
+    return value ? { value } : { skip: "we could not shape the date for this form" };
+  }
+  var HIGH_SCHOOL_RE = /\b(high|secondary|senior secondary|higher secondary)\s+school\b|\bhigher secondary\b|\bsenior secondary\b/i;
+  function highSchoolAnswer(row, ctx) {
+    if (row.kind === "radio" || row.kind === "checkbox" || !HIGH_SCHOOL_RE.test(row.label || "")) return null;
+    const key = (matchFieldKey(row.label) || {}).key;
+    if (key !== "university" && key !== "graduation_date") return null;
+    const schools = ctx && ctx.facts && ctx.facts.educationEntries || [];
+    const school = schools.find((s) => (degreeEntry(s && s.degree) || {}).level === "high school");
+    const wanted = school && (key === "university" ? school.school : isoYear(school.to).slice(0, 4));
+    if (!wanted) return { ask: "your profile has no high school for this \u2014 add it, or answer here" };
+    const value = coerce(wanted, Object.assign({}, row, { candidateKey: "", candidates: [] }));
+    return value === null ? { ask: `this list doesn't offer your answer (${wanted})` } : { value };
+  }
+  var KEKA_FIELD_RE = /^(Experience|Education)Details\[(\d+)\]\.(\w+)$/;
+  var MONTH_NAMES = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  function spokenDate(iso) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+    return m ? `${Number(m[3])} ${MONTH_NAMES[Number(m[2]) - 1]} ${m[1]}` : "";
+  }
+  function kekaEntryAnswer(row, ctx) {
+    const m = KEKA_FIELD_RE.exec(fieldName(row));
+    if (!m) return null;
+    const facts = ctx && ctx.facts || {};
+    const entry = ((m[1] === "Experience" ? facts.workExperience : facts.educationEntries) || [])[Number(m[2])];
+    if (!entry) return null;
+    const date = (iso) => iso ? { value: spokenDate(iso) } : null;
+    if (m[1] === "Experience") {
+      if (m[3] === "isCurrentlyWorking") return entry.current ? { value: "Yes" } : { skip: "not your current job" };
+      if (m[3] === "dateOfJoining") return date(isoMonth(entry.from));
+      if (m[3] === "dateOfRelieving") return entry.current ? { skip: "your current job" } : date(isoMonth(entry.to));
+      return null;
+    }
+    if (m[3] === "degree") return entry.degree ? { value: entry.degree } : null;
+    if (m[3] === "dateOfJoining") return date(isoYear(entry.from));
+    if (m[3] === "dateOfCompletion") return date(isoYear(entry.to));
+    return null;
+  }
   function done(d, action, value, source, confidence, reason) {
     d.action = action;
     d.value = value == null ? "" : String(value);
@@ -4082,6 +4238,18 @@ Zimbabwe|Zimbabwean
     const real2 = labels.filter((l) => l && !PLACEHOLDER_RE2.test(l.trim()));
     if (real2.length) return real2.every((l) => /^(yes|no)\b/i.test(l.trim()) || looksLikeDecline(l));
     return /^\s*(are|is|do|does|have|has|will|were)\b/i.test(row.label || "");
+  }
+  function visaEmployer(url, company) {
+    const given = String(company || "");
+    let host = "", path = "";
+    try {
+      const u = new URL(String(url || ""));
+      host = u.hostname;
+      path = u.pathname;
+    } catch (e) {
+    }
+    const onVisa = /^visa\./i.test(host) || /\/recruiting\/visa(\/|$)/i.test(path) || /\bvisa\b/i.test(given);
+    return onVisa ? "Visa" : given;
   }
   var JOB_COUNTRY_RE = /\bcountry\b[^?]*\b(apply|applying|this (role|job|position))\b/i;
   function jobCountryFromUrl(url) {
@@ -4750,6 +4918,14 @@ Zimbabwe|Zimbabwean
     if (!entry.level) return null;
     return bestCandidateMatch(degreeShapes(entry.level), labels, degreeGuard) || iscedOption(stored, entry, labels);
   }
+  var SCHOOL_LEAVING_RE = /\bhigh school\b|(?<!post[- ])\bsecondary\b|\bsenior school\b|\b1[02]th\b|\bclass\s*(x|xii|10|12)\b|\bxii\b|\bhsc\b|\bssc\b|\b10\s*\+\s*2\b|\bged\b|\bintermediate\b|\bmatric\w*|\bpre-?university\b|\bpuc\b|\ba[- ]levels?\b/i;
+  function highSchoolDiploma(stored, options) {
+    const entry = degreeEntry(stored);
+    if (!entry || entry.level !== "high school") return null;
+    const labels = (options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean);
+    if (labels.some((l) => SCHOOL_LEAVING_RE.test(l))) return null;
+    return labels.find((l) => /^diploma$/i.test(l.trim())) || null;
+  }
   var ISCED_BY_LEVEL = [8, 7, 6, 5, 3, null];
   var ISCED_RE = /\bISCED\s*(\d)(?:\s*[–-]\s*(\d))?/i;
   function iscedLevelOf(stored, entry) {
@@ -4935,7 +5111,9 @@ Zimbabwe|Zimbabwean
     if (row.candidateKey === "citizenship_status") {
       return row.country && countryOption(row.country, options) || citizenshipOption(text, options);
     }
-    if (row.candidateKey === "degree") return degreeOption(text, options);
+    if (row.candidateKey === "degree") {
+      return degreeOption(text, options) || (row.kind === "select" || row.wholeList ? highSchoolDiploma(text, options) : null);
+    }
     if (row.candidateKey === "previous_employer") return previousEmployerOption(text, options);
     const country = countryOf(text);
     if (country && countryShare(options) >= 0.5) {
@@ -5005,6 +5183,178 @@ Zimbabwe|Zimbabwean
     return counts;
   }
 
+  // src/autofill/timeline.js
+  var SLOW_MS = 3e3;
+  var MAX_EVENTS = 80;
+  var MAX_KEPT = 80;
+  var BURST_MS = 50;
+  var ROW_STEPS = /* @__PURE__ */ new Set(["rows redrawn", "row marked"]);
+  var MAX_ROW_EVENTS = 20;
+  var current = null;
+  var finished = [];
+  var clean2 = (s) => String(s == null ? "" : s).replace(/\s+/g, " ").trim();
+  function watchRows(el) {
+    const doc = el && el.ownerDocument;
+    const Observer = globalThis.MutationObserver;
+    if (!doc || !doc.body || !Observer) return null;
+    const p = globalThis.__tcvFieldProbe;
+    const ROW = p && p.OPTION_SEL || '[role="option"]';
+    const PILL = '[data-automation-id="selectedItem"]';
+    const has = (node, sel) => node.nodeType === 1 && (node.matches(sel) || !!node.querySelector(sel));
+    const ownPage = (node) => !(node.closest && node.closest("#tailorcv-sidebar"));
+    const observer = new Observer((mutations) => {
+      for (const m of mutations) {
+        if (m.type === "attributes") {
+          if (!ownPage(m.target) || !m.target.matches(ROW)) continue;
+          const said = m.target.getAttribute(m.attributeName) || "";
+          if (m.attributeName === "aria-label") {
+            if (/\bchecked\b/i.test(said) && !/\bnot checked\b/i.test(said)) note("row ticked", clean2(said));
+          } else {
+            note("row marked", m.attributeName);
+          }
+          continue;
+        }
+        if (m.target.nodeType !== 1 || !ownPage(m.target)) continue;
+        const added = Array.from(m.addedNodes);
+        const pill2 = added.find((n) => has(n, PILL));
+        if (pill2) note("answer on field", clean2(pill2.textContent));
+        else if (added.concat(Array.from(m.removedNodes)).some((n) => has(n, ROW))) note("rows redrawn");
+      }
+    });
+    try {
+      observer.observe(doc.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["aria-label", "aria-selected", "data-automation-selected"]
+      });
+    } catch (e) {
+      return null;
+    }
+    return observer;
+  }
+  function beginTimeline(row) {
+    if (current) endTimeline("unfinished");
+    current = {
+      field: clean2(row && row.label).replace(/\s*\*$/, "").slice(0, 70),
+      start: Date.now(),
+      events: [],
+      rowEvents: 0,
+      rowHtml: "",
+      observer: null
+    };
+    try {
+      current.observer = watchRows(row && row.el);
+    } catch (e) {
+      current.observer = null;
+    }
+  }
+  function note(step, detail) {
+    if (!current || current.events.length >= MAX_EVENTS) return;
+    const at = Date.now() - current.start;
+    const last = current.events[current.events.length - 1];
+    if (ROW_STEPS.has(step)) {
+      if (last && last.step === step && at - last.at < BURST_MS) {
+        last.at = at;
+        last.count = (last.count || 1) + 1;
+        return;
+      }
+      if (current.rowEvents >= MAX_ROW_EVENTS) return;
+      current.rowEvents++;
+    }
+    current.events.push({ at, step, detail: detail == null ? "" : String(detail) });
+  }
+  function noteWait(name, limitMs, startedAt, ranOut) {
+    if (!current) return;
+    note(`wait ${name}`, `${Date.now() - startedAt} of ${limitMs} ms${ranOut ? ", RAN OUT" : ""}`);
+  }
+  function noteClick(node, label) {
+    if (!current) return;
+    note("click", clean2(label));
+    try {
+      current.rowHtml = String(node.outerHTML || "").slice(0, 600);
+    } catch (e) {
+      current.rowHtml = "";
+    }
+  }
+  function summarize2(t) {
+    const ev = t.events;
+    const clicks = ev.filter((e) => e.step === "click");
+    const clickAt = clicks.length ? clicks[clicks.length - 1].at : null;
+    let search = null;
+    let open = null;
+    let resultsAt = null;
+    ev.forEach((e, i) => {
+      if (open === null && (e.step === "search" || e.step === "wait list" || e.step === "click")) open = e.at;
+      if (e.step !== "search") return;
+      const done2 = ev.slice(i + 1).find((x) => x.step === "results" || x.step === "search");
+      if (done2 && done2.step === "results") {
+        search = (search || 0) + (done2.at - e.at);
+        if (clickAt === null || done2.at <= clickAt) resultsAt = done2.at;
+      }
+    });
+    const redraws = ev.filter((e) => e.step === "rows redrawn" && resultsAt !== null && e.at >= resultsAt && (clickAt === null || e.at <= clickAt));
+    const settle = resultsAt === null ? null : redraws.length ? redraws[redraws.length - 1].at - resultsAt : 0;
+    const heldAt = clickAt === null ? null : ev.filter((e) => e.at >= clickAt).find((e) => e.step === "answer on field" || e.step === "held");
+    const after = clickAt === null ? null : (heldAt ? heldAt.at : t.totalMs) - clickAt;
+    return {
+      field: t.field,
+      open,
+      search,
+      settle,
+      afterClick: after,
+      total: t.totalMs,
+      names: ev.filter((e) => e.step === "search").length,
+      ranOut: ev.filter((e) => /^wait /.test(e.step) && /RAN OUT/.test(e.detail)).length,
+      result: t.outcome
+    };
+  }
+  function timelineText(t) {
+    const lines = t.events.map((e) => `  +${e.at} ${e.step}${e.count > 1 ? ` x${e.count}` : ""}${e.detail ? `: ${e.detail}` : ""}`);
+    if (t.outcome !== "ok" && t.rowHtml) lines.push(`  row clicked: ${t.rowHtml}`);
+    return `[TailorCV] timeline: ${t.field} \u2014 ${t.outcome} in ${t.totalMs} ms
+${lines.join("\n")}`;
+  }
+  function endTimeline(outcome) {
+    const t = current;
+    if (!t) return;
+    current = null;
+    try {
+      if (t.observer) t.observer.disconnect();
+    } catch (e) {
+    }
+    t.observer = null;
+    t.totalMs = Date.now() - t.start;
+    t.outcome = outcome || "";
+    if (!t.events.length) return;
+    if (finished.length < MAX_KEPT) finished.push(t);
+    if (t.outcome !== "ok" || t.totalMs >= SLOW_MS) {
+      try {
+        console.info(timelineText(t));
+      } catch (e) {
+      }
+    }
+  }
+  function clearTimelines() {
+    finished = [];
+  }
+  function timelinesText() {
+    if (!finished.length) return "";
+    const ms = (v) => v === null ? "-" : String(v);
+    const lines = finished.map(summarize2).map((s) => `${s.result.padEnd(9)} total ${ms(s.total)} | open ${ms(s.open)} | search ${ms(s.search)} (${s.names} name${s.names === 1 ? "" : "s"}) | settle ${ms(s.settle)} | after click ${ms(s.afterClick)} | waits ran out ${s.ranOut} | ${s.field}`);
+    return `[TailorCV] dropdown timelines (ms), in fill order:
+${lines.join("\n")}`;
+  }
+  function printTimelines() {
+    const text = timelinesText();
+    if (text) {
+      try {
+        console.info(text);
+      } catch (e) {
+      }
+    }
+  }
+
   // src/autofill/write.js
   var probe2 = () => globalThis.__tcvFieldProbe;
   function fire(el, type, init) {
@@ -5032,6 +5382,7 @@ Zimbabwe|Zimbabwean
   }
   var KEY_CODES = { Enter: 13, Escape: 27, ArrowDown: 40, ArrowUp: 38, Tab: 9, Backspace: 8 };
   function pressPointer(el) {
+    noteRowPress(el);
     const opts = { bubbles: true, cancelable: true, composed: true, button: 0 };
     for (const type of ["pointerdown", "mousedown", "pointerup", "mouseup", "click"]) {
       try {
@@ -5045,6 +5396,14 @@ Zimbabwe|Zimbabwean
           }
         }
       }
+    }
+  }
+  function noteRowPress(el) {
+    try {
+      const p = probe2();
+      const row = el.closest && el.closest(`${p && p.OPTION_SEL || '[role="option"]'}, .multiselect-container li`);
+      if (row && !isChosenValue(row)) noteClick(row, row.textContent);
+    } catch (e) {
     }
   }
   function focus(el) {
@@ -5256,14 +5615,15 @@ Zimbabwe|Zimbabwean
     const el = row.el;
     if (!el) return false;
     const shapes = dedupe([value].concat(candidates || []));
-    const current = row.value || "";
-    if (current && looksLikeDecline(value) && !looksLikeDecline(current)) return true;
+    const current2 = row.value || "";
+    if (current2 && looksLikeDecline(value) && !looksLikeDecline(current2)) return true;
     const isButton = (el.tagName || "").toLowerCase() === "button";
     try {
       scrollIntoView(el);
       dismissListbox(el);
       openWidget(row);
       await sleep(TIMING.settleMs);
+      note("opened");
       let options = [];
       if (readFirst && !isButton) options = await waitForOpenedList(el);
       if (options.length) {
@@ -5276,6 +5636,7 @@ Zimbabwe|Zimbabwean
         const p = probe2();
         const wdPrompt = !!(p && p.workdayMultiselect && p.workdayMultiselect(input));
         for (const query of queries) {
+          note("search", `"${query}"`);
           setText(input, query, { blur: false });
           focus(input);
           if (wdPrompt) {
@@ -5314,7 +5675,11 @@ Zimbabwe|Zimbabwean
       }
       if (readFirst) {
         let labels = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
-        let pick = pickReadFirst(readFirst, labels);
+        let pick = pickReadFirst(readFirst, labels, isButton);
+        if (!pick && !isButton && isWorkdayPrompt(el)) {
+          const found = await waitForReadFirstPick(el, readFirst, options, TIMING.optionWaitMs * 3);
+          if (found) ({ options, labels, pick } = found);
+        }
         if (!pick && !isButton && picklistButton(el)) {
           const input = typableInput(row) || el;
           const entry = readFirst.key === "degree" ? degreeEntry(readFirst.stored) : null;
@@ -5338,11 +5703,13 @@ Zimbabwe|Zimbabwean
         readFirst.labels = labels;
         if (readFirst.key === "saved") readFirst.variant = pickSavedVariant(readFirst.entry, labels);
         const node = options[labels.indexOf(pick)];
-        try {
-          node.scrollIntoView({ block: "nearest" });
-        } catch (e) {
+        if (!(node.getAttribute && node.getAttribute("data-automation-selected") === "true")) {
+          try {
+            node.scrollIntoView({ block: "nearest" });
+          } catch (e) {
+          }
+          pressPointer(rowClickTarget(node, pick));
         }
-        pressPointer(node);
         return settlesTo(row, [pick].concat(shapes));
       }
       for (const shape of options.length ? shapes : []) {
@@ -5370,7 +5737,137 @@ Zimbabwe|Zimbabwean
       dismissListbox(row.el);
     }
   }
+  function multiselectWidget(el) {
+    if (!el || (el.tagName || "").toLowerCase() !== "select") return null;
+    const wrap = el.closest && el.closest(".multiselect, .multi-select") || el.parentElement;
+    const menu = wrap && wrap.querySelector(".multiselect-container");
+    if (!menu) return null;
+    const button = wrap.querySelector("button.multiselect") || wrap.querySelector("button.dropdown-toggle") || wrap.querySelector("button");
+    return { button, menu, search: menu.querySelector(".singleselect-search, .multiselect-search") };
+  }
+  function multiselectOpen({ button, menu }) {
+    const parent = menu.parentElement;
+    return menu.offsetHeight > 0 || menu.classList.contains("show") || parent && parent.classList.contains("open") || button && button.getAttribute("aria-expanded") === "true";
+  }
+  function multiselectRows(menu) {
+    return Array.from(menu.querySelectorAll("li a label")).filter((label) => {
+      const radio = label.querySelector("input");
+      return !!(radio && String(radio.value || "").trim()) && isNodeDrawn(label);
+    });
+  }
+  var MULTISELECT_SETTLED_MS = 800;
+  async function commitMultiselect(row, value, candidates, readFirst, fromProfile) {
+    const widget = multiselectWidget(row.el);
+    const { button, menu, search } = widget;
+    const shapes = dedupe([value].concat(candidates || []).concat(searchToken(value)));
+    const pickIn = (labels) => {
+      if (readFirst) return pickReadFirst(readFirst, labels);
+      for (const shape of shapes) {
+        const i = promptResultFor(shape, labels);
+        if (i >= 0) return labels[i];
+      }
+      return null;
+    };
+    const labelsOf = (rows2) => rows2.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+    let rows = [];
+    try {
+      scrollIntoView(button || row.el);
+      if (button && !multiselectOpen(widget)) pressPointer(button);
+      await sleep(TIMING.settleMs);
+      const whole = searchToken(value);
+      const first = whole.split(/\s+/)[0];
+      const queries = search ? dedupe([whole].concat(first.length >= 3 ? [first] : [])) : [""];
+      for (const query of queries) {
+        const typedOver = labelsOf(multiselectRows(menu)).join("|");
+        if (search) note("search", `"${query}"`);
+        if (search) await typeText(search, query, 8);
+        const deadline = Date.now() + TIMING.remoteSearchMs;
+        let answered = !search;
+        let seen = typedOver;
+        let changedAt = Date.now();
+        for (; ; ) {
+          rows = multiselectRows(menu);
+          const labels = labelsOf(rows);
+          const pick = rows.length ? pickIn(labels) : null;
+          if (pick) {
+            note("results", `${rows.length} rows, answer among them`);
+            if (readFirst) {
+              readFirst.picked = pick;
+              readFirst.labels = labels;
+            }
+            const node = rows[labels.indexOf(pick)];
+            try {
+              node.scrollIntoView({ block: "nearest" });
+            } catch (e) {
+            }
+            pressPointer(node);
+            return await settlesTo(row, [pick].concat(shapes)) ? pick : null;
+          }
+          const now2 = labels.join("|");
+          if (now2 !== seen) {
+            seen = now2;
+            changedAt = Date.now();
+            answered = true;
+          }
+          if (Date.now() >= deadline || answered && Date.now() - changedAt >= MULTISELECT_SETTLED_MS) {
+            note("results", `${rows.length} rows${Date.now() >= deadline ? ", wait RAN OUT" : ""}`);
+            break;
+          }
+          await sleep(100);
+        }
+        if (rows.length) break;
+      }
+      if (!readFirst) {
+        for (const shape of shapes) {
+          const near = rows.filter((n) => sharesWord(shape, n.textContent));
+          if (!near.length || !await clickMatchingOption(row.el, shape, near)) continue;
+          if (await settlesTo(row, labelsOf(near))) {
+            const now2 = reprobe(row);
+            return now2 && now2.value || labelsOf(near)[0];
+          }
+          return null;
+        }
+        if (fromProfile) {
+          const before = labelsOf(multiselectRows(menu)).join("|");
+          if (search) await typeText(search, "Other", 8);
+          const deadline = Date.now() + TIMING.remoteSearchMs;
+          let answered = !search;
+          let seen = before;
+          let changedAt = Date.now();
+          for (; ; ) {
+            rows = multiselectRows(menu);
+            const now2 = labelsOf(rows).join("|");
+            if (now2 !== seen) {
+              seen = now2;
+              changedAt = Date.now();
+              answered = true;
+            }
+            if (Date.now() >= deadline || answered && Date.now() - changedAt >= MULTISELECT_SETTLED_MS) break;
+            await sleep(100);
+          }
+          const others = rows.filter((n) => /^others?$/i.test((n.textContent || "").trim()));
+          if (others.length === 1) {
+            const label = labelsOf(others)[0];
+            try {
+              others[0].scrollIntoView({ block: "nearest" });
+            } catch (e) {
+            }
+            pressPointer(others[0]);
+            return await settlesTo(row, [label]) ? label : null;
+          }
+        }
+      }
+      if (search) setText(search, "", { blur: false });
+      reportDropdownFailure(row, value, rows);
+      return null;
+    } catch (e) {
+      return null;
+    } finally {
+      if (button && multiselectOpen(widget)) pressPointer(button);
+    }
+  }
   function searchStep(query, input, el, options) {
+    note("results", `${(options || []).length} rows: ${(options || []).slice(0, 4).map((n) => (n.textContent || "").replace(/\s+/g, " ").trim()).join(" | ")}`);
     const doc = el.ownerDocument || globalThis.document;
     let cells = 0;
     try {
@@ -5501,8 +5998,10 @@ Zimbabwe|Zimbabwean
   function waitForOptions2(el, timeout) {
     return new Promise((resolve) => {
       const doc = el.ownerDocument || globalThis.document;
+      const startedAt = Date.now();
       const immediate = visibleOptionNodes2(doc, el);
       if (immediate.length) {
+        noteWait("list", timeout, startedAt, false);
         resolve(immediate);
         return;
       }
@@ -5515,7 +6014,9 @@ Zimbabwe|Zimbabwean
         } catch (e) {
         }
         clearTimeout(timer);
-        resolve(visibleOptionNodes2(doc, el));
+        const nodes = visibleOptionNodes2(doc, el);
+        noteWait("list", timeout, startedAt, !nodes.length);
+        resolve(nodes);
       };
       const obs = new globalThis.MutationObserver(() => {
         if (visibleOptionNodes2(doc, el).length) finish();
@@ -5558,29 +6059,44 @@ Zimbabwe|Zimbabwean
     }
     return LOADING_TEXT_RE.test(list.textContent || "");
   }
-  async function waitForReadFirstPick(el, readFirst, before) {
+  async function waitForReadFirstPick(el, readFirst, before, ms) {
     const doc = el.ownerDocument || globalThis.document;
-    const deadline = Date.now() + TIMING.remoteSearchMs;
+    const limit = ms == null ? TIMING.remoteSearchMs : ms;
+    const startedAt = Date.now();
+    const deadline = startedAt + limit;
     const stale = new Set(before || []);
     let answeredAt = 0;
     for (; ; ) {
       const options = visibleOptionNodes2(doc, el);
       const labels = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
       const pick = options.length ? pickReadFirst(readFirst, labels) : null;
-      if (pick) return { options, labels, pick };
+      if (pick) {
+        noteWait("answer in the list", limit, startedAt, false);
+        return { options, labels, pick };
+      }
       if (!answeredAt && (options.some((n) => !stale.has(n)) || stale.size && [...stale].every((n) => !n.isConnected))) answeredAt = Date.now();
-      if (Date.now() >= deadline || answeredAt && Date.now() - answeredAt > TIMING.settleMs + 300) return null;
+      if (Date.now() >= deadline || answeredAt && Date.now() - answeredAt > TIMING.settleMs + 300) {
+        noteWait("answer in the list", limit, startedAt, Date.now() >= deadline);
+        return null;
+      }
       await sleep(100);
     }
   }
   async function waitForMatchingOptions(el, shapes, timeout) {
     const doc = el.ownerDocument || globalThis.document;
-    const deadline = Date.now() + timeout;
+    const startedAt = Date.now();
+    const deadline = startedAt + timeout;
     let nodes = [];
     for (; ; ) {
       nodes = visibleOptionNodes2(doc, el);
-      if (nodes.length && listOffersAny(shapes, nodes)) return nodes;
-      if (Date.now() >= deadline) return nodes;
+      if (nodes.length && listOffersAny(shapes, nodes)) {
+        noteWait("matching rows", timeout, startedAt, false);
+        return nodes;
+      }
+      if (Date.now() >= deadline) {
+        noteWait("matching rows", timeout, startedAt, true);
+        return nodes;
+      }
       await sleep(100);
     }
   }
@@ -5633,7 +6149,15 @@ Zimbabwe|Zimbabwean
       idx = best == null ? -1 : labels.indexOf(best);
     }
     if (idx < 0) return false;
-    const node = nodes[idx];
+    const target = rowClickTarget(nodes[idx], labels[idx]);
+    try {
+      target.scrollIntoView({ block: "nearest" });
+    } catch (e) {
+    }
+    pressPointer(target);
+    return true;
+  }
+  function rowClickTarget(node, label) {
     let target = node;
     const WD_ROW = '[data-automation-id="promptOption"], [data-automation-id="promptLeafNode"]';
     let workdayRow = false;
@@ -5644,30 +6168,39 @@ Zimbabwe|Zimbabwean
     }
     if (workdayRow) {
       for (const d of node.querySelectorAll("*")) {
-        if ((d.textContent || "").replace(/\s+/g, " ").trim() === labels[idx]) target = d;
+        if ((d.textContent || "").replace(/\s+/g, " ").trim() === label) target = d;
       }
     }
-    try {
-      target.scrollIntoView({ block: "nearest" });
-    } catch (e) {
-    }
-    pressPointer(target);
-    return true;
+    return target;
   }
   async function waitForPromptResults(el, shapes, done2) {
     const doc = el.ownerDocument || globalThis.document;
     const start = Date.now();
-    const deadline = start + Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
+    const limit = Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
+    const deadline = start + limit;
     const offers = (nodes) => {
       const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
       return shapes.some((s) => promptResultFor(s, labels) >= 0);
     };
     for (; ; ) {
-      if (done2 && done2()) return [];
+      if (done2 && done2()) {
+        noteWait("search results", limit, start, false);
+        return [];
+      }
       const nodes = visibleOptionNodes2(doc, el);
-      if (nodes.length && offers(nodes)) return nodes;
-      if (Date.now() - start > 1500 && saysNoItems(doc)) return nodes;
-      if (Date.now() >= deadline) return nodes;
+      if (nodes.length && offers(nodes)) {
+        noteWait("search results", limit, start, false);
+        return nodes;
+      }
+      if (Date.now() - start > 1500 && saysNoItems(doc)) {
+        note("no items");
+        noteWait("search results", limit, start, false);
+        return nodes;
+      }
+      if (Date.now() >= deadline) {
+        noteWait("search results", limit, start, true);
+        return nodes;
+      }
       await sleep(100);
     }
   }
@@ -5710,11 +6243,13 @@ Zimbabwe|Zimbabwean
     };
     const pillWaitMs = Math.max(TIMING.commitWaitMs * 2, 300);
     const addOne = async (skill) => {
+      note("search", `"${skill}"`);
       writeSearch(skill);
       fireKey(input, "keydown", "Enter");
       fireKey(input, "keyup", "Enter");
       const options = await waitForPromptResults(el, [skill]);
       const labels = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+      note("results", `${labels.length} rows`);
       const idx = promptResultFor(skill, labels);
       if (idx < 0) return "missing";
       const label = labels[idx];
@@ -5793,10 +6328,16 @@ Zimbabwe|Zimbabwean
     const doc = el.ownerDocument || globalThis.document;
     const isSet = () => shapes.some((s) => committed(row, s));
     const was = new Set(before);
-    const deadline = Date.now() + Math.max(TIMING.commitWaitMs, 300);
+    const limit = Math.max(TIMING.commitWaitMs, 300);
+    const startedAt = Date.now();
+    const deadline = startedAt + limit;
     let level = [];
     for (; ; ) {
-      if (isSet()) return true;
+      if (isSet()) {
+        note("held");
+        noteWait("answer after the click", limit, startedAt, false);
+        return true;
+      }
       const nodes = visibleOptionNodes2(doc, el);
       const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
       if (labels.length && labels.some((l) => !was.has(l))) {
@@ -5823,11 +6364,13 @@ Zimbabwe|Zimbabwean
           );
           return false;
         }
+        if (labels.join("|") !== level.join("|")) note("level opened", labels.slice(0, 10).join(" | "));
         level = labels;
       }
       if (Date.now() >= deadline) break;
       await sleep(100);
     }
+    noteWait("answer after the click", limit, startedAt, true);
     if (level.length) {
       console.info("[TailorCV] a level opened with no", JSON.stringify(drill), "row:", level.slice(0, 10));
       return false;
@@ -5945,7 +6488,7 @@ Zimbabwe|Zimbabwean
       dismissListbox(row.el);
     }
   }
-  function pickReadFirst(readFirst, labels) {
+  function pickReadFirst(readFirst, labels, wholeList) {
     if (readFirst.key === "saved") {
       const saved = pickSaved(readFirst.entry, labels);
       return saved != null && labels.includes(saved) ? saved : null;
@@ -5955,6 +6498,7 @@ Zimbabwe|Zimbabwean
       options: labels,
       candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
       candidateKey: readFirst.key,
+      wholeList,
       sponsorship: readFirst.sponsorship,
       citizenHere: readFirst.citizenHere,
       country: readFirst.country
@@ -5974,10 +6518,19 @@ Zimbabwe|Zimbabwean
     return !!(a && b && a !== b);
   }
   async function settlesTo(row, shapes, ms) {
-    const deadline = Date.now() + (ms == null ? TIMING.commitWaitMs : ms);
+    const limit = ms == null ? TIMING.commitWaitMs : ms;
+    const startedAt = Date.now();
+    const deadline = startedAt + limit;
     for (; ; ) {
-      if ((shapes || []).some((sh) => committed(row, sh))) return true;
-      if (Date.now() >= deadline) return false;
+      if ((shapes || []).some((sh) => committed(row, sh))) {
+        note("held");
+        noteWait("field to hold it", limit, startedAt, false);
+        return true;
+      }
+      if (Date.now() >= deadline) {
+        noteWait("field to hold it", limit, startedAt, true);
+        return false;
+      }
       await sleep(Math.max(TIMING.settleMs, 100));
     }
   }
@@ -6036,15 +6589,15 @@ Zimbabwe|Zimbabwean
   })();
   function base64ToBytes(base64) {
     const src = String(base64 || "").replace(/[\s]/g, "");
-    const clean2 = src.replace(/[^A-Za-z0-9+/=]/g, "");
-    const padding = clean2.endsWith("==") ? 2 : clean2.endsWith("=") ? 1 : 0;
-    const out = new Uint8Array(Math.floor(clean2.length / 4) * 3 - padding);
+    const clean3 = src.replace(/[^A-Za-z0-9+/=]/g, "");
+    const padding = clean3.endsWith("==") ? 2 : clean3.endsWith("=") ? 1 : 0;
+    const out = new Uint8Array(Math.floor(clean3.length / 4) * 3 - padding);
     let o = 0;
-    for (let i = 0; i + 3 < clean2.length; i += 4) {
-      const a = B64_LOOKUP[clean2.charCodeAt(i)];
-      const b = B64_LOOKUP[clean2.charCodeAt(i + 1)];
-      const c = B64_LOOKUP[clean2.charCodeAt(i + 2)];
-      const dd = B64_LOOKUP[clean2.charCodeAt(i + 3)];
+    for (let i = 0; i + 3 < clean3.length; i += 4) {
+      const a = B64_LOOKUP[clean3.charCodeAt(i)];
+      const b = B64_LOOKUP[clean3.charCodeAt(i + 1)];
+      const c = B64_LOOKUP[clean3.charCodeAt(i + 2)];
+      const dd = B64_LOOKUP[clean3.charCodeAt(i + 3)];
       const chunk = a << 18 | b << 12 | c << 6 | dd;
       if (o < out.length) out[o++] = chunk >> 16 & 255;
       if (o < out.length) out[o++] = chunk >> 8 & 255;
@@ -6078,6 +6631,10 @@ Zimbabwe|Zimbabwean
   function accepts(decision, value, shown) {
     if (differentCountries(value, shown)) return false;
     if (decision && decision.row && decision.row.kind === "date-parts") return sameDate(value, shown);
+    if (decision && decision.row && isCalendarInput(decision.row.el)) {
+      const a = parseLooseDate(value), b = parseLooseDate(shown);
+      if (a && b) return a.y === b.y && a.m === b.m && a.d === b.d;
+    }
     if (commitMatches(value, shown)) return true;
     if (commitMatches(value, shown)) return true;
     for (const candidate of decision && decision.candidates || []) {
@@ -6108,14 +6665,85 @@ Zimbabwe|Zimbabwean
     if (a.length < 6 || b.length < 6) return false;
     return a === b || a.endsWith(b) || b.endsWith(a);
   }
+  async function setCalendarDate(row, value) {
+    const date = parseLooseDate(value);
+    const el = row.el;
+    if (!date || !el) return false;
+    const doc = el.ownerDocument || globalThis.document;
+    const open = () => {
+      const box = doc.getElementById("ui-datepicker-div");
+      return box && isNodeDrawn(box) ? box : null;
+    };
+    const opened = async () => {
+      const deadline = Date.now() + TIMING.optionWaitMs;
+      for (; ; ) {
+        if (open()) return true;
+        if (Date.now() >= deadline) return false;
+        await sleep(50);
+      }
+    };
+    const choose = async (selector, wanted) => {
+      const box = open();
+      const list = box && box.querySelector(selector);
+      if (!list || !Array.from(list.options).some((o) => o.value === String(wanted))) return false;
+      if (list.value !== String(wanted)) {
+        list.value = String(wanted);
+        fire(list, "change");
+        await sleep(Math.max(TIMING.settleMs, 50));
+      }
+      return true;
+    };
+    try {
+      scrollIntoView(el);
+      blur(el);
+      focus(el);
+      pressPointer(el);
+      if (!open()) fire(el, "focus");
+      if (!await opened()) {
+        note("calendar did not open");
+        return false;
+      }
+      note("opened");
+      if (!await choose(".ui-datepicker-year", date.y) || !await choose(".ui-datepicker-month", date.m - 1)) {
+        note("calendar does not offer", `${date.m}/${date.y}`);
+        return false;
+      }
+      const box = open();
+      const day = box && Array.from(box.querySelectorAll('td[data-handler="selectDay"] a')).find((a) => {
+        const cell = a.closest("td");
+        return (a.textContent || "").trim() === String(date.d) && cell.getAttribute("data-month") === String(date.m - 1) && cell.getAttribute("data-year") === String(date.y);
+      });
+      if (!day) {
+        note("calendar does not offer", `day ${date.d}`);
+        return false;
+      }
+      note("click", `day ${date.d}`);
+      pressPointer(day);
+      const deadline = Date.now() + TIMING.commitWaitMs;
+      for (; ; ) {
+        const shown = parseLooseDate(el.value);
+        if (shown && shown.y === date.y && shown.m === date.m && shown.d === date.d) {
+          note("held");
+          return true;
+        }
+        if (Date.now() >= deadline) return false;
+        await sleep(50);
+      }
+    } finally {
+      if (open()) dismissListbox(el);
+    }
+  }
   async function applyDecision(decision) {
     const row = decision.row;
     const value = decision.value;
     if (!row || !row.el || !value) return { ok: false, outcome: "failed", shown: "" };
+    const isList = row.kind === "combobox" || row.kind === "select" || isCalendarInput(row.el);
+    if (isList) beginTimeline(row);
     if (decision.multiValues && decision.multiValues.length && row.multiPrompt) {
       const res = await commitPromptMulti(row, decision.multiValues);
       if (res.missing.length) decision.reason = `not in this employer's list: ${res.missing.join(", ")} \u2014 add any yourself`;
       const ok = res.pills.length > 0 && res.added.length + res.already.length > 0;
+      endTimeline(ok ? "ok" : "empty");
       return { ok, outcome: ok ? "ok" : "empty", shown: res.pills.join(" | ") };
     }
     let wrote = false;
@@ -6124,6 +6752,18 @@ Zimbabwe|Zimbabwean
         wrote = await setDateParts(row, value);
         break;
       case "select":
+        if (multiselectWidget(row.el)) {
+          const picked = await commitMultiselect(
+            row,
+            value,
+            decision.candidates,
+            decision.readFirst,
+            decision.source === "profile"
+          );
+          wrote = !!picked;
+          if (picked) decision.candidates = (decision.candidates || []).concat(picked);
+          break;
+        }
         wrote = setSelect(row.el, value);
         if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
         break;
@@ -6146,6 +6786,10 @@ Zimbabwe|Zimbabwean
         wrote = setContentEditable(row.el, value);
         break;
       default:
+        if (isCalendarInput(row.el)) {
+          wrote = await setCalendarDate(row, value);
+          if (wrote || row.el.readOnly) break;
+        }
         wrote = setText(row.el, value);
         if (wrote && datePickerHost(row.el)) {
           fireKey(row.el, "keydown", "Enter");
@@ -6163,6 +6807,7 @@ Zimbabwe|Zimbabwean
         break;
     }
     const result = await verdict(decision, row, value, wrote);
+    if (isList) endTimeline(result.outcome);
     if (!result.ok && (row.kind === "combobox" || row.kind === "select") && !(decision.options && decision.options.length)) {
       let labels = row.seenOptions && row.seenOptions.length ? row.seenOptions : [];
       if (!labels.length) {
@@ -6637,18 +7282,6 @@ Zimbabwe|Zimbabwean
     const els = p.fillableIn(panel).elements.filter(isVisible);
     return describeFields({ root: panel, fields: els }).map((r) => Object.assign(r, { scope: panel }));
   }
-  function isoMonth(v) {
-    const s = String(v || "").trim();
-    let m = s.match(/^(\d{1,2})\/(\d{4})$/);
-    if (m) return `${m[2]}-${m[1].padStart(2, "0")}-01`;
-    m = s.match(/^(\d{4})-(\d{1,2})/);
-    if (m) return `${m[1]}-${m[2].padStart(2, "0")}-01`;
-    return "";
-  }
-  function isoYear(v) {
-    const y = (String(v || "").match(/\b(19|20)\d{2}\b/) || [])[0];
-    return y ? `${y}-01-01` : "";
-  }
   function experienceAnswer(row, entry) {
     const label = String(row.label || "").replace(/\*\s*$/, "").trim();
     if (row.kind === "date-parts") {
@@ -6777,11 +7410,11 @@ Zimbabwe|Zimbabwean
     const filled = [];
     const byAi = [];
     let rows = panelRows(panel);
-    const current = spec.currentBox && rows.find((r) => r.kind === "checkbox" && /current/i.test(r.label || ""));
-    if (current && entry.current && !current.filled) {
-      const res = await applyDecision({ row: current, value: "Yes", candidates: ["Yes"], label: current.label });
+    const current2 = spec.currentBox && rows.find((r) => r.kind === "checkbox" && /current/i.test(r.label || ""));
+    if (current2 && entry.current && !current2.filled) {
+      const res = await applyDecision({ row: current2, value: "Yes", candidates: ["Yes"], label: current2.label });
       if (res.ok) filled.push("Currently work here");
-      else log(spec, `"${current.label}" did not take (${res.outcome})`);
+      else log(spec, `"${current2.label}" did not take (${res.outcome})`);
       await sleep(TIMING.settleMs + 100);
       rows = panelRows(panel);
     }
@@ -7003,12 +7636,15 @@ Zimbabwe|Zimbabwean
   var STATE_TTL_MS = 30 * 60 * 1e3;
   var MAX_DROPDOWNS_TO_OPEN = 25;
   var clock = startClock();
+  var extensionReloaded = false;
   function send(msg) {
     return new Promise((resolve) => {
       try {
         globalThis.chrome.runtime.sendMessage(msg, (res) => resolve(res || {}));
       } catch (e) {
-        resolve({ error: String(e && e.message || e) });
+        const error = String(e && e.message || e);
+        if (/context invalidated/i.test(error)) extensionReloaded = true;
+        resolve({ error });
       }
     });
   }
@@ -7169,7 +7805,8 @@ Zimbabwe|Zimbabwean
       const now2 = reprobe(d.row);
       return !!now2 && !now2.filled;
     };
-    const targets = pageBlockers(decisions).map((b) => b.decision).filter((d) => d.row && d.row.kind !== "file" && d.row.kind !== "tile" && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d)).slice(0, MAX_FORCED);
+    const knownAnswer = (d) => !!(d.value && d.source === "profile" && multiselectWidget(d.row.el));
+    const targets = pageBlockers(decisions).map((b) => b.decision).filter((d) => d.row && d.row.kind !== "file" && d.row.kind !== "tile" && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d) && !knownAnswer(d)).slice(0, MAX_FORCED);
     if (!targets.length) return { forced: 0 };
     for (const d of targets) {
       if (d.kind === "combobox" && !(d.options && d.options.length)) {
@@ -7272,7 +7909,12 @@ Zimbabwe|Zimbabwean
       }
     };
     clock = startClock();
-    ctx = Object.assign({}, ctx, { jobCountry: await jobCountry(globalThis.location.href) });
+    clearTimelines();
+    extensionReloaded = false;
+    ctx = Object.assign({}, ctx, {
+      jobCountry: await jobCountry(globalThis.location.href),
+      jobCompany: visaEmployer(globalThis.location.href, ctx && ctx.jobCompany)
+    });
     if (detectAts(globalThis.location.href) === "successfactors" && expandSections()) {
       progress("scanning", { detail: "opening the form\u2019s sections" });
       clock.quiet(await waitForQuiet(globalThis.document.body));
@@ -7417,11 +8059,13 @@ Zimbabwe|Zimbabwean
     console.table(timing.phases);
     if (timing.slowFields.length) console.table(timing.slowFields);
     if (timing.quietWaits.length) console.table(timing.quietWaits);
+    printTimelines();
     return {
       timing,
       decisions,
       counts: summarize(decisions),
       serverError: decisions.serverError || "",
+      extensionReloaded,
       page: state.page,
       opaqueHosts: form.opaqueHosts || 0,
       ats: form.ats
@@ -7575,8 +8219,8 @@ Zimbabwe|Zimbabwean
   }
   function nextCandidate(d) {
     if (!d || !d.candidates || d.candidates.length < 2) return "";
-    const current = String(d.value || "").toLowerCase();
-    const next = d.candidates.find((c) => String(c).toLowerCase() !== current);
+    const current2 = String(d.value || "").toLowerCase();
+    const next = d.candidates.find((c) => String(c).toLowerCase() !== current2);
     return next || "";
   }
   function alternatePhone(value, ctx) {
@@ -8365,10 +9009,10 @@ Zimbabwe|Zimbabwean
         }
         delete link.dataset.busy;
         link.textContent = "Forget";
-        const note = globalThis.document.createElement("div");
-        note.className = "tcv-af-row-src";
-        note.textContent = res && res.error || "Could not forget that answer.";
-        link.parentNode.appendChild(note);
+        const note2 = globalThis.document.createElement("div");
+        note2.className = "tcv-af-row-src";
+        note2.textContent = res && res.error || "Could not forget that answer.";
+        link.parentNode.appendChild(note2);
       });
     }
     for (const link of body.querySelectorAll(".tcv-af-jump")) {
@@ -8403,10 +9047,10 @@ Zimbabwe|Zimbabwean
           btn.textContent = "Save & fill";
           const row = btn.closest(".tcv-af-row");
           if (row) {
-            const note = globalThis.document.createElement("div");
-            note.className = "tcv-af-row-src";
-            note.textContent = res && res.reason || d.reason || "That did not take \u2014 try filling it directly.";
-            row.appendChild(note);
+            const note2 = globalThis.document.createElement("div");
+            note2.className = "tcv-af-row-src";
+            note2.textContent = res && res.reason || d.reason || "That did not take \u2014 try filling it directly.";
+            row.appendChild(note2);
           }
         }
       });
@@ -8443,10 +9087,10 @@ Zimbabwe|Zimbabwean
       }
       btn.textContent = "Could not save";
       const why = res && res.error ? res.error : res && res.rejected ? "We don't store answers to sensitive questions \u2014 set these in your profile." : "Nothing was saved.";
-      const note = globalThis.document.createElement("div");
-      note.className = "tcv-af-row-src";
-      note.textContent = why;
-      btn.after(note);
+      const note2 = globalThis.document.createElement("div");
+      note2.className = "tcv-af-row-src";
+      note2.textContent = why;
+      btn.after(note2);
     });
   }
   function renderRunning(body, phase, auto) {
@@ -8533,9 +9177,9 @@ Zimbabwe|Zimbabwean
           el.setAttribute(attr.name, name === "srcset" ? "" : stripQuery(attr.value));
           continue;
         }
-        let clean2 = scrubText(attr.value, secrets).replace(/\s+/g, " ").trim();
-        if (clean2.length > MAX_ATTR_CHARS) clean2 = clean2.slice(0, MAX_ATTR_CHARS) + "\u2026";
-        if (clean2 !== attr.value) el.setAttribute(attr.name, clean2);
+        let clean3 = scrubText(attr.value, secrets).replace(/\s+/g, " ").trim();
+        if (clean3.length > MAX_ATTR_CHARS) clean3 = clean3.slice(0, MAX_ATTR_CHARS) + "\u2026";
+        if (clean3 !== attr.value) el.setAttribute(attr.name, clean3);
       }
     }
     const walker = node.ownerDocument.createTreeWalker(node, 128 | 4);

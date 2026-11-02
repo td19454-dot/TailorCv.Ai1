@@ -22,6 +22,76 @@ test('label comes from a label[for] pointing at the input', () => {
   eq(d.kind, 'text');
 });
 
+test('a Lever question comes from its own block, in both of its layouts', () => {
+  const wrapped = mount(`<li class="application-question"><label><div class="application-label">Veteran status</div>
+    <div class="application-field"><select id="v"><option>Select ...</option><option>I am not a protected veteran</option></select></div></label></li>`);
+  eq(wrapped.probe.leverQuestion(wrapped.document.getElementById('v')), 'Veteran status');
+  const answers = mount(`<li class="application-question custom-question"><div><div class="application-label"><div class="text">Are you a resident of California?<span class="required">✱</span></div></div>
+    <div class="application-field"><ul><li><label><input type="radio" id="y" name="q" value="Yes"><span>Yes</span></label></li></ul></div></div></li>`);
+  const yes = answers.document.getElementById('y');
+  eq(answers.probe.leverQuestion(yes), 'Are you a resident of California?✱');
+  eq(answers.probe.labelFor(yes), 'Yes', 'the answer keeps its own label, as the option');
+  const elsewhere = mount('<label for="n">Full name</label><input id="n" name="name">');
+  eq(elsewhere.probe.leverQuestion(elsewhere.document.getElementById('n')), '', 'nothing outside a Lever block');
+});
+
+test('a tooltip inside a label is not part of the label (D. E. Shaw)', () => {
+  const help = '<div class="extra-information right" tabindex="0"><div class="question">?</div>'
+    + '<div class="tooltip"><p> If none of the options apply to you, please select "Other".</p></div></div>';
+  eq(describe1(`<label for="u">University<span class="asterisk">*</span>${help}</label><input id="u" name="u">`, '#u').label,
+     'University*');
+  eq(describe1(`<label>Degree${help}<input name="d"></label>`, '[name=d]').label, 'Degree');
+  eq(describe1(`<span id="a">Field of Study${help}</span><input aria-labelledby="a" name="f">`, '[name=f]').label,
+     'Field of Study');
+  eq(describe1('<label for="r">Role <span role="tooltip">Your current role</span></label><input id="r" name="r">', '#r').label,
+     'Role');
+  // A label that is nothing but its help keeps it, rather than reading as no label.
+  eq(describe1('<label for="o"><span class="tooltip">Your city</span></label><input id="o" name="o">', '#o').label,
+     'Your city');
+});
+
+test('react-virtualized-select rows are options, though they carry no role (D. E. Shaw)', () => {
+  const env = mount(`<input id="x"><div role="listbox"><div role="grid"><div role="rowgroup">
+    <div class="VirtualizedSelectOption VirtualizedSelectFocusedOption">Bachelor of Arts</div>
+    <div class="VirtualizedSelectOption">Bachelor of Technology</div></div></div></div>`);
+  deepEq(env.probe.optionNodes(env.document).map(n => n.textContent), ['Bachelor of Arts', 'Bachelor of Technology']);
+});
+
+test('an aria-label that only prompts gives way to the real label (RippleHire)', () => {
+  // The placeholder in other words, "Select", and Workday's own prompt.
+  eq(describe1('<label for="c">Current City :</label><select id="c" name="c" aria-label="Enter current city" '
+    + 'data-placeholder="Enter current city"></select>', '#c').label, 'Current City :');
+  eq(describe1('<label for="t">Title :</label><select id="t" name="t" aria-label="Select"></select>', '#t').label, 'Title :');
+  eq(describe1('<label for="p">Phone Type</label><button id="p" aria-haspopup="listbox" aria-label="Select One Required">Select One</button>', '#p').label,
+     'Phone Type');
+  // No real label to give way to: it stands.
+  eq(describe1('<select id="n" name="n" aria-label="Select"></select>', '#n').label, 'Select');
+  // A real aria-label is the label, whatever else is there.
+  eq(describe1('<label for="e">Mail</label><input id="e" name="e" aria-label="Work Email" placeholder="you@x.com">', '#e').label, 'Work Email');
+});
+
+test('data-required="Y" makes a field required', () => {
+  ok(describe1('<select id="r" name="r" data-required="Y"></select>', '#r').required);
+  notOk(describe1('<select id="q" name="q" data-required="N"></select>', '#q').required);
+});
+
+test('an option with its text in label="" reads as that text, and its prompt is no option', () => {
+  const html = '<select id="c" name="c"><option value="" label="Enter current city"></option>'
+    + '<option value="Kolkata" label="Kolkata" selected></option></select>';
+  const d = describe1(html, '#c');
+  eq(d.value, 'Kolkata');
+  ok(d.filled);
+  deepEq(d.options.map(o => o.label), ['Kolkata']);
+});
+
+test('a select behind a searchable widget has no options yet; one without a search box keeps them', () => {
+  const select = '<select id="c" name="c"><option value="Akola" label="Akola"></option><option value="Mumbai" label="Mumbai"></option></select>';
+  const search = '<ul class="multiselect-container"><div><input class="singleselect-search"></div></ul>';
+  deepEq(describe1(`<div class="multi-select multiselect">${select}${search}</div>`, '#c').options, []);
+  eq(describe1(`<div class="multi-select multiselect">${select}<ul class="multiselect-container"></ul></div>`, '#c').options.length, 2);
+  eq(describe1(`<div>${select}</div>`, '#c').options.length, 2);
+});
+
 test('aria-label wins over everything else', () => {
   const d = describe1('<input aria-label="Email Address" id="e">', '#e');
   eq(d.label, 'Email Address');

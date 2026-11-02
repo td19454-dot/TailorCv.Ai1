@@ -713,6 +713,43 @@ test('a degree level list takes the level', () => {
      'High School Diploma');
 });
 
+const NO_SCHOOL = ['Bachelors of Management and Engineering', 'Diploma', 'Certificate/Technical degree',
+                   'Associates', 'Bachelors', 'Post-Graduate', 'Masters', 'Doctorate'];
+
+test('high school: "Diploma" is the last resort, on a list with nothing like it', () => {
+  for (const stored of ['Higher Secondary', 'High School', 'HSC']) {
+    eq(p.highSchoolDiploma(stored, NO_SCHOOL), 'Diploma', stored);
+  }
+  eq(p.coerce('Higher Secondary', degreeRow('Higher Secondary', NO_SCHOOL)),
+     'Diploma', 'a native select is always read whole');
+  eq(p.coerce('Higher Secondary', Object.assign(degreeRow('Higher Secondary', NO_SCHOOL), { kind: 'combobox', wholeList: true })),
+     'Diploma', 'a list read whole');
+  eq(p.coerce('Higher Secondary', Object.assign(degreeRow('Higher Secondary', NO_SCHOOL), { kind: 'combobox' })),
+     null, 'a list that may be partial: its high-school row may not be drawn yet');
+});
+
+test('high school: anything like it on the list stops "Diploma"', () => {
+  for (const like of ['High School', 'Secondary', 'Senior Secondary Certificate', 'Class XII', '12th Standard',
+                      '10+2', 'GED', 'Intermediate', 'Pre-University', 'A Levels', 'Class X']) {
+    eq(p.highSchoolDiploma('Higher Secondary', NO_SCHOOL.concat(like)), null, like);
+  }
+  eq(p.highSchoolDiploma('Higher Secondary', NO_SCHOOL.concat('Post-Secondary Certificate')), 'Diploma',
+     'after school is not high school');
+  eq(p.coerce('Higher Secondary', degreeRow('Higher Secondary', NO_SCHOOL.concat('High School Diploma'))), 'High School Diploma');
+  eq(p.coerce('Higher Secondary', degreeRow('Higher Secondary', NO_SCHOOL.concat('Higher Secondary'))), 'Higher Secondary');
+});
+
+test('high school: only an option that is exactly "Diploma", and only for high school', () => {
+  eq(p.highSchoolDiploma('Higher Secondary', ['University Diploma', 'Bachelors']), null);
+  eq(p.highSchoolDiploma('Higher Secondary', ['Diploma in Engineering', 'Bachelors']), null);
+  eq(p.highSchoolDiploma('Higher Secondary', ['Bachelors', 'Masters']), null, 'no Diploma on the list');
+  eq(p.highSchoolDiploma('Bachelor of Technology', ['Diploma', 'Masters']), null, 'not a B.Tech');
+  eq(p.highSchoolDiploma('Master of Technology', ['Diploma', 'Bachelors']), null, 'not a master\'s');
+  eq(p.highSchoolDiploma('', NO_SCHOOL), null, 'no degree stored');
+  eq(p.coerce('Bachelor of Technology', degreeRow('Bachelor of Technology', ['Diploma', 'Masters'])),
+     null, 'a B.Tech is never given a diploma');
+});
+
 test('a list that spells degrees out keeps the exact one', () => {
   const full = ['Bachelor of Technology', 'Master of Technology', 'Bachelor of Science'];
   eq(p.coerce('Bachelor of Technology', degreeRow('Bachelor of Technology', full)),
@@ -1671,6 +1708,19 @@ test("on Visa's own form, questions naming Visa are not visa-sponsorship questio
               CTX, null, null)[0].sensitive);
 });
 
+test('Visa\'s own form is known by its address or its name, and only Visa\'s', () => {
+  const VISA_URL = 'https://visa.wd5.myworkdayjobs.com/en-US/Visa/job/IN---Bengaluru-India/Sr-SW-Engineer--Python--GenAI--4--years--experience-_REF084891W/apply/applyManually?share_id=LinkedIn_corporate_page';
+  eq(p.visaEmployer(VISA_URL, ''), 'Visa');
+  eq(p.visaEmployer(VISA_URL, 'Careers'), 'Visa', 'its address settles it, whatever the page was read as');
+  eq(p.visaEmployer('https://wd5.myworkdaysite.com/recruiting/visa/Visa/job/X/Y', ''), 'Visa');
+  eq(p.visaEmployer('https://example.com/apply', 'Visa Careers'), 'Visa');
+  // Anyone else's form, even one about visas.
+  eq(p.visaEmployer('https://nike.wd1.myworkdayjobs.com/nke/job/India/Visa-Specialist_R1/apply', 'Nike'), 'Nike');
+  eq(p.visaEmployer('https://visaservices.example.com/apply', 'Acme'), 'Acme');
+  eq(p.visaEmployer('https://acme.wd1.myworkdayjobs.com/x', ''), '');
+  eq(p.visaEmployer('not a url', 'Acme'), 'Acme');
+});
+
 test('"I have read and consent to the above" is a terms agreement the profile permission ticks', () => {
   // Citi's Terms checkbox (Oct 2026) matched none of the terms phrasings.
   const label = 'Yes, I have read and consent to the above.*';
@@ -1729,6 +1779,32 @@ test('"a current or former employee of" reads every company it names, from the w
   }
   // A current employee alone is another question, left as it was.
   eq(p.previousEmployerAnswer(radio('Are you a current employee of FactSet?*'), worked('Quantiphi'), BANK), null);
+});
+
+test('a current salary has no profile field: asked here, never sent to the model, never told to add an expectation', () => {
+  const ask = label => {
+    const d = p.decide([field(label, { required: true })], { answerBank: { full_name: 'A B', expected_salary: '12 LPA' }, hasResume: true }, null, null)[0];
+    return d;
+  };
+  for (const label of ['What is your current annual base salary? (INR) *', 'Current CTC *', 'What is your present salary?*',
+                       'What was your last drawn salary?*', 'Previous compensation*', 'Existing CTC*']) {
+    const d = ask(label);
+    eq(d.sensitive, 'salary', label);
+    eq(d.action, p.ASK, `${label} -> ${d.action}: ${d.reason}`);
+    notOk(d.value, 'not the expected salary');
+    ok(/current salary/.test(d.reason), d.reason);
+    eq(p.fieldsForServer([d]).length, 0, `${label}: not sent to the model`);
+  }
+  // An expected salary has its profile field: filled from it, or pointed at it.
+  const expected = 'Please confirm your expected annual base salary? (INR) *';
+  eq(ask(expected).value, '12 LPA');
+  const empty = p.decide([field(expected, { required: true })], { answerBank: { full_name: 'A B' }, hasResume: true }, null, null)[0];
+  eq(empty.action, p.PROFILE, empty.reason);
+  ok(/salary expectation/.test(empty.reason), empty.reason);
+  // "last" or "previous" beside "rate" or "pay" is not a salary.
+  for (const label of ['Please rate your last project', 'How would you rate your previous manager?', 'What was your last pay grade level?']) {
+    notOk(ask(label).sensitive === 'salary', label);
+  }
 });
 
 test('Nike: a work-authorization list worded "Yes, without restriction" takes that option', () => {

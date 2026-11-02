@@ -31,13 +31,19 @@ const probe = () => globalThis.__tcvFieldProbe;
  * could not measure would silently shrink the form; including one that turns
  * out to be hidden costs at most a wasted write that verification then reports.
  */
+/** An input that a jQuery UI calendar fills (write.js setCalendarDate). */
+export function isCalendarInput(el) {
+  return !!(el && el.classList && el.classList.contains('hasDatepicker'));
+}
+
 export function isVisible(el) {
   if (!el) return false;
   const p = probe();
   const node = (p && p.fieldWrapper(el)) || el;
 
   if (el.disabled === true) return false;
-  if (el.readOnly === true && (el.tagName || '').toLowerCase() !== 'select') return false;
+  // Read-only as typing goes, but a calendar fills it: Keka's every date (Nov 2026).
+  if (el.readOnly === true && (el.tagName || '').toLowerCase() !== 'select' && !isCalendarInput(el)) return false;
   const type = (el.getAttribute && (el.getAttribute('type') || '').toLowerCase()) || '';
   if (type === 'hidden') return false;
   // A file input is a field even when the site hides it behind an Attach
@@ -80,7 +86,9 @@ export function isVisible(el) {
 export function isChosenValue(node) {
   try {
     return !!(node && node.closest
-      && node.closest('[data-automation-id="selectedItem"], [data-automation-id="selectedItemList"]'));
+      // react-select's chip says role="option" too: Current Location's "Kolkata"
+      // was read as the one option of every list on the page (D. E. Shaw, Nov 2026).
+      && node.closest('[data-automation-id="selectedItem"], [data-automation-id="selectedItemList"], .Select-value'));
   } catch (e) { return false; }
 }
 
@@ -518,6 +526,9 @@ export function findForm(doc) {
   const d = doc || globalThis.document;
   if (!d || !probe()) return null;
 
+  const resumeStep = workdayResumeStep(d);
+  if (resumeStep) return resumeStep;
+
   const seen = new Set();
   const scored = [];
   for (const sel of APP_ROOT_SELECTORS) {
@@ -564,6 +575,25 @@ export function findForm(doc) {
     url,
     isForm: best.score >= MIN_CONFIDENT_SCORE || APPLY_URL_RE.test(url),
   };
+}
+
+/**
+ * Workday's "Autofill with Resume" step, when the person chose it over Apply
+ * Manually: one upload, with no id, name or label of its own. Too few fields for
+ * the step to score, so the page-wide search took the header's language menu and
+ * the upload, which it could not read, and nothing was attached (LSEG, Nov 2026).
+ */
+function workdayResumeStep(d) {
+  const url = (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '';
+  if (detectAts(url) !== 'workday') return null;
+  let root = null, input = null;
+  try {
+    root = d.querySelector('[data-automation-id="applyFlowAutoFillPage"]');
+    input = root && root.querySelector('input[type="file"]');
+  } catch (e) { return null; }
+  if (!input || !isVisible(input)) return null;
+  return { root, score: MIN_CONFIDENT_SCORE, fields: [input], opaqueHosts: 0, ats: 'workday', url,
+           isForm: true, resumeStep: true };
 }
 
 // Ashby's "Autofill from resume" box sits beside the form. It is Ashby's own
@@ -851,7 +881,7 @@ export function describeFields(form) {
     // not an unreadable field, it is an upload whose name is on the control
     // beside it, so it gets described from that instead of being dropped.
     if (!d && isFileField(el)) {
-      const named = uploadGroupLabel(el);
+      const named = form.resumeStep ? 'Resume' : uploadGroupLabel(el);
       if (named) {
         d = { ident: named, kind: 'file', label: named, value: '', filled: false,
               invalid: false, required: false, options: null };
@@ -939,7 +969,7 @@ export function describeFields(form) {
 
     if (isFileField(el)) {
       row.kind = 'file';
-      let slot = documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
+      let slot = (form.resumeStep && 'resume') || documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
       // The label we have names no document, or names only the button ("Attach").
       // Either way the field's real name is on the control beside it: Greenhouse
       // puts it on the wrapping group, Adobe on the "Upload Resume" button while
@@ -1062,7 +1092,7 @@ export function describeFields(form) {
       // the fieldset legend), never on "Yes"/"No". Read only off the options, a
       // required group looked optional — and an optional unknown is skipped
       // rather than asked, so the user was never told it needed an answer.
-      if (/\*|\(required\)/i.test(question)) row.required = true;
+      if (/\*|✱|\(required\)/i.test(question)) row.required = true;
       const group = row.members[0].closest && row.members[0].closest('fieldset, [role="radiogroup"]');
       if (group && group.getAttribute('aria-required') === 'true') row.required = true;
       if (group && labelMarkedRequired(fieldsetQuestionLabel(group, row.members))) row.required = true;
@@ -1439,6 +1469,8 @@ function groupIdentity(el, d, kind) {
  */
 function groupLabel(members, p) {
   const el = members[0];
+  const lever = p.leverQuestion && p.leverQuestion(el);
+  if (lever) return lever;
   const group = el.closest && el.closest('[role="radiogroup"], fieldset');
   if (group) {
     const aria = group.getAttribute && group.getAttribute('aria-label');

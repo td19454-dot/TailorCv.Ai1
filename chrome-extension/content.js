@@ -2824,8 +2824,12 @@
     applyBusy = false;
 
     if (result.error) {
-      globalStatus.className = 'tcv-status-text tcv-error';
-      globalStatus.textContent = `✗ ${humanFillError(result.error)}`;
+      // A frame that reloaded (iCIMS after a resume upload) is not a failure:
+      // what was filled may well be there, so it isn't shown as one.
+      const reloaded = frameReloaded(result.error);
+      globalStatus.className = reloaded ? 'tcv-status-text' : 'tcv-status-text tcv-error';
+      globalStatus.textContent = reloaded
+        ? humanFillError(result.error) : `✗ ${humanFillError(result.error)}`;
       track('autofill_failed', { error: result.error, host: location.hostname });
       if (!isAuto) renderApplyReady();
       return result;
@@ -2833,8 +2837,11 @@
 
     const counts = result.counts || {};
     const filled = (counts.fill || 0) + (counts.document || 0);
-    globalStatus.className = 'tcv-status-text tcv-ok';
-    globalStatus.textContent = `✓ Filled ${filled} field${filled === 1 ? '' : 's'} — review before submitting`;
+    globalStatus.className = result.extensionReloaded ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
+    // The resume and the AI answers could not be reached: the count would mislead.
+    globalStatus.textContent = result.extensionReloaded
+      ? '✗ The extension was reloaded — refresh this page, then autofill again.'
+      : `✓ Filled ${filled} field${filled === 1 ? '' : 's'} — review before submitting`;
     track('autofill_completed', {
       host: location.hostname,
       ats: result.ats,
@@ -3326,9 +3333,17 @@
     });
   }
 
+  // Chrome's wording when the frame we were waiting on went away mid-reply.
+  function frameReloaded(code) {
+    return /message (channel|port) closed/i.test(String(code));
+  }
+
   function humanFillError(code) {
     if (code === 'no_form') return 'No application form found on this page.';
     if (code === 'no_fields') return 'We could not read any fields on this form.';
+    if (frameReloaded(code)) {
+      return 'The form reloaded while we were filling it. Check the fields, and click Autofill again if any are empty.';
+    }
     return code;
   }
 

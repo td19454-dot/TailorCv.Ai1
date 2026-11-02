@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { JSDOM } from 'jsdom';
 import { test, run, ok, notOk, eq } from './harness.mjs';
+import { polyfillFileApis } from './dom.mjs';
 import * as fixtures from './fixtures.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -64,6 +65,11 @@ function loadPage(html, url, withAutofill, opts) {
       // A form inside an iframe (Greenhouse embedded on careers.airbnb.com),
       // as background.js reports it once the frame announces itself.
       case 'AF_FRAME_DISCOVER': return { data: options.frames || [] };
+      case 'AF_FRAME_SEND': return options.frameSend ? options.frameSend(msg.payload) : { data: null };
+      case 'AF_GET_RESUME_FILE':
+        return options.resumeFile
+          ? { data: { base64: 'JVBERi0xLjQK', filename: 'ada_lovelace.pdf', mime: 'application/pdf' } }
+          : { data: null };
       // The job-description sources for a form-only page (background.js).
       case 'JOB_REMEMBER': return { data: { ok: true } };
       case 'JOB_RECALL': return { data: options.recall || {} };
@@ -581,6 +587,25 @@ function missForm(page, misses) {
   return state;
 }
 
+test('Auto-apply: Workday\'s "Autofill with Resume" step uploads the resume and presses Continue', async () => {
+  const page = loadPage(`<!doctype html><html><body>${fixtures.WORKDAY_RESUME_STEP}</body></html>`,
+                        'https://lseg.wd3.myworkdayjobs.com/en-US/Careers/job/IND-BLR/Software-Engineer_R0121252/apply/autofillWithResume',
+                        true, { resumeFile: true });
+  polyfillFileApis(page.window);
+  const doc = page.document;
+  let continued = 0;
+  doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => {
+    continued++;
+    doc.querySelector('[data-automation-id="progressBarActiveStep"]').innerHTML = '<label>Review</label>';
+    doc.querySelector('[data-automation-id="applyFlowAutoFillPage"]').innerHTML = '';
+  });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000),
+     `it reaches Review: ${doc.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 300)}`);
+  ok(page.sent.some(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'resume'), 'the resume was fetched');
+  eq(continued, 1, 'Continue pressed once');
+});
+
 test('Auto-apply: a form missed for a moment is looked for again, and the page is filled without a pause', async () => {
   const page = autoApplyPage();
   const app = mountSteps(page);
@@ -954,6 +979,53 @@ test('a frame form that appears after the panel drew is picked up', async () => 
   options.frames.push(GREENHOUSE_FRAME);        // the Greenhouse iframe finishes rendering
   page.push({ type: 'AF_FRAME_FOUND' });
   ok(await waitForText(page, /Autofill this application/, 5000), 'redrawn with Autofill');
+});
+
+// A fill inside a frame whose reply came back as this error (background.js).
+async function frameFillStatus(error) {
+  const page = loadPage(JSON_LD_PAGE, 'https://careers.airbnb.com/positions/8123037/', true, {
+    frames: [GREENHOUSE_FRAME],
+    frameSend: payload => (payload.type === 'AF_FRAME_APPLY' ? { error } : { data: null }),
+  });
+  ok(await waitForText(page, /Autofill this application/, 10000), 'Autofill must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  // Looked up each time: a redraw of the panel detaches it for a moment.
+  const status = () => page.document.getElementById('tcvGlobalStatus');
+  const deadline = Date.now() + 5000;
+  while (!(status() && status().textContent) && Date.now() < deadline) {
+    await new Promise(r => setTimeout(r, 20));
+  }
+  return status();
+}
+
+const CHANNEL_CLOSED = 'A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received';
+
+test('a form that reloads mid-fill says so, in place of Chrome\'s error (iCIMS)', async () => {
+  const status = await frameFillStatus(CHANNEL_CLOSED);
+  ok(/The form reloaded/.test(status.textContent), `says what happened: ${status.textContent}`);
+  notOk(/listener|message channel/i.test(status.textContent), 'Chrome\'s text is gone');
+  notOk(/✗/.test(status.textContent), 'no failure mark');
+  notOk(status.classList.contains('tcv-error'), 'not shown in red');
+});
+
+test('a fill whose extension was reloaded says to refresh, in place of the count', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
+  renderLater(page, fixtures.WORKDAY_MYINFO, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  const AF = page.window.__tcvAutofill;
+  const real = AF.runAutofill;
+  AF.runAutofill = async (...args) => Object.assign(await real(...args), { extensionReloaded: true });
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /refresh this page/i, 30000), 'it says so');
+  const status = page.document.getElementById('tcvGlobalStatus');
+  notOk(/Filled \d+/.test(status.textContent), status.textContent);
+  ok(status.classList.contains('tcv-error'), 'as an error');
+});
+
+test('any other frame error still shows as a failure', async () => {
+  const status = await frameFillStatus('Could not establish connection');
+  ok(/✗ Could not establish connection/.test(status.textContent), `passed through: ${status.textContent}`);
+  ok(status.classList.contains('tcv-error'), 'shown in red');
 });
 
 // Watches the panel body from the first moment it exists.
