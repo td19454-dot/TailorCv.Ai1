@@ -49,6 +49,10 @@ The four tailoring moves still apply, but the emphasis shifts.
 
 The honesty guardrail matters even more at a startup. In a small company, you interview with the people you would work beside, often in a deep technical conversation, and any [exaggeration](/blog/ai-resume-tailoring-human-voice) surfaces immediately. Tailoring means re-expressing your real experience to match what they value — never inventing it. A startup that catches a stretched claim in a founder conversation is a hard no, because they are hiring for trust as much as skill.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Read each edit before you accept it. In TailorCV, removed words show in red and new words in green.
+
 ## The Manual Way
 
 By hand: read the Wellfound posting closely (startups pack a lot into a short JD), note the stack, stage and the range they want, duplicate your resume, re-emphasise your most relevant, [impactful](/blog/how-to-quantify-resume-achievements) work, show breadth, keep it clean, and write a genuinely specific cover letter. Because the cover letter matters so much here, this takes *longer* than a big-company application done by hand — often twenty minutes-plus. Which is exactly why people fall back on a generic resume and a templated note, and exactly why founders ignore most of their applicants.

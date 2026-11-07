@@ -333,6 +333,12 @@ def parse_saved_experience(raw) -> list[dict]:
         entry["current"] = bool(e.get("current"))
         if entry["current"]:
             entry["to"] = ""
+        # Optional: the company's website, which only picks the logo the
+        # profile page shows. Kept only when given, so an entry without it has
+        # exactly the shape forms are filled from.
+        website = str(e.get("website") or "").strip()[:200]
+        if website:
+            entry["website"] = website
         if any(entry[k] for k in EXPERIENCE_FIELDS):
             out.append(entry)
     return out

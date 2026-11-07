@@ -114,6 +114,10 @@ So a well-built generic resume gets filtered out just as efficiently as a badly 
 
 TailorCV starts from the posting. Paste it with your resume, get a [free ATS match score](/ats-analysis) for that role — unlimited — with the exact missing keywords, and the AI **rewrites your bullets** to carry that language honestly, without inventing anything you did not do. About a minute per job.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+You can see each change before you keep it: removed words in red, new words in green.
+
 ## Round 4: The ATS Question
 
 **TailorCV wins.**

@@ -113,6 +113,10 @@ Careerflow has ATS scoring and keyword matching. On free, it is basic and you ge
 
 The difference is what happens after the score. Careerflow tells you what is missing. TailorCV **rewrites the resume** so it is not missing anymore.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+The rewrite is shown on your own resume: removed words in red, new words in green.
+
 That sounds like a small distinction. It is not. Here is the actual experience of the gap: you get a 58% match and a list of nine missing keywords. Now you are sitting at 11pm with a Word document trying to work "cross-functional stakeholder management" into a bullet about your final-year project, without lying, and without it reading like a robot wrote it. Then you do it again tomorrow. For a different job. With different keywords.
 
 By week three, most people stop tailoring. They go back to sending one generic resume to eighty companies, and the response rate quietly collapses — which is the exact thing they downloaded a tool to prevent. Our piece on [tailored vs generic resumes](/blog/tailored-vs-generic-resume) shows what that difference looks like in numbers.

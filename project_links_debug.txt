@@ -1,7 +1,7 @@
 === PROJECT NAMES FROM AI ===
   'TailorCV'
-  'Youtube Sentiment Analysis'
-  'Marketing Analytics'
+  'Myntra E-commerce Website Clone'
+  'Customer Behaviour Analytics'
 
 === ANNOTATION MAP (pdf) ===
 {
@@ -12,39 +12,39 @@
   ],
   [
    "Link",
-   "https://www.thetailorcv.com"
+   "https://thetailorcv.com"
   ]
  ],
- "Youtube Sentiment Analysis": [
+ "Myntra E-commerce Website Clone": [
   [
    "GitHub",
-   "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"
+   "https://github.com/td19454-dot/myntraaclone"
   ],
   [
    "Link",
-   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"
+   "https://myntraaclone.onrender.com"
   ]
  ],
- "Marketing Analytics": [
+ "Customer Behaviour Analytics": [
   [
    "GitHub",
-   "https://github.com/SSarkar-1/saas_Chatbot"
+   "https://github.com/td19454-dot/customer_behavior"
   ]
  ]
 }
 
 === TITLE POSITIONS FOUND IN PDF ===
-  page0 top=232.7  'TailorCV'
-  page0 top=353.5  'Youtube Sentiment Analysis'
-  page0 top=417.5  'Marketing Analytics'
+  page0 top=216.9  'TailorCV'
+  page0 top=321.6  'Myntra E-commerce Website Clone'
+  page0 top=376.6  'Customer Behaviour Analytics'
   NOT LOCATED: []
 
 === LINK POSITIONS AND DECISIONS ===
-  page0 top=  241.9 x0= 205.4 -> 'TailorCV' (dist 0.1)  https://github.com/td19454-dot/TailorCv.Ai1
-  page0 top=  241.9 x0= 237.5 -> 'TailorCV' (dist 0.1)  https://www.thetailorcv.com
-  page0 top=  362.6 x0= 279.7 -> 'Youtube Sentiment Analysis' (dist 0.1)  https://github.com/SSarkar-1/Youtube_Sentiment_Insights
-  page0 top=  362.6 x0= 311.7 -> 'Youtube Sentiment Analysis' (dist 0.1)  https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view
-  page0 top=  426.6 x0= 262.8 -> 'Marketing Analytics' (dist 0.1)  https://github.com/SSarkar-1/saas_Chatbot
+  page0 top=  224.4 x0= 163.7 -> 'TailorCV' (dist 0.2)  https://github.com/td19454-dot/TailorCv.Ai1
+  page0 top=  224.4 x0= 192.1 -> 'TailorCV' (dist 0.2)  https://thetailorcv.com
+  page0 top=  329.1 x0= 223.7 -> 'Myntra E-commerce Website Clone' (dist 0.2)  https://github.com/td19454-dot/myntraaclone
+  page0 top=  329.1 x0= 252.2 -> 'Myntra E-commerce Website Clone' (dist 0.2)  https://myntraaclone.onrender.com
+  page0 top=  384.0 x0= 219.3 -> 'Customer Behaviour Analytics' (dist 0.2)  https://github.com/td19454-dot/customer_behavior
 
 === TEXT MAP ===
 {}
@@ -58,34 +58,34 @@
   ],
   [
    "Link",
-   "https://www.thetailorcv.com"
+   "https://thetailorcv.com"
   ]
  ],
- "Youtube Sentiment Analysis": [
+ "Myntra E-commerce Website Clone": [
   [
    "GitHub",
-   "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"
+   "https://github.com/td19454-dot/myntraaclone"
   ],
   [
    "Link",
-   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"
+   "https://myntraaclone.onrender.com"
   ]
  ],
- "Marketing Analytics": [
+ "Customer Behaviour Analytics": [
   [
    "GitHub",
-   "https://github.com/SSarkar-1/saas_Chatbot"
+   "https://github.com/td19454-dot/customer_behavior"
   ]
  ]
 }
 
 === AFTER inject_links ===
   'TailorCV'
-     links=[{"label": "GitHub", "url": "https://github.com/td19454-dot/TailorCv.Ai1"}, {"label": "Link", "url": "https://www.thetailorcv.com"}]
+     links=[{"label": "GitHub", "url": "https://github.com/td19454-dot/TailorCv.Ai1"}, {"label": "Link", "url": "https://thetailorcv.com"}]
      github_link='' url=''
-  'Youtube Sentiment Analysis'
-     links=[{"label": "GitHub", "url": "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"}, {"label": "Link", "url": "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"}]
+  'Myntra E-commerce Website Clone'
+     links=[{"label": "GitHub", "url": "https://github.com/td19454-dot/myntraaclone"}, {"label": "Link", "url": "https://myntraaclone.onrender.com"}]
      github_link='' url=''
-  'Marketing Analytics'
-     links=[{"label": "GitHub", "url": "https://github.com/SSarkar-1/saas_Chatbot"}]
+  'Customer Behaviour Analytics'
+     links=[{"label": "GitHub", "url": "https://github.com/td19454-dot/customer_behavior"}]
      github_link='' url=''

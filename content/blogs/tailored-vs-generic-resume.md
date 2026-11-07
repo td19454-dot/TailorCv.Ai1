@@ -33,6 +33,10 @@ A **[tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)**
 
 The same experience, framed generically, sounds like everyone else. Framed with specificity and alignment to the posting, it stands out immediately.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+This is what that reframing looks like on a real resume: removed words in red, new words in green.
+
 ---
 
 ## Side-by-Side: Every Section Compared

@@ -67,6 +67,10 @@ It is not a job-match tool. It does not take a job description, score your resum
 
 TailorCV starts there. You paste the posting, upload your resume, and get an [ATS match score](/ats-analysis) that names the gaps. Then it rewrites your bullets to carry the missing language *only where your experience supports it* — the rule is that it never claims a skill your resume shows no evidence for. Our [guide to matching a resume to a job description](/blog/how-to-match-resume-keywords-to-job-description) covers the method if you want to do it by hand instead.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+The rewrite happens on the resume you uploaded, with removed words in red and new words in green.
+
 If your resume is not getting callbacks, the question is usually not "does this look good" but "does this match what they asked for." Those need different tools.
 
 ## Round 4: One Resume vs a Version Per Job

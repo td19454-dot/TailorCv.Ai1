@@ -149,6 +149,10 @@ Before submitting, apply this test to every bullet on your resume:
 
 If yes, rewrite it until the answer is no.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Seeing old and new wording together makes the test easier to run on each edited bullet.
+
 The goal is a resume where every line is uniquely *yours* - because it contains a specific result, a specific tool, a specific context, or a specific scale that only you could have written.
 
 ---

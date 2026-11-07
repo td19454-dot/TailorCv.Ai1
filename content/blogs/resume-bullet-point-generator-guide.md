@@ -25,6 +25,10 @@ A resume bullet point generator can turn a flat job description into a sharp, me
 
 A bullet point generator is a drafting tool, not a fact-finder. It cannot invent metrics you never had, and it cannot know your actual impact unless you tell it. What it is good at is structure: turning a rough description into a clean, action-first sentence, suggesting stronger verbs, and formatting the result so it reads consistently with the rest of your resume.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+When TailorCV rewrites a bullet, removed words show in red and new words in green, so you can check each number before you keep it.
+
 The mistake most people make is treating the generator like a search engine - typing "sales associate bullet points" and expecting something usable. That produces generic filler because the tool has nothing specific to work with. Treat it more like a very fast editor: you give it raw material, it gives you a polished draft, and you check that draft against what actually happened.
 
 This distinction matters because recruiters and hiring managers increasingly recognize AI-flavored resume language. A bullet that sounds impressive but vague is now a bigger red flag than a slightly plain one, because it signals the applicant did not put in the work to make it specific. The goal is not to sound like AI wrote your resume - it is to use AI to get to a strong draft faster, then finish the job yourself.

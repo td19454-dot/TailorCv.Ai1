@@ -132,6 +132,10 @@ So the most beautiful resume in the world, sent to a portal, gets filtered out j
 
 TailorCV starts from the posting. [Free ATS match score](/ats-analysis), exact missing keywords, and the AI **rewrites your bullets** to carry that language honestly — without inventing anything you did not do. About a minute per job.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Each edit is marked on your resume, with removed words in red and new words in green.
+
 
 ## Round 5: The Chrome Extension
 

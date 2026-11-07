@@ -77,6 +77,10 @@ Pull three postings for your role in the target industry. Highlight the nouns an
 
 Only translate where the underlying work is genuinely the same. If the target industry's term implies something you did not do, keep your original description.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Check translated terms line by line. TailorCV marks removed words in red and new words in green.
+
 ## Step 2: Rewrite Bullets in Shared Functional Language
 
 Now rework your bullets using the function's neutral vocabulary, keeping the facts intact.

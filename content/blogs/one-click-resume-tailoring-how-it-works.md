@@ -44,6 +44,10 @@ This is the step people worry about, and rightly, because a careless tool here p
 
 Good one-click tailoring rewrites your bullets so they carry the posting's language — but under a hard constraint: **it may only re-express what is genuinely on your resume.** It rephrases "worked with clients and teams" into "managed stakeholder relationships across teams" *if your experience supports that*; it does not invent a project, an employer, or a skill you never had. This guardrail is the whole difference between a tool worth using and one that gets you caught in the interview.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+TailorCV marks every edit on your own resume: removed words in red, new words in green. Check them against what you actually did.
+
 Within that constraint, three things happen. It works the missing keywords in where your real experience backs them, so the language matches. It keeps [your own voice](/blog/ai-resume-tailoring-human-voice) rather than flattening everything into corporate mush, because a resume that reads like a machine wrote it fails the human stage even if it passes the filter. And it avoids the [keyword-stuffing mistakes](/blog/ats-keyword-mistakes) that a good tool is specifically designed not to make — cramming terms with no substance behind them is exactly what [sounds generic](/blog/how-to-stop-sounding-generic-on-resume) to a recruiter. Where it can, it [quantifies](/blog/how-to-quantify-achievements-on-resume) using numbers already in your history.
 
 The result is not a new resume. It is your resume, re-emphasised and re-worded to answer this specific posting — which is precisely what tailoring by hand aims at, done in a click. The manual version of exactly this is in [how to tailor your resume for every job](/blog/how-to-tailor-resume-for-every-job) and [in five minutes](/blog/how-to-tailor-resume-in-5-minutes).

@@ -616,6 +616,9 @@ class UserApplyProfile(Base):
     # parse_saved_education. Supersedes university / degree / major /
     # graduation_date once saved.
     education_history = Column(Text, nullable=True)
+    # JSON list of projects / outside experience the user adds on the profile
+    # page — see routers/profile_page.py parse_saved_projects.
+    projects = Column(Text, nullable=True)
     linkedin_url = Column(String(300), nullable=True)
     github_url = Column(String(300), nullable=True)
     portfolio_url = Column(String(300), nullable=True)

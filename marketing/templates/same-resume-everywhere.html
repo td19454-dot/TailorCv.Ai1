@@ -1,0 +1,32 @@
+---
+subject: {{ first_name }}, are you sending the same resume everywhere?
+preheader: Two jobs with the same title can ask for very different things.
+---
+{% extends "_base.html" %}
+{% block body %}
+<p>Hi {{ first_name }},</p>
+
+<p>Two jobs with the same title can ask for very different things. One resume sent to both will fit neither of them well, even when you could do either job.</p>
+
+<p>Rewriting it by hand for every application takes time, so most people stop doing it. Here&rsquo;s the quicker way to do it in TailorCV:</p>
+
+<p style="line-height:1.9;">
+  <strong>1.</strong> Add your resume and the job description.<br>
+  <strong>2.</strong> See your match rate and which skills are marked missing.<br>
+  <strong>3.</strong> Let the AI rewrite your resume for that job.<br>
+  <strong>4.</strong> Check each change, with removed words in red and new words in green.
+</p>
+
+<p>Please don&rsquo;t skip step 4. Keep only what&rsquo;s true, because an interviewer can ask about anything on your resume.</p>
+
+<p style="margin:28px 0;">
+  <a href="{{ base_url }}/optimize?utm_source=email&utm_medium=marketing&utm_campaign={{ campaign }}"
+     style="background:#2563eb;color:#ffffff;padding:12px 22px;border-radius:6px;text-decoration:none;font-weight:bold;">
+    Tailor my resume
+  </a>
+</p>
+
+<p>Pick one job you actually want and try it on that.</p>
+
+<p>Until next time,<br>Shubham Sarkar<br>Co-Founder, TailorCV</p>
+{% endblock %}

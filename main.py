@@ -780,6 +780,8 @@ def _ensure_apply_profile_columns() -> None:
         to_add.append("ADD COLUMN work_experience TEXT")
     if "education_history" not in cols:
         to_add.append("ADD COLUMN education_history TEXT")
+    if "projects" not in cols:
+        to_add.append("ADD COLUMN projects TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -14557,6 +14559,50 @@ def _template_parsed_to_editor_payload(parsed: dict) -> dict:
     return {"cvData": cv_data, "meta": {}}
 
 
+class _ResumeAIError(Exception):
+    """The model call inside editor_payload_from_resume failed."""
+
+
+async def editor_payload_from_resume(pdf_path: str, resume_text: str) -> dict:
+    """Structured resume data — the Make CV import pipeline, shared with the
+    profile page (routers/profile_page.py) so both read a resume the same way.
+
+    The same AI parse as the template-change feature (each project / job as its
+    own entry), dropped bullets restored, and links recovered from the PDF's
+    annotation layer as the tailoring pipeline does: PDFs hide most project /
+    certification URLs behind clickable anchor text the extracted text lacks.
+    Raises _ResumeAIError when the model call fails; link recovery failing only
+    loses links.
+    """
+    prompt = create_prompt(resume_text, "")
+    try:
+        response_string = await get_resume_response(prompt)
+    except Exception as exc:
+        logger.exception("AI generation failed")
+        raise _ResumeAIError(str(exc)) from exc
+
+    parsed = parse_ai_json_response(response_string)
+    parsed = restore_dropped_bullets(parsed, resume_text)
+
+    try:
+        normalized_text = normalize_links(resume_text)
+        (extracted_links, extracted_pub_links, mapped_links,
+         project_link_map) = await asyncio.gather(
+            asyncio.to_thread(extract_project_links, normalized_text),
+            asyncio.to_thread(extract_publication_links, normalized_text),
+            asyncio.to_thread(map_project_demo_links, normalized_text),
+            asyncio.to_thread(extract_project_link_map, normalized_text),
+        )
+        parsed = await _recover_project_and_publication_links(
+            parsed, pdf_path, project_link_map, extracted_links,
+            extracted_pub_links, mapped_links,
+        )
+        await _recover_contact_and_section_links(parsed, pdf_path)
+    except Exception:
+        logger.exception("Link recovery failed during CV import; continuing without it")
+    return _template_parsed_to_editor_payload(parsed)
+
+
 @app.post("/api/extract-cv-from-pdf")
 @app.post("/api/extract-cv-from-pdf/")
 @app.post("/extract-cv-from-pdf")
@@ -14586,39 +14632,10 @@ async def extract_cv_from_pdf(request: Request, file: UploadFile = File(...)):
         if not resume_text or not resume_text.strip():
             raise HTTPException(status_code=400, detail="No extractable text found in this PDF.")
 
-        # Use the same AI parsing path as the template-change feature for accurate,
-        # fully-structured output (each project / experience as a separate entry).
-        prompt = create_prompt(resume_text, "")
         try:
-            response_string = await get_resume_response(prompt)
-        except Exception as exc:
-            logger.exception("AI generation failed")
-            raise HTTPException(status_code=500, detail=user_error_detail(exc, "We couldn't extract your CV details this time. Please try again."))
-
-        parsed = parse_ai_json_response(response_string)
-        parsed = restore_dropped_bullets(parsed, resume_text)
-
-        # Recover links exactly as the tailoring pipeline does. Without this the
-        # builder only kept whatever URLs the model happened to copy out of the
-        # extracted text, and PDFs hide most project / certification URLs behind
-        # clickable anchor text that only the annotation layer contains.
-        try:
-            normalized_text = normalize_links(resume_text)
-            (extracted_links, extracted_pub_links, mapped_links,
-             project_link_map) = await asyncio.gather(
-                asyncio.to_thread(extract_project_links, normalized_text),
-                asyncio.to_thread(extract_publication_links, normalized_text),
-                asyncio.to_thread(map_project_demo_links, normalized_text),
-                asyncio.to_thread(extract_project_link_map, normalized_text),
-            )
-            parsed = await _recover_project_and_publication_links(
-                parsed, file_path, project_link_map, extracted_links,
-                extracted_pub_links, mapped_links,
-            )
-            await _recover_contact_and_section_links(parsed, file_path)
-        except Exception:
-            logger.exception("Link recovery failed during CV import; continuing without it")
-        return _template_parsed_to_editor_payload(parsed)
+            return await editor_payload_from_resume(file_path, resume_text)
+        except _ResumeAIError as exc:
+            raise HTTPException(status_code=500, detail=user_error_detail(exc.__cause__ or exc, "We couldn't extract your CV details this time. Please try again."))
     except HTTPException:
         raise
     except Exception as exc:

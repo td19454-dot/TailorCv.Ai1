@@ -108,6 +108,10 @@ The first bullet of your most recent job gets the most reading time. If the post
 
 You are not fabricating experience - you are reordering what is already there to lead with what is most relevant to *this* posting.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+If you use TailorCV for this step, every edit is marked in red and green, so a quick check takes less of your five minutes.
+
 ---
 
 ## After the 5 Minutes: Verify With a Tool

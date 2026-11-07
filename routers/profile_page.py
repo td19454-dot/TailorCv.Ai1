@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from dataclasses import dataclass, field
 from datetime import date
 
@@ -556,6 +557,8 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
         Spec("phone", "phone", "Phone", kind="phone",
              help="Country code and number are kept separate, so forms with their own "
                   "country-code field get just the number."),
+    ]),
+    ("links", "Portfolio & links", [
         Spec("linkedinUrl", "linkedin_url", "LinkedIn", placeholder="linkedin.com/in/…", max_len=300),
         Spec("githubUrl", "github_url", "GitHub", placeholder="github.com/…", max_len=300),
         Spec("portfolioUrl", "portfolio_url", "Portfolio / website", placeholder="https://…",
@@ -583,6 +586,13 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
              max_len=60000),
         Spec("yearsExperience", "years_experience", "Years of experience", placeholder="e.g. 3",
              max_len=20),
+    ]),
+    ("projects", "Projects & outside experience", [
+        Spec("projects", "projects", "Projects", kind="projects", wide=True,
+             help="Personal, academic, open-source or volunteer work. Dates as MM/YYYY.",
+             max_len=40000),
+    ]),
+    ("skills", "Skills", [
         Spec("skills", "skills", "Key skills", kind="textarea", wide=True,
              placeholder="Comma-separated", max_len=2000),
     ]),
@@ -634,10 +644,6 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
                   "criminal-history question; with “Yes” you answer each one yourself. "
                   "Questions asking you to consent to a background check are never "
                   "answered from this."),
-        Spec("willingToRelocate", "willing_to_relocate", "Willing to relocate?",
-             kind="select", options=YES_NO),
-        Spec("remotePreference", "remote_preference", "Work arrangement", kind="select",
-             options=REMOTE),
     ]),
     # Workday's Voluntary Disclosures ask these. Filled only from here by the
     # extension; never part of what any model is shown (PRIVATE_KEYS).
@@ -650,7 +656,11 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
         Spec("cityOfBirth", "city_of_birth", "City of birth", max_len=100,
              help="Only for forms that ask. Never sent to the AI."),
     ]),
-    ("availability", "Availability & compensation", [
+    ("availability", "Availability & preferences", [
+        Spec("willingToRelocate", "willing_to_relocate", "Willing to relocate?",
+             kind="select", options=YES_NO),
+        Spec("remotePreference", "remote_preference", "Work arrangement", kind="select",
+             options=REMOTE),
         Spec("noticePeriod", "notice_period", "Notice period", placeholder="e.g. 30 days",
              max_len=60),
         Spec("availableStartDate", "available_start_date", "Earliest start date",
@@ -691,6 +701,27 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
 ]
 
 ALL_SPECS = {s.key: s for _, _, specs in SECTIONS for s in specs}
+
+# The page's left-hand "career hub": each hub is one panel of section cards.
+# Every section appears in exactly one hub (checked below), so a field added to
+# SECTIONS can't silently go missing from the page.
+HUBS: list[tuple[str, str, str, list[str]]] = [
+    ("profile", "Profile", "Edit autofill information",
+     ["work", "education", "projects", "skills", "links"]),
+    ("personal", "Personal Info", "Edit demographic data",
+     ["name", "contact", "address", "birth", "eligibility", "eeo"]),
+    ("preferences", "Job Preferences", "Availability & pay",
+     ["availability", "answers", "consent"]),
+]
+_SECTION_BY_ID = {sid: (sid, title, specs) for sid, title, specs in SECTIONS}
+assert sorted(s for _, _, _, ids in HUBS for s in ids) == sorted(_SECTION_BY_ID), \
+    "every profile section must belong to exactly one hub"
+
+
+def _hubs_for_page() -> list[dict]:
+    return [{"id": hid, "title": title, "sub": sub,
+             "sections": [_SECTION_BY_ID[s] for s in ids]}
+            for hid, title, sub, ids in HUBS]
 EEO_COLUMNS = {"gender", "race_ethnicity", "veteran_status", "disability_status",
                "gender_pronouns", "lgbtq_identity"}
 SELECT_VALUES = {s.key: {v for v, _ in s.options} for s in ALL_SPECS.values() if s.kind == "select"}
@@ -737,10 +768,17 @@ async def _effective(db, user, prof) -> dict:
         "previousCompany": p.previous_company, "yearsExperience": p.years_experience,
         "university": p.university, "degree": p.degree, "major": p.major,
         "graduationDate": p.graduation_date, "gpa": p.gpa,
-        "skills": ", ".join(p.top_skills),
+        # Every skill on the resume, not p.top_skills: that is autofill's short
+        # list for one form (at most 8), and showing it here hid the rest.
+        # The resume's own Skills section when it has one (read exactly, see
+        # resume_facts.extract_skill_groups), else the parsed list.
+        "skills": ", ".join(rf.flatten_skill_groups(rf.extract_skill_groups(user.base_resume_text)))
+                  or (", ".join(p.top_skills) if not (facts.get("skills") or []) else
+                      ", ".join(str(s).strip() for s in facts["skills"] if str(s).strip())),
         "noticePeriod": p.notice_period, "availableStartDate": p.available_start_date,
         "expectedSalary": p.expected_salary,
         "whyThisRole": p.why_this_role,
+        "projects": projects_from_facts(facts.get("projects")),
     }
 
 
@@ -763,9 +801,25 @@ def _stored(prof, user) -> dict:
             out[key] = parse_saved_experience(getattr(prof, spec.column, "") if prof else "")
         elif spec.kind == "education":
             out[key] = parse_saved_education(getattr(prof, spec.column, "") if prof else "")
+        elif spec.kind == "projects":
+            out[key] = parse_saved_projects(getattr(prof, spec.column, "") if prof else "")
         else:
             out[key] = str((getattr(prof, spec.column, "") if prof else "") or "")
     return out
+
+
+def _is_truncated_skills(saved: str, resume: str) -> bool:
+    """A saved skills list that is only autofill's old top-8 cut of the resume.
+
+    Before the page showed every resume skill, it showed at most 8, and saving
+    the card stored just those. Such a list — 8 or fewer, every one taken from
+    the resume, and the resume has more — is that cut, not the user's choice.
+    A list with any skill of the user's own, or a longer one, is left alone.
+    """
+    def items(text):
+        return [x.strip().lower() for x in str(text or "").split(",") if x.strip()]
+    mine, theirs = items(saved), items(resume)
+    return 0 < len(mine) <= 8 and len(theirs) > len(mine) and set(mine) <= set(theirs)
 
 
 def _page_model(stored: dict, effective: dict, facts_cached: bool) -> dict:
@@ -799,7 +853,11 @@ def _page_model(stored: dict, effective: dict, facts_cached: bool) -> dict:
             fields[key] = {"value": s if saved else e, "source": "saved" if saved
                            else ("suggested" if e.get("number") else "")}
             continue
-        if s:
+        if key == "skills" and s and e and _is_truncated_skills(s, e):
+            # Saved while this page could only show autofill's top 8: the
+            # whole resume list is shown instead, and a save stores it.
+            fields[key] = {"value": e, "source": "suggested"}
+        elif s:
             fields[key] = {"value": s, "source": "saved"}
         elif e:
             fields[key] = {"value": e, "source": "suggested"}
@@ -823,17 +881,34 @@ async def profile_page(request: Request):
         prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user.id).first()
         from auto_apply import resume_facts as rf
 
-        model = _page_model(_stored(prof, user), await _effective(db, user, prof),
-                            rf.load_cached_facts(db, user) is not None)
+        cached = rf.load_cached_facts(db, user)
+        model = _page_model(_stored(prof, user), await _effective(db, user, prof), cached is not None)
+        has_resume = bool(user.base_resume_path
+                          and await document_store.ensure_file_async(user.base_resume_path))
+        # The resume hasn't been read for projects yet (never parsed, or parsed
+        # before projects were extracted): the page asks for it in the
+        # background, so the page itself still loads without an LLM call.
+        needs_resume_parse = _needs_resume_read(user, cached)
+        uploaded = user.base_resume_uploaded_at if has_resume else None
+        has_cover = bool(user.base_cover_letter_path
+                         and await document_store.ensure_file_async(user.base_cover_letter_path))
+        cover_at = user.base_cover_letter_generated_at if has_cover else None
         return templates.TemplateResponse(request, "profile.html", {
             "request": request,
-            "sections": SECTIONS,
+            "hubs": _hubs_for_page(),
             "degree_groups": DEGREE_GROUPS,
             "field_options": FIELD_OF_STUDY_OPTIONS,
             "today_iso": date.today().isoformat(),
             "model": model,
             "user_name": user.name or "",
-            "has_resume": bool(user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path)),
+            "has_resume": has_resume,
+            "needs_resume_parse": needs_resume_parse,
+            # The resume's skill headings, so the Skills card groups like it.
+            "skill_groups": rf.extract_skill_groups(user.base_resume_text),
+            "resume_filename": (user.base_resume_filename or "Your resume") if has_resume else "",
+            "resume_uploaded": uploaded.strftime("%d %b %Y") if uploaded else "",
+            "has_cover_letter": has_cover,
+            "cover_generated": cover_at.strftime("%d %b %Y") if cover_at else "",
         })
     finally:
         db.close()
@@ -849,6 +924,90 @@ async def get_profile(request: Request):
 
         return _page_model(_stored(prof, user), await _effective(db, user, prof),
                            rf.load_cached_facts(db, user) is not None)
+    finally:
+        db.close()
+
+
+def _needs_resume_read(user, cached) -> bool:
+    """Whether the resume still has to be read with the Make CV pipeline."""
+    return bool((user.base_resume_text or "").strip()) and (
+        cached is None or cached.get("extract_pipeline") != EXTRACT_PIPELINE)
+
+
+@router.post("/api/profile/resume-projects")
+async def resume_projects(request: Request):
+    """Read the base resume with the Make CV import pipeline (main.py
+    editor_payload_from_resume) and cache the result as the resume facts —
+    once per resume: a new upload drops the cache. Returns the projects, and
+    `parsed` when the page should reload to show everything it found.
+
+    The facts parse (auto_apply/resume_facts.py) still runs when nothing is
+    cached, alongside, because it alone separates education's field of study.
+    A failed read is NOT stored: caching empty facts would wipe the
+    suggestions an older parse still gives.
+    """
+    import asyncio
+    import logging
+    import sys
+
+    from auto_apply import resume_facts as rf
+
+    log = logging.getLogger(__name__)
+    db = SessionLocal()
+    try:
+        user = _require_user(request, db)
+        user_id, text, pdf = user.id, (user.base_resume_text or "").strip(), user.base_resume_path or ""
+        cached = rf.load_cached_facts(db, user)
+    finally:
+        db.close()   # not held open across the model calls below
+    if not text:
+        return {"projects": [], "parsed": False}
+    if not _needs_resume_read(user, cached):
+        return {"projects": projects_from_facts(cached.get("projects")), "parsed": False}
+
+    app_module = sys.modules.get("main") or sys.modules.get("__main__")
+    make_cv = getattr(app_module, "editor_payload_from_resume", None)
+    have_pdf = bool(pdf) and await document_store.ensure_file_async(pdf)
+
+    async def none():
+        return None
+    payload, light = await asyncio.gather(
+        make_cv(pdf, text) if (make_cv and have_pdf) else none(),
+        rf._llm_facts(text) if cached is None else none(),
+        return_exceptions=True)
+    if isinstance(payload, BaseException):
+        log.warning("profile: Make CV resume read failed", exc_info=payload)
+        payload = None
+    if isinstance(light, BaseException):
+        log.warning("profile: resume facts parse failed", exc_info=light)
+        light = None
+
+    if cached is not None:
+        facts = cached
+    elif light is not None:
+        facts = rf._normalize(light, text)
+    elif payload is not None:
+        facts = rf.empty_facts()
+    else:
+        raise HTTPException(status_code=502, detail="Couldn't read your resume. Try again later.")
+    if payload is not None:
+        facts = _merge_make_cv(facts, payload)
+    # Marked even when the Make CV read failed, so a page load never retries
+    # it in a loop; the next resume upload drops the cache and tries again.
+    facts["extract_pipeline"] = EXTRACT_PIPELINE
+    facts.setdefault("projects", [])
+
+    db = SessionLocal()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user or (user.base_resume_text or "").strip() != text:
+            # Signed out, or a new resume was uploaded meanwhile: this read is stale.
+            return {"projects": [], "parsed": False}
+        # Links the parse still missed, from the PDF's clickable annotations.
+        facts["projects"] = await _add_pdf_project_links(user, list(facts["projects"]))
+        facts["project_links_checked"] = True
+        rf.store_facts(db, user, facts)
+        return {"projects": projects_from_facts(facts["projects"]), "parsed": True}
     finally:
         db.close()
 
@@ -908,6 +1067,256 @@ def _validated_education(raw) -> list:
     return schools
 
 
+PROJECT_FIELDS = ("name", "role", "url", "from", "to", "description")
+PROJECT_LIMITS = {"name": 160, "role": 160, "url": 300, "from": 7, "to": 7, "description": 5000}
+MAX_PROJECTS = 20
+
+
+def parse_saved_projects(raw) -> list[dict]:
+    """The stored JSON list of projects, tolerant of anything malformed (read as empty)."""
+    if isinstance(raw, str):
+        try:
+            raw = json.loads(raw) if raw.strip() else []
+        except ValueError:
+            return []
+    out = []
+    for p in raw if isinstance(raw, list) else []:
+        if not isinstance(p, dict):
+            continue
+        entry = {k: str(p.get(k) or "").strip() for k in PROJECT_FIELDS}
+        entry["current"] = bool(p.get("current"))
+        if entry["current"]:
+            entry["to"] = ""
+        if any(entry[k] for k in PROJECT_FIELDS):
+            out.append(entry)
+    return out
+
+
+def projects_from_facts(projects) -> list[dict]:
+    """The resume's parsed projects in the profile's shape (dates as MM/YYYY)."""
+    from auto_apply.profile import to_month_year
+    from auto_apply.resume_facts import join_wrapped_lines
+
+    out = []
+    for p in projects or []:
+        if not isinstance(p, dict):
+            continue
+        end = str(p.get("end_date") or "").strip()
+        current = bool(p.get("is_current")) or end.lower() in ("present", "current", "ongoing", "now")
+        out.append({"name": str(p.get("name") or "").strip(), "role": str(p.get("role") or "").strip(),
+                    "url": str(p.get("url") or "").strip(),
+                    "from": to_month_year(p.get("start_date")),
+                    "to": "" if current else to_month_year(end), "current": current,
+                    # Parses from before the prompt joined wrapped bullets.
+                    "description": join_wrapped_lines(p.get("description"))})
+    return parse_saved_projects(out)
+
+
+# Marks facts read with the Make CV import pipeline (editor_payload_from_resume).
+# Cached facts without it are re-read once, so every user gets the better parse.
+EXTRACT_PIPELINE = "make-cv-2"
+_PRESENT_WORDS = ("present", "current", "now", "ongoing", "till date", "to date", "today")
+
+
+def _split_dates(text: str) -> tuple[str, str]:
+    """"Dec 2025 – Present" → ("Dec 2025", "Present"); "2023 - 2027" → the two years;
+    a single date is the start. Hyphens inside a date ("2024-06") are kept."""
+    t = str(text or "").strip()
+    if not t:
+        return "", ""
+    parts = [p.strip() for p in re.split(r"\s+(?:–|—|-|to)\s+|\s*[–—]\s*|(?<=\d{4})\s*-\s*(?=\w)", t) if p.strip()]
+    if len(parts) >= 2:
+        return _clean_date(parts[0]), _clean_date(parts[-1])
+    return _clean_date(parts[0]), ""
+
+
+_MONTH_NAMES = ("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec")
+
+
+def _clean_date(text: str) -> str:
+    """A resume date in a form auto_apply.profile.to_month_year reads: "4 jun,
+    2026" / "June 4, 2026" → "Jun 2026". Anything else is returned as written."""
+    t = str(text or "").strip()
+    m = (re.fullmatch(r"\d{1,2}(?:st|nd|rd|th)?\s*[-/ ]?\s*([A-Za-z]{3,9})\.?,?\s*'?(\d{4})", t)
+         or re.fullmatch(r"([A-Za-z]{3,9})\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s*(\d{4})", t))
+    if m and m.group(1)[:3].lower() in _MONTH_NAMES:
+        return m.group(1)[:3].title() + " " + m.group(2)
+    return t
+
+
+def _clean_score(text: str) -> str:
+    """A grade as the editor parse gives it ("CGPA - 7.5", "percentage - 85%",
+    "8.7/10") reduced to the value: "7.5", "85%", "8.7/10". Unreadable → as given."""
+    t = str(text or "").strip()
+    m = re.search(r"(\d{1,3}(?:\.\d{1,2})?)\s*(?:/\s*(\d{1,3}(?:\.\d{1,2})?))?\s*(%)?", t)
+    if not m:
+        return t
+    if m.group(3) or re.search(r"percent|marks", t, re.I):
+        return m.group(1) + "%"
+    return m.group(1) + ("/" + m.group(2) if m.group(2) else "")
+
+
+def _clean_name(text: str) -> str:
+    """"Jadavpur University,kolkata" → "Jadavpur University, Kolkata"."""
+    t = re.sub(r"\s*,\s*", ", ", str(text or "").strip())
+    return re.sub(r", ([a-z])", lambda m: ", " + m.group(1).upper(), t)
+
+
+def _detail_lines(details: str) -> str:
+    """Editor "details" ("• a\\n• b") as plain lines, one bullet each."""
+    from auto_apply.resume_facts import join_wrapped_lines
+
+    return join_wrapped_lines(details)
+
+
+def _merge_make_cv(facts: dict, payload: dict) -> dict:
+    """Layer the Make CV parse over the facts. It restores bullets the model
+    dropped and recovers links from the PDF's annotation layer, so work history,
+    projects, per-school grades and missing contact links come from it. The
+    facts keep what that schema lacks: education's separate field of study
+    (Workday's Field of Study), and anything the editor parse came back without."""
+    from auto_apply import resume_facts as rf
+
+    cv = (payload or {}).get("cvData") or {}
+    pi_cv = cv.get("personalInfo") or {}
+    pi = facts.setdefault("personal_info", {})
+    for fact_key, cv_key in (("full_name", "name"), ("email", "email"), ("phone", "phone"),
+                             ("location", "location"), ("linkedin", "linkedin"),
+                             ("github", "github"), ("portfolio", "portfolio")):
+        if not str(pi.get(fact_key) or "").strip() and str(pi_cv.get(cv_key) or "").strip():
+            pi[fact_key] = str(pi_cv[cv_key]).strip()
+    if pi.get("location") and not any((facts.get("address") or {}).values()):
+        facts["address"] = rf.split_location(pi["location"])
+
+    work = []
+    for e in cv.get("experience") or []:
+        start, end = _split_dates(e.get("dates"))
+        entry = {"company": str(e.get("company") or "").strip(), "role": str(e.get("title") or "").strip(),
+                 "location": str(e.get("location") or "").strip(), "start_date": start,
+                 "end_date": end, "is_current": end.lower() in _PRESENT_WORDS,
+                 "description": _detail_lines(e.get("details"))[:5000]}
+        if entry["company"] or entry["role"]:
+            work.append(entry)
+    if work:
+        facts["work_history"] = work[:12]
+
+    projects = []
+    for p in cv.get("projects") or []:
+        start, end = _split_dates(p.get("dates"))
+        entry = {"name": str(p.get("name") or "").strip()[:160],
+                 "role": "", "url": str(p.get("url") or p.get("github_link") or "").strip()[:300],
+                 "start_date": start, "end_date": end, "is_current": end.lower() in _PRESENT_WORDS,
+                 "description": _detail_lines(p.get("details"))[:5000]}
+        if entry["name"] or entry["description"]:
+            projects.append(entry)
+    if projects or "projects" not in facts:
+        facts["projects"] = projects[:12]
+
+    # Each school's own grade, matched by name; the facts' entries keep their
+    # field of study. Schools only the editor parse found are added.
+    def key(s):
+        return re.sub(r"[^a-z0-9]", "", str(s or "").lower())
+    edu = facts.setdefault("education", [])
+    for school in cv.get("education") or []:
+        name, score = _clean_name(school.get("school")), _clean_score(school.get("score"))
+        match = next((e for e in edu if key(e.get("institution")) and
+                      (key(e.get("institution")) in key(name) or key(name) in key(e.get("institution")))), None)
+        if match is None and name:
+            start, end = _split_dates(school.get("year"))
+            match = {"institution": name, "degree": str(school.get("degree") or "").strip(),
+                     "field_of_study": "", "start_date": start, "end_date": end, "description": ""}
+            edu.append(match)
+        if match is not None and score and not match.get("gpa"):
+            match["gpa"] = score
+    if not facts.get("gpa"):
+        facts["gpa"] = next((e["gpa"] for e in edu if e.get("gpa")), "")
+
+    # Skills from both parses, the Make CV one first (it keeps every category
+    # the resume lists), without duplicates. Each parse alone missed some.
+    # The facts parse copies the resume's own spelling ("Java Script", "Fast
+    # Api", "Panda"), the Make CV parse often corrects it — the same skill
+    # twice. Compared ignoring case, spaces and punctuation, and a spelling
+    # one typo away ("Matpotlib") counts as the same skill.
+    from difflib import SequenceMatcher
+
+    def skill_key(s):
+        return re.sub(r"[^a-z0-9+#]", "", s.lower())
+
+    def same(a, b):
+        return a == b or (min(len(a), len(b)) >= 5 and SequenceMatcher(None, a, b).ratio() >= 0.88)
+
+    keys, skills = [], []
+    make_cv_skills = [s for row in cv.get("skills") or []
+                      for s in re.split(r"[,;|•]", str(row.get("items") or ""))]
+    for s in make_cv_skills + list(facts.get("skills") or []):
+        s = re.sub(r"\s+", " ", str(s)).strip(" .")
+        k = skill_key(s)
+        if s and k and len(s) <= 60 and not any(same(k, other) for other in keys):
+            keys.append(k)
+            skills.append(s)
+    if skills:
+        facts["skills"] = skills[:100]
+    facts["extract_pipeline"] = EXTRACT_PIPELINE
+    return facts
+
+
+async def _add_pdf_project_links(user, projects: list[dict]) -> list[dict]:
+    """Fill each project's missing link from the resume PDF's clickable links.
+
+    Resume links are usually invisible in the extracted text (a "GitHub" or ↗
+    icon carrying the URL), so the facts parse can't see them; main.py's
+    extract_project_links_from_pdf reads the PDF's link annotations and matches
+    each to the nearest project title. Looked up through sys.modules: this
+    router is imported BY main, and importing it back would either cycle or,
+    under `python main.py`, load a second copy of the whole app.
+    """
+    import asyncio
+    import sys
+
+    names = [p.get("name", "") for p in projects if p.get("name") and not p.get("url")]
+    path = getattr(user, "base_resume_path", "") or ""
+    if not names or not path or not await document_store.ensure_file_async(path):
+        return projects
+    app_module = sys.modules.get("main") or sys.modules.get("__main__")
+    finder = getattr(app_module, "extract_project_links_from_pdf", None)
+    if finder is None:
+        return projects
+    try:
+        found = await asyncio.to_thread(finder, path, names)
+    except Exception:
+        import logging
+        logging.getLogger(__name__).warning("profile: reading project links from the PDF failed", exc_info=True)
+        return projects
+    for p in projects:
+        pairs = found.get(p.get("name", "")) if not p.get("url") else None
+        if pairs:
+            p["url"] = str(pairs[0][1] or "").strip()[:300]
+    return projects
+
+
+def _validated_projects(raw) -> list:
+    """The project list as sent by the page, checked; 422 names the project and box."""
+    from auto_apply.profile import MONTH_YEAR_RE
+
+    if not isinstance(raw, list):
+        raise HTTPException(status_code=422, detail="Projects must be a list.")
+    projects = parse_saved_projects(raw)
+    if len(projects) > MAX_PROJECTS:
+        raise HTTPException(status_code=422, detail=f"At most {MAX_PROJECTS} projects can be saved.")
+    for n, proj in enumerate(projects, 1):
+        for fld, limit in PROJECT_LIMITS.items():
+            if len(proj[fld]) > limit:
+                raise HTTPException(status_code=422,
+                                    detail=f"Project {n}: {fld} is too long (max {limit}).")
+        for fld, name in (("from", "From"), ("to", "To")):
+            if proj[fld] and not MONTH_YEAR_RE.match(proj[fld]):
+                raise HTTPException(status_code=422,
+                                    detail=f"Project {n}: {name} should look like 01/2026.")
+        if proj["url"] and not proj["url"].lower().startswith(("http://", "https://")):
+            proj["url"] = "https://" + proj["url"]
+    return projects
+
+
 class ProfileSave(BaseModel):
     """Only keys present change. Unknown keys are refused rather than ignored,
     so a typo in the page cannot silently drop a value."""
@@ -960,6 +1369,10 @@ async def save_profile(request: Request, payload: ProfileSave):
             if spec.kind == "education":
                 schools = _validated_education(raw)
                 prof.education_history = json.dumps(schools, ensure_ascii=False) if schools else None
+                continue
+            if spec.kind == "projects":
+                projects = _validated_projects(raw)
+                prof.projects = json.dumps(projects, ensure_ascii=False) if projects else None
                 continue
             text = str(raw if raw is not None else "").strip()
             if len(text) > spec.max_len:

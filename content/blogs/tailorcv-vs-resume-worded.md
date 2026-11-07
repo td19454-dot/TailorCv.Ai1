@@ -54,6 +54,10 @@ Resume Worded tells you what is weak — a bullet lacks a metric, a verb is pass
 
 TailorCV does the rewriting step. The [tailoring flow](/modify-cv) rewrites bullets to carry the posting's language, but only where your existing experience supports the claim. It will not add a skill your resume shows no evidence for — that constraint is deliberate and enforced, because a resume that claims something you cannot discuss in an interview is worse than one that omits it.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Every rewrite is marked on your resume, with removed words in red and new words in green, so you review the edits before you accept them.
+
 The honest trade: advice teaches you to write better resumes over time. Rewriting gets this application out today. Which you want depends on whether you are building a skill or meeting a deadline.
 
 ## Round 3: LinkedIn — Where Resume Worded Wins
