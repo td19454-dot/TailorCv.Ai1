@@ -4,14 +4,14 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Profile | TailorCV</title>
+    <title>Auto Apply Job | TailorCV</title>
     <meta name="description" content="The details TailorCV fills into job applications — name, address, phone, education and your saved answers.">
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="/static/style3.css">
     <link rel="stylesheet" href="/static/header-footer.css?v=18">
     <link rel="stylesheet" href="/static/style2.css?v=7">
     <link rel="stylesheet" href="/static/job_dashboard.css?v=2">
-    <link rel="stylesheet" href="/static/profile.css?v=29">
+    <link rel="stylesheet" href="/static/profile.css?v=51">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,6 +29,7 @@
         "personal": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
         "preferences": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg>',
         "answers": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 9h8M8 12h5"/></svg>',
+        "extension": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 11.2 21 3.5l-7.7 18.5-2.4-7.4-8.4-3.4z"/><path d="M10.9 14.6 21 3.5"/></svg>',
     } %}
 
     <main class="jd-page pf-page">
@@ -78,6 +79,36 @@
                 </div>
                 <ul class="pf-checklist" id="pf-checklist"></ul>
             </section>
+
+            <section class="pf-box pf-tracker" aria-labelledby="pf-tracker-h">
+                <h2 class="pf-side-h" id="pf-tracker-h">Job Tracker</h2>
+                <p class="pf-muted">Every job you apply to is saved here automatically, with its tailored resume and job description.</p>
+
+                {# A picture of a saved application, as the tracker shows one. #}
+                <div class="pf-jc-stack" aria-hidden="true">
+                    <div class="pf-jc pf-jc-back"></div>
+                    <div class="pf-jc">
+                        <div class="pf-jc-head">
+                            <span class="pf-jc-title">GCP Data Engineer</span>
+                            <span class="pf-jc-badge">Saved</span>
+                        </div>
+                        <div class="pf-jc-meta">Jul 15, 2026 · Zorba AI{% if user_name %} · {{ user_name }}{% endif %}</div>
+                        <span class="pf-jc-tpl">Template 1</span>
+                        <div class="pf-jc-jd">▸ View job description</div>
+                        <div class="pf-jc-row">
+                            <span class="pf-jc-input">Zorba AI</span>
+                            <span class="pf-jc-select">Saved ▾</span>
+                        </div>
+                        <span class="pf-jc-update">Update</span>
+                        <div class="pf-jc-btns">
+                            <span class="pf-jc-dl">Download PDF</span>
+                            <span class="pf-jc-del">Delete</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="jd-btn pf-pill pf-tracker-btn" href="/my-resumes">My applications</a>
+            </section>
         </aside>
 
         <!-- ── Main column ── -->
@@ -98,6 +129,30 @@
                 <div class="pf-panel" data-hub-panel="{{ hub.id }}"{% if not loop.first %} hidden{% endif %}>
 
                     {% if hub.id == "profile" %}
+                    {# Profile is the Chrome extension's page: logged-in /extension lands here. #}
+                <section class="pf-card pf-resume pf-ext-install" id="pf-ext-install">
+                    <div class="pf-card-head pf-ext-head">
+                        <h2>Auto Apply Job</h2>
+                        <span class="pf-tag">Chrome extension</span>
+                    </div>
+                    <div class="pf-resume-row">
+                        <span class="pf-file-ico" aria-hidden="true">{{ hub_icons["extension"] | safe }}</span>
+                        <div class="pf-resume-txt">
+                            <strong>Apply to jobs in one click</strong>
+                            <small>Fills every application with the details on this page and tailors your resume to each job.</small>
+                            <ul class="pf-ext-points">
+                                <li>Autofills applications</li>
+                                <li>Tailors your resume</li>
+                                <li>Works on the major job boards</li>
+                            </ul>
+                        </div>
+                        <a class="jd-btn pf-pill" href="{{ chrome_store_url }}" target="_blank" rel="noopener">Add to Chrome</a>
+                    </div>
+                    {% if not has_resume %}
+                    <p class="pf-status pf-cover-status">Add your resume <a href="#pf-resume">below</a> first — the extension tailors and attaches it.</p>
+                    {% endif %}
+                </section>
+
                     <section class="pf-card pf-resume" id="pf-resume">
                         <div class="pf-card-head"><h2>Resume</h2></div>
                         <div class="pf-resume-row">
@@ -145,6 +200,43 @@
                             {% endif %}
                         </div>
                         <p class="pf-status pf-cover-status" id="pf-cover-status" role="status" aria-live="polite"></p>
+                    </section>
+
+                    {# The design the extension downloads tailored resumes in: one row like
+                       Resume and Cover Letter; "Choose template" opens the list beneath it. #}
+                    <section class="pf-card pf-resume" id="pf-ext-template">
+                        <div class="pf-card-head"><h2>Resume template</h2></div>
+                        <div class="pf-resume-row">
+                            <span class="pf-file-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M8 3h7l4 4v11H8z"/><path d="M15 3v4h4"/><path d="M5 6v15h11"/><path d="M11 12h5M11 15h3"/></svg>
+                            </span>
+                            <div class="pf-resume-txt">
+                                <strong id="pf-ext-template-name">Template {{ ext_template_id }}</strong>
+                                <small>Every resume the extension tailors downloads in this design</small>
+                            </div>
+                            <button type="button" class="jd-btn pf-pill" id="pf-ext-template-btn"
+                                    aria-expanded="false" aria-controls="pf-ext-template-picker">Choose template</button>
+                        </div>
+                        <input type="hidden" id="pf-ext-template-id" value="{{ ext_template_id }}">
+                        <input type="hidden" id="pf-ext-style-id" value="{{ ext_style_id }}">
+                        <input type="hidden" id="pf-ext-cover-template" value="{{ ext_cover_template }}">
+                        {# Opens over the page (moved to <body> by profile_extension.js). #}
+                        <div class="pf-tpl-modal" id="pf-ext-template-picker" hidden
+                             role="dialog" aria-modal="true" aria-labelledby="pf-ext-template-title">
+                            <div class="pf-tpl-dialog">
+                                <div class="pf-tpl-dialog-head">
+                                    <div>
+                                        <h3 id="pf-ext-template-title">Choose a resume template</h3>
+                                        <p>Every resume the extension tailors downloads in this design.</p>
+                                    </div>
+                                    <button type="button" class="pf-icon-btn" id="pf-ext-template-close" aria-label="Close">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                                    </button>
+                                </div>
+                                <div class="pf-tpl-grid" id="pf-ext-template-grid"></div>
+                            </div>
+                        </div>
+                        <p class="pf-status pf-cover-status" id="pf-ext-template-status" role="status" aria-live="polite"></p>
                     </section>
                     {% endif %}
 
@@ -274,7 +366,8 @@
       window.TAILORCV_FIELD_OPTIONS = {{ field_options | tojson }};
       window.TAILORCV_SKILL_GROUPS = {{ (skill_groups or []) | tojson }};
     </script>
-    <script src="/static/profile_page.js?v=23" defer></script>
+    <script src="/static/profile_page.js?v=28" defer></script>
+    <script src="/static/profile_extension.js?v=3" defer></script>
     <script>
     // The same drifting waves as the Make CV page (templates/modify_cv.html),
     // drawn behind the cards. Still, single frame for reduced-motion users.

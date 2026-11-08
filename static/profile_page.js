@@ -499,7 +499,8 @@
 
   var LINK_TILES = {
     linkedinUrl: { cls: "li", ico: '<b>in</b>' },
-    githubUrl: { cls: "gh", ico: '<svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>' },
+    // GitHub's mark (a filled shape — see .pf-link-gh svg in profile.css).
+    githubUrl: { cls: "gh", ico: '<svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>' },
     portfolioUrl: { cls: "pf", ico: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>' },
   };
   function href(url) {
@@ -509,30 +510,14 @@
     return /^https?:\/\/[^\s"<>]+$/i.test(u) ? u : "";
   }
 
-  // Skills grouped under the resume's own headings ("Languages", "AI/ML"…),
-  // as the resume lists them. The list itself is the saved/edited one: a skill
-  // the user added that no heading holds goes under "Other skills", and a
-  // heading whose skills were all removed is dropped.
+  // Skills as one row of chips, in the saved order — no headings (the
+  // person's choice, Nov 2026: the resume's groups only added clutter here).
   function chipRow(list) {
     return '<div class="pf-chips pf-skill-chips">' + list.map(function (s) {
       return '<span class="pf-chip">' + esc(s) + '</span>'; }).join("") + '</div>';
   }
   function skillRows(skills) {
-    var groups = (window.TAILORCV_SKILL_GROUPS || []).filter(function (g) { return g && g.category; });
-    if (!groups.length) return chipRow(skills);
-    var left = skills.slice(), rows = [];
-    function take(name) {
-      var i = left.map(function (s) { return s.toLowerCase(); }).indexOf(String(name).toLowerCase());
-      return i === -1 ? null : left.splice(i, 1)[0];
-    }
-    groups.forEach(function (g) {
-      var mine = (g.skills || []).map(take).filter(Boolean);
-      if (mine.length) rows.push([g.category, mine]);
-    });
-    if (left.length) rows.push([rows.length ? "Other skills" : "", left]);
-    return '<div class="pf-skill-groups">' + rows.map(function (r) {
-      return '<div class="pf-skill-group">' + (r[0] ? '<h4>' + esc(r[0]) + '</h4>' : "") + chipRow(r[1]) + '</div>';
-    }).join("") + '</div>';
+    return chipRow(skills);
   }
 
   // One field's read-only rendering. Returns { html, wide, tile }.
@@ -822,10 +807,10 @@
   ];
 
   function level(pct) {
-    if (pct >= 100) return "Autofill ready ✨";
-    if (pct >= 70) return "Nearly there 🚀";
-    if (pct >= 40) return "Building momentum 🔥";
-    return "Getting started 🌱";
+    if (pct >= 100) return "Autofill ready";
+    if (pct >= 70) return "Nearly there";
+    if (pct >= 40) return "Building momentum";
+    return "Getting started";
   }
 
   function initials(name) {

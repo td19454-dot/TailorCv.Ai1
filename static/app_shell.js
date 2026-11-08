@@ -10,7 +10,7 @@
         "/solutions", "/ats-analysis", "/optimize", "/modify-cv", "/cover-letter",
         "/auto-apply", "/my-resumes", "/interview-prep", "/mock-interview",
         "/optimized-editor", "/templates", "/portfolio", "/portfolio-builder",
-        "/my-portfolios", "/extension"
+        "/my-portfolios", "/extension", "/profile", "/onboarding"
     ];
 
     function getUser() {
@@ -109,7 +109,9 @@
 
         // Slim icon rail with hover tooltips
         var items = LINKS.map(function (l) {
-            var active = (here === l[0].replace(/\/+$/, "")) ? " active" : "";
+            // The profile (and its first-run setup) IS the Chrome extension's page.
+            var at = (here === "/profile" || here === "/onboarding") ? "/extension" : here;
+            var active = (at === l[0].replace(/\/+$/, "")) ? " active" : "";
             return '<a class="tcv-rail-link' + active + '" href="' + l[0] + '" aria-label="' + l[2] + '">'
                 + '<span class="tcv-rail-ic">' + l[1] + '</span>'
                 + '<span class="tcv-rail-tip">' + l[2] + '</span></a>';

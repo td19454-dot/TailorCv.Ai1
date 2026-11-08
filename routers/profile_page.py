@@ -41,6 +41,12 @@ from models import User, UserApplyProfile, UserApplyQA
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
+# The Chrome Web Store listing — the same env var and default main.py uses.
+CHROME_STORE_URL = os.getenv(
+    "CHROME_STORE_URL",
+    "https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb",
+).strip()
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
@@ -708,7 +714,7 @@ ALL_SPECS = {s.key: s for _, _, specs in SECTIONS for s in specs}
 # Every section appears in exactly one hub (checked below), so a field added to
 # SECTIONS can't silently go missing from the page.
 HUBS: list[tuple[str, str, str, list[str]]] = [
-    ("profile", "Profile", "Edit autofill information",
+    ("profile", "Auto Apply Job", "Resume & autofill information",
      ["work", "education", "projects", "skills", "links"]),
     ("personal", "Personal Info", "Edit demographic data",
      ["name", "contact", "address", "birth", "eligibility", "eeo"]),
@@ -879,6 +885,11 @@ async def profile_page(request: Request):
         if not user:
             return RedirectResponse(url="/login?next=/profile", status_code=302)
         prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user.id).first()
+        # A brand-new user — nothing saved for autofill yet — gets the
+        # step-by-step setup first. Finishing or skipping it saves the profile
+        # row, so this happens once.
+        if prof is None:
+            return RedirectResponse(url="/onboarding", status_code=302)
         from auto_apply import resume_facts as rf
 
         # Skills saved back when this page showed only autofill's top 8: store
@@ -919,6 +930,75 @@ async def profile_page(request: Request):
             "resume_uploaded": uploaded.strftime("%d %b %Y") if uploaded else "",
             "has_cover_letter": has_cover,
             "cover_generated": cover_at.strftime("%d %b %Y") if cover_at else "",
+            # The "Auto Apply Job" panel: this page is also the extension's page
+            # now (logged-in /extension redirects here) — install link and the
+            # designs the extension downloads in.
+            "chrome_store_url": CHROME_STORE_URL,
+            "ext_template_id": user.base_template_id or 1,
+            "ext_style_id": user.base_style_id or 1,
+            "ext_cover_template": user.base_cover_template or "classic",
+        })
+    finally:
+        db.close()
+
+
+ONBOARDING_STEPS = [
+    ("resume", "Resume"), ("documents", "Template & cover letter"),
+    ("education", "Education"), ("experience", "Experience"),
+    ("authorization", "Work authorization"), ("eeo", "EEO"), ("skills", "Skills"),
+    ("personal", "Personal"), ("links", "Links"),
+]
+
+
+@router.get("/onboarding", response_class=HTMLResponse)
+async def onboarding_page(request: Request):
+    """First-run setup for the extension: the profile, one step at a time.
+
+    Every step saves through the same endpoints the profile page uses (POST
+    /api/profile, POST /api/extension/base-resume), so nothing here is stored
+    differently. Finishing or skipping lands on /profile.
+    """
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return RedirectResponse(url="/login?next=/onboarding", status_code=302)
+    db = SessionLocal()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            return RedirectResponse(url="/login?next=/onboarding", status_code=302)
+        prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user.id).first()
+        from auto_apply import resume_facts as rf
+
+        model = _page_model(_stored(prof, user), await _effective(db, user, prof),
+                            rf.load_cached_facts(db, user) is not None)
+        has_resume = bool(user.base_resume_path
+                          and await document_store.ensure_file_async(user.base_resume_path))
+        uploaded = user.base_resume_uploaded_at if has_resume else None
+        has_cover = bool(user.base_cover_letter_path
+                         and await document_store.ensure_file_async(user.base_cover_letter_path))
+        step = request.query_params.get("step") or "resume"
+        if step not in {s for s, _ in ONBOARDING_STEPS}:
+            step = "resume"
+        return templates.TemplateResponse(request, "onboarding.html", {
+            "request": request,
+            "steps": ONBOARDING_STEPS,
+            "data": {
+                "fields": model["fields"],
+                "step": step,
+                "hasResume": has_resume,
+                "resumeFilename": (user.base_resume_filename or "Your resume") if has_resume else "",
+                "resumeUploaded": uploaded.strftime("%d %b %Y") if uploaded else "",
+                "hasCover": has_cover,
+                "coverFilename": (user.base_cover_letter_filename or "cover_letter.pdf") if has_cover else "",
+                "templateId": user.base_template_id or 1,
+                "styleId": user.base_style_id or 1,
+                "coverTemplate": user.base_cover_template or "classic",
+                "options": {
+                    "yesNo": YES_NO, "country": COUNTRY_OPTIONS, "gender": GENDER_OPTIONS,
+                    "race": RACE_OPTIONS, "veteran": VETERAN_OPTIONS,
+                    "disability": DISABILITY_OPTIONS, "lgbtq": LGBTQ_OPTIONS,
+                },
+            },
         })
     finally:
         db.close()

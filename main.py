@@ -6214,9 +6214,12 @@ CHROME_STORE_URL = os.getenv(
 
 @app.get("/extension", response_class=HTMLResponse)
 async def extension_page(request: Request):
-    """Logged out: marketing landing. Logged in: the extension setup page, where the
-    user installs it and sets the base resume + template the extension tailors from."""
+    """Logged out: marketing landing. Logged in: the profile — the profile IS the
+    extension's page (Nov 2026): the resume, every answer autofill uses, the
+    install link and the designs it downloads in."""
     user_id = request.session.get("user_id")
+    if user_id:
+        return RedirectResponse(url="/profile", status_code=302)
 
     base_resume = {
         "has_base_resume": False,
@@ -8843,6 +8846,49 @@ async def generate_base_cover_letter(request: Request):
         raise HTTPException(status_code=401, detail="Not logged in")
     filename = await _write_base_cover_letter(user_id)
     return JSONResponse({"success": True, "filename": filename})
+
+
+@app.post("/api/dashboard/base-cover-letter/upload")
+async def upload_base_cover_letter(request: Request):
+    """Store the user's OWN cover letter PDF as the base cover letter — the same
+    file autofill attaches to "Cover Letter" fields, replacing a generated one.
+    Used by first-run setup (/onboarding). Keeps normal CSRF protection."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    form = await request.form()
+    upload = form.get("file")
+    if not getattr(upload, "filename", ""):
+        raise HTTPException(status_code=400, detail="Choose a PDF to upload.")
+    new_path = save_uploaded_pdf(upload)          # rejects anything but .pdf
+    content = await upload.read()
+    if len(content) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="That PDF is over 10 MB — please upload a smaller file.")
+    if not content.startswith(b"%PDF"):
+        raise HTTPException(status_code=400, detail="That file isn't a PDF.")
+    with open(new_path, "wb") as f:
+        f.write(content)
+    # Durable copy, like the base resume's: it must survive a deploy.
+    await asyncio.to_thread(document_store.store_file, new_path)
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            os.remove(new_path)
+            raise HTTPException(status_code=401, detail="Not logged in")
+        old_path = user.base_cover_letter_path
+        user.base_cover_letter_path = new_path
+        user.base_cover_letter_filename = (upload.filename or "cover_letter.pdf")[:255]
+        user.base_cover_letter_generated_at = datetime.utcnow()
+        db.commit()
+    finally:
+        db.close()
+    if old_path and old_path != new_path:
+        if os.path.exists(old_path):
+            os.remove(old_path)
+        await asyncio.to_thread(document_store.remove_file, old_path)
+    return JSONResponse({"success": True, "filename": upload.filename})
 
 
 async def _write_base_cover_letter(user_id: int) -> str:

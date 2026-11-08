@@ -3637,14 +3637,24 @@ Zimbabwe|Zimbabwean
         );
       }
       const additiveSkills = row.multiPrompt && (matchFieldKey(row.label) || {}).key === "top_skills";
-      if (row.filled && !row.invalid && !additiveSkills) {
+      const ownEntry = row.filledByForm ? entryAnswer(row, ctx) : null;
+      const sameText = (a, b) => String(a || "").replace(/\s+/g, " ").trim().toLowerCase() === String(b || "").replace(/\s+/g, " ").trim().toLowerCase();
+      const replaceFormRead = !!(ownEntry && ownEntry.value && row.kind !== "checkbox" && !sameText(ownEntry.value, row.value));
+      if (row.filled && !row.invalid && !additiveSkills && !replaceFormRead) {
         return done(d, SKIP, row.value, "", 0, "already filled in");
       }
-      const namedField = kekaEntryAnswer(row, ctx) || leverSignatureDate(row, rows, bank) || highSchoolAnswer(row, ctx);
+      const namedField = entryAnswer(row, ctx) || leverSignatureDate(row, rows, bank) || highSchoolAnswer(row, ctx);
       if (namedField) {
         d.noServer = true;
         if (namedField.ask) return done(d, row.required ? ASK : SKIP, "", "", 0, namedField.ask);
-        return namedField.skip ? done(d, SKIP, "", "", 0, namedField.skip) : done(d, FILL, namedField.value, "profile", 0.95, "");
+        return namedField.skip ? done(d, SKIP, "", "", 0, namedField.skip) : done(
+          d,
+          FILL,
+          namedField.value,
+          "profile",
+          0.95,
+          replaceFormRead ? `from your profile — the form had read "${truncate(row.value, 40)}" from your resume` : ""
+        );
       }
       if (row.block) {
         const b = blockFieldAnswer(row, row.block);
@@ -4054,6 +4064,41 @@ Zimbabwe|Zimbabwean
     if (m[3] === "dateOfJoining") return date(isoYear(entry.from));
     if (m[3] === "dateOfCompletion") return date(isoYear(entry.to));
     return null;
+  }
+  var PHENOM_ENTRY_RE = /^(experience|education)Data\[(\d+)\]\.([\w.]+)$/;
+  var monthSlashYear = (iso) => /^(\d{4})-(\d{2})/.test(iso || "") ? `${iso.slice(5, 7)}/${iso.slice(0, 4)}` : "";
+  function phenomEntryAnswer(row, ctx) {
+    const m = PHENOM_ENTRY_RE.exec(row && row.el && row.el.id || "");
+    if (!m) return null;
+    const facts = ctx && ctx.facts || {};
+    const exp = m[1] === "experience";
+    const entry = ((exp ? facts.workExperience : facts.educationEntries) || [])[Number(m[2])];
+    if (!entry) return null;
+    const part = m[3].toLowerCase();
+    const own = (v, what) => {
+      if (String(v || "").trim()) return { value: String(v).trim() };
+      const why = `no ${what} saved for this entry — add it in your profile, or fill it in here`;
+      return row.required ? { ask: why } : { skip: why };
+    };
+    const date = (iso, what) => own(monthSlashYear(iso), what);
+    if (exp) {
+      if (/currentlywork/.test(part)) return entry.current ? { value: "Yes" } : { skip: "not your current job" };
+      if (/startdate/.test(part)) return date(isoMonth(entry.from), "start date");
+      if (/enddate/.test(part)) return entry.current ? { skip: "your current job" } : date(isoMonth(entry.to), "end date");
+      if (/company|employer/.test(part)) return own(entry.company, "company");
+      if (/title|designation|position/.test(part)) return own(entry.title, "job title");
+      if (/location|city/.test(part)) return own(entry.location, "location");
+      return null;
+    }
+    if (/startdate/.test(part)) return date(isoYear(entry.from), "start date");
+    if (/enddate/.test(part)) return date(isoYear(entry.to), "end date");
+    if (/school|institution|university|college/.test(part)) return own(entry.school, "school");
+    if (/fieldofstudy|major|discipline/.test(part)) return own(entry.field, "field of study");
+    if (/degree/.test(part)) return own(entry.degree, "degree");
+    return null;
+  }
+  function entryAnswer(row, ctx) {
+    return kekaEntryAnswer(row, ctx) || phenomEntryAnswer(row, ctx);
   }
   function done(d, action, value, source, confidence, reason) {
     d.action = action;
@@ -8503,7 +8548,7 @@ ${lines.join("\n")}`;
       return { ok: false, shown: "" };
     }
     const target = decision.row.el;
-    const reading = isProfileImport(decision.row) ? watchResumeReading(target) : null;
+    const reading = isProfileImport(decision.row) || decision.slot === "resume" && formReadsResume(target) ? watchResumeReading(target) : null;
     if (decision.row.dropOnly) {
       const dropped = dropFile(target, file);
       if (slot && dropped) attachedThisRun.add(slot);
@@ -8619,6 +8664,18 @@ ${lines.join("\n")}`;
         return true;
       }
     };
+  }
+  var AUTOFILL_HINT_RE = /\bauto-?\s?fill|\bpre-?\s?fill|\bpars(e|es|ing)\b|\bpopulate/i;
+  function formReadsResume(input) {
+    if (!input) return false;
+    try {
+      if (input.closest(".resume-upload-wrapper")) return true;
+      const doc = input.ownerDocument || globalThis.document;
+      if (doc.querySelector('[atm-id="resume-button"]')) return true;
+    } catch (e) {
+    }
+    const near = ancestor(input, 4);
+    return !!near && AUTOFILL_HINT_RE.test(String(near.textContent || "").slice(0, 2e3));
   }
   function ancestor(el, levels) {
     let node = el;

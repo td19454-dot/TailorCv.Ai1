@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set up Auto Apply Job | TailorCV</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="stylesheet" href="/static/header-footer.css?v=18">
+    <link rel="stylesheet" href="/static/onboarding.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style> html { background-color: #030014; } </style>
+</head>
+<body>
+    {% include "_nav.html" %}
+
+    {# First-run setup: the profile one step at a time (routers/profile_page.py
+       onboarding_page). static/onboarding.js draws each step's fields from the
+       profile model and saves through the same endpoints the profile page uses. #}
+    <main class="ob-page">
+      <div class="ob-shell">
+        <nav class="ob-tabs" aria-label="Setup steps">
+            {% for sid, label in steps %}
+            <button type="button" class="ob-tab" data-step="{{ sid }}">{{ label }}</button>
+            {% endfor %}
+        </nav>
+
+        <div class="ob-card" id="ob-card">
+            <h1 class="ob-title" id="ob-title"></h1>
+            <div class="ob-tip" id="ob-tip">
+                <span class="ob-tip-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M2.5 11.2 21 3.5l-7.7 18.5-2.4-7.4-8.4-3.4z"/><path d="M10.9 14.6 21 3.5"/></svg>
+                </span>
+                <div>
+                    <b>Auto Apply Job</b>
+                    <p id="ob-tip-text"></p>
+                </div>
+            </div>
+            <div class="ob-body" id="ob-body"></div>
+            <p class="ob-error" id="ob-error" role="alert" hidden></p>
+            <div class="ob-actions" id="ob-actions">
+                <button type="button" class="ob-skip" id="ob-skip">Skip this step</button>
+                <button type="button" class="ob-next" id="ob-next">Save and continue</button>
+            </div>
+        </div>
+
+        {# Shown while the uploaded resume is read; the next steps open pre-filled. #}
+        <div class="ob-card ob-parse" id="ob-parse" hidden>
+            <div class="ob-parse-copy">
+                <div class="ob-parse-bar-head"><span>Reading your resume…</span><b id="ob-parse-pct">0%</b></div>
+                <div class="ob-parse-bar"><span id="ob-parse-fill"></span></div>
+                <h2>Auto Apply Job can help you…<br><em>fill your applications.</em></h2>
+                <p class="ob-parse-note">Set up your profile once, then apply to jobs in one click.</p>
+            </div>
+            <div class="ob-parse-art" aria-hidden="true">
+                <div class="ob-browser">
+                    <div class="ob-browser-bar"><i></i><i></i><i></i><span></span></div>
+                    <div class="ob-browser-body">
+                        <span class="ob-ln w40"></span><span class="ob-mf"></span>
+                        <span class="ob-ln w30"></span><span class="ob-mf"></span>
+                        <span class="ob-ln w50"></span><span class="ob-mf"></span>
+                        <span class="ob-btn"></span>
+                        <span class="ob-done">✓ Application filled</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/static/auth_nav.js?v=21" defer></script>
+    <script src="/static/mobile_nav.js" defer></script>
+    <script>window.TCV_ONBOARDING = {{ data | tojson }};</script>
+    <script src="/static/onboarding.js?v=2" defer></script>
+</body>
+</html>

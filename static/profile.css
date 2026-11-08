@@ -201,13 +201,13 @@ main.jd-page.pf-page { padding-top: 120px !important; }
   box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .08); pointer-events: none; }
 .pf-logo-job { background: #f1f5f9; color: #1f2937; box-shadow: inset 0 0 0 1px #e2e8f0; }
 .pf-logo-job svg { width: 30px; height: 30px; stroke-width: 1.7; }
-.pf-logo-proj { background: linear-gradient(135deg, #3b82f6, #93c5fd); }
+.pf-logo-proj { background: linear-gradient(135deg, #3b82f6, #1d4ed8); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); }
 .pf-logo-proj svg { width: 28px; height: 28px; }
 .pf-proj-link { margin: 12px 0 0; font-size: .9rem; overflow-wrap: anywhere; }
 .pf-proj-link a { color: var(--pf-accent-dark); text-decoration: none; }
 .pf-proj-link a:hover { text-decoration: underline; }
 .pf-job label small.pf-help { font-weight: 400; }
-.pf-logo-edu { background: linear-gradient(135deg, #3b82f6, #93c5fd); }
+.pf-logo-edu { background: linear-gradient(135deg, #3b82f6, #1d4ed8); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); }
 .pf-logo-edu svg { width: 30px; height: 30px; }
 .pf-entry-body { flex: 1; min-width: 0; }
 .pf-entry h3 { font-size: 1.01rem !important; font-weight: 600 !important; color: var(--pf-text) !important; margin: 4px 0 8px !important; }
@@ -252,10 +252,10 @@ ul.pf-desc li::before { content: "• "; }
 /* Resume */
 .pf-resume-row { display: flex; align-items: center; gap: 22px; }
 .pf-file-ico { width: 56px; height: 56px; border-radius: 6px; flex-shrink: 0; display: grid; place-items: center;
-  background: linear-gradient(135deg, #3b82f6, #93c5fd); color: #fff; }
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); }
 .pf-file-ico svg { width: 30px; height: 30px; }
 .pf-resume.pf-drop { border: 2px dashed var(--pf-accent); background: var(--pf-accent-soft); }
-.pf-file-cover { background: linear-gradient(135deg, #a78bfa, #c4b5fd); }
+.pf-file-cover { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
 .pf-cover-status:empty { display: none; }
 .pf-cover-status { margin: 14px 0 0; }
 .pf-resume-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
@@ -433,9 +433,14 @@ ul.pf-desc li::before { content: "• "; }
 
 .pf-dash { color: var(--pf-dim); }
 .pf-chip { background: rgba(255, 255, 255, .04); border-color: var(--pf-line-2); }
+.pf-page .pf-chip { border-radius: 8px !important; }
 .pf-tag { background: rgba(255, 255, 255, .08); }
 .pf-logo-job { background: rgba(255, 255, 255, .06); color: #dbe4ff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1); }
+/* No company logo: the same blue tile as every other section's icon. */
+.pf-logo-job:not(.has-img) { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); }
 .pf-link-gh { background: #0d1117; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14); }
+.pf-link-gh svg { fill: currentColor; stroke: none; width: 26px; height: 26px; }
 .pf-links a, .pf-proj-link a, .pf-intro a, .pf-banner a, .pf-exp-add, .pf-flag.on em { color: var(--pf-link); }
 
 .pf-page .jd-field input, .pf-page .jd-field select, .pf-page .jd-field textarea,
@@ -455,3 +460,243 @@ ul.pf-desc li::before { content: "• "; }
 .pf-status.pf-err { color: #fca5a5; }
 .pf-banner { background: rgba(245, 158, 11, .1); border-color: rgba(245, 158, 11, .3); color: #fde68a; }
 .pf-toast { background: #0d1130; border: 1px solid var(--pf-line-2); }
+
+/* ── fewer boxes (Nov 2026) ───────────────────────────────────
+   Two surfaces only: the sidebar and the main column. Inside them, sections
+   are separated by hairlines, not each framed in its own card. */
+.pf-page .pf-side {
+  gap: 0; background: var(--pf-card); border: 1px solid var(--pf-line); border-radius: 16px;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: 0 12px 32px -14px rgba(0, 0, 0, .6);
+}
+.pf-page .pf-box {
+  background: transparent; border: none; border-radius: 0; box-shadow: none;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+.pf-page .pf-strength { border-top: 1px solid var(--pf-line); }
+
+/* Menu: plain rows; the open one is tinted with an accent edge, not a solid block. */
+.pf-page .pf-hub { gap: 2px; }
+.pf-page .pf-hub a { border: none; background: transparent; padding: 11px 12px; }
+.pf-page .pf-hub a:hover { background: rgba(255, 255, 255, .05); border: none; }
+.pf-page .pf-hub a.on, .pf-page .pf-hub a.on:hover {
+  background: rgba(59, 130, 246, .14); color: var(--pf-text); box-shadow: inset 3px 0 0 #3b82f6;
+}
+.pf-page .pf-hub a.on .pf-hub-ico { color: #93c5fd; }
+.pf-page .pf-hub a.on small { color: var(--pf-sub); }
+.pf-page .pf-hub-arrow { opacity: 0; transition: opacity .12s; }
+.pf-page .pf-hub a:hover .pf-hub-arrow, .pf-page .pf-hub a.on .pf-hub-arrow { opacity: .7; color: var(--pf-sub); }
+.pf-page .pf-hub a.on .pf-count { background: rgba(255, 255, 255, .12); color: var(--pf-sub); }
+
+/* Status: a line of text above the content, not a banner box. */
+.pf-page .pf-main { gap: 18px; }
+.pf-page .pf-hero, .pf-page .pf-hero.complete {
+  background: transparent; border: none; border-radius: 0; padding: 2px 4px;
+}
+.pf-page .pf-hero-icon { width: 28px; height: 28px; font-size: .9rem; }
+.pf-page .pf-hero h2 { font-size: 1.06rem !important; margin: 0 0 3px !important; }
+
+/* Main column: one surface; each section a band divided by a hairline. */
+.pf-page .pf-form {
+  gap: 0; background: var(--pf-card); border: 1px solid var(--pf-line); border-radius: 16px; padding: 0 36px;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: 0 12px 32px -14px rgba(0, 0, 0, .6);
+}
+.pf-page .pf-panel { gap: 0; }
+.pf-page .pf-card {
+  background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 30px 0;
+  -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom: 1px solid var(--pf-line);
+}
+.pf-page .pf-panel > .pf-card:last-child { border-bottom: none; }
+.pf-page .pf-card.editing { border-color: var(--pf-line); box-shadow: none; }
+.pf-page .pf-card-head h2 { font-size: 1.12rem !important; }
+
+/* Edit buttons: just the pencil until hovered. */
+.pf-page .pf-icon-btn { border: none; background: transparent; }
+.pf-page .pf-icon-btn:hover { background: rgba(255, 255, 255, .08); }
+
+@media (max-width: 600px) {
+  .pf-page .pf-form { padding: 0 18px; }
+  .pf-page .pf-card { padding: 24px 0; }
+}
+
+/* Plane-style buttons — the same design as "Upload Existing CV" (modify_cv.html)
+   and the dashboard's launch button: blue gradient, dark ring, paper plane. */
+.pf-page .jd-btn.pf-pill {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 12px 24px 12px 20px !important; min-height: 46px; border-radius: 12px !important;
+  color: #fff !important; font-weight: 600; text-decoration: none; text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+  border: 2px solid transparent !important;
+  background: linear-gradient(#3b8bff, #1d4ed8) padding-box,
+              linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .45)) border-box !important;
+  box-shadow: 0 .5px .5px 1px rgba(255, 255, 255, .2), 0 8px 22px rgba(37, 99, 235, .4) !important;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.pf-page .jd-btn.pf-pill::before {
+  content: ""; flex: 0 0 auto; width: 17px; height: 17px; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2.5 11.2 21 3.5l-7.7 18.5-2.4-7.4-8.4-3.4z' fill='black'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2.5 11.2 21 3.5l-7.7 18.5-2.4-7.4-8.4-3.4z' fill='black'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform .3s ease;
+}
+.pf-page .jd-btn.pf-pill:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 1px 2px rgba(255, 255, 255, .3), 0 12px 28px rgba(37, 99, 235, .55) !important;
+}
+.pf-page .jd-btn.pf-pill:hover::before { transform: rotate(45deg); }
+.pf-page .jd-btn.pf-pill:active { transform: scale(1); }
+.pf-page .jd-btn.pf-pill:focus-visible { outline: 2px solid #bfdbfe; outline-offset: 4px; }
+.pf-page .jd-btn.pf-pill[disabled] { opacity: .65; transform: none; cursor: default; }
+@media (prefers-reduced-motion: reduce) {
+  .pf-page .jd-btn.pf-pill, .pf-page .jd-btn.pf-pill::before { transition: none; }
+}
+
+/* Only the profile-complete line sits in its own box. */
+.pf-page .pf-hero, .pf-page .pf-hero.complete {
+  background: var(--pf-card); border: 1px solid var(--pf-line); border-radius: 16px; padding: 18px 26px;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: 0 12px 32px -14px rgba(0, 0, 0, .6);
+}
+
+/* ── "Auto Apply Job" panel (the extension's page, Nov 2026) ───────────────── */
+/* Panels outside the profile form (Saved answers, Auto Apply Job) get the same
+   single surface the form has, so their sections don't float on the waves. */
+.pf-page .pf-main > .pf-panel:not([hidden]) {
+  background: var(--pf-card); border: 1px solid var(--pf-line); border-radius: 16px; padding: 0 36px;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: 0 12px 32px -14px rgba(0, 0, 0, .6);
+}
+.pf-page .pf-file-ico svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Resume template: "Choose template" opens the gallery's real previews in a
+   window over the page. It sits under <body>, outside .pf-page, so it carries
+   the page's colour tokens itself. */
+.pf-tpl-modal {
+  --pf-text: #e8edff; --pf-sub: #c3cde6; --pf-muted: #97a3c4;
+  --pf-line: rgba(129, 140, 248, .18); --pf-line-2: rgba(129, 140, 248, .3); --pf-accent: #3b82f6;
+  position: fixed; inset: 0; z-index: 10000; display: flex; align-items: flex-start; justify-content: center;
+  padding: 6vh 20px 20px; background: rgba(3, 0, 20, .72);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  font-family: 'Inter', system-ui, sans-serif; color: var(--pf-text);
+}
+.pf-tpl-modal[hidden] { display: none; }
+.pf-tpl-dialog {
+  width: min(1080px, 100%); max-height: 88vh; overflow: auto; box-sizing: border-box; padding: 26px 30px 30px;
+  background: #0d1130; border: 1px solid var(--pf-line); border-radius: 16px;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, .7); animation: pfTplIn .18s ease-out;
+}
+@keyframes pfTplIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.pf-tpl-dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin: 0 0 22px; }
+.pf-tpl-dialog-head h3 { margin: 0 0 6px; font-size: 1.2rem; font-weight: 600; color: var(--pf-text); }
+.pf-tpl-dialog-head p { margin: 0; font-size: .9rem; color: var(--pf-sub); }
+.pf-tpl-modal .pf-icon-btn {
+  display: inline-grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; padding: 0; cursor: pointer;
+  border: none; border-radius: 8px; background: transparent; color: var(--pf-sub);
+}
+.pf-tpl-modal .pf-icon-btn:hover { background: rgba(255, 255, 255, .08); color: var(--pf-text); }
+.pf-tpl-modal .pf-icon-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.pf-tpl-modal .pf-icon-btn:focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 2px; }
+html.pf-modal-open, html.pf-modal-open body { overflow: hidden; }
+.pf-tpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px;
+  color: var(--pf-muted); font-size: .88rem; }
+.pf-tpl { padding: 0; background: none; border: 0; cursor: pointer; text-align: center; font: inherit; color: inherit; }
+.pf-tpl-shot {
+  display: block; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; background: rgba(255, 255, 255, .04);
+  border: 2px solid var(--pf-line-2); transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.pf-tpl-shot img { width: 100%; height: 100%; object-fit: contain; padding: 8px; display: block; box-sizing: border-box; }
+.pf-tpl:hover .pf-tpl-shot { transform: translateY(-3px); border-color: rgba(96, 165, 250, .7); }
+.pf-tpl.on .pf-tpl-shot { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, .35); }
+.pf-tpl-name { display: block; margin-top: 8px; font-size: .84rem; color: var(--pf-sub); }
+.pf-tpl.on .pf-tpl-name { color: var(--pf-text); font-weight: 600; }
+.pf-tpl:focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 3px; border-radius: 10px; }
+
+@media (max-width: 600px) {
+  .pf-page .pf-main > .pf-panel:not([hidden]) { padding: 0 18px; }
+  .pf-tpl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .pf-tpl-modal { padding: 12px; }
+  .pf-tpl-dialog { padding: 20px 16px; max-height: 94vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-tpl-shot { transition: none; }
+  .pf-tpl-dialog { animation: none; }
+}
+
+/* Sidebar "Job Tracker" block, under My Profile Strength: a short line, a
+   picture of a saved application (two cards, one peeking out behind), the button. */
+.pf-page .pf-tracker { border-top: 1px solid var(--pf-line); text-align: left; }
+.pf-page .pf-tracker .pf-side-h { margin-bottom: 8px; }
+.pf-page .pf-tracker .pf-tracker-btn { width: 100%; margin-top: 4px; box-sizing: border-box; }
+
+.pf-jc-stack { position: relative; margin: 20px 0 22px; padding-top: 10px; }
+.pf-jc {
+  position: relative; padding: 16px 16px 14px; border-radius: 14px; text-align: left;
+  background: linear-gradient(160deg, rgba(30, 41, 89, .95), rgba(15, 20, 52, .95));
+  border: 1px solid rgba(129, 140, 248, .28);
+  box-shadow: 0 14px 30px -12px rgba(0, 0, 0, .65);
+}
+.pf-jc-back {
+  position: absolute; inset: 0 14px auto 14px; height: 60px; padding: 0;
+  background: rgba(30, 41, 89, .55); box-shadow: none; transform: translateY(-10px); opacity: .8;
+}
+.pf-jc-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pf-jc-title { font-size: .98rem; font-weight: 700; color: #f1f5ff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pf-jc-badge {
+  flex: none; font-size: .7rem; font-weight: 700; color: #cbd5f5; padding: 3px 10px; border-radius: 999px;
+  background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16);
+}
+.pf-jc-meta { margin-top: 6px; font-size: .78rem; color: #97a3c4; }
+.pf-jc-tpl {
+  display: inline-block; margin-top: 10px; font-size: .72rem; font-weight: 700; color: #bfdbfe;
+  padding: 4px 11px; border-radius: 999px; background: rgba(59, 130, 246, .18); border: 1px solid rgba(96, 165, 250, .4);
+}
+.pf-jc-jd { margin-top: 10px; padding-bottom: 12px; font-size: .78rem; font-weight: 600; color: #8ab4ff;
+  border-bottom: 1px solid rgba(129, 140, 248, .18); }
+.pf-jc-btns { display: flex; gap: 8px; margin-top: 12px; }
+.pf-jc-dl {
+  flex: 1; text-align: center; font-size: .76rem; font-weight: 700; color: #fff; padding: 8px 0; border-radius: 9px;
+  background: linear-gradient(135deg, #4f7fff, #7c3aed);
+}
+.pf-jc-del {
+  flex: none; font-size: .76rem; font-weight: 700; color: #f87171; padding: 8px 14px; border-radius: 9px;
+  border: 1px solid rgba(248, 113, 113, .45);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pf-jc-stack .pf-jc:not(.pf-jc-back) { animation: pfJcFloat 5s ease-in-out infinite; }
+}
+@keyframes pfJcFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+/* "Auto Apply Job" card at the top of Profile: title + tag, headline, one line,
+   three ticked points, and the button centred on the right. */
+.pf-page .pf-ext-head { justify-content: flex-start; gap: 12px; }
+.pf-page .pf-ext-head .pf-tag { margin-left: 0; }
+.pf-page .pf-ext-install .pf-resume-txt strong { font-size: 1.06rem; }
+.pf-ext-points { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.pf-ext-points li { display: inline-flex; align-items: center; gap: 7px; font-size: .84rem; color: var(--pf-text); }
+.pf-ext-points li::before {
+  content: ""; flex: none; width: 16px; height: 16px; border-radius: 50%;
+  background: rgba(59, 130, 246, .2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2393c5fd' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 10px no-repeat;
+}
+.pf-page .pf-ext-install .pf-resume-row { align-items: center; }
+.pf-page .pf-ext-install .pf-pill { align-self: center; }
+
+/* The tracker card's edit row, as the job tracker shows it: company, status, Update. */
+.pf-jc-row { display: flex; gap: 8px; margin-top: 12px; }
+.pf-jc-input, .pf-jc-select {
+  flex: 1; min-width: 0; font-size: .78rem; color: #dbe4ff; padding: 8px 10px; border-radius: 8px;
+  background: rgba(255, 255, 255, .04); border: 1px solid rgba(129, 140, 248, .3);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pf-jc-update {
+  display: inline-block; margin-top: 10px; font-size: .76rem; font-weight: 700; color: #dbeafe; padding: 7px 14px;
+  border-radius: 8px; background: rgba(59, 130, 246, .18); border: 1px solid rgba(96, 165, 250, .4);
+}
+
+/* Icon tiles: see-through blue with a light outline, not solid. */
+.pf-page .pf-file-ico, .pf-page .pf-file-ico.pf-file-cover,
+.pf-page .pf-logo-edu, .pf-page .pf-logo-proj, .pf-page .pf-logo-job:not(.has-img) {
+  background: rgba(59, 130, 246, .14); color: #93c5fd; box-shadow: inset 0 0 0 1px rgba(96, 165, 250, .35);
+}
+
+/* Inside the app shell (shorter top bar than the marketing navbar): the sticky
+   sidebar lines up with the main column instead of starting 100px lower. */
+html.tcv-app .pf-page .pf-side { top: 16px; }

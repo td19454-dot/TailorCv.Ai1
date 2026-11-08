@@ -1177,7 +1177,11 @@ async function attachDocument(decision, ctx) {
   void ctx;
   // Oracle's import: watched from before the file goes in, so what was already
   // on the page is not taken for the form reading it.
-  const reading = isProfileImport(decision.row) ? watchResumeReading(target) : null;
+  // Likewise a resume upload the page reads into the form: Phenom rewrote Work
+  // Experience and Education a few seconds after we had filled them (Quest
+  // Global, Nov 2026).
+  const reading = isProfileImport(decision.row) || (decision.slot === 'resume' && formReadsResume(target))
+    ? watchResumeReading(target) : null;
 
   // A drop-target with no file input of its own. There is nothing to write to,
   // so the drop event IS the mechanism — and there is also nothing to read back,
@@ -1330,6 +1334,25 @@ function watchResumeReading(input) {
       return true;
     },
   };
+}
+
+// "This will auto-fill the fields below" (Keka), "we'll parse your resume".
+const AUTOFILL_HINT_RE = /\bauto-?\s?fill|\bpre-?\s?fill|\bpars(e|es|ing)\b|\bpopulate/i;
+
+/**
+ * Does this page read an uploaded resume into its own fields? Phenom's apply
+ * page (its "Upload Resume" button beside a hidden input) always does; others
+ * say so beside the upload. Only these pay the wait for the reading to show.
+ */
+function formReadsResume(input) {
+  if (!input) return false;
+  try {
+    if (input.closest('.resume-upload-wrapper')) return true;
+    const doc = input.ownerDocument || globalThis.document;
+    if (doc.querySelector('[atm-id="resume-button"]')) return true;
+  } catch (e) { /* fall through */ }
+  const near = ancestor(input, 4);
+  return !!near && AUTOFILL_HINT_RE.test(String(near.textContent || '').slice(0, 2000));
 }
 
 function ancestor(el, levels) {

@@ -166,18 +166,27 @@ export function decide(rows, ctx, server, state) {
     // Except Workday's skills prompt: it only ADDS — the skills Workday read
     // from the resume stay, and the profile's other skills join them.
     const additiveSkills = row.multiPrompt && (matchFieldKey(row.label) || {}).key === 'top_skills';
-    if (row.filled && !row.invalid && !additiveSkills) {
+    // What the ATS filled by reading the uploaded resume normally stays. Not in
+    // an Experience / Education row whose entry the profile holds: Phenom's
+    // reader put the company into Job Title and left Company blank (Quest
+    // Global, Nov 2026). The person's own saved entry is the better source.
+    const ownEntry = row.filledByForm ? entryAnswer(row, ctx) : null;
+    const sameText = (a, b) => String(a || '').replace(/\s+/g, ' ').trim().toLowerCase()
+      === String(b || '').replace(/\s+/g, ' ').trim().toLowerCase();
+    const replaceFormRead = !!(ownEntry && ownEntry.value && row.kind !== 'checkbox' && !sameText(ownEntry.value, row.value));
+    if (row.filled && !row.invalid && !additiveSkills && !replaceFormRead) {
       return done(d, SKIP, row.value, '', 0, 'already filled in');
     }
 
-    // Fields known by name: Keka's Experience and Education rows, from that
-    // row's own entry, and the date on Lever's disability signature.
-    const namedField = kekaEntryAnswer(row, ctx) || leverSignatureDate(row, rows, bank) || highSchoolAnswer(row, ctx);
+    // Fields known by name: Keka's and Phenom's Experience and Education rows,
+    // from that row's own entry, and the date on Lever's disability signature.
+    const namedField = entryAnswer(row, ctx) || leverSignatureDate(row, rows, bank) || highSchoolAnswer(row, ctx);
     if (namedField) {
       d.noServer = true;
       if (namedField.ask) return done(d, row.required ? ASK : SKIP, '', '', 0, namedField.ask);
       return namedField.skip ? done(d, SKIP, '', '', 0, namedField.skip)
-        : done(d, FILL, namedField.value, 'profile', 0.95, '');
+        : done(d, FILL, namedField.value, 'profile', 0.95,
+               replaceFormRead ? `from your profile — the form had read "${truncate(row.value, 40)}" from your resume` : '');
     }
 
     // A date under such a heading is that entry's: "Start Date" under "Highest
@@ -769,6 +778,55 @@ function kekaEntryAnswer(row, ctx) {
   if (m[3] === 'dateOfJoining') return date(isoYear(entry.from));
   if (m[3] === 'dateOfCompletion') return date(isoYear(entry.to));
   return null;
+}
+
+// Phenom's repeating rows, by id: experienceData[1].companyName is job 2's
+// company, educationData[0].fromTo.startDate school 1's start (Quest Global, Nov 2026).
+const PHENOM_ENTRY_RE = /^(experience|education)Data\[(\d+)\]\.([\w.]+)$/;
+
+/** "2026-06-01" → "06/2026", the shape Phenom's month pickers show. */
+const monthSlashYear = iso => (/^(\d{4})-(\d{2})/.test(iso || '') ? `${iso.slice(5, 7)}/${iso.slice(0, 4)}` : '');
+
+/**
+ * One box of a Phenom Work Experience or Education row, from the profile entry
+ * its id points to. A blank entry value is asked when the box is required and
+ * skipped otherwise — never borrowed from the profile's general answers, which
+ * put the current job into every row. { value } / { ask } / { skip } / null.
+ */
+function phenomEntryAnswer(row, ctx) {
+  const m = PHENOM_ENTRY_RE.exec((row && row.el && row.el.id) || '');
+  if (!m) return null;
+  const facts = (ctx && ctx.facts) || {};
+  const exp = m[1] === 'experience';
+  const entry = ((exp ? facts.workExperience : facts.educationEntries) || [])[Number(m[2])];
+  if (!entry) return null;
+  const part = m[3].toLowerCase();
+  const own = (v, what) => {
+    if (String(v || '').trim()) return { value: String(v).trim() };
+    const why = `no ${what} saved for this entry — add it in your profile, or fill it in here`;
+    return row.required ? { ask: why } : { skip: why };
+  };
+  const date = (iso, what) => own(monthSlashYear(iso), what);
+  if (exp) {
+    if (/currentlywork/.test(part)) return entry.current ? { value: 'Yes' } : { skip: 'not your current job' };
+    if (/startdate/.test(part)) return date(isoMonth(entry.from), 'start date');
+    if (/enddate/.test(part)) return entry.current ? { skip: 'your current job' } : date(isoMonth(entry.to), 'end date');
+    if (/company|employer/.test(part)) return own(entry.company, 'company');
+    if (/title|designation|position/.test(part)) return own(entry.title, 'job title');
+    if (/location|city/.test(part)) return own(entry.location, 'location');
+    return null;
+  }
+  if (/startdate/.test(part)) return date(isoYear(entry.from), 'start date');
+  if (/enddate/.test(part)) return date(isoYear(entry.to), 'end date');
+  if (/school|institution|university|college/.test(part)) return own(entry.school, 'school');
+  if (/fieldofstudy|major|discipline/.test(part)) return own(entry.field, 'field of study');
+  if (/degree/.test(part)) return own(entry.degree, 'degree');
+  return null;
+}
+
+/** The answer an Experience / Education row's own entry gives this box, or null. */
+function entryAnswer(row, ctx) {
+  return kekaEntryAnswer(row, ctx) || phenomEntryAnswer(row, ctx);
 }
 
 function done(d, action, value, source, confidence, reason) {

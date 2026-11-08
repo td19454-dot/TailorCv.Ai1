@@ -7543,15 +7543,24 @@ def _extract_contact_from_resume_text(text: str, lines: list[str]) -> dict[str, 
 
     top_lines = [_clean_resume_line(line) for line in lines[:8] if _clean_resume_line(line)]
     location = ""
+    # A contact line holds several items — "leetcode.com/u/x • site.com/me •
+    # Kolkata, West Bengal", each behind an icon-font glyph (U+E000–U+F8FF).
+    # Taken whole, the location field showed the glyphs and both links. So
+    # each line is split on its separators and only a piece that is no link,
+    # email or phone number can be the place.
+    urlish = re.compile(r"@|https?://|www\.|\b[a-z0-9-]+\.(?:com|in|org|io|dev|ai|net|me|co|app|xyz)\b", re.I)
     for line in top_lines:
-        if email and email in line:
-            continue
-        if phone and phone in line:
-            continue
-        if "@" in line or "http" in line.lower() or "www." in line.lower():
-            continue
-        if re.search(r"\b(?:india|usa|united states|uk|canada|australia|remote)\b", line.lower()) or "," in line:
-            location = line
+        line = re.sub(r"[-�]", " ", line)
+        for part in re.split(r"\s*[•|·▪●◦]\s*|\s{3,}", line):
+            part = re.sub(r"\s+", " ", part).strip(" \t-–—:;,")
+            if not part or urlish.search(part):
+                continue
+            if (email and email in part) or (phone and phone in part) or re.fullmatch(r"[\d\s()+\-.]+", part):
+                continue
+            if re.search(r"\b(?:india|usa|united states|uk|canada|australia|remote)\b", part.lower()) or "," in part:
+                location = part
+                break
+        if location:
             break
 
     return {
