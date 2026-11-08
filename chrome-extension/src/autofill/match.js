@@ -840,8 +840,9 @@ export const FIELD_SYNONYMS = [
   // employer's name was written into a notice-period box; "Why are you leaving
   // your current employer?" and "How long have you been in your current role?"
   // were the same mistake waiting to happen.
-  { key: 'current_job_title', labels: ['current title', 'current job title', 'current role', 'job title', 'most recent title', 'occupation'],
-    only: NAME_FIELD_WORDS.concat(['job', 'title', 'role', 'position', 'designation', 'occupation', 'company', 'employer']) },
+  { key: 'current_job_title', labels: ['current title', 'current job title', 'current role', 'job title', 'most recent title', 'occupation',
+    'professional title', 'current designation', 'designation', 'current position'],
+    only: NAME_FIELD_WORDS.concat(['job', 'title', 'role', 'position', 'designation', 'occupation', 'company', 'employer', 'professional', 'your']) },
   { key: 'current_company', labels: ['current company', 'current employer', 'most recent company', 'most recent employer', 'company name', 'employer'],
     only: NAME_FIELD_WORDS.concat(['company', 'employer', 'organization', 'organisation', 'business']) },
   { key: 'years_of_experience', labels: ['years of experience', 'total experience', 'years experience', 'how many years of experience', 'relevant experience years'] },

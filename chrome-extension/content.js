@@ -842,6 +842,54 @@
     return stylesReady;
   }
 
+  // The launcher tab slides up and down the right edge: drag it out of the
+  // page's way, and it stays where it was left, on every site. A press that
+  // moves under 5px is still a click.
+  const LAUNCHER_TOP_KEY = 'tcvLauncherTop';
+  function placeLauncher(el, top) {
+    const max = Math.max(8, window.innerHeight - el.offsetHeight - 8);
+    const y = Math.min(Math.max(8, Math.round(top)), max);
+    el.style.setProperty('top', `${y}px`, 'important');
+    return y;
+  }
+  function makeLauncherDraggable(el) {
+    try {
+      chrome.storage.local.get(LAUNCHER_TOP_KEY, (got) => {
+        const top = got && Number(got[LAUNCHER_TOP_KEY]);
+        if (top > 0) placeLauncher(el, top);
+      });
+    } catch (e) { /* storage unavailable: stays at the default spot */ }
+    let startY = 0, startTop = 0, moving = false, pressed = false;
+    el.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
+      pressed = true; moving = false;
+      startY = e.clientY; startTop = el.getBoundingClientRect().top;
+      try { el.setPointerCapture(e.pointerId); } catch (x) { /* ignore */ }
+    });
+    el.addEventListener('pointermove', (e) => {
+      if (!pressed) return;
+      if (!moving && Math.abs(e.clientY - startY) < 5) return;
+      moving = true;
+      el.classList.add('tcv-dragging');
+      placeLauncher(el, startTop + e.clientY - startY);
+    });
+    const end = () => {
+      if (!pressed) return;
+      pressed = false;
+      el.classList.remove('tcv-dragging');
+      if (!moving) return;
+      el.dataset.tcvDragged = '1';            // swallow the click this release fires
+      const y = placeLauncher(el, el.getBoundingClientRect().top);
+      try { chrome.storage.local.set({ [LAUNCHER_TOP_KEY]: y }); } catch (x) { /* ignore */ }
+    };
+    el.addEventListener('pointerup', end);
+    el.addEventListener('pointercancel', end);
+    window.addEventListener('resize', () => {
+      const top = parseFloat(el.style.getPropertyValue('top'));
+      if (top > 0) placeLauncher(el, top);
+    });
+  }
+
   async function createPanel() {
     if (document.getElementById('tailorcv-sidebar')) return;
     await ensureStyles();
@@ -982,7 +1030,9 @@
       launcher.classList.add('tcv-visible');
       accountMenu.classList.remove('tcv-visible');
     });
+    makeLauncherDraggable(launcher);
     launcher.addEventListener('click', () => {
+      if (launcher.dataset.tcvDragged === '1') { launcher.dataset.tcvDragged = ''; return; }
       sb.classList.remove('tcv-collapsed');
       launcher.classList.remove('tcv-visible');
       track('panel_opened', { host: location.hostname, via: 'launcher' });
@@ -1615,7 +1665,6 @@
             <div class="tcv-job-meta">${job.company ? esc(job.company) + ' · ' : ''}${SOURCE_LABEL[job.source] || ''}</div>
           </div>
         </div>
-        <div class="tcv-job-foot">Wrong job? <a href="#" id="tcvEditJd">Edit the description</a></div>
       </div>
       ${hasForm() ? `
       <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">Autofill this application <span aria-hidden="true">▸</span></button>` : `
@@ -1649,7 +1698,7 @@
             <div class="tcv-match-sub" id="tcvMatchSub">Skill match for this job</div>
           </div>
         </div>
-        <button class="tcv-btn tcv-btn-outline-accent" id="tcvTailorBtn">${tcvBusy ? tailorLabel : '✎ Tailor Resume'}</button>
+        <button class="tcv-btn tcv-btn-outline-accent" id="tcvTailorBtn">${tcvBusy ? tailorLabel : '<svg class="tcv-ico" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>Tailor Resume'}</button>
       </div>
       <div id="tcvResultSlot"></div>
       <button class="tcv-card tcv-row-card" id="tcvCoverBtn" type="button">
@@ -1677,10 +1726,6 @@
     const startBtn = body.querySelector('#tcvStartAppBtn');
     if (startBtn) startBtn.addEventListener('click', () => startApplication());
 
-    body.querySelector('#tcvEditJd').addEventListener('click', (e) => {
-      e.preventDefault();
-      renderManual(job.jd_string);
-    });
 
     // Both actions run off the same JD and the same stored base resume, so the cover
     // letter costs the user nothing extra to set up — it is the same click, once more.
@@ -2775,7 +2820,7 @@
     AF.ui.renderRunning(body, AF.ui.PHASE_TEXT.scanning, isAuto ? autoRunningInfo() : null);
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = '';
-    startProgress();
+    // No percentage ring here: the scanning view is the progress indicator.
     track('autofill_started', { host: location.hostname, ats: form.ats });
 
     const runStartedAt = performance.now();
@@ -2841,7 +2886,7 @@
     // The resume and the AI answers could not be reached: the count would mislead.
     globalStatus.textContent = result.extensionReloaded
       ? '✗ The extension was reloaded — refresh this page, then autofill again.'
-      : `✓ Filled ${filled} field${filled === 1 ? '' : 's'} — review before submitting`;
+      : `✓ Filled ${filled} field${filled === 1 ? '' : 's'}`;
     track('autofill_completed', {
       host: location.hostname,
       ats: result.ats,
@@ -3303,10 +3348,57 @@
     };
   }
 
+  // ── Continue to the next page ───────────────────────────────
+  // After a fill on a multi-page form: one press of the form's own Next /
+  // Continue. Never a button that submits or applies. The watcher above sees
+  // the new step and shows it, exactly as when the person presses it by hand.
+  const PAGE_NEXT_RE = /^(next|continue|save (and|&) continue|save (and|&) next|next step|next page|proceed)\b/i;
+  const PAGE_FINAL_RE = /submit|apply|send|finish|complete/i;
+
+  function pageNextButton() {
+    if (isFinalStep()) return null;
+    const known = nextButton();
+    if (known || isOracleFlow()) return known;
+    const sel = 'button, input[type="button"], input[type="submit"], a[role="button"], [role="button"]';
+    for (const b of document.querySelectorAll(sel)) {
+      if (b.closest('#tailorcv-sidebar') || b.disabled || b.getAttribute('aria-disabled') === 'true') continue;
+      if (!AF.isNodeVisible(b)) continue;
+      const name = (b.value || b.getAttribute('aria-label') || b.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!name || name.length > 40 || PAGE_FINAL_RE.test(name)) continue;
+      if (PAGE_NEXT_RE.test(name)) return b;
+    }
+    return null;
+  }
+
+  async function continueToNextPage() {
+    const next = pageNextButton();
+    if (!next) {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = '✗ Could not find the next-page button on this page.';
+      return { ok: false };
+    }
+    const before = stepKey();
+    const shownBefore = pageErrors();
+    globalStatus.className = 'tcv-status-text';
+    globalStatus.textContent = 'Moving to the next page…';
+    pressButton(next);
+    const moved = await waitForNextStep(before, shownBefore);
+    if (moved.ok) { globalStatus.textContent = ''; return { ok: true }; }
+    globalStatus.className = 'tcv-status-text tcv-error';
+    globalStatus.textContent = moved.errors && moved.errors.length
+      ? `✗ The page did not move on: ${moved.errors[0]}`
+      : '✗ The page did not move on — check it for missing answers.';
+    return { ok: false };
+  }
+
   function renderApplyResults(result, autoInfo) {
     currentView = 'results';
+    // Only a form in this page can be pressed on; a paused or finished
+    // auto-apply has its own Continue.
+    const canNext = !!applyForm && !(autoInfo && autoInfo.state) && !!pageNextButton();
     AF.ui.renderResults(body, result, applyCtx, {
       onFill: () => runAutofill(),
+      onNext: canNext ? () => continueToNextPage() : null,
       // Re-render in place after the user answers a field, so the row moves out
       // of "needs your answer" and into "filled" without re-running anything.
       // A paused auto-apply re-reads what is still blocking.

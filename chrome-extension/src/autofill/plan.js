@@ -751,12 +751,20 @@ function kekaEntryAnswer(row, ctx) {
   const entry = ((m[1] === 'Experience' ? facts.workExperience : facts.educationEntries) || [])[Number(m[2])];
   if (!entry) return null;
   const date = iso => (iso ? { value: spokenDate(iso) } : null);
+  // The text boxes of that same entry, not the profile's general answers: the
+  // row's Location took the person's home city, and a second row would take
+  // their current company (Tarento, Nov 2026).
+  const own = (v, what) => (String(v || '').trim() ? { value: String(v).trim() } : { skip: `no ${what} saved for this entry` });
   if (m[1] === 'Experience') {
     if (m[3] === 'isCurrentlyWorking') return entry.current ? { value: 'Yes' } : { skip: 'not your current job' };
     if (m[3] === 'dateOfJoining') return date(isoMonth(entry.from));
     if (m[3] === 'dateOfRelieving') return entry.current ? { skip: 'your current job' } : date(isoMonth(entry.to));
+    if (/company|employer|organi[sz]ation/i.test(m[3])) return own(entry.company, 'company');
+    if (/title|designation|role|position/i.test(m[3])) return own(entry.title, 'job title');
+    if (/location|city/i.test(m[3])) return own(entry.location, 'location');
     return null;
   }
+  if (/institut|college|school|university/i.test(m[3])) return own(entry.school, 'school');
   if (m[3] === 'degree') return entry.degree ? { value: entry.degree } : null;
   if (m[3] === 'dateOfJoining') return date(isoYear(entry.from));
   if (m[3] === 'dateOfCompletion') return date(isoYear(entry.to));
@@ -1619,9 +1627,9 @@ export function criminalHistoryAnswer(row) {
   return { value, reason: 'no criminal record — always No' };
 }
 
-// A Workday skills prompt takes one search per skill; ten is plenty and keeps
-// the field from costing more than a few seconds.
-const MAX_PROMPT_SKILLS = 10;
+// A Workday skills prompt takes one search per skill (~1.5 s each). Every
+// skill on the profile goes, up to 25: a cap of 10 sent 8 of a resume's 21.
+const MAX_PROMPT_SKILLS = 25;
 
 /** "Python, SQL; Machine Learning" → ['Python', 'SQL', 'Machine Learning'], unique, capped. */
 export function splitSkills(text) {

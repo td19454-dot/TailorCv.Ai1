@@ -130,7 +130,25 @@
         const lg = fs.querySelector("legend");
         if (lg) return txt(lg);
       }
-      return attr(el, "placeholder");
+      return attr(el, "placeholder") || wrapperText(el);
+    }
+    const WRAPPER_DROP_SEL = 'input, select, textarea, button, [role="listbox"], [role="option"], [role="alert"], [aria-live], [class*="error" i], [class*="helper" i], [class*="hint" i]';
+    function wrapperText(el) {
+      let n = el.parentElement;
+      for (let depth = 0; n && depth < 5; depth++, n = n.parentElement) {
+        if (only(n) !== el || isFormLevel2(n)) break;
+        let clone = null;
+        try {
+          clone = n.cloneNode(true);
+          const drop = clone.querySelectorAll(WRAPPER_DROP_SEL);
+          for (let i = 0; i < drop.length; i++) drop[i].remove();
+        } catch (e) {
+          return "";
+        }
+        const t = txt(clone);
+        if (t && /[a-z]{2}/i.test(t)) return t.length <= 200 ? t : "";
+      }
+      return "";
     }
     function siblingLabel(el) {
       let n = el.parentElement, depth = 0;
@@ -1373,8 +1391,8 @@ what when where which who will with would you your now future
     // were the same mistake waiting to happen.
     {
       key: "current_job_title",
-      labels: ["current title", "current job title", "current role", "job title", "most recent title", "occupation"],
-      only: NAME_FIELD_WORDS.concat(["job", "title", "role", "position", "designation", "occupation", "company", "employer"])
+      labels: ["current title", "current job title", "current role", "job title", "most recent title", "occupation", "professional title", "current designation", "designation", "current position"],
+      only: NAME_FIELD_WORDS.concat(["job", "title", "role", "position", "designation", "occupation", "company", "employer", "professional", "your"])
     },
     {
       key: "current_company",
@@ -2308,7 +2326,7 @@ what when where which who will with would you your now future
             value: "",
             filled: false,
             invalid: false,
-            required: false,
+            required: /\*\s*$/.test(named),
             options: null
           };
         }
@@ -2689,6 +2707,9 @@ what when where which who will with would you your now future
           n.querySelectorAll('button, label, legend, [role="button"], h1, h2, h3, h4')
         ).map(text).filter((t) => t && t.length <= 60);
         named = texts.find((t) => documentSlotFor(t)) || "";
+        if (!named) {
+          named = Array.from(n.querySelectorAll("span, p, strong")).map(text).filter((t) => t && t.length <= 60).find((t) => documentSlotFor(t)) || "";
+        }
         if (!named && depth === 0) named = texts.find((t) => !UPLOAD_ACTION_RE.test(t)) || "";
       } catch (e) {
       }
@@ -2703,8 +2724,8 @@ what when where which who will with would you your now future
     const doc = root && root.ownerDocument;
     if (!doc) return [];
     try {
-      if (root.querySelectorAll('input[type="file"]').length) return [];
-      return Array.from(doc.querySelectorAll('input[type="file"]')).filter((el) => !root.contains(el) && !(el.closest && el.closest("form")) && isVisible(el)).slice(0, 2);
+      const rootHasFiles = root.querySelectorAll('input[type="file"]').length > 0;
+      return Array.from(doc.querySelectorAll('input[type="file"]')).filter((el) => !root.contains(el) && !(el.closest && el.closest("form")) && isVisible(el)).filter((el) => !rootHasFiles || documentSlotFor(uploadGroupLabel(el)) === "resume").slice(0, 2);
     } catch (e) {
       return [];
     }
@@ -4018,12 +4039,17 @@ Zimbabwe|Zimbabwean
     const entry = ((m[1] === "Experience" ? facts.workExperience : facts.educationEntries) || [])[Number(m[2])];
     if (!entry) return null;
     const date = (iso) => iso ? { value: spokenDate(iso) } : null;
+    const own = (v, what) => String(v || "").trim() ? { value: String(v).trim() } : { skip: `no ${what} saved for this entry` };
     if (m[1] === "Experience") {
       if (m[3] === "isCurrentlyWorking") return entry.current ? { value: "Yes" } : { skip: "not your current job" };
       if (m[3] === "dateOfJoining") return date(isoMonth(entry.from));
       if (m[3] === "dateOfRelieving") return entry.current ? { skip: "your current job" } : date(isoMonth(entry.to));
+      if (/company|employer|organi[sz]ation/i.test(m[3])) return own(entry.company, "company");
+      if (/title|designation|role|position/i.test(m[3])) return own(entry.title, "job title");
+      if (/location|city/i.test(m[3])) return own(entry.location, "location");
       return null;
     }
+    if (/institut|college|school|university/i.test(m[3])) return own(entry.school, "school");
     if (m[3] === "degree") return entry.degree ? { value: entry.degree } : null;
     if (m[3] === "dateOfJoining") return date(isoYear(entry.from));
     if (m[3] === "dateOfCompletion") return date(isoYear(entry.to));
@@ -4645,7 +4671,7 @@ Zimbabwe|Zimbabwean
     if (value === null) return { ask: "none of the options say No \u2014 choose your answer" };
     return { value, reason: "no criminal record \u2014 always No" };
   }
-  var MAX_PROMPT_SKILLS = 10;
+  var MAX_PROMPT_SKILLS = 25;
   function splitSkills(text) {
     const seen = /* @__PURE__ */ new Set();
     const out = [];
@@ -6173,14 +6199,18 @@ ${lines.join("\n")}`;
     }
     return target;
   }
-  async function waitForPromptResults(el, shapes, done2) {
+  async function waitForPromptResults(el, shapes, done2, opts) {
     const doc = el.ownerDocument || globalThis.document;
     const start = Date.now();
     const limit = Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
     const deadline = start + limit;
+    const pick = opts && opts.pick || promptResultFor;
+    const stale = opts && opts.staleSig || "";
+    const STALE_TRUST_MS = 2500;
     const offers = (nodes) => {
       const labels = nodes.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
-      return shapes.some((s) => promptResultFor(s, labels) >= 0);
+      if (stale && labels.join("\n") === stale && Date.now() - start < STALE_TRUST_MS) return false;
+      return shapes.some((s) => pick(s, labels) >= 0);
     };
     for (; ; ) {
       if (done2 && done2()) {
@@ -6230,12 +6260,30 @@ ${lines.join("\n")}`;
     if (idx < 0) idx = labels.findIndex((t) => commitMatches(want, t));
     return idx;
   }
+  function skillResultFor(want, labels) {
+    const norm = (s) => normalizeOptionText(s);
+    const bare = (s) => norm(String(s || "").replace(/\([^)]*\)/g, " "));
+    const notes = (s) => (String(s || "").match(/\(([^)]*)\)/g) || []).map((n) => norm(n.slice(1, -1)));
+    const w = norm(want), wBare = bare(want);
+    if (!w) return -1;
+    const tests = [
+      (t) => norm(t) === w,
+      (t) => bare(t) === w,
+      (t) => notes(t).includes(w),
+      (t) => !!wBare && (bare(t) === wBare || norm(t) === wBare)
+    ];
+    for (const test of tests) {
+      const idx = labels.findIndex(test);
+      if (idx >= 0) return idx;
+    }
+    return -1;
+  }
   async function commitPromptMulti(row, values) {
     const el = row.el;
     const input = typableInput(row) || el;
     const out = { added: [], already: [], missing: [], pills: [] };
     const shown = () => promptPills(row);
-    const has = (pills, skill) => pills.some((t) => promptResultFor(skill, [t]) === 0);
+    const has = (pills, skill) => pills.some((t) => skillResultFor(skill, [t]) === 0);
     const writeSearch = (text) => {
       focus(input);
       writeValue(input, text);
@@ -6244,13 +6292,14 @@ ${lines.join("\n")}`;
     const pillWaitMs = Math.max(TIMING.commitWaitMs * 2, 300);
     const addOne = async (skill) => {
       note("search", `"${skill}"`);
+      const before = visibleOptionNodes2(el.ownerDocument || globalThis.document, el).map((n) => (n.textContent || "").replace(/\s+/g, " ").trim()).join("\n");
       writeSearch(skill);
       fireKey(input, "keydown", "Enter");
       fireKey(input, "keyup", "Enter");
-      const options = await waitForPromptResults(el, [skill]);
+      const options = await waitForPromptResults(el, [skill], null, { staleSig: before, pick: skillResultFor });
       const labels = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
       note("results", `${labels.length} rows`);
-      const idx = promptResultFor(skill, labels);
+      const idx = skillResultFor(skill, labels);
       if (idx < 0) return "missing";
       const label = labels[idx];
       if (shown().includes(label)) return "already";
@@ -7458,9 +7507,12 @@ ${lines.join("\n")}`;
   var LIST_KINDS = /* @__PURE__ */ new Set(["combobox", "select", "radio", "choice"]);
   var PAGE_SIZED_LIST = 25;
   var NAMED_PLACE_RE = /\bcountry\b|^(state|province)\b/i;
+  var FIELD_OF_STUDY_RE = /field of study|\bmajor\b|discipline|area of study|speciali[sz]ation|course of study|\bsubject\b/i;
   async function askModel(row, entry, spec, ask) {
     if (typeof ask !== "function" || !row.required || !LIST_KINDS.has(row.kind)) return false;
     if (classifySensitive(row.label)) return false;
+    if (spec.kind === "education" && FIELD_OF_STUDY_RE.test(row.label || "") && !String(entry.field || "").trim()) return false;
+    if (row.multiPrompt) return false;
     let options = (row.options || []).map((o) => typeof o === "string" ? o : o && o.label).filter(Boolean);
     const named = spec.cascades && NAMED_PLACE_RE.test(row.label || "");
     if (!named && !options.length && row.kind === "combobox") {
@@ -8800,24 +8852,14 @@ ${lines.join("\n")}`;
           No fields found on this step yet. If a section opens with <b>Add</b>
           (Work Experience, Education), open it first, then autofill this page.
         </div>` : ""}
-      ${blockers.length ? `
-        <div class="tcv-af-note">
-          ${esc(blockers[0])}
-          <a href="#" id="tcvAfProfileLink">Open your profile \u2192</a>
-        </div>` : ""}
       ${quotaOut ? `
         <div class="tcv-af-note">
           You've used your free autofills. <a href="#" id="tcvAfUpgrade">Upgrade to Pro \u2192</a>
         </div>` : `
         <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">${page > 1 ? "Autofill this page" : "Autofill this application"} <span aria-hidden="true">\u25B8</span></button>
         ${form && (form.ats === "workday" || form.ats === "oracle") && handlers.onAutoApply ? `
-        <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoBtn">\u23E9 Auto-apply all pages</button>
-        <div class="tcv-af-note tcv-af-note-quiet">Fills each page and clicks ${form.ats === "oracle" ? "Next" : "Save and Continue"},
-          pausing only for what it can't fill. It stops at ${form.ats === "oracle" ? "the last page" : "Review"} \u2014 you click Submit.</div>` : ""}`}
-      <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn">\u2726 Tailor my resume for this job</button>
-      <div class="tcv-af-note tcv-af-note-quiet">
-        TailorCV never submits an application. You review everything and send it yourself.
-      </div>
+        <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoBtn">\u23E9 Auto-apply all pages</button>` : ""}`}
+      <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn"><svg class="tcv-ico" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>Tailor my resume for this job</button>
     </div>`;
     const fill = body.querySelector("#tcvAfFillBtn");
     if (fill) fill.addEventListener("click", () => handlers.onFill());
@@ -8847,37 +8889,44 @@ ${lines.join("\n")}`;
     const byForm = decisions.filter((d) => d.byForm).length;
     body.innerHTML = `
     <div class="tcv-af-panel">
-      <div class="tcv-af-summary" id="tcvAfSummary">
-        ${pill("ok", `${filled} filled`)}
-        ${byForm ? pill("review", `${byForm} from your resume`) : ""}
-        ${counts[SUGGEST] ? pill("review", `${counts[SUGGEST]} to review`) : ""}
-        ${counts[ASK] ? pill("ask", `${counts[ASK]} need you`) : ""}
-        ${counts[PROFILE] ? pill("ask", `${counts[PROFILE]} for your profile`) : ""}
-      </div>
+      ${summaryHtml(filled, decisions.length, [
+      byForm ? pill("review", `${byForm} from your resume`) : "",
+      counts[SUGGEST] ? pill("review", `${counts[SUGGEST]} to review`) : "",
+      counts[ASK] ? pill("ask", `${counts[ASK]} need you`) : "",
+      counts[PROFILE] ? pill("ask", `${counts[PROFILE]} for your profile`) : ""
+    ])}
       ${result.page > 1 ? `<div class="tcv-source">Page ${esc(result.page)} of this application</div>` : ""}
       ${autoBannerHtml(handlers.auto, decisions)}
-      <button class="tcv-btn tcv-btn-start" id="tcvAfRerun">\u21BB Autofill this page</button>
+      <button class="tcv-btn tcv-btn-start" id="tcvAfRerun"><svg class="tcv-ico" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Autofill this page</button>
       ${result.serverError ? `<div class="tcv-af-note">${esc(result.serverError)}</div>` : ""}
       ${result.opaqueHosts ? `<div class="tcv-af-note tcv-af-note-quiet">
         ${esc(result.opaqueHosts)} field group(s) on this page are built in a way
         we can't read \u2014 check those by hand.</div>` : ""}
       <div id="tcvAfBody">${GROUPS.map((g) => groupHtml(g, decisions)).join("")}</div>
-      <div class="tcv-af-note tcv-af-note-quiet">
-        Review everything, then submit the application yourself. TailorCV never
-        submits for you.
-      </div>
-      <div class="tcv-af-note tcv-af-note-quiet">
-        Something filled wrong? <a href="#" id="tcvAfEditProfile">Edit your application
-        profile</a> \u2014 name, address, phone and eligibility answers all come from there.
-      </div>
+      ${handlers.onNext ? `<div class="tcv-af-next-bar">
+        <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfNext">Continue to the next page <span aria-hidden="true">▸</span></button>
+      </div>` : ""}
     </div>`;
+    const bar = body.querySelector(".tcv-af-sum-bar span");
+    if (bar) bar.style.setProperty("width", `${bar.dataset.pct || 0}%`, "important");
+    const nextBtn = body.querySelector("#tcvAfNext");
+    if (nextBtn) {
+      nextBtn.addEventListener("click", async () => {
+        nextBtn.disabled = true;
+        nextBtn.textContent = "Moving to the next page…";
+        const res = await handlers.onNext();
+        if (!res || !res.ok) {
+          nextBtn.disabled = false;
+          nextBtn.innerHTML = 'Continue to the next page <span aria-hidden="true">▸</span>';
+        }
+      });
+    }
     wireRows(body, decisions, ctx, handlers);
     wireAutoBanner(body, handlers.auto);
     const rerun = body.querySelector("#tcvAfRerun");
     if (rerun) rerun.addEventListener("click", () => handlers.onFill());
     bindLink(body, "#tcvAfEditProfile", handlers.onOpenProfile);
     if (decisions.length && decisions[0].row) highlight(decisions);
-    offerToRemember(body, result, handlers);
   }
   function autoBannerHtml(auto, decisions) {
     if (!auto) return "";
@@ -8909,11 +8958,24 @@ ${lines.join("\n")}`;
   function pill(kind, text) {
     return `<span class="tcv-af-summary-pill tcv-af-${esc(kind)}">${esc(text)}</span>`;
   }
+  function summaryHtml(filled, total, pills) {
+    const pct = total ? Math.round(filled / total * 100) : 0;
+    const rest = pills.filter(Boolean).join("");
+    return `
+      <div class="tcv-af-summary" id="tcvAfSummary">
+        <div class="tcv-af-sum-line">
+          <span><b>${esc(filled)} filled</b> of ${esc(total)} field${total === 1 ? "" : "s"}</span>
+          <span class="tcv-af-sum-pct">${esc(pct)}%</span>
+        </div>
+        <div class="tcv-af-sum-bar"><span data-pct="${esc(pct)}"></span></div>
+        ${rest ? `<div class="tcv-af-sum-rest">${rest}</div>` : ""}
+      </div>`;
+  }
   function groupHtml(group, decisions) {
     const rows = decisions.filter(group.match || ((d) => d.action === group.action));
     if (!rows.length) return "";
     return `
-    <div class="tcv-af-group">
+    <div class="tcv-af-group tcv-af-group-${esc(group.badge)}">
       <div class="tcv-af-group-title">${esc(group.title)} \xB7 ${rows.length}</div>
       ${rows.map((d) => rowHtml(group, d, decisions.indexOf(d))).join("")}
     </div>`;
@@ -9093,14 +9155,19 @@ ${lines.join("\n")}`;
       btn.after(note2);
     });
   }
+  var SCAN_DOC = `<div class="tcv-af-doc" role="progressbar" aria-label="Scanning">
+  <i class="tcv-af-doc-h"></i>
+  <i class="tcv-af-doc-l"></i><i class="tcv-af-doc-l"></i><i class="tcv-af-doc-l tcv-af-doc-s"></i>
+  <i class="tcv-af-doc-f"></i><i class="tcv-af-doc-f"></i><i class="tcv-af-doc-f"></i>
+  <i class="tcv-af-doc-b"></i>
+  <span class="tcv-af-doc-scan"></span>
+</div>`;
   function renderRunning(body, phase, auto) {
     body.innerHTML = `
-    <div class="tcv-af-panel">
-      ${auto ? `<div class="tcv-af-auto tcv-af-auto-running">
-        <div class="tcv-af-auto-title">\u23E9 Auto-apply \xB7 page ${esc(auto.page || 1)}</div>
-        <div class="tcv-af-auto-msg">Filling each page and moving on. It stops at Review.</div>
-      </div>` : ""}
-      <div class="tcv-status-text" id="tcvAfPhase">${esc(phase || "Reading the form\u2026")}</div>
+    <div class="tcv-af-panel tcv-af-scan">
+      ${SCAN_DOC}
+      <div class="tcv-af-scan-title">${auto ? `AI is applying \xB7 page ${esc(auto.page || 1)}` : "AI is scanning this page"}</div>
+      <div class="tcv-af-scan-sub" id="tcvAfPhase">${esc(phase || "Reading the form\u2026")}</div>
       ${auto && auto.onStop ? `<button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoStop">Stop after this page</button>` : ""}
     </div>`;
     const stop = body.querySelector("#tcvAfAutoStop");

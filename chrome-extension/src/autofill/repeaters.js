@@ -321,11 +321,19 @@ const LIST_KINDS = new Set(['combobox', 'select', 'radio', 'choice']);
 // part of itself, and the model would be choosing the nearest row on that page.
 const PAGE_SIZED_LIST = 25;
 const NAMED_PLACE_RE = /\bcountry\b|^(state|province)\b/i;
+const FIELD_OF_STUDY_RE = /field of study|\bmajor\b|discipline|area of study|speciali[sz]ation|course of study|\bsubject\b/i;
 
 /** One required list answered by the model from this entry; true when it took. */
 async function askModel(row, entry, spec, ask) {
   if (typeof ask !== 'function' || !row.required || !LIST_KINDS.has(row.kind)) return false;
   if (classifySensitive(row.label)) return false;
+  // A field of study the person never gave is theirs to answer, not the model's:
+  // with nothing to go on it chose "Accounting" for an engineering student
+  // (Workday, Nov 2026).
+  if (spec.kind === 'education' && FIELD_OF_STUDY_RE.test(row.label || '') && !String(entry.field || '').trim()) return false;
+  // A Workday search list shows the start of its A-Z catalogue, not the answers:
+  // choosing from that is choosing from whatever begins with "A".
+  if (row.multiPrompt) return false;
   let options = (row.options || []).map(o => (typeof o === 'string' ? o : o && o.label)).filter(Boolean);
   // A country or state, on a paged list: named by the model, and then only taken
   // if the list holds exactly that (see inPagedList in write.js).

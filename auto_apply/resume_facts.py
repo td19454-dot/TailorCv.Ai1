@@ -461,6 +461,31 @@ def flatten_skill_groups(groups: list[dict]) -> list[str]:
     return out
 
 
+def _skill_items(text) -> list[str]:
+    return [x.strip() for x in str(text or "").split(",") if x.strip()]
+
+
+def is_truncated_skills(saved: str, full: str) -> bool:
+    """A saved skills list that is only autofill's old top-8 cut of `full`.
+
+    The profile page once showed at most 8 skills, and saving the card stored
+    just those. Such a list — 8 or fewer, every one also in `full`, and `full`
+    has more — is that cut, not the user's choice. A list holding any skill of
+    the user's own, or a longer one, is theirs and is left alone.
+    """
+    mine = [s.lower() for s in _skill_items(saved)]
+    theirs = [s.lower() for s in _skill_items(full)]
+    return 0 < len(mine) <= 8 and len(theirs) > len(mine) and set(mine) <= set(theirs)
+
+
+def upgraded_skills(saved: str, resume_text: str) -> str:
+    """The resume's whole Skills section when `saved` is only the old cut of
+    it; otherwise `saved` unchanged. Only ever adds the user's own resume
+    skills — nothing saved is dropped."""
+    full = ", ".join(flatten_skill_groups(extract_skill_groups(resume_text)))
+    return full if full and is_truncated_skills(saved, full) else saved
+
+
 # ── assembly ──────────────────────────────────────────────────────────────
 
 def _clean_str(value) -> str:

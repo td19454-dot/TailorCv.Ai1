@@ -1090,18 +1090,23 @@ function rowClickTarget(node, label) {
  * the moment they do, so a fast search costs nothing extra — and stops early
  * once Workday says "No Items" for a search that has had time to run.
  */
-async function waitForPromptResults(el, shapes, done) {
+async function waitForPromptResults(el, shapes, done, opts) {
   const doc = el.ownerDocument || globalThis.document;
   const start = Date.now();
   const limit = Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
   const deadline = start + limit;
-  // The same strict test the pick uses (exact, or every word). The fuzzy
-  // listOffersAny accepted the PREVIOUS search's results still on screen —
-  // "Machine Learning Methods" for "Deep Learning" — so it stopped waiting,
-  // found nothing to click, and moved on as the real results arrived.
+  const pick = (opts && opts.pick) || promptResultFor;
+  // The list that was up BEFORE this search. Until Workday redraws it, what is
+  // on screen answers the previous search: "CSS" was matched to "CSS HTML" in
+  // the HTML results 5 ms after typing, and JavaScript was clicked in a list
+  // that was then replaced (NVIDIA, Nov 2026). A list identical to the old one
+  // is believed only after a while — two searches can return the same rows.
+  const stale = (opts && opts.staleSig) || '';
+  const STALE_TRUST_MS = 2500;
   const offers = nodes => {
     const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
-    return shapes.some(s => promptResultFor(s, labels) >= 0);
+    if (stale && labels.join('\n') === stale && Date.now() - start < STALE_TRUST_MS) return false;
+    return shapes.some(s => pick(s, labels) >= 0);
   };
   for (;;) {
     // Workday may select the answer itself on Enter (Field of Study, an exact
@@ -1146,6 +1151,35 @@ function promptResultFor(want, labels) {
 }
 
 /**
+ * The result row that IS this skill, or -1. Stricter than promptResultFor:
+ * a row with extra words is a different skill ("LLM Evaluation" is not
+ * "LLM", "CSS HTML" is not "CSS"), and claiming it would put a skill on the
+ * application the person never listed. Accepted, best first:
+ *   the same name                     SQL          → SQL
+ *   the name plus Workday's note      Python       → Python (Programming Language)
+ *   the note is the name              LLM          → Large Language Models (LLM)
+ *   the name without its own note     NLP-style "Natural Language Processing(NLP)"
+ */
+export function skillResultFor(want, labels) {
+  const norm = s => normalizeOptionText(s);
+  const bare = s => norm(String(s || '').replace(/\([^)]*\)/g, ' '));
+  const notes = s => (String(s || '').match(/\(([^)]*)\)/g) || []).map(n => norm(n.slice(1, -1)));
+  const w = norm(want), wBare = bare(want);
+  if (!w) return -1;
+  const tests = [
+    t => norm(t) === w,
+    t => bare(t) === w,
+    t => notes(t).includes(w),
+    t => !!wBare && (bare(t) === wBare || norm(t) === wBare),
+  ];
+  for (const test of tests) {
+    const idx = labels.findIndex(test);
+    if (idx >= 0) return idx;
+  }
+  return -1;
+}
+
+/**
  * Add several answers to a Workday multi-select prompt ("Type to Add Skills").
  *
  * Workday's own sequence, per answer: write it, press Enter (typing alone does
@@ -1160,7 +1194,7 @@ async function commitPromptMulti(row, values) {
   const input = typableInput(row) || el;
   const out = { added: [], already: [], missing: [], pills: [] };
   const shown = () => promptPills(row);
-  const has = (pills, skill) => pills.some(t => promptResultFor(skill, [t]) === 0);
+  const has = (pills, skill) => pills.some(t => skillResultFor(skill, [t]) === 0);
   // The search text, with an input event only. setText's extra `change` is
   // nothing Workday's search box needs while its list is open.
   const writeSearch = (text) => { focus(input); writeValue(input, text); fire(input, 'input'); };
@@ -1175,13 +1209,17 @@ async function commitPromptMulti(row, values) {
   const pillWaitMs = Math.max(TIMING.commitWaitMs * 2, 300);
   const addOne = async (skill) => {
     note('search', `"${skill}"`);
+    // What the list says before this search, so its leftovers are not taken
+    // for this search's results.
+    const before = visibleOptionNodes(el.ownerDocument || globalThis.document, el)
+      .map(n => (n.textContent || '').replace(/\s+/g, ' ').trim()).join('\n');
     writeSearch(skill);
     fireKey(input, 'keydown', 'Enter');
     fireKey(input, 'keyup', 'Enter');
-    const options = await waitForPromptResults(el, [skill]);
+    const options = await waitForPromptResults(el, [skill], null, { staleSig: before, pick: skillResultFor });
     const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
     note('results', `${labels.length} rows`);
-    const idx = promptResultFor(skill, labels);
+    const idx = skillResultFor(skill, labels);
     if (idx < 0) return 'missing';
     const label = labels[idx];
     if (shown().includes(label)) return 'already';   // ticked already, under another wording

@@ -173,7 +173,29 @@
 
     const fs = el.closest && el.closest('fieldset');
     if (fs) { const lg = fs.querySelector('legend'); if (lg) return txt(lg); }
-    return attr(el, 'placeholder');
+    return attr(el, 'placeholder') || wrapperText(el);
+  }
+
+  // Last resort: the field's name as plain text in its own wrapper, with no
+  // <label> at all. Gem: <div><span>First name *</span><div><div><input></div>
+  // </div></div>. Same bound as siblingLabel — only wrappers holding this one
+  // control — so it never reads the field above; and short text only, so a
+  // paragraph of instructions is not taken for a name.
+  const WRAPPER_DROP_SEL = 'input, select, textarea, button, [role="listbox"], [role="option"], [role="alert"], [aria-live], [class*="error" i], [class*="helper" i], [class*="hint" i]';
+  function wrapperText(el) {
+    let n = el.parentElement;
+    for (let depth = 0; n && depth < 5; depth++, n = n.parentElement) {
+      if (only(n) !== el || isFormLevel(n)) break;
+      let clone = null;
+      try {
+        clone = n.cloneNode(true);
+        const drop = clone.querySelectorAll(WRAPPER_DROP_SEL);
+        for (let i = 0; i < drop.length; i++) drop[i].remove();
+      } catch (e) { return ''; }
+      const t = txt(clone);
+      if (t && /[a-z]{2}/i.test(t)) return t.length <= 200 ? t : '';
+    }
+    return '';
   }
 
   function siblingLabel(el) {

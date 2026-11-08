@@ -656,7 +656,12 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         return saved or str(fact_keys.get(key) or "").strip()
 
     names = resolve_name_parts(prof, snap.get("name") or "")
-    saved_skills = [s.strip() for s in str(prof.get("skills") or "").split(",") if s.strip()][:20]
+    # The saved list, or the resume's whole Skills section when what is saved
+    # is only the old top-8 cut of it (the same rule the profile page shows
+    # and stores) — so autofill never sends fewer skills than the page lists.
+    from auto_apply import resume_facts as rf
+    saved_text = rf.upgraded_skills(str(prof.get("skills") or ""), snap.get("resume_text", ""))
+    saved_skills = [s.strip() for s in saved_text.split(",") if s.strip()][:30]
     addr = resolve_address_parts(
         prof, prof.get("location") or "",
         ((facts.get("personal_info") or {}).get("location") or "") if isinstance(facts, dict) else "",

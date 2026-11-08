@@ -23,6 +23,7 @@ saves and reports its effective value with no second place to update.
 from __future__ import annotations
 
 import json
+import logging
 import os
 import re
 from dataclasses import dataclass, field
@@ -38,6 +39,7 @@ from database import SessionLocal
 from models import User, UserApplyProfile, UserApplyQA
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
@@ -816,10 +818,8 @@ def _is_truncated_skills(saved: str, resume: str) -> bool:
     the resume, and the resume has more — is that cut, not the user's choice.
     A list with any skill of the user's own, or a longer one, is left alone.
     """
-    def items(text):
-        return [x.strip().lower() for x in str(text or "").split(",") if x.strip()]
-    mine, theirs = items(saved), items(resume)
-    return 0 < len(mine) <= 8 and len(theirs) > len(mine) and set(mine) <= set(theirs)
+    from auto_apply import resume_facts as rf
+    return rf.is_truncated_skills(saved, resume)
 
 
 def _page_model(stored: dict, effective: dict, facts_cached: bool) -> dict:
@@ -880,6 +880,16 @@ async def profile_page(request: Request):
             return RedirectResponse(url="/login?next=/profile", status_code=302)
         prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user.id).first()
         from auto_apply import resume_facts as rf
+
+        # Skills saved back when this page showed only autofill's top 8: store
+        # the resume's whole Skills section now, so what the page shows is
+        # what autofill reads. Adds the user's own resume skills, drops none.
+        if prof and prof.skills:
+            upgraded = rf.upgraded_skills(prof.skills, user.base_resume_text)
+            if upgraded != prof.skills:
+                prof.skills = upgraded
+                db.commit()
+                logger.info("profile: stored the full resume skills list for user %s", user.id)
 
         cached = rf.load_cached_facts(db, user)
         model = _page_model(_stored(prof, user), await _effective(db, user, prof), cached is not None)

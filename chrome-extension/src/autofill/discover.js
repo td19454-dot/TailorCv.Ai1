@@ -884,7 +884,7 @@ export function describeFields(form) {
       const named = form.resumeStep ? 'Resume' : uploadGroupLabel(el);
       if (named) {
         d = { ident: named, kind: 'file', label: named, value: '', filled: false,
-              invalid: false, required: false, options: null };
+              invalid: false, required: /\*\s*$/.test(named), options: null };
       }
     }
     // No stable identity. Reported rather than dropped, so the review UI can
@@ -1333,6 +1333,13 @@ function uploadGroupLabel(el) {
       // Adobe it is the only name the field has — so naming beats the
       // action-word rule. A bare "Attach" names nothing and is still refused.
       named = texts.find(t => documentSlotFor(t)) || '';
+      // Gem names the block with plain text — <span>Resume *</span> — not a
+      // label. Plain text only counts when it names a document itself, and
+      // only inside this one-upload wrapper (the climb's bound above).
+      if (!named) {
+        named = Array.from(n.querySelectorAll('span, p, strong'))
+          .map(text).filter(t => t && t.length <= 60).find(t => documentSlotFor(t)) || '';
+      }
       // Anything else is only trusted in the field's OWN wrapper: one level up
       // sits "Apply With LinkedIn" beside the Dropbox and Drive buttons, and
       // any of those would be a confident wrong name.
@@ -1358,9 +1365,14 @@ function orphanFileInputs(form) {
   const doc = root && root.ownerDocument;
   if (!doc) return [];
   try {
-    if (root.querySelectorAll('input[type="file"]').length) return [];
+    // Phenom (Siemens Healthineers): the resume block sits above the <form>,
+    // while the form holds its own "Additional attachments" picker. A root
+    // with uploads of its own still takes an outside one, but only when that
+    // one is plainly the resume — its "Upload Resume" button names it.
+    const rootHasFiles = root.querySelectorAll('input[type="file"]').length > 0;
     return Array.from(doc.querySelectorAll('input[type="file"]'))
       .filter(el => !root.contains(el) && !(el.closest && el.closest('form')) && isVisible(el))
+      .filter(el => !rootHasFiles || documentSlotFor(uploadGroupLabel(el)) === 'resume')
       .slice(0, 2);
   } catch (e) { return []; }
 }
