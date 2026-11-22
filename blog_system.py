@@ -457,7 +457,12 @@ class BlogService:
 
         word_count = len(re.findall(r"\w+", body))
         read_time = max(1, round(word_count / WORD_PER_MINUTE))
-        lastmod_iso = datetime.utcfromtimestamp(os.path.getmtime(file_path)).strftime("%Y-%m-%d")
+        # Sitemap <lastmod>: the real content date (frontmatter `updated`, else
+        # the publish date). It used to be the file mtime, but the Docker build
+        # stamps every file with the deploy time, so each deploy told Google
+        # all ~1,200 posts changed that day. Google learns to ignore a lastmod
+        # that is always "today", losing its main hint for what to crawl next.
+        lastmod_iso = (updated_date or parsed_date).strftime("%Y-%m-%d")
 
         if not description:
             plain = re.sub(r"<[^>]+>", "", content_html)

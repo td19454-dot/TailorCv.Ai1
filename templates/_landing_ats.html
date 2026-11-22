@@ -248,7 +248,7 @@
                 <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
                 <div class="solx-faq" style="margin-top:32px">
                     <details open><summary>What is an ATS score?</summary><p>It is how well your resume matches a specific job in the eyes of the applicant tracking software that screens it. We score your resume against the exact job description you paste, then show you what is dragging the score down.</p></details>
-                    <details><summary>Is it really free with no signup?</summary><p>Yes. You get one full ATS report with no account and no card. Create a free account and your ATS score stays free.</p></details>
+                    <details><summary>Is it really free with no signup?</summary><p>Yes. You get one full ATS report with no account and no card. Create a free account for 3 more full scans - still no card.</p></details>
                     <details><summary>How is this different from the resume optimizer?</summary><p>This checker audits your resume and tells you what is wrong. The resume optimizer goes further and rewrites your resume to fix it, then rescores it.</p></details>
                     <details><summary>What does the report include?</summary><p>Your match score and level, matched and missing hard and soft skills, a section-by-section breakdown, formatting and parser faults, and a priority list of fixes.</p></details>
                     <details><summary>Is my resume stored?</summary><p>Your resume is used to produce your report and is not posted anywhere. A free account lets you save your reports if you want them kept.</p></details>
@@ -333,13 +333,41 @@
                 function landTrack(ev, props) {
                     try { if (window.posthog && typeof posthog.capture === 'function') posthog.capture(ev, Object.assign({ source: 'landing_widget', logged_in: loggedIn }, props || {})); } catch (e) {}
                 }
+
+                // Guests get one free scan. After that, send them to log in (scans
+                // are free and unlimited with an account). Save the resume + JD
+                // and flag the scan as pending first, so /solutions runs it
+                // automatically right after login (maybeResumePendingATS in
+                // main_new.js) instead of making them start over.
+                function sendToLogin() {
+                    landTrack('guest_ats_login_redirect');
+                    try { localStorage.setItem('tailorcv_jobDescription', jd); } catch (e) {}
+                    try { sessionStorage.setItem('tailorcv_pending_ats', '1'); } catch (e) {}
+                    outEl.innerHTML = '<div class="solx-ats-spin"></div><p class="solx-ats-note">You have used your free scan. Taking you to log in - your scan will run right after.</p>';
+                    var go = function () { window.location.href = '/login?next=' + encodeURIComponent('/solutions'); };
+                    var reader = new FileReader();
+                    reader.onload = function () {
+                        try { localStorage.setItem('tailorcv_resumeFile', JSON.stringify({ data: reader.result, name: f.name, type: f.type || 'application/pdf' })); } catch (e) {}
+                        setTimeout(go, 900);
+                    };
+                    reader.onerror = function () { setTimeout(go, 900); };
+                    reader.readAsDataURL(f);
+                }
+                var guestUsed = false;
+                try { guestUsed = localStorage.getItem('tailorcv_guest_scan_used') === '1'; } catch (e) {}
+                if (!loggedIn && guestUsed) { sendToLogin(); return; }
+
                 landTrack('ats_scan_started');
 
                 fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
                     .then(function(res){
                         return res.json().catch(function(){ return {}; }).then(function(body){
                             if (!res.ok) {
-                                if (res.status === 429) landTrack('guest_ats_quota_exceeded');
+                                if (res.status === 429 || res.status === 401 || res.status === 403) {
+                                    if (res.status === 429) landTrack('guest_ats_quota_exceeded');
+                                    try { localStorage.setItem('tailorcv_guest_scan_used', '1'); } catch (e) {}
+                                    var redirect = new Error('login'); redirect.login = true; throw redirect;
+                                }
                                 throw new Error(tcvErrorMessage(body, 'That scan did not go through. Please try again.'));
                             }
                             return body;
@@ -347,6 +375,7 @@
                     })
                     .then(function(data){
                         landTrack('ats_scan_completed', { guest_scan: !!data.guest_scan, match_rate: data.match_rate });
+                        if (data.guest_scan) { try { localStorage.setItem('tailorcv_guest_scan_used', '1'); } catch (e) {} }
                         var payload = JSON.stringify(data);
                         try { sessionStorage.setItem(ATS_PAYLOAD_KEY, payload); } catch (e) {}
                         try { localStorage.setItem(ATS_PAYLOAD_LOCAL_KEY, payload); } catch (e) {}
@@ -354,7 +383,10 @@
                         window.location.href = '/ats-analysis';
                     })
                     .catch(function(e){
-                        outEl.innerHTML = '<div class="solx-ats-idle">' + esc(e.message) + '</div>'
+                        if (e && e.login) { sendToLogin(); return; }
+                        // "Failed to fetch" = the connection dropped before any reply.
+                        var msg = (e && e.name === 'TypeError') ? 'The connection dropped before your score came back. Please try again.' : e.message;
+                        outEl.innerHTML = '<div class="solx-ats-idle">' + esc(msg) + '</div>'
                             + '<a href="/signup?next=/solutions" class="solx-btn" style="width:auto;margin-top:20px">Create My Free Account</a>';
                         goEl.disabled = false;
                         goEl.textContent = 'Get My Free ATS Score';

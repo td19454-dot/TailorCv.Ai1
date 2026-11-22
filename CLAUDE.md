@@ -70,7 +70,7 @@ SQLAlchemy over SQLite locally (`users.db`, gitignored) and Postgres in producti
 
 ### Gating
 
-- ATS scanning is free and unlimited for logged-in users. Guests get **one** free scan, tracked by session flag plus hashed-IP row (`GuestAtsScan`); after that they hit signup. It is not fully gated behind login.
+- ATS scanning: guests get **one** free scan, tracked by session flag plus hashed-IP row (`GuestAtsScan`); after that the landing widget sends them to log in. Free accounts get `FREE_LIMITS["ats_scans"]` (3, lifetime) full scans in [quota_limits.py](quota_limits.py); after that scans still run but return a **locked** report (score + one fix, rest blurred, see `ats_lock.py`), capped at `LOCKED_ATS_DAILY_LIMIT` (5) per 24h. Pro is unlimited.
 - Everything else is metered by `FREE_LIMITS` ([main.py:610](main.py#L610)) as a *lifetime* sum across all `UsageRecord` months, not per month. `enforce_quota` takes a `SELECT ... FOR UPDATE` on the user row so concurrent requests can't both spend the last credit, and raises HTTP 402 `{"error": "upgrade_required"}`. `refund_quota` undoes the increment when the LLM call afterwards fails.
 - `BILLING_BETA_USER_IDS` narrows gating to specific user IDs; empty means everyone is gated.
 
