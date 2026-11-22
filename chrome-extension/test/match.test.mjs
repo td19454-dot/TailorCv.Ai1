@@ -10,6 +10,7 @@
 import { readFileSync } from 'node:fs';
 import { test, run, ok, notOk, eq, deepEq } from './harness.mjs';
 import * as m from '../src/autofill/match.js';
+import * as c from '../src/autofill/countries.js';
 
 // ── normalisation ────────────────────────────────────────────
 
@@ -258,11 +259,26 @@ const MUST_FLAG = [
   ['demographic', 'Veteran status'],
   ['demographic', 'Protected veteran status'],
   ['demographic', 'Are you a protected military veteran?'],
+  ['demographic', 'Have you ever served or are you currently serving in the United States military?'],
+  // Anti-bribery declarations (Walmart, Oct 2026) — ahead of government_employment.
+  ['government_official', 'Are you (or have you been within the last 12 months) a Government Official? Government Official (GO) means any official or employee of any government agency, ministry or department of a government'],
+  ['government_official', 'Are any of your immediate family members Government Officials (Any Official or Employee of any government department/agency)?'],
+  ['government_official', 'Are you a government official?'],
+  ['government_official', 'Do you currently hold or have you held, within the last 5 years, a position as a government official?'],
+  ['government_official', 'Is any member of your immediate family a public official?'],
+  ['government_official', 'Are you a politically exposed person?'],
+  ['government_employment', 'Have you ever been directly employed by (1) any government or military entity, state-owned enterprise, or publicly-funded institution?'],
   ['demographic', 'Disability status'],
   ['demographic', 'Do you have a disability?'],
   ['demographic', 'What are your pronouns?'],
   ['demographic', 'Do you identify as LGBTQ+?'],
   ['demographic', 'Sexual orientation'],
+  ['demographic', 'What is your sex?'],
+  ['demographic', 'Sex*'],
+  ['demographic', 'Would you describe yourself as neurodivergent?'],
+  ['demographic', 'How do you identify?'],
+  ['birth', 'What is your year of birth?'],
+  ['health', 'Have you ever been treated for drug and/or alcohol abuse?'],
 ];
 
 test('classifySensitive flags every real-world sensitive wording', () => {
@@ -318,9 +334,23 @@ test('isNeverFill covers identifiers we must not touch at all', () => {
   for (const label of [
     'Social Security Number', 'SSN', 'National Insurance number',
     'Bank account number', 'Routing number', 'IBAN', 'Credit card number', 'CVV',
-    'Password', 'One time password', 'Date of birth', 'DOB', 'Birth date',
+    'Password', 'One time password',
     'PAN card number', 'Aadhaar number',
   ]) ok(m.isNeverFill(label), `should be never-fill: ${label}`);
+});
+
+test('date and place of birth are profile-only sensitive questions, not never-fill', () => {
+  const keys = {
+    'Date of Birth*': 'date_of_birth', 'DOB': 'date_of_birth', 'Birth date': 'date_of_birth',
+    'Country / Territory of Birth*': 'country_of_birth', 'City of Birth*': 'city_of_birth',
+    'Place of birth': 'city_of_birth',
+  };
+  for (const [label, key] of Object.entries(keys)) {
+    notOk(m.isNeverFill(label), `${label} is answerable from the profile`);
+    eq(m.classifySensitive(label), 'birth', label);
+    eq(m.matchSensitiveKey(label, 'birth').key, key, label);
+  }
+  eq(m.classifySensitive('Are you a citizen by birth?'), 'citizenship');
 });
 
 test('isNeverFill does not catch ordinary fields', () => {
@@ -414,6 +444,15 @@ test('matchFieldKey resolves the common identity fields', () => {
   eq(m.matchFieldKey('Email Address').key, 'email');
   eq(m.matchFieldKey('Mobile number').key, 'phone');
   eq(m.matchFieldKey('LinkedIn Profile URL').key, 'linkedin_url');
+});
+
+test('a form\'s "(optional)" marker does not hide the field it labels (Workday Social Network URLs)', () => {
+  eq(m.matchFieldKey('LinkedIn (optional)').key, 'linkedin_url');
+  eq(m.matchFieldKey('LinkedIn (Optional)').key, 'linkedin_url');
+  eq(m.matchFieldKey('LinkedIn - optional').key, 'linkedin_url');
+  eq(m.matchFieldKey('Email Address (required)').key, 'email');
+  // Still nothing for a label that is only the marker.
+  eq(m.matchFieldKey('(optional)'), null);
 });
 
 test('matchFieldKey resolves education fields', () => {
@@ -523,6 +562,26 @@ test('no non-sensitive synonym is flagged sensitive', () => {
   eq(gaps.length, 0, `unanswerable synonyms:\n    ${gaps.join('\n    ')}`);
 });
 
+test('an internal field name in brackets is unreadable; a plain name in brackets is not', () => {
+  ok(m.looksLikeOpaqueId('cards[3da58b41-acf5-40a1-945e-c7f047ef8050][field0]'), 'a Lever card');
+  ok(m.looksLikeOpaqueId('cards[d54adf7b-3148-4095-93bb-72bef32a61f8][field1]*'), 'with its required mark');
+  notOk(m.looksLikeOpaqueId('urls[GitHub]'), 'says what it is');
+  notOk(m.looksLikeOpaqueId('ExperienceDetails[0].companyName'), 'says what it is');
+});
+
+test('a validation prompt is unreadable, but "Please select your gender." is a question', () => {
+  // Walmart's Voluntary Disclosures (Oct 2026): an open "please select …" tail
+  // read both real questions as prompts, and auto-apply paused on them.
+  for (const prompt of ['Please select', 'Please Select One', 'Please select an option.', 'Please make a selection',
+    'Please select a value from the list', 'Please answer this question.', 'This information is required.', 'Select One*']) {
+    ok(m.looksLikeOpaqueId(prompt), `${prompt} is only a prompt`);
+  }
+  for (const question of ['Please select your gender.*', 'Please select your Nationality.*',
+    'Please choose your preferred location']) {
+    notOk(m.looksLikeOpaqueId(question), `${question} is a question`);
+  }
+});
+
 test('isPlaceholderOption spots the non-answers', () => {
   ok(m.isPlaceholderOption('Select…'));
   ok(m.isPlaceholderOption('Select an option'));
@@ -575,6 +634,61 @@ test('a nationality question maps to its own stored answer', () => {
   }
 });
 
+test('a question that only mentions the employer is not asking for its name', () => {
+  // The employer's name was written into this notice-period box.
+  eq(m.matchFieldKey('How much notice must you provide your current employer before leaving?*').key, 'notice_period');
+  eq(m.matchFieldKey('What is your notice period with your current employer?').key, 'notice_period');
+  eq(m.matchFieldKey('Why are you leaving your current employer?'), null);
+  eq(m.matchFieldKey('How long have you been in your current role?'), null);
+  // Still the name wherever the name is what is asked.
+  for (const l of ['Current employer', 'What is the name of your current employer?', 'Employer name',
+                   'Name of current/most recent employer', 'Please enter your current employer']) {
+    eq(m.matchFieldKey(l).key, 'current_company', l);
+  }
+  for (const l of ['Job Title', 'What is your current job title?', 'Job title at your current employer']) {
+    eq(m.matchFieldKey(l).key, 'current_job_title', l);
+  }
+});
+
+test('British spellings find the same stored answer ("authorised to work")', () => {
+  const label = 'Are you legally authorised to work in the country / territory in which this position is located?*';
+  const cat = m.classifySensitive(label);
+  eq(cat, 'work_authorization');
+  eq(m.matchSensitiveKey(label, cat).key, 'authorized_to_work_in_country');
+  eq(m.matchFieldKey('Right to work / work authorisation').key,
+     m.matchFieldKey('Right to work / work authorization').key);
+});
+
+test('countries: every spelling and demonym reads as its country, never a near-miss', () => {
+  eq(c.countryOf('Indian'), 'India');
+  eq(c.countryOf('Viet Nam'), 'Vietnam');
+  eq(c.countryOf('Korea, Republic of'), 'South Korea');
+  eq(c.countryOf('United States of America'), 'United States');
+  eq(c.countryOf('U.S.A.'), 'United States');
+  eq(c.countryOf('India (+91)'), 'India');
+  eq(c.countryOf('Citizen (India)'), '', 'a country only in parentheses is not the subject');
+  eq(c.countryOf('Citizen (India)', true), 'India');
+  eq(c.countryOf('Single (India)'), '');
+  eq(c.countryShare(['Divorced (India)', 'Married (India)', 'Single (India)']), 0);
+  eq(c.countryOf('India › Citizen'), 'India');
+  eq(c.countryOf('British Indian Ocean Territory'), '');
+  eq(c.countryOption('India', ['Iceland', 'British Indian Ocean Territory', 'India', 'Indonesia']), 'India');
+  eq(c.countryOption('India', ['Iceland', 'Indonesia']), null);
+});
+
+test('countries: the one country a question asks about', () => {
+  eq(c.countryNamedIn('Are you a citizen of Singapore?'), 'Singapore');
+  eq(c.countryNamedIn('Are you a U.S. citizen?'), 'United States');
+  eq(c.countryNamedIn('Are you a US citizen or permanent resident?'), 'United States');
+  eq(c.countryNamedIn('Do you hold Canadian citizenship?'), 'Canada');
+  eq(c.countryNamedIn('Are you a citizen of Northern Ireland?'), 'United Kingdom');
+  eq(c.countryNamedIn('Are you a citizen of South Sudan?'), 'South Sudan');
+  // "us" the word is not the United States; no country, or two, is none.
+  eq(c.countryNamedIn('Please tell us your citizenship status'), '');
+  eq(c.countryNamedIn('Citizenship Status'), '');
+  eq(c.countryNamedIn('Are you a citizen of India or Pakistan?'), '');
+});
+
 test('a yes/no citizenship question is NOT a nationality field', () => {
   // "Are you a US citizen?" wants Yes or No. Answering it with "Indian" would
   // be a wrong declaration on an immigration-adjacent question, so it stays
@@ -625,6 +739,20 @@ test('a sponsorship question is matched however the form words it', () => {
 
 test('an unrelated work-permit question does not claim the sponsorship answer', () => {
   eq(m.matchFieldKey('Do you have a valid work permit?'), null);
+});
+
+test('Workday "Self-Identification of …" sections read the stored answer they name', () => {
+  // NVIDIA: "Self-Identification of Gender" matched no stored answer, so the
+  // gender dropdown was left to the person and auto-apply paused on it.
+  for (const [label, key] of [['Self-Identification of Gender', 'gender'],
+                              ['Voluntary Self-Identification of Disability', 'disability_status'],
+                              ['Self-Identification of Race/Ethnicity', 'race_ethnicity'],
+                              ['Self Identification: Veteran Status', 'veteran_status']]) {
+    const category = m.classifySensitive(label);
+    eq(category, 'demographic', label);
+    const entry = m.matchSensitiveKey(label, category);
+    eq(entry && entry.key, key, label);
+  }
 });
 
 await run('match.js');

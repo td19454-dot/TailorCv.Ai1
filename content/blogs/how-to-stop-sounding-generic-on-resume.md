@@ -41,9 +41,9 @@ Both problems are fixable with the same solution: replace categories with specif
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+Paper size, font, font size, line height and margins are all adjustable.
 
 ### 1. "Results-oriented professional"
 
@@ -148,6 +148,10 @@ Before submitting, apply this test to every bullet on your resume:
 **Ask:** "Could anyone who held this job title write this sentence?"
 
 If yes, rewrite it until the answer is no.
+
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Seeing old and new wording together makes the test easier to run on each edited bullet.
 
 The goal is a resume where every line is uniquely *yours* - because it contains a specific result, a specific tool, a specific context, or a specific scale that only you could have written.
 

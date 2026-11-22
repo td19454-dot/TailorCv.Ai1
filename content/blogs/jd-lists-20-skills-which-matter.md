@@ -93,4 +93,8 @@ Rather than sorting a long list manually every time, a scan can show you which i
 
 [Scan your resume against the posting](/ats-analysis) and look at what is flagged as missing — this often correlates closely with the higher-signal items identified by position and specificity, giving you a faster, more concrete version of the same sort.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Each skill is marked matched or missing, which gives you a shorter list to check against the posting.
+
 Free, about a minute. See also [required vs preferred qualifications](/blog/required-vs-preferred-in-practice) and [which missing skills actually matter](/blog/which-missing-skills-actually-matter).

@@ -3,6 +3,7 @@ import asyncio
 import base64
 import copy
 import hashlib
+import itertools
 import json
 import logging
 import os
@@ -47,6 +48,7 @@ from functions import (
     get_resume_response,
     AI_MODEL,
     OPTIMIZER_MODEL,
+    OPTIMIZER_REASONING_EFFORT,
     OPTIMIZER_TEMPERATURE,
     extract_links,
     inject_links,
@@ -89,6 +91,7 @@ from functions import (
 from extraction import process_resume
 import alerts
 import analytics
+import document_store
 import health_watch
 import skill_categories as skillcat
 from models import AtsLockedReport, BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, ResumeOptimization, SavedResume, SignupVerificationCode, UsageRecord, User
@@ -191,6 +194,7 @@ async def csrf_middleware(request: Request, call_next):
         # cross-site POST at all.
         "/api/extension/autofill/plan",
         "/api/extension/autofill/answers",
+        "/api/extension/autofill/answers/forget",
         "/api/extension/apply-profile",
         "/api/extension/apply-answers",
         "/api/billing/razorpay/webhook",
@@ -732,6 +736,9 @@ def _ensure_apply_profile_columns() -> None:
             qa_add.append("ADD COLUMN embedding TEXT")
         if "embedding_model" not in qa_cols:
             qa_add.append("ADD COLUMN embedding_model VARCHAR(60)")
+        # One answer per kind of option list — see UserApplyQA.variants.
+        if "variants" not in qa_cols:
+            qa_add.append("ADD COLUMN variants TEXT")
         if qa_add:
             with engine.begin() as conn:
                 for clause in qa_add:
@@ -759,12 +766,22 @@ def _ensure_apply_profile_columns() -> None:
         to_add.append("ADD COLUMN skills TEXT")
     if "nationality" not in cols:
         to_add.append("ADD COLUMN nationality VARCHAR(80)")
+    if "citizenship_status" not in cols:
+        to_add.append("ADD COLUMN citizenship_status VARCHAR(80)")
+    for birth_col, width in (("date_of_birth", 10), ("country_of_birth", 80), ("city_of_birth", 100)):
+        if birth_col not in cols:
+            to_add.append(f"ADD COLUMN {birth_col} VARCHAR({width})")
     if "name_title" not in cols:
         to_add.append("ADD COLUMN name_title VARCHAR(20)")
+    for decl_col in ("government_official", "family_government_official", "criminal_history"):
+        if decl_col not in cols:
+            to_add.append(f"ADD COLUMN {decl_col} VARCHAR(10)")
     if "work_experience" not in cols:
         to_add.append("ADD COLUMN work_experience TEXT")
     if "education_history" not in cols:
         to_add.append("ADD COLUMN education_history TEXT")
+    if "projects" not in cols:
+        to_add.append("ADD COLUMN projects TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -1472,6 +1489,35 @@ def _cleanup_files(file_paths: list[str]) -> None:
 MAX_CONCURRENT_REQUESTS = int(os.getenv("MAX_CONCURRENT_REQUESTS", "4"))
 request_semaphore = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
 
+# WeasyPrint layouts for the editors' live preview and page count. Each layout
+# holds tens of MB, and the editors send one per edit (120-400 ms debounce),
+# so a user dragging a slider stacked a dozen in parallel threads - the spikes
+# that OOM-killed the 512 MB instance. On half a CPU, running them one at a
+# time costs no throughput.
+EDITOR_RENDER_CONCURRENCY = max(1, int(os.getenv("EDITOR_RENDER_CONCURRENCY", "1")))
+_editor_render_sem = asyncio.Semaphore(EDITOR_RENDER_CONCURRENCY)
+# Newest request per (user, endpoint). Every editor request carries the whole
+# document, so one still queued after a newer one arrived is answered without
+# rendering; both editors already ignore a response with no html/pages.
+_editor_render_latest: dict[tuple, int] = {}
+_editor_render_seq = itertools.count(1)
+
+
+async def _run_editor_render(request: Request, kind: str, fn):
+    """Run blocking WeasyPrint work `fn` in a thread under the editor render
+    gate. Returns None, without running it, when superseded."""
+    key = (request.session.get("user_id"), kind)
+    seq = next(_editor_render_seq)
+    _editor_render_latest[key] = seq
+    try:
+        async with _editor_render_sem:
+            if _editor_render_latest.get(key) != seq:
+                return None
+            return await asyncio.to_thread(fn)
+    finally:
+        if _editor_render_latest.get(key) == seq:
+            _editor_render_latest.pop(key, None)
+
 # OPTIMIZATION: Cache for templates and CSS to avoid repeated file I/O
 _template_cache = {}
 _css_cache = {}
@@ -1558,9 +1604,14 @@ ul.contact-list > li::marker, ul.contact > li::marker, .contact ul > li::marker,
    jumps to the next page whole. Measured: page 1 at 96% full with page 2
    holding a single bullet. Entries flow instead; only the pieces that must
    stay together are pinned. Mirrors buildDesignCss() in editor_v2.js so the
-   preview and the PDF paginate identically. */
+   preview and the PDF paginate identically.
+   Whole SECTIONS flow too: templates 7, 10, 11 and style4.css pin `.section`
+   with break-inside: avoid, so a Projects section that overran page 1 jumped
+   to page 2 whole even though each entry inside it was free to split.
+   `.timeline-row` is template 14's entry. */
 .entry, .experience-item, .project-item, .education-item,
-.exp-entry, .edu-entry, .proj-entry, .item {
+.exp-entry, .edu-entry, .proj-entry, .item, .timeline-row,
+.section, .resume-section {
   break-inside: auto !important; page-break-inside: auto !important;
   orphans: 2; widows: 2;
 }
@@ -1574,10 +1625,18 @@ h2, h3, .section-title, .section-heading, .sec-title,
 /* One bullet never splits across the seam. */
 li { break-inside: avoid; page-break-inside: avoid; orphans: 2; widows: 2; }
 p  { orphans: 2; widows: 2; }
-/* Short trailing sections stay whole when they fit. */
+/* Short trailing sections stay whole when they fit. !important so the
+   `.section` release above cannot override them on a shared element. */
 .certifications, .awards, .achievements, section.certifications {
-  break-inside: avoid; page-break-inside: avoid;
+  break-inside: avoid !important; page-break-inside: avoid !important;
 }
+/* Skills is the one long section that must flow across the seam. Templates
+   pin their sections whole (`.sidebar-section`, `.section`, `.side-block`
+   { break-inside: avoid }), so a skills list that overran page 1 jumped to
+   page 2 entirely and left a tall empty gap. Single items still never split
+   (the li rule above), and a group label stays with its first skill. */
+.skills-section { break-inside: auto !important; page-break-inside: auto !important; }
+.skill-label { break-after: avoid; page-break-after: avoid; }
 
 /* --- BUG D: only real links are coloured and underlined ----------------- */
 a { text-decoration: none; }
@@ -1801,24 +1860,20 @@ def _sidebar_page_css(html_content: str) -> str:
 
     # Panel colour.
     #
-    # `.sidebar`'s own background is NOT always the colour a reader sees. In
-    # template 8 the column is `--side: #f7f7f7` (near-white) and the colour
-    # lives in four `var(--accent)` blocks INSIDE it (.contact-card,
-    # .chip-list li). Painting that near-white across page 2 produced a blank
-    # stripe where a maroon panel belonged. So: take the column's own colour
-    # only when it is actually tinted, and otherwise fall back to the accent
-    # the panel's blocks are filled with.
+    # Whatever colour the column itself declares is the one the reader sees,
+    # light or dark. Template 8's column is `--side: #f7f7f7` with maroon
+    # blocks (.contact-card, .chip-list li) sitting INSIDE it; substituting
+    # the accent for that near-white painted the whole column maroon and put
+    # the maroon headings and chips on maroon, unreadable. Fall back to the
+    # accent only when the column declares no colour at all.
     colour = ""
     m = re.search(
         r"\.sidebar\s*\{[^}]*?background(?:-color)?:\s*([^;]+);",
         html_content, re.S)
     if m:
-        candidate = _literal(m.group(1))
-        # A near-white column is the paper showing through, not a panel.
-        if candidate and _lum(candidate) < 0.92:
-            colour = candidate
+        colour = _literal(m.group(1))
 
-    if not colour:
+    if not colour and not m:
         accent = re.search(r"--accent\s*:\s*([^;]+);", html_content)
         if accent:
             candidate = _literal(accent.group(1))
@@ -6159,9 +6214,12 @@ CHROME_STORE_URL = os.getenv(
 
 @app.get("/extension", response_class=HTMLResponse)
 async def extension_page(request: Request):
-    """Logged out: marketing landing. Logged in: the extension setup page, where the
-    user installs it and sets the base resume + template the extension tailors from."""
+    """Logged out: marketing landing. Logged in: the profile — the profile IS the
+    extension's page (Nov 2026): the resume, every answer autofill uses, the
+    install link and the designs it downloads in."""
     user_id = request.session.get("user_id")
+    if user_id:
+        return RedirectResponse(url="/profile", status_code=302)
 
     base_resume = {
         "has_base_resume": False,
@@ -6174,7 +6232,7 @@ async def extension_page(request: Request):
         db = get_db()
         try:
             user = db.query(User).filter(User.id == user_id).first()
-            has_base = bool(user and user.base_resume_path and os.path.exists(user.base_resume_path))
+            has_base = bool(user and user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path))
             base_resume = {
                 "has_base_resume": has_base,
                 "filename": user.base_resume_filename if has_base else None,
@@ -7165,6 +7223,59 @@ async def landing_page(request: Request):
     )
 
 
+def _is_valid_template_id(template_id) -> bool:
+    """True when resume-templates/html/template<id>.html exists."""
+    if not isinstance(template_id, int) or isinstance(template_id, bool) or template_id < 1:
+        return False
+    return os.path.isfile(os.path.join(
+        BASE_DIR, "resume-templates", "resume-templates", "html", f"template{template_id}.html"))
+
+
+def _preferred_template_id(request: Request):
+    """The signed-in user's default resume template, or None. Shared with the
+    extension (User.base_template_id) so web and extension tailor into the same
+    layout; /solutions skips the template picker when this is set."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return None
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        tid = user.base_template_id if user else None
+        return tid if _is_valid_template_id(tid) else None
+    finally:
+        db.close()
+
+
+@app.post("/api/preferences/template")
+async def set_preferred_template(request: Request):
+    """Save the default template the optimize flow uses. Called from the web app,
+    so it keeps normal CSRF protection — not in EXEMPT_PATHS. Touches only the
+    template; /api/extension/base-resume would 400 without a base resume on file."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    template_id = payload.get("template_id") if isinstance(payload, dict) else None
+    if not _is_valid_template_id(template_id):
+        raise HTTPException(status_code=400, detail="Unknown template")
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        user.base_template_id = template_id
+        db.commit()
+    finally:
+        db.close()
+    return JSONResponse({"success": True})
+
+
 @app.get("/solutions", response_class=HTMLResponse)
 async def solutions_page(request: Request):
     """Solutions page where users upload resume & JD."""
@@ -7175,6 +7286,7 @@ async def solutions_page(request: Request):
         {
             "request": request,
             "is_logged_in": bool(request.session.get("user_id")),
+            "preferred_template_id": _preferred_template_id(request),
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
             "canonical_url": build_absolute_url("/solutions"),
             "software_schema_json": build_software_app_schema(),
@@ -7195,6 +7307,7 @@ async def optimize_page(request: Request):
             # Without this the template sees is_logged_in as undefined (falsy) and
             # serves the logged-out landing to signed-in users.
             "is_logged_in": bool(request.session.get("user_id")),
+            "preferred_template_id": _preferred_template_id(request),
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
             # Alias of /solutions — canonical points to the primary URL to avoid
             # duplicate-content indexing.
@@ -7814,7 +7927,7 @@ async def my_resumes_page(request: Request):
             .all()
         )
         user = db.query(User).filter(User.id == user_id).first()
-        has_base_resume = bool(user and user.base_resume_path and os.path.exists(user.base_resume_path))
+        has_base_resume = bool(user and user.base_resume_path and await document_store.ensure_file_async(user.base_resume_path))
         base_resume = {
             "has_base_resume": has_base_resume,
             "filename": user.base_resume_filename if has_base_resume else None,
@@ -8145,6 +8258,7 @@ def _build_base_cover_letter_prompt(resume_text: str) -> str:
         "Rules:\n"
         "- 3 to 4 short paragraphs, under 300 words total.\n"
         "- Professional and confident tone.\n"
+        "- Begin with the salutation \"Dear Hiring Manager,\" on its own line.\n"
         "- Open by introducing the candidate's professional focus and what they're looking "
         "for next, in general terms — do not name a specific company or role, and do not "
         "claim to be applying to \"this position\" or similar.\n"
@@ -8314,7 +8428,7 @@ async def extension_cover_letter(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/extension first.")
         base_resume_path = user.base_resume_path
         cover_template = user.base_cover_template or "classic"
@@ -8568,6 +8682,10 @@ async def set_extension_base_resume(request: Request):
         with open(new_path, "wb") as f:
             content = await upload.read()
             f.write(content)
+        # The durable copy: Render's disk is wiped on every deploy, and without
+        # this every user had to upload their base resume again. A failure is
+        # reported, not raised — the file is still on disk until then.
+        await asyncio.to_thread(document_store.store_file, new_path)
 
     # Extracted once here so the extension's skill-match score never needs to
     # re-parse the PDF on every job the user looks at. Only when a new file was
@@ -8608,11 +8726,28 @@ async def set_extension_base_resume(request: Request):
             from auto_apply.resume_facts import invalidate_facts
 
             invalidate_facts(db, user_id)
-        if has_upload and old_path and old_path != new_path and os.path.exists(old_path):
-            os.remove(old_path)
+        if has_upload and old_path and old_path != new_path:
+            if os.path.exists(old_path):
+                os.remove(old_path)
+            # The replaced resume's stored copy too, even when a deploy already
+            # took the local file.
+            await asyncio.to_thread(document_store.remove_file, old_path)
     finally:
         db.close()
-    return JSONResponse({"success": True})
+
+    # A new resume gets a new master cover letter, written once here and attached
+    # to every application form from then on — never per application. Written
+    # before responding so the extension's next context fetch already sees it. A
+    # failure leaves the resume saved; the letter can be regenerated later.
+    cover_letter_ok = None
+    if has_upload:
+        try:
+            await _write_base_cover_letter(user_id)
+            cover_letter_ok = True
+        except Exception:
+            logger.exception("Base cover letter generation on resume upload failed")
+            cover_letter_ok = False
+    return JSONResponse({"success": True, "cover_letter": cover_letter_ok})
 
 
 @app.get("/api/extension/base-resume")
@@ -8627,7 +8762,9 @@ async def get_extension_base_resume(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        has_base_resume = bool(user.base_resume_path and os.path.exists(user.base_resume_path))
+        # Restored from storage if a deploy wiped the disk (document_store).
+        has_base_resume = bool(user.base_resume_path
+                               and await document_store.ensure_file_async(user.base_resume_path))
         return JSONResponse({
             "has_base_resume": has_base_resume,
             "filename": user.base_resume_filename if has_base_resume else None,
@@ -8664,6 +8801,8 @@ async def delete_extension_base_resume(request: Request):
         invalidate_facts(db, user_id)
         if old_path and os.path.exists(old_path):
             os.remove(old_path)
+        if old_path:
+            await asyncio.to_thread(document_store.remove_file, old_path)
     finally:
         db.close()
     return JSONResponse({"success": True})
@@ -8681,7 +8820,8 @@ async def get_base_cover_letter(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        has_one = bool(user.base_cover_letter_path and os.path.exists(user.base_cover_letter_path))
+        has_one = bool(user.base_cover_letter_path
+                       and await document_store.ensure_file_async(user.base_cover_letter_path))
         return JSONResponse({
             "has_base_cover_letter": has_one,
             "filename": user.base_cover_letter_filename if has_one else None,
@@ -8704,13 +8844,63 @@ async def generate_base_cover_letter(request: Request):
     user_id = request.session.get("user_id")
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
+    filename = await _write_base_cover_letter(user_id)
+    return JSONResponse({"success": True, "filename": filename})
+
+
+@app.post("/api/dashboard/base-cover-letter/upload")
+async def upload_base_cover_letter(request: Request):
+    """Store the user's OWN cover letter PDF as the base cover letter — the same
+    file autofill attaches to "Cover Letter" fields, replacing a generated one.
+    Used by first-run setup (/onboarding). Keeps normal CSRF protection."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    form = await request.form()
+    upload = form.get("file")
+    if not getattr(upload, "filename", ""):
+        raise HTTPException(status_code=400, detail="Choose a PDF to upload.")
+    new_path = save_uploaded_pdf(upload)          # rejects anything but .pdf
+    content = await upload.read()
+    if len(content) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="That PDF is over 10 MB — please upload a smaller file.")
+    if not content.startswith(b"%PDF"):
+        raise HTTPException(status_code=400, detail="That file isn't a PDF.")
+    with open(new_path, "wb") as f:
+        f.write(content)
+    # Durable copy, like the base resume's: it must survive a deploy.
+    await asyncio.to_thread(document_store.store_file, new_path)
 
     db = get_db()
     try:
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
+            os.remove(new_path)
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        old_path = user.base_cover_letter_path
+        user.base_cover_letter_path = new_path
+        user.base_cover_letter_filename = (upload.filename or "cover_letter.pdf")[:255]
+        user.base_cover_letter_generated_at = datetime.utcnow()
+        db.commit()
+    finally:
+        db.close()
+    if old_path and old_path != new_path:
+        if os.path.exists(old_path):
+            os.remove(old_path)
+        await asyncio.to_thread(document_store.remove_file, old_path)
+    return JSONResponse({"success": True, "filename": upload.filename})
+
+
+async def _write_base_cover_letter(user_id: int) -> str:
+    """Write the master cover letter from the user's base resume and store it as
+    a PDF. Called when the base resume is uploaded, so one letter is reused on
+    every application form, the same way the resume is. Raises HTTPException."""
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=400, detail="Upload a base resume first — the cover letter is written from it.")
         base_resume_path = user.base_resume_path
         cover_template = user.base_cover_template or "classic"
@@ -8728,7 +8918,7 @@ async def generate_base_cover_letter(request: Request):
     prompt = _build_base_cover_letter_prompt(resume_text[:8000])
     try:
         async with request_semaphore:
-            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+            raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.4)
         parsed = parse_ai_json_response(raw)
         if not isinstance(parsed, dict):
             parsed = {}
@@ -8756,6 +8946,8 @@ async def generate_base_cover_letter(request: Request):
         if os.path.exists(new_path):
             os.remove(new_path)
         raise HTTPException(status_code=500, detail="Failed to render the cover letter PDF.")
+    # Durable copy, like the base resume's: it must survive a deploy.
+    await asyncio.to_thread(document_store.store_file, new_path)
 
     db2 = get_db()
     try:
@@ -8769,10 +8961,12 @@ async def generate_base_cover_letter(request: Request):
         db2.commit()
     finally:
         db2.close()
-    if old_path and old_path != new_path and os.path.exists(old_path):
-        os.remove(old_path)
+    if old_path and old_path != new_path:
+        if os.path.exists(old_path):
+            os.remove(old_path)
+        await asyncio.to_thread(document_store.remove_file, old_path)
 
-    return JSONResponse({"success": True, "filename": "cover_letter.pdf"})
+    return "cover_letter.pdf"
 
 
 @app.delete("/api/dashboard/base-cover-letter")
@@ -8793,6 +8987,8 @@ async def delete_base_cover_letter(request: Request):
         db.commit()
         if old_path and os.path.exists(old_path):
             os.remove(old_path)
+        if old_path:
+            await asyncio.to_thread(document_store.remove_file, old_path)
     finally:
         db.close()
     return JSONResponse({"success": True})
@@ -8822,7 +9018,7 @@ async def extension_skill_match(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=404, detail="No base resume set.")
 
         resume_text = user.base_resume_text
@@ -8863,7 +9059,7 @@ async def extension_tailor_resume(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/my-resumes first.")
 
         # Atomically gate + consume the same ai_optimizations quota the website
@@ -9156,7 +9352,7 @@ async def extension_apply_answers(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not user.base_resume_path or not await document_store.ensure_file_async(user.base_resume_path):
             raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/extension first.")
         base_resume_path = user.base_resume_path
         resume_text = user.base_resume_text
@@ -13067,7 +13263,8 @@ async def _optimize_resume_core(
     if forwarded_ats is not None:
         try:
             response_string = await get_resume_response(
-                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE,
+                reasoning_effort=OPTIMIZER_REASONING_EFFORT,
             )
         except Exception as exc:
             logger.exception("AI generation failed")
@@ -13079,7 +13276,8 @@ async def _optimize_resume_core(
         try:
             response_string, ats_result = await asyncio.gather(
                 get_resume_response(
-                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE,
+                    reasoning_effort=OPTIMIZER_REASONING_EFFORT,
                 ),
                 ats_scoring(ats_resume_string, jd_string),
                 return_exceptions=True,
@@ -13912,7 +14110,8 @@ async def estimate_html_pages(request: Request):
         def _count_pages() -> int:
             doc = HTML(string=html, base_url=BASE_DIR).render(zoom=pdf_scale)
             return max(1, len(getattr(doc, "pages", []) or []))
-        pages = await asyncio.to_thread(_count_pages)
+        # None when a newer estimate from this user superseded it.
+        pages = await _run_editor_render(request, "estimate", _count_pages)
         return {"success": True, "pages": pages}
     except Exception as exc:
         logger.exception("Page estimate failed")
@@ -14406,6 +14605,50 @@ def _template_parsed_to_editor_payload(parsed: dict) -> dict:
     return {"cvData": cv_data, "meta": {}}
 
 
+class _ResumeAIError(Exception):
+    """The model call inside editor_payload_from_resume failed."""
+
+
+async def editor_payload_from_resume(pdf_path: str, resume_text: str) -> dict:
+    """Structured resume data — the Make CV import pipeline, shared with the
+    profile page (routers/profile_page.py) so both read a resume the same way.
+
+    The same AI parse as the template-change feature (each project / job as its
+    own entry), dropped bullets restored, and links recovered from the PDF's
+    annotation layer as the tailoring pipeline does: PDFs hide most project /
+    certification URLs behind clickable anchor text the extracted text lacks.
+    Raises _ResumeAIError when the model call fails; link recovery failing only
+    loses links.
+    """
+    prompt = create_prompt(resume_text, "")
+    try:
+        response_string = await get_resume_response(prompt)
+    except Exception as exc:
+        logger.exception("AI generation failed")
+        raise _ResumeAIError(str(exc)) from exc
+
+    parsed = parse_ai_json_response(response_string)
+    parsed = restore_dropped_bullets(parsed, resume_text)
+
+    try:
+        normalized_text = normalize_links(resume_text)
+        (extracted_links, extracted_pub_links, mapped_links,
+         project_link_map) = await asyncio.gather(
+            asyncio.to_thread(extract_project_links, normalized_text),
+            asyncio.to_thread(extract_publication_links, normalized_text),
+            asyncio.to_thread(map_project_demo_links, normalized_text),
+            asyncio.to_thread(extract_project_link_map, normalized_text),
+        )
+        parsed = await _recover_project_and_publication_links(
+            parsed, pdf_path, project_link_map, extracted_links,
+            extracted_pub_links, mapped_links,
+        )
+        await _recover_contact_and_section_links(parsed, pdf_path)
+    except Exception:
+        logger.exception("Link recovery failed during CV import; continuing without it")
+    return _template_parsed_to_editor_payload(parsed)
+
+
 @app.post("/api/extract-cv-from-pdf")
 @app.post("/api/extract-cv-from-pdf/")
 @app.post("/extract-cv-from-pdf")
@@ -14435,39 +14678,10 @@ async def extract_cv_from_pdf(request: Request, file: UploadFile = File(...)):
         if not resume_text or not resume_text.strip():
             raise HTTPException(status_code=400, detail="No extractable text found in this PDF.")
 
-        # Use the same AI parsing path as the template-change feature for accurate,
-        # fully-structured output (each project / experience as a separate entry).
-        prompt = create_prompt(resume_text, "")
         try:
-            response_string = await get_resume_response(prompt)
-        except Exception as exc:
-            logger.exception("AI generation failed")
-            raise HTTPException(status_code=500, detail=user_error_detail(exc, "We couldn't extract your CV details this time. Please try again."))
-
-        parsed = parse_ai_json_response(response_string)
-        parsed = restore_dropped_bullets(parsed, resume_text)
-
-        # Recover links exactly as the tailoring pipeline does. Without this the
-        # builder only kept whatever URLs the model happened to copy out of the
-        # extracted text, and PDFs hide most project / certification URLs behind
-        # clickable anchor text that only the annotation layer contains.
-        try:
-            normalized_text = normalize_links(resume_text)
-            (extracted_links, extracted_pub_links, mapped_links,
-             project_link_map) = await asyncio.gather(
-                asyncio.to_thread(extract_project_links, normalized_text),
-                asyncio.to_thread(extract_publication_links, normalized_text),
-                asyncio.to_thread(map_project_demo_links, normalized_text),
-                asyncio.to_thread(extract_project_link_map, normalized_text),
-            )
-            parsed = await _recover_project_and_publication_links(
-                parsed, file_path, project_link_map, extracted_links,
-                extracted_pub_links, mapped_links,
-            )
-            await _recover_contact_and_section_links(parsed, file_path)
-        except Exception:
-            logger.exception("Link recovery failed during CV import; continuing without it")
-        return _template_parsed_to_editor_payload(parsed)
+            return await editor_payload_from_resume(file_path, resume_text)
+        except _ResumeAIError as exc:
+            raise HTTPException(status_code=500, detail=user_error_detail(exc.__cause__ or exc, "We couldn't extract your CV details this time. Please try again."))
     except HTTPException:
         raise
     except Exception as exc:
@@ -14703,18 +14917,6 @@ async def editor_render(request: Request):
             if isinstance(entry, dict) and isinstance(entry.get("bullets"), list):
                 entry["bullets"] = [b for b in entry["bullets"] if b]
 
-    try:
-        html_content, _ = _render_resume_html(
-            parsed,
-            str(body.get("jd_string") or ""),
-            int(body.get("template_id") or 1),
-            int(body.get("style_id") or 1),
-        )
-    except Exception as exc:
-        logger.exception("Editor render failed")
-        raise HTTPException(status_code=500,
-                            detail=user_error_detail(exc, "Could not render the preview."))
-
     # Page count from WeasyPrint, the same engine that produces the PDF. A
     # CSS-based guess in the browser drifts from the real file, and the whole
     # point of the page markers is that they match what gets downloaded.
@@ -14726,23 +14928,44 @@ async def editor_render(request: Request):
     # `</` cannot appear inside a style element; dropping it keeps a stray
     # delimiter or font name from closing the tag.
     design_css = str(body.get("design_css") or "").replace("</", "<\\/")[:20000]
-    count_html = html_content
-    if design_css:
-        style_tag = f"<style id=\"edv2-design\">{design_css}</style>"
-        if "</head>" in count_html:
-            count_html = count_html.replace("</head>", style_tag + "</head>", 1)
-        else:
-            count_html = style_tag + count_html
 
-    pages = 1
-    try:
-        from weasyprint import HTML as _WeasyHTML
-        def _count() -> int:
+    # Both steps run WeasyPrint (_render_resume_html lays the page out once in
+    # _apply_multipage_fixes), so both go through the editor render gate, off
+    # the event loop.
+    def _render_and_count() -> tuple[str, int]:
+        html_content, _ = _render_resume_html(
+            parsed,
+            str(body.get("jd_string") or ""),
+            int(body.get("template_id") or 1),
+            int(body.get("style_id") or 1),
+        )
+        count_html = html_content
+        if design_css:
+            style_tag = f"<style id=\"edv2-design\">{design_css}</style>"
+            if "</head>" in count_html:
+                count_html = count_html.replace("</head>", style_tag + "</head>", 1)
+            else:
+                count_html = style_tag + count_html
+
+        pages = 1
+        try:
+            from weasyprint import HTML as _WeasyHTML
             doc = _WeasyHTML(string=count_html, base_url=BASE_DIR).render()
-            return max(1, len(getattr(doc, "pages", []) or []))
-        pages = await asyncio.to_thread(_count)
-    except Exception:
-        logger.exception("Editor page count failed")
+            pages = max(1, len(getattr(doc, "pages", []) or []))
+        except Exception:
+            logger.exception("Editor page count failed")
+        return html_content, pages
+
+    try:
+        result = await _run_editor_render(request, "render", _render_and_count)
+    except Exception as exc:
+        logger.exception("Editor render failed")
+        raise HTTPException(status_code=500,
+                            detail=user_error_detail(exc, "Could not render the preview."))
+    if result is None:
+        # A newer edit is queued behind this one and will repaint the preview.
+        return JSONResponse({"success": True, "html": None, "design": design, "pages": None})
+    html_content, pages = result
 
     return JSONResponse({
         "success": True,

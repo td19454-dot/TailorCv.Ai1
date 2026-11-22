@@ -81,7 +81,7 @@ A corporate events team, a wedding planning firm, and a nonprofit gala organizer
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 

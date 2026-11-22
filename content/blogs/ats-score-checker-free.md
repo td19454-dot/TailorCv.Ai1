@@ -86,6 +86,10 @@ Once you know your score, improving it is straightforward when you focus on the 
 
 After each change, run the **free [ATS score checker](https://www.thetailorcv.com/solutions)** again. Optimization is a loop: scan, fix, re-scan.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The report marks each skill as matched or missing, so you can see what to work on before you scan again.
+
 ## Free ATS Score Checker vs Paid Tools
 
 Many paid services lock the most useful feedback behind a subscription. The good news is that a quality **free [ATS score checker](https://www.thetailorcv.com/solutions)** gives you everything you need to start: a real score, a full breakdown of passed and failed checks, and clear guidance.

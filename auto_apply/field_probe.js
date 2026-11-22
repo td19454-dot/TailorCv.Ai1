@@ -94,14 +94,55 @@
     return found && found.length === 1 ? found[0] : null;
   }
 
+  // A label's text without the help tucked inside it. D. E. Shaw's labels hold a
+  // "?" and its hidden tooltip, so "University*" read as "University*? If none of
+  // the options apply…" and matched no question (Nov 2026).
+  const LABEL_HELP_SEL = '.extra-information, [role="tooltip"], [class*="tooltip" i]';
+  function labelText(node) {
+    let clone = null;
+    try {
+      if (!node.querySelector(LABEL_HELP_SEL)) return txt(node);
+      clone = node.cloneNode(true);
+      const help = clone.querySelectorAll(LABEL_HELP_SEL);
+      for (let i = 0; i < help.length; i++) help[i].remove();
+    } catch (e) { return txt(node); }
+    return txt(clone) || txt(node);
+  }
+
+  // A Lever question, from its own block. Lever wraps some fields in a <label>
+  // holding the question, the field and any status text ("Analyzing resume..."),
+  // and gives others a plain <div class="application-label"> with a <label> per
+  // answer, so a label search read options, "Yes", or the field's name. With the
+  // question unseen, the model answered it blind (Palantir, Nov 2026). '' outside
+  // such a block. Options keep their own labels: they go through labelFor.
+  function leverQuestion(el) {
+    const block = el && el.closest && el.closest('.application-question');
+    const label = block && block.querySelector('.application-label');
+    return label ? labelText(label) : '';
+  }
+
+  // An aria-label that only prompts for an answer, and the real label beside it:
+  // <label for="custom15">Current City :</label> and aria-label="Enter current
+  // city" on the same field, or aria-label="Select" on every other (RippleHire,
+  // Nov 2026). '' when there is no such label; the aria-label then stands.
+  function labelBehindPrompt(el, aria) {
+    const prompt = aria === attr(el, 'data-placeholder') || aria === attr(el, 'placeholder')
+      || PLACEHOLDER_OPTION_RE.test(aria);
+    const id = attr(el, 'id');
+    if (!prompt || !id) return '';
+    let lab = null;
+    try { lab = document.querySelector('label[for="' + id.replace(/["\\]/g, '\\$&') + '"]'); } catch (e) {}
+    return lab ? labelText(lab) : '';
+  }
+
   function labelFor(el) {
     if (!el) return '';
     const aria = attr(el, 'aria-label');
-    if (aria) return aria;
+    if (aria) return labelBehindPrompt(el, aria) || aria;
     const by = attr(el, 'aria-labelledby');
     if (by) {
       const t = by.split(/\s+/).map(id => {
-        let e = null; try { e = document.getElementById(id); } catch (x) {} return e ? txt(e) : '';
+        let e = null; try { e = document.getElementById(id); } catch (x) {} return e ? labelText(e) : '';
       }).filter(Boolean).join(' ');
       if (t) return t;
     }
@@ -109,10 +150,10 @@
     if (id) {
       let lab = null;
       try { lab = document.querySelector('label[for="' + id.replace(/["\\]/g, '\\$&') + '"]'); } catch (e) {}
-      if (lab) return txt(lab);
+      if (lab) return labelText(lab);
     }
     const anc = el.closest && el.closest('label');
-    if (anc) return txt(anc);
+    if (anc) return labelText(anc);
 
     // A <label> that is a SIBLING of the control, with no `for` and no wrapping.
     // Lever writes every field this way
@@ -132,7 +173,29 @@
 
     const fs = el.closest && el.closest('fieldset');
     if (fs) { const lg = fs.querySelector('legend'); if (lg) return txt(lg); }
-    return attr(el, 'placeholder');
+    return attr(el, 'placeholder') || wrapperText(el);
+  }
+
+  // Last resort: the field's name as plain text in its own wrapper, with no
+  // <label> at all. Gem: <div><span>First name *</span><div><div><input></div>
+  // </div></div>. Same bound as siblingLabel — only wrappers holding this one
+  // control — so it never reads the field above; and short text only, so a
+  // paragraph of instructions is not taken for a name.
+  const WRAPPER_DROP_SEL = 'input, select, textarea, button, [role="listbox"], [role="option"], [role="alert"], [aria-live], [class*="error" i], [class*="helper" i], [class*="hint" i]';
+  function wrapperText(el) {
+    let n = el.parentElement;
+    for (let depth = 0; n && depth < 5; depth++, n = n.parentElement) {
+      if (only(n) !== el || isFormLevel(n)) break;
+      let clone = null;
+      try {
+        clone = n.cloneNode(true);
+        const drop = clone.querySelectorAll(WRAPPER_DROP_SEL);
+        for (let i = 0; i < drop.length; i++) drop[i].remove();
+      } catch (e) { return ''; }
+      const t = txt(clone);
+      if (t && /[a-z]{2}/i.test(t)) return t.length <= 200 ? t : '';
+    }
+    return '';
   }
 
   function siblingLabel(el) {
@@ -262,7 +325,7 @@
     const type = attr(el, 'type').toLowerCase();
     const name = attr(el, 'name');
     const id = attr(el, 'id');
-    const label = labelFor(el);
+    const label = leverQuestion(el) || labelFor(el);
     let kind = tag, ident = '', value = '', filled = false;
 
     if (tag === 'input' && (type === 'radio' || type === 'checkbox')) {
@@ -285,7 +348,7 @@
     } else if (tag === 'select') {
       kind = 'select';
       const opt = (el.selectedIndex >= 0 && el.options) ? el.options[el.selectedIndex] : null;
-      value = opt ? txt(opt) : '';
+      value = opt ? optionText(opt) : '';
       // A non-empty value rejects <option value="">Select…</option> without
       // needing to re-implement the placeholder regex here.
       filled = !!(el.value && String(el.value).trim()) && !!value;
@@ -343,6 +406,15 @@
         // CLEARS the inner input, so the input is not the place to look.
         if (single) { value = txt(single); }
         else if (hidden && hidden.value) { value = String(hidden.value).trim(); }
+        // SuccessFactors' picklist keeps the choice in the input's title — and,
+        // when nothing is chosen, the question itself (ExxonMobil, Oct 2026).
+        // Never the box's text: that is also whatever was typed to filter.
+        else if (/\brcmpaginatedselectinput\b/.test(String(el.className || ''))) {
+          const title = String(attr(el, 'title') || '').trim();
+          const asked = [label, attr(el, 'aria-label'), attr(el, 'placeholder'), 'No Selection']
+            .map(s => String(s || '').trim().toLowerCase());
+          value = title && asked.indexOf(title.toLowerCase()) < 0 && !/…$/.test(title) ? title : '';
+        }
         // A combobox whose own input shows the choice and is CLOSED: Oracle
         // Candidate Experience keeps its listbox (and an in-field label) in the
         // wrapper after a pick, so the two rules below read every filled Oracle
@@ -395,6 +467,7 @@
     if (!el) return false;
     if (el.required === true) return true;
     if (attr(el, 'aria-required') === 'true') return true;
+    if (/^(y|yes|true)$/i.test(attr(el, 'data-required'))) return true;
     const lab = labelFor(el);
     if (/\*/.test(lab) || /\(required\)/i.test(lab)) return true;
     let n = el.parentElement, depth = 0;
@@ -419,13 +492,26 @@
   // Same rule as _parse_select_options in browser.py.
   const PLACEHOLDER_OPTION_RE = /^(select|choose|please select)\b.*\.{0,3}$|^--+$/i;
 
+  // <option value="Kolkata" label="Kolkata"></option> shows its label attribute
+  // and has no text of its own (RippleHire, Nov 2026).
+  function optionText(opt) {
+    return txt(opt) || attr(opt, 'label');
+  }
+
   function optionsFor(el) {
     if (!el || (el.tagName || '').toLowerCase() !== 'select') return null;
+    // A select behind a bootstrap-multiselect with a search box holds only what
+    // was last searched for, so Kolkata was turned away before it was looked for
+    // (RippleHire, Nov 2026). As a list not read yet: the writer searches it.
+    const widget = el.closest && el.closest('.multiselect, .multi-select');
+    if (widget && widget.querySelector('.singleselect-search, .multiselect-search')) return [];
     const out = [], opts = el.options || [];
     for (let i = 0; i < opts.length; i++) {
-      const label = txt(opts[i]);
+      const label = optionText(opts[i]);
       if (!label || PLACEHOLDER_OPTION_RE.test(label)) continue;
       const raw = opts[i].value;
+      // <option value="" label="Enter current city">: a prompt in any words.
+      if (!txt(opts[i]) && !(raw != null && String(raw).trim())) continue;
       const value = (raw != null && String(raw).trim()) ? String(raw) : label;
       if (!value) continue;
       out.push({ value: value, label: label });
@@ -538,7 +624,7 @@
         for (let i = 0; i < drop.length; i++) drop[i].remove();
       } catch (e) { return ''; }
       const t = txt(clone);
-      if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(t)) continue;
+      if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i.test(t)) continue;
       if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
     }
     return '';
@@ -568,7 +654,12 @@
   // role="option", so both are read. Where one row carries both (a role=option
   // wrapping a promptOption), only the outermost is kept, or every option would
   // be listed twice and the option-count guards would be off by double.
-  const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"]';
+  // SuccessFactors' picklist list ("76:_listSelect", named by the input's
+  // aria-owns) is read by its rows too, in case they carry no role.
+  // react-virtualized-select's rows carry no role either (D. E. Shaw, Nov 2026):
+  // <div class="VirtualizedSelectOption">Bachelor of Arts</div>, in a role="grid".
+  const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"], [id$="_listSelect"] li, '
+    + '.VirtualizedSelectOption';
 
   // Oracle Candidate Experience draws its dropdown lists as a grid, not a
   // listbox: <input role="combobox" aria-haspopup="grid" aria-controls="city-17-listbox">
@@ -689,6 +780,7 @@
     control: control,
     only: only,
     labelFor: labelFor,
+    leverQuestion: leverQuestion,
     rsContainer: rsContainer,
     isInvalid: isInvalid,
     requiredFor: requiredFor,

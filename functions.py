@@ -642,18 +642,44 @@ load_dotenv(dotenv_path=BASE_DIR / ".env")
 _openai_client = None
 # The model for every feature EXCEPT the resume tailoring rewrite: cover
 # letters, mock interviews, interview questions, LinkedIn parsing, resume
-# extraction. These are ordinary generation tasks where gpt-4o-mini is both
-# cheaper and faster, and no measurement suggested they need more.
+# extraction. These are ordinary generation tasks where the cheapest model is
+# good enough, and no measurement suggested they need more. This was
+# gpt-4o-mini until OpenAI scheduled it for shutdown on 2027-01-14 and named
+# gpt-6-luna as the replacement (cheaper per token, but a reasoning model — see
+# AI_REASONING_EFFORT below).
 # The tailoring call is the exception — see OPTIMIZER_MODEL below.
-AI_MODEL = os.getenv("AI_MODEL", "gpt-4o-mini")
+AI_MODEL = os.getenv("AI_MODEL", "gpt-6-luna")
 MOCK_INTERVIEW_MODEL = AI_MODEL
 
 
-_REASONING_MODEL_PREFIXES = ("gpt-5", "o1", "o3", "o4")
+_REASONING_MODEL_PREFIXES = ("gpt-5", "gpt-6", "o1", "o3", "o4", "gemini-")
+_REASONING_EFFORTS = {"none", "minimal", "low", "medium", "high", "xhigh", "max"}
 
 
 def _is_reasoning_model(model: str) -> bool:
     return str(model or "").startswith(_REASONING_MODEL_PREFIXES)
+
+
+def _reasoning_effort(requested: str | None = None) -> str | None:
+    """The reasoning_effort to send, or None to leave the API default.
+
+    `requested` is what the caller asked for; only the tailoring rewrite asks,
+    passing OPTIMIZER_REASONING_EFFORT explicitly from its call site. Everything
+    else gets AI_REASONING_EFFORT, default "none": those calls replaced a
+    non-reasoning gpt-4o-mini, so no reasoning tokens means no added latency or
+    cost, and the small output caps on them (220-400 tokens for mock-interview
+    turns) aren't eaten by reasoning before any visible text is written — which
+    would come back as an empty answer, not an error.
+
+    Chosen per call rather than by model name, because AI_MODEL and
+    OPTIMIZER_MODEL can be the same model and still need different efforts.
+
+    Valid values differ by family (gpt-6 takes "none", gpt-5 takes "minimal");
+    a wrong one set in .env is a 400, which is the right way for that to fail.
+    """
+    effort = requested if requested is not None else os.getenv("AI_REASONING_EFFORT", "none")
+    effort = str(effort).strip().lower()
+    return effort if effort in _REASONING_EFFORTS else None
 
 
 def _adapt_call_params(kwargs: dict) -> dict:
@@ -680,44 +706,75 @@ def _adapt_call_params(kwargs: dict) -> dict:
         out["max_completion_tokens"] = out.pop("max_tokens")
     # Only the default temperature is accepted, so drop whatever was asked for
     # rather than 400. Callers use it to trade determinism against variety; on a
-    # reasoning model that dial is `reasoning_effort` instead.
+    # reasoning model that dial is `reasoning_effort` instead. That means the
+    # callers asking for 0.6-0.7 (interview questions, career cards) run at the
+    # model's default variety — expected, not a bug.
     out.pop("temperature", None)
     out.pop("top_p", None)
     if "reasoning_effort" not in out:
-        effort = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
-        if effort in {"minimal", "low", "medium", "high"}:
+        effort = _reasoning_effort()
+        if effort:
             out["reasoning_effort"] = effort
+    if _is_gemini_model(out.get("model")):
+        # Gemini's OpenAI-compatible endpoint 400s on `seed` ("Unknown name"),
+        # so Gemini output is not reproducible run to run the way OpenAI's is.
+        out.pop("seed", None)
     return out
 
 
-class _AdaptingCompletions:
-    """chat.completions proxy that runs every create() through _adapt_call_params."""
+# Gemini is reached through Google's OpenAI-compatible endpoint, so every call
+# site keeps using chat.completions.create and only the model name changes.
+# Gemini 3 models think by default (~400 billed thinking tokens on a one-line
+# prompt), take reasoning_effort none/low/medium/high (not "minimal"), and
+# Google recommends leaving temperature at its default — which is why "gemini-"
+# is in _REASONING_MODEL_PREFIXES: they need the same treatment as gpt-5.
+_GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 
-    def __init__(self, inner):
+
+def _is_gemini_model(model: str) -> bool:
+    return str(model or "").startswith("gemini-")
+
+
+class _AdaptingCompletions:
+    """chat.completions proxy that runs every create() through _adapt_call_params,
+    and sends gemini-* models to the Gemini client instead of OpenAI."""
+
+    def __init__(self, inner, gemini=None):
         self._inner = inner
+        self._gemini = gemini
 
     async def create(self, **kwargs):
-        return await self._inner.create(**_adapt_call_params(kwargs))
+        params = _adapt_call_params(kwargs)
+        if _is_gemini_model(params.get("model")):
+            if self._gemini is None:
+                raise RuntimeError(
+                    f"{params.get('model')} needs GEMINI_API_KEY in .env, and it is not set."
+                )
+            return await self._gemini.create(**params)
+        return await self._inner.create(**params)
 
     def __getattr__(self, name):
         return getattr(self._inner, name)
 
 
 class _AdaptingChat:
-    def __init__(self, inner):
+    def __init__(self, inner, gemini=None):
         self._inner = inner
-        self.completions = _AdaptingCompletions(inner.completions)
+        self.completions = _AdaptingCompletions(
+            inner.completions, gemini.completions if gemini is not None else None
+        )
 
     def __getattr__(self, name):
         return getattr(self._inner, name)
 
 
 class _AdaptingClient:
-    """AsyncOpenAI wrapper. Everything except chat.completions passes straight through."""
+    """AsyncOpenAI wrapper. Everything except chat.completions passes straight through
+    to OpenAI; chat.completions is adapted per model family and routed per provider."""
 
-    def __init__(self, inner):
+    def __init__(self, inner, gemini=None):
         self._inner = inner
-        self.chat = _AdaptingChat(inner.chat)
+        self.chat = _AdaptingChat(inner.chat, gemini.chat if gemini is not None else None)
 
     def __getattr__(self, name):
         return getattr(self._inner, name)
@@ -731,11 +788,20 @@ async def _build_openai_client():
             raise RuntimeError(
                 "OPENAI_API_KEY is not set. Add it to your .env file before using ATS analysis or resume optimization."
             )
-        _openai_client = _AdaptingClient(AsyncOpenAI(
-            api_key=api_key,
-            timeout=120.0,
-            max_retries=3
-        ))
+        gemini_key = os.getenv("GEMINI_API_KEY")
+        _openai_client = _AdaptingClient(
+            AsyncOpenAI(
+                api_key=api_key,
+                timeout=120.0,
+                max_retries=3
+            ),
+            gemini=AsyncOpenAI(
+                api_key=gemini_key,
+                base_url=_GEMINI_BASE_URL,
+                timeout=120.0,
+                max_retries=3,
+            ) if gemini_key else None,
+        )
     return _openai_client
 
 
@@ -1302,7 +1368,8 @@ Job Description:
 """
 # The model that does the tailoring rewrite itself. Rewrite quality IS the
 # product here, so this one call is chosen on measurement rather than on price.
-# Every other LLM call in the app stays on gpt-4o-mini.
+# Every other LLM call in the app stays on AI_MODEL (gpt-6-luna; was gpt-4o-mini
+# when the table below was measured).
 #
 # Measured end-to-end on a real resume + JD. "reverts" is how often
 # enforce_bullet_facts had to discard the model's rewrite because it dropped a
@@ -1326,6 +1393,7 @@ Job Description:
 # Both settings are .env-overridable: OPTIMIZER_MODEL=gpt-4o-mini drops the cost
 # back to ~$2/1000, OPTIMIZER_REASONING_EFFORT=medium buys the 5% revert rate.
 OPTIMIZER_MODEL = os.getenv("OPTIMIZER_MODEL", "gpt-5-mini")
+OPTIMIZER_REASONING_EFFORT = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
 try:
     OPTIMIZER_TEMPERATURE = float(os.getenv("OPTIMIZER_TEMPERATURE", "0.35"))
 except ValueError:
@@ -1341,7 +1409,7 @@ except ValueError:
     # the same generic 500, so there was nothing to act on.
     reraise=True,
 )
-def _completion_params(model: str, temperature: float) -> dict:
+def _completion_params(model: str, temperature: float, reasoning_effort: str | None = None) -> dict:
     """Per-model-family call parameters for the tailoring request.
 
     The gpt-5 family are reasoning models and reject the parameters the gpt-4
@@ -1355,13 +1423,13 @@ def _completion_params(model: str, temperature: float) -> dict:
     Sending the wrong set is a hard 400, not a degraded response, so this is
     chosen by family rather than left to the caller.
     """
-    if str(model or "").startswith(("gpt-5", "o1", "o3", "o4")):
+    if _is_reasoning_model(model):
         params = {
             "max_completion_tokens": 16384,
             "seed": _ATS_SEED,
         }
-        effort = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
-        if effort in {"minimal", "low", "medium", "high"}:
+        effort = _reasoning_effort(reasoning_effort)
+        if effort:
             params["reasoning_effort"] = effort
         return params
     return {
@@ -1371,12 +1439,20 @@ def _completion_params(model: str, temperature: float) -> dict:
     }
 
 
-async def get_resume_response(prompt: str, model: str = AI_MODEL, temperature: float = 0) -> str:
+async def get_resume_response(
+    prompt: str,
+    model: str = AI_MODEL,
+    temperature: float = 0,
+    reasoning_effort: str | None = None,
+) -> str:
     """
     Async OpenAI call for resume optimization with retries.
+
+    `reasoning_effort` only matters on reasoning models; None means
+    AI_REASONING_EFFORT. The tailoring call passes OPTIMIZER_REASONING_EFFORT.
     """
     client = await _build_openai_client()
-    call_params = _completion_params(model, temperature)
+    call_params = _completion_params(model, temperature, reasoning_effort)
     try:
         response = await client.chat.completions.create(
             model=model,
@@ -5898,9 +5974,56 @@ _ATS_CACHE_MAX = 300
 # every run and on every machine. A score that moves on its own is not a
 # measurement, and this is a scoring product.
 _ATS_SEED = 7
-# Longest whitespace run tolerated in the streamed ATS report before treating
-# it as the JSON-mode "endless blank lines" failure and aborting the stream.
-_ATS_MAX_WHITESPACE_RUN = 400
+
+# JSON mode can degenerate mid-report into thousands of blank lines until
+# max_tokens, leaving an unterminated object. Production failures read e.g.
+# "line 6557 column 3 (char 12861)" - ~2 chars per line. A real report never
+# has a whitespace run anywhere near this long, so past it the reply is junk.
+_ATS_WHITESPACE_RUNAWAY = 200
+
+
+async def _stream_ats_completion(client, user_message: str, seed: int) -> str | None:
+    """One streamed ATS call. Returns the raw reply, or None if it degenerated
+    into a whitespace run - aborted as soon as the run starts instead of paying
+    for the rest of max_tokens."""
+    try:
+        stream = await client.chat.completions.create(
+            model=AI_MODEL,
+            response_format={"type": "json_object"},
+            messages=[
+                {"role": "system", "content": _ATS_SYSTEM_PROMPT},
+                {"role": "user", "content": user_message},
+            ],
+            temperature=0,
+            # ~62 of the 100 points come from this call's yes/no answers, so a
+            # user rescanning the same resume could see a different number.
+            # temperature=0 alone does not guarantee identical output; the seed
+            # makes the score reproducible.
+            seed=seed,
+            # 1500 was not enough for the full audit JSON on a long resume - it
+            # truncated and fell back to _repair_truncated_json, silently losing
+            # checks (a missing check scores 0, so truncation cost real points).
+            max_tokens=4000,
+            stream=True,
+        )
+        chunks: list[str] = []
+        trailing_ws = 0
+        async for chunk in stream:
+            delta = chunk.choices[0].delta.content if chunk.choices else None
+            if not delta:
+                continue
+            chunks.append(delta)
+            stripped = delta.rstrip()
+            trailing_ws = trailing_ws + len(delta) if not stripped else len(delta) - len(stripped)
+            if trailing_ws > _ATS_WHITESPACE_RUNAWAY:
+                try:
+                    await stream.close()
+                except Exception:
+                    pass
+                return None
+        return "".join(chunks)
+    except Exception as exc:
+        raise _normalize_openai_error(exc) from exc
 
 
 async def ats_scoring(resume_string, jd_string):
@@ -5944,72 +6067,32 @@ async def ats_scoring(resume_string, jd_string):
     )
 
     client = await _build_openai_client()
-
-    async def _call(seed: int) -> str:
-        # Change 2: stream=True — collect chunks as they arrive instead of one big buffer
+    # The same input + seed tends to degenerate again, which is why "please scan
+    # again" kept failing for users. Retry once on a neighbouring seed. The
+    # normal path still uses _ATS_SEED, so reproducible scores are unchanged.
+    # Salvaging the partial JSON is not an option: a missing check scores 0.
+    parsed = None
+    for attempt_seed in (_ATS_SEED, _ATS_SEED + 1):
+        content = await _stream_ats_completion(client, user_message, attempt_seed)
+        if content is None:
+            logger.warning("ATS reply degenerated into whitespace (seed=%s)", attempt_seed)
+            continue
         try:
-            stream = await client.chat.completions.create(
-                model=AI_MODEL,
-                response_format={"type": "json_object"},
-                messages=[
-                    {"role": "system", "content": _ATS_SYSTEM_PROMPT},
-                    {"role": "user", "content": user_message},
-                ],
-                temperature=0,
-                # ~62 of the 100 points come from this call's yes/no answers, so a
-                # user rescanning the same resume could see a different number.
-                # temperature=0 alone does not guarantee identical output; the seed
-                # makes the score reproducible.
-                seed=seed,
-                # 1500 was not enough for the full audit JSON on a long resume - it
-                # truncated and fell back to _repair_truncated_json, silently losing
-                # checks (a missing check scores 0, so truncation cost real points).
-                max_tokens=4000,
-                stream=True,
-            )
-            chunks: list[str] = []
-            trailing_ws = 0
-            async for chunk in stream:
-                delta = chunk.choices[0].delta.content if chunk.choices else None
-                if not delta:
-                    continue
-                chunks.append(delta)
-                # JSON mode can degenerate into thousands of blank lines until
-                # max_tokens (seen in production: ~6,500 newlines, then a
-                # truncated object). A real report never has a whitespace run
-                # this long, so stop reading instead of paying for the rest.
-                stripped = delta.rstrip()
-                trailing_ws = trailing_ws + len(delta) if not stripped else len(delta) - len(stripped)
-                if trailing_ws > _ATS_MAX_WHITESPACE_RUN:
-                    logger.warning("ATS scoring: whitespace runaway detected, aborting stream")
-                    try:
-                        await stream.close()
-                    except Exception:
-                        pass
-                    break
-            return "".join(chunks)
-        except Exception as exc:
-            raise _normalize_openai_error(exc) from exc
-
-    def _parse(raw: str):
-        try:
-            return json.loads(raw)
+            parsed = json.loads(content)
         except Exception:
-            match = re.search(r"\{[\s\S]*\}\s*$", raw)
+            match = re.search(r"\{[\s\S]*\}\s*$", content)
             try:
-                return json.loads(match.group(0)) if match else None
+                parsed = json.loads(match.group(0)) if match else {}
             except json.JSONDecodeError:
-                return None
-
-    content = await _call(_ATS_SEED)
-    parsed = _parse(content)
+                logger.warning("ATS reply unparseable (seed=%s, %d chars)", attempt_seed, len(content))
+                continue
+        break
     if parsed is None:
-        # One retry with a different seed: the runaway is a sampling path, so a
-        # new seed almost always produces a clean report. The good result is
-        # cached below, so later rescans of the same input stay stable.
-        logger.warning("ATS scoring: unusable model output (len=%d), retrying once", len(content))
-        content = await _call(_ATS_SEED + 1)
-        parsed = _parse(content)
+        raise AIOutputError(
+            "Our AI scanner returned an incomplete report for this resume. Please scan "
+            "again. If it keeps failing, trim the job description to the key "
+            "requirements, or re-export your resume as a fresh PDF."
+        )
 
     if False:
         base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
@@ -6664,14 +6747,6 @@ The JSON must strictly follow the schema provided below.
     }
   ]
 } '''
-    if parsed is None:
-        # Both attempts failed (e.g. JSON mode degenerating into blank lines
-        # until max_tokens, leaving an unterminated object).
-        raise AIOutputError(
-            "Our AI scanner returned an incomplete report for this resume. Please scan "
-            "again. If it keeps failing, trim the job description to the key "
-            "requirements, or re-export your resume as a fresh PDF."
-        )
 
     if not isinstance(parsed, dict):
         parsed = {}
@@ -7468,15 +7543,24 @@ def _extract_contact_from_resume_text(text: str, lines: list[str]) -> dict[str, 
 
     top_lines = [_clean_resume_line(line) for line in lines[:8] if _clean_resume_line(line)]
     location = ""
+    # A contact line holds several items — "leetcode.com/u/x • site.com/me •
+    # Kolkata, West Bengal", each behind an icon-font glyph (U+E000–U+F8FF).
+    # Taken whole, the location field showed the glyphs and both links. So
+    # each line is split on its separators and only a piece that is no link,
+    # email or phone number can be the place.
+    urlish = re.compile(r"@|https?://|www\.|\b[a-z0-9-]+\.(?:com|in|org|io|dev|ai|net|me|co|app|xyz)\b", re.I)
     for line in top_lines:
-        if email and email in line:
-            continue
-        if phone and phone in line:
-            continue
-        if "@" in line or "http" in line.lower() or "www." in line.lower():
-            continue
-        if re.search(r"\b(?:india|usa|united states|uk|canada|australia|remote)\b", line.lower()) or "," in line:
-            location = line
+        line = re.sub(r"[-�]", " ", line)
+        for part in re.split(r"\s*[•|·▪●◦]\s*|\s{3,}", line):
+            part = re.sub(r"\s+", " ", part).strip(" \t-–—:;,")
+            if not part or urlish.search(part):
+                continue
+            if (email and email in part) or (phone and phone in part) or re.fullmatch(r"[\d\s()+\-.]+", part):
+                continue
+            if re.search(r"\b(?:india|usa|united states|uk|canada|australia|remote)\b", part.lower()) or "," in part:
+                location = part
+                break
+        if location:
             break
 
     return {

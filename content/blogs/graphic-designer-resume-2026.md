@@ -39,9 +39,9 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+Paper size, font, font size, line height and margins are all adjustable.
 
 
 One page for designers with under 7 years of experience. Your [resume's visual design](https://thetailorcv.com/blog/resume-margins-spacing-formatting) should be [clean and minimal](https://thetailorcv.com/blog/how-to-choose-resume-template) - not a showcase of every Illustrator technique you know.

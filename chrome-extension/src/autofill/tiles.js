@@ -29,7 +29,7 @@ function tileText(tile) {
   return ((summary && summary.getAttribute('aria-label')) || tile.textContent || '').replace(/\s+/g, ' ').trim();
 }
 
-function tileFlagged(tile) {
+export function tileFlagged(tile) {
   return tile.classList.contains('apply-flow-profile-item-tile--invalid')
     || /fields to fix/i.test(tile.textContent || '');
 }
@@ -90,6 +90,8 @@ export function tileAnswer(kind, label, entry) {
     return y ? [y] : null;
   }
   if (kind === 'education') {
+    // Workday: "Overall Result (GPA)". Before "degree": "grade" is in neither.
+    if (/\bc?gpa\b|overall result|grade point|\bgrade\b|percentage/.test(l)) return entry.gpa ? [entry.gpa] : null;
     if (/degree|qualification/.test(l)) return entry.degree ? candidatesFor('degree', entry.degree) : null;
     if (/area of study|major|field of study|discipline|speciali|subject/.test(l)) return entry.field ? [entry.field] : null;
     if (/school|university|college|institution|establishment/.test(l)) return entry.school ? [entry.school] : null;

@@ -26,7 +26,7 @@ A skill-match score compares the skills on your resume against the skills a job 
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
@@ -50,6 +50,10 @@ The number is a signal; the two lists are the substance. Here is how to act on t
 **Skills you genuinely lack.** The honest gaps. These tell you something real: whether you are a fit, and what to learn next. A posting where you are missing several core skills is useful information — it says "not yet", which saves you a wasted application and points at what to build. Do not [fabricate](/blog/how-to-stop-sounding-generic-on-resume) these; a claimed skill you cannot back up collapses in the interview.
 
 Reading the gaps this way turns a score into a plan: close the phrasing gaps now, bridge the adjacent ones carefully, and note the real gaps as learning targets. It is the difference between an [ATS score and a general resume score](/blog/ats-score-vs-resume-score) made concrete and actionable.
+
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Each row shows whether the skill was found on your resume, which gives you the list to sort.
 
 ## Skill-Match, Then Tailor
 

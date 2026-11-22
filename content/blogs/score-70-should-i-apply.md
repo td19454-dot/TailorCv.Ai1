@@ -32,6 +32,10 @@ Open the posting and find each missing item in the original text. Look at the la
 
 Missing three preferred items at 70% is a completely different situation from missing one required item at 70%. The first is normal and worth applying to; the second is usually a hard filter. Our guide to [required vs preferred qualifications](/blog/matching-resume-required-vs-preferred-qualifications) covers the distinction in more depth.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+A score near 70 can look like this. What decides it is which items are marked Missing, and whether the posting requires them.
+
 ### 2. Are the gaps real, or just unwritten?
 
 This is the question that changes most outcomes. Take each missing item and sort it:

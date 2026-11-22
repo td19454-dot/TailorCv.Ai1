@@ -99,7 +99,7 @@ And our ATS score stays free and unlimited in every region — because the thing
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
@@ -131,6 +131,10 @@ Here is why that matters. **The filter matches language, not meaning.** If the j
 So the most beautiful resume in the world, sent to a portal, gets filtered out just as efficiently as an ugly one — and you never learn why, because there is no rejection email that says "you were missing eleven keywords". Our [tailored vs generic resume](/blog/tailored-vs-generic-resume) piece shows what that costs.
 
 TailorCV starts from the posting. [Free ATS match score](/ats-analysis), exact missing keywords, and the AI **rewrites your bullets** to carry that language honestly — without inventing anything you did not do. About a minute per job.
+
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Each edit is marked on your resume, with removed words in red and new words in green.
 
 
 ## Round 5: The Chrome Extension

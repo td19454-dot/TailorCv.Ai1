@@ -52,6 +52,10 @@ This attacks the actual reason applications fail. Your resume is [parsed and mat
 
 The good auto-tailors do it honestly: they [keep your voice](/blog/ai-resume-tailoring-human-voice), avoid [keyword-stuffing](/blog/ats-keyword-mistakes), never [fabricate](/blog/how-to-stop-sounding-generic-on-resume) experience, and output a [parseable format](/blog/ats-resume-parser-friendly-format). That honesty is what separates a tool that helps from one that gets you caught in the interview.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+One way to check that for yourself is to read every edit. TailorCV marks removed words in red and new words in green.
+
 ## Why the Difference Matters So Much
 
 Here is the mistake people make. Applying feels slow and tedious, so they reach for the tool that makes it *feel* faster — autofill. They blast through fifty applications, feel productive, and hear nothing. Then they conclude the market is brutal.

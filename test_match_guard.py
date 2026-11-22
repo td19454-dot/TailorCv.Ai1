@@ -58,6 +58,26 @@ MUST_FLAG = [
     ("demographic", "Veteran status"),
     ("demographic", "Protected veteran status"),
     ("demographic", "Are you a protected military veteran?"),
+    ("demographic", "Have you ever served or are you currently serving in the United States military?"),
+    ("demographic", "Are you a current or former military spouse?"),
+    # Anti-bribery declarations (Walmart, Oct 2026): their own category, ahead
+    # of government_employment, whose words their definitions share.
+    ("government_official", "Are you (or have you been within the last 12 months) a Government "
+                            "Official? Government Official (GO) means any official or employee of "
+                            "any government agency, ministry or department of a government"),
+    ("government_official", "Are any of your immediate family members Government Officials (Any "
+                            "Official or Employee of any government department/agency)?"),
+    ("government_official", "Are you a government official?"),
+    ("government_official", "Do you currently hold or have you held, within the last 5 years, a "
+                            "position as a government official?"),
+    ("government_official", "Is any member of your immediate family a public official?"),
+    ("government_official", "Are you a politically exposed person?"),
+    # Employment BY a government — not military service (Snowflake, Oct 2026).
+    ("government_employment", "Have you ever been directly employed by (1) any government or "
+                              "military entity, state-owned enterprise, or publicly-funded institution, "
+                              "or (2) a government contractor in a role that recommended Snowflake as "
+                              "part of Government procurement?"),
+    ("government_employment", "Have you worked for a government agency in the last two years?"),
     ("demographic", "Disability status"),
     ("demographic", "Do you have a disability?"),
     ("demographic", "What are your pronouns?"),
@@ -66,6 +86,23 @@ MUST_FLAG = [
     ("demographic", "Have you served in the armed forces?"),
     ("demographic", "Do you identify as LGBTQ+?"),
     ("demographic", "Sexual orientation"),
+    # "sex" is the gender question (Oct 2026: it went to the model without it).
+    ("demographic", "What is your sex?"),
+    ("demographic", "Sex*"),
+    ("demographic", "Would you describe yourself as neurodivergent?"),
+    ("demographic", "How do you identify?"),
+    # ExxonMobil (Oct 2026): a year of birth, and medical history.
+    ("birth", "What is your year of birth?"),
+    ("health", "Have you ever been treated for drug and/or alcohol abuse?"),
+    # Date and place of birth: profile only, never the model (PwC Workday, Oct 2026).
+    ("birth", "Date of birth"),
+    ("birth", "DOB"),
+    ("birth", "Birth date"),
+    ("birth", "Country / Territory of Birth"),
+    ("birth", "City of Birth"),
+    ("birth", "Place of birth"),
+    ("birth", "Where were you born?"),
+    ("citizenship", "Are you a citizen by birth?"),
 ]
 
 MUST_NOT_FLAG = [
@@ -84,7 +121,7 @@ MUST_NOT_FLAG = [
 NEVER_FILL = [
     "Social Security Number", "SSN", "National Insurance number",
     "Bank account number", "Routing number", "IBAN", "Credit card number", "CVV",
-    "Password", "One time password", "Date of birth", "DOB", "Birth date",
+    "Password", "One time password",
     "PAN card number", "Aadhaar number",
 ]
 
@@ -116,6 +153,14 @@ def test_relocation_is_a_preference_not_a_sensitive_question():
     assert mg.classify_sensitive("Are you willing to relocate to New York?") is None
 
 
+def test_birth_answers_may_be_saved_from_a_form():
+    # Region of Birth has no profile field: the person's own answer is kept.
+    assert "birth" in mg.STORABLE_SENSITIVE
+    assert not mg.is_never_store("Region of Birth", "West Bengal")
+    # Still never saved: work authorization belongs in the profile.
+    assert mg.is_never_store("Are you legally authorized to work in the United States?", "Yes")
+
+
 def test_a_dual_category_question_is_still_locked():
     assert mg.classify_sensitive("Do you hold a valid work permit?")
     assert mg.classify_sensitive("Do you have the right to work here without sponsorship?")
@@ -141,10 +186,27 @@ def test_looks_secret():
 def test_is_never_store_refuses_secrets_and_sensitive_questions():
     assert mg.is_never_store("Social Security Number", "123-45-6789")
     assert mg.is_never_store("Employee reference", "123-45-6789"), "a secret VALUE is enough"
-    assert mg.is_never_store("What is your gender?", "Female"), \
-        "EEO answers belong in the profile, not captured per-application"
     assert mg.is_never_store("Are you authorized to work in the US?", "Yes")
     assert mg.is_never_store("Expected salary", "2500000")
+
+
+def test_is_never_store_allows_the_persons_own_clearance_criminal_and_citizenship_answers():
+    # Worded too variously for one profile value; the person's own answer to the
+    # exact question may be kept (and is reused only for that question).
+    assert not mg.is_never_store("Active Security Clearance(s)*", "Never held a clearance")
+    assert not mg.is_never_store("Have you ever been convicted of a felony?", "No")
+    assert not mg.is_never_store(
+        "Which of the following best describes your “U.S. person” status?",
+        "None of the above; I am a citizen of a different country")
+    assert not mg.is_never_store("Citizenship Status", "(b) U.S. lawful permanent resident")
+    # EEO answers too, for that exact wording, once the person chose them (Oct
+    # 2026: "Would you say you have a disability?" was asked on every form).
+    assert not mg.is_never_store("Would you say you have a disability?", "No, I don't have a disability")
+    assert mg.is_never_store("What is your gender?", "123-45-6789"), "a secret value still never is"
+    assert not mg.is_never_store(
+        "Have you ever been directly employed by (1) any government or military entity?", "No")
+    assert mg.is_never_store("Active Security Clearance(s)*", "123-45-6789"), \
+        "a secret value is still refused"
 
 
 def test_is_never_store_allows_an_ordinary_learned_answer():
@@ -158,6 +220,33 @@ def test_empty_input_is_not_flagged():
     assert mg.classify_sensitive(None) is None
     assert not mg.is_never_fill("")
     assert not mg.looks_secret(None)
+
+
+# (label, employer, expected category or None). On the employer's own form its
+# name is no visa question; visa wording around it still is (Visa, Oct 2026).
+EMPLOYER_CASES = [
+    ("I agree that Visa may reach out to me via SMS regarding my application. I can opt-out at any time.*",
+     "Visa", None),
+    ("Visa may use automated tools such as AI to support review of your application for this role.*",
+     "Visa", None),
+    ("Have you ever worked for Visa Inc. or any wholly/majority-owned subsidiaries of Visa Inc.?",
+     "Visa Inc.", None),
+    ("Why do you want to work at Visa?", "Visa", None),
+    ("Will you now or in the future require Visa sponsorship?", "Visa", "sponsorship"),
+    ("Do you hold a valid work Visa?", "Visa", "sponsorship"),
+    ("What is your current Visa status?", "Visa", "sponsorship"),
+    ("Do you need a Visa to work in India?", "Visa", "sponsorship"),
+    ("Do you require a visa?", "Visa", "sponsorship"),
+    # Another employer changes nothing.
+    ("Do you require visa sponsorship?", "Citi", "sponsorship"),
+    ("Why Citi?", "Citi", None),
+]
+
+
+def test_the_employers_own_name_is_not_a_visa_question():
+    wrong = [f"{label!r} @ {emp} -> {mg.classify_sensitive(label, emp)!r}, want {want!r}"
+             for label, emp, want in EMPLOYER_CASES if mg.classify_sensitive(label, emp) != want]
+    assert not wrong, "\n    ".join(wrong)
 
 
 def test_js_and_python_classifiers_agree():
@@ -192,21 +281,26 @@ def test_js_and_python_classifiers_agree():
         # Via the environment, not argv: the label corpus is a few KB of text
         # with quotes and slashes in it, and Windows argument quoting mangles it.
         "const labels = JSON.parse(process.env.TCV_LABELS);\n"
-        "console.log(JSON.stringify(labels.map(l => "
-        "[m.classifySensitive(l), m.isNeverFill(l)])));\n"
+        "const withEmployer = JSON.parse(process.env.TCV_EMPLOYER_CASES);\n"
+        "console.log(JSON.stringify([labels.map(l => "
+        "[m.classifySensitive(l), m.isNeverFill(l)]), "
+        "withEmployer.map(([l, e]) => m.classifySensitive(l, e))]));\n"
     )
     with tempfile.NamedTemporaryFile("w", suffix=".mjs", delete=False, encoding="utf-8") as fh:
         fh.write(script)
         path = fh.name
     try:
-        env = dict(os.environ, TCV_LABELS=json.dumps(labels))
+        env = dict(os.environ, TCV_LABELS=json.dumps(labels),
+                   TCV_EMPLOYER_CASES=json.dumps([[l, e] for l, e, _ in EMPLOYER_CASES]))
         proc = subprocess.run([node, path], capture_output=True, text=True, env=env)
         assert proc.returncode == 0, proc.stderr[:2000]
-        js_results = json.loads(proc.stdout.strip().splitlines()[-1])
+        js_results, js_employer = json.loads(proc.stdout.strip().splitlines()[-1])
     finally:
         os.unlink(path)
 
-    disagreements = []
+    disagreements = [f"employer:  {label!r} @ {emp} -> js={js!r} py={mg.classify_sensitive(label, emp)!r}"
+                     for (label, emp, _), js in zip(EMPLOYER_CASES, js_employer)
+                     if js != mg.classify_sensitive(label, emp)]
     for label, (js_cat, js_never) in zip(labels, js_results):
         py_cat = mg.classify_sensitive(label)
         py_never = mg.is_never_fill(label)

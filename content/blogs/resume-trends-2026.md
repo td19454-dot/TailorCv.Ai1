@@ -140,9 +140,9 @@ Three older tactics are firmly out in 2026, and none of them are close calls any
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+Paper size, font, font size, line height and margins are all adjustable.
 
 
 **Keyword stuffing.** Early ATS advice pushed candidates to cram keywords anywhere they'd fit, including in white text or hidden sections. Modern ATS parsing and human reviewers both catch this quickly, and it now reads as a red flag rather than a clever workaround. See [ATS keyword mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes) for what natural keyword usage looks like instead.

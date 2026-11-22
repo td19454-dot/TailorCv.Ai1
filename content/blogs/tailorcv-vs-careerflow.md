@@ -59,7 +59,7 @@ TailorCV makes the opposite bet: that for most people, especially students and [
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
@@ -112,6 +112,10 @@ But be clear about what LinkedIn optimization does and does not fix. It helps re
 Careerflow has ATS scoring and keyword matching. On free, it is basic and you get one resume. On Premium, you get unlimited resume analysis. It works.
 
 The difference is what happens after the score. Careerflow tells you what is missing. TailorCV **rewrites the resume** so it is not missing anymore.
+
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+The rewrite is shown on your own resume: removed words in red, new words in green.
 
 That sounds like a small distinction. It is not. Here is the actual experience of the gap: you get a 58% match and a list of nine missing keywords. Now you are sitting at 11pm with a Word document trying to work "cross-functional stakeholder management" into a bullet about your final-year project, without lying, and without it reading like a robot wrote it. Then you do it again tomorrow. For a different job. With different keywords.
 

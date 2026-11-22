@@ -47,7 +47,7 @@ export function stripRegionSuffix(label) {
   return s;
 }
 
-const PLACEHOLDER_OPTION_RE = /^(select|choose|please select)\b.*\.{0,3}$|^--+$/i;
+const PLACEHOLDER_OPTION_RE = /^(select|choose|please select)\b.*\.{0,3}$|^--+$|^no selection$/i;
 
 /** Whether an option label is a placeholder rather than a real answer. */
 export function isPlaceholderOption(label) {
@@ -338,17 +338,63 @@ export const SENSITIVE_PATTERNS = [
     /\b(authori[sz]\w*|eligib\w*|legal\w*)\b[\s\S]*\b(work|employ\w*)\b/.source,
   ].join('|'))],
   ['citizenship', /\bcitizen\w*|\bnationality\b|\bpermanent resident\b|\bgreen card\b|\bpassports?\b/],
+  // Date and place of birth: the profile's own answer or nothing — never the
+  // model, which answered PwC's "Country / Territory of Birth" from a
+  // nationality. After citizenship, so "citizen by birth" stays citizenship.
+  // "year of birth" too (ExxonMobil, Oct 2026): unflagged, it went to the
+  // model, which is never shown the date of birth.
+  ['birth', /\b(date|country|territory|city|town|place|region|state|province|year) of birth\b|\bbirth ?(date|day|place|country|city|year)\b|\bdob\b|\bborn\b/],
   ['clearance', /\bsecurity clearance\b|\bclearance level\b|\bpolygraph\b/],
   ['criminal', /\b(convict\w*|criminal|felony|misdemeanor|background check)\b/],
-  ['salary', /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b/],
+  // Medical history — "Have you ever been treated for drug and/or alcohol
+  // abuse?" (ExxonMobil). Answered by the standing-No rule; a wording it
+  // misses is the person's, never the model's.
+  ['health', /\b(drug|alcohol|substance)\w*\b[\s\S]*\b(abuse|misuse|treat\w*|rehab\w*|dependen\w*|addict\w*)\b/],
+  // Anti-bribery declarations: "Are you (or have you been within the last 12
+  // months) a Government Official?", "Are any of your immediate family members
+  // Government Officials?" (Walmart, Oct 2026). Answered from the profile's two
+  // answers only (governmentOfficialAnswer in plan.js). Ahead of
+  // 'government_employment': their definitions say "employee of any government
+  // agency", and "Are you a government official?" has no employment word at all —
+  // it was not sensitive, and went to the model.
+  ['government_official', /\b(government|public|foreign) officials?\b|\bofficials? (or employees? )?of (a|an|any|the) (government|public|foreign)\b|\bpolitically exposed\b/],
+  // Employment by a government, the military, a state-owned enterprise
+  // (Snowflake: "Have you ever been directly employed by (1) any government or
+  // military entity, state-owned enterprise…"). An employment-history question,
+  // not military SERVICE — read as the veteran question it had no profile
+  // answer and could not be saved. Needs BOTH an employment word and a
+  // government word, and sits ahead of 'demographic' so "served in the
+  // military" stays a veteran question.
+  ['government_employment', /\b(employ\w*|worked for|working for)\b[\s\S]*\b(government|military|state owned|publicly funded|public sector|civil service)\b|\b(government|military|state owned|public sector)\b[\s\S]*\bemploy\w*/],
+  // Not "rate" or "pay" with present / last / previous: "Please rate your last project".
+  ['salary', /\b(salary|compensation|pay|wage|rate|ctc)\b[\s\S]*\b(expect\w*|desir\w*|requir\w*|range|current|minimum)\b|\b(expect\w*|desir\w*|current|minimum)\b[\s\S]*\b(salary|compensation|pay|wage|rate|ctc)\b|\b(present|last|previous|existing)\b[\s\S]*\b(salary|compensation|wages?|ctc)\b|\b(salary|compensation|wages?|ctc)\b[\s\S]*\b(present|last|previous|existing)\b/],
   // The EEO block. browser.py _EEO_FIELD_MARKERS, as alternations.
-  ['demographic', /\bgender\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
+  // "sex" too: "What is your sex?" was no EEO question without it, and went to
+  // the model (Oct 2026). \bsex\b, so "sexual" is not it.
+  // "How do you identify?": Capgemini's gender question, with no gender word.
+  ['demographic', /\bgender\b|\bsex\b|\bhow do you identify\b|\brac(e|ial)\b|\bethnic\w*|\bveteran\b|\bmilitary\b|\bdisab\w*|\bpronoun\w*/],
   // Military service asked without the word "military": Oracle's India form
   // asks "Have you served in any of the below India Uniformed forces?" and the
   // model answered it.
   ['demographic', /\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
-  ['demographic', /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b/],
+  // Neurodivergence is disability data (DoorDash's survey, Oct 2026) — it went
+  // to the model without this.
+  ['demographic', /\bhispanic\b|\blatino\b|\blgbtq?\b|\bsexual orientation\b|\btransgender\b|\bneuro\s?diver\w*/],
 ];
+
+// Sensitive categories with no profile field, whose answer the person may save
+// from a form they answered (match_guard.py STORABLE_SENSITIVE). Reused only
+// for the same question — see savedEntry() in plan.js.
+// Citizenship included: its questions ("Which best describes your 'U.S. person'
+// status?") are worded too variously for the profile's one status to answer
+// them all, so the person's own answer to the exact question is kept too.
+// Birth too: Region of Birth has no profile field (match_guard.py, same set).
+// Demographic too (Oct 2026): the profile answers these, but a wording the
+// rules cannot place ("Would you say you have a disability?") went back to the
+// person on every form. Their own answer to that exact wording is kept, and
+// used only after the profile (plan.js), which they may change later.
+export const STORABLE_SENSITIVE = new Set(['clearance', 'criminal', 'citizenship', 'government_employment', 'birth',
+  'government_official', 'demographic']);
 
 // browser.py _EEO_FIELD_MARKERS — kept separately because EEO fields have a
 // behaviour the other sensitive categories don't: a stored "Decline to
@@ -364,15 +410,42 @@ export function looksLikeEeoField(label) {
   return EEO_FIELD_MARKERS.some(m => lowered.includes(m));
 }
 
+// An employer whose NAME is a sensitive word. On Visa's application every
+// question naming the company — "I agree that Visa may reach out to me via
+// SMS", "Have you ever worked for Visa Inc.?" — read as a visa question and was
+// sent to the profile's sponsorship answer (Oct 2026). The name is set aside
+// before classifying, except where it sits in visa wording ("work Visa",
+// "Visa sponsorship", "Visa status"). Mirrored in match_guard.without_employer.
+const EMPLOYER_SUFFIX_RE = /[\s,]+(inc|incorporated|corp|corporation|co|company|ltd|limited|llc|plc)\.?$/i;
+const VISA_WORDING_BEFORE_RE = /\b(work|h-?1b|student|employment|immigration|immigrant|nonimmigrant|tourist|business|dependent|valid|current|sponsored|a|an|your|any|which|what|l-?1|o-?1|tn|e-?3|f-?1|j-?1|opt)\s*$/i;
+const VISA_WORDING_AFTER_RE = /^\s*(sponsor\w*|status|type|holder|category|categories|transfer|requirement|support|application|petition|stamp|expir\w*)/i;
+
+/** `label` with the employer's name — when that name is itself sensitive — replaced by "the company". */
+export function withoutEmployer(label, employer) {
+  const text = String(label == null ? '' : label);
+  let name = String(employer || '').trim();
+  while (EMPLOYER_SUFFIX_RE.test(name)) name = name.replace(EMPLOYER_SUFFIX_RE, '').trim();
+  if (!name || !classifySensitive(name)) return text;
+  const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+  return text.replace(re, (m, at) => {
+    // A name is written capitalised; "visa" in lower case is the document.
+    if (!/^[A-Z]/.test(m)) return m;
+    if (VISA_WORDING_BEFORE_RE.test(text.slice(0, at))) return m;
+    if (VISA_WORDING_AFTER_RE.test(text.slice(at + m.length))) return m;
+    return 'the company';
+  });
+}
+
 /**
- * The sensitive category this label falls into, or null.
+ * The sensitive category this label falls into, or null. `employer`, when
+ * given, is the company the form belongs to — see withoutEmployer.
  *
  * Errs toward flagging: a false positive costs the user one question they
  * answer once and we remember forever, while a false negative is a fabricated
  * legal declaration. That asymmetry decides every borderline case here.
  */
-export function classifySensitive(label) {
-  const sig = questionSignature(label);
+export function classifySensitive(label, employer) {
+  const sig = questionSignature(employer ? withoutEmployer(label, employer) : label);
   if (!sig) return null;
   for (const [category, re] of SENSITIVE_PATTERNS) {
     if (re.test(sig)) return category;
@@ -388,7 +461,8 @@ const NEVER_FILL_PATTERNS = [
   /\biban\b|\bswift\b|\bsort code\b|\bcvv\b|\bcredit card\b|\bcard number\b/,
   /\b(bank|routing|account) (number|no|details)\b/,
   /\bpassword\b|\bpasscode\b|\bone time (code|password)\b|\botp\b/,
-  /\bdate of birth\b|\bbirth date\b|\bbirthdate\b|\bdob\b/,
+  // Date of birth is no longer here: it is the 'birth' sensitive category,
+  // filled from the profile's own answer only.
 ];
 
 /**
@@ -399,10 +473,14 @@ const NEVER_FILL_PATTERNS = [
  */
 export function looksLikeOpaqueId(label) {
   // A validation prompt standing in for the question is just as unreadable.
-  if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i
+  // Subject-less only: Walmart's real question "Please select your gender."
+  // was read as a prompt by an open "please select …" tail (Oct 2026).
+  if (/^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i
       .test(String(label || ''))) return true;
   const t = String(label || '').replace(/\*+\s*$/, '').trim();
-  if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;
+  // Brackets too: Lever's cards[3da58b41-acf5-…][field0] went to the model as a
+  // question, and came back "Ataturk University" (Palantir, Nov 2026).
+  if (t.length < 12 || /\s/.test(t) || !/^[\w.:[\]-]+$/.test(t)) return false;
   // A hash or UUID: a long hex run with real digits in it — not a field name
   // like "address_line_2", which the synonym table can still make sense of.
   const hex = t.match(/[0-9a-f]{10,}/ig) || [];
@@ -467,6 +545,22 @@ const MONTHS = {
   may: 5, jun: 6, june: 6, jul: 7, july: 7, aug: 8, august: 8, sep: 9, sept: 9,
   september: 9, oct: 10, october: 10, nov: 11, november: 11, dec: 12, december: 12,
 };
+
+/** "04/2023" / "2023-04" → "2023-04-01" for the split-date writer; else ''. */
+export function isoMonth(v) {
+  const s = String(v || '').trim();
+  let m = s.match(/^(\d{1,2})\/(\d{4})$/);
+  if (m) return `${m[2]}-${m[1].padStart(2, '0')}-01`;
+  m = s.match(/^(\d{4})-(\d{1,2})/);
+  if (m) return `${m[1]}-${m[2].padStart(2, '0')}-01`;
+  return '';
+}
+
+/** "2023" → "2023-01-01": the split-date writer fills only the boxes a date has. */
+export function isoYear(v) {
+  const y = (String(v || '').match(/\b(19|20)\d{2}\b/) || [])[0];
+  return y ? `${y}-01-01` : '';
+}
 
 /** Parse the date shapes resumes and profiles actually contain. Null if unsure. */
 export function parseLooseDate(value) {
@@ -600,6 +694,13 @@ export const EEO_GROUPS = {
       shapes: ['Yes, I have a disability (or previously had a disability)',
                'Yes, I have a disability', 'Yes'] },
   ],
+  // No profile field: read off the LGBTQ+ answer "No" (plan.js), so the only
+  // group ever asked for is heterosexual / straight.
+  sexual_orientation: [
+    { test: /\b(hetero\w*|straight)\b/i, not: /\bnot\b/i,
+      shapes: ['Heterosexual/Straight', 'Heterosexual / Straight', 'Heterosexual or Straight',
+               'Straight/Heterosexual', 'Heterosexual', 'Straight'] },
+  ],
 };
 
 /**
@@ -672,7 +773,7 @@ export function isConditionalFollowUp(label) {
 // virtualised list, so for them typing is how the right option appears.
 export const READ_FIRST_KEYS = new Set([
   'gender', 'race_ethnicity', 'veteran_status', 'disability_status',
-  'gender_pronouns', 'lgbtq_identity',
+  'gender_pronouns', 'lgbtq_identity', 'citizenship_status', 'sexual_orientation',
 ]);
 
 // ── field synonyms: label -> answer-bank key ─────────────────
@@ -685,6 +786,11 @@ export const READ_FIRST_KEYS = new Set([
 //
 // `sensitive` entries are still listed: that is HOW a sensitive field gets
 // answered at all, from a stored value and nothing else.
+// The words a label asking for a name may hold besides the name's own words:
+// "Name of current/most recent employer", "Please enter your current employer".
+const NAME_FIELD_WORDS = ['name', 'current', 'currently', 'most', 'recent', 'present', 'latest', 'last',
+  'previous', 'enter', 'if', 'any', 'applicable', 'who'];
+
 export const FIELD_SYNONYMS = [
   // identity
   { key: 'first_name', labels: ['first name', 'given name', 'forename', 'legal first name'] },
@@ -718,7 +824,8 @@ export const FIELD_SYNONYMS = [
   // number — before this it matched nothing, went to the model, and Oracle's
   // picker was left empty, so the form rejected the number beside it.
   { key: 'phone_country_code', labels: ['country code', 'phone country code', 'country phone code', 'dial code', 'dialing code', 'calling code', 'country calling code', 'phone code'] },
-  { key: 'address_country', labels: ['country', 'country of residence'] },
+  // "Country of Application": the country of residence (the person's choice, Oct 2026).
+  { key: 'address_country', labels: ['country', 'country of residence', 'country of application'] },
   { key: 'postal_code', labels: ['zip', 'zip code', 'postal code', 'postcode', 'pin code'] },
 
   // links
@@ -727,10 +834,21 @@ export const FIELD_SYNONYMS = [
   { key: 'portfolio_or_website', labels: ['portfolio', 'website', 'personal website', 'portfolio url', 'personal site', 'web site'] },
 
   // experience
-  { key: 'current_job_title', labels: ['current title', 'current job title', 'current role', 'job title', 'most recent title', 'occupation'] },
-  { key: 'current_company', labels: ['current company', 'current employer', 'most recent company', 'most recent employer', 'company name', 'employer'] },
+  // Name fields: matched only when the label asks for the name itself — its
+  // other words must be in `only`. "How much notice must you provide your
+  // current employer before leaving?" holds "current employer", and the
+  // employer's name was written into a notice-period box; "Why are you leaving
+  // your current employer?" and "How long have you been in your current role?"
+  // were the same mistake waiting to happen.
+  { key: 'current_job_title', labels: ['current title', 'current job title', 'current role', 'job title', 'most recent title', 'occupation',
+    'professional title', 'current designation', 'designation', 'current position'],
+    only: NAME_FIELD_WORDS.concat(['job', 'title', 'role', 'position', 'designation', 'occupation', 'company', 'employer', 'professional', 'your']) },
+  { key: 'current_company', labels: ['current company', 'current employer', 'most recent company', 'most recent employer', 'company name', 'employer'],
+    only: NAME_FIELD_WORDS.concat(['company', 'employer', 'organization', 'organisation', 'business']) },
   { key: 'years_of_experience', labels: ['years of experience', 'total experience', 'years experience', 'how many years of experience', 'relevant experience years'] },
-  { key: 'top_skills', labels: ['skills', 'key skills', 'technical skills', 'core skills'] },
+  // "Type to Add Skills": Workday's skills prompt (NVIDIA). The bare "skills"
+  // is one word and may only absorb one extra; this label has two.
+  { key: 'top_skills', labels: ['skills', 'key skills', 'technical skills', 'core skills', 'add skills', 'type to add skills'] },
 
   // education
   { key: 'university', labels: ['university', 'college', 'school', 'institution', 'school name', 'university name', 'alma mater'] },
@@ -741,7 +859,10 @@ export const FIELD_SYNONYMS = [
 
   // logistics
   { key: 'notice_period', labels: ['notice period', 'how much notice', 'notice'] },
-  { key: 'available_start_date', labels: ['start date', 'available start date', 'when can you start', 'earliest start date', 'availability date'] },
+  { key: 'available_start_date', labels: ['start date', 'available start date', 'when can you start', 'earliest start date', 'availability date',
+    // ExxonMobil (Oct 2026): "When are you available to start working?",
+    // "…when is the earliest you will be able to start employment?"
+    'available to start', 'earliest start'] },
   { key: 'willing_to_relocate', labels: ['relocate', 'willing to relocate', 'open to relocation'] },
   { key: 'remote_work_preference', labels: ['remote preference', 'work preference', 'work arrangement', 'onsite or remote', 'hybrid preference'] },
   { key: 'how_did_you_hear_about_us', labels: ['how did you hear', 'how did you find', 'referral source', 'where did you hear about us', 'source'] },
@@ -760,10 +881,19 @@ export const FIELD_SYNONYMS = [
   // Sensitive on purpose. Nationality sits beside the right-to-work questions,
   // and a guess from a dial code or an address would be an immigration-adjacent
   // declaration the person never made.
+  // The US status question (citizen / permanent resident / refugee / …), not a
+  // country. Matched before 'nationality' because exact signatures win first.
+  { key: 'citizenship_status', sensitive: true, labels: ['citizenship status', 'citizen status', 'us citizenship status', 'citizenship immigration status'] },
   { key: 'nationality', sensitive: true, labels: ['nationality', 'citizenship', 'country of citizenship', 'nationality or citizenship', 'what is your nationality', 'indicate your nationality'] },
+  // Birth details: the profile's own answers, never the model's.
+  { key: 'date_of_birth', sensitive: true, labels: ['date of birth', 'birth date', 'birthdate', 'dob', 'birthday'] },
+  { key: 'country_of_birth', sensitive: true, labels: ['country of birth', 'country territory of birth', 'birth country', 'country where you were born'] },
+  { key: 'city_of_birth', sensitive: true, labels: ['city of birth', 'place of birth', 'birth city', 'town of birth', 'birthplace'] },
   { key: 'expected_salary', sensitive: true, labels: ['expected salary', 'salary expectation', 'desired salary', 'compensation expectation', 'expected ctc', 'desired compensation'] },
-  { key: 'gender', sensitive: true, labels: ['gender', 'gender identity', 'gender do you identify as', 'gender you identify with', 'gender identify'] },
-  { key: 'race_ethnicity', sensitive: true, labels: ['race', 'ethnicity', 'race ethnicity', 'racial identity', 'hispanic or latino'] },
+  { key: 'gender', sensitive: true, labels: ['gender', 'gender identity', 'gender do you identify as', 'gender you identify with', 'gender identify', 'sex'] },
+  // "identify your race": the bare 'race' is one word, and one-word synonyms
+  // absorb only one extra word — Greenhouse's "Please identify your race" has two.
+  { key: 'race_ethnicity', sensitive: true, labels: ['race', 'ethnicity', 'race ethnicity', 'racial identity', 'hispanic or latino', 'identify your race', 'identify your ethnicity'] },
   // "Have you ever served or are you currently serving in the United States
   // military?" — the same fact as veteran status, asked as a Yes/No.
   { key: 'veteran_status', sensitive: true, labels: ['veteran status', 'military status', 'protected veteran', 'military service', 'served in the military', 'serving in the military', 'served military', 'serving military', 'uniformed forces', 'armed forces', 'defence forces', 'defense forces'] },
@@ -792,6 +922,8 @@ function synonymMatches(syn, label, entry) {
   const ds = distinctive(syn), dl = distinctive(label);
   if (!ds.size || !dl.size) return false;
   if (!isSubset(ds, dl)) return false;
+  // A name field takes only a label asking for the name (see FIELD_SYNONYMS).
+  if (entry && entry.only && [...dl].some(w => !ds.has(w) && !entry.only.includes(w))) return false;
   if (ds.size === 1) {
     // A one-word synonym may only absorb ONE extra word, and only a word that
     // does not change what is being asked for: a harmless qualifier ("Current
@@ -838,11 +970,35 @@ export function hasHonorificOptions(options) {
   return labels.filter(l => HONORIFIC_RE.test(l)).length / labels.length >= 0.6;
 }
 
-export function matchFieldKey(label) {
+// A form's own "(optional)" / "(required)" marker: says nothing about what is
+// asked. Workday labels its Social Network URLs "LinkedIn (optional)", and the
+// extra word "optional" put that label past every LinkedIn synonym.
+const OPTIONALITY_RE = /\(\s*(optional|required)\s*\)|\s+[-–—]?\s*optional\s*$/ig;
+
+// British spellings, read as the American ones every synonym is written in.
+// "Are you legally authorised to work in the country…" (UK/EU/APAC forms)
+// matched no synonym, so the stored work-authorization answer was never read
+// and the person was told to add to their profile what was already there.
+// Word stems only, never a blanket -ise → -ize ("promise", "exercise").
+const BRITISH_SPELLINGS = [
+  [/\bauthoris(e|ed|es|ing|ation|ations)\b/gi, 'authoriz$1'],
+  [/\borganis(e|ed|es|ing|ation|ations)\b/gi, 'organiz$1'],
+  [/\brecognis(e|ed|es|ing)\b/gi, 'recogniz$1'],
+  [/\bspecialis(e|ed|es|ing|ation|ations)\b/gi, 'specializ$1'],
+  [/\blabour\b/gi, 'labor'],
+  [/\bprogramme(s)?\b/gi, 'program$1'],
+  [/\bcentre(s)?\b/gi, 'center$1'],
+  [/\blicence(s)?\b/gi, 'license$1'],
+];
+
+export function matchFieldKey(label, entries) {
+  label = String(label || '').replace(OPTIONALITY_RE, ' ').trim();
+  for (const [re, us] of BRITISH_SPELLINGS) label = label.replace(re, us);
   const sig = questionSignature(label);
   if (!sig) return null;
+  const pool = entries || FIELD_SYNONYMS;
 
-  for (const entry of FIELD_SYNONYMS) {
+  for (const entry of pool) {
     for (const syn of entry.labels) {
       if (questionSignature(syn) === sig) return entry;
     }
@@ -852,7 +1008,7 @@ export function matchFieldKey(label) {
   // list order is the tiebreak and the more specific keys are listed first
   // within each group.
   let best = null, bestWeight = -1;
-  for (const entry of FIELD_SYNONYMS) {
+  for (const entry of pool) {
     for (const syn of entry.labels) {
       if (!synonymMatches(syn, label, entry)) continue;
       const weight = distinctive(syn).size;
@@ -861,3 +1017,84 @@ export function matchFieldKey(label) {
   }
   return best;
 }
+
+const SELF_ID_RE = /\b(voluntary\s+)?self[\s-]*identification(\s+of)?\b|\bvoluntary\s+disclosures?(\s+of)?\b/gi;
+
+// The stored answers each sensitive category may be answered from.
+const CATEGORY_KEYS = {
+  sponsorship: ['requires_visa_sponsorship', 'visa_status'],
+  work_authorization: ['authorized_to_work_in_country'],
+  citizenship: ['citizenship_status', 'nationality'],
+  birth: ['date_of_birth', 'country_of_birth', 'city_of_birth'],
+  salary: ['expected_salary'],
+  demographic: ['gender', 'race_ethnicity', 'veteran_status', 'disability_status',
+                'gender_pronouns', 'lgbtq_identity'],
+};
+
+/**
+ * The stored answer a SENSITIVE question asks for, or null.
+ *
+ * Its own category's answers first. The open synonym search alone matched "Will
+ * you require company sponsorship now or in the future to maintain or extend
+ * your current work authorization status?" to current_company — it holds
+ * "current" and "company" — so the stored "No" was never read. Nor is any
+ * sensitive answer good enough: the same question holds "work authorization",
+ * and the authorized-to-work "Yes" filed as the sponsorship answer would be the
+ * opposite of what the person said. Failing that, the open search as before,
+ * but only ever a sensitive entry.
+ */
+export function matchSensitiveKey(label, category) {
+  // Workday's section names: "Self-Identification of Gender", "Voluntary
+  // Self-Identification of Disability". The wrapper words left "gender" two
+  // extra words to absorb, so the stored gender was never read and auto-apply
+  // paused on it (NVIDIA, Oct 2026).
+  label = String(label || '').replace(SELF_ID_RE, ' ').trim() || label;
+  const keys = CATEGORY_KEYS[category];
+  if (keys) {
+    const own = matchFieldKey(label, FIELD_SYNONYMS.filter(e => keys.includes(e.key)));
+    if (own) return own;
+  }
+  const any = matchFieldKey(label);
+  if (any && any.sensitive) return any;
+  // A sponsorship question in words no synonym carries: "Will you now or in
+  // the future require Notion to SPONSOR an immigration case in order to employ
+  // you?" — every synonym says "sponsorship", so it matched nothing and was
+  // sent to the profile that already holds the answer. Last, after the open
+  // search, so "authorized to work … without sponsorship" keeps its
+  // authorized-to-work answer.
+  if (category === 'sponsorship' && /\bsponsor/.test(questionSignature(label))) {
+    return FIELD_SYNONYMS.find(e => e.key === 'requires_visa_sponsorship') || null;
+  }
+  // A category with one profile answer names it, whatever the wording: "your
+  // current status regarding eligibility to work in India" and "your expected
+  // total annual compensation" matched no synonym, and the sidebar said to add
+  // to the profile answers it already held (DoorDash, Oct 2026). Never the
+  // EXPECTED salary for a current / last one.
+  if (category === 'work_authorization') {
+    return FIELD_SYNONYMS.find(e => e.key === 'authorized_to_work_in_country') || null;
+  }
+  if (category === 'salary' && !/\b(current|present|last|previous|existing)\b/.test(questionSignature(label))) {
+    return FIELD_SYNONYMS.find(e => e.key === 'expected_salary') || null;
+  }
+  // An EEO question in words no synonym carries — "Would you say you have a
+  // disability?" took four extra words, and went back to the person on every
+  // form (Oct 2026). By the one EEO subject it names: exactly one, or nothing.
+  // A spouse's service is no answer of theirs ("military spouse").
+  if (category === 'demographic') {
+    const sig = questionSignature(label);
+    if (/\bspouses?\b|\bpartners?\b/.test(sig)) return null;
+    const keys = EEO_SUBJECTS.filter(([, re]) => re.test(sig)).map(([key]) => key);
+    if (keys.length === 1) return FIELD_SYNONYMS.find(e => e.key === keys[0]) || null;
+  }
+  return null;
+}
+
+// The EEO subject a question names, for matchSensitiveKey's last resort.
+const EEO_SUBJECTS = [
+  ['disability_status', /\bdisab\w*/],
+  ['veteran_status', /\bveteran\w*|\bmilitary\b|\b(armed|uniformed|defen[cs]e) forces?\b|\bparamilitary\b/],
+  ['gender_pronouns', /\bpronoun\w*/],
+  ['lgbtq_identity', /\blgbtq?\w*|\bsexual orientation\b|\btransgender\b/],
+  ['race_ethnicity', /\brac(e|ial)\b|\bethnic\w*|\bhispanic\b|\blatin[oax]\b/],
+  ['gender', /\bgender\b|\bsex\b|\bhow do you identify\b/],
+];

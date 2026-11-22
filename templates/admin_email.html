@@ -68,6 +68,18 @@
   dialog::backdrop { background: rgba(15, 20, 30, .45); }
   dialog h3 { margin: 0 0 8px; }
   .dirty { color: var(--warn); font-size: 12px; font-weight: 600; }
+  .results { margin: 0 20px 40px; }
+  .table-wrap { overflow-x: auto; }
+  table.stats { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.stats th, table.stats td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+  table.stats th { font-size: 12px; color: var(--muted); font-weight: 600; }
+  table.stats th:first-child, table.stats td:first-child { text-align: left; }
+  table.stats tbody tr { cursor: pointer; }
+  table.stats tbody tr:hover, table.stats tbody tr.on { background: #f5f8ff; }
+  table.stats .sub { display: block; font-size: 11px; color: var(--muted); }
+  table.stats .na { color: var(--muted); }
+  .links { margin-top: 12px; font-size: 13px; }
+  .links li { margin: 4px 0; word-break: break-all; }
 </style>
 </head>
 <body>
@@ -138,7 +150,7 @@
   <div>
     <div class="preview-wrap">
       <div class="row" style="justify-content:space-between;margin-bottom:8px">
-        <h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:0">Preview <span style="text-transform:none;font-weight:400">(as Asha Rao)</span></h2>
+        <h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:0">Preview <span style="text-transform:none;font-weight:400">(as Shubham Sarkar)</span></h2>
         <div class="row seg-toggle">
           <button data-w="100%" class="active">Desktop</button>
           <button data-w="390px">Mobile</button>
@@ -150,6 +162,23 @@
     </div>
   </div>
 </main>
+
+<section class="card results">
+  <div class="row" style="justify-content:space-between;margin-bottom:12px">
+    <h2 style="margin:0">Results</h2>
+    <button id="statsBtn" type="button">Refresh</button>
+  </div>
+  <div class="table-wrap">
+    <table class="stats">
+      <thead><tr>
+        <th>Campaign</th><th>Sent</th><th>Opened</th><th>Clicked</th><th>Click-to-open</th><th>Unsubscribed</th>
+      </tr></thead>
+      <tbody id="statsBody"><tr><td colspan="6" class="na">Loading…</td></tr></tbody>
+    </table>
+  </div>
+  <div id="linksBox" class="links" hidden></div>
+  <div class="hint" style="margin-top:10px">Unique recipients. Opens run high because Apple Mail loads images for every email; read them as a trend. Clicks count as opens too. Campaigns sent before tracking was added show sends only. Click a row for its links.</div>
+</section>
 
 <dialog id="confirm">
   <h3>Send for real?</h3>
@@ -398,9 +427,54 @@ async function pollJob(id) {
   } else {
     setStatus("jobStatus", `Stopped: ${j.error}. Recipients already sent are logged; sending again resumes from there.`, "err");
   }
-  refreshAudience();
+  refreshAudience(); refreshStats();
 }
 $("jobStatus").style.whiteSpace = "pre-wrap";
+
+// ── results ───────────────────────────────────────────────────────
+const pct = (r) => r === null ? "–" : (r * 100).toFixed(1) + "%";
+function cell(n, rate, tracked) {
+  const td = document.createElement("td");
+  if (!tracked) { td.textContent = "–"; td.className = "na"; return td; }
+  td.textContent = n.toLocaleString();
+  const s = document.createElement("span"); s.className = "sub"; s.textContent = pct(rate); td.appendChild(s);
+  return td;
+}
+async function refreshStats() {
+  const body = $("statsBody");
+  let r;
+  try { r = await api("/stats"); }
+  catch (e) { body.innerHTML = ""; const tr = body.insertRow(); const td = tr.insertCell(); td.colSpan = 6; td.className = "na"; td.textContent = e.message; return; }
+  body.innerHTML = "";
+  if (!r.campaigns.length) { const td = body.insertRow().insertCell(); td.colSpan = 6; td.className = "na"; td.textContent = "No campaigns sent yet."; return; }
+  r.campaigns.forEach(c => {
+    const tr = body.insertRow();
+    const name = tr.insertCell(); name.textContent = c.campaign;
+    const when = document.createElement("span"); when.className = "sub";
+    when.textContent = c.last_sent ? "sent " + new Date(c.last_sent + "Z").toLocaleDateString() : ""; name.appendChild(when);
+    tr.insertCell().textContent = c.sent.toLocaleString();
+    tr.appendChild(cell(c.opens, c.open_rate, c.tracked));
+    tr.appendChild(cell(c.clicks, c.ctr, c.tracked));
+    const cto = tr.insertCell(); cto.textContent = c.tracked ? pct(c.click_to_open) : "–"; if (!c.tracked) cto.className = "na";
+    tr.appendChild(cell(c.unsubscribes, c.unsub_rate, c.tracked));
+    tr.addEventListener("click", () => showLinks(c.campaign, tr));
+  });
+}
+async function showLinks(campaign, tr) {
+  document.querySelectorAll("#statsBody tr").forEach(x => x.classList.toggle("on", x === tr));
+  const box = $("linksBox"); box.hidden = false; box.textContent = "Loading…";
+  try {
+    const r = await api("/stats/" + encodeURIComponent(campaign));
+    box.innerHTML = "";
+    const h = document.createElement("b"); h.textContent = `Links clicked in ${campaign}`; box.appendChild(h);
+    if (!r.links.length) { const p = document.createElement("div"); p.className = "hint"; p.textContent = "No clicks recorded."; box.appendChild(p); return; }
+    const ul = document.createElement("ul");
+    r.links.forEach(l => { const li = document.createElement("li"); li.textContent = `${l.clicks} · ${l.url}`; ul.appendChild(li); });
+    box.appendChild(ul);
+  } catch (e) { box.textContent = e.message; }
+}
+$("statsBtn").addEventListener("click", refreshStats);
+refreshStats();
 
 window.addEventListener("beforeunload", (e) => { if (state.dirty || state.jobTimer) { e.preventDefault(); e.returnValue = ""; } });
 

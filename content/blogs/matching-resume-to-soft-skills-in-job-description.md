@@ -55,6 +55,10 @@ Most resumes fail here in one of two ways: they either ignore soft skills entire
 
 The second version proves the soft skill through a concrete result rather than naming it directly. This mirrors the approach in [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+TailorCV's report gives soft skills their own section and marks each one as matched or missing.
+
 ---
 
 ## A Framework for Matching Soft Skills to a Job Description
@@ -142,7 +146,7 @@ By using specific examples, candidates can effectively demonstrate their soft sk
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 

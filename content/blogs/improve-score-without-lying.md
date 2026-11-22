@@ -58,6 +58,10 @@ Nothing was added. The claim is identical. It is now matchable.
 
 Do this for every item in your missing list that you genuinely do — usually most of it. See [which missing skills actually matter](/blog/which-missing-skills-actually-matter) for the triage.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Work down the rows marked Missing and name the ones you have really done.
+
 ### 2. Rewrite the summary for this posting
 
 Your summary is the highest-leverage text on the page and most people write it once and never change it. Rewriting two or three lines to name the target role and the posting's central requirements is entirely honest and moves the score more than any other single edit.

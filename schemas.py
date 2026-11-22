@@ -106,6 +106,10 @@ class QAAnswerItem(BaseModel):
     was 538 characters — so this is bounded generously, not tightly."""
     question: str = Field(min_length=1, max_length=2000)
     answer: str = Field(min_length=1, max_length=2000)
+    # The options the form offered when this answer was chosen, if it was a
+    # choice: the answer is kept for that KIND of list (UserApplyQA.variants).
+    # Bounded like AutofillField.options — a country list is ~250 rows.
+    options: list[str] = Field(default_factory=list, max_length=300)
 
 
 class RunAnswersRequest(BaseModel):
@@ -120,6 +124,14 @@ class ApplyAnswersRequest(BaseModel):
     Same storage, same per-item bounds.
     """
     answers: list[QAAnswerItem] = Field(min_length=1, max_length=25)
+
+
+class ForgetAnswerRequest(BaseModel):
+    """Forget a saved answer from the extension's panel: the stored question,
+    and the options of the kind of list it was used on — only that kind's
+    answer goes (see qa_store.forget_answer)."""
+    question: str = Field(min_length=1, max_length=2000)
+    options: list[str] = Field(default_factory=list, max_length=300)
 
 
 class AutofillField(BaseModel):
@@ -157,3 +169,6 @@ class AutofillPlanRequest(BaseModel):
     jobCompany: str = Field(default="", max_length=300)
     jdExcerpt: str = Field(default="", max_length=2000)
     fields: list[AutofillField] = Field(default_factory=list, max_length=200)
+    # Auto-apply's second pass on one page: the required fields still empty,
+    # which the model must answer (best reading of the resume) rather than skip.
+    force: bool = False

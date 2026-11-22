@@ -44,8 +44,16 @@ logger = logging.getLogger(__name__)
 #    Workday-shaped experience list.
 FACTS_VERSION = 2
 
-_MODEL = "gpt-4o-mini"
 _MAX_RESUME_CHARS = 12000
+
+
+def _model() -> str:
+    # Follows the app-wide AI_MODEL. Imported lazily like get_resume_response:
+    # functions.py is heavy, and the deterministic helpers here (split_location,
+    # infer_state_country) are imported by tests that never touch the LLM.
+    from functions import AI_MODEL
+
+    return AI_MODEL
 
 
 def resume_text_hash(text: str) -> str:
@@ -75,6 +83,10 @@ Return ONLY a JSON object of exactly this shape:
     {{"company": "", "role": "", "location": "",
       "start_date": "", "end_date": "", "is_current": false, "description": ""}}
   ],
+  "projects": [
+    {{"name": "", "role": "", "url": "",
+      "start_date": "", "end_date": "", "is_current": false, "description": ""}}
+  ],
   "skills": []
 }}
 
@@ -90,6 +102,13 @@ RULES:
   one per line, without the bullet symbols. Do not summarise or reword.
 - "is_current" is true only where the resume says the role is ongoing
   ("Present", "Current"), never because it looks like the latest one.
+- A bullet point that wraps onto several lines of the text is ONE bullet: join
+  its lines with a space. Start a new line only where a new bullet starts.
+- "projects": entries from a Projects / Personal Projects / Academic Projects
+  section only — never a job from the experience section. "name" is the
+  project's title, "url" a link the resume gives for it (else ""), "role" only
+  if stated. "description" is its bullet points copied VERBATIM, one per line,
+  without the bullet symbols. Most recent first; [] if there is no such section.
 - Do NOT output a GPA field. Do NOT split the location into parts. Those are
   handled outside this prompt.
 """
@@ -99,7 +118,7 @@ async def _llm_facts(resume_text: str) -> dict:
     from functions import get_resume_response
 
     prompt = _FACTS_PROMPT.format(resume=resume_text[:_MAX_RESUME_CHARS])
-    raw = await get_resume_response(prompt, model=_MODEL, temperature=0)
+    raw = await get_resume_response(prompt, model=_model(), temperature=0)
     data = json.loads(raw)
     if not isinstance(data, dict):
         raise ValueError("resume facts parse returned a non-object")
@@ -386,10 +405,133 @@ def us_state_code(state: str) -> str:
     return _US_STATES.get(s.lower(), "")
 
 
+# ── skills section, read exactly ──────────────────────────────────────────
+
+_SKILLS_HEADING_RE = re.compile(
+    r"^(technical\s+skills|skills(\s*(&|and)\s*\w+)?|key\s+skills|core\s+(skills|competencies)|"
+    r"technical\s+proficienc(y|ies)|skill\s*set)\s*:?$", re.IGNORECASE)
+_GROUP_LINE_RE = re.compile(r"^([A-Za-z][A-Za-z0-9 &/+().\-]{1,40}?)\s*[:–—]\s*(.+)$")
+
+
+def extract_skill_groups(resume_text: str) -> list[dict]:
+    """The resume's own Skills section as [{"category", "skills"}], or [].
+
+    Read from the text, not asked of a model: a Skills section is almost always
+    "Languages: Python, SQL" lines under one heading, so it can be copied
+    exactly — every skill, the resume's own spelling and grouping, nothing
+    added from project bullets. Stops at the next line that isn't a skills
+    line (the following section's heading). A section of bare comma lists with
+    no categories comes back as one group named "".
+    """
+    lines = [ln.strip() for ln in str(resume_text or "").splitlines()]
+    try:
+        start = next(i for i, ln in enumerate(lines) if _SKILLS_HEADING_RE.match(ln))
+    except StopIteration:
+        return []
+    groups: list[dict] = []
+    for ln in lines[start + 1:start + 40]:
+        if not ln:
+            continue
+        ln = _BULLET_RE.sub("", ln).strip()
+        m = _GROUP_LINE_RE.match(ln)
+        if m and "," in m.group(2) or (m and len(m.group(2).split()) <= 6):
+            category, rest = m.group(1).strip(), m.group(2)
+        elif "," in ln and groups:
+            category, rest = None, ln          # a group wrapped onto a second line
+        elif "," in ln and not groups:
+            category, rest = "", ln            # uncategorised list
+        else:
+            break                              # the next section's heading
+        items = [re.sub(r"\s+", " ", s).strip(" .") for s in re.split(r"[,;|•]", rest)]
+        items = [s for s in items if s and len(s) <= 60]
+        if category is None:
+            groups[-1]["skills"].extend(items)
+        elif items:
+            groups.append({"category": category, "skills": items})
+    return groups[:15]
+
+
+def flatten_skill_groups(groups: list[dict]) -> list[str]:
+    seen, out = set(), []
+    for g in groups or []:
+        for s in g.get("skills") or []:
+            if s.lower() not in seen:
+                seen.add(s.lower())
+                out.append(s)
+    return out
+
+
+def _skill_items(text) -> list[str]:
+    return [x.strip() for x in str(text or "").split(",") if x.strip()]
+
+
+def is_truncated_skills(saved: str, full: str) -> bool:
+    """A saved skills list that is only autofill's old top-8 cut of `full`.
+
+    The profile page once showed at most 8 skills, and saving the card stored
+    just those. Such a list — 8 or fewer, every one also in `full`, and `full`
+    has more — is that cut, not the user's choice. A list holding any skill of
+    the user's own, or a longer one, is theirs and is left alone.
+    """
+    mine = [s.lower() for s in _skill_items(saved)]
+    theirs = [s.lower() for s in _skill_items(full)]
+    return 0 < len(mine) <= 8 and len(theirs) > len(mine) and set(mine) <= set(theirs)
+
+
+def upgraded_skills(saved: str, resume_text: str) -> str:
+    """The resume's whole Skills section when `saved` is only the old cut of
+    it; otherwise `saved` unchanged. Only ever adds the user's own resume
+    skills — nothing saved is dropped."""
+    full = ", ".join(flatten_skill_groups(extract_skill_groups(resume_text)))
+    return full if full and is_truncated_skills(saved, full) else saved
+
+
 # ── assembly ──────────────────────────────────────────────────────────────
 
 def _clean_str(value) -> str:
     return str(value or "").strip()
+
+
+_BULLET_RE = re.compile(r"^[•\-*–·▪●◦]\s*")
+_HANGING_END_RE = re.compile(
+    r"([,;:(&/\-–]|\b(?:and|or|of|the|to|for|with|in|on|via|by|a|an|across|using|from|into|at))$",
+    re.IGNORECASE)
+
+
+def _continues(prev: str, cur: str) -> bool:
+    """Whether `cur` is the wrapped tail of `prev` rather than a bullet of its own.
+
+    PDF text keeps the page's line breaks, so one bullet often arrives as two
+    or three lines ("...on Neon" / "PostgreSQL, which ..."). A line that ends a
+    sentence starts the next bullet; a line that stops mid-phrase (a comma, "and",
+    "via"), is followed by lowercase, or ran the full width of the page, carries on.
+    """
+    if re.search(r"[.!?]$", prev):
+        return False
+    if cur[:1].islower():
+        return True
+    if _HANGING_END_RE.search(prev):
+        return True
+    return len(prev) >= 70
+
+
+def join_wrapped_lines(text: str) -> str:
+    """Bullet text with each bullet on one line (see _continues). A line that
+    starts with its own bullet symbol is never joined to the one above."""
+    out: list[str] = []
+    for raw in str(text or "").splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        m = _BULLET_RE.match(line)
+        body = line[m.end():].strip() if m else line
+        if not body:
+            continue
+        if out and not m and _continues(out[-1], body):
+            out[-1] = out[-1] + " " + body
+        else:
+            out.append(body)
+    return "\n".join(out)
 
 
 def _normalize(parsed: dict, resume_text: str) -> dict:
@@ -428,6 +570,22 @@ def _normalize(parsed: dict, resume_text: str) -> dict:
         if any(v for k, v in entry.items() if k != "is_current"):
             work.append(entry)
 
+    projects = []
+    for p in (parsed.get("projects") or [])[:12]:
+        if not isinstance(p, dict):
+            continue
+        entry = {
+            "name": _clean_str(p.get("name"))[:160],
+            "role": _clean_str(p.get("role"))[:160],
+            "url": _clean_str(p.get("url"))[:300],
+            "start_date": _clean_str(p.get("start_date")),
+            "end_date": _clean_str(p.get("end_date")),
+            "is_current": bool(p.get("is_current")),
+            "description": join_wrapped_lines(_clean_str(p.get("description")))[:5000],
+        }
+        if entry["name"] or entry["description"]:
+            projects.append(entry)
+
     skills = [_clean_str(s) for s in (parsed.get("skills") or []) if _clean_str(s)][:40]
     location = _clean_str(pi.get("location"))
 
@@ -445,6 +603,10 @@ def _normalize(parsed: dict, resume_text: str) -> dict:
         "address": split_location(location),
         "education": education,
         "work_history": work,
+        # Added after FACTS_VERSION 2 without a bump (a bump would discard every
+        # cached parse): a cached row WITHOUT this key predates it, and the
+        # profile page re-parses once to fill it (routers/profile_page.py).
+        "projects": projects,
         "gpa": extract_gpa(education, resume_text),
         "skills": skills,
     }
@@ -506,7 +668,7 @@ def store_facts(db, user, facts: dict) -> None:
     row.facts_json = json.dumps(facts, ensure_ascii=False)
     row.resume_text_hash = resume_text_hash(text)
     row.source_resume_path = getattr(user, "base_resume_path", "") or ""
-    row.model = _MODEL
+    row.model = _model()
     db.commit()
 
 

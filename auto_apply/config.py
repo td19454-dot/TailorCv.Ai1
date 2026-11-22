@@ -95,6 +95,10 @@ def pro_monthly_cap() -> int:
 
 
 def model_name() -> str:
+    # gpt-4.1 and gpt-4o-mini both leave OpenAI's API on 2027-01-14, but
+    # stagehand 4.0.2 validates model names against a hardcoded allowlist that
+    # stops at gpt-5.6-* — "openai/gpt-6-luna" is rejected at Stagehand.create.
+    # Move this once stagehand is upgraded to a release that lists gpt-6.
     return _env("AUTO_APPLY_MODEL", "openai/gpt-4.1")
 
 

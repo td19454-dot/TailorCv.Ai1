@@ -18,16 +18,28 @@
 //   * Fields that appear in response to an answer get one extra round, capped.
 
 import { describeFields, findForm, isApplicationPage, readComboboxOptions, reprobe, hasUploadedFile,
-         profileTileBlocks }
+         profileTileBlocks, detectAts, picklistButton }
   from './discover.js';
-import { fillProfileTiles } from './tiles.js';
-import { experienceSection, fillExperienceSection, inSection } from './repeaters.js';
-import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
+import { fillProfileTiles, tileFlagged } from './tiles.js';
+import { expandSections, inRepeatingRow, markFollowUps, educationFromRows, noteBlocks,
+         attachmentBoxes, boxHasFile, openUploadInput, waitForUpload } from './successfactors.js';
+import { experienceSection, fillExperienceSection, educationSection, fillEducationSection, inSection,
+         sfExperienceSection, sfEducationSection }
+  from './repeaters.js';
+import { decide, coerce, fieldsForServer, summarize, jobCountryFromUrl, visaEmployer, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
-import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo } from './write.js';
-import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone }
-  from './match.js';
-import { TIMING, sleep } from './timing.js';
+import { countryOf } from './countries.js';
+import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64, settlesTo, setText, heldNow, multiselectWidget } from './write.js';
+import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone,
+  STORABLE_SENSITIVE } from './match.js';
+
+/** May this question's answer go to the answer store? (match_guard.is_never_store) */
+function storable(label, sensitive, employer) {
+  const category = sensitive || classifySensitive(label, employer);
+  return !category || STORABLE_SENSITIVE.has(category);
+}
+import { TIMING, sleep, startClock } from './timing.js';
+import { clearTimelines, printTimelines } from './timeline.js';
 
 const MAX_REPAIR_SWEEPS = 1;
 const MAX_REVEAL_ROUNDS = 2;
@@ -37,6 +49,13 @@ const STATE_TTL_MS = 30 * 60 * 1000;
 // reading one costs a click plus a render wait, so the count is bounded.
 const MAX_DROPDOWNS_TO_OPEN = 25;
 
+// The current run's timings (see startClock). Replaced at the start of each run;
+// the initial one only absorbs measurements from writes made outside a run.
+let clock = startClock();
+
+
+// This run lost the extension: it was reloaded, and this tab kept the old script.
+let extensionReloaded = false;
 
 /** Messages to the background worker. */
 function send(msg) {
@@ -44,7 +63,9 @@ function send(msg) {
     try {
       globalThis.chrome.runtime.sendMessage(msg, res => resolve(res || {}));
     } catch (e) {
-      resolve({ error: String((e && e.message) || e) });
+      const error = String((e && e.message) || e);
+      if (/context invalidated/i.test(error)) extensionReloaded = true;
+      resolve({ error });
     }
   });
 }
@@ -145,12 +166,23 @@ export function watchUserEdits(form, onEdit) {
   stopWatchingUserEdits();
   if (!form || !form.root) return;
   const rows = new Map();
+  // What each field held when watching began. An edit is a field now holding
+  // a value it did not hold then — not merely a change or blur event. Leaving
+  // a field fires blur with nothing changed, and a widget may empty itself:
+  // Ashby's location box wipes an unpicked search on blur. Both were recorded
+  // as the person's edit, so every later run skipped the field ("you edited
+  // this") and Location was never filled again. An emptied field holds
+  // nothing of theirs that a refill could overwrite, so it is not an edit.
+  const before = new Map();
   for (const row of describeFields(form)) {
     for (const el of row.members || []) rows.set(el, row);
+    if (row.key) before.set(row.key, currentValue(row));
   }
   const handler = (event) => {
     const row = rows.get(event.target);
     if (!row || !row.key) return;
+    const value = currentValue(row);
+    if (!value || value === before.get(row.key)) return;
     if (!state.userEdited.includes(row.key)) state.userEdited.push(row.key);
     if (typeof onEdit === 'function') {
       try { onEdit(row, event); } catch (e) { /* the UI must not break the page */ }
@@ -160,6 +192,12 @@ export function watchUserEdits(form, onEdit) {
   for (const type of ['change', 'blur']) {
     form.root.addEventListener(type, handler, { capture: true, passive: true });
   }
+}
+
+/** The value a field shows right now, '' when it holds none. */
+function currentValue(row) {
+  const now = reprobe(row);
+  return now && now.filled ? String(now.value || '') : '';
 }
 
 export function stopWatchingUserEdits() {
@@ -184,7 +222,7 @@ export function learnableAnswers(decisions) {
     const after = reprobe(d.row);
     const value = (after && after.value) || '';
     if (!value || !after.filled) continue;
-    if (d.sensitive || classifySensitive(d.label)) continue;
+    if (!storable(d.label, d.sensitive, d.employer)) continue;
     if (isNeverFill(d.label) || looksSecret(value)) continue;
     if (d.row.kind === 'file') continue;
     const type = (d.row.hints && d.row.hints.type) || '';
@@ -192,9 +230,179 @@ export function learnableAnswers(decisions) {
     const autocomplete = (d.row.hints && d.row.hints.autocomplete) || '';
     if (/^cc-|one-time-code/.test(autocomplete)) continue;
     if (!questionSignature(d.label)) continue;
-    out.push({ key: d.key, question: d.label, answer: value });
+    out.push({ key: d.key, question: d.label, answer: value, options: optionLabels(d) });
   }
   return out;
+}
+
+/**
+ * What stops this page from being sent on, read from the page as it is NOW
+ * (the person may have fixed things by hand since the run).
+ *
+ * Only REQUIRED fields that are empty, rejected, or a required upload with no
+ * file. An optional field left blank, or an AI-written answer awaiting review,
+ * is not a blocker: auto-apply moves on past those (the person's choice).
+ */
+export function pageBlockers(decisions) {
+  const out = [];
+  const seen = new Set();
+  for (const d of decisions || []) {
+    const row = d && d.row;
+    // An Education / Experience tile still flagged: Oracle's Next refuses the
+    // page over it. Read live, so fixing it by hand during a pause clears it
+    // (saving redraws the tile, and the old element leaves the page).
+    if (row && row.kind === 'tile') {
+      if (d.action === ASK && row.el.isConnected && tileFlagged(row.el) && !seen.has(d.key)) {
+        seen.add(d.key);
+        out.push({ key: d.key, label: d.label, reason: d.reason || 'fix this entry', decision: d });
+      }
+      continue;
+    }
+    if (!row || !row.required || seen.has(d.key)) continue;
+    let reason = '';
+    if (row.kind === 'file') {
+      if (!hasUploadedFile(row.el)) reason = 'needs a file';
+    } else {
+      const now = reprobe(row);
+      if (!now) continue;                       // gone from the page
+      if (now.invalid) reason = 'the form rejected this';
+      else if (!now.filled) reason = 'needs an answer';
+    }
+    if (reason) {
+      seen.add(d.key);
+      out.push({ key: d.key, label: d.label || '(unlabelled field)', reason, decision: d });
+    }
+  }
+  return out;
+}
+
+// The person's choice (Oct 2026). routers/extension_autofill.py FORCE_MAX_FIELDS holds the same.
+const MAX_FORCED = 20;
+
+/**
+ * Auto-apply's second pass on a page: the required fields still empty, sent
+ * back with `force` so the model answers them (from the resume) instead of
+ * skipping — a skipped required question stopped the whole run. Never a
+ * sensitive question, a never-fill one, an upload, or a field the profile names
+ * but holds nothing for (an invented middle name is worse than a pause).
+ * Answers are written and marked to be checked. Returns { forced } or { error }.
+ */
+export async function forceAnswers(ctx, decisions, onProgress) {
+  const progress = typeof onProgress === 'function' ? onProgress : () => {};
+  // Still EMPTY, and not one kept from the model (noServer). A filled field the
+  // form flags is no question for it: SuccessFactors flags every picklist opened
+  // while empty and clears that later, and those filled ones took the places
+  // ahead of the questions really left (ExxonMobil, Oct 2026).
+  const isEmpty = (d) => { const now = reprobe(d.row); return !!now && !now.filled; };
+  // Nor a profile answer a search-box widget has no row for: the model filled
+  // Employer Name with the company being applied to (HDFC, Nov 2026).
+  const knownAnswer = d => !!(d.value && d.source === 'profile' && multiselectWidget(d.row.el));
+  const targets = pageBlockers(decisions).map(b => b.decision).filter(d =>
+    d.row && d.row.kind !== 'file' && d.row.kind !== 'tile' && !d.slot && !d.knownEmpty && !d.sensitive && !d.noServer
+    && !classifySensitive(d.label, d.employer) && !isNeverFill(d.label) && isEmpty(d) && !knownAnswer(d)).slice(0, MAX_FORCED);
+  if (!targets.length) return { forced: 0 };
+
+  for (const d of targets) {
+    if (d.kind === 'combobox' && !(d.options && d.options.length)) {
+      const labels = await readComboboxOptions(d.row);
+      if (labels.length) {
+        d.row.options = labels.map(l => ({ value: l, label: l }));
+        d.options = d.row.options;
+      }
+    }
+  }
+  const fields = targets.map(d => ({
+    i: decisions.indexOf(d),
+    label: d.block ? `${d.label} (${d.block})` : d.label,
+    kind: d.kind,
+    required: true,
+    sensitive: false,
+    recallOnly: false,
+    compose: false,
+    documentSlot: null,
+    options: (d.options || []).map(o => (typeof o === 'string' ? o : o.label)).filter(Boolean).slice(0, 300),
+  }));
+  const res = await send({
+    type: 'AF_PLAN',
+    payload: {
+      url: globalThis.location.href,
+      host: globalThis.location.hostname,
+      ats: (findForm() || {}).ats || 'generic',
+      jobTitle: (ctx && ctx.jobTitle) || '',
+      jobCompany: (ctx && ctx.jobCompany) || '',
+      jdExcerpt: String((ctx && ctx.jdExcerpt) || '').slice(0, 2000),
+      force: true,
+      fields,
+    },
+  });
+  if (res.error) return { error: res.error };
+  const answers = (res.data && res.data.answers) || {};
+  const answered = [];
+  for (const d of targets) {
+    const a = answers[String(decisions.indexOf(d))];
+    if (!a || !String(a.value || '').trim()) continue;
+    // A typed field takes its own shape, as every other answer does: "2022" in
+    // a MM/dd/yyyy date picker was "Invalid date" (Deloitte, Oct 2026). A
+    // choice goes as given: the writer matches the model's text to the options
+    // (a lone checkbox's own label ticks it).
+    const typed = d.kind === 'text' || d.kind === 'textarea';
+    const value = typed ? coerce(String(a.value), d.row) : String(a.value);
+    if (value === null) continue;
+    d.value = value;
+    d.action = FILL;
+    d.source = 'ai_forced';
+    d.confidence = Number(a.confidence) || 0.6;
+    d.candidates = [];
+    d.reason = ctx && ctx.resumePass
+      ? 'best answer from your resume — check it'
+      : 'best answer from your resume, so auto-apply could continue — check it';
+    answered.push(d);
+  }
+  if (answered.length) {
+    // The edit watcher would take our own writes for the person's (they fire
+    // change events) and "Continue" would then save these guesses as their
+    // answers. Off while writing; back on with these as the starting values.
+    stopWatchingUserEdits();
+    try {
+      await writeAll(answered, ctx, progress, true);
+    } finally {
+      watchUserEdits(findForm(), null);
+    }
+  }
+  return { forced: answered.length };
+}
+
+/**
+ * The model's choice for one list in an Education / Experience block the rules
+ * could not answer (Visa's ISCED-worded Degree): one option, verbatim, chosen
+ * for that block's entry. The forced path — never charged, never a sensitive
+ * question (the server re-checks). Null when it gives none.
+ */
+function askBlockField(ctx) {
+  return async (row, entryText, options) => {
+    const label = String(row.label || '').replace(/\s*\*+\s*$/, '');
+    const res = await send({
+      type: 'AF_PLAN',
+      payload: {
+        url: globalThis.location.href,
+        host: globalThis.location.hostname,
+        ats: (findForm() || {}).ats || 'generic',
+        jobTitle: (ctx && ctx.jobTitle) || '',
+        jobCompany: (ctx && ctx.jobCompany) || '',
+        jdExcerpt: '',
+        force: true,
+        fields: [{
+          i: 0, label: entryText ? `${label} — for: ${entryText}` : label, kind: row.kind,
+          required: true, sensitive: false, recallOnly: false, compose: false, documentSlot: null,
+          options: options.slice(0, 300),
+        }],
+      },
+    });
+    const a = !res.error && res.data && res.data.answers && res.data.answers['0'];
+    const value = a && String(a.value || '').trim();
+    // No options: a country or state on a paged list, named by the model.
+    return value && (!options.length || options.includes(value)) ? value : null;
+  };
 }
 
 // ── the run ──────────────────────────────────────────────────
@@ -213,6 +421,21 @@ export async function runAutofill(ctx, onProgress) {
     }
   };
 
+  clock = startClock();
+  clearTimelines();
+  extensionReloaded = false;
+  ctx = Object.assign({}, ctx, {
+    jobCountry: await jobCountry(globalThis.location.href),
+    jobCompany: visaEmployer(globalThis.location.href, ctx && ctx.jobCompany),
+  });
+
+  // SuccessFactors keeps most of its form in closed sections: open them first,
+  // or their fields are hidden and never read.
+  if (detectAts(globalThis.location.href) === 'successfactors' && expandSections()) {
+    progress('scanning', { detail: 'opening the form’s sections' });
+    clock.quiet(await waitForQuiet(globalThis.document.body));
+  }
+
   // A page of only Education / Experience tiles (Oracle) has no fillable box
   // until an entry is opened; it is still an application page with work to do.
   let form = findForm();
@@ -229,8 +452,15 @@ export async function runAutofill(ctx, onProgress) {
   }
 
   attachedThisRun.clear();
+  const isSf = form.ats === 'successfactors' || detectAts(globalThis.location.href) === 'successfactors';
+  // Before the form is read: there is no file input until a box is opened, and
+  // a form that reads the resume does so as soon as it lands.
+  const sfDocuments = isSf ? await clock.time('documents', () => attachSfDocuments(ctx, progress)) : [];
+  if (sfDocuments.length) clock.quiet(await waitForQuiet(globalThis.document.body));
   progress('scanning');
-  let rows = describeFields(form);
+  let rows = await clock.time('scan', () => describeFields(form));
+  // A menu left open by an upload that failed: its input is not a field.
+  if (isSf) rows = rows.filter(r => !(r.el && r.el.classList && r.el.classList.contains('fileUpload')));
   if (!rows.length && !hasTiles) return { error: 'no_fields', decisions: [], counts: summarize([]) };
 
   // Documents first, then the form as it stands AFTER them. Oracle's "Import
@@ -241,6 +471,7 @@ export async function runAutofill(ctx, onProgress) {
   // it (plan.js skips a filled, valid field) and only the gaps are ours.
   let decisions = [];
   const fileRows = rows.filter(r => r.kind === 'file');
+  const docsStart = clock.now();
   if (fileRows.length) {
     const filledBefore = new Set(rows.filter(r => r.filled).map(r => r.key));
     // Decided locally: which file goes where never needs the server, and waiting
@@ -267,7 +498,7 @@ export async function runAutofill(ctx, onProgress) {
       // filled — the address block reloads for the country it found.
       if (decisions.some(d => d.formRead)) {
         progress('scanning', { detail: 'letting the form read your resume' });
-        await waitForQuiet(form.root);
+        clock.quiet(await waitForQuiet(form.root));
       }
       rows = describeFields(findForm() || form);
       // Only what the upload filled: a value already there before it (the
@@ -276,21 +507,58 @@ export async function runAutofill(ctx, onProgress) {
         if (r.kind !== 'file' && r.filled && !r.invalid && !filledBefore.has(r.key)) r.filledByForm = true;
       }
     }
+    clock.add('documents', clock.now() - docsStart);
   }
+  decisions = sfDocuments.concat(decisions);
   // Workday's Work Experience blocks belong to fillExperienceSection, which
   // fills block N from job N. Planned as ordinary questions, every block's Job
   // Title got the current job. Only taken over when there are jobs to put in.
   const jobs = (ctx && ctx.facts && ctx.facts.workExperience) || [];
-  const expSection = jobs.length ? experienceSection() : null;
-  const fieldRows = rows.filter(r => r.kind !== 'file' && !inSection(expSection, r));
+  // SuccessFactors' rows are their own shape: its "Education" is also a labelled
+  // group, which the Workday filler took for its own and then found nothing in.
+  const expSection = jobs.length ? (isSf ? sfExperienceSection() : experienceSection()) : null;
+  // Education N blocks likewise, from the profile's school list.
+  const schools = (ctx && ctx.facts && ctx.facts.educationEntries) || [];
+  const eduSection = schools.length ? (isSf ? sfEducationSection() : educationSection()) : null;
+  const inRepeater = r => inSection(expSection, r) || inSection(eduSection, r) || inRepeatingRow(r);
+  if (isSf) {
+    markFollowUps(rows.filter(r => !inRepeatingRow(r)));
+    noteBlocks(rows, schools, jobs);
+    ctx = Object.assign({}, ctx, { sfEducation: educationFromRows(rows) });
+  }
+  const fieldRows = rows.filter(r => r.kind !== 'file' && !inRepeater(r));
   decisions = decisions.concat(await fillInTwoWaves(await planFor(fieldRows, ctx, progress), ctx, progress));
+  // SuccessFactors' Previous Employment / Formal Education rows: as it filled
+  // them from the candidate profile. An empty required one is the person's.
+  const sfRows = rows.filter(r => r.kind !== 'file' && inRepeatingRow(r)
+                                  && !inSection(expSection, r) && !inSection(eduSection, r));
+  if (sfRows.length) {
+    decisions = decisions.concat(decide(sfRows, ctx, null, state).map(d => {
+      d.noServer = true;
+      if (d.row.filled) { d.action = SKIP; d.value = d.row.value; d.reason = 'as SuccessFactors filled it from your profile'; }
+      else {
+        d.action = d.row.required ? ASK : SKIP;
+        d.value = '';
+        d.reason = 'a SuccessFactors row — fill it in on the page';
+      }
+      return d;
+    }));
+  }
   if (expSection) {
     // Workday reads the resume uploaded on this step and fills Work Experience
     // itself — title, company, location, usually not dates. That lands a few
     // seconds later; reading the blocks before it settles meant planning
     // against a block 1 that then filled in underneath us.
-    await waitForQuiet(form.root);
-    decisions = decisions.concat(await fillExperienceSection(ctx, progress));
+    await clock.time('experience', async () => {
+      clock.quiet(await waitForQuiet(form.root));
+      decisions = decisions.concat(await fillExperienceSection(ctx, progress, undefined, askBlockField(ctx), isSf));
+    });
+  }
+  if (eduSection) {
+    await clock.time('education', async () => {
+      clock.quiet(await waitForQuiet(form.root));
+      decisions = decisions.concat(await fillEducationSection(ctx, progress, undefined, askBlockField(ctx), isSf));
+    });
   }
   for (const d of decisions) {
     if (d.row && d.row.filledByForm && d.action === SKIP) {
@@ -299,9 +567,108 @@ export async function runAutofill(ctx, onProgress) {
     }
   }
 
-  // One repair sweep, no LLM: retry only what the page disagreed about.
+  await redecideFailedSaved(decisions, ctx, progress);
+
+  const repairStart = clock.now();
+  await repairSweeps(decisions, ctx, progress);
+  clock.add('repair', clock.now() - repairStart);
+
+  // Fields revealed by an answer we just gave (a "Yes" that opens a follow-up).
+  const revealStart = clock.now();
+  let revealed = 0;
+  while (revealed < MAX_REVEAL_ROUNDS) {
+    const before = new Set(rows.map(r => r.key));
+    clock.quiet(await waitForQuiet(form.root));
+    const fresh = describeFields(findForm() || form);
+    if (ctx && ctx.sfEducation !== undefined) {
+      markFollowUps(fresh.filter(r => !inRepeatingRow(r)));
+      noteBlocks(fresh, (ctx.facts && ctx.facts.educationEntries) || [], (ctx.facts && ctx.facts.workExperience) || []);
+    }
+    // Never the profile import: it was handled (or deliberately skipped) above.
+    // Nor the blocks "Add Another" created: fillExperienceSection filled them.
+    const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
+                                    && !inRepeater(r));
+    if (!added.length) break;
+    revealed++;
+    progress('scanning', { detail: `${added.length} new field(s) appeared` });
+    const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
+    // As for the fields seen first: these were written once and never checked
+    // again, so a dropdown that refused stayed ✓ (Nike, Nov 2026).
+    await redecideFailedSaved(extra, ctx, progress);
+    await repairSweeps(extra, ctx, progress);
+    decisions = decisions.concat(extra);
+    rows = fresh;
+  }
+  clock.add('reveal', clock.now() - revealStart);
+
+  // Education / Experience entries the form flags (Oracle's tiles): opened,
+  // filled from the matching profile entry, saved, and checked.
+  if (hasTiles) {
+    const tiled = await clock.time('tiles', () => fillProfileTiles(ctx, progress));
+    decisions = decisions.concat(tiled);
+  }
+
+  await clock.time('refill', () => refillCleared(decisions, progress, form.root));
+  handBackFailed(decisions);
+  await clock.time('reread_options', () => rereadEmptyLists(decisions));
+
+  // Required questions nothing answered: "What best describes your experience
+  // designing analytical data models?" — the profile cannot say, and the first
+  // AI call is never shown the resume. Answered from the resume by the pass
+  // auto-apply makes, for review (DoorDash, Oct 2026). Not on auto-apply's own
+  // fill: its loop makes this pass itself, once per step.
+  if (ctx && ctx.resumePass && pageBlockers(decisions).length) {
+    progress('resume', {});
+    const forced = await clock.time('resume_pass', () => forceAnswers(ctx, decisions, progress));
+    if (forced && forced.error) console.warn('[TailorCV] resume pass failed —', forced.error);
+  }
+
+  await saveState();
+  watchUserEdits(form, null);
+
+  const timing = clock.summary();
+  console.info(`[TailorCV] autofill took ${timing.totalMs} ms`);
+  console.table(timing.phases);
+  if (timing.slowFields.length) console.table(timing.slowFields);
+  if (timing.quietWaits.length) console.table(timing.quietWaits);
+  printTimelines();
+
+  return {
+    timing,
+    decisions,
+    counts: summarize(decisions),
+    serverError: decisions.serverError || '',
+    extensionReloaded,
+    page: state.page,
+    opaqueHosts: form.opaqueHosts || 0,
+    ats: form.ats,
+  };
+}
+
+// A slow posting must not hold the form back: past this, the URL decides.
+const JOB_COUNTRY_WAIT_MS = 3000;
+
+/**
+ * The country this Workday job is in, or '': its posting's own data, which also
+ * knows /job/Bangalore/… is in India. Only if that can't be read, its URL. A
+ * posting read that doesn't settle it (several locations) stays unsettled.
+ */
+async function jobCountry(url) {
+  if (detectAts(url) !== 'workday') return '';
+  let timer = null;
+  const res = await Promise.race([
+    send({ type: 'JOB_COUNTRY', url }),
+    new Promise(resolve => { timer = setTimeout(() => resolve({}), JOB_COUNTRY_WAIT_MS); }),
+  ]);
+  clearTimeout(timer);
+  const posted = res && res.data;
+  return posted && typeof posted.country === 'string' ? countryOf(posted.country) : jobCountryFromUrl(url);
+}
+
+/** One repair sweep, no LLM: retry only what the page disagreed about. */
+async function repairSweeps(decisions, ctx, progress) {
   for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
-    let broken = decisions.filter(d => d.outcome && d.outcome !== 'ok' && d.value);
+    let broken = decisions.filter(d => d.outcome && d.outcome !== 'ok' && d.value && !d.redecided);
     if (!broken.length) break;
     // Re-read before retrying. A pick can land after its check gave up — on
     // Oracle, Country took, the address block redrew, and the "repair" then typed
@@ -345,42 +712,16 @@ export async function runAutofill(ctx, onProgress) {
     progress('repairing', { total: broken.length });
     await writeAll(broken, ctx, progress, true);
   }
+}
 
-  // Fields revealed by an answer we just gave (a "Yes" that opens a follow-up).
-  let revealed = 0;
-  while (revealed < MAX_REVEAL_ROUNDS) {
-    const before = new Set(rows.map(r => r.key));
-    await waitForQuiet(form.root);
-    const fresh = describeFields(findForm() || form);
-    // Never the profile import: it was handled (or deliberately skipped) above.
-    // Nor the blocks "Add Another" created: fillExperienceSection filled them.
-    const added = fresh.filter(r => r.key && !before.has(r.key) && !(r.kind === 'file' && isProfileImport(r))
-                                    && !inSection(expSection, r));
-    if (!added.length) break;
-    revealed++;
-    progress('scanning', { detail: `${added.length} new field(s) appeared` });
-    const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
-    decisions = decisions.concat(extra);
-    rows = fresh;
+/** The last word before the panel: a write that failed is the person's, whichever path made it. */
+function handBackFailed(decisions) {
+  for (const d of decisions) {
+    if ((d.action === FILL || d.action === SUGGEST) && d.outcome && d.outcome !== 'ok') {
+      d.action = ASK;
+      d.reason = outcomeReason(d);
+    }
   }
-
-  // Education / Experience entries the form flags (Oracle's tiles): opened,
-  // filled from the matching profile entry, saved, and checked.
-  if (hasTiles) decisions = decisions.concat(await fillProfileTiles(ctx, progress));
-
-  await refillCleared(decisions, progress);
-
-  await saveState();
-  watchUserEdits(form, null);
-
-  return {
-    decisions,
-    counts: summarize(decisions),
-    serverError: decisions.serverError || '',
-    page: state.page,
-    opaqueHosts: form.opaqueHosts || 0,
-    ats: form.ats,
-  };
 }
 
 function isPhoneRow(row) {
@@ -412,26 +753,50 @@ function isProfileImport(row) {
  * spaced phone number) still holds the answer and is left alone, and a field
  * the person changed is theirs.
  */
-async function refillCleared(decisions, progress) {
-  const lost = decisions.filter(d => {
+//
+// Each rewrite is given time for the page's reaction before the next. Capital
+// One's Workday redraws the Code of Conduct question, empty, whenever the
+// "second job" answer above it changes: rewritten back to back, the Code of
+// Conduct read back "Yes", was then emptied by second-job's redraw, and the
+// panel showed it filled while the page said "Select One" (Oct 2026). Two
+// rounds; what still will not stay is the person's, never a ✓.
+const REFILL_ROUNDS = 2;
+
+// Not only EMPTIED: Oracle's resume import, finishing after a field was filled,
+// writes its own reading over it, and a field showing something else is as
+// lost as an empty one (Oct 2026). "Something else" is judged as the write was
+// (heldNow), so a reformatted answer is left alone.
+async function refillCleared(decisions, progress, root) {
+  const emptied = () => decisions.filter(d => {
     if (!(d.action === FILL || d.action === SUGGEST) || d.outcome !== 'ok') return false;
     if (!d.row || d.row.kind === 'file' || d.row.kind === 'tile') return false;
     if (d.key && state.userEdited.includes(d.key)) return false;
-    const now = reprobe(d.row);
-    return !!now && !now.filled;
+    const held = heldNow(d);
+    return held === 'empty' || held === 'changed';
   });
-  if (!lost.length) return;
-  console.info(`[TailorCV] the form emptied ${lost.length} answer(s) after they were filled — filling again:`,
-               lost.map(d => d.label).join(' | '));
-  progress('repairing', { total: lost.length, detail: 'the form cleared some answers — filling them again' });
-  for (const d of lost) {
-    const result = await applyDecision(d);
-    d.outcome = result.outcome;
-    d.shown = result.shown;
-    if (!result.ok) {
-      d.action = ASK;
-      d.reason = 'the form cleared this after we filled it';
+  for (let round = 0; round < REFILL_ROUNDS; round++) {
+    const lost = emptied();
+    if (!lost.length) return;
+    console.info(`[TailorCV] the form emptied or changed ${lost.length} answer(s) after they were filled — filling again:`,
+                 lost.map(d => d.label).join(' | '));
+    progress('repairing', { total: lost.length, detail: 'the form cleared some answers — filling them again' });
+    for (const d of lost) {
+      const result = await applyDecision(d);
+      d.outcome = result.outcome;
+      d.shown = result.shown;
+      if (!result.ok) {
+        d.action = ASK;
+        d.reason = 'the form cleared this after we filled it';
+      }
+      // The page's reaction to this answer (a question below redrawn) lands
+      // before the next one is written.
+      clock.quiet(await waitForQuiet(root));
     }
+  }
+  for (const d of emptied()) {
+    d.action = ASK;
+    d.outcome = 'cleared';
+    d.reason = 'the form cleared this after it was filled — choose it again';
   }
 }
 
@@ -442,8 +807,22 @@ async function refillCleared(decisions, progress) {
  * after Country is picked, loading them from its server ("dependency fields
  * loading" → "Address form loaded"); a single look at 900 ms could miss them.
  * A page that is not changing still costs only revealWatchMs.
+ *
+ * Our own sidebar does not count as the page changing. It sits in the page's
+ * <body>, and its progress ring redraws every 150 ms for the whole run — so
+ * with it counted, the page never went quiet and every wait ran the full
+ * revealMaxMs (5 s), once or more on every page.
+ *
+ * Resolves with { ms, capped } — how long it waited, and whether it gave up.
  */
-function waitForQuiet(root) {
+const OWN_UI = '#tailorcv-sidebar, #tailorcv-launcher';
+
+function isOwnUi(node) {
+  const el = node && (node.nodeType === 1 ? node : node.parentElement);
+  try { return !!(el && el.closest && el.closest(OWN_UI)); } catch (e) { return false; }
+}
+
+export function waitForQuiet(root) {
   const doc = (root && root.ownerDocument) || globalThis.document;
   const target = (doc && doc.body) || root;
   return new Promise(resolve => {
@@ -451,17 +830,20 @@ function waitForQuiet(root) {
     let last = start;
     let obs = null;
     try {
-      obs = new globalThis.MutationObserver(() => { last = Date.now(); });
+      obs = new globalThis.MutationObserver(records => {
+        if (records.some(r => !isOwnUi(r.target))) last = Date.now();
+      });
       obs.observe(target, { childList: true, subtree: true, attributes: true });
     } catch (e) { obs = null; }
     const tick = () => {
       const now = Date.now();
       const waited = now - start;
       const quiet = now - last;
-      if (waited >= TIMING.revealMaxMs
+      const capped = waited >= TIMING.revealMaxMs;
+      if (capped
           || (waited >= TIMING.revealWatchMs && (quiet >= TIMING.revealQuietMs || last === start))) {
         try { if (obs) obs.disconnect(); } catch (e) { /* ignore */ }
-        resolve();
+        resolve({ ms: waited, capped });
         return;
       }
       setTimeout(tick, 100);
@@ -490,6 +872,34 @@ function decisionsToWrite(decisions) {
   return decisions.filter(d => (d.action === FILL || d.action === SUGGEST || d.action === DOCUMENT));
 }
 
+// Dropdowns left for the person whose list read empty before the fill.
+const MAX_REREADS = 8;
+
+/**
+ * Read again, once everything is filled, the lists of the dropdowns left for
+ * the person that had no options when they were first read. A list that hangs
+ * off another answer is empty until that answer is in: PwC's Region of Birth
+ * lists the regions of the Country of Birth, which this run fills — so read
+ * before the fill it held only "Select One", and the sidebar offered nothing
+ * to choose from.
+ */
+async function rereadEmptyLists(decisions) {
+  const empty = decisions.filter(d => (d.action === ASK || d.action === PROFILE)
+    && d.kind === 'combobox' && d.row && d.row.el && d.row.el.isConnected
+    // Opening a SuccessFactors row's empty picklist flags it "is required" in red.
+    && !inRepeatingRow(d.row)
+    && !(d.options && d.options.length)).slice(0, MAX_REREADS);
+  for (const d of empty) {
+    const now = reprobe(d.row);
+    if (now && now.filled) continue;
+    const labels = await readComboboxOptions(d.row);
+    if (labels.length) {
+      d.row.options = labels.map(l => ({ value: l, label: l }));
+      d.options = d.row.options;
+    }
+  }
+}
+
 /** Decide a batch of rows, reading dropdown options and calling the server once. */
 async function planFor(rows, ctx, progress) {
   // First pass with no server help. This is what answers a plain identity form
@@ -509,13 +919,15 @@ async function planFor(rows, ctx, progress) {
 
   if (needOptions.length) {
     progress('reading', { total: needOptions.length });
-    for (const d of needOptions) {
-      const labels = await readComboboxOptions(d.row);
-      if (labels.length) {
-        d.row.options = labels.map(l => ({ value: l, label: l }));
-        d.options = d.row.options;
+    await clock.time('read_options', async () => {
+      for (const d of needOptions) {
+        const labels = await readComboboxOptions(d.row);
+        if (labels.length) {
+          d.row.options = labels.map(l => ({ value: l, label: l }));
+          d.options = d.row.options;
+        }
       }
-    }
+    });
     // Re-decide: a stored answer that had nothing to match against may now match.
     decisions = decide(rows, ctx, null, state);
   }
@@ -566,11 +978,13 @@ async function askServer(rows, ctx, decisions, toAsk) {
 async function fillInTwoWaves(plan, ctx, progress) {
   const local = plan.decisions;
   progress('filling', { done: 0, total: decisionsToWrite(local).length });
-  await writeAll(local, ctx, progress);
+  await clock.time('local_writes', () => writeAll(local, ctx, progress));
   if (!plan.server) return local;
 
   progress('thinking');
-  const answered = await plan.server;
+  // Only the part of the request still outstanding after wave 1: that is the
+  // time the person actually spends waiting on the server.
+  const answered = await clock.time('server_wait', () => plan.server);
   const wroteLocally = new Set(decisionsToWrite(local));
   const merged = answered.map((d, i) => (wroteLocally.has(local[i]) ? local[i] : d));
   merged.serverError = answered.serverError;
@@ -585,7 +999,7 @@ async function fillInTwoWaves(plan, ctx, progress) {
       if (d.key && !state.userEdited.includes(d.key)) state.userEdited.push(d.key);
     }
   }
-  await writeAll(wave2, ctx, progress);
+  await clock.time('server_writes', () => writeAll(wave2, ctx, progress));
   return merged;
 }
 
@@ -597,8 +1011,10 @@ async function writeAll(decisions, ctx, progress, isRepair) {
     progress(isRepair ? 'repairing' : 'filling',
              { done, total: todo.length, detail: d.label });
     done++;
+    const fieldStart = clock.now();
     if (d.action === DOCUMENT) {
       const result = await attachDocument(d, ctx);
+      clock.field({ label: d.label, kind: 'file', ms: clock.now() - fieldStart, outcome: result.ok ? 'ok' : 'failed' });
       d.outcome = result.ok ? 'ok' : 'failed';
       d.shown = result.shown || '';
       d.formRead = !!result.formRead;
@@ -609,8 +1025,11 @@ async function writeAll(decisions, ctx, progress, isRepair) {
       continue;
     }
     const result = await applyDecision(d);
+    clock.field({ label: d.label, kind: d.row && d.row.kind, ms: clock.now() - fieldStart,
+                  outcome: result.outcome });
     d.outcome = result.outcome;
     d.shown = result.shown;
+    keepListRead(d);
     if (result.ok) {
       if (d.key) state.registry[d.key] = d.value;
     } else if (!isRepair) {
@@ -623,10 +1042,99 @@ async function writeAll(decisions, ctx, progress, isRepair) {
       if (d.outcome !== 'ok') {
         d.action = ASK;
         d.reason = outcomeReason(d);
+        const picklist = d.row && picklistButton(d.row.el);
+        if (picklist) {
+          // What was typed to search is no answer, though it looks like one:
+          // Country of Residence showed "India" while the form said required.
+          setText(d.row.el, '');
+          // Optional, and nothing on the list fits: nobody's problem.
+          if (!d.row.required) {
+            d.action = SKIP;
+            d.value = '';
+            d.reason = 'optional — nothing to choose from on this form';
+          }
+        }
       }
     }
   }
   return decisions;
+}
+
+/**
+ * A saved answer the form did not take is no answer here: each such field is
+ * decided again as if nothing were saved — the profile, else the person; a
+ * required one left empty still gets the resume pass. The repair sweep retried
+ * the same saved text instead: Workday's Citizenship Status, a country list,
+ * got "(e) … DACA" from a U.S. form twice and stayed empty, while the profile
+ * said India (Oct 2026). Replaces the decisions in place.
+ */
+async function redecideFailedSaved(decisions, ctx, progress) {
+  const failed = decisions.filter(d => d.source === 'saved_answer' && d.outcome && d.outcome !== 'ok' && d.row);
+  if (!failed.length) return;
+  const toWrite = [];
+  await sleep(TIMING.settleMs);
+  for (const d of failed) {
+    // A pick that landed after its check gave up is the saved answer, taken.
+    const shapes = [d.value].concat(d.readFirst && d.readFirst.picked ? [d.readFirst.picked] : []);
+    if (await settlesTo(d.row, shapes, 0)) {
+      d.outcome = 'ok';
+      if (d.key) state.registry[d.key] = d.value;
+      continue;
+    }
+    const sig = questionSignature(d.row.label);
+    const others = ((ctx && ctx.savedSensitive) || []).filter(s => questionSignature(s.question) !== sig);
+    const [fresh] = decide([d.row], Object.assign({}, ctx, { savedSensitive: others }), null, state);
+    fresh.redecided = true;
+    // Told in the panel, with Forget: the saved answer is kept for the kind of
+    // list it was saved on, and was no answer for this one.
+    if (d.savedFrom) fresh.setAside = d.savedFrom;
+    if (!(fresh.options && fresh.options.length) && d.options && d.options.length) fresh.options = d.options;
+    decisions[decisions.indexOf(d)] = fresh;
+    if (fresh.action === FILL || fresh.action === SUGGEST) {
+      toWrite.push(fresh);
+    } else if (picklistButton(d.row.el)) {
+      // What was typed to search is no answer, though it looks like one.
+      setText(d.row.el, '');
+    }
+  }
+  if (toWrite.length) await writeAll(toWrite, ctx, progress, true);
+}
+
+/**
+ * A list the writer opened and read (Workday's prompt, unread when planned):
+ * its options become the decision's, for the panel's dropdown and for saving
+ * an answer with the list it was chosen from. A saved answer the writer picked
+ * from it is the one Forget takes.
+ */
+function keepListRead(d) {
+  const rf = d.readFirst;
+  if (!rf) return;
+  if (rf.labels && rf.labels.length && !(d.options && d.options.length)) {
+    d.options = rf.labels.map(l => ({ value: l, label: l }));
+  }
+  if (rf.variant && d.savedFrom) d.savedFrom = Object.assign({}, d.savedFrom, { options: rf.variant.options });
+}
+
+/**
+ * Forget the saved answer a panel row was filled from (or that was set aside
+ * as no answer for this list) — for that kind of list only. The field keeps
+ * what it shows; the next form asks, or the profile answers.
+ */
+export async function forgetSaved(decision) {
+  const from = decision && (decision.savedFrom || decision.setAside);
+  if (!from || !from.question) return { ok: false, error: 'There is no saved answer to forget here.' };
+  const res = await send({ type: 'AF_FORGET_ANSWER', payload: {
+    question: from.question, options: (from.options || []).slice(0, 300) } });
+  if (!res || !res.data) {
+    const error = res && res.error;
+    return { ok: false, error: !error || /context invalidated/i.test(error)
+      ? 'The extension was reloaded — refresh this page and try again.' : error };
+  }
+  decision.savedFrom = null;
+  decision.setAside = null;
+  decision.forgotten = true;
+  decision.reason = "forgotten — this answer won't be used again";
+  return { ok: true };
 }
 
 function outcomeReason(d) {
@@ -667,6 +1175,13 @@ async function attachDocument(decision, ctx) {
 
   const target = decision.row.el;
   void ctx;
+  // Oracle's import: watched from before the file goes in, so what was already
+  // on the page is not taken for the form reading it.
+  // Likewise a resume upload the page reads into the form: Phenom rewrote Work
+  // Experience and Education a few seconds after we had filled them (Quest
+  // Global, Nov 2026).
+  const reading = isProfileImport(decision.row) || (decision.slot === 'resume' && formReadsResume(target))
+    ? watchResumeReading(target) : null;
 
   // A drop-target with no file input of its own. There is nothing to write to,
   // so the drop event IS the mechanism — and there is also nothing to read back,
@@ -703,9 +1218,48 @@ async function attachDocument(decision, ctx) {
     if (attached || Date.now() >= deadline) break;
     await sleep(150);
   }
-  const formRead = await waitWhileReadingResume(target);
+  const formRead = reading ? await reading.wait() : await waitWhileReadingResume(target);
   // What the page shows is the verdict, however the file got there.
   return { ok: attached, shown: attached ? file.name : '', formRead };
+}
+
+/**
+ * SuccessFactors' Resume and Cover Letter boxes: opened, given the file, and
+ * checked on the page itself. A box already holding a file is left alone — it may
+ * be tailored for this job. Decided by the same rules as any other upload, so a
+ * cover letter the person has none of is theirs to attach.
+ */
+async function attachSfDocuments(ctx, progress) {
+  const out = [];
+  for (const box of attachmentBoxes()) {
+    if (boxHasFile(box.field)) continue;
+    const row = {
+      key: `sf-document-${box.slot}`, el: box.field, members: [], kind: 'file', label: box.label, ident: box.label,
+      value: '', filled: false, invalid: false, required: box.required, options: [], readable: true,
+      documentSlot: box.slot, hints: {},
+    };
+    const [d] = decide([row], ctx, null, state);
+    out.push(d);
+    if (d.action !== DOCUMENT) continue;
+    progress('filling', { detail: box.label });
+    const input = await openUploadInput(box.field);
+    let ok = false;
+    if (input) {
+      row.el = input;
+      await writeAll([d], ctx, progress);
+      // The input takes any file; only the page says the upload worked. Longer
+      // than an input's check: this waits on the upload to its server.
+      ok = d.outcome === 'ok' && await waitForUpload(box.field, TIMING.uploadConfirmMs * 5);
+    }
+    // The box stays the field: the input goes with the menu.
+    row.el = box.field;
+    if (!ok) {
+      d.action = ASK;
+      d.outcome = 'failed';
+      d.reason = 'attach this one yourself';
+    }
+  }
+  return out;
 }
 
 /**
@@ -728,6 +1282,131 @@ async function waitWhileReadingResume(input) {
   return true;
 }
 
+/**
+ * Oracle's "Import your profile" reads the resume only once its server has the
+ * file — seconds after the attach. One look at 300 ms never saw it begin: the
+ * page was filled while it read, and the import then wrote over Country code
+ * and more as the run ended (Oct 2026). So, from before the file goes in, watch
+ * for up to resumeParseDetectMs for any sign of the reading:
+ *  - the upload, or a button beside it, disabled;
+ *  - a busy marker, spinner or progress bar beside it;
+ *  - the form's fields changing — nothing else is filling them yet, since
+ *    documents go first.
+ * Once seen, wait for those signs to clear and the fields to stand still for
+ * resumeParseQuietMs (all within resumeParseMaxMs). `wait()` resolves with
+ * whether the form read the resume.
+ */
+function watchResumeReading(input) {
+  const doc = (input && input.ownerDocument) || globalThis.document;
+  const block = (input && input.closest && input.closest('.apply-flow-profile-import'))
+    || ancestor(input, 3);
+  const root = (input && input.closest && input.closest('form')) || doc.body;
+  // What already shows before the file goes in is no sign of reading.
+  const before = new Set(readingSigns(input, block));
+  const values = fieldSnapshot(root);
+  const signNow = () => readingSigns(input, block).some(el => !before.has(el));
+  return {
+    async wait() {
+      const start = Date.now();
+      let seen = '';
+      while (Date.now() - start < TIMING.resumeParseDetectMs) {
+        if (signNow()) { seen = 'it shows it is busy'; break; }
+        if (fieldSnapshot(root) !== values) { seen = 'its fields are changing'; break; }
+        await sleep(150);
+      }
+      if (!seen) {
+        console.info(`[TailorCV] no sign of the form reading the resume in ${Date.now() - start} ms — filling on`);
+        return false;
+      }
+      console.info(`[TailorCV] the form is reading the resume (${seen}, after ${Date.now() - start} ms) — `
+        + 'waiting for it to finish before filling on');
+      const deadline = start + TIMING.resumeParseMaxMs;
+      while (signNow() && Date.now() < deadline) await sleep(250);
+      // Then until what it writes stands still.
+      let last = fieldSnapshot(root);
+      let stillSince = Date.now();
+      while (Date.now() < deadline && Date.now() - stillSince < TIMING.resumeParseQuietMs) {
+        await sleep(150);
+        const now = fieldSnapshot(root);
+        if (now !== last) { last = now; stillSince = Date.now(); }
+      }
+      console.info(`[TailorCV] the form finished reading the resume after ${Date.now() - start} ms`);
+      return true;
+    },
+  };
+}
+
+// "This will auto-fill the fields below" (Keka), "we'll parse your resume".
+const AUTOFILL_HINT_RE = /\bauto-?\s?fill|\bpre-?\s?fill|\bpars(e|es|ing)\b|\bpopulate/i;
+
+/**
+ * Does this page read an uploaded resume into its own fields? Phenom's apply
+ * page (its "Upload Resume" button beside a hidden input) always does; others
+ * say so beside the upload. Only these pay the wait for the reading to show.
+ */
+function formReadsResume(input) {
+  if (!input) return false;
+  try {
+    if (input.closest('.resume-upload-wrapper')) return true;
+    const doc = input.ownerDocument || globalThis.document;
+    if (doc.querySelector('[atm-id="resume-button"]')) return true;
+  } catch (e) { /* fall through */ }
+  const near = ancestor(input, 4);
+  return !!near && AUTOFILL_HINT_RE.test(String(near.textContent || '').slice(0, 2000));
+}
+
+function ancestor(el, levels) {
+  let node = el;
+  for (let i = 0; i < levels && node && node.parentElement; i++) node = node.parentElement;
+  return node || null;
+}
+
+const BUSY_SELECTOR = '[aria-busy="true"], [role="progressbar"], [class*="spinner" i], [class*="loading" i], '
+  + '[class*="progress" i], button[disabled], input[disabled]';
+
+/** Elements that say the upload is being read: the upload disabled, or a busy
+ *  marker / spinner / disabled button beside it, as drawn now. */
+function readingSigns(input, block) {
+  const out = [];
+  if (input && input.isConnected && input.disabled) out.push(input);
+  // Oracle binds each section's aria-hidden to isProfileImportLoading: it says
+  // outright that the import is running, wherever the upload itself sits.
+  const doc = (input && input.ownerDocument) || globalThis.document;
+  const reading = doc.querySelector('apply-flow-section[aria-hidden="true"]');
+  if (reading) out.push(reading);
+  if (!block || !block.isConnected) return out;
+  for (const el of block.querySelectorAll(BUSY_SELECTOR)) {
+    if (el !== input && drawn(el)) out.push(el);
+  }
+  if (block.getAttribute && block.getAttribute('aria-busy') === 'true') out.push(block);
+  return out;
+}
+
+function drawn(el) {
+  if (el.closest('[hidden]')) return false;
+  try {
+    const style = (el.ownerDocument.defaultView || globalThis).getComputedStyle(el);
+    return style.display !== 'none' && style.visibility !== 'hidden';
+  } catch (e) {
+    return true;
+  }
+}
+
+/** Every field's value on the form (and which pills are chosen), as one string. */
+function fieldSnapshot(root) {
+  if (!root) return '';
+  const parts = [];
+  for (const el of root.querySelectorAll('input, select, textarea')) {
+    const type = (el.type || '').toLowerCase();
+    if (type === 'file' || type === 'hidden' || isOwnUi(el)) continue;
+    parts.push(type === 'checkbox' || type === 'radio' ? (el.checked ? '1' : '0') : String(el.value || ''));
+  }
+  for (const el of root.querySelectorAll('[aria-checked="true"], [aria-selected="true"]')) {
+    if (!isOwnUi(el)) parts.push((el.textContent || '').trim());
+  }
+  return parts.join('\u0001');
+}
+
 // ── answering a field from the sidebar ───────────────────────
 
 /**
@@ -739,6 +1418,15 @@ async function waitWhileReadingResume(input) {
  */
 export async function answerField(decision, value, remember) {
   decision.value = String(value == null ? '' : value);
+  // The person's own choice, as chosen. The planner's shapes of the PROFILE's
+  // answer must not re-pick it: the writer re-chose from the open list by the
+  // stored LGBTQ+ "No", found nothing, and "Heterosexual/Straight" — picked
+  // in the sidebar — never went in (DoorDash, Oct 2026). Still read the whole
+  // list first where the planner did: EEO lists filter by substring as you type.
+  if (decision.readFirst) decision.readFirst = { key: '', stored: decision.value };
+  decision.candidates = [];
+  decision.drill = null;
+  decision.hierarchy = null;
   const result = await applyDecision(decision);
   decision.outcome = result.outcome;
   decision.shown = result.shown;
@@ -758,24 +1446,36 @@ export async function answerField(decision, value, remember) {
   }
 
   if (remember && result.ok
-      && !decision.sensitive && !classifySensitive(decision.label)
+      && storable(decision.label, decision.sensitive, decision.employer)
       && !isNeverFill(decision.label) && !looksSecret(decision.value)) {
     await send({ type: 'AF_SAVE_ANSWERS', payload: { answers: [
-      { question: decision.label, answer: decision.value },
+      { question: decision.label, answer: decision.value, options: optionLabels(decision) },
     ] } });
   }
   return result;
+}
+
+// The options an answer was chosen from: it is kept as that kind of list's
+// answer (UserApplyQA.variants), and reused only on the same kind.
+function optionLabels(d) {
+  const options = (d.options && d.options.length) ? d.options : ((d.row && d.row.options) || []);
+  return options.map(o => (typeof o === 'string' ? o : (o && o.label) || '')).filter(Boolean).slice(0, 300);
 }
 
 /** Save answers the user has already typed into the page themselves. */
 export async function rememberAnswers(items) {
   const answers = (items || [])
     .filter(i => i && i.question && i.answer)
-    .map(i => ({ question: i.question, answer: i.answer }))
+    .map(i => ({ question: i.question, answer: i.answer, options: i.options || [] }))
     .slice(0, 25);
   if (!answers.length) return { saved: 0 };
   const res = await send({ type: 'AF_SAVE_ANSWERS', payload: { answers } });
-  return (res && res.data) || { saved: 0 };
+  if (res && res.data) return res.data;
+  // No response at all means the message never reached the background worker
+  // (an extension reload orphans this page's script) — not a server refusal.
+  const reloaded = 'The extension was reloaded — refresh this page and try again.';
+  const error = res && res.error;
+  return { saved: 0, error: !error || /context invalidated/i.test(error) ? reloaded : error };
 }
 
 export { FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP };

@@ -116,4 +116,8 @@ Rather than guessing whether your resume has too many or too few keywords, see w
 
 [Run your resume against a posting](/ats-analysis) and look at both lists — what matched and what is missing. If your skills section is long but the missing list is still substantial, you likely have volume without the right evidence, which is exactly what stuffing produces.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Matched and missing skills appear in one table, so a long skills section with many gaps is easy to spot.
+
 Free, about a minute. See also [resume keyword density](/blog/resume-keyword-density-ats) and [weak resume bullets](/blog/weak-resume-bullets-fix).

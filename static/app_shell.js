@@ -10,7 +10,7 @@
         "/solutions", "/ats-analysis", "/optimize", "/modify-cv", "/cover-letter",
         "/auto-apply", "/my-resumes", "/interview-prep", "/mock-interview",
         "/optimized-editor", "/templates", "/portfolio", "/portfolio-builder",
-        "/my-portfolios", "/extension"
+        "/my-portfolios", "/extension", "/profile", "/onboarding"
     ];
 
     function getUser() {
@@ -53,6 +53,8 @@
         chrome: svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 8.6h8.4M9.1 13.7l-4.2 7.2M14.9 13.7l-4.2 7.2"/>'),
         out: svg('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/>')
     };
+    // Inline SVG, not "☰": Windows renders that glyph as a blue emoji tile.
+    var BURGER_SVG = svg('<path d="M4 6h16M4 12h16M4 18h16"/>');
     var LINKS = [
         ["/dashboard", IC.home, "Home"],
         ["/modify-cv", IC.cv, "Resume Builder"],
@@ -101,13 +103,15 @@
             + '</div>';
 
         top.innerHTML =
-            '<button class="tcv-burger" id="tcvBurger" aria-label="Toggle menu" title="Collapse menu">☰</button>'
+            '<button class="tcv-burger" id="tcvBurger" aria-label="Toggle menu" title="Collapse menu">' + BURGER_SVG + '</button>'
             + '<a class="tcv-top-logo" href="' + (user ? "/dashboard" : "/") + '"><img class="tcv-top-mark" src="/static/logo-mark.webp" alt=""><span class="tcv-top-word">TailorCV</span></a>'
             + topRight;
 
         // Slim icon rail with hover tooltips
         var items = LINKS.map(function (l) {
-            var active = (here === l[0].replace(/\/+$/, "")) ? " active" : "";
+            // The profile (and its first-run setup) IS the Chrome extension's page.
+            var at = (here === "/profile" || here === "/onboarding") ? "/extension" : here;
+            var active = (at === l[0].replace(/\/+$/, "")) ? " active" : "";
             return '<a class="tcv-rail-link' + active + '" href="' + l[0] + '" aria-label="' + l[2] + '">'
                 + '<span class="tcv-rail-ic">' + l[1] + '</span>'
                 + '<span class="tcv-rail-tip">' + l[2] + '</span></a>';

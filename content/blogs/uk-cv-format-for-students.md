@@ -89,9 +89,9 @@ The specific differences between UK and other markets are small individually and
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-Font size, spacing and template controls with a live page counter — which is what keeps a UK graduate CV to the single page convention expects.
+Font size, line height and margin controls — which is what keeps a UK graduate CV to the single page convention expects.
 
 ## Scenarios: what to cut
 

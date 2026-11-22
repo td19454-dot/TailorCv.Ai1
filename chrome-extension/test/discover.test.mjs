@@ -62,6 +62,23 @@ const SEARCH_FORM = `
 
 // ── form root selection ──────────────────────────────────────
 
+test('detectAts: Oracle on oraclecloud.com and on a company\'s own domain, nothing else', () => {
+  const oracle = [
+    'https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210768873/apply/section/1',
+    'https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/jobs/preview/210767444/apply/section/4/',
+    'https://careers.oracle.com/en/sites/jobsearch/jobs/preview/337914/apply/section/1/?location=India&mode=location',
+    'https://careers.oracle.com/en/sites/jobsearch/job/337914',
+  ];
+  for (const url of oracle) eq(d.detectAts(url), 'oracle', url);
+  const other = [
+    'https://example.com/jobs/337914/apply',
+    'https://example.com/sites/default/files/job.pdf',
+    'https://boards.greenhouse.io/acme/jobs/123',
+    'https://acme.wd5.myworkdayjobs.com/en-US/External/job/Pune/Engineer_R1',
+  ];
+  for (const url of other) ok(d.detectAts(url) !== 'oracle', url);
+});
+
 test('findForm picks a Greenhouse-shaped application form', async () => {
   await withDoc(GREENHOUSE, () => {
     const f = d.findForm();
@@ -164,6 +181,110 @@ test('describeFields finds both Greenhouse question sections', async () => {
                       'resume', 'question_1', 'question_2', 'question_3']) {
       ok(ids.includes(id), `${id} was not discovered`);
     }
+  });
+});
+
+test('Workday "Please Select One" is named by its section, and is the sensitive gender question', async () => {
+  // NVIDIA Voluntary Disclosures. Read as "Please Select One" it was no gender
+  // question, and auto-apply's forced pass would have had the model pick one.
+  await withDoc(`<main><div data-automation-id="applyFlowPage">
+    <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    <div role="group" aria-labelledby="Self-Identification-of-Gender-section">
+      <h4 id="Self-Identification-of-Gender-section">Self-Identification of Gender</h4>
+      <div data-automation-id="formField-gender"><label for="personalInfoPerson--gender"><span>Please Select One<abbr aria-hidden="true">*</abbr></span></label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Please Select One Select One Required"
+          name="gender" id="personalInfoPerson--gender">Select One</button></div>
+    </div>
+    <div data-automation-id="formField-acceptTermsAndAgreements"><label for="tc">By selecting the checkbox, you agree to our Terms and Conditions.<abbr>*</abbr></label>
+      <input id="tc" type="checkbox" name="acceptTermsAndAgreements" aria-required="true"></div>
+    </div></div></main>`, () => {
+    const rows = d.describeFields(d.findForm());
+    const gender = rows.find(r => r.el && r.el.id === 'personalInfoPerson--gender');
+    ok(gender, `labels: ${rows.map(r => r.label).join(' | ')}`);
+    eq(gender.label, 'Self-Identification of Gender');
+    const [dec] = p.decide([gender], { answerBank: {} });
+    eq(dec.sensitive, 'demographic', 'sensitive: never sent to the AI, forced or not');
+    // And answered from the profile's gender — it paused auto-apply as "needs you".
+    const [filled] = p.decide([gender], { answerBank: { gender: 'Male' } });
+    eq(filled.action, p.FILL, `action ${filled.action}: ${filled.reason}`);
+    eq(filled.value, 'Male');
+  });
+});
+
+test('Walmart "Please select your gender." keeps its label and is answered from the profile', async () => {
+  // Read as a validation prompt, both questions became "we couldn't read this
+  // question" — options never read, profile never asked — and auto-apply paused.
+  await withDoc(`<main><div data-automation-id="applyFlowPage">
+    <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    <div role="group" aria-labelledby="Personal-Information-section">
+      <h4 id="Personal-Information-section">Personal Information</h4>
+      <div data-automation-id="formField-gender"><label for="personalInfoPerson--gender"><span>Please select your gender.<abbr aria-hidden="true">*</abbr></span></label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Please select your gender. Select One Required"
+          name="gender" id="personalInfoPerson--gender">Select One</button><input type="text"></div>
+      <div data-automation-id="formField-nationality"><label for="personalInfoPerson--nationality"><span>Please select your Nationality.<abbr aria-hidden="true">*</abbr></span></label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Please select your Nationality. Select One Required"
+          name="nationality" id="personalInfoPerson--nationality">Select One</button><input type="text"></div>
+    </div>
+    </div></div></main>`, () => {
+    const rows = d.describeFields(d.findForm());
+    const gender = rows.find(r => r.el && r.el.id === 'personalInfoPerson--gender');
+    const nationality = rows.find(r => r.el && r.el.id === 'personalInfoPerson--nationality');
+    ok(gender && nationality, `labels: ${rows.map(r => r.label).join(' | ')}`);
+    eq(gender.label, 'Please select your gender.*');
+    eq(nationality.label, 'Please select your Nationality.*');
+    const [g, n] = p.decide([gender, nationality], { answerBank: { gender: 'Male', nationality: 'India' } });
+    eq(g.action, p.FILL, `gender ${g.action}: ${g.reason}`);
+    eq(g.value, 'Male');
+    eq(n.action, p.FILL, `nationality ${n.action}: ${n.reason}`);
+    ok(/india/i.test(n.value), `nationality value ${n.value}`);
+  });
+});
+
+test('a SuccessFactors page with every section closed is an application page', async () => {
+  const CLOSED = `<form id="careerform"><div class="rcmFormSection">
+    <h2><button type="button" class="topBar rcmFormSectionTopBar" aria-expanded="false">Profile Information</button></h2>
+    <div class="sectionContent sectionContentClosed" style="display:none">
+      <label for="e">Email</label><input id="e" type="text"></div></div></form>`;
+  const SF = 'https://career4.successfactors.com/portalcareer';
+  await withDoc(CLOSED, (env) => {
+    env.dom.reconfigure({ url: SF });
+    const form = d.isApplicationPage(env.document);
+    ok(form && form.sectionsClosed, 'known by its section bars');
+    eq(form.fields.length, 0);
+    eq(form.ats, 'successfactors');
+    eq(env.document.querySelector('button').getAttribute('aria-expanded'), 'false', 'and nothing was opened');
+  });
+  // SAP's other address for the same form (Wipro).
+  await withDoc(CLOSED, (env) => {
+    env.dom.reconfigure({ url: 'https://career55.sapsf.eu/portalcareer' });
+    const form = d.isApplicationPage(env.document);
+    ok(form && form.sectionsClosed, 'known at sapsf.eu too');
+    eq(form.ats, 'successfactors');
+    eq(d.detectAts('https://career10.sapsf.com/portalcareer'), 'successfactors');
+    eq(d.detectAts('https://notsapsf.com/careers'), 'generic', 'not a name that merely ends the same');
+  });
+  await withDoc(CLOSED, (env) => {
+    env.dom.reconfigure({ url: 'https://example.test/apply' });
+    eq(d.isApplicationPage(env.document), null, 'not on another site');
+  });
+  await withDoc('<div id="searchResults"><a href="/job/1">Network Engineer</a></div>', (env) => {
+    env.dom.reconfigure({ url: SF });
+    eq(d.isApplicationPage(env.document), null, 'not a SuccessFactors page with no sections');
+  });
+});
+
+test('an input in a shadow root inside a hidden section is hidden', async () => {
+  // SuccessFactors' UI5 date pickers in a closed section read as visible while
+  // every other field there was hidden (ExxonMobil, Oct 2026).
+  await withDoc(`<form><div id="closed" style="display:none"><span id="host"></span></div>
+    <span id="shown"></span></form>`, () => {
+    const make = id => {
+      const root = document.getElementById(id).attachShadow({ mode: 'open' });
+      root.innerHTML = '<input type="text" aria-label="From Date">';
+      return root.querySelector('input');
+    };
+    notOk(d.isVisible(make('host')), 'hidden with its section');
+    ok(d.isVisible(make('shown')), 'a shown one still counts');
   });
 });
 
@@ -601,6 +722,39 @@ test('readComboboxOptions ignores a previous dropdown still on screen', async ()
     });
     const row = d.describeFields(d.findForm()).find(r => r.kind === 'combobox');
     deepEq(await d.readComboboxOptions(row), ['Landline', 'Mobile']);
+  });
+});
+
+test('a SuccessFactors list arriving late is not read as the next field\'s', async () => {
+  // ExxonMobil (Oct 2026): each list comes from the server. The last field's
+  // arrived while the next was being read, and every answer sat one field off:
+  // GPA was offered Yes / No, and the question after it the GPAs.
+  const pick = (id, label) => `<label for="${id}:_input">${label}</label>
+    <span class="sfCascadingPicklist"><div class="paginatedPicklistContainer fd-input-group--control">
+      <input role="combobox" aria-owns="${id}:_listSelect" aria-label="${label}" aria-required="true" title="${label}"
+             placeholder="No Selection" aria-expanded="false" class="rcmpaginatedselectinput" id="${id}:_input" type="text">
+      <button type="button" class="rcmpaginatedselectbutton" id="${id}:_selectButton"></button></div></span>`;
+  await withDoc(`<form>${pick('100', 'Have you been interviewed?')}${pick('200', 'GPA (US &amp; Canada)')}
+    <label for="a">Email</label><input id="a" type="text"></form>`, async (env) => {
+    const doc = env.document;
+    const list = (id, rows, named) => {
+      const ul = doc.createElement('ul');
+      if (named) ul.id = `${id}:_listSelect`;
+      ul.innerHTML = rows.map((r, i) => `<li role="option" id="${id}:item${i}" class="sf-list-item">${r}</li>`).join('');
+      doc.body.appendChild(ul);
+    };
+    doc.getElementById('200:_selectButton').addEventListener('click', () => {
+      setTimeout(() => list('100', ['No Selection', 'No', 'Yes'], true), 5);   // the last field's, late
+      setTimeout(() => list('200', ['No Selection', '3.6', '3.7'], true), 750);  // past the first wait
+    });
+    deepEq(await d.readComboboxOptions({ el: doc.getElementById('200:_input') }), ['3.6', '3.7']);
+
+    // Known by the row's number even if the list itself carries no such id.
+    doc.querySelectorAll('ul').forEach(u => u.remove());
+    doc.getElementById('100:_selectButton').addEventListener('click', () => {
+      setTimeout(() => list('100', ['No Selection', 'No', 'Yes'], false), 5);
+    });
+    deepEq(await d.readComboboxOptions({ el: doc.getElementById('100:_input') }), ['No', 'Yes']);
   });
 });
 

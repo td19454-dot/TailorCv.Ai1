@@ -32,6 +32,10 @@ It cannot tell that "fast-paced environment" describes an office and "Kubernetes
 
 This is worth understanding rather than just accepting, because it tells you what the report *is*: a diff, not a verdict. The [four-bucket method for reading a report](/blog/how-to-read-your-ats-report) builds on exactly this point.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+A skill marked Missing only means the term was not found on your resume. Whether it matters is still your call.
+
 ## The Seven Categories
 
 ### 1. Culture and personality language

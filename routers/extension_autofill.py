@@ -14,6 +14,7 @@ Endpoints:
   GET  /api/extension/apply-context      what we know about the user (cacheable)
   POST /api/extension/autofill/plan      field labels in, answers out (1 LLM call)
   POST /api/extension/autofill/answers   save an answer the user typed
+  POST /api/extension/autofill/answers/forget   forget one saved answer
   GET  /api/extension/base-resume/file   the resume bytes, for the file input
 
 One plan call per form page is the performance contract. The context is cached
@@ -31,9 +32,10 @@ import os
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import FileResponse
 
+import document_store
 from database import SessionLocal
 from models import User, UserApplyProfile
-from schemas import ApplyAnswersRequest, AutofillPlanRequest
+from schemas import ApplyAnswersRequest, AutofillPlanRequest, ForgetAnswerRequest
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -42,9 +44,16 @@ router = APIRouter()
 # model is — the v1 promise is that the user reviews before submitting, and a
 # paragraph they did not read is the one thing they cannot review at a glance.
 PROSE_KEYS = {"cover_letter", "why_do_you_want_this_role"}
+# Never shown to the model, even as context: the extension fills these from the
+# profile itself, and the profile page promises they are never sent to the AI.
+PRIVATE_KEYS = {"date_of_birth", "country_of_birth", "city_of_birth",
+                "is_government_official", "family_government_official",
+                "has_criminal_history"}
 
 MAX_FIELDS_PER_PLAN = 120
-MAX_OPTIONS_PER_FIELD = 60
+# A country list is about 250 rows, alphabetical: at 60 the model never saw India,
+# and its answer was checked against the first 60 alone (Capgemini, Oct 2026).
+MAX_OPTIONS_PER_FIELD = 300
 
 
 def _require_user(request: Request, db):
@@ -81,6 +90,13 @@ async def apply_context(request: Request):
         user = _require_user(request, db)
         prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user.id).first()
 
+        # Restored from storage if a deploy wiped the disk — before the snapshot,
+        # whose validate_profile() checks the resume file exists.
+        resume_ok = bool((user.base_resume_path or "").strip()
+                         and await document_store.ensure_file_async(user.base_resume_path))
+        cover_ok = bool((user.base_cover_letter_path or "").strip()
+                        and await document_store.ensure_file_async(user.base_cover_letter_path))
+
         # Parse the resume into structured facts if we haven't already, or if the
         # resume changed. This is the one place that happens — the upload path
         # deliberately only invalidates, so it never grows an LLM call.
@@ -101,8 +117,6 @@ async def apply_context(request: Request):
         bank = answer_bank(profile)
         blockers = validate_profile(profile, snap)
 
-        resume_ok = bool((user.base_resume_path or "").strip()
-                         and os.path.exists(user.base_resume_path or ""))
         return {
             "profileVersion": _profile_version(user, prof, facts),
             "answerBank": bank,
@@ -127,10 +141,14 @@ async def apply_context(request: Request):
                             or bank.get("veteran_status") or bank.get("disability_status")),
             },
             "blockers": blockers,
+            # The person's own answers to clearance / criminal-history questions,
+            # saved from a form they answered. The extension reuses one only for
+            # the SAME question (exact signature) — never a similar one, and
+            # never through the model.
+            "savedSensitive": _saved_sensitive_answers(db, user.id),
             "hasResume": resume_ok,
             "resumeFilename": user.base_resume_filename or "resume.pdf",
-            "hasCoverLetter": bool((user.base_cover_letter_path or "").strip()
-                                   and os.path.exists(user.base_cover_letter_path or "")),
+            "hasCoverLetter": cover_ok,
             "coverLetterFilename": user.base_cover_letter_filename or "cover_letter.pdf",
             "quota": {
                 "exhausted": quota_exhausted(db, user, "autofills"),
@@ -139,6 +157,17 @@ async def apply_context(request: Request):
         }
     finally:
         db.close()
+
+
+def _saved_sensitive_answers(db, user_id: int) -> list[dict]:
+    from auto_apply import qa_store
+    from auto_apply.match_guard import STORABLE_SENSITIVE, classify_sensitive
+
+    return [
+        {"question": a["question"], "answer": a["answer"], "variants": a["variants"]}
+        for a in qa_store.load_answers(db, user_id)
+        if classify_sensitive(a["question"]) in STORABLE_SENSITIVE
+    ]
 
 
 def _context_snapshot(user, prof, facts: dict) -> dict:
@@ -220,8 +249,14 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
         # work in the United States?" must not get an answer for it; the flags
         # are OR'd, so the request can only ever add caution, never remove it.
         for f in fields:
-            f.sensitive = bool(f.sensitive) or bool(classify_sensitive(f.label))
+            f.sensitive = bool(f.sensitive) or bool(classify_sensitive(f.label, payload.jobCompany))
             f.neverFill = bool(is_never_fill(f.label))
+
+        # Auto-apply's second pass on a page already planned (and charged): the
+        # required fields still empty, answered rather than skipped. Not charged
+        # again; bounded by _force_targets.
+        if payload.force:
+            return await _forced_plan(db, user, prof, fields, payload)
 
         # Charged before the work, refunded if the work fails — the same shape
         # every other metered feature here uses. 402 carries the code the
@@ -295,6 +330,98 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
         db.close()
 
 
+FORCE_MAX_FIELDS = 20   # chrome-extension/src/autofill/run.js MAX_FORCED holds the same
+
+
+def _force_targets(fields) -> list:
+    """The fields a forced pass may answer: never sensitive, never-fill, an
+    upload, a field the profile names but holds nothing for (recallOnly: Middle
+    Name for someone with none), or a motivation answer. At most FORCE_MAX_FIELDS."""
+    return [f for f in fields
+            if not f.sensitive and not getattr(f, "neverFill", False)
+            and not f.documentSlot and not f.recallOnly and not f.compose][:FORCE_MAX_FIELDS]
+
+
+async def _forced_plan(db, user, prof, fields, payload) -> dict:
+    from auto_apply import resume_facts as rf
+    from auto_apply.profile import answer_bank, build_applicant_profile
+
+    targets = _force_targets(fields)
+    answers: dict[str, dict] = {}
+    if targets:
+        facts = rf.load_cached_facts(db, user) or rf.empty_facts()
+        profile = await build_applicant_profile(_context_snapshot(user, prof, facts), narrative=False)
+        bank = answer_bank(profile)
+        try:
+            forced = await _forced_answers(bank, user.base_resume_text or "", targets, payload)
+        except Exception:
+            logger.exception("autofill plan: forced-answer LLM call failed")
+            forced = {}
+        for f in targets:
+            raw = forced.get(str(f.i))
+            if raw is None or not str(raw).strip():
+                continue
+            value = _resolve_against_options(str(raw), f)
+            if value is None:
+                continue
+            answers[str(f.i)] = {"value": value, "source": "ai_forced", "confidence": 0.6}
+    return {
+        "answers": answers,
+        "ask": [f.i for f in fields if str(f.i) not in answers],
+        "sensitiveSkipped": [f.i for f in fields if f.sensitive],
+        "neverFill": [f.i for f in fields if getattr(f, "neverFill", False)],
+    }
+
+
+_FORCED_ANSWER_PROMPT = """You are completing the REQUIRED questions left on one page of a job application, on
+behalf of the candidate. The form will not move on until each has an answer, so answer every
+index below — do not skip any.
+
+THE JOB: {job}
+
+CANDIDATE_DATA (the candidate's own profile answers):
+{candidate_json}
+
+THE CANDIDATE'S RESUME:
+{resume}
+
+REQUIRED FIELDS (index: question):
+{fields_block}
+
+Rules:
+- A field with [OPTIONS ...] must get exactly one listed option, copied verbatim.
+- Experience or skill questions ("Do you have experience with SQL?", "Years of experience with
+  Python?") follow the resume: Yes / an estimate from the resume's dates when it shows it, No / 0
+  when it does not.
+- Preference or willingness questions — working onsite or hybrid, travel, shifts, weekends,
+  overtime, background or reference checks, drug screening, notice or start-date flexibility,
+  following company policies — answer Yes / the agreeable option.
+- A licence, certification, clearance, degree, membership or employer the resume does not show
+  is No. Never claim one the resume does not show.
+- Free text: one short, factual line drawn from the resume or CANDIDATE_DATA.
+
+Return ONLY a JSON object: {{"answers": {{"<index>": "<value>"}}}}
+"""
+
+
+async def _forced_answers(bank: dict, resume_text: str, fields, payload) -> dict:
+    """One call that answers every given field (auto-apply's second pass)."""
+    from functions import get_resume_response
+
+    candidate = {k: v for k, v in bank.items() if k not in PROSE_KEYS and k not in PRIVATE_KEYS}
+    job = " at ".join(x for x in (payload.jobTitle, payload.jobCompany) if x) or "(not given)"
+    prompt = _FORCED_ANSWER_PROMPT.format(
+        job=job,
+        candidate_json=json.dumps(candidate, ensure_ascii=False, indent=1),
+        resume=(resume_text or "(none on file)")[:6000],
+        fields_block=_fields_block(fields),
+    )
+    raw = await get_resume_response(prompt)
+    parsed = json.loads(raw)
+    answers = parsed.get("answers") if isinstance(parsed, dict) else None
+    return answers if isinstance(answers, dict) else {}
+
+
 async def _settle(task) -> dict:
     """The compose task's answers, or {} if there was none or it failed."""
     if task is None:
@@ -314,7 +441,12 @@ async def _recall_and_map(db, user, bank: dict, fields, payload, answers: dict) 
     from auto_apply import qa_store
 
     # ── Tier 2: recall a stored answer, exactly or semantically ──
-    stored = qa_store.load_answers(db, user.id)
+    from auto_apply.match_guard import classify_sensitive
+
+    # A saved clearance / criminal-history answer is reused only for that exact
+    # question, by the extension. Never as a "similar" match for anything else.
+    stored = [a for a in qa_store.load_answers(db, user.id)
+              if not classify_sensitive(a["question"])]
     # Motivation questions are never recalled: the stored answer to "Why
     # Robinhood?" is exactly the wrong answer to "Why Anthropic?".
     recall_targets = [f for f in fields
@@ -329,15 +461,25 @@ async def _recall_and_map(db, user, bank: dict, fields, payload, answers: dict) 
         hit = qa_store.recall(f.label, vector, stored)
         if not hit:
             continue
-        value = _resolve_against_options(hit["answer"], f)
-        if value is None:
-            continue
+        options = list(f.options or [])[:MAX_OPTIONS_PER_FIELD]
+        if options:
+            # The answer saved over this KIND of list, as one of its options —
+            # or none, and the mapping call below answers it instead.
+            value = qa_store.pick_saved(hit, options)
+            if value is None:
+                continue
+        else:
+            value = hit["answer"]
         answers[str(f.i)] = {
             "value": value,
             "source": "saved_answer",
             "confidence": 0.85 if hit["confident"] else 0.6,
             "matchedQuestion": hit["question"],
         }
+        # A list not read yet (Workday's prompt): the extension picks from it
+        # once it is open, by the same rule.
+        if not options and hit.get("variants"):
+            answers[str(f.i)]["variants"] = hit["variants"]
 
     # ── Tier 3b: one LLM call for whatever is left ──
     # What the model is allowed to see. Everything sensitive, every
@@ -486,7 +628,7 @@ async def _llm_answers(bank: dict, fields, payload) -> dict:
     # sentence into any free-text box it could not otherwise answer ("If you
     # answered Yes, please explain" got "I want to build."). Motivation
     # questions are written separately, per job, by _compose_answers.
-    candidate = {k: v for k, v in bank.items() if k not in PROSE_KEYS}
+    candidate = {k: v for k, v in bank.items() if k not in PROSE_KEYS and k not in PRIVATE_KEYS}
     if payload.jobTitle:
         candidate["_applying_for"] = payload.jobTitle
     if payload.jobCompany:
@@ -585,7 +727,7 @@ async def save_apply_answers(request: Request, payload: ApplyAnswersRequest):
     try:
         user = _require_user(request, db)
         items = [
-            {"question": a.question.strip(), "answer": a.answer.strip()}
+            {"question": a.question.strip(), "answer": a.answer.strip(), "options": a.options}
             for a in (payload.answers or [])
             if a.question.strip() and a.answer.strip()
         ]
@@ -602,6 +744,21 @@ async def save_apply_answers(request: Request, payload: ApplyAnswersRequest):
         }
         saved = qa_store.upsert_answers(db, user.id, kept, embeddings)
         return {"ok": True, "saved": saved, "rejected": rejected}
+    finally:
+        db.close()
+
+
+@router.post("/api/extension/autofill/answers/forget")
+async def forget_apply_answer(request: Request, payload: ForgetAnswerRequest):
+    """Forget a saved answer the panel showed as wrong — for the kind of list it
+    was used on only; the question's answers for other lists stay."""
+    from auto_apply import qa_store
+
+    db = SessionLocal()
+    try:
+        user = _require_user(request, db)
+        forgotten = qa_store.forget_answer(db, user.id, payload.question.strip(), payload.options)
+        return {"ok": True, "forgotten": forgotten}
     finally:
         db.close()
 
@@ -627,7 +784,7 @@ async def base_resume_file(request: Request, doc: str = "resume"):
         else:
             path = user.base_resume_path or ""
             filename = user.base_resume_filename or "resume.pdf"
-        if not path or not os.path.exists(path):
+        if not path or not await document_store.ensure_file_async(path):
             raise HTTPException(status_code=404, detail="No file on file.")
         return FileResponse(path, media_type="application/pdf", filename=filename)
     finally:

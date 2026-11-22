@@ -145,6 +145,10 @@ Apply with your best general resume. Use these to practice [interview](https://t
 
 Track everything in a spreadsheet: company, role, date applied, status, next steps.
 
+![The TailorCV dashboard after login: a Resume, Apply, Interview and Stand Out action plan, a progress tracker, and links to the resume builder, ATS score, cover letter and mock interview tools](public/blog-images/tailorcv-dashboard-action-plan.webp)
+
+If you'd rather not keep a spreadsheet, the TailorCV dashboard walks you through each stage of the search, with your resume, cover letters and interview practice in one place.
+
 ---
 
 ## Step 6: Prepare for Technical Interviews

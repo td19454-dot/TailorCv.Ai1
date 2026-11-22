@@ -48,7 +48,7 @@ Let us deal with this properly, because it is the single most common complaint a
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
@@ -113,6 +113,10 @@ That matters more than it sounds, because of how applications actually work. Whe
 So a well-built generic resume gets filtered out just as efficiently as a badly built one. The template did not save it. Our [tailored vs generic resume](/blog/tailored-vs-generic-resume) piece shows what that costs in practice.
 
 TailorCV starts from the posting. Paste it with your resume, get a [free ATS match score](/ats-analysis) for that role — unlimited — with the exact missing keywords, and the AI **rewrites your bullets** to carry that language honestly, without inventing anything you did not do. About a minute per job.
+
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+You can see each change before you keep it: removed words in red, new words in green.
 
 ## Round 4: The ATS Question
 

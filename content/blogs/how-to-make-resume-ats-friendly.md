@@ -108,6 +108,8 @@ Cramming keywords unnaturally (e.g., a hidden white-text keyword block) can get 
 
 The [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) shows you exactly which keywords from the job description are missing from your resume - making this process precise instead of guesswork.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
 ---
 
 ## ATS-Friendly Resume Structure

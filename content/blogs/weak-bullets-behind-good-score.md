@@ -119,6 +119,10 @@ One to two lines. Long enough for action, scale and outcome; short enough to be 
 
 The scanner stage is solvable with one pass. The persuasion stage takes actual rewriting, and it is where the callbacks come from.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+A rewrite shown word by word: removed words in red, new words in green. A better score still needs bullets that persuade the person reading them.
+
 If you want to check the first is genuinely handled before you move on, [scan your resume against a posting](/ats-analysis) — then close the report and spend your time on whether each of your top bullets answers "so what?"
 
 Related: [turning duties into achievements](/blog/duty-into-achievement) and [high score but no interviews](/blog/high-ats-score-no-interviews).

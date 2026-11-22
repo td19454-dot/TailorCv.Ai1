@@ -15,28 +15,36 @@
 // calls) after a dropdown reported success while the form still showed "This
 // field is required".
 
-import { commitMatches, bestOptionMatch, looksLikeDecline } from './match.js';
-import { coerce, candidatesFor } from './plan.js';
-import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isChosenValue, isChoiceSelected,
-         controlAncestor, readComboboxOptions }
+import { commitMatches, bestOptionMatch, looksLikeDecline, normalizeOptionText, parseLooseDate } from './match.js';
+import { coerce, candidatesFor, citizenshipOption, degreeEntry, sharesWord } from './plan.js';
+import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible, isNodeDrawn, hiddenReason,
+         isChosenValue, isChoiceSelected, controlAncestor, readComboboxOptions, picklistButton,
+         isBlankOption, datePickerHost, ownOptions, isCalendarInput }
   from './discover.js';
 import { TIMING, sleep } from './timing.js';
+import { countryOf, countryOption, countryShare } from './countries.js';
+import { pickSaved, pickSavedVariant } from './saved.js';
+import { beginTimeline, endTimeline, note, noteClick, noteWait } from './timeline.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 
 
 // ── event plumbing ───────────────────────────────────────────
 
+// Composed like the real event: input crosses a shadow root, change does not.
+// A composed change reached SuccessFactors' own listener on its UI5 date picker,
+// which reads the component's change event's detail.value, and threw (Oct 2026).
 function fire(el, type, init) {
   try {
-    el.dispatchEvent(new globalThis.Event(type, Object.assign({ bubbles: true }, init || {})));
+    el.dispatchEvent(new globalThis.Event(type,
+      Object.assign({ bubbles: true, composed: type !== 'change' }, init || {})));
   } catch (e) { /* a detached node: the caller's verify will catch it */ }
 }
 
 function fireKey(el, type, key) {
   try {
     el.dispatchEvent(new globalThis.KeyboardEvent(type, {
-      key, code: key, bubbles: true, cancelable: true,
+      key, code: key, bubbles: true, cancelable: true, composed: true,
       keyCode: KEY_CODES[key] || 0, which: KEY_CODES[key] || 0,
     }));
   } catch (e) { /* ignore */ }
@@ -53,6 +61,7 @@ const KEY_CODES = { Enter: 13, Escape: 27, ArrowDown: 40, ArrowUp: 38, Tab: 9, B
  * work across them; each dispatch is independently harmless.
  */
 function pressPointer(el) {
+  noteRowPress(el);
   const opts = { bubbles: true, cancelable: true, composed: true, button: 0 };
   for (const type of ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click']) {
     try {
@@ -64,6 +73,15 @@ function pressPointer(el) {
       if (type === 'click') { try { el.click(); } catch (_) { /* ignore */ } }
     }
   }
+}
+
+/** For the dropdown's timeline: a press on one of a list's rows, not on the field. */
+function noteRowPress(el) {
+  try {
+    const p = probe();
+    const row = el.closest && el.closest(`${(p && p.OPTION_SEL) || '[role="option"]'}, .multiselect-container li`);
+    if (row && !isChosenValue(row)) noteClick(row, row.textContent);
+  } catch (e) { /* measurement only */ }
 }
 
 function focus(el) {
@@ -235,7 +253,13 @@ export function setCheckable(row, value) {
 
   let target = null;
   if (members.length === 1 && row.kind === 'checkbox') {
-    const truthy = /^(yes|true|1|on|checked|i agree|agree|accept)$/i.test(String(value));
+    // Its own label is a "tick it" too: a lone box's one option IS its label,
+    // and the model, told to copy an option, sent "Yes, I have read and consent
+    // to the above." — which failed here and stopped auto-apply (Citi).
+    const plain = s => String(s || '').replace(/\*+\s*$/, '').replace(/\s+/g, ' ').trim().toLowerCase();
+    const own = [row.optionLabel, row.label, p && p.labelFor(members[0])].map(plain).filter(Boolean);
+    const truthy = /^(yes|true|1|on|checked|i agree|agree|accept)$/i.test(String(value))
+      || own.includes(plain(value));
     if (!truthy) return false;
     target = members[0];
   } else {
@@ -311,7 +335,7 @@ function searchToken(value) {
   return head.length >= 2 ? head : text;
 }
 
-export async function commitCombobox(row, value, candidates, readFirst) {
+export async function commitCombobox(row, value, candidates, readFirst, drill) {
   const el = row.el;
   if (!el) return false;
   // `value` stays the primary answer; the rest are other shapes of it that
@@ -332,19 +356,20 @@ export async function commitCombobox(row, value, candidates, readFirst) {
     dismissListbox(el);
     openWidget(row);
     await sleep(TIMING.settleMs);
+    note('opened');
 
     let options = [];
     // A short EEO list filters by substring, so typing the stored "Male" hides
     // "Cisgender man" before it can be matched. Read the whole list first; type
     // only if opening it showed nothing. See READ_FIRST_KEYS in match.js.
-    if (readFirst && !isButton) options = await waitForOptions(el, TIMING.optionWaitMs);
+    if (readFirst && !isButton) options = await waitForOpenedList(el);
     if (options.length) {
       // already open with the full list
     } else if (isButton) {
       // A <button> dropdown (Workday): there is no input to type into, and
       // writing a "value" onto a button changes nothing — pressing it is the
       // whole interaction, and the options appear in a portal.
-      options = await waitForOptions(el, TIMING.optionWaitMs);
+      options = await waitForOpenedList(el);
     } else {
       // Type to filter. Whole-value write first (react-select reads the
       // input's onChange); per-character with key events if no menu appears,
@@ -362,11 +387,43 @@ export async function commitCombobox(row, value, candidates, readFirst) {
       // to be matched against (Oracle's City and State both stayed empty).
       const queries = dedupe(shapes.map(searchToken)).slice(0, 4);
       row.searchTrace = [];
+      // Workday's prompt boxes (Field of Study, "How Did You Hear About Us?"):
+      // typing does not filter — the full list stays up — and only Enter runs
+      // the search. The answer must then be clicked, or Workday erases the text
+      // when focus moves on. Enter was pressed only when NO options showed, which
+      // on Workday is never, so the search never ran (NVIDIA, Oct 2026). Only
+      // here: on react-select and most others Enter SELECTS the highlighted row.
+      const p = probe();
+      const wdPrompt = !!(p && p.workdayMultiselect && p.workdayMultiselect(input));
       for (const query of queries) {
+        note('search', `"${query}"`);
         // Keep the focus: this input IS the open menu's search box.
         setText(input, query, { blur: false });
         focus(input);
+        if (wdPrompt) {
+          fireKey(input, 'keydown', 'Enter');
+          fireKey(input, 'keyup', 'Enter');
+          // Workday's single-select prompt can commit the exact match on Enter
+          // by itself: Field of Study was filled while this waited for a row
+          // to click, then reported "did not commit" (NVIDIA, Oct 2026).
+          const isSet = () => shapes.some(s => committed(row, s));
+          options = await waitForPromptResults(el, shapes, isSet);
+          row.searchTrace.push(Object.assign(searchStep(query, input, el, options), { searchedWithEnter: true }));
+          if (isSet()) return true;
+          if (options.length && listOffersAny(shapes, options)) break;
+          continue;   // key-by-key typing does nothing here: next query, no retype
+        }
         options = await waitForOptions(el, TIMING.optionWaitMs);
+        // A remote search still answering: wait for it rather than retype,
+        // which would only start the search over.
+        options = await waitOutLoading(el, shapes, options);
+        // Still loading after the whole wait: the search itself is not
+        // answering. Retyping or trying the other words would only wait the
+        // same again, once per word — stop and leave it to the person.
+        if (!options.length && listStillLoading(el.ownerDocument || globalThis.document, el)) {
+          row.searchTrace.push(Object.assign(searchStep(query, input, el, options), { stillLoading: true }));
+          break;
+        }
         if (!options.length || !listOffersAny(shapes, options)) {
           // Widgets that filter only on real keystrokes (Oracle): typed key by
           // key. Also when the list is NOT empty but lacks the answer — Oracle
@@ -376,7 +433,11 @@ export async function commitCombobox(row, value, candidates, readFirst) {
           // typing the full "Kolkata, West Bengal, India" into a remote search
           // returns nothing.
           await typeText(input, query, 8);
-          options = await waitForMatchingOptions(el, shapes, TIMING.optionWaitMs * 2);
+          // A SuccessFactors search goes to its server: "India" stayed typed in
+          // Country of Residence, with the results on their way (Capgemini).
+          options = await waitForMatchingOptions(el, shapes,
+            picklistButton(el) ? TIMING.remoteSearchMs : TIMING.optionWaitMs * 2);
+          options = await waitOutLoading(el, shapes, options);
         }
         if (!options.length) {
           // Workday's multiselect search only shows results on Enter. Here Enter
@@ -395,22 +456,62 @@ export async function commitCombobox(row, value, candidates, readFirst) {
     // same shapes, same guards, same decline fallback — never the bare fuzzy
     // matcher, which rates "Male" close to "Female".
     if (readFirst) {
-      const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
-      const pick = pickReadFirst(readFirst, labels);
+      let labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+      // A button's list opens with all its rows; a search box's may not.
+      let pick = pickReadFirst(readFirst, labels, isButton);
+      // A Workday search-box list opens with a few of its rows drawn: 2 of Gender
+      // Identity's 5, without "Male", so nothing was clicked (Barclays, Nov 2026).
+      // The answer's row is given a moment to appear.
+      if (!pick && !isButton && isWorkdayPrompt(el)) {
+        const found = await waitForReadFirstPick(el, readFirst, options, TIMING.optionWaitMs * 3);
+        if (found) ({ options, labels, pick } = found);
+      }
+      // A SuccessFactors list opens on one page of hundreds: the answer is
+      // searched for, then chosen by the same rules. Deloitte's Qualification
+      // stayed empty with B.Tech off the first page (Oct 2026).
+      if (!pick && !isButton && picklistButton(el)) {
+        const input = typableInput(row) || el;
+        // A degree by its own spellings first: "Class XII" for Higher Secondary.
+        const entry = readFirst.key === 'degree' ? degreeEntry(readFirst.stored) : null;
+        const words = [readFirst.stored].concat(entry ? entry.spellings : shapes);
+        for (const query of dedupe(words.map(searchToken)).slice(0, 12)) {
+          const before = visibleOptionNodes(el.ownerDocument || globalThis.document, el);
+          await typeText(input, query, 8);
+          const found = await waitForReadFirstPick(el, readFirst, before);
+          if (found) { ({ options, labels, pick } = found); break; }
+        }
+      }
       if (!pick) {
+        if (labels.length) readFirst.labels = labels;
         reportDropdownFailure(row, value, options);
         return false;
       }
+      // What was chosen, for the check afterwards: a saved "(e) … DACA" shows
+      // as this list's own wording of it. The list itself, for the panel: its
+      // options to change the answer to, and which saved answer took it.
+      readFirst.picked = pick;
+      readFirst.labels = labels;
+      if (readFirst.key === 'saved') readFirst.variant = pickSavedVariant(readFirst.entry, labels);
       const node = options[labels.indexOf(pick)];
-      try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
-      pressPointer(node);
+      // A Workday checkbox row already ticked: another click would untick it.
+      if (!(node.getAttribute && node.getAttribute('data-automation-selected') === 'true')) {
+        try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+        pressPointer(rowClickTarget(node, pick));
+      }
       return settlesTo(row, [pick].concat(shapes));
     }
 
     // Every shape, against the list we already have open: no extra open, no
     // extra wait, and the list itself settles what the field meant.
     for (const shape of options.length ? shapes : []) {
+      const before = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
       if (!await clickMatchingOption(el, shape, options)) continue;
+      // Workday's hierarchical prompt: the country row opens its own level
+      // (India › Citizen / Permanent Resident) rather than selecting.
+      if (drill && isWorkdayPrompt(el)) {
+        const drilled = await drillDown(row, el, shapes, drill, before);
+        if (drilled !== null) return drilled;
+      }
       // Any wording we were prepared to use counts: Oracle picks "+91 (India)"
       // and then displays "+91" — the same answer, shown its own way.
       if (await settlesTo(row, shapes)) return true;
@@ -442,6 +543,147 @@ export async function commitCombobox(row, value, candidates, readFirst) {
 }
 
 /**
+ * The bootstrap-multiselect drawn for a hidden <select>, or null (RippleHire,
+ * Nov 2026): a button, its menu, and in the menu a search box and rows of
+ * <li><a><label><input type="radio" value="Akola"> Akola</label></a></li>.
+ */
+export function multiselectWidget(el) {
+  if (!el || (el.tagName || '').toLowerCase() !== 'select') return null;
+  const wrap = (el.closest && el.closest('.multiselect, .multi-select')) || el.parentElement;
+  const menu = wrap && wrap.querySelector('.multiselect-container');
+  if (!menu) return null;
+  const button = wrap.querySelector('button.multiselect') || wrap.querySelector('button.dropdown-toggle')
+    || wrap.querySelector('button');
+  return { button, menu, search: menu.querySelector('.singleselect-search, .multiselect-search') };
+}
+
+function multiselectOpen({ button, menu }) {
+  const parent = menu.parentElement;
+  return menu.offsetHeight > 0 || menu.classList.contains('show') || (parent && parent.classList.contains('open'))
+    || (button && button.getAttribute('aria-expanded') === 'true');
+}
+
+/** A widget's answerable rows, as they stand: labels with a real value, on screen. */
+function multiselectRows(menu) {
+  return Array.from(menu.querySelectorAll('li a label')).filter((label) => {
+    const radio = label.querySelector('input');
+    return !!(radio && String(radio.value || '').trim()) && isNodeDrawn(label);
+  });
+}
+
+// How long a widget's rows must stand unchanged to count as the search's answer.
+const MULTISELECT_SETTLED_MS = 800;
+
+/**
+ * Open the widget, search if it has a search box, and click the answer's row:
+ * the label chosen, or null. Its city list comes from a server as the search is
+ * typed, so the rows are waited on. Until they settle, only the exact row or one
+ * holding every word of the answer will do: the list up before the results
+ * arrive has "Akola" where "Kolkata" belongs. Once settled, the matcher every
+ * other form uses decides, among rows sharing a whole word with the answer: by
+ * itself it took "Kolat" for Kolkata and "Calicut" for Calcutta.
+ */
+async function commitMultiselect(row, value, candidates, readFirst, fromProfile) {
+  const widget = multiselectWidget(row.el);
+  const { button, menu, search } = widget;
+  const shapes = dedupe([value].concat(candidates || []).concat(searchToken(value)));
+  const pickIn = (labels) => {
+    if (readFirst) return pickReadFirst(readFirst, labels);
+    for (const shape of shapes) {
+      const i = promptResultFor(shape, labels);
+      if (i >= 0) return labels[i];
+    }
+    return null;
+  };
+  const labelsOf = rows => rows.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+  let rows = [];
+  try {
+    scrollIntoView(button || row.el);
+    if (button && !multiselectOpen(widget)) pressPointer(button);
+    await sleep(TIMING.settleMs);
+    // The whole answer, then its first word if that finds nothing: a search for
+    // "Alignerr Inc" has no results where the list says "Alignerr".
+    const whole = searchToken(value);
+    const first = whole.split(/\s+/)[0];
+    const queries = search ? dedupe([whole].concat(first.length >= 3 ? [first] : [])) : [''];
+    for (const query of queries) {
+      const typedOver = labelsOf(multiselectRows(menu)).join('|');
+      if (search) note('search', `"${query}"`);
+      if (search) await typeText(search, query, 8);
+      const deadline = Date.now() + TIMING.remoteSearchMs;
+      // No search box: the list is what it is, and nothing is on its way.
+      let answered = !search;
+      let seen = typedOver;
+      let changedAt = Date.now();
+      for (;;) {
+        rows = multiselectRows(menu);
+        const labels = labelsOf(rows);
+        const pick = rows.length ? pickIn(labels) : null;
+        if (pick) {
+          note('results', `${rows.length} rows, answer among them`);
+          if (readFirst) { readFirst.picked = pick; readFirst.labels = labels; }
+          const node = rows[labels.indexOf(pick)];
+          try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+          pressPointer(node);
+          return await settlesTo(row, [pick].concat(shapes)) ? pick : null;
+        }
+        const now = labels.join('|');
+        if (now !== seen) { seen = now; changedAt = Date.now(); answered = true; }
+        if (Date.now() >= deadline || (answered && Date.now() - changedAt >= MULTISELECT_SETTLED_MS)) {
+          note('results', `${rows.length} rows${Date.now() >= deadline ? ', wait RAN OUT' : ''}`);
+          break;
+        }
+        await sleep(100);
+      }
+      if (rows.length) break;
+    }
+    if (!readFirst) {
+      for (const shape of shapes) {
+        const near = rows.filter(n => sharesWord(shape, n.textContent));
+        if (!near.length || !await clickMatchingOption(row.el, shape, near)) continue;
+        if (await settlesTo(row, labelsOf(near))) {
+          const now = reprobe(row);
+          return (now && now.value) || labelsOf(near)[0];
+        }
+        return null;
+      }
+      // Their answer, and this list doesn't have it: its one "Others" row says
+      // so, and the form asks for the name in its own box (HDFC's "Employer Name
+      // - Others"). Never for an answer of the model's, and never a choice of two.
+      if (fromProfile) {
+        const before = labelsOf(multiselectRows(menu)).join('|');
+        if (search) await typeText(search, 'Other', 8);
+        const deadline = Date.now() + TIMING.remoteSearchMs;
+        let answered = !search;
+        let seen = before;
+        let changedAt = Date.now();
+        for (;;) {
+          rows = multiselectRows(menu);
+          const now = labelsOf(rows).join('|');
+          if (now !== seen) { seen = now; changedAt = Date.now(); answered = true; }
+          if (Date.now() >= deadline || (answered && Date.now() - changedAt >= MULTISELECT_SETTLED_MS)) break;
+          await sleep(100);
+        }
+        const others = rows.filter(n => /^others?$/i.test((n.textContent || '').trim()));
+        if (others.length === 1) {
+          const label = labelsOf(others)[0];
+          try { others[0].scrollIntoView({ block: 'nearest' }); } catch (e) {}
+          pressPointer(others[0]);
+          return await settlesTo(row, [label]) ? label : null;
+        }
+      }
+    }
+    if (search) setText(search, '', { blur: false });
+    reportDropdownFailure(row, value, rows);
+    return null;
+  } catch (e) {
+    return null;
+  } finally {
+    if (button && multiselectOpen(widget)) pressPointer(button);
+  }
+}
+
+/**
  * Say, in the page console, exactly how a dropdown commit failed.
  *
  * A dropdown that "didn't take" has half a dozen possible causes — no options
@@ -456,6 +698,8 @@ export async function commitCombobox(row, value, candidates, readFirst) {
  * block mid-fill), whether its list was open, and what was offered.
  */
 function searchStep(query, input, el, options) {
+  note('results', `${(options || []).length} rows: ${(options || []).slice(0, 4)
+    .map(n => (n.textContent || '').replace(/\s+/g, ' ').trim()).join(' | ')}`);
   const doc = el.ownerDocument || globalThis.document;
   let cells = 0;
   try { cells = doc.querySelectorAll('[role="gridcell"], [role="option"]').length; } catch (e) { cells = -1; }
@@ -466,6 +710,7 @@ function searchStep(query, input, el, options) {
     listOpen: el.getAttribute ? el.getAttribute('aria-expanded') : null,
     optionsMatched: (options || []).length,
     rowsOnPage: cells,
+    rowsSkipped: (options || []).length ? undefined : rowsRejected(doc),
     firstOffered: (options || []).slice(0, 5).map(n => (n.textContent || '').replace(/\s+/g, ' ').trim()),
   };
 }
@@ -526,6 +771,9 @@ function openWidget(row) {
     // wraps every field, and pressing it instead of the input opens nothing.
     const ctl = controlAncestor(el);
     if (ctl && ctl.contains(el) && (!wrap || wrap.contains(ctl) || ctl.contains(wrap))) target = ctl;
+    // SuccessFactors' picklist opens from its own button (see picklistButton).
+    const sf = picklistButton(el);
+    if (sf) target = sf;
   }
   focus(target);
   pressPointer(target);
@@ -558,52 +806,79 @@ function visibleOptionNodes(doc, el) {
   // waitForOptions returned those immediately, for every dropdown on the page
   // — so "Bachelor's Degree" was matched against a list of countries, matched
   // nothing, and every dropdown reported "we could not get this to stick".
-  const shown = nodes.filter(n => (n.textContent || '').trim() && isNodeVisible(n) && !isChosenValue(n));
+  // Not a disabled option either: it cannot be picked, and Workday opens a
+  // list with only its disabled "Select One" before the real options load —
+  // read at that moment, the Degree list looked like it had nothing to offer.
+  // A Workday prompt's results are judged by what is drawn, not aria-hidden:
+  // Workday hides its whole page root from screen readers while the popup is
+  // open, results included (see isNodeDrawn).
+  const onScreen = isWorkdayPrompt(el) ? isNodeDrawn : isNodeVisible;
+  const shown = nodes.filter(n => (n.textContent || '').trim() && onScreen(n) && !isChosenValue(n)
+                                  && !isBlankOption(n)
+                                  && !(n.getAttribute && n.getAttribute('aria-disabled') === 'true'));
   return el ? ownOptions(doc, el, shown) : shown;
 }
 
+function isWorkdayPrompt(el) {
+  if (!el) return false;
+  const p = probe();
+  try {
+    if (p && p.workdayMultiselect && p.workdayMultiselect(el)) return true;
+    // Or the field wrapper holding one.
+    return !!(el.querySelector && el.querySelector('[data-automation-id="multiselectInputContainer"]'));
+  } catch (e) { return false; }
+}
+
+/** Why the option rows on the page were not taken, counted ("aria-hidden: 6") — for failure reports. */
+function rowsRejected(doc) {
+  const p = probe();
+  const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
+  const counts = {};
+  for (const n of nodes) {
+    const why = !(n.textContent || '').trim() ? 'empty'
+      : isChosenValue(n) ? 'chosen'
+      : (n.getAttribute && n.getAttribute('aria-disabled') === 'true') ? 'disabled'
+      : (hiddenReason(n) || 'taken-or-not-own');
+    counts[why] = (counts[why] || 0) + 1;
+  }
+  return counts;
+}
+
 /**
- * Of the options on screen, the ones that belong to THIS control.
- *
- * The sweep above is document-wide, so a list another dropdown left open was
- * read as this one's. On Oracle Candidate Experience the phone "Country code"
- * list ("+91 (India)") was still up when the address "Country" opened, and
- * "India" matched "+91 (India)" in the wrong list — Country stayed empty.
- * A control that names its listbox (aria-controls / aria-owns) gets exactly
- * that list; otherwise a list some OTHER control claims is left out.
+ * The options of a list just opened. A list that is OPEN (aria-expanded) but
+ * still has nothing pickable is loading — Workday's Degree shows only its
+ * disabled "Select One" first — so it is given up to TIMING.remoteSearchMs,
+ * returning the moment options arrive. Only for opening a list: a typed search
+ * that matches nothing is expanded and empty too, and must not wait.
  */
-function ownOptions(doc, el, nodes) {
-  const ref = n => (n && n.getAttribute && (n.getAttribute('aria-controls') || n.getAttribute('aria-owns'))) || '';
-  let mine = null;
-  for (let n = el, i = 0; n && i < 4 && !mine; n = n.parentElement, i++) {
-    const id = ref(n).split(/\s+/)[0];
-    if (id) { try { mine = doc.getElementById(id); } catch (e) { mine = null; } }
+async function waitForOpenedList(el) {
+  const nodes = await waitForOptions(el, TIMING.optionWaitMs);
+  if (nodes.length || !isExpanded(el)) return nodes;
+  return waitForOptions(el, TIMING.remoteSearchMs);
+}
+
+function isExpanded(el) {
+  for (let n = el, i = 0; n && i < 3; n = n.parentElement, i++) {
+    if (n.getAttribute && n.getAttribute('aria-expanded') === 'true') return true;
   }
-  if (mine) {
-    const inMine = nodes.filter(n => mine.contains(n));
-    if (inMine.length) return inMine;
-  }
-  return nodes.filter(n => {
-    const lb = n.closest && n.closest('[role="listbox"]');
-    if (!lb || !lb.id) return true;
-    let owner = null;
-    try { owner = doc.querySelector(`[aria-controls~="${lb.id}"], [aria-owns~="${lb.id}"]`); } catch (e) { owner = null; }
-    return !owner || owner === el || owner.contains(el) || el.contains(owner);
-  });
+  return false;
 }
 
 function waitForOptions(el, timeout) {
   return new Promise(resolve => {
     const doc = (el.ownerDocument) || globalThis.document;
+    const startedAt = Date.now();
     const immediate = visibleOptionNodes(doc, el);
-    if (immediate.length) { resolve(immediate); return; }
+    if (immediate.length) { noteWait('list', timeout, startedAt, false); resolve(immediate); return; }
     let settled = false;
     const finish = () => {
       if (settled) return;
       settled = true;
       try { obs.disconnect(); } catch (e) {}
       clearTimeout(timer);
-      resolve(visibleOptionNodes(doc, el));
+      const nodes = visibleOptionNodes(doc, el);
+      noteWait('list', timeout, startedAt, !nodes.length);
+      resolve(nodes);
     };
     // Observing the whole document, because react-select renders its menu into
     // a <body>-level portal rather than inside the field.
@@ -616,20 +891,90 @@ function waitForOptions(el, timeout) {
 }
 
 /**
+ * Keep waiting while this control's own list says it is still loading.
+ *
+ * Search-as-you-type lists that query a server show a placeholder until the
+ * answer arrives — Ashby's Location shows "Loading..." in the listbox its
+ * input aria-controls — and that round trip can outlast every fixed wait
+ * here. Only a list that SAYS it is loading is waited on, so nothing changes
+ * for lists that are simply empty. Capped by TIMING.remoteSearchMs.
+ */
+async function waitOutLoading(el, shapes, options) {
+  const doc = el.ownerDocument || globalThis.document;
+  const deadline = Date.now() + TIMING.remoteSearchMs;
+  let nodes = options || [];
+  while ((!nodes.length || !listOffersAny(shapes, nodes))
+         && listStillLoading(doc, el) && Date.now() < deadline) {
+    await sleep(100);
+    nodes = visibleOptionNodes(doc, el);
+  }
+  return nodes.length ? nodes : visibleOptionNodes(doc, el);
+}
+
+const LOADING_TEXT_RE = /^\s*(loading|searching)\b[.…\s]*$/i;
+
+/** Does the listbox this control owns show a loading state? */
+function listStillLoading(doc, el) {
+  let id = '';
+  for (let n = el, i = 0; n && i < 4 && !id; n = n.parentElement, i++) {
+    id = ((n.getAttribute && (n.getAttribute('aria-controls') || n.getAttribute('aria-owns'))) || '')
+      .split(/\s+/)[0];
+  }
+  if (!id) return false;
+  let list = null;
+  try { list = doc.getElementById(id); } catch (e) { list = null; }
+  if (!list) return false;
+  try {
+    if (list.matches('[aria-busy="true"], [data-loading]')
+        || list.querySelector('[aria-busy="true"], [data-loading], [role="progressbar"]')) return true;
+  } catch (e) { return false; }
+  return LOADING_TEXT_RE.test(list.textContent || '');
+}
+
+/**
  * Wait for the list to show an option for the answer, up to `timeout`.
  *
  * After typing, the list re-renders on its own schedule — Oracle's City list
  * comes back from its server — so reading it at once returns the stale list
  * from before the keystrokes. Resolves with whatever is showing at the end.
  */
+/**
+ * Search results holding readFirst's pick: { options, labels, pick }, or null —
+ * once results other than `before` have stood without one for a moment, or by
+ * `ms` (TIMING.remoteSearchMs unless given).
+ */
+async function waitForReadFirstPick(el, readFirst, before, ms) {
+  const doc = el.ownerDocument || globalThis.document;
+  const limit = ms == null ? TIMING.remoteSearchMs : ms;
+  const startedAt = Date.now();
+  const deadline = startedAt + limit;
+  const stale = new Set(before || []);
+  let answeredAt = 0;
+  for (;;) {
+    const options = visibleOptionNodes(doc, el);
+    const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+    const pick = options.length ? pickReadFirst(readFirst, labels) : null;
+    if (pick) { noteWait('answer in the list', limit, startedAt, false); return { options, labels, pick }; }
+    // Answered: new rows, or the old ones gone (a search that found nothing).
+    if (!answeredAt && (options.some(n => !stale.has(n))
+                        || (stale.size && [...stale].every(n => !n.isConnected)))) answeredAt = Date.now();
+    if (Date.now() >= deadline || (answeredAt && Date.now() - answeredAt > TIMING.settleMs + 300)) {
+      noteWait('answer in the list', limit, startedAt, Date.now() >= deadline);
+      return null;
+    }
+    await sleep(100);
+  }
+}
+
 async function waitForMatchingOptions(el, shapes, timeout) {
   const doc = el.ownerDocument || globalThis.document;
-  const deadline = Date.now() + timeout;
+  const startedAt = Date.now();
+  const deadline = startedAt + timeout;
   let nodes = [];
   for (;;) {
     nodes = visibleOptionNodes(doc, el);
-    if (nodes.length && listOffersAny(shapes, nodes)) return nodes;
-    if (Date.now() >= deadline) return nodes;
+    if (nodes.length && listOffersAny(shapes, nodes)) { noteWait('matching rows', timeout, startedAt, false); return nodes; }
+    if (Date.now() >= deadline) { noteWait('matching rows', timeout, startedAt, true); return nodes; }
     await sleep(100);
   }
 }
@@ -652,12 +997,56 @@ function highlightedMatches(el, shapes) {
 /** Does this open list hold an option for any of the answer's shapes? */
 function listOffersAny(shapes, nodes) {
   const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
-  return shapes.some(sh => labels.some(t => commitMatches(sh, t)) || bestOptionMatch(sh, labels) != null);
+  return shapes.some((sh) => {
+    // A country is offered only by naming it. SuccessFactors lists one page at
+    // a time and searches its server: "British Indian Ocean Territory" on the
+    // first page counted as offering "Indian", so the search was never waited for.
+    if (isStrictCountry(sh, labels)) return !!countryOption(countryOf(sh), labels);
+    return labels.some(t => commitMatches(sh, t))
+      || (!inPagedList(nodes) && bestOptionMatch(sh, labels) != null);
+  });
+}
+
+/**
+ * Rows of a SuccessFactors picklist: one page of a long list, or search results
+ * still on their way. A near match there is only the nearest row on this page:
+ * "Engineer-Mining" for a Chemical Engineering degree (ExxonMobil, Oct 2026).
+ * Exact or whole-word, or nothing — an empty field the person sees beats a wrong one.
+ */
+function inPagedList(nodes) {
+  return nodes.some(n => (n.closest && n.closest('[id$="_listSelect"]'))
+                         || /\bsf-list-item\b/.test(String(n.className || '')));
+}
+
+/**
+ * `value` names a country that only that country's row may answer: in a list of
+ * countries, or when it is another name for one ("Indian" is a whole word of
+ * "British Indian Ocean Territory", which is no country we know, so that list
+ * reads as no list of countries at all).
+ */
+function isStrictCountry(value, labels) {
+  const country = countryOf(value);
+  if (!country) return false;
+  return countryShare(labels) >= 0.5 || normalizeOptionText(value) !== normalizeOptionText(country);
 }
 
 async function clickMatchingOption(el, value, nodes) {
   const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
-  let idx = labels.findIndex(t => commitMatches(value, t));
+  // The exact option first. A whole-word match alone took the FIRST row holding
+  // every word — Workday's results list "Computer & Info Science" above
+  // "Computer Science", and the wrong one was clicked.
+  const want = normalizeOptionText(value);
+  let idx = want ? labels.findIndex(t => normalizeOptionText(t) === want) : -1;
+  // A country in a list of countries: that country or nothing. "Indian" is a
+  // whole word of "British Indian Ocean Territory", and PwC's Country of Birth
+  // was filled with it (Oct 2026).
+  if (idx < 0 && isStrictCountry(value, labels)) {
+    const pick = countryOption(countryOf(value), labels);
+    idx = pick == null ? -1 : labels.indexOf(pick);
+    if (idx < 0) return false;
+  }
+  if (idx < 0) idx = labels.findIndex(t => commitMatches(value, t));
+  if (idx < 0 && inPagedList(nodes)) return false;
   if (idx < 0) {
     // No whole-word match among what is on screen. Fall back to the fuzzy
     // matcher, but only against the rows actually offered — so this can pick a
@@ -666,19 +1055,443 @@ async function clickMatchingOption(el, value, nodes) {
     idx = best == null ? -1 : labels.indexOf(best);
   }
   if (idx < 0) return false;
-  const node = nodes[idx];
-  try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
-  pressPointer(node);
+  const target = rowClickTarget(nodes[idx], labels[idx]);
+  try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+  pressPointer(target);
   return true;
 }
 
+/**
+ * Where to press an option row. On a Workday result row, the innermost element
+ * holding the text: the click then bubbles through whatever inside the row
+ * listens (promptLeafNode, the radio, the row itself), as a person's click on
+ * the words does. Any other row, itself.
+ */
+function rowClickTarget(node, label) {
+  let target = node;
+  const WD_ROW = '[data-automation-id="promptOption"], [data-automation-id="promptLeafNode"]';
+  let workdayRow = false;
+  try { workdayRow = node.matches(WD_ROW) || !!node.querySelector(WD_ROW); } catch (e) { workdayRow = false; }
+  if (workdayRow) {
+    for (const d of node.querySelectorAll('*')) {
+      if ((d.textContent || '').replace(/\s+/g, ' ').trim() === label) target = d;
+    }
+  }
+  return target;
+}
+
+/**
+ * The results of a Workday prompt search, once they offer one of `shapes`.
+ *
+ * Workday searches its server after Enter, and that round trip regularly ran
+ * past the 1.2 s this used to wait: the extension moved on to the next skill
+ * just as the previous skill's results arrived (NVIDIA, Oct 2026). So it waits
+ * up to TIMING.remoteSearchMs for results that offer the answer — returning
+ * the moment they do, so a fast search costs nothing extra — and stops early
+ * once Workday says "No Items" for a search that has had time to run.
+ */
+async function waitForPromptResults(el, shapes, done, opts) {
+  const doc = el.ownerDocument || globalThis.document;
+  const start = Date.now();
+  const limit = Math.max(TIMING.remoteSearchMs, TIMING.optionWaitMs * 2);
+  const deadline = start + limit;
+  const pick = (opts && opts.pick) || promptResultFor;
+  // The list that was up BEFORE this search. Until Workday redraws it, what is
+  // on screen answers the previous search: "CSS" was matched to "CSS HTML" in
+  // the HTML results 5 ms after typing, and JavaScript was clicked in a list
+  // that was then replaced (NVIDIA, Nov 2026). A list identical to the old one
+  // is believed only after a while — two searches can return the same rows.
+  const stale = (opts && opts.staleSig) || '';
+  const STALE_TRUST_MS = 2500;
+  const offers = nodes => {
+    const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+    if (stale && labels.join('\n') === stale && Date.now() - start < STALE_TRUST_MS) return false;
+    return shapes.some(s => pick(s, labels) >= 0);
+  };
+  for (;;) {
+    // Workday may select the answer itself on Enter (Field of Study, an exact
+    // match): nothing to click then — clicking would only toggle it.
+    if (done && done()) { noteWait('search results', limit, start, false); return []; }
+    const nodes = visibleOptionNodes(doc, el);
+    if (nodes.length && offers(nodes)) { noteWait('search results', limit, start, false); return nodes; }
+    if (Date.now() - start > 1500 && saysNoItems(doc)) { note('no items'); noteWait('search results', limit, start, false); return nodes; }
+    if (Date.now() >= deadline) { noteWait('search results', limit, start, true); return nodes; }
+    await sleep(100);
+  }
+}
+
+/** Workday's empty-search message ("No Items.") is on screen. */
+function saysNoItems(doc) {
+  const roots = Array.from(doc.querySelectorAll('[data-automation-id="activeListContainer"], [role="listbox"]'));
+  return roots.some(root => {
+    const walker = doc.createTreeWalker(root, 4 /* NodeFilter.SHOW_TEXT */);
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      if (/^\s*no (items|results|matches)( found)?\.?\s*$/i.test(n.nodeValue || '')
+          && isNodeVisible(n.parentElement)) return true;
+    }
+    return false;
+  });
+}
+
+/** The answers a Workday prompt already shows as pills. */
+function promptPills(row) {
+  const p = probe();
+  const box = p && p.workdayMultiselect && p.workdayMultiselect(typableInput(row) || row.el);
+  if (!box) return [];
+  return Array.from(box.querySelectorAll('[data-automation-id="selectedItem"]'))
+    .map(n => (n.textContent || '').replace(/\s+/g, ' ').trim()).filter(Boolean);
+}
+
+/** The result row for `want`: the exact one, else the first holding all its words. Never fuzzy. */
+function promptResultFor(want, labels) {
+  const exact = normalizeOptionText(want);
+  let idx = labels.findIndex(t => normalizeOptionText(t) === exact);
+  if (idx < 0) idx = labels.findIndex(t => commitMatches(want, t));
+  return idx;
+}
+
+/**
+ * The result row that IS this skill, or -1. Stricter than promptResultFor:
+ * a row with extra words is a different skill ("LLM Evaluation" is not
+ * "LLM", "CSS HTML" is not "CSS"), and claiming it would put a skill on the
+ * application the person never listed. Accepted, best first:
+ *   the same name                     SQL          → SQL
+ *   the name plus Workday's note      Python       → Python (Programming Language)
+ *   the note is the name              LLM          → Large Language Models (LLM)
+ *   the name without its own note     NLP-style "Natural Language Processing(NLP)"
+ */
+export function skillResultFor(want, labels) {
+  const norm = s => normalizeOptionText(s);
+  const bare = s => norm(String(s || '').replace(/\([^)]*\)/g, ' '));
+  const notes = s => (String(s || '').match(/\(([^)]*)\)/g) || []).map(n => norm(n.slice(1, -1)));
+  const w = norm(want), wBare = bare(want);
+  if (!w) return -1;
+  const tests = [
+    t => norm(t) === w,
+    t => bare(t) === w,
+    t => notes(t).includes(w),
+    t => !!wBare && (bare(t) === wBare || norm(t) === wBare),
+  ];
+  for (const test of tests) {
+    const idx = labels.findIndex(test);
+    if (idx >= 0) return idx;
+  }
+  return -1;
+}
+
+/**
+ * Add several answers to a Workday multi-select prompt ("Type to Add Skills").
+ *
+ * Workday's own sequence, per answer: write it, press Enter (typing alone does
+ * not search — the old results stay up), wait for "Search Results", click the
+ * row. The list stays open between answers. A skill already shown as a pill
+ * is left alone: its row is a ticked checkbox, and clicking it again removes
+ * it. A skill with no result containing its words is skipped and reported —
+ * an approximate pick would be a skill the person never claimed.
+ */
+async function commitPromptMulti(row, values) {
+  const el = row.el;
+  const input = typableInput(row) || el;
+  const out = { added: [], already: [], missing: [], pills: [] };
+  const shown = () => promptPills(row);
+  const has = (pills, skill) => pills.some(t => skillResultFor(skill, [t]) === 0);
+  // The search text, with an input event only. setText's extra `change` is
+  // nothing Workday's search box needs while its list is open.
+  const writeSearch = (text) => { focus(input); writeValue(input, text); fire(input, 'input'); };
+
+  // One skill: search with Enter, click its result, and WAIT for its pill.
+  // Workday saves each pick to its server ("pill-REMOTE_SKILL-…") and redraws
+  // the pills from the reply — the selection as it stood at that click, plus
+  // the new skill. Clicking the next skill before the reply came back meant
+  // that reply never held the earlier one: each new skill erased the one
+  // before it, and the 0.1 s check logged every skill "not offered" (NVIDIA,
+  // Oct 2026). A person is slower than the server; this waits for it.
+  const pillWaitMs = Math.max(TIMING.commitWaitMs * 2, 300);
+  const addOne = async (skill) => {
+    note('search', `"${skill}"`);
+    // What the list says before this search, so its leftovers are not taken
+    // for this search's results.
+    const before = visibleOptionNodes(el.ownerDocument || globalThis.document, el)
+      .map(n => (n.textContent || '').replace(/\s+/g, ' ').trim()).join('\n');
+    writeSearch(skill);
+    fireKey(input, 'keydown', 'Enter');
+    fireKey(input, 'keyup', 'Enter');
+    const options = await waitForPromptResults(el, [skill], null, { staleSig: before, pick: skillResultFor });
+    const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+    note('results', `${labels.length} rows`);
+    const idx = skillResultFor(skill, labels);
+    if (idx < 0) return 'missing';
+    const label = labels[idx];
+    if (shown().includes(label)) return 'already';   // ticked already, under another wording
+
+    // Workday draws the results, then redraws them (the highlight on the first
+    // row, the count): a row clicked the instant it appeared could already be
+    // gone. Settle, then take the row as it is NOW.
+    await sleep(Math.max(TIMING.settleMs, 150));
+    const rowNow = () => visibleOptionNodes(el.ownerDocument || globalThis.document, el)
+      .find(n => (n.textContent || '').replace(/\s+/g, ' ').trim() === label) || null;
+    const press = (node) => {
+      // The innermost element holding the text, so the click bubbles up through
+      // whatever inside the row listens (the checkbox, the label, the row).
+      let target = node;
+      for (const d of node.querySelectorAll('*')) {
+        if ((d.textContent || '').replace(/\s+/g, ' ').trim() === label) target = d;
+      }
+      try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+      pressPointer(target);
+    };
+    const ticked = (node) => !!node && (node.getAttribute('aria-selected') === 'true'
+      || node.getAttribute('aria-checked') === 'true'
+      || !!node.querySelector('input:checked, [aria-checked="true"]'));
+
+    let node = rowNow() || options[idx];
+    press(node);
+    const deadline = Date.now() + pillWaitMs;
+    let retried = false;
+    while (!has(shown(), skill) && Date.now() < deadline) {
+      await sleep(100);
+      // Not ticked in the list either after a moment: the click did not land.
+      // One more, on the row as it is now. Never when it shows ticked — a
+      // second click on a ticked row would remove the skill.
+      if (!retried && Date.now() > deadline - pillWaitMs / 2) {
+        retried = true;
+        const again = rowNow();
+        if (again && !ticked(again) && !has(shown(), skill)) { node = again; press(again); }
+      }
+    }
+    if (has(shown(), skill)) return 'added';
+    try {
+      console.info(`[TailorCV] skills: clicked "${label}" but no pill appeared — row was `
+        + `${node && node.isConnected ? 'on the page' : 'gone'}: `
+        + String(node && node.outerHTML || '').slice(0, 400));
+    } catch (e) { /* diagnostics only */ }
+    return 'missing';
+  };
+
+  try {
+    scrollIntoView(input);
+    openWidget(row);
+    await sleep(TIMING.settleMs);
+    for (const skill of values) {
+      if (has(shown(), skill)) { out.already.push(skill); continue; }
+      out[await addOne(skill)].push(skill);
+    }
+    // Belt and braces: anything that was on the field and is no longer —
+    // whatever removed it — gets one more search and click.
+    const lost = out.added.concat(out.already).filter(s => !has(shown(), s));
+    for (const skill of lost) {
+      console.info(`[TailorCV] skills: "${skill}" disappeared — adding it again`);
+      if ((await addOne(skill)) !== 'added') {
+        for (const list of [out.added, out.already]) {
+          const i = list.indexOf(skill);
+          if (i >= 0) list.splice(i, 1);
+        }
+        out.missing.push(skill);
+      }
+    }
+  } catch (e) {
+    // Reported through the counts below; the panel lists what did not land.
+  } finally {
+    // Nothing left in the search box for Workday to erase on blur, and no list
+    // left open over the fields below.
+    try { writeSearch(''); } catch (e) {}
+    dismissListbox(el);
+  }
+  out.pills = shown();
+  console.info(`[TailorCV] skills: added ${out.added.length}, already there ${out.already.length}`
+               + (out.missing.length ? `, not offered: ${out.missing.join(', ')}` : ''));
+  return out;
+}
+
 /** The option the planner's own rules choose for this EEO answer, or null. */
-function pickReadFirst(readFirst, labels) {
+/**
+ * After a click on a Workday prompt row: it either selected (done), or opened
+ * the row's own level — Workday keeps citizenship per country, so "India"
+ * opens "Citizen / Permanent Resident / …". Then the row stating `drill` is
+ * picked, by citizenship group only: "Non-Citizen" is never "Citizen".
+ *
+ * true / false when settled here; null when the list never changed, so the
+ * caller's ordinary commit check decides.
+ */
+async function drillDown(row, el, shapes, drill, before) {
+  const doc = el.ownerDocument || globalThis.document;
+  const isSet = () => shapes.some(s => committed(row, s));
+  const was = new Set(before);
+  const limit = Math.max(TIMING.commitWaitMs, 300);
+  const startedAt = Date.now();
+  const deadline = startedAt + limit;
+  let level = [];
+  for (;;) {
+    if (isSet()) { note('held'); noteWait('answer after the click', limit, startedAt, false); return true; }
+    const nodes = visibleOptionNodes(doc, el);
+    const labels = nodes.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+    if (labels.length && labels.some(l => !was.has(l))) {
+      const pick = citizenshipOption(drill, labels);
+      if (pick) {
+        await sleep(Math.max(TIMING.settleMs, 100));
+        const fresh = visibleOptionNodes(doc, el);
+        const node = fresh.find(n => (n.textContent || '').replace(/\s+/g, ' ').trim() === pick)
+          || nodes[labels.indexOf(pick)];
+        let target = node;
+        for (const d of node.querySelectorAll('*')) {
+          if ((d.textContent || '').replace(/\s+/g, ' ').trim() === pick) target = d;
+        }
+        try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+        pressPointer(target);
+        if (await settlesTo(row, shapes.concat([pick]))) return true;
+        console.info('[TailorCV] dropdown did not commit after choosing', JSON.stringify(pick),
+                     'in the level that opened:', labels.slice(0, 10));
+        return false;
+      }
+      if (labels.join('|') !== level.join('|')) note('level opened', labels.slice(0, 10).join(' | '));
+      level = labels;
+    }
+    if (Date.now() >= deadline) break;
+    await sleep(100);
+  }
+  noteWait('answer after the click', limit, startedAt, true);
+  if (level.length) {
+    console.info('[TailorCV] a level opened with no', JSON.stringify(drill), 'row:', level.slice(0, 10));
+    return false;
+  }
+  return null;
+}
+
+/**
+ * One answer inside a Workday two-level prompt: "How Did You Hear About Us?"
+ * lists categories (Job Posting Sites ›, Social Platform ›, Referral ›…) and
+ * LinkedIn sits inside one of them (PwC, Oct 2026). Searching the answer was
+ * all the old writer did, and on these lists it found nothing to click.
+ *
+ * Search first — Workday's search can return the leaf itself. Otherwise open
+ * the categories in `parents` order (only those: never a referral) and take
+ * the leaf in the first one that has it. Capped, so this one field can never
+ * hold up the rest of the page.
+ */
+async function commitHierarchyPick(row, leaf, parents, fallback) {
+  // One budget for the whole field, LinkedIn and fallback together.
+  const deadline = Date.now() + TIMING.remoteSearchMs + Math.max(TIMING.commitWaitMs * 2, 1000);
+  const first = await pickInHierarchy(row, leaf, parents, deadline);
+  if (first.ok) return true;
+  // Not offered anywhere: the fallback answer ("External Agency"), searched or
+  // on the top level, never inside a category. Not when the list never showed
+  // a row at all: it is not answering, and asking again only waits again.
+  if (!fallback || !first.sawRows || Date.now() >= deadline) return false;
+  return (await pickInHierarchy(row, fallback, [], deadline)).ok;
+}
+
+async function pickInHierarchy(row, leaf, parents, deadline) {
+  const el = row.el;
+  const doc = el.ownerDocument || globalThis.document;
+  const input = typableInput(row) || el;
+  const listWaitMs = Math.max(TIMING.optionWaitMs * 2, 1000);
+  const text = n => (n.textContent || '').replace(/\s+/g, ' ').trim();
+  const want = normalizeOptionText(leaf);
+  const rowsNow = () => visibleOptionNodes(doc, el);
+  const leafRow = () => rowsNow().find(n => normalizeOptionText(text(n)) === want) || null;
+  const isSet = () => committed(row, leaf);
+  const press = (node) => {
+    let target = node;
+    for (const d of node.querySelectorAll('*')) if (text(d) === text(node)) target = d;
+    try { target.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+    pressPointer(target);
+  };
+  const takeLeaf = async () => {
+    if (!leafRow()) return false;
+    await sleep(Math.max(TIMING.settleMs, 100));
+    const node = leafRow();
+    if (!node) return false;
+    press(node);
+    return settlesTo(row, [leaf]);
+  };
+  let sawRows = false;
+  // A list either shows its rows within about a second or is not going to.
+  const waitRows = async (test) => {
+    const until = Math.min(deadline, Date.now() + listWaitMs);
+    for (;;) {
+      const nodes = rowsNow();
+      if (nodes.length) sawRows = true;
+      if (nodes.length && test(nodes)) return nodes;
+      if (Date.now() >= until) return nodes;
+      await sleep(100);
+    }
+  };
+  const isParent = (label, parent) => {
+    const a = normalizeOptionText(label), b = normalizeOptionText(parent);
+    return !!a && !!b && (a === b || a.includes(b) || b.includes(a));
+  };
+  // A row that OPENS a list: Workday draws a › on it. Pressing a plain row
+  // selects it — on a flat list "Social Media" was chosen while looking for
+  // the category LinkedIn might be in.
+  const NAV_SEL = '[class*="chevron" i], [class*="caret-right" i], [class*="arrow-right" i], '
+    + '[aria-haspopup="true"], [aria-expanded]';
+  const opensList = (node) => {
+    try { return node.matches(NAV_SEL) || !!node.querySelector(NAV_SEL); } catch (e) { return false; }
+  };
+  const reopen = async () => {
+    dismissListbox(el);
+    await sleep(TIMING.settleMs);
+    openWidget(row);
+    return waitRows(nodes => parents.some(p => nodes.some(n => isParent(text(n), p))));
+  };
+
+  let seen = [];
+  try {
+    scrollIntoView(el);
+    dismissListbox(el);
+    openWidget(row);
+    await sleep(TIMING.settleMs);
+
+    // 1. Search: write it, Enter, take the leaf if the results hold it.
+    focus(input); writeValue(input, leaf); fire(input, 'input');
+    fireKey(input, 'keydown', 'Enter'); fireKey(input, 'keyup', 'Enter');
+    await waitForPromptResults(el, [leaf], isSet);
+    if (rowsNow().length) sawRows = true;
+    if (isSet()) return { ok: true, sawRows: true };
+    if (await takeLeaf()) return { ok: true, sawRows: true };
+
+    // 2. Browse: the top level itself, then each category that would hold it.
+    focus(input); writeValue(input, ''); fire(input, 'input');
+    let top = await reopen();
+    if (await takeLeaf()) return { ok: true, sawRows: true };
+    for (const parent of parents) {
+      if (Date.now() >= deadline) break;
+      seen = top.map(text);
+      const cat = top.find(n => isParent(text(n), parent) && opensList(n));
+      if (!cat) continue;
+      const before = new Set(seen);
+      press(cat);
+      await waitRows(nodes => nodes.some(n => !before.has(text(n))));
+      if (isSet()) return { ok: true, sawRows: true };
+      if (await takeLeaf()) return { ok: true, sawRows: true };
+      top = await reopen();                 // back to the top level
+    }
+    console.info('[TailorCV] no', JSON.stringify(leaf), 'in this list — rows seen:', seen.slice(0, 15),
+                 '| first row:', (top[0] && top[0].outerHTML || '').slice(0, 300));
+    reportDropdownFailure(row, leaf, rowsNow());
+    return { ok: false, sawRows };
+  } catch (e) {
+    return { ok: false, sawRows };
+  } finally {
+    dismissListbox(row.el);
+  }
+}
+
+function pickReadFirst(readFirst, labels, wholeList) {
+  // A saved answer: the one saved for this kind of list (saved.js).
+  if (readFirst.key === 'saved') {
+    const saved = pickSaved(readFirst.entry, labels);
+    return saved != null && labels.includes(saved) ? saved : null;
+  }
   const pick = coerce(readFirst.stored, {
     kind: 'combobox',
     options: labels,
     candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
     candidateKey: readFirst.key,
+    wholeList,
+    sponsorship: readFirst.sponsorship,
+    citizenHere: readFirst.citizenHere,
+    country: readFirst.country,
   });
   return pick != null && labels.includes(pick) ? pick : null;
 }
@@ -686,9 +1499,19 @@ function pickReadFirst(readFirst, labels) {
 function committed(row, value) {
   const after = reprobe(row);
   if (!after) return false;
-  if (after.invalid) return false;
+  // Not for a SuccessFactors picklist: it flags itself "required" when opened
+  // empty and clears that later, while its title already holds the choice. A
+  // correct "No" was reported as not sticking (ExxonMobil, Oct 2026).
+  if (after.invalid && !picklistButton(row.el)) return false;
   if (!after.filled) return false;          // typed but never committed
+  if (differentCountries(value, after.value)) return false;
   return commitMatches(value, after.value);
+}
+
+/** Both name a country, and not the same one: never "the same answer", whatever words they share. */
+function differentCountries(value, shown) {
+  const a = countryOf(value), b = countryOf(shown);
+  return !!(a && b && a !== b);
 }
 
 /**
@@ -701,10 +1524,16 @@ function committed(row, value) {
  * Returns as soon as it holds, so a quick widget costs no extra time.
  */
 export async function settlesTo(row, shapes, ms) {
-  const deadline = Date.now() + (ms == null ? TIMING.commitWaitMs : ms);
+  const limit = ms == null ? TIMING.commitWaitMs : ms;
+  const startedAt = Date.now();
+  const deadline = startedAt + limit;
   for (;;) {
-    if ((shapes || []).some(sh => committed(row, sh))) return true;
-    if (Date.now() >= deadline) return false;
+    if ((shapes || []).some(sh => committed(row, sh))) {
+      note('held');
+      noteWait('field to hold it', limit, startedAt, false);
+      return true;
+    }
+    if (Date.now() >= deadline) { noteWait('field to hold it', limit, startedAt, true); return false; }
     await sleep(Math.max(TIMING.settleMs, 100));
   }
 }
@@ -877,6 +1706,17 @@ export async function setDateParts(row, iso) {
  *    claimed we could not fill — when the first write had been correct.
  */
 function accepts(decision, value, shown) {
+  if (differentCountries(value, shown)) return false;
+  // A split date is compared as a date: the profile's "2003-12-01" is the
+  // form's "12/1/2003". As words they differ, and a correct Date of Birth (and
+  // Workday's work-experience From / To) was reported as "the form shows … instead".
+  if (decision && decision.row && decision.row.kind === 'date-parts') return sameDate(value, shown);
+  // A calendar shows the date its own way: "2004-05-08" is its "8 May 2004".
+  if (decision && decision.row && isCalendarInput(decision.row.el)) {
+    const a = parseLooseDate(value), b = parseLooseDate(shown);
+    if (a && b) return a.y === b.y && a.m === b.m && a.d === b.d;
+  }
+  if (commitMatches(value, shown)) return true;
   if (commitMatches(value, shown)) return true;
   for (const candidate of (decision && decision.candidates) || []) {
     if (commitMatches(candidate, shown)) return true;
@@ -885,7 +1725,25 @@ function accepts(decision, value, shown) {
   // same answer if the planner's rules would have picked what is shown.
   if (decision && decision.readFirst && shown
       && pickReadFirst(decision.readFirst, [shown]) === shown) return true;
+  if (decision && decision.readFirst && decision.readFirst.picked
+      && commitMatches(decision.readFirst.picked, shown)) return true;
   return isPhoneField(decision && decision.row) && samePhone(value, shown);
+}
+
+/**
+ * ISO "YYYY-MM-DD" / "YYYY-MM" / "YYYY" against a split date read back in the
+ * form's order — month/day/year, month/year, or year (readDateParts) — by number.
+ */
+function sameDate(iso, shown) {
+  const want = /^(\d{4})(?:-(\d{1,2}))?(?:-(\d{1,2}))?$/.exec(String(iso || '').trim());
+  const got = String(shown || '').split('/').map(s => s.trim());
+  if (!want || !got.every(s => /^\d+$/.test(s))) return false;
+  const [, y, m, d] = want;
+  const read = got.length === 3 ? { m: got[0], d: got[1], y: got[2] }
+             : got.length === 2 ? { m: got[0], y: got[1] }
+             : { y: got[0] };
+  const same = (a, b) => a === undefined || b === undefined || Number(a) === Number(b);
+  return same(y, read.y) && same(m, read.m) && same(d, read.d);
 }
 
 function isPhoneField(row) {
@@ -903,10 +1761,91 @@ function samePhone(wanted, shown) {
   return a === b || a.endsWith(b) || b.endsWith(a);
 }
 
+/**
+ * A date through its jQuery UI calendar: year, then month, then the day. Written
+ * straight into the input, the calendar's own handler never runs, so the form
+ * would not react (Keka enables End of Course from it). False, with nothing typed,
+ * if the calendar will not open or does not offer that date: a blocked future day,
+ * a year off its list, or a calendar with no month and year lists.
+ */
+async function setCalendarDate(row, value) {
+  const date = parseLooseDate(value);
+  const el = row.el;
+  if (!date || !el) return false;
+  const doc = el.ownerDocument || globalThis.document;
+  const open = () => {
+    const box = doc.getElementById('ui-datepicker-div');
+    return box && isNodeDrawn(box) ? box : null;
+  };
+  const opened = async () => {
+    const deadline = Date.now() + TIMING.optionWaitMs;
+    for (;;) {
+      if (open()) return true;
+      if (Date.now() >= deadline) return false;
+      await sleep(50);
+    }
+  };
+  const choose = async (selector, wanted) => {
+    const box = open();
+    const list = box && box.querySelector(selector);
+    if (!list || !Array.from(list.options).some(o => o.value === String(wanted))) return false;
+    if (list.value !== String(wanted)) {
+      list.value = String(wanted);
+      fire(list, 'change');
+      await sleep(Math.max(TIMING.settleMs, 50));
+    }
+    return true;
+  };
+  try {
+    scrollIntoView(el);
+    blur(el);
+    focus(el);
+    pressPointer(el);
+    // A tab that is not in front gets no focus event of its own.
+    if (!open()) fire(el, 'focus');
+    if (!await opened()) { note('calendar did not open'); return false; }
+    note('opened');
+    if (!await choose('.ui-datepicker-year', date.y) || !await choose('.ui-datepicker-month', date.m - 1)) {
+      note('calendar does not offer', `${date.m}/${date.y}`);
+      return false;
+    }
+    const box = open();
+    const day = box && Array.from(box.querySelectorAll('td[data-handler="selectDay"] a')).find((a) => {
+      const cell = a.closest('td');
+      return (a.textContent || '').trim() === String(date.d)
+        && cell.getAttribute('data-month') === String(date.m - 1)
+        && cell.getAttribute('data-year') === String(date.y);
+    });
+    if (!day) { note('calendar does not offer', `day ${date.d}`); return false; }
+    note('click', `day ${date.d}`);
+    pressPointer(day);
+    const deadline = Date.now() + TIMING.commitWaitMs;
+    for (;;) {
+      const shown = parseLooseDate(el.value);
+      if (shown && shown.y === date.y && shown.m === date.m && shown.d === date.d) { note('held'); return true; }
+      if (Date.now() >= deadline) return false;
+      await sleep(50);
+    }
+  } finally {
+    if (open()) dismissListbox(el);
+  }
+}
+
 export async function applyDecision(decision) {
   const row = decision.row;
   const value = decision.value;
   if (!row || !row.el || !value) return { ok: false, outcome: 'failed', shown: '' };
+  const isList = row.kind === 'combobox' || row.kind === 'select' || isCalendarInput(row.el);
+  if (isList) beginTimeline(row);
+
+  // Workday's "Type to Add Skills": several answers, each its own search.
+  if (decision.multiValues && decision.multiValues.length && row.multiPrompt) {
+    const res = await commitPromptMulti(row, decision.multiValues);
+    if (res.missing.length) decision.reason = `not in this employer's list: ${res.missing.join(', ')} — add any yourself`;
+    const ok = res.pills.length > 0 && res.added.length + res.already.length > 0;
+    endTimeline(ok ? 'ok' : 'empty');
+    return { ok, outcome: ok ? 'ok' : 'empty', shown: res.pills.join(' | ') };
+  }
 
   let wrote = false;
   switch (row.kind) {
@@ -914,13 +1853,27 @@ export async function applyDecision(decision) {
       wrote = await setDateParts(row, value);
       break;
     case 'select':
+      // A hidden select behind a bootstrap-multiselect: written alone, the box
+      // the person sees would stay empty.
+      if (multiselectWidget(row.el)) {
+        const picked = await commitMultiselect(row, value, decision.candidates, decision.readFirst,
+                                               decision.source === 'profile');
+        wrote = !!picked;
+        // The row chosen is this answer as this list words it ("Alignerr" for
+        // "Alignerr Inc"), not a form showing something else.
+        if (picked) decision.candidates = (decision.candidates || []).concat(picked);
+        break;
+      }
       wrote = setSelect(row.el, value);
       // A "select" that has no real <option> children is a custom widget
       // wearing a select's clothes.
-      if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
+      if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
       break;
     case 'combobox':
-      wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
+      wrote = decision.hierarchy && isWorkdayPrompt(row.el)
+        ? await commitHierarchyPick(row, decision.hierarchy.leaf, decision.hierarchy.parents,
+                                    decision.hierarchy.fallback)
+        : await commitCombobox(row, value, decision.candidates, decision.readFirst, decision.drill);
       break;
     case 'radio':
     case 'checkbox':
@@ -933,7 +1886,18 @@ export async function applyDecision(decision) {
       wrote = setContentEditable(row.el, value);
       break;
     default:
+      if (isCalendarInput(row.el)) {
+        wrote = await setCalendarDate(row, value);
+        if (wrote || row.el.readOnly) break;
+      }
       wrote = setText(row.el, value);
+      // A UI5 date picker (SuccessFactors) takes a typed date on Enter: the
+      // input event alone leaves its own value — the one the form reads — empty.
+      if (wrote && datePickerHost(row.el)) {
+        fireKey(row.el, 'keydown', 'Enter');
+        fireKey(row.el, 'keyup', 'Enter');
+        fire(row.el, 'change');
+      }
       if (wrote) {
         await sleep(TIMING.settleMs);
         const check = reprobe(row);
@@ -948,6 +1912,7 @@ export async function applyDecision(decision) {
   }
 
   const result = await verdict(decision, row, value, wrote);
+  if (isList) endTimeline(result.outcome);
 
   // A dropdown that did not end up filled goes to the sidebar — with its real
   // options, so the person picks from the list instead of typing into a text
@@ -970,6 +1935,22 @@ export async function applyDecision(decision) {
     if (labels.length) decision.options = labels.map(label => ({ value: label, label }));
   }
   return result;
+}
+
+/**
+ * Does a field we filled still hold our answer? 'ok', 'empty', 'changed', or
+ * 'gone' (no longer on the page). Judged as the write itself was (accepts): a
+ * form that reformatted the answer ("+91" for "+91 (India)") still holds it.
+ */
+export function heldNow(decision) {
+  const row = decision && decision.row;
+  const after = row && reprobe(row);
+  if (!after) return 'gone';
+  if (!after.filled) return 'empty';
+  if (after.value === decision.shown) return 'ok';
+  const loneCheckboxTicked = row.kind === 'checkbox' && (row.options || []).length <= 1
+    && /^(yes|true|on|checked)$/i.test(String(decision.value));
+  return loneCheckboxTicked || accepts(decision, decision.value, after.value) ? 'ok' : 'changed';
 }
 
 async function verdict(decision, row, value, wrote) {

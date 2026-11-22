@@ -98,6 +98,10 @@ Not inherently. Paid tools often give more detail; the underlying score is still
 
 The value is in the breakdown and in tracking movement within a single tool, not in the headline figure.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The category scores and skill rows are the breakdown to follow from one scan to the next.
+
 [Run a free scan](/ats-analysis) and use it as your consistent baseline - then judge your edits by whether the missing list shortens, which is the part that means the same thing everywhere.
 
 Related: [what counts as a good score](/blog/good-ats-score-when-to-stop) and [how to read an ATS report](/blog/how-to-read-your-ats-report).

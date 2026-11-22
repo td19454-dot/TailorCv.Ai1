@@ -87,4 +87,8 @@ Rather than guessing at a number in the abstract, the fastest way to know what "
 
 [Scan your resume against the posting](/ats-analysis) and look at the missing-requirements list. That list — not a general rule of thumb — tells you exactly what coverage would move your standing, and roughly how much work remains.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The rows marked Missing show what is left to cover for this posting.
+
 Free, about a minute. See also [which missing skills actually matter](/blog/which-missing-skills-actually-matter) and [required vs preferred qualifications](/blog/required-vs-preferred-in-practice).

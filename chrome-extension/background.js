@@ -116,6 +116,22 @@ async function fetchJob(urls) {
   return {};
 }
 
+// The job's country, from a Workday posting's own data: its URL may name only
+// a city (/job/Bangalore/…). { country } when the posting was read, '' if it
+// doesn't settle it; null when it couldn't be read.
+async function fetchJobCountry(url) {
+  const J = self.TCVJobSource;
+  const k = J && J.jobKey(url);
+  if (!k || k.ats !== 'workday') return null;
+  try {
+    const res = await fetch(k.api, { credentials: 'include', headers: { Accept: 'application/json' } });
+    return res.ok ? { country: J.postingCountry(k.ats, await res.json()) } : null;
+  } catch (e) {
+    console.warn('[TailorCV] could not read the job posting at', url, '—', e && e.message);
+    return null;
+  }
+}
+
 async function getCsrfToken() {
   // Make sure a csrftoken cookie exists (the server sets one on every response),
   // then read it back — the double-submit CSRF pattern needs it echoed as a header.
@@ -679,10 +695,39 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           body: JSON.stringify(msg.payload || {}),
         });
         if (!res.ok) {
-          sendResponse({ error: 'Could not save that answer.' });
+          // The status and the server's reason go back to the panel: a bare
+          // "could not save" left a 401, a 422 and an outage looking the same.
+          const data = await res.json().catch(() => ({}));
+          console.warn('[TailorCV] saving answers failed', res.status, data);
+          sendResponse({
+            error: res.status === 401 ? 'You are signed out of TailorCV — sign in and try again.'
+              : `${detailText(data.detail, 'Could not save that answer.')} (HTTP ${res.status})`,
+            code: res.status,
+          });
           return;
         }
         // A saved answer changes what the next form can be filled from.
+        await clearAutofillContext();
+        sendResponse({ data: await res.json() });
+
+      } else if (msg.type === 'AF_FORGET_ANSWER') {
+        // The panel's Forget on a row filled from a saved answer: that kind of
+        // list's answer only (see qa_store.forget_answer).
+        const res = await fetch(`${BASE_URL}/api/extension/autofill/answers/forget`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(msg.payload || {}),
+        });
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          sendResponse({
+            error: res.status === 401 ? 'You are signed out of TailorCV — sign in and try again.'
+              : `${detailText(data.detail, 'Could not forget that answer.')} (HTTP ${res.status})`,
+            code: res.status,
+          });
+          return;
+        }
         await clearAutofillContext();
         sendResponse({ data: await res.json() });
 
@@ -745,6 +790,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
       } else if (msg.type === 'JOB_FETCH') {
         sendResponse({ data: await fetchJob(msg.urls) });
+
+      } else if (msg.type === 'JOB_COUNTRY') {
+        sendResponse({ data: await fetchJobCountry(msg.url) });
 
       } else if (msg.type === 'AF_FRAME_DISCOVER') {
         sendResponse({ data: discoverFormFrames(sender) });

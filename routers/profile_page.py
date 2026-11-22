@@ -23,18 +23,29 @@ saves and reports its effective value with no second place to update.
 from __future__ import annotations
 
 import json
+import logging
 import os
+import re
 from dataclasses import dataclass, field
+from datetime import date
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 
+import document_store
 from database import SessionLocal
 from models import User, UserApplyProfile, UserApplyQA
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
+
+# The Chrome Web Store listing — the same env var and default main.py uses.
+CHROME_STORE_URL = os.getenv(
+    "CHROME_STORE_URL",
+    "https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb",
+).strip()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
@@ -78,6 +89,417 @@ DISABILITY_OPTIONS = _eeo(
 PRONOUN_OPTIONS = _eeo("He/him", "She/her", "They/them", "He/they", "She/they",
                        "Ze/zir", "My pronouns are not listed")
 LGBTQ_OPTIONS = _eeo("Yes", "No", "Questioning")
+
+# The profile's Degree dropdown, grouped by level. Each is the person's actual
+# degree; the extension's DEGREE_CATALOG (chrome-extension/src/autofill/plan.js)
+# turns it into what each employer's list calls it — "BTECH" on Workday,
+# "Bachelor's Degree" on Greenhouse. test_degree_options.py checks that every
+# label here is recognised there.
+DEGREE_GROUPS = [
+    ("Doctorate", ["PhD (Doctor of Philosophy)", "MD (Doctor of Medicine)", "JD (Juris Doctor)"]),
+    ("Master's", ["M.Tech (Master of Technology)", "M.E. (Master of Engineering)",
+                  "M.S. / M.Sc (Master of Science)", "MCA (Master of Computer Applications)",
+                  "MBA (Master of Business Administration)", "M.A. (Master of Arts)",
+                  "M.Com (Master of Commerce)", "Master's degree (other)"]),
+    ("Bachelor's", ["B.Tech (Bachelor of Technology)", "B.E. (Bachelor of Engineering)",
+                    "B.S. / B.Sc (Bachelor of Science)", "BCA (Bachelor of Computer Applications)",
+                    "BBA (Bachelor of Business Administration)", "B.A. (Bachelor of Arts)",
+                    "B.Com (Bachelor of Commerce)", "Bachelor's degree (other)"]),
+    ("Other", ["Associate's degree", "University Diploma", "Diploma", "Post-diploma studies",
+               "Technical/other training", "Some post college", "Some college",
+               "High School", "No degree"]),
+]
+
+# The profile's Field of Study dropdown: Workday's own list (NVIDIA, Oct 2026),
+# spelled exactly as Workday spells it, so the value autofill puts into
+# Workday's Field of Study box is one of its options verbatim — no fuzzy match.
+# Workday lists "Electronics & Communication" twice (once in capitals); kept once.
+FIELD_OF_STUDY_OPTIONS = [
+    "Accounting", "Advanced Computing", "Advertising", "Aeronautical Engineering", "Aerospace",
+    "Agriculture", "Animation", "Applications Design and Data Analysis", "Applied Computing",
+    "Applied Electronics", "Applied Informatics", "Applied Mathematics", "Applied Science",
+    "Applied Statistics", "Architecture", "Art", "Artificial Intelligence", "Automation",
+    "Automotive Engineering", "Big Data Algorithms", "Biochemistry", "BioComputational Physics",
+    "Bio-Electrical Engineering", "Bioengineering", "Bioinformatics", "Biology",
+    "Biomedical Applications", "Biomedical Engineering", "Business Administration",
+    "Business Analytics", "Business Management", "Catalysis Science", "Chartered Accountant",
+    "Chemical Engineering", "Chemistry", "Civil Engineering", "Cognitive Science", "Communications",
+    "Complexity Science & Engineering", "Computational Fluid Dynamics",
+    "Computational Mathematics", "Computational Science & Engineering", "Computer & Info Science",
+    "Computer Application", "Computer Engineering", "Computer Games",
+    "Computer Information Systems", "Computer Networking", "Computer Science",
+    "Computer Science & Engin.", "Computer System Design", "Computer Vision and Machine Learning",
+    "Control & Instrumentation", "Control Science and Engineering", "Data Science",
+    "Deep Learning", "Design Technology", "Ecommerce", "Economics", "Education",
+    "Electrical & Computer Engineering", "Electrical and Electronics Engineering",
+    "Electrical Engineering", "Electrical Engineering and Computer Science",
+    "Electronic Engineering", "Electronics", "Electronics & Communication",
+    "Embedded System Design", "Energy and Environmental Systems", "Engineering", "English",
+    "Entrepreneurship", "Finance", "Game Design", "Geomatics Engineering", "Graphic Design",
+    "High Performance Computing", "History", "HumanComputer Interaction", "Humanities",
+    "Human Resources", "Images", "Industrial Arts", "Industrial Engineering",
+    "Information systems & Technologies", "Information Technology",
+    "Innovation and Research Results Transfer", "Interactive Telecommunications Program",
+    "Interdisciplinary Studies", "Law", "Logic and Methodology of Science", "Machine Learning",
+    "Management Information Systems", "Management science and Engineering", "Marketing",
+    "Materials Engineering", "Mathematics", "Mechanical and Electrical Engineering",
+    "Mechanical Engineering", "Mechanics", "Mechatronics Engineering", "Media Arts and Animation",
+    "Neuroscience", "No Degree", "Other", "Physical Chemistry", "Physics", "Political Science",
+    "Product Development & Management", "Product Management", "Project Management",
+    "Psychology", "Public Relations", "Radio Physics", "Robotics Engineering", "Robotic Systems",
+    "Science", "Scientific Computing", "Software Engineering", "Speech Recognition", "Statistics",
+    "Technical Management", "Telecommunication", "Thermal Engineering", "Visual Communication",
+    "Visual Psychophysics",
+]
+
+# "Citizenship Status" in the categories US forms ask it in (SpaceX's ITAR list:
+# citizen or national / lawful permanent resident / refugee / asylee / DACA /
+# other). A fixed list, not free text: plan.js CITIZENSHIP_GROUPS maps each onto
+# the form's own wording, and only within the same group.
+CITIZENSHIP_OPTIONS = [
+    ("", "Not set"),
+    ("U.S. citizen or national", "U.S. citizen or national"),
+    ("U.S. lawful permanent resident (green card)", "U.S. lawful permanent resident (green card)"),
+    ("Refugee", "Refugee"),
+    ("Asylee", "Asylee"),
+    ("DACA recipient", "DACA recipient"),
+    ("Not a U.S. citizen or permanent resident", "Not a U.S. citizen or permanent resident"),
+]
+
+# Country of citizenship. The first names of chrome-extension/src/autofill/
+# countries.js, which autofill reads this against ("Are you a citizen of …?",
+# country and nationality lists, Workday's per-country citizenship list).
+COUNTRY_OPTIONS = [("", "Not set")] + [(c, c) for c in [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
+    "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
+    "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
+    "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso",
+    "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic",
+    "Chad", "Chile", "China", "Colombia", "Comoros", "Congo",
+    "Democratic Republic of the Congo", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba",
+    "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini",
+    "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana",
+    "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras",
+    "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland",
+    "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati",
+    "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia",
+    "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Madagascar", "Malawi",
+    "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
+    "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco",
+    "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand",
+    "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman",
+    "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru",
+    "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Romania", "Russia", "Rwanda",
+    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa",
+    "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles",
+    "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia",
+    "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname",
+    "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand",
+    "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan",
+    "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
+    "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen",
+    "Zambia", "Zimbabwe",
+]]
+
+NATIONALITY_LEGACY = {
+    "afghan": "Afghanistan",
+    "albanian": "Albania",
+    "algerian": "Algeria",
+    "andorran": "Andorra",
+    "angolan": "Angola",
+    "antiguan": "Antigua and Barbuda",
+    "argentine": "Argentina",
+    "argentinian": "Argentina",
+    "armenian": "Armenia",
+    "australian": "Australia",
+    "austrian": "Austria",
+    "azerbaijani": "Azerbaijan",
+    "the bahamas": "Bahamas",
+    "bahamian": "Bahamas",
+    "bahraini": "Bahrain",
+    "bangladeshi": "Bangladesh",
+    "barbadian": "Barbados",
+    "belarusian": "Belarus",
+    "belgian": "Belgium",
+    "belizean": "Belize",
+    "beninese": "Benin",
+    "bhutanese": "Bhutan",
+    "plurinational state of bolivia": "Bolivia",
+    "bolivia, plurinational state of": "Bolivia",
+    "bolivian": "Bolivia",
+    "bosnian": "Bosnia and Herzegovina",
+    "motswana": "Botswana",
+    "botswanan": "Botswana",
+    "brazilian": "Brazil",
+    "brunei darussalam": "Brunei",
+    "bruneian": "Brunei",
+    "bulgarian": "Bulgaria",
+    "burkinabe": "Burkina Faso",
+    "burundian": "Burundi",
+    "cape verde": "Cabo Verde",
+    "cape verdean": "Cabo Verde",
+    "cambodian": "Cambodia",
+    "cameroonian": "Cameroon",
+    "canadian": "Canada",
+    "central african": "Central African Republic",
+    "chadian": "Chad",
+    "chilean": "Chile",
+    "people's republic of china": "China",
+    "prc": "China",
+    "chinese": "China",
+    "colombian": "Colombia",
+    "comoran": "Comoros",
+    "republic of the congo": "Congo",
+    "congo, republic of the": "Congo",
+    "congolese": "Congo",
+    "dr congo": "Democratic Republic of the Congo",
+    "drc": "Democratic Republic of the Congo",
+    "congo, democratic republic of the": "Democratic Republic of the Congo",
+    "congo, the democratic republic of the": "Democratic Republic of the Congo",
+    "costa rican": "Costa Rica",
+    "côte d'ivoire": "Cote d'Ivoire",
+    "ivory coast": "Cote d'Ivoire",
+    "ivorian": "Cote d'Ivoire",
+    "croatian": "Croatia",
+    "cuban": "Cuba",
+    "cypriot": "Cyprus",
+    "czechia": "Czech Republic",
+    "czech": "Czech Republic",
+    "danish": "Denmark",
+    "dane": "Denmark",
+    "djiboutian": "Djibouti",
+    "dominican (dominica)": "Dominica",
+    "dominican": "Dominican Republic",
+    "ecuadorian": "Ecuador",
+    "egyptian": "Egypt",
+    "salvadoran": "El Salvador",
+    "equatoguinean": "Equatorial Guinea",
+    "eritrean": "Eritrea",
+    "estonian": "Estonia",
+    "swaziland": "Eswatini",
+    "swazi": "Eswatini",
+    "ethiopian": "Ethiopia",
+    "fijian": "Fiji",
+    "finnish": "Finland",
+    "finn": "Finland",
+    "french": "France",
+    "gabonese": "Gabon",
+    "the gambia": "Gambia",
+    "gambian": "Gambia",
+    "georgian": "Georgia",
+    "german": "Germany",
+    "ghanaian": "Ghana",
+    "greek": "Greece",
+    "grenadian": "Grenada",
+    "guatemalan": "Guatemala",
+    "guinean": "Guinea",
+    "bissau-guinean": "Guinea-Bissau",
+    "guyanese": "Guyana",
+    "haitian": "Haiti",
+    "honduran": "Honduras",
+    "hong kong sar": "Hong Kong",
+    "hong kong sar china": "Hong Kong",
+    "hong kong sar, china": "Hong Kong",
+    "hong konger": "Hong Kong",
+    "hungarian": "Hungary",
+    "icelandic": "Iceland",
+    "icelander": "Iceland",
+    "republic of india": "India",
+    "indian": "India",
+    "indonesian": "Indonesia",
+    "iran, islamic republic of": "Iran",
+    "islamic republic of iran": "Iran",
+    "iranian": "Iran",
+    "iraqi": "Iraq",
+    "republic of ireland": "Ireland",
+    "irish": "Ireland",
+    "israeli": "Israel",
+    "italian": "Italy",
+    "jamaican": "Jamaica",
+    "japanese": "Japan",
+    "jordanian": "Jordan",
+    "kazakhstani": "Kazakhstan",
+    "kazakh": "Kazakhstan",
+    "kenyan": "Kenya",
+    "i-kiribati": "Kiribati",
+    "kosovar": "Kosovo",
+    "kuwaiti": "Kuwait",
+    "kyrgyz": "Kyrgyzstan",
+    "lao people's democratic republic": "Laos",
+    "lao": "Laos",
+    "laotian": "Laos",
+    "latvian": "Latvia",
+    "lebanese": "Lebanon",
+    "basotho": "Lesotho",
+    "liberian": "Liberia",
+    "libyan": "Libya",
+    "liechtensteiner": "Liechtenstein",
+    "lithuanian": "Lithuania",
+    "luxembourgish": "Luxembourg",
+    "luxembourger": "Luxembourg",
+    "macao": "Macau",
+    "macao sar china": "Macau",
+    "macanese": "Macau",
+    "malagasy": "Madagascar",
+    "malawian": "Malawi",
+    "malaysian": "Malaysia",
+    "maldivian": "Maldives",
+    "malian": "Mali",
+    "maltese": "Malta",
+    "marshallese": "Marshall Islands",
+    "mauritanian": "Mauritania",
+    "mauritian": "Mauritius",
+    "mexican": "Mexico",
+    "micronesia, federated states of": "Micronesia",
+    "micronesian": "Micronesia",
+    "moldova, republic of": "Moldova",
+    "republic of moldova": "Moldova",
+    "moldovan": "Moldova",
+    "monegasque": "Monaco",
+    "mongolian": "Mongolia",
+    "montenegrin": "Montenegro",
+    "moroccan": "Morocco",
+    "mozambican": "Mozambique",
+    "burma": "Myanmar",
+    "burmese": "Myanmar",
+    "namibian": "Namibia",
+    "nauruan": "Nauru",
+    "nepalese": "Nepal",
+    "nepali": "Nepal",
+    "the netherlands": "Netherlands",
+    "holland": "Netherlands",
+    "dutch": "Netherlands",
+    "new zealander": "New Zealand",
+    "nicaraguan": "Nicaragua",
+    "nigerien": "Niger",
+    "nigerian": "Nigeria",
+    "korea, democratic people's republic of": "North Korea",
+    "democratic people's republic of korea": "North Korea",
+    "north korean": "North Korea",
+    "macedonia": "North Macedonia",
+    "macedonian": "North Macedonia",
+    "norwegian": "Norway",
+    "omani": "Oman",
+    "pakistani": "Pakistan",
+    "palauan": "Palau",
+    "palestine, state of": "Palestine",
+    "state of palestine": "Palestine",
+    "palestinian territory": "Palestine",
+    "palestinian": "Palestine",
+    "panamanian": "Panama",
+    "papua new guinean": "Papua New Guinea",
+    "paraguayan": "Paraguay",
+    "peruvian": "Peru",
+    "the philippines": "Philippines",
+    "filipino": "Philippines",
+    "philippine": "Philippines",
+    "polish": "Poland",
+    "portuguese": "Portugal",
+    "puerto rican": "Puerto Rico",
+    "qatari": "Qatar",
+    "romanian": "Romania",
+    "russian federation": "Russia",
+    "russian": "Russia",
+    "rwandan": "Rwanda",
+    "kittitian": "Saint Kitts and Nevis",
+    "saint lucian": "Saint Lucia",
+    "vincentian": "Saint Vincent and the Grenadines",
+    "samoan": "Samoa",
+    "sammarinese": "San Marino",
+    "são tomé and príncipe": "Sao Tome and Principe",
+    "santomean": "Sao Tome and Principe",
+    "saudi": "Saudi Arabia",
+    "saudi arabian": "Saudi Arabia",
+    "senegalese": "Senegal",
+    "serbian": "Serbia",
+    "seychellois": "Seychelles",
+    "sierra leonean": "Sierra Leone",
+    "singaporean": "Singapore",
+    "slovak republic": "Slovakia",
+    "slovak": "Slovakia",
+    "slovenian": "Slovenia",
+    "slovene": "Slovenia",
+    "solomon islander": "Solomon Islands",
+    "somali": "Somalia",
+    "south african": "South Africa",
+    "korea, republic of": "South Korea",
+    "republic of korea": "South Korea",
+    "korea": "South Korea",
+    "korean": "South Korea",
+    "south korean": "South Korea",
+    "south sudanese": "South Sudan",
+    "spanish": "Spain",
+    "spaniard": "Spain",
+    "sri lankan": "Sri Lanka",
+    "sudanese": "Sudan",
+    "surinamese": "Suriname",
+    "swedish": "Sweden",
+    "swede": "Sweden",
+    "swiss": "Switzerland",
+    "syrian arab republic": "Syria",
+    "syrian": "Syria",
+    "taiwan, province of china": "Taiwan",
+    "taiwanese": "Taiwan",
+    "tajik": "Tajikistan",
+    "tanzania, united republic of": "Tanzania",
+    "united republic of tanzania": "Tanzania",
+    "tanzanian": "Tanzania",
+    "thai": "Thailand",
+    "east timor": "Timor-Leste",
+    "timorese": "Timor-Leste",
+    "togolese": "Togo",
+    "tongan": "Tonga",
+    "trinidadian": "Trinidad and Tobago",
+    "tobagonian": "Trinidad and Tobago",
+    "tunisian": "Tunisia",
+    "türkiye": "Turkey",
+    "turkiye": "Turkey",
+    "turkish": "Turkey",
+    "turkmen": "Turkmenistan",
+    "tuvaluan": "Tuvalu",
+    "ugandan": "Uganda",
+    "ukrainian": "Ukraine",
+    "uae": "United Arab Emirates",
+    "emirati": "United Arab Emirates",
+    "uk": "United Kingdom",
+    "u.k.": "United Kingdom",
+    "great britain": "United Kingdom",
+    "britain": "United Kingdom",
+    "british": "United Kingdom",
+    "england": "United Kingdom",
+    "scotland": "United Kingdom",
+    "wales": "United Kingdom",
+    "northern ireland": "United Kingdom",
+    "english": "United Kingdom",
+    "scottish": "United Kingdom",
+    "welsh": "United Kingdom",
+    "united states of america": "United States",
+    "usa": "United States",
+    "u.s.a.": "United States",
+    "us": "United States",
+    "u.s.": "United States",
+    "america": "United States",
+    "american": "United States",
+    "uruguayan": "Uruguay",
+    "uzbek": "Uzbekistan",
+    "ni-vanuatu": "Vanuatu",
+    "holy see": "Vatican City",
+    "holy see (vatican city state)": "Vatican City",
+    "venezuela, bolivarian republic of": "Venezuela",
+    "venezuelan": "Venezuela",
+    "viet nam": "Vietnam",
+    "vietnamese": "Vietnam",
+    "yemeni": "Yemen",
+    "zambian": "Zambia",
+    "zimbabwean": "Zimbabwe",
+}
+
+def nationality_canonical(value: str) -> str:
+    """The country an older free-text nationality ("Indian") names, or the value as-is."""
+    text = (value or "").strip()
+    return NATIONALITY_LEGACY.get(text.lower(), text)
+
 
 # Free-text answers saved before these were dropdowns, mapped onto the option
 # that says the same thing. Only unambiguous ones: "Not a protected veteran" is
@@ -143,6 +565,8 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
         Spec("phone", "phone", "Phone", kind="phone",
              help="Country code and number are kept separate, so forms with their own "
                   "country-code field get just the number."),
+    ]),
+    ("links", "Portfolio & links", [
         Spec("linkedinUrl", "linkedin_url", "LinkedIn", placeholder="linkedin.com/in/…", max_len=300),
         Spec("githubUrl", "github_url", "GitHub", placeholder="github.com/…", max_len=300),
         Spec("portfolioUrl", "portfolio_url", "Portfolio / website", placeholder="https://…",
@@ -170,6 +594,13 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
              max_len=60000),
         Spec("yearsExperience", "years_experience", "Years of experience", placeholder="e.g. 3",
              max_len=20),
+    ]),
+    ("projects", "Projects & outside experience", [
+        Spec("projects", "projects", "Projects", kind="projects", wide=True,
+             help="Personal, academic, open-source or volunteer work. Dates as MM/YYYY.",
+             max_len=40000),
+    ]),
+    ("skills", "Skills", [
         Spec("skills", "skills", "Key skills", kind="textarea", wide=True,
              placeholder="Comma-separated", max_len=2000),
     ]),
@@ -178,10 +609,13 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
         # single University / Degree / Major boxes other forms have are read
         # from the first (most recent) entry.
         Spec("educationHistory", "education_history", "Schools", kind="education", wide=True,
-             help="Most recent first. Years only; “To” can be your expected graduation year.",
+             help="Most recent first, as Workday's Education section asks: school, degree, "
+                  "field of study, overall result (GPA), and years — “To” can be your expected "
+                  "graduation year.",
              max_len=20000),
         Spec("gpa", "gpa", "GPA / CGPA / percentage", placeholder="e.g. 8.7/10 or 85%",
-             max_len=20),
+             help="For forms with a single GPA box. Also used for your first school when "
+                  "its own GPA is empty.", max_len=20),
     ]),
     ("eligibility", "Work eligibility", [
         Spec("workAuthorized", "work_authorized", "Authorized to work in the job's country?",
@@ -190,16 +624,51 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
         Spec("requiresSponsorship", "requires_sponsorship", "Need visa sponsorship?",
              kind="select", options=YES_NO),
         Spec("visaStatus", "visa_status", "Visa status", max_len=60),
-        Spec("nationality", "nationality", "Nationality / citizenship",
-             placeholder="e.g. Indian",
-             help="Only ever filled from this answer — never guessed from your "
-                  "address or phone number.", max_len=80),
+        Spec("nationality", "nationality", "Country of citizenship",
+             kind="select", options=COUNTRY_OPTIONS,
+             help="Citizenship and nationality questions are answered from this — "
+                  "“Are you a citizen of …?” by comparing with it. Never guessed from "
+                  "your address or phone number.", max_len=80),
+        Spec("citizenshipStatus", "citizenship_status", "U.S. immigration status (only if it applies)",
+             kind="select", options=CITIZENSHIP_OPTIONS,
+             help="Leave empty unless you hold U.S. citizenship, a green card, refugee or "
+                  "asylee status, or DACA. Left empty, US forms are answered from your "
+                  "country of citizenship.", max_len=80),
+        Spec("governmentOfficial", "government_official",
+             "Are you, or have you ever been, a government official?",
+             kind="select", options=YES_NO,
+             help="Includes any employee of a government department or agency, a "
+                  "state-owned or government-controlled company, a public international "
+                  "organisation, a political party or its officials, and candidates for "
+                  "political office. Filled only from this answer — never guessed."),
+        Spec("familyGovernmentOfficial", "family_government_official",
+             "Is anyone in your family a government official, now or in the past?",
+             kind="select", options=YES_NO,
+             help="Immediate family or other relatives — same definition as above."),
+        Spec("criminalHistory", "criminal_history",
+             "Have you ever been convicted of any crime, or do you have criminal charges pending?",
+             kind="select", options=YES_NO,
+             help="Felonies and misdemeanours, in any country. “No” is filled on every "
+                  "criminal-history question; with “Yes” you answer each one yourself. "
+                  "Questions asking you to consent to a background check are never "
+                  "answered from this."),
+    ]),
+    # Workday's Voluntary Disclosures ask these. Filled only from here by the
+    # extension; never part of what any model is shown (PRIVATE_KEYS).
+    ("birth", "Date & place of birth", [
+        Spec("dateOfBirth", "date_of_birth", "Date of birth", kind="date",
+             help="Only for forms that ask. Filled from here, never sent to the AI.", max_len=10),
+        Spec("countryOfBirth", "country_of_birth", "Country of birth", kind="select",
+             options=COUNTRY_OPTIONS,
+             help="Left empty, forms get your country of citizenship.", max_len=80),
+        Spec("cityOfBirth", "city_of_birth", "City of birth", max_len=100,
+             help="Only for forms that ask. Never sent to the AI."),
+    ]),
+    ("availability", "Availability & preferences", [
         Spec("willingToRelocate", "willing_to_relocate", "Willing to relocate?",
              kind="select", options=YES_NO),
         Spec("remotePreference", "remote_preference", "Work arrangement", kind="select",
              options=REMOTE),
-    ]),
-    ("availability", "Availability & compensation", [
         Spec("noticePeriod", "notice_period", "Notice period", placeholder="e.g. 30 days",
              max_len=60),
         Spec("availableStartDate", "available_start_date", "Earliest start date",
@@ -208,8 +677,6 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
              help="Only ever filled from this answer — never guessed.", max_len=60),
     ]),
     ("answers", "Common questions", [
-        Spec("howDidYouHear", "how_did_you_hear", "How did you hear about the job?",
-             placeholder="Company website", max_len=120),
         Spec("whyThisRole", "why_this_role", "Why do you want this role?", kind="textarea",
              wide=True, help="Offered for review on each form, never submitted unread.",
              max_len=2000),
@@ -242,6 +709,27 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
 ]
 
 ALL_SPECS = {s.key: s for _, _, specs in SECTIONS for s in specs}
+
+# The page's left-hand "career hub": each hub is one panel of section cards.
+# Every section appears in exactly one hub (checked below), so a field added to
+# SECTIONS can't silently go missing from the page.
+HUBS: list[tuple[str, str, str, list[str]]] = [
+    ("profile", "Auto Apply Job", "Resume & autofill information",
+     ["work", "education", "projects", "skills", "links"]),
+    ("personal", "Personal Info", "Edit demographic data",
+     ["name", "contact", "address", "birth", "eligibility", "eeo"]),
+    ("preferences", "Job Preferences", "Availability & pay",
+     ["availability", "answers", "consent"]),
+]
+_SECTION_BY_ID = {sid: (sid, title, specs) for sid, title, specs in SECTIONS}
+assert sorted(s for _, _, _, ids in HUBS for s in ids) == sorted(_SECTION_BY_ID), \
+    "every profile section must belong to exactly one hub"
+
+
+def _hubs_for_page() -> list[dict]:
+    return [{"id": hid, "title": title, "sub": sub,
+             "sections": [_SECTION_BY_ID[s] for s in ids]}
+            for hid, title, sub, ids in HUBS]
 EEO_COLUMNS = {"gender", "race_ethnicity", "veteran_status", "disability_status",
                "gender_pronouns", "lgbtq_identity"}
 SELECT_VALUES = {s.key: {v for v, _ in s.options} for s in ALL_SPECS.values() if s.kind == "select"}
@@ -288,10 +776,17 @@ async def _effective(db, user, prof) -> dict:
         "previousCompany": p.previous_company, "yearsExperience": p.years_experience,
         "university": p.university, "degree": p.degree, "major": p.major,
         "graduationDate": p.graduation_date, "gpa": p.gpa,
-        "skills": ", ".join(p.top_skills),
+        # Every skill on the resume, not p.top_skills: that is autofill's short
+        # list for one form (at most 8), and showing it here hid the rest.
+        # The resume's own Skills section when it has one (read exactly, see
+        # resume_facts.extract_skill_groups), else the parsed list.
+        "skills": ", ".join(rf.flatten_skill_groups(rf.extract_skill_groups(user.base_resume_text)))
+                  or (", ".join(p.top_skills) if not (facts.get("skills") or []) else
+                      ", ".join(str(s).strip() for s in facts["skills"] if str(s).strip())),
         "noticePeriod": p.notice_period, "availableStartDate": p.available_start_date,
         "expectedSalary": p.expected_salary,
-        "howDidYouHear": p.how_did_you_hear, "whyThisRole": p.why_this_role,
+        "whyThisRole": p.why_this_role,
+        "projects": projects_from_facts(facts.get("projects")),
     }
 
 
@@ -314,9 +809,23 @@ def _stored(prof, user) -> dict:
             out[key] = parse_saved_experience(getattr(prof, spec.column, "") if prof else "")
         elif spec.kind == "education":
             out[key] = parse_saved_education(getattr(prof, spec.column, "") if prof else "")
+        elif spec.kind == "projects":
+            out[key] = parse_saved_projects(getattr(prof, spec.column, "") if prof else "")
         else:
             out[key] = str((getattr(prof, spec.column, "") if prof else "") or "")
     return out
+
+
+def _is_truncated_skills(saved: str, resume: str) -> bool:
+    """A saved skills list that is only autofill's old top-8 cut of the resume.
+
+    Before the page showed every resume skill, it showed at most 8, and saving
+    the card stored just those. Such a list — 8 or fewer, every one taken from
+    the resume, and the resume has more — is that cut, not the user's choice.
+    A list with any skill of the user's own, or a longer one, is left alone.
+    """
+    from auto_apply import resume_facts as rf
+    return rf.is_truncated_skills(saved, resume)
 
 
 def _page_model(stored: dict, effective: dict, facts_cached: bool) -> dict:
@@ -334,6 +843,12 @@ def _page_model(stored: dict, effective: dict, facts_cached: bool) -> dict:
             fields[key] = {"value": canon,
                            "source": "saved" if s and canon == s else ("suggested" if s else "")}
             continue
+        if spec.column == "nationality":
+            # An older free-text "Indian" is shown as India, Suggested until saved.
+            canon = nationality_canonical(s)
+            fields[key] = {"value": canon,
+                           "source": "saved" if s and canon == s else ("suggested" if s else "")}
+            continue
         # Choices the user makes (yes/no answers, permissions) are only ever what
         # they saved — there is nothing to suggest.
         if spec.kind in ("checkbox", "readonly", "select"):
@@ -344,7 +859,11 @@ def _page_model(stored: dict, effective: dict, facts_cached: bool) -> dict:
             fields[key] = {"value": s if saved else e, "source": "saved" if saved
                            else ("suggested" if e.get("number") else "")}
             continue
-        if s:
+        if key == "skills" and s and e and _is_truncated_skills(s, e):
+            # Saved while this page could only show autofill's top 8: the
+            # whole resume list is shown instead, and a save stores it.
+            fields[key] = {"value": e, "source": "suggested"}
+        elif s:
             fields[key] = {"value": s, "source": "saved"}
         elif e:
             fields[key] = {"value": e, "source": "suggested"}
@@ -366,16 +885,120 @@ async def profile_page(request: Request):
         if not user:
             return RedirectResponse(url="/login?next=/profile", status_code=302)
         prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user.id).first()
+        # A brand-new user — nothing saved for autofill yet — gets the
+        # step-by-step setup first. Finishing or skipping it saves the profile
+        # row, so this happens once.
+        if prof is None:
+            return RedirectResponse(url="/onboarding", status_code=302)
+        from auto_apply import resume_facts as rf
+
+        # Skills saved back when this page showed only autofill's top 8: store
+        # the resume's whole Skills section now, so what the page shows is
+        # what autofill reads. Adds the user's own resume skills, drops none.
+        if prof and prof.skills:
+            upgraded = rf.upgraded_skills(prof.skills, user.base_resume_text)
+            if upgraded != prof.skills:
+                prof.skills = upgraded
+                db.commit()
+                logger.info("profile: stored the full resume skills list for user %s", user.id)
+
+        cached = rf.load_cached_facts(db, user)
+        model = _page_model(_stored(prof, user), await _effective(db, user, prof), cached is not None)
+        has_resume = bool(user.base_resume_path
+                          and await document_store.ensure_file_async(user.base_resume_path))
+        # The resume hasn't been read for projects yet (never parsed, or parsed
+        # before projects were extracted): the page asks for it in the
+        # background, so the page itself still loads without an LLM call.
+        needs_resume_parse = _needs_resume_read(user, cached)
+        uploaded = user.base_resume_uploaded_at if has_resume else None
+        has_cover = bool(user.base_cover_letter_path
+                         and await document_store.ensure_file_async(user.base_cover_letter_path))
+        cover_at = user.base_cover_letter_generated_at if has_cover else None
+        return templates.TemplateResponse(request, "profile.html", {
+            "request": request,
+            "hubs": _hubs_for_page(),
+            "degree_groups": DEGREE_GROUPS,
+            "field_options": FIELD_OF_STUDY_OPTIONS,
+            "today_iso": date.today().isoformat(),
+            "model": model,
+            "user_name": user.name or "",
+            "has_resume": has_resume,
+            "needs_resume_parse": needs_resume_parse,
+            # The resume's skill headings, so the Skills card groups like it.
+            "skill_groups": rf.extract_skill_groups(user.base_resume_text),
+            "resume_filename": (user.base_resume_filename or "Your resume") if has_resume else "",
+            "resume_uploaded": uploaded.strftime("%d %b %Y") if uploaded else "",
+            "has_cover_letter": has_cover,
+            "cover_generated": cover_at.strftime("%d %b %Y") if cover_at else "",
+            # The "Auto Apply Job" panel: this page is also the extension's page
+            # now (logged-in /extension redirects here) — install link and the
+            # designs the extension downloads in.
+            "chrome_store_url": CHROME_STORE_URL,
+            "ext_template_id": user.base_template_id or 1,
+            "ext_style_id": user.base_style_id or 1,
+            "ext_cover_template": user.base_cover_template or "classic",
+        })
+    finally:
+        db.close()
+
+
+ONBOARDING_STEPS = [
+    ("resume", "Resume"), ("documents", "Template & cover letter"),
+    ("education", "Education"), ("experience", "Experience"),
+    ("authorization", "Work authorization"), ("eeo", "EEO"), ("skills", "Skills"),
+    ("personal", "Personal"), ("links", "Links"),
+]
+
+
+@router.get("/onboarding", response_class=HTMLResponse)
+async def onboarding_page(request: Request):
+    """First-run setup for the extension: the profile, one step at a time.
+
+    Every step saves through the same endpoints the profile page uses (POST
+    /api/profile, POST /api/extension/base-resume), so nothing here is stored
+    differently. Finishing or skipping lands on /profile.
+    """
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return RedirectResponse(url="/login?next=/onboarding", status_code=302)
+    db = SessionLocal()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            return RedirectResponse(url="/login?next=/onboarding", status_code=302)
+        prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user.id).first()
         from auto_apply import resume_facts as rf
 
         model = _page_model(_stored(prof, user), await _effective(db, user, prof),
                             rf.load_cached_facts(db, user) is not None)
-        return templates.TemplateResponse(request, "profile.html", {
+        has_resume = bool(user.base_resume_path
+                          and await document_store.ensure_file_async(user.base_resume_path))
+        uploaded = user.base_resume_uploaded_at if has_resume else None
+        has_cover = bool(user.base_cover_letter_path
+                         and await document_store.ensure_file_async(user.base_cover_letter_path))
+        step = request.query_params.get("step") or "resume"
+        if step not in {s for s, _ in ONBOARDING_STEPS}:
+            step = "resume"
+        return templates.TemplateResponse(request, "onboarding.html", {
             "request": request,
-            "sections": SECTIONS,
-            "model": model,
-            "user_name": user.name or "",
-            "has_resume": bool(user.base_resume_path and os.path.exists(user.base_resume_path)),
+            "steps": ONBOARDING_STEPS,
+            "data": {
+                "fields": model["fields"],
+                "step": step,
+                "hasResume": has_resume,
+                "resumeFilename": (user.base_resume_filename or "Your resume") if has_resume else "",
+                "resumeUploaded": uploaded.strftime("%d %b %Y") if uploaded else "",
+                "hasCover": has_cover,
+                "coverFilename": (user.base_cover_letter_filename or "cover_letter.pdf") if has_cover else "",
+                "templateId": user.base_template_id or 1,
+                "styleId": user.base_style_id or 1,
+                "coverTemplate": user.base_cover_template or "classic",
+                "options": {
+                    "yesNo": YES_NO, "country": COUNTRY_OPTIONS, "gender": GENDER_OPTIONS,
+                    "race": RACE_OPTIONS, "veteran": VETERAN_OPTIONS,
+                    "disability": DISABILITY_OPTIONS, "lgbtq": LGBTQ_OPTIONS,
+                },
+            },
         })
     finally:
         db.close()
@@ -391,6 +1014,90 @@ async def get_profile(request: Request):
 
         return _page_model(_stored(prof, user), await _effective(db, user, prof),
                            rf.load_cached_facts(db, user) is not None)
+    finally:
+        db.close()
+
+
+def _needs_resume_read(user, cached) -> bool:
+    """Whether the resume still has to be read with the Make CV pipeline."""
+    return bool((user.base_resume_text or "").strip()) and (
+        cached is None or cached.get("extract_pipeline") != EXTRACT_PIPELINE)
+
+
+@router.post("/api/profile/resume-projects")
+async def resume_projects(request: Request):
+    """Read the base resume with the Make CV import pipeline (main.py
+    editor_payload_from_resume) and cache the result as the resume facts —
+    once per resume: a new upload drops the cache. Returns the projects, and
+    `parsed` when the page should reload to show everything it found.
+
+    The facts parse (auto_apply/resume_facts.py) still runs when nothing is
+    cached, alongside, because it alone separates education's field of study.
+    A failed read is NOT stored: caching empty facts would wipe the
+    suggestions an older parse still gives.
+    """
+    import asyncio
+    import logging
+    import sys
+
+    from auto_apply import resume_facts as rf
+
+    log = logging.getLogger(__name__)
+    db = SessionLocal()
+    try:
+        user = _require_user(request, db)
+        user_id, text, pdf = user.id, (user.base_resume_text or "").strip(), user.base_resume_path or ""
+        cached = rf.load_cached_facts(db, user)
+    finally:
+        db.close()   # not held open across the model calls below
+    if not text:
+        return {"projects": [], "parsed": False}
+    if not _needs_resume_read(user, cached):
+        return {"projects": projects_from_facts(cached.get("projects")), "parsed": False}
+
+    app_module = sys.modules.get("main") or sys.modules.get("__main__")
+    make_cv = getattr(app_module, "editor_payload_from_resume", None)
+    have_pdf = bool(pdf) and await document_store.ensure_file_async(pdf)
+
+    async def none():
+        return None
+    payload, light = await asyncio.gather(
+        make_cv(pdf, text) if (make_cv and have_pdf) else none(),
+        rf._llm_facts(text) if cached is None else none(),
+        return_exceptions=True)
+    if isinstance(payload, BaseException):
+        log.warning("profile: Make CV resume read failed", exc_info=payload)
+        payload = None
+    if isinstance(light, BaseException):
+        log.warning("profile: resume facts parse failed", exc_info=light)
+        light = None
+
+    if cached is not None:
+        facts = cached
+    elif light is not None:
+        facts = rf._normalize(light, text)
+    elif payload is not None:
+        facts = rf.empty_facts()
+    else:
+        raise HTTPException(status_code=502, detail="Couldn't read your resume. Try again later.")
+    if payload is not None:
+        facts = _merge_make_cv(facts, payload)
+    # Marked even when the Make CV read failed, so a page load never retries
+    # it in a loop; the next resume upload drops the cache and tries again.
+    facts["extract_pipeline"] = EXTRACT_PIPELINE
+    facts.setdefault("projects", [])
+
+    db = SessionLocal()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user or (user.base_resume_text or "").strip() != text:
+            # Signed out, or a new resume was uploaded meanwhile: this read is stale.
+            return {"projects": [], "parsed": False}
+        # Links the parse still missed, from the PDF's clickable annotations.
+        facts["projects"] = await _add_pdf_project_links(user, list(facts["projects"]))
+        facts["project_links_checked"] = True
+        rf.store_facts(db, user, facts)
+        return {"projects": projects_from_facts(facts["projects"]), "parsed": True}
     finally:
         db.close()
 
@@ -422,7 +1129,7 @@ def _validated_experience(raw) -> list:
     return jobs
 
 
-EDUCATION_LIMITS = {"school": 200, "degree": 120, "field": 120}
+EDUCATION_LIMITS = {"school": 200, "degree": 120, "field": 120, "gpa": 20}
 MAX_SCHOOLS = 10
 
 
@@ -448,6 +1155,256 @@ def _validated_education(raw) -> list:
             raise HTTPException(status_code=422,
                                 detail=f"School {n}: From is after To.")
     return schools
+
+
+PROJECT_FIELDS = ("name", "role", "url", "from", "to", "description")
+PROJECT_LIMITS = {"name": 160, "role": 160, "url": 300, "from": 7, "to": 7, "description": 5000}
+MAX_PROJECTS = 20
+
+
+def parse_saved_projects(raw) -> list[dict]:
+    """The stored JSON list of projects, tolerant of anything malformed (read as empty)."""
+    if isinstance(raw, str):
+        try:
+            raw = json.loads(raw) if raw.strip() else []
+        except ValueError:
+            return []
+    out = []
+    for p in raw if isinstance(raw, list) else []:
+        if not isinstance(p, dict):
+            continue
+        entry = {k: str(p.get(k) or "").strip() for k in PROJECT_FIELDS}
+        entry["current"] = bool(p.get("current"))
+        if entry["current"]:
+            entry["to"] = ""
+        if any(entry[k] for k in PROJECT_FIELDS):
+            out.append(entry)
+    return out
+
+
+def projects_from_facts(projects) -> list[dict]:
+    """The resume's parsed projects in the profile's shape (dates as MM/YYYY)."""
+    from auto_apply.profile import to_month_year
+    from auto_apply.resume_facts import join_wrapped_lines
+
+    out = []
+    for p in projects or []:
+        if not isinstance(p, dict):
+            continue
+        end = str(p.get("end_date") or "").strip()
+        current = bool(p.get("is_current")) or end.lower() in ("present", "current", "ongoing", "now")
+        out.append({"name": str(p.get("name") or "").strip(), "role": str(p.get("role") or "").strip(),
+                    "url": str(p.get("url") or "").strip(),
+                    "from": to_month_year(p.get("start_date")),
+                    "to": "" if current else to_month_year(end), "current": current,
+                    # Parses from before the prompt joined wrapped bullets.
+                    "description": join_wrapped_lines(p.get("description"))})
+    return parse_saved_projects(out)
+
+
+# Marks facts read with the Make CV import pipeline (editor_payload_from_resume).
+# Cached facts without it are re-read once, so every user gets the better parse.
+EXTRACT_PIPELINE = "make-cv-2"
+_PRESENT_WORDS = ("present", "current", "now", "ongoing", "till date", "to date", "today")
+
+
+def _split_dates(text: str) -> tuple[str, str]:
+    """"Dec 2025 – Present" → ("Dec 2025", "Present"); "2023 - 2027" → the two years;
+    a single date is the start. Hyphens inside a date ("2024-06") are kept."""
+    t = str(text or "").strip()
+    if not t:
+        return "", ""
+    parts = [p.strip() for p in re.split(r"\s+(?:–|—|-|to)\s+|\s*[–—]\s*|(?<=\d{4})\s*-\s*(?=\w)", t) if p.strip()]
+    if len(parts) >= 2:
+        return _clean_date(parts[0]), _clean_date(parts[-1])
+    return _clean_date(parts[0]), ""
+
+
+_MONTH_NAMES = ("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec")
+
+
+def _clean_date(text: str) -> str:
+    """A resume date in a form auto_apply.profile.to_month_year reads: "4 jun,
+    2026" / "June 4, 2026" → "Jun 2026". Anything else is returned as written."""
+    t = str(text or "").strip()
+    m = (re.fullmatch(r"\d{1,2}(?:st|nd|rd|th)?\s*[-/ ]?\s*([A-Za-z]{3,9})\.?,?\s*'?(\d{4})", t)
+         or re.fullmatch(r"([A-Za-z]{3,9})\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s*(\d{4})", t))
+    if m and m.group(1)[:3].lower() in _MONTH_NAMES:
+        return m.group(1)[:3].title() + " " + m.group(2)
+    return t
+
+
+def _clean_score(text: str) -> str:
+    """A grade as the editor parse gives it ("CGPA - 7.5", "percentage - 85%",
+    "8.7/10") reduced to the value: "7.5", "85%", "8.7/10". Unreadable → as given."""
+    t = str(text or "").strip()
+    m = re.search(r"(\d{1,3}(?:\.\d{1,2})?)\s*(?:/\s*(\d{1,3}(?:\.\d{1,2})?))?\s*(%)?", t)
+    if not m:
+        return t
+    if m.group(3) or re.search(r"percent|marks", t, re.I):
+        return m.group(1) + "%"
+    return m.group(1) + ("/" + m.group(2) if m.group(2) else "")
+
+
+def _clean_name(text: str) -> str:
+    """"Jadavpur University,kolkata" → "Jadavpur University, Kolkata"."""
+    t = re.sub(r"\s*,\s*", ", ", str(text or "").strip())
+    return re.sub(r", ([a-z])", lambda m: ", " + m.group(1).upper(), t)
+
+
+def _detail_lines(details: str) -> str:
+    """Editor "details" ("• a\\n• b") as plain lines, one bullet each."""
+    from auto_apply.resume_facts import join_wrapped_lines
+
+    return join_wrapped_lines(details)
+
+
+def _merge_make_cv(facts: dict, payload: dict) -> dict:
+    """Layer the Make CV parse over the facts. It restores bullets the model
+    dropped and recovers links from the PDF's annotation layer, so work history,
+    projects, per-school grades and missing contact links come from it. The
+    facts keep what that schema lacks: education's separate field of study
+    (Workday's Field of Study), and anything the editor parse came back without."""
+    from auto_apply import resume_facts as rf
+
+    cv = (payload or {}).get("cvData") or {}
+    pi_cv = cv.get("personalInfo") or {}
+    pi = facts.setdefault("personal_info", {})
+    for fact_key, cv_key in (("full_name", "name"), ("email", "email"), ("phone", "phone"),
+                             ("location", "location"), ("linkedin", "linkedin"),
+                             ("github", "github"), ("portfolio", "portfolio")):
+        if not str(pi.get(fact_key) or "").strip() and str(pi_cv.get(cv_key) or "").strip():
+            pi[fact_key] = str(pi_cv[cv_key]).strip()
+    if pi.get("location") and not any((facts.get("address") or {}).values()):
+        facts["address"] = rf.split_location(pi["location"])
+
+    work = []
+    for e in cv.get("experience") or []:
+        start, end = _split_dates(e.get("dates"))
+        entry = {"company": str(e.get("company") or "").strip(), "role": str(e.get("title") or "").strip(),
+                 "location": str(e.get("location") or "").strip(), "start_date": start,
+                 "end_date": end, "is_current": end.lower() in _PRESENT_WORDS,
+                 "description": _detail_lines(e.get("details"))[:5000]}
+        if entry["company"] or entry["role"]:
+            work.append(entry)
+    if work:
+        facts["work_history"] = work[:12]
+
+    projects = []
+    for p in cv.get("projects") or []:
+        start, end = _split_dates(p.get("dates"))
+        entry = {"name": str(p.get("name") or "").strip()[:160],
+                 "role": "", "url": str(p.get("url") or p.get("github_link") or "").strip()[:300],
+                 "start_date": start, "end_date": end, "is_current": end.lower() in _PRESENT_WORDS,
+                 "description": _detail_lines(p.get("details"))[:5000]}
+        if entry["name"] or entry["description"]:
+            projects.append(entry)
+    if projects or "projects" not in facts:
+        facts["projects"] = projects[:12]
+
+    # Each school's own grade, matched by name; the facts' entries keep their
+    # field of study. Schools only the editor parse found are added.
+    def key(s):
+        return re.sub(r"[^a-z0-9]", "", str(s or "").lower())
+    edu = facts.setdefault("education", [])
+    for school in cv.get("education") or []:
+        name, score = _clean_name(school.get("school")), _clean_score(school.get("score"))
+        match = next((e for e in edu if key(e.get("institution")) and
+                      (key(e.get("institution")) in key(name) or key(name) in key(e.get("institution")))), None)
+        if match is None and name:
+            start, end = _split_dates(school.get("year"))
+            match = {"institution": name, "degree": str(school.get("degree") or "").strip(),
+                     "field_of_study": "", "start_date": start, "end_date": end, "description": ""}
+            edu.append(match)
+        if match is not None and score and not match.get("gpa"):
+            match["gpa"] = score
+    if not facts.get("gpa"):
+        facts["gpa"] = next((e["gpa"] for e in edu if e.get("gpa")), "")
+
+    # Skills from both parses, the Make CV one first (it keeps every category
+    # the resume lists), without duplicates. Each parse alone missed some.
+    # The facts parse copies the resume's own spelling ("Java Script", "Fast
+    # Api", "Panda"), the Make CV parse often corrects it — the same skill
+    # twice. Compared ignoring case, spaces and punctuation, and a spelling
+    # one typo away ("Matpotlib") counts as the same skill.
+    from difflib import SequenceMatcher
+
+    def skill_key(s):
+        return re.sub(r"[^a-z0-9+#]", "", s.lower())
+
+    def same(a, b):
+        return a == b or (min(len(a), len(b)) >= 5 and SequenceMatcher(None, a, b).ratio() >= 0.88)
+
+    keys, skills = [], []
+    make_cv_skills = [s for row in cv.get("skills") or []
+                      for s in re.split(r"[,;|•]", str(row.get("items") or ""))]
+    for s in make_cv_skills + list(facts.get("skills") or []):
+        s = re.sub(r"\s+", " ", str(s)).strip(" .")
+        k = skill_key(s)
+        if s and k and len(s) <= 60 and not any(same(k, other) for other in keys):
+            keys.append(k)
+            skills.append(s)
+    if skills:
+        facts["skills"] = skills[:100]
+    facts["extract_pipeline"] = EXTRACT_PIPELINE
+    return facts
+
+
+async def _add_pdf_project_links(user, projects: list[dict]) -> list[dict]:
+    """Fill each project's missing link from the resume PDF's clickable links.
+
+    Resume links are usually invisible in the extracted text (a "GitHub" or ↗
+    icon carrying the URL), so the facts parse can't see them; main.py's
+    extract_project_links_from_pdf reads the PDF's link annotations and matches
+    each to the nearest project title. Looked up through sys.modules: this
+    router is imported BY main, and importing it back would either cycle or,
+    under `python main.py`, load a second copy of the whole app.
+    """
+    import asyncio
+    import sys
+
+    names = [p.get("name", "") for p in projects if p.get("name") and not p.get("url")]
+    path = getattr(user, "base_resume_path", "") or ""
+    if not names or not path or not await document_store.ensure_file_async(path):
+        return projects
+    app_module = sys.modules.get("main") or sys.modules.get("__main__")
+    finder = getattr(app_module, "extract_project_links_from_pdf", None)
+    if finder is None:
+        return projects
+    try:
+        found = await asyncio.to_thread(finder, path, names)
+    except Exception:
+        import logging
+        logging.getLogger(__name__).warning("profile: reading project links from the PDF failed", exc_info=True)
+        return projects
+    for p in projects:
+        pairs = found.get(p.get("name", "")) if not p.get("url") else None
+        if pairs:
+            p["url"] = str(pairs[0][1] or "").strip()[:300]
+    return projects
+
+
+def _validated_projects(raw) -> list:
+    """The project list as sent by the page, checked; 422 names the project and box."""
+    from auto_apply.profile import MONTH_YEAR_RE
+
+    if not isinstance(raw, list):
+        raise HTTPException(status_code=422, detail="Projects must be a list.")
+    projects = parse_saved_projects(raw)
+    if len(projects) > MAX_PROJECTS:
+        raise HTTPException(status_code=422, detail=f"At most {MAX_PROJECTS} projects can be saved.")
+    for n, proj in enumerate(projects, 1):
+        for fld, limit in PROJECT_LIMITS.items():
+            if len(proj[fld]) > limit:
+                raise HTTPException(status_code=422,
+                                    detail=f"Project {n}: {fld} is too long (max {limit}).")
+        for fld, name in (("from", "From"), ("to", "To")):
+            if proj[fld] and not MONTH_YEAR_RE.match(proj[fld]):
+                raise HTTPException(status_code=422,
+                                    detail=f"Project {n}: {name} should look like 01/2026.")
+        if proj["url"] and not proj["url"].lower().startswith(("http://", "https://")):
+            proj["url"] = "https://" + proj["url"]
+    return projects
 
 
 class ProfileSave(BaseModel):
@@ -503,6 +1460,10 @@ async def save_profile(request: Request, payload: ProfileSave):
                 schools = _validated_education(raw)
                 prof.education_history = json.dumps(schools, ensure_ascii=False) if schools else None
                 continue
+            if spec.kind == "projects":
+                projects = _validated_projects(raw)
+                prof.projects = json.dumps(projects, ensure_ascii=False) if projects else None
+                continue
             text = str(raw if raw is not None else "").strip()
             if len(text) > spec.max_len:
                 raise HTTPException(status_code=422,
@@ -511,6 +1472,21 @@ async def save_profile(request: Request, payload: ProfileSave):
                 text = eeo_canonical(spec.column, text)
                 # An older free-text answer with no matching option may be sent
                 # back unchanged; anything else must be one of the options.
+                if text not in SELECT_VALUES[key] and text != (getattr(prof, spec.column, "") or ""):
+                    raise HTTPException(status_code=422, detail=f"Invalid choice for {spec.label}.")
+                setattr(prof, spec.column, text)
+                continue
+            if spec.kind == "date" and text:
+                # ISO, as <input type="date"> sends it: a real day, in the past.
+                try:
+                    when = date.fromisoformat(text)
+                except ValueError:
+                    raise HTTPException(status_code=422, detail=f"{spec.label} must be a date.")
+                if len(text) != 10 or when >= date.today() or when.year < 1900:
+                    raise HTTPException(status_code=422, detail=f"{spec.label} must be a past date.")
+            if spec.column == "nationality":
+                text = nationality_canonical(text)
+                # An older answer naming no listed country may be sent back unchanged.
                 if text not in SELECT_VALUES[key] and text != (getattr(prof, spec.column, "") or ""):
                     raise HTTPException(status_code=422, detail=f"Invalid choice for {spec.label}.")
                 setattr(prof, spec.column, text)
@@ -533,6 +1509,18 @@ async def save_profile(request: Request, payload: ProfileSave):
 
 class AnswerEdit(BaseModel):
     answer: str = Field(min_length=1, max_length=2000)
+    # One kind of list's answer (UserApplyQA.variants): its index, and the
+    # answer this page showed for it, so a list changed elsewhere since is
+    # never edited blind.
+    variant: int | None = None
+    was: str | None = None
+
+
+def _variants_out(row) -> list[dict]:
+    from auto_apply.qa_store import decode_variants
+
+    return [{"index": i, "answer": v["answer"], "options": v["options"][:12]}
+            for i, v in enumerate(decode_variants(row.variants))]
 
 
 @router.get("/api/profile/answers")
@@ -543,6 +1531,7 @@ async def list_answers(request: Request):
         rows = (db.query(UserApplyQA).filter(UserApplyQA.user_id == user.id)
                 .order_by(UserApplyQA.updated_at.desc()).all())
         return {"answers": [{"id": r.id, "question": r.question_text, "answer": r.answer,
+                             "variants": _variants_out(r),
                              "updatedAt": r.updated_at.isoformat() if r.updated_at else None}
                             for r in rows]}
     finally:
@@ -571,7 +1560,18 @@ async def edit_answer(request: Request, answer_id: int, payload: AnswerEdit):
         if is_never_store(row.question_text, answer):
             raise HTTPException(status_code=422,
                                 detail="That answer can't be stored as a reusable answer.")
-        row.answer = answer   # the question is unchanged, so its embedding still holds
+        if payload.variant is not None:
+            # A form reads the answer kept for its kind of list, not `answer`:
+            # editing only that showed here and never reached a form.
+            from auto_apply.qa_store import edit_variant
+
+            try:
+                edit_variant(row, payload.variant, payload.was or "", answer)
+            except ValueError:
+                raise HTTPException(status_code=409,
+                                    detail="This answer changed since the page loaded — refresh and try again.")
+        else:
+            row.answer = answer   # the question is unchanged, so its embedding still holds
         db.commit()
         return {"ok": True}
     finally:
@@ -579,11 +1579,24 @@ async def edit_answer(request: Request, answer_id: int, payload: AnswerEdit):
 
 
 @router.delete("/api/profile/answers/{answer_id}")
-async def delete_answer(request: Request, answer_id: int):
+async def delete_answer(request: Request, answer_id: int, variant: int | None = None, was: str | None = None):
+    """Forget one saved answer — or, with `variant`, only its answer for that
+    kind of list (the row goes with its last one)."""
     db = SessionLocal()
     try:
         user = _require_user(request, db)
-        db.delete(_own_answer(db, user, answer_id))
+        row = _own_answer(db, user, answer_id)
+        last = True
+        if variant is not None:
+            from auto_apply.qa_store import delete_variant
+
+            try:
+                last = delete_variant(row, variant, was or "")
+            except ValueError:
+                raise HTTPException(status_code=409,
+                                    detail="This answer changed since the page loaded — refresh and try again.")
+        if last:
+            db.delete(row)
         db.commit()
         return {"ok": True}
     finally:

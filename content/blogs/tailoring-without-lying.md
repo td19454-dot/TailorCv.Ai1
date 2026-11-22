@@ -106,6 +106,10 @@ The practical argument, separate from the ethical one: fabricated claims are wea
 
 A fabricated skill sits in a list with no supporting evidence, which readers discount. A real achievement described properly — with scale, constraint and outcome — is specific in a way invention rarely manages, because you know the details.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Seeing each edit in red and green makes it easier to catch a claim you could not back up in an interview.
+
 Most people underclaim their genuine work far more than they would gain from inventing. Fixing that is both safer and more effective.
 
 Over-tailoring is usually where honesty starts to slip, so it helps to know your stopping point; [how much tailoring is too much](/blog/how-much-tailoring-is-too-much) gives a practical checklist.

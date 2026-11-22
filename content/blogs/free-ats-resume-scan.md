@@ -26,6 +26,10 @@ Before you send another application, run a **free ATS resume scan**. In about 60
 
 An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) resume scan analyzes your resume the way an Applicant Tracking System does. It checks how well your resume matches a job description and flags anything that could get you filtered out.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+A scan result in TailorCV: a match rate, scores by category, and each skill marked matched or missing.
+
 A good scan returns:
 
 - An overall [ATS score](https://thetailorcv.com/blog/ats-score-guide)

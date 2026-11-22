@@ -46,6 +46,10 @@ Rewriting individual bullets is the fifth edit. It is worth doing for two or thr
 
 The guide to [which bullets to rewrite](/blog/which-bullets-to-rewrite) covers how to pick those two or three. Beyond that, you are mostly moving words around.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Seeing every edit marked also shows you how much has changed. If most of a bullet is green, read it again and check it still sounds like you.
+
 ## Signs You Have Tailored Too Much
 
 Over-tailoring is not about time spent. It is about what the resume starts to look like. These are the symptoms a recruiter notices.

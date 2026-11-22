@@ -258,6 +258,8 @@ Overloading your resume with keywords appears unnatural.
 
 Even qualified candidates lose points by omitting critical terms.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
 ### Using Images or Icons
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software cannot reliably read graphics.
@@ -277,6 +279,8 @@ Here are the most effective ways to improve your [ATS score](https://thetailorcv
 Customize your resume for each application.
 
 This dramatically increases relevance.
+
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 ---
 

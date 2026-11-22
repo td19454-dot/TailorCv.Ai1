@@ -38,9 +38,9 @@ For why this matters at the [ATS](https://thetailorcv.com/blog/what-is-a-good-at
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
+This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: paper size, font, font size, line height and margins.
 
 ### Minute 1 - Read the Job Description Once, Highlight Key Terms
 
@@ -107,6 +107,10 @@ For more on keyword matching, see [best resume keywords to beat ATS systems](htt
 The first bullet of your most recent job gets the most reading time. If the posting emphasizes a specific outcome (e.g., "reduce churn"), and you have an achievement related to it, move that bullet to the top.
 
 You are not fabricating experience - you are reordering what is already there to lead with what is most relevant to *this* posting.
+
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+If you use TailorCV for this step, every edit is marked in red and green, so a quick check takes less of your five minutes.
 
 ---
 

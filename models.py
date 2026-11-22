@@ -254,6 +254,25 @@ class MarketingSend(Base):
     sent_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
 
 
+class MarketingEvent(Base):
+    """Opens, clicks and unsubscribes from a marketing campaign, recorded by the
+    public tracking routes in routers/marketing.py.
+
+    Only the first event per (campaign, user, kind, url) is kept: one open and
+    one unsubscribe per recipient, one click per recipient per link. `url` is ""
+    for opens and unsubscribes rather than NULL, because Postgres treats NULLs
+    as distinct and the unique constraint would never fire."""
+    __tablename__ = "marketing_events"
+    __table_args__ = (UniqueConstraint("campaign", "user_id", "kind", "url", name="uq_marketing_event"),)
+
+    id = Column(Integer, primary_key=True, index=True)
+    campaign = Column(String(100), nullable=False, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    kind = Column(String(20), nullable=False)  # open | click | unsubscribe
+    url = Column(String(2000), nullable=False, default="", server_default="")
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+
+
 class AtsLockedReport(Base):
     """The full analysis behind a locked ATS scan (see ats_lock.py). The
     browser only ever gets the redacted copy; /api/ats-report/<token> returns
@@ -597,6 +616,9 @@ class UserApplyProfile(Base):
     # parse_saved_education. Supersedes university / degree / major /
     # graduation_date once saved.
     education_history = Column(Text, nullable=True)
+    # JSON list of projects / outside experience the user adds on the profile
+    # page — see routers/profile_page.py parse_saved_projects.
+    projects = Column(Text, nullable=True)
     linkedin_url = Column(String(300), nullable=True)
     github_url = Column(String(300), nullable=True)
     portfolio_url = Column(String(300), nullable=True)
@@ -620,6 +642,27 @@ class UserApplyProfile(Base):
     # so like those it is answered only from what the user stored here, never
     # inferred from a phone dial code or an address.
     nationality = Column(String(80), nullable=True)
+    # "Citizenship Status" as US forms ask it (citizen / permanent resident /
+    # refugee / asylee / DACA / none of those) — a different claim from the
+    # country in `nationality`. One of profile_page.CITIZENSHIP_OPTIONS.
+    citizenship_status = Column(String(80), nullable=True)
+    # Date and place of birth, for forms that ask (Workday's Voluntary
+    # Disclosures). Filled only from these, never sent to the model.
+    # date_of_birth is ISO YYYY-MM-DD; country_of_birth is one of
+    # profile_page.COUNTRY_OPTIONS (empty: forms get `nationality`).
+    date_of_birth = Column(String(10), nullable=True)
+    country_of_birth = Column(String(80), nullable=True)
+    city_of_birth = Column(String(100), nullable=True)
+    # Anti-bribery declarations: "Are you (or have you been) a Government
+    # Official?" and the same about family. Asked in their broadest form, so a
+    # "no" answers every narrower wording. Filled only from these, never sent to
+    # the model.
+    government_official = Column(String(10), nullable=True)          # "yes" | "no"
+    family_government_official = Column(String(10), nullable=True)   # "yes" | "no"
+    # "Have you ever been convicted of any crime, or do you have pending
+    # criminal charges?" Broadest form again: "no" answers every narrower
+    # wording, "yes" goes back to the person. Never sent to the model.
+    criminal_history = Column(String(10), nullable=True)             # "yes" | "no"
 
     # Voluntary self-identification. Default to declining rather than guessing.
     gender = Column(String(60), nullable=True)
@@ -670,6 +713,15 @@ class UserApplyQA(Base):
     # backfilled lazily, and an un-embedded row still works via the exact path.
     embedding = Column(Text)
     embedding_model = Column(String(60))
+
+    # The same question asked over different KINDS of option list keeps one
+    # answer per kind: "Citizenship Status" over U.S. statuses ("(e) … DACA")
+    # and over a country list ("India") are two answers, not one overwriting
+    # the other. JSON list of {"options": [labels], "answer": str}, oldest
+    # first; see qa_store.pick_saved. `answer` above stays the latest answer,
+    # for readers that know nothing of variants. Nullable: a row saved without
+    # options (the dashboard modal, older clients) has none.
+    variants = Column(Text)
 
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)

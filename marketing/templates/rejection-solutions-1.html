@@ -1,0 +1,33 @@
+---
+subject: {{ first_name }}, No more burnout
+preheader: Why one "no" shouldn't change how you see yourself.
+---
+{% extends "_base.html" %}
+{% block body %}
+<p>Hi {{ first_name }},</p>
+
+<p style="margin:24px 0;padding:14px 18px;border-left:4px solid #2563eb;background:#f1f5ff;font-size:17px;line-height:1.5;font-style:italic;color:#1e293b;">
+  Rejection does not mean you are not good enough. It means the other person failed to notice what you offer.
+</p>
+
+<p>You open your inbox and see a reply from a company you applied to. Your heart skips a beat. <em>Is this it?</em> Then you read: <strong>&ldquo;Unfortunately, we decided not to move forward.&rdquo;</strong> Even though you matched almost everything they asked for.</p>
+
+<p>Suddenly the whole day feels different. We&rsquo;ve all been there.</p>
+
+<p>But the real problem isn&rsquo;t the rejection. It&rsquo;s letting one &ldquo;no&rdquo; make you doubt yourself and carrying that into your next application. <strong>A rejection lasts a moment. The meaning you attach to it lasts much longer.</strong></p>
+
+<p>Here&rsquo;s how I see it: it&rsquo;s the company&rsquo;s loss, not yours. You did what you had to. If not them, someone else. Most companies filter candidates with automated screening anyway. If they don&rsquo;t care, neither should you.</p>
+
+<p>Keep upskilling, keep applying, keep taking your shot. <strong>Only one hit is enough.</strong></p>
+
+<p style="line-height:1.9;">
+  Build the perfect resume &rarr; <a href="{{ base_url }}/modify-cv?utm_source=email&utm_medium=marketing&utm_campaign={{ campaign }}" style="color:#2563eb;font-weight:bold;">Click here</a><br>
+  Make every application stronger &rarr; <a href="{{ base_url }}/optimize?utm_source=email&utm_medium=marketing&utm_campaign={{ campaign }}" style="color:#2563eb;font-weight:bold;">Click here</a>
+</p>
+
+<p>Until next time,<br>Shubham Sarkar<br>Co-Founder, TailorCV</p>
+
+<p style="margin-top:24px;padding-top:16px;border-top:1px solid #e5e7eb;font-size:14px;color:#4b5563;">
+  <strong>P.S.</strong> <a href="https://www.reddit.com/r/recruitinghell/comments/17v3a31/getting_a_job_now_vs_before/" style="color:#2563eb;">Then vs Now</a>
+</p>
+{% endblock %}

@@ -72,9 +72,9 @@ Your resume has to reflect that. Understanding [how recruiters read resumes](htt
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
+This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: paper size, font, font size, line height and margins.
 
 ### 1. Lead With Impact, Not Title
 

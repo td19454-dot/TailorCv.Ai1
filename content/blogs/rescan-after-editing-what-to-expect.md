@@ -24,6 +24,10 @@ You made the edits and ran the scan again. Here is how to read what came back.
 
 The percentage is a summary. The useful signal is whether the item you were trying to fix disappeared from the missing list.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+After you re-scan, check whether the item you edited still shows as Missing.
+
 **Item cleared, score rose.** The edit worked. Move to the next item.
 
 **Item cleared, score barely moved.** Normal. That item was lightly weighted — often a preferred rather than required one. The fix was still correct.

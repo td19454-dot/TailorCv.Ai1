@@ -19,6 +19,10 @@ import * as d from '../src/autofill/discover.js';
 import * as p from '../src/autofill/plan.js';
 import * as run_ from '../src/autofill/run.js';
 import * as tiles from '../src/autofill/tiles.js';
+import * as rep_ from '../src/autofill/repeaters.js';
+import * as ui from '../src/autofill/ui.js';
+import * as write_ from '../src/autofill/write.js';
+import * as timeline from '../src/autofill/timeline.js';
 import { setTiming } from '../src/autofill/timing.js';
 
 // The production waits exist to let a framework re-render before a field is read
@@ -29,6 +33,7 @@ import { setTiming } from '../src/autofill/timing.js';
 // against real React.
 setTiming({ settleMs: 0, optionWaitMs: 20, revealWatchMs: 10, revealQuietMs: 30, revealMaxMs: 400,
             commitWaitMs: 150, uploadConfirmMs: 400, resumeParseMaxMs: 2000, resumeParseStartMs: 20,
+            resumeParseDetectMs: 300, resumeParseQuietMs: 60,
             tileOpenMs: 500, tileSaveMs: 500 });
 
 const BANK = {
@@ -132,6 +137,9 @@ function handleMessage(msg, options) {
     case 'AF_STATE_SET': return { data: { ok: true } };
     case 'AF_STATE_CLEAR': return { data: { ok: true } };
     case 'AF_SAVE_ANSWERS': return { data: { saved: (msg.payload.answers || []).length } };
+    case 'AF_FORGET_ANSWER': return { data: { ok: true, forgotten: true } };
+    case 'JOB_COUNTRY':
+      return { data: options.postedCountry === undefined ? null : { country: options.postedCountry } };
     case 'AF_GET_RESUME_FILE':
       return options.noResumeBytes
         ? { error: 'no_file' }
@@ -141,6 +149,15 @@ function handleMessage(msg, options) {
     case 'AF_PLAN': {
       if (options.serverError) return { error: options.serverError, code: options.serverCode };
       const answers = {};
+      // The forced pass (auto-apply's required leftovers, a block's list the
+      // rules could not answer): options.forceAnswer(field) -> value or null.
+      if (msg.payload.force && options.forceAnswer) {
+        for (const field of msg.payload.fields || []) {
+          const value = options.forceAnswer(field);
+          if (value) answers[String(field.i)] = { value, source: 'ai_forced', confidence: 0.6 };
+        }
+        return { data: { answers, ask: [], sensitiveSkipped: [], neverFill: [] } };
+      }
       for (const field of msg.payload.fields || []) {
         // A motivation question the server writes for this job (_compose_answers).
         if (field.compose && options.composeAnswer) {
@@ -198,6 +215,55 @@ test('each fixture is attributed to the right ATS by URL', () => {
   eq(d.detectAts('https://jobs.lever.co/acme/x/apply'), 'lever');
   eq(d.detectAts('https://acme.wd5.myworkdayjobs.com/en-US/careers/job/x/apply'), 'workday');
   eq(d.detectAts('https://jobs.ashbyhq.com/acme/abc-123/application'), 'ashby');
+});
+
+// ── waiting for the page to settle ───────────────────────────
+
+// Our sidebar lives in the page's <body> and its progress ring redraws every
+// 150 ms. Counted as the page changing, it kept every wait running to its cap.
+const SIDEBAR = '<div id="tailorcv-sidebar"><span id="pct">0%</span></div>'
+              + '<div id="page-area"></div>';
+
+function churn(env, selector) {
+  const node = env.document.querySelector(selector);
+  let n = 0;
+  return setInterval(() => {
+    n++;
+    node.textContent = `${n}%`;
+    node.setAttribute('style', `opacity:${n % 2}`);
+  }, 5);
+}
+
+test('waitForQuiet: our own sidebar redrawing does not keep the page "busy"', async () => {
+  await withForm(fixtures.GREENHOUSE + SIDEBAR, {}, async (env) => {
+    const timer = churn(env, '#pct');
+    try {
+      const res = await run_.waitForQuiet(env.document.body);
+      notOk(res.capped, `waited ${res.ms} ms — the sidebar's churn was counted as the page changing`);
+    } finally { clearInterval(timer); }
+  });
+});
+
+test('waitForQuiet: the page itself changing still holds the wait open', async () => {
+  await withForm(fixtures.GREENHOUSE + SIDEBAR, {}, async (env) => {
+    const timer = churn(env, '#page-area');
+    try {
+      const res = await run_.waitForQuiet(env.document.body);
+      ok(res.capped, 'a page still loading fields must be waited for (Oracle\'s address block)');
+    } finally { clearInterval(timer); }
+  });
+});
+
+test('a run reports where its time went', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async () => {
+    const result = await run_.runAutofill(CTX, null);
+    const t = result.timing;
+    ok(t, 'the result must carry timing');
+    ok(t.totalMs >= 0, 'a total');
+    ok('scan' in t.phases && 'local_writes' in t.phases, `phases: ${JSON.stringify(t.phases)}`);
+    ok(Array.isArray(t.slowFields) && t.slowFields.length > 0, 'the slowest fields');
+    ok(t.quietWaits.length >= 1, 'every run waits at least once for revealed fields');
+  });
 });
 
 // ── one label, several meanings, end to end ──────────────────
@@ -275,7 +341,7 @@ test('Greenhouse (current markup): the resume reaches the upload behind "Attach"
   });
 });
 
-test('Greenhouse: work authorization comes from the profile, not the model', async () => {
+test('Greenhouse: work authorization and sponsorship never go to the model', async () => {
   await withForm(fixtures.GREENHOUSE, {
     // The stub would happily answer these if they were ever sent.
     serverAnswers: {
@@ -284,7 +350,7 @@ test('Greenhouse: work authorization comes from the profile, not the model', asy
     },
   }, async (env, sent) => {
     const result = await run_.runAutofill(CTX, null);
-    eq(valueOf(env, '#q_auth'), '0', 'the stored answer is No, so option value 0');
+    eq(valueOf(env, '#q_auth'), '1', 'always Yes, over the stored No, so option value 1');
     eq(valueOf(env, '#q_sponsor'), '1', 'the stored answer is Yes, so option value 1');
 
     // And the proof of the structural rule: they never left the browser.
@@ -356,12 +422,139 @@ test('Greenhouse: a cover letter we do not have is reported, not faked', async (
   });
 });
 
+test("auto-apply's forced answer ticks a lone checkbox when it is the box's own label", async () => {
+  // Citi (Oct 2026): the forced pass — which writes the model's text as given —
+  // sent the box's only option, its label, and the write refused it: "we could
+  // not get this to stick", and auto-apply stopped.
+  const label = 'Yes, I have read and consent to the above.';
+  await withForm(`<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      <label for="tc">${label}</label><input id="tc" type="checkbox" name="acceptTermsAndAgreements" required>
+    </form>`, { forceAnswer: f => (/consent to the above/.test(f.label) ? f.label : null) }, async (env) => {
+    // Permission off, so the profile does not tick it and the forced pass does.
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, BANK, { accepts_employer_terms_and_privacy_policy: 'No' }) });
+    const result = await run_.runAutofill(ctx, null);
+    notOk(env.document.getElementById('tc').checked, 'left for the forced pass');
+    const forced = await run_.forceAnswers(ctx, result.decisions);
+    const d = byLabel(result.decisions, 'consent to the above');
+    eq(forced.forced, 1);
+    ok(env.document.getElementById('tc').checked, `ticked: ${d.action} ${d.outcome} ${d.reason}`);
+    eq(d.outcome, 'ok');
+  });
+});
+
+test('a manual fill answers the required questions left from the resume, for review', async () => {
+  // DoorDash (Oct 2026): "What best describes your experience designing
+  // analytical data models?" — the first AI call is never shown the resume and
+  // left it empty; only auto-apply (Workday) made the resume pass.
+  const form = `<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      <label for="dm">What best describes your experience designing analytical data models? *</label>
+      <select id="dm" required><option value="">Select…</option><option>None</option>
+        <option>Some — I have contributed to them</option><option>Extensive — I have led them</option></select>
+      <label for="fel">Has any member of your family been convicted of a felony? *</label>
+      <select id="fel" required><option value="">Select…</option><option>Yes</option><option>No</option></select>
+    </form>`;
+  const asked = [];
+  const forceAnswer = f => { asked.push(f.label); return /analytical data models/.test(f.label) ? 'Some — I have contributed to them' : null; };
+
+  await withForm(form, { forceAnswer }, async (env, sent) => {
+    const result = await run_.runAutofill(Object.assign({}, CTX, { resumePass: true }), null);
+    const d = byLabel(result.decisions, 'analytical data models');
+    eq(d.action, p.FILL, `${d.action}: ${d.reason}`);
+    eq(d.source, 'ai_forced');
+    eq(d.reason, 'best answer from your resume — check it');
+    eq(env.document.getElementById('dm').value, 'Some — I have contributed to them');
+    // Sensitive: never in the resume pass.
+    notOk(asked.some(l => /felony/i.test(l)), `asked: ${asked.join(' | ')}`);
+    eq(byLabel(result.decisions, 'felony').action, p.ASK);
+    ok(sent.some(m => m.type === 'AF_PLAN' && m.payload.force), 'one forced request');
+  });
+
+  // Auto-apply's own fill: its loop makes the pass itself, so none here.
+  asked.length = 0;
+  await withForm(form, { forceAnswer }, async (env, sent) => {
+    await run_.runAutofill(CTX, null);
+    notOk(sent.some(m => m.type === 'AF_PLAN' && m.payload.force), 'no forced request without resumePass');
+    eq(env.document.getElementById('dm').value, '');
+  });
+});
+
 test('Greenhouse: an unknown product question is answered by the server tier', async () => {
   await withForm(fixtures.GREENHOUSE, {
     serverAnswers: { 'Have you used our developer platform? *': 'Yes' },
   }, async (env) => {
     await run_.runAutofill(CTX, null);
     eq(valueOf(env, '#q_product'), '1');
+  });
+});
+
+// Capital One's Workday (Oct 2026): the "second job" answer's first update was
+// lost (Workday's own blur handler crashed), and every change to it redraws the
+// Code of Conduct question below — empty — a moment later. Rewritten back to
+// back, the Code of Conduct read back "Yes", was emptied, and the panel kept ✓.
+const CAPONE_QUESTIONS = `<form>
+  <label for="fn">First Name</label><input id="fn" name="first_name">
+  <label for="em">Email</label><input id="em" name="email" type="email">
+  <label for="job2">Do you have a second job or outside business?</label>
+  <select id="job2" name="job2" required><option value="">Select One</option><option>Yes</option><option>No</option></select>
+  <label for="coc">Please acknowledge the Code of Conduct by responding Yes</label>
+  <select id="coc" name="coc" required><option value="">Select One</option><option>Yes</option><option>No</option></select>
+</form>`;
+const CAPONE_ANSWERS = {
+  'Do you have a second job or outside business?': 'No',
+  'Please acknowledge the Code of Conduct by responding Yes': 'Yes',
+};
+
+// Workday works on an answer for a moment (the page changes: a busy state),
+// then redraws — here, empties — what depends on it. Busy-then-redraw is what
+// waitForQuiet sees, as on the real page.
+function redrawLater(w, el, ms) {
+  el.setAttribute('data-busy', 'true');
+  w.setTimeout(() => { el.value = ''; el.removeAttribute('data-busy'); }, ms);
+}
+
+function wireCapitalOne(env, opts = {}) {
+  const w = env.window;
+  const job = env.document.getElementById('job2'), coc = env.document.getElementById('coc');
+  let jobChanges = 0;
+  job.addEventListener('change', () => {
+    if (++jobChanges === 1) redrawLater(w, job, 40);    // the lost update
+    redrawLater(w, coc, 60);                            // the follow-up redrawn, empty
+  });
+  if (opts.cocNeverStays) coc.addEventListener('change', () => redrawLater(w, coc, 60));
+}
+
+// The real quiet wait is at least 0.9 s — well past Workday's redraw. This
+// suite's 10 ms one would end before the redraw lands, which no real page sees.
+async function withRealisticWaits(fn) {
+  setTiming({ revealWatchMs: 300, revealQuietMs: 100 });
+  try { return await fn(); } finally { setTiming({ revealWatchMs: 10, revealQuietMs: 30 }); }
+}
+
+test('Capital One: a follow-up question its parent empties is filled again after the parent settles', async () => {
+  await withForm(CAPONE_QUESTIONS, { serverAnswers: CAPONE_ANSWERS }, async (env) => {
+    wireCapitalOne(env);
+    const result = await withRealisticWaits(() => run_.runAutofill(CTX, null));
+    await new Promise(r => setTimeout(r, 600));          // anything still pending lands
+    eq(valueOf(env, '#job2'), 'No');
+    eq(valueOf(env, '#coc'), 'Yes', 'the Code of Conduct holds its answer');
+    for (const d of result.decisions.filter(x => x.action === p.FILL && x.row && x.row.el)) {
+      ok(d.row.el.value, `${d.label} is shown filled and must be: page holds "${d.row.el.value}"`);
+    }
+  });
+});
+
+test('Capital One: an answer the page keeps emptying is handed over, never shown filled', async () => {
+  await withForm(CAPONE_QUESTIONS, { serverAnswers: CAPONE_ANSWERS }, async (env) => {
+    wireCapitalOne(env, { cocNeverStays: true });
+    const result = await withRealisticWaits(() => run_.runAutofill(CTX, null));
+    const coc = byLabel(result.decisions, 'code of conduct');
+    eq(coc.action, p.ASK, `not ✓: ${coc.action} ${coc.reason}`);
+    ok(/cleared/.test(coc.reason), coc.reason);
   });
 });
 
@@ -488,20 +681,20 @@ test('Lever: bracketed field names and span-wrapped labels resolve', async () =>
   });
 });
 
-test('Lever: a radio group for work authorization is answered from the profile', async () => {
+test('Lever: a radio group for work authorization is always Yes', async () => {
   await withForm(fixtures.LEVER, {}, async (env) => {
     await run_.runAutofill(CTX, null);
     const yes = env.document.querySelector('[value=Yes]');
     const no = env.document.querySelector('[value=No]');
-    ok(no.checked, 'the stored answer is No');
-    notOk(yes.checked);
+    ok(yes.checked, 'always Yes, over the stored No');
+    notOk(no.checked);
   });
 });
 
-test('Lever: "How did you hear" is filled from the profile', async () => {
+test('Lever: "How did you hear" is filled with LinkedIn', async () => {
   await withForm(fixtures.LEVER, {}, async (env) => {
     await run_.runAutofill(CTX, null);
-    eq(valueOf(env, '[name="cards[source][field0]"]'), 'Company website');
+    eq(valueOf(env, '[name="cards[source][field0]"]'), 'LinkedIn');
   });
 });
 
@@ -712,6 +905,92 @@ test('an unheaded upload after "Resume/CV" does not inherit it', async () => {
   });
 });
 
+const LSEG_URL = 'https://lseg.wd3.myworkdayjobs.com/en-US/Careers/job/IND-BLR/Software-Engineer_R0121252/apply/autofillWithResume';
+
+// Uploads, then empties the input and lists the file, as Workday's My Experience does.
+function wireResumeStep(doc) {
+  const input = doc.querySelector('[data-automation-id="file-upload-input-ref"]');
+  input.addEventListener('change', () => {
+    const name = input.files && input.files[0] ? input.files[0].name : '';
+    if (!name) return;
+    setTimeout(() => {
+      input.value = '';
+      doc.querySelector('[data-automation-id="resumeUpload"] > div:last-child').innerHTML = `<div><span>${name}</span></div>`;
+    }, 120);
+  });
+}
+
+test('Workday "Autofill with Resume": the upload is the one field, read as the resume', async () => {
+  await withForm(fixtures.WORKDAY_RESUME_STEP, {}, async (env) => {
+    env.dom.reconfigure({ url: LSEG_URL });
+    const form = d.findForm();
+    eq(form.root.getAttribute('data-automation-id'), 'applyFlowAutoFillPage');
+    ok(d.isApplicationPage(), 'the sidebar offers Autofill');
+    const rows = d.describeFields(form);
+    eq(rows.length, 1, `rows: ${rows.map(r => r.label).join(' | ')}`);
+    eq(rows[0].kind, 'file');
+    eq(rows[0].documentSlot, 'resume');
+    eq(rows[0].el, env.document.querySelector('[data-automation-id="file-upload-input-ref"]'));
+  });
+});
+
+test('Workday "Autofill with Resume": the resume is uploaded, and the header\'s menu is left alone', async () => {
+  await withForm(fixtures.WORKDAY_RESUME_STEP, {}, async (env, sent) => {
+    env.dom.reconfigure({ url: LSEG_URL });
+    wireResumeStep(env.document);
+    let opened = 0;
+    env.document.getElementById('settingsSelectorButton').addEventListener('mousedown', () => { opened++; });
+    const result = await run_.runAutofill(Object.assign({}, CTX, { hasResume: true }), null);
+    eq(result.error, undefined);
+    eq(result.decisions.length, 1, `decisions: ${result.decisions.map(x => x.label).join(' | ')}`);
+    eq(result.decisions[0].slot, 'resume');
+    eq(result.decisions[0].outcome, 'ok');
+    ok(sent.some(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'resume'), 'the resume is fetched');
+    eq(opened, 0, 'the language menu is not opened');
+  });
+});
+
+test('Workday "Autofill with Resume": with no resume on file, the person is asked', async () => {
+  await withForm(fixtures.WORKDAY_RESUME_STEP, {}, async (env, sent) => {
+    env.dom.reconfigure({ url: LSEG_URL });
+    const result = await run_.runAutofill(Object.assign({}, CTX, { hasResume: false }), null);
+    eq(result.decisions[0].action, p.ASK);
+    notOk(sent.some(m => m.type === 'AF_GET_RESUME_FILE'), 'nothing to fetch');
+  });
+});
+
+test('Workday "Autofill with Resume": a file already uploaded is not replaced', async () => {
+  const html = fixtures.WORKDAY_RESUME_STEP.replace('<div class="upload-list"></div>',
+    '<div class="upload-list"><div><span>tailored_for_this_job.pdf</span></div></div>');
+  await withForm(html, {}, async (env, sent) => {
+    env.dom.reconfigure({ url: LSEG_URL });
+    const result = await run_.runAutofill(Object.assign({}, CTX, { hasResume: true }), null);
+    eq(result.decisions[0].action, p.SKIP);
+    notOk(sent.some(m => m.type === 'AF_GET_RESUME_FILE'), 'it stays as it is');
+  });
+});
+
+test('Workday "Autofill with Resume": an upload with its own label in another language is still the resume', async () => {
+  const html = fixtures.WORKDAY_RESUME_STEP.replace('type="file">', 'type="file" aria-label="Datei hochladen">')
+    .replace(/Autofill with Resume/g, 'Mit Lebenslauf ausfüllen');
+  await withForm(html, {}, async (env) => {
+    env.dom.reconfigure({ url: LSEG_URL });
+    eq(d.describeFields(d.findForm())[0].documentSlot, 'resume');
+  });
+});
+
+test('The resume step is only Workday\'s, and only that step', async () => {
+  await withForm(fixtures.WORKDAY_RESUME_STEP, {}, async (env) => {
+    env.dom.reconfigure({ url: 'https://careers.example.com/apply/resume' });
+    notOk(d.findForm().resumeStep, 'the same markup on another site');
+  });
+  const otherStep = fixtures.WORKDAY_RESUME_STEP.replace('applyFlowAutoFillPage', 'applyFlowMyExpPage');
+  await withForm(otherStep, {}, async (env) => {
+    env.dom.reconfigure({ url: LSEG_URL });
+    notOk(d.findForm().resumeStep, 'another Workday step with one upload');
+  });
+});
+
 // Workday "Application Questions" (Bank of America, ghr.wd1.myworkdayjobs.com):
 // the question is rich text, the button carries only name="<hash>" and
 // aria-label "Select One Required". The sidebar showed the hash as the
@@ -754,6 +1033,210 @@ test('Workday questionnaire: questions are read from their text, never the hash'
     const plan = sent.find(m => m.type === 'AF_PLAN');
     const labels = plan ? plan.payload.fields.map(f => f.label) : [];
     notOk(labels.some(l => /^[0-9a-f]{20,}/i.test(l)), `a hash reached the model: ${labels.join(' | ')}`);
+  });
+});
+
+test('Workday: Nike\'s conflict-of-interest dropdown is No, and never reaches the model', async () => {
+  const para = `<p>Under NIKE Policy, certain situations may create a Conflict of Interest. If hired for this role, will you be engaged in either of the below activities at the same time as your NIKE employment?</p>
+    <p>(1) Additional work outside of Nike</p><p>(2) Owning your own business</p>`;
+  const button = name => `<div><button type="button" aria-haspopup="listbox" name="${name}"
+    aria-label="Select One Required">Select One</button><input type="text" tabindex="-1" value=""></div>`;
+  const html = fixtures.WORKDAY_MYINFO.replace('<div data-automation-id="formField-email">', `
+    <div data-automation-id="primaryQuestionnairePage">
+      <fieldset data-fkit-id="primaryQuestionnaire--aaaa"><legend><div class="rich-text">${para}</div><abbr>*</abbr></legend>${button('aaaa')}</fieldset>
+      <div data-fkit-id="primaryQuestionnaire--bbbb"><div class="rich-text">${para}<abbr>*</abbr></div>${button('bbbb')}</div>
+    </div>
+    <div data-automation-id="formField-email">`);
+  await withForm(html, {}, async (env, sent) => {
+    const result = await run_.runAutofill(CTX, null);
+    for (const name of ['aaaa', 'bbbb']) {
+      const x = result.decisions.find(y => y.row && y.row.el && y.row.el.getAttribute('name') === name);
+      ok(/Owning your own business/.test(x.row.label), `${name} label: "${x.row.label}"`);
+      eq(x.value, 'No', `${name}: ${x.action} ${x.reason}`);
+    }
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    notOk(plan && plan.payload.fields.some(f => /Conflict of Interest/.test(f.label)), 'never asked of the model');
+  });
+});
+
+// Nike's Application Questions, as captured (Nov 2026).
+const NIKE_URL = 'https://nike.wd1.myworkdayjobs.com/en-US/nke/job/Karnataka-India/Lead-Cyber-Defense-Data-Analyst--ITC_R-92380/apply';
+const NIKE_AUTH = ['Yes, without restriction', 'Yes, I have a visa / sponsorship', 'No, I would require visa / sponsorship'];
+const NIKE_CTX = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+  { authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: 'No', nationality: 'India' }) });
+const nikeQuestion = (id, label) => `
+  <div data-automation-id="formField-${id}" data-fkit-id="primaryQuestionnaire--${id}"><fieldset>
+    <legend><div data-automation-id="richText"><p><b>${label}<abbr title="required">*</abbr></b></p></div></legend>
+    <div><button aria-haspopup="listbox" type="button" value="" aria-label="Select One Required" name="${id}"
+                 id="primaryQuestionnaire--${id}">Select One</button><input type="text" tabindex="-1" value=""></div>
+  </fieldset></div>`;
+const nikeButton = (doc, id) => doc.getElementById(`primaryQuestionnaire--${id}`);
+function wireNikeList(doc, id, options) {
+  const portal = doc.getElementById('wd-portal');
+  const button = nikeButton(doc, id);
+  button.addEventListener('mousedown', () => {
+    button.dataset.opened = String(Number(button.dataset.opened || 0) + 1);
+    portal.innerHTML = '<ul role="listbox"><li role="option" aria-disabled="true"><div>Select One</div></li>'
+      + options.map(o => `<li role="option"><div>${o}</div></li>`).join('') + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]:not([aria-disabled])')) {
+      li.addEventListener('mousedown', () => { button.textContent = li.textContent; portal.innerHTML = ''; });
+    }
+  });
+}
+const nikePage = inner => fixtures.WORKDAY_MYINFO.replace('<div data-automation-id="formField-email">',
+  `<div id="nike-questions">${inner}</div><div data-automation-id="formField-email">`);
+const atNikeUrl = () => Object.defineProperty(globalThis, 'location',
+  { value: new URL(NIKE_URL), writable: true, configurable: true, enumerable: true });
+
+test('Nike: Authorized takes "Yes, without restriction" and Citizen takes Yes, from the job\'s country', async () => {
+  const html = nikePage(nikeQuestion('auth', 'Are you authorized to work in the country you are applying to?')
+    + nikeQuestion('cit', 'Are you a Citizen of the country you are applying to?'));
+  await withForm(html, {}, async (env) => {
+    atNikeUrl();
+    fixtures.wireWorkday(env.document);
+    wireNikeList(env.document, 'auth', NIKE_AUTH);
+    wireNikeList(env.document, 'cit', ['Yes', 'No']);
+    const result = await run_.runAutofill(NIKE_CTX, null);
+    eq(nikeButton(env.document, 'auth').textContent, 'Yes, without restriction');
+    eq(nikeButton(env.document, 'cit').textContent, 'Yes');
+    for (const needle of ['authorized to work', 'a citizen of']) {
+      const d = byLabel(result.decisions, needle);
+      eq(d.action, p.FILL, `${needle}: ${d.action} ${d.outcome} ${d.reason}`);
+      eq(d.outcome, 'ok');
+    }
+  });
+});
+
+test('Workday: a right-to-work list worded by citizenship takes the citizenship option for a job in their country', async () => {
+  const LIST = ['Yes - I hold citizenship', 'Yes – I hold a valid work permit / VISA', 'No - I require VISA sponsorship'];
+  const html = nikePage(nikeQuestion('right', 'Do you have the right to work in the location to which you are applying?'));
+  await withForm(html, {}, async (env) => {
+    atNikeUrl();
+    fixtures.wireWorkday(env.document);
+    wireNikeList(env.document, 'right', LIST);
+    const result = await run_.runAutofill(NIKE_CTX, null);
+    const d = byLabel(result.decisions, 'right to work');
+    eq(nikeButton(env.document, 'right').textContent, LIST[0], `${d.action} ${d.outcome} ${d.reason}`);
+    eq(d.action, p.FILL);
+    eq(d.outcome, 'ok');
+  });
+});
+
+const AMADEUS_URL = 'https://amadeus.wd502.myworkdayjobs.com/en-US/jobs/job/Bangalore/Software-Development-Engineer-2_R37949-2/apply?source=LinkedIn';
+const rightToWork = async (posted, ctx, url) => {
+  const LIST = ['Yes - I hold citizenship', 'Yes – I hold a valid work permit / VISA', 'No - I require VISA sponsorship'];
+  const html = nikePage(nikeQuestion('right', 'Do you have the right to work in the location to which you are applying?'));
+  return withForm(html, { postedCountry: posted }, async (env, sent) => {
+    Object.defineProperty(globalThis, 'location', { value: new URL(url || AMADEUS_URL), writable: true, configurable: true, enumerable: true });
+    fixtures.wireWorkday(env.document);
+    wireNikeList(env.document, 'right', LIST);
+    const result = await run_.runAutofill(ctx || NIKE_CTX, null);
+    const d = byLabel(result.decisions, 'right to work');
+    return { d, shown: nikeButton(env.document, 'right').textContent, asked: sent.filter(m => m.type === 'JOB_COUNTRY') };
+  });
+};
+
+test('Amadeus: /job/Bangalore/ is in India by the posting\'s own data, and takes the citizenship option', async () => {
+  const { d, shown, asked } = await rightToWork('India');
+  eq(shown, 'Yes - I hold citizenship', `${d.action} ${d.outcome} ${d.reason}`);
+  eq(d.action, p.FILL);
+  eq(d.outcome, 'ok');
+  eq(asked.length, 1);
+  eq(asked[0].url, AMADEUS_URL);
+});
+
+test('The right to work is Yes for a job abroad too: the permit option, marked to check, never a pause', async () => {
+  const { d, shown } = await rightToWork('United States of America');
+  eq(shown, 'Yes – I hold a valid work permit / VISA', `${d.action} ${d.outcome} ${d.reason}`);
+  eq(d.action, p.SUGGEST);
+  eq(d.outcome, 'ok');
+  ok(/United States/.test(d.reason), d.reason);
+});
+
+test('The right to work is Yes when the country is unknown, and when the profile says otherwise', async () => {
+  // Several locations; the posting unreadable with a URL naming only a city.
+  for (const posted of ['', undefined]) {
+    const { d, shown } = await rightToWork(posted);
+    eq(shown, 'Yes - I hold citizenship', `posted ${posted}: ${d.action} ${d.outcome} ${d.reason}`);
+    eq(d.action, p.FILL);
+  }
+  // Unreadable posting: the URL still answers.
+  const fromUrl = await rightToWork(undefined, NIKE_CTX, NIKE_URL);
+  eq(fromUrl.shown, 'Yes - I hold citizenship');
+  // The person's choice: even a profile saying not authorized, needing sponsorship.
+  const no = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+    { authorized_to_work_in_country: 'No', requires_visa_sponsorship: 'Yes', nationality: 'India' }) });
+  const { d, shown } = await rightToWork('India', no);
+  eq(shown, 'Yes - I hold citizenship', `${d.action} ${d.outcome} ${d.reason}`);
+});
+
+test('Barclays: criminal history, screening and the right to work land on the page, with nothing sent to the model', async () => {
+  const html = nikePage(
+    nikeQuestion('right', 'Do you have the legal right to work in the country or jurisdiction where the position you are applying for is located?')
+    + nikeQuestion('crime', 'Do you have any criminal convictions, cautions, reprimands or final warnings (including traffic offences) in any country?')
+    + nikeQuestion('screen', 'If your application is successful Barclays undertakes people screening as part of its recruitment process, these include; criminal records, address verification — are you happy to continue with your application?'));
+  await withForm(html, {}, async (env, sent) => {
+    fixtures.wireWorkday(env.document);
+    for (const id of ['right', 'crime', 'screen']) wireNikeList(env.document, id, ['Yes', 'No']);
+    await run_.runAutofill(NIKE_CTX, null);
+    eq(nikeButton(env.document, 'right').textContent, 'Yes');
+    eq(nikeButton(env.document, 'crime').textContent, 'No');
+    eq(nikeButton(env.document, 'screen').textContent, 'Yes');
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    const labels = plan ? plan.payload.fields.map(f => f.label) : [];
+    notOk(labels.some(l => /right to work|criminal|screening/i.test(l)), `sent to the model: ${labels.join(' | ')}`);
+  });
+});
+
+test('Nike: a dropdown that appears mid-fill and refuses is retried, and never shows as filled', async () => {
+  const html = nikePage('');
+  await withForm(html, {}, async (env) => {
+    const doc = env.document;
+    fixtures.wireWorkday(doc);
+    let drawn = false;
+    doc.addEventListener('mousedown', e => {
+      if (drawn || !(e.target.closest && e.target.closest('[role=option]'))) return;
+      drawn = true;
+      setTimeout(() => {
+        doc.getElementById('nike-questions').innerHTML =
+          nikeQuestion('auth', 'Are you authorized to work in the country you are applying to?');
+        // Nothing here says their answer: the write can only fail.
+        wireNikeList(doc, 'auth', ['Option A', 'Option B']);
+      }, 0);
+    }, true);
+    const result = await run_.runAutofill(NIKE_CTX, null);
+    ok(drawn, 'the question appeared');
+    const d = byLabel(result.decisions, 'authorized to work');
+    ok(d, 'the late question has a decision');
+    eq(d.action, p.ASK, `${d.action} ${d.outcome}`);
+    eq(d.reason, 'we could not get this to stick');
+    const opened = Number(nikeButton(doc, 'auth').dataset.opened);
+    ok(opened >= 2, `written, then retried: opened ${opened} time(s)`);
+
+    const { body } = panelFor(env, result);
+    const filled = Array.from(body.querySelectorAll('.tcv-af-group'))
+      .find(g => /^Filled ·/.test(g.querySelector('.tcv-af-group-title').textContent));
+    notOk(filled && /authorized to work/.test(filled.textContent),
+          `not listed under Filled: ${filled ? filled.textContent.replace(/\s+/g, ' ').slice(0, 700) : ''}`);
+  });
+});
+
+test('The panel\'s counts match its sections after auto-apply\'s second pass', async () => {
+  const html = nikePage(nikeQuestion('shift', 'Do you have a preferred shift pattern?'));
+  const forceAnswer = field => (/shift pattern/.test(field.label) ? 'No' : null);
+  await withForm(html, { forceAnswer }, async (env) => {
+    fixtures.wireWorkday(env.document);
+    wireNikeList(env.document, 'shift', ['Yes', 'No']);
+    const result = await run_.runAutofill(NIKE_CTX, null);
+    const before = result.counts[p.FILL];
+    const forced = await run_.forceAnswers(NIKE_CTX, result.decisions);
+    ok(forced.forced >= 1, `forced: ${JSON.stringify(forced)}`);
+    eq(byLabel(result.decisions, 'shift pattern').action, p.FILL);
+    const now = result.decisions.filter(d => d.action === p.FILL || d.action === p.DOCUMENT).length;
+    ok(now > before, `${now} filled now, ${before} when counted`);
+    const { body } = panelFor(env, result);
+    ok(body.querySelector('#tcvAfSummary').textContent.includes(`${now} filled`),
+       body.querySelector('#tcvAfSummary').textContent.replace(/\s+/g, ' '));
   });
 });
 
@@ -1112,6 +1595,66 @@ test('Oracle: the resume import runs first; what it filled is left alone, only t
   });
 });
 
+// The Oracle form behind the Oct 2026 log: the import only starts reading once
+// its server has the file — after the run's one look at 300 ms — so the page
+// was filled while it read, and the import then wrote over Country code and
+// more. However the reading shows itself (or does not), the page is filled
+// only after it.
+function wireLateImport(env, { startMs = 100, readMs = 120, sign = 'disable', fills = {} } = {}) {
+  const doc = env.document;
+  const input = doc.querySelector('.apply-flow-profile-import-awli__file-upload');
+  const block = doc.querySelector('.apply-flow-profile-import');
+  input.addEventListener('change', () => {
+    setTimeout(() => {
+      if (sign === 'disable') input.disabled = true;
+      if (sign === 'spinner') block.insertAdjacentHTML('beforeend', '<div class="oj-progress-circle">Reading…</div>');
+      if (sign === 'section hidden') doc.body.insertAdjacentHTML('beforeend', '<apply-flow-section id="section-1" aria-hidden="true"></apply-flow-section>');
+      setTimeout(() => {
+        const section = doc.getElementById('section-1');
+        if (section) section.setAttribute('aria-hidden', 'false');
+        for (const b of doc.querySelectorAll('ul[aria-label="Title"] [role=radio]')) b.setAttribute('aria-checked', 'false');
+        for (const [id, v] of Object.entries(fills)) doc.getElementById(id).value = v;
+        input.disabled = false;
+        const spin = block.querySelector('.oj-progress-circle');
+        if (spin) spin.remove();
+      }, readMs);
+    }, startMs);
+  });
+}
+
+for (const sign of ['disable', 'spinner', 'section hidden', 'none']) {
+  test(`Oracle: a resume import that starts reading late is waited for (${sign})`, async () => {
+    await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
+      wireRadioPills(env.document);
+      wireLateImport(env, { sign, fills: { 'firstName-20': 'FromResume', 'lastName-22': '' } });
+      const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { name_title: 'Mr.' }) });
+      const result = await run_.runAutofill(ctx, null);
+      const doc = env.document;
+      eq(doc.getElementById('firstName-20').value, 'FromResume', 'what the import filled is left as it filled it');
+      eq(doc.getElementById('lastName-22').value, BANK.last_name);
+      const chosen = [...doc.querySelectorAll('[role="radio"][aria-checked="true"]')].map(b => b.textContent.trim());
+      deepEq(chosen, ['Mr.'], 'Title is filled after the import, not cleared by it');
+      eq(byLabel(result.decisions, 'Title').action, p.FILL);
+    });
+  });
+}
+
+test('an answer the page writes OVER after it was filled is filled again', async () => {
+  await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
+    wireRadioPills(env.document);
+    const last = env.document.getElementById('lastName-22');
+    let overwritten = false;
+    last.addEventListener('input', () => {
+      if (overwritten) return;
+      overwritten = true;
+      setTimeout(() => { last.value = 'FromSomewhereElse'; }, 20);
+    });
+    const result = await withRealisticWaits(() => run_.runAutofill(CTX, null));
+    eq(last.value, BANK.last_name);
+    eq(byLabel(result.decisions, 'Last Name').action, p.FILL);
+  });
+});
+
 test('a field the page empties after it was filled is filled again, never left showing ✓', async () => {
   await withForm(ORACLE_IMPORT_THEN_UPLOAD, {}, async (env) => {
     wireRadioPills(env.document);
@@ -1455,7 +1998,7 @@ test('Workday (real markup): How Did You Hear commits a selectedItem, not typed 
     const result = await run_.runAutofill(CTX, null);
     const items = [...env.document.querySelectorAll('[data-automation-id=selectedItem]')]
       .map(n => n.textContent.trim());
-    eq(items.join(','), 'Company Website');
+    eq(items.join(','), 'LinkedIn');
     const row = byLabel(result.decisions, 'hear about');
     eq(row.outcome, 'ok', `${row.action} / ${row.reason}`);
   });
@@ -1484,15 +2027,15 @@ test('Workday (real markup): the date parts are written', async () => {
   });
 });
 
-test('Workday (real markup): the Citi-employment question is asked, never guessed', async () => {
+test('Workday (real markup): the Citi-employment question is answered from the work history', async () => {
   await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
     fixtures.wireWorkday(env.document);
     const result = await run_.runAutofill(CTX, null);
     const row = byLabel(result.decisions, 'employed by citi');
     ok(row, 'the radio group must be found, labelled by its legend');
-    eq(row.action, p.ASK);
+    eq(row.action, p.FILL, 'Citi is not in the work history (Acme Corp): No, without asking');
     notOk(env.document.querySelector('#radio-yes').checked);
-    notOk(env.document.querySelector('#radio-no').checked);
+    ok(env.document.querySelector('#radio-no').checked);
   });
 });
 
@@ -1716,6 +2259,90 @@ test('Ashby: the education dropdown is matched to one of its real options', asyn
   });
 });
 
+// OpenAI on Ashby (Oct 2026): Yes / No buttons with a hidden mirror checkbox,
+// and the EEO radios in a second, sibling form container.
+const ashbyCtx = over => Object.assign({}, CTX, {
+  answerBank: Object.assign({}, CTX.answerBank, {
+    authorized_to_work_in_country: 'Yes', requires_visa_sponsorship: 'No',
+    gender: 'Cisgender man', race_ethnicity: 'South Asian',
+    veteran_status: 'I have never served in the military',
+  }, over || {}),
+});
+const pressed = (env, id) => {
+  const box = env.document.querySelector(`input[name="${id}"]`).parentElement;
+  const on = box.querySelector('button[aria-pressed="true"]');
+  return on ? on.textContent.trim() : '';
+};
+const checkedRadio = (env, field) => {
+  const r = env.document.querySelector(`input[name="eeo__${field}"]:checked`);
+  return r ? env.document.querySelector(`label[for="${r.id}"]`).textContent.trim() : '';
+};
+
+test('Ashby (OpenAI): Yes / No buttons are questions, not a hidden tickbox', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    const result = await run_.runAutofill(ashbyCtx(), null);
+    notOk(result.error, result.error);
+    const auth = byLabel(result.decisions, 'authorized to work');
+    eq(auth.kind, 'choice');
+    eq(auth.label, 'Are you authorized to work in the country where the job is located?',
+       'the question from its own label, without the description');
+    const spons = byLabel(result.decisions, 'require sponsorship');
+    eq(spons.label, 'Will you now or in the future require sponsorship for employment visa status in this country?');
+    eq(pressed(env, 'q-authorized'), 'Yes');
+    eq(pressed(env, 'q-sponsorship'), 'No');
+    notOk(result.decisions.some(x => x.kind === 'checkbox' && /authorized|sponsorship|office/i.test(x.label)),
+          'the mirror checkbox is not offered as a field of its own');
+  });
+});
+
+test('Ashby (OpenAI): the EEO survey radios are found and filled from the profile', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    const result = await run_.runAutofill(ashbyCtx(), null);
+    eq(checkedRadio(env, 'gender'), 'Male');
+    eq(checkedRadio(env, 'race'), 'Asian (Not Hispanic or Latino)');
+    eq(checkedRadio(env, 'veteran_status'), 'I am not a protected veteran');
+    // Found by their own question — Ashby writes it as a <label>, not a <legend>.
+    // Before, each group took its first option as the question: Race became
+    // "Hispanic or Latino" and was mistaken for the Hispanic Yes / No question.
+    for (const label of ['Gender', 'Race', 'Veteran Status']) {
+      ok(result.decisions.some(x => x.label === label && x.kind === 'radio'), label);
+    }
+  });
+});
+
+test('Ashby (OpenAI): a required Yes / No with no answer on file is asked, never pressed', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    const result = await run_.runAutofill(ashbyCtx(), null);
+    const office = byLabel(result.decisions, 'US office');
+    ok(office.required, 'Ashby marks required on the label\'s class, not with an asterisk');
+    eq(office.action, p.ASK);
+    eq(pressed(env, 'q-office'), '');
+  });
+});
+
+test('Ashby (OpenAI): a protected veteran is never filed as "not a protected veteran"', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    await run_.runAutofill(ashbyCtx({ veteran_status: 'I identify as a protected veteran' }), null);
+    eq(checkedRadio(env, 'veteran_status'),
+       'I identify as one or more of the classifications of protected veteran listed above');
+  });
+});
+
+test('Ashby (OpenAI): the resume goes to the Resume field, never to Ashby\'s own parser', async () => {
+  await withForm(fixtures.ASHBY_OPENAI, {}, async (env) => {
+    fixtures.wireAshbyYesNo(env.document);
+    const result = await run_.runAutofill(ashbyCtx(), null);
+    eq(env.document.querySelector('#_systemfield_resume').files.length, 1);
+    eq(env.document.querySelector('#ashby-autofill-file').files.length, 0,
+       'a file there re-parses the resume and overwrites the filled form');
+    notOk(result.decisions.some(x => /autofill from resume|upload file/i.test(x.label || '')));
+  });
+});
+
 // ── Generic ──────────────────────────────────────────────────
 
 test('Generic: a plain careers form is filled including education facts', async () => {
@@ -1814,6 +2441,125 @@ test('a drop zone that DOES have a file input is not double-counted', async () =
     const rows = d.describeFields(d.findForm());
     eq(rows.filter(r => r.dropOnly).length, 0, 'the input is the field');
     eq(rows.filter(r => r.kind === 'file').length, 1);
+  });
+});
+
+// Ashby uploads (Snowflake, Oct 2026): the file input and its "Upload File /
+// or drag and drop here" zone are siblings in one wrapper, and "Additional
+// Attachments" names the cover letter only in its description.
+const ashbyUpload = (id, title, description, required) => `
+  <div class="ashby-application-form-field-entry" data-field-path="${id}">
+    <label class="ashby-application-form-question-title" for="${id}">${title}</label>
+    ${description ? `<div class="ashby-application-form-question-description"><p>${description}</p></div>` : ''}
+    <div role="presentation" class="_container_10xk4_70 ashby-application-form-input-file">
+      <input type="file" tabindex="-1" id="${id}" ${required ? 'required' : ''}>
+      <div class="_instructions_10xk4_33 ashby-application-form-input-file-dropzone">
+        <button class="ashby-application-form-input-file-dropzone-upload"><span>Upload File</span></button>
+        <p class="ashby-application-form-input-file-dropzone-instructions">or drag and drop here</p>
+      </div>
+    </div>
+  </div>`;
+// Served with no whitespace between tags, as the live page is: a label and its
+// description read as one run of text ("Additional AttachmentsCover Letter").
+const ASHBY_UPLOADS = extra => compact(`
+  <div class="ashby-application-form-container">
+    <div class="ashby-application-form-field-entry">
+      <label for="_systemfield_name">Full Name</label><input id="_systemfield_name" required>
+    </div>
+    <div class="ashby-application-form-field-entry">
+      <label for="_systemfield_email">Email</label><input id="_systemfield_email" type="email" required>
+    </div>
+    ${ashbyUpload('_systemfield_resume', 'Resume', '', true)}
+    ${extra || ''}
+    ${ashbyUpload('q-attachments', 'Additional Attachments', 'Cover Letter, Portfolio, Projects, etc', false)}
+  </div>`);
+function compact(html) { return html.replace(/>\s+</g, '><').trim(); }
+const COVER_CTX = Object.assign({}, CTX, { hasCoverLetter: true });
+
+test('Ashby: "Additional Attachments" asking for a cover letter gets the cover letter', async () => {
+  await withForm(ASHBY_UPLOADS(), {}, async (env, sent) => {
+    const result = await run_.runAutofill(COVER_CTX, null);
+    const box = result.decisions.find(x => x.label === 'Additional Attachments');
+    eq(box.slot, 'cover_letter');
+    eq(env.document.getElementById('q-attachments').files.length, 1);
+    eq(env.document.getElementById('_systemfield_resume').files.length, 1, 'and the resume still goes to Resume');
+    ok(sent.some(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'cover_letter'));
+  });
+});
+
+test('Ashby: with no cover letter on file, the attachments box is left for the person', async () => {
+  await withForm(ASHBY_UPLOADS(), {}, async (env) => {
+    const result = await run_.runAutofill(CTX, null);   // hasCoverLetter: false
+    eq(result.decisions.find(x => x.label === 'Additional Attachments').action, p.ASK);
+    eq(env.document.getElementById('q-attachments').files.length, 0);
+  });
+});
+
+test('a form with its own Cover Letter field keeps the catch-all box for the person', async () => {
+  await withForm(ASHBY_UPLOADS(ashbyUpload('q-cover', 'Cover Letter', '', false)), {}, async (env) => {
+    await run_.runAutofill(COVER_CTX, null);
+    eq(env.document.getElementById('q-cover').files.length, 1);
+    eq(env.document.getElementById('q-attachments').files.length, 0,
+       'one cover letter, in the field made for it');
+  });
+});
+
+test('Ashby: an upload\'s own drag-and-drop zone is not a second field', async () => {
+  await withForm(ASHBY_UPLOADS(), {}, () => {
+    const rows = d.describeFields(d.findForm());
+    eq(rows.filter(r => r.dropOnly).length, 0,
+       'no phantom "Upload File or drag and drop here" row');
+    eq(rows.filter(r => r.kind === 'file').length, 2);
+  });
+});
+
+// Ashby's Location (Snowflake): results come from a network search that
+// outlasts the writer's usual option wait, behind a "Loading..." popup.
+const LOCATION_CTX = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+  { location: 'Kolkata, West Bengal, India', address_city: 'Kolkata',
+    address_state: 'West Bengal', address_country: 'India' }) });
+const locationBox = env => env.document.querySelector('.ashby-application-form-input-autocomplete');
+
+test('Ashby: Location waits out the "Loading..." search and picks the place', async () => {
+  await withForm(fixtures.ASHBY_LOCATION, {}, async (env) => {
+    fixtures.wireAshbyLocation(env.document, { delayMs: 800 });
+    const result = await run_.runAutofill(LOCATION_CTX, null);
+    const row = byLabel(result.decisions, 'Location');
+    ok(row, 'the Location field is found');
+    eq(row.outcome, 'ok', `${row.action}: ${row.reason}`);
+    locationBox(env).dispatchEvent(new env.window.Event('blur'));
+    eq(locationBox(env).value, 'Kolkata, West Bengal, India', 'still there after Ashby\'s blur reset');
+  });
+});
+
+test('Ashby: a Location that failed once is tried again on the next run', async () => {
+  await withForm(fixtures.ASHBY_LOCATION, {}, async (env) => {
+    // A search that never answers in time, then Ashby's blur wipes the box.
+    fixtures.wireAshbyLocation(env.document, { never: true });
+    await run_.runAutofill(LOCATION_CTX, null);
+    locationBox(env).dispatchEvent(new env.window.Event('blur'));
+    eq(locationBox(env).value, '');
+    // The next run, with the network back: not "you edited this".
+    fixtures.wireAshbyLocation(env.document, { delayMs: 50 });
+    const again = await run_.runAutofill(LOCATION_CTX, null);
+    const row = byLabel(again.decisions, 'Location');
+    notOk(/you edited/i.test(row.reason || ''), row.reason);
+    eq(row.outcome, 'ok', `${row.action}: ${row.reason}`);
+    locationBox(env).dispatchEvent(new env.window.Event('blur'));
+    eq(locationBox(env).value, 'Kolkata, West Bengal, India');
+  });
+});
+
+test('clicking into a field and out again is not an edit', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env) => {
+    run_.watchUserEdits(d.findForm(), null);
+    const el = env.document.querySelector('#q_linkedin');
+    el.dispatchEvent(new env.window.Event('blur', { bubbles: true }));
+    el.dispatchEvent(new env.window.Event('change', { bubbles: true }));
+    const result = await run_.runAutofill(CTX, null);
+    const row = byLabel(result.decisions, 'linkedin');
+    notOk(/you edited/.test(row.reason || ''), 'nothing was typed, so it is still filled');
+    eq(el.value, 'https://linkedin.com/in/adalovelace');
   });
 });
 
@@ -1948,6 +2694,40 @@ test('an ordinary answer typed into the panel IS offered to the store', async ()
   });
 });
 
+// Clearance and criminal history have no profile field, so "Save & fill" keeps
+// the person's own answer; citizenship status lives in the profile and is not.
+test('Save & fill remembers clearance, criminal-history and citizenship answers', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    const form = env.document.querySelector('form');
+    form.insertAdjacentHTML('beforeend', `
+      <label for="q_felony">Has any member of your family been convicted of a felony?</label>
+      <select id="q_felony"><option value="">Select…</option><option>Yes</option><option>No</option></select>
+      <label for="q_citizen">Citizenship Status</label>
+      <select id="q_citizen"><option value="">Select…</option>
+        <option>(a) U.S. citizen or national of the United States</option>
+        <option>(f) Other (please explain)</option></select>`);
+    const result = await run_.runAutofill(CTX, null);
+
+    const felony = byLabel(result.decisions, 'convicted');
+    ok(felony, 'the felony question should be found');
+    eq(felony.action, p.ASK);
+    ok((await run_.answerField(felony, 'No', true)).ok);
+    const save = sent.find(m => m.type === 'AF_SAVE_ANSWERS');
+    ok(save, 'the person\'s own criminal-history answer is kept');
+    eq(save.payload.answers[0].answer, 'No');
+
+    sent.length = 0;
+    const citizen = byLabel(result.decisions, 'citizenship status');
+    await run_.answerField(citizen, '(f) Other (please explain)', true);
+    const kept = sent.find(m => m.type === 'AF_SAVE_ANSWERS');
+    ok(kept, 'a citizenship answer is kept too, for this exact question');
+    eq(kept.payload.answers[0].answer, '(f) Other (please explain)');
+    // With the list it was chosen from: kept as that kind of list's answer.
+    ok((kept.payload.answers[0].options || []).includes('(a) U.S. citizen or national of the United States'),
+       `options: ${JSON.stringify(kept.payload.answers[0].options)}`);
+  });
+});
+
 test('learnable answers exclude the sensitive and the secret', async () => {
   await withForm(fixtures.GREENHOUSE, {}, async (env) => {
     const result = await run_.runAutofill(CTX, null);
@@ -1965,6 +2745,34 @@ test('learnable answers exclude the sensitive and the secret', async () => {
     const questions = learnable.map(l => l.question.toLowerCase());
     notOk(questions.some(q => /salary/.test(q)), 'salary must never be learned');
     ok(questions.some(q => /linkedin/.test(q)), 'an ordinary correction is learnable');
+  });
+});
+
+// content.js always passes onRemember, which can only reach a sub-frame. On a
+// top-level Greenhouse form it answered "no_frame" and nothing was ever saved.
+test('"Remember for next time" on a top-level form saves from this page, not via a frame', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    const result = await run_.runAutofill(CTX, null);
+    run_.watchUserEdits(d.findForm(), null);
+    const el = env.document.querySelector('#q_linkedin');
+    el.value = 'https://linkedin.com/in/ada2';
+    el.dispatchEvent(new env.window.Event('change', { bubbles: true }));
+
+    const body = env.document.createElement('div');
+    env.document.body.appendChild(body);
+    let framed = 0;
+    ui.renderResults(body, result, CTX, {
+      onRemember: async () => { framed++; return { error: 'no_frame' }; },
+    });
+    const btn = body.querySelector('#tcvAfRemember');
+    ok(btn, 'the remember offer should render');
+    btn.click();
+    await new Promise(r => setTimeout(r, 0));
+
+    eq(framed, 0, 'a local form must not be routed through the frame handler');
+    const save = sent.find(m => m.type === 'AF_SAVE_ANSWERS');
+    ok(save, 'the answer must be sent to the store');
+    ok(save.payload.answers.some(a => /linkedin/i.test(a.question)));
   });
 });
 
@@ -2042,6 +2850,2570 @@ function wireWorkdayExperience(env) {
   return log;
 }
 
+// Workday's Education block (as on the user's screenshot, Oct 2026): School or
+// University, Degree (a button dropdown, "Select One"), Field of Study, Overall
+// Result (GPA), From / To (Actual or Expected) as year-only spinbuttons. The
+// section starts with no block and an "Add" button.
+function wdYear(id, label) {
+  return `<div data-automation-id="formField-${id.split('--')[1]}"><fieldset><legend><label><span>${label}</span></label></legend>
+    <div id="${id}" role="group" data-automation-id="dateInputWrapper"><div id="${id}-dateSectionYear"><div aria-hidden="true" data-automation-id="dateSectionYear-display">YYYY</div>
+    <input role="spinbutton" aria-label="Year" aria-valuemax="9999" aria-valuemin="1" aria-valuetext="YYYY" id="${id}-dateSectionYear-input" data-automation-id="dateSectionYear-input"></div></div></fieldset></div>`;
+}
+
+function wdEducationBlock(n, k) {
+  const f = `education-${k}--`;
+  const text = (name, label, req) => `<div data-automation-id="formField-${name}"><label for="${f}${name}"><span>${label}${req ? '<abbr aria-hidden="true">*</abbr>' : ''}</span></label>
+    <input type="text" id="${f}${name}" name="${name}" aria-required="${req}"></div>`;
+  return `<div role="group" aria-labelledby="Education-${n}-panel">
+    <div><h5 id="Education-${n}-panel">Education ${n}</h5><button>Delete</button></div>
+    <div data-fkit-id="${f}null">
+      ${text('schoolName', 'School or University', true)}
+      <div data-automation-id="formField-degree"><label id="${f}degree-label" for="${f}degree"><span>Degree<abbr aria-hidden="true">*</abbr></span></label>
+        <button type="button" id="${f}degree" aria-haspopup="listbox" aria-labelledby="${f}degree-label ${f}degree" value="">Select One</button></div>
+      <div data-automation-id="formField-fieldOfStudy"><label for="${f}fieldOfStudy">Field of Study</label>
+        <div data-automation-id="multiSelectContainer"><ul data-automation-id="selectedItemList"></ul>
+          <div data-automation-id="multiselectInputContainer">
+            <input data-automation-id="searchBox" id="${f}fieldOfStudy" type="text" placeholder="Search"></div></div></div>
+      ${text('gradeAverage', 'Overall Result (GPA)', false)}
+      <div class="dates">${wdYear(f + 'firstYearAttended', 'From')}${wdYear(f + 'lastYearAttended', 'To (Actual or Expected)')}</div>
+    </div></div>`;
+}
+
+const WD_EDUCATION_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>My Experience</h3>
+  <div data-automation-id="applyFlowMyExpPage">
+    <div role="group" aria-labelledby="Work-Experience-section"><h4 id="Work-Experience-section">Work Experience</h4>
+      <div><div><button data-automation-id="add-button" id="exp-add">Add</button></div></div></div>
+    <div role="group" aria-labelledby="Education-section"><h4 id="Education-section">Education</h4>
+      <div><div><button data-automation-id="add-button" id="edu-add">Add</button></div></div></div>
+    <div role="group" aria-labelledby="Skills-section"><h4 id="Skills-section">Skills</h4>
+      <label for="skills-input">Type to Add Skills</label><input type="text" id="skills-input" name="skills"></div>
+    <div role="group" aria-labelledby="Resume-section"><h4 id="Resume-section">Resume/CV</h4>
+      <label for="resume-file">Resume/CV</label><input type="file" id="resume-file" name="resume"></div>
+    <div role="group" aria-labelledby="Social-section"><h4 id="Social-section">Social Network URLs</h4>
+      <label for="li">LinkedIn (optional)</label><input type="text" id="li" name="linkedInAccount"></div>
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+
+// Part of NVIDIA's Workday Field of Study list, in its order.
+const WD_FIELDS = ['Accounting', 'Advanced Computing', 'Advertising', 'Aeronautical Engineering', 'Aerospace',
+  'Agriculture', 'Animation', 'Applications Design and Data Analysis', 'Applied Computing',
+  'Applied Electronics', 'Applied Informatics', 'Applied Mathematics', 'Applied Science',
+  'Chemical Engineering', 'Chemistry', 'Civil Engineering', 'Computational Science & Engineering',
+  'Computer & Info Science', 'Computer Science', 'Computer Science & Engin.',
+  'Electrical Engineering and Computer Science', 'Mechanical Engineering'];
+
+// NVIDIA's real Workday degree list (Oct 2026).
+// "High School" is further down the list than the screenshot reached; an
+// earlier NVIDIA run had it selected in Education 2.
+const WD_DEGREES = ['Post-diploma studies', 'BTECH', 'MTECH', 'MCA', 'University Diploma', 'Associates',
+  'Technical/other training', 'Some college', 'PhD', 'Some post college', 'No Degree', 'High School'];
+
+// opts.degreeLoadMs: the Degree list opens with only its disabled "Select One"
+//   and loads the real options this long after (NVIDIA's report, Oct 2026).
+// opts.enterSelects: Field of Study's Enter selects the exact match itself —
+//   the pill appears and no result needs clicking (NVIDIA's report).
+function wireWorkdayEducation(env, opts = {}) {
+  const doc = env.document;
+  const log = { eduAdds: 0, expAdds: 0, next: 0 };
+  const section = doc.querySelector('[aria-labelledby="Education-section"]');
+  const add = doc.getElementById('edu-add');
+  const portal = doc.getElementById('wd-portal');
+  let k = 40;
+  const wireDegree = (block) => {
+    const btn = block.querySelector('[data-automation-id="formField-degree"] button');
+    const placeholder = '<li data-value="" role="option" aria-disabled="true" aria-selected="true" id="select-one"><div>Select One</div></li>';
+    const fill = () => {
+      portal.innerHTML = '<ul role="listbox">' + placeholder + (opts.degrees || WD_DEGREES).map(o =>
+        `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">${o}</li>`).join('') + '</ul>';
+      for (const li of portal.querySelectorAll('[role=option]:not([aria-disabled])')) {
+        li.addEventListener('mousedown', () => { btn.textContent = li.textContent; btn.value = li.textContent; portal.innerHTML = ''; });
+      }
+    };
+    btn.addEventListener('mousedown', () => {
+      btn.setAttribute('aria-expanded', 'true');
+      if (!opts.degreeLoadMs) { fill(); return; }
+      portal.innerHTML = '<ul role="listbox">' + placeholder + '</ul>';
+      doc.defaultView.setTimeout(fill, opts.degreeLoadMs);
+    });
+  };
+  // Workday's Field of Study prompt, as it behaves (NVIDIA, Oct 2026): opening
+  // shows the full list's first rows; typing changes nothing; Enter searches and
+  // shows the results with the FIRST highlighted; a click adds a selectedItem
+  // pill; leaving without a click erases what was typed.
+  log.letterKeys = 0;
+  const wireField = (block) => {
+    const input = block.querySelector('[data-automation-id="formField-fieldOfStudy"] input');
+    const pills = block.querySelector('[data-automation-id="formField-fieldOfStudy"] [data-automation-id="selectedItemList"]');
+    // opts.hideRoot: while the results are open, Workday marks the page's root
+    // aria-hidden="true" (the console warning on NVIDIA) — the results inside it
+    // are on screen all the same.
+    const root = doc.querySelector('[data-automation-id="applyFlowPage"]');
+    const render = (items) => {
+      portal.innerHTML = '<ul role="listbox">' + items.map((o, i) =>
+        `<li role="option" data-automation-id="promptOption" data-automation-label="${o}"${i === 0 ? ' aria-selected="true"' : ''}>`
+        + `<div data-automation-id="promptLeafNode"><span class="radio"></span><span>${o}</span></div></li>`).join('') + '</ul>';
+      if (opts.hideRoot) root.setAttribute('aria-hidden', 'true');
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        li.addEventListener('mousedown', () => {
+          pills.innerHTML += `<li><div data-automation-id="selectedItem">${li.textContent}</div></li>`;
+          input.value = '';
+          portal.innerHTML = '';
+          root.removeAttribute('aria-hidden');
+        });
+      }
+    };
+    input.addEventListener('mousedown', () => render(WD_FIELDS.slice(0, 12)));
+    input.addEventListener('keydown', (e) => {
+      if (/^[a-z]$/i.test(e.key)) log.letterKeys++;
+      if (e.key !== 'Enter') return;
+      const exact = WD_FIELDS.find(o => o.toLowerCase() === input.value.trim().toLowerCase());
+      if (opts.enterSelects && exact) {
+        log.enterSelected = (log.enterSelected || 0) + 1;
+        pills.innerHTML += `<li><div data-automation-id="selectedItem">${exact}</div></li>`;
+        input.value = '';
+        // and the results still render, with the selected one among them
+      }
+      const words = (exact || input.value).toLowerCase().split(/\W+/).filter(Boolean).map(w => w.slice(0, 6));
+      render(WD_FIELDS.filter(o => o.toLowerCase().split(/\W+/).some(ow => words.some(w => ow.startsWith(w)))));
+    });
+    input.addEventListener('blur', () => { input.value = ''; });
+  };
+  add.addEventListener('click', () => {
+    const n = section.querySelectorAll('[aria-labelledby$="-panel"]').length + 1;
+    log.eduAdds++;
+    if (n > 1) add.textContent = 'Add Another';
+    add.parentElement.parentElement.insertAdjacentHTML('beforebegin', wdEducationBlock(n, k++));
+    const block = section.querySelector(`[aria-labelledby="Education-${n}-panel"]`);
+    wireDegree(block);
+    wireField(block);
+  });
+  doc.getElementById('exp-add').addEventListener('click', () => { log.expAdds++; });
+  doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => { log.next++; });
+  return log;
+}
+
+// PwC's Workday Voluntary Disclosures (Oct 2026): Date of Birth as three
+// spinbuttons, Country / Territory of Birth as a button list in which
+// "British Indian Ocean Territory" comes before "India".
+const wdDatePart = (id, part, label, max) => `<div id="${id}-dateSection${part}"><div aria-hidden="true" data-automation-id="dateSection${part}-display">${label}</div>
+  <input role="spinbutton" aria-label="${part}" aria-valuemax="${max}" aria-valuemin="1" aria-valuetext="${label}" aria-required="true"
+         id="${id}-dateSection${part}-input" data-automation-id="dateSection${part}-input"></div>`;
+const PWC_BIRTH_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>Voluntary Disclosures</h3>
+  <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    <div role="group" aria-labelledby="Personal-Information-section"><h4 id="Personal-Information-section">Personal Information</h4>
+      <div data-automation-id="formField-dateOfBirth"><fieldset><legend><label id="label342"><span>Date of Birth<abbr aria-hidden="true">*</abbr></span></label></legend>
+        <div id="personalInfoPerson--dateOfBirth" role="group" data-automation-id="dateInputWrapper">
+          ${wdDatePart('personalInfoPerson--dateOfBirth', 'Month', 'MM', 12)}
+          ${wdDatePart('personalInfoPerson--dateOfBirth', 'Day', 'DD', 31)}
+          ${wdDatePart('personalInfoPerson--dateOfBirth', 'Year', 'YYYY', 9999)}
+        </div></fieldset></div>
+      <div data-automation-id="formField-countryOfBirth"><label for="personalInfoPerson--countryOfBirth"><span>Country / Territory of Birth<abbr aria-hidden="true">*</abbr></span></label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Country / Territory of Birth Select One Required"
+                name="countryOfBirth" id="personalInfoPerson--countryOfBirth">Select One</button></div>
+      <div data-automation-id="formField-regionOfBirth"><label for="personalInfoPerson--regionOfBirth">Region of Birth</label>
+        <button aria-haspopup="listbox" type="button" value="" aria-label="Region of Birth Select One"
+                name="regionOfBirth" id="personalInfoPerson--regionOfBirth">Select One</button></div>
+      <div data-automation-id="formField-cityOfBirth"><label for="personalInfoPerson--cityOfBirth"><span>City of Birth<abbr aria-hidden="true">*</abbr></span></label>
+        <input type="text" id="personalInfoPerson--cityOfBirth" name="cityOfBirth" aria-required="true"></div>
+    </div>
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+const PWC_COUNTRIES = ['Afghanistan', 'Bhutan', 'British Indian Ocean Territory', 'Brunei Darussalam', 'Iceland',
+  'India', 'Indonesia', 'Singapore'];
+
+function wirePwcBirth(env) {
+  const doc = env.document;
+  const portal = doc.getElementById('wd-portal');
+  const btn = doc.getElementById('personalInfoPerson--countryOfBirth');
+  btn.addEventListener('mousedown', () => {
+    btn.setAttribute('aria-expanded', 'true');
+    portal.innerHTML = '<ul role="listbox">'
+      + '<li data-value="" role="option" aria-disabled="true" aria-selected="true"><div>Select One</div></li>'
+      + PWC_COUNTRIES.map(o => `<li role="option" data-automation-id="promptOption" data-automation-label="${o}"><div>${o}</div></li>`).join('')
+      + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]:not([aria-disabled])')) {
+      li.addEventListener('mousedown', () => { btn.textContent = li.textContent; btn.value = li.textContent; portal.innerHTML = ''; });
+    }
+  });
+  // Region of Birth, as PwC's behaves: opens with only the disabled "Select
+  // One", then loads the regions OF THE CHOSEN COUNTRY — none before one is chosen.
+  const region = doc.getElementById('personalInfoPerson--regionOfBirth');
+  const placeholder = '<li data-value="" role="option" aria-disabled="true" aria-selected="true"><div>Select One</div></li>';
+  region.addEventListener('mousedown', () => {
+    region.setAttribute('aria-expanded', 'true');
+    portal.innerHTML = '<ul role="listbox">' + placeholder + '</ul>';
+    doc.defaultView.setTimeout(() => {
+      const regions = btn.value === 'India' ? ['Karnataka', 'Maharashtra', 'West Bengal'] : [];
+      portal.innerHTML = '<ul role="listbox">' + placeholder + regions.map(o =>
+        `<li role="option" data-automation-id="promptOption"><div>${o}</div></li>`).join('') + '</ul>';
+    }, 150);
+  });
+}
+
+test('PwC Workday: Region of Birth offers the regions of the country just filled, not "Select One"', async () => {
+  await withForm(PWC_BIRTH_PAGE, {}, async (env) => {
+    wirePwcBirth(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { country_of_birth: 'India', date_of_birth: '2003-12-01', city_of_birth: 'Kolkata' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const region = byLabel(result.decisions, 'region of birth');
+    eq(region.action, p.ASK);
+    deepEq((region.options || []).map(o => o.label), ['Karnataka', 'Maharashtra', 'West Bengal']);
+  });
+});
+
+test('PwC Workday: Date of Birth and Country of Birth from the profile; never "British Indian Ocean Territory"', async () => {
+  await withForm(PWC_BIRTH_PAGE, {}, async (env, sent) => {
+    wirePwcBirth(env);
+    // No country of birth stored: the country of citizenship, written the old way.
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { nationality: 'Indian', date_of_birth: '1999-04-07', city_of_birth: 'Kolkata' }) });
+    await run_.runAutofill(ctx, null);
+    const doc = env.document;
+    eq(doc.getElementById('personalInfoPerson--countryOfBirth').textContent, 'India');
+    eq(valueOf(env, '[data-automation-id=dateSectionMonth-input]'), '04');
+    eq(valueOf(env, '[data-automation-id=dateSectionDay-input]'), '07');
+    eq(valueOf(env, '[data-automation-id=dateSectionYear-input]'), '1999');
+    eq(doc.getElementById('personalInfoPerson--cityOfBirth').value, 'Kolkata');
+    // None of the birth fields went to the server's model.
+    const planned = sent.filter(m => m.type === 'AF_PLAN')
+      .flatMap(m => ((m.payload && m.payload.fields) || []).map(f => f.label || ''));
+    ok(!planned.some(l => /birth/i.test(l)), `sent to the model: ${planned.join(' | ')}`);
+  });
+});
+
+test('Workday Date of Birth: a spinbutton that drops the leading zero is still the same date, not a mismatch', async () => {
+  await withForm(PWC_BIRTH_PAGE, {}, async (env) => {
+    wirePwcBirth(env);
+    // Workday keeps "1" for the first of the month, not "01".
+    for (const el of env.document.querySelectorAll('[role=spinbutton]')) {
+      el.addEventListener('change', () => { if (/^0\d$/.test(el.value)) el.value = el.value.slice(1); });
+    }
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { country_of_birth: 'India', date_of_birth: '2003-12-01', city_of_birth: 'Kolkata' }) });
+    const result = await run_.runAutofill(ctx, null);
+    eq(valueOf(env, '[data-automation-id=dateSectionDay-input]'), '1', 'the fixture drops the zero');
+    const dob = byLabel(result.decisions, 'date of birth');
+    eq(dob.outcome, 'ok', dob.reason);
+    eq(ui.displayDate(dob.shown || dob.value), '12-01-2003');
+  });
+});
+
+test('displayDate: MM-DD-YYYY, zero-padded', () => {
+  eq(ui.displayDate('2003-12-01'), '12-01-2003');
+  eq(ui.displayDate('12/1/2003'), '12-01-2003');
+  eq(ui.displayDate('9/2023'), '09-2023');
+  eq(ui.displayDate('2023-09'), '09-2023');
+  eq(ui.displayDate('Kolkata'), 'Kolkata');
+});
+
+// Workday's citizenship prompts. "Citizenship Status" is hierarchical: each
+// country row has a › and opens that country's own level (Citizen / Permanent
+// Resident / Non-Citizen); "Primary Nationality" is a flat country list.
+const wdPrompt = (id, label) => `
+    <div data-automation-id="formField-${id}"><label for="${id}">${label}<abbr aria-hidden="true">*</abbr></label>
+      <div data-automation-id="multiSelectContainer"><ul data-automation-id="selectedItemList"></ul>
+        <div data-automation-id="multiselectInputContainer">
+          <input data-automation-id="searchBox" id="${id}" type="text" placeholder="Search" aria-required="true"></div></div></div>`;
+// Workday's two-level "How Did You Hear About Us?" (PwC, Oct 2026): categories
+// with ›, each opening its own list under a ← header. opts.searchFinds: Enter
+// on a search returns matching leaf rows (else "No Items"). opts.noLinkedIn:
+// no category holds LinkedIn, but the top level has "External Agency".
+const HEAR_TREE = {
+  'Alumni': ['Former Employee'],
+  'Job Posting Sites': ['Karriere.at', 'Lagou', 'LinkedIn', 'Monster'],
+  'Referral': ['Employee Referral'],
+  'Social Platform': ['Facebook', 'Glassdoor', 'LinkedIn', 'Twitter'],
+  'Website': ['PwC Careers'],
+};
+const WD_HEAR_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>My Information</h3>
+  <div data-automation-id="applyFlowMyInfoPage">
+    ${wdPrompt('source', 'How Did You Hear About Us?')}
+    <div data-automation-id="formField-legalNameSection_firstName"><label for="fn">Given Name(s)<abbr>*</abbr></label>
+      <input id="fn" type="text" aria-required="true" name="legalName--firstName"></div>
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+
+function wireWorkdayHear(env, opts = {}) {
+  const doc = env.document;
+  const portal = doc.getElementById('wd-portal');
+  const input = doc.getElementById('source');
+  const pills = doc.querySelector('[data-automation-id="formField-source"] [data-automation-id="selectedItemList"]');
+  const log = { pressed: [] };
+  let tree = Object.assign({}, HEAR_TREE);
+  if (opts.flatNoLinkedIn) tree = { 'Company Website': null, 'Social Media': null, 'Employee Referral': null };
+  if (opts.noLinkedIn) {
+    for (const k of Object.keys(tree)) tree[k] = tree[k].filter(x => x !== 'LinkedIn');
+    tree['External Agency'] = null;                 // a top-level leaf
+  }
+  const row = (o, more) => `<li role="option" data-automation-id="promptOption"><div data-automation-id="promptLeafNode"><span>${o}</span>${more ? '<span class="chevron"></span>' : ''}</div></li>`;
+  const choose = (text) => { pills.innerHTML += `<li><div data-automation-id="selectedItem">${text}</div></li>`; input.value = ''; portal.innerHTML = ''; };
+  const wireRows = () => {
+    for (const li of portal.querySelectorAll('[role=option]')) {
+      const label = li.textContent.trim();
+      li.addEventListener('mousedown', () => {
+        log.pressed.push(label);
+        if (Array.isArray(tree[label])) level(label); else choose(label);
+      });
+    }
+  };
+  const top = () => { portal.innerHTML = '<ul role="listbox">' + Object.keys(tree).map(k => row(k, Array.isArray(tree[k]))).join('') + '</ul>'; wireRows(); };
+  const level = (cat) => {
+    portal.innerHTML = `<div><button aria-label="Back">←</button><span>${cat}</span></div><ul role="listbox">`
+      + tree[cat].map(o => row(o, false)).join('') + '</ul>';
+    wireRows();
+  };
+  input.addEventListener('mousedown', top);
+  input.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const q = input.value.trim().toLowerCase();
+    if (!q) { top(); return; }
+    const hits = opts.searchFinds
+      ? [].concat(...Object.entries(tree).map(([k, v]) => (v || [k]).filter(x => x.toLowerCase().includes(q))))
+      : [];
+    portal.innerHTML = '<ul role="listbox">' + (hits.length ? hits.map(o => row(o, false)).join('')
+      : '<li><div>No Items.</div></li>') + '</ul>';
+    wireRows();
+  });
+  return log;
+}
+const hearPill = doc => Array.from(doc.querySelectorAll('[data-automation-id="formField-source"] [data-automation-id="selectedItem"]'))
+  .map(n => n.textContent).join(' | ');
+
+for (const [name, opts, want] of [
+  ['the search finds LinkedIn', { searchFinds: true }, 'LinkedIn'],
+  ['LinkedIn is inside a category', {}, 'LinkedIn'],
+  ['no LinkedIn anywhere: External Agency', { noLinkedIn: true }, 'External Agency'],
+  // A plain row is never pressed as if it were a category.
+  ['a flat list with neither: nothing picked', { flatNoLinkedIn: true }, ''],
+]) {
+  test(`Workday "How Did You Hear About Us?" two-level list — ${name}`, async () => {
+    await withForm(WD_HEAR_PAGE, {}, async (env) => {
+      const log = wireWorkdayHear(env, opts);
+      await run_.runAutofill(CTX, null);
+      eq(hearPill(env.document), want);
+      ok(!log.pressed.some(l => /referral|alumni/i.test(l)), `never a referral: ${log.pressed.join(', ')}`);
+      eq(valueOf(env, '#fn'), 'Ada', 'the rest of the page still fills');
+    });
+  });
+}
+
+const WD_CITIZENSHIP_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>Voluntary Disclosures</h3>
+  <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    ${wdPrompt('citizenshipStatus', 'Citizenship Status')}
+    ${wdPrompt('primaryNationality', 'Primary Nationality')}
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+const WD_COUNTRIES = ['Afghanistan', 'Åland Islands', 'Albania', 'Algeria', 'Cambodia', 'British Indian Ocean Territory',
+  'India', 'Indonesia', 'Singapore', 'United States of America'];
+const WD_LEVEL = ['Citizen', 'Permanent Resident', 'Non-Citizen'];
+
+function wireWorkdayCitizenship(env) {
+  const doc = env.document;
+  const portal = doc.getElementById('wd-portal');
+  const log = { levelsOpened: 0, picks: [] };
+  const wire = (id, hierarchical) => {
+    const input = doc.getElementById(id);
+    const pills = doc.querySelector(`[data-automation-id="formField-${id}"] [data-automation-id="selectedItemList"]`);
+    const choose = (text) => {
+      log.picks.push(`${id}: ${text}`);
+      pills.innerHTML += `<li><div data-automation-id="selectedItem">${text}</div></li>`;
+      input.value = '';
+      portal.innerHTML = '';
+    };
+    const row = (o, more) => `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">`
+      + `<div data-automation-id="promptLeafNode"><span>${o}</span>${more ? '<span class="chevron"></span>' : ''}</div></li>`;
+    const level = (country) => {
+      log.levelsOpened++;
+      portal.innerHTML = `<div><button aria-label="Back">‹</button><span>${country}</span></div>`
+        + '<ul role="listbox">' + WD_LEVEL.map(o => row(o, false)).join('') + '</ul>';
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        li.addEventListener('mousedown', () => choose(`${country} › ${li.textContent.trim()}`));
+      }
+    };
+    const render = (items) => {
+      portal.innerHTML = '<ul role="listbox">' + items.map(o => row(o, hierarchical)).join('') + '</ul>';
+      for (const li of portal.querySelectorAll('[role=option]')) {
+        const country = li.textContent.trim();
+        li.addEventListener('mousedown', () => (hierarchical ? level(country) : choose(country)));
+      }
+    };
+    input.addEventListener('mousedown', () => render(WD_COUNTRIES));
+    input.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const q = input.value.trim().toLowerCase();
+      render(WD_COUNTRIES.filter(o => o.toLowerCase().includes(q)));
+    });
+  };
+  wire('citizenshipStatus', true);
+  wire('primaryNationality', false);
+  return log;
+}
+
+const pillsOf = (doc, id) => Array.from(doc.querySelectorAll(
+  `[data-automation-id="formField-${id}"] [data-automation-id="selectedItem"]`)).map(n => n.textContent).join(' | ');
+
+// What a run prints, as text: these lines are pasted out of the console to read.
+async function consoleOf(fn) {
+  const lines = [];
+  const info = console.info;
+  console.info = (...a) => { lines.push(a.join(' ')); };
+  try { await fn(); } finally { console.info = info; }
+  return lines;
+}
+const CITIZEN_CTX = () => Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank, { nationality: 'India' }) });
+
+test('Dropdown timeline: a fill that worked is one summary line, with its steps timed', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    wireWorkdayCitizenship(env);
+    const lines = await consoleOf(() => run_.runAutofill(CITIZEN_CTX(), null));
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen', 'the fill itself is unchanged');
+    const summary = lines.find(l => /dropdown timelines/.test(l));
+    ok(summary, `printed: ${lines.join(' / ')}`);
+    const row = summary.split('\n').find(l => /Citizenship Status/.test(l));
+    ok(/^ok\s/.test(row) && /open \d+/.test(row) && /search \d+ \(1 name\)/.test(row)
+       && /settle \d+/.test(row) && /after click \d+/.test(row) && /waits ran out 0/.test(row), row);
+    notOk(lines.some(l => /timeline: Citizenship Status/.test(l)), 'a quick fill that worked has no step list');
+  });
+});
+
+test('Dropdown timeline: a fill that failed prints its steps, the click, and the row clicked', async () => {
+  // The level that opens has no Citizen row, and nothing is selected.
+  const page = WD_CITIZENSHIP_PAGE;
+  await withForm(page, {}, async (env) => {
+    const doc = env.document;
+    const portal = doc.getElementById('wd-portal');
+    const input = doc.getElementById('citizenshipStatus');
+    const draw = (rows) => { portal.innerHTML = `<ul role="listbox">${rows.map(o =>
+      `<li role="option" data-automation-id="promptOption"><div data-automation-id="promptLeafNode"><span>${o}</span></div></li>`).join('')}</ul>`; };
+    input.addEventListener('mousedown', () => draw(['India']));
+    input.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      draw(['India']);
+      portal.querySelector('span').addEventListener('mousedown', () => draw(['No Items.']));
+    });
+    const lines = await consoleOf(() => run_.runAutofill(CITIZEN_CTX(), null));
+    const detail = lines.find(l => /timeline: Citizenship Status/.test(l));
+    ok(detail, `printed: ${lines.join(' / ')}`);
+    ok(/\+\d+ search: "India"/.test(detail), detail);
+    ok(/\+\d+ results: 1 rows: India/.test(detail), detail);
+    ok(/\+\d+ click: India/.test(detail), detail);
+    ok(/\+\d+ level opened: No Items\./.test(detail), detail);
+    ok(/wait answer after the click: \d+ of \d+ ms, RAN OUT/.test(detail), detail);
+    ok(/row clicked: <li role="option"/.test(detail), detail);
+  });
+});
+
+test('Dropdown timeline: a native select has no list to tell of', async () => {
+  const html = `<form><label for="c">Favourite colour*</label><select id="c" required><option value="">Choose</option><option value="b">Blue</option></select>
+    <label for="n">Full name</label><input id="n" type="text"></form>`;
+  await withForm(html, {}, async (env) => {
+    const form = d.findForm();
+    const row = d.describeFields(form).find(r => r.kind === 'select');
+    timeline.clearTimelines();
+    const res = await write_.applyDecision({ row, value: 'Blue', candidates: [], label: row.label });
+    ok(res.ok);
+    eq(timeline.timelinesText(), '', 'nothing recorded');
+  });
+});
+
+test('Dropdown timeline: times come out of the steps as measured', () => {
+  const s = timeline.summarize({
+    field: 'F', totalMs: 5000, outcome: 'ok',
+    events: [
+      { at: 60, step: 'opened', detail: '' },
+      { at: 100, step: 'search', detail: '"India"' },
+      { at: 900, step: 'wait search results', detail: '800 of 5000 ms' },
+      { at: 900, step: 'results', detail: '4 rows' },
+      { at: 950, step: 'rows redrawn', detail: '' },
+      { at: 1000, step: 'click', detail: 'Citizen (India)' },
+      { at: 1040, step: 'rows redrawn', detail: '' },
+      { at: 3000, step: 'answer on field', detail: 'Citizen (India)' },
+    ],
+  });
+  eq(s.open, 100);
+  eq(s.search, 800);
+  eq(s.settle, 50, 'results until the last redraw before the click');
+  eq(s.afterClick, 2000);
+  eq(s.names, 1);
+  eq(s.ranOut, 0);
+  const none = timeline.summarize({ field: 'F', totalMs: 700, outcome: 'empty',
+    events: [{ at: 0, step: 'wait list', detail: '600 of 600 ms, RAN OUT' }] });
+  eq(none.search, null);
+  eq(none.afterClick, null);
+  eq(none.ranOut, 1);
+});
+
+test('Dropdown timeline: a 240-row list changing at once is one line, and the steps survive', async () => {
+  const rows = Array.from({ length: 240 }, (_, i) => `<li role="option" aria-selected="true">+${i}</li>`).join('');
+  await withForm(`<div><label for="c">Code</label><input id="c"><ul id="l">${rows}</ul></div>`, {}, async (env) => {
+    const doc = env.document;
+    const lines = await consoleOf(async () => {
+      timeline.beginTimeline({ label: 'Code', el: doc.getElementById('c') });
+      for (const li of doc.querySelectorAll('#l li')) li.setAttribute('aria-selected', 'false');
+      await new Promise(r => setTimeout(r, 0));
+      timeline.note('search', '"India"');
+      timeline.note('results', '4 rows');
+      timeline.noteClick(doc.querySelector('#l li'), '+0');
+      timeline.endTimeline('empty');
+    });
+    const detail = lines.find(l => /timeline: Code/.test(l));
+    ok(/search: "India"/.test(detail) && /results: 4 rows/.test(detail) && /click: \+0/.test(detail), detail);
+    // A pause under load can split a burst in two; what matters is a few lines, not 240.
+    const marked = detail.split('\n').filter(l => /row marked/.test(l));
+    ok(marked.length >= 1 && marked.length <= 3, detail);
+    eq(marked.reduce((sum, l) => sum + Number((/ x(\d+)/.exec(l) || [0, 1])[1]), 0), 240, detail);
+  });
+});
+
+// jQuery UI's calendar, as Keka's capture shows it: one shared box, redrawn on
+// each month or year change, days as td[data-handler="selectDay"] cells. Picking
+// a start date enables the end date beside it, as a read-only calendar input.
+const KEKA_END_OF = { experienceDateOfJoining_0: 'dateOfRelieving_0', educationDateOfJoining_0: 'dateOfCompletion_0' };
+const MONTH_WORDS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+function wireCalendar(doc, opts = {}) {
+  const box = doc.getElementById('ui-datepicker-div');
+  const log = { typedInto: [], opened: 0 };
+  let input = null, y = 2026, m = 10;
+  const blocked = (day) => !!opts.latest && (y > opts.latest.y || (y === opts.latest.y && m > opts.latest.m - 1)
+    || (y === opts.latest.y && m === opts.latest.m - 1 && day > opts.latest.d));
+  const draw = () => {
+    const years = [];
+    for (let v = opts.firstYear || 1956; v <= (opts.lastYear || 2126); v++) years.push(v);
+    box.innerHTML = `<select class="ui-datepicker-month">${MONTH_WORDS.map((w, i) => `<option value="${i}"${i === m ? ' selected' : ''}>${w.slice(0, 3)}</option>`).join('')}</select>
+      <select class="ui-datepicker-year">${years.map(v => `<option value="${v}"${v === y ? ' selected' : ''}>${v}</option>`).join('')}</select>
+      <table class="ui-datepicker-calendar"><tbody><tr>${Array.from({ length: 28 }, (_, i) => i + 1).map(day => (blocked(day)
+        ? `<td class="ui-datepicker-unselectable ui-state-disabled"><span>${day}</span></td>`
+        : `<td data-handler="selectDay" data-event="click" data-month="${m}" data-year="${y}"><a class="ui-state-default">${day}</a></td>`)).join('')}</tr></tbody></table>`;
+    box.querySelector('.ui-datepicker-month').addEventListener('change', (e) => { m = Number(e.target.value); draw(); });
+    box.querySelector('.ui-datepicker-year').addEventListener('change', (e) => { y = Number(e.target.value); draw(); });
+    for (const td of box.querySelectorAll('td[data-handler]')) {
+      td.addEventListener('click', () => {
+        const target = input;
+        target.value = `${td.textContent.trim()} ${MONTH_WORDS[m]} ${y}`;
+        box.style.display = 'none';
+        const end = doc.getElementById(KEKA_END_OF[target.id]);
+        if (end) {
+          end.disabled = false;
+          end.readOnly = true;
+          wire(end);
+          end.classList.add('hasDatepicker');
+        }
+      });
+    }
+  };
+  const wire = (el) => {
+    el.addEventListener('focus', () => { log.opened++; input = el; y = 2026; m = 10; draw(); box.style.display = 'block'; });
+    el.addEventListener('keydown', (e) => { if (e.key === 'Escape') box.style.display = 'none'; });
+  };
+  for (const el of doc.querySelectorAll('input.hasDatepicker')) wire(el);
+  return log;
+}
+const KEKA_JOBS = { current: [{ company: 'Alignerr', title: 'ML Engineer', from: '01/2026', to: '', current: true }],
+                    past: [{ company: 'CMATER', title: 'RA', from: '05/2025', to: '09/2025', current: false }] };
+const KEKA_SCHOOLS = [{ school: 'Jadavpur University, Kolkata', degree: 'Bachelor of Technology', field: 'Chemical Engineering', from: '2023', to: '2027' }];
+const kekaCtx = (jobs, bank) => Object.assign({}, CTX, {
+  answerBank: Object.assign({}, CTX.answerBank, bank || {}),
+  facts: { workExperience: jobs, educationEntries: KEKA_SCHOOLS },
+});
+const keka = (doc, id) => doc.getElementById(id);
+
+test('Keka: Date of Joining goes through the calendar, and a current job ticks its box', async () => {
+  await withForm(fixtures.KEKA_DATES, {}, async (env) => {
+    const doc = env.document;
+    wireCalendar(doc);
+    const result = await run_.runAutofill(kekaCtx(KEKA_JOBS.current), null);
+    eq(keka(doc, 'experienceDateOfJoining_0').value, '1 January 2026');
+    ok(keka(doc, 'isCurrentlyWorking_0').checked, 'Currently working here');
+    eq(keka(doc, 'dateOfRelieving_0').value, '', 'a current job has no end date');
+    eq(byLabel(result.decisions, 'Date of Joining').outcome, 'ok');
+    eq(doc.getElementById('ui-datepicker-div').style.display, 'none', 'the calendar is left closed');
+  });
+});
+
+test('Keka: a past job gets its end date, once the start date has enabled it', async () => {
+  await withForm(fixtures.KEKA_DATES, {}, async (env) => {
+    const doc = env.document;
+    wireCalendar(doc);
+    await run_.runAutofill(kekaCtx(KEKA_JOBS.past), null);
+    eq(keka(doc, 'experienceDateOfJoining_0').value, '1 May 2025');
+    eq(keka(doc, 'dateOfRelieving_0').value, '1 September 2025');
+    notOk(keka(doc, 'isCurrentlyWorking_0').checked, 'not a current job');
+  });
+});
+
+test('Keka: Course and both course dates come from the school', async () => {
+  await withForm(fixtures.KEKA_DATES, {}, async (env, sent) => {
+    const doc = env.document;
+    wireCalendar(doc);
+    await run_.runAutofill(kekaCtx(KEKA_JOBS.current), null);
+    eq(keka(doc, 'degree_0').value, 'Bachelor of Technology');
+    eq(keka(doc, 'educationDateOfJoining_0').value, '1 January 2023');
+    eq(keka(doc, 'dateOfCompletion_0').value, '1 January 2027');
+    const toModel = sent.filter(m => m.type === 'AF_PLAN').flatMap(m => m.payload.fields.map(f => f.label)).join(' | ');
+    notOk(/Date of Joining|Start of Course|End of Course|Course\b|Currently working/.test(toModel), `sent to the model: ${toModel}`);
+  });
+});
+
+test('Keka: Date of Birth fills from the profile through the calendar, and never reaches the model', async () => {
+  await withForm(fixtures.KEKA_DATES, {}, async (env, sent) => {
+    const doc = env.document;
+    wireCalendar(doc);
+    const result = await run_.runAutofill(kekaCtx(KEKA_JOBS.current, { date_of_birth: '2004-05-08' }), null);
+    eq(keka(doc, 'dateOfBirth').value, '8 May 2004', 'day and month the right way round');
+    eq(byLabel(result.decisions, 'Date of Birth').outcome, 'ok', 'the calendar\'s wording of the same date is no mismatch');
+    const toModel = sent.filter(m => m.type === 'AF_PLAN').flatMap(m => m.payload.fields.map(f => f.label)).join(' | ');
+    notOk(/birth/i.test(toModel), `sent to the model: ${toModel}`);
+  });
+});
+
+test('Calendar: a day it blocks is not typed in, and goes to the person', async () => {
+  await withForm(fixtures.KEKA_DATES, {}, async (env) => {
+    const doc = env.document;
+    wireCalendar(doc, { latest: { y: 2026, m: 11, d: 2 } });
+    const result = await run_.runAutofill(kekaCtx(KEKA_JOBS.current), null);
+    eq(keka(doc, 'dateOfCompletion_0').value, '', 'January 2027 is blocked');
+    eq(byLabel(result.decisions, 'End of Course').action, p.ASK);
+    eq(keka(doc, 'educationDateOfJoining_0').value, '1 January 2023', 'the dates it offers still fill');
+    eq(doc.getElementById('ui-datepicker-div').style.display, 'none', 'the calendar is left closed');
+  });
+});
+
+test('Calendar: a year off its list is not typed in, and goes to the person', async () => {
+  await withForm(fixtures.KEKA_DATES, {}, async (env) => {
+    const doc = env.document;
+    wireCalendar(doc, { firstYear: 2025, lastYear: 2126 });
+    const result = await run_.runAutofill(kekaCtx(KEKA_JOBS.current), null);
+    eq(keka(doc, 'educationDateOfJoining_0').value, '', '2023 is off the list');
+    eq(byLabel(result.decisions, 'Start of Course').action, p.ASK);
+  });
+});
+
+test('Calendar: a read-only input that never opens one is not typed in', async () => {
+  await withForm(fixtures.KEKA_DATES, {}, async (env) => {
+    const result = await run_.runAutofill(kekaCtx(KEKA_JOBS.current), null);
+    eq(keka(env.document, 'experienceDateOfJoining_0').value, '');
+    eq(byLabel(result.decisions, 'Date of Joining').action, p.ASK);
+  });
+});
+
+test('A read-only input with no calendar is still not a field', async () => {
+  const html = fixtures.KEKA_DATES.replace('<input type="email" id="email"',
+    '<input type="text" readonly="" id="plainReadonly" name="plainReadonly"><input type="email" id="email"');
+  await withForm(html, {}, async () => {
+    const rows = d.describeFields(d.findForm());
+    notOk(rows.some(r => r.el && r.el.id === 'plainReadonly'), 'left out');
+    ok(rows.some(r => r.el && r.el.id === 'experienceDateOfJoining_0'), 'the calendar input is in');
+  });
+});
+
+test('The Keka rule goes by field name: the same label elsewhere does not use it', async () => {
+  const html = fixtures.KEKA_DATES.replace(/name="ExperienceDetails\[0\]\.dateOfJoining"/, 'name="joinDate"');
+  await withForm(html, {}, async (env) => {
+    wireCalendar(env.document);
+    await run_.runAutofill(kekaCtx(KEKA_JOBS.current), null);
+    eq(keka(env.document, 'experienceDateOfJoining_0').value, '', 'no job date for an unnamed box');
+  });
+});
+
+const leverRow = (rows, needle) => rows.find(r => (r.label || '').toLowerCase().includes(needle.toLowerCase()));
+const toModel = sent => sent.filter(m => m.type === 'AF_PLAN').flatMap(m => m.payload.fields.map(f => f.label));
+
+test('Lever: every field reads as its question, without options or status text', async () => {
+  await withForm(fixtures.LEVER_REAL, {}, async () => {
+    const rows = d.describeFields(d.findForm());
+    const labels = rows.map(r => r.label);
+    ok(labels.some(l => /^Resume\/CV\s*✱$/.test(l)), `resume: ${labels.join(' | ')}`);
+    eq(leverRow(rows, 'Disability status').label, 'Disability status');
+    eq(leverRow(rows, 'High School Name').label, 'High School Name✱');
+    ok(leverRow(rows, 'Which university'), 'the dropdown has its question');
+    ok(leverRow(rows, 'Preferred Name'), 'the text box too, not its placeholder');
+    notOk(labels.some(l => /^cards\[|^Yes$|^English|Type your response|Analyzing|Select \.\.\./.test(l)), labels.join(' | '));
+  });
+});
+
+test('Lever: answers stay options, and a required group of checkboxes is required', async () => {
+  await withForm(fixtures.LEVER_REAL, {}, async () => {
+    const rows = d.describeFields(d.findForm());
+    const options = r => r.options.map(o => o.label);
+    deepEq(options(leverRow(rows, 'resident of California')), ['Yes', 'No']);
+    deepEq(options(leverRow(rows, 'Language Skill')), ['English (ENG)', 'Hindi (HIN)', 'Other']);
+    ok(leverRow(rows, 'Language Skill').required, 'its ✱ says so');
+  });
+});
+
+test('Lever: sponsorship is never sent to the model, and work authorization is the standing Yes', async () => {
+  await withForm(fixtures.LEVER_REAL, {}, async (env, sent) => {
+    const result = await run_.runAutofill(CTX, null);
+    const labels = toModel(sent).join(' | ');
+    notOk(/sponsorship/i.test(labels), `sent: ${labels}`);
+    notOk(/legally authorized/i.test(labels), `sent: ${labels}`);
+    eq(byLabel(result.decisions, 'legally authorized').value, 'Yes');
+  });
+});
+
+test('Lever: the questions the model does get carry their real text', async () => {
+  await withForm(fixtures.LEVER_REAL, {}, async (env, sent) => {
+    await run_.runAutofill(CTX, null);
+    const labels = toModel(sent);
+    ok(labels.some(l => /Which university/.test(l)), labels.join(' | '));
+    ok(labels.some(l => /resident of California/.test(l)), labels.join(' | '));
+    notOk(labels.some(l => /^cards\[|^Yes$/.test(l)), labels.join(' | '));
+  });
+});
+
+const HS_NAME = '[name="cards[d54adf7b-3148-4095-93bb-72bef32a61f8][field0]"]';
+const HS_YEAR = '[name="cards[d54adf7b-3148-4095-93bb-72bef32a61f8][field1]"]';
+const leverSchools = schools => Object.assign({}, CTX, { facts: { educationEntries: schools } });
+const UNIVERSITY_ENTRY = { school: 'Jadavpur University, Kolkata', degree: 'Bachelor of Technology', field: 'Chemical Engineering', from: '2023', to: '2027' };
+const SCHOOL_ENTRY = { school: 'Hariyana Vidya Mandir, Kolkata', degree: 'Higher Secondary', field: 'Physics', from: '2020', to: '2022' };
+
+test('High school questions take the saved high school, not the university', async () => {
+  await withForm(fixtures.LEVER_REAL, {}, async (env, sent) => {
+    await run_.runAutofill(leverSchools([UNIVERSITY_ENTRY, SCHOOL_ENTRY]), null);
+    eq(valueOf(env, HS_NAME), 'Hariyana Vidya Mandir, Kolkata');
+    eq(valueOf(env, HS_YEAR), '2022');
+    notOk(toModel(sent).some(l => /high school/i.test(l)), toModel(sent).join(' | '));
+  });
+});
+
+test('With no high school saved, those questions go to the person, not the university', async () => {
+  await withForm(fixtures.LEVER_REAL, {}, async (env, sent) => {
+    const result = await run_.runAutofill(leverSchools([UNIVERSITY_ENTRY]), null);
+    eq(valueOf(env, HS_NAME), '');
+    eq(valueOf(env, HS_YEAR), '');
+    eq(byLabel(result.decisions, 'High School Name').action, p.ASK);
+    eq(byLabel(result.decisions, 'Year of High School').action, p.ASK);
+    notOk(toModel(sent).some(l => /high school/i.test(l)), 'never the model');
+  });
+});
+
+test('A high school year the list does not offer goes to the person', async () => {
+  await withForm(fixtures.LEVER_REAL, {}, async (env) => {
+    const school = Object.assign({}, SCHOOL_ENTRY, { to: '2015' });
+    const result = await run_.runAutofill(leverSchools([UNIVERSITY_ENTRY, school]), null);
+    eq(valueOf(env, HS_YEAR), '');
+    eq(byLabel(result.decisions, 'Year of High School').action, p.ASK);
+  });
+});
+
+test('Other school questions still take the university', () => {
+  const row = (label, name) => ({ key: label, el: null, members: [], kind: 'text', label, ident: name, value: '', filled: false,
+    invalid: false, required: true, readable: true, documentSlot: null, hints: {}, options: [] });
+  const ctx = Object.assign(leverSchools([UNIVERSITY_ENTRY, SCHOOL_ENTRY]),
+    { answerBank: Object.assign({}, BANK, { university: 'Jadavpur University, Kolkata', graduation_date: '2027' }) });
+  eq(p.decide([row('School Name', 'school')], ctx, null, null)[0].value, 'Jadavpur University, Kolkata');
+  eq(p.decide([row('High School Name', 'hs')], ctx, null, null)[0].value, 'Hariyana Vidya Mandir, Kolkata');
+});
+
+test('A field named only cards[...] goes to the person, never the model', async () => {
+  const html = `<form><label for="n">Full name*</label><input id="n" name="name" required>
+    <label for="e">Email*</label><input id="e" name="email" type="email" required>
+    <div><select name="cards[3da58b41-acf5-40a1-945e-c7f047ef8050][field0]" required><option value="">Select...</option><option>Ataturk University</option><option>Jadavpur University</option></select></div></form>`;
+  await withForm(html, {}, async (env, sent) => {
+    const result = await run_.runAutofill(CTX, null);
+    const row = result.decisions.find(x => /cards\[/.test(x.label));
+    eq(row.action, p.ASK, row.reason);
+    notOk(toModel(sent).some(l => /cards\[/.test(l)), toModel(sent).join(' | '));
+  });
+});
+
+test('A radio group labelled with its own answer goes to the person; a lone consent box still fills', () => {
+  const group = { key: 'g', el: null, members: [], kind: 'radio', label: 'Yes', ident: 'q1', value: '', filled: false, invalid: false,
+                  required: true, readable: true, documentSlot: null, hints: {}, options: [{ value: 'Yes', label: 'Yes' }, { value: 'No', label: 'No' }] };
+  const asked = p.decide([group], CTX, null, null)[0];
+  eq(asked.action, p.ASK);
+  ok(asked.noServer, 'never sent to the model');
+  const lone = { key: 'c', el: null, members: [], kind: 'checkbox', label: 'I agree to the terms', ident: 'c1', value: '', filled: false, invalid: false,
+                 required: true, readable: true, documentSlot: null, hints: {}, options: [{ value: 'on', label: 'I agree to the terms' }] };
+  notOk(p.decide([lone], CTX, null, null)[0].reason === "we couldn't read this question — please answer it", 'its label is its question');
+});
+
+test('Lever: the disability signature gets today\'s date, once Disability status has an answer', async () => {
+  const today = new Date();
+  const shown = `${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}/${today.getFullYear()}`;
+  await withForm(fixtures.LEVER_REAL, {}, async (env) => {
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank, { disability_status: 'No disability' }) });
+    await run_.runAutofill(ctx, null);
+    eq(env.document.querySelector('[name="eeo[disabilitySignatureDate]"]').value, shown);
+  });
+  await withForm(fixtures.LEVER_REAL, {}, async (env) => {
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank, { disability_status: '' }) });
+    await run_.runAutofill(ctx, null);
+    eq(env.document.querySelector('[name="eeo[disabilitySignatureDate]"]').value, '', 'no answer, so no signature date');
+  });
+});
+
+test('A run that lost the extension says so', async () => {
+  await withForm(fixtures.LEVER_REAL, {}, async () => {
+    const real = globalThis.chrome.runtime.sendMessage;
+    const clean = await run_.runAutofill(CTX, null);
+    notOk(clean.extensionReloaded, 'not on a normal run');
+    globalThis.chrome.runtime.sendMessage = () => { throw new Error('Extension context invalidated.'); };
+    try {
+      const lost = await run_.runAutofill(CTX, null);
+      ok(lost.extensionReloaded, 'after the extension was reloaded');
+    } finally {
+      globalThis.chrome.runtime.sendMessage = real;
+    }
+    notOk((await run_.runAutofill(CTX, null)).extensionReloaded, 'cleared on the next run');
+  });
+});
+
+test('Workday citizenship: the country of citizenship, then its Citizen level; nationality flat', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { nationality: 'Indian', citizenship_status: 'Not a U.S. citizen or permanent resident' }) });
+    await run_.runAutofill(ctx, null);
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
+    eq(pillsOf(env.document, 'primaryNationality'), 'India');
+    eq(log.levelsOpened, 1, 'one country opened, never a second');
+  });
+});
+
+test('Workday citizenship: with no country of citizenship, nothing is picked', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    await run_.runAutofill(CTX, null);
+    eq(log.picks.length, 0, `picked: ${log.picks.join(', ')}`);
+  });
+});
+
+// A saved answer is kept per kind of option list. "(e) … DACA", saved from a
+// U.S.-status list, was typed into Workday's country list, found nothing, and
+// Citizenship Status stayed empty while the profile said India (Oct 2026).
+const SAVED_DACA = '(e) Authorized to work in the United States under the Deferred Action for Childhood Arrivals (DACA) program';
+const SAVED_US_LIST = ['(a) U.S. citizen or national of the United States', '(b) U.S. lawful permanent resident',
+  SAVED_DACA, '(f) Other (please explain)'];
+
+test('Workday citizenship: an answer saved from a U.S.-status list gives way to the profile', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    const typed = [];
+    env.document.getElementById('citizenshipStatus')
+      .addEventListener('keydown', () => typed.push(env.document.getElementById('citizenshipStatus').value));
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, CTX.answerBank, { nationality: 'India' }),
+      savedSensitive: [{ question: 'Citizenship Status', answer: SAVED_DACA,
+                         variants: [{ options: SAVED_US_LIST, answer: SAVED_DACA }] }],
+    });
+    const result = await run_.runAutofill(ctx, null);
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
+    ok(!typed.some(t => /daca|authorized/i.test(t)), `the saved text is never typed: ${typed.join(' / ')}`);
+    const d = byLabel(result.decisions, 'citizenship status');
+    eq(d.source, 'profile', `${d.source}: ${d.reason}`);
+    ok(d.redecided, 'the saved answer was tried, then the field decided again without it');
+    void log;
+  });
+});
+
+test('Workday citizenship: an OLD saved DACA answer (no options kept) also gives way to the profile', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, CTX.answerBank, { nationality: 'India' }),
+      savedSensitive: [{ question: 'Citizenship Status', answer: SAVED_DACA }],
+    });
+    const result = await run_.runAutofill(ctx, null);
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
+    ok(!log.picks.some(p => /daca/i.test(p)), `picked: ${log.picks.join(', ')}`);
+    eq(byLabel(result.decisions, 'citizenship status').source, 'profile');
+  });
+});
+
+// Barclays' Voluntary Disclosures (Nov 2026): a search box whose checkbox rows
+// answer only when the words inside them are pressed, 2 of them drawn at first.
+const WD_GENDER_PAGE = `
+  <div data-automation-id="applyFlowPage"><h3>Voluntary Disclosures</h3>
+  <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+    ${wdPrompt('genderIdentities', 'Gender Identity')}
+    ${wdPrompt('pronouns', 'Pronoun')}
+  </div>
+  <div id="wd-portal"></div>
+  <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">Save and Continue</button></div></div>`;
+const WD_GENDER_LIST = ['Another Gender Identity', 'Female', 'Male', 'Non-Binary', 'Prefer not to say'];
+
+function wireCheckboxList(doc, id, list, opts) {
+  const options = opts || {};
+  const portal = doc.getElementById('wd-portal');
+  const input = doc.getElementById(id);
+  const pills = doc.querySelector(`[data-automation-id="formField-${id}"] [data-automation-id="selectedItemList"]`);
+  const log = { clicks: [] };
+  // A list reopened shows what is ticked, as Workday's does.
+  const ticked = new Set();
+  const draw = rows => {
+    portal.innerHTML = `<div role="listbox">${rows.map((o, i) => `
+      <div role="option" data-automation-id="menuItem" aria-setsize="${list.length}" aria-posinset="${i + 1}"
+           aria-selected="${ticked.has(o)}" data-automation-selected="${ticked.has(o)}"><div data-automation-id="promptLeafNode"><span>${o}</span></div></div>`).join('')}</div>`;
+    for (const row of portal.querySelectorAll('[role=option]')) {
+      const words = row.querySelector('span');
+      // Only the words answer: a press on the outer row reaches nothing.
+      words.addEventListener('mousedown', () => {
+        const text = words.textContent;
+        log.clicks.push(text);
+        const on = !ticked.has(text);
+        if (on) ticked.add(text); else ticked.delete(text);
+        row.setAttribute('data-automation-selected', String(on));
+        if (!options.noPill) pills.innerHTML += `<li><div data-automation-id="selectedItem">${text}</div></li>`;
+      });
+    }
+  };
+  input.addEventListener('mousedown', () => {
+    draw(list.slice(0, 2));
+    if (list.length > 2) setTimeout(() => draw(list), 30);
+  });
+  return log;
+}
+const manCtx = () => Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank, { gender: 'Cisgender man', gender_pronouns: '' }) });
+
+// D. E. Shaw (Nov 2026): react-select with a virtualized list. The label holds a
+// tooltip; the chosen value is a role="option" chip; the rows are plain divs, the
+// first few drawn until typing narrows them; a row answers to its click.
+const VSELECT_HELP = '<div class="extra-information right" tabindex="0"><div class="question">?</div><div class="tooltip">'
+  + '<p> If none of the options apply to you, please select "Other" and fill in the blank that appears.</p></div></div>';
+const vselect = (id, label, chosen) => `<div class="form-field required"><label for="${id}">${label}<span class="asterisk">*</span>${VSELECT_HELP}</label>
+  <div class="autocomplete"><div class="Select is-searchable Select--single" data-vselect="${id}"><input name="form-field-name" type="hidden">
+    <div class="Select-control"><div class="Select-multi-value-wrapper" id="rs-${id}--value">
+      <div class="Select-value"><span class="Select-value-label" role="option" aria-selected="true" id="rs-${id}--value-item">${chosen || ''}</span></div>
+      <div class="Select-input"><input id="${id}" aria-activedescendant="rs-${id}--value" aria-expanded="false" aria-haspopup="false" aria-owns="" role="combobox" value=""><div></div></div>
+    </div><span class="Select-arrow-zone"><span class="Select-arrow"></span></span></div>
+  </div></div></div>`;
+function wireVselect(doc, id, rows, drawn = 5) {
+  const input = doc.getElementById(id);
+  const box = doc.querySelector(`[data-vselect="${id}"]`);
+  const chip = doc.getElementById(`rs-${id}--value-item`);
+  const log = { clicks: [] };
+  const close = () => {
+    const menu = box.querySelector('.Select-menu-outer');
+    if (menu) menu.remove();
+    input.setAttribute('aria-expanded', 'false');
+    input.setAttribute('aria-owns', '');
+  };
+  const draw = () => {
+    close();
+    const q = input.value.trim().toLowerCase();
+    const shown = rows.filter(r => r.toLowerCase().includes(q)).slice(0, drawn);
+    box.insertAdjacentHTML('beforeend', `<div class="Select-menu-outer"><div class="Select-menu" id="rs-${id}--list" role="listbox"><div>
+      <div aria-label="grid" class="ReactVirtualized__Grid ReactVirtualized__List VirtualSelectGrid" role="grid">
+      <div class="ReactVirtualized__Grid__innerScrollContainer" role="rowgroup">${shown.map((r, i) =>
+        `<div class="VirtualizedSelectOption${i ? '' : ' VirtualizedSelectFocusedOption'}">${r}</div>`).join('')}</div></div></div></div></div>`);
+    input.setAttribute('aria-expanded', 'true');
+    input.setAttribute('aria-owns', `rs-${id}--list`);
+    for (const row of box.querySelectorAll('.VirtualizedSelectOption')) {
+      row.addEventListener('click', () => {
+        log.clicks.push(row.textContent);
+        chip.textContent = row.textContent;
+        box.classList.add('has-value');
+        input.value = '';
+        close();
+      });
+    }
+  };
+  for (const type of ['mousedown', 'focus', 'input']) input.addEventListener(type, draw);
+  return log;
+}
+const VSELECT_PAGE = `<form class="online-application-form">
+  ${vselect('currentLocation', 'Current Location (City/District)', 'Kolkata')}
+  ${vselect('university-0', 'University')}
+  ${vselect('degree-0', 'Degree')}
+  ${vselect('hobby-0', 'Favourite Hobby')}
+</form>`;
+const VSELECT_DEGREES = ['Associate of Arts', 'Bachelor of Accountancy', 'Bachelor of Applied Science', 'Bachelor of Architecture',
+  'Bachelor of Arts', 'Bachelor of Business Administration', 'Bachelor of Technological Education', 'Bachelor of Technology',
+  'Bachelor of Technology + Master of Technology', 'Master of Arts'];
+const VSELECT_SCHOOLS = ['Aligarh Muslim University - Uttar Pradesh - India', 'Anna University - Tamil Nadu - India',
+  'Banaras Hindu University - Uttar Pradesh - India', 'Delhi University - Delhi - India', 'IIT Bombay - Maharashtra - India',
+  'Jadavpur University - West Bengal - India', 'Kolkata University - West Bengal - India', 'Other'];
+const vselectCtx = () => Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, {
+  university: 'Jadavpur University, Kolkata', degree: 'Bachelor of Technology' }) });
+const chipOf = (env, id) => env.document.getElementById(`rs-${id}--value-item`).textContent;
+
+test('D. E. Shaw: labels read clean, and the virtualized list\'s row is found and clicked', async () => {
+  await withForm(VSELECT_PAGE, {}, async (env, sent) => {
+    const school = wireVselect(env.document, 'university-0', VSELECT_SCHOOLS);
+    wireVselect(env.document, 'degree-0', VSELECT_DEGREES);
+    wireVselect(env.document, 'currentLocation', ['Kolkata']);
+    wireVselect(env.document, 'hobby-0', []);
+    const result = await run_.runAutofill(vselectCtx(), null);
+
+    const u = byLabel(result.decisions, 'university');
+    eq(u.label, 'University*');
+    eq(u.source, 'profile');
+    eq(chipOf(env, 'university-0'), 'Jadavpur University - West Bengal - India');
+    ok(school.clicks.includes('Jadavpur University - West Bengal - India'), `clicks: ${school.clicks.join(', ')}`);
+    eq(byLabel(result.decisions, 'degree').label, 'Degree*');
+
+    eq(chipOf(env, 'currentLocation'), 'Kolkata', 'a value already there stays');
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    notOk(plan && plan.payload.fields.some(f => /university|^degree/i.test(f.label)), 'neither went to the model');
+  });
+});
+
+test('D. E. Shaw: another field\'s chosen value is never offered as an option, to the model or the panel', async () => {
+  const forced = [];
+  const forceAnswer = f => { forced.push(f); return null; };
+  await withForm(VSELECT_PAGE, { forceAnswer }, async (env, sent) => {
+    wireVselect(env.document, 'university-0', VSELECT_SCHOOLS);
+    wireVselect(env.document, 'degree-0', VSELECT_DEGREES);
+    wireVselect(env.document, 'currentLocation', ['Kolkata']);
+    wireVselect(env.document, 'hobby-0', ['Reading', 'Chess']);
+    const result = await run_.runAutofill(vselectCtx(), null);
+    const h = byLabel(result.decisions, 'favourite hobby');
+    eq(h.action, p.ASK, `${h.action} ${h.value}`);
+    await run_.forceAnswers(vselectCtx(), result.decisions);
+
+    const plans = sent.filter(m => m.type === 'AF_PLAN').flatMap(m => m.payload.fields);
+    const hobby = plans.filter(f => /favourite hobby/i.test(f.label));
+    ok(hobby.length, 'the question was asked');
+    for (const f of hobby) notOk((f.options || []).includes('Kolkata'), `options: ${JSON.stringify(f.options)}`);
+    notOk(forced.some(f => (f.options || []).includes('Kolkata')), 'nor in the forced pass');
+    notOk((h.options || []).map(o => (typeof o === 'string' ? o : o.label)).includes('Kolkata'), 'nor in the panel');
+  });
+});
+
+// RippleHire (HDFC, Nov 2026): a hidden select with a bootstrap-multiselect drawn
+// for it. Its label is behind a prompt aria-label; its rows come after typing.
+const ripple = (id, label, placeholder) => `<div class="form-group required show">
+  <label for="${id}" class="control-label">${label} :</label>
+  <div class="col-sm-4 multi-select multiselect input_field" id="multi-select">
+    <select class="form-control required" id="${id}" name="${id}" data-required="Y" aria-label="${placeholder}" data-placeholder="${placeholder}" style="display: none;"><option value="" label="${placeholder}"></option></select>
+    <div class="btn-group"><button type="button" class="multiselect dropdown-toggle btn btn-default" aria-expanded="false">${placeholder}</button>
+      <ul class="multiselect-container dropdown-menu"><div class="singleselect-item filter"><input class="singleselect-search" type="text" placeholder="Search"></div></ul></div>
+  </div></div>`;
+function wireRipple(doc, id, rows, opts) {
+  // A server's search may answer with close names, not only ones holding the words.
+  const answersClose = !!(opts && opts.answersClose);
+  const select = doc.getElementById(id);
+  const wrap = select.parentElement;
+  const button = wrap.querySelector('button');
+  const group = button.parentElement;
+  const menu = wrap.querySelector('.multiselect-container');
+  const search = wrap.querySelector('.singleselect-search');
+  const log = { clicks: [], opened: 0 };
+  button.addEventListener('click', () => {
+    const open = !group.classList.contains('open');
+    group.classList.toggle('open', open);
+    button.setAttribute('aria-expanded', String(open));
+    if (open) log.opened++;
+  });
+  const draw = (items) => {
+    for (const li of menu.querySelectorAll('li')) li.remove();
+    select.innerHTML = select.options[0].outerHTML + items.map(o => `<option value="${o}" label="${o}"></option>`).join('');
+    menu.insertAdjacentHTML('beforeend', [''].concat(items).map(o => `<li><a tabindex="0"><label class="multiselect-option-text radio"><input type="radio" value="${o}"> ${o || select.getAttribute('data-placeholder')}</label></a></li>`).join(''));
+    for (const radio of menu.querySelectorAll('input[type=radio]')) {
+      radio.addEventListener('change', () => {
+        log.clicks.push(radio.value);
+        select.value = radio.value;
+        button.textContent = radio.value;
+        group.classList.remove('open');
+        button.setAttribute('aria-expanded', 'false');
+      });
+    }
+  };
+  // Before any search it holds a few cities, and not necessarily the answer.
+  draw(['Akola', 'Mumbai'].filter(r => !rows.length || rows.includes(r)));
+  // The server's answer to what was typed, a moment after the key.
+  let timer = null;
+  search.addEventListener('keyup', () => {
+    clearTimeout(timer);
+    const q = search.value.trim().toLowerCase();
+    timer = setTimeout(() => draw(answersClose ? rows : rows.filter(r => r.toLowerCase().includes(q))), 30);
+  });
+  return { log, button, search };
+}
+const RIPPLE_CITIES = ['Akola', 'Kolanda', 'Kolhapur', 'Kolkata', 'Kollam', 'Mumbai'];
+const ripplePage = `<form id="savecandidate">
+  <fieldset><legend><h2>Personal Details</h2></legend>
+  <div class="form-group required show"><label for="firstName" class="control-label">First Name :</label>
+    <div class="input_field"><input type="text" class="form-control required show" name="firstName" id="firstName"></div></div>
+  <div class="form-group required show"><label for="custom21" class="control-label">Title :</label>
+    <div class="input_field"><select class="form-control required show" aria-label="Select" id="custom21" name="custom21" data-required="Y">
+      <option value="">Select</option><option value="Dr.">Dr.</option><option value="Mr.">Mr.</option><option value="Ms.">Ms.</option></select></div></div>
+  ${ripple('custom15', 'Current City', 'Enter current city')}
+  ${ripple('custom16', 'Preferred City', 'Enter preferred city')}
+  ${ripple('custom28', 'Employer Name', 'Select')}
+  <div class="form-group show"><label for="custom29" class="control-label">Employer Name - Others :</label>
+    <div class="input_field"><input type="text" class="form-control" name="custom29" id="custom29"></div></div>
+  </fieldset></form>`;
+const rippleCtx = () => Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { address_city: 'Kolkata', current_company: 'Alignerr', title: 'Mr.' }) });
+
+test('RippleHire: Current City and Preferred City click Kolkata in the widget, under their real labels', async () => {
+  await withForm(ripplePage, {}, async (env) => {
+    const cur = wireRipple(env.document, 'custom15', RIPPLE_CITIES);
+    const pref = wireRipple(env.document, 'custom16', RIPPLE_CITIES);
+    wireRipple(env.document, 'custom28', ['Acme Corp']);
+    const result = await run_.runAutofill(rippleCtx(), null);
+    for (const [needle, id, widget] of [['current city', 'custom15', cur], ['preferred city', 'custom16', pref]]) {
+      const d = byLabel(result.decisions, needle);
+      ok(d, `${needle} is read by its real label: ${result.decisions.map(x => x.label).join(' | ')}`);
+      ok(d.row.required, 'required');
+      deepEq(widget.log.clicks, ['Kolkata'], `${d.action} ${d.outcome} ${d.reason}`);
+      eq(valueOf(env, `#${id}`), 'Kolkata');
+      eq(widget.button.textContent, 'Kolkata', 'the box the person sees');
+      eq(d.action, p.FILL);
+      eq(d.outcome, 'ok');
+    }
+  });
+});
+
+test('RippleHire: an answer with no row clicks nothing, goes to the person, and leaves no search text', async () => {
+  await withForm(ripplePage, {}, async (env) => {
+    wireRipple(env.document, 'custom15', RIPPLE_CITIES);
+    wireRipple(env.document, 'custom16', RIPPLE_CITIES);
+    // "Kol…" results standing is no reason to take "Kolhapur" for a city not listed.
+    const emp = wireRipple(env.document, 'custom28', ['Acme Corp', 'Algebra Inc']);
+    const result = await run_.runAutofill(rippleCtx(), null);
+    const d = byLabel(result.decisions, 'employer name');
+    ok(d, `found: ${result.decisions.map(x => x.label).join(' | ')}`);
+    deepEq(emp.log.clicks, [], 'nothing clicked');
+    notOk(d.action === p.FILL, `${d.action} ${d.outcome}`);
+    eq(emp.search.value, '', 'no leftover search text');
+    notOk(emp.button.parentElement.classList.contains('open'), 'the menu is closed again');
+  });
+});
+
+const rippleOne = async (id, answer, rows, bankExtra, opts) => {
+  let widget = null;
+  let decision = null;
+  await withForm(ripplePage, {}, async (env) => {
+    for (const other of ['custom15', 'custom16', 'custom28']) {
+      const w = wireRipple(env.document, other, other === id ? rows : [], other === id ? opts : null);
+      if (other === id) widget = w;
+    }
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { title: 'Mr.', address_city: '', current_company: '' }, bankExtra) });
+    const result = await run_.runAutofill(ctx, null);
+    decision = result.decisions.find(x => x.row && x.row.el && x.row.el.id === id);
+  });
+  return { clicks: widget.log.clicks, decision };
+};
+
+test('RippleHire: the widget matches like other forms, among rows that share a word with the answer', async () => {
+  // Only close names: the matcher alone would take Kolat. No shared word, no click.
+  let r = await rippleOne('custom15', 'Kolkata', ['Kolat', 'Kolhapur', 'Kollam'], { address_city: 'Kolkata' }, { answersClose: true });
+  deepEq(r.clicks, [], `clicked: ${r.clicks.join(', ')}`);
+  notOk(r.decision.action === p.FILL && r.decision.outcome === 'ok', `${r.decision.action} ${r.decision.outcome}`);
+  r = await rippleOne('custom15', 'Calcutta', ['Kolkata', 'Calicut'], { address_city: 'Calcutta' }, { answersClose: true });
+  deepEq(r.clicks, [], `clicked: ${r.clicks.join(', ')}`);
+  // A longer answer than the row: the row shares its word, and that counts as filled.
+  r = await rippleOne('custom28', 'Alignerr Inc', ['Alignerr', 'Aligarh Corp'], { current_company: 'Alignerr Inc' });
+  deepEq(r.clicks, ['Alignerr']);
+  eq(r.decision.outcome, 'ok', `${r.decision.action} ${r.decision.reason}`);
+  eq(r.decision.action, p.FILL, r.decision.reason);
+  // The name before its comma finds the row, ahead of a row sharing another word.
+  r = await rippleOne('custom28', 'Jadavpur University, Kolkata',
+    ['Jadavpur University - West Bengal - India', 'Kolkata University'], { current_company: 'Jadavpur University, Kolkata' });
+  deepEq(r.clicks, ['Jadavpur University - West Bengal - India']);
+  eq(r.decision.outcome, 'ok', r.decision.reason);
+});
+
+test('RippleHire: an answer not on the list takes its one Others row', async () => {
+  const employer = { current_company: 'Alignerr' };
+  // Listed: taken, and Other never searched.
+  let r = await rippleOne('custom28', 'Alignerr', ['Alignerr', 'Others'], employer);
+  deepEq(r.clicks, ['Alignerr']);
+  // Not listed: "Others", or "Other", counted as filled.
+  for (const row of ['Others', 'Other', 'OTHERS']) {
+    r = await rippleOne('custom28', 'Alignerr', ['Acme Corp', row], employer);
+    deepEq(r.clicks, [row], `${r.decision.action} ${r.decision.outcome} ${r.decision.reason}`);
+    eq(r.decision.action, p.FILL, r.decision.reason);
+    eq(r.decision.outcome, 'ok', r.decision.reason);
+  }
+  // A choice of two, or names merely holding the word: nothing clicked.
+  for (const rows of [['Other', 'Others'], ['Mothers Dairy', 'Others Ltd', 'Another Other']]) {
+    r = await rippleOne('custom28', 'Alignerr', rows, employer);
+    deepEq(r.clicks, [], `${rows.join(', ')}: clicked ${r.clicks.join(', ')}`);
+    notOk(r.decision.action === p.FILL, `${r.decision.action} ${r.decision.outcome}`);
+  }
+});
+
+test('RippleHire: the Others row lands on the hidden select the form submits', async () => {
+  await withForm(ripplePage, {}, async (env) => {
+    wireRipple(env.document, 'custom15', RIPPLE_CITIES);
+    wireRipple(env.document, 'custom16', RIPPLE_CITIES);
+    const emp = wireRipple(env.document, 'custom28', ['Acme Corp', 'Others']);
+    await run_.runAutofill(rippleCtx(), null);
+    deepEq(emp.log.clicks, ['Others']);
+    eq(valueOf(env, '#custom28'), 'Others');
+  });
+});
+
+test('RippleHire: the model never replaces a profile answer the widget has no row for; other fields still go to it', async () => {
+  const asked = [];
+  const forceAnswer = (f) => { asked.push(f.label); return /employer name/i.test(f.label) ? 'HDFC Bank Ltd' : 'Blue'; };
+  const page = ripplePage.replace('</fieldset>', `<div class="form-group required show"><label for="col" class="control-label">Favourite colour :</label>
+    <div class="input_field"><input type="text" class="form-control required show" name="col" id="col" required></div></div></fieldset>`);
+  await withForm(page, { forceAnswer }, async (env) => {
+    wireRipple(env.document, 'custom15', RIPPLE_CITIES);
+    wireRipple(env.document, 'custom16', RIPPLE_CITIES);
+    const emp = wireRipple(env.document, 'custom28', ['Acme Corp', 'HDFC Bank Ltd']);
+    const result = await run_.runAutofill(rippleCtx(), null);
+    await run_.forceAnswers(rippleCtx(), result.decisions);
+    notOk(asked.some(l => /^employer name :/i.test(l)), `asked: ${asked.join(' | ')}`);
+    deepEq(emp.log.clicks, [], 'HDFC is never clicked');
+    ok(asked.some(l => /favourite colour/i.test(l)), `a question with no known answer still goes: ${asked.join(' | ')}`);
+    eq(valueOf(env, '#col'), 'Blue');
+    const d = byLabel(result.decisions, 'employer name :');
+    eq(d.source, 'profile');
+    eq(d.action, p.ASK, `${d.action} ${d.reason}`);
+  });
+});
+
+test('RippleHire: a plain select behind aria-label="Select" keeps its label and fills as before', async () => {
+  await withForm(ripplePage, {}, async (env) => {
+    wireRipple(env.document, 'custom15', RIPPLE_CITIES);
+    wireRipple(env.document, 'custom16', RIPPLE_CITIES);
+    wireRipple(env.document, 'custom28', []);
+    const rows = d.describeFields(d.findForm());
+    const title = rows.find(r => r.el && r.el.id === 'custom21');
+    eq(title.label, 'Title :');
+    ok(title.required);
+    deepEq(title.options.map(o => o.label), ['Dr.', 'Mr.', 'Ms.']);
+  });
+});
+
+const VISA_FORM = `<form>
+  <label for="fn">First Name</label><input id="fn" name="first_name">
+  <label for="em">Email</label><input id="em" name="email" type="email">
+  <label for="sms">I agree that Visa may reach out to me via SMS regarding my application and candidate experience. Message and data rates may apply. I can opt-out at any time. *</label>
+  <select id="sms" required><option value="">Select</option><option>Yes</option><option>No</option></select>
+  <label for="ai">Visa may use automated tools such as AI to support review of your application for this role, and if applicable, match you with relevant existing and future open roles. If you prefer not to have your application processed by these tools, you can opt-out. Opting out will not impact your eligibility for this role or to apply for relevant open roles. *</label>
+  <select id="ai" required><option value="">Select</option><option>Yes</option><option>No</option></select>
+  <label for="sp">Will you now or in the future require Visa sponsorship? *</label>
+  <select id="sp" required><option value="">Select</option><option>Yes</option><option>No</option></select>
+</form>`;
+const visaRun = async (url) => {
+  let out = null;
+  await withForm(VISA_FORM, {}, async (env, sent) => {
+    Object.defineProperty(globalThis, 'location', { value: new URL(url), writable: true, configurable: true, enumerable: true });
+    // No company read from the page, as on the live form.
+    const result = await run_.runAutofill(Object.assign({}, CTX, { jobCompany: '' }), null);
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    out = { result, labels: plan ? plan.payload.fields.map(f => f.label) : [] };
+  });
+  return out;
+};
+
+test('Visa\'s Workday form: questions naming Visa are not sponsorship questions; a real one still is', async () => {
+  const { result, labels } = await visaRun('https://visa.wd5.myworkdayjobs.com/en-US/Visa/job/IN---Bengaluru-India/Sr-SW-Engineer_REF084891W/apply/applyManually');
+  for (const needle of ['via SMS', 'automated tools']) {
+    const d = byLabel(result.decisions, needle);
+    notOk(d.sensitive, `${needle}: ${d.sensitive}`);
+    notOk(/sponsorship/.test(d.reason || ''), d.reason);
+    ok(labels.some(l => l.includes(needle)), `${needle} goes to be answered: ${labels.join(' | ').slice(0, 200)}`);
+  }
+  const real = byLabel(result.decisions, 'require Visa sponsorship');
+  eq(real.sensitive, 'sponsorship');
+  notOk(labels.some(l => /require Visa sponsorship/.test(l)), 'never sent to the model');
+});
+
+test('On another company\'s form, "Visa" in a question still reads as a visa', async () => {
+  const { result } = await visaRun('https://acme.wd1.myworkdayjobs.com/en-US/Acme/job/India/Engineer_R1/apply');
+  eq(byLabel(result.decisions, 'via SMS').sensitive, 'sponsorship');
+});
+
+test('CBRE: a current salary comes to the sidebar with an answer box, and what is typed there fills the field', async () => {
+  const html = `<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      <label for="cur">What is your current annual base salary? (INR) *</label><input id="cur" name="cur" required>
+    </form>`;
+  await withForm(html, {}, async (env, sent) => {
+    const result = await run_.runAutofill(CTX, null);
+    const d = byLabel(result.decisions, 'current annual base salary');
+    eq(d.action, p.ASK, `${d.action}: ${d.reason}`);
+    eq(valueOf(env, '#cur'), '', 'never guessed');
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    notOk(plan && plan.payload.fields.some(f => /salary/i.test(f.label)), 'never sent to the model');
+
+    const { body } = panelFor(env, result);
+    const row = Array.from(body.querySelectorAll('.tcv-af-row')).find(r => /current annual base salary/.test(r.textContent));
+    ok(row && row.querySelector('input, textarea, select'), 'the row has an answer box');
+    ok(!/salary expectation/.test(row.textContent), row.textContent.replace(/\s+/g, ' '));
+
+    ok((await run_.answerField(d, '1200000', false)).ok);
+    eq(valueOf(env, '#cur'), '1200000');
+  });
+});
+
+test('Workday checkbox list: the answer\'s row, drawn a moment late, is clicked by its words', async () => {
+  await withForm(WD_GENDER_PAGE, {}, async (env) => {
+    const log = wireCheckboxList(env.document, 'genderIdentities', WD_GENDER_LIST);
+    wireCheckboxList(env.document, 'pronouns', ['He', 'She']);
+    const result = await run_.runAutofill(manCtx(), null);
+    const d = byLabel(result.decisions, 'gender identity');
+    deepEq(log.clicks, ['Male'], `${d.action} ${d.outcome} ${d.reason}`);
+    eq(pillsOf(env.document, 'genderIdentities'), 'Male');
+    eq(d.action, p.FILL);
+    eq(d.outcome, 'ok');
+  });
+});
+
+test('Workday checkbox list: a retry never clicks a ticked row again, which would untick it', async () => {
+  await withForm(WD_GENDER_PAGE, {}, async (env) => {
+    // Ticked, and no tag on the page: the write reads as failed, so it is retried.
+    const log = wireCheckboxList(env.document, 'genderIdentities', ['Female', 'Male'], { noPill: true });
+    await run_.runAutofill(manCtx(), null);
+    eq(log.clicks.filter(c => c === 'Male').length, 1, `clicks: ${log.clicks.join(', ')}`);
+  });
+});
+
+test('Workday checkbox list: an answer with no row on the list clicks nothing and goes to the person', async () => {
+  await withForm(WD_GENDER_PAGE, {}, async (env) => {
+    const log = wireCheckboxList(env.document, 'genderIdentities', ['Option A', 'Option B', 'Option C']);
+    const result = await run_.runAutofill(manCtx(), null);
+    const d = byLabel(result.decisions, 'gender identity');
+    deepEq(log.clicks, [], 'nothing clicked');
+    eq(d.action, p.ASK, `${d.action} ${d.outcome} ${d.reason}`);
+  });
+});
+
+// The panel: a row filled from a saved answer can be changed or forgotten
+// where it is seen; one set aside as no answer for this list says so.
+// SpaceX's Greenhouse Citizenship Status: the U.S. federal list.
+const addSpacexCitizen = env => env.document.querySelector('form').insertAdjacentHTML('beforeend', `
+  <label for="q_citizen">Citizenship Status</label>
+  <select id="q_citizen"><option value="">Select…</option>
+    ${SAVED_US_LIST.map(o => `<option>${o}</option>`).join('')}</select>`);
+const savedDacaCtx = () => Object.assign({}, CTX, {
+  answerBank: Object.assign({}, CTX.answerBank, { nationality: 'India' }),
+  savedSensitive: [{ question: 'Citizenship Status', answer: SAVED_DACA,
+                     variants: [{ options: SAVED_US_LIST, answer: SAVED_DACA }] }],
+});
+const panelFor = (env, result) => {
+  const body = env.document.createElement('div');
+  env.document.body.appendChild(body);
+  let refreshed = 0;
+  const handlers = { onRefresh: () => { refreshed++; ui.renderResults(body, result, CTX, handlers); } };
+  ui.renderResults(body, result, CTX, handlers);
+  return { body, refreshes: () => refreshed };
+};
+const tick = () => new Promise(r => setTimeout(r, 0));
+
+test('Panel: Forget on a row filled from a saved answer forgets the answer for that kind of list', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    addSpacexCitizen(env);
+    const result = await run_.runAutofill(savedDacaCtx(), null);
+    const d = byLabel(result.decisions, 'citizenship status');
+    eq(d.source, 'saved_answer');
+    eq(valueOf(env, '#q_citizen'), SAVED_DACA);
+    const panel = panelFor(env, result);
+    ok(panel.body.querySelector('.tcv-af-change'), 'Change is offered');
+    const forget = panel.body.querySelector('.tcv-af-forget');
+    ok(forget, 'Forget is offered');
+    forget.click();
+    for (let i = 0; i < 5 && !panel.refreshes(); i++) await tick();
+    const msg = sent.find(m => m.type === 'AF_FORGET_ANSWER');
+    ok(msg, 'the forget goes to the store');
+    eq(msg.payload.question, 'Citizenship Status');
+    deepEq(msg.payload.options, SAVED_US_LIST);
+    ok(d.forgotten);
+    notOk(panel.body.querySelector('.tcv-af-forget'), 'nothing left to forget');
+    eq(valueOf(env, '#q_citizen'), SAVED_DACA, 'the field keeps what it shows');
+  });
+});
+
+test('Panel: Change fills an option of this list and saves it for this kind of list', async () => {
+  await withForm(fixtures.GREENHOUSE, {}, async (env, sent) => {
+    addSpacexCitizen(env);
+    const result = await run_.runAutofill(savedDacaCtx(), null);
+    const panel = panelFor(env, result);
+    panel.body.querySelector('.tcv-af-change').click();
+    const form = panel.body.querySelector('.tcv-af-change-form');
+    notOk(form.hidden, 'Change opens the answer box');
+    const select = form.querySelector('.tcv-af-ask-select');
+    ok(select, 'with the options of this list');
+    select.value = SAVED_US_LIST[1];
+    form.querySelector('.tcv-af-ask-save').click();
+    for (let i = 0; i < 50 && !sent.some(m => m.type === 'AF_SAVE_ANSWERS'); i++) await tick();
+    eq(valueOf(env, '#q_citizen'), SAVED_US_LIST[1]);
+    const save = sent.find(m => m.type === 'AF_SAVE_ANSWERS');
+    ok(save, 'the new answer is saved');
+    eq(save.payload.answers[0].answer, SAVED_US_LIST[1]);
+    deepEq(save.payload.answers[0].options, SAVED_US_LIST);
+  });
+});
+
+test('Panel: a saved answer set aside on the Workday country list is said so, with Forget it', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env, sent) => {
+    wireWorkdayCitizenship(env);
+    const result = await run_.runAutofill(savedDacaCtx(), null);
+    eq(pillsOf(env.document, 'citizenshipStatus'), 'India › Citizen');
+    const d = byLabel(result.decisions, 'citizenship status');
+    ok(d.setAside, 'the set-aside answer is kept on the decision');
+    deepEq(d.setAside.options, SAVED_US_LIST);
+    const panel = panelFor(env, result);
+    const aside = panel.body.querySelector('.tcv-af-aside');
+    ok(aside && /isn't on this list/.test(aside.textContent), 'the panel says so');
+    aside.querySelector('.tcv-af-forget').click();
+    for (let i = 0; i < 5 && !panel.refreshes(); i++) await tick();
+    const msg = sent.find(m => m.type === 'AF_FORGET_ANSWER');
+    ok(msg, 'Forget it goes to the store');
+    deepEq(msg.payload.options, SAVED_US_LIST, 'the answer for the U.S. list, which was set aside');
+  });
+});
+
+test('Workday nationality: an answer saved from a country list is picked from the opened list', async () => {
+  await withForm(WD_CITIZENSHIP_PAGE, {}, async (env) => {
+    const log = wireWorkdayCitizenship(env);
+    const ctx = Object.assign({}, CTX, {
+      savedSensitive: [{ question: 'Primary Nationality', answer: 'Singapore',
+                         variants: [{ options: ['India', 'Singapore', 'United States'], answer: 'Singapore' }] }],
+    });
+    const result = await run_.runAutofill(ctx, null);
+    eq(pillsOf(env.document, 'primaryNationality'), 'Singapore');
+    eq(byLabel(result.decisions, 'primary nationality').source, 'saved_answer');
+    void log;
+  });
+});
+
+const WD_SCHOOLS = [
+  { school: 'Indian Institute of Technology Delhi', degree: 'M.Tech (Master of Technology)',
+    field: 'Chemical Engineering', gpa: '', from: '2023', to: '2025' },
+  { school: 'NIT Durgapur', degree: 'B.Tech (Bachelor of Technology)', field: 'Computer Science',
+    gpa: '8.1/10', from: '2019', to: '2023' },
+];
+const eduBlock = (doc, n) => doc.querySelector(`[aria-labelledby="Education-${n}-panel"]`);
+const eduVal = (block, name) => block.querySelector(`[name="${name}"]`).value;
+const eduField = block => Array.from(block.querySelectorAll(
+  '[data-automation-id="formField-fieldOfStudy"] [data-automation-id="selectedItem"]')).map(n => n.textContent).join(' | ');
+const eduYear = (block, which) => block.querySelector(`[id$="--${which}-dateSectionYear-input"]`).value;
+
+test('Workday education: "Add" opens a block per school, each filled from the profile', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    const log = wireWorkdayEducation(env);
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, CTX.answerBank, { gpa: '8.7/10' }),
+      facts: { educationEntries: WD_SCHOOLS },
+    });
+    const result = await run_.runAutofill(ctx, null);
+    const doc = env.document;
+
+    const b1 = eduBlock(doc, 1), b2 = eduBlock(doc, 2);
+    ok(b1 && b2, 'two blocks added, one per school');
+    notOk(eduBlock(doc, 3), 'no empty third block');
+    eq(log.eduAdds, 2);
+    eq(eduVal(b1, 'schoolName'), 'Indian Institute of Technology Delhi');
+    eq(b1.querySelector('[data-automation-id="formField-degree"] button').textContent, 'MTECH',
+       'M.Tech takes the list\'s own MTECH');
+    // Workday's prompt: committed only as a clicked pill — typed text is erased.
+    eq(eduField(b1), 'Chemical Engineering', 'searched with Enter and clicked');
+    eq(eduField(b2), 'Computer Science', 'the exact result, not the highlighted "Computational Science & Engineering"');
+    eq(log.letterKeys, 0, 'no key-by-key typing — Workday ignores it');
+    eq(eduVal(b1, 'gradeAverage'), '8.7/10', 'the first school falls back to the profile GPA');
+    eq(eduYear(b1, 'firstYearAttended'), '2023');
+    eq(eduYear(b1, 'lastYearAttended'), '2025');
+
+    eq(eduVal(b2, 'schoolName'), 'NIT Durgapur', 'block 2 is school 2');
+    eq(b2.querySelector('[data-automation-id="formField-degree"] button').textContent, 'BTECH',
+       'B.Tech takes BTECH, never MTECH');
+    eq(eduVal(b2, 'gradeAverage'), '8.1/10', 'its own GPA');
+    eq(eduYear(b2, 'lastYearAttended'), '2023');
+
+    eq(log.expAdds, 0, "Work Experience's Add is never pressed without jobs");
+    eq(log.next, 0, 'never Save and Continue');
+    const rows = result.decisions.filter(x => String(x.key).startsWith('repeater:education'));
+    eq(rows.length, 2);
+    ok(rows.every(x => x.action === p.FILL), rows.map(x => `${x.label}: ${x.reason}`).join(' | '));
+  });
+});
+
+// The user's own profile, from the NVIDIA reports (Oct 2026).
+const NVIDIA_SCHOOLS = [
+  { school: 'Jadavpur University, Kolkata', degree: 'Bachelor of Technology', field: 'Chemical Engineering',
+    gpa: '7.5', from: '2023', to: '2027' },
+  { school: 'Hariyana Vidya Mandir, Kolkata', degree: 'Higher Secondary', field: '',
+    gpa: '9.0', from: '2020', to: '2022' },
+];
+
+test('Workday education: Degree waits for its options to load past "Select One"', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    wireWorkdayEducation(env, { degreeLoadMs: 300 });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: NVIDIA_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    const doc = env.document;
+    const degree = n => eduBlock(doc, n).querySelector('[data-automation-id="formField-degree"] button').textContent;
+    eq(degree(1), 'BTECH', 'Bachelor of Technology → BTECH, once the real options load');
+    eq(degree(2), 'High School', 'Higher Secondary → High School');
+  });
+});
+
+// A Workday degree list with nothing like high school (Nov 2026), complete.
+const WD_DEGREES_NO_SCHOOL = ['Bachelors of Management and Engineering', 'Diploma', 'Certificate/Technical degree',
+  'Associates', 'Bachelors', 'Post-Graduate', 'Masters', 'Master of Business Administration', 'Doctorate',
+  'Doctor of Medicine', 'Doctor of Veterinary Medicine', 'Juris Doctorate'];
+
+test('Workday education: Higher Secondary takes "Diploma" on a list with nothing like high school', async () => {
+  const asked = [];
+  const forceAnswer = (f) => { asked.push(f.label); return /^Degree/.test(f.label) ? 'Bachelors' : null; };
+  await withForm(WD_EDUCATION_PAGE, { forceAnswer }, async (env) => {
+    wireWorkdayEducation(env, { degrees: WD_DEGREES_NO_SCHOOL });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: NVIDIA_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    const degree = n => eduBlock(env.document, n).querySelector('[data-automation-id="formField-degree"] button').textContent;
+    eq(degree(1), 'Bachelors', 'the B.Tech keeps its own level');
+    eq(degree(2), 'Diploma', 'the rule answers it, not the model');
+    notOk(asked.some(l => /^Degree/.test(l)), `the model is not asked: ${asked.join(' | ')}`);
+  });
+});
+
+test('Workday education: a list that has high school takes it, not "Diploma"', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    wireWorkdayEducation(env, { degrees: WD_DEGREES_NO_SCHOOL.concat('High School') });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: NVIDIA_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    const degree = eduBlock(env.document, 2).querySelector('[data-automation-id="formField-degree"] button').textContent;
+    eq(degree, 'High School');
+  });
+});
+
+test('a search box showing "Diploma" before its high-school row is not answered with "Diploma"', async () => {
+  const page = WD_GENDER_PAGE.replace("Voluntary Disclosures", 'My Information').replace(wdPrompt('genderIdentities', 'Gender Identity'), wdPrompt('degree', 'Degree'));
+  await withForm(page, {}, async (env) => {
+    const log = wireCheckboxList(env.document, 'degree', ['Diploma', 'Bachelors', 'High School']);
+    wireCheckboxList(env.document, 'pronouns', ['He', 'She']);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank, { degree: 'Higher Secondary' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const d = byLabel(result.decisions, 'degree');
+    deepEq(log.clicks, ['High School'], `clicks: ${log.clicks.join(', ')}; ${d && d.action} ${d && d.source} ${d && d.outcome} ${d && d.reason}; ${result.decisions.length} decisions`);
+  });
+});
+
+test('Workday education: a Degree the rules cannot match is chosen by the model from the list', async () => {
+  // Visa (Oct 2026): no rule matched its degree list, the Degree stayed
+  // "Select One" and auto-apply stopped. Here: a B.E. against NVIDIA's list,
+  // which has BTECH but no B.E. and no "Bachelor's Degree".
+  const asked = [];
+  const forceAnswer = (f) => {
+    asked.push(f);
+    return /^Degree/.test(f.label) && f.options.includes('BTECH') ? 'BTECH' : null;
+  };
+  await withForm(WD_EDUCATION_PAGE, { forceAnswer }, async (env) => {
+    wireWorkdayEducation(env);
+    const schools = [Object.assign({}, NVIDIA_SCHOOLS[0], { degree: 'Bachelor of Engineering' }), NVIDIA_SCHOOLS[1]];
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: schools } });
+    const result = await run_.runAutofill(ctx, null);
+    const degree = n => eduBlock(env.document, n).querySelector('[data-automation-id="formField-degree"] button').textContent;
+    eq(degree(1), 'BTECH', "the model's pick, from the list");
+    eq(degree(2), 'High School', 'the rules still answer what they can — no model call for it');
+    eq(asked.length, 1, `one call: ${asked.map(f => f.label).join(' | ')}`);
+    ok(/Jadavpur/.test(asked[0].label) && /Bachelor of Engineering/.test(asked[0].label),
+       `asked for THIS school's degree: ${asked[0].label}`);
+    ok(asked[0].options.includes('BTECH'), 'with the options read from the list');
+    const row = result.decisions.find(x => String(x.key) === 'repeater:education:0');
+    eq(row.source, 'ai_forced');
+    ok(/Degree picked by AI/.test(row.reason), row.reason);
+  });
+});
+
+test('Workday education: a Field of Study that Enter already selected counts as filled', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    const log = wireWorkdayEducation(env, { enterSelects: true });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: NVIDIA_SCHOOLS } });
+    const logged = [];
+    const info = console.info, group = console.groupCollapsed;
+    console.groupCollapsed = (...a) => { logged.push(a.join(' ')); };
+    let result;
+    try { result = await run_.runAutofill(ctx, null); } finally { console.groupCollapsed = group; console.info = info; }
+    eq(eduField(eduBlock(env.document, 1)), 'Chemical Engineering', 'one pill — never clicked off');
+    eq(log.enterSelected, 1);
+    notOk(logged.some(l => /did not commit: Field of Study/.test(l)), 'no false "did not commit"');
+    const row = result.decisions.find(x => String(x.key) === 'repeater:education:0');
+    eq(row.action, p.FILL, row.reason);
+  });
+});
+
+test('Workday education: Field of Study is clicked while Workday hides the page root from screen readers', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    wireWorkdayEducation(env, { hideRoot: true });
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: WD_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    eq(eduField(eduBlock(env.document, 1)), 'Chemical Engineering');
+    eq(eduField(eduBlock(env.document, 2)), 'Computer Science');
+  });
+});
+
+test('Workday education: a block already showing a school takes that school', async () => {
+  await withForm(WD_EDUCATION_PAGE, {}, async (env) => {
+    wireWorkdayEducation(env);
+    const doc = env.document;
+    doc.getElementById('edu-add').click();                       // Workday's resume read made block 1…
+    eduBlock(doc, 1).querySelector('[name="schoolName"]').value = 'NIT Durgapur';   // …for school 2
+    const ctx = Object.assign({}, CTX, { facts: { educationEntries: WD_SCHOOLS } });
+    await run_.runAutofill(ctx, null);
+    eq(eduYear(eduBlock(doc, 1), 'lastYearAttended'), '2023', 'block 1 completed as NIT Durgapur');
+    eq(eduVal(eduBlock(doc, 2), 'schoolName'), 'Indian Institute of Technology Delhi', 'the other school gets a new block');
+  });
+});
+
+// Workday's "Type to Add Skills" (NVIDIA, Oct 2026): typing does not search;
+// Enter shows checkbox results for the current text; clicking a row TOGGLES
+// its pill (a second click removes it); the list stays open; blur erases any
+// unpicked text. "Deep Learning" starts selected, as Workday's resume read does.
+const WD_SKILL_CATALOG = ['Machine Learning (ML)', 'Machine Learning Methods', 'AWS Machine Learning',
+  'Deep Learning', 'AWS Deep Learning AMIs', 'Deep Learning Algorithms', 'Python (Programming Language)',
+  'Python', 'Pythonic', 'SQL', 'Neural Networks', 'Natural Language Processing (NLP)'];
+const WD_SKILLS_PAGE = `
+  <div data-automation-id="applyFlowPage"><h2>My Experience</h2>
+  <div data-automation-id="applyFlowMyExpPage">
+    <div data-automation-id="formField-email"><label for="wd-email">Email</label><input id="wd-email" type="email"></div>
+    <div data-automation-id="formField-name"><label for="wd-name">Legal Name</label><input id="wd-name" type="text"></div>
+    <div data-automation-id="formField-skills"><label for="wd-skills">Type to Add Skills</label>
+      <div data-automation-id="multiSelectContainer">
+        <ul role="listbox" data-automation-id="selectedItemList" aria-label="items selected"><li role="presentation" data-automation-id="menuItem"><div role="option" data-automation-id="selectedItem" aria-label="Deep Learning, press delete to clear value.">Deep Learning</div></li></ul>
+        <div data-automation-id="multiselectInputContainer">
+          <input data-automation-id="searchBox" id="wd-skills" type="text" placeholder="Search"></div></div></div>
+  </div><div id="wd-portal"></div></div>`;
+
+// opts.searchMs: Workday's server search — results appear this long after Enter.
+// opts.redrawMs: results are drawn, then redrawn (rows replaced) this long after.
+// opts.innerOnly: only an element INSIDE each row listens for the click, as a
+// checkbox row may — a click on the row element itself does nothing.
+function wireWorkdaySkills(env, opts = {}) {
+  const doc = env.document;
+  const input = doc.getElementById('wd-skills');
+  const pills = doc.querySelector('[data-automation-id="selectedItemList"]');
+  const portal = doc.getElementById('wd-portal');
+  const log = { letterKeys: 0, untoggled: [] };
+  const picked = () => Array.from(pills.querySelectorAll('[data-automation-id="selectedItem"]')).map(n => n.textContent);
+  // A clicked skill is saved to Workday's server first ("pill-REMOTE_SKILL-…"
+  // in the real markup), and the reply REDRAWS the pills from the selection as
+  // it stood at that click, plus the new skill. A second click before the
+  // first reply therefore loses the first skill: its reply never included it.
+  // That is "each new skill erases the previous one" (NVIDIA, Oct 2026).
+  const win = doc.defaultView;
+  const draw = (names) => {
+    pills.innerHTML = names.map(n => `<li role="presentation" data-automation-id="menuItem"><div role="option" data-automation-id="selectedItem" aria-label="${n}, press delete to clear value.">${n}</div></li>`).join('');
+  };
+  const toggle = (name) => {
+    const atClick = picked();
+    const next = atClick.includes(name) ? atClick.filter(n => n !== name) : atClick.concat([name]);
+    if (atClick.includes(name)) log.untoggled.push(name);
+    win.setTimeout(() => draw(next), 120);                    // the server round trip
+  };
+  const render = (items) => {
+    if (!items.length) { portal.innerHTML = '<ul role="listbox"><li>No Items.</li></ul>'; return; }
+    portal.innerHTML = '<ul role="listbox">' + items.map(o =>
+      `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">`
+      + `<div data-automation-id="promptLeafNode"><span class="box"></span><span>${o}</span></div></li>`).join('') + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]')) {
+      const target = opts.innerOnly ? li.querySelector('span:last-child') : li;
+      target.addEventListener('mousedown', (e) => {
+        if (opts.innerOnly && e.target !== target) return;
+        toggle(li.textContent);
+      });
+    }
+  };
+  input.addEventListener('keydown', (e) => {
+    if (/^[a-z]$/i.test(e.key)) log.letterKeys++;
+    if (e.key === 'Escape') { portal.innerHTML = ''; return; }
+    if (e.key !== 'Enter') return;
+    const words = input.value.toLowerCase().split(/\W+/).filter(Boolean);
+    const items = WD_SKILL_CATALOG.filter(o => words.every(w => o.toLowerCase().includes(w)));
+    const show = () => {
+      render(items);
+      if (opts.redrawMs) win.setTimeout(() => render(items), opts.redrawMs);   // rows replaced
+    };
+    if (opts.searchMs) win.setTimeout(show, opts.searchMs); else show();
+  });
+  input.addEventListener('blur', () => { input.value = ''; });
+  log.picked = picked;
+  return log;
+}
+
+test('Workday skills: each profile skill is searched with Enter and ticked once', async () => {
+  await withForm(WD_SKILLS_PAGE, {}, async (env) => {
+    const log = wireWorkdaySkills(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, Python, Underwater Basket Weaving' }) });
+    const result = await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(), ['Deep Learning', 'Machine Learning (ML)', 'Python'].sort());
+    deepEq(log.untoggled, [], 'the already-selected Deep Learning is never clicked off');
+    eq(log.letterKeys, 0, 'no key-by-key typing');
+    eq(env.document.getElementById('wd-skills').value, '', 'nothing left in the box for Workday to erase');
+    const row = byLabel(result.decisions, 'skills');
+    eq(row.action, p.FILL);
+    ok(/Underwater Basket Weaving/.test(row.reason || ''), `reports the skill Workday lacks: ${row.reason}`);
+  });
+});
+
+test('Workday skills accumulate — adding one never erases the one before', async () => {
+  const empty = WD_SKILLS_PAGE.replace(
+    '<li role="presentation" data-automation-id="menuItem"><div role="option" data-automation-id="selectedItem" aria-label="Deep Learning, press delete to clear value.">Deep Learning</div></li>', '');
+  await withForm(empty, {}, async (env) => {
+    const log = wireWorkdaySkills(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, NLP, Python' }) });
+    await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(),
+           ['Deep Learning', 'Machine Learning (ML)', 'Natural Language Processing (NLP)', 'Python'].sort(),
+           'every skill kept, one after another');
+    deepEq(log.untoggled, [], 'no skill was ticked off along the way');
+    eq(env.document.getElementById('wd-skills').value, '');
+  });
+});
+
+test('Workday skills: a slow search is waited for, not skipped', async () => {
+  // NVIDIA: TensorFlow's results arrived just as the extension moved on to
+  // PyTorch. Here results take far longer than the old wait.
+  const empty = WD_SKILLS_PAGE.replace(/<li role="presentation"[\s\S]*?<\/li>/, '');
+  await withForm(empty, {}, async (env) => {
+    const log = wireWorkdaySkills(env, { searchMs: 400 });
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, Python' }) });
+    await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(), ['Deep Learning', 'Machine Learning (ML)', 'Python'].sort());
+  });
+});
+
+test('Workday skills: ticked even when the results are redrawn and only the row\'s inside listens', async () => {
+  const empty = WD_SKILLS_PAGE.replace(/<li role="presentation"[\s\S]*?<\/li>/, '');
+  await withForm(empty, {}, async (env) => {
+    const log = wireWorkdaySkills(env, { redrawMs: 40, innerOnly: true });
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { top_skills: 'Machine Learning, Deep Learning, Python' }) });
+    await run_.runAutofill(ctx, null);
+    deepEq(log.picked().sort(), ['Deep Learning', 'Machine Learning (ML)', 'Python'].sort());
+    deepEq(log.untoggled, [], 'never clicked twice into an un-tick');
+  });
+});
+
+// Greenhouse (Stripe, Oct 2026): Degree is a react-select-style box whose list
+// names only levels. Opening shows the whole list; typing filters it. Every
+// typed search is counted — the degree must be chosen from one open list.
+const STRIPE_DEGREE_LIST = ["Associate's Degree", "Bachelor's Degree", 'Doctor of Medicine (M.D.)',
+  'Doctor of Philosophy (Ph.D.)', "Engineer's Degree", 'High School', 'Juris Doctor (J.D.)',
+  'Master of Business Administration (M.B.A.)', "Master's Degree"];
+const STRIPE_DEGREE_FORM = `
+<form id="application-form">
+  <div class="field"><label for="first_name">First Name</label><input id="first_name" name="first_name"></div>
+  <div class="field"><label for="email">Email</label><input id="email" type="email" name="email"></div>
+  <div class="field">
+    <label for="q_degree">Degree <abbr title="required">*</abbr></label>
+    <div class="select__container">
+      <div class="select__control"><div class="select__placeholder">Select...</div>
+        <input role="combobox" id="q_degree" aria-haspopup="listbox" aria-autocomplete="list" aria-expanded="false"></div>
+      <input type="hidden" name="question_degree" value="">
+    </div>
+  </div>
+</form>`;
+
+function wireStripeDegree(env) {
+  const doc = env.document;
+  const input = doc.getElementById('q_degree');
+  const control = input.parentElement;
+  const log = { opens: 0, typed: 0 };
+  let menu = null;
+  const close = () => { if (menu) menu.remove(); menu = null; input.setAttribute('aria-expanded', 'false'); };
+  const render = (filter) => {
+    if (!menu) {
+      menu = doc.createElement('div');
+      menu.id = 'q_degree-listbox';
+      menu.setAttribute('role', 'listbox');
+      control.parentElement.appendChild(menu);
+      input.setAttribute('aria-controls', menu.id);
+      input.setAttribute('aria-expanded', 'true');
+    }
+    const shown = STRIPE_DEGREE_LIST.filter(o => !filter || o.toLowerCase().includes(filter.toLowerCase()));
+    menu.innerHTML = shown.map((o, i) => `<div role="option" id="deg-${i}" class="select__option">${o}</div>`).join('');
+    for (const node of menu.querySelectorAll('[role=option]')) {
+      const pick = () => {
+        control.querySelector('.select__placeholder, .select__single-value').outerHTML =
+          `<div class="select__single-value">${node.textContent}</div>`;
+        control.parentElement.querySelector('input[type=hidden]').value = node.textContent;
+        input.value = '';
+        close();
+      };
+      node.addEventListener('mousedown', pick);
+      node.addEventListener('click', pick);
+    }
+  };
+  const open = () => { if (!menu) { log.opens++; render(''); } };
+  input.addEventListener('mousedown', open);
+  input.addEventListener('focus', open);
+  input.addEventListener('input', () => { log.typed++; render(input.value); });
+  return log;
+}
+
+test('Greenhouse degree: B.Tech picks "Bachelor\'s Degree" from one open list, no typed searches', async () => {
+  await withForm(STRIPE_DEGREE_FORM, {}, async (env) => {
+    const log = wireStripeDegree(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, CTX.answerBank,
+      { degree: 'B.Tech (Bachelor of Technology)' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const shown = env.document.querySelector('.select__single-value');
+    ok(shown, `degree not committed: ${JSON.stringify(byLabel(result.decisions, 'degree'))}`);
+    eq(shown.textContent, "Bachelor's Degree");
+    eq(log.typed, 0, 'chosen from the open list — no search typed per spelling');
+  });
+});
+
+// DoorDash's Greenhouse form (Oct 2026): react-selects whose options exist only
+// while open, filtered by what is typed. Each `[id, label, options]`.
+const DOORDASH_SELECTS = [
+  ['q_worked', 'Have you worked at DoorDash?*',
+    ['I have not worked at DoorDash', 'I am a previous employee', 'I am a previous DoorDash Dasher']],
+  ['74710', 'What is your sex?', ['Woman', 'Man', 'Intersex', 'Prefer not to say']],
+  ['74712', 'What is your sexual orientation?', ['Heterosexual/Straight', 'Gay or Lesbian', 'Bisexual', 'Prefer not to say']],
+  ['74714', 'Would you describe yourself as neurodivergent?', ['Yes', 'No', 'Prefer not to say']],
+];
+const DOORDASH_FORM = `<form id="application-form">
+  <div class="field"><label for="first_name">First Name</label><input id="first_name" name="first_name"></div>
+  <div class="field"><label for="email">Email</label><input id="email" type="email" name="email"></div>
+  ${DOORDASH_SELECTS.map(([id, label]) => `<div class="field">
+    <label for="${id}">${label}</label>
+    <div class="select__container"><div class="select__control"><div class="select__placeholder">Select...</div>
+      <input role="combobox" id="${id}" aria-haspopup="listbox" aria-autocomplete="list" aria-expanded="false"></div>
+    </div></div>`).join('')}
+</form>`;
+
+function wireDoorDashSelects(env) {
+  const doc = env.document;
+  for (const [id, , list] of DOORDASH_SELECTS) {
+    const input = doc.getElementById(id);
+    const control = input.parentElement;
+    let menu = null;
+    const close = () => { if (menu) menu.remove(); menu = null; input.setAttribute('aria-expanded', 'false'); };
+    const render = (filter) => {
+      if (!menu) {
+        menu = doc.createElement('div');
+        menu.id = `react-select-${id}-listbox`;
+        menu.setAttribute('role', 'listbox');
+        control.parentElement.appendChild(menu);
+        input.setAttribute('aria-controls', menu.id);
+        input.setAttribute('aria-expanded', 'true');
+      }
+      const shown = list.filter(o => !filter || o.toLowerCase().includes(filter.toLowerCase()));
+      menu.innerHTML = shown.map((o, i) => `<div role="option" id="react-select-${id}-option-${i}" class="select__option">${o}</div>`).join('');
+      for (const node of menu.querySelectorAll('[role=option]')) {
+        const pick = () => {
+          control.querySelector('.select__placeholder, .select__single-value').outerHTML =
+            `<div class="select__single-value">${node.textContent}</div>`;
+          input.value = '';
+          close();
+        };
+        node.addEventListener('mousedown', pick);
+        node.addEventListener('click', pick);
+      }
+    };
+    const open = () => { if (!menu) render(''); };
+    input.addEventListener('mousedown', open);
+    input.addEventListener('focus', open);
+    input.addEventListener('input', () => render(input.value));
+  }
+}
+const ddShown = (env, id) => {
+  const v = env.document.getElementById(id).closest('.select__container').querySelector('.select__single-value');
+  return v ? v.textContent : '';
+};
+
+test('DoorDash: sex, orientation and "worked at DoorDash?" are picked from their open lists', async () => {
+  await withForm(DOORDASH_FORM, {}, async (env, sent) => {
+    wireDoorDashSelects(env);
+    const ctx = Object.assign({}, CTX, { jobCompany: 'DoorDash', answerBank: Object.assign({}, CTX.answerBank,
+      { gender: 'Cisgender man', lgbtq_identity: 'No' }) });
+    const result = await run_.runAutofill(ctx, null);
+    eq(ddShown(env, 'q_worked'), 'I have not worked at DoorDash',
+       JSON.stringify(byLabel(result.decisions, 'worked at doordash')));
+    // Typed "Male" matched nothing in "Woman / Man / …"; read whole, it is "Man".
+    eq(ddShown(env, '74710'), 'Man', JSON.stringify(byLabel(result.decisions, 'your sex')));
+    // The LGBTQ+ "No" was typed into the orientation list as "No".
+    eq(ddShown(env, '74712'), 'Heterosexual/Straight');
+    // Neurodivergence: sensitive, never to the model, the person's to answer.
+    const neuro = byLabel(result.decisions, 'neurodivergent');
+    eq(neuro.sensitive, 'demographic');
+    notOk(sent.some(m => m.type === 'AF_PLAN' && (m.payload.fields || []).some(f => /neurodivergent/i.test(f.label))),
+          'never sent to the model');
+  });
+});
+
+// SuccessFactors (ExxonMobil, Oct 2026): closed sections, picklists that keep
+// their choice in the input's title and open from their own button, a UI5
+// date picker with its input in a shadow root, and pre-filled repeating rows.
+const SF_FORM = `<form id="careerform">
+  <div class="rcmFormSection">
+    <h2><button type="button" class="topBar rcmFormSectionTopBar" aria-expanded="false" id="694:topBar">Job-Specific Information</button></h2>
+    <div class="sectionContent sectionContentClosed" id="694:sectionContent" style="display:none">
+      <label for="60:_txtFld">First Name</label><input id="60:_txtFld" name="firstName" type="text" aria-required="true">
+      <label for="392:_input">Are you currently a member of the Board of Directors of any for-profit or non-profit organization?</label>
+      <span class="sfCascadingPicklist"><div class="paginatedPicklistContainer fd-input-group fd-input-group--control">
+        <input role="combobox" aria-owns="393:_listSelect" placeholder="No Selection" aria-expanded="false" aria-required="true"
+          aria-label="Are you currently a member of the Board of Directors of any for-profit or non-profit organization?"
+          title="Are you currently a member of the Board of Directors of any for-profit or non-profit organization?"
+          class="rcmpaginatedselectinput fd-input" id="392:_input" type="text">
+        <button type="button" class="rcmpaginatedselectbutton" id="392:_selectButton"></button></div></span>
+      <label for="619:_datepicker">When are you available to start working?</label>
+      <div id="619:_datepicker" class="datePicker"><div>
+        <ui5-date-picker-xweb-calendar-widget accessible-name="When are you available to start working?" format-pattern="MM/dd/yyyy" required=""></ui5-date-picker-xweb-calendar-widget>
+      </div></div>
+      ${sfPicklist('381', 'What is your country/region of birth?', true)}
+      ${sfPicklist('463', 'Have you previously worked for ExxonMobil, Imperial, Pioneer, Denbury or any its affiliates as an employee?', true)}
+      ${sfPicklist('601', 'Country/Region where you obtained the highest education', true)}
+      ${sfPicklist('594', 'Major/Field of study of highest education completed or in progress', true)}
+      <label for="pwc">Have you ever been employed by PwC?</label><input id="pwc" type="text" aria-required="true">
+      <label for="iy">If yes, please provide type of employment</label><input id="iy" type="text">
+      <div id="440:_datepicker" class="datePicker"><div>
+        <ui5-date-picker-xweb-calendar-widget id="pwcStart" accessible-name="Start Date" format-pattern="MM/dd/yyyy"></ui5-date-picker-xweb-calendar-widget>
+      </div></div>
+      <label for="454:_txtFld">Job Title</label><input id="454:_txtFld" name="titlePWC" type="text">
+      <label for="yc">Year you obtained this citizenship</label><input id="yc" type="text">
+    </div>
+  </div>
+  <div id="137:_bgElementContainer"><div class="rcmSectionComponent">
+    <label for="141:_txtFld">Company Name</label><input id="141:_txtFld" name="VFLD6" type="text" aria-required="true">
+  </div></div>
+  <div id="207:_bgElementContainer"><div class="rcmSectionComponent">
+    ${sfPicklist('212', 'Institution/University Country/Region', true, 'India')}
+    ${sfPicklist('230', 'Degree', true, 'Bachelor')}
+    ${sfPicklist('244', 'Major/Field of Study', true, 'Engineer-Chemical')}
+  </div></div>
+</form>`;
+
+function sfPicklist(id, label, required, chosen) {
+  return `<label for="${id}:_input">${label}</label>
+    <span class="sfCascadingPicklist"><div class="paginatedPicklistContainer fd-input-group fd-input-group--control">
+      <input role="combobox" aria-owns="${id}:_listSelect" placeholder="No Selection" aria-expanded="false"
+        aria-required="${required}" aria-label="${label}" title="${chosen || label}"
+        class="rcmpaginatedselectinput fd-input" id="${id}:_input" type="text">
+      <button type="button" class="rcmpaginatedselectbutton" id="${id}:_selectButton"></button></div></span>`;
+}
+
+// One page of a long list on opening; typing searches the whole list, and the
+// answer arrives later, like SuccessFactors' round trip to its server.
+const SF_COUNTRIES = ['No Selection', 'Afghanistan', 'Albania', 'British Indian Ocean Territory', 'Canada', 'India', 'Nepal'];
+const SF_MAJORS = ['No Selection', 'Engineer-Aerospace', 'Engineer-Chemical', 'Engineer-Mining'];
+
+function wireSfList(doc, id, options, pageSize) {
+  const input = doc.getElementById(`${id}:_input`);
+  const listId = `${id}:_listSelect`;
+  const draw = (rows) => {
+    let list = doc.getElementById(listId);
+    if (!list) {
+      list = doc.createElement('ul');
+      list.id = listId;
+      list.setAttribute('role', 'listbox');
+      doc.body.appendChild(list);
+    }
+    input.setAttribute('aria-expanded', 'true');
+    list.innerHTML = rows.map((o, i) => `<li role="option" id="${id}:item${i}">${o}</li>`).join('');
+    for (const li of list.querySelectorAll('li')) {
+      li.addEventListener('click', () => {
+        input.setAttribute('title', li.textContent === 'No Selection' ? input.getAttribute('aria-label') : li.textContent);
+        input.value = li.textContent;
+        list.remove();
+        input.setAttribute('aria-expanded', 'false');
+      });
+    }
+  };
+  doc.getElementById(`${id}:_selectButton`).addEventListener('click', () => draw(options.slice(0, pageSize)));
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase();
+    setTimeout(() => {
+      if (input.getAttribute('aria-expanded') === 'true') draw(options.filter(o => o.toLowerCase().includes(q)));
+    }, 40);
+  });
+}
+
+function wireSuccessFactors(env) {
+  const doc = env.document;
+  const bar = doc.getElementById('694:topBar');
+  bar.addEventListener('click', () => {
+    const content = doc.getElementById('694:sectionContent');
+    content.className = 'sectionContent sectionContentOpen';
+    content.style.display = '';
+    bar.setAttribute('aria-expanded', 'true');
+  });
+  const input = doc.getElementById('392:_input');
+  doc.getElementById('392:_selectButton').addEventListener('click', () => {
+    if (doc.getElementById('393:_listSelect')) return;
+    const list = doc.createElement('ul');
+    list.id = '393:_listSelect';
+    list.innerHTML = '<li>No Selection</li><li>Yes</li><li>No</li>';
+    doc.body.appendChild(list);
+    input.setAttribute('aria-expanded', 'true');
+    for (const li of list.querySelectorAll('li')) {
+      li.addEventListener('click', () => {
+        input.setAttribute('title', li.textContent);
+        input.value = li.textContent;
+        list.remove();
+        input.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+  wireSfList(doc, '381', SF_COUNTRIES, 5);
+  wireSfList(doc, '463', ['No Selection', 'No', 'Yes'], 3);
+  wireSfList(doc, '601', SF_COUNTRIES, 5);
+  wireSfList(doc, '594', SF_MAJORS, 2);
+  // The UI5 date picker: nested shadow roots, no placeholder on the real input,
+  // its value set from that input's change, and its own change event carrying
+  // detail.value — which SuccessFactors' listener on the component reads.
+  env.window.__dateErrors = [];
+  env.window.eval(`
+  customElements.define('ui5-date-picker-xweb-calendar-widget', class extends HTMLElement {
+    connectedCallback() {
+      if (this.shadowRoot) return;
+      const root = this.attachShadow({ mode: 'open' });
+      const inner = document.createElement('div');
+      root.appendChild(inner);
+      const innerRoot = inner.attachShadow({ mode: 'open' });
+      innerRoot.innerHTML = '<input type="text" aria-label="' + this.getAttribute('accessible-name') + '"'
+        + (this.hasAttribute('required') ? ' aria-required="true"' : '') + '>';
+      this.value = '';
+      innerRoot.querySelector('input').addEventListener('change', (e) => {
+        this.value = e.target.value;
+        this.dispatchEvent(new CustomEvent('change', { detail: { value: e.target.value } }));
+      });
+      this.addEventListener('change', (e) => {
+        if (!e.detail) window.__dateErrors.push('a change event with no detail reached the component');
+      });
+    }
+  });`);
+  env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
+}
+
+test('Capgemini: a slow country search commits; consent unlocks its question; an empty optional list is left', async () => {
+  const pick = (id, label, opts) => sfPicklist(id, label, !!(opts && opts.required));
+  await withForm(`<form id="careerform">
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      ${pick('9', 'Country of Residence', { required: true })}
+      ${pick('21', 'I give my explicit consent for Capgemini Group to collect and process information about my gender for the purpose of observing our recruitment practices.')}
+      ${pick('33', 'How do you identify?')}
+      ${pick('25', 'I have a disability which I will need Capgemini to make reasonable adjustments for')}
+    </form>`, {}, async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://career5.successfactors.eu/careers' });
+    const COUNTRIES_ = ['Afghanistan', 'British Indian Ocean Territory', 'Canada', 'India'];
+    const draw = (id, rows) => {
+      const input = doc.getElementById(`${id}:_input`);
+      const old = doc.getElementById(`${id}:_listSelect`);
+      if (old) old.remove();
+      const list = doc.createElement('ul');
+      list.id = `${id}:_listSelect`;
+      list.innerHTML = rows.map((o, i) => `<li role="option" id="${id}:item${i}">${o}</li>`).join('');
+      doc.body.appendChild(list);
+      input.setAttribute('aria-expanded', 'true');
+      for (const li of list.querySelectorAll('li')) {
+        li.addEventListener('click', () => {
+          input.setAttribute('title', li.textContent);
+          input.value = li.textContent;
+          list.remove();
+          input.setAttribute('aria-expanded', 'false');
+          input.dispatchEvent(new env.window.Event('picked'));
+        });
+      }
+    };
+    // Country: the first page on opening; a search answers only after 1.5 s.
+    const country = doc.getElementById('9:_input');
+    doc.getElementById('9:_selectButton').addEventListener('click', () => draw('9', COUNTRIES_.slice(0, 3)));
+    country.addEventListener('input', () => {
+      const q = country.value.toLowerCase();
+      if (q) setTimeout(() => draw('9', COUNTRIES_.filter(c => c.toLowerCase().includes(q))), 1500);
+    });
+    // Consent unlocks "How do you identify?", disabled until then.
+    const identify = doc.getElementById('33:_input');
+    const identifyBtn = doc.getElementById('33:_selectButton');
+    identify.disabled = true;
+    identifyBtn.disabled = true;
+    const consent = doc.getElementById('21:_input');
+    doc.getElementById('21:_selectButton').addEventListener('click', () => draw('21', ['Yes', 'No']));
+    consent.addEventListener('picked', () => {
+      if (consent.getAttribute('title') === 'Yes') { identify.disabled = false; identifyBtn.disabled = false; }
+    });
+    identifyBtn.addEventListener('click', () => draw('33', ['Woman', 'Man', 'Prefer not to say']));
+    // The disability list has no rows.
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+      { gender: 'Cisgender man', disability_status: "No, I don't have a disability" }) });
+    const result = await run_.runAutofill(ctx, null);
+
+    const title = id => doc.getElementById(`${id}:_input`).getAttribute('title');
+    eq(title('9'), 'India', JSON.stringify(byLabel(result.decisions, 'country of residence')));
+    eq(title('21'), 'Yes');
+    eq(title('33'), 'Man', JSON.stringify(byLabel(result.decisions, 'how do you identify')));
+    const disability = byLabel(result.decisions, 'i have a disability');
+    eq(disability.action, p.SKIP, `${disability.action}: ${disability.reason}`);
+    eq(doc.getElementById('25:_input').value, '', 'nothing typed left behind');
+  });
+});
+
+test('EY: a country list whose first page stops at Dominica gets India by search, never Dominica', async () => {
+  // The server matched "India" to the nearest name on that page (EY, Oct 2026).
+  const FIRST_PAGE = ['No Selection', 'Afghanistan', 'Albania', 'Canada', 'Denmark', 'Dominica'];
+  const ALL = FIRST_PAGE.concat(['India', 'Indonesia', 'Nepal']);
+  await withForm(`<form id="careerform">
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      ${sfPicklist('71', 'Country of Residence:', true)}
+      ${sfPicklist('72', 'Country of Residence - Permanent', true)}
+    </form>`, { serverAnswers: { 'Country of Residence:': 'Dominica', 'Country of Residence - Permanent': 'Dominica' } },
+  async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://eyglobal.successfactors.eu/careers' });
+    wireSfList(doc, '71', ALL, FIRST_PAGE.length);
+    wireSfList(doc, '72', ['No Selection', 'Afghanistan', 'Dominica', 'Indonesia'], 3);
+    const result = await run_.runAutofill(CTX, null);
+    const title = id => doc.getElementById(`${id}:_input`).getAttribute('title');
+    eq(title('71'), 'India', JSON.stringify(byLabel(result.decisions, 'country of residence')));
+    // No India in the list at all: left empty, not the nearest name.
+    notOk(['Dominica', 'Indonesia'].includes(title('72')), title('72'));
+  });
+});
+
+// SuccessFactors' rows (Wipro, Oct 2026): empty, with an Add button, and State
+// locked until Country is set.
+const sfDate = (id, label, required) => `<label for="${id}:_datepicker">${label}</label>
+  <div id="${id}:_datepicker" class="datePicker"><div>
+    <ui5-date-picker-xweb-calendar-widget accessible-name="${label}" format-pattern="MM/dd/yyyy"${required ? ' required=""' : ''}></ui5-date-picker-xweb-calendar-widget></div></div>`;
+const sfText = (id, label, required) => `<label for="${id}:_txtFld">${required ? '<span class="requiredField">*</span> ' : ''}${label}</label>
+  <input id="${id}:_txtFld" type="text" aria-required="${!!required}">`;
+const sfExperienceRow = n => `<div><div id="${n}:_sectionComponent" class="layoutWrapper row rcmSectionComponent">
+    ${sfText(`${n}1`, 'Title', true)}${sfText(`${n}2`, 'Current Employer', true)}
+    ${sfDate(`${n}3`, 'Start Date', true)}${sfDate(`${n}4`, 'End Date')}
+    ${sfPicklist(`${n}5`, 'Country/Region', true)}${sfPicklist(`${n}6`, 'State', true)}${sfText(`${n}7`, 'City', true)}
+  </div></div>`;
+const SF_ROW_FORM = (experienceRows, educationRow) => `<form id="careerform">
+  <label for="fn">First Name</label><input id="fn" name="first_name">
+  <label for="em">Email</label><input id="em" name="email" type="email">
+  <div class="rcmFormSection"><h2><button type="button" class="rcmFormSectionTopBar" aria-expanded="true"><span>Professional Experience</span></button></h2>
+    <div class="sectionContent"><div id="150:_bgElementContainer">${experienceRows}</div>
+    <div role="button" id="151:_addRowBtn" class="addRowButton">Add</div></div></div>
+  <div class="rcmFormSection" ><h2 id="201:headerLabel"><button type="button" class="rcmFormSectionTopBar" aria-expanded="true"><span>Education</span></button></h2>
+    <div class="sectionContent" role="group" aria-labelledby="201:headerLabel"><div id="200:_bgElementContainer">${educationRow}</div></div></div>
+  <div class="rcmFormSection"><h2><button type="button" class="rcmFormSectionTopBar" aria-expanded="true"><span>Language Proficiency</span></button></h2>
+    <div class="sectionContent"><div id="300:_bgElementContainer"><div><div class="rcmSectionComponent">${sfPicklist('301', 'Language', true)}</div></div></div></div></div>
+</form>`;
+const SF_EDUCATION_ROW = `<div><div class="rcmSectionComponent">
+    ${sfPicklist('205', 'Education Type', true)}${sfPicklist('212', 'Degree', true)}${sfText('218', 'College/University', true)}
+    ${sfPicklist('223', 'Major', true)}${sfDate('236', 'Start Date', true)}${sfDate('241', 'End Date', true)}
+    ${sfText('250', 'Final Score (CGPA/Percentage)')}${sfPicklist('255', 'Country', true)}${sfDate('272', 'Year Of Passing', true)}
+  </div></div>`;
+
+function defineSfDatePicker(env) {
+  env.window.eval(`customElements.define('ui5-date-picker-xweb-calendar-widget', class extends HTMLElement {
+    connectedCallback() {
+      if (this.shadowRoot) return;
+      const root = this.attachShadow({ mode: 'open' });
+      root.innerHTML = '<input type="text" aria-label="' + this.getAttribute('accessible-name') + '"'
+        + (this.hasAttribute('required') ? ' aria-required="true"' : '') + '>';
+      this.value = '';
+      root.querySelector('input').addEventListener('change', (e) => { this.value = e.target.value; });
+    }
+  });`);
+}
+const sfDateValue = (doc, id) => doc.getElementById(`${id}:_datepicker`).querySelector('ui5-date-picker-xweb-calendar-widget').value;
+const SF_JOBS = [
+  { title: 'AI/ML Engineer', company: 'Zorba AI', location: 'Kolkata, West Bengal, India', from: '04/2024', to: '', current: true },
+  { title: 'Data Analyst', company: 'Prospus', location: 'Pune, India', from: '06/2022', to: '03/2024', current: false },
+];
+const SF_SCHOOLS = [{ school: 'Jadavpur University', degree: 'B.Tech', field: 'Chemical Engineering', from: '2018', to: '2022', gpa: '7.5' }];
+
+test('SuccessFactors: empty rows fill from the profile, one entry per row, adding a row for the next', async () => {
+  const opens = [];
+  const asked = [];
+  const forceAnswer = (f) => { asked.push(f.label); return /^Education Type/.test(f.label) ? 'Graduate' : /^Country/.test(f.label) ? 'India' : null; };
+  await withForm(SF_ROW_FORM(sfExperienceRow('16'), SF_EDUCATION_ROW), { forceAnswer }, async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://career55.sapsf.eu/portalcareer' });
+    defineSfDatePicker(env);
+    const wire = (id, list) => {
+      wireSfList(doc, id, list, 5);
+      doc.getElementById(`${id}:_selectButton`).addEventListener('click', () => opens.push(id));
+    };
+    const wireRow = (n) => {
+      wire(`${n}5`, ['No Selection', 'Canada', 'India']);
+      const state = doc.getElementById(`${n}6:_input`);
+      const stateBtn = doc.getElementById(`${n}6:_selectButton`);
+      state.disabled = true; stateBtn.disabled = true;
+      wire(`${n}6`, ['No Selection', 'Maharashtra', 'West Bengal']);
+      // State unlocks once Country is picked.
+      new env.window.MutationObserver(() => { state.disabled = false; stateBtn.disabled = false; })
+        .observe(doc.getElementById(`${n}5:_input`), { attributes: true, attributeFilter: ['title'] });
+    };
+    wireRow('16');
+    doc.getElementById('151:_addRowBtn').addEventListener('click', () => {
+      const box = doc.createElement('div');
+      box.innerHTML = sfExperienceRow('17');
+      doc.getElementById('150:_bgElementContainer').appendChild(box.firstElementChild);
+      wireRow('17');
+    });
+    wire('205', ['No Selection', 'Graduate', 'Post Graduate']);
+    wire('212', ['No Selection', "Bachelor's Degree", "Master's Degree"]);
+    wire('223', ['No Selection', 'Engineer-Chemical', 'Engineer-Mining']);
+    wire('255', ['No Selection', 'Canada', 'India']);
+    wire('301', ['No Selection', 'English']);
+
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: SF_JOBS, educationEntries: SF_SCHOOLS } });
+    const result = await run_.runAutofill(ctx, null);
+    const val = id => doc.getElementById(`${id}:_txtFld`).value;
+    const title = id => doc.getElementById(`${id}:_input`).getAttribute('title');
+    // Row 1 is job 1, with its location; a current job has no End Date.
+    eq(val('161'), 'AI/ML Engineer');
+    eq(val('162'), 'Zorba AI');
+    eq(sfDateValue(doc, '163'), '04/01/2024');
+    eq(sfDateValue(doc, '164'), '');
+    eq(title('165'), 'India');
+    eq(title('166'), 'West Bengal', 'unlocked by Country, and read again');
+    eq(val('167'), 'Kolkata');
+    // Add made row 2 for job 2. "Pune, India" has no state: left for the person.
+    eq(val('171'), 'Data Analyst');
+    eq(val('172'), 'Prospus');
+    eq(sfDateValue(doc, '174'), '03/01/2024');
+    eq(title('175'), 'India');
+    eq(val('177'), 'Pune');
+    // Education: the year is all the profile has.
+    eq(val('218'), 'Jadavpur University');
+    eq(title('212'), "Bachelor's Degree");
+    eq(sfDateValue(doc, '236'), '01/01/2018');
+    eq(sfDateValue(doc, '272'), '01/01/2022');
+    eq(val('250'), '7.5');
+    eq(title('205'), 'Graduate', 'a short list: the model chooses');
+    eq(title('255'), 'India', 'named by the model, and on the list');
+    // "Chemical Engineering" is not whole words of "Engineer-Chemical": empty, not Mining.
+    eq(title('223'), 'Major');
+    ok(!asked.some(l => /^City/.test(l)), `a text field is never asked: ${asked.join(' | ')}`);
+    // A row kept to the old rule is untouched and never opened to read it.
+    notOk(opens.includes('301'), `opened: ${opens.join(',')}`);
+    eq(byLabel(result.decisions, 'language').action, p.ASK);
+    eq(result.decisions.filter(d => /title$/i.test(d.label || '')).length, 0, 'row fields are not planned as questions');
+  });
+});
+
+test('SuccessFactors: a pre-filled row is matched by its company and keeps what it holds', async () => {
+  await withForm(SF_ROW_FORM(`<div><div class="rcmSectionComponent">
+      ${sfText('161', 'Company Name', true)}${sfText('162', 'Title', true)}${sfPicklist('163', 'Present Employer', true, 'No')}
+      ${sfDate('164', 'From Date', true)}</div></div>`, ''), {}, async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
+    defineSfDatePicker(env);
+    doc.getElementById('161:_txtFld').value = 'Prospus';
+    doc.getElementById('162:_txtFld').value = 'Analyst (their words)';
+    const added = [];
+    doc.getElementById('151:_addRowBtn').addEventListener('click', () => added.push(1));
+    wireSfList(doc, '301', ['No Selection', 'English'], 5);
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: [SF_JOBS[1]], educationEntries: [] } });
+    await run_.runAutofill(ctx, null);
+    eq(doc.getElementById('162:_txtFld').value, 'Analyst (their words)', 'what it holds stays');
+    eq(doc.getElementById('163:_input').getAttribute('title'), 'No');
+    eq(sfDateValue(doc, '164'), '06/01/2022', 'its empty date is filled from that job, not read off "No"');
+    eq(added.length, 0, 'one job, one row');
+  });
+});
+
+test('SuccessFactors row answers: location, dates and what is left alone', () => {
+  const row = label => ({ label, hints: { format: 'MM/dd/yyyy' } });
+  deepEq(rep_.parseLocation('Kolkata, West Bengal, India'), { city: 'Kolkata', state: 'West Bengal', country: 'India' });
+  deepEq(rep_.parseLocation('Pune, India'), { city: 'Pune', state: '', country: 'India' });
+  deepEq(rep_.parseLocation('Kolkata, West Bengal'), { city: 'Kolkata', state: 'West Bengal', country: '' });
+  deepEq(rep_.parseLocation('Remote'), {});
+  const job = SF_JOBS[0];
+  eq(rep_.sfRowAnswer(row('Present Employer'), job, 'experience')[0], 'Yes');
+  eq(rep_.sfRowAnswer(row('End Date'), job, 'experience'), null, 'a current job has no end');
+  const school = SF_SCHOOLS[0];
+  eq(rep_.sfRowAnswer(row('Year Of Passing'), school, 'education')[0], '01/01/2022');
+  eq(rep_.sfRowAnswer(row('Expected Graduation Date'), school, 'education'), null);
+  eq(rep_.sfRowAnswer(row('Institution/University Country/Region'), school, 'education'), null, 'not the school');
+  eq(rep_.sfRowAnswer(row('If "Other", please type in the Institution/University Name'), school, 'education'), null);
+  eq(rep_.sfRowAnswer(row('Highest Degree'), school, 'education'), null, 'a Yes / No, not the degree');
+  eq(rep_.sfRowAnswer(row('City'), school, 'education'), null);
+  eq(rep_.sfRowAnswer(row('Institution/University'), school, 'education')[0], 'Jadavpur University');
+});
+
+// Deloitte (Oct 2026): one long section, its blocks only bold notes over the same labels.
+const sfNote = text => `<div class="RCMFormField rcmFormElement instructionField" role="note"><label for=""></label>
+  <div class="fieldComponentInput"><table><tbody><tr><td><b>${text}</b></td></tr></tbody></table></div></div>`;
+const sfEduBlock = (n, heading) => `${sfNote(heading)}
+  ${sfPicklist(`${n}1`, 'Qualification', true)}${sfPicklist(`${n}2`, 'Specialization', true)}
+  ${sfPicklist(`${n}3`, 'University Name', true)}${sfPicklist(`${n}8`, 'College/Institute Name', true)}
+  ${sfDate(`${n}4`, 'Start Date', true)}${sfDate(`${n}5`, 'End Date', true)}${sfDate(`${n}6`, 'Qualification Year', true)}`;
+const DELOITTE_FORM = `<form id="careerform"><div class="rcmFormSection"><div class="sectionContent">
+  <div id="50:_sectionComponent" class="layoutWrapper row rcmSectionComponent">
+    <label for="fn">First Name</label><input id="fn" name="first_name">
+    ${sfNote('Current Work Experience Details')}
+    ${sfNote('Note: If you are a fresher, Put NA in all fields')}
+    ${sfText('81', 'Current Company Name', true)}${sfText('82', 'Designation', true)}
+    ${sfDate('83', 'Start Date', true)}${sfDate('84', 'End Date')}
+    ${sfNote('Previous Work Experience Details')}
+    ${sfText('91', 'Previous Company Name', true)}${sfText('92', 'Designation', true)}
+    ${sfDate('93', 'Start Date')}${sfDate('94', 'End Date')}
+    ${sfEduBlock('6', 'Highest Education Details')}
+    ${sfEduBlock('7', '2nd Highest Education Details')}
+  </div></div></div></form>`;
+
+test('Deloitte: each block under its heading fills from its own school or job; Start Date is never the availability date', async () => {
+  const schools = [
+    { school: 'South Point High School', degree: 'Higher Secondary', field: 'Science', from: '2016', to: '2018', gpa: '' },
+    { school: 'Jadavpur University', degree: 'B.Tech', field: 'Chemical', from: '2018', to: '2022', gpa: '7.5' },
+  ];
+  await withForm(DELOITTE_FORM, {}, async (env) => {
+    const doc = env.document;
+    env.dom.reconfigure({ url: 'https://career44.sapsf.com/portalcareer' });
+    defineSfDatePicker(env);
+    // Qualification: B.Tech is off the first page and only a search finds it, paired with B.E.
+    const QUALS = ['No Selection', 'B.A.', 'B.Com', 'B.Sc', 'Diploma'].concat(['B.E./B.Tech', 'Class XII', 'M.E./M.Tech']);
+    for (const n of ['6', '7']) {
+      wireSfList(doc, `${n}1`, QUALS, 5);
+      wireSfList(doc, `${n}2`, ['No Selection', 'Chemical', 'Science', 'Mining'], 4);
+      wireSfList(doc, `${n}3`, ['No Selection', 'Jadavpur University', 'South Point High School'], 3);
+      wireSfList(doc, `${n}8`, ['No Selection', 'A.C. College', 'B.P. Poddar Institute',
+        'Jadavpur Sammilita Balika Vidyalaya', 'Jadavpur University', 'South Point High School'], 3);
+    }
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, BANK, { available_start_date: 'Immediately', degree: 'B.Tech', major: 'Chemical',
+                                            university: 'Jadavpur University' }),
+      facts: { educationEntries: schools, workExperience: SF_JOBS },
+    });
+    const result = await run_.runAutofill(ctx, null);
+    const title = id => doc.getElementById(`${id}:_input`).getAttribute('title');
+    const why = needle => JSON.stringify(result.decisions.filter(d => (d.label || '').includes(needle))
+      .map(d => [d.action, d.value, d.reason]));
+
+    eq(title('61'), 'B.E./B.Tech', why('Qualification'));
+    eq(title('62'), 'Chemical');
+    eq(title('63'), 'Jadavpur University');
+    eq(title('68'), 'Jadavpur University', why('College'));
+    eq(sfDateValue(doc, '64'), '01/01/2018', why('Start Date'));
+    eq(sfDateValue(doc, '65'), '01/01/2022');
+    eq(sfDateValue(doc, '66'), '01/01/2022');
+    // The second-highest is the school, not the B.Tech again.
+    eq(title('71'), 'Class XII', why('Qualification'));
+    eq(title('72'), 'Science');
+    eq(title('73'), 'South Point High School');
+    eq(title('78'), 'South Point High School');
+    eq(sfDateValue(doc, '74'), '01/01/2016');
+    eq(sfDateValue(doc, '76'), '01/01/2018');
+
+    eq(doc.getElementById('81:_txtFld').value, 'Zorba AI');
+    eq(doc.getElementById('82:_txtFld').value, 'AI/ML Engineer');
+    eq(sfDateValue(doc, '83'), '04/01/2024');
+    eq(sfDateValue(doc, '84'), '', 'a current job has no end date');
+    eq(doc.getElementById('91:_txtFld').value, 'Prospus', 'the previous job, not the current one');
+    eq(doc.getElementById('92:_txtFld').value, 'Data Analyst');
+    eq(sfDateValue(doc, '93'), '06/01/2022');
+    eq(sfDateValue(doc, '94'), '03/01/2024');
+  });
+});
+
+// SuccessFactors' upload box: no file input until "+" opens its menu.
+const sfBox = (id, label, required, hasFile) => `<div class="RCMFormField rcmFormElement attachmentField">
+    <label id="${id}l" for="" class="rcmFormFieldLabel">${required ? '<span class="requiredField" aria-hidden="true">*</span> ' : ''}${label}</label>
+    <div id="${id}:_attach" class="${hasFile ? 'successBtn' : 'attachmentBtn'}">
+      <div role="button" id="${id}:_attachDownloadLabel" class="attachmentLabel attachmentText${hasFile ? '' : ' displayNone'}"><span>${hasFile ? 'mine.pdf' : ''}</span></div>
+      <span tabindex="0" role="button" id="${id}:_attachIcon" class="glyphicon addAttachments"></span>
+    </div></div>`;
+
+function wireSfUpload(env, id, opts) {
+  const doc = env.document;
+  const options = opts || {};
+  const log = { opened: 0, uploaded: [] };
+  doc.getElementById(`${id}:_attachIcon`).addEventListener('click', () => {
+    log.opened++;
+    const menu = doc.createElement('div');
+    menu.innerHTML = `<div class="attachmentUploadOptions"><span>Upload from Device</span><br>
+      <input type="file" class="fileUpload" name="fileData1"></div>`;
+    doc.body.appendChild(menu);
+    menu.querySelector('input').addEventListener('change', (e) => {
+      log.uploaded.push(e.target.files[0] && e.target.files[0].name);
+      if (options.rejects) return;
+      setTimeout(() => {
+        doc.getElementById(`${id}:_attachDownloadLabel`).classList.remove('displayNone');
+        menu.remove();
+      }, 50);
+    });
+  });
+  return log;
+}
+
+test('SuccessFactors: the resume goes in through the "+" menu, and a box with a file is left alone', async () => {
+  await withForm(`<form id="careerform">
+      ${sfBox('72', 'Resume', true)}${sfBox('74', 'Cover letter', false)}
+      ${sfBox('76', 'Supporting Documentation (References, Transcript, etc.)', false)}
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+    </form>`, {}, async (env, sent) => {
+    env.dom.reconfigure({ url: 'https://career5.successfactors.eu/careers' });
+    const resume = wireSfUpload(env, '72');
+    const other = wireSfUpload(env, '76');
+    const cover = wireSfUpload(env, '74');
+    const result = await run_.runAutofill(CTX, null);   // no cover letter on file
+    deepEq(resume.uploaded.length, 1, 'one upload');
+    ok(sent.some(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'resume'));
+    const d = byLabel(result.decisions, 'resume');
+    eq(d.action, p.DOCUMENT, `${d.action}: ${d.reason}`);
+    eq(d.outcome, 'ok');
+    eq(env.document.querySelectorAll('input.fileUpload').length, 0, 'the menu closed with the upload');
+    eq(other.opened, 0, 'supporting documents are not ours');
+    eq(cover.opened, 0, 'no cover letter on file: not opened');
+    eq(byLabel(result.decisions, 'cover letter').action, p.ASK);
+    eq(env.document.getElementById('fn').value, 'Ada', 'and the form is filled after');
+  });
+
+  await withForm(`<form id="careerform">${sfBox('72', 'Resume', true, true)}
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+    </form>`, {}, async (env) => {
+    env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
+    const log = wireSfUpload(env, '72');
+    await run_.runAutofill(CTX, null);
+    eq(log.opened, 0, 'a file already there may be tailored for this job');
+  });
+});
+
+test('SuccessFactors: an upload the page never confirms is the person\'s to attach', async () => {
+  await withForm(`<form id="careerform">${sfBox('72', 'Resume', true)}
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+    </form>`, {}, async (env) => {
+    env.dom.reconfigure({ url: 'https://career4.successfactors.com/portalcareer' });
+    wireSfUpload(env, '72', { rejects: true });
+    const result = await run_.runAutofill(CTX, null);
+    const d = byLabel(result.decisions, 'resume');
+    eq(d.action, p.ASK, `${d.action}: ${d.reason}`);
+    eq(d.reason, 'attach this one yourself');
+    ok(result.decisions.every(x => !/upload from device/i.test(x.label || '')), 'the open menu is not a field');
+  });
+});
+
+test('a radio group resting on "No Selection" is unanswered, and takes the profile\'s answer', async () => {
+  // ExxonMobil's Voluntary Disclosures (Oct 2026): Gender starts on a selected
+  // "No Selection", read as already filled in, and it stayed there.
+  await withForm(`<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      <fieldset><legend>Gender</legend>
+        <input type="radio" name="gender" id="g0" checked><label for="g0">No Selection</label>
+        <input type="radio" name="gender" id="g1"><label for="g1">Female</label>
+        <input type="radio" name="gender" id="g2"><label for="g2">Male</label>
+      </fieldset>
+    </form>`, {}, async (env) => {
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { gender: 'Cisgender man' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const gender = byLabel(result.decisions, 'gender');
+    deepEq(gender.options.map(o => o.label), ['Female', 'Male'], 'No Selection is no option');
+    eq(gender.action, p.FILL, `${gender.action}: ${gender.reason}`);
+    eq(gender.outcome, 'ok');
+    ok(env.document.getElementById('g2').checked, 'Male is selected');
+    notOk(env.document.getElementById('g0').checked);
+  });
+});
+
+test('the resume pass asks only what is still empty, however many filled fields are flagged', async () => {
+  // ExxonMobil (Oct 2026): filled picklists the form still flagged took all the
+  // places, and the questions really left never reached the model.
+  const flagged = Array.from({ length: 22 }, (_, i) =>
+    `<label for="q${i}">Internal question ${i}?</label>
+     <input id="q${i}" name="q${i}" type="text" required aria-invalid="true" value="kept ${i}">`).join('');
+  const asked = [];
+  await withForm(`<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      ${flagged}
+      <label for="bond">Are you bound by any bond to serve the Government?</label>
+      <select id="bond" required><option value="">Select…</option><option>Yes</option><option>No</option></select>
+      <label for="sig"><span class="requiredField" aria-hidden="true">*</span> Typed Signature</label>
+      <input id="sig" name="disclaimerAcknowledge" type="text" aria-required="true">
+    </form>`, { forceAnswer: (f) => { asked.push(f.label); return /bound by/.test(f.label) ? 'No' : null; } }, async (env) => {
+    const result = await run_.runAutofill(Object.assign({}, CTX, { resumePass: true }), null);
+    deepEq(asked, ['Are you bound by any bond to serve the Government?']);
+    eq(env.document.getElementById('bond').value, 'No');
+    eq(env.document.getElementById('q0').value, 'kept 0', 'a filled answer is not rewritten');
+    // Its asterisk comes first here, and the rule still knows it.
+    eq(byLabel(result.decisions, 'typed signature').label, 'Typed Signature');
+    eq(env.document.getElementById('sig').value, 'Ada Lovelace');
+  });
+});
+
+test('the resume pass writes its answer in the field\'s own shape: a date picker gets MM/dd/yyyy, never "2022"', async () => {
+  // Deloitte's Qualification Year (Oct 2026): "2022" typed raw was "Invalid date".
+  await withForm(`<form id="careerform">
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      ${sfDate('51', 'Year of Award of Fellowship', true)}
+    </form>`, { forceAnswer: (f) => (/Fellowship/.test(f.label) ? '2022' : null) }, async (env) => {
+    defineSfDatePicker(env);
+    await run_.runAutofill(Object.assign({}, CTX, { resumePass: true }), null);
+    eq(sfDateValue(env.document, '51'), '01/01/2022');
+  });
+});
+
+test('the resume pass sends up to 20 empty questions', async () => {
+  const empties = Array.from({ length: 23 }, (_, i) =>
+    `<label for="e${i}">Which tool number ${i} do you use?</label>
+     <select id="e${i}" required><option value="">Select…</option><option>Alpha</option><option>Beta</option></select>`).join('');
+  const asked = [];
+  await withForm(`<form>
+      <label for="fn">First Name</label><input id="fn" name="first_name">
+      <label for="em">Email</label><input id="em" name="email" type="email">
+      ${empties}
+    </form>`, { forceAnswer: (f) => { asked.push(f.label); return null; } }, async () => {
+    await run_.runAutofill(Object.assign({}, CTX, { resumePass: true }), null);
+    eq(asked.length, 20);
+  });
+});
+
+test('SuccessFactors: closed sections are opened, picklists and UI5 dates filled, rows left as they are', async () => {
+  await withForm(SF_FORM, {}, async (env) => {
+    wireSuccessFactors(env);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+      { available_start_date: 'Immediately', nationality: 'India', major: 'Chemical Engineering' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const title = id => env.document.getElementById(`${id}:_input`).getAttribute('title');
+    // The list shows one page; India is found by waiting for the search, and
+    // "Indian" never lands on "British Indian Ocean Territory".
+    eq(title('381'), 'India', JSON.stringify(byLabel(result.decisions, 'country/region of birth')));
+    // "No Selection" is no "No": Yes / No still reads as Yes / No.
+    eq(title('463'), 'No', JSON.stringify(byLabel(result.decisions, 'as an employee')));
+    // Asked again: the Formal Education row's own wording, not a guess from one page.
+    eq(title('601'), 'India');
+    eq(title('594'), 'Engineer-Chemical');
+    // Under an "If yes": left empty, the current job not written into Job Title.
+    eq(env.document.getElementById('iy').value, '');
+    eq(env.document.getElementById('454:_txtFld').value, '');
+    eq(env.document.getElementById('pwcStart').value, '', 'nor the start date into its Start Date');
+    eq(env.document.getElementById('yc').value, '', 'a year of citizenship is never a country');
+    deepEq(env.window.__dateErrors, [], 'only the component\'s own change event reaches its listener');
+    eq(env.document.getElementById('694:topBar').getAttribute('aria-expanded'), 'true', 'the section was opened');
+    eq(env.document.getElementById('60:_txtFld').value, 'Ada', 'a field inside it was read and filled');
+    // Picked from the list its own button opens, and read back from the title.
+    const board = byLabel(result.decisions, 'board of directors');
+    eq(env.document.getElementById('392:_input').getAttribute('title'), 'No',
+       `${board && board.action} ${board && board.outcome}: ${board && board.reason}`);
+    eq(board.outcome, 'ok');
+    // The UI5 component heard the date.
+    const host = env.document.querySelector('ui5-date-picker-xweb-calendar-widget');
+    // "Immediately" in a date picker: today, in its own format.
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    eq(host.value, `${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${now.getFullYear()}`,
+       JSON.stringify(byLabel(result.decisions, 'available to start')));
+    // A SuccessFactors row: never planned as a single question.
+    const company = byLabel(result.decisions, 'company name');
+    eq(env.document.getElementById('141:_txtFld').value, '', 'row 1 is not given the current company');
+    eq(company.action, p.ASK);
+  });
+});
+
+test('Save & fill writes the person\'s own pick, not the profile\'s answer again', async () => {
+  // DoorDash (Oct 2026): "Heterosexual/Straight" chosen in the sidebar never
+  // went in — the writer re-picked from the open list by the profile's "No".
+  await withForm(DOORDASH_FORM, {}, async (env) => {
+    wireDoorDashSelects(env);
+    const ctx = Object.assign({}, CTX, { jobCompany: 'DoorDash', answerBank: Object.assign({}, CTX.answerBank,
+      { gender: 'Cisgender man', lgbtq_identity: 'No' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const orientation = byLabel(result.decisions, 'sexual orientation');
+    ok(orientation.readFirst, 'filled by reading the open list');
+    const res = await run_.answerField(orientation, 'Bisexual', false);
+    ok(res.ok, `${orientation.outcome}: ${orientation.reason}`);
+    eq(ddShown(env, '74712'), 'Bisexual');
+  });
+});
+
 const WD_JOBS = [
   { title: 'AI/ML Engineer', company: 'Zorba AI', location: 'Kolkata', from: '04/2024', to: '', current: true,
     description: 'Built RAG pipelines on GCP.' },
@@ -2053,6 +5425,40 @@ const wdBlock = (doc, n) => doc.querySelector(`[aria-labelledby="Work-Experience
 const wdVal = (block, name) => block.querySelector(`[name="${name}"], [id$="--${name}"]`).value;
 const wdDateVal = (block, which) => ['Month', 'Year'].map(p =>
   block.querySelector(`[id$="--${which}-dateSection${p}-input"]`).value).join('/');
+
+// NVIDIA (Oct 2026): Workday re-renders a text field once it is typed into —
+// a NEW <input> with the SAME name in every block. Looking it up again by name
+// across the page found block 1's field, so block 2's correct values were
+// reported "did not take (mismatch)" while the page showed them right.
+function rerenderOnInput(doc, section) {
+  section.addEventListener('change', (e) => {
+    const old = e.target;
+    if (!(old && old.tagName === 'INPUT' && old.type === 'text' && old.isConnected)) return;
+    const fresh = old.cloneNode(true);
+    fresh.value = old.value;
+    old.replaceWith(fresh);
+  }, true);
+}
+
+test('Workday experience: a re-rendered field is checked in its own block, not block 1', async () => {
+  await withForm(WD_MY_EXPERIENCE, {}, async (env) => {
+    wireWorkdayExperience(env);
+    rerenderOnInput(env.document, env.document.querySelector('[aria-labelledby="Work-Experience-section"]'));
+    const ctx = Object.assign({}, CTX, { facts: { workExperience: WD_JOBS } });
+    const logged = [];
+    const info = console.info;
+    console.info = (...a) => { logged.push(a.join(' ')); };
+    let result;
+    try { result = await run_.runAutofill(ctx, null); } finally { console.info = info; }
+    const falseFails = logged.filter(l => /did not take/.test(l));
+    deepEq(falseFails, [], 'no field reported as failed while the page holds its value');
+    const b2 = wdBlock(env.document, 2);
+    eq(wdVal(b2, 'jobTitle'), 'Data Analyst', 'the page holds the right value');
+    const rows = result.decisions.filter(x => String(x.key).startsWith('repeater:experience'));
+    eq(rows.length, 2);
+    ok(rows.every(x => x.action === p.FILL), rows.map(x => `${x.label}: ${x.reason}`).join(' | '));
+  });
+});
 
 test('Workday experience: each job fills its own block, "Add Another" adds the next', async () => {
   await withForm(WD_MY_EXPERIENCE, {}, async (env) => {

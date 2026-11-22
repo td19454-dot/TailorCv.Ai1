@@ -52,6 +52,10 @@ Two candidates both score 65% on the same posting.
 
 Same score, completely different situations. **Always read the missing list, not just the number.** The list is the actionable part; the percentage is a summary.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+This report shows 72%, rated Good Match, with skills still marked Missing. Those rows tell you more than the number.
+
 ## Required vs Preferred Changes Everything
 
 Most postings mix hard requirements with wish-list items, and scoring often treats them more evenly than employers do.

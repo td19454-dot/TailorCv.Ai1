@@ -64,6 +64,10 @@ This means shortening a bullet is safe from a matching perspective as long as yo
 
 Notice the second version is not just shorter — it added a number, which the first version's length was hiding rather than earning.
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+TailorCV shows a rewrite this way, with removed words in red and new words in green. If a number appears in green, check that it is yours.
+
 ## A Reasonable Visual Target
 
 As a rough guide rather than a rule: aim for bullets that occupy one line on the page, and treat two lines as an acceptable maximum for a genuinely complex, high-value achievement. Three lines or more almost always means either two ideas combined or padding that can be cut.

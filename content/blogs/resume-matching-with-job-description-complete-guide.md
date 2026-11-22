@@ -182,6 +182,10 @@ Group your highlighted keywords into categories:
 Go through your resume and mark which of those keywords already appear.
 What is missing is your gap list.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+TailorCV builds this list for you, marking each skill from the job description as matched or missing.
+
 ### Step 4: Close the Keyword Gaps
 
 Add [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) where you genuinely have the skill or experience.
@@ -237,6 +241,12 @@ Here is a real example for a [data analyst](https://thetailorcv.com/blog/data-an
 
 The "after" version uses exact terminology, adds context, and includes [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 That is a matched resume.
+
+### See exactly what changed
+
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+When TailorCV matches your resume, it marks every edit: removed words in red, new words in green. That makes it quick to catch anything that doesn't reflect your real experience.
 
 ---
 
@@ -319,7 +329,7 @@ That is unsustainable when you are applying to 10-20 jobs per week.
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 

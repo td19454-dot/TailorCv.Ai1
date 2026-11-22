@@ -83,11 +83,25 @@ class ApplicantProfile:
     notice_period: str = ""
     expected_salary: str = ""
     available_start_date: str = ""
-    how_did_you_hear: str = "Company website"
+    # Always LinkedIn (no profile answer); the extension does the same.
+    how_did_you_hear: str = "LinkedIn"
     # No DECLINE default: "Decline to self-identify" is a real answer to a
     # voluntary EEO question, but it is not an answer to "what is your
     # nationality". Unset means unset, and the field goes back to the user.
     nationality: str = ""
+    # Same: unset goes back to the user, never a default.
+    citizenship_status: str = ""
+    # "yes" | "no": are you / is anyone in your family a government official.
+    # Same: unset goes back to the user, never a default.
+    government_official: str = ""
+    family_government_official: str = ""
+    # "yes" | "no": ever convicted of any crime, or criminal charges pending.
+    criminal_history: str = ""
+    # Date (ISO) and place of birth. Same: unset goes back to the user; only
+    # ever filled from these, never sent to the model (match_guard "birth").
+    date_of_birth: str = ""
+    country_of_birth: str = ""
+    city_of_birth: str = ""
     gender: str = DECLINE
     race_ethnicity: str = DECLINE
     veteran_status: str = DECLINE
@@ -140,8 +154,14 @@ class ApplicantProfile:
     cover_note: str = ""
 
     def to_agent_json(self) -> str:
-        """Compact CANDIDATE_DATA blob handed to the browser agent."""
-        return json.dumps(answer_bank(self), ensure_ascii=False, indent=1)
+        """Compact CANDIDATE_DATA blob handed to the browser agent.
+
+        Without date and place of birth: those are filled only by the
+        extension, from the profile, and are never shown to a model.
+        """
+        bank = {k: v for k, v in answer_bank(self).items()
+                if k not in ("date_of_birth", "country_of_birth", "city_of_birth")}
+        return json.dumps(bank, ensure_ascii=False, indent=1)
 
 
 def split_full_name(full: str) -> tuple[str, str, str]:
@@ -313,6 +333,12 @@ def parse_saved_experience(raw) -> list[dict]:
         entry["current"] = bool(e.get("current"))
         if entry["current"]:
             entry["to"] = ""
+        # Optional: the company's website, which only picks the logo the
+        # profile page shows. Kept only when given, so an entry without it has
+        # exactly the shape forms are filled from.
+        website = str(e.get("website") or "").strip()[:200]
+        if website:
+            entry["website"] = website
         if any(entry[k] for k in EXPERIENCE_FIELDS):
             out.append(entry)
     return out
@@ -322,7 +348,8 @@ def parse_saved_experience(raw) -> list[dict]:
 # Workday's Education section: School or University, Degree, Field of Study,
 # From, To (Actual or Expected) — the years only.
 
-EDUCATION_FIELDS = ("school", "degree", "field", "from", "to")
+# "gpa": Workday's per-school "Overall Result (GPA)".
+EDUCATION_FIELDS = ("school", "degree", "field", "from", "to", "gpa")
 YEAR_RE = re.compile(r"^(19|20)\d{2}$")
 
 
@@ -350,6 +377,7 @@ def education_from_facts(education: list) -> list[dict]:
             # A range written only in end_date ("2023 - 2027") still yields both.
             "from": to_year(start) or (to_year(end) if to_year(end) != to_year(end, last=True) else ""),
             "to": to_year(end, last=True),
+            "gpa": str(e.get("gpa") or "").strip(),
         }
         if any(entry.values()):
             out.append(entry)
@@ -429,6 +457,16 @@ def snapshot_user(db, user_id: int, job_id: int) -> dict:
     # run must not grow an LLM call inside its DB snapshot. The extension's
     # /apply-context endpoint is what populates this.
     facts = _load_facts_quietly(db, user)
+
+    # Put the documents back on disk if a deploy wiped it: the runner uploads
+    # these paths to the employer's form (browser.upload_resume), and
+    # validate_profile checks the resume file exists. Callers run this in a
+    # worker thread (runner._db_call) or restore them first (job_dashboard).
+    import document_store
+
+    for doc_path in (user.base_resume_path, user.base_cover_letter_path):
+        if doc_path:
+            document_store.ensure_file(doc_path)
 
     return {
         "user_id": user.id,
@@ -510,6 +548,13 @@ def _profile_to_dict(prof) -> dict:
         "how_did_you_hear": prof.how_did_you_hear or "",
         "why_this_role": prof.why_this_role or "",
         "nationality": prof.nationality or "",
+        "citizenship_status": getattr(prof, "citizenship_status", "") or "",
+        "government_official": getattr(prof, "government_official", "") or "",
+        "family_government_official": getattr(prof, "family_government_official", "") or "",
+        "criminal_history": getattr(prof, "criminal_history", "") or "",
+        "date_of_birth": getattr(prof, "date_of_birth", "") or "",
+        "country_of_birth": getattr(prof, "country_of_birth", "") or "",
+        "city_of_birth": getattr(prof, "city_of_birth", "") or "",
         "gender": prof.gender or "",
         "race_ethnicity": prof.race_ethnicity or "",
         "veteran_status": prof.veteran_status or "",
@@ -556,7 +601,7 @@ support a claim, leave it out."""
 
 
 async def _narrative_fields(snap: dict) -> dict:
-    """One gpt-4o-mini pass for the free-text fields only.
+    """One AI_MODEL pass for the free-text fields only.
 
     The prompt asks for narrative keys and nothing else, and the caller only
     reads those keys back — so there is no path by which the model can set a
@@ -611,7 +656,12 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         return saved or str(fact_keys.get(key) or "").strip()
 
     names = resolve_name_parts(prof, snap.get("name") or "")
-    saved_skills = [s.strip() for s in str(prof.get("skills") or "").split(",") if s.strip()][:20]
+    # The saved list, or the resume's whole Skills section when what is saved
+    # is only the old top-8 cut of it (the same rule the profile page shows
+    # and stores) — so autofill never sends fewer skills than the page lists.
+    from auto_apply import resume_facts as rf
+    saved_text = rf.upgraded_skills(str(prof.get("skills") or ""), snap.get("resume_text", ""))
+    saved_skills = [s.strip() for s in saved_text.split(",") if s.strip()][:30]
     addr = resolve_address_parts(
         prof, prof.get("location") or "",
         ((facts.get("personal_info") or {}).get("location") or "") if isinstance(facts, dict) else "",
@@ -642,8 +692,15 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         notice_period=str(prof.get("notice_period") or "").strip(),
         expected_salary=str(prof.get("expected_salary") or "").strip(),
         available_start_date=str(prof.get("available_start_date") or "").strip(),
-        how_did_you_hear=str(prof.get("how_did_you_hear") or "").strip() or "Company website",
+        how_did_you_hear="LinkedIn",
         nationality=str(prof.get("nationality") or "").strip(),
+        citizenship_status=str(prof.get("citizenship_status") or "").strip(),
+        government_official=str(prof.get("government_official") or "").strip(),
+        family_government_official=str(prof.get("family_government_official") or "").strip(),
+        criminal_history=str(prof.get("criminal_history") or "").strip(),
+        date_of_birth=str(prof.get("date_of_birth") or "").strip(),
+        country_of_birth=str(prof.get("country_of_birth") or "").strip(),
+        city_of_birth=str(prof.get("city_of_birth") or "").strip(),
         gender=str(prof.get("gender") or "").strip() or DECLINE,
         race_ethnicity=str(prof.get("race_ethnicity") or "").strip() or DECLINE,
         veteran_status=str(prof.get("veteran_status") or "").strip() or DECLINE,
@@ -826,6 +883,13 @@ def answer_bank(p: ApplicantProfile) -> dict:
         "why_do_you_want_this_role": p.why_this_role,
         "cover_letter": p.cover_note,
         "nationality": p.nationality,
+        "citizenship_status": p.citizenship_status,
+        "is_government_official": _yn(p.government_official),
+        "family_government_official": _yn(p.family_government_official),
+        "has_criminal_history": _yn(p.criminal_history),
+        "date_of_birth": p.date_of_birth,
+        "country_of_birth": p.country_of_birth,
+        "city_of_birth": p.city_of_birth,
         "gender": p.gender or DECLINE,
         "race_ethnicity": p.race_ethnicity or DECLINE,
         "veteran_status": p.veteran_status or DECLINE,

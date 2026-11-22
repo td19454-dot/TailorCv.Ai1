@@ -364,6 +364,12 @@ The optimized version includes:
 - Measurable achievements
 - Searchable terminology
 
+### What the changes look like on a real resume
+
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+Removed words are in red and new ones in green, so you can check every change against what you actually did before accepting it.
+
 ---
 
 ## Why ATS-Friendly Resumes Get More Interviews
@@ -400,6 +406,12 @@ Modern tools can:
 - Save time applying to jobs
 
 Instead of manually editing resumes for every application, platforms like [TailorCV.ai](https://www.thetailorcv.com) can automatically tailor resumes to job descriptions and improve ATS compatibility within minutes.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
+
+You still get the final say: adjust the layout, review the differences, then download the resume or save it to your account.
 
 ---
 

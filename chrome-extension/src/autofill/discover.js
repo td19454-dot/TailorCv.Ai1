@@ -11,7 +11,7 @@
 // returns the same set every time, which makes one pass sufficient and makes
 // "we saw N fields" an honest number.
 
-import { questionSignature, documentSlotFor } from './match.js';
+import { questionSignature, documentSlotFor, isPlaceholderOption } from './match.js';
 import { TIMING } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
@@ -31,13 +31,19 @@ const probe = () => globalThis.__tcvFieldProbe;
  * could not measure would silently shrink the form; including one that turns
  * out to be hidden costs at most a wasted write that verification then reports.
  */
+/** An input that a jQuery UI calendar fills (write.js setCalendarDate). */
+export function isCalendarInput(el) {
+  return !!(el && el.classList && el.classList.contains('hasDatepicker'));
+}
+
 export function isVisible(el) {
   if (!el) return false;
   const p = probe();
   const node = (p && p.fieldWrapper(el)) || el;
 
   if (el.disabled === true) return false;
-  if (el.readOnly === true && (el.tagName || '').toLowerCase() !== 'select') return false;
+  // Read-only as typing goes, but a calendar fills it: Keka's every date (Nov 2026).
+  if (el.readOnly === true && (el.tagName || '').toLowerCase() !== 'select' && !isCalendarInput(el)) return false;
   const type = (el.getAttribute && (el.getAttribute('type') || '').toLowerCase()) || '';
   if (type === 'hidden') return false;
   // A file input is a field even when the site hides it behind an Attach
@@ -80,7 +86,9 @@ export function isVisible(el) {
 export function isChosenValue(node) {
   try {
     return !!(node && node.closest
-      && node.closest('[data-automation-id="selectedItem"], [data-automation-id="selectedItemList"]'));
+      // react-select's chip says role="option" too: Current Location's "Kolkata"
+      // was read as the one option of every list on the page (D. E. Shaw, Nov 2026).
+      && node.closest('[data-automation-id="selectedItem"], [data-automation-id="selectedItemList"], .Select-value'));
   } catch (e) { return false; }
 }
 
@@ -114,6 +122,18 @@ function isListboxCompanion(el) {
 export function isNodeVisible(node) {
   if (!node) return false;
   if (inAriaHidden(node)) return false;
+  return isNodeDrawn(node);
+}
+
+/**
+ * On screen as drawn, whatever aria-hidden says. Workday marks its page root
+ * aria-hidden="true" while a prompt's popup is open (the "Blocked aria-hidden"
+ * console warning on NVIDIA), and the search results sit inside that root — so
+ * by isNodeVisible every result row was hidden, and Field of Study was typed
+ * and searched but never clicked. Only for lists already known to be open.
+ */
+export function isNodeDrawn(node) {
+  if (!node) return false;
   if (hiddenByStyle(node)) return false;
   if (typeof node.getBoundingClientRect === 'function') {
     const r = node.getBoundingClientRect();
@@ -121,6 +141,14 @@ export function isNodeVisible(node) {
     if (measured && r.width < 2 && r.height < 2) return false;
   }
   return true;
+}
+
+/** Why a node counts as off screen ('' when it is on screen) — for failure reports. */
+export function hiddenReason(node) {
+  if (!node) return 'gone';
+  if (hiddenByStyle(node)) return 'style';
+  if (inAriaHidden(node)) return 'aria-hidden';
+  return isNodeDrawn(node) ? '' : 'size';
 }
 
 /**
@@ -151,7 +179,7 @@ function hiddenByStyle(node) {
       if (cs.visibility === 'hidden' || cs.visibility === 'collapse') return true;
       if (cs.opacity !== '' && cs.opacity != null && parseFloat(cs.opacity) === 0) return true;
     }
-    n = n.parentElement;
+    n = parentAcross(n);
     depth++;
   }
   return false;
@@ -162,9 +190,19 @@ function inAriaHidden(node) {
   while (n && n.nodeType === 1 && depth < 25) {
     if (n.getAttribute && n.getAttribute('aria-hidden') === 'true') return true;
     if (n.hidden === true) return true;
-    n = n.parentElement; depth++;
+    n = parentAcross(n); depth++;
   }
   return false;
+}
+
+// The parent, stepping out of a shadow root to its host. A SuccessFactors date
+// picker's input lives in a UI5 component's shadow DOM; walking parentElement
+// stopped at the shadow root, so a date inside a collapsed section read as
+// visible while every other field there was hidden (ExxonMobil, Oct 2026).
+function parentAcross(n) {
+  if (n.parentElement) return n.parentElement;
+  const root = n.parentNode;
+  return root && root.nodeType === 11 && root.host ? root.host : null;
 }
 
 // ── choice buttons ───────────────────────────────────────────
@@ -181,6 +219,53 @@ const NAV_TEXT = /^(back|next|previous|prev|continue|submit|save|cancel|close|ad
 
 function choiceText(el) {
   return (el.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * A hidden input that only mirrors a row of choice buttons, for the page's own
+ * form state. Ashby's Yes / No:
+ *   <button aria-pressed data-option="yes">Yes</button><button …>No</button>
+ *   <input type="checkbox" tabindex="-1" name="<question id>">
+ * Taken for a field of its own, it hid the buttons (a group holding an input
+ * was not a choice group) and was offered as a tickbox that can only be ticked.
+ * Narrow on purpose: out of the tab order, labelled by nothing of its own, and
+ * sitting beside at least two choice buttons.
+ */
+export function isChoiceMirror(el) {
+  if (!el || (el.tagName || '').toLowerCase() !== 'input') return false;
+  const type = (el.getAttribute('type') || '').toLowerCase();
+  if (type !== 'checkbox' && type !== 'radio') return false;
+  if (el.getAttribute('tabindex') !== '-1') return false;
+  if (el.closest && el.closest('label')) return false;
+  const id = el.getAttribute('id');
+  if (id && el.ownerDocument && Array.from(el.ownerDocument.querySelectorAll('label[for]'))
+        .some(l => l.getAttribute('for') === id)) return false;
+  const parent = el.parentElement;
+  if (!parent) return false;
+  const buttons = Array.from(parent.children).filter(c => c.matches && c.matches(CHOICE_SEL));
+  return buttons.length >= 2;
+}
+
+/** The <label for=…> naming a choice group's mirror input, or null. */
+function mirrorLabel(group) {
+  const mirror = Array.from(group.querySelectorAll('input')).find(isChoiceMirror);
+  const key = mirror && (mirror.getAttribute('id') || mirror.getAttribute('name'));
+  if (!key) return null;
+  return Array.from(group.ownerDocument.querySelectorAll('label[for]'))
+    .find(l => l.getAttribute('for') === key) || null;
+}
+
+/** The question a mirror input's own <label for=…> names, or ''. */
+function mirrorQuestion(group) {
+  const label = mirrorLabel(group);
+  const text = label ? choiceText(label) : '';
+  return text && !PROMPT_ONLY_RE.test(text) ? text.slice(0, 600) : '';
+}
+
+/** Inputs in `node` that are real fields, not a choice group's mirror. */
+function realInputsIn(node) {
+  return Array.from(node.querySelectorAll('input:not([type="hidden"]), select, textarea'))
+    .filter(x => !isChoiceMirror(x));
 }
 
 /** Is this choice button currently the selected one? */
@@ -203,7 +288,7 @@ export const NOT_QUESTION_SEL = '[role="alert"], [aria-live], [class*="error" i]
 
 /** A label that is only a validation prompt, never a question. */
 export const PROMPT_ONLY_RE =
-  /^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)[^.?]*|select (one|an option)|choose one)\s*[.*!]*\s*$/i;
+  /^\s*(this (information|field|question) is required|(this )?(field )?is required|required|please (select|choose|make a selection|answer)(\s+(one|an?\s+(option|value|answer|response|item)|this (question|field)))?(\s+(from (the|this|a) (list|dropdown|options)|below))?|select (one|an option)|choose one)\s*[.*!]*\s*$/i;
 
 /** Text of `node` without the parts that are never the question. */
 function questionTextOf(node, dropSel) {
@@ -227,13 +312,17 @@ function choiceQuestion(group) {
     }).filter(Boolean).join(' ') || rg.getAttribute('aria-label') || '';
     if (named && !PROMPT_ONLY_RE.test(named)) return named.slice(0, 600);
   }
+  // So does a mirror input's <label for=…> (Ashby): the question alone, without
+  // the description paragraph the text walk below would sweep in with it.
+  const labelled = mirrorQuestion(group);
+  if (labelled) return labelled;
   let n = group;
   for (let depth = 0; n && depth < 4; depth++, n = n.parentElement) {
     if (isFormLevel(n)) break;
     let groups = 0, fields = 0;
     try {
       groups = n.querySelectorAll(CHOICE_SEL).length;
-      fields = n.querySelectorAll('input:not([type="hidden"]), select, textarea').length;
+      fields = realInputsIn(n).length;
     } catch (e) { return ''; }
     if (fields > 0 || groups > group.querySelectorAll(CHOICE_SEL).length) {
       if (depth > 0) break;          // reached a box holding another question
@@ -252,6 +341,7 @@ export function choiceGroups(root) {
   try { all = Array.from(root.querySelectorAll(CHOICE_SEL)); } catch (e) { return []; }
   for (const b of all) {
     if (b.closest('#tailorcv-sidebar, nav, header, footer, [role="navigation"], [role="tablist"], [role="menu"]')) continue;
+    if (notAField(b)) continue;
     if (!isVisible(b)) continue;
     const t = choiceText(b);
     if (!t || t.length > 40 || NAV_TEXT.test(t)) continue;
@@ -263,7 +353,7 @@ export function choiceGroups(root) {
   const out = [];
   for (const [group, buttons] of byParent) {
     if (buttons.length < 2 || buttons.length > 6) continue;
-    try { if (group.querySelector('input:not([type="hidden"]), select, textarea')) continue; }
+    try { if (realInputsIn(group).length) continue; }
     catch (e) { continue; }
     const question = choiceQuestion(group);
     if (!question) continue;
@@ -415,8 +505,12 @@ export function detectAts(url) {
   if (/jobvite\.com/.test(u)) return 'jobvite';
   if (/bamboohr\.com/.test(u)) return 'bamboohr';
   if (/taleo\.net/.test(u)) return 'taleo';
-  if (/successfactors\.(com|eu)/.test(u)) return 'successfactors';
+  // sapsf.* is SAP's other address for it: career55.sapsf.eu (Wipro, Oct 2026).
+  if (/successfactors\.(com|eu)|\bsapsf\.(com|eu)/.test(u)) return 'successfactors';
   if (/oraclecloud\.com\/hcmui\/candidateexperience/.test(u)) return 'oracle';
+  // The same product on a company's own domain has no oraclecloud.com to go by,
+  // only its route: careers.oracle.com/en/sites/jobsearch/jobs/preview/337914/apply/section/1/
+  if (/\/sites\/[^/?#]+\/jobs?\/(preview\/)?\d+/.test(u)) return 'oracle';
   return 'generic';
 }
 
@@ -431,6 +525,9 @@ const MIN_CONFIDENT_SCORE = 6;
 export function findForm(doc) {
   const d = doc || globalThis.document;
   if (!d || !probe()) return null;
+
+  const resumeStep = workdayResumeStep(d);
+  if (resumeStep) return resumeStep;
 
   const seen = new Set();
   const scored = [];
@@ -467,7 +564,7 @@ export function findForm(doc) {
   // Prefer the highest score; on a tie prefer the TIGHTEST root, so a <form>
   // inside a page wrapper wins over the wrapper.
   scored.sort((a, b) => (b.score - a.score) || (a.fields.length - b.fields.length));
-  const best = scored[0];
+  const best = ashbyWholeForm(scored[0], d);
   const url = (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '';
   return {
     root: best.root,
@@ -478,6 +575,54 @@ export function findForm(doc) {
     url,
     isForm: best.score >= MIN_CONFIDENT_SCORE || APPLY_URL_RE.test(url),
   };
+}
+
+/**
+ * Workday's "Autofill with Resume" step, when the person chose it over Apply
+ * Manually: one upload, with no id, name or label of its own. Too few fields for
+ * the step to score, so the page-wide search took the header's language menu and
+ * the upload, which it could not read, and nothing was attached (LSEG, Nov 2026).
+ */
+function workdayResumeStep(d) {
+  const url = (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '';
+  if (detectAts(url) !== 'workday') return null;
+  let root = null, input = null;
+  try {
+    root = d.querySelector('[data-automation-id="applyFlowAutoFillPage"]');
+    input = root && root.querySelector('input[type="file"]');
+  } catch (e) { return null; }
+  if (!input || !isVisible(input)) return null;
+  return { root, score: MIN_CONFIDENT_SCORE, fields: [input], opaqueHosts: 0, ats: 'workday', url,
+           isForm: true, resumeStep: true };
+}
+
+// Ashby's "Autofill from resume" box sits beside the form. It is Ashby's own
+// resume parser, not a question: a resume dropped into it re-parses and
+// overwrites the fields autofill has just filled.
+const NOT_A_FIELD_SEL = '.ashby-application-form-autofill-uploader';
+
+function notAField(el) {
+  return !!(el && el.closest && el.closest(NOT_A_FIELD_SEL));
+}
+
+/**
+ * Ashby renders the application as sibling containers: the questions, then the
+ * voluntary EEO survey (Gender / Race / Veteran Status) in a second
+ * .ashby-application-form-container. Each is scored on its own and only the
+ * best was kept, so the survey was never seen. The root becomes the smallest
+ * node holding all of them, minus the resume-parser box beside them.
+ */
+function ashbyWholeForm(best, d) {
+  const SEL = '.ashby-application-form-container';
+  let parts = [];
+  try { parts = Array.from(d.querySelectorAll(SEL)); } catch (e) { return best; }
+  if (parts.length < 2 || !parts.some(c => c === best.root || c.contains(best.root))) return best;
+  const root = commonAncestor(parts);
+  if (!root || root === best.root || isFormLevel(root)) return best;
+  const p = probe();
+  const { elements, opaqueHosts } = p.fillableIn(root);
+  const fields = elements.filter(el => isVisible(el) && !notAField(el));
+  return { root, score: best.score, fields, opaqueHosts };
 }
 
 function commonAncestor(els) {
@@ -622,7 +767,27 @@ function describeNode(el) {
 export function isApplicationPage(doc) {
   const form = findForm(doc);
   if (form && form.isForm) return form;
-  return tilesOnlyForm(doc);
+  return tilesOnlyForm(doc) || closedSectionsForm(doc);
+}
+
+/**
+ * A SuccessFactors page whose questions are all in closed sections: no visible
+ * field, so no form by any count — the panel offered the paste-a-description
+ * box, and Autofill, which is what opens the sections, could not be reached.
+ * Known by its section bars instead. Nothing here opens them: the page stays
+ * as it is until Autofill is pressed (runAutofill → expandSections).
+ */
+function closedSectionsForm(doc) {
+  const d = doc || globalThis.document;
+  const url = (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '';
+  if (detectAts(url) !== 'successfactors') return null;
+  let bar = null;
+  try { bar = d.querySelector('button.rcmFormSectionTopBar'); } catch (e) { bar = null; }
+  if (!bar) return null;
+  return {
+    root: bar.closest('form') || d.body,
+    score: 0, fields: [], opaqueHosts: 0, ats: 'successfactors', url, isForm: true, sectionsClosed: true,
+  };
 }
 
 // ── profile-item tiles (Oracle Candidate Experience) ─────────
@@ -693,6 +858,9 @@ export function describeFields(form) {
   for (const el of fields) {
     // Workday's value store behind a <button> dropdown, not a question of its own.
     if (isListboxCompanion(el)) continue;
+    // Ashby's hidden checkbox behind a Yes / No pair: the buttons are the
+    // question, found as a choice group below.
+    if (isChoiceMirror(el)) continue;
     // Workday dates: three spinbutton inputs (month, day, year) that are one
     // question. Described individually they come out as three fields labelled
     // "Month", "Day" and "Year", none of which matches anything the user has
@@ -713,10 +881,10 @@ export function describeFields(form) {
     // not an unreadable field, it is an upload whose name is on the control
     // beside it, so it gets described from that instead of being dropped.
     if (!d && isFileField(el)) {
-      const named = uploadGroupLabel(el);
+      const named = form.resumeStep ? 'Resume' : uploadGroupLabel(el);
       if (named) {
         d = { ident: named, kind: 'file', label: named, value: '', filled: false,
-              invalid: false, required: false, options: null };
+              invalid: false, required: /\*\s*$/.test(named), options: null };
       }
     }
     // No stable identity. Reported rather than dropped, so the review UI can
@@ -733,8 +901,8 @@ export function describeFields(form) {
       const existing = out[groupKeys.get(logical)];
       existing.members.push(el);
       const label = p.labelFor(el) || el.value || '';
-      if (label) existing.options.push({ value: el.value || label, label, el });
-      if (el.checked) { existing.filled = true; existing.value = label; }
+      if (label && !isPlaceholderOption(label)) existing.options.push({ value: el.value || label, label, el });
+      if (el.checked && !isPlaceholderOption(label)) { existing.filled = true; existing.value = label; }
       if (p.requiredFor(el)) existing.required = true;
       continue;
     }
@@ -770,18 +938,38 @@ export function describeFields(form) {
       // the national number only; pasting "+91 98765 43210" into it produces a
       // doubled dial code the form then rejects.
       hasCountryWidget: hasCountryWidget(el),
+      // Workday's search-and-tick prompt (Skills, Field of Study): Enter runs
+      // the search and each answer is a clicked result. See commitPromptMulti.
+      multiPrompt: !!(p.workdayMultiselect && p.workdayMultiselect(el)),
     };
+
+    // SuccessFactors marks a required field before its label: "* Typed Signature".
+    row.label = String(row.label || '').replace(/^\s*\*+\s*/, '');
+
+    // A label that only says "Please Select One": the question is the section
+    // heading. NVIDIA's gender dropdown is that, under "Self-Identification of
+    // Gender" — read as "Please Select One" it was no gender question at all,
+    // and the forced pass would have had the model pick one.
+    if (PLACEHOLDER_LABEL_RE.test(row.label)) {
+      const named = sectionNameOf(el) || (PLACEHOLDER_LABEL_RE.test(d.ident) ? '' : d.ident);
+      if (named) row.label = named;
+    }
 
     if (kind === 'radio' || kind === 'checkbox') {
       const label = p.labelFor(el) || el.value || '';
-      row.options = label ? [{ value: el.value || label, label, el }] : [];
+      // SuccessFactors' radio groups start on a selected "No Selection": no
+      // answer, and no option. Read as one, Gender was "already filled in" and
+      // left on it (ExxonMobil, Oct 2026).
+      const blank = kind === 'radio' && isPlaceholderOption(label);
+      row.options = label && !blank ? [{ value: el.value || label, label, el }] : [];
       row.optionLabel = label;
+      if (blank && el.checked) { row.filled = false; row.value = ''; }
       if (logical) groupKeys.set(logical, out.length);
     }
 
     if (isFileField(el)) {
       row.kind = 'file';
-      let slot = documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
+      let slot = (form.resumeStep && 'resume') || documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
       // The label we have names no document, or names only the button ("Attach").
       // Either way the field's real name is on the control beside it: Greenhouse
       // puts it on the wrapping group, Adobe on the "Upload Resume" button while
@@ -805,6 +993,15 @@ export function describeFields(form) {
           slot = headingSlot;
           row.label = heading;
         }
+      }
+      // A catch-all upload whose description asks for the cover letter among
+      // other things — Ashby (Snowflake): "Additional Attachments" / "Cover
+      // Letter, Portfolio, Projects, etc". Settled after the loop: it only
+      // takes the cover letter when the form has no field of its own for one.
+      if (!slot && CATCH_ALL_UPLOAD_RE.test(row.label)
+          && /cover ?letter/i.test(fieldDescription(el))) {
+        slot = 'cover_letter';
+        row.catchAllUpload = true;
       }
       row.documentSlot = slot;
       row.filled = hasUploadedFile(el);
@@ -830,7 +1027,8 @@ export function describeFields(form) {
       key, el: group, members: buttons, kind: 'choice',
       label: question, ident: key,
       value: selected ? choiceText(selected) : '', filled: !!selected,
-      invalid: false, required: /\*\s*$|\*|\(required\)/.test(question),
+      invalid: false,
+      required: /\*\s*$|\*|\(required\)/.test(question) || labelMarkedRequired(mirrorLabel(group)),
       options: buttons.map(b => ({ value: choiceText(b), label: choiceText(b), el: b })),
       readable: true, documentSlot: null, hints: { tag: 'choice' },
     });
@@ -849,6 +1047,12 @@ export function describeFields(form) {
       documentSlot: documentSlotFor(label),
       hints: { tag: 'dropzone' }, dropOnly: true,
     });
+  }
+
+  // A form with its own Cover Letter upload gets the letter there; the
+  // catch-all box is then left for the person (portfolio, projects…).
+  if (out.some(r => r.documentSlot === 'cover_letter' && !r.catchAllUpload)) {
+    for (const r of out) if (r.catchAllUpload) { r.documentSlot = null; r.catchAllUpload = false; }
   }
 
   // A form with its own country-code FIELD wants the phone number without the
@@ -888,12 +1092,37 @@ export function describeFields(form) {
       // the fieldset legend), never on "Yes"/"No". Read only off the options, a
       // required group looked optional — and an optional unknown is skipped
       // rather than asked, so the user was never told it needed an answer.
-      if (/\*|\(required\)/i.test(question)) row.required = true;
+      if (/\*|✱|\(required\)/i.test(question)) row.required = true;
       const group = row.members[0].closest && row.members[0].closest('fieldset, [role="radiogroup"]');
       if (group && group.getAttribute('aria-required') === 'true') row.required = true;
+      if (group && labelMarkedRequired(fieldsetQuestionLabel(group, row.members))) row.required = true;
     } else if (row.optionLabel) row.label = row.optionLabel;
   }
   return out;
+}
+
+// Uploads that take "anything else": the cover letter may go here when the
+// description names it and no dedicated field exists.
+const CATCH_ALL_UPLOAD_RE = /\b(additional|other|supporting|supplementary|optional)\b.*\b(attachments?|documents?|files?|materials?)\b|^\s*(attachments?|documents?)\s*\*?\s*$/i;
+
+/** The text of the field wrapper around `el` — its question and description. */
+function fieldDescription(el) {
+  const wrap = el.closest && el.closest(
+    '[data-field-path], .ashby-application-form-field-entry, [class*="fieldEntry" i], '
+    + '[class*="field-entry" i], [class*="form-group" i], fieldset');
+  if (!wrap || isFormLevel(wrap)) return '';
+  try {
+    const clone = wrap.cloneNode(true);
+    for (const x of clone.querySelectorAll('button, input, select, textarea')) x.remove();
+    // Text node by text node, joined with spaces: Ashby serves the label and
+    // its description with no whitespace between them, so textContent read
+    // "Additional AttachmentsCover Letter…" and "cover letter" never matched.
+    const doc = wrap.ownerDocument;
+    const walker = doc.createTreeWalker(clone, 4 /* NodeFilter.SHOW_TEXT */);
+    const parts = [];
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) parts.push(n.nodeValue);
+    return clean(parts.join(' ')).slice(0, 400);
+  } catch (e) { return ''; }
 }
 
 function unreadable(el, p) {
@@ -996,6 +1225,32 @@ export function hasUploadedFile(el) {
   return false;
 }
 
+const PLACEHOLDER_LABEL_RE = /^\s*(please\s+)?(select|choose)(\s+(one|an?\s+option))?\s*[:.*]?\s*$/i;
+
+/**
+ * The name of the section a field sits in: the wrapping group's
+ * aria-labelledby, a <fieldset>'s legend, or the heading above it. ''.
+ */
+function sectionNameOf(el) {
+  const clean = s => (s || '').replace(/\s+/g, ' ').trim();
+  try {
+    const group = el.closest('[role="group"][aria-labelledby], fieldset');
+    if (group && !group.closest('#tailorcv-sidebar')) {
+      let text = '';
+      if (group.tagName === 'FIELDSET') {
+        const legend = group.querySelector('legend');
+        text = clean(legend && legend.textContent);
+      } else {
+        const doc = el.ownerDocument;
+        text = clean(group.getAttribute('aria-labelledby').split(/\s+/)
+          .map(id => { const n = doc.getElementById(id); return n ? n.textContent : ''; }).join(' '));
+      }
+      if (text && text.length <= 80 && !PLACEHOLDER_LABEL_RE.test(text)) return text;
+    }
+  } catch (e) { /* fall through */ }
+  return sectionHeadingBefore(el);
+}
+
 /**
  * The section heading an upload sits under, or ''.
  *
@@ -1078,6 +1333,13 @@ function uploadGroupLabel(el) {
       // Adobe it is the only name the field has — so naming beats the
       // action-word rule. A bare "Attach" names nothing and is still refused.
       named = texts.find(t => documentSlotFor(t)) || '';
+      // Gem names the block with plain text — <span>Resume *</span> — not a
+      // label. Plain text only counts when it names a document itself, and
+      // only inside this one-upload wrapper (the climb's bound above).
+      if (!named) {
+        named = Array.from(n.querySelectorAll('span, p, strong'))
+          .map(text).filter(t => t && t.length <= 60).find(t => documentSlotFor(t)) || '';
+      }
       // Anything else is only trusted in the field's OWN wrapper: one level up
       // sits "Apply With LinkedIn" beside the Dropbox and Drive buttons, and
       // any of those would be a confident wrong name.
@@ -1103,9 +1365,14 @@ function orphanFileInputs(form) {
   const doc = root && root.ownerDocument;
   if (!doc) return [];
   try {
-    if (root.querySelectorAll('input[type="file"]').length) return [];
+    // Phenom (Siemens Healthineers): the resume block sits above the <form>,
+    // while the form holds its own "Additional attachments" picker. A root
+    // with uploads of its own still takes an outside one, but only when that
+    // one is plainly the resume — its "Upload Resume" button names it.
+    const rootHasFiles = root.querySelectorAll('input[type="file"]').length > 0;
     return Array.from(doc.querySelectorAll('input[type="file"]'))
       .filter(el => !root.contains(el) && !(el.closest && el.closest('form')) && isVisible(el))
+      .filter(el => !rootHasFiles || documentSlotFor(uploadGroupLabel(el)) === 'resume')
       .slice(0, 2);
   } catch (e) { return []; }
 }
@@ -1130,13 +1397,36 @@ function dropOnlyZones(root) {
   const out = [];
   for (const zone of zones) {
     let hasInput = false;
-    try { hasInput = !!zone.querySelector('input[type="file"]'); } catch (e) { hasInput = true; }
+    try {
+      // Its own file input, inside it — or beside it, in the same upload
+      // wrapper (Ashby: .ashby-application-form-input-file holds the input and
+      // the "Upload File / or drag and drop here" zone as siblings). Either way
+      // the input is the field and the zone only its face; counted twice, every
+      // Ashby upload grew a phantom "Upload File or drag and drop here" row.
+      hasInput = !!zone.querySelector('input[type="file"]') || besideFileInput(zone);
+    } catch (e) { hasInput = true; }
     // Nested matches (an Uppy root inside an Uppy dashboard) would otherwise each
     // become a field; keep only the innermost.
     const nested = out.some(other => zone.contains(other) || other.contains(zone));
-    if (!hasInput && !nested && isVisible(zone)) out.push(zone);
+    if (!hasInput && !nested && isVisible(zone) && !notAField(zone)) out.push(zone);
   }
   return out;
+}
+
+/**
+ * Does a file input sit beside this zone, as a direct child of one of its
+ * nearest wrappers? Ashby's zone and its parts (the "Upload File" button, the
+ * "or drag and drop here" line — all with "dropzone" in their class) are a few
+ * levels inside the wrapper that holds the input. Stops at the form level, so
+ * a form-wide input never claims an unrelated zone.
+ */
+function besideFileInput(zone) {
+  let n = zone.parentElement;
+  for (let i = 0; n && i < 3 && !isFormLevel(n); i++, n = n.parentElement) {
+    if (Array.from(n.children).some(c => (c.tagName || '').toLowerCase() === 'input'
+        && (c.getAttribute('type') || '').toLowerCase() === 'file')) return true;
+  }
+  return false;
 }
 
 function zoneLabel(zone, p) {
@@ -1191,6 +1481,8 @@ function groupIdentity(el, d, kind) {
  */
 function groupLabel(members, p) {
   const el = members[0];
+  const lever = p.leverQuestion && p.leverQuestion(el);
+  if (lever) return lever;
   const group = el.closest && el.closest('[role="radiogroup"], fieldset');
   if (group) {
     const aria = group.getAttribute && group.getAttribute('aria-label');
@@ -1199,6 +1491,8 @@ function groupLabel(members, p) {
     if (legend) return clean(legend.textContent);
     const viaProbe = p.labelFor(group);
     if (viaProbe) return viaProbe;
+    const question = fieldsetQuestionLabel(group, members);
+    if (question) return clean(question.textContent);
   }
 
   // Smallest ancestor that contains all the options.
@@ -1211,6 +1505,33 @@ function groupLabel(members, p) {
     n = n.parentElement; depth++;
   }
   return '';
+}
+
+/**
+ * A fieldset's question written as a <label> rather than a <legend> (Ashby:
+ * <fieldset><label for="_systemfield_eeoc_gender">Gender</label> …radios…).
+ * Its `for` names no control on the page, so it is no option's label — the
+ * options' own labels point at the radios. Without this the group took its
+ * first option ("Male", "Hispanic or Latino") as the question.
+ */
+function fieldsetQuestionLabel(group, members) {
+  const ids = new Set(members.map(m => m.id).filter(Boolean));
+  const doc = group.ownerDocument;
+  let labels = [];
+  try { labels = Array.from(group.querySelectorAll('label')); } catch (e) { return null; }
+  return labels.find(label => {
+    if (label.querySelector(probe().CONTROL_SEL)) return false;
+    const target = label.getAttribute('for');
+    if (!target || ids.has(target)) return false;
+    if (doc && doc.getElementById(target)) return false;   // labels some other control
+    return !!clean(label.textContent);
+  }) || null;
+}
+
+/** Is a question label marked required by its class (Ashby's `_required_…`)? */
+function labelMarkedRequired(label) {
+  const cls = (label && label.className && String(label.className)) || '';
+  return /(^|[\s_-])required($|[\s_-])/i.test(cls);
 }
 
 /** A label inside `node` that describes the group rather than one option. */
@@ -1260,15 +1581,23 @@ function hasCountryWidget(el) {
 /** Everything a writer needs to shape a value for this specific control. */
 function fieldHints(el) {
   const g = a => (el.getAttribute && el.getAttribute(a)) || '';
+  // A UI5 date picker states its shape on the component, not on the input
+  // inside: "When are you available to start working?" read as plain text, and
+  // got "Immediately" — "Invalid date" (ExxonMobil, Oct 2026).
+  const picker = datePickerHost(el);
   return {
     type: g('type').toLowerCase(),
-    placeholder: g('placeholder'),
+    placeholder: g('placeholder') || (picker && picker.getAttribute('placeholder')) || '',
+    format: (picker && picker.getAttribute('format-pattern')) || '',
     pattern: g('pattern'),
     maxLength: el.maxLength > 0 ? el.maxLength : null,
     autocomplete: g('autocomplete').toLowerCase(),
     inputmode: g('inputmode').toLowerCase(),
     multiple: el.multiple === true,
     tag: (el.tagName || '').toLowerCase(),
+    // A SuccessFactors picklist: its options read are one page of the list,
+    // and the rest are found by searching its server.
+    paged: !!picklistButton(el),
   };
 }
 
@@ -1314,7 +1643,16 @@ export async function readComboboxOptions(row) {
   try {
     scrollIntoView(el);
     clickOpen(el);
-    const labels = await waitForOptions(stale);
+    let labels = await waitForOptions(stale, TIMING.optionWaitMs, el);
+    // Open but nothing pickable yet: Workday opens with only its disabled
+    // "Select One" and loads the rest (PwC's Region of Birth reached the
+    // sidebar as a list of just "Select One"). Waited on only while the list
+    // says it is open, returning the moment options arrive.
+    // Only while that placeholder shows: a list that is simply empty costs nothing more.
+    // A SuccessFactors picklist always: each list comes from its server.
+    if (!labels.length && (picklistButton(el) || (isOpen(el) && showsPlaceholder(p, stale)))) {
+      labels = await waitForOptions(stale, TIMING.remoteSearchMs, el);
+    }
     return labels;
   } catch (e) {
     return [];
@@ -1323,12 +1661,48 @@ export async function readComboboxOptions(row) {
   }
 }
 
+function isOpen(el) {
+  for (let n = el, i = 0; n && i < 3; n = n.parentElement, i++) {
+    if (n.getAttribute && n.getAttribute('aria-expanded') === 'true') return true;
+  }
+  return false;
+}
+
+function showsPlaceholder(p, stale) {
+  return visibleOptionNodes(p).some(n => !stale.has(n) && isDisabledOption(n));
+}
+
+/** A placeholder or group header: listed, but nothing anyone can pick ("Select One"). */
+function isDisabledOption(n) {
+  return !!(n.getAttribute && n.getAttribute('aria-disabled') === 'true') || isBlankOption(n);
+}
+
+/**
+ * SuccessFactors' first row, "No Selection": a real, clickable row that means
+ * no answer. Read as an option it starts with "No", so the Yes / No rules saw
+ * two Nos and gave up, and the model picked it as its answer (ExxonMobil, Oct 2026).
+ */
+export function isBlankOption(n) {
+  return /^\s*no selection\s*$/i.test((n && n.textContent) || '');
+}
+
+/** The UI5 date picker around an input in its shadow DOM (nested shadow roots included), or null. */
+export function datePickerHost(el) {
+  let root = el && el.getRootNode && el.getRootNode();
+  for (let i = 0; root && root.nodeType === 11 && i < 6; i++) {
+    const host = root.host;
+    if (host && /date-picker/i.test(host.tagName || '')) return host;
+    root = host && host.getRootNode && host.getRootNode();
+  }
+  return null;
+}
+
 function optionLabelsIn(node) {
   const p = probe();
   const nodes = p && p.optionNodes ? p.optionNodes(node) : [];
   const out = [];
   for (const n of nodes) {
-    if (isChosenValue(n)) continue;
+    if (isChosenValue(n) || isDisabledOption(n)) continue;
     const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
     if (t && out.length < MAX_OPTIONS_READ) out.push(t);
   }
@@ -1341,7 +1715,45 @@ function visibleOptionNodes(p) {
   catch (e) { return []; }
 }
 
-function waitForOptions(stale) {
+/**
+ * Of the options on screen, the ones that belong to THIS control.
+ *
+ * The sweep is document-wide, so a list another dropdown left open was read as
+ * this one's. On Oracle Candidate Experience the phone "Country code" list
+ * ("+91 (India)") was still up when the address "Country" opened, and "India"
+ * matched "+91 (India)" in the wrong list — Country stayed empty. On
+ * SuccessFactors each list comes from its server, and one arriving late was read
+ * as the next field's: GPA was offered Yes / No, and the next question the GPAs.
+ * A control that names its listbox (aria-controls / aria-owns) gets exactly that
+ * list; otherwise a list some OTHER control claims is left out.
+ */
+export function ownOptions(doc, el, nodes) {
+  const ref = n => (n && n.getAttribute && (n.getAttribute('aria-controls') || n.getAttribute('aria-owns'))) || '';
+  let mine = null;
+  let named = '';
+  for (let n = el, i = 0; n && i < 4 && !named; n = n.parentElement, i++) {
+    named = ref(n).split(/\s+/)[0];
+    if (named) { try { mine = doc.getElementById(named); } catch (e) { mine = null; } }
+  }
+  if (mine) {
+    const inMine = nodes.filter(n => mine.contains(n));
+    if (inMine.length) return inMine;
+  }
+  // A picklist's rows carry its number too: aria-owns "646:_listSelect", row "646:item0".
+  if (picklistButton(el)) {
+    const prefix = named.split(':')[0] + ':';
+    return prefix.length > 1 ? nodes.filter(n => String(n.id || '').startsWith(prefix)) : [];
+  }
+  return nodes.filter(n => {
+    const lb = n.closest && n.closest('[role="listbox"]');
+    if (!lb || !lb.id) return true;
+    let owner = null;
+    try { owner = doc.querySelector(`[aria-controls~="${lb.id}"], [aria-owns~="${lb.id}"]`); } catch (e) { owner = null; }
+    return !owner || owner === el || owner.contains(el) || el.contains(owner);
+  });
+}
+
+function waitForOptions(stale, timeout, el) {
   const skip = stale || new Set();
   return new Promise(resolve => {
     const doc = globalThis.document;
@@ -1360,8 +1772,9 @@ function waitForOptions(stale) {
     const read = () => {
       if (!p || !p.optionNodes) return [];
       const out = [];
-      for (const n of p.optionNodes(doc)) {
-        if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n)) continue;
+      const nodes = p.optionNodes(doc);
+      for (const n of el ? ownOptions(doc, el, nodes) : nodes) {
+        if (skip.has(n) || !isNodeVisible(n) || isChosenValue(n) || isDisabledOption(n)) continue;
         const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
         if (t && out.length < MAX_OPTIONS_READ) out.push(t);
       }
@@ -1384,7 +1797,7 @@ function waitForOptions(stale) {
       if (labels.length) finish(labels);
     });
     try { obs.observe(doc.body, { childList: true, subtree: true }); } catch (e) {}
-    const timer = setTimeout(() => finish(read()), TIMING.optionWaitMs);
+    const timer = setTimeout(() => finish(read()), timeout == null ? TIMING.optionWaitMs : timeout);
   });
 }
 
@@ -1425,6 +1838,13 @@ export function clickOpen(el) {
  * "input-row__control-container", and clicking that wrapper instead of the
  * input left Oracle's dropdowns closed, so their options were never read.
  */
+/** A SuccessFactors picklist's own open button (`button.rcmpaginatedselectbutton`), or null. */
+export function picklistButton(el) {
+  if (!el || !/\brcmpaginatedselectinput\b/.test(String(el.className || ''))) return null;
+  const box = el.parentElement;
+  try { return (box && box.querySelector('button.rcmpaginatedselectbutton')) || null; } catch (e) { return null; }
+}
+
 export function controlAncestor(el) {
   for (let n = el && el.parentElement, i = 0; n && i < 6; n = n.parentElement, i++) {
     if (Array.from(n.classList || []).some(c => /(^|[-_])control$/i.test(c))) return n;
@@ -1440,6 +1860,10 @@ function pickClickTarget(el, p) {
   // returned nothing: the menu never opened, the sidebar got no choices, and
   // it offered a free-text box for a question that has eight fixed answers.
   if (role === 'combobox') {
+    // SuccessFactors' picklist opens from its own button; its wrapper's class
+    // ("fd-input-group--control") reads as a react-select control.
+    const sf = picklistButton(el);
+    if (sf) return sf;
     const ctl = controlAncestor(el);
     if (ctl && ctl !== el) return ctl;
     return el;
@@ -1462,12 +1886,28 @@ function pickClickTarget(el, p) {
  * Read a Workday date back as one value. Filled only when EVERY part is: a date
  * with a month and a year but no day is not an answer the form will accept.
  */
+/** A member the framework replaced, found again by id inside the row's own block. */
+function liveMember(el, row) {
+  if (!el || el.isConnected) return el;
+  const scope = row.scope && row.scope.isConnected ? row.scope : null;
+  const id = el.getAttribute && el.getAttribute('id');
+  if (!scope || !id) return el;
+  try { return Array.from(scope.querySelectorAll('[id]')).find(n => n.id === id) || el; }
+  catch (e) { return el; }
+}
+
 function readDateParts(row) {
   const parts = {};
-  for (const el of row.members || []) {
+  for (const member of row.members || []) {
+    const el = liveMember(member, row);
     if (!el.isConnected) continue;
     const part = datePartOf(el);
     if (part) parts[part] = String(el.value || '').trim();
+  }
+  // Workday's spinbuttons hold "1" for the first of the month; read as the
+  // form displays it, "01".
+  for (const k of ['month', 'day']) {
+    if (/^\d$/.test(parts[k] || '')) parts[k] = '0' + parts[k];
   }
   const order = ['month', 'day', 'year'].filter(k => k in parts);
   const values = order.map(k => parts[k]);
@@ -1511,7 +1951,8 @@ export function reprobe(row) {
   if (!d) return null;
   if (row.kind === 'radio' || row.kind === 'checkbox') {
     // Read the group, not the one member we happen to hold.
-    const checked = row.members.filter(x => x.isConnected && x.checked);
+    const checked = row.members.filter(x => x.isConnected && x.checked
+      && !isPlaceholderOption(p.labelFor(x) || x.value || ''));
     return {
       value: checked.map(x => p.labelFor(x) || x.value || '').filter(Boolean).join(' | '),
       filled: checked.length > 0,
@@ -1535,17 +1976,23 @@ function reresolve(row) {
   const p = probe();
   const doc = globalThis.document;
   if (!p || !row.ident) return null;
+  // A row from a repeated block (Workday's Work Experience 2, Education 2) is
+  // looked for inside THAT block. Every block's field has the same name, and a
+  // page-wide lookup returned block 1's — so block 2's correct value was
+  // compared with block 1's and reported "did not take" (NVIDIA, Oct 2026).
+  const scope = row.scope && row.scope.isConnected ? row.scope : null;
+  const root = scope || doc;
   const esc = s => String(s).replace(/["\\]/g, '\\$&');
   for (const sel of [`[name="${esc(row.ident)}"]`, `#${cssId(row.ident)}`]) {
     if (!sel || sel === '#') continue;
     let el = null;
-    try { el = doc.querySelector(sel); } catch (e) { el = null; }
+    try { el = root.querySelector(sel); } catch (e) { el = null; }
     if (el && isVisible(el)) return el;
   }
   // Last resort: rescan and match on the normalised key.
-  const form = findForm(doc);
-  if (!form) return null;
-  for (const el of form.fields) {
+  const fields = scope ? p.fillableIn(scope).elements : ((findForm(doc) || {}).fields || []);
+  if (!fields.length) return null;
+  for (const el of fields) {
     const d = p.describeEl(el);
     if (d && questionSignature(d.ident) === row.key.split('#')[0]) return el;
   }

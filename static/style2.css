@@ -433,9 +433,7 @@ header.navbar + * {
     height: 42px;
     border: none;
     cursor: pointer;
-    background: linear-gradient(135deg, #0b72ff, #0a58ff);
-    clip-path: polygon(18% 0, 100% 0, 82% 100%, 0 100%);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    background: transparent;
 }
 
 .mobile-menu-toggle span {

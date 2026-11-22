@@ -7,7 +7,7 @@ body {
 }
 
 body {
-    background-color: #0b1020 !important;
+    background-color: #000000 !important;
     color: #e2e8f0;
     font-family: 'Inter', sans-serif;
     position: relative;
@@ -24,7 +24,7 @@ body::before {
     pointer-events: none;
     background-image: radial-gradient(circle at 20% 15%, rgba(56, 189, 248, 0.26), transparent 35%),
                       radial-gradient(circle at 85% 20%, rgba(99, 102, 241, 0.24), transparent 32%),
-                      linear-gradient(135deg, #030712 0%, #111827 45%, #0b1020 100%);
+                      linear-gradient(135deg, #030712 0%, #111827 45%, #000000 100%);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -171,14 +171,19 @@ header.navbar .nav-links a {
 
 .editor-actionbar-btn-primary {
     color: #ffffff;
-    border-color: #2563eb;
-    background: #2563eb;
+    border-color: #090909;
+    background: #8B5CF6;
 }
 
 .editor-actionbar-btn-primary:hover {
-    color: #ffffff;
-    border-color: #1d4ed8;
-    background: #1d4ed8;
+    color: #8B5CF6;
+    border-color: #090909;
+    background: #ffffff;
+}
+
+#top-see-changes-btn,
+#top-see-changes-btn:hover {
+    border-color: #8B5CF6;
 }
 
 .editor-sidebar {
@@ -200,7 +205,7 @@ header.navbar .nav-links a {
 .editor-top {
     text-align: left;
     margin: 0;
-    background: linear-gradient(180deg, rgba(8, 17, 44, 0.78), rgba(8, 17, 44, 0.62));
+    background: linear-gradient(180deg, rgba(0, 0, 0,0.78), rgba(0, 0, 0,0.62));
     border: 1px solid rgba(148, 163, 184, 0.26);
     border-radius: 16px;
     padding: 1rem;
@@ -222,7 +227,7 @@ header.navbar .nav-links a {
 }
 
 .editor-controls {
-    background: rgba(8, 17, 44, 0.66);
+    background: rgba(0, 0, 0,0.66);
     border: 1px solid rgba(148, 163, 184, 0.3);
     border-radius: 16px;
     padding: 0.9rem 1rem;
@@ -410,7 +415,7 @@ header.navbar .nav-links a {
     color: #cbd5e1;
     min-height: 1.2rem;
     text-align: center;
-    background: rgba(8, 17, 44, 0.6);
+    background: rgba(0, 0, 0,0.6);
     border: 1px solid rgba(148, 163, 184, 0.25);
     border-radius: 12px;
     padding: 0.55rem 0.7rem;
@@ -631,7 +636,7 @@ header.navbar .nav-links a {
         z-index: 300;
         display: flex;
         flex-direction: column;
-        background: rgba(8, 17, 44, 0.98);
+        background: rgba(0, 0, 0,0.98);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-top: 1px solid rgba(148, 163, 184, 0.25);
@@ -678,7 +683,7 @@ header.navbar .nav-links a {
         right: 0;
         bottom: 221px;          /* the measured strip height */
         z-index: 299;
-        background: rgba(8, 17, 44, 0.98);
+        background: rgba(0, 0, 0,0.98);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-top: 1px solid rgba(148, 163, 184, 0.25);
@@ -722,7 +727,7 @@ header.navbar .nav-links a {
         z-index: 300;
         margin: 0 !important;
         border-radius: 0 !important;
-        background: rgba(8, 17, 44, 0.98) !important;
+        background: rgba(0, 0, 0,0.98) !important;
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-top: 1px solid rgba(148, 163, 184, 0.25) !important;
@@ -831,7 +836,7 @@ header.navbar .nav-links a {
         font-size: 0.7rem;
         padding: 0.28rem 0.55rem;
         border-radius: 6px;
-        background: rgba(8, 17, 44, 0.88) !important;
+        background: rgba(0, 0, 0,0.88) !important;
         border: 1px solid rgba(148, 163, 184, 0.35) !important;
         color: #94a3b8 !important;
         backdrop-filter: blur(10px);
@@ -1034,7 +1039,7 @@ header.navbar .nav-links a {
 }
 
 .editor-actionbar {
-    background: linear-gradient(90deg, #0b3a5a 0%, #17205a 100%);
+    background: #000000;
     border-color: rgba(96, 165, 250, 0.28);
     border-radius: 0;
     border-left: 0;
@@ -1156,10 +1161,10 @@ body.optimized-editor-body > .editor-page {
     min-height: calc(100vh - 146px);
     padding: 0;
     gap: 0;
-    background: linear-gradient(180deg, #0b1630 0%, #071126 100%);
+    background: #000000;
     border-right: 1px solid rgba(79, 108, 173, 0.36);
     overflow-y: auto;
-    scrollbar-color: rgba(148, 163, 184, 0.7) rgba(8, 17, 38, 0.75);
+    scrollbar-color: rgba(148, 163, 184, 0.7) #000000;
 }
 
 .legacy-editor-tabs {
@@ -1444,7 +1449,7 @@ body.optimized-editor-body > .editor-page {
 
 .actions-card {
     margin-top: 16px;
-    background: rgba(8, 17, 44, 0.84);
+    background: rgba(0, 0, 0,0.84);
     border-color: rgba(111, 132, 179, 0.38);
     border-radius: 16px;
 }

@@ -125,4 +125,8 @@ The clearest way to apply this is against a specific posting you are actually co
 
 [Scan your resume against the posting](/ats-analysis) and, using the missing list it returns, go back to the original posting text and check the language around each item — required or preferred. That combination tells you far more than either the score alone or the posting alone.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The report tells you what is missing. The posting's wording tells you whether it is required or preferred.
+
 Free, about a minute. See also [which missing skills actually matter](/blog/which-missing-skills-actually-matter) and [score 70%, should I apply](/blog/score-70-should-i-apply).

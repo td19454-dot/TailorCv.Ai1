@@ -267,6 +267,10 @@ Largely yes - a referral often means a human reads you first and the matching st
 
 The quickest way to see whether your phrasing landed is to look at what a scan found and what it did not - a term you consider covered showing up as missing tells you the wording is not connecting.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+If a skill you believe you covered shows as Missing, the wording on your resume is the first thing to check.
+
 [Scan your resume against a posting](/ats-analysis) and read the found/missing lists rather than the score. Anything you believe you cover but that comes back missing is a vocabulary problem, and it is fixed by rewriting the bullet where that work already lives.
 
 If you would rather see the rewrite drafted in the posting's own wording, the [tailoring tool](/solutions) works from the same comparison.

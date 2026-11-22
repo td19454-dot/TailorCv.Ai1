@@ -44,9 +44,9 @@ TailorCV combines four things most job seekers buy separately: an [ATS score che
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
+The optimized resume renders live beside the controls, so you see each change as you adjust.
 
 
 ### What the extension looks like on a real posting

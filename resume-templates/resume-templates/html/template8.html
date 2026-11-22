@@ -61,7 +61,16 @@
     .sidebar {
       background: var(--side);
       border-right: 1px solid #dddddd;
-      padding: 16px 13px 14px;
+      padding: 16px 0 14px;
+    }
+
+    /* The inset lives on the children, not the column, so the contact card
+       can span the full column width with plain margins. A negative-margin
+       bleed (-13px each side) works in a browser but WeasyPrint does not
+       widen the box for it, so the PDF card stopped 26px short. */
+    .sidebar > * {
+      margin-left: 13px;
+      margin-right: 13px;
     }
 
     .name-block {
@@ -92,7 +101,7 @@
       color: #ffffff;
       border-radius: 0;
       padding: 11px 11px 9px;
-      margin: 0 -13px 14px;
+      margin: 0 0 14px;
     }
 
     .contact-list {
@@ -167,19 +176,24 @@
       line-height: 1.12;
     }
 
+    /* Inline chips, not a flex-wrap row: WeasyPrint cannot split a flex
+       container across pages, so a long skills list jumped to the next page
+       whole. Inline boxes wrap into line boxes, which break like text.
+       font-size: 0 drops the whitespace between <li>s so the 6px margin is
+       the only gap, as `gap: 6px` was. */
     .chip-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 0;
+      display: block;
+      margin: 0 0 -6px;
       padding: 0;
       list-style: none;
+      font-size: 0;
     }
 
     .chip-list li {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-block;
+      margin: 0 6px 6px 0;
+      vertical-align: top;
+      text-align: center;
       padding: 2px 2px 2px;
       background: var(--accent);
       color: #ffffff;
@@ -190,8 +204,8 @@
     }
 
     .chip-list li.wide-chip {
-      width: 100%;
-      justify-content: flex-start;
+      display: block;
+      margin-right: 0;
       white-space: normal;
       text-align: left;
     }

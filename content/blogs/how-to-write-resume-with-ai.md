@@ -100,6 +100,10 @@ Feed your real bullets to AI with a prompt like:
 
 Read every AI-suggested line. Remove generic filler. Make it sound like you. Cut clichés like "results-oriented," "synergy," "leveraged," and "proven track record."
 
+![TailorCV's see-the-difference view: an 85% resume score beside the resume, with removed words struck through in red and new words highlighted in green](public/blog-images/tailorcv-see-what-changed.webp)
+
+This step is easier when you can see every edit. In TailorCV, removed words show in red and new words in green, so you know exactly what to check.
+
 ### Step 5: Verify ATS Match
 
 Run your final resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) against the specific job description to confirm your keywords match and your resume is parseable.

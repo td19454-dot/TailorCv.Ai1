@@ -158,6 +158,17 @@
     return { role: clean(role), company: clean(company), jd_string: jd };
   }
 
+  /**
+   * The one country a Workday posting says it is in, as written, or '': a
+   * posting with other locations may be anywhere among them.
+   */
+  function postingCountry(ats, data) {
+    if (ats !== 'workday' || !data || typeof data !== 'object') return '';
+    const info = data.jobPostingInfo || {};
+    if (Array.isArray(info.additionalLocations) && info.additionalLocations.length) return '';
+    return clean(info.country && info.country.descriptor);
+  }
+
   function walkForJobPosting(node, depth) {
     if (!node || depth > 4) return null;
     if (Array.isArray(node)) {
@@ -204,5 +215,5 @@
     return shared / Math.min(x.size, y.size) >= 0.6;
   }
 
-  root.TCVJobSource = { jobKey, postingUrl, parsePosting, jobPostingFromHtml, htmlToText, sameRole };
+  root.TCVJobSource = { jobKey, postingUrl, parsePosting, postingCountry, jobPostingFromHtml, htmlToText, sameRole };
 })(typeof globalThis !== 'undefined' ? globalThis : self);

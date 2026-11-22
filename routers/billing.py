@@ -18,6 +18,8 @@ import hmac
 import json
 import logging
 import os
+import subprocess
+import sys
 import time
 import uuid
 from datetime import datetime, timedelta
@@ -27,15 +29,24 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-# Payment SDKs are imported here, at module load, on purpose — not inside the
-# handlers. A missing or renamed package (polar-sdk 1.0 renamed polar_sdk ->
-# polar) then crashes startup, so Render fails the deploy and keeps the old
-# version live, instead of booting fine and 500ing the first buyer.
+# Payment SDKs must be importable before the app serves a request. A missing
+# or renamed package (polar-sdk 1.0 renamed polar_sdk -> polar) has to crash
+# startup, so Render fails the deploy and keeps the old version live, instead
+# of booting fine and 500ing the first buyer.
 import razorpay
+
+# polar_sdk alone is 56 MB resident (measured; the largest import in the app)
+# on a 512 MB instance, and only Polar checkout/cancel/webhook use it. So it is
+# imported inside those handlers, and the startup guarantee above is kept by
+# importing every name they use in a child process instead: same crash on a
+# broken package, but the memory goes away when the child exits.
+# Keep this list in sync with the local imports in _require_polar,
+# polar_checkout, polar_cancel and polar_webhook.
+_POLAR_IMPORT_CHECK = """
 from polar_sdk import Polar
 from polar_sdk.models import (
     CheckoutCreate,
-    ResourceNotFound as PolarResourceNotFound,
+    ResourceNotFound,
     WebhookCheckoutExpiredPayload,
     WebhookCheckoutUpdatedPayload,
     WebhookOrderPaidPayload,
@@ -49,6 +60,21 @@ from polar_sdk.webhooks import (
     WebhookVerificationError,
     validate_event,
 )
+"""
+
+
+def _verify_polar_sdk(check: str = _POLAR_IMPORT_CHECK) -> None:
+    result = subprocess.run(
+        [sys.executable, "-c", check], capture_output=True, text=True, timeout=120,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            "polar_sdk is missing or incompatible; refusing to start.\n"
+            + result.stderr.strip()[-2000:]
+        )
+
+
+_verify_polar_sdk()
 
 import alerts
 import analytics
@@ -349,6 +375,7 @@ def _require_polar():
     access_token = os.getenv("POLAR_ACCESS_TOKEN")
     if not access_token:
         raise HTTPException(status_code=503, detail={"error": "payment_not_configured"})
+    from polar_sdk import Polar
     return Polar(access_token=access_token)
 
 
@@ -411,6 +438,21 @@ async def billing_client_error(body: CheckoutErrorReport, request: Request):
     return JSONResponse({"ok": True})
 
 
+def _checkout_started(user, plan: str, provider: str, region: str, request: Request) -> None:
+    """A checkout session was just created: record it and message the owner.
+    Not an error, so message only, no call; keyed per user and plan so a
+    double-click is one message but switching plans is another.
+    """
+    analytics.track(user.id, "checkout_started",
+                    {"plan": plan, "provider": provider, "region": region}, request=request)
+    alerts.notify(
+        f"checkout started ({provider})",
+        f"user {user.id} ({user.email}), plan {plan}, region {region}",
+        key=f"checkout_started:{provider}:{user.id}:{plan}",
+        urgent=False,
+    )
+
+
 # ── Razorpay routes ───────────────────────────────────────────────────────────
 
 class RazorpaySubscriptionRequest(BaseModel):
@@ -453,8 +495,7 @@ async def razorpay_subscription(body: RazorpaySubscriptionRequest, request: Requ
             "total_count": total_count,
             "notes": {"user_id": str(user.id), "plan": body.plan, "region": region},
         })
-        analytics.track(user.id, "checkout_started",
-                        {"plan": body.plan, "provider": "razorpay", "region": region}, request=request)
+        _checkout_started(user, body.plan, "razorpay", region, request)
         return {
             "subscription_id": subscription["id"],
             "key_id": os.getenv("RAZORPAY_KEY_ID"),
@@ -484,8 +525,7 @@ async def razorpay_order(body: RazorpayOrderRequest, request: Request):
             "receipt": str(uuid.uuid4())[:20],
             "notes": {"user_id": str(user.id), "plan": "weekly", "region": region},
         })
-        analytics.track(user.id, "checkout_started",
-                        {"plan": "weekly", "provider": "razorpay", "region": region}, request=request)
+        _checkout_started(user, "weekly", "razorpay", region, request)
         return {
             "order_id": order["id"],
             "key_id": os.getenv("RAZORPAY_KEY_ID"),
@@ -763,6 +803,7 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
         # throws the upgrade paywall in their face seconds after they paid.
         success_url = f"{app_base}/billing/polar/return"
 
+        from polar_sdk.models import CheckoutCreate
         try:
             checkout = polar.checkouts.create(
                 request=CheckoutCreate(
@@ -785,8 +826,7 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
                 region, body.plan, price_id, success_url, exc,
             )
             raise HTTPException(status_code=502, detail="Could not start checkout. Please try again.")
-        analytics.track(user.id, "checkout_started",
-                        {"plan": body.plan, "provider": "polar", "region": region}, request=request)
+        _checkout_started(user, body.plan, "polar", region, request)
         return {"checkout_url": checkout.url}
     finally:
         db.close()
@@ -843,6 +883,8 @@ async def polar_return(request: Request):
 @router.post("/api/billing/polar/cancel")
 async def polar_cancel(request: Request):
     """Cancel the user's active Polar subscription (revokes at period end)."""
+    from polar_sdk.models import ResourceNotFound as PolarResourceNotFound
+
     polar = _require_polar()
     db, user = _get_db_and_user(request)
     try:
@@ -873,6 +915,23 @@ async def polar_webhook(request: Request):
     webhook_secret = os.getenv("POLAR_WEBHOOK_SECRET")
     if not webhook_secret:
         raise HTTPException(status_code=503, detail={"error": "payment_not_configured"})
+
+    # Imported before the try below, whose catch-all would otherwise report an
+    # ImportError as an unparseable payload.
+    from polar_sdk.models import (
+        WebhookCheckoutExpiredPayload,
+        WebhookCheckoutUpdatedPayload,
+        WebhookOrderPaidPayload,
+        WebhookSubscriptionActivePayload,
+        WebhookSubscriptionCreatedPayload,
+        WebhookSubscriptionRevokedPayload,
+        WebhookSubscriptionUpdatedPayload,
+    )
+    from polar_sdk.webhooks import (
+        WebhookUnknownTypeError,
+        WebhookVerificationError,
+        validate_event,
+    )
 
     payload = await request.body()
     headers = dict(request.headers)

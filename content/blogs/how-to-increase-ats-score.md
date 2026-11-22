@@ -113,6 +113,10 @@ See [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-qu
 
 Run the [ATS score checker](/solutions) again. Compare to your baseline, apply any remaining suggestions, and re-scan until you are at 80+.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+After each re-scan, compare the match rate and see which skills are still marked Missing.
+
 | Edit | Typical Impact |
 |---|---|
 | Fix formatting / template | +10 to +20 |

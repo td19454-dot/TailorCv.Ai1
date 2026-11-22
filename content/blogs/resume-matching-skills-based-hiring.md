@@ -75,6 +75,10 @@ If your strongest evidence for a required skill comes from a personal project, f
 
 Use the [TailorCV ATS score checker](/solutions) to confirm your resume demonstrates the specific skills the posting lists, not just an adjacent job title.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+The skills comparison shows which of the posting's skills were found on your resume and which were not.
+
 ---
 
 ## Common Mistakes When Matching Skills-Based Job Descriptions
@@ -134,7 +138,7 @@ To ensure your resume aligns with a skills-based job description, follow this st
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 

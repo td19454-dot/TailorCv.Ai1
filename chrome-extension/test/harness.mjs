@@ -59,6 +59,13 @@ function fmt(v) {
 export async function run(suite) {
   let passed = 0;
   const failures = [];
+  // ONLY="part of a name" runs just the matching tests.
+  const only = process.env.ONLY;
+  if (only) {
+    const chosen = tests.filter(t => t.name.includes(only));
+    tests.length = 0;
+    tests.push(...chosen);
+  }
   for (const { name, fn } of tests) {
     try {
       await fn();

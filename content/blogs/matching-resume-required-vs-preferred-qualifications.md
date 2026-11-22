@@ -109,6 +109,10 @@ Review [ats keyword mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes)
 
 TailorCV's [resume optimizer](/solutions) reads the job description, separates required from preferred qualifications automatically, and shows you exactly which required items are missing from your resume before you apply. This means you spend your editing time where it actually moves your match score, not chasing every keyword in the posting equally.
 
+![TailorCV's ATS report: a 72% match rate with scores by category, and a skills comparison marking collaboration, mentoring and influencing technical decisions as missing and end-to-end ownership as matched](public/blog-images/tailorcv-skill-gap-report.webp)
+
+Each skill is marked matched or missing, so you can check it against the posting's required items first.
+
 ---
 
 ## Practical Examples of Prioritizing Qualifications
@@ -143,7 +147,7 @@ Tailoring your resume can significantly improve your chances of landing an inter
 
 ### Your resume after optimization
 
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 

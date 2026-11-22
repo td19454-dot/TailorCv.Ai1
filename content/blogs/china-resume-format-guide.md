@@ -91,7 +91,7 @@ For applications to multinational companies, check whether an English version, a
 
 ### Your resume after optimization
 
-![Choosing a resume template in TailorCV, with several ATS-safe layouts shown side by side](public/blog-images/choose-resume-template.webp)
+![The optimized resume in TailorCV, with paper size, font, font size, line height and margin controls beside the finished resume, and buttons to download it, see the difference or save it](public/blog-images/tailorcv-optimized-resume-editor.webp)
 
 Templates differ in how much space they give a photo and a self-evaluation section, both of which a domestic Chinese employer expects.
 

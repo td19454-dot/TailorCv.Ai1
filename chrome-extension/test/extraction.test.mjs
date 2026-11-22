@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { JSDOM } from 'jsdom';
 import { test, run, ok, notOk, eq } from './harness.mjs';
+import { polyfillFileApis } from './dom.mjs';
 import * as fixtures from './fixtures.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -64,10 +65,17 @@ function loadPage(html, url, withAutofill, opts) {
       // A form inside an iframe (Greenhouse embedded on careers.airbnb.com),
       // as background.js reports it once the frame announces itself.
       case 'AF_FRAME_DISCOVER': return { data: options.frames || [] };
+      case 'AF_FRAME_SEND': return options.frameSend ? options.frameSend(msg.payload) : { data: null };
+      case 'AF_GET_RESUME_FILE':
+        return options.resumeFile
+          ? { data: { base64: 'JVBERi0xLjQK', filename: 'ada_lovelace.pdf', mime: 'application/pdf' } }
+          : { data: null };
       // The job-description sources for a form-only page (background.js).
       case 'JOB_REMEMBER': return { data: { ok: true } };
       case 'JOB_RECALL': return { data: options.recall || {} };
       case 'JOB_FETCH': return { data: options.fetched || {} };
+      // The autofill plan endpoint, when a test supplies one.
+      case 'AF_PLAN': return { data: options.plan ? options.plan(msg.payload) : null };
       default: return { data: null };
     }
   };
@@ -315,13 +323,46 @@ test('Workday: a late form on a page with no description shows the apply panel (
      'the apply panel must appear once the form renders');
 });
 
+test('SuccessFactors: every section closed still offers Autofill, which opens them and fills', async () => {
+  // Candidate Profile (Oct 2026): closed sections hide every field, so there was
+  // no form, no Autofill to press — and pressing it is what opens them. Rendered
+  // after the panel has given up reading a posting (about 9s), so only the
+  // watcher can notice a form with no visible field.
+  const page = loadPage('<!doctype html><html><body></body></html>',
+    'https://career4.successfactors.com/portalcareer', true);
+  page.document.addEventListener('click', (e) => {
+    const bar = e.target.closest && e.target.closest('button.rcmFormSectionTopBar');
+    if (!bar) return;
+    bar.setAttribute('aria-expanded', 'true');
+    bar.closest('.rcmFormSection').querySelector('.sectionContent').style.display = '';
+  });
+  renderLater(page, `<form id="careerform">
+    ${['Profile Information', 'Job-Specific Information'].map((title, i) => `<div class="rcmFormSection">
+      <h2><button type="button" class="topBar rcmFormSectionTopBar" aria-expanded="false">${title}</button></h2>
+      <div class="sectionContent sectionContentClosed" style="display:none">
+        ${i === 0 ? '<label for="mail">Email</label><input id="mail" name="contactEmail" type="text">'
+                  : '<label for="note">Notes</label><input id="note" name="notes" type="text">'}
+      </div></div>`).join('')}
+  </form>`, 12000);
+
+  ok(await waitForText(page, /Autofill this application/, 25000), 'Autofill is offered');
+  ok(await waitForText(page, /closed sections/, 2000), 'and says what it will do');
+  const bars = () => Array.from(page.document.querySelectorAll('button.rcmFormSectionTopBar'));
+  ok(bars().every(b => b.getAttribute('aria-expanded') === 'false'), 'nothing opens until it is pressed');
+
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 30000), 'the fill finishes');
+  ok(bars().every(b => b.getAttribute('aria-expanded') === 'true'), 'the sections were opened');
+  eq(page.document.getElementById('mail').value, 'ada@example.com');
+});
+
 test('Workday: a new step on the SAME URL is offered as the next page', async () => {
   const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
   renderLater(page, fixtures.WORKDAY_MYINFO, 200);
   ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
 
   page.document.getElementById('tcvAfFillBtn').click();
-  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+  ok(await waitForText(page, /filled/i, 30000), 'the first fill must finish');
 
   // "Save and Continue": Workday swaps the step's fields in place, URL unchanged.
   const step = page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
@@ -346,7 +387,7 @@ test('Workday: a next step with nothing to fill yet still offers "Autofill this 
   renderLater(page, withHeading, 200);
   ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
   page.document.getElementById('tcvAfFillBtn').click();
-  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+  ok(await waitForText(page, /filled/i, 30000), 'the first fill must finish');
 
   page.document.querySelector('[data-automation-id="applyFlowPage"] h2').textContent = 'My Experience';
   page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]').innerHTML = `
@@ -357,6 +398,536 @@ test('Workday: a next step with nothing to fill yet still offers "Autofill this 
   ok(await waitForText(page, /No fields found on this step yet/, 5000), 'and says what to do');
 });
 
+// Real Workday markup (PwC, Oct 2026): the <h2> is the JOB TITLE, the same on
+// every step; the step is named by the progress bar and an <h3>.
+const progressBar = (active) => {
+  const steps = ['My Information', 'My Experience', 'Application Questions', 'Voluntary Disclosures', 'Review'];
+  return '<ol data-automation-id="progressBar">' + steps.map((s, i) => s === active
+    ? `<li data-automation-id="progressBarActiveStep"><label>current step ${i + 1} of 5</label><label>${s}</label></li>`
+    : `<li data-automation-id="progressBarInactiveStep"><label>step ${i + 1} of 5</label><label>${s}</label></li>`).join('') + '</ol>';
+};
+const realWorkday = (step) => fixtures.WORKDAY_MYINFO.replace(
+  '<div data-automation-id="applyFlowMyInfoPage">',
+  `<h2 data-automation-id="jobTitleHeading">Senior Associate</h2><div id="pb">${progressBar(step)}</div>`
+  + `<h3 id="step-h3">${step}</h3><div data-automation-id="applyFlowMyInfoPage">`);
+
+test('Workday (real markup): Save and Continue to the next step is offered as the next page', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', PWC_URL, true);
+  renderLater(page, realWorkday('Application Questions'), 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 30000), 'the first fill must finish');
+
+  // The job title stays; the progress bar, the step heading and the fields change.
+  page.document.getElementById('pb').innerHTML = progressBar('Voluntary Disclosures');
+  page.document.getElementById('step-h3').textContent = 'Voluntary Disclosures';
+  page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]').innerHTML = `
+    <div data-automation-id="formField-maritalStatus"><label for="ms">Marital Status*</label>
+      <input id="ms" type="text" aria-required="true"></div>
+    <div data-automation-id="formField-cityOfBirth"><label for="cb">City of Birth*</label>
+      <input id="cb" type="text" aria-required="true"></div>`;
+  ok(await waitForText(page, /Page \d/, 15000), 'the next step must be offered as a new page');
+  ok(await waitForText(page, /Autofill this page/, 5000), 'with the autofill button');
+});
+
+test('Workday (real markup): a step that grows blocks keeps its results', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', PWC_URL, true);
+  renderLater(page, realWorkday('My Experience'), 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 30000), 'the fill must finish');
+  let blocks = '';
+  for (let n = 1; n <= 4; n++) {
+    blocks += `<div role="group" aria-labelledby="Education-${n}-panel"><h5 id="Education-${n}-panel">Education ${n}</h5>
+      <label for="sch${n}">School or University*</label><input id="sch${n}" type="text">
+      <label for="deg${n}">Degree*</label><input id="deg${n}" type="text"></div>`;
+  }
+  page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]').insertAdjacentHTML('beforeend', blocks);
+  await new Promise(r => setTimeout(r, 4000));
+  const text = page.document.getElementById('tailorcv-sidebar').textContent;
+  ok(!/Page 2/.test(text), 'still the same step — no "Page 2"');
+  ok(/filled/i.test(text), 'the results are still shown');
+});
+
+// ── Auto-apply ──────────────────────────────────────────────
+// A three-step Workday application in real markup. Save and Continue moves to
+// the next step; the last step is Review, whose button SUBMITS. opts.blocker:
+// step 2 holds a required question no profile answers. opts.errorOnFirst: the
+// first Save and Continue shows Workday's error banner and stays put.
+function wireAutoApplyPage(page, opts = {}) {
+  const doc = page.document;
+  const log = { next: 0, submit: 0, filled: {} };
+  const steps = [
+    { name: 'My Information', html: `<div data-automation-id="formField-email"><label for="e1">Email Address<abbr>*</abbr></label>
+        <input id="e1" type="text" aria-required="true"></div>` },
+    { name: 'Application Questions', html: `<div data-automation-id="formField-email2"><label for="e2">Email Address<abbr>*</abbr></label>
+        <input id="e2" type="text" aria-required="true"></div>${opts.blocker ? `
+      <div data-automation-id="formField-colour"><label for="q1">What is your favourite colour?<abbr>*</abbr></label>
+        <input id="q1" type="text" aria-required="true"></div>` : ''}` },
+    { name: 'Review', html: '<p>Review your application.</p>', submit: true },
+  ];
+  let at = 0;
+  let errored = false;
+  const render = () => {
+    const s = steps[at];
+    doc.body.innerHTML = `<div data-automation-id="applyFlowPage">
+      <h2 data-automation-id="jobTitleHeading">Senior Associate</h2>
+      <ol data-automation-id="progressBar">${steps.map((x, i) => i === at
+        ? `<li data-automation-id="progressBarActiveStep"><label>current step ${i + 1} of 3</label><label>${x.name}</label></li>`
+        : `<li data-automation-id="progressBarInactiveStep"><label>step ${i + 1} of 3</label><label>${x.name}</label></li>`).join('')}</ol>
+      <h3>${s.name}</h3>
+      <div data-automation-id="applyFlowStepPage">${s.html}</div>
+      <div data-automation-id="pageFooter"><button data-automation-id="pageFooterNextButton">${s.submit ? 'Submit' : 'Save and Continue'}</button></div>
+    </div>`;
+    if (opts.uploadNotice && at === 0) {
+      // Its own section among several fields, as on Workday's My Experience —
+      // beside a lone field the probe would read it as that field's error.
+      doc.querySelector('[data-automation-id="applyFlowStepPage"]').insertAdjacentHTML('beforeend',
+        `<div data-automation-id="formField-website"><label for="w1">Website</label><input id="w1" type="text"></div>
+         <section><div role="alert">SHUBHAM_SARKAR_JU.pdf successfully uploaded</div></section>`);
+    }
+    doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => {
+      for (const el of doc.querySelectorAll("input")) if (el.value) log.filled[el.id] = el.value;
+      if (steps[at].submit) { log.submit++; return; }
+      log.next++;
+      if ((opts.errorOnFirst && !errored) || opts.errorAlways) {
+        errored = true;
+        doc.querySelector('[data-automation-id="applyFlowPage"]').insertAdjacentHTML('afterbegin',
+          '<div data-automation-id="errorBanner">Errors Found: Phone Number is required</div>');
+        return;
+      }
+      // Workday's quiet refusal: an empty required field is outlined, no banner.
+      if (opts.validate) {
+        const empty = Array.from(doc.querySelectorAll('input[aria-required="true"]')).filter(el => !el.value);
+        for (const el of empty) el.setAttribute('aria-invalid', 'true');
+        if (empty.length) { log.refused = (log.refused || 0) + 1; return; }
+      }
+      // Refused once on step 2 even though it was filled — the form cleared it.
+      if (opts.refuseOnceAt === at && !errored) {
+        errored = true;
+        const el = doc.querySelector('input[aria-required="true"]');
+        el.value = '';
+        el.setAttribute('aria-invalid', 'true');
+        log.refused = (log.refused || 0) + 1;
+        return;
+      }
+      const advance = () => {
+        at++;
+        render();
+        if (opts.footerStays) {
+          // NVIDIA: the footer stays from the last step; the step's fields are
+          // drawn a moment after the progress bar moves.
+          const stepPage = doc.querySelector('[data-automation-id="applyFlowStepPage"]');
+          const html = stepPage.innerHTML;
+          stepPage.innerHTML = '';
+          setTimeout(() => { stepPage.innerHTML = html; }, opts.footerStays);
+        }
+        if (opts.lagMs) {
+          // Workday: the progress bar moves at once; the page and its footer are
+          // drawn a moment later.
+          doc.querySelector('[data-automation-id="applyFlowStepPage"]').innerHTML = '';
+          doc.querySelector('[data-automation-id="pageFooter"]').remove();
+          setTimeout(render, opts.lagMs);
+        }
+      };
+      // Workday saves the step before it moves on — a second or more.
+      if (opts.saveMs) setTimeout(advance, opts.saveMs);
+      else advance();
+    });
+  };
+  // Workday drops a field's error outline as soon as it gets a value.
+  for (const type of ['input', 'change']) {
+    doc.body.addEventListener(type, (e) => {
+      if (e.target && e.target.value) e.target.setAttribute('aria-invalid', 'false');
+    });
+  }
+  return { log, filled: log.filled, render, goTo: (i) => { at = i; render(); } };
+}
+
+// The sidebar lives in <body>: render the steps into a container instead of
+// replacing the body, so the panel survives each "page".
+function autoApplyPage(opts) {
+  return loadPage('<!doctype html><html><body><div id="wd-root"></div></body></html>', PWC_URL, true, opts);
+}
+
+function mountSteps(page, opts) {
+  const root = page.document.getElementById('wd-root');
+  const shim = { document: { body: root, getElementById: id => page.document.getElementById(id),
+                             querySelector: s => root.querySelector(s),
+                             querySelectorAll: s => root.querySelectorAll(s) } };
+  const app = wireAutoApplyPage(shim, opts);
+  app.render();
+  return app;
+}
+
+async function startAuto(page) {
+  ok(await waitForText(page, /Auto-apply all pages/, 15000), 'the auto-apply button is offered on Workday');
+  page.document.getElementById('tcvAfAutoBtn').click();
+}
+
+test('Auto-apply: fills every step, clicks Save and Continue, stops at Review without submitting', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page);
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it stops on the Review page');
+  eq(app.log.next, 2, 'Save and Continue pressed once per step before Review');
+  eq(app.log.submit, 0, 'Submit is NEVER pressed');
+});
+
+// The next `misses` looks for a form find none: a page just changed (Barclays, Nov 2026).
+function missForm(page, misses) {
+  const AF = page.window.__tcvAutofill;
+  const real = AF.isApplicationPage;
+  const state = { left: misses, calls: 0 };
+  AF.isApplicationPage = (...args) => {
+    state.calls++;
+    if (state.left > 0) { state.left--; return null; }
+    return real(...args);
+  };
+  return state;
+}
+
+test('Auto-apply: Workday\'s "Autofill with Resume" step uploads the resume and presses Continue', async () => {
+  const page = loadPage(`<!doctype html><html><body>${fixtures.WORKDAY_RESUME_STEP}</body></html>`,
+                        'https://lseg.wd3.myworkdayjobs.com/en-US/Careers/job/IND-BLR/Software-Engineer_R0121252/apply/autofillWithResume',
+                        true, { resumeFile: true });
+  polyfillFileApis(page.window);
+  const doc = page.document;
+  let continued = 0;
+  doc.querySelector('[data-automation-id="pageFooterNextButton"]').addEventListener('click', () => {
+    continued++;
+    doc.querySelector('[data-automation-id="progressBarActiveStep"]').innerHTML = '<label>Review</label>';
+    doc.querySelector('[data-automation-id="applyFlowAutoFillPage"]').innerHTML = '';
+  });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000),
+     `it reaches Review: ${doc.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 300)}`);
+  ok(page.sent.some(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'resume'), 'the resume was fetched');
+  eq(continued, 1, 'Continue pressed once');
+});
+
+test('Auto-apply: a form missed for a moment is looked for again, and the page is filled without a pause', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page);
+  ok(await waitForText(page, /Auto-apply all pages/, 15000), 'the auto-apply button is offered');
+  const missed = missForm(page, 1);
+  page.document.getElementById('tcvAfAutoBtn').click();
+  ok(await waitForText(page, /Ready to submit/, 60000),
+     `it reaches Review: ${page.document.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 400)}`);
+  eq(missed.left, 0, 'the form really was missed');
+  ok(app.filled.e2, 'the page after it was filled too');
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: a page that truly has no form still pauses, after looking again', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page);
+  ok(await waitForText(page, /Auto-apply all pages/, 15000), 'the auto-apply button is offered');
+  const missed = missForm(page, Infinity);
+  page.document.getElementById('tcvAfAutoBtn').click();
+  ok(await waitForText(page, /Auto-apply paused/, 60000), 'it pauses');
+  ok(/No application form found/.test(page.document.getElementById('tailorcv-sidebar').textContent), 'and says why');
+  ok(missed.calls > 3, `it looked more than once: ${missed.calls}`);
+  eq(app.log.next, 0, 'nothing was pressed');
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: pauses on a required field it cannot fill, and Continue resumes', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page, { blocker: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Auto-apply paused/, 60000), 'it pauses on step 2');
+  ok(/favourite colour/i.test(page.document.getElementById('tailorcv-sidebar').textContent), 'listing the field');
+  eq(app.log.next, 1, 'it did not press Save and Continue past the blocker');
+
+  const q = page.document.getElementById('q1');
+  q.value = 'Blue';
+  q.dispatchEvent(new page.window.Event('input', { bubbles: true }));
+  q.dispatchEvent(new page.window.Event('change', { bubbles: true }));
+  page.document.getElementById('tcvAfAutoContinue').click();
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it carries on to Review');
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+  // What they answered on the page is remembered, without being asked.
+  const saved = page.sent.filter(m => m.type === 'AF_SAVE_ANSWERS')
+    .flatMap(m => (m.payload && m.payload.answers) || []);
+  ok(saved.some(a => /favourite colour/i.test(a.question) && a.answer === 'Blue'),
+     `saved on Continue: ${JSON.stringify(saved)}`);
+});
+
+test('Auto-apply: a required question the AI skipped is asked again with force, and the run goes on', async () => {
+  const forced = [];
+  const page = autoApplyPage({
+    plan: (payload) => {
+      if (!payload.force) return { answers: {} };           // the first pass skips it
+      forced.push(...payload.fields.map(f => f.label));
+      const f = payload.fields.find(x => /colour/i.test(x.label));
+      return { answers: f ? { [f.i]: { value: 'Blue', source: 'ai_forced', confidence: 0.6 } } : {} };
+    },
+  });
+  const app = mountSteps(page, { blocker: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it reaches Review without pausing');
+  ok(forced.some(l => /colour/i.test(l)), `the question was sent with force: ${forced.join(', ')}`);
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: a sensitive required question is never forced — it still pauses', async () => {
+  const forced = [];
+  const page = autoApplyPage({
+    plan: (payload) => { if (payload.force) forced.push(...payload.fields.map(f => f.label)); return { answers: {} }; },
+  });
+  const root = page.document.getElementById('wd-root');
+  mountSteps(page);
+  root.querySelector('[data-automation-id="applyFlowStepPage"]').insertAdjacentHTML('beforeend',
+    `<div data-automation-id="formField-auth"><label for="wa">Will you now or in the future require visa sponsorship?<abbr>*</abbr></label>
+      <input id="wa" type="text" aria-required="true"></div>`);
+  await startAuto(page);
+  ok(await waitForText(page, /Auto-apply paused/, 60000), 'it pauses for the sponsorship question');
+  ok(!forced.some(l => /sponsorship/i.test(l)), `never sent with force: ${forced.join(', ')}`);
+});
+
+test('Auto-apply: a page drawn after its step changes is still filled before moving on', async () => {
+  // NVIDIA: the progress bar moved, the page came a moment later — the fill
+  // found nothing ("0 filled") and Save and Continue was not there yet.
+  const page = autoApplyPage();
+  const app = mountSteps(page, { lagMs: 1500 });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it reaches Review');
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+  ok(app.filled.e2, 'step 2 was filled after it was drawn');
+});
+
+test('Auto-apply: a "successfully uploaded" notice is not an error', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page, { uploadNotice: true, saveMs: 1500 });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000),
+     `it reaches Review: ${page.document.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 600)}`);
+  eq(app.log.next, 2);
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: the footer stays while the next step is drawn — the step is still filled', async () => {
+  // NVIDIA Voluntary Disclosures: Save and Continue never left the screen, the
+  // fields came 2 s later, the fill ran on the empty step ("0 filled") and
+  // Workday refused the press.
+  const page = autoApplyPage();
+  const app = mountSteps(page, { footerStays: 2000, validate: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 60000), 'it reaches Review');
+  ok(app.filled.e2, 'step 2 was filled once drawn');
+  eq(app.log.refused || 0, 0, 'Workday never had to refuse a press');
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: a press Workday quietly refuses is filled again and pressed once more', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page, { refuseOnceAt: 1 });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000),
+     `it reaches Review after the retry: ${page.document.getElementById('tailorcv-sidebar').textContent
+       .replace(/\s+/g, ' ').slice(280, 900)} log=${JSON.stringify(app.log)}`);
+  eq(app.log.refused, 1);
+  eq(app.log.next, 3, 'step 1, step 2 refused, step 2 again');
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: Workday\'s error banner gets one refill and one more press', async () => {
+  // Visa: "School or University is required" beside a box showing the school —
+  // committed after the press. The second press goes through.
+  const page = autoApplyPage();
+  const app = mountSteps(page, { errorOnFirst: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000), 'it reaches Review after the retry');
+  eq(app.log.next, 3, 'step 1 refused, step 1 again, step 2');
+  eq(app.log.submit, 0);
+});
+
+test('Auto-apply: Workday refusing twice with an error pauses, showing the error', async () => {
+  const page = autoApplyPage();
+  const app = mountSteps(page, { errorAlways: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Phone Number is required/, 90000), 'the error is shown in the sidebar');
+  ok(/Auto-apply paused/.test(page.document.getElementById('tailorcv-sidebar').textContent));
+  eq(app.log.next, 2, 'pressed twice, not more');
+});
+
+// ── Auto-apply on Oracle ────────────────────────────────────
+// A four-page Oracle Candidate Experience application in the markup of a JPMC
+// capture: the sections are all on the page and only the active one is shown,
+// the page menu marks the current page, and the last page has Submit, no Next.
+const ORACLE_URL = 'https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/jobs/preview/1/apply/section/1/';
+
+function oracleRow(id, label, extra = '') {
+  return `<div class="input-row input-row--text">
+    <label class="input-row__label input-row__label--required" for="${id}"><span class="input-row__linebreak">${label}</span></label>
+    <div class="input-row__control-container"><input class="input-row__control" id="${id}" name="${id}" type="text" aria-required="true" aria-invalid="false" ${extra}></div>
+  </div>`;
+}
+
+function oraclePage(opts = {}) {
+  const page = loadPage(`<!doctype html><html><body><main><section class="apply-flow__content-container">
+    <form class="apply-flow__content apply-flow__content-form" novalidate method="post">
+      <div class="apply-flow-page">
+        ${[1, 2, 3, 4].map(n => `<apply-flow-section id="section-${n}" aria-hidden="false">
+          <div class="apply-flow-section" data-section-number="${n}"${n === 1 ? '' : ' style="display:none"'}>
+            ${(opts.sections || {})[n] || oracleRow(`email-${n}`, 'Email Address') + oracleRow(`name-${n}`, 'Full Name')}
+          </div></apply-flow-section>`).join('')}
+        <apply-flow-pagination><div class="apply-flow-pagination"><div class="apply-flow-pagination__buttons"></div></div></apply-flow-pagination>
+      </div>
+    </form></section></main></body></html>`, opts.url || ORACLE_URL, true, opts);
+  const doc = page.document;
+  const log = { next: 0, back: 0, submit: 0, formSubmits: 0, refused: 0 };
+  let at = 1;
+  doc.addEventListener('submit', () => { log.formSubmits++; });
+  const renderFooter = () => {
+    const links = [1, 2, 3, 4].map(n => `<li><a href="#" class="apply-flow-navigation-pages__link${n === at
+      ? ' apply-flow-navigation-pages__link--current' : ''}" aria-label="${n}">${n}</a></li>`).join('');
+    doc.querySelector('.apply-flow-pagination__buttons').innerHTML = `
+      <button type="button" class="button apply-flow-pagination__button" id="back" title="Back" aria-label="Back"><span class="button__label">Back</span></button>
+      <div class="apply-flow-navigation-pages" role="navigation"><ul>${links}</ul></div>
+      ${at === 4
+    ? '<button type="button" class="button apply-flow-pagination__button apply-flow-pagination__submit-button" id="submit"><span class="button__label">Submit</span></button>'
+    : `<button${opts.nextHasNoType ? '' : ' type="button"'} class="button apply-flow-pagination__button" id="next"${
+      opts.nextName ? '' : ' title="Next" aria-label="Next"'}><span class="button__label">${opts.nextName || 'Next'}</span></button>`}`;
+    doc.getElementById('back').addEventListener('click', () => { log.back++; });
+    const next = doc.getElementById('next');
+    if (next) next.addEventListener('click', () => {
+      log.next++;
+      const shown = doc.querySelector(`[data-section-number="${at}"]`);
+      const empty = [...shown.querySelectorAll('input[aria-required="true"]')].filter(i => !i.value);
+      if (opts.refuseAlways || (opts.refuseOnceAt === at && !log.refused)) {
+        log.refused++;
+        const row = shown.querySelector('.input-row');
+        row.classList.add('input-row--invalid');
+        row.querySelector('input').setAttribute('aria-invalid', 'true');
+        return;
+      }
+      if (empty.length) { log.refused++; for (const i of empty) i.closest('.input-row').classList.add('input-row--invalid'); return; }
+      shown.style.display = 'none';
+      at++;
+      page.window.history.pushState({}, '', (opts.url || ORACLE_URL).replace(/section\/1\//, `section/${at}/`));
+      doc.querySelector(`[data-section-number="${at}"]`).style.display = '';
+      renderFooter();
+    });
+    const submit = doc.getElementById('submit');
+    if (submit) submit.addEventListener('click', () => { log.submit++; });
+  };
+  renderFooter();
+  // Oracle drops a field's outline as soon as it gets a value.
+  for (const type of ['input', 'change']) {
+    doc.body.addEventListener(type, (e) => {
+      const row = e.target && e.target.closest && e.target.closest('.input-row');
+      if (row && e.target.value) {
+        row.classList.remove('input-row--invalid');
+        e.target.setAttribute('aria-invalid', 'false');
+      }
+    });
+  }
+  return { page, doc, log, at: () => at };
+}
+
+test('Auto-apply on Oracle: fills every page, clicks Next, stops at the Submit page without pressing it', async () => {
+  const { page, doc, log, at } = oraclePage();
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000),
+     `it stops on the last page: ${doc.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 500)}`);
+  eq(at(), 4, 'it reached page 4');
+  eq(log.next, 3, 'Next pressed once per page before the last');
+  eq(log.submit, 0, 'Submit is NEVER pressed');
+  eq(log.back, 0, 'Back is never pressed');
+  for (const n of [1, 2, 3, 4]) ok(doc.getElementById(`name-${n}`).value, `page ${n} was filled`);
+});
+
+test('Auto-apply on Oracle: works on a company\'s own domain (careers.oracle.com)', async () => {
+  const { page, log, at } = oraclePage({ url: 'https://careers.oracle.com/en/sites/jobsearch/jobs/preview/337914/apply/section/1/?location=India&locationId=300000000106947&locationLevel=country&mode=location' });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000), 'it stops on the last page');
+  eq(at(), 4);
+  eq(log.next, 3);
+  eq(log.submit, 0, 'Submit is NEVER pressed');
+});
+
+test('Auto-apply on Oracle: a Next with no type inside the form can never submit the form', async () => {
+  const { page, log } = oraclePage({ nextHasNoType: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000), 'it reaches the last page');
+  eq(log.next, 3);
+  eq(log.formSubmits, 0, 'the press never submits the form');
+  eq(log.submit, 0);
+});
+
+test('Auto-apply on Oracle: a page Oracle refuses once is filled again and pressed once more', async () => {
+  const { page, log } = oraclePage({ refuseOnceAt: 2 });
+  await startAuto(page);
+  ok(await waitForText(page, /Ready to submit/, 90000), 'it reaches the last page after the retry');
+  eq(log.refused, 1);
+  eq(log.next, 4, 'page 1, page 2 refused, page 2 again, page 3');
+  eq(log.submit, 0);
+});
+
+test('Auto-apply on Oracle: refused twice, it pauses and names the outlined field', async () => {
+  const { page, doc, log } = oraclePage({ refuseAlways: true });
+  await startAuto(page);
+  ok(await waitForText(page, /Auto-apply paused/, 90000), 'it pauses');
+  ok(/Oracle did not (accept|move on)/.test(doc.getElementById('tailorcv-sidebar').textContent), 'says what happened');
+  ok(/Email Address/.test(doc.getElementById('tailorcv-sidebar').textContent), 'names the field');
+  eq(log.next, 2, 'pressed twice, not more');
+  eq(log.submit, 0);
+});
+
+test('Auto-apply on Oracle: a footer button that is not called Next is never pressed', async () => {
+  const { page, doc, log } = oraclePage({ nextName: 'Proceed' });
+  await startAuto(page);
+  ok(await waitForText(page, /Couldn.t find Next/, 90000),
+     `it pauses: ${doc.getElementById('tailorcv-sidebar').textContent.replace(/\s+/g, ' ').slice(0, 500)}`);
+  eq(log.next, 0);
+  eq(log.back, 0);
+  eq(log.submit, 0);
+});
+
+test('Auto-apply on Oracle: a required question it cannot fill pauses before Next', async () => {
+  const { page, doc, log } = oraclePage({ sections: { 2: oracleRow('email-2', 'Email Address') + oracleRow('colour', 'What is your favourite colour?') } });
+  await startAuto(page);
+  ok(await waitForText(page, /Auto-apply paused/, 90000), 'it pauses on page 2');
+  ok(/favourite colour/i.test(doc.getElementById('tailorcv-sidebar').textContent), 'listing the question');
+  eq(log.next, 1, 'Next was not pressed past it');
+  eq(log.submit, 0);
+});
+
+test('Workday: a step that grows blocks under the same heading keeps its results', async () => {
+  // nvidia.wd5 "My Experience": the run itself pressed Add and created Work
+  // Experience / Education blocks. Compared with the fields from BEFORE the
+  // run, that read as a new step, and the results gave way to "Page 2 — ready
+  // to autofill". The heading had not changed, so it was the same step.
+  const withHeading = fixtures.WORKDAY_MYINFO.replace(
+    '<div data-automation-id="applyFlowMyInfoPage">',
+    '<h2>My Experience</h2><div data-automation-id="applyFlowMyInfoPage">');
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
+  renderLater(page, withHeading, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 30000), 'the fill must finish');
+
+  const step = page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
+  let blocks = '';
+  for (let n = 1; n <= 4; n++) {
+    blocks += `<div role="group" aria-labelledby="Education-${n}-panel"><h5 id="Education-${n}-panel">Education ${n}</h5>
+      <label for="sch${n}">School or University*</label><input id="sch${n}" type="text">
+      <label for="deg${n}">Degree*</label><input id="deg${n}" type="text">
+      <label for="gpa${n}">Overall Result (GPA)</label><input id="gpa${n}" type="text"></div>`;
+  }
+  step.insertAdjacentHTML('beforeend', blocks);
+  await new Promise(r => setTimeout(r, 4000));                       // the watcher runs
+  const text = page.document.getElementById('tailorcv-sidebar').textContent;
+  ok(!/Page 2/.test(text), 'still the same step — no "Page 2"');
+  ok(/filled/i.test(text), 'the results are still shown');
+});
+
 test('Workday: the next step is shown even when the page passes through "no form" on the way', async () => {
   // nvidia.wd5: page 1 is torn down (a moment with no form at all) before page
   // 2 renders. The watcher saw page 2 as a form "appearing", left the results
@@ -365,7 +936,7 @@ test('Workday: the next step is shown even when the page passes through "no form
   renderLater(page, fixtures.WORKDAY_MYINFO, 200);
   ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
   page.document.getElementById('tcvAfFillBtn').click();
-  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+  ok(await waitForText(page, /filled/i, 30000), 'the first fill must finish');
 
   const step = page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
   step.innerHTML = '<div class="loading">Loading…</div>';          // between steps
@@ -408,6 +979,53 @@ test('a frame form that appears after the panel drew is picked up', async () => 
   options.frames.push(GREENHOUSE_FRAME);        // the Greenhouse iframe finishes rendering
   page.push({ type: 'AF_FRAME_FOUND' });
   ok(await waitForText(page, /Autofill this application/, 5000), 'redrawn with Autofill');
+});
+
+// A fill inside a frame whose reply came back as this error (background.js).
+async function frameFillStatus(error) {
+  const page = loadPage(JSON_LD_PAGE, 'https://careers.airbnb.com/positions/8123037/', true, {
+    frames: [GREENHOUSE_FRAME],
+    frameSend: payload => (payload.type === 'AF_FRAME_APPLY' ? { error } : { data: null }),
+  });
+  ok(await waitForText(page, /Autofill this application/, 10000), 'Autofill must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  // Looked up each time: a redraw of the panel detaches it for a moment.
+  const status = () => page.document.getElementById('tcvGlobalStatus');
+  const deadline = Date.now() + 5000;
+  while (!(status() && status().textContent) && Date.now() < deadline) {
+    await new Promise(r => setTimeout(r, 20));
+  }
+  return status();
+}
+
+const CHANNEL_CLOSED = 'A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received';
+
+test('a form that reloads mid-fill says so, in place of Chrome\'s error (iCIMS)', async () => {
+  const status = await frameFillStatus(CHANNEL_CLOSED);
+  ok(/The form reloaded/.test(status.textContent), `says what happened: ${status.textContent}`);
+  notOk(/listener|message channel/i.test(status.textContent), 'Chrome\'s text is gone');
+  notOk(/✗/.test(status.textContent), 'no failure mark');
+  notOk(status.classList.contains('tcv-error'), 'not shown in red');
+});
+
+test('a fill whose extension was reloaded says to refresh, in place of the count', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
+  renderLater(page, fixtures.WORKDAY_MYINFO, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  const AF = page.window.__tcvAutofill;
+  const real = AF.runAutofill;
+  AF.runAutofill = async (...args) => Object.assign(await real(...args), { extensionReloaded: true });
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /refresh this page/i, 30000), 'it says so');
+  const status = page.document.getElementById('tcvGlobalStatus');
+  notOk(/Filled \d+/.test(status.textContent), status.textContent);
+  ok(status.classList.contains('tcv-error'), 'as an error');
+});
+
+test('any other frame error still shows as a failure', async () => {
+  const status = await frameFillStatus('Could not establish connection');
+  ok(/✗ Could not establish connection/.test(status.textContent), `passed through: ${status.textContent}`);
+  ok(status.classList.contains('tcv-error'), 'shown in red');
 });
 
 // Watches the panel body from the first moment it exists.

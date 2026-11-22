@@ -9,8 +9,9 @@
 // the person can see what went in, what needs a second look, and what still
 // needs them — so the four groups are the deliverable, not decoration.
 
-import { ASK, DOCUMENT, FILL, PROFILE, SKIP, SUGGEST } from './plan.js';
-import { answerField, learnableAnswers, rememberAnswers } from './run.js';
+import { ASK, DOCUMENT, FILL, PROFILE, SKIP, SUGGEST, summarize } from './plan.js';
+import { answerField, learnableAnswers, rememberAnswers, forgetSaved } from './run.js';
+import { STORABLE_SENSITIVE } from './match.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 
@@ -125,6 +126,7 @@ const SOURCE_LABEL = {
   saved_answer: 'a saved answer',
   ai: 'AI',
   ai_written: 'AI, written for this job',
+  ai_forced: 'AI, from your resume',
   standard: 'a standard answer',
   you: 'you',
 };
@@ -150,7 +152,9 @@ export function renderReady(body, form, ctx, handlers, extra) {
             <div class="tcv-job-title">${page > 1
               ? `Page ${esc(page)} of this application`
               : 'Application form detected'}</div>
-            <div class="tcv-job-meta">${esc(count)} field${count === 1 ? '' : 's'} on this page${
+            <div class="tcv-job-meta">${form && form.sectionsClosed
+              ? 'Questions in closed sections'
+              : `${esc(count)} field${count === 1 ? '' : 's'} on this page`}${
               form && form.ats && form.ats !== 'generic' ? ` · ${esc(form.ats)}` : ''}</div>
           </div>
         </div>
@@ -160,30 +164,30 @@ export function renderReady(body, form, ctx, handlers, extra) {
           This step lists your Education and Experience entries. Autofill opens
           each one the form marks as needing a fix, fills it from your profile,
           and saves it.
+        </div>` : form && form.sectionsClosed ? `
+        <div class="tcv-af-note">
+          This form keeps its questions in closed sections. Autofill opens them,
+          then fills what it can.
         </div>` : !count ? `
         <div class="tcv-af-note">
           No fields found on this step yet. If a section opens with <b>Add</b>
           (Work Experience, Education), open it first, then autofill this page.
-        </div>` : ''}
-      ${blockers.length ? `
-        <div class="tcv-af-note">
-          ${esc(blockers[0])}
-          <a href="#" id="tcvAfProfileLink">Open your profile →</a>
         </div>` : ''}
       ${quotaOut ? `
         <div class="tcv-af-note">
           You've used your free autofills. <a href="#" id="tcvAfUpgrade">Upgrade to Pro →</a>
         </div>` : `
         <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">${page > 1
-          ? 'Autofill this page' : 'Autofill this application'} <span aria-hidden="true">▸</span></button>`}
-      <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn">✦ Tailor my resume for this job</button>
-      <div class="tcv-af-note tcv-af-note-quiet">
-        TailorCV never submits an application. You review everything and send it yourself.
-      </div>
+          ? 'Autofill this page' : 'Autofill this application'} <span aria-hidden="true">▸</span></button>
+        ${form && (form.ats === 'workday' || form.ats === 'oracle') && handlers.onAutoApply ? `
+        <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoBtn">⏩ Auto-apply all pages</button>` : ''}`}
+      <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn"><svg class="tcv-ico" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>Tailor my resume for this job</button>
     </div>`;
 
   const fill = body.querySelector('#tcvAfFillBtn');
   if (fill) fill.addEventListener('click', () => handlers.onFill());
+  const auto = body.querySelector('#tcvAfAutoBtn');
+  if (auto) auto.addEventListener('click', () => handlers.onAutoApply());
   const tailor = body.querySelector('#tcvAfTailorBtn');
   if (tailor) tailor.addEventListener('click', (e) => { e.preventDefault(); handlers.onTailor(); });
   bindLink(body, '#tcvAfProfileLink', handlers.onOpenProfile);
@@ -208,63 +212,140 @@ function bindLink(body, selector, fn) {
  */
 export function renderResults(body, result, ctx, handlers) {
   const decisions = result.decisions || [];
-  const counts = result.counts || {};
+  // From the decisions as they stand: auto-apply's second pass changes them
+  // after the run counted them, and the top said 5 filled over a list of 9.
+  const counts = decisions.length ? summarize(decisions) : (result.counts || {});
   const filled = (counts[FILL] || 0) + (counts[DOCUMENT] || 0);
   const byForm = decisions.filter(d => d.byForm).length;
 
   body.innerHTML = `
     <div class="tcv-af-panel">
-      <div class="tcv-af-summary" id="tcvAfSummary">
-        ${pill('ok', `${filled} filled`)}
-        ${byForm ? pill('review', `${byForm} from your resume`) : ''}
-        ${counts[SUGGEST] ? pill('review', `${counts[SUGGEST]} to review`) : ''}
-        ${counts[ASK] ? pill('ask', `${counts[ASK]} need you`) : ''}
-        ${counts[PROFILE] ? pill('ask', `${counts[PROFILE]} for your profile`) : ''}
-      </div>
+      ${summaryHtml(filled, decisions.length, [
+        byForm ? pill('review', `${byForm} from your resume`) : '',
+        counts[SUGGEST] ? pill('review', `${counts[SUGGEST]} to review`) : '',
+        counts[ASK] ? pill('ask', `${counts[ASK]} need you`) : '',
+        counts[PROFILE] ? pill('ask', `${counts[PROFILE]} for your profile`) : '',
+      ])}
       ${result.page > 1 ? `<div class="tcv-source">Page ${esc(result.page)} of this application</div>` : ''}
-      <button class="tcv-btn tcv-btn-start" id="tcvAfRerun">↻ Autofill this page</button>
+      ${autoBannerHtml(handlers.auto, decisions)}
+      <button class="tcv-btn tcv-btn-start" id="tcvAfRerun"><svg class="tcv-ico" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Autofill this page</button>
       ${result.serverError ? `<div class="tcv-af-note">${esc(result.serverError)}</div>` : ''}
       ${result.opaqueHosts ? `<div class="tcv-af-note tcv-af-note-quiet">
         ${esc(result.opaqueHosts)} field group(s) on this page are built in a way
         we can't read — check those by hand.</div>` : ''}
       <div id="tcvAfBody">${GROUPS.map(g => groupHtml(g, decisions)).join('')}</div>
-      <div class="tcv-af-note tcv-af-note-quiet">
-        Review everything, then submit the application yourself. TailorCV never
-        submits for you.
-      </div>
-      <div class="tcv-af-note tcv-af-note-quiet">
-        Something filled wrong? <a href="#" id="tcvAfEditProfile">Edit your application
-        profile</a> — name, address, phone and eligibility answers all come from there.
-      </div>
+      ${handlers.onNext ? `<div class="tcv-af-next-bar">
+        <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfNext">Continue to the next page <span aria-hidden="true">▸</span></button>
+      </div>` : ''}
     </div>`;
 
+  const bar = body.querySelector('.tcv-af-sum-bar span');
+  if (bar) bar.style.setProperty('width', `${bar.dataset.pct || 0}%`, 'important');
+  const nextBtn = body.querySelector('#tcvAfNext');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', async () => {
+      nextBtn.disabled = true;
+      nextBtn.textContent = 'Moving to the next page…';
+      const res = await handlers.onNext();
+      // Moved: the watcher has already drawn the new page. Not moved: try again.
+      if (!res || !res.ok) {
+        nextBtn.disabled = false;
+        nextBtn.innerHTML = 'Continue to the next page <span aria-hidden="true">▸</span>';
+      }
+    });
+  }
   wireRows(body, decisions, ctx, handlers);
+  wireAutoBanner(body, handlers.auto);
   const rerun = body.querySelector('#tcvAfRerun');
   if (rerun) rerun.addEventListener('click', () => handlers.onFill());
   bindLink(body, '#tcvAfEditProfile', handlers.onOpenProfile);
   // Only a local run can highlight: the fields of an embedded form are not in
   // this document, so the frame highlights its own when it fills them.
   if (decisions.length && decisions[0].row) highlight(decisions);
-  offerToRemember(body, result, handlers);
+}
+
+/**
+ * Auto-apply's state above the results: paused (what is blocking, with Continue
+ * and Stop), stopped (why), or done (the Review page — the person submits).
+ */
+function autoBannerHtml(auto, decisions) {
+  if (!auto) return '';
+  const blockers = auto.blockers || [];
+  const list = blockers.length ? `<ul class="tcv-af-auto-list">${blockers.map(b => {
+    const i = decisions.indexOf(b.decision);
+    return `<li>${esc(b.label)} — ${esc(b.reason)}${i >= 0
+      ? ` <a href="#" class="tcv-af-jump" data-index="${i}">show</a>` : ''}</li>`;
+  }).join('')}</ul>` : '';
+  const title = auto.state === 'done' ? '✓ Ready to submit'
+    : auto.state === 'paused' ? `⏸ Auto-apply paused${blockers.length
+      ? ` — ${blockers.length} field${blockers.length === 1 ? '' : 's'} need${blockers.length === 1 ? 's' : ''} you` : ''}`
+      : 'Auto-apply stopped';
+  return `
+    <div class="tcv-af-auto tcv-af-auto-${esc(auto.state || 'paused')}" id="tcvAfAuto">
+      <div class="tcv-af-auto-title">${esc(title)}</div>
+      ${auto.message ? `<div class="tcv-af-auto-msg">${esc(auto.message)}</div>` : ''}
+      ${list}
+      ${auto.state === 'paused' ? `
+        <div class="tcv-af-auto-actions">
+          <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfAutoContinue">Continue auto-apply ▸</button>
+          <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoStop">Stop</button>
+        </div>` : ''}
+    </div>`;
+}
+
+function wireAutoBanner(body, auto) {
+  if (!auto) return;
+  const go = body.querySelector('#tcvAfAutoContinue');
+  if (go && auto.onContinue) go.addEventListener('click', () => auto.onContinue());
+  const stop = body.querySelector('#tcvAfAutoStop');
+  if (stop && auto.onStop) stop.addEventListener('click', () => auto.onStop());
 }
 
 function pill(kind, text) {
   return `<span class="tcv-af-summary-pill tcv-af-${esc(kind)}">${esc(text)}</span>`;
 }
 
+/** "14 filled of 19 fields · 74%", a bar, and the other counts as small dots. */
+function summaryHtml(filled, total, pills) {
+  const pct = total ? Math.round((filled / total) * 100) : 0;
+  const rest = pills.filter(Boolean).join('');
+  return `
+      <div class="tcv-af-summary" id="tcvAfSummary">
+        <div class="tcv-af-sum-line">
+          <span><b>${esc(filled)} filled</b> of ${esc(total)} field${total === 1 ? '' : 's'}</span>
+          <span class="tcv-af-sum-pct">${esc(pct)}%</span>
+        </div>
+        <div class="tcv-af-sum-bar"><span data-pct="${esc(pct)}"></span></div>
+        ${rest ? `<div class="tcv-af-sum-rest">${rest}</div>` : ''}
+      </div>`;
+}
+
 function groupHtml(group, decisions) {
   const rows = decisions.filter(group.match || (d => d.action === group.action));
   if (!rows.length) return '';
   return `
-    <div class="tcv-af-group">
+    <div class="tcv-af-group tcv-af-group-${esc(group.badge)}">
       <div class="tcv-af-group-title">${esc(group.title)} · ${rows.length}</div>
       ${rows.map(d => rowHtml(group, d, decisions.indexOf(d))).join('')}
     </div>`;
 }
 
+/** A split date as people read it: "2003-12-01" or "12/1/2003" -> "12-01-2003" (MM-DD-YYYY). */
+export function displayDate(text) {
+  const s = String(text || '').trim();
+  const pad = n => String(n).padStart(2, '0');
+  let m = /^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?$/.exec(s);
+  if (m) return m[3] ? `${pad(m[2])}-${pad(m[3])}-${m[1]}` : `${pad(m[2])}-${m[1]}`;
+  m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(s);
+  if (m) return `${pad(m[1])}-${pad(m[2])}-${m[3]}`;
+  m = /^(\d{1,2})\/(\d{4})$/.exec(s);
+  if (m) return `${pad(m[1])}-${m[2]}`;
+  return s;
+}
+
 function rowHtml(group, d, index) {
   const needsInput = d.action === ASK && d.kind !== 'file' && !d.slot;
-  const value = d.shown || d.value;
+  const value = d.kind === 'date-parts' ? displayDate(d.shown || d.value) : (d.shown || d.value);
   return `
     <div class="tcv-af-row" data-index="${index}">
       <div class="tcv-af-row-head">
@@ -276,8 +357,30 @@ function rowHtml(group, d, index) {
       ${d.source ? `<div class="tcv-af-row-src">from ${esc(SOURCE_LABEL[d.source] || d.source)}${
         d.reason ? ` · ${esc(d.reason)}` : ''}</div>`
         : (d.reason ? `<div class="tcv-af-row-src">${esc(d.reason)}</div>` : '')}
+      ${savedControlsHtml(d, index)}
       ${needsInput ? askFormHtml(d, index) : ''}
     </div>`;
+}
+
+// A row filled from a saved answer can be put right where it is seen: Change
+// picks this list's right option (it fills, and becomes the answer saved for
+// this kind of list), Forget drops the saved one. A saved answer that was no
+// answer for this list is said so, with Forget — it may be wrong for every list.
+function savedControlsHtml(d, index) {
+  if (d.forgotten) return '';
+  const fromSaved = d.source === 'saved_answer' && (d.action === FILL || d.action === SUGGEST) && d.savedFrom;
+  return `${fromSaved ? `
+      <div class="tcv-af-row-src tcv-af-saved">
+        <a href="#" class="tcv-af-change" data-index="${index}">Change</a> ·
+        <a href="#" class="tcv-af-forget" data-index="${index}">Forget</a>
+      </div>
+      <div class="tcv-af-change-form" data-index="${index}" hidden>${askFormHtml(d, index)}</div>` : ''}${
+    d.setAside && !fromSaved ? `
+      <div class="tcv-af-row-src tcv-af-aside">
+        Your saved answer "${esc(truncate(d.setAside.answer, 60))}" isn't on this list — kept for
+        forms with the list you saved it on. ·
+        <a href="#" class="tcv-af-forget" data-index="${index}">Forget it</a>
+      </div>` : ''}`;
 }
 
 function askFormHtml(d, index) {
@@ -289,13 +392,15 @@ function askFormHtml(d, index) {
        </select>`
     : `<input class="tcv-af-ask-input" data-index="${index}" type="text"
               placeholder="Your answer">`;
-  // Remembering defaults ON for an ordinary question. A sensitive one
-  // (citizenship, clearance, criminal history) is never remembered — answerField
-  // refuses it — so it gets no checkbox that would pretend otherwise.
+  // Remembering defaults ON for an ordinary question. Most sensitive ones are
+  // never remembered — answerField refuses them — so they get no checkbox that
+  // would pretend otherwise. Clearance and criminal history have no profile
+  // field, so the person's own answer may be kept, for this exact question.
+  const neverSaved = d.sensitive && !STORABLE_SENSITIVE.has(d.sensitive);
   return `
     <div class="tcv-af-ask-form">
       ${control}
-      ${d.sensitive ? `
+      ${neverSaved ? `
       <div class="tcv-af-remember">Used on this form only — never saved.</div>` : `
       <label class="tcv-af-remember">
         <input type="checkbox" class="tcv-af-remember-box" data-index="${index}" checked>
@@ -313,6 +418,34 @@ function truncate(s, n) {
 }
 
 function wireRows(body, decisions, ctx, handlers) {
+  for (const link of body.querySelectorAll('.tcv-af-change')) {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const form = body.querySelector(`.tcv-af-change-form[data-index="${link.dataset.index}"]`);
+      if (form) form.hidden = !form.hidden;
+    });
+  }
+  for (const link of body.querySelectorAll('.tcv-af-forget')) {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const index = Number(link.dataset.index);
+      const d = decisions[index];
+      if (!d || link.dataset.busy) return;
+      link.dataset.busy = '1';
+      link.textContent = 'Forgetting…';
+      const res = d.row ? await forgetSaved(d) : await handlers.onForget(index);
+      if (res && res.ok) {
+        handlers.onRefresh();
+        return;
+      }
+      delete link.dataset.busy;
+      link.textContent = 'Forget';
+      const note = globalThis.document.createElement('div');
+      note.className = 'tcv-af-row-src';
+      note.textContent = (res && res.error) || 'Could not forget that answer.';
+      link.parentNode.appendChild(note);
+    });
+  }
   for (const link of body.querySelectorAll('.tcv-af-jump')) {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -371,8 +504,8 @@ function offerToRemember(body, result, handlers) {
   const decisions = result.decisions || [];
   // A local run computes this from live rows; a framed run had the frame compute
   // it and send the list along, since only the frame can read its own fields.
-  const learnable = result.learnable
-    || (decisions.length && decisions[0].row ? learnableAnswers(decisions) : []);
+  const local = !!(decisions.length && decisions[0].row);
+  const learnable = result.learnable || (local ? learnableAnswers(decisions) : []);
   if (!learnable.length) return;
   const host = body.querySelector('#tcvAfBody');
   if (!host) return;
@@ -395,21 +528,60 @@ function offerToRemember(body, result, handlers) {
   btn.addEventListener('click', async () => {
     btn.disabled = true;
     btn.textContent = 'Saving…';
-    const res = handlers && handlers.onRemember
+    // The same split as "Save & fill": a form in this document saves from here.
+    // content.js always passes onRemember, and it can only reach a sub-frame —
+    // on a top-level form (most Greenhouse boards) it failed with "no_frame".
+    const res = !local && handlers && handlers.onRemember
       ? await handlers.onRemember(learnable)
       : await rememberAnswers(learnable);
-    btn.textContent = res && res.saved ? `✓ Saved ${res.saved}` : 'Could not save';
+    if (res && res.saved) {
+      btn.textContent = `✓ Saved ${res.saved}`;
+      return;
+    }
+    btn.textContent = 'Could not save';
+    // Say why: a refusal (sensitive question), a sign-out and a server error
+    // each need something different from the person.
+    const why = res && res.error ? res.error
+      : res && res.rejected ? "We don't store answers to sensitive questions — set these in your profile."
+      : 'Nothing was saved.';
+    const note = globalThis.document.createElement('div');
+    note.className = 'tcv-af-row-src';
+    note.textContent = why;
+    btn.after(note);
   });
 }
 
 export { jumpTo };
 
+// A page of placeholder lines with a blue line sweeping down it: the form
+// being read.
+const SCAN_DOC = `<div class="tcv-af-doc" role="progressbar" aria-label="Scanning">
+  <i class="tcv-af-doc-h"></i>
+  <i class="tcv-af-doc-l"></i><i class="tcv-af-doc-l"></i><i class="tcv-af-doc-l tcv-af-doc-s"></i>
+  <i class="tcv-af-doc-f"></i><i class="tcv-af-doc-f"></i><i class="tcv-af-doc-f"></i>
+  <i class="tcv-af-doc-b"></i>
+  <span class="tcv-af-doc-scan"></span>
+</div>`;
+
 /** The "we're working" view, for the duration of a run. */
-export function renderRunning(body, phase) {
+export function renderRunning(body, phase, auto) {
   body.innerHTML = `
-    <div class="tcv-af-panel">
-      <div class="tcv-status-text" id="tcvAfPhase">${esc(phase || 'Reading the form…')}</div>
+    <div class="tcv-af-panel tcv-af-scan">
+      ${SCAN_DOC}
+      <div class="tcv-af-scan-title">${auto
+        ? `AI is applying · page ${esc(auto.page || 1)}`
+        : 'AI is scanning this page'}</div>
+      <div class="tcv-af-scan-sub" id="tcvAfPhase">${esc(phase || 'Reading the form…')}</div>
+      ${auto && auto.onStop ? `<button class="tcv-btn tcv-btn-outline-accent" id="tcvAfAutoStop">Stop after this page</button>` : ''}
     </div>`;
+  const stop = body.querySelector('#tcvAfAutoStop');
+  if (stop) {
+    stop.addEventListener('click', () => {
+      stop.disabled = true;
+      stop.textContent = 'Stopping after this page…';
+      auto.onStop();
+    });
+  }
 }
 
 export function setPhase(body, text) {
@@ -423,4 +595,5 @@ export const PHASE_TEXT = {
   thinking: 'Working out the answers…',
   filling: 'Filling the form…',
   repairing: 'Fixing what didn’t take…',
+  resume: 'Answering the required questions left, from your resume…',
 };
